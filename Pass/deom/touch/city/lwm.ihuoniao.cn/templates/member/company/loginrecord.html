@@ -1,0 +1,33 @@
+{#$pageTitle = "帐号登录记录 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/loginrecord.css?v=1" media="all" />
+<script type="text/javascript">
+	var atpage = 1, totalCount = 0, pageSize = 15;
+</script>
+</head>
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+
+	<div class="notice">公告：管理控制台改版啦，为便于您的操作，用户中心功能整合到管理控制台并对样式进行优化，欢迎体验！<a href="#" target="_blank">操作指南</a> <a href="#" target="_blank">建议反馈</a><em class="close">&times;</em></div>
+
+	<div class="nav-tabs fn-clear">
+		<ul class="fn-clear">
+			<li class="active"><a href="javascript:;">登录记录<small id="totalTip"></small></a></li>
+		</ul>
+	</div>
+	<div class="container">
+
+		<div class="list" id="list"></div>
+		<div class="pagination fn-clear"></div>
+
+	</div>
+
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/loginrecord.js?v=2"></script>
+</body>
+</html>

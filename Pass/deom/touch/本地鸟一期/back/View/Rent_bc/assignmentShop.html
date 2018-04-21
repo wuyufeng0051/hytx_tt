@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>泸西微城</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../../css/mui.min.css">
+	<style>
+	body{
+		padding-bottom: 44px;
+	}
+	.info{
+		padding: 10px;
+		background: #fff;
+		display: -webkit-flex;
+		margin-bottom: 10px;
+	}
+	.left{
+		flex: 1;
+		border-right: 1px solid #ddd;
+	}
+	.left h4{
+		font-size: 16px;
+	}
+	.left div{
+		font-size: 14px;
+		color: #bcbcbc;
+	}
+	.right{
+		width: 60px;
+		text-align: center;
+	}
+	.right img{
+		display: block;
+		margin:auto;
+	}
+	.right span{
+		display: block;
+		color: #9a9a9a;
+		font-size: 14px;
+	}
+	.content{
+		padding: 10px;
+		background: #fff;
+		border-bottom: 1px solid #f2f2f2;
+	}
+	.content h3{
+		color: #fd7201;
+		font-size: 18px;
+	}
+	.content p{
+		margin-bottom: 0;
+	}
+	.content p span{
+		color:#000;
+	}
+
+	.description{
+		background: #fff;
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+	.description p{
+		margin-bottom: 0;
+		font-size: 14px;
+	}
+	.report{
+		background: #fceecb;
+		height: 50px;
+		position: relative;
+		padding: 5px 10px;
+		padding-right: 70px;
+		margin:5px 0;
+	}
+	.report .text{
+		border-right: 1px solid #d9d9d9;
+		font-size: 14px;
+	}
+	.report p{
+		margin:0;
+		color: #ff7300;
+		/*font-weight: bold;*/
+		font-size: 14px;
+	}
+	.report a{
+		width: 50px;
+		position: absolute;
+		right: 10px;
+		top:15px;
+		display: block;
+		background: #ff7300;
+		color: #fff;
+		border-radius: 10px;
+		padding: 2px 5px;
+		text-align: center;
+		line-height: 24px;
+		height: 24px;
+		border-left: 1px solid #d9d9d9;
+		font-size: 16px;
+	}
+
+	</style>
+</head>
+<body>
+
+<include file="Public/share" title='包含文件'/>
+
+	<div class="mui-content">
+		<div class="slide">
+			<img src="../../img/banner.png" alt="" style="width: 100%;display: block;">
+		</div>
+		<div class="info">
+			<div class="left">
+				<h4>泸西商河雅苑152平米</h4>
+				<div>
+					<span>发布:2016-45-52</span>
+					<span style="margin-left: 30px;">浏览:7次</span>
+				</div>
+			</div>
+			<div class="right">
+				<img src="../../img/collect.png" alt="" width="28">
+				<span>收藏</span>
+			</div>
+		</div>
+		<div class="content">
+			<h3>10万/月</h3>
+			<p>类型:&nbsp;<span>临街商铺</span></p>
+			<p>面积:&nbsp;<span>151平米</span></p>
+			<p>地址:&nbsp;<span>泸西商河雅苑</span></p>
+		</div>
+		<div class="description">
+			<p style="color: #000;"><span style="color:#8f8f94;">描述:<br></span>朝阳大房子 150平方.................</p>
+		</div>
+
+		<!-- 举报 -->
+		<div class="report">
+			<div class="text">
+				<span>如果您认为此条信息为</span>
+				<p>无效、虚假、诈骗信息、请立即举报！</p>
+			</div>
+			<a>举报</a>
+		</div>
+		<!-- 广告 -->
+		<div class="ad">
+			<img src="../../img/banner.png" alt="" style="width: 100%;display: block;">
+		</div>
+	</div>
+	<footer class="mui-bar mui-bar-footer" style="padding: 5px 10px;height: 50px;">
+		<div style="position: relative;padding-right: 40px;">
+			<h4 style="margin:0;line-height: 24px;font-size: 14px;">联系人:王芳</h4>
+			<p style="color:#999;font-size: 13px;margin-bottom: 0;">联系我时,请说实在沪西本地鸟上看到的,谢谢</p>
+			<a href="" style="display: block;width: 40px;height: 40px;position: absolute;right: 0;top:0px;"><img src="../../img/phone.png" width="40px;" alt=""></a>
+		</div>
+	</footer>
+	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/zepto.min.js"></script>
+	<script>
+	$('.pz span').on('tap',function(){
+		$(this).addClass('active').siblings().removeClass('active');
+	})
+
+
+	</script>
+</body>
+</html>

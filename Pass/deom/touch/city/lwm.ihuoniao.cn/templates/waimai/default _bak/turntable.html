@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+	<title>进店外卖 服务到家</title>
+	<script src="js/zepto.min.js"></script>
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/turntable.css">
+	<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="js/jQueryRotate.2.2.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+	<div class="rotate-con-pan">
+		<div class="rotate-con-zhen"></div>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		$(".rotate-con-zhen").rotate({
+			bind:{
+				click:function(){
+					var a = runzp();
+					 $(this).rotate({
+						 	duration:3000,               //转动时间
+						 	angle: 0,                    //起始角度
+	            			animateTo:1440+a.angle,      //结束的角度
+							easing: $.easing.easeOutSine,//动画效果，需加载jquery.easing.min.js
+							callback: function(){
+								alert(a.prize+a.message);//简单的弹出获奖信息
+							}
+					 });
+				}
+			}
+		});
+	});
+	</script>
+	<div class="shuoming">
+		<h1>抽奖说明</h1>
+		<ul>
+			<li>每人每天只能参与<em>1</em>次抽奖</li>
+			<li>今天还有<em>1</em>次抽奖机会</li>
+		</ul>
+	</div>
+	<div class="shuoming">
+		<h1>奖品介绍</h1>
+		<ul>
+			<li>一等奖：优惠券5元（数量0）</li>
+			<li>二等奖：优惠券3元（数量31）</li>
+			<li>三等奖：积分（数量17）</li>
+		</ul>
+	</div>
+	<div class="duihuan fn-clear"><em>未兑换奖品</em><span>0</span> </div>
+	<div class="duihuan fn-clear"><em>已兑换奖品</em><span>0</span> </div>
+	<script src="js/public.js"></script>
+</body>
+</html>

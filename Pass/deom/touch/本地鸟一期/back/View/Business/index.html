@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="public">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection"> 
+    <title>商家信息</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css?v=2">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/_head.css?v=2">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+<!-- <div class="loading" ><img src="__PUBLIC__/Home/img/loading.gif" style="width: 30px;height: 30px;"><p style="text-align: center;color: #fff;">加载中，请稍等...</p></div> -->
+<!-- 共同顶部 s-->
+<div class="header fn-clear">
+    <div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+    <div class="title">商家详情</div>
+    <div class="share"></div>
+    <div class="header_right"><a href="__MODULE__/Business/businessenter">商家入驻</a><i></i><a href="__MODULE__/Index/my">我的</a></div>
+</div>
+<!-- 共同顶部 e-->
+
+
+<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/busness.css?v=10">
+<script type="text/javascript" src="__PUBLIC__/Home/js/swiper.min.js"></script>
+<!-- 顶部固定搜索框 s-->
+<div class="search_box">
+    <div class="seach_pic"><img src="__PUBLIC__/Home/images/banner.png" alt=""></div>
+    <div class="sea_input fn-clear"><input type="text" placeholder="请输入您要查找的信息" id="search"><a href="javascript:;" id="searchbtn"><button><i></i>查找</button></a></div>
+</div>
+<!-- 顶部固定搜索框 e-->
+<!-- 便携工具列表 s-->
+<div class="tools_box">
+    <div class="swiper-container" id="swiper-container2">
+        <div class="swiper-wrapper quan_list">
+            <div class="swiper-slide fn-clear">
+                <ul>
+                    <li class="sj_1"><a href="__MODULE__/Business/business?search=餐饮美食"><i></i>餐饮美食</a></li>
+                    <li class="sj_2"><a href="__MODULE__/Business/business?search=休闲娱乐"><i></i>休闲娱乐</a></li>
+                    <li class="sj_3"><a href="__MODULE__/Business/business?search=生活购物"><i></i>生活购物</a></li>
+                    <li class="sj_4"><a href="__MODULE__/Business/business?search=外卖跑腿"><i></i>外卖跑腿</a></li>
+                    <li class="sj_5"><a href="__MODULE__/Business/business?search=酒店住宿"><i></i>酒店住宿</a></li>
+                    <li class="sj_6"><a href="__MODULE__/Business/business?search=快递物流"><i></i>快递物流</a></li>
+                    <li class="sj_7"><a href="__MODULE__/Business/business?search=丽人美容"><i></i>丽人美容</a></li>
+                    <li class="sj_8"><a href="__MODULE__/Business/business?search=教育培训"><i></i>教育培训</a></li>
+                    <li class="sj_9"><a href="__MODULE__/Business/business?search=服饰鞋包"><i></i>服饰鞋包</a></li>
+                    <li class="sj_10"><a href="__MODULE__/Business/business?search=电脑数码"><i></i>电脑数码</a></li>
+                </ul>
+            </div>
+            <div class="swiper-slide fn-clear">
+                <ul>
+                    <li class="sj_11"><a href="__MODULE__/Business/business?search=摄影摄像"><i></i>摄影摄像</a></li>
+                    <li class="sj_12"><a href="__MODULE__/Business/business?search=母婴周边"><i></i>母婴周边</a></li>
+                    <li class="sj_13"><a href="__MODULE__/Business/business?search=保险金融"><i></i>保险金融</a></li>
+                    <li class="sj_14"><a href="__MODULE__/Business/business?search=汽车相关"><i></i>汽车相关</a></li>
+                    <li class="sj_15"><a href="__MODULE__/Business/business?search=运动健身"><i></i>运动健身</a></li>
+                    <li class="sj_16"><a href="__MODULE__/Business/business?search=装修建材"><i></i>装修建材</a></li>
+                    <li class="sj_17"><a href="__MODULE__/Business/business?search=家具家纺"><i></i>家具家纺</a></li>
+                    <li class="sj_18"><a href="__MODULE__/Business/business?search=家用电器"><i></i>家用电器</a></li>
+                    <li class="sj_19"><a href="__MODULE__/Business/business?search=维修服务"><i></i>维修服务</a></li>
+                    <li class="sj_20"><a href="__MODULE__/Business/business?search=鲜花庆典"><i></i>鲜花庆典</a></li>
+                </ul>
+            </div>
+            <div class="swiper-slide fn-clear ">
+                <ul>
+                    <li class="sj_21"><a href="__MODULE__/Business/business?search=生活服务"><i></i>生活服务</a></li>
+                    <li class="sj_22"><a href="__MODULE__/Business/business?search=特产旅游"><i></i>特产旅游</a></li>
+                    <li class="sj_23"><a href="__MODULE__/Business/business?search=广告相关"><i></i>广告相关</a></li>
+                    <li class="sj_24"><a href="__MODULE__/Business/business?search=农林牧渔"><i></i>农林牧渔</a></li>
+                    <li class="sj_25"><a href="__MODULE__/Business/business?search=办公用品"><i></i>办公用品</a></li>
+                    <li class="sj_26"><a href="__MODULE__/Business/business?search=医疗药店"><i></i>医疗药店</a></li>
+                    <li class="sj_27"><a href="__MODULE__/Business/business?search=其他类别"><i></i>其他类别</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-pagination swiper-pagination-bullets"></div>
+</div>
+<!-- 便携工具列表 e-->
+<!-- 广告幻灯片 s -->
+<div class="swiper-container1 picscroll">
+    <div class="swiper-container2">
+        <div class="swiper-wrapper">
+            <volist name="status" id="vo">
+                <div class="swiper-slide">
+                    <a><img src="__PUBLIC__/../{$vo['advertisement_img']}"></a>
+                </div>
+            </volist>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!-- 广告幻灯片 e -->
+<!-- 推荐商家列表 s -->
+<div class="merchant">
+    <div class="merchant_lead fn-clear">
+        <div class="mer_l"><i></i>推荐商家</div>
+       <!--  <div class="mer_r">
+            <span>入驻商家：<em>{$total}</em></span>
+            <span>浏览量：<em>{$totalbrowse}</em></span>
+        </div> -->
+    </div>
+    <div class="merchant_list" >
+        <foreach name="res_all" item="val">
+        <div class="mer_detail fn-clear" data-phone="{$val['business_phone']}" data-tel="{$val['business_tel']}"><a href="__MODULE__/Business/shopdetail/business_id/{$val['business_id']}">
+            <if condition="$val['business_is_activity'] eq 1">
+            <div class="mer_pic"><img src="{$val['business_shopimg']}" alt=""><i class="huo"></i></div>
+                <elseif condition="$val['business_is_top'] eq 1"/>
+                <div class="mer_pic"><img src="{$val['business_shopimg']}" alt=""><i class="top"></i></div>
+                <else/>
+                <div class="mer_pic"><img src="{$val['business_shopimg']}" alt=""></div>
+            </if>
+            <h1>{$val['business_shopname']}</h1>
+            <p>营业时间：{$val['business_shopopen']}-{$val['business_shopclose']}</p>
+            <p><i></i>{$val['business_like']} 次</p>
+            <span>{$val['business_shopaddress']}</span>
+        </a>
+            <div class="tel"></div>
+        </div>
+        </foreach>
+    </div>
+    <if condition="$totalpage gt 1">
+        {$pageButton}
+    </if>
+    <div class="tips">共{$totalpage}页</div>
+</div>
+<!-- 推荐商家列表 e -->
+<div class="disk"></div>
+<div class="phone">
+    <h1>提示</h1>
+    <h2>联系我时，请说是在<em>泸西本地鸟</em>上看到的，谢谢！</h2>
+    <ul>
+        <li><a><em></em><i></i></a></li>
+        <li><a><em></em><i></i></a></li>
+    </ul>
+    <div class="close"><i></i></div>
+</div>
+<script>
+    if($('#page_type')[0]){
+        $('#page_type')[0].selectedIndex = -1;}
+    // 分页选择
+    function changepage(v){
+        window.location.href='__ROOT__'+v;
+    }
+    $('#searchbtn').click(function(){
+        var searchval=$('#search').val();
+        window.location.href="__MODULE__/Business/business?search="+searchval;
+    })
+</script>
+
+
+<script type="text/javascript" src="__PUBLIC__/Home/js/businessindex.js?v=4"></script>
+</body>
+</html>

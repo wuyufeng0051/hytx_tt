@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">try {
+        ace.settings.check('breadcrumbs', 'fixed')
+      } catch(e) {}</script>
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-gear gear-icon"></i>
+        <a href="/config/account">系统设置</a></li>
+      <li>
+        <a href="/config/employee">员工账号</a></li>
+      <li class="active">分配外卖店铺</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <link rel="stylesheet" href="css/chosen.min.css">
+      <script src="js/chosen.jquery.min.js"></script>
+      <link rel="stylesheet" href="css/ace.min.css" id="main-ace-style">
+      <style>.aaa{display:none;} .form-actions{margin-top: 55px;margin-bottom: 1px;} .col-sm-8{width: 55%;}</style>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="widget-box">
+            <div class="widget-header">
+              <h4 class="widget-title">分配店铺</h4></div>
+            <div class="widget-body">
+              <div class="widget-main">
+                <form enctype="multipart/form-data" class="form-horizontal" id="shop-form" action="/config/setemployeeshop?employee_id=101265" method="post">
+                  <p>员工帐号：
+                    <span class="badge badge-success">配送部</span></p>
+                  <div class="alert alert-danger" id="shop-form_es_" style="display:none">
+                    <p>请更正下列输入错误:</p>
+                    <ul>
+                      <li>dummy</li></ul>
+                  </div>
+                  <div class="form-group col-sm-8">
+                    <label style="margin-right:20px;">店铺管理：</label>
+                    <input type="radio" name="EmployeesAccount[shop_type]" value="0" onclick="setshop(0)" class="send_type" checked="">全部店铺
+                    <input type="radio" name="EmployeesAccount[shop_type]" value="1" onclick="setshop(1)" class="send_type">指定店铺
+                    <br>&nbsp;
+                    <br></div>
+                  <div id="selectshop" class="form-group col-sm-8 aaa">
+                    <label>店铺（可多选）</label>
+                    <select style="width: 500px; display: none;" multiple="multiple" name="shop_ids[]" class="chosen-select form-control chosen-select1" id="form-field-select-4" data-placeholder="可多选">
+                      <option value="171604">梁记粥铺</option>
+                      <option value="179493">味美家煲仔饭</option>
+                      <option value="188840">沐小卤卤肉饭</option>
+                      <option value="191043">遍地香</option>
+                      <option value="198384">蔡记兔头</option>
+                      <option value="198470">大圣烧烤</option>
+                      <option value="198789">五谷渔粉</option>
+                      <option value="201814">湖南米粉秭归旗舰店</option>
+                      <option value="203781">桃园包子</option>
+                      <option value="203806">龙虾甲鱼馆</option>
+                      <option value="203914">羊子沟羊肉串</option>
+                      <option value="204828">一号渔港</option>
+                      <option value="205689">庙嘴泄滩包子</option>
+                      <option value="205770">罗蒂爸爸</option>
+                      <option value="206291">陕西红富士（金点自营）</option>
+                      <option value="206593">五谷渔粉（茶粥坊店）</option>
+                      <option value="206740">撮一顿川菜馆</option>
+                      <option value="206902">老字号米酒汤圆（下酒菜 甜品）</option>
+                      <option value="207170">易购24小时便利店</option>
+                      <option value="207670">比得灌汤包</option>
+                      <option value="207703">本素咖啡</option>
+                      <option value="208291">龙潮美式瓦缸炭火烤鱼</option>
+                      <option value="208570">金巷子</option>
+                      <option value="209507">有意思</option>
+                      <option value="210977">花之恋</option>
+                      <option value="211219">老归州酒家</option>
+                      <option value="212668">米桂坊过桥米线</option>
+                      <option value="214250">郑记卤味</option>
+                      <option value="214683">吾饮良品</option>
+                      <option value="215141">馋嘴鱼莊</option>
+                      <option value="216567">木炭原味儿烧烤</option>
+                      <option value="216826">红油面馆</option>
+                      <option value="216935">冰淋橙夏</option>
+                      <option value="218162">怡满堂大药房</option>
+                      <option value="221492">王胖子早点</option>
+                      <option value="224050">阁楼咖啡</option>
+                      <option value="224147">千里香馄饨王</option>
+                      <option value="224187">周姐卤菜水饺</option>
+                      <option value="224339">七里香万州面馆</option>
+                      <option value="224370">小树鲜果（水果、零食）</option>
+                      <option value="224467">粥公卤婆（烧烤）</option>
+                      <option value="224542">茶物语</option>
+                      <option value="224543">邓记烤鱼</option>
+                      <option value="225881">九三食府</option>
+                      <option value="226578">原酒印象</option>
+                      <option value="226584">乡风缘野鸡养殖农场</option>
+                      <option value="226756">小牧场羊肉砂锅</option>
+                      <option value="227334">惠姑家庭农场</option>
+                      <option value="227431">杜康专卖店</option>
+                      <option value="227490">炎锅家常菜（瓦罐汤）</option>
+                      <option value="234626">秘制牛肉粉面馆</option>
+                      <option value="234732">屈乡风味馆</option>
+                      <option value="234765">吴妈面馆</option>
+                      <option value="234772">可礼客中式快餐</option>
+                      <option value="236441">蟹谢啦（香辣蟹钳）</option>
+                      <option value="238113">天喔零食秭归店</option>
+                      <option value="238848">正新鸡排（金城店）</option>
+                      <option value="239273">嘛嘛香中式营养快餐</option>
+                      <option value="240581">正宗片皮鸭</option>
+                      <option value="242582">苏州火鸟测试</option>
+                      <option value="242701">金点生鲜超市</option>
+                      <option value="186168">木语果蛋糕</option>
+                      <option value="189027">肯德基</option>
+                      <option value="190600">舒心批发超市</option>
+                      <option value="193454">五色谷大酒库旗舰店</option>
+                      <option value="189066">纯果乐</option>
+                      <option value="191434">净果成人用品</option>
+                      <option value="193156">麦佳乐蛋糕店</option>
+                      <option value="195654">周黑鸭</option>
+                      <option value="200063">欢乐家旗舰店</option>
+                      <option value="189287">新派煲仔饭</option>
+                      <option value="189881">矮子馅饼（秭归店）</option>
+                      <option value="192626">巴黎天使</option>
+                      <option value="194392">绿源清江尙品桶装系列纯净水天然水</option>
+                      <option value="195171">子归醇</option>
+                      <option value="196068">王梁记麻辣烫</option>
+                      <option value="180884">四季花时尚饮品</option>
+                      <option value="186549">香满园拉面馆</option>
+                      <option value="187702">福和祥煲仔饭</option>
+                      <option value="188229">坝头刚子烧烤</option>
+                      <option value="189341">韦一粮油</option>
+                      <option value="190198">糖炒栗子</option>
+                      <option value="194765">王老板烩面</option>
+                      <option value="195667">花漫舞</option>
+                      <option value="180758">安吉尔纯净水</option>
+                      <option value="182990">沙县小吃信合店</option>
+                      <option value="183295">坝头夜猫子小黄鱼</option>
+                      <option value="186498">均瑶旗舰店</option>
+                      <option value="188487">坝头米酒汤圆 萝卜饺子</option>
+                      <option value="190211">庙嘴万州面</option>
+                      <option value="193935">张氏茶油鸭</option>
+                      <option value="197991">艳子农家小炒</option>
+                      <option value="183123">功夫煲仔饭</option>
+                      <option value="186255">巴东傅记羊肉面</option>
+                      <option value="188260">坝头东北小吃</option>
+                      <option value="191671">砂锅米线</option>
+                      <option value="193993">正新鸡排</option>
+                      <option value="195600">庙嘴炸酱面馆</option>
+                      <option value="182341">一家人餐馆</option>
+                      <option value="186189">妙味馄饨</option>
+                      <option value="190154">一扫光零食量贩店</option>
+                      <option value="186180">坝头火爆鱿鱼</option>
+                      <option value="187913">红牛能量补给站</option>
+                      <option value="189378">妙嘴小吃</option>
+                      <option value="190159">零食加油站</option>
+                      <option value="179446">测试店铺（勿点）</option>
+                      <option value="187713">一品香</option>
+                      <option value="188197">坝头开心花甲</option>
+                      <option value="190315">襄阳牛杂面</option>
+                      <option value="192603">华莱士</option>
+                      <option value="198327">真味酒楼</option>
+                      <option value="210668">谭家村酒业</option>
+                      <option value="186396">老家大锅台</option>
+                      <option value="188519">坝头灌汤包</option>
+                      <option value="189699">成都抄手</option>
+                      <option value="189267">胖胖熊美食城</option>
+                      <option value="180907">老字号鸡蛋饭</option>
+                      <option value="182664">重庆小面</option>
+                      <option value="183195">太陽·卤味坊</option>
+                      <option value="191202">马大姐旗舰店</option>
+                      <option value="193184">松滋杜婆鸡</option>
+                      <option value="182536">坝头功夫鱿鱼</option>
+                      <option value="186177">精武人家（小区店）</option>
+                      <option value="194467">纸上烤鱼(国华盛景店)</option>
+                      <option value="165797">凤凰楼</option>
+                      <option value="190137">泄滩包子金城店</option>
+                      <option value="186200">坝头台湾手抓饼</option>
+                      <option value="188293">坝头碳烤小黄鱼</option>
+                      <option value="195057">姨妹子菜馆</option>
+                      <option value="202250">坝头米酒汤圆</option>
+                      <option value="186588">坝头江湖翅客24号</option>
+                      <option value="186570">坝头鸡翅包饭 烧烤</option>
+                      <option value="183237">坝头盐都小吃</option>
+                      <option value="188363">川府石锅鱼</option>
+                      <option value="192207">时尚酒家</option>
+                      <option value="183307">泽尚生活馆</option>
+                      <option value="191240">万美菜馆</option>
+                      <option value="209064">韩大大冒菜</option>
+                      <option value="187677">程家菜馆</option>
+                      <option value="189461">剑峰菜馆</option>
+                      <option value="183336">朋友圈土菜馆</option>
+                      <option value="187689">平价菜馆</option>
+                      <option value="189248">馋神醉仙鸭</option>
+                      <option value="189252">欣怡川菜馆</option>
+                      <option value="187718">贵州花江狗肉（小区店）</option>
+                      <option value="193139">郑记干锅</option>
+                      <option value="195717">丰锅农家菜</option>
+                      <option value="187896">河鲜馆</option>
+                      <option value="187285">跑腿业务</option>
+                      <option value="194234">五香嘴量贩休闲食品</option>
+                      <option value="197223">麦点超市</option>
+                      <option value="199278">茶粥坊</option>
+                      <option value="201368">家常菜馆</option>
+                      <option value="202819">世纪华联</option>
+                      <option value="203134">夷蒙概念牛肉</option>
+                      <option value="205327">祥和飞锅万州面</option>
+                      <option value="207984">品味烧烤</option>
+                      <option value="210794">秋谷山纯粮酒</option>
+                      <option value="212643">金烈火奶酪蛋糕</option>
+                      <option value="217682">面相聚</option>
+                      <option value="219509">山东口福饼</option>
+                      <option value="224337">茶粥坊土钵菜</option>
+                      <option value="186611">坝头养生卤品</option>
+                      <option value="199721">鲜烫麻辣烫</option>
+                      <option value="182550">维纳斯美容会所</option>
+                      <option value="182875">网上营业厅</option>
+                      <option value="186185">坝头铁板炒饭</option>
+                      <option value="188558">韩国凉面</option>
+                      <option value="192225">李功夫中华鸡排</option>
+                      <option value="185223">宏发煤气</option>
+                      <option value="188574">坝头那家粉</option>
+                      <option value="189049">楚城小厨</option>
+                      <option value="189030">辛勤小吃店</option>
+                      <option value="188456">坝头砂锅麻辣烫</option>
+                      <option value="188186">坝头公园27号肉夹馍</option>
+                      <option value="188194">坝头饮品庄园</option>
+                      <option value="196345">三少食府</option>
+                      <option value="186597">坝头澳洲大肉串</option>
+                      <option value="181130">蒙古烤羊腿</option>
+                      <option value="190390">万州烤鱼</option>
+                      <option value="188710">小南园</option>
+                      <option value="183168">老字号虾皇</option>
+                      <option value="189072">大三峡</option></select>
+                    <div class="chosen-container chosen-container-multi" style="width: 500px;" title="" id="form_field_select_4_chosen">
+                      <ul class="chosen-choices">
+                        <li class="search-field">
+                          <input type="text" value="可多选" class="default" autocomplete="off" style="width: 0px;"></li>
+                      </ul>
+                      <div class="chosen-drop">
+                        <ul class="chosen-results"></ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix form-actions">
+                    <div class="col-md-offset-3 col-md-9">
+                      <button class="btn btn-info" type="submit">
+                        <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>$('chosen-select chosen-select1').chosen({
+          allow_single_deselect: true
+        });
+        $('chosen-select chosen-select2').chosen({
+          allow_single_deselect: true
+        });
+
+        $(window).off('resize.chosen').on('resize.chosen',
+        function() {
+          $('.chosen-select chosen-select1').each(function() {
+            var $this = $(this);
+            $this.next().css({
+              'width': $this.parent().width()
+            });
+          }); $('.chosen-select chosen-select2').each(function() {
+            var $this = $(this);
+            $this.next().css({
+              'width': $this.parent().width()
+            });
+          })
+        }).trigger('resize.chosen');
+
+        function setshop(type) {
+          if (type == 1) {
+            $('#form_field_select_4_chosen').css('width', '500px');
+            $('#selectshop').removeClass('aaa');
+          } else {
+            $('#selectshop').addClass('aaa');
+          }
+        }</script>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

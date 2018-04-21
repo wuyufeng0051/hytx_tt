@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-desktop desktop-icon"></i>
+        <a href="#">店铺</a></li>
+      <li class="active">打印机绑定</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-xs-10">
+          <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">
+              <i class="ace-icon fa fa-times"></i>
+            </button>
+            <p>如未绑定打印机，您需要先到“系统设置-》打印机管理”中设置好打印机，再进行店铺的打印机绑定</p>
+            <p>
+              <a class="btn btn-danger" href="#">前往打印机管理</a></p>
+          </div>
+          <div id="shopList" class="grid-view">
+            <table class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th id="shopList_c0">
+                    <a class="sort-link" href="#">店铺名称</a></th>
+                  <th id="shopList_c1">打印机</th>
+                  <th class="button-column" id="shopList_c2">操作</th></tr>
+                <tr class="filters">
+                  <td>
+                    <input name="Config[shopname]" type="text" maxlength="20"></td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td></tr>
+              </thead>
+              <tbody>
+                <tr class="odd">
+                  <td width="200">正新鸡排（金城店）</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">五谷渔粉（茶粥坊店）</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">桃园包子</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">惠姑家庭农场</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">吴妈面馆</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">祥和飞锅万州面</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">原酒印象</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">老归州酒家</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">可礼客中式快餐</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">乡风缘野鸡养殖农场</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">一号渔港</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">龙虾甲鱼馆</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">茶物语</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">邓记烤鱼</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">花之恋</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">天喔零食秭归店</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">味美家煲仔饭</td>
+                  <td style="text-align:center;">
+                    <span style="padding:5px;margin-left:10px;background:#dd4b39;color:#ffffff;">味美家</span></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">怡满堂大药房</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">阁楼咖啡</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">王胖子早点</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">老字号米酒汤圆（下酒菜 甜品）</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">比得灌汤包</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">易购24小时便利店</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">世纪华联</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">遍地香</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">大圣烧烤</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">茶粥坊土钵菜</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">面相聚</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">七里香万州面馆</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">梁记粥铺</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">湖南米粉秭归旗舰店</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">本素咖啡</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">九三食府</td>
+                  <td style="text-align:center;">
+                    <span style="padding:5px;margin-left:10px;background:#dd4b39;color:#ffffff;">九三食府</span></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">有意思</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">馋嘴鱼莊</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">麦点超市</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">冰淋橙夏</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">杜康专卖店</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">秋谷山纯粮酒</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">茶粥坊</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">品味烧烤</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">小树鲜果（水果、零食）</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">山东口福饼</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">庙嘴泄滩包子</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">夷蒙概念牛肉</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">秘制牛肉粉面馆</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">五谷渔粉</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">羊子沟羊肉串</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="odd">
+                  <td width="200">千里香馄饨王</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+                <tr class="even">
+                  <td width="200">撮一顿川菜馆</td>
+                  <td style="text-align:center;"></td>
+                  <td width="220">
+                    <a style="cursor:pointer" class="label label-sm label-success" title="打印机绑定" href="#">打印机绑定</a>
+                    <a style="cursor:pointer" class="label label-sm label-info" onclick="selfprinter(this);return false;" title="格式打印" href="#">格式打印</a>
+                    <a style="cursor:pointer" class="label label-sm label-warning" onclick="printercontent(this);return false;" title="自由打印" href="#">自由打印</a></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="summary">第 1-50 条, 共 181 条.</div>
+            <div class="pager">
+              <ul class="pagination" id="yw0">
+                <li class="hidden hidden">
+                  <a href="#">&lt;&lt; 首页</a></li>
+                <li class="prev hidden">
+                  <a href="#">
+                    <i class="ace-icon fa fa-angle-double-left"></i>
+                  </a>
+                </li>
+                <li class="page active">
+                  <a href="#">1</a></li>
+                <li class="page">
+                  <a href="#">2</a></li>
+                <li class="page">
+                  <a href="#">3</a></li>
+                <li class="page">
+                  <a href="#">4</a></li>
+                <li class="next">
+                  <a href="#">
+                    <i class="ace-icon fa fa-angle-double-right"></i>
+                  </a>
+                </li>
+                <li class="hidden">
+                  <a href="#">末页 &gt;&gt;</a></li>
+              </ul>
+            </div>
+            <div class="keys" style="display:none" title="/printer/index">
+              <span>238848</span>
+              <span>206593</span>
+              <span>203781</span>
+              <span>227334</span>
+              <span>234765</span>
+              <span>205327</span>
+              <span>226578</span>
+              <span>211219</span>
+              <span>234772</span>
+              <span>226584</span>
+              <span>204828</span>
+              <span>203806</span>
+              <span>224542</span>
+              <span>224543</span>
+              <span>210977</span>
+              <span>238113</span>
+              <span>179493</span>
+              <span>218162</span>
+              <span>224050</span>
+              <span>221492</span>
+              <span>206902</span>
+              <span>207670</span>
+              <span>207170</span>
+              <span>202819</span>
+              <span>191043</span>
+              <span>198470</span>
+              <span>224337</span>
+              <span>217682</span>
+              <span>224339</span>
+              <span>171604</span>
+              <span>201814</span>
+              <span>207703</span>
+              <span>225881</span>
+              <span>209507</span>
+              <span>215141</span>
+              <span>197223</span>
+              <span>216935</span>
+              <span>227431</span>
+              <span>210794</span>
+              <span>199278</span>
+              <span>207984</span>
+              <span>224370</span>
+              <span>219509</span>
+              <span>205689</span>
+              <span>203134</span>
+              <span>234626</span>
+              <span>198789</span>
+              <span>203914</span>
+              <span>224147</span>
+              <span>206740</span></div>
+          </div>
+        </div>
+      </div>
+      <div id="dialog-printercontent" class="hide">
+        <form id="new-printer" action="/printer/sendprintercontent" method="post">
+          <div class="ness">
+            <div style="width:400px;margin:0 auto;">打印内容:
+              <br>
+              <textarea style="width:400px;height:200px;" name="content"></textarea>
+              <input type="hidden" name="shop_id" value="0" id="shop_id"></div>
+          </div>
+        </form>
+      </div>
+      <style>.form-group{height:30px;} .addprinterfood,.deleteprinterfood{background:#ff893c;float:right;margin-right:0px;width:30px;height:30px;text-align:center;line-height:30px;cursor:pointer;} .deleteprinterfood{float:left;}</style>
+      <div id="lztpopups" style="width:500px;display:none;">
+        <div class="row">
+          <div class="col-sm-12">
+            <form id="printer-order" action="/printer/selfprinter" method="post">
+              <input type="hidden" name="shop_id" id="shop_id1" value="">
+              <div class="form-group">
+                <label class="col-sm-3 new_label" for="Printer[nickname]">姓名</label>
+                <input type="text" class="col-sm-8" name="Printer[nickname]" id="Printer_nickname"></div>
+              <div class="form-group">
+                <label class="col-sm-3 new_label" for="Printer[phone]">手机号</label>
+                <input type="text" class="col-sm-8" name="Printer[phone]" id="Printer_phone"></div>
+              <div class="form-group">
+                <label class="col-sm-3 new_label" for="Printer[address]">配送地址</label>
+                <input type="text" class="col-sm-8" name="Printer[address]" id="Printer_address"></div>
+              <div class="form-group">
+                <label class="col-sm-3 new_label" for="Printer[memo]">备注</label>
+                <input type="text" class="col-sm-8" name="Printer[memo]" id="Printer_memo"></div>
+              <div class="form-group">
+                <label class="col-sm-3 new_label" for="Printer[delivery]">外送费</label>
+                <input type="text" class="col-sm-8" name="Printer[delivery]" id="Printer_delivery"></div>
+              <div class="form-group">
+                <label class="col-sm-3 new_label" for="Printer[total_price]">总金额</label>
+                <input type="text" class="col-sm-8" name="Printer[total_price]" id="Printer_total_price"></div>
+              <div style="margin:10px;height:30px;width:100px;line-height:30px;">
+                <b>商品详情：</b>
+                <div class="addprinterfood">加</div></div>
+              <div id="printerfoodlist">
+                <div class="form-group">
+                  <div class="deleteprinterfood">删</div>
+                  <label class="col-sm-2 new_label" for="Printer[foodname][0]">商品名:</label>
+                  <input type="text" name="Printer[foodname][0]" class="col-sm-3">
+                  <label class="col-sm-2 new_label" for="Printer[foodprice][0]" style="">价格:</label>
+                  <input type="text" name="Printer[foodprice][0]" class="col-sm-1">
+                  <label class="col-sm-2 new_label" for="Printer[foodnum][0]">数量:</label>
+                  <input type="text" name="Printer[foodnum][0]" class="col-sm-1"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

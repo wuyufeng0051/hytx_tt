@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>顺路货</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/_head.css">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+</head>
+<body>
+<input type="hidden" id="Share_title" value = "{$res.shunlu_contactname}（{$res.shunlu_contactsex}/货主）">
+<include file="Public/share" title='包含文件'/>
+<!-- 共同顶部 s-->
+<div class="header fn-clear">
+    <div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+    <div class="title">顺路货详情</div>
+    <div class="share"></div>
+    <div class="header_right"><a href="enter.shtml">商家入驻</a><i></i><a href="#">我的</a></div>
+</div>
+<!-- 共同顶部 e-->
+<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/photoswipe.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/default-skin.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/car_detail.css">
+<script type="text/javascript" src="__PUBLIC__/Home/js/swiper.min.js"></script>
+
+
+<div class="var_b">
+    <div class="infor" style="padding: .3rem .3rem;">
+        <h1 style="font-size: .34rem;">{$res.shunlu_contactname} <em style="font-size: .28rem;font-weight: bold;">（{$res.shunlu_contactsex}/货主）</em></h1>
+        <h2 style="margin-top: .2rem;">{$res.shunlu_cartype}</h2>
+    </div>
+</div>
+
+<div class="infor_de">
+    <div class="in_txt">
+        <ul>
+            <li class="time"><em>发货时间：</em><span>{$res.shunlu_starttime}</span></li>
+            <li class="start"><em>始发地：</em><span>{$res.shunlu_startplace}</span></li>
+            <li class="end"><em>目的地：</em><span>{$res.shunlu_endplace}</span></li>
+            <if condition="$res['shunlu_remark'] neq ''">
+                <li><em>备注：</em><span>{$res.shunlu_remark}</span></li>
+            </if>
+        </ul>
+    </div>
+    <div class="in_pic fn-clear">
+        <div class="my-gallery comment-pic-slide swiper-container"  itemscope itemtype="">
+            <div class="swiper-wrapper">
+                <foreach name="res['imgs']" item="imgs">
+                    <figure itemprop="associatedMedia" itemscope itemtype="" class="swiper-slide">
+                        <a href="{$imgs['imgs_path']}" itemprop="contentUrl" data-size="" >
+                            <img src="{$imgs['imgs_path']}" itemprop="thumbnail" alt="Image description" />
+                        </a>
+                    </figure>
+                </foreach>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="pswp__bg"></div>
+            <div class="pswp__scroll-wrap">
+                <div class="pswp__container">
+                    <div class="pswp__item">
+                        <div class="pswp__zoom-wrap">
+                        </div>
+                    </div>
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                </div>
+                <div class="pswp__ui pswp__ui--hidden">
+                    <div class="pswp__top-bar">
+                        <div class="pswp__counter"></div>
+                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                        <div class="pswp__preloader">
+                            <div class="pswp__preloader__icn">
+                                <div class="pswp__preloader__cut">
+                                    <div class="pswp__preloader__donut"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                        <div class="pswp__share-tooltip"></div>
+                    </div>
+                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                    </button>
+                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                    </button>
+                    <div class="pswp__caption">
+                        <div class="pswp__caption__center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="var_b1">
+    <div class="report fn-clear">
+        <div class="report_left">
+            <h1>如果您认为此条信息为</h1><p>无效、虚假、诈骗信息、请立即举报！</p>
+        </div>
+        <div class="report_right">
+            <a href="__MODULE__/Report/report?report_cid={$res.shunlu_id}&report_uid={$res.shunlu_uid}&report_type=19">举报</a>
+        </div>
+    </div>
+</div>
+<!-- 广告幻灯片 s -->
+<!--<div class="picscroll">-->
+<!--<div class="bd" id="picscroll">-->
+<!--<ul class="picscroll-pic">-->
+<!--<volist name="status" id="vo">-->
+<!--<li>-->
+<!--<a href="javascript:;"><img src="__PUBLIC__/../{$vo['advertisement_img']}"></a>-->
+<!--</li>-->
+<!--</volist>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<div class="swiper-container1 picscroll">
+    <div class="swiper-container2">
+        <div class="swiper-wrapper">
+            <volist name="status" id="vo">
+                <div class="swiper-slide">
+                    <a><img src="__PUBLIC__/../{$vo['advertisement_img']}"></a>
+                </div>
+            </volist>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!-- 广告幻灯片 e -->
+<div class="contact fn-clear">
+    <div class="con_left">联系人：{$res.shunlu_contactname}</div>
+    <div class="con_right"><i></i>电话联系</div>
+</div>
+<div class="phone">
+    <h1>提示</h1>
+    <h2>联系我时，请说是在<em>泸西本地鸟</em>上看到的，谢谢！</h2>
+    <ul>
+        <li><a href="tel:{$res.shunlu_contactphone}">{$res.shunlu_contactphone}<i></i></a></li>
+    </ul>
+    <div class="close"><i></i></div>
+</div>
+<div class="disk"></div>
+<div class="share_box"></div>
+
+<script type="text/javascript" src="__PUBLIC__/Home/js/photoswipe.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/photoswipe-ui-default.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/car_detail.js"></script>
+</body>
+</html>

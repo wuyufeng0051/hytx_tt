@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>我的发布</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/_head.css">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+</head>
+<body>
+    <style>
+        body{
+            margin-top: 0;
+        }
+        .header {
+            height: .9rem;
+            background: #fd5530 !important;
+            color: #fff;
+            font-size: .32rem;
+            line-height: .9rem;
+            max-width: 1080px;
+            position: relative;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 11;
+            overflow: hidden;
+        }
+    </style>
+<include file="Public/share" title='包含文件'/>
+<!-- 共同顶部 s-->
+<div class="header fn-clear">
+    <div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+    <div class="title">编辑商家信息</div>
+    <div class="share"></div>
+    <div class="header_right"><a href="enter.shtml">商家入驻</a><i></i><a href="#">我的</a></div>
+</div>
+<!-- 共同顶部 e-->
+
+<link rel="stylesheet" href="__PUBLIC__/Home/css/enter.css?v=3">
+<script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=RlrCSDRWdEdwBmGizieNRp4z"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&amp;ak=RlrCSDRWdEdwBmGizieNRp4z&amp;services=&amp;t=20170717103214"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/mobileSelect.css">
+<script type="text/javascript" src="__PUBLIC__/Home/js/mobileSelect.js"></script>
+
+<input type="hidden" value="{$business_edit['business_id']}" id="business_id">
+<div class="write fn-clear">
+    <span><i></i>店铺名称</span><input type="text" placeholder="请输店铺名称 20字以内" name="shopname" id="shopname" value="{$business_edit['business_shopname']}">
+</div>
+<div class="write choice fn-clear">
+    <span><i></i>店铺分类</span><em>请选择店铺所属分类  （可多选）</em><div class="arrow box_open"><img src="__PUBLIC__/Home/images/arrow.png" alt=""></div>
+</div>
+<input type="hidden" id="shopcate" value="{$business_edit['business_shopcate']}">
+<div class="choice_box fn-clear">
+    <ul>
+        <li><i></i>餐饮美食</li>
+        <li><i></i>休闲娱乐</li>
+        <li><i></i>生活购物</li>
+        <li><i></i>外卖跑腿</li>
+        <li><i></i>酒店住宿</li>
+        <li><i></i>快递物流</li>
+        <li><i></i>丽人美容</li>
+        <li><i></i>教育培训</li>
+        <li><i></i>服饰鞋包</li>
+        <li><i></i>电脑数码</li>
+        <li><i></i>摄影摄像</li>
+        <li><i></i>母婴周边</li>
+        <li><i></i>保险金融</li>
+        <li><i></i>汽车相关</li>
+        <li><i></i>运动健身</li>
+        <li><i></i>装修建材</li>
+        <li><i></i>家居家纺</li>
+        <li><i></i>家用电器</li>
+        <li><i></i>维修服务</li>
+        <li><i></i>鲜花庆典</li>
+        <li><i></i>生活服务</li>
+        <li><i></i>特产旅游</li>
+        <li><i></i>广告相关</li>
+        <li><i></i>办公用品</li>
+        <li><i></i>农林牧渔</li>
+        <li><i></i>医疗药店</li>
+        <li><i></i>其他类别</li>
+    </ul>
+</div>
+<div class="write fn-clear">
+    <span><i></i>详细地址</span><input id="place" type="text" placeholder="请输入详细地址" value="{$business_edit['business_shopaddress']}"><div class="location"><i></i><p>定位</p></div>
+</div>
+<input type="hidden" id="lng" value="{$business_edit['business_lng']}">
+<input type="hidden" id="lat" value="{$business_edit['business_lat']}">
+<div class="write fn-clear">
+    <span><i></i>营业时间</span>
+    <div type="text" id="starttime" >{$business_edit['business_shopopen']}</div>
+    <div class="w_line">--</div>
+    <div type="text" id="endtime">{$business_edit['business_shopclose']}</div>
+</div>
+<div class="tel_box">
+    <span><i></i>联系电话</span>
+    <div class="tel_list">
+        <div class="phone_num"><input type="text" placeholder="请输入手机号码（必填）" id="shopphone" value="{$business_edit['business_phone']}"></div>
+        <input type="text" placeholder="请输入座机号码（可选填）" id="shoptel" value="{$business_edit['business_tel']}">
+    </div>
+</div>
+<div class="certfy picture_1">
+    <div class="pic_list">
+        <div class="img-box">
+            <ul class="uploader-list fn-clear" id="fileList1">
+                <li class="uploadbtn">
+                    <div id="filePicker1" data-type="atlas" data-amount="1" class="webuploader-container picker">
+                        <div class="webuploader-pick"><div class="webuploader-pick"><em></em><p>店铺头像</p></div></div>
+                    </div>
+                </li>
+                <li class="thumbnail"><img src="{$business_edit['business_shopimg']}" ></li>
+            </ul>
+            <p class="imgtip"></p>
+            <div class="pic_tips">(200X200最佳，正方形图片，用于分享朋友圈，只可以上传一张)</div>
+        </div>
+    </div>
+</div>
+<div class="certfy picture_2">
+    <div class="pic_list">
+        <div class="img-box">
+            <ul class="uploader-list fn-clear" id="fileList2">
+                <foreach name="business_shopimgs" item="shopimgs">
+                    <li><img src="{$shopimgs['imgs_smallpath']}" data-imgid="{$shopimgs['imgs_id']}"/><i></i></li>
+                </foreach>
+                <li class="uploadbtn">
+                    <div id="filePicker2" data-type="atlas" data-amount="9" class="webuploader-container picker">
+                        <div class="webuploader-pick"><div class="webuploader-pick"><em></em><p>店铺相册</p></div></div>
+                    </div>
+                </li>
+            </ul>
+            <p class="imgtip"></p>
+            <div class="pic_tips">（店铺环境相册750X400长方形图片最佳，最多可上传9张）</div>
+        </div>
+    </div>
+</div>
+<div class="intro">
+    <h1><em></em>商家介绍</h1>
+    <div class="intro_txt">
+        <textarea name="" id="business_des" cols="30" rows="10" placeholder="请为您的店铺添加描述… 例如：公司简介、经营项目、服 务项目… 500字以内，不能填写电话号码。">{$business_edit['business_des']}</textarea>
+    </div>
+</div>
+<div class="certfy picture_3">
+    <div class="pic_list">
+        <div class="img-box">
+            <ul class="uploader-list fn-clear" id="fileList3">
+                <foreach name="business_goodsimgs" item="goodsimgs">
+                    <li><img src="{$goodsimgs['imgs_smallpath']}" data-imgid="{$goodsimgs['imgs_id']}"/><i></i></li>
+                </foreach>
+                <li class="uploadbtn">
+                    <div id="filePicker3" data-type="atlas" data-amount="9" class="webuploader-container picker">
+                        <div class="webuploader-pick"><div class="webuploader-pick"><em></em><p>产品相册</p></div></div>
+                    </div>
+                </li>
+            </ul>
+            <p class="imgtip"></p>
+            <div class="pic_tips">（产品、案例等相册750x400长方形图片最佳，最多可以上传9张） </div>
+        </div>
+    </div>
+</div>
+<div class="b_box" style="padding-bottom:0">
+    <?php if(empty($business_edit['business_shopcode'])){ ?>
+    <div class="QR_code fn-clear"><em>上传个人微信二维码</em><span><i>未上传</i><img src="__PUBLIC__/Home/images/arrow.png" alt=""></span></div>
+    <?php }else{ ?>
+    <div class="QR_code fn-clear"><em>上传个人微信二维码</em><span><i>已上传</i><img src="__PUBLIC__/Home/images/arrow.png" alt=""></span></div>
+    <?php } ?>
+</div>
+<div class="agreement"><i></i>我已阅读并同意<a href="__MODULE__/Index/userAgreement">《本地鸟用户协议》</a></div>
+<div class="btn_box">
+<div class="btn">确定修改</div>
+</div>
+<!-- 遮罩层 s -->
+<div class="disk"></div>
+<!-- 遮罩层 e -->
+<!-- 修改成功 s -->
+<div class="succeed_box">
+    <h1>修改成功</h1>
+    <h2>您可以在<em>个人中心-我的发布</em>进行管理</h2>
+    <p><a href="javascript:history.go(-1);location.replace(document.referrer);"><span>确定</span></a></p>
+</div>
+<!-- 修改成功 e -->
+<!-- 选择地理位置 s -->
+<div class="choice_location">
+    <ul>
+        <li class="now">我当前位置</li>
+        <li class="map">地图上选点</li>
+        <li class="close">关闭</li>
+    </ul>
+</div>
+<!-- 选择地理位置 e -->
+<!-- 上传二维码弹出层 s -->
+<div class="QR_box">
+    <h1>点击上传二维码</h1>
+    <div class="certfy picture_4">
+        <div class="pic_list">
+            <div class="img-box">
+                <ul class="uploader-list fn-clear" id="fileList4">
+                    <li class="uploadbtn">
+                        <div id="filePicker4" data-type="atlas" data-amount="1" class="webuploader-container picker">
+                            <div class="webuploader-pick"><div class="webuploader-pick"><em></em><p>上传</p></div></div>
+                        </div>
+                    </li>
+                    <li class="thumbnail"><img src="{$business_edit['business_shopcode']}" ></li>
+                </ul>
+                <p class="imgtip"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="delete">
+    <h1>提示：</h1>
+    <h2>是否删除？</h2>
+    <div class="de_foot"><div class="de_btn"><span class="sure">确定</span><span class="cancel">取消</span></div></div>
+</div>
+<div class="map_box">
+    <div class="header fn-clear">
+        <div class="back"><i></i>返回</div>
+        <div class="sure">确定</div>
+    </div>
+    <iframe id="mapPage" width="100%" height="100%" frameborder=0
+            src="http://apis.map.qq.com/tools/locpicker?search=1&type=1&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp">
+    </iframe>
+</div>
+<!-- 上传二维码弹出层 e -->
+<script type="text/javascript" src="__PUBLIC__/Home/js/enter.js?v=1"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="__PUBLIC__/Home/js/layer.js"></script>
+<script>
+    wx.config({
+        debug: false,
+        appId: '<?php echo $signPackage["appId"];?>',
+        timestamp: '<?php echo $signPackage['timestamp'];?>',
+        nonceStr: '<?php echo $signPackage['nonceStr'];?>',
+        signature: '<?php echo $signPackage['signature'];?>',
+        jsApiList: [
+            // 所有要调用的 API 都要加到这个列表中
+            'chooseImage',
+            'uploadImage',
+            'downloadImage'
+        ]
+    });
+    var download_img1=[];
+    var download_img2=[];
+    var download_img3=[];
+    var download_img4=[];
+    var images = {
+        localId: [],
+        serverId: []
+    }
+    // 调用微信接口上传图片
+    $(".picture_1").click(function(){
+        wx.ready(function(){
+            //拍照或从手机相册中选图接口
+            wx.chooseImage({
+                count: 1, // 最多能选择多少张图片，默认9
+                sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                success: function (res) {
+                    var localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                    var localIdImg=localId.toString().split(",");
+                    //上传图片接口
+                    if (localIdImg.length == 0) {
+                        return;
+                    }
+                    var i = 0, length = images.localId.length;
+                    images.serverId = [];
+                    function upload() {
+                        wx.uploadImage({
+                            localId: localIdImg[i],
+                            success: function (res) {
+                                $("#fileList1 .thumbnail img").attr('src',localIdImg[i]);
+                                i++;
+                                images.serverId.push(res.serverId);
+                                download_img1 =images.serverId;
+                                if (i < localIdImg.length) {
+                                    upload();
+                                }
+                            },
+                            fail: function (res) {
+                                alert(JSON.stringify(res));
+                            }
+                        });
+                    }
+                    upload();
+                }
+            });
+        });
+    });
+    $("#filePicker2").click(function(){
+        var length = $('#fileList2 li').length;
+        var conunt = 10 - length;
+        if (conunt == 0) {
+
+        }else{
+            wx.ready(function(){
+                //拍照或从手机相册中选图接口
+                wx.chooseImage({
+                    count: conunt, // 最多能选择多少张图片，默认9
+                    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                    success: function (res) {
+                        var localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                        var localIdImg=localId.toString().split(",");
+                        //上传图片接口
+                        if (localIdImg.length == 0) {
+                            return;
+                        }
+                        var i = 0, length = images.localId.length;
+                        images.serverId = [];
+                        function upload() {
+                            wx.uploadImage({
+                                localId: localIdImg[i],
+                                success: function (res) {
+                                    $("#fileList2").prepend('<li><img src="'+localIdImg[i]+'" /><i></i></li>');
+                                    i++;
+                                    images.serverId.push(res.serverId);
+                                    download_img2 =images.serverId;
+                                    if (i < localIdImg.length) {
+                                        upload();
+                                    }
+                                    if ($('.picture_2 ul li').length > 9) {
+                                        var x = $('.picture_2 ul li');
+                                        x.closest('.uploader-list').find('.uploadbtn').hide();
+                                    }
+                                },
+                                fail: function (res) {
+                                    alert(JSON.stringify(res));
+                                }
+                            });
+                        }
+                        upload();
+                    }
+                });
+            });
+        }
+    });
+    $('.picture_2').delegate('#fileList2 li i','click',function(){
+        var x = $(this),
+        id = x.closest('li').find('img').data('imgid');
+        $('.delete').show();
+        $('.disk').show();
+        $('.delete .sure').click(function(){
+            if(id=='') {
+                find = x.closest('li');
+                find.remove();
+                if ($('.picture_2 ul li').length < 10) {
+                    $('.picture_2').find('.uploadbtn').show();
+                }
+                $('.delete').hide();
+                $('.disk').hide();
+            }else{
+                $.post("__MODULE__/Business/delimg",{imgs_id:id},function(data) {
+                    if (data.status == "1") {
+                        find = x.closest('li');
+                        find.remove();
+                        if ($('.picture_2 ul li').length < 10) {
+                            $('.picture_2').find('.uploadbtn').show();
+                        }
+                        $('.delete').hide();
+                        $('.disk').hide();
+                    }else{
+                        $('.delete').hide();
+                        $('.disk').hide();
+                    }
+                })
+            }
+        })
+    })
+    $("#filePicker3").click(function(){
+        var length = $('#fileList3 li').length;
+        var conunt = 10 - length;
+        if (conunt == 0) {
+
+        }else{
+            wx.ready(function(){
+                //拍照或从手机相册中选图接口
+                wx.chooseImage({
+                    count: conunt, // 最多能选择多少张图片，默认9
+                    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                    success: function (res) {
+                        var localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                        var localIdImg=localId.toString().split(",");
+                        //上传图片接口
+                        if (localIdImg.length == 0) {
+                            return;
+                        }
+                        var i = 0, length = images.localId.length;
+                        images.serverId = [];
+                        function upload() {
+                            wx.uploadImage({
+                                localId: localIdImg[i],
+                                success: function (res) {
+                                    $("#fileList3").prepend('<li><img src="'+localIdImg[i]+'" /><i></i></li>');
+                                    i++;
+                                    images.serverId.push(res.serverId);
+                                    download_img3 =images.serverId;
+                                    if (i < localIdImg.length) {
+                                        upload();
+                                    }
+                                    if ($('.picture_3 ul li').length > 9) {
+                                        var x = $('.picture_3 ul li');
+                                        x.closest('.uploader-list').find('.uploadbtn').hide();
+                                    }
+                                },
+                                fail: function (res) {
+                                    alert(JSON.stringify(res));
+                                }
+                            });
+                        }
+                        upload();
+                    }
+                });
+            });
+        }
+    });
+    $('.picture_3').delegate('#fileList3 li i','click',function(){
+        var x = $(this),
+            id = x.closest('li').find('img').data('imgid');
+        $('.delete').show();
+        $('.disk').show();
+        $('.delete .sure').click(function(){
+            if(id=='') {
+                find = x.closest('li');
+                find.remove();
+                if ($('.picture_3 ul li').length < 10) {
+                    $('.picture_3').find('.uploadbtn').show();
+                }
+                $('.delete').hide();
+                $('.disk').hide();
+            }else{
+                $.post("__MODULE__/Business/delimg",{imgs_id:id},function(data) {
+                    if (data.status == "1") {
+                        find = x.closest('li');
+                        find.remove();
+                        if ($('.picture_3 ul li').length < 10) {
+                            $('.picture_3').find('.uploadbtn').show();
+                        }
+                        $('.delete').hide();
+                        $('.disk').hide();
+                    }else{
+                        $('.delete').hide();
+                        $('.disk').hide();
+                    }
+                })
+            }
+        })
+    })
+    $(".picture_4").click(function(){
+        wx.ready(function(){
+            //拍照或从手机相册中选图接口
+            wx.chooseImage({
+                count: 1, // 最多能选择多少张图片，默认9
+                sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                success: function (res) {
+                    var localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                    var localIdImg=localId.toString().split(",");
+                    //上传图片接口
+                    if (localIdImg.length == 0) {
+                        return;
+                    }
+                    var i = 0, length = images.localId.length;
+                    images.serverId = [];
+                    function upload() {
+                        wx.uploadImage({
+                            localId: localIdImg[i],
+                            success: function (res) {
+                                $(".thumbnail_bc").remove();
+                                $("#fileList4").prepend('<li class="thumbnail_bc"><img src="'+localIdImg[i]+'" /></li>');
+                                i++;
+                                images.serverId.push(res.serverId);
+                                download_img4 =images.serverId;
+                                if (i < localIdImg.length) {
+                                    upload();
+                                }
+                                // if ($('.picture_4 ul li').length > 1) {
+                                //  var x = $('.picture_4 ul li');
+                                //    x.closest('.uploader-list').find('.uploadbtn').hide();
+                                // }
+                            },
+                            fail: function (res) {
+                                alert(JSON.stringify(res));
+                            }
+                        });
+                    }
+                    upload();
+                }
+            });
+        });
+    });
+    $('.btn').click(function(){
+        $.post('{:U("Home/Index/userRelease")}', {}, function(data) {
+            if (data == 1) {
+                layer.msg('对不起，您没有权利发布信息')
+            }else{
+                var bianhu = 0;
+                var business_shopname = $('#shopname').val(); //店铺名
+                var cate='';
+                $('.choice_box ul li.cb_bc').each(function(){
+                    cate+=$(this).text()+",";
+                });
+                if(cate.length>0){
+                    cate=cate.substring(0,cate.length-1);
+                }
+                var business_shopcate =cate;
+                var business_shopaddress = $('#place').val();//地址
+                var business_shopopen = $('#starttime').text();//开店时间
+                var business_shopclose = $('#endtime').text();//关店时间
+                var business_phone=$('#shopphone').val();
+                var business_tel=$('#shoptel').val();
+                var select = $('.agree_bc').text(); //协议
+                var business_shopimgs=$('#fileList2 li').length;
+                var business_shopgoodsimgs=$('#fileList3 li').length;
+                var business_des=$('#business_des').val();
+                var business_id=$('#business_id').val();
+                    if (!business_shopname) {
+                        layer.msg('请先填写店铺名称')
+                    }else if(business_shopcate == ""){
+                        layer.msg('请先选择店铺分类')
+                    }else if(business_shopaddress ==""){
+                        layer.msg('请先填写详细地址')
+                    }else if(business_shopopen=='开店时间'){
+                        layer.msg('请先选择营业时间')
+                    }else if(business_shopclose=='关店时间'){
+                        layer.msg('请先选择营业时间')
+                    }else if(!business_phone){
+                        layer.msg('请先填写联系电话')
+                    }else if(business_shopimgs<=1){
+                        layer.msg('请先上传店铺相册')
+                    }else if(business_shopgoodsimgs<=1&&(!business_des)){
+                        layer.msg('请先上传产品相册')
+                    }else{
+                        bianhu = 1;
+                    }
+
+                    if (bianhu == 1) {
+                        if(select){
+                            layer.msg('请先阅读并同意《本地鸟用户协议》')
+                        }else{
+                                var index = layer.load(0, {shade: [0.5,'#000']}); //0代表加载的风格，支持0-2
+                                $.post("__MODULE__/Business/editbusiness",{business_id:business_id,business_shopname:business_shopname,business_shopcate:business_shopcate,business_shopaddress:business_shopaddress,business_shopopen:business_shopopen,business_shopclose:business_shopclose,business_phone:business_phone,business_tel:business_tel,business_shopimg:download_img1,business_des:business_des,business_shopcode:download_img4,business_shopimgs:download_img2,business_shopgoodsimg:download_img3,business_lng:$('#lng').val(),business_lat:$('#lat').val()},function(data) {
+                                    if (data.status == "1") {
+                                        layer.close(index);
+                                        //提交成功弹出层
+                                        $('.succeed_box').show();
+                                        $('.disk').show();
+                                    }else{
+                                        alert(data.msg);
+                                    }
+                                })
+                            }
+                    }
+            }
+        })
+    })
+    //当页面加载完成的时候，自动调用该方法
+    window.onload=function() {
+        //获得所要回显的值，此处为：100,1001,200,1400
+        var checkeds = $("#shopcate").val();
+        //拆分为字符串数组
+        var checkArray = checkeds.split(",");
+        for (i=0;i<checkArray.length ;i++ )
+        {
+            if(checkArray[i].trim() == "餐饮美食") {
+                $(".choice_box ul li").eq(0).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "休闲娱乐") {
+                $(".choice_box ul li").eq(1).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "生活购物") {
+                $(".choice_box ul li").eq(2).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "外卖跑腿") {
+                $(".choice_box ul li").eq(3).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "酒店住宿") {
+                $(".choice_box ul li").eq(4).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "快递物流") {
+                $(".choice_box ul li").eq(5).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "丽人美容") {
+                $(".choice_box ul li").eq(6).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "教育培训") {
+                $(".choice_box ul li").eq(7).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "服饰鞋包") {
+                $(".choice_box ul li").eq(8).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "电脑数码") {
+                $(".choice_box ul li").eq(9).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "摄影摄像") {
+                $(".choice_box ul li").eq(10).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "母婴周边") {
+                $(".choice_box ul li").eq(11).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "保险金融") {
+                $(".choice_box ul li").eq(12).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "汽车相关") {
+                $(".choice_box ul li").eq(13).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "运动健身") {
+                $(".choice_box ul li").eq(14).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "装修建材") {
+                $(".choice_box ul li").eq(15).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "家居家纺") {
+                $(".choice_box ul li").eq(16).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "家用电器") {
+                $(".choice_box ul li").eq(17).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "维修服务") {
+                $(".choice_box ul li").eq(18).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "鲜花庆典") {
+                $(".choice_box ul li").eq(19).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "生活服务") {
+                $(".choice_box ul li").eq(20).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "特产旅游") {
+                $(".choice_box ul li").eq(21).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "广告相关") {
+                $(".choice_box ul li").eq(22).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "办公用品") {
+                $(".choice_box ul li").eq(23).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "农林牧渔") {
+                $(".choice_box ul li").eq(24).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "医疗药店") {
+                $(".choice_box ul li").eq(25).addClass('cb_bc');
+            }
+            else if(checkArray[i].trim() == "其他类别") {
+                $(".choice_box ul li").eq(26).addClass('cb_bc');
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

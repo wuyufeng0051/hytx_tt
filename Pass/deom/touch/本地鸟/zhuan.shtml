@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<title>幸运大转盘</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zhuan.css">
+<script src="js/touchScale.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+
+<div class="contain">
+  <div class="rotate_wrap">
+		<img class="bg_img rotate_origin" id="i_bg" src="images/pan.png">
+		<img class="cont_img rotate_origin1" id="i_cont" src="images/zhuan_btn.png">
+	</div>
+  <div class="qian-box">
+    <p>每次抽奖将消耗<em>10</em>积分</p>
+    <p>当前剩余<em class="rest">10</em>积分</p>
+    <a href="qian.shtml" class="link-qian">签到赚积分</a>
+  </div>
+  <div class="rule-box fn-clear">
+    <a href="record.shtml" class="jilu">中奖记录</a>
+    <a href="#attention" class="guize">活动规则</a>
+  </div>
+  <div class="notice-box txtScroll-top">
+    <p class="notice-tit fn-clear"><span class="fn-left">中奖信息</span><span class="fn-right">累计<em>4258</em>人中奖</span></p>
+    <div class="bd">
+      <ul>
+        <li class="fn-clear bg"><span>133****2750</span><span>抽中10积分</span><span>2017-06-30</span></li>
+        <li class="fn-clear"><span>133****2750</span><span>抽中10积分</span><span>2017-06-30</span></li>
+        <li class="fn-clear bg"><span>133****2750</span><span>抽中10积分</span><span>2017-06-30</span></li>
+        <li class="fn-clear"><span>133****2750</span><span>抽中10积分</span><span>2017-06-30</span></li>
+        <li class="fn-clear bg"><span>133****2750</span><span>抽中10积分</span><span>2017-06-30</span></li>
+        <li class="fn-clear"><span>133****2750</span><span>抽中10积分</span><span>2017-06-30</span></li>
+        <li class="fn-clear bg"><span>133****2750</span><span>抽中10积分</span><span>2017-06-30</span></li>
+        <li class="fn-clear"><span>133****2750</span><span>抽中10积分</span><span>2017-06-30</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="attention" id="attention">
+    <p class="atit">活动规则</p>
+    <p>1、每转一次消耗10积分。</p>
+    <p>2、积分可通过“签到赢积分”获得。</p>
+    <p class="atit">实体奖品和手机话费</p>
+    <p>1、中奖用户可在中奖记录里面点击查看</p>
+    <p>2、每周周三工作人员与中奖用户联系确认相关信息，周四后陆续邮寄奖品和充值手机话费。</p>
+    <p class="atit">商家优惠券</p>
+    <p>1、中奖用户在我的（个人中心）里面我的优惠券进行查看。</p>
+    <p>2、需用户自行联系商家使用。</p>
+  </div>
+
+  <div class="footer"></div>
+
+</div>
+
+<div class="layer empty">
+  <div class="txt">
+    <p>积分不足</p>
+    <p>快去签到赚取积分再来吧~</p>
+  </div>
+</div>
+
+<div class="layer failer">
+  <div class="txt">
+    <p>您与礼品擦肩而过，</p>
+    <p>换个姿势再试试~</p>
+  </div>
+</div>
+
+<div class="layer success">
+  <div class="txt">
+    <p class="bonus">抽到车载手机支架一个</p>
+    <p><a href="contact.shtml" class="blank">请填写兑奖联系方式</a></p>
+  </div>
+</div>
+
+<div class="mask"></div>
+
+
+
+<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+<script src="js/zhuan.js" type="text/javascript"></script>
+</body>
+</html>

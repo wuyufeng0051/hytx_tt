@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-flag-o flag-o-icon"></i>
+      <li class="active">营销活动</li>
+      <li>
+        <a href="#">大转盘抽奖</a></li>
+      <li class="active">中奖列表</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li >
+                <a href="Slyder_Adventures.html">基本配置</a></li>
+              <li>
+                <a href="Slyder_Set.html">设置奖项</a></li>
+              <li class="active">
+                <a href="Slyder_List.html">中奖列表</a></li>
+            </ul>
+            <div class="tab-content">
+              <a href="#" class="btn btn-success">全部</a>
+              <a href="#" class="btn ">已确认</a>
+              <a href="#" class="btn ">未确认</a>
+              <div id="yw0" class="grid-view">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th id="yw0_c0">奖项</th>
+                      <th id="yw0_c1">奖项描述</th>
+                      <th id="yw0_c2">奖项类型</th>
+                      <th id="yw0_c3">抽奖时间</th>
+                      <th id="yw0_c4">
+                        <a class="sort-link" href="#">顾客ID</a></th>
+                      <th id="yw0_c5">是否完成奖项兑换</th>
+                      <th id="yw0_c6">确认时间</th>
+                      <th id="yw0_c7">操作</th></tr>
+                    <tr class="filters">
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <input name="LewaimaiDrawResult[lewaimai_customer_id]" type="text"></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td></tr>
+                  </thead>
+                  <tbody>
+                    <tr class="odd">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-15 18:26:09</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">12566235</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-13 23:13:38</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">14617346</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-13 20:57:55</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">12858875</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-13 10:40:44</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">15742711</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-12 17:52:59</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">15729144</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-12 13:51:29</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">13099751</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="120">三等奖</td>
+                      <td width="150">积分</td>
+                      <td width="50">积分</td>
+                      <td width="70">2017-03-12 11:44:35</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">12858875</a>&nbsp;</td>
+                      <td width="70">积分已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-12 09:29:19</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">15471037</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="120">三等奖</td>
+                      <td width="150">积分</td>
+                      <td width="50">积分</td>
+                      <td width="70">2017-03-11 10:55:28</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">13455933</a>&nbsp;</td>
+                      <td width="70">积分已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-11 10:21:41</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">12858875</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-11 02:24:57</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">14183095</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">三等奖</td>
+                      <td width="150">积分</td>
+                      <td width="50">积分</td>
+                      <td width="70">2017-03-10 21:59:16</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">15471250</a>&nbsp;</td>
+                      <td width="70">积分已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="120">三等奖</td>
+                      <td width="150">积分</td>
+                      <td width="50">积分</td>
+                      <td width="70">2017-03-10 11:28:49</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">15669596</a>&nbsp;</td>
+                      <td width="70">积分已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-09 15:24:35</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">15654195</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-08 16:19:35</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">12329853</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-07 18:56:49</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">14586366</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="120">三等奖</td>
+                      <td width="150">积分</td>
+                      <td width="50">积分</td>
+                      <td width="70">2017-03-05 23:45:07</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">12391278</a>&nbsp;</td>
+                      <td width="70">积分已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-05 15:33:03</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">12498428</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-04 17:18:22</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">13224296</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-04 13:55:32</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">15484829</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-04 13:36:39</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">15528565</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-04 01:23:12</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">12770965</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-03 21:25:31</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">15524013</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-03 19:31:30</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">15520414</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-03 18:00:08</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">12249495</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-03 11:28:27</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">15497165</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-02 21:13:05</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">15502467</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">三等奖</td>
+                      <td width="150">积分</td>
+                      <td width="50">积分</td>
+                      <td width="70">2017-03-02 11:05:14</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">12971826</a>&nbsp;</td>
+                      <td width="70">积分已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-01 18:26:38</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">15471037</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">二等奖</td>
+                      <td width="150">优惠券3元</td>
+                      <td width="50">优惠券</td>
+                      <td width="70">2017-03-01 10:53:55</td>
+                      <td width="70">
+                        <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">15438409</a>&nbsp;</td>
+                      <td width="70">优惠券已发放</td>
+                      <td width="70">&nbsp;</td>
+                      <td width="70"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="summary">第 1-30 条, 共 338 条.</div>
+                <div class="pager">
+                  <ul class="pagination" id="yw1">
+                    <li class="hidden hidden">
+                      <a href="#">&lt;&lt; 首页</a></li>
+                    <li class="prev hidden">
+                      <a href="#">
+                        <i class="ace-icon fa fa-angle-double-left"></i>
+                      </a>
+                    </li>
+                    <li class="page active">
+                      <a href="#">1</a></li>
+                    <li class="page">
+                      <a href="#">2</a></li>
+                    <li class="page">
+                      <a href="#">3</a></li>
+                    <li class="page">
+                      <a href="#">4</a></li>
+                    <li class="page">
+                      <a href="#">5</a></li>
+                    <li class="page">
+                      <a href="#">6</a></li>
+                    <li class="page">
+                      <a href="#">7</a></li>
+                    <li class="page">
+                      <a href="#">8</a></li>
+                    <li class="page">
+                      <a href="#">9</a></li>
+                    <li class="page">
+                      <a href="#">10</a></li>
+                    <li class="next">
+                      <a href="#">
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                      </a>
+                    </li>
+                    <li class="hidden">
+                      <a href="#">末页 &gt;&gt;</a></li>
+                  </ul>
+                </div>
+                <div class="keys" style="display:none" title="/extension/winninginfo">
+                  <span>8619564</span>
+                  <span>8599396</span>
+                  <span>8598384</span>
+                  <span>8590904</span>
+                  <span>8582749</span>
+                  <span>8580720</span>
+                  <span>8579148</span>
+                  <span>8577159</span>
+                  <span>8566821</span>
+                  <span>8566322</span>
+                  <span>8563832</span>
+                  <span>8562309</span>
+                  <span>8556765</span>
+                  <span>8548668</span>
+                  <span>8539103</span>
+                  <span>8529151</span>
+                  <span>8507405</span>
+                  <span>8503077</span>
+                  <span>8493013</span>
+                  <span>8491437</span>
+                  <span>8491308</span>
+                  <span>8486587</span>
+                  <span>8485131</span>
+                  <span>8484266</span>
+                  <span>8483463</span>
+                  <span>8480045</span>
+                  <span>8475010</span>
+                  <span>8469471</span>
+                  <span>8463623</span>
+                  <span>8459224</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

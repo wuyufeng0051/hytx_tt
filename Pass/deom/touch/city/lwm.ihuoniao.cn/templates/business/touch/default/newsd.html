@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#}-{#$business_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/newsd.css?v=3">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+</head>
+
+<body>
+
+  {#$pageCurr = "newsd"#}
+
+  <!-- 头部 -->
+  <div class="header">
+    <div class="header-l">
+      <a href="javascript:history.go(-1)"><img src="{#$templets_skin#}images/left1.png"></a>
+    </div>
+    <div class="header-c">
+      <a href="javascript:;"><span>{#$detail_title#}</span></a>
+    </div>
+    <div class="header-r">
+      <a href="javascript:;"></a>
+    </div>
+  </div>
+  <!-- 头部 end-->
+
+  <div class="content">
+    <h3 class="newsd-tit">{#$newsd_title#}</h3>
+    <p class="newsd-info">阅读： <span>{#$newsd_click#}</span>&nbsp;&nbsp;&nbsp;{#$newsd_pubdate|date_format:"%Y-%m-%d"#}</p>
+    <div>
+      {#$newsd_body#}
+    </div>
+  </div>
+
+</body>
+</html>

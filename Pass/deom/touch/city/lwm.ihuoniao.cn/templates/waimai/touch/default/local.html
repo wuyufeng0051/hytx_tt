@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定位页面</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0;">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/local.css">
+</head>
+<body>
+	<div class="container">
+	<!-- 头部 -->
+		<div class="header">
+			<div class="header-l">
+				<a href="javascript:window.history.go(-1)"><img src="{#$templets_skin#}images/left.png" alt=""></a>
+			</div>
+			<div class="header-address">
+				<span>选择收获地址</span>
+			</div>
+			<div class="header-search">
+				<a href="javascript:;"><img src="{#$templets_skin#}images/search.png" alt=""></a>
+			</div>
+		</div>
+	<!-- 头部 end -->
+
+	<!-- 搜索框 -->
+		<div class="search-box">
+			<form method="get">
+				<input type="text" placeholder="请输入收货地址" class="search-txt" id="s">
+				<input type="submit" value="搜索" class="search-btn">
+			</form>
+		</div>
+	<!-- 搜索框 end-->
+
+	<!-- 定位 -->
+		<div class="locate">
+			<a href="#"><span><i><img src="{#$templets_skin#}images/local.png" alt=""></i>定位到当前位置</span></a>
+		</div>
+	<!-- 定位 end-->
+
+	<!-- 历史地址 -->
+		<div class="history">
+			<div class="history-tit"><span>历史搜索</span></div>
+			<ul>
+				<li><a href="#">肯德基</a></li>
+				<li><a href="#">河南烩面</a></li>
+				<li><a href="#">温馨99</a></li>
+				<li><a href="#">苏州九龙医院</a></li>
+			</ul>
+		</div>
+	<!-- 历史地址 end-->
+
+
+	</div>
+	<script src="{#$templets_skin#}js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8Fr4D4DMfOpwcwmwtOomfrEh"></script>
+	<script src="{#$templets_skin#}js/public.js"></script>
+	<script src="{#$templets_skin#}js/local.js"></script>
+</body>
+</html>

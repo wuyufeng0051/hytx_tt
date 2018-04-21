@@ -1,0 +1,57 @@
+<style>.state0 {padding: 0 0 20px 115px; color: #f00;}</style>
+<div class="w-form">
+	{#if $storeState == 1#}
+		{#if $detail_state == 0#}
+		<p class="state0">您的站点信息正在审核中，请耐心等待！</p>
+		{#elseif $detail_state == 2#}
+		<p class="state0">您的站点信息审核失败，请检查您填写的资料！</p>
+		{#/if#}
+	{#/if#}
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=website&action=storeConfig">
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>站点名称：</dt>
+			<dd>
+				<input type="text" name="title" class="inp" id="title" size="35" maxlength="60" data-title="请输入站点名称" value="{#$detail_title#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>站点摘要：</dt>
+			<dd>
+				<textarea class="inp text" name="note" id="note" rows="3" cols="60" data-title="请输入站点摘要，200个字以内，选填">{#$detail_note#}</textarea>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>头部代码：</dt>
+			<dd>
+				<textarea class="inp text" name="head" id="head" rows="3" cols="60" data-title="一般用于Google Webmaster Tools验证元标记">{#$detail_head#}</textarea>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>底部代码：</dt>
+			<dd>
+				<textarea class="inp text" name="footer" id="footer" rows="3" cols="60" data-title="一般用于Google Analytics追踪代码，百度、CNZZ等统计代码">{#$detail_footer#}</textarea>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>验证码：</dt>
+			<dd>
+				<input type="text" class="inp" maxlength="4" size="6" name="vdimgck" id="vdimgck" autocomplete="off" data-title="请输入验证码" />
+				<img src="/include/vdimgck.php" title="看不清？点击换一张" id="verifycode" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>&nbsp;</dt>
+			<dd>
+				<button class="submit" id="submit">保存设置</button>
+				{#if $storeState == 1#}
+					{#if $detail_state == 1#}<a href="{#$detail_domain#}" target="_blank" style="float: left; color: blue; margin: 20px 0 0 30px;">查看我的站点</a>{#/if#}
+				{#/if#}
+			</dd>
+		</dl>
+	</form>
+</div>

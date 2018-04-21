@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>微信基本设置</title>
+{#$cssFile#}
+<script>
+var thumbSize = {#$thumbSize#}, thumbType = "{#$thumbType#}";
+var adminPath = "{#$adminPath#}", action = "wechat";
+</script>
+<style media="screen">
+    .thead {margin: 20px 10px;}
+    .weixinQr img{width: 94px; height: 94px; margin-left: -4px;}.editform dt{width: 180px;}.editform dt label.sl{margin-top: -10px;}.editform dt small{display: block; margin: -8px 12px 0 0;}.editform dt small i{font-style: normal;}
+</style>
+</head>
+
+<body>
+<div class="alert alert-success" style="margin:10px 10px 0;"><button type="button" class="close" data-dismiss="alert">×</button>微信配置教程：<a href="http://help.ikuman.cn/help-50-9.html" target="_blank">http://help.ikuman.cn/help-50-9.html</a></div>
+
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <div class="thead" style="margin-top: 0;">&nbsp;&nbsp;服务器配置</div>
+    <dl class="clearfix">
+      <dt><label>登录确认：</label></dt>
+      <dd class="radio">
+        {#html_radios name="wechatType" values=$typeState checked=$typeStateChecked output=$typeStateNames separator="&nbsp;&nbsp;"#}
+      </dd>
+    </dl>
+    <dl class="clearfix">
+      <dt><label>服务器URL：</label></dt>
+      <dd style="padding-top: 10px;">
+        <span style="font-size: 14px;">{#$cfg_basehost#}/api/weixin/</span>
+      </dd>
+    </dl>
+    <dl class="clearfix">
+      <dt><label for="wechatToken">服务器Token：</label></dt>
+      <dd>
+        <input class="input-xlarge" type="text" name="wechatToken" id="wechatToken" value="{#$wechatToken#}" data-regex=".*" />
+        <span class="input-tips"><s></s>请输入服务器配置Token</span>
+      </dd>
+    </dl>
+    <dl class="clearfix">
+      <dt><label for="wechatAppid">开发者AppID：</label></dt>
+      <dd>
+        <input class="input-xlarge" type="text" name="wechatAppid" id="wechatAppid" value="{#$wechatAppid#}" data-regex=".*" />
+        <span class="input-tips"><s></s>请输入开发者AppID</span>
+      </dd>
+    </dl>
+    <dl class="clearfix">
+      <dt><label for="wechatAppsecret">开发者AppSecret：</label></dt>
+      <dd>
+        <input class="input-xlarge" type="text" name="wechatAppsecret" id="wechatAppsecret" value="{#$wechatAppsecret#}" data-regex=".*" />
+        <span class="input-tips"><s></s>请输入开发者AppSecret</span>
+      </dd>
+    </dl>
+  <div class="thead" style="margin-top: 20px;">&nbsp;&nbsp;基本配置</div>
+  <dl class="clearfix">
+    <dt><label for="wechatName" class="sl">公众号名称：</label><small><i>{</i><i>#$</i>cfg_weixinName<i>#}</i></small></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="wechatName" id="wechatName" value="{#$wechatName#}" data-regex=".*" />
+      <span class="input-tips"><s></s>请输入公众号名称</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="wechatCode" class="sl">微信号：</label><small><i>{</i><i>#$</i>cfg_weixinCode<i>#}</i></small></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="wechatCode" id="wechatCode" value="{#$wechatCode#}" data-regex=".*" />
+      <span class="input-tips"><s></s>请输入微信号</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label class="sl">二维码：</label><small><i>{</i><i>#$</i>cfg_weixinQr<i>#}</i></small></dt>
+    <dd class="weixinQr">
+      <input name="wechatQr" type="hidden" id="wechatQr" value="{#$wechatQr#}" />
+      <div class="spic{#if $wechatQr == ''#} hide{#/if#}">
+        <div class="sholder">{#if $wechatQr#}<img src="/include/attachment.php?f={#$wechatQr#}" />{#/if#}</div>
+        <a href="javascript:;" class="reupload"{#if $wechatQr#} style="display: inline-block;"{#/if#}>重新上传</a>
+      </div>
+      <iframe src ="/include/upfile.inc.php?mod=siteConfig&type=card&obj=wechatQr" style="width:100%; height:25px;{#if $wechatQr#} display:none;{#/if#}" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" ></iframe>
+    </dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd>
+        <input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" />
+    </dd>
+  </dl>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

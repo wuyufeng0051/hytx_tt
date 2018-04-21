@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>系统设置 - {#$cfg_webname#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/set.css?v=2" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#$pageTitle = "系统设置"#}
+{#include file="top.html"#}
+
+<!-- 设置列表 -->
+<div class="set_list">
+	<ul>
+		<li class="button fn-clear"><em>接收消息推送</em><input type="checkbox" class="al-toggle-button" id="pushStatus"></li>
+		<li class="clear fn-clear"><em>清除缓存</em><span id="cache">0 B</span></li>
+		<li class="about fn-clear"><a href="{#getUrlPath service='member' type='user' template='version'#}"><em>系统信息</em><span></span></a></li>
+	</ul>
+</div>
+<!-- 设置列表 -->
+
+<div class="succes">清除成功</div>
+
+<script type="text/javascript" src="{#$templets_skin#}js/set.js?v=6"></script>
+</body>
+</html>

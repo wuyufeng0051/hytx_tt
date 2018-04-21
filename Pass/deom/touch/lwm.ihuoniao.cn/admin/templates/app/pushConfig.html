@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>推送配置</title>
+{#$cssFile#}
+<script>
+var adminPath = "{#$adminPath#}";
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <div class="thead" style="margin-top: 0;">&nbsp;&nbsp;安卓应用</div>
+    <dl class="clearfix">
+      <dt><label for="android_access_id">ID：</label></dt>
+      <dd><input class="input-xlarge" type="text" name="android_access_id" id="android_access_id" value="{#$android_access_id#}" placeholder="友盟不需要，阿里云移动推送需要" /></dd>
+    </dl>
+    <dl class="clearfix">
+      <dt><label for="android_access_key">Appkey：</label></dt>
+      <dd><input class="input-xlarge" type="text" name="android_access_key" id="android_access_key" value="{#$android_access_key#}" /></dd>
+    </dl>
+    <dl class="clearfix">
+      <dt><label for="android_secret_key">Secret：</label></dt>
+      <dd><input class="input-xlarge" type="text" name="android_secret_key" id="android_secret_key" value="{#$android_secret_key#}" /></dd>
+    </dl>
+  <div class="thead" style="margin-top: 20px;">&nbsp;&nbsp;iOS应用</div>
+  <dl class="clearfix">
+    <dt><label for="ios_access_id">ID：</label></dt>
+    <dd><input class="input-xlarge" type="text" name="ios_access_id" id="ios_access_id" value="{#$ios_access_id#}" placeholder="友盟不需要，阿里云移动推送需要" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="ios_access_key">Appkey：</label></dt>
+    <dd><input class="input-xlarge" type="text" name="ios_access_key" id="ios_access_key" value="{#$ios_access_key#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="ios_secret_key">Secret：</label></dt>
+    <dd><input class="input-xlarge" type="text" name="ios_secret_key" id="ios_secret_key" value="{#$ios_secret_key#}" /></dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd>
+        <input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" />
+    </dd>
+  </dl>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

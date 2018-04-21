@@ -1,0 +1,49 @@
+{#if $type == "demand"#}
+{#$type = "qzu"#}
+{#$ptitle = "求租、求购"#}
+{#elseif $type == "qzu" || $type == "qgou"#}
+{#$ptitle = "求租、求购"#}
+{#elseif $type == "sale"#}
+{#$ptitle = "二手房"#}
+{#elseif $type == "zu"#}
+{#$ptitle = "出租房"#}
+{#elseif $type == "xzl"#}
+{#$ptitle = "写字楼"#}
+{#elseif $type == "sp"#}
+{#$ptitle = "商铺"#}
+{#elseif $type == "cf"#}
+{#$ptitle = "厂房、仓库"#}
+{#/if#}
+<ul class="main-tab">
+	<li class="curr"><a href="javascript:;">{#if $do == "edit"#}修改【{#$ptitle#}】房源{#else#}发布【{#$ptitle#}】房源{#/if#}</a></li>
+	<li><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost=$type#}">我的全部房源</a></li>
+</ul>
+
+<div class="w-form">
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=house&type={#$type#}&action={#if $do == "edit"#}edit&id={#$id#}{#else#}put{#/if#}" data-url="{#getUrlPath service='member' type='user' template='manage' action='house' dopost=$type#}">
+		{#* 求租、求购 *#}
+		{#if $type == "demand" || $type == "qzu" || $type == "qgou"#}
+
+		{#include file="fabu-house-demand.html"#}
+
+		{#* 其它正常情况 *#}
+		{#else#}
+
+		{#include file="fabu-house-$type.html"#}
+
+		{#/if#}
+
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>验证码：</dt>
+			<dd>
+				<input type="text" class="inp" maxlength="4" size="6" name="vdimgck" id="vdimgck" autocomplete="off" data-title="请输入验证码" />
+				<img src="/include/vdimgck.php" title="看不清？点击换一张" id="verifycode" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>&nbsp;</dt>
+			<dd><button class="submit" type="submit" id="submit">{#if $id == 0#}立即发布{#else#}提交修改{#/if#}</button></dd>
+		</dl>
+	</form>
+</div>

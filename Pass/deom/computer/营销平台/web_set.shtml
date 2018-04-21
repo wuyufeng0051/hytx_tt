@@ -1,0 +1,58 @@
+<!--#include file="_head.shtml"-->
+<link rel="stylesheet" href="css/web_site.css">
+
+
+
+
+
+
+
+		<div class="content_box">
+			<div class="content">
+				<div class="con_txt">
+					<div class="lead">
+						<ul class="fn-clear">
+							<li><a href="#">首页</a></li><em>/</em>
+							<li><a href="#">广告主中心 </a></li><em>/</em>
+							<li><a href="#">广告主信息</a></li><em>/</em>
+							<li class="lead_bc"><a href="#">广告主网站信息管理</a></li>
+						</ul>
+					</div>
+					<div class="edit" >
+						<span>编辑</span>
+					</div>
+					<div class="infor">
+						<ul>
+							<li><em>网站名称</em><span>泸州华府名邸装饰</span></li>
+							<li><em>网站地址</em><span>http://www.hongliad.com</span></li>
+							<li><em>网站描述</em><span>N/A</span></li>
+							<li><em>展开时间</em><span>2017-04-08 14:05:47</span></li>
+							<li><em>已展开时间</em><span>26天</span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+<!--#include file="_foot.shtml"-->
+<script type="text/javascript" src="js/layer.js"></script>
+<script>
+
+$('.edit span').on('click', function(){
+  layer.open({
+	  type: 1,
+	  title: false,
+	  closeBtn: 0,
+	  shadeClose: true,
+	  skin: 'yourclass',
+	  content: '<div class="edit_txt"><h1>编辑网站信息</h1><ul><li><em>网站名称</em><input type="text"disabled="disabled"value="泸州华府名邸装饰"></li><li><em>网站地址</em><input type="text"value=""></li><li><em>网站描述</em><input type="text"value=""></li></ul><div class="edit_btn"><button class="sure">确定</button></div></div>'
+	});
+});
+	
+</script>

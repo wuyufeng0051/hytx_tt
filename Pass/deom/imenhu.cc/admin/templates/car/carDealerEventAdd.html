@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var thumbSize = {#$thumbSize#}, thumbType = "{#$thumbType#}",  //缩略图配置
+    addrListArr = {#$addrListArr#}, modelType = "car", adminPath = "{#$adminPath#}";
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="aid" id="aid" value="{#$aid#}" />
+  <input type="hidden" name="cid" id="cid" value="{#$cid#}" />
+  <input type="hidden" name="pid" id="pid" value="{#$pid#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt>经销商：</dt>
+    <dd><a href="javascript:;" class="btn" id="cOffer" data-id="{#$aid#}">{#$aname#}<span class="caret"></span></a></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="title">活动标题：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="title" id="title" value="{#$title#}" maxlength="60" data-regex=".{2,60}" />
+      <span class="input-tips"><s></s>请输入活动标题，2-60位</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>缩略图：</dt>
+    <dd>
+      <input name="litpic" type="hidden" id="litpic" value="{#$litpic#}" />
+      {#if $litpic != ""#}
+      <div id="license" class="uploadinp uploading"><span id="uploadBt"></span></div>
+      <div id="licenseFiles" style="display:inline-block;"><a href='{#$cfg_attachment#}{#$litpic#}' target="_blank"><img alt="" src="{#$cfg_attachment#}{#$litpic#}&type=small" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;" style="display:inline-block;">删除图片</a>
+      {#else#}
+      <div id="license" class="uploadinp"><span id="uploadBt"></span></div>
+      <div id="licenseFiles"><a href="#" target="_blank" title=""><img alt="" src="" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;">删除图片</a>
+      {#/if#}
+      <div id="licenseProgress" class="progressBar">
+        <i id="licenseProgressBar" class="progress"></i>
+        <span id="licensePercent">0%</span>
+        <a id="cancelUploadBt" href="javascript:;">取消</a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>活动时间：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <span class="add-on"><label for="start">开始：</label></span>
+        <input class="input-small" type="text" name="start" id="start" value="{#$start#}">
+        <span class="add-on"><label for="end">结束：</label></span>
+        <input class="input-small" type="text" name="end" id="end" value="{#$end#}">
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>活动车系：</label></dt>
+    <dd style="position:static;">
+      <div id="carBtn">
+        <a href="javascript:;" class="btn" id="cBrand" data-type="Brand" data-id="{#$bid#}">{#$bname#}<span class="caret"></span></a>
+        <a href="javascript:;" class="btn" id="cCar" data-type="Car" data-id="{#$cid#}">{#$cname#}<span class="caret"></span></a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="brand">活动车型：</label></dt>
+    <dd>
+      <button class="btn" id="chooseCar" type="button">选择</button>
+      <div id="chooseCars"></div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>活动介绍：</dt>
+    <dd>
+      <textarea name="note" id="note" class="input-xxlarge" rows="3">{#$note#}</textarea>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>活动内容：</dt>
+    <dd>
+      <script id="content" name="content" type="text/plain" style="width:85%;height:300px">{#$content#}</script>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>属性：</dt>
+    <dd class="radio">{#html_checkboxes name='property' values=$propertyVal output=$propertyList selected=$property separator="&nbsp;&nbsp;"#}</dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$editorFile#}
+{#$jsFile#}
+</body>
+</html>

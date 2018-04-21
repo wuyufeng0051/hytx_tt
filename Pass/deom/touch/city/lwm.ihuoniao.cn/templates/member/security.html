@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>安全中心 - {#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/security.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, doget = '{#$doget#}', rating = {#$userinfo.security#}, certifyState = {#$userinfo.certifyState#},
+			pageUrl = '{#getUrlPath service='member' type='user' template='security'#}',
+			bindPaypwdUrl = '{#getUrlPath service='member' type='user' template='security' doget='paypwdAdd'#}',
+			bindPhoneUrl = '{#getUrlPath service='member' type='user' template='security' doget='chphone'#}',
+			bindEmailUrl = '{#getUrlPath service='member' type='user' template='security' doget='chemail'#}',
+			bindQuestionUrl = '{#getUrlPath service='member' type='user' template='security' doget='question'#}';
+	var phoneCheck = {#$userinfo.phoneCheck#}, emailCheck = {#$userinfo.emailCheck#}, questionSet = {#$userinfo.question#};
+</script>
+</head>
+
+<body>
+{#$pageTitle = "安全中心"#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="container fn-clear">
+
+		{#include file="sidebar.html"#}
+
+		<div class="main">
+
+			<dl class="testing fn-clear" id="testing">
+				<dt class="percentage">100</dt>
+				<dd>
+					<h5>正在进行支付密码验证···</h5>
+					<div class="progress">
+						<div class="bar"><i></i></div>
+						<ul class="fn-clear">
+							<li class="p1"><i></i><span>支付密码</span></li>
+							<li class="p2"><i></i><span>实名认证</span></li>
+							<li class="p3"><i></i><span>绑定手机</span></li>
+							<li class="p4"><i></i><span>绑定邮箱</span></li>
+							<li class="p5"><i></i><span>安全问题</span></li>
+						</ul>
+					</div>
+					<p class="suc-tip"></p>
+					<a href="{#getUrlPath service='member' type='user' template='security'#}" class="checkSecure">重新检测</a>
+				</dd>
+			</dl>
+
+			<div class="list">
+				<ul class="nickname fn-clear">
+					<li class="l"><s></s>登录昵称</li>
+					<li class="c"><s></s>{#$userinfo.nickname#}</li>
+					<li class="r"><a href="javascript:;" id="chnickname">修改</a></li>
+				</ul>
+				<ul class="password fn-clear">
+					<li class="l"><s></s>登录密码</li>
+					<li class="c"><s></s>****************</li>
+					<li class="r"><a href="javascript:;" id="chpassword">修改</a></li>
+				</ul>
+				<ul class="paypwd{#if $userinfo.paypwdCheck == 0#} fail{#/if#} fn-clear fn-hide">
+					<li class="l"><s></s>支付密码</li>
+					<li class="c"><s></s>{#if $userinfo.paypwdCheck == 0#}未设置{#else#}****************{#/if#}</li>
+					<li class="r">{#if $userinfo.paypwdCheck == 0#}<a href="javascript:;" id="paypwdAdd">立即设置</a>{#else#}<a href="javascript:;" id="paypwdEdit">修改</a><a href="javascript:;" id="paypwdReset">重置</a>{#/if#}</li>
+				</ul>
+				<ul class="certify{#if $userinfo.certifyState != 1#} fail{#/if#} fn-clear fn-hide">
+					<li class="l"><s></s>实名认证</li>
+					<li class="c"><s></s>{#if $userinfo.certifyState != 1#}{#if $userinfo.certifyState == 3#}已提交，正在审核中...{#else#}{#if $userinfo.certifyState == 2#}{#$userinfo.certifyInfo#}{#else#}未认证{#/if#}{#/if#}{#else#}{#$userinfo.idcard#}{#/if#}</li>
+					<li class="r">{#if $userinfo.certifyState != 1#}{#if $userinfo.certifyState != 3#}<a href="javascript:;" id="chCertify">{#if $userinfo.certifyState == 2#}重新认证{#else#}立即认证{#/if#}</a>{#else#}<a href="javascript:;" id="shCertify">查看</a>{#/if#}{#else#}<a href="javascript:;" id="shCertify">查看</a>{#/if#}</li>
+				</ul>
+				<ul class="mobile{#if $userinfo.phoneCheck != 1#} fail{#/if#} fn-clear fn-hide">
+					<li class="l"><s></s>手机认证</li>
+					<li class="c"><s></s>{#if $userinfo.phoneCheck != 1#}未认证{#else#}{#$userinfo.phoneEncrypt#}{#/if#}</li>
+					<li class="r">{#if $userinfo.phoneCheck != 1#}<a href="javascript:;" id="chphone">立即认证</a>{#else#}<a href="javascript:;" id="chphoneEdit">换手机</a><a href="javascript:;" id="chphoneDel">解绑</a>{#/if#}</li>
+				</ul>
+				<ul class="email{#if $userinfo.emailCheck != 1#} fail{#/if#} fn-clear fn-hide">
+					<li class="l"><s></s>邮箱认证</li>
+					<li class="c"><s></s>{#if $userinfo.emailCheck != 1#}未认证{#else#}{#$userinfo.emailEncrypt#}{#/if#}</li>
+					<li class="r">{#if $userinfo.emailCheck != 1#}<a href="javascript:;" id="chemail">立即认证</a>{#else#}<a href="javascript:;" id="chEmailEdit">换邮箱</a><a href="javascript:;" id="chEmailDel">解绑</a>{#/if#}</li>
+				</ul>
+				<ul class="question{#if $userinfo.question == 0#} fail{#/if#} fn-clear fn-hide">
+					<li class="l"><s></s>安全保护问题</li>
+					<li class="c"><s></s>{#if $userinfo.question == 0#}未设置{#else#}已启用{#/if#}</li>
+					<li class="r">{#if $userinfo.question == 0#}<a href="javascript:;" id="question">启用</a>{#else#}<a href="javascript:;" id="chQuestionEdit">修改</a><a href="javascript:;" id="chQuestionDel">重置</a>{#/if#}</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script id="authentication" type="text/html">
+	<div class="editForm" name="editForm">
+		<div class="edit-tip"><s></s><p>您接下来的操作涉及帐户安全，请先进行身份验证！</p></div>
+		<ul class="authenticated">
+			{#if $userinfo.phoneCheck == 1#}<li class="p"><a href="javascript:;"><em></em>通过短信验证<s><i></i></s></a></li>{#/if#}
+			{#if $userinfo.emailCheck == 1#}<li class="e"><a href="javascript:;"><em></em>通过邮箱验证<s><i></i></s></a></li>{#/if#}
+			{#if $userinfo.question == 1#}<li class="q"><a href="javascript:;"><em></em>通过安全保护问题验证<s><i></i></s></a></li>{#/if#}
+		</ul>
+		<div class="authlist">
+			{#if $userinfo.phoneCheck == 1#}
+			<div class="item">
+				<dl class="clearfix">
+		      <dt>手机号码：</dt>
+		      <dd><input type="text" disabled value="{#$userinfo.phoneEncrypt#}" /></dd>
+		    </dl>
+		    <dl class="clearfix">
+		      <dt>验证码：</dt>
+		      <dd><input type="text" class="vdimgck" id="vdimgck" name="vdimgck" placeholder="6位数字" autocomplete="off" maxlength="6" onkeyup="value=value.replace(/\D+/ig,'')" /><a href="javascript:;" class="verifybtn" id="getPhoneAuthVerify">获取短信验证码</a></dd>
+		    </dl>
+			</div>
+			{#/if#}
+			{#if $userinfo.emailCheck == 1#}
+			<div class="item">
+				<dl class="clearfix">
+		      <dt>邮箱地址：</dt>
+		      <dd><input type="text" disabled value="{#$userinfo.emailEncrypt#}" /></dd>
+		    </dl>
+		    <dl class="clearfix">
+		      <dt>验证码：</dt>
+		      <dd><input type="text" class="vdimgck" id="vdimgckEmail" name="vdimgck" placeholder="6位数字" autocomplete="off" maxlength="6" onkeyup="value=value.replace(/\D+/ig,'')" /><a href="javascript:;" class="verifybtn" id="getEmailAuthVerify">获取邮箱验证码</a></dd>
+		    </dl>
+		  </div>
+		  {#/if#}
+		  {#if $userinfo.question == 1#}
+			<div class="item">
+				<dl class="clearfix">
+		      <dt>问题：</dt>
+		      <dd class="sel-group">
+		      	<em>您{#$question1#}的{#$question2#}是？</em>
+		      </dd>
+		    </dl>
+		    <dl class="clearfix">
+		      <dt>答案：</dt>
+		      <dd><input type="text" id="answer" name="answer" placeholder="请输入您的密保答案" autocomplete="off" /></dd>
+		    </dl>
+			</div>
+			{#/if#}
+		</div>
+		<div class="footer-tip">如您的密保工具都已无法使用，<a href="#" target="_blank">请点此申诉</a>，成功后可更换。</div>
+  </div>
+</script>
+<script id="chnicknameEdit" type="text/html">
+	<div class="editForm" name="editForm">
+		<div class="edit-tip"><s></s><p>请确保在安全环境下操作</p></div>
+    <dl class="clearfix">
+      <dt>新昵称：</dt>
+      <dd><input type="text" id="name" name="name" autocomplete="off" placeholder="请输入新昵称" maxlength="10" /></dd>
+    </dl>
+  </div>
+</script>
+<script id="chpasswordEdit" type="text/html">
+	<div class="editForm" name="editForm">
+		<div class="edit-tip"><s></s><p>新密码建议组合规则：<br />长度为6~14个字符<br />支持数字,大小写字母和标点符号</p></div>
+    <dl class="clearfix">
+      <dt>当前密码：</dt>
+      <dd><input type="password" id="old" name="old" placeholder="请输入原密码" /></dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>新密码：</dt>
+      <dd><input type="password" id="new" name="new" placeholder="请输入新密码" /></dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>密码强度：</dt>
+      <dd id="passwordStrengthDiv"><span></span></dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>确认密码：</dt>
+      <dd><input type="password" id="confirm" name="confirm" placeholder="确认新密码" /></dd>
+    </dl>
+  </div>
+</script>
+{#if $userinfo.paypwdCheck == 0#}
+<script id="chpaypwdAdd" type="text/html">
+	<div class="editForm" name="editForm">
+		<div class="edit-tip"><s></s><p>交易付款或者账户信息更改时需校验，与登录密码不一样</p></div>
+    <dl class="clearfix">
+      <dt>支付密码：</dt>
+      <dd><input type="password" id="pay1" name="pay1" placeholder="请输入支付密码" /></dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>密码强度：</dt>
+      <dd id="passwordStrengthDiv"><span></span></dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>再次确认：</dt>
+      <dd><input type="password" id="pay2" name="pay2" placeholder="确认支付密码" /></dd>
+    </dl>
+  </div>
+</script>
+{#else#}
+<script id="chpaypwdEdit" type="text/html">
+	<div class="editForm" name="editForm">
+		<div class="edit-tip"><s></s><p>如果您忘记了支付密码，请选择【重置】的方式重置！</p></div>
+    <dl class="clearfix">
+      <dt>原支付密码：</dt>
+      <dd><input type="password" id="old" name="old" placeholder="请输入原密码" /></dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>新支付密码：</dt>
+      <dd><input type="password" id="new" name="new" placeholder="请输入新密码" /></dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>密码强度：</dt>
+      <dd id="passwordStrengthDiv"><span></span></dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>确认密码：</dt>
+      <dd><input type="password" id="confirm" name="confirm" placeholder="确认新密码" /></dd>
+    </dl>
+  </div>
+</script>
+{#/if#}
+{#if $userinfo.certifyState == 0 || $userinfo.certifyState == 2#}
+<script id="chCertifyAdd" type="text/html">
+	<div class="editForm" name="editForm">
+		<div class="edit-tip{#if $userinfo.certifyState == 2#} error{#/if#}"><s></s><p>{#if $userinfo.certifyState == 2#}{#$userinfo.certifyInfo#}{#else#}实名认证用户可拥有更多会员权利。<br />适用于个人用户，认证审核需要1-2个工作日，仅支持二代身份证认证。{#/if#}</p></div>
+    <dl class="clearfix">
+      <dt>真实姓名：</dt>
+      <dd style="width: 200px;"><input type="text" id="realname" name="realname" autocomplete="off" maxlength="10" placeholder="请输入身份证上的姓名" /></dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>身份证号码：</dt>
+      <dd style="width: 200px;"><input type="text" id="idcard" name="idcard" autocomplete="off" maxlength="18" placeholder="请输入18位身份证号码" /></dd>
+    </dl>
+    <div class="cardUpload fn-clear">
+    	<div class="item front">
+    		<input name="front" type="hidden" id="front" />
+    		<div class="spic">
+	        <div class="sholder"></div>
+	        <a href="javascript:;" class="reupload">重新上传</a>
+	      </div>
+	      <iframe class="uploadFrame" src ="/include/upfile.inc.php?mod=siteConfig&type=card&obj=front&filetype=image" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" ></iframe>
+    	</div>
+    	<div class="item back">
+    		<input name="back" type="hidden" id="back" />
+    		<div class="spic">
+	        <div class="sholder"></div>
+	        <a href="javascript:;" class="reupload">重新上传</a>
+	      </div>
+	      <iframe class="uploadFrame" src ="/include/upfile.inc.php?mod=siteConfig&type=card&obj=back&filetype=image" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" ></iframe>
+    	</div>
+    </div>
+  </div>
+</script>
+{#else#}
+<script id="chCertify" type="text/html">
+	<div class="editForm" name="editForm">
+		<div class="edit-tip success"><s></s><p>{#if $userinfo.certifyState == 1#}您已经通过实名认证！{#else#}您的实名认证信息已经提交，请等待工作人员的审核！{#/if#}</p></div>
+    <dl class="clearfix">
+      <dt>真实姓名：</dt>
+      <dd style="width: 200px;"><input type="text" id="realname" disabled /></dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>身份证号码：</dt>
+      <dd style="width: 200px;"><input type="text" id="idcard" disabled /></dd>
+    </dl>
+    <div class="cardUpload fn-clear">
+    	<div class="item front"><div class="spic"><div class="sholder"></div></div></div>
+    	<div class="item back"><div class="spic"><div class="sholder"></div></div></div>
+    </div>
+  </div>
+</script>
+{#/if#}
+{#if $userinfo.phoneCheck != 1#}
+<script id="chphoneAdd" type="text/html">
+	<div class="editForm" name="editForm">
+		<div class="edit-tip"><s></s><p>绑定后可以直接使用手机号码登录网站！</p></div>
+    <dl class="clearfix">
+      <dt>手机号码：</dt>
+      <dd><input type="text" id="phone" name="phone" placeholder="请输入11位手机号码" autocomplete="off" maxlength="11" onkeyup="value=value.replace(/\D+/ig,'')" /></dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>验证码：</dt>
+      <dd><input type="text" class="vdimgck" id="vdimgck" name="vdimgck" placeholder="6位数字" autocomplete="off" maxlength="6" onkeyup="value=value.replace(/\D+/ig,'')" /><a href="javascript:;" class="verifybtn" id="getPhoneVerify">获取短信验证码</a></dd>
+    </dl>
+  </div>
+</script>
+{#/if#}
+{#if $userinfo.emailCheck != 1#}
+<script id="chemailAdd" type="text/html">
+	<div class="editForm" name="editForm">
+		<div class="edit-tip"><s></s><p>绑定后可以直接使用邮箱登录网站！</p></div>
+    <dl class="clearfix">
+      <dt>邮箱地址：</dt>
+      <dd><input type="text" id="email" name="email" placeholder="请输入您的邮箱地址" autocomplete="off" /></dd>
+    </dl>
+  </div>
+</script>
+{#/if#}
+{#if $userinfo.question == 0#}
+<script id="questionAdd" type="text/html">
+	<div class="editForm" name="editForm">
+		<div class="edit-tip"><s></s><p>安全保护问题将作为您唯一的，通用的身份校验，请认真设置！<br />遗忘支付密码时，可以通过安全问题找回。</p></div>
+    <dl class="clearfix">
+      <dt>选择问题：</dt>
+      <dd class="sel-group">
+      	<em>我</em>
+      	<div class="sel q1">
+      		<label>请选择<s></s></label>
+      		<select>
+      			<option value="请选择">请选择</option>
+      			<option value="爸爸">爸爸</option>
+      			<option value="妈妈">妈妈</option>
+      			<option value="丈夫">丈夫</option>
+      			<option value="妻子">妻子</option>
+      			<option value="外公">外公</option>
+      			<option value="外婆">外婆</option>
+      			<option value="爷爷">爷爷</option>
+      			<option value="奶奶">奶奶</option>
+      			<option value="儿子">儿子</option>
+      			<option value="女儿">女儿</option>
+      			<option value="小学老师">小学老师</option>
+      			<option value="中学老师">中学老师</option>
+      			<option value="大学老师">大学老师</option>
+      		</select>
+      	</div>
+      	<input type="hidden" id="q1" name="q1" />
+      	<em>的</em>
+      	<div class="sel q2">
+      		<label>请选择<s></s></label>
+      		<select>
+      			<option value="请选择">请选择</option>
+      			<option value="姓名">姓名</option>
+      			<option value="生日">生日</option>
+      			<option value="出生地">出生地</option>
+      		</select>
+      	</div>
+      	<input type="hidden" id="q2" name="q2" />
+      </dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>输入答案：</dt>
+      <dd><input type="text" id="answer" name="answer" placeholder="请输入您的密保答案" autocomplete="off" /></dd>
+    </dl>
+  </div>
+</script>
+{#/if#}
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.passwordStrength.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/security.js"></script>
+</body>
+</html>

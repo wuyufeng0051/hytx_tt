@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>重置密码</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/resetpwd.css?v=2" media="all" />
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}';
+</script>
+</head>
+
+<body>
+<div class="reg-pup">
+  <h2>重置密码</h2>
+  <a href="{#$cfg_basehost#}" title="返回首页" id="close">返回首页</a>
+  {#if $empty == "yes"#}
+  <div class="empty">对不起，链接已失效，点击<a href="{#$cfg_basehost#}">这里</a>回首页！</div>
+  {#else#}
+  <form class="form-horizontal" action="">
+    <input type="hidden" name="data" id="data" value="{#$data#}" />
+    <ul>
+      <li class="npwd"><input type="password" class="login-input" name="npwd" id="npwd" autocomplete="off" /><span>新密码</span><em id="passwordStrengthDiv"></em></li>
+      <li><input type="password" class="login-input" name="npwd1" id="npwd1" autocomplete="off" /><span>再输一次</span></li>
+      <li class="submit fn-clear">
+        <a href="javascript:;" id="submitFpwd" class="login-btn">确认</a>
+      </li>
+    </ul>
+  </form>
+  {#/if#}
+  <div class="login-foot">
+    我知道密码了， <a href="{#$cfg_basehost#}/login.html">立即登录</a>
+  </div>
+</div>
+
+<div id="particles-js"></div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/particles.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.passwordStrength.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/resetpwd.js?v=2"></script>
+</body>
+</html>

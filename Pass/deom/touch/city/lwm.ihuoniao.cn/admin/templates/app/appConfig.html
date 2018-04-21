@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>APP基本设置</title>
+{#$cssFile#}
+<script>
+var adminPath = "{#$adminPath#}";
+var imglist = {
+    "android_guide": {#$android_guide#},
+    "ios_guide": {#$ios_guide#}
+};
+</script>
+<style media="screen">
+    .editform dt {width: 200px;}
+</style>
+</head>
+
+<body>
+<form action="appConfig.php" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label>最新版本：</label></dt>
+    <dd class="clearfix">
+		<div class="input-prepend">
+          <span class="add-on">Android：</span>
+          <input class="span2" id="android_version" name="android_version" type="text" value="{#$android_version#}" />
+        </div>
+		<div class="input-prepend">
+          <span class="add-on">iOS：</span>
+          <input class="span2" id="ios_version" name="ios_version" type="text" value="{#$ios_version#}" />
+        </div>
+	</dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>LOGO：<br /><small>尺寸：180*180</small>&nbsp;&nbsp;&nbsp;</label></dt>
+    <dd class="thumb clearfix listImgBox">
+		<div class="uploadinp filePicker thumbtn{#if $logo != ""#} hide{#/if#}" id="filePicker3" data-type="logo" data-count="1" data-size="5120" data-imglist=""><div></div><span></span></div>
+        {#if $logo != ""#}
+		<ul id="listSection3" class="listSection thumblist clearfix" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$cfg_attachment#}{#$logo#}' target="_blank" title=""><img style="max-width: 150px;" alt="" src="{#$cfg_attachment#}{#$logo#}" data-val="{#$logo#}"/></a><a class="reupload li-rm" href="javascript:;">删除图片</a></li></ul>
+		{#else#}
+		<ul id="listSection3" class="listSection thumblist clearfix"></ul>
+		{#/if#}
+		<input type="hidden" name="logo" value="" class="imglist-hidden" id="logo">
+	</dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="android_download">Android安装包下载地址：</label></dt>
+    <dd><input class="input-xxlarge" type="text" name="android_download" id="android_download" value="{#$android_download#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="ios_download">iOS安装包下载地址：</label></dt>
+    <dd><input class="input-xxlarge" type="text" name="ios_download" id="ios_download" value="{#$ios_download#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>Android引导页：<br /><small>尺寸：720*1280</small>&nbsp;&nbsp;&nbsp;</label></dt>
+    <dd class="listImgBox hide">
+		<div class="list-holder">
+			<ul id="listSection0" class="clearfix listSection piece"></ul>
+			<input type="hidden" name="android_guide" value='{#$android_guide#}' class="imglist-hidden">
+		</div>
+		<div class="btn-section clearfix">
+			<div class="uploadinp filePicker" id="filePicker0" data-type="single" data-count="10" data-size="5120" data-imglist="android_guide"><div id="flasHolder0"></div><span>添加图片</span></div>
+			<div class="upload-tip">
+				<p><a href="javascript:;" class="hide deleteAllAtlas">删除所有</a>&nbsp;&nbsp;{#$atlasType|replace:"*.":""|replace:";":"、"#}&nbsp;&nbsp;单张最大5M<span class="fileerror"></span></p>
+			</div>
+		</div>
+	</dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>iOS引导页：<br /><small>尺寸：750*1334</small>&nbsp;&nbsp;&nbsp;</label></dt>
+    <dd class="listImgBox hide">
+		<div class="list-holder">
+			<ul id="listSection1" class="clearfix listSection piece"></ul>
+			<input type="hidden" name="ios_guide" value='{#$ios_guide#}' class="imglist-hidden">
+		</div>
+		<div class="btn-section clearfix">
+			<div class="uploadinp filePicker" id="filePicker1" data-type="single" data-count="10" data-size="5120" data-imglist="ios_guide"><div id="flasHolder1"></div><span>添加图片</span></div>
+			<div class="upload-tip">
+				<p><a href="javascript:;" class="hide deleteAllAtlas">删除所有</a>&nbsp;&nbsp;{#$atlasType|replace:"*.":""|replace:";":"、"#}&nbsp;&nbsp;单张最大5M<span class="fileerror"></span></p>
+			</div>
+		</div>
+	</dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>广告页：<br /><small>尺寸：640*1136</small>&nbsp;&nbsp;&nbsp;</label></dt>
+    <dd class="thumb clearfix listImgBox">
+		<div class="uploadinp filePicker thumbtn{#if $ad_pic != ""#} hide{#/if#}" id="filePicker2" data-type="card" data-count="1" data-size="5120" data-imglist=""><div></div><span></span></div>
+        {#if $ad_pic != ""#}
+		<ul id="listSection2" class="listSection thumblist clearfix" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$cfg_attachment#}{#$ad_pic#}' target="_blank" title=""><img style="max-width: 150px;" alt="" src="{#$cfg_attachment#}{#$ad_pic#}" data-val="{#$ad_pic#}"/></a><a class="reupload li-rm" href="javascript:;">删除图片</a></li></ul>
+		{#else#}
+		<ul id="listSection2" class="listSection thumblist clearfix"></ul>
+		{#/if#}
+		<input type="hidden" name="ad_pic" value="" class="imglist-hidden" id="ad_pic">
+        <br /><br />
+        <input class="input-xxlarge" type="text" name="ad_link" id="ad_link" value="{#$ad_link#}" placeholder="广告链接，留空表示没有链接" />
+        <div class="input-prepend input-append" style="display: block; margin-top: 15px;">
+          <span class="add-on">广告倒计时</span>
+          <input class="span1" id="ad_time" name="ad_time" type="number" min="1" value="{#$ad_time#}" />
+          <span class="add-on">秒</span>
+        </div>
+	</dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="android_index">Android首页地址：</label></dt>
+    <dd><input class="input-xxlarge" type="text" name="android_index" id="android_index" value="{#if $android_index#}{#$android_index#}{#else#}{#$cfg_basehost#}/{#/if#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="ios_index">iOS首页地址：</label></dt>
+    <dd><input class="input-xxlarge" type="text" name="ios_index" id="ios_index" value="{#if $ios_index#}{#$ios_index#}{#else#}{#$cfg_basehost#}/{#/if#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>百度地图：</label></dt>
+    <dd class="clearfix">
+      <div class="input-prepend">
+        <span class="add-on">Android</span>
+        <input class="span4" id="map_baidu_android" name="map_baidu_android" type="text" value="{#$map_baidu_android#}" />
+      </div>
+      <br />
+      <div class="input-prepend">
+        <span class="add-on">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iOS</span>
+        <input class="span4" id="map_baidu_ios" name="map_baidu_ios" type="text" value="{#$map_baidu_ios#}" />
+      </div>
+      <label><input type="radio" name="map_set" value="2" {#if $map_set == 2#}checked="checked"{#/if#}>默认</label>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="map_google">谷歌地图：</label></dt>
+    <dd>
+      <input class="input-xxlarge" type="text" name="map_google" id="map_google" value="{#$map_google#}" />
+      <label><input type="radio" name="map_set" value="1" {#if $map_set == 1#}checked="checked"{#/if#}>默认</label>
+    </dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

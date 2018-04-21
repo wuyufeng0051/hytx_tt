@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>店铺列表</title>
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/le_list.css">
+</head>
+
+<body>
+<div class="search fn-clear">
+	<div class="location"><a href="local.html"></a></div>
+	<div class="se_1"><a href="search.html"></a></div>
+</div>
+<div class="lead_pic"><img src="{#$templets_skin#}upfile/cXxRUBZSkwM2JL7XyqwfeGzM8fciqThE-w174.png" alt=""></div>
+<div class="navigation fn-clear">
+	<div class="nav_lead fn-clear">
+		<ul>
+			<li><em>{#$typename#}</em><i></i></li>
+			<li><em>默认排序</em><i></i></li>
+			<li><em>不限状态</em><i></i></li>
+		</ul>
+	</div>
+	<div class="nav_txt">
+		<div class="nav">
+			<ul data-type='type'>
+				<li data-id=""><a href="javascript:;"><b></b>全部分类<i></i></a></li>
+				{#foreach from=$typeArr item=type#}
+				<li data-id="{#$type.id#}"{#if $typeid == $type.id#} class="nav_bc"{#/if#}><a href="javascript:;"><b></b>{#$type.title#}<i></i></a></li>
+				{#/foreach#}
+			</ul>
+		</div>
+		<div class="nav none">
+			<ul data-type='orderby'>
+				<li data-id=""><a href="javascript:;"><b></b>默认排序<i></i></a></li>
+				<li data-id="1"><a href="javascript:;"><b></b>距离最近<i></i></a></li>
+				<li data-id="2"><a href="javascript:;"><b></b>销量最高<i></i></a></li>
+				<li data-id="3"><a href="javascript:;"><b></b>起送价最低<i></i></a></li>
+				<li data-id="4"><a href="javascript:;"><b></b>评论最多<i></i></a></li>
+			</ul>
+		</div>
+		<div class="nav none">
+			<ul data-type='yingye'>
+				<li data-id=""><a href="javascript:;"><b></b>不限状态<i></i></a></li>
+				<li data-id="1"><a href="javascript:;"><b></b>营业中<i></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="le_list"></div>
+<div class="disk none"></div>
+
+<script type="text/javascript">
+	var typeid = {#$typeid#}, orderby = '', yingye = '', lng = '', lat = '', page = 1, pageSize = 10;
+</script>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak={#$site_map_key#}&services=&t={#$smarty.now#}"></script>
+<script src="{#$templets_skin#}js/le_list.js"></script>
+</body>
+</html>

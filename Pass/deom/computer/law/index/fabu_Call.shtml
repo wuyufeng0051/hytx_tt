@@ -1,0 +1,312 @@
+<!--#include file="_top.shtml"-->
+<link rel="stylesheet" href="css/fabu_Callbids.css">
+
+
+<div class="search fn-clear">
+	<div class="logo"><a href="#"><img src="images/logo3.png" alt=""></a></div>
+	<div class="search_list fn-clear">
+		<form action="">
+			<input type="text" placeholder="请输入法律相关内容">
+			<button>搜索</button>
+		</form>
+		<a href="fabu_Call.shtml" class="online">发布招标<i></i></a>
+	</div>
+	<div class="tell">
+		<p>400-888-1234</p><span><i></i>客服热线：早8:00-凌晨2:00</span>
+	</div>
+</div>
+<div class="lead">
+	<ul class="fn-clear">
+		<li class="lead_bc"><a href="index.shtml">首页</a></li>
+		<li><a href="Callbids_List.shtml">徐州招标案件</a></li>
+		<li><a href="#">徐州案源库</a></li>
+		<li><a href="#">法律援助中心</a></li>
+		<li><a href="#">法律知识</a></li>
+		<li><a href="#">律师访谈</a></li>
+		<li><a href="#">常用法规</a></li>
+		<li><a href="#">律师事务所</a></li>
+		<li><a href="#">徐州法援</a></li>
+	</ul>
+</div>
+<div class="FC_box wrap fn-clear">
+	<div class="FC_left">
+		<div class="flow">
+			<div class="FlowLine"></div>
+			<ul class="fn-clear">
+				<li class="flFirst FL_bc"><em>1</em><i class="FL2"></i></li>
+				<li><i class="FL1"></i><em>2</em><i class="FL2"></i></li>
+				<li><i class="FL1"></i><em>3</em><i class="FL2"></i></li>
+				<li><i class="FL1"></i><em>4</em><i class="FL2"></i></li>
+				<li class="fllast"><i class="FL1"></i><em>5</em></li>
+			</ul>
+		</div>
+		<div class="flow_com fn-clear">
+			<ul>
+				<li class="flFirst FL_bc">发布案件招标</li>
+				<li>客服审核</li>
+				<li>多律师投标</li>
+				<li>选定中标律师</li>
+				<li>双方接洽合作</li>
+			</ul>
+		</div>
+		<div class="FormBox">
+			<div class="FormTabe type fn-clear">
+				<div class="FT_name">案件类型：</div>
+				<select name="" id="type">
+					<option value="">请选择分类</option>
+					<option value="1">凶杀</option>
+				</select>
+				<div class="warning"><em>*</em>选择您的案件属于哪种类型</div>
+			</div>
+			<div class="FormTabe city fn-clear">
+				<div class="FT_name">涉案城市：</div>
+				<select name="" id="">
+					<option value="">请选择省份</option>
+					<option value="">江苏省</option>
+				</select>
+				<select name="" id="">
+					<option value="">请选择城市</option>
+					<option value="">苏州</option>
+				</select>
+				<select name="" id="">
+					<option value="">请选择区县</option>
+				</select>
+			</div>
+			<div class="FormTabe money fn-clear">
+				<div class="FT_name">涉案金额：</div>
+				<input type="text" id="money"> <em>元人民币</em>
+				<div class="warning"><em>*</em>预计案件将涉及到是款项数额（保密请填“0”）</div>
+			</div>
+			<div class="FormTabe title fn-clear">
+				<div class="FT_name">案件标题：</div>
+				<input type="text" placeholder="请概述您的案件详情，请注明案件详情，如：“离婚案件”[2-40个汉字]"> 
+			</div>
+			<div class="FormTabe dection fn-clear">
+				<div class="FT_name">案件标题：</div>
+				<div class="dec_com">
+					<p>高效的案件描述应包含</p> 
+					<p>1、案件基本事实：起因、结果（后果）、进展；</p>
+					<p>2、具体的要求和想法，要解决的问题（诉讼请求）；</p>
+					<p>3、您掌握有什么证据;</p>
+					<span>以上信息有利于律师作出全面、精确的分析，帮您第一时间了解法律
+					风险及对应策略，更高效的解决法律困扰。</span>
+				</div>
+				<textarea name="" id="" cols="30" rows="10"></textarea>
+			</div>
+			<div class="FormTabe upload  fn-clear">
+				<div class="FT_name">证据材料：</div>
+				<div class="pic_list">
+			        <div class="img-box">
+						<ul class="uploader-list fn-clear" id="fileList1">
+							<li class="uploadbtn">
+								<div id="filePicker1" data-type="atlas" data-amount="9" class="webuploader-container picker">
+									<div class="webuploader-pick"><div class="webuploader-pick"><i></i>上传证据</div></div>
+								</div>
+							</li>
+						</ul>
+			  	    </div>
+				</div>
+				<div class="warning"><em>*</em>把你手中所有的证据上传给我们，多多益善，打官司就是打证据</div>
+			</div>
+			<div class="FormTabe name fn-clear">
+				<div class="FT_name">您的姓名：</div>
+				<input type="text" id="name">
+				<div class="warning"><em>*</em>您的真实姓名，如以企、事业单位或其他组织名义委托案件，请填写企业全称</div>
+			</div>
+			<div class="FormTabe name fn-clear">
+				<div class="FT_name">联系方式：</div>
+				<input type="text" id="tel">
+				<div class="warning"><em>*</em>请填写真实电话，如您的联系方式无法核实，本网将不予审核发布</div>
+			</div>
+			<div class="FormTabe name fn-clear">
+				<div class="FT_name"></div>
+				<input type="text" placeholder="请输入验证码">
+				<div class="send">发送验证码</div>
+			</div>
+			<div class="read  fn-clear"><i></i>我已经阅读并理解和接收<a href="#">《网站注册协议》</a>和<a href="#">《网站隐私保护条款》</a></div>
+			<div class="submit">发布案件招标</div>
+		</div>
+	</div>
+	<div class="FC_right">
+		<div class="ad1"></div>
+		<div class="ad2"></div>
+		<div class="tj fn-clear">
+			<h1>徐州推荐律师</h1>
+			<ul>
+				<li>
+					<div class="tj_pic">
+						<img src="upfile/p_1.png" alt="">
+						<div class="infor">
+							<h3>律师365湖北律师</h3>
+							<div class="to"><a href="#">向TA咨询</a></div>
+							<span>电话：<em>15129882209</em></span>
+							<div class="rz fn-clear">
+								<ul>
+									<li class="zy">执业认证</li>
+									<li class="moble">手机认证</li>
+									<li class="vip">会员律师</li>
+								</ul>
+							</div>
+							<div class="in_txt">简介：律师365湖北律师，女，汉族，中共党员，山东政法学院法学本科，西北师范大学法学硕士研究生。</div>
+							<div class="pj fn-clear">
+								<ul>
+									<li><i>1215</i><b>好评数</b></li>
+									<li><i>2546</i><b>咨询采纳</b></li>
+									<li><i>61368</i><b>帮助人数</b></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<span>张小燕律师</span><p>13582341975</p><s><a href="#">在线咨询</a></s>
+				</li>
+				<li>
+					<div class="tj_pic">
+						<img src="upfile/p_1.png" alt="">
+						<div class="infor">
+							<h3>律师365湖北律师</h3>
+							<div class="to"><a href="#">向TA咨询</a></div>
+							<span>电话：<em>15129882209</em></span>
+							<div class="rz fn-clear">
+								<ul>
+									<li class="zy">执业认证</li>
+									<li class="moble">手机认证</li>
+									<li class="vip">会员律师</li>
+								</ul>
+							</div>
+							<div class="in_txt">简介：律师365湖北律师，女，汉族，中共党员，山东政法学院法学本科，西北师范大学法学硕士研究生。</div>
+							<div class="pj fn-clear">
+								<ul>
+									<li><i>1215</i><b>好评数</b></li>
+									<li><i>2546</i><b>咨询采纳</b></li>
+									<li><i>61368</i><b>帮助人数</b></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<span>张小燕律师</span><p>13582341975</p><s><a href="#">在线咨询</a></s>
+				</li>
+				<li>
+					<div class="tj_pic">
+						<img src="upfile/p_1.png" alt="">
+						<div class="infor">
+							<h3>律师365湖北律师</h3>
+							<div class="to"><a href="#">向TA咨询</a></div>
+							<span>电话：<em>15129882209</em></span>
+							<div class="rz fn-clear">
+								<ul>
+									<li class="zy">执业认证</li>
+									<li class="moble">手机认证</li>
+									<li class="vip">会员律师</li>
+								</ul>
+							</div>
+							<div class="in_txt">简介：律师365湖北律师，女，汉族，中共党员，山东政法学院法学本科，西北师范大学法学硕士研究生。</div>
+							<div class="pj fn-clear">
+								<ul>
+									<li><i>1215</i><b>好评数</b></li>
+									<li><i>2546</i><b>咨询采纳</b></li>
+									<li><i>61368</i><b>帮助人数</b></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<span>张小燕律师</span><p>13582341975</p><s><a href="#">在线咨询</a></s>
+				</li>
+				<li>
+					<div class="tj_pic">
+						<img src="upfile/p_1.png" alt="">
+						<div class="infor">
+							<h3>律师365湖北律师</h3>
+							<div class="to"><a href="#">向TA咨询</a></div>
+							<span>电话：<em>15129882209</em></span>
+							<div class="rz fn-clear">
+								<ul>
+									<li class="zy">执业认证</li>
+									<li class="moble">手机认证</li>
+									<li class="vip">会员律师</li>
+								</ul>
+							</div>
+							<div class="in_txt">简介：律师365湖北律师，女，汉族，中共党员，山东政法学院法学本科，西北师范大学法学硕士研究生。</div>
+							<div class="pj fn-clear">
+								<ul>
+									<li><i>1215</i><b>好评数</b></li>
+									<li><i>2546</i><b>咨询采纳</b></li>
+									<li><i>61368</i><b>帮助人数</b></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<span>张小燕律师</span><p>13582341975</p><s><a href="#">在线咨询</a></s>
+				</li>
+				<li>
+					<div class="tj_pic">
+						<img src="upfile/p_1.png" alt="">
+						<div class="infor">
+							<h3>律师365湖北律师</h3>
+							<div class="to"><a href="#">向TA咨询</a></div>
+							<span>电话：<em>15129882209</em></span>
+							<div class="rz fn-clear">
+								<ul>
+									<li class="zy">执业认证</li>
+									<li class="moble">手机认证</li>
+									<li class="vip">会员律师</li>
+								</ul>
+							</div>
+							<div class="in_txt">简介：律师365湖北律师，女，汉族，中共党员，山东政法学院法学本科，西北师范大学法学硕士研究生。</div>
+							<div class="pj fn-clear">
+								<ul>
+									<li><i>1215</i><b>好评数</b></li>
+									<li><i>2546</i><b>咨询采纳</b></li>
+									<li><i>61368</i><b>帮助人数</b></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<span>张小燕律师</span><p>13582341975</p><s><a href="#">在线咨询</a></s>
+				</li>
+				<li>
+					<div class="tj_pic">
+						<img src="upfile/p_1.png" alt="">
+						<div class="infor">
+							<h3>律师365湖北律师</h3>
+							<div class="to"><a href="#">向TA咨询</a></div>
+							<span>电话：<em>15129882209</em></span>
+							<div class="rz fn-clear">
+								<ul>
+									<li class="zy">执业认证</li>
+									<li class="moble">手机认证</li>
+									<li class="vip">会员律师</li>
+								</ul>
+							</div>
+							<div class="in_txt">简介：律师365湖北律师，女，汉族，中共党员，山东政法学院法学本科，西北师范大学法学硕士研究生。</div>
+							<div class="pj fn-clear">
+								<ul>
+									<li><i>1215</i><b>好评数</b></li>
+									<li><i>2546</i><b>咨询采纳</b></li>
+									<li><i>61368</i><b>帮助人数</b></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<span>张小燕律师</span><p>13582341975</p><s><a href="#">在线咨询</a></s>
+				</li>
+			</ul>
+		</div>
+		<div class="Promise">
+			<div class="PromiseLead">服务承诺</div>
+			<p>1、严格保障您的个人隐私，绝不向投标律师以外第三方透漏您的招标内容；</p>
+			<p>2、所有投标律师均通过本站实名认证，服务有保障；</p>
+			<p>3、所有招标案件均由本站客服电话回访核实，案件真实有效；</p>
+			<p>4、便捷高效法律咨询平台，绝不向招标用户收取任何费用！</p>
+		</div>
+		<div class="wx">
+			<img src="images/ys_38.png" alt="">
+			<span><i></i>扫微信，与律师是对话</span>
+			<p><em>千名律师</em><em>微信在线</em><em>及时交流</em></p>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/webuploader.js"></script>
+<script type="text/javascript" src="js/fabu_Call.js"></script>
+
+<!--#include file="_foot.shtml"-->

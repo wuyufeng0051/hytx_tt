@@ -1,0 +1,51 @@
+<volist name="r_post" id="vo">
+	<div class="mui-card" style="padding-bottom: 15px;margin: 0;border-bottom: 1px solid #ddd;background-color: #fff">
+		<div class="mui-card-content">
+			<div class="mui-card-content-inner" style="padding:8px;">
+				<div style="position:relative;padding-left: 60px;display: block;color: #000;">
+					<div style="position: absolute;left: 0;width: 50px;height: 50px;">
+                     <?php if($vo['user_id'] == $_SESSION['user_id']){ ?>
+					  <a href="__MODULE__/Mybrid/myBrid" class="a">
+                     <?php }else{ ?>
+					  <a href="__MODULE__/Mybrid/taBrid?user_id={$vo.user_id}" class="a">
+                     <?php } ?>
+						<div class="mui-media-object mui-pull-left img" style="width: 100%;height: 100%;background-image: url({$vo.user_head});background-repeat: no-repeat;background-position: 50% 50%;background-size: cover;"></div>
+					  </a>
+
+					</div>
+					<?php if($vo['user_id'] == $_SESSION['user_id']){ ?>
+					  <a href="__MODULE__/Mybrid/myBrid" class="a">
+                     <?php }else{ ?>
+                      <a href="__MODULE__/Mybrid/taBrid?user_id={$vo.user_id}" class="a">
+                     <?php } ?>
+					  <h4 style="color: #4673a8;margin-bottom: 8px;font-weight: normal;">{$vo.user_name}</h4>
+					  </a>
+					<p class="time">{$vo.post_date}</p>
+					 <input type="hidden" value="{$vo.post_date}" class="times">
+					<div class="mui-ellipsis-5" style="line-height: 21px; font-size: 16px;color: #333;">{$vo.post_content}</div>
+					<a style="color: #5a87a8;margin-top: 5px;margin-bottom: 5px;display: block;width: 100%;text-align: right;" href="__MODULE__/Bridpost/postcomment?post_id={$vo.post_id}" class="a">查看全文>></a>
+					<ul class="listimg imgbox">
+					  <volist name="vo.imgs" id="v">
+						<li>
+							<img src="__PUBLIC__/../{$v.imgs_path}">
+						</li>
+					  </volist> 
+					</ul>
+					<ul class="listopation" style="color: #808080;">
+					   <?php if($vo['user_id'] == $_SESSION['user_id']){ ?>
+						<li style="text-align: left;left: 0;">
+							<span style="color: #5a87a8" class="delpost" str="{$vo.post_id}">删除</span>
+						</li>
+					   <?php }  ?>
+						<li style="text-align: center;left: 33.3%;" class="pinjia">
+							<img src="__PUBLIC__/Home/img/pinjia.png"><span>评论 {$vo.count}</span>
+						</li>
+						<li style="text-align: right;padding-right: 5px;left: 66.6%;" class="zan" str="{$vo.post_id}">
+							<img src="__PUBLIC__/Home/img/zan.png" style="width: 18px;height: 18px;padding-right: 3px;padding-top: 3px;"><span class="post_like">{$vo.post_like}</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</volist>

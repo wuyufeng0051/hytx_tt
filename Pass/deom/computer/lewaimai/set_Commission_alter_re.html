@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <link rel="stylesheet" href="css/font-awesome.min.css" />
+      <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/ace-fonts.min.css" />
+      <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+  </head>
+  <body class="no-skin">
+      <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+          <script type="text/javascript">try {
+              ace.settings.check('breadcrumbs', 'fixed')
+            } catch(e) {}</script>
+          <ul class="breadcrumb">
+            <i class="ace-icon fa fa-bar-chart-o bar-chart-o-icon"></i>
+            <li class="active">统计</li>
+            <li>
+              <a href="/statistics/chartorder">外卖统计</a></li>
+            <li>
+              <a href="/statistics/financenew">新财务结算</a></li>
+            <li class="active">修改打款账号</li></ul>
+          <!-- .breadcrumb --></div>
+        <!-- /section:basics/content.breadcrumbs -->
+        <div class="page-content">
+          <!-- /section:settings.box -->
+          <div class="page-content-area">
+            <div class="row">
+              <div class="col-xs-12">
+                <script>function deleteoption(type) {
+                    if (type == 1) {
+                      $('.optionprovince').remove();
+                      $('.optioncity').remove();
+                      $('.optionbankname').remove();
+                    } else if (type == 2) {
+                      $('.optioncity').remove();
+                      $('.optionbankname').remove();
+                    } else if (type == 3) {
+                      $('.optionbankname').remove();
+                    }
+                    bankname_no = '';
+                    $('#bankname_no').val('');
+                  }
+                  var headbankname = '';
+                  var province = '';
+                  var city = '';
+                  var bankname = '';
+                  var bankname_no = '';
+                  $(function() {
+                    $('#headbankname').on('change',
+                    function() {
+                      deleteoption(1);
+                      headbankname = $(this).val();
+                      if (headbankname == 0 || headbankname == '0') {
+
+                    } else {
+                        $.ajax({
+                          type: "GET",
+                          url: "/balance/headbanknamechange",
+                          data: "headbankname=" + headbankname,
+                          dataType: 'json',
+                          cache: false,
+                          error: function(XMLHttpRequest, textStatus, errorThrown) {},
+                          success: function(info) {
+                            var string = '';
+                            var data = info.data;
+                            for (var el in data) {
+                              string += '<option class="optionprovince" value="' + data[el].province + '" >' + data[el].province + '</option>';
+                            }
+                            $('#province').append(string);
+                          }
+                        });
+                      }
+                    });
+
+                    $('#province').on('change',
+                    function() {
+                      deleteoption(2);
+                      province = $(this).val();
+                      if (province == 0 || province == '0') {
+
+                    } else {
+                        $.ajax({
+                          type: "GET",
+                          url: "/balance/provincechange",
+                          data: 'headbankname=' + headbankname + '&province=' + province,
+                          dataType: 'json',
+                          cache: false,
+                          error: function(XMLHttpRequest, textStatus, errorThrown) {},
+                          success: function(info) {
+                            var string = '';
+                            var data = info.data;
+                            for (var el in data) {
+                              string += '<option class="optioncity" value="' + data[el].city + '">' + data[el].city + '</option>';
+                            }
+                            $('#city').append(string);
+                          }
+                        });
+                      }
+                    });
+
+                    $('#city').on('change',
+                    function() {
+                      deleteoption(3);
+                      city = $(this).val();
+                      if (city == 0 || city == '0') {
+
+                    } else {
+                        $.ajax({
+                          type: "GET",
+                          url: "/balance/citychange",
+                          data: 'headbankname=' + headbankname + '&province=' + province + '&city=' + city,
+                          dataType: 'json',
+                          cache: false,
+                          error: function(XMLHttpRequest, textStatus, errorThrown) {},
+                          success: function(info) {
+                            var string = '';
+                            var data = info.data;
+                            for (var el in data) {
+                              string += '<option class="optionbankname" value="' + data[el].branchname + '" unionpay_no="' + data[el].unionpay_no + '">' + data[el].branchname + '</option>';
+                            }
+                            $('#bankname').append(string);
+                          }
+                        });
+                      }
+                    });
+
+                    $('#bankname').on('change',
+                    function() {
+                      deleteoption(4);
+                      bankname_no = $(this).attr('unionpay_no');
+                      jQuery(".optionbankname").each(function() {
+                        if (this.selected == true) {
+                          bankname_no = $(this).attr('unionpay_no');
+                        }
+                      });
+                      bankname = $(this).val();
+                      if (bankname == 0 || bankname == '0') {
+
+                    } else {
+                        $('#bankname_no').val(bankname_no);
+                      }
+                    });
+                  });</script>
+                <div id="yw0">
+                  <div class="alert in alert-block fade alert-info">
+                    <a href="#" class="close" data-dismiss="alert">×</a>以下设置的是你设置的支付账户信息，对店铺进行一键打款将打到此账户上，请认真填写</div></div>
+                <form action="" method="post">
+                  <!-- <div style="height:30px;"></div> -->
+                  <div class="profile-user-info profile-user-info-striped">
+                    <div class="profile-info-row">
+                      <div class="profile-info-name">银行类型(总行)</div>
+                      <div class="profile-info-value">
+                        <select name="headbankname" id="headbankname">
+                          <option value="0">未选择</option>
+                          <option value="中国工商银行">中国工商银行</option>
+                          <option value="中国农业银行">中国农业银行</option>
+                          <option value="中国建设银行">中国建设银行</option>
+                          <option value="招商银行">招商银行</option>
+                          <option value="交通银行">交通银行</option>
+                          <option value="中国银行">中国银行</option>
+                          <option value="中国民生银行">中国民生银行</option>
+                          <option value="中国光大银行">中国光大银行</option>
+                          <option value="中信银行">中信银行</option>
+                          <option value="中国邮政储蓄银行">中国邮政储蓄银行</option></select>
+                      </div>
+                    </div>
+                    <div class="profile-info-row">
+                      <div class="profile-info-name">开户行所在地</div>
+                      <div class="profile-info-value">省份:
+                        <select name="province" id="province">
+                          <option value="0">未选择</option></select>城市:
+                        <select name="city" id="city">
+                          <option value="0">未选择</option></select>
+                        <span class="help-button" data-rel="tooltip" data-placement="left" title="这里请正确选择银行卡的所在地，请认真选择，提交后将不能修改！">
+                          <span class="ace-icon fa fa-info bigger-120"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="profile-info-row">
+                      <div class="profile-info-name">开户行网点</div>
+                      <div class="profile-info-value">
+                        <select name="bankname" id="bankname">
+                          <option value="0">未选择</option></select>
+                      </div>
+                    </div>
+                    <div class="profile-info-row">
+                      <div class="profile-info-name">联行号</div>
+                      <div class="profile-info-value">
+                        <input type="text" name="bankname_no" style="width:250px;" placeholder="" id="bankname_no" readonly="readonly">
+                        <span class="help-button" data-rel="tooltip" data-placement="right" title="这个地方选择开户网点的时候,系统会自动填入,请认真核对如有错误请连续客服解决,提交后不能修改">
+                          <span class="ace-icon fa fa-info bigger-120"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="profile-info-row">
+                      <div class="profile-info-name">银行开户名</div>
+                      <div class="profile-info-value">
+                        <input type="text" name="bankusername" value="" style="width:250px;" placeholder="">
+                        <span class="help-button" data-rel="tooltip" data-placement="right" title="这是该银行卡开户的时候用的名字(如:张三),请认真填写,提交后不能修改">
+                          <span class="ace-icon fa fa-info bigger-120"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="profile-info-row">
+                      <div class="profile-info-name">银行卡号</div>
+                      <div class="profile-info-value">
+                        <input type="text" name="bankcard_no" style="width:250px;" placeholder="" value="">
+                        <span class="help-button" data-rel="tooltip" data-placement="right" title="这是该银行卡的号码,请认真填写,提交后不能修改">
+                          <span class="ace-icon fa fa-info bigger-120"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="profile-info-row">
+                      <div class="profile-info-name">确认银行卡号</div>
+                      <div class="profile-info-value">
+                        <input type="text" name="queren_bankcard_no" style="width:250px;" placeholder="" value=""></div>
+                    </div>
+                    <div class="profile-info-row">
+                      <div class="profile-info-name">银行账户类型</div>
+                      <div class="profile-info-value">
+                        <select name="bank_type" style="width:250px;">
+                          <option value="0">私人账户</option>
+                          <option value="1">对公账户</option></select>
+                        <span class="help-button" data-rel="tooltip" data-placement="left" title="这里请选择银行账户的类型,银行账户分为私人和对公两种,请认真选择，提交后将不能修改！">
+                          <span class="ace-icon fa fa-info bigger-120"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <script type="text/javascript">$(function($) {
+                        $('[data-rel="tooltip"]').tooltip();
+                      })</script>
+                  </div>
+                  <div style="margin-left:100px;margin-top:20px;">
+                    <button class="btn btn-xs btn-app btn-success" type="submit">保存</button></div>
+                  <!-- <div style="margin-top:20px;"> --></form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="js/jquery-ui.min.js"></script>
+  </body>
+
+</html>

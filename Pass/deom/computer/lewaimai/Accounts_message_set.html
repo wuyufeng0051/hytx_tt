@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-wechat wechat-icon"></i>
+      <li class="active">公众号设置</li>
+      <li class="active">模板消息设置</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>#df_area{ padding-left:20px; } .clear{ clear:both; } .addfield{margin-top:-10px;width:120px;height:30px;background:#27B3EF;line-height:30px;color:#ffffff;font-weight:bold;text-align:center;font-size:16px;cursor:pointer;float:left;margin-right:10px;} #filecontent{width:1000px;height:auto;margin-top:10px;} .xxfield,.txfield{width:1000px;heigth:40px;background:#f5f5f5;line-height:40px;border:1px solid #eeeeee;margin-top:10px;} .deletefield{width:40px;height:40px;float:right;background:#eeeeee;color:#FF0000;font-weight:bold;line-height:40px;text-align:center;cursor:pointer;} .save_field{margin-top:10px;width:60px;height:30px;background:#61b509;line-height:30px;color:#ffffff;font-weight:bold;text-align:center;font-size:16px;cursor:pointer;} input[type=checkbox].ace.ace-switch.ace-switch-5+.lbl::before { content: "开启a0\a0\a0\a0\a0关闭"; }</style>
+      <div class="alert alert-block alert-info">
+        <button type="button" class="close" data-dismiss="alert">
+          <i class="ace-icon fa fa-times"></i>
+        </button>开通模板功能需要到公众平台申请，审核通过过才可用。注意：申请开通模板的行业类型需要选择“IT科技/互联网|电子商务，餐饮/餐饮”。
+        <br></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <button class="btn btn-danger" style="margin-bottom: 15px; margin-right: 10px;" onclick="ChooseWeixinTemplate()">
+            <i class="ace-icon fa fa-check"></i>一键设置模板消息</button>
+          <a href="#" class="btn btn-primary" style="margin-bottom: 15px;" target="_blank">模板消息设置与使用详细教程</a>
+          <div id="template-fail" class="alert alert-block alert-danger" style="display: none;">
+            <button type="button" class="close" data-dismiss="alert">
+              <i class="ace-icon fa fa-times"></i>
+            </button>设置模板失败，请检查您的模板消息的行业类型选择是否正确！</div>
+          <div id="template-limit" class="alert alert-block alert-danger" style="display: none;">
+            <button type="button" class="close" data-dismiss="alert">
+              <i class="ace-icon fa fa-times"></i>
+            </button>设置模板消息失败，您的模板消息数量已达到上限15个，请在微信公众号后台删除至少5个无用的模板消息再重新设置！</div>
+          <form enctype="multipart/form-data" class="form-horizontal" id="shop-form" action="/template/index" method="post">
+            <div class="alert alert-danger" id="shop-form_es_" style="display:none">
+              <p>请更正下列输入错误:</p>
+              <ul>
+                <li>dummy</li></ul>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2" for="Template_is_used">是否使用模板消息</label>
+              <select name="Template[is_used]" id="Template_is_used">
+                <option value="1" selected="selected">开启</option>
+                <option value="0">关闭</option></select>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_confirm_template_id">确认订单模板消息ID</label></label>
+              <input class="col-sm-4" size="100" name="Template[confirm_template_id]" id="Template_confirm_template_id" type="text" maxlength="100" value="dJavS_h0z9RECzU7osGPolt_AJ6iQ0Gza9UeBgatk9M"></div>
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_confirm_remark">确认订单的备注消息</label></label>
+              <textarea class="col-sm-4" rows="2" placeholder="确认订单备注信息，比如：您的订单已收到，我们尽快安排配送，请备好零钞。" name="Template[confirm_remark]" id="Template_confirm_remark">老大，选择金点外卖，您真是英明啊！订单掌柜已确认，小弟将策马扬鞭，尽快为您送达，有任何问题，可呼叫：0717-2822222</textarea></div>
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_courier_template_id">设置配送员模板消息ID</label></label>
+              <input class="col-sm-4" size="100" maxlength="100" name="Template[courier_template_id]" id="Template_courier_template_id" type="text" value="uF4VaRLLnExVKxY3Qd9S7YW9h50GwJnja0MvcWTXz9Q"></div>
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_courier_remark">设置配送员的备注消息</label></label>
+              <textarea class="col-sm-4" rows="2" placeholder="为订单设置配送员备注信息，比如：您的订单已开始配送，约30分钟送到。" name="Template[courier_remark]" id="Template_courier_remark">您的订单已分配给镖师，若地址填错，或有任何需要，请拨上面的电话!</textarea></div>
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_template_pickup_id">配送员取货模板消息ID</label></label>
+              <input class="col-sm-4" size="100" maxlength="100" name="Template[template_pickup_id]" id="Template_template_pickup_id" type="text" value="Q2oLvz9CAETbyNIcjpl_iIaRE57pVUh1Nwh5hNfTH8w"></div>
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_template_pickup_remark">配送员取货模板消息提醒内容</label></label>
+              <textarea class="col-sm-4" rows="2" placeholder="配送员取货后给顾客的提醒，比如：如有疑问，请联系电话：xxxxxxx" name="Template[template_pickup_remark]" id="Template_template_pickup_remark">老大，镖师已接镖,我们立马押镖上路，不出一根烟的功夫，即可送镖上门，请稍作等待！</textarea></div>
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_success_template_id">成功点单模板消息ID</label></label>
+              <input class="col-sm-4" size="100" maxlength="100" name="Template[success_template_id]" id="Template_success_template_id" type="text" value="wO5CBQHnXhBUXWmp8dxzssp9LHrpRHy-ZkdtbCTG_YU"></div>
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_success_remark">订单成功的备注消息</label></label>
+              <textarea class="col-sm-4" rows="2" placeholder="设置订单成功备注信息，比如：您的订单已完成配送，相应积分已到达您的账户，请查收。" name="Template[success_remark]" id="Template_success_remark">您的镖已安全送达，再次感谢，万望龙体康健，顺便请给5星好评（评论一次送2积分，可兑换奖品）</textarea></div>
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_cancel_template_id">取消订单模板消息ID</label></label>
+              <input class="col-sm-4" size="100" name="Template[cancel_template_id]" id="Template_cancel_template_id" type="text" maxlength="100" value="BoaChrJKkKNapg3Wy9QvBsw_uuUOysuPZ99chxKTiFQ"></div>
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_cancel_remark">取消订单的备注消息</label></label>
+              <textarea class="col-sm-4" rows="2" placeholder="设置订单成功备注信息，比如：您的订单已被取消，如有疑问请联系电话：xxxxxxxx" name="Template[cancel_remark]" id="Template_cancel_remark">您的订单已被商家取消，货款会在12小时内退回至您的账户，如有疑问：请致电2822222或13207208860</textarea></div>
+            <!-- <div class="form-group">
+            <label class="col-sm-2"></label></div>        
+            <div class="form-group">
+            <label class="col-sm-2"></label></div> -->
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_mail_template_id">发送系统邮件模板消息ID</label></label>
+              <input class="col-sm-4" size="100" name="Template[mail_template_id]" id="Template_mail_template_id" type="text" maxlength="100" value=""></div>
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_mail_remark">接收系统邮件备注</label></label>
+              <textarea class="col-sm-4" rows="2" placeholder="收到系统邮件时备注信息，比如：您收到1封新邮件，请尽快查看，如有疑问请联系电话：xxxxxxx" name="Template[mail_remark]" id="Template_mail_remark"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_paotui_template_id">跑腿模板消息ID</label></label>
+              <input class="col-sm-4" size="100" name="Template[paotui_template_id]" id="Template_paotui_template_id" type="text" maxlength="100" value="4H41LbUasW4qsQNmyTQ3MX8KNDc4VIPDXSn4412KG_I"></div>
+            <!-- <div class="form-group">
+            <label class="col-sm-2"></label></div>   -->
+            <!-- <div class="form-group">
+            <label class="col-sm-2"></label></div> -->
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_template_tuangou_id">团购订单成功模板消息ID</label></label>
+              <input class="col-sm-4" size="100" maxlength="100" name="Template[template_tuangou_id]" id="Template_template_tuangou_id" type="text" value="UQcF8FyNQXJvqB2KbbcZYxttfHo2HxiOwWqscHFhJbs"></div>
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_template_tuangou_remark">团购订单成功模板消息提醒内容</label></label>
+              <textarea class="col-sm-4" rows="2" placeholder="团购订单提交成功后给顾客的提醒，比如：如有疑问，请联系电话：xxxxxxx" name="Template[template_tuangou_remark]" id="Template_template_tuangou_remark"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_template_balance_id">会员余额变动模板消息ID</label></label>
+              <input class="col-sm-4" size="100" maxlength="100" name="Template[template_balance_id]" id="Template_template_balance_id" type="text" value="27CvbC2AGSu_bvxCyvxczsc1LtvxcWJRa5z8hqnsxJM"></div>
+            <div class="form-group">
+              <label class="col-sm-2">
+                <label for="Template_template_balance_remark">会员余额变动模板消息提醒内容</label></label>
+              <textarea class="col-sm-4" rows="2" placeholder="会员余额发生变化后给会员的提醒，比如：如有疑问，请联系电话：xxxxxxx" name="Template[template_balance_remark]" id="Template_template_balance_remark"></textarea>
+            </div>
+            <div class="span12" style="margin-top:10px;">
+              <div class="form-actions">
+                <button class="btn btn-info" type="submit">
+                  <i class="ace-icon fa fa-check bigger-110"></i>保存设置</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

@@ -1,0 +1,224 @@
+<div class="row-fluid">
+    <div class="span12">
+        <h3 class="page-title">
+            房产信息
+        </h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="index">房产信息</a>
+                <i class="icon-angle-right"></i>
+            </li>
+            <li>
+                <a href="index?range=lease">出租</a>
+                <i class="icon-angle-right"></i>
+            </li>
+            <li>{$Think.get.lease_id}</li>
+        </ul>
+    </div>
+</div>
+
+<form class="form-horizontal" action="change" id="form">
+    <div class="control-group">
+        <label class="control-label">#:</label>
+        <div class="controls">
+            <input type="text" name="lease_id" value="{$rend.lease_id}" class="m-wrap medium" readonly="" id="id">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">图片:</label>
+        <div class="controls">
+            <div class="fileupload fileupload-new" data-provides="fileupload">
+                {volist name='img' id='io'}
+                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;float:left; margin-right: 10px">
+                    <img src="../../../../{$io.imgs_path}" alt="" style="height: 150px">
+                </div>
+                {/volist}
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">标题:</label>
+        <div class="controls">
+            <input type="text" name="lease_title" value="{$rend.lease_title}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">房号:</label>
+        <div class="controls">
+            <input type="text" name="lease_fewroom" value="{$rend.lease_fewroom}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">户型:</label>
+        <div class="controls">
+            <input type="text" name="lease_room" value="{$rend.lease_room}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">租金:</label>
+        <div class="controls">
+            {if condition="$rend.lease_price==0"}
+            <input type="text" name="lease_price" value="面议" class="m-wrap medium" readonly="">
+            {else /}
+            <input type="text" name="lease_price" value="{$rend.lease_price}{$rend.lease_pricetype}" class="m-wrap medium" readonly="">
+            {/if}
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">配置:</label>
+        <div class="controls">
+            <textarea class="large m-wrap" name="lease_config" rows="2" readonly="">{$rend.lease_config}</textarea>
+        </div>
+    </div>
+
+  <?php if(!empty($rend['clas'])){ ?>
+    <div class="control-group">
+        <label class="control-label">类型:</label>
+        <div class="controls">
+            <input type="text" name="lease_class" value="{$rend.clas.classify2_name}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+  <?php } ?>
+    <div class="control-group">
+        <label class="control-label">面积:</label>
+        <div class="controls">
+            <input type="text" name="lease_acreage" value="{$rend.lease_acreage}平米" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">地址:</label>
+        <div class="controls">
+            <textarea class="large m-wrap" name="lease_address" rows="2" readonly="">{$rend.lease_address}</textarea>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">描述:</label>
+        <div class="controls">
+            <textarea class="large m-wrap" name="lease_desc" rows="5" readonly="">{$rend.lease_desc}</textarea>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">联系人:</label>
+        <div class="controls" >
+            <input type="text" name="lease_name" value="{$rend.lease_name}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">联系方式:</label>
+        <div class="controls" >
+            <input type="text" name="lease_phone" value="{$rend.lease_phone}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+  <?php if(!empty($rend['lease_transfer'])){ ?>
+    <div class="control-group">
+        <label class="control-label">转让费:</label>
+        <div class="controls" >
+            <input type="text" name="lease_transfer" value="{$rend.lease_transfer}" class="m-wrap medium" readonly="">万
+        </div>
+    </div>
+<?php } ?>
+    <div class="control-group">
+        <label class="control-label">发布日期:</label>
+        <div class="controls" >
+            <input type="text" name="lease_time" value="{$rend.lease_time}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">发布者id:</label>
+        <div class="controls" >
+            <input type="text" name="lease_uid" value="{$rend.lease_uid}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">浏览次数:</label>
+        <div class="controls" >
+            <input type="text" name="lease_browse" value="{$rend.lease_browse}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">类别:</label>
+        <div class="controls">
+            <select class="small m-wrap" tabindex="1" name="lease_type" disabled>
+                <option value="0" {if condition="$rend.lease_type=='商铺'"}selected{/if}>商铺</option>
+                <option value="1" {if condition="$rend.lease_type=='其他'"}selected{/if}>其他</option>
+                <option value="2" {if condition="$rend.lease_type=='住房'"}selected{/if}>住房</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">置顶:</label>
+        <div class="controls">
+            <select class="small m-wrap" name="lease_is_top" disabled>
+                <option value="0" {if condition="$rend.lease_is_top=='否'"}selected{/if}>否</option>
+                <option value="1" {if condition="$rend.lease_is_top=='是'"}selected{/if}>是</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">状态:</label>
+        <div class="controls">
+            <select class="small m-wrap" tabindex="1" name="lease_status" id="lease_status">
+                <option value="0" {if condition="$rend.lease_status==0"}selected{/if}>正常</option>
+                <option value="-1" {if condition="$rend.lease_status==-1"}selected{/if}>已删</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button type="button" class="btn blue btn-save"><i class="icon-ok"></i> 保存</button>
+        <!-- <button type="button" class="btn btn-qx">返回</button> -->
+        <button type="button" class="btn red" href="#form_modal" data-toggle="modal" >删除</button>
+    </div>
+    {include file="estate/tc_lease2" /}
+
+</form>
+
+<input type="hidden" id="name" value="lease_id">
+<input type="hidden" id="sty" value="{$rend.lease_uid}">
+<input type="hidden" id="str" value="{$rend.lease_id}">
+
+
+
+<script>
+
+    $(document).ready(function () {
+        $(".btn-save").click(function(){
+            if(confirm('确定保存吗?')) {
+                var url = $('#form').attr('action');
+                var status=$('#lease_status').val();
+                var id=$('#id').val();
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {
+                        lease_status:status,
+                       lease_id:id
+                    },
+                    success: function (data) {
+                        if (data.code == 0) {
+                            location.href = history.back(-1);
+                        }
+                    }
+                });
+                return false;
+            }else {
+                return false;
+            }
+        })
+    })
+</script>

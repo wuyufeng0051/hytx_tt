@@ -1,0 +1,79 @@
+body{max-width: 1080px;margin: 0 auto;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;font-size: .24rem;opacity: 0;color: #000; overflow: hidden;}
+body.show {opacity:1;}
+html{background-color: rgb(238, 238, 238);}
+i,em{font-style: normal;}
+
+
+/*头部*/
+.header{height: 1rem; background: #f0f0f0; border-bottom: 1px solid #e6e6e6; display: -webkit-box;}
+.header-l .logo{margin: .2rem 0 0; }
+.header-l .logo img{height: .6rem; }
+.header-m{-webkit-box-flex: 1; line-height: 1rem; font-size: .34rem; text-align: center;}
+.header-r{display: -webkit-box;}
+.header-r a{display: table-cell; padding: 0 .2rem; vertical-align: middle; height: 1rem;}
+.header-r a.more{padding-right: .2rem;}
+.header-r a img{height: .5rem;}
+
+/*头部幻灯片部分*/
+.wrapper .swiper-container {height: 2.5rem;color: #fff;text-align: center;}
+.wrapper img {width: 100%;height: 2.5rem;}
+.wrapper .pages {position: absolute;z-index: 20;right: .2rem;bottom: .1rem; display: none;}
+.wrapper .page{font-size: .3rem;}
+.wrapper .swiper-pagination-switch {display: inline-block;width: 0.12rem;height: 0.12rem;border-radius: 0.16rem;background: #555;margin-right: 5px;opacity: 0.8;border: 1px solid #fff;cursor: pointer;}
+.wrapper .swiper-active-switch {background: #fff;}
+.wrapper .swiper-dynamic-links {text-align: center;}
+.wrapper .indicator{position: absolute; bottom: .1rem; right: .2rem;}
+.wrapper .indicator i{display: inline-block; width: 8px; height: 8px; border-radius: 8px; background: #fff; margin-right: .08rem; opacity: .5;}
+.wrapper .indicator i.active{opacity: 1;}
+
+/*导航*/
+.nav{background: #fff;padding: .3rem 0 0; border-bottom: 1px solid #d8d8d8;}
+.nav li{width: 25%;float: left; margin-bottom: .3rem;}
+.nav li a{display: block;}
+.nav li img{width: .9rem;height: .9rem;display: block;margin: 0 auto;}
+.nav li .nav-txt{text-align: center;margin-top: .1rem;}
+
+/*活动*/
+.imgwrap{width: 100%; margin-top: .2rem; border-top: 1px solid #d8d8d8; border-bottom: 1px solid #d8d8d8; background: #fff;}
+.imgwrap a img{width: 100%;}
+
+/*婚宴酒店*/
+.item{margin-top: .2rem; background: #fff; border-top: 1px solid #d8d8d8; border-bottom: 1px solid #d8d8d8;}
+.item .title{font-size: .28rem; padding: .2rem;}
+.item .title .more{padding-right: .3rem; background: url(../images/arrow.png) right center no-repeat; background-size: auto .25rem; color: #999;}
+.item ul{padding-left: .2rem;}
+.item li{width: 33.3%; float: left; box-sizing: border-box; padding-right: .2rem;}
+.item li .imgbox{border-radius: .1rem; overflow: hidden;}
+.item li img{width: 100%; display: block;}
+.item li span{text-align: center; display: block; margin: .1rem 0;}
+
+/*选项卡*/
+.list{margin-top: .2rem; background: #fff; border-top: 1px solid #d8d8d8; border-bottom: 1px solid #d8d8d8;}
+.tab{border-bottom: 1px solid #d8d8d8;}
+.tab ul{display: -webkit-box;}
+.tab ul li{-webkit-box-flex: 1; text-align: center; font-size: .28rem; padding: .2rem 0;}
+.tab ul li.curr{border-bottom: 3px solid #ff3366;}
+.tab ul li.curr a{ color: #ff3366;}
+.tab ul li a{display: block; }
+.content .allitem{display: none;}
+.content .allitem:first-child{display: block;}
+.content li{padding: .2rem; border-bottom: 1px solid #f0f0f0;}
+.content li a{display: block;}
+.content .imgbox{width: 2rem; height: 1.3rem; overflow: hidden; border-radius: .1rem; margin-right: .2rem;}
+.content .imgbox img{width: 100%; display: block;}
+.content .txtbox{position: relative; overflow: hidden;}
+.content .tit{font-size: .28rem; line-height: .4rem; height: .4rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.content .money{margin: .1rem 0 0; font-size: .24rem;}
+.content .price{color: #ff3366; margin-right: .2rem;}
+.content .mprice{color: #999; text-decoration: line-through;}
+.content .tag{color: #999; line-height: .5rem; height: .5rem; overflow: hidden;}
+.content .tag span{margin: 0 .1rem 0 .05rem;}
+.list .more{text-align: center; padding: .2rem 0;}
+.list .more a{border: 1px solid #cba97a; padding: .1rem .5rem; border-radius: .4rem; line-height: .6rem; color: #cba97a;}
+
+/*底部*/
+.footer{text-align: center; color: #b2b2b2; padding: .4rem 0;}
+.footer ul{display: -webkit-box; padding: 0 .5rem;}
+.footer ul li{-webkit-box-flex: 1;}
+.footer ul li a{display: block; color: #7a7a7a;}
+.footer p{line-height: .5rem; margin-top: .2rem;}

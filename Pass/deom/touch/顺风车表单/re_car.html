@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/re_car.css">
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/touchScale.js"></script>
+</head>
+<body>
+	<!-- 公用头部 s -->
+	<div class="header">
+		<div class="header-l">
+			<a href="http://ihuoniao.cn" target="_blank"><img src="http://huoniaomenhu.cn/uploads/siteConfig/adv/large/2016/09/13/14737381553743.png" width="100%" height="100%" alt="火鸟门户"></a>
+		</div>
+		<div class="header-address">
+			<span>发布顺路货</span>
+		</div>
+		<div class="header-search">
+			<a href="javascript:;" class="dropnav"></a>
+		</div>
+	</div>
+	<!-- 公用头部 e -->
+	<div class="form">
+		<form action="">
+			<section class="edit-item">
+				<section class="input-control fn-clear">
+					<i class="green"></i>
+					<section class="user-fav fn-clear">
+						<input type="text"  value="" placeholder="输入始发地">
+					</section>
+				</section>	
+				<section class="input-control fn-clear">
+					<i></i>
+					<section class="user-fav fn-clear">
+						<input type="text"  value="" placeholder="输入目的地">
+					</section>
+				</section>	
+				<section class="input-control fn-clear">
+					<s></s>
+					<span>乘车时间</span>
+					<section class="user-fav fn-clear">
+						<input type="text" class="time" value="2017-07-04 11:07:00">
+					</section>
+				</section>	
+				<section class="input-control fn-clear bag ">
+					<s></s>
+					<span>货物</span>
+					<section class="user-fav fn-clear">
+						<input type="text" value="" readonly="readonly" placeholder="请选择车型">
+						<div class="arrow "><img src="images/top-arrow.png" alt="" class="bag_bc"></div>
+					</section>
+				</section>	
+				<div class="choice_box fn-hide fn-clear bag_1">
+					<ul>
+						<li class="CB_bc"><i></i>小件货物</li>
+						<li><i></i>大件货物</li>
+					</ul>
+				</div>
+				<div class="remark">
+					<div class="remark_lead"><em>备注</em></div>
+					<textarea name="" id="" cols="30" rows="10" placeholder="请输入备注信息..."></textarea>
+				</div>
+				<div class="certfy picture">
+					<div class="pic_list">
+				        <div class="img-box">
+				          <ul class="uploader-list fn-clear" id="fileList4">
+				            <li class="uploadbtn">
+				              <div id="filePicker4" data-type="atlas" data-amount="5" class="webuploader-container picker">
+				                <div class="webuploader-pick"><div class="webuploader-pick">+</div></div>
+				              </div>
+				            </li>
+						      </ul>
+				  		    <p class="imgtip"></p>
+				  		    <div class="pic_tips">（货物相册129X129正方形图片最佳，最多可以上传5张）</div>
+				  	    </div>
+					</div>
+			    </div>
+			</section>
+			<section class="edit-item">
+				<section class="input-control fn-clear">
+					<s></s>
+					<span>联系人</span>
+					<section class="user-fav fn-clear">
+						<input type="text" class="" placeholder="该如何称呼您">
+					</section>
+				</section>		
+			</section>
+			<section class="input-control fn-clear sex">
+					<s></s>
+					<span>性别</span>
+					<section class="user-fav fn-clear">
+						<div class="flase_box"></div>
+						<div class="arrow "><img src="images/top-arrow.png" alt="" class="sex_bc"></div>
+					</section>
+				</section>	
+			<div class="choice_box fn-clear fn-hide sex_1">
+					<ul>
+						<li class="CB_bc"><i></i>男</li>
+						<li><i></i>女</li>
+					</ul>
+				</div>
+			<section class="edit-item">
+				<section class="input-control fn-clear">
+					<s></s>
+					<span>联系电话</span>
+					<section class="user-fav fn-clear">
+						<input type="text" class="" placeholder="请输入电话">
+						<div class="get">发送验证码</div>
+					</section>
+				</section>		
+			</section>
+			<section class="edit-item">
+				<section class="input-control fn-clear">
+					<s></s>
+					<span>验证码</span>
+					<section class="user-fav fn-clear">
+						<input type="text" class="" placeholder="请输入验证码">
+					</section>
+				</section>		
+			</section>
+			<div class="agree agree_bc">
+				<i></i>我已阅读接受<em>《本地鸟用户协议》</em>
+			</div>
+			<div class="tbn">提交</div>
+		</form>
+	</div>
+	<div id="datePlugin"></div>
+</body>
+	<script type="text/javascript" src="js/webuploader.js"></script>
+	<script type="text/javascript" src="js/re_car.js"></script>
+	<script type="text/javascript" src="js/date.js"></script>
+</html>

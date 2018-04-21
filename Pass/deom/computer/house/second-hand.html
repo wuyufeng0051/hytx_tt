@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+
+          <html lang="zh-cmn-Hans">
+          
+          <head>
+            <meta charset="utf-8" />
+            <title>真二网 - 没有中介费的真实二手房交易平台</title>
+            <meta name="renderer" content="webkit">
+            <meta http-equiv="Pragma" content="no-cache">
+
+
+            <link rel="shortcut icon" href="upfile/favicon-new.ico" type="image/x-icon" />
+            <link type="text/css" href="css/public.min.css" rel="stylesheet" />
+            <link type="text/css" href="css/home.min.css" rel="stylesheet" />
+            <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+            <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+          </head>
+          
+          <body ms-controller="public_page">
+            <!-- topbar -->
+            <div class="header">
+              <div class="content-wapper">
+                <div class="header-text">
+                  <a class="h_a" href="#" target="_blank">
+                    <img src="upfile/header_text.png" class="add"></a>
+                </div>
+                <ul class="right-btn">
+                  <li class="login-btn">
+                    <a href="#">登录</a></li>
+                  <li>
+                    <a>|</a>
+                  </li>
+                  <li class="telephone-btn">
+                    <a>服务热线：400-013-2229</a>
+                  </li>
+                  <li>
+                    <a>|</a>
+                  </li>
+                  <li class="help_wap">
+                    <a target="_blank" class="help-btn" href="#">帮助</a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- /.topbar -->
+            <!-- nav -->
+            <div class="nav">
+              <div class="content-wapper">
+                <a href="#" class="logo">
+                  <img src="upfile/logo.png"></a>
+                <div class="sel-city">
+                  
+                  <dl class="city-list">
+                    <dd>
+                      <a href="#">郑州</a></dd>
+                    <dd>
+                      <a href="#">武汉</a></dd>
+                    <dd>
+                      <a href="#">深圳</a></dd>
+                  </dl>
+                </div>
+                <ul class="nav-items">
+                  <li>
+                    <a href="#" class="active" target="_self">首页</a></li>
+                  <li>
+                    <a href="#" target="_self">二手房</a></li>
+                  <li>
+                    <a href="#" target="_self">租房</a></li>
+                  <li>
+                    <a href="#" target="_self">房小二</a></li>
+                  <li>
+                    <a href="#" target="_blank">估房价</a></li>
+                  <li>
+                    <a href="#" target="_self">交易流程</a></li>
+                  <div class="more">
+                    <span>个人中心</span>
+                    <dl>
+                      <dd>
+                        <a href="#" target="_self">个人信息</a></dd>
+                      <dd>
+                        <a href="#" target="_self">我的收藏</a></dd>
+                      <dd>
+                        <a href="#" target="_self">聊天记录</a></dd>
+                      <dd>
+                        <a href="#" target="_self">卖房管理</a></dd>
+                      <dd>
+                        <a href="#" target="_self">专属房小二</a></dd>
+                    </dl>
+                  </div>
+                </ul>
+                <div class="rent-free">
+                  <a target="_blank" href="#">卖房</a>
+                  <a class="spot">·</a>
+                  <a href="#" target="_blank">出租</a>
+                  <span class="hot"></span>
+                </div>
+              </div>
+            </div>
+            <!-- /.nav -->
+            <!-- main-content -->
+            <div class="home-main" ms-controller="home_main">
+              <!-- slider -->
+              <div class="banner">
+
+
+
+
+<div class="swiper-container">
+      <div class="list fer_r">
+          <div class=" bd">
+
+                <div class="swiper-slide">
+                  <a target="_blank" href="#"><img src="upfile/wsmm.jpg" alt=""></a>
+                </div>
+
+
+                <div class="swiper-slide">
+                  <a target="_blank" href="#"><img src="upfile/axz1.jpg" alt=""></a>
+                </div>
+
+
+
+                <div class="swiper-slide ">
+                  <a target="_blank" href="#"><img src="upfile/flgw.jpg" alt=""></a>
+                </div>
+
+
+                <div class="swiper-slide">
+                  <a target="_blank" href="#"><img src="upfile/jcg.jpg" alt=""></a>
+                </div>
+
+
+
+                <div class="swiper-slide">
+                  <a target="_blank" href="#"><img src="upfile/zyd2.jpg" alt=""></a>
+                </div>
+
+          </div>
+
+                <a class="arrow-left"></a>
+                <a class="arrow-right"></a>
+                <div class="hd"><ul class="gg"></ul></div>
+           
+      </div>
+</div>
+
+
+
+                <div class="panel buy">
+
+
+                  <ul class="changeType  he_he">
+                    <li class="active">二手房</li>
+                    <li>租房</li>
+                  </ul>
+
+<div class="rlg">
+                  <div class="es-panel r_r coco active">
+
+                    <div class="search">
+                      <img src="upfile/search.png" />
+                      <input type="text" id="search_key" placeholder="请输入小区名称" class="autocompleter_node">
+                      <a class="s-btn" ms-on-click="banner.panel.search()">开始搜房</a>
+                      <a class="map-btn" target="_blank" href="#">地图找房</a>
+                    </div>
+
+                    <div class="t_quick">
+                      <a href="#" class="xiaoer" target="_blank">业主委托</a>
+                      <a href="#" class="quality" target="_blank">精品房源</a>
+                      <a href="#" class="tax" target="_blank">无营业税</a>
+                      <a href="#" class="vr" target="_blank">全景看房</a>
+                    </div>
+
+                    <p class="want-sell">想卖房？
+                      <a href="#">免费发布房源</a>
+                    </p>
+
+                  </div>
+
+
+<!--                   <div class="new-panel r_r v_d">
+                    <div class="search">
+                      <img src="upfile/search.png" />
+                      <input type="text" id="search_key_new" placeholder="请输入小区名称" class="autocompleter_node">
+                      <a class="s-btn" ms-on-click="banner.panel.newSearch()">开始找房</a></div>
+                    <div class="t_quick">
+                      <a href="#" class="xiaoer" target="_blank">小户型</a>
+                      <a href="#" class="quality" target="_blank">精装修</a>
+                      <a href="#" class="tax" target="_blank">刚需盘</a></div>
+                  </div> -->
+
+
+                  <div class="rent-panel r_r v_d">
+                    <div class="search">
+                      <img src="upfile/search.png" />
+                      <input type="text" id="search_key_rent" placeholder="请输入小区名称" class="autocompleter_node">
+                      <a class="s-btn" ms-on-click="banner.panel.rentSearch()">开始找房</a></div>
+                    <p class="want-rent">我有房出租？
+                      <a href="#" target="_blank">免费发布房源</a></p>
+                  </div>
+</div>
+
+                </div>
+              </div>
+              <!-- main-content -->
+              <!--main-->
+              <!--why-choice-->
+              <div class="why-choice main-child">
+                <div class="content-wapper">
+                  <h2 class="title">为什么选择
+                    <span>真二网</span></h2>
+                  <p class="video videoCtrl">
+                    <a href="#">第一次来？
+                      <em>三分钟了解真二网</em>
+                      <img src="upfile/video-start.png"></a>
+                  </p>
+                  <div class="lists">
+                    <ul class="list">
+                      <li>专业</li>
+                      <li>
+                        <img src="upfile/lx_1.png"></li>
+                      <li>
+                        <p>真二网有二手房专业交易顾问房小二，郑州市真二网签约中心覆盖全城，让我们离您更近，更高效地为您服务。</p>
+                      </li>
+                      <li>
+                        <a href="#" target="_blank">联系房小二</a></li>
+                    </ul>
+                    <ul class="list">
+                      <li>省钱</li>
+                      <li>
+                        <img src="upfile/lx_2.png"></li>
+                      <li>
+                        <p>真二网不收中介费，平均帮每个用户省去3万元。同时真二网提供专业的增值服务，让您买房省心又放心。</p>
+                      </li>
+                      <li>
+                        <a href="#" target="_blank">过户费用对比</a></li>
+                    </ul>
+                    <ul class="list" style="margin-right: 0">
+                      <li>安全</li>
+                      <li>
+                        <img src="upfile/lx_3.png"></li>
+                      <li>
+                        <p>真二网提供三方买卖合同，对接多家合作银行，设立银行面签服务点，保障买卖双方权益，确保交易资金安全。</p>
+                      </li>
+                      <li>
+                        <a href="#" target="_blank">了解交易流程</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!--why-choice end-->
+              <!--mian end-->
+              <!--房源推荐-->
+              <!--房源推荐结束-->
+              <!--委托-->
+              <div class="weituo main-child">
+                <div class="content-wapper">
+                  <h2 class="title">
+                    <span>把房子</span>委托给真二网</h2>
+                  <p class="desc">海量买房用户精准匹配，房小二专业优质服务，帮您快速成交！</p>
+                  <div class="weituoStep">
+                    <img src="upfile/1.png">
+                    <a href="#" target="_blank" class="in_fo fofo">发布房源信息</a>
+                     <a href="#" target="_blank"  class="in_fo folo">真二网验证信息真实性</a>
+                      <a href="#" target="_blank"  class="in_fo foko">和卖家直接沟通</a>
+                    </div>
+                  <div class="create">
+                    <a target="_blank" href="#">在线发布</a>
+                    <p>或拨打卖房热线：
+                      <span>400-013-2229</span></p>
+                  </div>
+                </div>
+              </div>
+              <!--委托结束-->
+              <!--App download-->
+              <div class="app-download main-child">
+                <div class="conten-wapper">
+                  <img class="appShow" src="upfile/app_phone.png" alt="app_show">
+                  <div class="desc">
+                    <p>告别漂泊，为爱安家</p>
+                    <h2 class="title">
+                      <span>买卖二手房</span>的不二“神器”</h2>
+                    <img src="upfile/appQR.jpg" alt="">
+                    <h3>真二网APP</h3>
+                    <a class="downLoadA iphoneIco">
+                      <img src="upfile/phone_platform_1.png">iPhone版下载</a>
+                    <a class="downLoadA androidIco">
+                      <img src="upfile/phone_platform_2.png">Android版下载</a></div>
+                </div>
+              </div>
+              <!--App download end -->
+              <!--交易流程-->
+              <div class="step zz main-child">
+                <div class="content-wapper">
+                  <h2>交易流程</h2>
+                  <ul class="jy_lis">
+                    <li>
+                      <p class="step1">
+                        <a>浏览/发布房源</a>
+                        <span></span>
+                      </p>
+                    </li>
+                    <li>
+                      <p class="step2">
+                        <a>沟通磋商</a>
+                        <span>获取房小二专业服务</span></p>
+                    </li>
+                    <li>
+                      <p class="step3">
+                        <a>签订合同，办理过户</a>
+                        <span>4500元/单</span></p>
+                    </li>
+                    <li>
+                      <p class="step4">
+                        <a>交易完成</a>
+                        <span></span>
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!--交易流程结束-->
+              <!--地图-->
+              <div class="map main-child zz">
+                <div class="content-wapper">
+                  <h2 class="title">
+                    <span>真二网签约中心</span>全城覆盖</h2>
+                  <div class="mymap">
+                    <a ms-repeat="map[4101].points" ms-css-left="el[0]" ms-css-top="el[1]"></a>
+                  </div>
+                </div>
+              </div>
+              <!--地图结束-->
+<!--               <div class="introduce main-child">
+                <a class="content" href="#" target="_blank"></a>
+              </div> -->
+              <div class="feature">
+                <ul>
+                  <li>
+                    <a href="#">
+                      <img src="upfile/money.png">0中介费</a></li>
+                  <li>
+                    <a href="#">
+                      <img src="upfile/hm.png">100%真实房源</a></li>
+                  <li>
+                    <a href="#">
+                      <img src="upfile/yuii.png">买卖双方直接沟通 交易透明</a></li>
+                  <li>
+                    <a href="#">
+                      <img src="upfile/lock.png">隐藏电话号码 保护隐私</a></li>
+                  <li>
+                    <a href="#">
+                      <img src="upfile/umbrella.png">专业代办 安全无忧</a></li>
+                  <li>
+                    <a href="#">
+                      <img src="upfile/people.png">房小二全程贴心服务</a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- /end main-content -->
+            <!-- footer -->
+            <div class="other-link">
+              <div class="wrap" ms-on-click="footer.changeTab($event)">
+
+
+                <div class="tab_menu ">
+                  <ul>
+                    <li class="tab_btn">热门区域</li>
+                    <li class="tab_btn">热门小区</li>
+                    <li class="tab_btn">友情链接</li></ul>
+                </div>
+
+                <div class="tab_box">
+
+              
+                   <div class="tab d_d">
+                    <ul>
+                      <li>
+                        <a target="_blank" href="#">金水区二手房</a></li>
+                      <li>
+                        <a target="_blank" href="#">中原区二手房</a></li>
+                      <li>
+                        <a target="_blank" href="#">二七区二手房</a></li>
+                      <li>
+                        <a target="_blank" href="#">管城区二手房</a></li>
+                      <li>
+                        <a target="_blank" href="#">郑东新区二手房</a></li>
+                      <li>
+                        <a target="_blank" href="#">惠济区二手房</a></li>
+                      <li>
+                        <a target="_blank" href="#">高新区二手房</a></li>
+                      <li>
+                        <a target="_blank" href="#">经济开发区二手房</a></li>
+                      <li>
+                        <a target="_blank" href="#">中牟二手房</a></li>
+                      <li>
+                        <a target="_blank" href="#">周边县市二手房</a></li>
+                      <li>
+                        <a target="_blank" href="#">郑州二手房</a></li>
+                    </ul>
+                  </div>
+
+
+
+                  <div class="tab c_c">
+                    <ul>
+                      <li>
+                        <a target="_blank" href="#">德润黄金海岸</a></li>
+                      <li>
+                        <a target="_blank" href="#">升龙凤凰城</a></li>
+                      <li>
+                        <a target="_blank" href="#">利海托斯卡纳</a></li>
+                      <li>
+                        <a target="_blank" href="#">富田太阳城</a></li>
+                      <li>
+                        <a target="_blank" href="#">中原新城</a></li>
+                      <li>
+                        <a target="_blank" href="#">升龙国际中心</a></li>
+                      <li>
+                        <a target="_blank" href="#">曼哈顿</a></li>
+                      <li>
+                        <a target="_blank" href="#">水岸鑫城</a></li>
+                      <li>
+                        <a target="_blank" href="#">财信圣堤亚纳</a></li>
+                      <li>
+                        <a target="_blank" href="#">远大理想城</a></li>
+                      <li>
+                        <a target="_blank" href="#">正弘蓝堡湾</a></li>
+                      <li>
+                        <a target="_blank" href="#">美景鸿城</a></li>
+                      <li>
+                        <a target="_blank" href="#">升龙又一城</a></li>
+                      <li>
+                        <a target="_blank" href="#">金成时代广场</a></li>
+                      <li>
+                        <a target="_blank" href="#">正商幸福港湾</a></li>
+                    </ul>
+                  </div>
+
+
+
+                  <div class="tab c_c">
+                    <ul>
+                      <li>
+                        <a target="_blank" href="#">大豫网</a></li>
+                      <li>
+                        <a target="_blank" href="#">腾讯房产</a></li>
+                      <li>
+                        <a target="_blank" href="#">郑州公积金管理中心</a></li>
+                      <li>
+                        <a target="_blank" href="#">河南省建设厅</a></li>
+                      <li>
+                        <a target="_blank" href="#">郑州房地产管理局</a></li>
+                      <li>
+                        <a target="_blank" href="#">河南省省直机关住房资金管理中心</a></li>
+                    </ul>
+                  </div>
+
+
+
+                </div>
+               
+                <div class="sys">
+                  <img src="upfile/weixinqu.png" alt="">
+                  <p>微信扫一扫 · 马上买卖二手房</p>
+                </div>
+              </div>
+            </div>
+            <div class="footer">
+              <ul>
+                <li>
+                  <a href="#" target="_blank">关于我们</a></li>
+                <li>
+                  <a href="#" target="_blank">服务条款</a></li>
+                <li>
+                  <a href="#" target="_blank">真二招聘</a></li>
+                <li>
+                  <a href="#" target="_blank">版权声明</a></li>
+                <li>
+                  <a href="#">投诉建议邮箱:ceo@zhen22.com</a></li>
+                <li>
+                  <a href="#">服务电话：400-013-2229（周一至周日 9：00-19：30）</a></li>
+              </ul>
+              <p>Copyright@2014 - 2016 Real Second Hand.All Rigts Reserved</p>
+              <p>真二（深圳）房产经纪有限公司版权所有</p>
+            </div>
+            
+            </div>
+            <div class="promotion">
+              <div class="promotion-wapper">
+                <div class="fl qr">
+                  <img src="upfile/pic-qr.png">
+                  <p>扫描二维码下载真二网APP</p>
+                </div>
+                <div class="fl desc">
+                  <p>告别漂泊，为爱安家</p>
+                  <h4>买卖二手房的不二“神器”</h4></div>
+                <img class="fr promotion-bg" src="upfile/pic1-b.png">
+                <img src="upfile/close.png" class="fr promotion-close"></div>
+            </div>
+     
+            
+            <script type="text/javascript" src="js/second.js"></script>
+            
+
+           
+          </body>
+          
+          </html>

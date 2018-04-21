@@ -1,0 +1,40 @@
+<div class="w-form">
+	{#if $storeid == 0#}
+	<p style="color: #f00; text-align: center; line-height: 300px;">请先配置站点信息！</p>
+	{#else#}
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=business&action={#if $id != ""#}editabout&id={#$id#}{#else#}addabout{#/if#}" data-url="{#getUrlPath service='member' template='business-about'#}">
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>信息标题：</dt>
+			<dd>
+				<input type="text" name="title" class="inp" id="title" size="60" maxlength="100" data-title="请输入信息标题" value="{#$detail_title#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt><span>*</span>内容：</dt>
+			<dd>
+				<script id="body" name="body" type="text/plain" style="width:90%;height:500px">{#$detail_body#}</script>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt>排序：</dt>
+			<dd>
+				<input type="text" class="inp" maxlength="4" size="6" name="weight" id="weight" autocomplete="off" value="{#$detail_weight#}" data-title="请输入排序" />
+				<span class="tip-inline focus" style="display: inline-block;"><s></s>值越大越排在前面</span>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>验证码：</dt>
+			<dd>
+				<input type="text" class="inp" maxlength="4" size="6" name="vdimgck" id="vdimgck" autocomplete="off" data-title="请输入验证码" />
+				<img src="/include/vdimgck.php" title="看不清？点击换一张" id="verifycode" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>&nbsp;</dt>
+			<dd><button class="submit" id="submit">{#if $id == 0#}确认提交{#else#}提交修改{#/if#}</button></dd>
+		</dl>
+	</form>
+	{#/if#}
+</div>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-desktop desktop-icon"></i>
+        <a href="#">店铺</a></li>
+      <li class="active">正新鸡排（金城店）</li>
+      <li class="active">商品分类</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.weekShowSwitch{ display: none; } #foodtypeList .tagInput{ font-size:12px; color:black; display:none; width:100%; }</style>
+      <div class="row">
+        <div class="col-xs-12">
+          <button class="btn btn-success" ><a href="shop_manage_kind_new.html" style="color:#fff;">新建商品分类</a></button>
+          <div id="foodtypeList" class="grid-view">
+            <table class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th id="foodtypeList_c0">
+                    <a class="sort-link" href="#">分类名称</a></th>
+                  <th id="foodtypeList_c1">编号</th>
+                  <th id="foodtypeList_c2">商品分类显示方式</th>
+                  <th id="foodtypeList_c3">是否显示分类</th>
+                  <th id="foodtypeList_c4">分类显示时间段</th>
+                  <th id="foodtypeList_c5">是否开启只星期几显示</th>
+                  <th id="foodtypeList_c6">
+                    <a class="sort-link" href="#">星期几显示</a></th>
+                  <th class="button-column" id="foodtypeList_c7">管理</th>
+                  <th id="foodtypeList_c8">操作</th></tr>
+              </thead>
+              <tbody>
+                <tr class="odd">
+                  <td>鸡排</td>
+                  <td width="80">
+                    <div class="tagDiv">
+                      <div style="display:inline;">0</div>
+                      <span style="margin-left:5px;position: relative;display:none;" class="red">
+                        <i class="fa fa-pencil-square-o bigger-130" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <input class="tagInput" type="text" value="0" data-id="1097577" data-old="0"></td>
+                  <td width="50">都显示</td>
+                  <td width="50">显示</td>
+                  <td width="150">00:00至00:00</td>
+                  <td width="150">
+                    <label class="weekShowSwitch" style="display: inline-block;">
+                      <input name="switch-field-1" class="ace ace-switch ace-switch-6" type="checkbox" data-status="0" data-id="1097577">
+                      <span class="lbl"></span>
+                    </label>
+                  </td>
+                  <td width="350"></td>
+                  <td width="90">
+                    <a style="width: 70px;" class="label label-sm label-success" title="子分类管理" href="#">子分类管理</a></td>
+                  <td nowrap="nowrap" width="80">
+                    <a href="#" title="修改" class="green" style="padding-right:8px;">
+                      <i class="ace-icon fa fa-pencil bigger-130"></i>
+                    </a>
+                    <a title="删除" class="red" style="padding-right:8px;cursor:pointer;" onclick="delete_type(1097577)">
+                      <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                    </a>&nbsp;</td>
+                </tr>
+                <tr class="even">
+                  <td>小吃</td>
+                  <td width="80">
+                    <div class="tagDiv">
+                      <div style="display:inline;">0</div>
+                      <span style="margin-left:5px;position: relative;display:none;" class="red">
+                        <i class="fa fa-pencil-square-o bigger-130" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <input class="tagInput" type="text" value="0" data-id="1097752" data-old="0"></td>
+                  <td width="50">都显示</td>
+                  <td width="50">显示</td>
+                  <td width="150">00:00至00:00</td>
+                  <td width="150">
+                    <label class="weekShowSwitch" style="display: inline-block;">
+                      <input name="switch-field-1" class="ace ace-switch ace-switch-6" type="checkbox" data-status="0" data-id="1097752">
+                      <span class="lbl"></span>
+                    </label>
+                  </td>
+                  <td width="350"></td>
+                  <td width="90">
+                    <a style="width: 70px;" class="label label-sm label-success" title="子分类管理" href="#">子分类管理</a></td>
+                  <td nowrap="nowrap" width="80">
+                    <a href="#" title="修改" class="green" style="padding-right:8px;">
+                      <i class="ace-icon fa fa-pencil bigger-130"></i>
+                    </a>
+                    <a title="删除" class="red" style="padding-right:8px;cursor:pointer;" onclick="delete_type(1097752)">
+                      <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                    </a>&nbsp;</td>
+                </tr>
+                <tr class="odd">
+                  <td>饮料</td>
+                  <td width="80">
+                    <div class="tagDiv">
+                      <div style="display:inline;">0</div>
+                      <span style="margin-left:5px;position: relative;display:none;" class="red">
+                        <i class="fa fa-pencil-square-o bigger-130" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <input class="tagInput" type="text" value="0" data-id="1097755" data-old="0"></td>
+                  <td width="50">都显示</td>
+                  <td width="50">显示</td>
+                  <td width="150">00:00至00:00</td>
+                  <td width="150">
+                    <label class="weekShowSwitch" style="display: inline-block;">
+                      <input name="switch-field-1" class="ace ace-switch ace-switch-6" type="checkbox" data-status="0" data-id="1097755">
+                      <span class="lbl"></span>
+                    </label>
+                  </td>
+                  <td width="350"></td>
+                  <td width="90">
+                    <a style="width: 70px;" class="label label-sm label-success" title="子分类管理" href="#">子分类管理</a></td>
+                  <td nowrap="nowrap" width="80">
+                    <a href="#" title="修改" class="green" style="padding-right:8px;">
+                      <i class="ace-icon fa fa-pencil bigger-130"></i>
+                    </a>
+                    <a title="删除" class="red" style="padding-right:8px;cursor:pointer;" onclick="delete_type(1097755)">
+                      <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                    </a>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="summary">第 1-3 条, 共 3 条.</div>
+            <div class="keys" style="display:none" title="/foodtype/index?shop_id=238848">
+              <span>1097577</span>
+              <span>1097752</span>
+              <span>1097755</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

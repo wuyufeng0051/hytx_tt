@@ -1,0 +1,52 @@
+{volist name='list' id='io'}
+{if condition='$io.source==1'}
+<div class="dataTables_wrapper form-inline" role="grid" id="{$io.source}">
+    {else/}
+    <div class="dataTables_wrapper form-inline" role="grid" id="{$io.source}" style="display: none">
+        {/if}
+    <table class="table table-striped table-bordered table-hover dataTable"
+           aria-describedby="sample_1_info">
+        <tr>
+            <th>商家</th>
+            <th style="width: 60px">价格</th>
+            <th>链接</th>
+            <th>链接类型</th>
+            <th>描述</th>
+            <!-- <th>图片路径</th> -->
+            <th style="width: 150px">投放时间</th>
+            <th style="width: 150px">到期时间</th>
+            <th style="width: 60px">分享次数</th>
+            <th style="width: 60px">浏览次数</th>
+            <th style="width: 50px">状态</th>
+            <th style="width:200px;">编辑</th>
+        </tr>
+        {volist name='io.list' id='vo'}
+        <tr>
+            <td>{$vo.advertisement_store}</td>
+            <td>{$vo.advertisement_price}</td>
+            <td>{$vo.advertisement_url}</td>
+            <td>{$vo.advertisement_type}</td>
+            <td>{$vo.advertisement_desc}</td>
+            <!-- <td>{$vo.advertisement_img}</td> -->
+            <td>{$vo.advertisement_date}</td>
+            <td>{$vo.advertisement_date}</td>
+            <td>{$vo.advertisement_browse}</td>
+            <td>{$vo.advertisement_browse}</td>
+            <td>
+                {if condition='$vo.advertisement_switch==0'}
+                <a href="status?id={$vo.advertisement_id}" class="btn mini green switch "></i>开</a>
+                {else /}
+                <a href="status?id={$vo.advertisement_id}" class="btn mini red switch"></i>关</a>
+                {/if}
+            </td>
+            <td>
+                <a href="javascript:;" class="btn mini blue edit "><i
+                        class="icon-tags"></i>修改</a>
+                <a href="del?id={$vo.advertisement_id}" class="btn mini red btn-del"><i
+                        class="icon-trash"></i> 删除</a>
+            </td>
+        </tr>
+        {/volist}
+    </table>
+</div>
+{/volist}

@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{#$cfg_webname#}</title>
+<meta name="keywords" content="{#$cfg_keywords#}">
+<meta name="description" content="{#$cfg_description#}">
+<meta name="wap-font-scale" content="no">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/siteConfig/touch/default/css/touch_common.css?v=5">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v=15">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v=15"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js" type="text/javascript"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, redirectUrl = '{#$redirectUrl#}', site = '{#$site#}';
+    var geetest = {#$cfg_geetest#};
+</script>
+<style>
+  html #newBridge {display: none;}
+</style>
+</head>
+
+<body>
+<header id="header">
+	<div class="l_btn logo"><script src="/include/json.php?action=adjs&id=168" language="javascript"></script></div>
+	<h1 class="title">{#$cfg_shortname#}</h1>
+	<div class="r_btn">
+		<ul class="weather" id="weather"></ul>
+	</div>
+	{#if $userinfo#}
+	{#$userDomain = $member_userDomain#}
+	{#if $userinfo.userType == 2#}
+	{#$userDomain = $member_busiDomain#}
+	{#/if#}
+	<a href="{#$userDomain#}" class="icon_user"></a>
+	{#else#}
+	<a href="javascript:;" class="icon_user" id="icon_user"></a>
+	{#/if#}
+</header>
+<!-- 导航 -->
+<div class="navHeight">
+	<div class="swipernav">
+		<div class="swiper-container swiper-container-horizontal" id="swiper-container1">
+	    <div class="swiper-wrapper">
+	      {#if in_array("article", $installModuleArr)#}<div class="swiper-slide"><a href="{#$article_channelDomain#}">新闻</a></div>{#/if#}
+	      {#if in_array("info", $installModuleArr)#}<div class="swiper-slide"><a href="{#$info_channelDomain#}">二手</a></div>{#/if#}
+	      {#if in_array("tuan", $installModuleArr)#}<div class="swiper-slide"><a href="{#$tuan_channelDomain#}">团购</a></div>{#/if#}
+	      {#if in_array("house", $installModuleArr)#}<div class="swiper-slide"><a href="{#$house_channelDomain#}">房产</a></div>{#/if#}
+	      {#if in_array("job", $installModuleArr)#}<div class="swiper-slide"><a href="{#$job_channelDomain#}">招聘</a></div>{#/if#}
+	      {#if in_array("renovation", $installModuleArr)#}<div class="swiper-slide"><a href="{#$renovation_channelDomain#}">装修</a></div>{#/if#}
+	      {#if in_array("shop", $installModuleArr)#}<div class="swiper-slide"><a href="{#$shop_channelDomain#}">商城</a></div>{#/if#}
+	      {#if in_array("build", $installModuleArr)#}<div class="swiper-slide"><a href="{#$build_channelDomain#}">建材</a></div>{#/if#}
+	      <div class="swiper-slide"><a href="{#$business_channelDomain#}">商家</a></div>
+	      {#if in_array("marry", $installModuleArr)#}<div class="swiper-slide"><a href="{#$marry_channelDomain#}">婚嫁</a></div>{#/if#}
+	      {#if in_array("waimai", $installModuleArr)#}<div class="swiper-slide"><a href="{#$waimai_channelDomain#}">外卖</a></div>{#/if#}
+          <div class="swiper-slide"><a href="app.html">测试</a></div>
+          <div class="swiper-slide"><a href="upload.html">上传</a></div>
+	      <!-- {#if in_array("home", $installModuleArr)#}<div class="swiper-slide"><a h{#$home_channelDomain#}ef="#">家居</a></div>{#/if#}
+	      {#if in_array("furniture", $installModuleArr)#}<div class="swiper-slide"><a href="{#$furniture_channelDomain#}">家具</a></div>{#/if#}
+	      {#if in_array("car", $installModuleArr)#}<div class="swiper-slide"><a href="{#$car_channelDomain#}">汽车</a></div>{#/if#}
+	      {#if in_array("special", $installModuleArr)#}<div class="swiper-slide"><a href="{#$special_channelDomain#}">专题</a></div>{#/if#}
+	      {#if in_array("website", $installModuleArr)#}<div class="swiper-slide"><a href="{#$website_channelDomain#}">建站</a></div>{#/if#} -->
+	    </div>
+	  </div>
+		<a href="javascript:;" class="toggleBtn"><i class="icon_down"></i></a>
+	</div>
+</div>
+<div class="navBox" id="navBox">
+	<div class="navlist" id="navlist">
+		<ul class="clearfix">
+			{#if in_array("article", $installModuleArr)#}<li><a href="{#$article_channelDomain#}"><span class="nav_1"></span>新闻</a></li>{#/if#}
+			{#if in_array("info", $installModuleArr)#}<li><a href="{#$info_channelDomain#}"><span class="nav_2"></span>二手</a></li>{#/if#}
+			{#if in_array("tuan", $installModuleArr)#}<li><a href="{#$tuan_channelDomain#}"><span class="nav_3"></span>团购</a></li>{#/if#}
+			{#if in_array("house", $installModuleArr)#}<li><a href="{#$house_channelDomain#}"><span class="nav_4"></span>房产</a></li>{#/if#}
+			{#if in_array("shop", $installModuleArr)#}<li><a href="{#$shop_channelDomain#}"><span class="nav_5"></span>商城</a></li>{#/if#}
+			{#if in_array("build", $installModuleArr)#}<li><a href="{#$build_channelDomain#}"><span class="nav_6"></span>建材</a></li>{#/if#}
+			{#if in_array("furniture", $installModuleArr)#}<li><a href="{#$furniture_channelDomain#}"><span class="nav_7"></span>家具</a></li>{#/if#}
+			{#if in_array("home", $installModuleArr)#}<li><a href="{#$home_channelDomain#}"><span class="nav_8"></span>家居</a></li>{#/if#}
+			{#if in_array("renovation", $installModuleArr)#}<li><a href="{#$renovation_channelDomain#}"><span class="nav_9"></span>装修</a></li>{#/if#}
+			{#if in_array("job", $installModuleArr)#}<li><a href="{#$job_channelDomain#}"><span class="nav_10"></span>招聘</a></li>{#/if#}
+			{#if in_array("dating", $installModuleArr)#}<li><a href="{#$dating_channelDomain#}"><span class="nav_11"></span>交友</a></li>{#/if#}
+			{#if in_array("marry", $installModuleArr)#}<li><a href="{#$marry_channelDomain#}"><span class="nav_12"></span>婚嫁</a></li>{#/if#}
+			{#if in_array("car", $installModuleArr)#}<li><a href="{#$car_channelDomain#}"><span class="nav_13"></span>汽车</a></li>{#/if#}
+			{#if in_array("waimai", $installModuleArr)#}<li><a href="{#$waimai_channelDomain#}"><span class="nav_14"></span>外卖</a></li>{#/if#}
+			<li><a href="{#$business_channelDomain#}"><span class="nav_15"></span>商家</a></li>
+			<li><a href="{#$cfg_basehost#}"><span class="nav_16"></span>旅游</a></li>
+			{#if in_array("tieba", $installModuleArr)#}<li><a href="{#$tieba_channelDomain#}"><span class="nav_17"></span>贴吧</a></li>{#/if#}
+			<li><a href="{#$cfg_basehost#}"><span class="nav_18"></span>五折卡</a></li>
+			{#if in_array("huangye", $installModuleArr)#}<li><a href="{#$huangye_channelDomain#}"><span class="nav_19"></span>黄页</a></li>{#/if#}
+			{#if in_array("video", $installModuleArr)#}<li><a href="{#$video_channelDomain#}"><span class="nav_20"></span>视频</a></li>{#/if#}
+			{#if in_array("pic", $installModuleArr)#}<li><a href="{#$pic_basehost#}"><span class="nav_21"></span>图片</a></li>{#/if#}
+			<li><a href="{#$cfg_basehost#}"><span class="nav_22"></span>直播</a></li>
+			<li><a href="{#$cfg_basehost#}"><span class="nav_23"></span>打车</a></li>
+			{#if in_array("vote", $installModuleArr)#}<li><a href="{#$vote_channelDomain#}"><span class="nav_24"></span>投票</a></li>{#/if#}
+		</ul>
+	</div>
+	<div class="bg" id="shearBg"></div>
+</div>
+
+<div class="nav">
+	<ul class="fn-clear">
+		{#siteConfig action="siteModule" return="module"#}
+		<li><a href="{#$module.url#}" target="_blank"><span>{#$module.name#}</span></a></li>
+		{#/siteConfig#}
+	</ul>
+</div>
+
+<!-- 轮播图 -->
+<div class="banna clearfix">
+	<!-- picscroll -->
+	<div class="picscroll">
+	    <div class="bd" id="picscroll">
+	    	<ul>
+					{#myad id="169"#}
+	    	</ul>
+	    </div>
+	    <div class="pages">
+	    	<span class="page">1</span>/
+	    	<span class="count"></span>
+	    </div>
+	</div>
+</div>
+
+<!-- 天气预报 -->
+<div class="todaylifeinfo hide">
+	<div class="inner clearfix">
+		<dl class="weatherd">
+			<dt>
+				<span>21°</span>
+				<span><img src="{#$templets_skin#}images/yu.png" alt=""></span>
+			</dt>
+			<dd>
+				<span class="s1">晴 14~31℃</span>
+				<span class="s2">空气良 80</span>
+			</dd>
+		</dl>
+		<dl class="xianxing">
+			<dt>限行尾号</dt>
+			<dd>
+				<span>3</span>
+				<span>8</span>
+			</dd>
+		</dl>
+	</div>
+</div>
+{#if in_array("article", $installModuleArr)#}
+<!-- 资讯列表 -->
+<div class="part newsList">
+	<div class="title">今日要闻</div>
+	<div class="list">
+		{#article action="alist" return="alist" group_img="1" typeid="9" pageSize="6"#}
+		<div class="m_item{#if $alist.group_img || $alist.litpic#} alonenews{#/if#}">
+			<a href="{#$alist.url#}" class="clearfix">
+				{#if $alist.group_img#}
+				<div class="bt m_news_bt">{#$alist.title#}</div>
+				<div class="pic clearfix">
+					{#foreach from=$alist.group_img item=group key=k#}
+	        {#if $k < 3#}
+	        <img src="{#$templets_skin#}images/blank.gif" data-url="{#changeFileSize url="{#$group.path#}" type="small"#}" alt="{#$alist.title|strip_tags#}">
+	        {#/if#}
+	        {#/foreach#}
+				</div>
+				<div class="m_des clearfix">
+					<div class="ab_l"><span class="souce">{#$alist.source#}</span><span class="time">{#$alist.pubdate|date_format:"%m-%d"#}</span></div>
+					<div class="ab_r">{#$alist.common#}<i class="icon-pls"></i>
+					</div>
+				</div>
+				{#elseif $alist.litpic#}
+				<div class="m_item-img">
+					<img src="{#$templets_skin#}images/blank.gif" data-url="{#changeFileSize url="{#$alist.litpic#}" type="small"#}" alt="{#$alist.title|strip_tags#}">
+				</div>
+				<div class="m_item-txt">
+					<span class="m_news_bt">{#$alist.title#}</span>
+					<div class="m_des clearfix">
+						<div class="ab_l"><span class="souce">{#$alist.source#}</span><span class="time">{#$alist.pubdate|date_format:"%m-%d"#}</span></div>
+						<div class="ab_r">{#$alist.common#}<i class="icon-pls"></i></div>
+					</div>
+				</div>
+				{#else#}
+				<div class="m_item-txt">
+					<span class="m_news_bt">{#$alist.title#}</span>
+					<div class="m_des clearfix">
+						<div class="ab_l"><span class="souce">{#$alist.source#}</span><span class="time">{#$alist.pubdate|date_format:"%m-%d"#}</span></div>
+						<div class="ab_r">{#$alist.common#}<i class="icon-pls"></i></div>
+					</div>
+				</div>
+				{#/if#}
+			</a>
+		</div>
+		{#/article#}
+	</div>
+	<div class="loadmore bb">
+		<a href="{#$article_channelDomain#}"><div class="load">展开更多<i></i></div></a>
+	</div>
+</div>
+{#/if#}
+
+{#if in_array("info", $installModuleArr)#}
+<!-- 二手信息 -->
+<div class="part secondHand">
+	<div class="hd clearfix">
+		<h2 class="title"><a href="{#$info_channelDomain#}">二手信息</a></h2>
+		<div class="morelink">
+			<a href="{#$info_channelDomain#}">竞价</a>
+			<a href="{#$info_channelDomain#}">最新</a>
+			<a href="{#$info_channelDomain#}">推荐</a>
+		</div>
+	</div>
+	<div class="bd">
+		<ul class="toplink clearfix">
+			<li>
+				<a href="{#$info_channelDomain#}">
+					<div class="txt">
+						<p class="t">二手良品</p>
+						<p class="st">官方质检</p>
+					</div>
+					<div class="pic">
+						<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}upfile/sechand_1.jpg" alt="">
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="{#$info_channelDomain#}">
+					<div class="txt">
+						<p class="t">放心工作</p>
+						<p class="st">不用担心黑中介</p>
+					</div>
+					<div class="pic">
+						<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}upfile/sechand_2.jpg" alt="">
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="{#$info_channelDomain#}">
+					<div class="txt">
+						<p class="t">闲置真心送</p>
+						<p class="st">乐赠闲置，悦己利他</p>
+					</div>
+					<div class="pic">
+						<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}upfile/sechand_3.jpg" alt="">
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="{#$info_channelDomain#}">
+					<div class="txt">
+						<p class="t">二手轿车</p>
+						<p class="st">好车天天看</p>
+					</div>
+					<div class="pic">
+						<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}upfile/sechand_4.jpg" alt="">
+					</div>
+				</a>
+			</li>
+		</ul>
+		<div class="list clearfix">
+			{#info action="ilist" return="ilist" pageSize="6"#}
+			<div class="item">
+				<a href="{#$ilist.url#}">
+					<div class="pic">
+						<img src="{#$templets_skin#}images/blank.gif" data-url="{#changeFileSize url="{#$ilist.litpic#}" type="small"#}" alt="">
+					</div>
+					<p class="title">{#$ilist.title#}</p>
+					<p class="item_btm clearfix">
+						<span class="price">{#$ilist.typename#}</span>
+						<span class="time">{#$ilist.pubdate|date_format:"%m-%d"#}</span>
+					</p>
+				</a>
+			</div>
+			{#/info#}
+		</div>
+		<div class="loadmore bb">
+			<a href="{#$info_channelDomain#}"><div class="load">展开更多<i></i></div></a>
+		</div>
+	</div>
+</div>
+{#/if#}
+
+{#if in_array("tuan", $installModuleArr)#}
+<!-- 团购 -->
+<div class="part tuangou">
+	<div class="hd clearfix">
+		<h2 class="title"><a href="{#$tuan_channelDomain#}">团购</a></h2>
+		<div class="morelink">
+			<a href="{#$tuan_channelDomain#}">推荐</a>
+			<a href="{#$tuan_channelDomain#}">最新</a>
+			<a href="{#$tuan_channelDomain#}">秒杀</a>
+		</div>
+	</div>
+	<div class="bd">
+		<div class="list">
+			{#tuan action="tlist" return="tlist" pageSize="6"#}
+			<div class="item">
+				<a href="{#$tlist.url#}">
+					<div class="pic">
+						<img src="{#$templets_skin#}images/blank.gif" data-url="{#changeFileSize url="{#$tlist.litpic#}" type="small"#}" alt="">
+					</div>
+					<div class="txt">
+						<p class="title"><span class="sell">已售{#$tlist.sale#}</span>{#$tlist.title#}</p>
+						<p class="des">{#$tlist.subtitle#}</p>
+						<div class="item_btm clearfix">
+							<div class="price"><span class="now">&yen;{#$tlist.market#}</span><span class="youhui"><i>减{#$tlist.market-$tlist.price#}</i></span></div>
+							<div class="btn">&yen;{#$tlist.price#}抢</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			{#/tuan#}
+		</div>
+		<div class="loadmore">
+			<a href="{#$tuan_channelDomain#}"><div class="load">展开更多<i></i></div></a>
+		</div>
+	</div>
+</div>
+{#/if#}
+
+{#if in_array("house", $installModuleArr)#}
+<!-- 房产信息 上方链接 -->
+<div class="houseInfo">
+	<dl class="picbox clearfix">
+		<dt>
+			<a href="{#getUrlPath service='house' template='loupan'#}">
+				<div class="pic"><img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}images/house_1.png" alt=""></div>
+				<div class="txt">
+					<p class="t">最新上线</p>
+				</div>
+			</a>
+		</dt>
+		<dd>
+			<div>
+				<a href="{#getUrlPath service='house' template='loupan'#}">
+					<div class="pic"><img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}images/house_2.png" alt=""></div>
+					<div class="txt">
+						<p class="t">优惠楼盘</p>
+						<p class="st">优惠！错过不再！</p>
+					</div>
+				</a>
+			</div>
+			<div>
+				<a href="{#getUrlPath service='house' template='loupan'#}">
+					<div class="pic"><img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}images/house_3.png" alt=""></div>
+					<div class="txt">
+						<p class="t">最近开盘</p>
+						<p class="st">3个月内开盘</p>
+					</div>
+				</a>
+			</div>
+		</dd>
+	</dl>
+</div>
+<!-- 房产信息 -->
+<div class="part houseInfo">
+	<div class="hd clearfix">
+		<h2 class="title"><a href="{#$house_channelDomain#}">房产信息</a></h2>
+		<div class="morelink">
+			<a href="{#getUrlPath service='house' template='loupan'#}">最新</a>
+			<a href="{#getUrlPath service='house' template='zu'#}">出租</a>
+			<a href="{#getUrlPath service='house' template='sale'#}">出售</a>
+		</div>
+	</div>
+	<div class="bd">
+		<div class="list">
+			{#house action="zulist" return="zu" pageSize="6"#}
+			<dl class="clearfix">
+				<a href="{#$zu.url#}">
+					<dt>
+						<img src="{#$templets_skin#}images/blank.gif" data-url="{#changeFileSize url="{#$zu.litpic#}" type="small"#}" alt="">
+					</dt>
+					<dd>
+						<p class="title">{#$zu.title#}</p>
+						<p class="info_m">
+							<span class="type">{#$zu.room#} {#$zu.rentype#}</span>
+							<span class="price"><em>{#$zu.price#}</em>元/月</span>
+						</p>
+						<p class="place">{#$zu.community#}</p>
+						<p class="tag">
+							<span>{#$zu.protype#}</span>
+							<span>{#$zu.direction#}</span>
+							<span>{#$zu.zhuangxiu#}</span>
+							{#if $zu.sharetype#}<span>{#$zu.sharetype#}</span>{#/if#}
+						</p>
+					</dd>
+				</a>
+			</dl>
+			{#/house#}
+		</div>
+		<div class="loadmore bb">
+			<a href="{#$house_channelDomain#}"><div class="load">展开更多<i></i></div></a>
+		</div>
+	</div>
+</div>
+{#/if#}
+
+{#if in_array("shop", $installModuleArr)#}
+<!-- 商城购物 -->
+<div class="part shopping">
+	<div class="hd clearfix">
+		<h2 class="title"><a href="{#$shop_channelDomain#}">商城购物</a></h2>
+		<div class="morelink">
+			<a href="{#$shop_channelDomain#}">最新</a>
+			<a href="{#$shop_channelDomain#}">推荐</a>
+			<a href="{#$shop_channelDomain#}">销量</a>
+		</div>
+	</div>
+	<div class="bd">
+		<div class="list clearfix">
+			{#shop action="slist" return="slist" pageSize="6"#}
+			<dl>
+				<a href="{#$slist.url#}">
+					<dt><img src="{#$templets_skin#}images/blank.gif" data-url="{#changeFileSize url="{#$slist.litpic#}" type="middle"#}" alt=""></dt>
+					<dd>
+						<p class="des">{#$slist.title#}</p>
+						<p class="price">&yen;{#$slist.price#}</p>
+					</dd>
+				</a>
+			</dl>
+			{#/shop#}
+		</div>
+		<div class="loadmore">
+			<a href="{#$shop_channelDomain#}"><div class="load">展开更多<i></i></div></a>
+		</div>
+	</div>
+</div>
+{#/if#}
+
+<!-- 建材装修 -->
+<div class="part build">
+	<ul class="p_nav">
+		{#if in_array("build", $installModuleArr)#}
+		<li>
+			<a href="{#$build_channelDomain#}">
+				<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}images/jiancai.png" alt="">
+				<span>建材</span>
+			</a>
+		</li>
+		{#/if#}
+		{#if in_array("furniture", $installModuleArr)#}
+		<li>
+			<a href="{#$furniture_channelDomain#}">
+				<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}images/jiaju.png" alt="">
+				<span>家具</span>
+			</a>
+		</li>
+		{#/if#}
+		{#if in_array("home", $installModuleArr)#}
+		<li>
+			<a href="{#$home_channelDomain#}">
+				<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}images/jiaju_life.png" alt="">
+				<span>家居</span>
+			</a>
+		</li>
+		{#/if#}
+		{#if in_array("renovation", $installModuleArr)#}
+		<li>
+			<a href="{#$renovation_channelDomain#}">
+				<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}images/zhuangxiu.png" alt="">
+				<span>装修</span>
+			</a>
+		</li>
+		{#/if#}
+		{#if in_array("house", $installModuleArr)#}
+		<li>
+			<a href="{#getUrlPath service='house' template='calculator-sy'#}">
+				<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}images/jisuanqi.png" alt="">
+				<span>计算器</span>
+			</a>
+		</li>
+		{#/if#}
+	</ul>
+</div>
+
+{#if in_array("renovation", $installModuleArr)#}
+<div class="part build">
+	<dl class="picbox clearfix">
+		<dt>
+			<a href="{#$renovation_channelDomain#}">
+				<div class="txt">
+					<p class="t">户型设计与报价<span class="free"><s></s>免费</span></p>
+					<p class="st">多家对比不吃亏</p>
+				</div>
+				<div class="pic"><img src="{#$templets_skin#}images/build_t_01.png" alt=""></div>
+			</a>
+		</dt>
+		<dd>
+			<a href="{#$renovation_channelDomain#}">
+				<div class="txt">
+					<p class="t">智能报价</p>
+					<p class="st">一分钟出报价</p>
+				</div>
+				<div class="pic"><img src="{#$templets_skin#}images/build_t_02.png" alt=""></div>
+			</a>
+			<a href="{#$renovation_channelDomain#}">
+				<div class="txt">
+					<p class="t">装修报</p>
+					<p class="st">第三方装修保障</p>
+				</div>
+				<div class="pic"><img src="{#$templets_skin#}images/build_t_03.png" alt=""></div>
+			</a>
+		</dd>
+	</dl>
+</div>
+<!-- 装修公司 -->
+<div class="part renovation">
+	<div class="hd clearfix">
+		<h2 class="title"><a href="{#$renovation_channelDomain#}">装修公司</a></h2>
+		<div class="morelink">
+			<a href="{#getUrlPath service='renovation' template='albums'#}">效果图</a>
+			<a href="{#$renovation_channelDomain#}">案例</a>
+		</div>
+	</div>
+	<div class="bd">
+		<div class="list">
+			{#renovation action="store" return="store" pageSize="6"#}
+			<div class="item">
+				<a href="{#$store.url#}">
+					<div class="pic"><img src="{#$templets_skin#}images/blank.gif" data-url="{#$store.logo#}" alt=""></div>
+					<div class="txt">
+						{#if $store.certi == 1#}<span class="tag">认</span>{#/if#}
+						<p class="title">{#$store.company#}</p>
+						<p class="data">
+							{#if $store.safeguard > 0#}<span class="koubei">担保金：<span class="num">{#$store.safeguard#}元</span></span>{#/if#}
+							{#if $store.caseCount > 0#}<span class="design">设计方案：{#$store.caseCount#}套</span>{#/if#}
+						</p>
+						{#if $store.diaryCount > 0#}<p class="askpeo">施工案例：{#$store.diaryCount#}个</p>{#/if#}
+					</div>
+				</a>
+			</div>
+			{#/renovation#}
+		</div>
+		<div class="loadmore bb">
+			<a href="{#$renovation_channelDomain#}"><div class="load">展开更多<i></i></div></a>
+		</div>
+	</div>
+</div>
+<!-- 热门案例 -->
+<div class="part hotcase">
+	<div class="hd clearfix">
+		<a href="{#$renovation_channelDomain#}">
+			<h2 class="title">热门案例</h2>
+			<span class="subtitle">精品推荐 脑洞打开</span>
+		</a>
+	</div>
+	<div class="bd">
+		<div class="list">
+			{#renovation action="diary" return="diary" orderby="click" pageSize="5"#}
+			{#if $_bindex.diary == 1#}
+			<div class="full">
+				<a href="{#$diary.url#}">
+					<div class="pic"><img src="{#$templets_skin#}images/blank.gif" data-url="{#changeFileSize url="{#$diary.litpic#}" type="o_large"#}" alt=""></div>
+					<div class="txt">
+						<p class="title">{#$diary.title#}</p>
+						<p class="des">38平米的小户型，演绎小空间的美和质感，一个人的生活，在精致小巧的空间中，精彩的进行着。设计师以灰色</p>
+					</div>
+				</a>
+			</div>
+			<div class="items clearfix">
+			{#else#}
+				<a href="{#$diary.url#}">
+					<img src="{#$templets_skin#}images/blank.gif" data-url="{#changeFileSize url="{#$diary.litpic#}" type="middle"#}" alt="">
+					<p><span>{#$diary.title#}</span></p>
+				</a>
+			{#/if#}
+			{#if $_bindex.diary == 5#}
+			</div>
+			{#/if#}
+			{#/renovation#}
+		</div>
+		<div class="loadmore">
+			<a href="{#$renovation_channelDomain#}"><div class="load">展开更多<i></i></div></a>
+		</div>
+	</div>
+</div>
+{#/if#}
+
+{#if in_array("job", $installModuleArr)#}
+<!-- 招聘信息上 -->
+<div class="part job">
+	<div class="picbox clearfix">
+		<a href="{#$job_channelDomain#}">
+			<div class="txt">
+				<p class="t">变高富帅</p>
+				<p class="st">高薪销售类</p>
+			</div>
+			<div class="pic"></div>
+		</a>
+		<a href="{#$job_channelDomain#}">
+			<div class="txt">
+				<p class="t">稳拿高薪</p>
+				<p class="st">技工类</p>
+			</div>
+			<div class="pic"></div>
+		</a>
+		<a href="{#$job_channelDomain#}">
+			<div class="txt">
+				<p class="t">快速入职</p>
+				<p class="st">餐饮酒店类</p>
+			</div>
+			<div class="pic"></div>
+		</a>
+		<a href="{#$job_channelDomain#}">
+			<div class="txt">
+				<p class="t">能逛商场</p>
+				<p class="st">超市百货类</p>
+			</div>
+			<div class="pic"></div>
+		</a>
+	</div>
+</div>
+<!-- 招聘信息 -->
+<div class="part bt job">
+	<div class="hd clearfix">
+		<h2 class="title"><a href="{#$job_channelDomain#}">招聘信息</a></h2>
+		<div class="morelink">
+			<a href="{#getUrlPath service='job' template='zhaopin'#}">推荐</a>
+			<a href="{#getUrlPath service='job' template='resume'#}">简历</a>
+			<a href="{#getUrlPath service='job' template='company'#}">企业</a>
+		</div>
+	</div>
+	<div class="bd">
+		<div class="list">
+			{#job action='post' return='post' pageSize='6'#}
+			<dl>
+				<a href="{#$post.url#}">
+					<dt><i class="type tag{#if strstr($post.property, 'h')#} tag-hot{#/if#}"></i>{#$post.title#}</dt>
+					<dd>
+						<p><span class="type">{#$post.addr[0]#} {#$post.addr[1]#}</span><span class="num">{#$post.salary#}</span></p>
+						<p class="p2"><span class="type">{#$post.pubdate|date_format:"%m-%d"#}</span>招聘{#$post.number#}人 {#$post.experience#} {#$post.educational#}</p>
+						<p class="p3"><span class="type">{#$post.type#}</span><i class="tag tag-yan"></i>{#$post.company['title']#}</p>
+					</dd>
+				</a>
+			</dl>
+			{#/job#}
+		</div>
+		<div class="loadmore">
+			<a href="{#$job_channelDomain#}"><div class="load">展开更多<i></i></div></a>
+		</div>
+	</div>
+</div>
+{#/if#}
+
+{#if in_array("dating", $installModuleArr)#}
+<!-- 同城交友 -->
+<div class="part bt dating">
+	<div class="hd clearfix">
+		<h2 class="title"><a href="{#$dating_channelDomain#}">同城交友</a></h2>
+		<div class="morelink">
+			<a href="{#$dating_channelDomain#}">推荐</a>
+			<a href="{#getUrlPath service='dating' template='search' param='sex=1'#}">男神</a>
+			<a href="{#getUrlPath service='dating' template='search' param='sex=0'#}">女神</a>
+		</div>
+	</div>
+	<div class="bd">
+		<div class="vlist">
+			<div class="hideScrollBar">
+				<ul class="clearfix">
+					{#dating action='memberList' return='dating' sex='0' pageSize='8'#}
+					<li>
+						<a href="{#$dating.url#}">
+							<div class="pic">
+								<img src="{#$templets_skin#}images/blank.gif" data-url="{#$dating.photo#}" alt="">
+							</div>
+							<div class="txt">
+								<p class="username">{#$dating.nickname#}</p>
+								<p class="userbase">{#$dating.age#}岁 {#$dating.height#}cm</p>
+							</div>
+						</a>
+					</li>
+					{#/dating#}
+				</ul>
+			</div>
+		</div>
+		<div class="list">
+			{#dating action='memberList' return='dating' sex='1' pageSize='5'#}
+			<dl>
+				<a href="{#$dating.url#}" class="clearfix">
+					<dt><img src="{#$templets_skin#}images/blank.gif" data-url="{#$dating.photo#}" alt=""></dt>
+					<dd>
+						<span class="comments">{#$dating.album#}</span>
+						<p class="title">{#$dating.nickname#}</p>
+						<p class="des">{#$dating.age#}岁/{#$dating.height#}厘米/{#$dating.educationName#}/{#$dating.incomeName#}</p>
+						<p class="tag">{#if $dating.purposeName#}<span>{#$dating.purposeName#}</span>{#/if#}{#if $dating.addr#}<span>{#$dating.addr[0]#}</span>{#/if#}</p>
+					</dd>
+				</a>
+			</dl>
+			{#/dating#}
+		</div>
+		<div class="loadmore">
+			<a href="{#$dating_channelDomain#}"><div class="load">展开更多<i></i></div></a>
+		</div>
+	</div>
+</div>
+{#/if#}
+
+{#if in_array("marry", $installModuleArr)#}
+<div class="part">
+	<div class="oLinklist">
+		<div class="item item0">
+			<div class="txt">
+				<p class="t">居家小摆件</p>
+				<p class="st">限时抢购 震撼来袭</p>
+			</div>
+			<div class="pic"><img src="{#$templets_skin#}images/mary_06.jpg" alt=""></div>
+		</div>
+		<div class="item item1">
+			<div class="txt">
+				<p class="t">婚车租赁</p>
+				<p class="st">全城最低 买贵退钱</p>
+			</div>
+			<div class="pic"><img src="{#$templets_skin#}images/mary_15.jpg" alt=""></div>
+		</div>
+		<div class="item item2">
+			<div class="pic"><img src="{#$templets_skin#}images/mary_03.jpg" alt=""></div>
+			<div class="txt">
+				<p class="t">当季热拍</p>
+				<p class="st">寻找最美婚纱照</p>
+				<p class="st">热门推荐 时下最IN</p>
+				<p class="price">1999元起</p>
+			</div>
+		</div>
+		<div class="item item3">
+			<div class="txt">
+				<p class="t">全球旅拍</p>
+				<p class="st">机票+酒店+拍摄</p>
+			</div>
+			<div class="pic"><img src="{#$templets_skin#}images/mary_10.jpg" alt=""></div>
+		</div>
+		<div class="item item4">
+			<div class="txt">
+				<p class="t">大婚定制</p>
+				<p class="st">超人气婚礼策划</p>
+			</div>
+			<div class="pic"><img src="{#$templets_skin#}images/mary_13.jpg" alt=""></div>
+		</div>
+	</div>
+</div>
+<!-- 婚嫁酒店 -->
+<div class="part marryHotel">
+	<div class="hd clearfix">
+		<h2 class="title"><a href="{#$marry_channelDomain#}">婚嫁酒店</a></h2>
+		<div class="morelink">
+			<a href="{#getUrlPath service='marry' template='ritual'#}">策划</a>
+			<a href="{#getUrlPath service='marry' template='wedding'#}">摄影</a>
+			<a href="{#getUrlPath service='marry' template='hotel'#}">酒店</a>
+		</div>
+	</div>
+	<div class="bd">
+		<div class="list">
+			{#marry action='hotel' return='hotel' pageSize='6'#}
+			<dl>
+				<a href="{#$hotel.url#}" class="clearfix">
+					<dt><img src="{#$templets_skin#}images/blank.gif" data-url="{#changeFileSize url="{#$hotel.litpic#}" type="small"#}" alt=""></dt>
+					<dd>
+						<p class="title">{#$hotel.title#}</p>
+						<p class="price clearfix">
+							<span class="youhui">
+								{#if $hotel.gift#}<s class="youhui-li"></s>{#/if#}
+								{#if in_array("r", $hotel.property)#}<s class="youhui-r"></s>{#/if#}
+								{#if in_array("h", $hotel.property)#}<s class="youhui-h"></s>{#/if#}
+							</span>
+							<span class="num">&yen;{#$hotel.minprice#}-{#$hotel.maxprice#} /桌</span>
+						</p>
+						<p class="other">
+							<span>容纳{#$hotel.tables#}桌</span>
+							<span>{#$hotel.addrName[0]#} {#$hotel.addrName[1]#}</span>
+							<span>{#$hotel.levalName#}</span>
+						</p>
+					</dd>
+				</a>
+			</dl>
+			{#/marry#}
+		</div>
+		<div class="loadmore">
+			<a href="{#getUrlPath service='marry' template='hotel'#}"><div class="load">展开更多<i></i></div></a>
+		</div>
+	</div>
+</div>
+{#/if#}
+
+{#if in_array("car", $installModuleArr)#}
+<!-- 汽车 -->
+<div class="part car">
+	<ul class="topnav clearfix">
+		<li>
+			<a href="{#$car_channelDomain#}">
+				<div class="pic"><img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}upfile/car_t_1.jpg" alt=""></div>
+				<span>新车上市</span>
+			</a>
+		</li>
+		<li>
+			<a href="{#$car_channelDomain#}">
+				<div class="pic"><img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}upfile/car_t_2.jpg" alt=""></div>
+				<span>关注排行榜</span>
+			</a>
+		</li>
+		<li>
+			<a href="{#$car_channelDomain#}">
+				<div class="pic"><img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}upfile/car_t_3.jpg" alt=""></div>
+				<span>优惠排行榜</span>
+			</a>
+		</li>
+	</ul>
+	<div class="hotbrand">
+		<p class="title">热门品牌</p>
+		<ul class="brandlist clearfix">
+			{#car action="brand" return="brand"#}
+			{#if $_bindex.brand < 11#}
+			<li>
+				<a href="">
+					<img src="{#$templets_skin#}images/blank.gif" data-url="{#$brand.logo#}" alt="">
+					<span>{#$brand.typename#}</span>
+				</a>
+			</li>
+			{#/if#}
+			{#/car#}
+		</ul>
+	</div>
+	<div class="hd clearfix">
+		<h2 class="title"><a href="{#$car_channelDomain#}">汽车信息</a></h2>
+		<div class="morelink">
+			<a href="">资讯</a>
+			<a href="">车型</a>
+			<a href="">经销商</a>
+		</div>
+	</div>
+	<div class="bd">
+		<div class="list">
+			<div class="item">
+				<a href="">
+					<div class="pic">
+						<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}upfile/car_info_1.jpg" alt="">
+					</div>
+					<div class="txt">
+						<p class="title">雪佛兰新一代Cobalt官图发布</p>
+						<p class="item_btm clearfix">
+							<span class="comnt">抢沙发</span>
+							<span class="time">1小时前</span>
+						</p>
+					</div>
+				</a>
+			</div>
+			<div class="item">
+				<a href="">
+					<div class="pic">
+						<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}upfile/car_info_2.jpg" alt="">
+					</div>
+					<div class="txt">
+						<p class="title">宝马新3系GT车型官图正式发布</p>
+						<p class="item_btm clearfix">
+							<span class="comnt">2评论</span>
+							<span class="time">1小时前</span>
+						</p>
+					</div>
+				</a>
+			</div>
+			<div class="item">
+				<a href="">
+					<div class="pic">
+						<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}upfile/car_info_3.jpg" alt="">
+					</div>
+					<div class="txt">
+						<p class="title">牧马人/途乐/废铁皮勒芒比赛</p>
+						<p class="item_btm clearfix">
+							<span class="comnt">2评论</span>
+							<span class="time">1小时前</span>
+						</p>
+					</div>
+				</a>
+			</div>
+			<div class="item">
+				<a href="">
+					<div class="pic">
+						<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}upfile/car_info_4.jpg" alt="">
+					</div>
+					<div class="txt">
+						<p class="title">盘点那些小孩子们的超级座驾</p>
+						<p class="item_btm clearfix">
+							<span class="comnt">2评论</span>
+							<span class="time">1小时前</span>
+						</p>
+					</div>
+				</a>
+			</div>
+			<div class="item">
+				<a href="">
+					<div class="pic">
+						<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}upfile/car_info_5.jpg" alt="">
+					</div>
+					<div class="txt">
+						<p class="title">爱卡试驾长安马自达CX-5 2.5L</p>
+						<p class="item_btm clearfix">
+							<span class="comnt">2评论</span>
+							<span class="time">1小时前</span>
+						</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="loadmore">
+			<div class="load">展开更多<i></i></div>
+		</div>
+	</div>
+</div>
+{#/if#}
+
+{#if in_array("tuan", $installModuleArr)#}
+<!-- 美食 -->
+<div class="part caterers">
+	<div class="picbox clearfix">
+		<div class="left">
+			<div class="top_t">
+				<img src="{#$templets_skin#}images/caterers_qg.jpg" alt="">
+				<!-- <div>
+					<div class="time">
+						<span class="time_t">距离结束</span>
+						<span class="mdqgdjs">
+							<s class="h">-</s>:<s class="m">-</s>:<s class="s">-</s>
+						</span>
+					</div>
+				</div> -->
+			</div>
+			<div class="com">
+				{#tuan action="tlist" return='list' rec="1" pageSize="1"#}
+				<div class="pic"><img src="{#$templets_skin#}images/blank.gif" data-url="{#$list.litpic#}" alt=""></div>
+				<div class="txt">
+					<p class="t">{#$list.title#}</p>
+					<p class="price"><span class="now">&yen;65</span><span class="youhui"><i>再减10</i></span></p>
+				</div>
+				{#/tuan#}
+			</div>
+		</div>
+		<div class="right">
+			<div class="item">
+				<div class="txt">
+					<p class="t">天天特价</p>
+					<p class="st">特惠不打烊</p>
+				</div>
+				<div class="pic">
+					<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}upfile/caterers_1.jpg" alt="">
+				</div>
+			</div>
+			<div class="item">
+				<div class="txt">
+					<p class="t">工作餐</p>
+					<p class="st">优惠不止5折~</p>
+				</div>
+				<div class="pic">
+					<img src="{#$templets_skin#}images/blank.gif" data-url="{#$templets_skin#}upfile/caterers_3.jpg" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="part caterersSale">
+	<div class="hd">
+		<h2 class="title"><a href="{#$tuan_channelDomain#}"><img src="{#$templets_skin#}images/ttlj.png" alt=""></a></h2>
+		<div class="morelink">
+			<a href="{#$tuan_channelDomain#}">更多立减</a>
+		</div>
+	</div>
+	<div class="bd">
+		<div class="salebox hideScrollBar">
+			<ul class="salelist clearfix">
+				{#tuan action="tlist" return="list" pageSize="8"#}
+				<li>
+					<a href="{#$list.url#}">
+						<div class="pic">
+							<img src="{#$templets_skin#}images/blank.gif" data-url="{#$list.litpic#}" alt="">
+						</div>
+						<div class="txt">
+							<p class="title">{#$list.title#}</p>
+							<p class="des">{#$list.subtitle#}</p>
+							<p class="price"><span class="n">&yen;{#$list.price#}</span><span class="m">已售{#$list.sale#}</span></p>
+						</div>
+					</a>
+				</li>
+				{#/tuan#}
+			</ul>
+		</div>
+	</div>
+</div>
+{#/if#}
+
+{#if in_array("waimai", $installModuleArr)#}
+<!-- 外卖 -->
+<div class="part waimai">
+	<div class="hd">
+		<h2 class="title"><a href="{#$waimai_channelDomain#}">美食外卖</a></h2>
+		<div class="morelink">
+			<a href="{#$waimai_channelDomain#}">推荐</a>
+			<a href="{#$waimai_channelDomain#}">优惠</a>
+			<a href="{#$waimai_channelDomain#}">特价</a>
+		</div>
+	</div>
+	<div class="bd">
+		<div class="list" id="waimaiList">
+			{#waimai action='store' return='wstore' pageSize='3'#}
+			<dl>
+				<a href="{#$wstore.url#}">
+					<dt class="clearfix">
+						<div class="pic">
+							<img src="{#$templets_skin#}images/blank.gif" data-url="{#$wstore.logo#}" alt="">
+						</div>
+						<div class="txt">
+							<p class="title">{#$wstore.title#} </p>
+							<p class="price">起送价&yen;{#$wstore.price#}<span class="pt">|</span>配送费&yen;{#$wstore.peisong#}<span class="pt">|</span>配送时间{#$wstore.times#}分钟</p>
+						</div>
+					</dt>
+					<dd>
+						{#if $wstore.sale#}
+						<div class="youhui">
+							<span class="m yh-jian">减</span>
+							<span class="d">满{#$wstore.sale|replace:",":"减"|replace:"$$":"元；减"#}元</span>
+						</div>
+						{#/if#}
+						{#if $wstore.supfapiao == 1#}
+						<div class="youhui">
+							<span class="m yh-sou">票</span>
+							<span class="d">{#$wstore.fapiaonote#}，{#$wstore.fapiao#}元起开</span>
+						</div>
+						{#/if#}
+						{#if $wstore.supfapiao == 1#}
+						<div class="youhui">
+							<span class="m yh-zhe">付</span>
+							<span class="d">该店铺支持在线支付</span>
+						</div>
+						{#/if#}
+						<div class="toggle"><em></em></div>
+					</dd>
+				</a>
+			</dl>
+			{#/waimai#}
+		</div>
+		<div class="loadmore bb">
+			<a href="{#$waimai_channelDomain#}"><div class="load">展开更多<i></i></div></a>
+		</div>
+	</div>
+</div>
+{#/if#}
+
+<!-- 底部 -->
+<footer id="footer">
+	<p class="copyright">Copyright © 火鸟门户所有 2013-{#$smarty.now|date_format:"%Y"#}</p>
+</footer>
+
+<!-- 底部固定导航 -->
+
+<div class="fixBtn">
+	<div id="backTop" class="btn"></div>
+</div>
+
+
+<div class="leftBtn">
+	<a href="javascript:;"></a>
+</div>
+
+
+
+<div class="snav_body">
+<div class="snav_leftmenubg"></div>
+<div class="snav_sidenv_box">
+  <div class="snav_sidenv_top f_f">
+		{#if $userinfo#}
+    <a href="{#$userDomain#}" class="sidenv_user">
+      <em><img src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="small"#}{#/if#}"></em>
+      <p>
+        <span class="user_tit fyy">{#$userinfo.nickname#}</span>
+      </p>
+		</a>
+		{#else#}
+		<a href="{#$cfg_basehost#}/login.html" class="sidenv_user">
+      <em><img src="{#$templets_skin#}images/noavatar_middle.gif"></em>
+      <p>
+        <span class="user_tit fyy">请登录或注册</span>
+      </p>
+      <p class="fyy">登录后更精彩...</p>
+		</a>
+		{#/if#}
+  </div>
+  <div class="sidenv_li" id="sidenv_li">
+    <ul class="snav_left_Touch gxta">
+      <li><a href="{#getUrlPath service='member' type='user' template='message'#}"><i class="snav_1"></i>通知 {#if $userinfo.message > 0#}<em class="snav_num">{#$userinfo.message#}</em>{#/if#}</a></li>
+      <li><a href="{#getUrlPath service='member' type='user' template='pocket'#}"><i class="snav_2"></i>我的口袋</a></li>
+      <li><a href="{#getUrlPath service='member' type='user' template='order' module='tuan'#}"><i class="snav_3"></i>我的订单</a></li>
+      <li><a href="#"><i class="snav_4"></i>购物车</a></li>
+      <li><a href="{#getUrlPath service='member' type='user' template='collect'#}"><i class="snav_5"></i>我的收藏</a></li>
+      <li><a href="{#getUrlPath service='member' type='user' template='info'#}"><i class="snav_6"></i>发布信息</a></li>
+      <li><a href="{#getUrlPath service='member' type='user' template='service'#}"><i class="snav_7"></i>帮助中心</a></li>
+      <li><a href="{#getUrlPath service='member' type='user' template='security'#}"><i class="snav_8"></i>安全中心</a></li>
+			{#if $userinfo#}
+      <li><a href="{#$cfg_basehost#}/logout.html" class="logout">退出登录</a></li>
+			{#/if#}
+    </ul>
+  </div>
+</div>
+</div>
+
+{#if !$userinfo#}
+<!-- 登录注册弹出层 s -->
+<div class="loginbox">
+	<div class="contain">
+		<div class="logintab">
+			<ul class="clearfix">
+				<li class="curr">登录</li>
+				<li>注册</li>
+				<li>找回密码</li>
+			</ul>
+		</div>
+		<div class="typebox">
+			<div class="form-box">
+				<form id="loginForm" action="">
+					<div class="inpbox">
+						<i class="icon icon1"></i>
+						<input type="text" name="" placeholder="用户名/邮箱/手机号" class="phone">
+					</div>
+					<div class="form-newpw inpbox">
+						<i class="icon icon2"></i>
+						<input type="password" name="" placeholder="密码" class="password">
+						<a href="javascript:;" class="psw_img"></a>
+					</div>
+					{#if $loginCode == 1#}
+					<div class="form-newpw inpbox">
+						<i class="icon icon3"></i>
+						<input type="text" name="" placeholder="验证码" class="vericode">
+						<span class="code-box"><img src="/include/vdimgck.php" title="看不清？点击换一张" id="verifycode"></span>
+					</div>
+					{#/if#}
+					<div class="login-btn"><input type="submit" value="登录"></div>
+				</form>
+			</div>
+			<div class="form-box" style="display:none">
+				<form id="regForm" action="">
+					<div class="form-get">
+						<input type="text" name="" placeholder="邮箱/手机号" class="number">
+						<a href="javascript:;"><span class="get-yzm">获取验证码</span><span class="reget-yzm dn">重新获取(<em id="djs">60</em>)</span></a>
+					</div>
+					<input type="text" name="" placeholder="验证码" class="yzm">
+					<div class="form-newpw">
+						<input type="password" name="" placeholder="密码" class="password">
+						<a href="javascript:;" class="psw_img"></a>
+					</div>
+					<div class="login-btn"><input type="submit" value="注册"></div>
+				</form>
+			</div>
+			<div class="form-box" style="display:none">
+				<div class="fpwdtab">
+					<ul class="clearfix">
+						<li class="curr"><i></i>手机找回</li>
+						<li><i></i>邮箱找回</li>
+					</ul>
+				</div>
+				<form id="fpwdForm" action="">
+					<div class="form-box-item form-item-number">
+						<div class="form-get form-get-phone">
+							<input type="text" name="" placeholder="手机号码" class="number">
+							<a href="javascript:;"><span class="get-yzm">获取验证码</span><span class="reget-yzm dn">重新获取(<em id="djs">60</em>)</span></a>
+						</div>
+						<input type="text" name="" class="yzm" placeholder="短信验证码">
+					</div>
+					<div class="form-box-item form-item-email dn">
+						<div class="form-get form-get-email"><input type="text" name="" placeholder="邮箱" class="number"></div>
+					</div>
+		            {#if !$cfg_geetest#}
+					<div class="form-newpw">
+						<input type="text" name="" placeholder="验证码" class="vericode">
+						<span class="code-box"><img src="{#$cfg_basehost#}/include/vdimgck.php" title="看不清？点击换一张" id="verifycode"></span>
+					</div>
+					{#/if#}
+					<div class="login-btn"><input type="submit" value="确定"></div>
+				</form>
+			</div>
+		</div>
+		<div class="other-login">
+			<div class="other-login-tit">
+				<span>其他方式登录</span>
+			</div>
+			<div class="other-login-img">
+				{#siteConfig action="getLoginConnect" return="login"#}
+				{#if $login.code == "wechat"#}
+				<a href="{#$cfg_basehost#}/api/login.php?type={#$login.code#}" class="wechat"><img src="{#$templets_skin#}images/weixin.png"></a>
+				{#elseif $login.code == "qq"#}
+				<a href="{#$cfg_basehost#}/api/login.php?type={#$login.code#}"><img src="{#$templets_skin#}images/qq.png"></a>
+				{#elseif $login.code == "sina"#}
+				<a href="{#$cfg_basehost#}/api/login.php?type={#$login.code#}"><img src="{#$templets_skin#}images/weibo.png"></a>
+				{#/if#}
+				{#/siteConfig#}
+			</div>
+		</div>
+	</div>
+	<div class="bg"></div>
+</div>
+<!-- 登录注册弹出层 e -->
+
+
+<div class="mask">
+	<div class="popup">
+		<div class="popup-txt">
+			<div class="popup-icon"><img src="{#$templets_skin#}images/pup.png" alt=""></div>
+			<p id="mailNote"></p>
+		</div>
+		<a href="javascript:;" class="know">我知道了</a>
+	</div>
+</div>
+
+<div id="maskReg"></div>
+<div id="popupReg-captcha-mobile"></div>
+
+<div id="maskFpwd"></div>
+<div id="popupFpwd-captcha-mobile"></div>
+
+{#/if#}
+
+
+
+
+{#include file="../../touch_bottom.html"#}
+
+
+<script src="{#$templets_skin#}js/common.js?v=12" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/slider.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/jquery.scroll.loading.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/swiper.min.js" type="text/javascript"></script>
+<script src="{#$cfg_basehost#}/static/js/ui/iscroll.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/index.js?v=13" type="text/javascript"></script>
+
+{#if !$userinfo#}
+{#if $cfg_geetest#}<script type="text/javascript" src="http://static.geetest.com/static/tools/gt.js"></script>{#/if#}
+<script src="{#$templets_skin#}js/login.js?v=17" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/register.js?v=12" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/fpwd.js?v=12" type="text/javascript"></script>
+{#/if#}
+
+
+
+</body>
+</html>

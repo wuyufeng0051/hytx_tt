@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>发帖</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.picker.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/iosSelect.css">
+	<style type="text/css">
+	body{
+		font-family: 微软雅黑;
+		background-color: #fff;
+	}
+	.item1{
+		width: 100%;
+		height: 45px;	
+		margin-top: 5px;
+		border-bottom: 1px solid #ddd;	
+	}
+	.item1 .left{
+		float: left;
+		line-height: 45px;
+		color: #7c7979;
+		font-size: 15px;
+	}
+	.item1 .left img{
+		height: 25px;
+		margin-left: 15px;
+		vertical-align: middle;
+		margin-right: 10px;
+	}
+	.item1 .right{
+		float: right;
+		margin-right: 15px;
+		font-size: 15px;
+		color: #fff;
+		background-color: #ff7300;
+		width: 60px;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		margin-top: 5px;
+		border-radius: 5px;
+	}
+	.item2{
+		width: 100%;
+	}
+	.item2 textarea{
+		font-size: 15px;
+		height: 300px;
+		border: none;
+	}
+	.item3{
+		width: 100%;
+		height: 45px;
+		border-top:1px solid #ddd;
+		border-bottom:1px solid #ddd;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+	}
+	.item3 .biaoqin{
+		float: left;
+		margin-left: 18px;
+		margin-right: 20px;
+		height: 45px;
+		line-height: 45px;
+	}
+	.biaoqin img{
+		width: 25px;
+		vertical-align: middle;
+		margin-top: -5px;
+	}
+	.item3 .photo{
+		line-height: 45px;
+	}
+	.photo img{
+		width: 25px;
+		vertical-align: middle;
+		margin-top: -5px;
+	}
+	.item3 button{
+		float: right;
+		margin-right: 15px;
+		border-radius: 5px;
+		margin-top: 5px;
+		height: 30px;
+		width: 55px;
+		text-align: center;
+	}
+	.mui-content{
+		background-color: #fff;
+	}
+	#upload{overflow: hidden;width: 100%;}
+	#upload img{width: 100%;} 
+	#upload>div{float: left;margin-right: 0px;margin-bottom: 0px;}
+	.pro_img{width:63px;height: 63px;overflow:hidden;float:left;position: relative;}
+	.pro_img img{ width: 25px;vertical-align: middle;margin-top: 5px;padding-left: 5px;}
+	.pro_img input{position: absolute;width: 100%;height: 100%;margin:0;opacity:0;z-index: 100;}
+	.closeimg{
+		position: absolute;
+		z-index: 888;
+		right: 5px;
+		top: 5px;
+		width: 10px;
+		height: 10px;
+
+	}
+	.item4{
+		width: 100%;
+		height: 180px;
+		display: none;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: 8888;
+		background-color: #fff;
+	}
+	/*.item5{
+		width: 100%;
+		height: 180px;
+		display: none;
+		color: #000;
+	}*/
+	.biaoqinbox{
+		width: 100%;
+		height: 180px;
+		/*display: none;*/
+		color: #000;
+		padding: 10px;
+		padding-left: 13px;
+		padding-right: 13px;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: 8888;
+		padding-top: 0;
+		background-color: #fff;
+	}
+	#upload div:last-child .closeimg{
+		display: none;
+	}
+	.swiper-container2 img{
+		display: block;
+		width: 100%;
+		height: 180px;
+	}
+	.swiper-container2{
+		width: 100%;
+		height: 180px;
+	}
+	.swiper-container2 ul{
+		width: 100%;
+		height: 140px;
+		list-style: none;
+		/*padding: 10px;*/
+		overflow: hidden;
+		padding-left: 7%;
+	}
+	.swiper-container2 ul li{
+		float: left;
+		width: 14.2%;
+		height: 35px;
+		line-height: 35px;
+		
+	}
+	.swiper-container2 ul li img{
+		width: 20px;
+		height: 20px;
+		padding-left: 3%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	</style>
+</head>
+<body>
+	<div class="mui-content">
+		<div class="item1">
+			<div class="left"><img src="__PUBLIC__/Home/img/laba.png">发帖规则&nbsp;></div>
+			<div class="right">发送</div>
+		</div>
+		<div class="item2">
+			<textarea type="text" placeholder="说点什么..." cols="8"><img  class="emojione"  alt="😚" src="//cdn.jsdelivr.net/emojione/assets/png/1F61A.png?v=1.2.4" />
+             </textarea>
+		</div>
+		<div class="item3">
+			<span class="biaoqin"><img id="biaoqinimg" src="__PUBLIC__/Home/img/biaoqin0.png"></span>
+			<span class="photo">
+				<img id="photoimg" src="__PUBLIC__/Home/img/img0.png">				
+			</span>
+			<button class="quxiao">取消</button>
+		</div>
+		<div class="item4">
+			<div style="overflow: hidden;width: 100%;">
+				<div id='upload'><div>
+					<a class='pro_img' id='a1'>
+					<input type='file' id='file1'  accept='image/*' runat="server" capture="camera" multiple='multiple' name='pic[]' onchange='t1(1)'/>
+					<img src='__PUBLIC__/Home/img/uploadimg.png' id='img1'>
+					<img class="closeimg" style="height: 18px;width: 18px;padding-left: 0;" src="__PUBLIC__/Home/img/closeimg.png" onclick="closeimg(this)">
+					</a>
+					<img  id='hidden1' style='display:none;'>
+				</div>
+			</div>
+			<p style="position: absolute;bottom: 0;left: 30%;">最多上传9张图片</p>
+		</div>
+		</div>
+		<div class="item5 biaoqinbox">
+				<!--图片轮播区-->
+		<div class="swiper-container2" style="position: relative;">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide" style="margin-top: 13px;">
+ 						<ul>
+						  <volist name="res_e" id='v'>
+							<li><img src="__PUBLIC__/../{$v.expression_path}"></li>
+						  </volist>	 
+						</ul>
+ 					 
+				</div>
+ 			</div>
+			<div class="swiper-pagination" style="position: absolute;bottom: 10px;"></div>
+		</div>
+		</div>
+	</div>
+
+
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$(".biaoqinbox").hide();
+	});
+		$('.biaoqin').on('tap',function(){
+			 document.getElementById("biaoqinimg").src = "__PUBLIC__/Home/img/baioqin.png";
+			 document.getElementById("photoimg").src = "__PUBLIC__/Home/img/img0.png";
+			  $('.item3').css('bottom','180px');
+			  $('.item4').css('display','none');
+			  $('.item5').css('display','block');
+		});
+		$('.photo').on('tap',function(){
+			 document.getElementById("biaoqinimg").src = "__PUBLIC__/Home/img/biaoqin0.png";
+			 document.getElementById("photoimg").src = "__PUBLIC__/Home/img/img.png";
+			 $('.item3').css('bottom','180px');
+			 $('.item4').css('display','block');
+			 $('.item5').css('display','none');
+		});
+		$('.quxiao').on('tap',function(){
+			document.getElementById("biaoqinimg").src = "__PUBLIC__/Home/img/biaoqin0.png";
+			document.getElementById("photoimg").src = "__PUBLIC__/Home/img/img0.png";
+			$('.item3').css('bottom','0');
+			$('.item4').css('display','none');
+			$('.item5').css('display','none');
+		});
+
+		/**
+		 * 图片上传
+		 */
+		
+		name_pic=1;
+		function t1(o){
+			if(o==1 || name_pic!=1){
+			var file="file"+o;
+			var img="img"+o;
+			var hid="hidden"+o;
+			var aa="a"+o;
+			}else{
+
+			var file="file"+name_pic;
+			var img="img"+name_pic;
+			var hid="hidden"+name_pic;
+			var aa="a"+name_pic;
+			}
+			var docObj = document.getElementById(file);
+			var imgObjPreview = document.getElementById(img);
+			var hidden=document.getElementById(hid);
+			// alert(hidden);
+			if (docObj.files && docObj.files[0]) {
+				hidden.src=window.URL.createObjectURL(docObj.files[0]); //获取file文件的路径
+				hidden.onload=function(){
+					var width=hidden.width;
+					var height=hidden.height;
+					var a=document.getElementById(aa);
+						if(width>height){
+						imgObjPreview.style.cssText='width:100%';	//重写css样式
+						}else{
+						imgObjPreview.style.cssText='height:100%;width:auto;';					
+						}
+				imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+				imgObjPreview.style.display = 'block';
+				}
+			}else{
+				return false;
+			}
+			if(o==name_pic){
+				var count=$('.pro_img').length;				
+				if(count<9){
+				name_pic++;
+			var pic_div="<div><a class='pro_img' id='a"+name_pic+"' ><input type='file' id='file"+name_pic+"'  accept='image/*' multiple='multiple' name='pic[]' onchange='t1("+name_pic+")'/><img src='__PUBLIC__/Home/img/uploadimg.png' id='img"+name_pic+"'><img class='closeimg' style='height: 20px;width: 20px;padding-left: 0;'' src='__PUBLIC__/Home/img/closeimg.png' onclick='closeimg(this)'></a><img  id='hidden"+name_pic+"' style='display:none;'></div>";
+			$('#upload').append(pic_div); 
+			}		
+		}
+
+	}
+
+	function closeimg(obj){
+		var imgid =  $(obj).parent().attr('id');
+		//alert(imgid);
+		document.getElementById(imgid).remove();
+	}
+
+	var mySwiper = new Swiper('.swiper-container2',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: false
+		});
+	</script>
+</body>

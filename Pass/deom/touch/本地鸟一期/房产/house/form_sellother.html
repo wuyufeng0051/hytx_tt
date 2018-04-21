@@ -1,0 +1,203 @@
+<div class="row-fluid">
+
+    <div class="span12">
+        <h3 class="page-title">
+            房产信息
+        </h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="index">房产信息</a>
+                <i class="icon-angle-right"></i>
+            </li>
+            <li>
+                <a href="index?range=sellother">出售其他房</a>
+                <i class="icon-angle-right"></i>
+            </li>
+            <li>{$Think.get.sell_other_id}</li>
+        </ul>
+    </div>
+</div>
+
+<form class="form-horizontal" action="change" id="form">
+    <div class="control-group">
+        <label class="control-label">#:</label>
+        <div class="controls" >
+            <input type="text" name="sell_other_id" value="{$rend.sell_other_id}" class="m-wrap medium" readonly="" id="id">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">图片:</label>
+        <div class="controls">
+            <div class="fileupload fileupload-new" data-provides="fileupload">
+                {volist name='img' id='io'}
+                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;float:left; margin-right: 10px">
+                    <img src="../../../../{$io.imgs_path}" alt="" style="height: 150px">
+                </div>
+                {/volist}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="control-group">
+        <label class="control-label">标题:</label>
+        <div class="controls" >
+            <input type="text" name="sell_other_title" value="{$rend.sell_other_title}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">类型:</label>
+        <div class="controls" >
+            <input type="text" name="sell_other_class" value="{$rend.clas.classify2_name}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">售价:</label>
+        <div class="controls" >
+            {if condition='$rend.sell_other_price==0'}
+            <input type="text" name="sell_other_price" value="面议" class="m-wrap medium" readonly="">
+            {else /}
+            <input type="text" name="sell_other_price" value="{$rend.sell_other_price}万" class="m-wrap medium" readonly="">
+            {/if}
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">面积:</label>
+        <div class="controls" >
+            <input type="text" name="sell_other_acreage" value="{$rend.sell_other_acreage}平米" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">来源:</label>
+        <div class="controls" >
+            <input type="text" name="sell_other_source" value="{$rend.source.classify2_name}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">联系人:</label>
+        <div class="controls" >
+            <input type="text" name="sell_other_name" value="{$rend.sell_other_name}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">联系方式:</label>
+        <div class="controls" >
+            <input type="text" name="sell_other_phone" value="{$rend.sell_other_phone}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">地址:</label>
+        <div class="controls">
+            <textarea class="large m-wrap" name="sell_other_address" rows="2" readonly="">{$rend.sell_other_address}</textarea>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">描述:</label>
+        <div class="controls">
+            <textarea class="large m-wrap" name="sell_other_desc" rows="3" readonly="">{$rend.sell_other_desc}</textarea>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">类型:</label>
+        <div class="controls">
+            <select class="small m-wrap" tabindex="1" name="sell_other_type" disabled>
+                <option value="0" {if condition="$rend.sell_other_type=='其他'"}selected{/if}>其他</option>
+                <option value="1" {if condition="$rend.sell_other_type=='商铺'"}selected{/if}>商铺</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">发布日期:</label>
+        <div class="controls" >
+            <input type="text" name="sell_other_time" value="{$rend.sell_other_time}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">发布者id:</label>
+        <div class="controls" >
+            <input type="text" name="sell_other_uid" value="{$rend.sell_other_uid}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">浏览次数:</label>
+        <div class="controls" >
+            <input type="text" name="sell_other_browse" value="{$rend.sell_other_browse}" class="m-wrap medium" readonly="">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">置顶:</label>
+        <div class="controls">
+            <select class="small m-wrap" name="sell_other_is_top" disabled>
+                <option value="0" {if condition="$rend.sell_other_is_top=='否'"}selected{/if}>否</option>
+                <option value="1" {if condition="$rend.sell_other_is_top=='是'"}selected{/if}>是</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">状态:</label>
+        <div class="controls">
+            <select class="small m-wrap" tabindex="1" name="sell_other_status" id="sell_other_status">
+                <option value="0" {if condition="$rend.sell_other_status==0"}selected{/if}>正常</option>
+                <option value="-1" {if condition="$rend.sell_other_status==-1"}selected{/if}>已删</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button type="button" class="btn blue btn-save"><i class="icon-ok"></i> 保存</button>
+        <!-- <button type="button" class="btn btn-qx">返回</button> -->
+        <button type="button" class="btn red" href="#form_modal" data-toggle="modal" >删除</button>
+    </div>
+    {include file="estate/tc_sellother2" /}
+</form>
+
+<input type="hidden" id="name" value="sell_other_id">
+<input type="hidden" id="sty" value="{$rend.sell_other_uid}">
+<input type="hidden" id="str" value="{$rend.sell_other_id}">
+
+
+<script>
+    $(document).ready(function () {
+        $(".btn-save").click(function(){
+            if(confirm('确定保存吗?')) {
+                var url = $('#form').attr('action');
+                var status=$('#sell_other_status').val();
+                var id=$('#id').val();
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {
+                        sell_other_status:status,
+                        sell_other_id:id
+                    },
+                    success: function (data) {
+                        if (data.code == 0) {
+                            location.href = history.back(-1);
+                        }
+                    }
+                });
+                return false;
+            }else {
+                return false;
+            }
+        })
+    })
+</script>
+
+
+

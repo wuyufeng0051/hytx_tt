@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+    <script>
+      $(function($) { 
+          $('[data-rel="tooltip"]').tooltip();
+          $('[data-rel="popover"]').popover();
+        })
+      </script>
+  <script src="js/bootstrap.min.js"></script>
+
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-cny cny-icon"></i>
+        <a href="#">账户余额</a></li>
+      <li class="active">提现</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="profile-user-info profile-user-info-striped">
+            <div class="profile-info-row">
+              <div class="profile-info-name">当前余额</div>
+              <div class="profile-info-value">
+                <span style="color:red" id="dqye">3523.36</span>&nbsp;&nbsp;&nbsp;元</div></div>
+            <div class="profile-info-row">
+              <div class="profile-info-name">银行类型</div>
+              <div class="profile-info-value">中国建设银行</div></div>
+            <div class="profile-info-row">
+              <div class="profile-info-name">开户行所在地</div>
+              <div class="profile-info-value">湖北省宜昌市</div></div>
+            <div class="profile-info-row">
+              <div class="profile-info-name">开户行网点</div>
+              <div class="profile-info-value">秭归支行</div></div>
+            <div class="profile-info-row">
+              <div class="profile-info-name">联行号</div>
+              <div class="profile-info-value">105526769089</div></div>
+            <div class="profile-info-row">
+              <div class="profile-info-name">银行开户名</div>
+              <div class="profile-info-value">向俊</div></div>
+            <div class="profile-info-row">
+              <div class="profile-info-name">银行卡号</div>
+              <div class="profile-info-value">6217002830005537420</div></div>
+            <div class="profile-info-row">
+              <div class="profile-info-name">银行账户类型</div>
+              <div class="profile-info-value">私人</div></div>
+            <div class="profile-info-row">
+              <div class="profile-info-name">填写提现金额</div>
+              <div class="profile-info-value">
+                <input type="text" value="100" id="convervalue">
+                <span class="help-button" data-rel="tooltip" data-placement="left" title="这里填写的是数字，如填写 100 则表示提现100元。提现金额不低于100元">
+                  <span class="ace-icon fa fa-info bigger-120"></span>
+                </span>
+              </div>
+            </div>
+            <div class="profile-info-row">
+              <div class="profile-info-name">简要说明</div>
+              <div class="profile-info-value">
+                <textarea rows="3" cols="30" id="describe"></textarea>
+                <span class="help-button" data-rel="tooltip" data-placement="left" title="选填部分。填写提现的简要说明，比如你的一些要求，管理员在给你打款的时候，会看到，最多100个字">
+                  <span class="ace-icon fa fa-info bigger-120"></span>
+                </span>
+              </div>
+            </div>
+            <div class="profile-info-row">
+              <div class="profile-info-name">提现密码</div>
+              <div class="profile-info-value">
+                <input type="password" name="password" id="password" style="width:100px;">
+                <span class="help-button" data-rel="tooltip" data-placement="left" title="乐外卖提现密码">
+                  <span class="ace-icon fa fa-info bigger-120"></span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button id="submit_button" class="btn btn-info" type="button">
+              <i class="ace-icon fa fa-check bigger-110"></i>提交</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

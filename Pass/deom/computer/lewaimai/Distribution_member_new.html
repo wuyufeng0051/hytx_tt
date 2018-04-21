@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-gear gear-icon"></i>
+      <li class="active">系统设置</li>
+      <li>
+        <a href="#">配送员管理</a></li>
+      <li class="active">新建配送员</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style type="text/css">.touxiang{margin-left:100px;}</style>
+      <div class="row">
+        <div class="col-sm-12">
+          <form enctype="multipart/form-data" class="form-horizontal" id="shop-form" action="/courier/create" method="post">
+            <div class="alert alert-danger" id="shop-form_es_" style="display:none">
+              <p>请更正下列输入错误:</p>
+              <ul>
+                <li>dummy</li></ul>
+            </div>
+            <input name="oldAdminId" value="56695" type="hidden">
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="Courier_name">姓名</label></label>
+              <input class="col-sm-2" size="20" maxlength="20" name="Courier[name]" id="Courier_name" type="text"></div>
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="Courier_username">app用户名</label></label>
+              <input class="col-sm-2" size="20" maxlength="20" name="Courier[username]" id="Courier_username" type="text"></div>
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="Courier_password">app密码</label></label>
+              <input class="col-sm-2" maxlength="16" name="Courier[password]" id="Courier_password" type="password" value=""></div>
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="Courier_phone">手机号</label></label>
+              <input class="col-sm-2" size="20" maxlength="20" name="Courier[phone]" id="Courier_phone" type="text"></div>
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="Courier_age">年龄</label></label>
+              <input class="col-sm-2" size="3" maxlength="3" name="Courier[age]" id="Courier_age" type="text"></div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Courier_sex">性别</label>
+              <select name="Courier[sex]" id="Courier_sex">
+                <option value="1" selected="selected">男</option>
+                <option value="0">女</option></select>
+            </div>
+            <div class="form-group" style="width:300px;">
+              <p style="font-size:14px;padding-left:10px;">头像上传(
+                <span style="color:red;">建议上传图片大小为100*100</span>)</p>
+              <input id="ytace-file-input" type="hidden" value="" name="Courier[pic]">
+              <label class="ace-file-input">
+                <input class="col-sm-4 touxiang" id="ace-file-input" size="10" onchange="preview1(this)" name="Courier[pic]" type="file">
+                <span class="ace-file-container" data-title="选择">
+                  <span class="ace-file-name" data-title="上传图片...">
+                    <i class=" ace-icon fa fa-upload"></i>
+                  </span>
+                </span>
+              </label>
+            </div>
+            <div id="imglist">
+            <input type="hidden" name="pic" value="" id="picvalue">
+            <input type="hidden" name="icontype" value="0" id="icontype">
+            <div class="clearfix form-actions">
+              <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="submit">
+                  <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

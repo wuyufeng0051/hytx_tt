@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var photoSize = {#$photoSize#}, photoType = "{#$photoType#}",
+    addrListArr = {#$addrListArr#}, modelType = "car", adminPath = "{#$adminPath#}";
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="aid" id="aid" value="{#$aid#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt>经销商：</dt>
+    <dd><a href="javascript:;" class="btn" id="cOffer" data-id="{#$aid#}">{#$aname#}<span class="caret"></span></a></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="name">姓名：</label></dt>
+    <dd>
+      <input class="input-large" type="text" name="name" id="name" value="{#$name#}" maxlength="10" data-regex=".{2,10}" />
+      <span class="input-tips"><s></s>请输入顾问姓名，2-10位</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>照片：</dt>
+    <dd>
+      <input name="litpic" type="hidden" id="litpic" value="{#$litpic#}" />
+      {#if $litpic != ""#}
+      <div id="license" class="uploadinp uploading"><span id="uploadBt"></span></div>
+      <div id="licenseFiles" style="display:inline-block;"><a href='{#$cfg_attachment#}{#$litpic#}' target="_blank"><img alt="" src="{#$cfg_attachment#}{#$litpic#}&type=middle" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;" style="display:inline-block;">删除图片</a>
+      {#else#}
+      <div id="license" class="uploadinp"><span id="uploadBt"></span></div>
+      <div id="licenseFiles"><a href="#" target="_blank" title=""><img alt="" src="" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;">删除图片</a>
+      {#/if#}
+      <div id="licenseProgress" class="progressBar">
+        <i id="licenseProgressBar" class="progress"></i>
+        <span id="licensePercent">0%</span>
+        <a id="cancelUploadBt" href="javascript:;">取消</a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="duty">职务：</label></dt>
+    <dd>
+      <input class="input-large" type="text" name="duty" id="duty" value="{#$duty#}" maxlength="15" data-regex=".*" />
+      <span class="input-tips"><s></s>请输入顾问职务</span>
+    </dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

@@ -1,0 +1,3138 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>乐外卖 - 店铺分类导航新增</title>
+
+		<meta name="description" content="乐外卖后台管理系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+		<!--[if !IE]> -->
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='/ace/js/jquery.min.js'>"+"<"+"/script>");
+		</script>
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='/ace/js/jquery1x.min.js'>"+"<"+"/script>");
+		</script>
+		<![endif]-->
+
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='/ace/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- bootstrap & fontawesome -->
+		<link rel="stylesheet" href="/ace/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/ace/css/font-awesome.min.css" />
+
+		<link rel="stylesheet" href="/ace/css/chosen.min.css" />
+		<link rel="stylesheet" href="/ace/css/jquery.gritter.min.css" />
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="/ace/css/jquery-ui.min.css" />
+
+		<!-- text fonts -->
+		<link rel="stylesheet" href="/ace/css/ace-fonts.min.css" />
+	
+
+		<!-- ace styles -->
+		<link rel="stylesheet" href="/ace/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+		<!-- 新建修改订单 -->
+	   	 <link rel="stylesheet" href="/css/order.css">
+
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="/ace/css/ace-part2.min.css" class="ace-main-stylesheet" />
+		<![endif]-->
+
+		<!--  <link rel="stylesheet" href="/ace/css/ace-skin-lewaimai.css" />-->
+
+		<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="/ace/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+		<!-- 自定义全局css -->
+		<link rel="stylesheet" href="/css/global.css" />
+
+		<!-- ace settings handler -->
+		<script src="/ace/js/ace-extra.min.js"></script>
+
+		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+		<!--[if lte IE 8]>
+		<script src="/ace/js/html5shiv.min.js"></script>
+		<script src="/ace/js/respond.min.js"></script>
+		<![endif]-->
+		<script src="/js/jquery-migrate-1.1.0.min.js"></script>
+
+		<script src="/js/lib/PCASClass.js"></script>
+		
+		<script src="/js/diy.js"></script>
+	</head>
+
+	<body class="no-skin">
+		<!-- #section:basics/navbar.layout -->
+		<div id="navbar" class="navbar navbar-default">
+			<script type="text/javascript">
+				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="navbar-container" id="navbar-container">
+				<!-- #section:basics/sidebar.mobile.toggle -->
+				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+					<span class="sr-only">Toggle sidebar</span>
+
+					<span class="icon-bar"></span>
+
+					<span class="icon-bar"></span>
+
+					<span class="icon-bar"></span>
+				</button>
+
+				<!-- /section:basics/sidebar.mobile.toggle -->
+				<div class="navbar-header pull-left">
+					<a href="https://www.lewaimai.com" class="navbar-brand" style="padding: 5px 0 0 0;">
+						<small>
+							<img style="width:38px;height:38px" src="/img/logo_38.png">
+							乐外卖后台管理系统
+						</small>
+					</a><!-- /.brand -->
+				</div><!-- /.navbar-header -->
+
+				<div class="navbar-buttons navbar-header pull-right" role="navigation">
+					<ul class="nav ace-nav">
+						
+						<li class="red">
+							<a class="dropdown-toggle" href="http://mall.lewaimai.com/" target="_blank">
+								<i class="ace-icon fa fa-shopping-cart icon-animated-vertical"></i>
+														官方商城
+							</a>
+						</li>
+						<li class="green">
+							<a class="dropdown-toggle" href="http://bbs.lewaimai.com/" target="_blank">
+								<i class="ace-icon fa fa-comments-o icon-animated-vertical"></i>
+								官方论坛
+							</a>
+						</li>
+						<li class="purple">
+							<a class="dropdown-toggle" href="/home/help">
+								<i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+								帮助中心
+							</a>
+						</li>
+
+						<li class="light-blue">
+							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+																		<img class="nav-user-photo" src="/img/logo.png" alt="Jason's Photo" />
+																<span class="user-info">
+									<small>欢迎您，</small>
+									秭归金点子外卖平台								</span>
+
+								<i class="ace-icon fa fa-caret-down"></i>
+							</a>
+
+							<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+								<li>
+									<a href="/wxconfig/binding">
+										<i class="ace-icon fa fa-link"></i>
+										微信公众号绑定
+									</a>
+								</li>
+
+								<li>
+									<a href="/config/account">
+										<i class="ace-icon fa fa-user"></i>
+										帐号设置
+									</a>
+								</li>
+
+								<li class="divider"></li>
+
+								<li>
+									<a href="/level/pay">
+										<i class="ace-icon fa fa-star"></i>
+										充值会员
+									</a>
+								</li>
+
+								<li>
+									<a href="/balance/index">
+										<i class="ace-icon fa fa-cny"></i>
+										&nbsp;提现
+									</a>
+								</li>
+								<li>
+									<a href="http://mall.lewaimai.com/" target="_blank">
+										<i class="ace-icon fa fa-shopping-cart" ></i>
+										官方商城
+									</a>
+								</li>
+
+								<li class="divider"></li>
+
+								<li>
+									<a href="/logout.html">
+										<i class="ace-icon fa fa-power-off"></i>
+										退出
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul><!-- /.ace-nav -->
+				</div><!-- /.navbar-header -->
+		 	</div><!-- /.container -->
+		</div>
+
+		<!-- /section:basics/navbar.layout -->
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<!-- #section:basics/sidebar -->
+			<div id="sidebar" class="sidebar                  responsive">
+				<script type="text/javascript">
+					try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+				</script>
+
+				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+						<a class="btn btn-success" href="/statistics/chartrevenue">
+							<i class="ace-icon fa fa-bar-chart-o"></i>
+						</a>
+
+						<a class="btn btn-warning" href="/shop/index">
+							<i class="ace-icon fa fa-desktop"></i>
+						</a>
+
+						<a class="btn btn-info" href="/order/viewopen">
+							<i class="ace-icon fa fa-smile-o"></i>
+						</a>
+
+						<a class="btn btn-danger" href="/level/pay">
+							<i class="menu-icon fa fa-shopping-bag"></i>
+						</a>
+					</div>
+
+					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+						<span class="btn btn-success"></span>
+
+						<span class="btn btn-info"></span>
+
+						<span class="btn btn-warning"></span>
+
+						<span class="btn btn-danger"></span>
+					</div>
+				</div><!-- #sidebar-shortcuts -->
+
+				<ul class="nav nav-list">
+					<li >
+						<a href="/home/index">
+							<i class="menu-icon fa fa-home"></i>
+							<span class="menu-text">首页 </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+										<li >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-bar-chart-o"></i>
+							<span class="menu-text">统计 </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+						<ul class="submenu">
+							<li >
+								<a href="/statistics/chartbusiness">
+									<i class="menu-icon fa fa-caret-right"></i>
+									财务统计
+								</a>
+								
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/statistics/chartrevenue">
+									<i class="menu-icon fa fa-caret-right"></i>
+									外卖统计
+								</a>
+								
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/tangshi/chartrevenue">
+									<i class="menu-icon fa fa-caret-right"></i>
+									店内下单统计
+								</a>
+								
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/errands/statisticsrevenue">
+									<i class="menu-icon fa fa-caret-right"></i>
+									跑腿统计
+								</a>
+								
+								<b class="arrow"></b>
+							</li>							
+							<li >
+								<a href="/tuangouordercount/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									团购统计
+								</a>
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/shouyintai/chartrevenue">
+									<i class="menu-icon fa fa-caret-right"></i>
+									收银台统计
+								</a>
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="/znjstatistics/diancan">
+									<i class="menu-icon fa fa-caret-right"></i>
+									收银机统计
+								</a>
+								
+								<b class="arrow"></b>
+							</li>	
+
+							<li >
+								<a href="/member/analyse">
+									<i class="menu-icon fa fa-caret-right"></i>
+									会员统计
+								</a>
+								
+								<b class="arrow"></b>
+							</li>	
+							
+							<li >
+								<a href="/statistics/chartorderbytime">
+									<i class="menu-icon fa fa-caret-right"></i>
+									运营统计
+								</a>
+								
+								<b class="arrow"></b>
+							</li>					
+							<li >
+								<a href="/pay/chartrevenue">
+									<i class="menu-icon fa fa-caret-right"></i>
+									短信消费统计
+								</a>
+								
+								<b class="arrow"></b>
+							</li>
+
+							
+
+							
+						</ul>
+					</li>
+															<li class="active open">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-desktop"></i>
+							<span class="menu-text">店铺</span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li >
+								<a href="/shop/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									店铺管理
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/shoptable/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									桌位管理
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/shoptype/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									店铺分类
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/shoptypecombin/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									店铺分类组合
+								</a>
+								
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/shop/moduleindex">
+									<i class="menu-icon fa fa-caret-right"></i>
+									店铺首页模块
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="active">
+								<a href="/autoreplysystem/shopindexconfig">
+									<i class="menu-icon fa fa-caret-right"></i>
+									店铺导航设置
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="/autoreplysystem/shoplist">
+									<i class="menu-icon fa fa-caret-right"></i>
+									店铺列表设置
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="/printer/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									打印机绑定
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							
+												<li >
+								<a href="/pingtai/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									外卖平台绑定
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+												</ul>
+					</li>
+															<li >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-smile-o"></i>
+							<span class="menu-text">外卖订单</span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li >
+								<a href="/order/viewopen">
+									<i class="menu-icon fa fa-caret-right"></i>
+									订单管理
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/order/ordersearch">
+									<i class="menu-icon fa fa-caret-right"></i>
+									订单搜索
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/order/exportorder">
+									<i class="menu-icon fa fa-caret-right"></i>
+									导出订单
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+										
+										<li >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-hand-o-up"></i>
+							<span class="menu-text">店内下单</span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li >
+								<a href="/tangshi/viewopen">
+									<i class="menu-icon fa fa-caret-right"></i>
+									店内下单订单
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/tangshi/ordersearch">
+									<i class="menu-icon fa fa-caret-right"></i>
+									店内下单订单搜索
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/tangshi/setting">
+									<i class="menu-icon fa fa-caret-right"></i>
+									店内下单设置
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+					
+										<li >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-bicycle"></i>
+							<span class="menu-text">跑腿</span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li >
+								<a href="/errands/orderdaiqiang">
+									<i class="menu-icon fa fa-caret-right"></i>
+									跑腿订单
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/errands/categorylist">
+									<i class="menu-icon fa fa-caret-right"></i>
+									跑腿分类设置
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/errands/setting">
+									<i class="menu-icon fa fa-caret-right"></i>
+									跑腿设置
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+										
+										<li >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-cart-plus"></i>
+							<span class="menu-text">团购</span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+						
+						<ul class="submenu">
+							<li >
+								<a href="/tuangouhexiao/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									团购核销
+								</a>
+								
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/tuangouorder/viewopen">
+									<i class="menu-icon fa fa-caret-right"></i>
+									团购订单
+								</a>
+								
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/tuangoushopbrand/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									团购店铺品牌
+								</a>
+								
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/tuangoutype/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									团购分类
+								</a>
+								
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/tuangouset/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									团购设置
+								</a>
+								
+								<b class="arrow"></b>
+							</li>
+							
+						</ul>
+					</li>
+										
+					<li >
+						<a href="#" class="dropdown-toggle">
+							<!-- menu-icon fa fa-cny -->
+							<i class="menu-icon fa fa-cny"></i>
+							<span class="menu-text">收银台</span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li >
+								<a href="/shouyintai/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									收款订单
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/shouyintai/shouyintaisearch">
+									<i class="menu-icon fa fa-caret-right"></i>
+									收款订单搜索
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/shouyintai/setting">
+									<i class="menu-icon fa fa-caret-right"></i>
+									收银台设置
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+					
+										<li >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-tty"></i>
+							<span class="menu-text">智能收银机 </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+
+							<li >
+								<a href="/zhinengji/accountmanage">
+									<i class="menu-icon fa fa-caret-right"></i>
+									收银机账号管理
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<!--<li >
+								<a href="">
+									<i class="menu-icon fa fa-caret-right"></i>
+									正餐收银管理
+								</a>
+
+								<b class="arrow"></b>
+							</li>-->
+							<!--<li >
+								<a href="">
+									<i class="menu-icon fa fa-caret-right"></i>
+									店内呼叫服务
+								</a>
+
+								<b class="arrow"></b>
+							</li>-->
+							<li >
+								<a href="/zhinengji/rolemanage">
+									<i class="menu-icon fa fa-caret-right"></i>
+									收银机角色管理
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							
+							<li >
+								<a href="/zhinengji/jiqimalist">
+									<i class="menu-icon fa fa-caret-right"></i>
+									收银机列表
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							
+							<!-- <li >
+								<a href="">
+									<i class="menu-icon fa fa-caret-right"></i>
+									乐刷账号管理
+								</a>
+
+								<b class="arrow"></b>
+							</li> -->
+							<li >
+								<a href="/leshua/leshualist">
+									<i class="menu-icon fa fa-caret-right"></i>
+									乐刷账号列表
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="/zhinengji/diancanorder">
+									<i class="menu-icon fa fa-caret-right"></i>
+									收银机订单详情
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+					
+										<li >
+						<a href="/divpage/index">
+							<!-- <i class="menu-icon fa fa-caret-home"></i> -->
+							<i class="menu-icon fa fa-star"></i>
+							微页面
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+					
+										<!-- <li >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-cloud"></i>
+							<span class="menu-text">云分销</span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li >
+								<a href="">
+									<i class="menu-icon fa fa-caret-right"></i>
+									土特产分销
+								</a>
+
+								<b class="arrow"></b>
+							</li>		
+						</ul>
+					</li> -->
+					
+										<li >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-group"></i>
+							<span class="menu-text">客户管理</span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li >
+								<a href="/customer/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									顾客
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/member/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									会员
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/customer/customersearch">
+									<i class="menu-icon fa fa-caret-right"></i>
+									顾客搜索
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+															<li >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-comments-o"></i>
+							<span class="menu-text">顾客交流 </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li >
+								<a href="/message/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									店铺留言
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/message/comment">
+									<i class="menu-icon fa fa-caret-right"></i>
+									店铺评论
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/message/box">
+									<i class="menu-icon fa fa-caret-right"></i>
+									系统邮箱
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+															<li >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-flag-o"></i>
+							<span class="menu-text">营销活动</span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li >
+								<a href="/coupon/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									优惠券
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/extension/rotor">
+									<i class="menu-icon fa fa-caret-right"></i>
+									大转盘抽奖
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/signin/config">
+									<i class="menu-icon fa fa-caret-right"></i>
+									签到
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/point/pointprize">
+									<i class="menu-icon fa fa-caret-right"></i>
+									积分
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/ticket/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									二维码推广
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="/pay/smsmass">
+									<i class="menu-icon fa fa-caret-right"></i>
+									群发短信
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+                            <li >
+								<a href="/wxcoupon/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									微信现金红包
+								</a>
+								<b class="arrow"></b>
+							</li>
+
+							<!-- <li >
+								<a href="">
+									<i class="menu-icon fa fa-caret-right"></i>
+									优惠券红包
+								</a>
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="">
+									<i class="menu-icon fa fa-caret-right"></i>
+									收银台
+								</a>
+								<b class="arrow"></b>
+							</li> -->
+						</ul>
+					</li>
+										
+										<!-- <li >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-print"></i>
+							<span class="menu-text">打印机</span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li >
+								<a href="">
+									<i class="menu-icon fa fa-caret-right"></i>
+									打印机管理
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="">
+									<i class="menu-icon fa fa-caret-right"></i>
+									打印机设置
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li> -->
+					
+										<li >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-wechat"></i>
+							<span class="menu-text">公众号设置 </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li >
+								<a href="/wxconfig/binding">
+									<i class="menu-icon fa fa-caret-right"></i>
+									公众号绑定
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="#" class="dropdown-toggle">
+									<i class="menu-icon fa fa-caret-right"></i>
+									自动回复
+									<b class="arrow fa fa-angle-down"></b>
+								</a>
+
+								<b class="arrow"></b>
+
+								<ul class="submenu">
+									<li >
+										<a href="/autoreply/text">
+											<i class="menu-icon fa fa-caret-right"></i>
+											关键词自动回复
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+									<li >
+										<a href="/autoreply/subscribe">
+											<i class="menu-icon fa fa-caret-right"></i>
+											非关键词自动回复
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+									<li >
+										<a href="/autoreply/shopsearch">
+											<i class="menu-icon fa fa-caret-right"></i>
+											关键词搜索
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+									<li >
+										<a href="/autoreply/picture">
+											<i class="menu-icon fa fa-caret-right"></i>
+											图片素材
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+									<li >
+										<a href="/autoreply/news">
+											<i class="menu-icon fa fa-caret-right"></i>
+											图文素材
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+									<li >
+										<a href="/autoreply/otherinterface">
+											<i class="menu-icon fa fa-caret-right"></i>
+											第三方接口设置
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+								</ul>
+							</li>
+
+							<li >
+								<a href="/wxconfig/custommenu">
+									<i class="menu-icon fa fa-caret-right"></i>
+									公众号自定义菜单
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="/template/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									模板消息设置
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="/wxconfig/weixinzhifu">
+									<i class="menu-icon fa fa-caret-right"></i>
+									微信支付
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+															<li >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-gear"></i>
+							<span class="menu-text">系统设置 </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li >
+								<a href="/config/account">
+									<i class="menu-icon fa fa-caret-right"></i>
+									帐号设置
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="/autoreplysystem/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									系统功能图文
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							
+							
+
+							<li >
+								<a href="/printer/lewaimaiprinterindex">
+									<i class="menu-icon fa fa-caret-right"></i>
+									打印机管理
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="/courier/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									配送员管理
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							
+							<li >
+								<a href="/picture/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									素材管理
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="/config/employee">
+									<i class="menu-icon fa fa-caret-right"></i>
+									员工账号
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="/validate/config">
+									<i class="menu-icon fa fa-caret-right"></i>
+									身份认证
+								</a>
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+															<li >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-cny"></i>
+							<span class="menu-text">账户余额</span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li >
+								<a href="/balance/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									提现
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="/balance/history">
+									<i class="menu-icon fa fa-caret-right"></i>
+									提现记录
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="/balance/erhistory">
+									<i class="menu-icon fa fa-caret-right"></i>
+									余额记录
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="/balance/setting">
+									<i class="menu-icon fa fa-caret-right"></i>
+									提现账号设置
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+															<li >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-shopping-bag"></i>
+							<span class="menu-text">产品购买</span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+						<ul class="submenu">
+							<li >
+								<a href="/level/pay">
+									<i class="menu-icon fa fa-caret-right"></i>
+									会员充值
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="/pay/smsindex">
+									<i class="menu-icon fa fa-caret-right"></i>
+									短信充值
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="/printer/paysnkey">
+									<i class="menu-icon fa fa-caret-right"></i>
+									打印机SN和KEY
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+<!-- 
+							<li >
+								<a href="">
+									<i class="menu-icon fa fa-caret-right"></i>
+									硬件设备
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li >
+								<a href="">
+									<i class="menu-icon fa fa-caret-right"></i>
+									物料制作
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							
+							<li >
+								<a href="">
+									<i class="menu-icon fa fa-caret-right"></i>
+									商家贷款
+								</a>
+								
+								<b class="arrow"></b>
+							</li>
+							 -->
+							<li >
+								<a href="/leshuacredit/index">
+									<i class="menu-icon fa fa-caret-right"></i>
+									乐刷速贷
+								</a>
+								
+								<b class="arrow"></b>
+							</li>
+							<li >
+								<a href="http://mall.lewaimai.com/" target="_blank">
+									<i class="menu-icon fa fa-caret-right"></i>
+									官方商城
+								</a>
+								
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+										
+				</ul><!-- /.nav-list -->
+
+				<!-- #section:basics/sidebar.layout.minimize -->
+				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+					<i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+				</div>
+
+				<!-- /section:basics/sidebar.layout.minimize -->
+				<script type="text/javascript">
+					try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+				</script>
+			</div>
+
+			<div class="main-content">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<script type="text/javascript">
+						try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+					</script>
+
+					<ul class="breadcrumb">
+						<i class="ace-icon fa fa-desktop desktop-icon"></i><li class="active">店铺</li><li><a href="/autoreplysystem/shopcategory">店铺分类导航设置</a></li><li class="active">店铺分类导航新增</li>					</ul><!-- .breadcrumb -->
+				</div>
+
+				<!-- /section:basics/content.breadcrumbs -->
+				<div class="page-content">
+					<!-- /section:settings.box -->
+					<div class="page-content-area">
+						<script>
+$(function() {
+	$("#link_type").on('change', function() {
+		var link_type = parseInt($(this).val());
+		$('#category_list_wrapper,#shop_list_wrapper,#link_wrapper').hide();
+		if (link_type == 1)
+		{
+			$("#link_wrapper").show();
+		}
+		else if (link_type == 2)
+		{
+			$("#shop_list_wrapper").show();
+		}
+		else if (link_type == 3)
+		{
+			$("#category_list_wrapper").show();
+		}
+	});
+});
+</script>
+<div class="row">
+  <div class="col-xs-12">
+    <form enctype="multipart/form-data" class="form-horizontal" id="shop_category_nav_add_form" action="/autoreplysystem/shopcategoryadd" method="post">      <div class="alert alert-danger" id="shop_category_nav_add_form_es_" style="display:none"><p>请更正下列输入错误:</p>
+<ul><li>dummy</li></ul></div>      <div class="form-group">
+        <label class="col-sm-1"><label for="ShopCategoryNav_title">标题</label></label>
+        <input class="col-sm-5" size="15" maxlength="100" name="ShopCategoryNav[title]" id="ShopCategoryNav_title" type="text" />      </div>
+     
+      <div class="form-group" style="margin-bottom:0px;">
+			<label class="col-sm-3">选择图片类型&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<select id="checkimg"><option value="0">默认图片</option><option value="1">空间图片</option><option value="2">本地上传图片</option></select></label>
+	  </div>
+	  <div class="form-group" id="moren" style="width:400px;padding-left:12px;margin-bottom:50px;">
+				<div id="lztpopup" style="width:800px;">
+					<div class="row">
+						<div class="col-sm-12">
+														<div style="width:1000px;height:auto;">	
+								<div style="height:auto;width:1000px;position:relative;">
+									<div id="nowselectimagebox" style="display:none;position:fixed;top:50px;z-index:99999;">
+										<img src=""  id="nowselectimage"/>
+									</div>		
+																			<div class="box">
+											<div class="boximg">
+												<img class="imagesclass" src="/img/lewaimaiindex/zhongshikuaican.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+											</div>
+											<div class="imagename">
+												zhongshikuaican											</div>
+											<div class="boxcontroller">
+												<input type="radio" name="morenicon" value="zhongshikuaican" class="morenicon"  src="/img/lewaimaiindex/zhongshikuaican.png"/>选择
+											</div>
+										</div>					
+																				<div class="box">
+											<div class="boximg">
+												<img class="imagesclass" src="/img/lewaimaiindex/lingshi.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+											</div>
+											<div class="imagename">
+												lingshi											</div>
+											<div class="boxcontroller">
+												<input type="radio" name="morenicon" value="lingshi" class="morenicon"  src="/img/lewaimaiindex/lingshi.png"/>选择
+											</div>
+										</div>					
+																				<div class="box">
+											<div class="boximg">
+												<img class="imagesclass" src="/img/lewaimaiindex/bianlidian.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+											</div>
+											<div class="imagename">
+												bianlidian											</div>
+											<div class="boxcontroller">
+												<input type="radio" name="morenicon" value="bianlidian" class="morenicon"  src="/img/lewaimaiindex/bianlidian.png"/>选择
+											</div>
+										</div>					
+																				<div class="box">
+											<div class="boximg">
+												<img class="imagesclass" src="/img/lewaimaiindex/mianbao.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+											</div>
+											<div class="imagename">
+												mianbao											</div>
+											<div class="boxcontroller">
+												<input type="radio" name="morenicon" value="mianbao" class="morenicon"  src="/img/lewaimaiindex/mianbao.png"/>选择
+											</div>
+										</div>					
+																				<div class="box">
+											<div class="boximg">
+												<img class="imagesclass" src="/img/lewaimaiindex/shuiguo.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+											</div>
+											<div class="imagename">
+												shuiguo											</div>
+											<div class="boxcontroller">
+												<input type="radio" name="morenicon" value="shuiguo" class="morenicon"  src="/img/lewaimaiindex/shuiguo.png"/>选择
+											</div>
+										</div>					
+																				<div class="box">
+											<div class="boximg">
+												<img class="imagesclass" src="/img/lewaimaiindex/tianpin.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+											</div>
+											<div class="imagename">
+												tianpin											</div>
+											<div class="boxcontroller">
+												<input type="radio" name="morenicon" value="tianpin" class="morenicon"  src="/img/lewaimaiindex/tianpin.png"/>选择
+											</div>
+										</div>					
+																				<div class="box">
+											<div class="boximg">
+												<img class="imagesclass" src="/img/lewaimaiindex/yinpin.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+											</div>
+											<div class="imagename">
+												yinpin											</div>
+											<div class="boxcontroller">
+												<input type="radio" name="morenicon" value="yinpin" class="morenicon"  src="/img/lewaimaiindex/yinpin.png"/>选择
+											</div>
+										</div>					
+																				<div class="box">
+											<div class="boximg">
+												<img class="imagesclass" src="/img/lewaimaiindex/shenghuofuwu.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+											</div>
+											<div class="imagename">
+												shenghuofuwu											</div>
+											<div class="boxcontroller">
+												<input type="radio" name="morenicon" value="shenghuofuwu" class="morenicon"  src="/img/lewaimaiindex/shenghuofuwu.png"/>选择
+											</div>
+										</div>					
+																				<div class="box">
+											<div class="boximg">
+												<img class="imagesclass" src="/img/lewaimaiindex/xishikuaican.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+											</div>
+											<div class="imagename">
+												xishikuaican											</div>
+											<div class="boxcontroller">
+												<input type="radio" name="morenicon" value="xishikuaican" class="morenicon"  src="/img/lewaimaiindex/xishikuaican.png"/>选择
+											</div>
+										</div>					
+																				<div class="box">
+											<div class="boximg">
+												<img class="imagesclass" src="/img/lewaimaiindex/fenmianxiaochi.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+											</div>
+											<div class="imagename">
+												fenmianxiaochi											</div>
+											<div class="boxcontroller">
+												<input type="radio" name="morenicon" value="fenmianxiaochi" class="morenicon"  src="/img/lewaimaiindex/fenmianxiaochi.png"/>选择
+											</div>
+										</div>					
+																				<div class="box">
+											<div class="boximg">
+												<img class="imagesclass" src="/img/lewaimaiindex/rihanliaoli.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+											</div>
+											<div class="imagename">
+												rihanliaoli											</div>
+											<div class="boxcontroller">
+												<input type="radio" name="morenicon" value="rihanliaoli" class="morenicon"  src="/img/lewaimaiindex/rihanliaoli.png"/>选择
+											</div>
+										</div>					
+																				<div class="box">
+											<div class="boximg">
+												<img class="imagesclass" src="/img/lewaimaiindex/yexiao.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+											</div>
+											<div class="imagename">
+												yexiao											</div>
+											<div class="boxcontroller">
+												<input type="radio" name="morenicon" value="yexiao" class="morenicon"  src="/img/lewaimaiindex/yexiao.png"/>选择
+											</div>
+										</div>					
+																		</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group" id="kongjian" style="width:400px;padding-left:12px;display:none;">
+				<div class="btn btn-success" id='selectImg'>选择图片</div>
+			</div>
+			<div class="form-group" id="bendi" style="width:400px;padding-left:12px;display:none;">
+				<input id="ytace-file-input" type="hidden" value="" name="ShopCategoryNav[image_path]" /><input class="col-sm-4" id="ace-file-input" size="50" onchange="preview1(this)" name="ShopCategoryNav[image_path]" type="file" />			</div>
+				
+				<div id="imglist">
+										<img style="width:80px;height:80px" id="icon" src="/img/logo.png" alt="图文图片" />
+									</div>				
+				
+			<input type="hidden" name="iconvalue" value="" id="iconvalue"/> 
+			<input type="hidden" name="icontype" value="0" id="icontype"/>			
+			
+      <div class="form-group">
+        <label class="col-sm-1">链接类型</label>
+        <select name="ShopCategoryNav[link_type]" id="link_type">
+          <option value="1">外部链接</option>
+          <option value="2">店铺链接</option>
+          <option value="3">店铺分类链接</option>
+          <option value="4">全部店铺链接</option>
+        </select>
+      </div>
+      <div class="form-group" style="display:none" id="category_list_wrapper">
+        <label class="col-sm-1">店铺分类</label>
+        <select name="ShopCategoryNav[shop_type]" id="category_list">
+                      <option value="56824">便民业务</option>
+                      <option value="65580">多味早餐</option>
+                      <option value="65581">休闲零食</option>
+                      <option value="65589">卤味烧腊</option>
+                      <option value="67211">年货专区</option>
+                      <option value="53107">粉面小吃</option>
+                      <option value="53108">中式快餐</option>
+                      <option value="53109">蔬果</option>
+                      <option value="53110">酒水饮料</option>
+                      <option value="53111">能量西餐</option>
+                      <option value="53112">跑腿业务</option>
+                      <option value="53114">鲜花蛋糕</option>
+                      <option value="56754">夜宵烧烤</option>
+                      <option value="68771">测试</option>
+                  </select>
+      </div>
+      <div class="form-group" style="display:none" id="shop_list_wrapper">
+        <label class="col-sm-1">单个店铺</label>
+        <select name="ShopCategoryNav[shop_id]" id="shop_list">
+                      <option value="171604">梁记粥铺</option>
+                      <option value="179493">味美家煲仔饭</option>
+                      <option value="188840">沐小卤卤肉饭</option>
+                      <option value="191043">遍地香</option>
+                      <option value="198384">蔡记兔头</option>
+                      <option value="198470">大圣烧烤</option>
+                      <option value="198789">五谷渔粉</option>
+                      <option value="199278">茶粥坊</option>
+                      <option value="201814">湖南米粉秭归旗舰店</option>
+                      <option value="203781">桃园包子</option>
+                      <option value="203806">龙虾甲鱼馆</option>
+                      <option value="203914">羊子沟羊肉串</option>
+                      <option value="204828">一号渔港</option>
+                      <option value="205689">庙嘴泄滩包子</option>
+                      <option value="205770">罗蒂爸爸</option>
+                      <option value="206291">陕西红富士（金点自营）</option>
+                      <option value="206593">五谷渔粉（茶粥坊店）</option>
+                      <option value="206740">撮一顿川菜馆</option>
+                      <option value="206902">老字号米酒汤圆（下酒菜 甜品）</option>
+                      <option value="207170">易购24小时便利店</option>
+                      <option value="207670">比得灌汤包</option>
+                      <option value="207703">本素咖啡</option>
+                      <option value="208291">龙潮美式瓦缸炭火烤鱼</option>
+                      <option value="208570">金巷子</option>
+                      <option value="209507">有意思</option>
+                      <option value="210977">花之恋</option>
+                      <option value="211219">老归州酒家</option>
+                      <option value="212668">米桂坊过桥米线</option>
+                      <option value="214250">郑记卤味</option>
+                      <option value="214683">吾饮良品</option>
+                      <option value="215141">馋嘴鱼莊</option>
+                      <option value="216567">木炭原味儿烧烤</option>
+                      <option value="216826">红油面馆</option>
+                      <option value="216935">冰淋橙夏</option>
+                      <option value="217682">面相聚</option>
+                      <option value="218162">怡满堂大药房</option>
+                      <option value="221492">王胖子早点</option>
+                      <option value="224050">阁楼咖啡</option>
+                      <option value="224147">千里香馄饨王</option>
+                      <option value="224187">周姐卤菜水饺</option>
+                      <option value="224339">七里香万州面馆</option>
+                      <option value="224370">小树鲜果（水果、零食）</option>
+                      <option value="224467">粥公卤婆（烧烤）</option>
+                      <option value="224543">邓记烤鱼</option>
+                      <option value="225881">九三食府</option>
+                      <option value="226578">原酒印象</option>
+                      <option value="226584">乡风缘野鸡养殖农场</option>
+                      <option value="226756">小牧场羊肉砂锅</option>
+                      <option value="227334">惠姑家庭农场</option>
+                      <option value="227431">杜康专卖店</option>
+                      <option value="227490">炎锅家常菜（瓦罐汤）</option>
+                      <option value="234626">秘制牛肉粉面馆</option>
+                      <option value="234732">屈乡风味馆</option>
+                      <option value="234765">吴妈面馆</option>
+                      <option value="234772">可礼客中式快餐</option>
+                      <option value="236441">蟹谢啦（香辣蟹钳）</option>
+                      <option value="238113">天喔零食秭归店</option>
+                      <option value="238848">正新鸡排（金城店）</option>
+                      <option value="239273">嘛嘛香中式营养快餐</option>
+                      <option value="240581">正宗片皮鸭</option>
+                      <option value="187285">跑腿业务</option>
+                      <option value="194234">五香嘴量贩休闲食品</option>
+                      <option value="197223">麦点超市</option>
+                      <option value="201368">家常菜馆</option>
+                      <option value="202819">世纪华联</option>
+                      <option value="203134">夷蒙概念牛肉</option>
+                      <option value="205327">祥和飞锅万州面</option>
+                      <option value="207984">品味烧烤</option>
+                      <option value="210794">秋谷山纯粮酒</option>
+                      <option value="212643">金烈火奶酪蛋糕</option>
+                      <option value="219509">山东口福饼</option>
+                      <option value="224337">茶粥坊土钵菜</option>
+                      <option value="224542">茶物语</option>
+                      <option value="186168">木语果蛋糕</option>
+                      <option value="189027">肯德基</option>
+                      <option value="190600">舒心批发超市</option>
+                      <option value="193454">五色谷大酒库旗舰店</option>
+                      <option value="186611">坝头养生卤品</option>
+                      <option value="189066">纯果乐</option>
+                      <option value="191434">净果成人用品</option>
+                      <option value="193156">麦佳乐蛋糕店</option>
+                      <option value="195654">周黑鸭</option>
+                      <option value="200063">欢乐家旗舰店</option>
+                      <option value="189287">新派煲仔饭</option>
+                      <option value="189881">矮子馅饼（秭归店）</option>
+                      <option value="192626">巴黎天使</option>
+                      <option value="194392">绿源清江尙品桶装系列纯净水天然水</option>
+                      <option value="195171">子归醇</option>
+                      <option value="196068">王梁记麻辣烫</option>
+                      <option value="180884">四季花时尚饮品</option>
+                      <option value="186549">香满园拉面馆</option>
+                      <option value="187702">福和祥煲仔饭</option>
+                      <option value="189341">韦一粮油</option>
+                      <option value="190198">糖炒栗子</option>
+                      <option value="194765">王老板烩面</option>
+                      <option value="195667">花漫舞</option>
+                      <option value="188229">坝头刚子烧烤</option>
+                      <option value="199721">鲜烫麻辣烫</option>
+                      <option value="180758">安吉尔纯净水</option>
+                      <option value="182990">沙县小吃信合店</option>
+                      <option value="183295">坝头夜猫子小黄鱼</option>
+                      <option value="186498">均瑶旗舰店</option>
+                      <option value="188487">坝头米酒汤圆 萝卜饺子</option>
+                      <option value="190211">庙嘴万州面</option>
+                      <option value="193935">张氏茶油鸭</option>
+                      <option value="197991">艳子农家小炒</option>
+                      <option value="183123">功夫煲仔饭</option>
+                      <option value="186255">巴东傅记羊肉面</option>
+                      <option value="188260">坝头东北小吃</option>
+                      <option value="191671">砂锅米线</option>
+                      <option value="193993">正新鸡排</option>
+                      <option value="195600">庙嘴炸酱面馆</option>
+                      <option value="182550">维纳斯美容会所</option>
+                      <option value="182341">一家人餐馆</option>
+                      <option value="182875">网上营业厅</option>
+                      <option value="186185">坝头铁板炒饭</option>
+                      <option value="188558">韩国凉面</option>
+                      <option value="192225">李功夫中华鸡排</option>
+                      <option value="186189">妙味馄饨</option>
+                      <option value="190154">一扫光零食量贩店</option>
+                      <option value="185223">宏发煤气</option>
+                      <option value="188574">坝头那家粉</option>
+                      <option value="189049">楚城小厨</option>
+                      <option value="186180">坝头火爆鱿鱼</option>
+                      <option value="187913">红牛能量补给站</option>
+                      <option value="189378">妙嘴小吃</option>
+                      <option value="190159">零食加油站</option>
+                      <option value="189030">辛勤小吃店</option>
+                      <option value="179446">测试店铺（勿点）</option>
+                      <option value="187713">一品香</option>
+                      <option value="190315">襄阳牛杂面</option>
+                      <option value="192603">华莱士</option>
+                      <option value="198327">真味酒楼</option>
+                      <option value="210668">谭家村酒业</option>
+                      <option value="188197">坝头开心花甲</option>
+                      <option value="186396">老家大锅台</option>
+                      <option value="188519">坝头灌汤包</option>
+                      <option value="189699">成都抄手</option>
+                      <option value="189267">胖胖熊美食城</option>
+                      <option value="180907">老字号鸡蛋饭</option>
+                      <option value="182664">重庆小面</option>
+                      <option value="183195">太陽·卤味坊</option>
+                      <option value="191202">马大姐旗舰店</option>
+                      <option value="193184">松滋杜婆鸡</option>
+                      <option value="188456">坝头砂锅麻辣烫</option>
+                      <option value="182536">坝头功夫鱿鱼</option>
+                      <option value="186177">精武人家（小区店）</option>
+                      <option value="194467">纸上烤鱼(国华盛景店)</option>
+                      <option value="165797">凤凰楼</option>
+                      <option value="188186">坝头公园27号肉夹馍</option>
+                      <option value="190137">泄滩包子金城店</option>
+                      <option value="188194">坝头饮品庄园</option>
+                      <option value="186200">坝头台湾手抓饼</option>
+                      <option value="196345">三少食府</option>
+                      <option value="188293">坝头碳烤小黄鱼</option>
+                      <option value="195057">姨妹子菜馆</option>
+                      <option value="202250">坝头米酒汤圆</option>
+                      <option value="186597">坝头澳洲大肉串</option>
+                      <option value="186588">坝头江湖翅客24号</option>
+                      <option value="181130">蒙古烤羊腿</option>
+                      <option value="186570">坝头鸡翅包饭 烧烤</option>
+                      <option value="190390">万州烤鱼</option>
+                      <option value="183237">坝头盐都小吃</option>
+                      <option value="188363">川府石锅鱼</option>
+                      <option value="192207">时尚酒家</option>
+                      <option value="183307">泽尚生活馆</option>
+                      <option value="191240">万美菜馆</option>
+                      <option value="209064">韩大大冒菜</option>
+                      <option value="187677">程家菜馆</option>
+                      <option value="189461">剑峰菜馆</option>
+                      <option value="183336">朋友圈土菜馆</option>
+                      <option value="188710">小南园</option>
+                      <option value="187689">平价菜馆</option>
+                      <option value="189248">馋神醉仙鸭</option>
+                      <option value="189252">欣怡川菜馆</option>
+                      <option value="187718">贵州花江狗肉（小区店）</option>
+                      <option value="193139">郑记干锅</option>
+                      <option value="183168">老字号虾皇</option>
+                      <option value="195717">丰锅农家菜</option>
+                      <option value="189072">大三峡</option>
+                      <option value="187896">河鲜馆</option>
+                  </select>
+      </div>
+      <div class="form-group" id="link_wrapper">
+        <label class="col-sm-1"><label for="ShopCategoryNav_link">链接</label></label>
+        <input class="col-sm-5" size="15" maxlength="255" name="ShopCategoryNav[link]" id="ShopCategoryNav_link" type="text" />        <span style="color:red">(*外部链接url建议写全(包括前面的协议,比如http协议),如https://www.lewaimai.com)</span>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-1"><label for="ShopCategoryNav_position">编号</label></label>
+        <input class="col-sm-1" size="15" maxlength="100" name="ShopCategoryNav[position]" id="ShopCategoryNav_position" type="text" value="1" />      </div>
+      <div class="span12">
+        <div class="form-actions">
+          <button class="btn btn-info" type="submit"><i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+        </div>
+      </div>
+    </form>  </div>   
+</div>
+
+<script>
+$(function(){
+	$("#checkimg").change(function(){
+		var v = $(this).val();
+		if(v==2){
+			$("#bendi").show();
+			$("#kongjian").hide();
+			$("#moren").hide();
+		}else if(v==1){
+			$("#kongjian").show();
+			$("#bendi").hide();
+			$("#moren").hide();
+		}else if(v==0){
+			$("#kongjian").hide();
+			$("#bendi").hide();
+			$("#moren").show();
+		}
+	})
+})
+
+
+function addshopimg(url,url1){
+		var string = '';
+		string += '<div style="width:100px;height:auto;background:#cccccc;">';
+		string += '<img src="'+url+'" style="width:100px;max-height:180px;"/>';
+		string += '</div><span id="inputimglist" style="display:none;"></span>';
+		$('#imglist').html(string);
+		var string1='<input id="inputimgid'+shoppictage+'" name="shopimage" value="'+url1+'"/>';
+		$('#inputimglist').append(string1);
+		shoppictage++;		
+	}
+	var shoppictage = 50;
+	function deleteshopimg(id,obj){
+		$(obj).parent('.shopimgone').remove();
+		$('#'+id).remove();
+	}
+</script>
+
+<div id="lztpopups" style="width:800px;display:none;">
+	<div class="row">
+		<div class="col-sm-12">
+						<form id="deleteform" action="/picture/delete" method="post">
+			<div style="width:1000px;height:auto;">	
+				<div style="height:auto;width:1000px;position:relative;">
+					<div id="nowselectimagebox" style="display:none;position:fixed;top:50px;z-index:99999;">
+						<img src=""  id="nowselectimage"/>
+					</div>		
+											<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/luntan.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								luntan.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="luntan.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/zigui.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								zigui.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="zigui.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/秭归信息.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								秭归信息.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="秭归信息.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/积分兑换.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								积分兑换.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="积分兑换.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/呃巍峨.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								呃巍峨.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="呃巍峨.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/dd.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								dd.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="dd.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/ss.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								ss.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="ss.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/FFFF.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								FFFF.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="FFFF.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/烦烦烦.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								烦烦烦.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="烦烦烦.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/日日日.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								日日日.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="日日日.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/ddd.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								ddd.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="ddd.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/下单.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								下单.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="下单.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/恩恩.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								恩恩.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="恩恩.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/LOGO.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								LOGO.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="LOGO.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/中秋.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								中秋.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="中秋.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/大道.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								大道.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="大道.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/1.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								1.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="1.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/2.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								2.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="2.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/3.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								3.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="3.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/4.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								4.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="4.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/5.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								5.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="5.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/6.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								6.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="6.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/7.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								7.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="7.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/8.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								8.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="8.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/333.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								333.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="333.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/t01b71a0ad834660bde.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								t01b71a0ad834660bde.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="t01b71a0ad834660bde.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/t013945542b05db2a06.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								t013945542b05db2a06.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="t013945542b05db2a06.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/通天塔.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								通天塔.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="通天塔.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/通8888.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								通8888.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="通8888.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/1111副本.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								1111副本.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="1111副本.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/t01e01a306926480023.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								t01e01a306926480023.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="t01e01a306926480023.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/2323.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								2323.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="2323.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/速度是多少.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								速度是多少.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="速度是多少.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/多大的.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								多大的.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="多大的.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/是是是.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								是是是.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="是是是.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/水水水水.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								水水水水.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="水水水水.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/2222.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								2222.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="2222.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/1(1).jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								1(1).jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="1(1).jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/网站首页图片1.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								网站首页图片1.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="网站首页图片1.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/网站首页图片2.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								网站首页图片2.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="网站首页图片2.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/网站首页图片3.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								网站首页图片3.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="网站首页图片3.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/网站首页图片4.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								网站首页图片4.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="网站首页图片4.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/红牛.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								红牛.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="红牛.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/网站首页图片1t.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								网站首页图片1t.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="网站首页图片1t.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/网站首页图片24.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								网站首页图片24.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="网站首页图片24.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/图片.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								图片.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="图片.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/true.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								true.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="true.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/肯德基.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								肯德基.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="肯德基.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/0.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								0.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="0.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/555.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								555.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="555.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/570dcd80ae3ab_1024副本.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								570dcd80ae3ab_1024副本.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="570dcd80ae3ab_1024副本.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/2322.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								2322.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="2322.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/2322g.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								2322g.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="2322g.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/11.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								11.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="11.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/22.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								22.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="22.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/33.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								33.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="33.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/10.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								10.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="10.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/备份网站首页图片额鹅鹅鹅.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								备份网站首页图片额鹅鹅鹅.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="备份网站首页图片额鹅鹅鹅.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/备份网站首页图片方法.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								备份网站首页图片方法.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="备份网站首页图片方法.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/QQ图片20161018230758.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								QQ图片20161018230758.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="QQ图片20161018230758.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/QQ图片20161018230803.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								QQ图片20161018230803.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="QQ图片20161018230803.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/QQ图片20161018230807.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								QQ图片20161018230807.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="QQ图片20161018230807.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/梁记粥铺1.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								梁记粥铺1.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="梁记粥铺1.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/热烈祝贺.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								热烈祝贺.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="热烈祝贺.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/首页.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								首页.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="首页.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/123.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								123.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="123.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/23.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								23.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="23.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/26.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								26.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="26.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/8.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								8.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="8.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/2.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								2.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="2.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/3.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								3.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="3.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/4.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								4.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="4.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/5.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								5.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="5.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/6.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								6.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="6.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/7.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								7.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="7.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/10.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								10.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="10.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/9.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								9.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="9.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/11.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								11.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="11.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/12.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								12.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="12.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/13.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								13.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="13.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/14.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								14.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="14.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/15.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								15.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="15.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/16.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								16.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="16.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/超市便利-01.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								超市便利-01.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="超市便利-01.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/酒水饮料-01.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								酒水饮料-01.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="酒水饮料-01.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/未标题-8-01.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								未标题-8-01.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="未标题-8-01.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/鲜花蛋糕-01.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								鲜花蛋糕-01.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="鲜花蛋糕-01.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/[ppp.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								[ppp.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="[ppp.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/优惠券11.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								优惠券11.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="优惠券11.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/全部分类.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								全部分类.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="全部分类.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/本地论坛.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								本地论坛.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="本地论坛.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/跑腿业务.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								跑腿业务.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="跑腿业务.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/批8.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								批8.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="批8.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/114.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								114.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="114.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/里7.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								里7.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="里7.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/最高.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								最高.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="最高.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/Shengdan.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								Shengdan.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="Shengdan.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/图形1.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								图形1.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="图形1.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/uououo.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								uououo.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="uououo.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/1.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								1.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="1.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/财神1.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								财神1.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="财神1.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/456.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								456.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="456.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/财神到.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								财神到.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="财神到.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/你.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								你.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="你.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/halou.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								halou.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="halou.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/hahaha.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								hahaha.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="hahaha.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/weweu.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								weweu.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="weweu.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/虎虎虎.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								虎虎虎.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="虎虎虎.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/婆婆.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								婆婆.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="婆婆.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/美了美了.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								美了美了.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="美了美了.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/首页图.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								首页图.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="首页图.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/fhsdrhshsfh.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								fhsdrhshsfh.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="fhsdrhshsfh.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/QQ图片20170111210638.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								QQ图片20170111210638.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="QQ图片20170111210638.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/嗡嗡嗡.png" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								嗡嗡嗡.png							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="嗡嗡嗡.png" class="priceinput"/>选择
+							</div>
+						</div>					
+												<div class="boxs">
+							<div class="boximgs">
+								<img class="imagesclass" src="https://img.lewaimai.com/uploads/publicprice/admin_56695/max/koko.jpg" style="max-width:180px;max-height:100px;margin:auto auto;"/>
+							</div>
+							<div class="imagenames">
+								koko.jpg							</div>
+							<div class="boxcontrollers">
+								<input type="radio" name="tupiankongjian" value="koko.jpg" class="priceinput"/>选择
+							</div>
+						</div>					
+										</div>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<style>
+.ui-icon.ui-icon-closethick{
+	display:none;
+}
+.ui-dialog .ui-dialog-titlebar-close span{
+	display:none;
+}
+.form-group .box{float:left;margin:20px 10px;width:100px;height:100px;border:1px solid #000000;}
+.form-group .boximg{height:100px;width:100px;}
+.form-group .boxcontroller{height:30px;line-height:30px;text-align:center;}
+.form-group .imagename{height:20px;text-align:center;line-height:20px;}
+</style>
+<script>
+	$(function(){
+		$('#ace-file-input').ace_file_input({
+			no_file:'上传图片...',
+			btn_choose:'选择',
+			btn_change:'重新选择',
+			no_icon:'fa fa-upload',
+			icon_remove:'',
+			droppable:false,
+			onchange:null,
+			remove:false,
+			thumbnail:false //| true | large
+			//whitelist:'gif|png|jpg|jpeg'
+			//blacklist:'exe|php'
+			//onchange:''
+			//
+		});
+		$('.morenicon').on('click',function(){
+			var iconvalue = $(this).attr('value');
+			var iconsrc = $(this).attr('src');
+			$('#icon').attr('src',iconsrc);
+			$('#iconvalue').val(iconvalue);
+			$('#icontype').val(1);
+		});
+	})
+</script>
+<script>
+	function preview1(input){
+		if (input.files && input.files[0]){
+			var reader = new FileReader();
+			reader.onload = function (e) { $('#icon').attr('src', e.target.result); }
+			reader.readAsDataURL(input.files[0]);
+			$('#icontype').val(3);
+		}
+	}
+</script>
+
+<!-- 导入选择图片相关文件 -->
+<link rel="stylesheet" href="/css/imgbox.css" />
+<script src="/js/imgbox.js?v=111"></script>
+
+<script>
+
+var url_prefix = 'https://img.lewaimai.com';
+var unassign_url = '/uploads/publicprice/admin_'+'56695'+'/max/';
+var assign_url =  '/uploads/media/picture/admin_'+'56695'+'/';
+
+function selFoodImg() {
+	var data=new Array();
+	
+	$('input[name="img_name"]:checked').each(function(){
+		data.push(this.value);
+	})
+	if(data.length > 0){
+			for(var b in data){
+				$('#icon').attr('src',url_prefix+data[b]);
+				$('#iconvalue').val(data[b]);
+				$('#icontype').val(2);
+			}
+			closeWindow('.sel_img_view');
+	}else{
+		bootbox.alert("请选择要添加的图片");
+	}
+}
+
+
+$(function(){
+
+	// 选择图片
+	$('#selectImg').click(function(){
+		
+		showImgBox('/picture/getimgbyname?group_name=', '/picture/getallgroup',true,true);
+	});
+
+	$('#ensure').click(selFoodImg);
+
+})
+
+</script>					</div><!-- /.page-content-area -->
+				</div><!-- /.page-content -->
+			</div><!-- /.main-content -->
+
+			<div class="footer">
+				<div class="footer-inner">
+					<!-- #section:basics/footer -->
+					<div class="footer-content">
+						<span class="bigger-120">
+							<span class="blue bolder">乐外卖</span>
+							深圳市迅享科技有限公司 © 2013-2017
+						</span>
+
+						&nbsp; &nbsp;
+						<span class="action-buttons">
+							<a href="#" id="weixindyh">
+								<i class="ace-icon fa fa-weixin text-primary green bigger-150"></i>
+							</a>
+
+							<a href="http://weibo.com/lewaimai" target="_blank">
+								<i class="ace-icon fa fa-weibo red bigger-150"></i>
+							</a>
+						</span>
+					</div>
+
+					<!-- /section:basics/footer -->
+				</div>
+			</div>
+
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
+		<div class="main-qrcode-show" style="display:none;position:absolute;bottom:60px;">
+			<img src="/img/newcode.jpg">
+		</div>
+
+		<!-- basic scripts -->
+		<script>
+		$(function(){
+			$('#weixindyh').on("mouseover", function(){
+				var pos = $(this).position();
+				$('.main-qrcode-show').css('left',pos.left);
+				$('.main-qrcode-show').show();
+			});
+			$("#weixindyh").on("mouseout", function(){
+				$('.main-qrcode-show').hide();
+			});
+		})
+
+		</script>
+		<script src="/ace/js/bootstrap.min.js"></script>
+
+		<!-- page specific plugin scripts -->
+		<script src="/ace/js/bootbox.min.js"></script>
+		<script src="/ace/js/jquery-ui.custom.min.js"></script>
+		<script src="/ace/js/jquery.gritter.min.js"></script>
+		<script src="/ace/js/jquery-ui.min.js"></script>
+		<script src="/ace/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="/ace/js/jquery.easypiechart.min.js"></script>
+		<script src="/ace/js/jquery.sparkline.min.js"></script>
+
+		<!-- ace scripts -->
+		<script src="/ace/js/ace-elements.min.js"></script>
+		<script src="/ace/js/ace.min.js"></script>
+
+		<script src="/ace/js/chosen.jquery.min.js"></script>
+
+		<!-- inline scripts related to this page -->
+		<script>
+			$(function(){
+				//初始化弹框的标题栏
+				$.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
+					_title: function(title) {
+						var $title = this.options.title || '&nbsp;'
+						if( ("title_html" in this.options) && this.options.title_html == true )
+							title.html($title);
+						else title.text($title);
+					}
+				}));
+				isShowAlert();
+				function isShowAlert(){
+							var shop_ids = '';
+							showalert();
+							window.setInterval(showalert, 30000);
+									}
+			})
+			function showalert(){
+				// alert(111)return;
+				var postdata = JSON.parse("{}");
+				postdata.admin_id = 56695;
+				postdata.type = "admin";
+				postdata.init_time = "2017-03-16 10:55:09";
+				postdata.shopids  = ""
+				$.ajax({
+					type:"POST",
+					url:"/order/getneworder",
+					data:postdata,
+					dataType:'json',
+					cache:false,
+					success:function(info){
+						// console.log(info);return;
+						if(info.status == 'success')
+						{
+							var count = parseInt(info.count);
+							var count_total = parseInt(info.count_total);
+							var time = info.time;
+
+							if (count > 0)
+							{
+								//弹提示框
+								var unique_id = $.gritter.add({
+									title: "新订单提醒",
+									text: "您有"+count+"笔新的未处理订单，请及时处理！",
+									image: '/img/logo.png',
+									time: '5000',
+									class_name: 'gritter-info'
+								});
+
+								//播放声音
+								$("#soundsw").html('<embed id="soundws_mp3" src="/music/dingdong.mp3" loop="0" autostart="true"></embed>');
+
+								setTimeout(function (){
+							        $("#soundws_mp3").remove();
+							    }, 20000);
+							}
+						}
+						else
+						{
+							alert(info.message);
+
+							return;
+						}
+					},
+					error:function(XMLHttpRequest, textStatus, errorThrown){
+						return;
+					}
+				});
+			}
+
+		    //下拉选择控件
+		    $(".chosen-select").chosen();
+			$('#chosen-multiple-style').on('click', function(e){
+				var target = $(e.target).find('input[type=radio]');
+				var which = parseInt(target.val());
+				if(which == 2) $('#form-field-select-4').addClass('tag-input-style');
+				else $('#form-field-select-4').removeClass('tag-input-style');
+			});
+
+			//chosen plugin inside a modal will have a zero width because the select element is originally hidden
+			//and its width cannot be determined.
+			//so we set the width after modal is show
+			$('#modal-form').on('shown.bs.modal', function () {
+				$(this).find('.chosen-container').each(function(){
+					$(this).find('a:first-child').css('width' , '210px');
+					$(this).find('.chosen-drop').css('width' , '210px');
+					$(this).find('.chosen-search input').css('width' , '200px');
+				});
+			})
+		</script>
+
+		<!-- 这里是与新订单提醒相关的内容 -->
+		<div style="position:fixed;top:-9999px;right:-9999px;" id="soundsw">
+            
+		</div>
+	</body>
+</html>

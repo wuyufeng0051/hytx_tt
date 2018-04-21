@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="css/order.css">
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">try {
+        ace.settings.check('breadcrumbs', 'fixed')
+      } catch(e) {}</script>
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-smile-o"></i>
+        <a href="/order/viewopen">外卖订单</a></li>
+      <li>
+        <a href="/order/viewopen">订单管理</a></li>
+      <li class="active">修改订单</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="content">
+            <div class="typelist-item-layout">
+              <div secondtypeid="0" id="foodtype_1117526" typeid="1117526" class="typelist-item typelist-selected">
+                <span>测试</span>
+                <div class="foodtype-ordernumposition">
+                  <div id="foodtype-ordernumlayout-1117526" class="foodtype-ordernumlayout" style="display: block;">
+                    <p id="foodtypeordernum_1117526">1</p></div>
+                </div>
+              </div>
+            </div>
+            <div class="typelist-item-secondtype">
+              <div id="foodsecond_1117526" class="typelist-secondtype"></div>
+            </div>
+            <div class="food-content">
+              <div id="fooditem_1117526" class="food-content-item">
+                <div id="food_list_detail_14873509" is_nature="0" typeid="1117526" align="center" style="display:none;" class="food-content-detail fooditem_1117526_0">
+                  <img id="foodimage_14873509" src="https://img.lewaimai.com">
+                  <div class="food-detail-name" id="foodname_14873509">商品测试</div>
+                  <div class="food-detail-price">￥
+                    <span>0.01</span></div>
+                  <div id="foodnumop_14873509" class="food-detail-name">
+                    <div id="small_delete_14873509" class="food-detail-delete"></div>
+                    <div id="op_foodnum_14873509" class="food-detail-num">1</div>
+                    <div id="small_plus_14873509" class="food-detail-plus"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="order-bottom">
+        <div class="order-bottom-address">
+          <div class="order-bottom-detail1">
+            <div style="width:33%;float:left;">
+              <label>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：
+                <input id="order_nickname" type="text" value="zzx"></label></div>
+            <div style="width:33%;float:left;">
+              <label>手机号：
+                <input id="order_phone" type="text" value="15104569999"></label>&nbsp;&nbsp;</div>
+            <div style="width:33%;float:left;">
+              <label>配送费：
+                <input type="number" id="order_deliveryfee" value="0.00"></label></div>
+          </div>
+          <div class="order-bottom-detail2">
+            <div style="width:34%;float:left;">
+              <label>配送地址：
+                <input id="order_address" type="text" value="苏州九龙医院-呼吸道门诊 快递员"></label></div>
+            <div style="width:65%;float:left;">
+              <label>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：
+                <input id="order_memo" type="text" style="width: 300px;" value=""></label></div>
+          </div>
+        </div>
+        <div class="order-bottom-shopcart">
+          <div class="shopcart-view">
+            <div class="shopcart-view-det">点击查看已选商品</div>
+            <div class="shopcart-view-img"></div>
+          </div>
+          <div class="shopcart-price">商品总价：
+            <span id="totalprice">0</span>元&nbsp;&nbsp;&nbsp;&nbsp;(不含配送费)</div></div>
+        <div class="order-bottom-submit">
+          <div class="submit-button">提交订单</div></div>
+      </div>
+      <!-- 商品属性 -->
+      <div id="all_food_nature" style="display:none;" class="all_food_nature">
+        <div class="food_nature_select" id="food_nature_select14873509" style="display: none;">
+          <div class="foodselect-header">
+            <div class="closefoodselect" id="closefoodselect14873509">
+              <span></span>
+            </div>
+            <div align="center" class="foodselect-detail">
+              <img src="https://img.lewaimai.com">
+              <div class="foodselect-name">商品测试</div>
+              <div class="foodselect-op">
+                <div class="foodselect-delete" id="small_delete_14873509"></div>
+                <div class="foodselect-plus" id="small_plus_14873509"></div>
+              </div>
+            </div>
+          </div>
+          <div class="foodselect-nature-layout" id="foodselect_nature_layout14873509"></div>
+        </div>
+      </div>
+      <!-- 购物车 -->
+      <div class="cartfoodinfo" style="display: none;">
+        <div class="closecart">
+          <span></span>
+        </div>
+        <div class="cartheader">
+          <p>当前已点商品：</p>
+        </div>
+        <div id="cartlayout"></div>
+        <div class="pricechangeinfo">
+          <div class="cartprice-text">商品总价：￥
+            <span id="cart-totalprice">0</span></div>
+          <div id="addserviceinfo"></div>
+          <div id="dabaofei"></div>
+          <div id="deliveryinfo"></div>
+        </div>
+        <p class="cartpayprice">总价：
+          <span class="shouldpayprice">￥
+            <span id="shouldpayprice-value">120.6</span></span>
+        </p>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>{$res['business_shopname']}</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/_head.css?v=20">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+</head>
+<body>
+<input type="hidden" id="Share_title" value = {$res['business_shopname']}>
+<include file="Public/share" title='包含文件'/>
+<!-- 共同顶部 s-->
+<div class="header fn-clear">
+    <div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+    <div class="title">商家详情</div>
+    <div class="share"></div>
+</div>
+<!-- 共同顶部 e-->
+
+<link rel="stylesheet" href="__PUBLIC__/Home/css/photoswipe.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/default-skin.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/shop_detail.css?v=4">
+<script type="text/javascript" src="__PUBLIC__/Home/js/swiper.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=RlrCSDRWdEdwBmGizieNRp4z"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+<!-- 商品图片展示 s-->
+<notempty name="res['shopimgs']">
+<div class="my-gallery comment-pic-slide swiper-container"  itemscope itemtype="">
+    <div class="swiper-wrapper">
+        <foreach name="res['shopimgs']" item="shopimgs">
+        <figure itemprop="associatedMedia" itemscope itemtype="" class="swiper-slide">
+            <a href="{$shopimgs['imgs_path']}" itemprop="contentUrl" data-size="" >
+                <img src="{$shopimgs['imgs_path']}" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+        </foreach>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+</notempty>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item">
+                <div class="pswp__zoom-wrap">
+                </div>
+            </div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 商品图片展示 e-->
+<!-- 商家介绍信息 s -->
+<div class="shop_infor fn-clear">
+    <div class="si_left">
+        <h1>{$res['business_shopname']}</h1>
+        <p>营业时间：{$res['business_shopopen']}-{$res['business_shopclose']}</p>
+        <p><em>发布：{$res['business_date']|substr=2,8|str_replace='-','.',###} - {$res['business_edate']|substr=2,8|str_replace='-','.',###}</em><em>浏览：{$res['business_browse']}次</em></p>
+    </div>
+    <?php if(!empty($coll)){ ?>
+    <div class="si_right" id="collect" data-collectid="{$coll.collection_id}"><i class="cang"></i><p>已收藏</p></div>
+    <?php }else{ ?>
+    <div class="si_right" data-id="{$res['business_id']}" id="collect"><i></i><p>收藏</p></div>
+    <?php } ?>
+</div>
+<div class="agree fn-clear">
+    <div class="ag_left">点赞越多，商家排序越靠前！<em>{$res['business_like']}</em>人已赞</div>
+    <?php if(!empty($col)){ ?>
+    <div class="ag_right" data-id="{$res['business_id']}"><i  class="zan"></i><em>已赞</em></div>
+    <?php }else{ ?>
+    <div class="ag_right" data-id="{$res['business_id']}"><i></i><em>赞一下</em></div>
+    <?php } ?>
+</div>
+<div class="place">地址：{$res['business_shopaddress']}</div>
+<div class="intro_tab">
+    <div class="intor_lead fn-clear">
+        <ul>
+            <li class="il_bc">商 家 介 绍</li>
+            <li>活 动 促 销</li>
+        </ul>
+    </div>
+    <div class="intor_list">
+        <div class="intor_txt">
+            <div class="t1">{$res['business_des']}</div>
+            <div class="intor_pic comment-pic-slide"  itemscope itemtype="">
+                <div class="">
+                    <foreach name="res['goodsimgs']" item="goodsimg">
+                    <figure itemprop="associatedMedia" itemscope itemtype="" class="">
+                        <a href="{$goodsimg['imgs_path']}" itemprop="contentUrl" data-size="" >
+                            <img src="{$goodsimg['imgs_path']}" itemprop="thumbnail" alt="Image description" />
+                        </a>
+                    </figure>
+                    </foreach>
+                </div>
+            </div>
+        </div>
+        <div class="intor_txt fn-hide">
+            <if condition="$res['business_is_activity'] eq 0">
+            <h2>该商家暂无活动促销，敬请期待…</h2>
+            <else/>
+            <h1>吃货召集令</h1>
+            <div class="active fn-clear">
+                <span>{$activity['activity_content']}</span>
+            </div>
+            <div class="active_time">
+                活动时间：{$activity['activity_start']|substr=5,5|str_replace='-','.',###}-{$activity['activity_end']|substr=5,5|str_replace='-','.',###}
+            </div>
+            <div class="intor_pic comment-pic-slide"  itemscope itemtype="">
+                <div class="">
+                    <foreach name="activity['imgs']" item="actimgs">
+                    <figure itemprop="associatedMedia" itemscope itemtype="" class="">
+                        <a href="{$actimgs['imgs_path']}" itemprop="contentUrl" data-size="" >
+                            <img src="{$actimgs['imgs_path']}" itemprop="thumbnail" alt="Image description" />
+                        </a>
+                    </figure>
+                    </foreach>
+                </div>
+            </div>
+            </if>
+        </div>
+    </div>
+</div>
+<div class="report"><i></i><a href="__MODULE__/Report/report?report_cid={$res.carinfo_id}&report_uid={$res.business_uid}&report_type=21">举报商家</a></div>
+<!-- 商家介绍信息 e -->
+<!-- 固定底部 s -->
+<div class="footer fn-clear">
+    <ul>
+        <li class="tel"><i></i>电话联系</li>
+        <li class="wei"><i></i>微信联系</li>
+        <li class="dao" data-lng="{$res['business_lng']}" data-lat="{$res['business_lat']}"><a href="http://api.map.baidu.com/marker?location={$res['business_lat']},{$res['business_lng']}&title={$res['business_shopname']}&content=&output=html"><i></i>地址导航</a></li>
+    </ul>
+</div>
+<!-- 固定底部 e -->
+<!-- 遮罩层 s -->
+<div class="disk"></div>
+<!-- 遮罩层 e -->
+<!-- 联系方式弹出层 s -->
+<div class="phone">
+    <h1>提示</h1>
+    <h2>联系我时，请说是在<em>泸西本地鸟</em>上看到的，谢谢！</h2>
+    <ul>
+        <?php if(!empty($res['business_phone'])){ ?>
+        <li><a href="tel:{$res['business_phone']}">{$res['business_phone']}<i></i></a></li>
+        <?php } ?>
+        <?php if(!empty($res['business_tel'])){ ?>
+        <li><a href="tel:{$res['business_tel']}">{$res['business_tel']}<i></i></a></li>
+        <?php } ?>
+    </ul>
+    <div class="close"><i></i></div>
+</div>
+<!-- 联系方式弹出层 e -->
+<!-- 微信分享弹出层 s -->
+<div class="share_box"></div>
+<!-- 微信分享弹出层 e -->
+<!-- 二维码弹出层 s -->
+<div class="QR_code">
+    <h1>长按二维码添加店主</h1>
+    <div class="QR_pic">
+        <?php if(!empty($res['business_shopcode'])){ ?>
+        <img src="{$res['business_shopcode']}" alt="">
+        <?php } ?>
+    </div>
+    <?php if(!empty($res['business_shopcode'])){ ?>
+    <p>添加我时，请说是在<em>泸西本地鸟</em>上看到的，谢谢！</p>
+    <?php }else{ ?>
+    <p style="font-size: 0.3rem">商家暂未设置二维码</p>
+    <?php } ?>
+</div>
+<!-- 二维码弹出层 e -->
+<script type="text/javascript" src="__PUBLIC__/Home/js/photoswipe.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/photoswipe-ui-default.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/shop_detail.js"></script>
+<script>
+    // 点击收藏
+    $('#collect').click(function(){
+        //判断是否收藏
+        var carinfo_id=$(this).data('id');
+        var x = $(this),
+            find = x.find('i');
+        //判断是否收藏
+        if (find.hasClass('cang')) {
+            //否
+            var cid =x.data('collectid');
+            $.post('{:U("Home/Index/enshrinedel")}',{cid:cid}, function(data) {
+                if (data != 2) {
+                    find.removeClass('cang');
+                    x.data('collectid','');
+                    $('.si_right p').text("收藏");
+                }
+            });
+        }else{
+            //是
+            $.post('{:U("Home/Index/enshrine")}',{id:carinfo_id,classes:"collection_businessid"}, function(data) {
+                if (data != 2) {
+                    find.addClass('cang');
+                    x.data('collectid',data);
+                    $('.si_right p').text("已收藏");
+                }
+            });
+        }
+    })
+    // 点赞
+    $('.ag_right').click(function(){
+        var x = $(this),
+            find = x.find('i');
+        var praise_txt = $('.agree .ag_left em');
+        var num=parseInt(praise_txt.text());
+        var goodsid =x.data('id');
+        if (find.hasClass('zan')) {
+            $.post('{:U("Home/Business/dellike")}',{business_id:goodsid}, function(data) {
+                if (data.status == 1) {
+                    find.removeClass('zan');
+                $('.ag_right em').text('赞一下');
+                    num -=1;
+                    praise_txt.text(num)
+                }
+            });
+        }else{
+            $.post('{:U("Home/Business/addlike")}',{business_id:goodsid}, function(data) {
+                if (data.status == 1) {
+                    find.addClass('zan');
+                    $('.ag_right em').text('已赞');
+                    num +=1;
+                    praise_txt.text(num)
+                }
+            });
+        }
+    })
+
+</script>
+</body>
+</html>

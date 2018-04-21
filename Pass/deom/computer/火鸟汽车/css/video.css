@@ -1,0 +1,493 @@
+.none{
+    display: none;
+}
+.video_list{
+	width: 1200px;
+	margin: 0 auto;
+}
+.video_list .vl_left{
+	width: 860px;
+	float: left;
+    margin-right: 40px;
+}
+.video_list .vl_left .vll_lead{
+	height: 40px;
+    border-bottom: 2px solid #e5e5e5;
+    margin-bottom: 20px;
+    position: relative;
+}
+.video_list .vl_left .vll_lead ul {
+	float: left;
+	height: 40px;
+	line-height: 40px;
+}
+.video_list .vl_left .vll_lead ul li{
+	font-size: 18px;
+	font-weight: bold;
+    float: left;
+    padding: 0 20px 0 0;
+    margin-right: 20px;
+    position: relative;
+}
+.video_list .vl_left .vll_lead ul li+li:before{
+	content: "";
+    width: 1px;
+    border-left: 1px solid #ccc;
+    position: absolute;
+    top: 14px;
+    left: -20px;
+    height: 16px;
+}
+.video_list .vl_left .vll_lead ul li.vll_bac a{
+    display: block;
+    color: #FF4F53;
+    border-bottom: 3px solid #FF4F53;
+}
+.video_list .vl_left .vll_lead .more{
+	bottom: 12px;
+    font-size: 14px;
+    position: absolute;
+    right: 0;
+    height: 22px;
+    line-height: 22px;
+}
+.video_list .vl_left .vll_lead .more a{
+	margin-left: 10px;
+}
+.video_list .vl_left .vll_lead .more a.more_bc{
+	font-weight: bold;
+}
+.video_list .vl_left .vll_lead .more a:before{
+	content: "";
+    height: 14px;
+    width: 10px;
+    border-left: 1px solid #ccc;
+    display: inline-block;
+    vertical-align: middle;
+}
+.video_list .vl_left .vll_lead .more a:first-child:before{
+	border-left: none;
+}
+
+.video_list .vl_left .vll_list .video_box{
+    width: 950px;
+    padding: 10px 0 0 0;
+}
+.video_list .vl_left .vll_list .video_box .vb{
+	width: 260px;
+    float: left;
+    margin: 0 40px 0 0;
+    padding: 0 0 20px;
+    box-sizing: content-box;
+}
+.video_list .vl_left .vll_list .video_box .vb .vb_txt{
+	width: 260px;
+	float: left;
+	margin: 0 20px 25px 0;
+	display: block;
+	position: relative;
+	overflow: hidden;
+}
+.video_list .vl_left .vll_list .video_box .vb .vb_txt .video_img{
+	width: 260px;
+    height: 150px;
+}
+.video_list .vl_left .vll_list .video_box .vb .vb_txt .video_img:hover .video_logo{
+    background: url(../images/icon-video-hover.png) 0 0 no-repeat;
+    top: 93px;
+}
+.video_list .vl_left .vll_list .video_box .vb .vb_txt .video_img img{
+	width: 260px;
+    height: 150px;
+}
+.video_list .vl_left .vll_list .video_box .vb .vb_txt .video_img .video_logo{
+	top: 93px;
+	left: 10px;
+	cursor:pointer;
+    width: 46px;
+    height: 46px;
+    position: absolute;
+    background: url(../images/icon-video.png) 0 0 no-repeat;
+    background-size: 46px;
+}
+.video_list .vl_left .vll_list .video_box .vb .vb_txt ul li.video_name{
+	height: 40px;
+	    margin: 10px 0;
+    overflow: hidden;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-weight: bold;
+    font-size: 14px;
+}
+.video_list .vl_left .vll_list .video_box .vb .vb_txt ul li.video_num p{
+	color: #999;
+	float: left;
+	padding: 0 10px 0 17px;
+    background: url(../images/icon-video-more.png) 0 0 no-repeat;
+    font-size: 14px;
+}
+.video_list .vl_left .vll_list .video_box .vb .vb_txt ul li.video_num p.v_price{
+    background-position: 0 -3px;
+}
+.video_list .vl_left .vll_list .video_box .vb .vb_txt ul li.video_num p.v_com{
+	background-position: 0 -27px;
+    padding-left: 18px;
+}
+.video_list .vl_left .vll_list .video_box .vb .vb_txt ul li.video_num p.v_time{
+    background-position: 0 -53px;
+    padding-left: 18px;
+}
+.video_list .vl_left .vll_list .page{
+    clear: both;
+    display: block;
+    position: relative;
+    height: 66px;
+    line-height: 66px;
+    overflow: hidden;
+    font-size: 16px;
+    padding: 20px 0;
+    margin: 0 auto;
+	text-align: center;
+	width: 350px
+}
+.video_list .vl_left .vll_list .page span{
+	color: #ccc;
+    transform: scaleY(1.6);
+    line-height: 24px;
+    font-size: 18px;
+        padding: 0 8px;
+    margin: 0 5px;
+    height: 26px;
+	float: left;
+}
+.video_list .vl_left .vll_list .page a{
+	float: left;
+	height: 26px;
+    line-height: 26px;
+    padding: 0 8px;
+    margin: 0 5px;
+    color: #333;
+    float: left;
+    white-space: nowrap;
+}
+.video_list .vl_left .vll_list .page a:hover{
+	background: #f0f0f0;
+    text-decoration: none;
+    border-radius: 2px;
+}
+.video_list .vl_left .vll_list .page a.page_bc{
+	    background: #FF4F53;
+    color: #fff;
+    border-radius: 3px;
+}
+.video_list .vl_left .vll_list .page em{
+	float: left;
+	height: 26px;
+	line-height: 26px;
+}
+.video_list .vl_left .next_see{
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+.video_list .vl_left .next_see h1{
+    border-bottom: 2px solid #e5e5e5;
+    height: 47px;
+    font-size: 24px;
+    color: #333;
+    line-height: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.video_list .vl_left .next_see .ns_list ul li{
+    float: left;
+    width: 25%;
+    list-style: none;
+    clear: none;
+    float: left;
+    position: relative;
+    padding-left: 15px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+.video_list .vl_left .next_see .ns_list ul li:before{
+    content: "";
+    width: 4px;
+    height: 4px;
+    display: block;
+    background: #4284D9;
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 0;
+}
+
+
+.video_list .vl_right{
+    float: left;
+    position: relative;
+    width: 300px;
+}
+.video_list .vl_right .evaluate{
+    margin-bottom: 50px;
+}
+.video_list .vl_right .evaluate h1{
+    min-height: 32px;
+    height: auto;
+    border-bottom: 0;
+    padding-bottom: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 0;
+    line-height: 32px;
+    margin-bottom: 20px;
+}
+.video_list .vl_right .evaluate .star{
+    margin: 0 0 20px;
+}
+.video_list .vl_right .evaluate .star .star_box{
+    height: 25px;
+    overflow: hidden;
+    margin: 0 0 15px;
+}
+.video_list .vl_right .evaluate .star .star_box span{
+        display: block;
+    height: 25px;
+    width: 172px;
+    margin: 0 10px 0 0;
+    float: left;
+    background: url(../images/start_img.png) repeat-x 0 -42px;
+}
+.video_list .vl_right .evaluate .star .star_box em{
+    display: block;
+    height: 25px;
+    background: url(../images/start_img.png) repeat-x 0 0;
+    width: 80%;
+}
+.video_list .vl_right .evaluate .star .star_box i{
+    font-style: normal;
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    color: #FF4F53;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+}
+.video_list .vl_right .evaluate .star p{
+    line-height: 24px;
+    font-size: 18px;
+    color: #333;
+}
+.video_list .vl_right .evaluate .star p b{
+    font-weight: normal;
+    color: #797979;
+}
+.video_list .vl_right .evaluate .nice{
+    margin: 0 0 10px;
+    color: #FF4F53;
+}
+.video_list .vl_right .evaluate .nice p{
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 10px;
+}
+.video_list .vl_right .evaluate .nice ul li{
+    overflow: hidden;
+    float: left;
+    margin: 0 5px 10px 0;
+    border-radius: 2px;
+    box-sizing: content-box;
+    font-size: 14px;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #FF4F53;
+}
+.video_list .vl_right .evaluate .nice ul li a{
+    color: #FF4F53;
+}
+.video_list .vl_right .evaluate .bad{
+    margin: 0 0 10px;
+}
+.video_list .vl_right .evaluate .bad p{
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 10px;
+}
+.video_list .vl_right .evaluate .bad ul li{
+    overflow: hidden;
+    float: left;
+    margin: 0 5px 10px 0;
+    border-radius: 2px;
+    box-sizing: content-box;
+    font-size: 14px;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #D8D8D8;
+}
+.video_list .vl_right .evaluate .bad ul li a{
+    color: #333;
+}
+.video_list .vl_right .evaluate .eva_btn{
+    height: 45px;
+    overflow: hidden;
+}
+.video_list .vl_right .evaluate .eva_btn ul li{
+    float: left;
+}
+.video_list .vl_right .evaluate .eva_btn ul li.fa a{
+    display: block;
+    width: 145px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    border-radius: 3px;
+    background: #FF4F53;
+    font-size: 16px;
+    border: 1px solid #FF4F53;
+}
+.video_list .vl_right .evaluate .eva_btn ul li.see a{
+    display: block;
+    width: 145px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #FF4F53;
+    border-radius: 3px;
+    background: #fff;
+    font-size: 16px;
+    border: 1px solid #FF4F53;
+    margin-left: 6px;
+}
+.video_list .vl_right .history{
+    margin-bottom: 50px;
+}
+.video_list .vl_right .history h1{
+    padding-bottom: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 0;
+    line-height: 32px;
+}
+.video_list .vl_right .history .his_list{
+    position: relative;
+    width: 320px;
+}
+.video_list .vl_right .history .his_list ul li{
+    float: left;
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 140px;
+    text-align: center;
+}
+.video_list .vl_right .history .his_list ul li a{
+    display: block;
+}
+.video_list .vl_right .history .his_list ul li a img{
+    width: 140px;
+    height: 93px;
+}
+.video_list .vl_right .history .his_list ul li a p{
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.video_list .vl_right .history .his_list ul li a em{
+    color: #FF4F53;
+    font-size: 14px;
+}
+.video_list .vl_right .rank .rank_lead{
+    margin-bottom: 20px;
+    min-height: 32px;
+    height: auto;
+    position: relative;
+}
+.video_list .vl_right .rank .rank_lead h1{
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    line-height: 32px;
+}
+.video_list .vl_right .rank .rank_lead .more{
+    position: absolute;
+    right: 0;
+    font-size: 14px;
+    bottom: 6px;
+    height: auto;
+    line-height: 1;
+}
+.video_list .vl_right .rank .rank_lead .more a:before{
+        content: "";
+    height: 14px;
+    width: 1px;
+    margin: 0 5px;
+    border-left: 1px solid #ccc;
+    display: inline-block;
+    vertical-align: middle;
+}
+.video_list .vl_right .rank .rank_lead .more a:first-child:before{
+    border-left: none;
+}
+.video_list .vl_right .rank .rank_lead .more a.rank_bc{
+    color: #FF4F53;
+    font-weight: normal;
+}
+.video_list .vl_right .rank .rank_list .rank_txt .rank_box{
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 140px;
+    display: block;
+    overflow: hidden;
+}
+.video_list .vl_right .rank .rank_list .rank_txt .rank_box em{
+    background: #4284D9;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+}
+.video_list .vl_right .rank .rank_list .rank_txt .rank_box em.top1{
+    background: #FF4F53;
+}
+.video_list .vl_right .rank .rank_list .rank_txt .rank_box .rank_img{
+    width: 140px;
+    overflow: hidden;
+    float: left;
+    margin-right: 10px;
+    height: 79px;
+    margin-left: -140px;
+}
+.video_list .vl_right .rank .rank_list .rank_txt .rank_box .rank_img img{
+    width: 100%;
+    height: 100%;
+}
+.video_list .vl_right .rank .rank_list .rank_txt .rank_box ul li.rank_name{ 
+    height: 40px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+.video_list .vl_right .rank .rank_list .rank_txt .rank_box ul li.rank_time .play{
+    color: #999;
+    padding: 0 10px 0 17px;
+    background: url(../images/icon-video-more.png) 0 0 no-repeat;
+    background-position: 0 -3px;
+}
+.video_list .vl_right .rank .rank_list .rank_txt .rank_box ul li.rank_time .com{
+    color: #999;
+    padding: 0 10px 0 17px;
+    background: url(../images/icon-video-more.png) 0 0 no-repeat;
+    background-position: 0 -27px;
+    padding-left: 18px;
+}

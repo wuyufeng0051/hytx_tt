@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>个人登录记录 - {#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/connect.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="container fn-clear">
+
+		{#include file="sidebar.html"#}
+
+		<div class="main">
+
+			<ul class="main-tab">
+				<li><a href="{#getUrlPath service='member' type='user' template='profile'#}">基本资料</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='portrait'#}">{#if $userinfo.photo != ""#}修改头像{#else#}设置头像{#/if#}</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='security' doget='chpassword'#}">修改密码</a></li>
+				<li class="curr"><a href="javascript:;">社交帐号</a></li>
+			</ul>
+
+			<div class="tip"><s></s>绑定社交帐号，绑定后可以使用以下帐号直接登录网站！</div>
+
+			<ul class="connect">
+				{#siteConfig action="getUserBindLoginConnect"#}
+				<li{#if $row.state == 0#} class="fail"{#else#} class="ok" data-id="{#$row.code#}"{#/if#}>
+					<div class="l"><img src="{#$cfg_basehost#}/api/login/{#$row.code#}/img/32.png" />{#$row.name#}快捷登录</div>
+					<div class="r">{#if $row.state == 0#}<a href="{#$cfg_basehost#}/api/login.php?type={#$row.code#}">立即绑定</a>{#else#}<a href="javascript:;">解除绑定</a>{#/if#}</div>
+				</li>
+				{#/siteConfig#}
+			</ul>
+
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/connect.js"></script>
+</body>
+</html>

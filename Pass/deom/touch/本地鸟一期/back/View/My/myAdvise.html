@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>我提的意见</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no" >
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+		<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+
+		<style>
+		/*公用头部*/
+		.header{
+		    height: .9rem;
+		    background: #fd5530 !important;
+		    color: #fff;
+		    font-size: .32rem;
+		    line-height: .9rem;
+		    max-width: 1080px;
+		    position: relative;
+		    overflow: hidden;
+		}
+		.header a{
+			display: inline-block;
+			color: #fff;
+		}
+		.header .back{
+		    height: .9rem;
+		    line-height: .9rem;
+		    width: 17%;
+		    float: left;
+		}
+		.header .back i{
+		    width: 0.4rem;
+		    height: .9rem;
+		    display: inline-block;
+		    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+		    vertical-align: middle;
+		    background-size: .3rem;
+		}
+		.header .header_right{
+			float: right;
+			height: .9rem;
+			margin-right: .2rem;
+		}
+		.header .header_right i{
+		    width: 0.04rem;
+		    height: 0.5rem;
+		    display: inline-block;
+		    vertical-align: middle;
+		    background: #fff;
+		    margin: 0 .15rem;
+		}
+		.header .title{
+		    float: left;
+		    width: 70%;
+		    text-align: center;
+		    font-size: 0.38rem;
+		}
+		.header .share_1{
+		    height: .9rem;
+		    float: right;
+		    width: 12%;
+		    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+		    background-size: .5rem;
+		}
+		#list .mui-media-object {
+		    line-height: 60px;
+		    max-width: 80px;
+		    width: 80px;
+		    height: 60px;
+		}
+		#list .mui-media-body>div{
+			color: #ff7300;
+			font-size: 16px;
+		}
+		#list .mui-media-body>div>span{
+			float: right;
+			color: #666;
+		}
+		#list .mui-media-body p{
+			color: #666;
+			padding-right: 10px;
+			position: relative;
+		}
+		#list .mui-media-body p span{
+			display: block;
+			width: 15px;
+			height: 15px;
+			position: absolute;
+			background: #f53532;
+			right: 0;
+			top:10px;
+			border-radius: 50%;
+			color: #fff;
+			line-height: 16px;
+			text-align: center;
+			font-size: 12px;
+		}
+		#list .mui-table-view-cell:after {
+			left: 0;
+		}
+		.mui-content>.mui-table-view:first-child {
+		    margin-top: 0;
+		}
+
+ 		body,html{
+ 			background: #f2f2f2;
+ 		}
+		</style>
+	</head>
+	<body>
+
+	<include file="Public/share" title='包含文件'/>
+			<!-- 共同顶部 s-->
+			<div class="header fn-clear">
+				<div class="back"><a class="a" href="javascript:history.go(-1)"><i></i>返回</a></div>
+			</div>
+			<!-- 共同顶部 e-->
+
+			 <?php if(!empty($res)){ ?>
+				<div class="mui-content">
+					<ul class="mui-table-view" id="list">
+					<?php $status_arr = array('未采纳', '已采纳', '审核中'); ?>
+					<?php foreach ($res as $v) {?>
+						<li class="mui-table-view-cell mui-media">
+							<a href="__MODULE__/My/myAdviseDetails<?php echo '?opinion_id=' . $v['opinion_id']?>">
+							 <?php if(!empty($v['imgs'][0]['imgs_path'])){ ?>
+								<img class="mui-media-object mui-pull-left" src="__PUBLIC__/../<?php echo $v['imgs'][0]['imgs_path']; ?>">
+							 <?php }else{ ?>
+								<img class="mui-media-object mui-pull-left" src="__PUBLIC__/Home/img/bendiniaologo.png">
+							 <?php } ?>
+								<div class="mui-media-body">
+									<div><?php echo $status_arr[$v['opinion_status']];?><span>
+									<?php $aaa = explode(' ', $v['opinion_date']); echo $aaa[0]?></span></div>
+									<p class="mui-ellipsis-2" style="min-height:27px;width: 90%;float: left;"><?php echo $v['opinion_content'];?>
+		    			        <?php if ($v['reply_sum']) echo '<span>' . $v['reply_sum'] . '</span>';?>
+		 							</p>
+
+		                            <?php if($v['count'] != 0 ){ ?>
+	 			                      <div style="float:right;background:#f00;width:17px;height:17px;border-radius:50%;color:#fff;font-size:14px;line-height:15px;text-align:center;margin-top: 10px;">
+	 			                      <?php echo $v['count'];?></div>
+		                            <?php } ?>
+		                            
+								  </div>
+							</a>
+						</li>
+					<?php }?>
+ 					</ul>
+	             </div>
+				<?php }else{ ?>	
+				 <div style="margin-top: 20px;">
+				   <p style="width: 100%;text-align: center;">您还没有提过意见</p>
+				   <p style="width: 100%;text-align: center;">赶紧到意见商城提意见兑换礼品</p>
+				 </div>
+				 <?php }  ?>	 
+		<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+		<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+		<script>
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+		</script>
+	</body>
+</html>

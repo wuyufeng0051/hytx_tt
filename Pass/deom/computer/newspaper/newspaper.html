@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>报纸首页</title>
+	<link rel="stylesheet" type="text/css" href="http://www.ihuoniao.cn/templates/siteConfig/default/css/base.css?v=1" media="all" />
+	<link rel="stylesheet" href="http://www.ihuoniao.cn/templates/siteConfig/default/css/index_public.css?v=1" />
+	<link rel="stylesheet" type="text/css" href="http://www.ihuoniao.cn/templates/member/css/login.css?v=5" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/newspaper.css">
+	<script type="text/javascript" src="http://www.ihuoniao.cn/static/js/core/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<!-- 顶部信息 s -->
+<div class="topInfo">
+	<div class="wrap fn-clear">
+		<div class="loginbox">
+						<div class="loginbefore fn-clear">
+				<a href="#" class="regist">免费注册</a><span class="logint"><a href="#">请登录</a></span><a class="loginconnect" href="#" ><i class="picon picon-qq"></i>QQ登陆</a><a  class="loginconnect" href="#" target="_blank"><i class="picon picon-weixin"></i>微信登陆</a><a class="loginconnect" href="#" target="_blank"><i class="picon picon-weibo"></i>新浪登陆</a>
+			</div>
+					</div>
+		<ul class="menu topbarlink fn-clear">
+			<li class="dropdown user">
+				<a href="#">我的会员中心<i class="picon picon-down"></i></a>
+				<div class="submenu">
+					<a href="#">我的订单</a>
+					<a href="#">交易明细</a>
+					<a href="#">安全中心</a>
+				</div>
+			</li>
+			<li><a href="#"><i class="picon picon-phone"></i>手机站</a><span class="separ">|</span>
+				<div class="pop">
+					<s></s>
+					<p>扫码访问<a href="#"><img src="http://www.ihuoniao.cn/include/qrcode.php?data=http://www.ihuoniao.cn" width="150" height="150" /></a></p>
+				</div>
+			</li>
+			<li><a href="#"><i class="picon picon-weixin"></i>微信公众平台</a><span class="separ">|</span>
+				<div class="pop" style="left: -26px;">
+					<s></s>
+					<p>微信扫码关注<img src="http://www.ihuoniao.cn/include/attachment.php?f=VVRaU05sYzREem9DTlE9PQ==" width="150" height="150" /></p>
+				</div>
+			</li>
+			<li class="dropdown">
+				<a href="#">快速发布<i class="picon picon-down"></i></a>
+				<div class="submenu">
+					<a href="#">新闻投稿</a>
+					<a href="#">分类信息</a>
+					<a href="#">发布房源</a>
+				</div>
+			</li>
+			<li class="dropdown webmap">
+				<a href="#">网站导航<i class="picon picon-down"></i></a>
+				<div class="submenu">
+					
+					<a href="#">新闻</a>
+					
+					<a href="#">信息</a>
+					
+					<a href="#">团购</a>
+					
+					<a href="#">房产</a>
+					
+					<a href="#">商城</a>
+					
+					<a href="#">建材</a>
+					
+					<a href="#">家具</a>
+					
+					<a href="#">家居</a>
+					
+					<a href="#">装修</a>
+					
+					<a href="#">招聘</a>
+					
+					<a href="#">交友</a>
+					
+					<a href="#">婚嫁</a>
+					
+					<a href="#">外卖</a>
+					
+					<a href="#">专题</a>
+					
+					<a href="#">汽车</a>
+					
+					<a href="#">报刊</a>
+					
+					<a href="#">自助建站</a>
+					
+					<a href="#">贴吧社区</a>
+					
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- 顶部信息 e -->
+<div class="news-lead">
+	<div class="choice">
+		<div class="news-choice">
+			报纸选择：
+			<select >
+				<option >---请选择报纸---</option>
+				<option>SuzhouReview</option>
+				<option>常熟新闻</option>
+				<option>城市商报</option>
+				<option>城市早8点</option>
+				<option>姑苏晚报</option>
+				<option>姑苏悦读</option>
+				<option>今日相城</option>
+				<option>今园区</option>
+				<option>昆山读本</option>
+				<option>美丽吴中</option>
+				<option>人文平江</option>
+				<option>苏州高新</option>
+				<option>苏州科协</option>
+				<option>苏州日报</option>
+				<option>文化沧浪</option>
+				<option>吴江读本</option>
+			</select>
+		</div>
+		<div class="date-choice">
+			日期选择：
+			<div style="float:right;">
+	    		<input placeholder="请输入日期" class="laydate-icon" onclick="laydate()">
+			</div>
+		</div>
+		<button>搜索</button>
+	</div>
+</div>
+<div class="news-main fn-clear">
+	<div class="news-mm">
+		<div class="main-1 fn-clear">
+			<div class="partone fn-clear">
+				<div class="partone-lead">
+					<p>苏 州</p>
+				</div>
+				<div class="partone-paper  fn-clear">
+					<ul class=" fn-clear">
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161130_7011_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161130_7014_122.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161201_7019_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161201_7020_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="main-1 fn-clear">
+			<div class="partone fn-clear">
+				<div class="partone-lead">
+					<p>城 区</p>
+				</div>
+				<div class="partone-paper  fn-clear">
+					<ul class=" fn-clear">
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161130_7011_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161130_7014_122.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161201_7019_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161201_7020_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161201_7020_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="main-1 fn-clear">
+			<div class="partone fn-clear">
+				<div class="partone-lead">
+					<p>城 区</p>
+				</div>
+				<div class="partone-paper  fn-clear">
+					<ul class=" fn-clear">
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161130_7011_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161201_7019_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161201_7020_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161201_7020_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="main-1 fn-clear">
+			<div class="partone fn-clear">
+				<div class="partone-lead">
+					<p>城 区</p>
+				</div>
+				<div class="partone-paper  fn-clear">
+					<ul class=" fn-clear">
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161130_7011_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="main-1 fn-clear">
+			<div class="partone fn-clear">
+				<div class="partone-lead">
+					<p>城 区</p>
+				</div>
+				<div class="partone-paper  fn-clear">
+					<ul class=" fn-clear">
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161130_7011_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161130_7011_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161130_7011_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+						<li>
+							<b>
+							<a href="newspaper-list.html"><img src="images/ep_20161130_7011_1.jpg"></a></b>
+							<p>苏州日报</p>
+							<span>2016年12月01日<a href="#"><i>更多</i></a></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 底部 s -->
+<div class="footer-login">
+	<p>
+		<a href="">关于我们</a><span class="pice-1">|</span><a href="">联系我们</a><span class="pice-1">|</span><a href="">投诉建议</a><span class="pice-1">|</span><a href="">广告服务</a><span class="pice-1">|</span><a href="">隐私保护</a><span class="pice-1">|</span><a href="">免责声明</a><span class="pice-1">|</span><a href="">用户协议</a><span class="pice-1">|</span><a href="">法律声明</a><span class="pice-1">|</span><a href="">服务条款</a><span class="pice-1">|</span><a href="">网络安全声明</a><span class="pice-1">|</span><a href="">帮助中心</a>
+	</p>
+	<p>
+	Copyright © 2016 火鸟门户. All rights reserved.  工信部备案：苏ICP备13047463号  公安部备案：
+	<a href="#" target="_blank">32059002001108号</a></p>
+	<p>增值电信业务许可证：
+	<a href="#" target="_blank">苏B1.B2-20140200</a>、
+	<a href="#" target="_blank">B2-20160517</a>
+	</p>
+</div>
+<!-- 底部 e -->
+<script type="text/javascript" src="http://www.ihuoniao.cn/static/js/common.js"></script>
+<script type="text/javascript" src="js/newspaper.js"></script>
+<script type="text/javascript" src="js/laydate.js"></script>
+</body>
+</html>

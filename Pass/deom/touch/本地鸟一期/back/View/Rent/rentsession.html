@@ -1,0 +1,94 @@
+<foreach name="lease" item="vo" key="k">
+ 		  <?php if($vo['lease_type'] == 0){ ?>
+			<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" style="padding: 10px 10px;">
+					 <!-- href="__MODULE__/Rent/rentShopDetails?lease_id={$vo.lease_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;" str="rentShop" stv="{$vo.lease_id}" class="topheight">
+ 							<div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+							     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; " ></div>
+                            </div>
+							<div class="mui-ellipsis-2" style="height: 42px;">
+								{$vo.lease_title}
+							</div>
+							<p style="margin-bottom: 0;font-size: 12px;"><span style="color: #ff7300;font-size: 16px;">
+ 							{$vo.lease_price} 
+ 							</span>&nbsp;&nbsp;{$vo.lease_class}&nbsp;&nbsp;<span style="color: #ff7300;font-size: 16px;float: right;"><?php if(empty($vo['lease_transfer'])){echo '出租';}else{echo '转让';} ?></span></p>
+							<p style="margin-bottom: 0;color: #666;font-size: 12px;width: 100%;height: 21px;">
+							 <strong class="mui-ellipsis-address" style="font-weight: normal;margin-right: 5px;">{$vo.lease_address}</strong>
+							 <?php if($vo['lease_is_top'] == 1){ ?>
+							  <span style="float: right;">置顶</span>
+							 <?php }else{ ?>
+							 <span style="float: right;" class="time">{$vo.lease_time}</span>
+							 <input type="hidden" value="{$vo.lease_time}" class="times">
+							 <?php } ?>
+						    </p>
+						</a>
+					</div>
+				</div>
+			</div>
+
+     <?php }else if($vo['lease_type'] == 1){ ?>
+			<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 10px 10px;">
+				<!-- href="__MODULE__/Rent/rentLandDetails?lease_id={$vo.lease_id}" -->
+					<a style="position: relative;padding-left: 90px;display: block;height: 85px;color:#000;"  str="rentLand" stv="{$vo.lease_id}" class="topheight">
+						<div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+						     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; " ></div>
+                        </div>
+						<div class="mui-ellipsis-2" style="height: 42px;">
+							{$vo.lease_title}
+						</div>
+						<p style="margin-bottom: 0;font-size: 12px;"><span style="color: #ff7300;font-size: 16px;">  
+				                   {$vo.lease_price} 
+				                   </span>&nbsp;&nbsp;{$vo.lease_class}&nbsp;&nbsp;</p>
+						<p style="margin-bottom: 0;color: #666;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-address" style="font-weight: normal;margin-right: 5px;">{$vo.lease_address}</strong>
+						<?php if($vo['lease_is_top'] == 1){ ?>
+						 <span style="float: right;">置顶</span>
+						<?php }else{ ?>
+						<span style="float: right;" class="time">{$vo.lease_time}</span>
+						<input type="hidden" value="{$vo.lease_time}" class="times">
+						<?php } ?>
+						</p>
+					</a>
+				</div>
+			</div>
+		 </div>
+	 <?php }else{ ?>
+	    <div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" style="padding: 10px 10px;">
+					    <!-- href="__MODULE__/Rent/rentHouseDetails?lease_id={$vo.lease_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;"  str="rentHouse" stv="{$vo.lease_id}" class="topheight">
+						    <div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+							     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; " ></div>
+                            </div>
+							<div class="mui-ellipsis-2" style="height: 42px;">
+								{$vo.lease_title}
+							</div>
+							<p style="margin-bottom: 0;font-size: 12px;">{$vo.lease_room}&nbsp;&nbsp;
+							 <span>
+							 <?php if(empty($vo['lease_config'])){ ?>
+							 无家具家电
+							 <?php }else{ ?>
+							 带家具家电
+							 <?php } ?>
+							 </span>
+							 <span style="float: right;color: #ff7300;font-size: 14px;">
+ 							{$vo.lease_price}
+ 							</span></p>
+							<p style="margin-bottom: 0;color: #000;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-address" style="font-weight: normal;margin-right: 5px;">{$vo.lease_address}</strong>
+ 							<?php if($vo['lease_is_top'] == 1){ ?>
+							 <span style="float: right;">置顶</span>
+							<?php }else{ ?>
+							<span style="float: right;" class="time">{$vo.lease_time}</span>
+							<input type="hidden" value="{$vo.lease_time}" class="times">
+							<?php } ?>
+							</p>
+						</a>
+					</div>
+				</div>
+			</div>
+	 <?php } ?>
+	  </foreach>

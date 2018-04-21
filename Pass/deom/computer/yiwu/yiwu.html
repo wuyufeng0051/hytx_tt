@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>易物</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/base.css" media="all"/>
+<link href="css/common.css"rel="stylesheet">
+<link href="css/yiwu.css"rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<!-- 头部导航 -->
+<div class="top">
+	<div class="lead fn-clear">
+		<div class="welcome">
+			<i>欢迎您!</i>
+			<div class="log">
+			<a href="#">登录</a>
+			<a href="#">注册</a>
+			</div>
+		</div>
+		<div class="order">
+			<ul class="fn-clear">
+				<li class="dropdown"><a href="#" class="indent">我的订单<i></i></a>
+					<ul>
+						<li><a href="#">待支付</a></li>
+						<li><a href="#">待收货</a></li>
+						<li><a href="#">待评价</a></li>
+						<li><a href="#">修改订单</a></li>
+					</ul>
+				</li>
+				<li><a href="#" class="car cart"><img src="images/cxzc.jpg">购物车<i>0</i></a></li>
+				<li><a href="#" class="car yicart"><img src="images/cxzc.jpg">易物车<i>0</i></a></li>
+				<li class="dropdown"><a href="#" class="indent">帮助中心<i></i></a>
+					<div class="downbox">
+						<h3>购物指南</h3>
+						<ul class="fn-clear">
+							<li><a href="#">会员制介绍</a></li>
+							<li><a href="#">积分介绍</a></li>
+							<li><a href="#">购物流程</a></li>
+						</ul>
+						<h3>支付方式</h3>
+						<ul class="fn-clear">
+							<li><a href="#l">快捷支付</a></li>
+							<li><a href="#l">货到付款</a></li>
+						</ul>
+						<h3>订单服务</h3>
+						<ul class="fn-clear">
+							<li><a href="#l">修改订单</a></li>
+							<li><a href="#l">取消订单</a></li>
+							<li><a href="#l">配送查询</a></li>
+							<li><a href="#l">订单说明</a></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="search fn-clear">
+	<div class="logo">
+		<a href="#"><img src="images/zczxccccc.jpg"></a>
+		<div class="change">
+			<i class="cityname">全国</i>
+			<p>切换城市</p>
+
+			<!-- 选择城市 s -->
+			<div class="citybox pop">
+				<div class="close">×</div>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>江苏省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">苏州</a><a href="javascript:;">无锡</a><a href="javascript:;">南京</a><a href="javascript:;">常州</a><a href="javascript:;">徐州</a><a href="javascript:;">扬州</a><a href="javascript:;">南通</a><a href="javascript:;">盐城</a><a href="javascript:;">徐州</a><a href="javascript:;">扬州</a><a href="javascript:;">南通</a><a href="javascript:;">盐城</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>福建省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">福州</a><a href="javascript:;">龙岩</a><a href="javascript:;">南平</a><a href="javascript:;">宁德</a><a href="javascript:;">莆田</a><a href="javascript:;">泉州</a><a href="javascript:;">三明</a><a href="javascript:;">厦门</a><a href="javascript:;">漳州</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>海南省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">海口</a><a href="javascript:;">三亚</a><a href="javascript:;">五指山</a><a href="javascript:;">三沙</a><a href="javascript:;">琼海</a><a href="javascript:;">文昌</a><a href="javascript:;">东方</a><a href="javascript:;">万宁</a><a href="javascript:;">白沙</a><a href="javascript:;">保亭</a><a href="javascript:;">临高</a><a href="javascript:;">澄迈</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>江苏省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">苏州</a><a href="javascript:;">无锡</a><a href="javascript:;">南京</a><a href="javascript:;">常州</a><a href="javascript:;">徐州</a><a href="javascript:;">扬州</a><a href="javascript:;">南通</a><a href="javascript:;">盐城</a><a href="javascript:;">徐州</a><a href="javascript:;">扬州</a><a href="javascript:;">南通</a><a href="javascript:;">盐城</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>福建省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">福州</a><a href="javascript:;">龙岩</a><a href="javascript:;">南平</a><a href="javascript:;">宁德</a><a href="javascript:;">莆田</a><a href="javascript:;">泉州</a><a href="javascript:;">三明</a><a href="javascript:;">厦门</a><a href="javascript:;">漳州</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>海南省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">海口</a><a href="javascript:;">三亚</a><a href="javascript:;">五指山</a><a href="javascript:;">三沙</a><a href="javascript:;">琼海</a><a href="javascript:;">文昌</a><a href="javascript:;">东方</a><a href="javascript:;">万宁</a><a href="javascript:;">白沙</a><a href="javascript:;">保亭</a><a href="javascript:;">临高</a><a href="javascript:;">澄迈</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>江苏省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">苏州</a><a href="javascript:;">无锡</a><a href="javascript:;">南京</a><a href="javascript:;">常州</a><a href="javascript:;">徐州</a><a href="javascript:;">扬州</a><a href="javascript:;">南通</a><a href="javascript:;">盐城</a><a href="javascript:;">徐州</a><a href="javascript:;">扬州</a><a href="javascript:;">南通</a><a href="javascript:;">盐城</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>福建省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">福州</a><a href="javascript:;">龙岩</a><a href="javascript:;">南平</a><a href="javascript:;">宁德</a><a href="javascript:;">莆田</a><a href="javascript:;">泉州</a><a href="javascript:;">三明</a><a href="javascript:;">厦门</a><a href="javascript:;">漳州</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>海南省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">海口</a><a href="javascript:;">三亚</a><a href="javascript:;">五指山</a><a href="javascript:;">三沙</a><a href="javascript:;">琼海</a><a href="javascript:;">文昌</a><a href="javascript:;">东方</a><a href="javascript:;">万宁</a><a href="javascript:;">白沙</a><a href="javascript:;">保亭</a><a href="javascript:;">临高</a><a href="javascript:;">澄迈</a><a href="javascript:;">三亚</a><a href="javascript:;">五指山</a><a href="javascript:;">三沙</a><a href="javascript:;">琼海</a><a href="javascript:;">文昌</a><a href="javascript:;">东方</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>江苏省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">苏州</a><a href="javascript:;">无锡</a><a href="javascript:;">南京</a><a href="javascript:;">常州</a><a href="javascript:;">徐州</a><a href="javascript:;">扬州</a><a href="javascript:;">南通</a><a href="javascript:;">盐城</a><a href="javascript:;">徐州</a><a href="javascript:;">扬州</a><a href="javascript:;">南通</a><a href="javascript:;">盐城</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>福建省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">福州</a><a href="javascript:;">龙岩</a><a href="javascript:;">南平</a><a href="javascript:;">宁德</a><a href="javascript:;">莆田</a><a href="javascript:;">泉州</a><a href="javascript:;">三明</a><a href="javascript:;">厦门</a><a href="javascript:;">漳州</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>海南省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">海口</a><a href="javascript:;">三亚</a><a href="javascript:;">五指山</a><a href="javascript:;">三沙</a><a href="javascript:;">琼海</a><a href="javascript:;">文昌</a><a href="javascript:;">东方</a><a href="javascript:;">万宁</a><a href="javascript:;">白沙</a><a href="javascript:;">保亭</a><a href="javascript:;">临高</a><a href="javascript:;">澄迈</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>福建省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">福州</a><a href="javascript:;">龙岩</a><a href="javascript:;">南平</a><a href="javascript:;">宁德</a><a href="javascript:;">莆田</a><a href="javascript:;">泉州</a><a href="javascript:;">三明</a><a href="javascript:;">厦门</a><a href="javascript:;">漳州</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>海南省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">海口</a><a href="javascript:;">三亚</a><a href="javascript:;">五指山</a><a href="javascript:;">三沙</a><a href="javascript:;">琼海</a><a href="javascript:;">文昌</a><a href="javascript:;">东方</a><a href="javascript:;">万宁</a><a href="javascript:;">白沙</a><a href="javascript:;">保亭</a><a href="javascript:;">临高</a><a href="javascript:;">澄迈</a><a href="javascript:;">三亚</a><a href="javascript:;">五指山</a><a href="javascript:;">三沙</a><a href="javascript:;">琼海</a><a href="javascript:;">文昌</a><a href="javascript:;">东方</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>江苏省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">苏州</a><a href="javascript:;">无锡</a><a href="javascript:;">南京</a><a href="javascript:;">常州</a><a href="javascript:;">徐州</a><a href="javascript:;">扬州</a><a href="javascript:;">南通</a><a href="javascript:;">盐城</a><a href="javascript:;">徐州</a><a href="javascript:;">扬州</a><a href="javascript:;">南通</a><a href="javascript:;">盐城</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>福建省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">福州</a><a href="javascript:;">龙岩</a><a href="javascript:;">南平</a><a href="javascript:;">宁德</a><a href="javascript:;">莆田</a><a href="javascript:;">泉州</a><a href="javascript:;">三明</a><a href="javascript:;">厦门</a><a href="javascript:;">漳州</a></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt class="fn-left"><strong>海南省</strong></dt>
+					<dd class="fn-left"><a href="javascript:;">海口</a><a href="javascript:;">三亚</a><a href="javascript:;">五指山</a><a href="javascript:;">三沙</a><a href="javascript:;">琼海</a><a href="javascript:;">文昌</a><a href="javascript:;">东方</a><a href="javascript:;">万宁</a><a href="javascript:;">白沙</a><a href="javascript:;">保亭</a><a href="javascript:;">临高</a><a href="javascript:;">澄迈</a></dd>
+				</dl>
+			</div>
+			<!-- 选择城市 e -->
+
+		</div>
+	</div>
+	<div class="seek">
+		<i></i>
+		<form class="r-search">
+
+			<div class="text-box">
+				<input type="text" placeholder="双十一LG洗衣机爆款6折起" class="s-1">
+			</div>
+			<input type="submit" class="s-2" value="搜索">
+			<a href="#" class="recommend">抢西门子烤箱</a>
+			<a href="#" class="recommend">双11五折嗨购</a>
+			<a href="#" class="recommend">双11抢空调</a>
+			<a href="#" class="recom">双11大牌pk</a>
+			<a href="#" class="recom">空调999元</a>
+			<a href="#" class="recom">母婴499减50</a>
+			<a href="#" class="recom">彩电1111元秒</a>
+		</form>
+	</div>
+</div>
+<!-- 头部导航结束 -->
+
+<!-- 导航 s -->
+	<div class="navwrap">
+		<div class="nav wrap">
+			<div class="all_kinds">
+				<div class="hd">全部商品分类</div>
+				<ul class="kindslist">
+					<li class="kind1">
+						<div class="title">
+							<a href="#">实体店体验专区</a><i></i>
+						</div>
+						<div class="sub_kinds">
+							<dl>
+								<dt><a href="#">活动商场<i class="icon icon-right"></i></a></dt>
+								<dd></dd>
+							</dl>
+						</div>
+					</li>
+					<li class="kind2">
+						<div class="title">
+							<a href="#">食品保健</a><i></i>
+						</div>
+						<div class="sub_kinds">
+							<dl>
+								<dt><a href="#">粮油调味<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">大米</a>
+									<a href="#">豆类</a>
+									<a href="#">豆油</a>
+									<a href="#">酱油</a>
+									<a href="#">火锅料</a>
+									<a href="#">挂面</a>
+									<a href="#">面粉</a>
+								</dd>
+							</dl>
+							<dl>
+								<dt><a href="#">酒水/饮料<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">白酒</a>
+									<a href="#">洋酒</a>
+									<a href="#">花酒</a>
+									<a href="#">梅酒</a>
+									<a href="#">红酒</a>
+									<a href="#">葡萄酒</a>
+									<a href="#">饮料</a>
+								</dd>
+							</dl>
+							<dl>
+								<dt><a href="#">滋补养生<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">茶叶</a>
+								</dd>
+							</dl>
+							<dl>
+								<dt><a href="#">营养保健<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">醋蛋归原液</a>
+								</dd>
+							</dl>
+						</div>
+					</li>
+					<li class="kind3">
+						<div class="title">
+							<a href="#">汽车用品</a><i></i>
+						</div>
+						<div class="sub_kinds">
+							<dl>
+								<dt><a href="#">汽车用品<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">车饰/香水</a>
+									<a href="#">安全预警仪</a>
+									<a href="#">其他</a>
+								</dd>
+							</dl>
+						</div>
+					</li>
+					<li class="kind4">
+						<div class="title">
+							<a href="#">服饰配件</a><i></i>
+						</div>
+						<div class="sub_kinds">
+							<dl>
+								<dt><a href="#">配件饰品<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">丝巾/围巾</a>
+									<a href="#">手套</a>
+									<a href="#">运动配件</a>
+									<a href="#">手串</a>
+									<a href="#">箱包</a>
+								</dd>
+							</dl>
+						</div>
+					</li>
+					<li class="kind5">
+						<div class="title">
+							<a href="#">化妆品/个人护理</a><i></i>
+						</div>
+						<div class="sub_kinds">
+							<dl>
+								<dt><a href="#">女士护肤<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">美容养颜</a>
+									<a href="#">基础护肤类</a>
+								</dd>
+							</dl>
+							<dl>
+								<dt><a href="#">男士护理<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">男士基础护肤</a>
+									<a href="#">男士套装</a>
+								</dd>
+							</dl>
+							<dl>
+								<dt><a href="#">身体护理<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">沐浴露</a>
+									<a href="#">纤体塑形</a>
+								</dd>
+							</dl>
+							<dl>
+								<dt><a href="#">洗发护发<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">洗发水</a>
+									<a href="#">护发素</a>
+									<a href="#">烫发/染发</a>
+								</dd>
+							</dl>
+						</div>
+					</li>
+					<li class="kind6">
+						<div class="title">
+							<a href="#">日用百货</a><i></i>
+						</div>
+						<div class="sub_kinds">
+							<dl>
+								<dt><a href="#">居家日用<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">牙刷/牙膏</a>
+									<a href="#">茶具套装</a>
+									<a href="#">毛巾/浴巾</a>
+									<a href="#">水杯/保温杯</a>
+									<a href="#">生活用纸</a>
+									<a href="#">卫生巾</a>
+									<a href="#">清洁用品</a>
+									<a href="#">婴儿用品</a>
+									<a href="#">清洁工具</a>
+									<a href="#">驱虫用品</a>
+									<a href="#">创意家居</a>
+									<a href="#">家纺软装</a>
+									<a href="#">枕腰垫</a>
+									<a href="#">香皂</a>
+									<a href="#">其他</a>
+								</dd>
+							</dl>
+							<dl>
+								<dt><a href="#">厨卫用品<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">花洒套餐</a>
+									<a href="#">刀剪菜板</a>
+									<a href="#">套餐/茶具</a>
+									<a href="#">烹饪锅具</a>
+									<a href="#">面盆</a>
+									<a href="#">厨房配件</a>
+									<a href="#">五金/挂件</a>
+									<a href="#">餐饮用具</a>
+								</dd>
+							</dl>
+							<dl>
+								<dt><a href="#">户外用品<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">旅游用品</a>
+									<a href="#">便携折叠桌椅</a>
+									<a href="#">睡袋/吊床</a>
+								</dd>
+							</dl>
+						</div>
+					</li>
+					<li class="kind7">
+						<div class="title">
+							<a href="#">文化用品</a><i></i>
+						</div>
+						<div class="sub_kinds">
+							<dl>
+								<dt><a href="#">办公用品<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">办公套装类</a>
+									<a href="#">礼品</a>
+								</dd>
+							</dl>
+						</div>
+					</li>
+					<li class="kind8">
+						<div class="title">
+							<a href="#">家电办公</a><i></i>
+						</div>
+						<div class="sub_kinds">
+							<dl>
+								<dt><a href="#">厨房家电<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">电磁炉</a>
+									<a href="#">微波炉</a>
+									<a href="#">豆浆机</a>
+								</dd>
+							</dl>
+							<dl>
+								<dt><a href="#">个人家电<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">电子称</a>
+									<a href="#">剃须刀</a>
+									<a href="#">护眼仪</a>
+									<a href="#">吹风机</a>
+									<a href="#">唱佛机</a>
+								</dd>
+							</dl>
+							<dl>
+								<dt><a href="#">休闲家电<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">投影仪</a>
+									<a href="#">录音笔</a>
+									<a href="#">耳机</a>
+									<a href="#">音箱</a>
+								</dd>
+							</dl>
+							<dl>
+								<dt><a href="#">数码配件<i class="icon icon-right"></i></a></dt>
+								<dd>
+									<a href="#">汽车数码产品</a>
+									<a href="#">充电器</a>
+								</dd>
+							</dl>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="nav_m">
+				<ul>
+					<li><a href="#">商城首页</a></li>
+					<li><a href="#">荣誉资质</a></li>
+					<li><a href="#">加入我们</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<!-- 导航 e -->
+<div class="banner">
+	<div class="list">
+		<div class="bd">
+			<div class="slideshow-item">
+				<a href="#"><img src="images/14284788414227.jpg" alt="" /></a>
+			</div>
+			<div class="slideshow-item ig-1">
+				<a href="#"><img src="images/14284788485414.jpg" alt="" /></a>
+			</div>
+			<div class="slideshow-item ig-1">
+				<a href="#"><img src="images/zxcxcasda.jpg" alt="" /></a>
+			</div>
+			<div class="slideshow-item ig-1">
+				<a href="#"><img src="images/zxczxcasd.jpg" alt="" /></a>
+			</div>
+			<div class="slideshow-item ig-1">
+				<a href="#"><img src="images/14284788414227.jpg" alt="" /></a>
+			</div>
+			<div class="slideshow-item ig-1">
+				<a href="#"><img src="images/zxcxcasda.jpg" alt="" /></a>
+			</div>
+		</div>
+		<div class="hd"><ul></ul></div>
+	</div>
+</div>
+<!-- 商品信息 -->
+<div class="pic fn-clear">
+	<ul>
+	<li><a href="#"><img src="images/zxcvxv.jpg"></a></li>
+	<li><a href="#"><img src="images/zxcvxv.jpg"></a></li>
+	<li><a href="#"><img src="images/zxcvxv.jpg"></a></li>
+	<li><a href="#"><img src="images/zxcvxv.jpg"></a></li>
+	</ul>
+</div>
+<div class="dapai fn-clear">
+	<h1>大牌盛宴</h1>
+	<a href="#" class="dapai-l fn-clear"><img src="images/zxczxcx.jpg"></a>
+	<div class="dapai-r">
+		<a href="#"><img src="images/147869565561748375.jpg"></a>
+		<a href="#"><img src="images/147869588254982385.png"></a>
+		<a href="#"><img src="images/147869600706066849.jpg"></a>
+		<a href="#"><img src="images/147869617789853479.jpg"></a>
+		<a href="#"><img src="images/147874059846619710.jpg"></a>
+		<a href="#"><img src="images/147874218257697658.jpg"></a>
+		<a href="#"><img src="images/147875048848435306.jpg"></a>
+		<a href="#"><img src="images/147879557159800278.jpg"></a>
+		<a href="#"><img src="images/147883283328477332.jpg"></a>
+		<a href="#"><img src="images/147883632981118072.jpg"></a>
+		<a href="#"><img src="images/147887028132164734.jpg"></a>
+		<a href="#"><img src="images/147869617789853479.jpg"></a>
+		<a href="#"><img src="images/147869588254982385.png"></a>
+		<a href="#"><img src="images/147879557159800278.jpg"></a>
+		<a href="#"><img src="images/147879557159800278.jpg"></a>
+		<a href="#"><img src="images/147869617789853479.jpg"></a>
+		<a href="#"><img src="images/147879557159800278.jpg"></a>
+		<a href="#"><img src="images/147879557159800278.jpg"></a>
+	</div>
+</div>
+<!-- 商品信息 -->
+<!-- 猜你喜欢 -->
+<div class="like fn-clear">
+	<div class="wrap">
+		<div class="like-tit">
+			<h2>猜你喜欢</h2>
+			<div class="change">
+				<a href="javascript:;">换一换</a>
+			</div>
+		</div>
+		<div class="like-box">
+			<ul class="showUl">
+				
+				<li class="uu">
+					<a href="#" class="like-img" target="_blank"><img src="images/0000000000-000000000129695812_1.jpg" ></a>
+					<a href="" class="like-txt" target="_blank">
+					<p>惠普（HP）DeskJet 1112 彩色喷墨打印机（打印）</p></a>
+					<p class="price">¥99.00</p>
+				</li>
+
+				<li>
+					<a href="#" class="like-img" target="_blank"><img src="images/0000000000-000000000101366972_1.jpg" ></a>
+					<a href="" class="like-txt" target="_blank"><p>惠普（HP） LaserJet Pro M1136 黑白多功能激光一体机 （打印 复印 扫描）</p></a>
+					<p class="price">¥99.00</p>
+				</li>
+				
+				<li>
+					<a href="#" class="like-img" target="_blank"><img src="images/0000000000-000000000151261660_1.jpg" ></a>
+					<a href="#" class="like-txt" target="_blank"><p>Apple MacBook Air 13.3英寸笔记本电脑（I5 8G 128G MMGF2CH/A 银色）</p></a>
+					<p class="price">¥308.00</p>
+				</li>
+				
+				<li>
+					<a href="#" class="like-img" target="_blank"><img src="images/0000000000-000000000123916377_1.jpg" ></a>
+					<a href="#" class="like-txt" target="_blank"><p>大眼睛2015卡通毛线手套女生可爱加厚加绒连指手套萌冬天挂脖保暖</p></a>
+					<p class="price">¥79.00</p>
+				</li>
+				
+				<li>
+					<a href="#" class="like-img" target="_blank"><img src="images/0000000000-000000000146354490_1.jpg" ></a>
+					<a href="#" class="like-txt" target="_blank"><p>小米（XIAOMI）平板电脑2 7.9英寸 （Intel Z8500 2G/16G 500W/800W）香槟金</p></a>
+					<p class="price">¥19.00</p>
+				</li>
+				
+				<li >
+					<a href="#" class="like-img " target="_blank"><img src="images/0000000000-000000000150055596_1.jpg" ></a>
+					<a href="" class="like-txt" target="_blank"><p>华硕（ASUS）K20CD 碉堡台式电脑主机（i3-6100 4G 7200转1TB DVD光驱 Win10 键鼠）</p></a>
+					<p class="price">¥238.00</p>
+				</li>
+			</ul>
+			<ul>
+				
+				<li>
+					<a href="#" class="like-img" target="_blank"><img src="images/0000000000-000000000123916377_1.jpg" alt="富安娜床单四件套-蝶迷花香"></a>
+					<a href="#" class="like-txt" target="_blank"><p>富安娜床单四件套-蝶迷花香</p></a>
+					<p class="price">¥388.00</p>
+				</li>
+				
+				<li>
+					<a href="#" class="like-img" target="_blank"><img src="images/0000000000-000000000123916377_1.jpg" alt="PAUL FRANK大嘴猴系列床品四件套"></a>
+					<a href="#" class="like-txt" target="_blank"><p>PAUL FRANK大嘴猴系列床品四件套</p></a>
+					<p class="price">¥228.00</p>
+				</li>
+				
+			</ul>
+			<ul>
+				
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="img-like">
+	<a href="#"><img src="images/zxcasd.jpg"></a>
+</div>
+<!-- 猜你喜欢 -->
+<!-- 楼层 -->
+<div class="floor fn-clear">
+	<div class="floor-lead">
+		<span>1F - 电子数码</span>
+		<p>
+		<a href="#">精选配件</a>
+		<a href="#">智能数码</a>
+		<a href="#">京东网厅</a>
+		</p>
+	</div>
+	<div class="floor-th">
+		<ul class="floor-l">
+			<a href="#"><img src="images/asdasd.jpg"></a>
+			<li><a href="#"> 华为手机</a></li>
+			<li><a href="#"> 小米手机</a></li>
+			<li><a href="#"> 乐视手机</a></li>
+			<li><a href="#"> 苹果手机</a></li>
+			<li><a href="#"> 笔记本</a></li>
+			<li><a href="#"> 平板电脑</a></li>
+			<li><a href="#"> 华为手机</a></li>
+			<li><a href="#"> 小米手机</a></li>
+			<li><a href="#"> 乐视手机</a></li>
+			<li><a href="#"> 华为手机</a></li>
+			<li><a href="#"> 小米手机</a></li>
+			<li><a href="#"> 乐视手机</a></li>
+			<li><a href="#"> 苹果手机</a></li>
+			<li><a href="#"> 笔记本</a></li>
+			<li><a href="#"> 平板电脑</a></li>
+			<li><a href="#"> 华为手机</a></li>
+			<li><a href="#"> 小米手机</a></li>
+			<li><a href="#"> 乐视手机</a></li>
+		</ul>
+		<ul class="floor-r">
+			<li>
+			<a href="#">
+			<img src="images/20161109132850724989.jpg">
+			</a>
+			<a href="#">
+			<span>荣耀畅玩5C</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>798</a>
+			<del>￥800</del>
+			</p>
+			</li>
+			<li>
+			<a href="#">
+			<img src="images/20161109132850725423.jpg">
+			</a>
+			<a href="#">
+			<span>蒙奇奇指环扣支架</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>8.8</a>
+			<del>￥28</del>
+			</p>
+			</li>
+			<li>
+			<a href="#">
+			<img src="images/20161109132850725763.jpg">
+			</a>
+			<a href="#">
+			<span>小天线控蓝牙自拍杆</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>29</a>
+			<del>￥49</del>
+			</p>
+			</li>
+			<li>
+			<a href="#">
+			<img src="images/20161109132850726174.jpg">
+			</a>
+			<a href="#">
+			<span>图拉斯6s手机膜</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>29</a>
+			<del>￥36</del>
+			</p>
+			</li>
+			<li>
+			<a href="#">
+			<img src="images/20161109132850726515.jpg">
+			</a>
+			<a href="#">
+			<span>纽曼再充电器双usb</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>29.9</a>
+			<del>￥38</del>
+			</p>
+			</li>
+			<li>
+			<a href="#">
+			<img src="images/20161109132850726853.jpg">
+			</a>
+			<a href="#">
+			<span>雷摄iphone数据线1米</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>5.9</a>
+			<del>￥10</del>
+			</p>
+			</li>
+			<li>
+			<a href="#">
+			<img src="images/2016110913285072720.jpg">
+			</a>
+			<a href="#">
+			<span>纽曼全兼容线控耳机</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>9.9</a>
+			<del>￥39</del>
+			</p>
+			</li>
+			<li>
+			<a href="#">
+			<img src="images/20161109132850724989.jpg">
+			</a>
+			<a href="#">
+			<span>荣耀畅玩5C</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>798</a>
+			<del>￥800</del>
+			</p>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="floor fn-clear">
+	<div class="floor-lead">
+		<span>1F - 电子数码</span>
+		<p>
+		<a href="#">精选配件</a>
+		<a href="#">智能数码</a>
+		<a href="#">京东网厅</a>
+		</p>
+	</div>
+	<div class="floor-th">
+		<ul class="floor-l">
+			<a href="#"><img src="images/asdasd.jpg"></a>
+			<li><a href="#"> 华为手机</a></li>
+			<li><a href="#"> 小米手机</a></li>
+			<li><a href="#"> 乐视手机</a></li>
+			<li><a href="#"> 苹果手机</a></li>
+			<li><a href="#"> 笔记本</a></li>
+			<li><a href="#"> 平板电脑</a></li>
+			<li><a href="#"> 华为手机</a></li>
+			<li><a href="#"> 小米手机</a></li>
+			<li><a href="#"> 乐视手机</a></li>
+			<li><a href="#"> 华为手机</a></li>
+			<li><a href="#"> 小米手机</a></li>
+			<li><a href="#"> 乐视手机</a></li>
+			<li><a href="#"> 苹果手机</a></li>
+			<li><a href="#"> 笔记本</a></li>
+			<li><a href="#"> 平板电脑</a></li>
+			<li><a href="#"> 华为手机</a></li>
+			<li><a href="#"> 小米手机</a></li>
+			<li><a href="#"> 乐视手机</a></li>
+		</ul>
+		<ul class="floor-r">
+			<li>
+			<a href="#">
+			<img src="images/20161109132850724989.jpg">
+			</a>
+			<a href="#">
+			<span>荣耀畅玩5C</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>798</a>
+			<del>￥800</del>
+			</p>
+			</li>
+			<li>
+			<a href="#">
+			<img src="images/20161109132850725423.jpg">
+			</a>
+			<a href="#">
+			<span>蒙奇奇指环扣支架</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>8.8</a>
+			<del>￥28</del>
+			</p>
+			</li>
+			<li>
+			<a href="#">
+			<img src="images/20161109132850725763.jpg">
+			</a>
+			<a href="#">
+			<span>小天线控蓝牙自拍杆</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>29</a>
+			<del>￥49</del>
+			</p>
+			</li>
+			<li>
+			<a href="#">
+			<img src="images/20161109132850726174.jpg">
+			</a>
+			<a href="#">
+			<span>图拉斯6s手机膜</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>29</a>
+			<del>￥36</del>
+			</p>
+			</li>
+			<li>
+			<a href="#">
+			<img src="images/20161109132850726515.jpg">
+			</a>
+			<a href="#">
+			<span>纽曼再充电器双usb</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>29.9</a>
+			<del>￥38</del>
+			</p>
+			</li>
+			<li>
+			<a href="#">
+			<img src="images/20161109132850726853.jpg">
+			</a>
+			<a href="#">
+			<span>雷摄iphone数据线1米</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>5.9</a>
+			<del>￥10</del>
+			</p>
+			</li>
+			<li>
+			<a href="#">
+			<img src="images/2016110913285072720.jpg">
+			</a>
+			<a href="#">
+			<span>纽曼全兼容线控耳机</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>9.9</a>
+			<del>￥39</del>
+			</p>
+			</li>
+			<li>
+			<a href="#">
+			<img src="images/20161109132850724989.jpg">
+			</a>
+			<a href="#">
+			<span>荣耀畅玩5C</span>
+			</a>
+			<p>
+			<a href="#" class="pp"><i>￥</i>798</a>
+			<del>￥800</del>
+			</p>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- 楼层 -->
+<div class="foot-img">
+	<a href="#"><img src="images/zczxczxc.jpg"></a>
+</div>
+<!-- foot -->
+<div class="foot-help">
+	<div class="hb cn-clear">
+		<div class="help-box">
+			<dl>
+				<dt>新手指南</dt>
+				<dd><a href="#"> 会员注册</a></dd>
+				<dd><a href="#"> 实名认证</a></dd>
+				<dd><a href="#"> 商品发布</a></dd>
+				<dd><a href="#"> 需求设置</a></dd>
+			</dl>
+			<dl>
+				<dt>如何交换</dt>
+				<dd><a href="#"> 寻找商品</a></dd>
+				<dd><a href="#"> 发起订单</a></dd>
+				<dd><a href="#"> 恢复订单</a></dd>
+				<dd><a href="#"> 如何支付</a></dd>
+			</dl>
+			<dl>
+				<dt>易物服务</dt>
+				<dd><a href="#"> 易物案例</a></dd>
+				<dd><a href="#"> 新闻中心</a></dd>
+				<dd><a href="#"> 会员类型</a></dd>
+				<dd><a href="#"> 渠道合作</a></dd>
+			</dl>	
+			<dl>
+				<dt>交易安全</dt>
+				<dd><a href="#"> 交易保障</a></dd>
+				<dd><a href="#"> 防骗指南</a></dd>
+				<dd><a href="#"> 交易纠纷</a></dd>
+				<dd><a href="#"> 投诉举报</a></dd>
+			</dl>
+			<dl>
+				<dt>常见问题</dt>
+				<dd><a href="#"> 密码找回</a></dd>
+				<dd><a href="#"> 店铺设置</a></dd>
+				<dd><a href="#"> 在线交流</a></dd>
+				<dd><a href="#"> 收费标准</a></dd>
+			</dl>
+		</div>
+		<div class="erwei">
+			<p></p>
+			<div class="ew">
+				<h2>手机登录：m.i1515.com</h2>
+				<ul>
+					<li>
+					<img src="images/zxczxczxcxzcx.jpg">
+					<i>手机客户端</i>
+					</li>
+					<li>
+					<img src="images/zxczxcxzc.jpg">
+					<i>微信公众号</i>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="foot fn-clear">
+	<ul>
+		<li class="f-t">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">法律声明</a>
+			<span>|</span>
+			<a href="#">帮助中心</a>
+			<span>|</span>
+			<a href="#">网站地图</a>
+		</li>
+		<li class="f-d">
+			<span>公司地址：北京市朝阳区酒仙桥路甲12号1号楼6层606室</span>
+			<span>电话：<a href="#">400-688-3913</a></span>
+		</li>
+		<li class="f-d">
+			<span>CopyRight 2011-2020</span>
+			<span>易物恒通（北京）国际投资股份有限公司版权所有</span>
+			<span>工商执照编号：91110105573162031B</span>
+			<span>食品流通许可证编号：sp1101051510330007（1-1）</span>
+		</li>
+		<li class="f-d">
+		<span>增值电信业务经营许可证编号：B2-20150472</span>
+		<span>出版物经营许可证编号：新出发京零字第朝150038号</span>
+		</li>
+	</ul>
+</div>
+<!-- foot -->
+<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

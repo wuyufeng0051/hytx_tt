@@ -1,0 +1,36 @@
+<foreach item="vo" name="all_infos" key="k">
+<div class="mui-card" style="margin:0;margin-bottom: 8px;">
+	<div class="mui-card-content">
+		<div class="mui-card-content-inner" style="padding: 5px 15px;">
+			<a style="position: relative;padding-left: 70px;display: block;color:#000;" class="topheight" str="{$vo.resume_id}">
+			         <?php if($vo['imgs1'] == 0){ ?>
+					    <div class="mui-media-object mui-pull-left img" style="width:60px; height: 60px; background-image: url({$vo.imgs}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;position: absolute;left: 0;right: 0; " ></div>
+
+					   <?php }else{ ?>
+					    <div class="mui-media-object mui-pull-left img" style="width:60px; height: 60px; background-image: url(__PUBLIC__/../{$vo.imgs}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;position: absolute;left: 0;right: 0; " ></div>
+					   
+					   <?php } ?>
+ 
+					<div>{$vo.resume_name}
+					<span>{$vo.resume_birthday}岁</span>
+			       <?php if($vo['resume_sex'] == 0){ ?>
+					<img src="__PUBLIC__/Home/img/women.png" alt="" style="height: 16px;vertical-align: text-bottom;">
+				       <?php }else{ ?>
+					<img src="__PUBLIC__/Home/img/man.png" alt="" style="height: 16px;vertical-align: text-bottom;">
+				       <?php } ?>
+				       <?php if($vo['resume_is_top'] == 1){ ?>
+					 <span style="float: right;">置顶</span>
+				   <?php }else{ ?>
+					<span style="float: right;">{$vo.resume_time}</span>
+				   <?php } ?>
+				</div>
+				<p style="margin-bottom: 0;">期望职位:{$vo.resume_position}</p>
+				<p style="margin-bottom: 0;">
+					<span style="margin-right: 5px;">{$vo.resume_education}</span>
+					<span style="margin-right: 5px;">{$vo.resume_exp}</span>
+				</p>
+			</a>
+		</div>
+	</div>
+</div>
+</foreach>

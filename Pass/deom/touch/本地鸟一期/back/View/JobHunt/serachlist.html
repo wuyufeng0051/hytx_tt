@@ -1,0 +1,162 @@
+<foreach name="all" item="vo" key="k">
+ <?php if(!empty($vo['recruit_id'])){ ?>
+		<div class="mui-card" style="margin:0;margin-bottom: 8px;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+				 
+					<a style="padding-bottom: 5px;display: block;color:#000;" stv="{$vo.recruit_id}" str="fullTime" class="topheight">
+						<div class="heading">
+						<span>{$vo.recruit_title}</span>
+						<em>置顶</em>
+ 						</div>
+						<div style="color:#ff7300;margin-bottom: 3px;">{$vo.recruit_wages}<span style="margin-left: 10px;color: #8f8f94;">{$vo.recruit_position}</span></div>
+						<div style="width: 100%;float: left;">
+							<volist id="o" name="vo.recruit_welfare">
+							<span style="border:#38b8ea 1px solid;color:#38b8ea;border-radius: 2px ;padding: 0 2px;font-size: 12px;margin-right:5px;float: left;margin-bottom: 5px;">{$o}</span>
+						    </volist>	
+						</div>
+					</a>
+					<p style="margin:0;padding: 5px 0;border-top: 1px dotted #ddd;width: 100%;float: left;"><span class="mui-ellipsis-address" style="width: 80%;float: left;">{$vo.recruit_corporate}</span><span style="float: right;">{$vo.recruit_region}</span></p>
+				</div>
+			</div>
+		</div>
+    <?php }else if(!empty($vo['part_time_job_id'])){ ?>
+		<div class="mui-card" style="margin:0;margin-bottom:8px;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+				 
+					<a style="color: #000;" str="partTime" class="topheight" stv="{$vo.part_time_job_id}">
+						<div class="heading">
+							<span>{$vo['part_time_job_title']}</span>
+							<em>置顶</em>
+						</div>
+						<div>
+							<h2 style="font-size: 16px;color:#fd6a34;line-height: 21px;">
+							    <span style="margin-right: 20px;display: inline-block;font-weight: normal;">
+							    <?php if($vo['part_time_job_wages1'] == 0){ ?>
+							    面议
+							    <?php }else{ ?>
+							    {$vo.part_time_job_wages1}{$vo.part_time_job_wages2}
+							    <?php } ?>
+							    </span>
+                               <small style="border:1px solid #27b94c;color: #27b94c;font-weight: normal;border-radius: 2px;font-size: 12px;padding: 0px 4px;vertical-align: middle;">{$vo.part_time_job_term}</small>
+								<small style="border: #38b8ea 1px solid;vertical-align: middle;color: #38b8ea;border-radius: 2px;padding: 0 2px;font-size: 12px;font-weight: normal;margin-right: 4px;">{$vo.part_time_job_settlement}
+								</small>
+ 								<span style="font-size: 14px;color: #666;font-weight: normal;float: right;display: inline-block;">
+									{$vo.part_time_job_position}
+								</span>
+							</h2>
+						</div>
+						<p class="mui-ellipsis-address" style="margin:0;">{$vo.part_time_job_address}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+    <?php }else{ ?>
+		<div class="mui-card" style="margin:0;margin-bottom: 8px;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+ 
+					<a style="position: relative;padding-left: 70px;display: block;color:#000;" stv="{$vo.resume_id}" str="resume"  class="topheight">
+					 <div class="mui-media-object mui-pull-left img" style="width:60px; height: 60px; background-image: url(__PUBLIC__/../{$vo.imgs}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;position: absolute;left: 0;right: 0; " ></div>
+					 
+ 						<div>{$vo.resume_name}
+							<span>{$vo.resume_birthday}岁</span>
+							<img src="__PUBLIC__/Home/img/women.png" alt="" style="height: 16px;vertical-align:text-bottom;">
+							<span style="float: right;">
+						    置顶</span>
+						</div>
+						<p style="margin-bottom: 0;">期望职位:{$vo.resume_position}</p>
+						<p style="margin-bottom: 0;">
+							<span style="margin-right: 8px;padding-left: 15px;background: url(__PUBLIC__/Home/img/xueli.png) no-repeat;background-size: 15px 15px;">{$vo.resume_education}</span>
+							<span style="padding-left: 15px;background: url(__PUBLIC__/Home/img/jinyan.png) no-repeat left center;
+							background-size: 14px 14px;">{$vo.resume_exp}</span>
+						</p>
+					</a>
+				</div>
+			</div>
+		</div>
+    <?php } ?>
+    </foreach>
+	<foreach name="res_all" item="vo" key="k">
+ 
+	 <?php if(!empty($vo['recruit_id'])){ ?>
+		<div class="mui-card" style="margin:0;margin-bottom: 8px;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+				 
+					<a style="padding-bottom: 5px;display: block;color:#000;" stv="{$vo.recruit_id}" str="fullTime"  class="topheight" >
+						<div class="heading">
+						<span>{$vo.recruit_title}</span>
+						<em>{$vo.recruit_datetime}</em>
+ 						</div>
+						<div style="color:#ff7300;margin-bottom: 3px;">{$vo.recruit_wages}<span style="margin-left: 10px;color: #8f8f94;">{$vo.recruit_position}</span></div>
+						<div style="width: 100%;float: left;">
+							<volist id="o" name="vo.recruit_welfares">
+							<span style="border:#38b8ea 1px solid;color:#38b8ea;border-radius: 2px ;padding: 0 2px;font-size: 12px;margin-right:5px;float: left;margin-bottom: 5px;">{$o}</span>
+						    </volist>	
+						</div>
+					</a>
+					<p style="margin:0;padding: 5px 0;border-top: 1px dotted #ddd;width: 100%;float: left;"><span class="mui-ellipsis-address" style="width: 80%;float: left;">{$vo.recruit_corporate}</span><span style="float: right;">{$vo.recruit_region}</span></p>
+				</div>
+			</div>
+		</div>
+    <?php }else if(!empty($vo['part_time_job_id'])){ ?>
+		<div class="mui-card" style="margin:0;margin-bottom:8px;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+				 
+					<a style="color: #000;"  class="topheight" str="partTime" stv="{$vo.part_time_job_id}">
+						<div class="heading">
+							<span>{$vo['part_time_job_title']}</span>
+							<em>{$vo['part_time_job_time']}</em>
+						</div>
+						<div>
+							<h2 style="font-size: 16px;color:#fd6a34;line-height: 21px;">
+							    <span style="margin-right: 20px;display: inline-block;font-weight: normal;">
+							    <?php if($vo['part_time_job_wages1'] == 0){ ?>
+							    面议
+							    <?php }else{ ?>
+							    {$vo.part_time_job_wages1}{$vo.part_time_job_wages2}
+							    <?php } ?>
+							    </span>
+                                <small style="border:1px solid #27b94c;color: #27b94c;font-weight: normal;border-radius: 2px;font-size: 12px;padding: 0px 4px;vertical-align: middle;">{$vo.part_time_job_term}</small>
+								<small style="border: #38b8ea 1px solid;vertical-align: middle;color: #38b8ea;border-radius: 2px;padding: 0 2px;font-size: 12px;font-weight: normal;margin-right: 4px;">{$vo.part_time_job_settlement}
+								</small>
+ 								<span style="font-size: 14px;color: #666;font-weight: normal;float: right;display: inline-block;">
+									{$vo.part_time_job_position}
+								</span>
+							</h2>
+						</div>
+						<p class="mui-ellipsis-address" style="margin:0;">{$vo.part_time_job_address}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+    <?php }else{ ?>
+		<div class="mui-card" style="margin:0;margin-bottom: 8px;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+				 
+					<a style="position: relative;padding-left: 70px;display: block;color:#000;" class="topheight" str="resume" stv="{$vo.resume_id}">
+
+					 <div class="mui-media-object mui-pull-left img" style="width:60px; height: 60px; background-image: url(__PUBLIC__/../{$vo.imgs}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;position: absolute;left: 0;right: 0; " ></div>
+						 
+ 						<div>{$vo.resume_name}
+							<span>{$vo.resume_birthday}岁</span>
+							<img src="__PUBLIC__/Home/img/women.png" alt="" style="height: 16px;vertical-align:text-bottom;">
+							<span style="float: right;">
+						     {$vo.resume_time}</span>
+						</div>
+						<p style="margin-bottom: 0;">期望职位:{$vo.resume_position}</p>
+						<p style="margin-bottom: 0;">
+							<span style="margin-right: 8px;padding-left: 15px;background: url(__PUBLIC__/Home/img/xueli.png) no-repeat;background-size: 15px 15px;">{$vo.resume_education}</span>
+							<span style="padding-left: 15px;background: url(__PUBLIC__/Home/img/jinyan.png) no-repeat left center;
+							background-size: 14px 14px;">{$vo.resume_exp}</span>
+						</p>
+					</a>
+				</div>
+			</div>
+		</div>
+    <?php } ?>
+    </foreach>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>退出登录 - {#$cfg_webname#}</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+	<meta name="keywords" content="{#$cfg_keywords#}" />
+	<meta name="description" content="{#$cfg_description#}" />
+  <link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+安全退出成功！<br />
+正在跳转到登录前的页面！&nbsp;&nbsp;<span id="timeover"></span>
+
+<script type="text/javascript">
+var secs = 2; //倒计时的秒数 
+var URL; 
+function LoadTime(url){ 
+  URL = url; 
+  for(var i=secs; i>=0; i--){ 
+    window.setTimeout('doUpdate(' + i + ')', (secs-i) * 1000); 
+  } 
+} 
+function doUpdate(num){ 
+  document.getElementById('timeover').innerHTML = num; 
+  if(num == 1) {window.location=URL;} 
+} 
+LoadTime('{#$redirectUrl#}'); 
+</script>
+</body>
+</html>

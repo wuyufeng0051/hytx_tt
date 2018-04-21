@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>求职简历</title>
+	<meta http-equiv="cache-control" content="public">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta content="telephone=no" name="format-detection"> 
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style>
+	body{
+		padding-top: 95px;
+	}
+	.mui-card{
+		box-shadow: none;
+	}
+	.searchBar{
+		width: 100%;
+		height: 50px;
+		position: fixed;
+		top:0;
+		background: #fd5530;
+		z-index: 100;
+	}
+	.search{
+		position: relative;
+		padding: 7px 10px;
+		padding-right: 95px;
+	}
+	.searchBar input{
+		margin: 0;
+		height: 36px;
+		line-height: 36px;
+		border:none;
+		font-size: 14px;
+		color: #fff;
+		padding-left: 30px;
+		background: #ff7558 url(__PUBLIC__/Home/img/search.png) no-repeat 10px center;
+		background-size: 16px 16px;
+		text-align: left;
+
+	}
+	::-webkit-input-placeholder { 
+	    color:#fff;
+	}
+	.searchBar .search-r{
+		position: absolute;
+		right: 5px;
+		top:15px;
+		font-size: 14px;
+		color: #fff;
+	}
+	.searchBar .search-r span{
+		padding: 0 8px;
+		border-right: 1px solid #fff;
+	}
+	.searchBar .search-r span:last-child{
+		border:none;
+	}
+
+	.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	/*筛选*/
+	.bg{
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		background: #000000;
+		opacity: 0.5;
+		z-index: 1;
+		display: none;
+	}
+	.nav{
+		width: 100%;
+		position:fixed;
+		top: 50px;
+		z-index: 99999;
+	    background: #fff;
+	    border-bottom: 1px solid #EAEAEA;
+	    z-index: 10;
+	}
+	.nav .nav_ul{
+		list-style: none;
+		padding: 0px;
+		margin: 0px;
+		position: relative;
+		width: 100%;
+		float: left;
+	}
+	.nav .nav_ul li.nav_ul_li{
+		float: left;
+		width: 25%;
+	}
+	.nav .nav_ul li.nav_ul_li h1{
+		float: left;
+		width: 100%;
+		padding:10px 0px;
+		text-align: center;
+		color: #333;;
+		font-size: 14px;
+		font-weight: normal;
+		cursor: pointer;
+		padding-top: 2px;
+	}
+	.nav .mui-icon{
+		font-size: 14px;
+	}
+	.nav_child{
+		list-style: none;
+		padding: 0px;
+		margin: 0px;
+		display: none;
+		float: left;
+		width: 100%;
+		position:absolute;
+		left: 0px;
+		top: 46px;
+		z-index:99999;
+		background: #fff;
+		max-height: 252px;
+		overflow: scroll;
+	}
+	.nav_child li{
+		float: left;
+		width: 100%;
+		border-top: 1px solid #EAEAEA;
+	}
+	.nav_child li a{
+		float: left;
+		width: 100%;
+		padding:10px 0px;
+		text-align:left;
+		text-indent: 15px;
+		font-family: "微软雅黑";
+		color: #333;
+		font-size: 12px;
+		font-weight: normal;
+		cursor: pointer;
+	}
+
+	.nav_child li a .mui-icon{
+		font-size: 18px;
+		display: none;
+		color: #ccc;
+		float: right;
+	}
+	/*弹出层*/
+	.mui-popover-arrow{
+	    display: none;
+	}
+	.mui-popover{
+	    position: fixed;
+	    width: 80%;
+	    height: 161px;
+	    border-radius: 10px;
+	    left: 50%;
+	    top: 50%;
+	    margin: 0 auto;
+	    z-index: 9999;
+	    background-color: #fff;
+	    -webkit-transform: translateX(-50%) translateY(-50%);
+	    -moz-transform: translateX(-50%) translateY(-50%);
+	    -ms-transform: translateX(-50%) translateY(-50%);
+	    transform: translateX(-50%) translateY(-50%);
+	    overflow: hidden;
+	}
+	.mui-popover h4{
+		background-color: #ff7400;
+		color: #fff;
+		text-align: center;
+		padding:10px 0;
+		margin:0;
+		font-weight: normal;
+		text-indent: 5%;
+	}
+	.mui-popover h4 span{
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 25px;
+		line-height: 20px;
+		float: right;
+		margin-right: 10%;
+		position: relative;
+		/*border-radius: 50%;
+		border:1px solid #fff;
+		width: 18px;
+		height: 18px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 18px;
+		line-height: 18px;
+		text-align: center;
+		margin-left: 10px;
+		position: relative;
+		top:1px;*/
+	}
+	.mui-popover ul{
+		padding:0;
+		margin:0;
+	}
+	.mui-popover ul li{
+		line-height: 40px;
+		text-align: center;
+		border-bottom: 1px solid #e6e6e6;
+	}
+	.mui-popover ul li a{
+		color:#000;
+	}
+	.backTop {
+	    border-radius: 50%;
+	    position: fixed;
+	    right: 10px;
+	    bottom: 15px;
+	    width: 40px;
+	    height: 40px;
+	    /*z-index: 9999;*/
+	    text-align: center;
+	    font-size: 18px;
+	    color: #666666;
+	    padding-top: 8px;
+	    opacity: 0.8;
+	    border:2px solid #707070;
+	    background: #fff url(__PUBLIC__/Home/img/toTop.png) center center no-repeat;
+	    background-size: 20px 20px;
+	    /*display: none;*/
+	}
+	 .title{
+	    color: #000;
+	    padding-left: 40px;
+	    line-height: 32px;
+	    border-bottom: 1px solid #e6e6e6;
+	    margin: 0;
+	    font-size: 16px;
+	    font-weight: 600;
+	    background: #fff url(__PUBLIC__/Home/img/tuijian.png) no-repeat 15px 4px;
+	    background-size:20px 18px; 
+	}
+
+	</style>
+		<style type="text/css">
+	/*图片预览*/
+	.mui-preview-image.mui-fullscreen {
+		position: fixed;
+		z-index: 20;
+		background-color: #000;
+	}
+	.mui-preview-header,
+	.mui-preview-footer {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		z-index: 10;
+	}
+	.mui-preview-header {
+		height: 44px;
+		top: 0;
+	}
+	.mui-preview-footer {
+		height: 50px;
+		bottom: 0px;
+	}
+	.mui-preview-header .mui-preview-indicator {
+		display: block;
+		line-height: 25px;
+		color: #fff;
+		text-align: center;
+		margin: 15px auto 4;
+		width: 70px;
+		background-color: rgba(0, 0, 0, 0.4);
+		border-radius: 12px;
+		font-size: 16px;
+	}
+	.mui-preview-image {
+		display: none;
+		-webkit-animation-duration: 0.5s;
+		animation-duration: 0.5s;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+	}
+	.mui-preview-image.mui-preview-in {
+		-webkit-animation-name: fadeIn;
+		animation-name: fadeIn;
+	}
+	.mui-preview-image.mui-preview-out {
+		background: none;
+		-webkit-animation-name: fadeOut;
+		animation-name: fadeOut;
+	}
+	.mui-preview-image.mui-preview-out .mui-preview-header,
+	.mui-preview-image.mui-preview-out .mui-preview-footer {
+		display: none;
+	}
+	.mui-zoom-scroller {
+		position: absolute;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		-webkit-backface-visibility: hidden;
+	}
+	.mui-zoom {
+		-webkit-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+	}
+	.mui-slider .mui-slider-group .mui-slider-item img {
+		width: auto;
+		height: auto;
+		max-width: 100%;
+		max-height: 100%;
+	}
+	.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+		width: 100%;
+	}
+	.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+		display: inline-table;
+	}
+	.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.mui-preview-loading {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		display: none;
+	}
+	.mui-preview-loading.mui-active {
+		display: block;
+	}
+	.mui-preview-loading .mui-spinner-white {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -25px;
+		margin-top: -25px;
+		height: 50px;
+		width: 50px;
+	}
+	.mui-preview-image img.mui-transitioning {
+		-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+		transition: transform 0.5s ease, opacity 0.5s ease;
+	}
+	@-webkit-keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@-webkit-keyframes fadeOut {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	@keyframes fadeOut {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+	.mui-table-view-cell{
+		padding-left: 3%;
+		padding-right: 3%;	
+		position: static;
+		padding: 10.5px 15px;
+	}
+	.mui-table-view-cell.mui-active{
+		background-color: #0062cc;
+	}
+	.mui-ellipsis-1{
+		display: -webkit-box;
+	    overflow: hidden;
+	    white-space: normal!important;
+	    text-overflow: ellipsis;
+	    word-wrap: break-word;
+	    -webkit-line-clamp: 1;
+	    -webkit-box-orient: vertical;
+	    height: 35px;
+	    line-height: 35px;
+	}
+	.nav_ul_li ul{
+		max-height: 295px;
+		overflow-y:scroll;
+		border-bottom: 0;
+	}
+	.mui-table-view:after{
+		height: 0;
+	}
+	.mui-table-view-cell:after{
+		height: 0;
+	}
+	body{position: relative;}
+	</style>
+</head>
+<body>
+
+<include file="Public/share" title='包含文件'/>
+
+	<div class="mui-content">
+	<form action="javascript:return true;">
+		<div class="searchBar">
+			<div class="search">
+				<?php if(!empty($_GET)){ ?>
+			    <div style="overflow: hidden;height: 36px;color:#fff;line-height: 40px;">
+ 					  <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color:#fff;line-height: 35px;">
+ 					  </a>
+ 					  &nbsp;搜索结果
+ 				</div>
+			   <?php }else{ ?>
+				<div class="search-l">
+					<input type="search" placeholder="搜索职位或关键词" id="search">
+				</div>
+			   <?php } ?>
+				<div class="search-r">
+					<span id="fabu">发布</span><span><a href="__MODULE__/My/myRelease" style="color:#fff;">我的</a></span>	
+				</div>
+			</div>
+		</div>
+	</form>
+		<!-- 筛选 -->
+		<!-- 期望职位：
+		不限  传菜员/服务员   营业员/店员   会计/出纳      
+		行政/文秘  业务/销售      客服/话务    经理/管理       
+		工人/技工  保安/仓管      司机/跟车    老师/家教    
+		快递员/送货员 厨师/配菜员    保姆/钟点工  美工/设计师    
+		程序/网管  按摩师/美容师    KTV/酒吧招聘   兼职工作  其它职位
+		学历： 
+		不限   初中   高中/中专   大专   本科   本科以上
+		工作经验：
+		不限  应届毕业生   一年   1-3年  3-5年  
+		 5-8年   8年以上
+		性别 
+		不限 男 女 -->
+		<div class="nav">
+			<ul class="nav_ul">
+				<li class="nav_ul_li filter1">
+					<h1 class="mui-ellipsis-1"><span id="num" stong="resume_position">期望职位</span>
+					    <span class="mui-icon mui-icon-arrowdown"></span></h1>
+					<ul class="mui-table-view nav_child">
+						<li class="mui-table-view-cell" id="chance" str=""><a>不限</a></li>
+					  <volist name="position_res" id="vo">
+						<li class="mui-table-view-cell" id="chance" str="{$vo.classify2_id}"><a>{$vo.classify2_name}</a></li>
+					  </volist>
+ 					</ul>
+				</li>
+				<li class="nav_ul_li filter2">
+					<h1 class="mui-ellipsis-1"><span id="num" stong="resume_education">学历</span>
+					    <span class="mui-icon mui-icon-arrowdown"></span></h1>
+					<ul class="mui-table-view nav_child">
+					<li class="mui-table-view-cell" id="chance" str=""><a>不限</a></li>
+					 <volist name="education_res" id="vo">
+					  <?php if($vo['classify2_name'] != "不限"){ ?>
+						<li class="mui-table-view-cell" id="chance" str="{$vo.classify2_id}"><a>{$vo.classify2_name}</a></li>
+					  <?php } ?>
+					 </volist>
+ 					</ul>
+				</li>
+				<li class="nav_ul_li filter3">
+					<h1 class="mui-ellipsis-1"><span id="num" stong="resume_exp">工作经验</span>
+					<span class="mui-icon mui-icon-arrowdown"></span></h1>
+					<ul class="mui-table-view nav_child">
+					<li class="mui-table-view-cell" id="chance" str=""><a>不限</a></li>
+						<volist name="exp_res" id="vo">
+						 <?php if($vo['classify2_name'] != "不限"){ ?>
+							<li class="mui-table-view-cell" id="chance" str="{$vo.classify2_id}"><a>{$vo.classify2_name}</a></li>
+						 <?php } ?>
+					 	</volist>
+ 					</ul>
+				</li>
+				<li class="nav_ul_li filter4">
+				   <h1 class="mui-ellipsis-1"><span id="num" stong="resume_sex">性别</span>
+					 <span class="mui-icon mui-icon-arrowdown"></span></h1>
+					<ul class="mui-table-view nav_child">
+						 <li class="mui-table-view-cell chance" id="chance" str=""><a>不限</a></li>
+						 <volist name="sex_res" id="vo">
+						   <li class="mui-table-view-cell chance" id="chance" str="{$vo.query_val}"><a>{$vo.query_name}</a></li>
+						 </volist>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<!-- 蒙层 -->
+		<div class="bg"></div>
+
+		   <!-- 广告 -->
+		 <div class="swiper-container">
+         <?php if(!empty($status)){ ?>
+          <div class="swiper-wrapper">
+		   <volist name="status" id="vo">
+            <div class="swiper-slide">
+               <a id="up" onclick="look(this)" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}">
+ 				  <img src="__PUBLIC__/../{$vo['advertisement_img']}">
+			   </a>
+		    </div>
+            </volist>
+        </div>
+		<?php } ?>
+        <div class="swiper-pagination"></div>
+      </div>
+    <!-- <h5 class="title">为你推荐</h5> -->
+    
+    <div id="zong">
+       <foreach item="vo" name="all_infos" key="k">
+		<div class="mui-card" style="margin:0;margin-bottom: 8px;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+					<a style="position: relative;padding-left: 70px;display: block;color:#000;" class="topheight" str="{$vo.resume_id}">
+					   <?php if($vo['imgs1'] == 0){ ?>
+					    <div class="mui-media-object mui-pull-left img" style="width:60px; height: 60px; background-image: url({$vo.imgs}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;position: absolute;left: 0;right: 0; " ></div>
+
+					   <?php }else{ ?>
+					    <div class="mui-media-object mui-pull-left img" style="width:60px; height: 60px; background-image: url(__PUBLIC__/../{$vo.imgs}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;position: absolute;left: 0;right: 0; " ></div>
+					   
+					   <?php } ?>
+						<!-- <img src="__PUBLIC__/../{$vo.imgs}" alt="" style="position: absolute;left: 0;right: 0;width: 60px;height: 60px;"> -->
+ 						<div>{$vo.resume_name}
+							<span>{$vo.resume_birthday}岁</span>
+					       <?php if($vo['resume_sex'] == 0){ ?>
+							<img src="__PUBLIC__/Home/img/women.png" alt="" style="height: 16px;vertical-align: text-bottom;">
+ 					       <?php }else{ ?>
+							<img src="__PUBLIC__/Home/img/man.png" alt="" style="height: 16px;vertical-align: text-bottom;">
+  					       <?php } ?>
+  					       <?php if($vo['resume_is_top'] == 1){ ?>
+							 <span style="float: right;">置顶</span>
+						   <?php }else{ ?>
+							<span style="float: right;">{$vo.resume_time}</span>
+						   <?php } ?>
+						</div>
+						<p style="margin-bottom: 0;">期望职位:{$vo.resume_position}</p>
+						<p style="margin-bottom: 0;">
+							<span style="margin-right: 5px;">{$vo.resume_education}</span>
+							<span style="margin-right: 5px;">{$vo.resume_exp}</span>
+						</p>
+					</a>
+				</div>
+			</div>
+		</div>
+      </foreach>
+    </div>
+	</div>
+
+	<div id="pop" class="mui-popover">
+		<h4>请选择您要发布的类别<span class="mui-icon mui-icon-close"></span></h4>
+		<ul class="mui-table-view">
+			<li class="mui-table-view-cell" style="padding:5.5px 0;"><a href="__MODULE__/JobHunt/fullTimeRelease">发布全职招聘</a></li>
+			<li class="mui-table-view-cell" style="padding:5.5px 0;"><a href="__MODULE__/JobHunt/partTimeRelease">发布兼职招聘</a></li>
+			<li class="mui-table-view-cell" style="padding:5.5px 0;"><a id="jianli">发布简历</a></li>
+		</ul>
+    </div>
+    
+
+    <div style="width:30%;margin:0 auto;color:#000;padding:5px;font-size:12px;color:#888;" id="load" srv="0">
+        往上滑加载更多
+    </div>
+    
+    <input type="hidden" id="limit" value="0">
+    <input type="hidden" id="scrollTop" value="0">
+    <input type="hidden" id="is_look">
+
+
+    <a id="scrollToTop" class="backTop"></a>
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script src="__PUBLIC__/Home/js/zoom.js"></script>
+	<script src="__PUBLIC__/Home/js/mui.previewimage.js"></script>
+	<script>
+		// 本地存储新闻列表位置
+	var html2 = localStorage.getItem('localhtml');
+	if(html2 == '' || html2 == undefined){
+	    localStorage.setItem('toplineTop',0);
+	    localStorage.setItem('pageNum',0);
+	}else{
+		$('#zong').html(html2);//将html填充进去
+		$('#limit').val(localStorage.getItem('pageNum'));    //将加载的页面数赋值给页面计数器
+		$('.filter1').find('#num').text(localStorage.getItem('filter1'));
+		$('.filter2').find('#num').text(localStorage.getItem('filter2'));
+		$('.filter3').find('#num').text(localStorage.getItem('filter3'));
+		$('.filter4').find('#num').text(localStorage.getItem('filter4'));
+		$('#search').val(localStorage.getItem('searchtxt'));
+		if(localStorage.getItem('selectClass1') != 'undefined'){
+			$('.filter1').find('#num').attr('class',localStorage.getItem('selectClass1'));
+		}
+		if(localStorage.getItem('selectClass2') != 'undefined'){
+			$('.filter2').find('#num').attr('class',localStorage.getItem('selectClass2'));
+		}
+		if(localStorage.getItem('selectClass3') != 'undefined'){
+			$('.filter3').find('#num').attr('class',localStorage.getItem('selectClass3'));
+		}
+		if(localStorage.getItem('selectClass4') != 'undefined'){
+			$('.filter4').find('#num').attr('class',localStorage.getItem('selectClass4'));
+		}
+		 $(window).on('load',function(){
+            $(window).scrollTop(localStorage.getItem('toplineTop'));    //滚动条滚动到进入详情页时的位置
+            // console.log($(window).scrollTop())
+        });
+		selectLimit();
+		localStorage.setItem('localhtml','');   //清除缓存
+	    localStorage.setItem('toplineTop',0);
+	    localStorage.setItem('pageNum',0); 
+	    localStorage.setItem('filter1','期望职位'); 
+	    localStorage.setItem('filter2','学历'); 
+	    localStorage.setItem('filter3','工作经验'); 
+	    localStorage.setItem('filter4','性别'); 
+	    localStorage.setItem('searchtxt','');  
+  		localStorage.setItem('selectClass1','undefined');  
+  		localStorage.setItem('selectClass2','undefined');  
+  		localStorage.setItem('selectClass3','undefined');  
+  		localStorage.setItem('selectClass4','undefined');  
+	}
+	   function muicard(){
+    	var all = 0;
+    	var have = $('.mui-card')
+    	$.each(have,function(index,item){
+               all += 1; 
+    	})
+ 
+    	if (all < 10) {
+    		$('#load').hide(); 
+    	}else{
+    		$('#load').show(); 
+    	}
+    }
+
+   muicard();
+
+
+     function toploa(){
+	   $('.topheight').on('click',function(){
+	      var stv = $(this).attr('str');
+	      var scrollTop =getScrollTop();
+ 	      $("#scrollTop").val(scrollTop);
+ 	      // var zong =$("#zong").html();
+       $.post('{:U("Home/Demo/look")}', {str:'resume',stv:stv}, function(daty){
+      	   if (daty == 1) {
+  	        // $.post('{:U("Home/JobHunt/resumesession")}', {zong:zong}, function(data) {
+  	        	localStorage.setItem('toplineTop',$(window).scrollTop());  //页面滚动条距离顶部的高度存到缓存中
+ 	      		localStorage.setItem('localhtml',document.getElementById('zong').innerHTML);   //将html存到本地缓存中
+ 	      		localStorage.setItem('pageNum',$('#limit').val());  //将页面加载数量存到缓存中
+ 	      		localStorage.setItem('filter1',$('.filter1').find('#num').text());  //将筛选条件存入本地缓存
+ 	      		localStorage.setItem('filter2',$('.filter2').find('#num').text());  
+ 	      		localStorage.setItem('filter3',$('.filter3').find('#num').text());  
+ 	      		localStorage.setItem('filter4',$('.filter4').find('#num').text());  
+ 	      		localStorage.setItem('searchtxt',$('#search').val());  
+ 	      		localStorage.setItem('selectClass1',$('.filter1').find('#num').attr('class'));  
+ 	      		localStorage.setItem('selectClass2',$('.filter2').find('#num').attr('class'));  
+ 	      		localStorage.setItem('selectClass3',$('.filter3').find('#num').attr('class'));
+ 	      		localStorage.setItem('selectClass4',$('.filter4').find('#num').attr('class'));
+ 		        location.href="__MODULE__/JobHunt/resumeDetails?resume_id="+stv
+  	         // });
+      	   }else{
+ 	     	 layer.msg('对不起,信息已删除')
+ 	       }
+         })
+	   });
+    }
+    toploa(); 
+
+   //求滚动条的高度
+   function getScrollTop(){    
+	    var scrollTop=0;    
+	    if(document.documentElement&&document.documentElement.scrollTop){    
+	        scrollTop=document.documentElement.scrollTop;    
+	    }else if(document.body){
+	        scrollTop=document.body.scrollTop;    
+	    }    
+	    return scrollTop;    
+	} 
+
+  
+   //如果之前滚动条的位置
+    function time(){
+    	muicard();
+      var is_look = $("#is_look").val();
+      if (is_look) {
+      	$("#load").hide();
+      }
+      var limit = $("#limit").val();
+ 	  // if (limit != 0) {
+ 	  	$.post('{:U("Home/JobHunt/lookresumesession")}', {limit:limit},function(data){
+  	  		if (data == 2) {
+  	  			$('#limit').val(0)
+			 	$("#scrollTop").val(0);
+			}else{
+   	  		   $("#zong").html("");
+  	  		   $("#zong").append(data)
+  	  		    var tab = $("#zong").text();
+				if (tab) {
+				var scrollTop = $("#scrollTop").val();
+				 window.scrollTo(0,scrollTop);
+				 toploa();
+				}
+ 			 }
+ 	  	});
+ 	  // }
+    }
+    setTimeout(time(),1000);
+
+
+
+	//加载
+	  function loadclick(){
+		$(window).scroll(function(){
+			var if_get ='<?php echo $_GET["worder"] ; ?>'
+ 			if (if_get) {
+   			  //判断是否是get
+               var ms = 1;
+ 		    }else{ 
+               var ms = 0;
+  		    }
+
+ 			var is_look =  $("#is_look").val();
+		　　var scrollTop = $(this).scrollTop();
+		　　var scrollHeight = $(document).height();
+		　　var windowHeight = $(this).height();
+		　　if(scrollTop + windowHeight == scrollHeight){
+ 		    	var limit = parseInt($('#limit').val())+1;
+ 		    	$('#limit').val(limit);
+ 		    	 // $("#load").show();
+  		    	 setTimeout(function(){
+		            if (is_look) {
+		           	    //判断是否是查询
+		            	    $.post('{:U("Home/JobHunt/resumeLook")}',{classify:is_look,limit:limit}, function(data){
+				              // 遍历查询出来的数据
+				               if(data){
+							      $("#zong").append(data)
+								  toploa(); 
+								}else{
+								  $("#load").text('已经到底了！')	
+								}
+ 							 })
+		            }else{
+							$.post('{:U("Home/JobHunt/loadresumes")}',{limit:limit,ms:ms}, function(data) {
+								
+		   					   if(data){
+							      $("#zong").append(data)
+								  toploa(); 
+								}else{
+								  $("#load").text('已经到底了！')	
+								}
+ 						     })
+			  		  }
+
+                      muicard();
+			     },500);
+  		　　  }
+		});
+	}	
+   
+    loadclick()
+
+  function selectLimit(){
+	 //获取全部选中的查询
+ 	var classifys=""
+     $("[id=num]").each(function(){
+     	var classall = $(this).attr('class');
+     	var stong = $(this).attr('stong')
+     	if (classall) {
+     	   classifys +=stong+'= "'+classall+'" and ';
+     	}
+     })
+
+     var classify = classifys.substring(0,classifys.length-4);
+     
+	 $("#is_look").val(classify)
+  }
+
+	$("#jianli").click(function(){
+		$.post('{:U("Home/JobHunt/judge")}', {}, function(data) {
+			 if (data == 1) {
+			   layer.msg('您已经发布过简历')
+			 }else{
+			 	location.href="__MODULE__/JobHunt/resumeRelease"
+			 }
+		});
+	})
+
+      $('[id=chance]').each(function() {
+     	$(this).click(function(){
+     			//点击选择的值（id）
+     		var chanceclass =  $(this).attr('str');
+     		//选择的内容
+     		var chancename =  $(this).text()
+     		//修改默认的值（圈子的内容）
+     		$(this).parent().parent().find('#num').text(chancename);
+     		//添加class（圈子的id）
+     		$(this).parent().parent().find('#num').attr('class',chanceclass);
+            
+            //获取全部选中的查询
+         	var classifys=""
+             $("[id=num]").each(function(){
+             	var classall = $(this).attr('class');
+             	var stong = $(this).attr('stong')
+             	if (classall) {
+             	   classifys +=stong+'= "'+classall+'" and ';
+             	}
+             })
+
+             var classify = classifys.substring(0,classifys.length-4);
+             
+             // alert(classify)
+             $("#limit").val(0)
+             $("#load").text('往上滑加载更多');
+			 $("#is_look").val(classify)
+              //查询内容
+              $('#zong').empty();
+              $.post('{:U("Home/JobHunt/resumeLook")}',{classify: classify,limit:0}, function(data){
+              // 遍历查询出来的数据
+              //判断是男还是女
+  		        	$('#zong').append(data)
+                      muicard();
+					  toploa(); 
+			 })
+         
+       	})
+     });
+
+
+		var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+
+		mui.init();
+      	
+      	window.onload = function() { 
+			setTimeout(function(){
+		    	$(".nav_child a").append('');  //<span class="mui-icon mui-icon-arrowright"></span>
+		    },100);
+		}; 
+      	// 下拉菜单
+      	$(document).ready(function(){
+      		$(".nav_ul_li h1").click(function(){
+      			if($(this).parent().find(".nav_child").is(":hidden")){
+      				$(".nav_ul_li h1").css("color","#333");
+      				$(this).css("color","#ff7300");
+      				
+      				$(".nav_ul_li h1 .mui-icon").removeClass("mui-icon-arrowup");
+      				$(".nav_ul_li h1 .mui-icon").addClass("mui-icon-arrowdown");
+      				$(this).find(".mui-icon").removeClass("mui-icon-arrowdown");
+      				$(this).find(".mui-icon").addClass("mui-icon-arrowup");
+      				
+ 					$(".nav_child").hide();				
+      				$(this).parent().find(".nav_child").show();
+      				
+      				$(".bg").show();
+				}
+				else{
+					$(this).css("color","#333");
+					
+					$(this).find(".mui-icon").removeClass("mui-icon-arrowup");
+      				$(this).find(".mui-icon").addClass("mui-icon-arrowdown");
+					
+					$(".nav_child").hide();
+      				$(this).parent().find(".nav_child").hide();
+      				
+      				$(".bg").hide();
+				}
+    		})
+     		  //按钮关闭弹出框
+        $(".mui-icon-close").click(function(){
+         	pop.classList.remove('mui-active');
+         	mask.close();
+         	
+         })
+        //点击蒙版下拉列表隐藏
+     		$(".bg").click(function(){
+     			$(".nav_child").hide();
+     			$(".nav_ul_li h1").css("color","#333");
+     			$(".nav_ul_li h1 .mui-icon").removeClass("mui-icon-arrowup");
+     			$(".nav_ul_li h1 .mui-icon").addClass("mui-icon-arrowdown");
+     			$(".bg").hide();
+     		})
+     		/*tap事件会造成穿透*/
+     		$(".nav_child a").on('click',function(){
+     			$(this).parent().parent().find(".mui-icon").hide();
+     			$(this).find(".mui-icon").show()
+     			/*隐藏遮罩层*/
+     			$('.bg').hide()
+     			$(".nav_child").hide();	
+     			$(".nav_ul_li h1").css("color","#333");
+     			$(".nav_ul_li h1 .mui-icon").removeClass("mui-icon-arrowup");
+  				$(".nav_ul_li h1 .mui-icon").addClass("mui-icon-arrowdown");
+     		});
+
+      	})
+
+      	// 弹出层
+      	var pop = document.getElementById("pop");
+        var mask = mui.createMask(function(){
+            pop.classList.remove('mui-active');
+        });
+        // 显示
+        mui('#fabu')[0].addEventListener('click',function(){
+            mask.show();//显示遮罩
+            pop.classList.add('mui-active');
+        })
+        //
+         $('#search').on('search', function(e){
+         	//搜索关键字
+         	val =  $('#search').val();
+         	if (!val) {
+         		layer.msg('请先输入关键字')
+         	}else{
+            window.location.href="__MODULE__/JobHunt/resume?worder="+val
+              }
+ 		});
+         
+         $("#scrollToTop").on("touchend", function(e) {
+			e.preventDefault();	
+		    mui.scrollTo(0,100);
+		});
+         
+function look(obj){
+     //$("[id=up]").each(function(){ 
+		//$(this).click(function(){
+     		var id = $(obj).attr('str');
+     		var type = $(obj).attr('stb');
+     		var url = $(obj).attr('url');
+				// alert(id)
+		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+ 	     		if (type == 0) {
+	     			 location.href="http://"+url;
+	     		}else if(type == 1){
+	     			 location.href= 'tel:' + url;
+	      		}else{
+	      			location.href=url;
+	      		}
+			});
+    	//})
+    //})
+ }
+    	var u = navigator.userAgent;
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		if(isiOS == true)
+		{
+			$('.searchBar input').focus(function(){
+	         	$('.searchBar').css({'position':'absolute','top':'0','left':'0'});
+	         	$('.nav').css({'position':'absolute','top':'50px','left':'0'});
+         	})
+           $('.searchBar input').blur(function(){
+	         	$('.searchBar').css({'position':'fixed','top':'0','left':'0'});
+	         	$('.nav').css({'position':'fixed','top':'50px','left':'0'});
+          })
+       }
+	</script>
+</body>
+</html>

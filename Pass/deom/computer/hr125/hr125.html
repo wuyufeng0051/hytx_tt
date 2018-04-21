@@ -1,0 +1,2109 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>hr135</title>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="css/css.css" type="text/css" />
+    <link rel="stylesheet" href="css/hr.css" type="text/css" />
+  </head>
+  
+  <body class="IndexBody">
+    <header>
+      <div class="bg bg_color">
+        <div class="top w1024">
+          <div class="nav fl">
+            <div class="nav_list fl">
+              <span class="nav_s">
+                <a href="#" class="png">首页</a></span>
+              <span class="nav_s">
+                <a href="#" class="png">找工作</a>
+                <div class="nav_icon nav_icon_new">
+                  <img src="images/new.gif"></div>
+              </span>
+              <span class="nav_s">
+                <a href="#" class="png">找人才</a></span>
+              <span class="nav_s">
+                <a href="#" class="png">找企业</a></span>
+              <span class="nav_s">
+                <a href="#" class="png">店铺招聘</a></span>
+              <span class="nav_s">
+                <a href="#" class="png">普工专区</a>
+                <div class="nav_icon nav_icon_hot">
+                  <img src="images/hotn.gif"></div>
+              </span>
+              <span class="nav_s">
+                <a href="#" class="png">职场资讯</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="er">
+        <div class="w1024">
+          <div class="logo fl">
+            <a href="#" title="hr135人才网最新招聘求职信息">
+              <img src="images/14727419025213.png" class="png" /></a>
+          </div>
+          <div class="er_city fl">
+          </div>
+          <div class="erSearch fr">
+            <form  method="get" id="search_form">
+              <input type="hidden" value="job" id="m" />
+              <input type="hidden" name="c" value="search" id="search" />
+              <div class="erSearch_box z_bg">
+                <div class="erSearch_left fl">
+                  <span class="erSearch_s" id='search_name'>找工作</span>
+                  <div class="erSearch_list_box z_bg none">
+                    <div class="erSearch_list_c">
+                      <a href="#"  rel="nofollow">找工作</a>
+                      <a href="#"  rel="nofollow">找人才</a>
+                      <a href="#"  rel="nofollow">找企业</a>
+                      <a href="#"  rel="nofollow">普工简历</a>
+                      <a href="#"  class="none" rel="nofollow">职场资讯</a>
+                      <a href="#"  rel="nofollow">店铺招聘</a>
+                    </div>
+                  </div>
+                </div>
+                <input type="text" id="keyword" name="keyword" class="erSearch_text fl" placeholder='请输入关键字'>
+                <input type="submit" value="搜 索" class="erSearch_sub z_bg fr" /></div>
+            </form>
+            <div class="announcement">
+              <div class="announcement_tit">网站公告：</div>
+              <ul class="announcement_tit_list">
+                <li>
+                  <a href="#">公告</a></li>
+                <li>
+                  <a href="#">测试空格</a></li>
+                <li>
+                  <a href="#">php新版测试PHPYU</a></li>
+                <li>
+                  <a href="#">PHPYUN发布了</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </header>
+    <div class="clear"></div>
+    <div class="fixed bg_color none" id="fix">
+      <div class="fixed_cont">
+        <ul class="fixed_list">
+          <li class="">
+            <a href="#">首页</a></li>
+          <li class="">
+            <a href="#">找工作</a></li>
+          <li class="">
+            <a href="#">找人才</a></li>
+          <li class="">
+            <a href="#">找企业</a></li>
+          <li class="">
+            <a href="#">店铺招聘</a></li>
+          <li class="">
+            <a href="#">普工专区</a></li>
+          <li class="">
+            <a href="#">职场资讯</a></li>
+          <li class="">
+            <a href="#">招聘会</a></li>
+          <li class="">
+            <a href="#" >兼职</a></li>
+          <li class="">
+            <a href="#" >地图</a></li>
+          <li class="">
+            <a href="#">培训</a></li>
+          <li class="">
+            <a href="#">测评</a></li>
+          <li class="">
+            <a href="#" >商城</a></li>
+          <li class="">
+            <a href="#" >专题招聘</a></li>
+          <li class="">
+            <a href="#">猎头服务</a></li>
+          <li class="">
+            <a href="#">问答</a></li>
+        </ul>
+        <div class="fixed_login bg_color_hover">
+          <div class="fixed_login_l" style="display:block">
+            <a href="#" style="color:#fff">
+              <span class="fixed_login_dl none" did="login">登录</span></a>|
+            <span class="fixed_login_dl" did="register">注册
+              <div class="fixed_reg_box none" id="register_t">
+                <a href="#" class="fixed_login_a">个人注册</a>
+                <a href="#" class="fixed_login_a">企业注册</a></div>
+            </span>
+          </div>
+        </div>
+        <div class="fixed_close">
+          <a href="#" >关闭</a></div>
+      </div>
+    </div>
+    <div class="w1024">
+      <div class="Index_leftsidebar fl">
+        <div class="Index_leftsidebar_tit z_bg">职位分类
+          <i class="Index_leftsidebar_icon png"></i></div>
+        <div id="sidebar">
+          <div class="mainNavs">
+            <div class="menu_box"  id="jobclass0">
+              <div class="menu_main">
+                <h2>计算机/互联网
+                  <span></span></h2>
+                <div class="menu_main_b_h">
+                  <a href="#">IT-品管、技术支持及其它</a>
+                  <a href="#">IT-管理</a>
+                  <a href="#">互联网/网游</a>
+                  <a href="#">计算机软件</a>
+                  <a href="#">计算机硬件</a></div>
+              </div>
+              <div class="menu_sub dn" style="top: 0px;" id="jobclass_0">
+                <dl class="reset">
+                  <dt>
+                    <a href="#">IT-品管、技术支持及其它</a></dt>
+                  <dd>
+                    <a href="#">其他</a>
+                    <a href="#">技术文员/助理</a>
+                    <a href="#">文档工程师</a>
+                    <a href="#">测试员</a>
+                    <a href="#">硬件测试</a>
+                    <a href="#">软件测试</a>
+                    <a href="#">系统测试</a>
+                    <a href="#">品质经理</a>
+                    <a href="#">标准化工程师</a>
+                    <a href="#">计量工程师</a>
+                    <a href="#">Helpdesk 技术支持</a>
+                    <a href="#">技术支持/维护工程师</a>
+                    <a href="#">技术支持/维护经理</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">IT-管理</a></dt>
+                  <dd>
+                    <a href="#">其他</a>
+                    <a href="#">项目执行/协调人员</a>
+                    <a href="#">项目主管</a>
+                    <a href="#">项目经理</a>
+                    <a href="#">项目总监</a>
+                    <a href="#">信息技术专员</a>
+                    <a href="#">信息技术经理/主管</a>
+                    <a href="#">技术总监/经理</a>
+                    <a href="#">首席技术执行官CTO/首席信息官CIO</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">互联网/网游</a></dt>
+                  <dd>
+                    <a href="#">网站策划</a>
+                    <a href="#">系统管理员/网络管理员</a>
+                    <a href="#">网站维护工程师</a>
+                    <a href="#">网站架构设计师</a>
+                    <a href="#">UI设计师/顾问</a>
+                    <a href="#">网络工程师</a>
+                    <a href="#">网站营运专员</a>
+                    <a href="#">网站营运经理/主管</a>
+                    <a href="#">多媒体/游戏开发工程师</a>
+                    <a href="#">语音/视频开发工程师</a>
+                    <a href="#">互联网软件开发工程师</a>
+                    <a href="#">网站编辑</a>
+                    <a href="#">网页设计/制作/美工</a>
+                    <a href="#">其他</a>
+                    <a href="#">智能大厦/综合布线</a>
+                    <a href="#">网络信息安全工程师</a>
+                    <a href="#">SEO搜索引擎优化</a>
+                    <a href="#">音效设计师</a>
+                    <a href="#">视觉设计师</a>
+                    <a href="#">特效设计师</a>
+                    <a href="#">脚本开发工程师</a>
+                    <a href="#">游戏策划师</a>
+                    <a href="#">游戏界面设计师</a>
+                    <a href="#">Flash设计/开发</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">计算机软件</a></dt>
+                  <dd>
+                    <a href="#">系统架构设计师</a>
+                    <a href="#">高级软件工程师</a>
+                    <a href="#">软件工程师</a>
+                    <a href="#">软件UI设计师/工程师</a>
+                    <a href="#">仿真应用工程师</a>
+                    <a href="#">ERP实施顾问</a>
+                    <a href="#">ERP技术开发</a>
+                    <a href="#">计算机辅</a>
+                    <a href="#">数据库工程师/管理员</a>
+                    <a href="#">系统工程师</a>
+                    <a href="#">系统分析员</a>
+                    <a href="#">系统集成工程师</a>
+                    <a href="#">需求工程师</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">计算机硬件</a></dt>
+                  <dd>
+                    <a href="#">高级硬件工程师</a>
+                    <a href="#">硬件工程师</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+              </div>
+            </div>
+            <div class="menu_box"  id="jobclass1">
+              <div class="menu_main">
+                <h2>服务业
+                  <span></span></h2>
+                <div class="menu_main_b_h">
+                  <a href="#">客服及技术支持</a>
+                  <a href="#">餐饮/娱乐</a>
+                  <a href="#">酒店/旅游</a>
+                  <a href="#">美容/健身/体育</a>
+                  <a href="#">百货/连锁/零售服务</a>
+                  <a href="#">交通运输服务</a>
+                  <a href="#">保安/家政/其他服务</a></div>
+              </div>
+              <div class="menu_sub dn" style="top: 0px;" id="jobclass_1">
+                <dl class="reset">
+                  <dt>
+                    <a href="#">客服及技术支持</a></dt>
+                  <dd>
+                    <a href="#">售前/售后技术支持经理</a>
+                    <a href="#">售前/售后技术支持主管</a>
+                    <a href="#">售前/售后技术支持工程师</a>
+                    <a href="#">咨询热线/呼叫中心服务人员</a>
+                    <a href="#">VIP专员</a>
+                    <a href="#">其他</a>
+                    <a href="#">客服总监(非技术)</a>
+                    <a href="#">客服经理(非技术)</a>
+                    <a href="#">客服主管(非技术)</a>
+                    <a href="#">客服专员/助理(非技术)</a>
+                    <a href="#">客户关系经理/主管</a>
+                    <a href="#">投诉专员</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">餐饮/娱乐</a></dt>
+                  <dd>
+                    <a href="#">餐饮/娱乐管理</a>
+                    <a href="#">餐饮/娱乐领班/部长</a>
+                    <a href="#">餐饮/娱乐服务员</a>
+                    <a href="#">传菜主管/传菜员</a>
+                    <a href="#">礼仪/迎宾</a>
+                    <a href="#">司仪</a>
+                    <a href="#">行政主厨/厨师长</a>
+                    <a href="#">厨师/面点师</a>
+                    <a href="#">调酒师/吧台员</a>
+                    <a href="#">茶艺师</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">酒店/旅游</a></dt>
+                  <dd>
+                    <a href="#">酒店/宾馆经理</a>
+                    <a href="#">酒店/宾馆营销</a>
+                    <a href="#">宴会管理</a>
+                    <a href="#">大堂经理</a>
+                    <a href="#">宾客服务经理</a>
+                    <a href="#">楼面经理</a>
+                    <a href="#">前厅接待</a>
+                    <a href="#">预定部主管</a>
+                    <a href="#">预定员</a>
+                    <a href="#">客房服务员/楼面服务员</a>
+                    <a href="#">机场代表</a>
+                    <a href="#">行李员</a>
+                    <a href="#">管家部经理/主管</a>
+                    <a href="#">清洁服务人员</a>
+                    <a href="#">健身房服务</a>
+                    <a href="#">旅游产品销售</a>
+                    <a href="#">导游/旅行顾问</a>
+                    <a href="#">行程管理/操作</a>
+                    <a href="#">票务/订房服务</a>
+                    <a href="#">签证专员</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">美容/健身/体育</a></dt>
+                  <dd>
+                    <a href="#">美容顾问/化妆</a>
+                    <a href="#">彩妆培训师</a>
+                    <a href="#">专柜彩妆顾问(BA)</a>
+                    <a href="#">美容助理/见席美容师</a>
+                    <a href="#">瘦身顾问</a>
+                    <a href="#">发型师</a>
+                    <a href="#">发型助理/学徒</a>
+                    <a href="#">美甲师</a>
+                    <a href="#">按摩/足疗</a>
+                    <a href="#">健身顾问/教练</a>
+                    <a href="#">体育运动教练</a>
+                    <a href="#">救生员</a>
+                    <a href="#">瑜伽/舞蹈老师</a>
+                    <a href="#">宠物护理/美容</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">百货/连锁/零售服务</a></dt>
+                  <dd>
+                    <a href="#">店长/卖场经理/楼面管理</a>
+                    <a href="#">品类经理</a>
+                    <a href="#">店员/营业员</a>
+                    <a href="#">安防主管</a>
+                    <a href="#">防损员/内保</a>
+                    <a href="#">收银主管/收银员</a>
+                    <a href="#">理货员/陈列员/收货员</a>
+                    <a href="#">导购员</a>
+                    <a href="#">西点师/面包糕点加工</a>
+                    <a href="#">生鲜食品加工/处理</a>
+                    <a href="#">熟食加工</a>
+                    <a href="#">兼职店员</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">交通运输服务</a></dt>
+                  <dd>
+                    <a href="#">飞机机长/副机长</a>
+                    <a href="#">空乘人员</a>
+                    <a href="#">地勤人员</a>
+                    <a href="#">列车/地铁车长</a>
+                    <a href="#">列车/地铁司机</a>
+                    <a href="#">船长/副船长</a>
+                    <a href="#">船员</a>
+                    <a href="#">乘务员</a>
+                    <a href="#">司机</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">保安/家政/其他服务</a></dt>
+                  <dd>
+                    <a href="#">保安经理</a>
+                    <a href="#">保安人员</a>
+                    <a href="#">保镖</a>
+                    <a href="#">寻呼员/话务员</a>
+                    <a href="#">搬运工</a>
+                    <a href="#">清洁工</a>
+                    <a href="#">家政服务/保姆</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+              </div>
+            </div>
+            <div class="menu_box"  id="jobclass2">
+              <div class="menu_main">
+                <h2>会计/金融/银行/保险
+                  <span></span></h2>
+                <div class="menu_main_b_h">
+                  <a href="#">保险</a>
+                  <a href="#">银行</a>
+                  <a href="#">金融/证券/期货/投资</a>
+                  <a href="#">财务/审计/税务</a></div>
+              </div>
+              <div class="menu_sub dn" style="top: 0px;" id="jobclass_2">
+                <dl class="reset">
+                  <dt>
+                    <a href="#">保险</a></dt>
+                  <dd>
+                    <a href="#">保险精算师</a>
+                    <a href="#">保险产品开发/项目策划</a>
+                    <a href="#">保险业务经理/主管</a>
+                    <a href="#">保险代理/经纪人/客户经理</a>
+                    <a href="#">理财顾问/财务规划师</a>
+                    <a href="#">储备经理人</a>
+                    <a href="#">保险核保</a>
+                    <a href="#">保险理赔</a>
+                    <a href="#">保险客户服务/续期管理</a>
+                    <a href="#">保险培训师</a>
+                    <a href="#">保险内勤</a>
+                    <a href="#">契约管理</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">银行</a></dt>
+                  <dd>
+                    <a href="#">行长/副行长</a>
+                    <a href="#">个人业务部门经理/主管</a>
+                    <a href="#">个人业务客户经理</a>
+                    <a href="#">公司业务部门经理/主管</a>
+                    <a href="#">公司业务客户经理</a>
+                    <a href="#">综合业务经理/主管</a>
+                    <a href="#">综合业务专员</a>
+                    <a href="#">资产评估/分析</a>
+                    <a href="#">风险控制</a>
+                    <a href="#">信贷管理</a>
+                    <a href="#">信审核查</a>
+                    <a href="#">进出口/信用证结算</a>
+                    <a href="#">外汇交易</a>
+                    <a href="#">清算人员</a>
+                    <a href="#">高级客户经理/客户经理</a>
+                    <a href="#">客户主管/专员</a>
+                    <a href="#">营业部大堂经理</a>
+                    <a href="#">银行柜员</a>
+                    <a href="#">银行卡、电子银行业务推广</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">金融/证券/期货/投资</a></dt>
+                  <dd>
+                    <a href="#">证券/期货/外汇经纪人</a>
+                    <a href="#">证券分析师</a>
+                    <a href="#">股票/期货操盘手</a>
+                    <a href="#">金融/经济研究员</a>
+                    <a href="#">投资/基金项目经理</a>
+                    <a href="#">投资/理财顾问</a>
+                    <a href="#">投资银行业务</a>
+                    <a href="#">融资经理/融资主管</a>
+                    <a href="#">融资专员</a>
+                    <a href="#">拍卖师</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">财务/审计/税务</a></dt>
+                  <dd>
+                    <a href="#">首席财务官 CFO</a>
+                    <a href="#">财务总监</a>
+                    <a href="#">财务经理</a>
+                    <a href="#">财务顾问</a>
+                    <a href="#">财务主管/总帐主管</a>
+                    <a href="#">会计经理/会计主管</a>
+                    <a href="#">会计</a>
+                    <a href="#">出纳员</a>
+                    <a href="#">财务/会计助理</a>
+                    <a href="#">会计文员</a>
+                    <a href="#">固定资产会计</a>
+                    <a href="#">财务分析经理/主管</a>
+                    <a href="#">财务分析员</a>
+                    <a href="#">成本经理/成本主管</a>
+                    <a href="#">成本管理员</a>
+                    <a href="#">资金经理/主管</a>
+                    <a href="#">资金专员</a>
+                    <a href="#">审计经理/主管</a>
+                    <a href="#">审计专员/助理</a>
+                    <a href="#">税务经理/税务主管</a>
+                    <a href="#">税务专员/助理</a>
+                    <a href="#">统计员</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+              </div>
+            </div>
+            <div class="menu_box"  id="jobclass3">
+              <div class="menu_main">
+                <h2>咨询/法律/教育/科研
+                  <span></span></h2>
+                <div class="menu_main_b_h">
+                  <a href="#">科研人员</a>
+                  <a href="#">培训</a>
+                  <a href="#">教师</a>
+                  <a href="#">律师/法务/合规</a>
+                  <a href="#">咨询/顾问</a></div>
+              </div>
+              <div class="menu_sub dn" style="top: 0px;" id="jobclass_3">
+                <dl class="reset">
+                  <dt>
+                    <a href="#">科研人员</a></dt>
+                  <dd>
+                    <a href="#">科研管理人员</a>
+                    <a href="#">科研人员</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">培训</a></dt>
+                  <dd>
+                    <a href="#">培训督导</a>
+                    <a href="#">培训讲师</a>
+                    <a href="#">培训策划</a>
+                    <a href="#">培训产品开发</a>
+                    <a href="#">培训/课程顾问</a>
+                    <a href="#">培训助理</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">教师</a></dt>
+                  <dd>
+                    <a href="#">校长</a>
+                    <a href="#">大学教授</a>
+                    <a href="#">讲师/助教</a>
+                    <a href="#">中学教师</a>
+                    <a href="#">小学教师</a>
+                    <a href="#">幼教</a>
+                    <a href="#">院校教务管理人员</a>
+                    <a href="#">兼职教师</a>
+                    <a href="#">家教</a>
+                    <a href="#">职业技术教师</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">律师/法务/合规</a></dt>
+                  <dd>
+                    <a href="#">律师/法律顾问</a>
+                    <a href="#">律师助理</a>
+                    <a href="#">法务经理</a>
+                    <a href="#">法务主管/专员</a>
+                    <a href="#">法务助理</a>
+                    <a href="#">合规经理</a>
+                    <a href="#">合规主管/专员</a>
+                    <a href="#">知识产权/专利顾问/专员</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">咨询/顾问</a></dt>
+                  <dd>
+                    <a href="#">专业顾问</a>
+                    <a href="#">咨询总监</a>
+                    <a href="#">咨询经理</a>
+                    <a href="#">专业培训师</a>
+                    <a href="#">咨询员</a>
+                    <a href="#">调研员</a>
+                    <a href="#">猎头/人才中介</a>
+                    <a href="#">情报信息分析人员</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+              </div>
+            </div>
+            <div class="menu_box"  id="jobclass4">
+              <div class="menu_main">
+                <h2>人事/行政/高级管理
+                  <span></span></h2>
+                <div class="menu_main_b_h">
+                  <a href="#">人力资源</a>
+                  <a href="#">高级管理</a>
+                  <a href="#">行政/后勤</a></div>
+              </div>
+              <div class="menu_sub dn" style="top: 0px;" id="jobclass_4">
+                <dl class="reset">
+                  <dt>
+                    <a href="#">人力资源</a></dt>
+                  <dd>
+                    <a href="#">人事总监</a>
+                    <a href="#">人事经理</a>
+                    <a href="#">人事主管</a>
+                    <a href="#">人事专员</a>
+                    <a href="#">人事助理</a>
+                    <a href="#">招聘经理/主管</a>
+                    <a href="#">招聘专员/助理</a>
+                    <a href="#">薪资福利经理/主管</a>
+                    <a href="#">薪资福利专员/助理</a>
+                    <a href="#">绩效考核经理/主管</a>
+                    <a href="#">绩效考核专员/助理</a>
+                    <a href="#">培训经理/主管</a>
+                    <a href="#">培训专员/助理/培训师</a>
+                    <a href="#">企业文化/员工关系/工会管理</a>
+                    <a href="#">人力资源信息系统专员</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">高级管理</a></dt>
+                  <dd>
+                    <a href="#">首席执行官CEO/总裁/总经理</a>
+                    <a href="#">首席运营官COO</a>
+                    <a href="#">副总经理/副总裁</a>
+                    <a href="#">合伙人</a>
+                    <a href="#">总监/部门经理</a>
+                    <a href="#">策略发展总监</a>
+                    <a href="#">办事处首席代表</a>
+                    <a href="#">办事处/分公司/分支机构经理</a>
+                    <a href="#">总裁助理/总经理助理</a>
+                    <a href="#">其他</a>
+                    <a href="#">行政经理/主管/办公室主任</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">行政/后勤</a></dt>
+                  <dd>
+                    <a href="#">行政总监</a>
+                    <a href="#">行政专员/助理</a>
+                    <a href="#">经理助理/秘书</a>
+                    <a href="#">前台接待/总机/接待生</a>
+                    <a href="#">后勤</a>
+                    <a href="#">图书管理员/资料管理员</a>
+                    <a href="#">电脑操作员/打字员</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+              </div>
+            </div>
+            <div class="menu_box"  id="jobclass5">
+              <div class="menu_main">
+                <h2>建筑/房地产
+                  <span></span></h2>
+                <div class="menu_main_b_h">
+                  <a href="#">物业管理</a>
+                  <a href="#">房地产</a>
+                  <a href="#">建筑装潢/市政建设</a></div>
+              </div>
+              <div class="menu_sub dn" style="top: 0px;" id="jobclass_5">
+                <dl class="reset">
+                  <dt>
+                    <a href="#">物业管理</a></dt>
+                  <dd>
+                    <a href="#">高级物业顾问/物业顾问</a>
+                    <a href="#">物业管理经理/主管</a>
+                    <a href="#">物业管理专员/助理</a>
+                    <a href="#">物业招商/租赁/租售</a>
+                    <a href="#">物业设施管理人员</a>
+                    <a href="#">物业机电工程师</a>
+                    <a href="#">物业维修人员</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">房地产</a></dt>
+                  <dd>
+                    <a href="#">房地产项目/开发/策划经理</a>
+                    <a href="#">房地产项目/开发/策划主管/专员</a>
+                    <a href="#">房产项目配套工程师</a>
+                    <a href="#">房地产项目招投标</a>
+                    <a href="#">房地产评估</a>
+                    <a href="#">房地产中介/交易</a>
+                    <a href="#">房地产销售经理/主管</a>
+                    <a href="#">房地产销售人员</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+                <dl class="reset">
+                  <dt>
+                    <a href="#">建筑装潢/市政建设</a></dt>
+                  <dd>
+                    <a href="#">高级建筑工程师/总工</a>
+                    <a href="#">建筑工程师</a>
+                    <a href="#">建筑设计师</a>
+                    <a href="#">市政工程师</a>
+                    <a href="#">结构/土木/土建工程师</a>
+                    <a href="#">公路/桥梁/港口/隧道工程</a>
+                    <a href="#">岩土工程</a>
+                    <a href="#">楼宇自动化</a>
+                    <a href="#">建筑机电工程师</a>
+                    <a href="#">安防工程师</a>
+                    <a href="#">给排水/暖通工程</a>
+                    <a href="#">幕墙工程师</a>
+                    <a href="#">规划与设计</a>
+                    <a href="#">室内外装潢设计</a>
+                    <a href="#">园艺/园林/景观设计</a>
+                    <a href="#">测绘/测量</a>
+                    <a href="#">建筑制图</a>
+                    <a href="#">开发报建</a>
+                    <a href="#">工程造价师/预结算经理</a>
+                    <a href="#">预结算员</a>
+                    <a href="#">建筑工程管理/项目经理</a>
+                    <a href="#">建筑工程验收</a>
+                    <a href="#">工程监理</a>
+                    <a href="#">合同管理</a>
+                    <a href="#">安全员</a>
+                    <a href="#">资料员</a>
+                    <a href="#">施工员</a>
+                    <a href="#">其他</a></dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="Index_rightsidebar fr">
+        <div class="banner cont_Projector fl">
+        <div class="list">
+          <div class="bd s_lb" id="slides">
+            <div class="slideshow-item ">
+              <a href="#"><img src="images/14738751126.JPG" alt=""></a>
+              <div class="slideinfo">
+              <h3><a class="bt"></a></h3>
+              <p></p>
+              <div class="bg"></div>
+              </div>
+            </div>
+            <div class="slideshow-item">
+              <a href="#"><img src="images/14710973011.JPG" alt=""></a>
+              <div class="slideinfo">
+              <h3><a class="bt"></a></h3>
+              <p></p>
+              <div class="bg"></div>
+              </div>
+            </div>
+            <div class="slideshow-item">
+              <a href="#"><img src="images/14710973011.JPG" alt=""></a>
+              <div class="slideinfo">
+              <h3><a class="bt"></a></h3>
+              <p></p>
+              <div class="bg"></div>
+              </div>
+            </div>
+          </div>
+          <div class="hd"><ul class="pagination"></ul></div>
+        </div>
+      </div>
+        <!-- Index login-->
+        <div class="Indexlogin fr">
+          <div class="Indexlogin_tit">
+            <span class="Indexlogin_tit_s">
+              <i class="Indexlogin_tit_line z_bg"></i>用户登录
+              <i class="Indexlogin_tit_sw"></i></span>
+          </div>
+          <form class="Indexlogin_box ">
+            <div class="Indexlogin_text">
+              <div>
+                <i class="Indexlogin_icon"></i>
+              </div>
+              <input type="text" id="username" name="username" placeholder="邮箱/手机号/用户名" class="Indexlogin_t">
+              <div class="logoin_msg none" id="show_name">
+                <div class="logoin_msg_tx">请填写用户名</div>
+                <div class="logoin_msg_icon"></div>
+              </div>
+            </div>
+            <div class="Indexlogin_text">
+              <div>
+                <i class="Indexlogin_icon Indexlogin_icon_m"></i>
+              </div>
+              <input type="password" id="password2" placeholder="请输入密码" class="Indexlogin_t">
+              <div class="logoin_msg none" id="show_pass">
+                <div class="logoin_msg_tx">请填写密码</div>
+                <div class="logoin_msg_icon"></div>
+              </div>
+            </div>
+            <div class="Indexlogin_yzm_t">
+              <div>
+                <i class="Indexlogin_icon Indexlogin_yzm_icon"></i>
+              </div>
+              <input type="text" id="txt_CheckCode" name="authcode" placeholder="验证码" class="Indexlogin_yzm">
+              <a href="#" >
+                <img id="vcode_imgs" src="http://ihuoniao.cn/include/vdimgck.php?v=1479870633029?v=1479870633845?v=1479870634502?v=1479873707620" width="60" height="30" class="Indexlogin_yzm_img vdimgck"></a>
+              <a href="javascript:;"  class="Indexlogin_icon_m_hyh change">换一换？</a></div>
+            <div class="Indexlogin_sub">
+              <input type="submit" value="立即登录" class="Indexlogin_bth" ></div>
+            <div class="Indexlogin_sub_fotg">还没有注册账号？
+              <a href="#" class="Indexlogin_ft ">忘记密码?</a></div>
+            <div class="Indexlogin_p">
+              <a href="#" class="text_color_login text_color">企业注册</a>
+              <a href="#" class="text_color_login_gr text_color">个人注册</a></div>
+          </form>
+        </div>
+        <section>
+          <div class="Index_box fl">
+            <div class="Index_Emergencybox fl">
+              <div class="Index_tit fl">
+                <span class="Famousenterprises_tit_s fl">
+                  <a href="#" rel="nofollow" >紧急招聘</a>
+                  <i class="Famousenterprises_tit_i z_bg"></i>
+                </span>
+                <a href="#" class="Index_tit_more text_color Index_tit_more_mt fr" rel="nofollow" >查看更多
+                  <i class="Index_tit_more_icon"></i></a>
+              </div>
+              <div class="Index_Emergency">
+                <ul class="Index_Emergency_list">
+                  <li>
+                    <div class="Index_Emergency_left fl">
+                      <aside class="zz_">
+                        <div class="Index_Emergency_leftjobname">
+                          <a href="#"  class="Index_Emergency_Jobname text_color">xxxx</a></div>
+                      </aside>
+                      <aside>
+                        <div class="Index_Emergency_p">
+                          <span class="Index_Emergency_Xz">￥4500 - 5999</span>不限经验/不限学历</div></aside>
+                      <aside>
+                        <div class="Index_Emergency_p2">
+                          <a href="#"  class="Index_Emergency_name">xxxxx</a></div>
+                      </aside>
+                    </div>
+                    <div class="Index_Emergency_logo fl">
+                      <a href="#">
+                        <img src="images/14720823129.JPG" width="148" height="60" /></a>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="Index_Emergency_left fl">
+                      <aside class="zz_">
+                        <div class="Index_Emergency_leftjobname">
+                          <a href="#"  class="Index_Emergency_Jobname text_color">文化创意主管</a></div>
+                      </aside>
+                      <aside>
+                        <div class="Index_Emergency_p">
+                          <span class="Index_Emergency_Xz">￥8000 - 9999</span>3年以上经验/本科学历</div></aside>
+                      <aside>
+                        <div class="Index_Emergency_p2">
+                          <a href="#"  class="Index_Emergency_name">江苏久久久媒体公司</a></div>
+                      </aside>
+                    </div>
+                    <div class="Index_Emergency_logo fl">
+                      <a href="#">
+                        <img src="images/1470122217811_1.jpg" width="148" height="60" /></a>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="Index_Emergency_left fl">
+                      <aside class="zz_">
+                        <div class="Index_Emergency_leftjobname">
+                          <a href="#"  class="Index_Emergency_Jobname text_color">广告策划</a></div>
+                      </aside>
+                      <aside>
+                        <div class="Index_Emergency_p">
+                          <span class="Index_Emergency_Xz">￥10000及以上</span>不限经验/本科学历</div></aside>
+                      <aside>
+                        <div class="Index_Emergency_p2">
+                          <a href="#"  class="Index_Emergency_name">江苏久久久媒体公司</a></div>
+                      </aside>
+                    </div>
+                    <div class="Index_Emergency_logo fl">
+                      <a href="#">
+                        <img src="images/1470122217811_1.jpg" width="148" height="60" /></a>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="Index_Emergency_left fl">
+                      <aside class="zz_">
+                        <div class="Index_Emergency_leftjobname">
+                          <a href="#"  class="Index_Emergency_Jobname text_color">总经理助理</a></div>
+                      </aside>
+                      <aside>
+                        <div class="Index_Emergency_p">
+                          <span class="Index_Emergency_Xz">￥4500 - 5999</span>2年以上经验/不限学历</div></aside>
+                      <aside>
+                        <div class="Index_Emergency_p2">
+                          <a href="#"  class="Index_Emergency_name">福州方大科技有限公司</a></div>
+                      </aside>
+                    </div>
+                    <div class="Index_Emergency_logo fl">
+                      <a href="#">
+                        <img src="images/1478489603502_1.PNG" width="148" height="60" /></a>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="Index_Emergency_left fl">
+                      <aside class="zz_">
+                        <div class="Index_Emergency_leftjobname">
+                          <a href="#"  class="Index_Emergency_Jobname text_color">互联网销售助理</a></div>
+                      </aside>
+                      <aside>
+                        <div class="Index_Emergency_p">
+                          <span class="Index_Emergency_Xz">面议</span>2年以上经验/高中学历</div></aside>
+                      <aside>
+                        <div class="Index_Emergency_p2">
+                          <a href="#"  class="Index_Emergency_name">北京易动纷享科技有限责任公司</a></div>
+                      </aside>
+                    </div>
+                    <div class="Index_Emergency_logo fl">
+                      <a href="#">
+                        <img src="images/1453014570100_1.JPG" width="148" height="60" /></a>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="Index_Emergency_left fl">
+                      <aside class="zz_">
+                        <div class="Index_Emergency_leftjobname">
+                          <a href="#"  class="Index_Emergency_Jobname text_color">急聘互联网人力资源主管</a></div>
+                      </aside>
+                      <aside>
+                        <div class="Index_Emergency_p">
+                          <span class="Index_Emergency_Xz">￥10000及以上</span>1年以上经验/高中学历</div></aside>
+                      <aside>
+                        <div class="Index_Emergency_p2">
+                          <a href="#"  class="Index_Emergency_name">广州市优格互联网金融信息服务有限公司</a></div>
+                      </aside>
+                    </div>
+                    <div class="Index_Emergency_logo fl">
+                      <a href="#">
+                        <img src="images/1453016429710_1.JPG" width="148" height="60" /></a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- 名企-->
+      <section>
+        <div class="Famousenterprises fl">
+          <div class="Famousenterprises_tit fl">
+            <span class="Famousenterprises_tit_s fl">
+              <a href="#" rel="nofollow" >名企招聘</a>
+              <i class="Famousenterprises_tit_i z_bg"></i>
+            </span>
+            <a href="#" class="Index_tit_more text_color fr" rel="nofollow" >查看更多
+              <i class="Index_tit_more_icon"></i></a>
+          </div>
+          <div class="Famousenterprises_box fl">
+            <div class="Famous_recruitment_cont">
+              <div class="left15560">
+                <div id="mainids">
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14771659456.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left">
+                              <a href="#">wqwerqwer</a></div>
+                            <div class="area_right">
+                              <a href="#">郑州韵之音文化传播有限公司</a>郑州韵之音文化传播有限公司，成立时间2015年12月18日，是一家文化艺术交流活动策划、会议会展服务...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14743356951.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left">
+                              <a href="#">策划经理</a></div>
+                            <div class="area_right">
+                              <a href="#">广西优壹城商业有限公司6</a>...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14764661052.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left"></div>
+                            <div class="area_right">
+                              <a href="#">深圳腾讯网络有限公司5566</a>深圳腾讯网络有限公司简介防守打法...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14680885147.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left">
+                              <a href="#">软件工程师</a></div>
+                            <div class="area_right">
+                              <a href="#">深圳腾讯网络有限公司9999</a>深圳腾讯网络有限公司简介...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14774040068.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left"></div>
+                            <div class="area_right">
+                              <a href="#">糖糖文化传媒有限公司</a>牛！...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14745430625.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left">
+                              <a href="#">行政前台</a></div>
+                            <div class="area_right">
+                              <a href="#">南宁亿联网络科技有限责任公司6</a>...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14723498008.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left"></div>
+                            <div class="area_right">
+                              <a href="#">好声音KTV娱乐会所</a>dddddddddddddddd</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14753063305.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left">
+                              <a href="#">续收客服专员</a></div>
+                            <div class="area_right">
+                              <a href="#">中国太平洋人寿保险股份有限公司南宁中心支公司区拓部</a>...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14570043066.PNG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left">
+                              <a href="#">电磁兼容测试工程师（</a></div>
+                            <div class="area_right">
+                              <a href="#">（富士康）南宁富桂精密工业有限公司6</a>...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14682596886.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left"></div>
+                            <div class="area_right">
+                              <a href="#">郑州高新开发区塞纳左岸中西餐厅</a>...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14722209751.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left"></div>
+                            <div class="area_right">
+                              <a href="#">广州海科电子科技有限公司(广州海科电子科技有限公司</a>...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14714784888.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left"></div>
+                            <div class="area_right">
+                              <a href="#">三亚陈易网络科技有限公司</a>...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14679659412.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left">
+                              <a href="#">主管会计</a></div>
+                            <div class="area_right">
+                              <a href="#">广东嘉城商标代理有限公司</a>广东嘉城商标代理有限公司，成立于2004年，长期服务于商标转让、商标买卖、商标注册及广州工商代理、代...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14726593046.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left">
+                              <a href="#">急聘互联网人力资源主</a></div>
+                            <div class="area_right">
+                              <a href="#">广州市优格互联网金融信息服务有限公司</a>优格金融（YouGetMoney）前身是广州市鸿博投资管理有限公司，创建于2012年4月，总部设立于...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14721792381.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left">
+                              <a href="#">招聘美工</a></div>
+                            <div class="area_right">
+                              <a href="#">千手信息技术有限公司</a>弃我而去温柔...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14767512293.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left">
+                              <a href="#">互联网销售助理</a></div>
+                            <div class="area_right">
+                              <a href="#">北京易动纷享科技有限责任公司</a>纷享销客——移动互联网创业公司领跑者，移动销售管理的第一品牌！ 创立三年，连续获得IDG资本、北极...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14749744388.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left">
+                              <a href="#">互联网产品咨询顾问</a></div>
+                            <div class="area_right">
+                              <a href="#">都需信息技术有限公司</a>深圳市迅雷网络技术有限公司于2003年在深圳成立，以领先的云加速技术和系列产品为用户提供基于大容量娱...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tlogo">
+                    <ul>
+                      <li  >
+                        <a href="#"  class="tlogo_p_a">
+                          <img width="185" height="75" border="1"  class="on lazy" src="images/14712382415.JPG"  /></a>
+                        <div class="show">
+                          <div class="area">
+                            <i class="area_icon"></i>
+                            <div class="area_left"></div>
+                            <div class="area_right">
+                              <a href="#">河南美之兴商贸有限公司</a>中兴通讯是全球领先的综合通信解决方案提供商。公司通过为全球160多个国家和地区的电信运营商和企业网客...</div></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="clear"></div>
+      <div class="w1024">
+        <div class="banner_main">
+          <div class="banner_cont">
+            <a href="#"></a>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <section>
+        <div class="Index_newbox fl">
+          <div class="Index_newtit fl">
+            <span class="Famousenterprises_tit_s fl">
+              <a href="#" rel="nofollow" >推荐职位</a>
+              <i class="Famousenterprises_tit_i z_bg"></i>
+            </span>
+            <a href="#" class="Index_tit_more text_color Index_tit_more_mt fr" rel="nofollow" >查看更多
+              <i class="Index_tit_more_icon"></i></a>
+          </div>
+          <div class="Index_con_box fl">
+            <div class="Index_Recommend">
+              <ul class="Index_Recommend_list">
+                <li>
+                  <aside>
+                    <div class="Index_Recommend_job">
+                      <span class="Index_Recommend_job_s">
+                        <a href="#" class="Index_Recommend_jobname text_color">
+                          <font color='red'>xxxx</font></a>
+                      </span>
+                      <span class="Index_Recommend_XZ">￥4500 - 5999</span></div>
+                  </aside>
+                  <aside>
+                    <div class="Index_Recommend_p">天津 静海县
+                      <span class="Index_Recommend_line">|</span>不限工作经验
+                      <span class="Index_Recommend_line">|</span>不限</div></aside>
+                  <aside>
+                    <div class="Index_Recommend_p2">
+                      <a href="#" class="Index_Emergency_name">xxxxx</a></div>
+                  </aside>
+                </li>
+                <li>
+                  <aside>
+                    <div class="Index_Recommend_job">
+                      <span class="Index_Recommend_job_s">
+                        <a href="#" class="Index_Recommend_jobname text_color">
+                          <font color='red'>文化创意主管</font></a>
+                      </span>
+                      <span class="Index_Recommend_XZ">￥8000 - 9999</span></div>
+                  </aside>
+                  <aside>
+                    <div class="Index_Recommend_p">上海 崇明县
+                      <span class="Index_Recommend_line">|</span>3年以上工作经验
+                      <span class="Index_Recommend_line">|</span>本科</div></aside>
+                  <aside>
+                    <div class="Index_Recommend_p2">
+                      <a href="#" class="Index_Emergency_name">江苏久久久媒体公司</a></div>
+                  </aside>
+                </li>
+                <li>
+                  <aside>
+                    <div class="Index_Recommend_job">
+                      <span class="Index_Recommend_job_s">
+                        <a href="#" class="Index_Recommend_jobname text_color">
+                          <font color='red'>客户经理</font></a>
+                      </span>
+                      <span class="Index_Recommend_XZ">￥6000 - 7999</span></div>
+                  </aside>
+                  <aside>
+                    <div class="Index_Recommend_p">天津 宁河县
+                      <span class="Index_Recommend_line">|</span>应届毕业生工作经验
+                      <span class="Index_Recommend_line">|</span>高中</div></aside>
+                  <aside>
+                    <div class="Index_Recommend_p2">
+                      <a href="#" class="Index_Emergency_name">广州市优格互联网金融信息服务有限公司</a></div>
+                  </aside>
+                </li>
+                <li>
+                  <aside>
+                    <div class="Index_Recommend_job">
+                      <span class="Index_Recommend_job_s">
+                        <a href="#" class="Index_Recommend_jobname text_color">
+                          <font color='red'>高级工程师</font></a>
+                      </span>
+                      <span class="Index_Recommend_XZ">￥10000及以上</span></div>
+                  </aside>
+                  <aside>
+                    <div class="Index_Recommend_p">天津 蓟县
+                      <span class="Index_Recommend_line">|</span>8年以上工作经验
+                      <span class="Index_Recommend_line">|</span>硕士</div></aside>
+                  <aside>
+                    <div class="Index_Recommend_p2">
+                      <a href="#" class="Index_Emergency_name">陶然阁装饰有限公司</a></div>
+                  </aside>
+                </li>
+                <li>
+                  <aside>
+                    <div class="Index_Recommend_job">
+                      <span class="Index_Recommend_job_s">
+                        <a href="#" class="Index_Recommend_jobname text_color">
+                          <font color='red'>互联网产品咨询顾问</font></a>
+                      </span>
+                      <span class="Index_Recommend_XZ">￥6000 - 7999</span></div>
+                  </aside>
+                  <aside>
+                    <div class="Index_Recommend_p">上海 崇明县
+                      <span class="Index_Recommend_line">|</span>3年以上工作经验
+                      <span class="Index_Recommend_line">|</span>中专</div></aside>
+                  <aside>
+                    <div class="Index_Recommend_p2">
+                      <a href="#" class="Index_Emergency_name">上海高玄信息技术有限公司</a></div>
+                  </aside>
+                </li>
+                <li>
+                  <aside>
+                    <div class="Index_Recommend_job">
+                      <span class="Index_Recommend_job_s">
+                        <a href="#" class="Index_Recommend_jobname text_color">
+                          <font color='red'>展示道具项目经理.</font></a>
+                      </span>
+                      <span class="Index_Recommend_XZ">面议</span></div>
+                  </aside>
+                  <aside>
+                    <div class="Index_Recommend_p">本溪 振兴区
+                      <span class="Index_Recommend_line">|</span>不限工作经验
+                      <span class="Index_Recommend_line">|</span>不限</div></aside>
+                  <aside>
+                    <div class="Index_Recommend_p2">
+                      <a href="#" class="Index_Emergency_name">郑州韵之音文化传播有限公司</a></div>
+                  </aside>
+                </li>
+                <li>
+                  <aside>
+                    <div class="Index_Recommend_job">
+                      <span class="Index_Recommend_job_s">
+                        <a href="#" class="Index_Recommend_jobname text_color">
+                          <font color='red'>主管会计</font></a>
+                      </span>
+                      <span class="Index_Recommend_XZ">￥4500 - 5999</span></div>
+                  </aside>
+                  <aside>
+                    <div class="Index_Recommend_p">
+                      <span class="Index_Recommend_line">|</span>不限工作经验
+                      <span class="Index_Recommend_line">|</span>不限</div></aside>
+                  <aside>
+                    <div class="Index_Recommend_p2">
+                      <a href="#" class="Index_Emergency_name">广东嘉城商标代理有限公司</a></div>
+                  </aside>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="Index_newbox fl">
+          <div class="Index_newtit fl">
+            <span class="Famousenterprises_tit_s fl">
+              <a href="#" rel="nofollow" >最新职位</a>
+              <i class="Famousenterprises_tit_i z_bg"></i>
+            </span>
+            <a href="#" class="Index_tit_more text_color Index_tit_more_mt fr" rel="nofollow" >查看更多
+              <i class="Index_tit_more_icon"></i></a>
+          </div>
+          <div class="Index_con_box fl">
+            <div class="Index_Newjob fl">
+              <ul class="Index_Newjob_list fl">
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">国内海上货运招聘 普</a>
+                      <span class="Index_Newjob_t_date">19:02</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">￥1000以下</span>1年以上经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">上海芦海船舶劳务服务有限公司</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">广州促销督导</a>
+                      <span class="Index_Newjob_t_date">19:01</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>2年以上经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">深圳市百富进出口有限公司</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">客服主管</a>
+                      <span class="Index_Newjob_t_date">19:00</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>应届毕业生经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">广西铺铺易电子商务有限公司1</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">储备店长</a>
+                      <span class="Index_Newjob_t_date">19:00</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>应届毕业生经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">广西蒂饴嘉餐饮管理有限公司1</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">最新网上兼//职网络</a>
+                      <span class="Index_Newjob_t_date">18:59</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>1年以上经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">北京郑莱尔网络有限公司</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">微信运营专员</a>
+                      <span class="Index_Newjob_t_date">18:59</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">￥1000以下</span>1年以上经验/大专学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">广州市晶日广告有限公司.</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">房地产项目监理</a>
+                      <span class="Index_Newjob_t_date">18:59</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>应届毕业生经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">广西春茂农牧集团有限公司</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">营业员/店员（新万达</a>
+                      <span class="Index_Newjob_t_date">18:59</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>应届毕业生经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">广西蒂饴嘉餐饮管理有限公司1</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">核磁共振医师</a>
+                      <span class="Index_Newjob_t_date">18:58</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>应届毕业生经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">南宁美年大健康健康管理有限公司1</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">中医医师</a>
+                      <span class="Index_Newjob_t_date">18:56</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>应届毕业生经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">南宁美年大健康健康管理有限公司1</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">销售经理+双休+五险</a>
+                      <span class="Index_Newjob_t_date">18:56</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">￥10000及以上</span>1年以上经验/大专学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">北大青鸟001</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">砂光技术员</a>
+                      <span class="Index_Newjob_t_date">18:56</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>应届毕业生经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">贺州速丰木业有限公司1</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">电气技术员</a>
+                      <span class="Index_Newjob_t_date">18:56</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>应届毕业生经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">贺州速丰木业有限公司1</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">集团总部：行政专员</a>
+                      <span class="Index_Newjob_t_date">18:55</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>应届毕业生经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">广西吉恩建设集团有限公司</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">人事专员</a>
+                      <span class="Index_Newjob_t_date">18:54</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>应届毕业生经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">南宁市青秀区乐恩教育培训学校1</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">保安</a>
+                      <span class="Index_Newjob_t_date">18:54</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>应届毕业生经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">广西江滨房地产开发有限公司1</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">兽医</a>
+                      <span class="Index_Newjob_t_date">18:53</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>应届毕业生经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">广西华兴集团有限公司1</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">诚招船员普工随船 电</a>
+                      <span class="Index_Newjob_t_date">18:53</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>1年以上经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">上海睿兴船务有限公司.</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">Executive</a>
+                      <span class="Index_Newjob_t_date">18:52</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>3年以上经验/大专学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">广州云顶旅游信息咨询服务有限公司</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="Index_Newjob_left fl">
+                    <div class="Index_Newjob_t fl">
+                      <a href="#" class="Index_Newjob_name text_color">酒店仓库管理员（上林</a>
+                      <span class="Index_Newjob_t_date">18:51</span></div>
+                    <div class="Index_Newjob_p fl">
+                      <span class="Index_Newjobzx">面议</span>应届毕业生经验/高中学历</div></div>
+                  <div class="Index_Newjob_right fr">
+                    <div class="Index_Newcom_name">
+                      <a href="#" class="Index_Newcom_cname">深圳雅斯特酒店管理有限公司1</a></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="Index_newbox Index_newbox_pd fl">
+          <div class="Index_newtit fl">
+            <span class="Famousenterprises_tit_s fl">
+              <a href="#" rel="nofollow" >人才推荐</a>
+              <i class="Famousenterprises_tit_i z_bg"></i>
+            </span>
+            <a href="#" class="Index_tit_more text_color Index_tit_more_mt fr" rel="nofollow" >查看更多
+              <i class="Index_tit_more_icon"></i></a>
+          </div>
+          <div class="Index_user fl">
+            <ul class="Index_user_list">
+              <li>
+                <div class="Index_user_pic">
+                  <a href="#" >
+                    <img width="80" height="100"  class="lazy" src="images/14204024737.JPG"  />
+                    <i class="Index_user_pic_bg png"></i>
+                  </a>
+                </div>
+                <div class="Index_user_p Index_user_name">
+                  <a class="cblue blod" href="#" >一米阳光</a></div>
+                <div class="Index_user_p">36岁
+                  <span class="Index_user_line">|</span>8年以上
+                  <span class="Index_Recommend_line">|</span>高中以下</div>
+                <div class="Index_user_p_yx">意向：广告客户总监/副总监</div>
+                <div class="com_rue_list fl"></div>
+              </li>
+              <li>
+                <div class="Index_user_pic">
+                  <a href="#" >
+                    <img width="80" height="100"  class="lazy" src="images/14204024737.JPG"  />
+                    <i class="Index_user_pic_bg png"></i>
+                  </a>
+                </div>
+                <div class="Index_user_p Index_user_name">
+                  <a class="cblue blod" href="#" >金子</a></div>
+                <div class="Index_user_p">21岁
+                  <span class="Index_user_line">|</span>3年以上
+                  <span class="Index_Recommend_line">|</span>大专</div>
+                <div class="Index_user_p_yx">意向：其他</div>
+                <div class="com_rue_list fl"></div>
+              </li>
+              <li>
+                <div class="Index_user_pic">
+                  <a href="#" >
+                    <img width="80" height="100"  class="lazy" src="images/14204024737.JPG"  />
+                    <i class="Index_user_pic_bg png"></i>
+                  </a>
+                </div>
+                <div class="Index_user_p Index_user_name">
+                  <a class="cblue blod" href="#" >是大癫疯</a></div>
+                <div class="Index_user_p">保密岁
+                  <span class="Index_user_line">|</span>
+                  <span class="Index_Recommend_line">|</span>高中</div>
+                <div class="Index_user_p_yx">意向：其他,船员</div>
+                <div class="com_rue_list fl"></div>
+              </li>
+              <li>
+                <div class="Index_user_pic">
+                  <a href="#" >
+                    <img width="80" height="100"  class="lazy" src="images/14204024737.JPG"  />
+                    <i class="Index_user_pic_bg png"></i>
+                  </a>
+                </div>
+                <div class="Index_user_p Index_user_name">
+                  <a class="cblue blod" href="#" >是大癫疯</a></div>
+                <div class="Index_user_p">保密岁
+                  <span class="Index_user_line">|</span>
+                  <span class="Index_Recommend_line">|</span>高中</div>
+                <div class="Index_user_p_yx">意向：行政专员/助理,船员</div>
+                <div class="com_rue_list fl"></div>
+              </li>
+              <li>
+                <div class="Index_user_pic">
+                  <a href="#" >
+                    <img width="80" height="100"  class="lazy" src="images/14204024737.JPG"  />
+                    <i class="Index_user_pic_bg png"></i>
+                  </a>
+                </div>
+                <div class="Index_user_p Index_user_name">
+                  <a class="cblue blod" href="#" >全志辉</a></div>
+                <div class="Index_user_p">保密岁
+                  <span class="Index_user_line">|</span>5年以上
+                  <span class="Index_Recommend_line">|</span>中专</div>
+                <div class="Index_user_p_yx">意向：工程监理</div>
+                <div class="com_rue_list fl"></div>
+              </li>
+              <li>
+                <div class="Index_user_pic">
+                  <a href="#" >
+                    <img width="80" height="100"  class="lazy" src="images/14204024737.JPG"  />
+                    <i class="Index_user_pic_bg png"></i>
+                  </a>
+                </div>
+                <div class="Index_user_p Index_user_name">
+                  <a class="cblue blod" href="#" >徐露</a></div>
+                <div class="Index_user_p">保密岁
+                  <span class="Index_user_line">|</span>3年以上
+                  <span class="Index_Recommend_line">|</span>本科</div>
+                <div class="Index_user_p_yx">意向：船员</div>
+                <div class="com_rue_list fl"></div>
+              </li>
+              <li>
+                <div class="Index_user_pic">
+                  <a href="#" >
+                    <img width="80" height="100"  class="lazy" src="images/14204024737.JPG"  />
+                    <i class="Index_user_pic_bg png"></i>
+                  </a>
+                </div>
+                <div class="Index_user_p Index_user_name">
+                  <a class="cblue blod" href="#" >是大癫疯</a></div>
+                <div class="Index_user_p">保密岁
+                  <span class="Index_user_line">|</span>3年以上
+                  <span class="Index_Recommend_line">|</span>高中</div>
+                <div class="Index_user_p_yx">意向：,园艺/园林/景观设</div>
+                <div class="com_rue_list fl"></div>
+              </li>
+              <li>
+                <div class="Index_user_pic">
+                  <a href="#" >
+                    <img width="80" height="100"  class="lazy" src="images/14204024737.JPG"  />
+                    <i class="Index_user_pic_bg png"></i>
+                  </a>
+                </div>
+                <div class="Index_user_p Index_user_name">
+                  <a class="cblue blod" href="#" >是大癫疯</a></div>
+                <div class="Index_user_p">保密岁
+                  <span class="Index_user_line">|</span>3年以上
+                  <span class="Index_Recommend_line">|</span>高中</div>
+                <div class="Index_user_p_yx">意向：,机械工程师,行政专</div>
+                <div class="com_rue_list fl"></div>
+              </li>
+              <li>
+                <div class="Index_user_pic">
+                  <a href="#" >
+                    <img width="80" height="100"  class="lazy" src="images/14204024737.JPG"  />
+                    <i class="Index_user_pic_bg png"></i>
+                  </a>
+                </div>
+                <div class="Index_user_p Index_user_name">
+                  <a class="cblue blod" href="#" >张崇峰</a></div>
+                <div class="Index_user_p">保密岁
+                  <span class="Index_user_line">|</span>10年以上
+                  <span class="Index_Recommend_line">|</span>本科</div>
+                <div class="Index_user_p_yx">意向：技工</div>
+                <div class="com_rue_list fl"></div>
+              </li>
+              <li>
+                <div class="Index_user_pic">
+                  <a href="#" >
+                    <img width="80" height="100"  class="lazy" src="images/14204024737.JPG"  />
+                    <i class="Index_user_pic_bg png"></i>
+                  </a>
+                </div>
+                <div class="Index_user_p Index_user_name">
+                  <a class="cblue blod" href="#" >张敏圣</a></div>
+                <div class="Index_user_p">保密岁
+                  <span class="Index_user_line">|</span>10年以上
+                  <span class="Index_Recommend_line">|</span>大专</div>
+                <div class="Index_user_p_yx">意向：技工</div>
+                <div class="com_rue_list fl"></div>
+              </li>
+              <li>
+                <div class="Index_user_pic">
+                  <a href="#" >
+                    <img width="80" height="100"  class="lazy" src="images/14204024737.JPG"  />
+                    <i class="Index_user_pic_bg png"></i>
+                  </a>
+                </div>
+                <div class="Index_user_p Index_user_name">
+                  <a class="cblue blod" href="#" >伍志坚</a></div>
+                <div class="Index_user_p">保密岁
+                  <span class="Index_user_line">|</span>10年以上
+                  <span class="Index_Recommend_line">|</span>中专</div>
+                <div class="Index_user_p_yx">意向：司机</div>
+                <div class="com_rue_list fl"></div>
+              </li>
+              <li>
+                <div class="Index_user_pic">
+                  <a href="#" >
+                    <img width="80" height="100"  class="lazy" src="images/14204024737.JPG"  />
+                    <i class="Index_user_pic_bg png"></i>
+                  </a>
+                </div>
+                <div class="Index_user_p Index_user_name">
+                  <a class="cblue blod" href="#" >是大癫疯</a></div>
+                <div class="Index_user_p">保密岁
+                  <span class="Index_user_line">|</span>5年以上
+                  <span class="Index_Recommend_line">|</span>高中</div>
+                <div class="Index_user_p_yx">意向：电工</div>
+                <div class="com_rue_list fl"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="Index_newbox fl">
+          <div class="Index_newtit fl">
+            <span class="Famousenterprises_tit_s fl">
+              <a href="#" rel="nofollow" >职场资讯</a>
+              <i class="Famousenterprises_tit_i z_bg"></i>
+            </span>
+            <a href="#" class="Index_tit_more text_color Index_tit_more_mt fr" rel="nofollow" >查看更多
+              <i class="Index_tit_more_icon"></i></a>
+          </div>
+          <div class="Index_con_box fl">
+            <div class="news_content">
+              <dl class="news_top">
+                <dt>
+                  <a href="#">
+                    <img width="100" height="80"  class="lazy" src="images/14759506483.JPG" /></a>
+                </dt>
+                <dd>
+                  <strong>
+                    <a href="#">公务员工资待遇不高，为什么还那么多人</a></strong>
+                  <span>公务员工资待遇不高，为什么还那么多人考呢公务员工...</span>
+                  <a href="#" >[详细]</a></dd>
+              </dl>
+              <div class="news_right">
+                <ul>
+                  <li>[职业指导]
+                    <a href="#" >
+                      <font color='#E53333'>最新招聘</font></a>
+                  </li>
+                  <li>[职业指导]
+                    <a href="#" >沭阳人民路手机店</a></li>
+                  <li>[职业指导]
+                    <a href="#" >
+                      <font color='#FF9900'>沭阳县公车改革处置车辆第三场拍卖会拍</font></a>
+                  </li>
+                  <li>[职业指导]
+                    <a href="#" >沭阳开发区控制性详细规划方案，胡建军</a></li>
+                  <li>[职业指导]
+                    <a href="#" >公务员工资待遇不高，为什么还那么多人</a></li>
+                  <li>[职业指导]
+                    <a href="#" >沭阳县公办中小学招聘教师笔试</a></li>
+                  <li>[职业指导]
+                    <a href="#" >新闻标题类别管理</a></li>
+                  <li>[职业指导]
+                    <a href="#" >沭阳人才网招聘地情文化信息中心文员</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="news_content">
+              <dl class="news_top">
+                <dt>
+                  <a href="#">
+                    <img width="100" height="80"  class="lazy" src="images/13736717907.JPG" /></a>
+                </dt>
+                <dd>
+                  <strong>
+                    <a href="#">面试时应该穿什么服装</a></strong>
+                  <span>面试是应该穿什么服装面试是应该穿什么服装...</span>
+                  <a href="#" >[详细]</a></dd>
+              </dl>
+              <div class="news_right">
+                <ul>
+                  <li>[现场招聘会]
+                    <a href="#" >面试时应该穿什么服装</a></li>
+                  <li>[现场招聘会]
+                    <a href="#" >只有熟悉“游戏规则”，才能更好地“玩</a></li>
+                  <li>[现场招聘会]
+                    <a href="#" >新闻信息</a></li>
+                  <li>[现场招聘会]
+                    <a href="#" >实行公开招聘有哪些具体的监督措施？</a></li>
+                  <li>[现场招聘会]
+                    <a href="#" >现在招聘会</a></li>
+                  <li>[现场招聘会]
+                    <a href="#" >劳务工转正不能仅靠“奖励”</a></li>
+                  <li>[现场招聘会]
+                    <a href="#" >迅速恢复迅速恢复迅速恢复迅速恢复迅复</a></li>
+                  <li>[现场招聘会]
+                    <a href="#" >设备损坏和电力不足莫大,成莫大障碍</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="news_content">
+              <dl class="news_top">
+                <dt>
+                  <a href="#">
+                    <img width="100" height="80"  class="lazy" src="images/14793506685.JPG" /></a>
+                </dt>
+                <dd>
+                  <strong>
+                    <a href="#">
+                      <font color='#E53333'>上司出尔反尔怎么办？</font></a>
+                  </strong>
+                  <span>我因脾气不好和主管吵了一架，经理让我回家休息一段...</span>
+                  <a href="#" >[详细]</a></dd>
+              </dl>
+              <div class="news_right">
+                <ul>
+                  <li>[劳动法规]
+                    <a href="#" >事业单位岗位聘用情况应如何备案</a></li>
+                  <li>[劳动法规]
+                    <a href="#" >小心踩入求职“陷阱”</a></li>
+                  <li>[劳动法规]
+                    <a href="#" >中华人民共和国社会保险法第一章</a></li>
+                  <li>[劳动法规]
+                    <a href="#" >女大学生就业遭歧视</a></li>
+                  <li>[劳动法规]
+                    <a href="#" >虚假招聘9特征</a></li>
+                  <li>[劳动法规]
+                    <a href="#" >初入职场小心求职“陷阱”</a></li>
+                  <li>[劳动法规]
+                    <a href="#" >气温超39℃露天工作须停工</a></li>
+                  <li>[劳动法规]
+                    <a href="#" >揭露就业陷阱</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="Index_newbox fl">
+          <div class="Index_newtit fl">
+            <span class="Famousenterprises_tit_s fl">友情链接
+              <i class="Famousenterprises_tit_i z_bg"></i></span>
+            <a href="#" class="Index_tit_more text_color Index_tit_more_mt fr" rel="nofollow">申请链接
+              <i class="Index_tit_more_icon"></i></a>
+          </div>
+          <div class="Index_con_box fl">
+            <div class="link_list_img">
+              <a href="#" >
+                <img class="lazy" src="images/14777197848.JPG"  width="120" height="35" /></a>
+              <a href="#" >
+                <img class="lazy" src="images/13839182782.PNG"  width="120" height="35" /></a>
+              <a href="#" >
+                <img class="lazy" src="images/13857040527.PNG"  width="120" height="35" /></a>
+              <a href="#" >
+                <img class="lazy" src="images/14739958697.JPG"  width="120" height="35" /></a>
+              <a href="#" >
+                <img class="lazy" src="images/14794322935.JPG"  width="120" height="35" /></a>
+              <a href="#" >
+                <img class="lazy" src="images/14735383014.JPG"  width="120" height="35" /></a>
+              <a href="#" >
+                <img class="lazy" src="images/14721438782.JPG"  width="120" height="35" /></a>
+              <a href="#" >
+                <img class="lazy" src="images/14706627183.JPG"  width="120" height="35" /></a>
+              <a href="#" >
+                <img class="lazy" src="images/13769873663.PNG"  width="120" height="35" /></a>
+            </div>
+            <div class="link_list_name">
+              <a href="#" >九江人才网</a>
+              <a href="#" >央视网</a>
+              <a href="#" >PHP人才网</a>
+              <a href="#" >百度</a>
+              <a href="#" >PHP人才网</a>
+              <a href="#" >海员招聘网</a>
+              <a href="#" >国际人才网</a>
+              <a href="#" >百度一下</a>
+              <a href="#" >财会专聘</a>
+              <a href="#" >扬州人才网</a>
+              <a href="#" >吉林人才网</a>
+              <a href="#" >PHP人才网</a>
+              <a href="#" >浙江人才网</a>
+              <a href="#" >宿迁人才网</a>
+              <a href="#" >宿迁人才网</a>
+              <a href="#" >苏州人才网</a>
+              <a href="#" >贵阳人才网</a>
+              <a href="#" >沭阳人才网</a>
+              <a href="#" >台州人才网</a>
+              <a href="#" >三亚人才网</a>
+              <a href="#" >北京人才网</a>
+              <a href="#" >浙江人才网</a>
+              <a href="#" >九江人才网</a>
+              <a href="#" >台州人才网</a>
+              <a href="#" >三亚人才网</a>
+              <a href="#" >贵阳人才网</a>
+              <a href="#" >海员招聘网</a></div>
+          </div>
+        </div>
+      </section>
+      <div class="clear"></div>
+    </div>
+    <div id="bg"></div>
+    <div class="clear"></div>
+    <div id="goTopBtn" class="png none">
+      <img border=0 src="images/lanren_top.png" class="png"></div>
+    <div id='footer_ad'></div>
+    <div class="clear"></div>
+    <div class="footer">
+      <div class="foot">
+        <div class="foot_conent">
+          <div class="footer_tel">
+           <div class="footer_left">
+            <dl class="footer_list">
+              <dt>关于我们</dt>
+              <dd>
+                <ul>
+                  <li>
+                    <a href="#">关于我们</a></li>
+                  <li>
+                    <a href="#">注册协议</a></li>
+                  <li>
+                    <a href="#">法律声明</a></li>
+                  <li>
+                    <a href="#">积分兑换</a></li>
+                  <li>
+                    <a href="#">经营资源</a></li>
+                </ul>
+                <dd></dl>
+            <dl class="footer_list">
+              <dt>产品与服务</dt>
+              <dd>
+                <ul>
+                  <li>
+                    <a href="#">猎头服务</a></li>
+                  <li>
+                    <a href="#">教育培训</a></li>
+                  <li>
+                    <a href="#">招聘会</a></li>
+                  <li>
+                    <a href="#">店铺招聘</a></li>
+                  <li>
+                    <a href="#">普工专区</a></li>
+                </ul>
+                <dd></dl>
+            <dl class="footer_list">
+              <dt>收费与推广</dt>
+              <dd>
+                <ul>
+                  <li>
+                    <a href="#">银行帐户</a></li>
+                  <li>
+                    <a href="#">品牌推广</a></li>
+                  <li>
+                    <a href="#">收费标准</a></li>
+                  <li>
+                    <a href="#">广告投放</a></li>
+                </ul>
+                <dd></dl>
+            <dl class="footer_list">
+              <dt>网站特色</dt>
+              <dd>
+                <ul>
+                  <li>
+                    <a href="#">猎头优势</a></li>
+                  <li>
+                    <a href="#">排行榜</a></li>
+                  <li>
+                    <a href="#">求职测评</a></li>
+                  <li>
+                    <a href="#">地图搜索</a></li>
+                  <li>
+                    <a href="#">订阅服务</a></li>
+                </ul>
+                <dd></dl>
+            <dl class="footer_list">
+              <dt>咨询反馈</dt>
+              <dd>
+                <ul>
+                  <li>
+                    <a href="#">客服中心</a></li>
+                  <li>
+                    <a href="#">常见问题</a></li>
+                  <li>
+                    <a href="#">友情链接</a></li>
+                  <li>
+                    <a href="#">职场指南</a></li>
+                </ul>
+                <dd></dl>
+          </div>
+          <div class="footer_wx">
+            <img src="images/comewm.jpg" width="120" height="120">
+            <div class="footer_wx_p">官方微信</div></div>
+        </div>
+        <div class="clear"></div>
+        
+      </div>
+      <div class="footer_bot">
+          <div class="footer_bot_p">
+          Copyright © 2016 苏州酷曼软件技术有限公司. All rights reserved. 统一社会信用代码：
+            <a href="#">增值电信业务许可证：苏B1.B2-20140200</a></div>
+        </div>
+    </div>
+    <div id="bg" style=""></div>
+    <div id="uclogin" class="none"></div>
+    <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="js/hr.js"></script>
+  </body>
+
+</html>

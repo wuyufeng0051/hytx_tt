@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>消息中心</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css?v=5">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/iconfont.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+	<style>
+	.mui-content{
+		background: #fff;
+	}
+	.banner img{
+	   width: 100%;
+	}
+	ul{
+		padding: 0;
+		margin:0;
+		list-style: none;
+	}
+	.nav,.nav1{
+		height: 90px;
+	    width: 100%;
+	    padding: 0 3.125%;
+	    background: #fff;
+	    padding-top: 15px;
+	    margin-bottom: 5px;
+	}
+	.nav ul,.nav1 ul{
+	    width: 100%;
+	}
+	.nav ul li{
+	    width: 25%;
+	    height: 69px;
+	    float: left;
+	}
+	.nav1 ul li{
+		width: 33.33%;
+		height: 69px;
+	    float: left;
+	}
+	.nav ul li a,.nav1 ul li a{
+	    display: block;
+	    width: 100%;
+	    height: 100%;
+	    text-align: center;
+
+	}
+	.nav ul li a img,.nav1 ul li a img{
+	    display: block;
+	    width: 40px;
+	    height: 40px;
+	    margin: 0 auto;
+	}
+	.nav ul li a p,.nav1 ul li a p{
+	    font-size: 12px;
+	    color: #808080;
+	    margin-top: 6px;
+	    margin-bottom: 0;
+	}
+	.title{
+		font-size: 15px;
+	    color: #000;
+	    padding-left: 15px;
+	    line-height: 32px;
+	    background: #fff;
+	    border-bottom: 1px solid #e6e6e6;
+	    margin:0;
+	    padding-top: 5px;
+	}
+	/*轮播*/
+	.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	/*底部颜色*/
+	.mui-bar-tab .mui-tab-item.mui-active {
+	    color: #f9512d;
+	}
+	/*列表*/
+	.uname{
+		font-size: 16px;
+		color: #333;
+		font-weight: bold;
+	}
+	.imgbox{
+		overflow: hidden;
+		position: relative;
+		right: -1.5px;
+	}
+	.imgbox li{
+		overflow: hidden;
+		float: left;
+		width: 33%;
+		list-style: none;
+		border:2px solid #fff;
+	}
+	.imgbox li img{
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	/*九宫格*/
+	#grid{
+		background: #fff;
+		overflow: hidden;
+	}
+	#grid li{
+		width: 33.33%;
+		float: left;
+	    padding: 11px 15px;
+	    vertical-align: top;
+	    border-right: 1px solid #eee;
+	    border-bottom: 1px solid #eee;
+	    text-align: center;
+	}
+	#grid li img{
+		width: 50px;
+		height: 50px;
+	}
+	#grid li span{
+		display: block;
+		font-size: 15px;
+	    line-height: 15px;
+	    display: block;
+	    width: 100%;
+	    height: 15px;
+	    margin-top: 8px;
+	    text-overflow: ellipsis;
+	    color: #333;
+	    overflow: hidden;
+	}
+	/*弹出层*/
+	.mui-popover-arrow{
+	    display: none;
+	}
+	.mui-popover{
+	    position: fixed;
+	    width: 80%;
+	    border-radius: 10px;
+	    position: absolute;
+		left: 50%;
+		top: 50%;
+	    margin: 0 auto;
+	    z-index: 9999;
+	    background-color: #fff;
+	    -webkit-transform: translateX(-50%) translateY(-50%);
+	    -moz-transform: translateX(-50%) translateY(-50%);
+	    -ms-transform: translateX(-50%) translateY(-50%);
+	    transform: translateX(-50%) translateY(-50%);
+	    overflow: hidden;
+	}
+	.mui-popover h4{
+		background-color: #ff7400;
+		color: #fff;
+		text-align: center;
+		padding:10px 0;
+		margin:0;
+		font-weight: normal;
+		text-indent: 5%;
+	}
+	.mui-popover h4 span{
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 25px;
+		line-height: 20px;
+		float: right;
+		margin-right: 10%;
+		position: relative;
+		/*border-radius: 50%;
+		border:1px solid #fff;
+		width: 18px;
+		height: 18px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 18px;
+		line-height: 18px;
+		text-align: center;
+		margin-left: 10px;
+		position: relative;
+		top:1px;*/
+	}
+	.mui-popover ul{
+		padding:0;
+		margin:0;
+	}
+	.mui-popover ul li{
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		border-bottom: 1px solid #e6e6e6;
+	}
+	.mui-popover ul li a{
+		color:#000;
+		display:block;
+	}
+	/*个人中心*/
+	.user_info{
+		padding: 20px 10px 10px;
+		height: 200px;
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+	}
+	.user_info::before {
+	    content: '';
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    -webkit-filter: blur(5px);
+	    filter: blur(5px);
+	    z-index: 1;
+	    background-image: url('{$res_user.user_head}');
+	    background-position: center top;
+	    background-size: cover;
+	    /*background-attachment: fixed;*/
+	}
+	.user_info .avatar{
+		width: 75px;
+		height: 75px;
+		border-radius: 50% 50%;
+		overflow: hidden;
+		display: block;
+		margin:10px auto;
+		margin-bottom: 15px;
+		position: relative;
+		z-index: 50;
+	}
+	.user_info .avatar img{
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	.user_info p,.user_info h5,.user_info h6{
+		position: relative;
+		z-index: 50;
+		color: #fff;
+		text-align: center;
+	}
+	.user_info .bg{
+		position: absolute;
+		z-index: 51;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+	}
+	.user_info .bg img{
+		display: block;
+	}
+	/*重写*/
+	.mui-table-view:before {
+	    position: absolute;
+	    right: 0;
+	    left: 0;
+	    height: 0px;
+	    content: '';
+	    -webkit-transform: scaleY(.5);
+	    transform: scaleY(.5);
+	    background-color: #c8c7cc;
+	    top: -1px;
+	}
+ 
+
+	/**/
+	#yj{
+		padding-left: 25px;
+		background: url(__PUBLIC__/Home/img/P4.png) no-repeat 15px center;
+		background-size: 16px 16px;
+	}
+	#lx{
+		padding-left: 25px;
+		background: url(__PUBLIC__/Home/img/P5.png) no-repeat 15px center;
+		background-size: 16px 16px;
+	}
+	/*消息通知*/
+	.list{
+		background: #fff;
+		font-size: 16px;
+	}
+	.list li{
+		border-bottom: 1px solid #e6e6e6;
+	}
+	.list li a{
+		display: -webkit-box;
+	    display: -webkit-flex;
+	    display: -ms-flexbox;
+	    display: flex;
+	    -webkit-box-align: center;
+	    -webkit-align-items: center;
+	    -ms-flex-align: center;
+	    align-items: center;
+	    padding: 10px;
+	    position: relative;
+	}
+	.list h3{
+	    overflow: hidden;
+	    padding: 0 10px;
+	    color: #111;
+	    font-size: 16px;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	    -webkit-box-flex: 1;
+	    -webkit-flex: 1;
+	    -ms-flex: 1;
+	    flex: 1;
+	    margin:0;
+	    font-weight: normal;
+	}
+	.list span{
+		position: absolute;
+		left: 35px;
+		top:3px;
+	}
+	/**/
+	.list1{
+	    background: #fff;
+	}
+	.item{
+		border-bottom: 1px solid #e6e6e6;
+	    height: 56px;
+	    position: relative;
+	    font-size: 14px;
+	    background: #fff;
+	}
+	.item img{
+		display: block;
+	}
+	.check_box {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    height: 100%;
+	    width: 36px;
+	    display: none;
+	}
+	.check{
+		height: 36px;
+	    padding: 10px 10px;
+	    display: block;
+	    background-image: url(__PUBLIC__/Home/img/fang.png);
+	    background-repeat: no-repeat;
+	    background-size: 16px 16px;
+	    background-clip: content-box;
+	    background-origin: content-box;
+	    margin-top: 12px;
+	}
+	.check[checked]{
+		background-image: url(__PUBLIC__/Home/img/fang1.png);
+	}
+	.item .content img{
+		float: left;
+		margin-right: 10px;
+	}
+	.item .content p{
+		margin:0;
+	}
+	.cancel{
+		display: none;
+	}
+	.allcheck{
+		padding: 6px;display: inline-block;margin:5px;padding-left: 25px;
+		background: url(__PUBLIC__/Home/img/fang.png) no-repeat left 6px;
+		background-size: 18px 18px;
+	}
+	.have{
+			background: url(__PUBLIC__/Home/img/fang1.png) no-repeat left 5px;
+	}
+	.nohave{
+			background: url(__PUBLIC__/Home/img/fang.png) no-repeat left 5px;
+	}
+	#pop4{
+		color: #000;
+		border-radius: 3px;
+		padding: 0 20px;
+		font-size: 14px;
+	}
+	#pop4 li{
+		line-height: 49px;
+		height: 50px;
+	}
+	#pop4 li span{
+		padding-left: 15px;
+		color: #666;
+	}
+	.nav ul .lispecial{
+		border-left: 1px solid #d9d9d9;
+		height: 45px;
+		margin-top: 8px;
+	}
+	.mui-ellipsis-5{
+		display: -webkit-box;
+		overflow: hidden;
+		white-space: normal!important;
+		text-overflow: ellipsis;
+		word-wrap: break-word;
+		-webkit-line-clamp:5;
+		-webkit-box-orient:vertical;
+	}
+	.listimg{
+		width: 100%;
+		/*height: 92px;*/
+		display: block;
+	}
+	.listimg li{
+		width: 33.3%;
+		float: left;
+	}
+	.listimg li img{
+		width: 98%;
+		height: auto;
+	}
+	.listopation{
+		margin-top: 8px;
+		margin-bottom: 8px;
+		position: relative;
+	}
+	.listopation li{
+		position: absolute;
+		width: 33.3%;
+		float: left;
+	}
+	/*.pinjia{
+		background: #fff url(__PUBLIC__/Home/img/pinjia.png) no-repeat center left;
+		background-size: 15px 15px;
+	}*/
+	.mui-card{
+		box-shadow: none;
+	}
+	.backTop {	
+		border-radius: 50%;    
+	    position: fixed;
+	    right: 10px;
+	    bottom: 55px;
+	    width: 45px;
+	    height: 45px;
+	    z-index: 9999;
+	    text-align: center;
+	    font-size: 18px;	   
+	    padding-top: 8px;	    
+	    background:#fff url(__PUBLIC__/Home/img/toTopyellow.png) center center no-repeat;
+	    background-size: 45px 45px;
+	    /* display: none; */
+	}
+	.pinjia img{
+		width: 18px;height: 18px;padding-right: 3px;padding-top: 3px;vertical-align: middle;margin-top: -4px;
+	}
+	 .weui-mask {
+	    position: fixed;
+	    z-index: 1000;
+	    top: 0;
+	    right: 0;
+	    left: 0;
+	    bottom: 0;
+	    background: rgba(0, 0, 0, .6);
+	}
+
+	.weui-mask_transparent{
+	    position: fixed;
+	    z-index: 1000;
+	    top: 0;
+	    right: 0;
+	    left: 0;
+	    bottom: 0;
+	}
+	.weui-dialog {
+	    position: fixed;
+	    z-index: 5000;
+	    width: 80%;
+	    max-width: 260px;
+	    height: 130px;
+	    top: 50%;
+	    left: 50%;
+	    -webkit-transform: translate(-50%, -50%);
+	    transform: translate(-50%, -50%);
+	    background-color: #FFFFFF;
+	    text-align: center;
+	    border-radius: 3px;
+	    overflow: hidden;
+	}
+/*	
+	.delcancel{
+		width: 50%;
+		float: left;
+		height: 40px;
+		line-height: 40px;
+		color: #fb7806;
+		text-align: center;
+	}
+	.delsure{
+		width: 50%;
+		float: left;
+		height: 40px;
+		line-height: 40px;
+		background-color: #fb7806;
+		color: #fff;
+		text-align: center;
+	}*/
+	.delete{
+    position: fixed;
+    left: 50%;
+    margin-left: -3rem;
+    top: 25%;
+    z-index: 12;
+    background: url(__PUBLIC__/Home/images/pb_7.png) no-repeat top;
+    width: 6rem;
+    height: 6rem;
+    background-size: 6rem;
+    text-align: center;
+    display: none;
+    z-index: 11111;
+}
+.delete h1{
+    font-size: .3rem;
+    margin-top: 1.8rem;
+    font-weight: bold;
+    background: #fff;
+    margin-bottom: 0;
+}
+.delete h2{
+    font-size: .3rem;
+    padding-top: .1rem;
+    font-weight: bold;
+    background: #fff;
+    padding-bottom: .3rem;
+    border-bottom: 0.04rem solid #e6e6e6;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.de_foot{
+	width: 100%;
+	background: #fff;
+}
+.delete .de_btn{
+	width: 80%;
+	margin: 0 auto;
+	padding: .4rem 0
+}
+.delete .de_btn span{
+	background: #fd5530;
+	color: #fff;
+	padding: 0.15rem .8rem;
+	font-size: .28rem;
+	border-radius: 0.1rem;
+}
+.delete .de_btn span.sure{
+	margin-right: .4rem;
+}
+	
+	
+	
+	</style>
+</head>
+<body>
+   	 <include file="Public/share" title='包含文件'/>
+
+<!-- 	<div class="js_dialog" id="iosDialog" style="display: none;">
+        <div class="weui-dialog">
+            <div style="height: 35px;line-height: 35px;font-weight: 600;font-size: 16px;margin-top: 10px;">提示</div>
+            <div style="height: 25px;line-height: 25px;font-size: 14px;color: #797979;">您确定删除选中的信息吗？</div>
+            <div style="height: 40px;margin-top: 20px;">
+            	<div class="delcancel">取消</div>
+            	<div class="delsure">确定</div>
+            </div>
+        </div>
+    </div> -->
+    <div class="weui-mask" style="display: none;"></div>
+    <div class="delete" id="iosDialog">
+		<h1>提示：</h1>
+		<h2>是否删除？</h2>
+		<div class="de_foot"><div class="de_btn"><span class="sure delsure">确定</span><span class="cancel1  delcancel ">取消</span></div></div>
+	</div>
+
+
+	 <nav class="mui-bar mui-bar-tab">
+		<a class="mui-tab-item a" href="__MODULE__/Index/index" id="ones">
+			<span class="mui-icon iconfont icon-shouye-shouye"></span>
+			<span class="mui-tab-label">主页</span>
+		</a>
+		<!-- <a class="mui-tab-item a " href="__MODULE__/Index/bird">
+			<span class="mui-icon iconfont icon-yqfzhinanzhenshi"></span>
+			<span class="mui-tab-label">鸟窝</span>
+		</a> -->
+		<a class="mui-tab-item a" href="__MODULE__/Index/announce" >
+			<span class="mui-icon iconfont icon-fabu"></span>
+			<span class="mui-tab-label">发布</span>
+		</a>
+		<a class="mui-tab-item a  mui-active" href="__MODULE__/Index/msg">
+			<span class="mui-icon iconfont icon-xiaoxi">
+				<!-- <span class="mui-badge mui-badge-danger"  id="xtgg">9</span> -->
+				<span class="mui-badge mui-badge-danger" id="zongtop" style="display:none;"></span>
+			</span>
+			<span class="mui-tab-label">消息</span>
+		</a>
+		<a class="mui-tab-item a"  href="__MODULE__/Index/my" id="intro">
+			<span class="mui-icon iconfont icon-geren-copy" ></span>
+			<span class="mui-tab-label">我的</span>
+		</a>
+	</nav>
+
+	<div class="mui-content">
+        <!--4-->
+		<div id="tabbar-with-xiaoxi" class="mui-control-content  mui-active" style="padding-top: 50px;padding-bottom: 50px;">
+			 	<!-- 消息 -->
+			<header id="header" class="mui-bar mui-bar-nav">
+				<h1 class="mui-title">消息</h1>
+				  <!-- <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a> -->
+				  <button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right cancel" style="display:none;border: none;color: #fd5530;">取消</button>
+				  <button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right del" style="border: none;color: #fd5530;">删除</button>
+			</header>
+
+			<ul class="list">
+				<li><a href="__MODULE__/Notice/message" class="a">
+				    <span class="mui-badge mui-badge-danger" id="xtgg" style="display:none;">4</span>
+				<img src="__PUBLIC__/Home/img/xiaoxi3.png" alt="" style="width: 36px;"><h3>系统公告</h3></a></li>
+				
+				<li><a href="__MODULE__/Notice/notice" class="a">
+				    <span class="mui-badge mui-badge-danger" id="tzzx" style="display:none;">4</span>
+				<img src="__PUBLIC__/Home/img/xiaoxi2.png" alt="" style="width: 36px;"><h3>通知中心</h3></a></li>
+				<li><a href="__MODULE__/Notice/assist" class="a">
+				   <span class="mui-badge mui-badge-danger" id="txxx" style="display:none;">4</span>
+				    <img src="__PUBLIC__/Home/img/xiaoxi1.png" style="width: 36px;"><h3>头条评论</h3></a>
+				</li>
+			</ul>
+
+			<ul class="list1">
+				  
+  			</ul>
+			<footer class="mui-bar mui-bar-footer"  style="bottom:52px;display: none;">
+				<span class="allcheck">全选</span>
+				<button class="mui-btn mui-pull-right" id='trueDel' style="top:6px;padding:6px 30px;
+				background: #fd5530;border:none;background: #fd5530;color: #fff;">删除</button>
+			</footer>
+		</div>
+</div>
+
+ 
+	<!-- /*****************************************/ -->
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+    <script src="__PUBLIC__/Home/js/time.js"></script>
+
+	<script> 	
+	  
+ 
+    function look(){
+	$('#button').trigger('click');  
+		$('.look_is').on('tap',function(){
+ 	      var resume_id = $(this).attr('str');
+ 	      // alert(resume_id)
+	      var id = $(this).attr('stv');
+	      var sta = $(this).attr('sta');
+	       
+	       $.post('{:U("Home/Index/look_is")}', {resume_id:resume_id,id:id,sta:sta}, function(data) {
+ 	       	  if (data == 1) {
+	       	  	location.href="__MODULE__/JobHunt/resumeDetails?resume_id="+resume_id;
+	       	  }else if(data == 3){
+	       	  	location.href="__MODULE__/My/myRelease";
+	       	  }else{
+	       	  	layer.msg('对不起您查看的简历已不存在')
+	       	  }
+	       });
+		})
+
+
+	//确定删除
+		$('#trueDel').on('click',function(){
+            $('#iosDialog').show();
+            $(".weui-mask").show();
+ 		})
+       
+         $(".delsure").click(function(){
+				var look_id = '';
+				var castresume ='';
+					//找见要删除的look表id
+				 $('.look .check[checked]').each(function(){
+					if(look_id==''){
+						look_id = this.id;
+					}else{
+						look_id += ','+this.id;
+					}
+
+				})
+	  
+	       	    //找见要删除的castresume表id
+					$('.castresume .check[checked]').each(function(){
+						if(castresume==''){
+							castresume = this.id;
+						}else{
+							castresume += ','+this.id;
+						}
+
+					})
+
+					$.post('__MODULE__/Delete/delMsg',{look_id:look_id,castresume:castresume},function(msg){
+						if(msg==1){
+							// layer.msg('已删除');
+ 							window.location.reload();
+							var is_look = $('.check[checked]').parent().parent().find('#top').attr('class')
+                             if (is_look != undefined) {
+                            	var zongtop = parseInt($("#zongtop").text());
+                            	$("#zongtop").text(zongtop-1)
+                            }
+							$('.check[checked]').parent().parent().remove();
+							$('#iosDialog').hide();
+						}
+
+					})
+             	
+             })
+
+
+       //选中消息子复选框
+	var checkBtn = document.getElementsByClassName('check');
+	for(var j = 0 ; j < checkBtn.length; j++){
+		checkBtn[j].onclick = function(){
+			var hasChecked = this.getAttribute('checked');
+			if(hasChecked !== null){
+				this.removeAttribute('checked');
+			}else{
+				this.setAttribute('checked',' ');
+			}
+		}
+	}
+
+	$('.del').on('tap',function(){
+		$('.check_box').show();
+		$('.content').css('padding-left',40);
+		$(this).hide()
+		$('.cancel').show()
+		$('footer').show()
+	})
+	$('.cancel').on('tap',function(){
+		$('.check_box').hide();
+		$('footer').hide();
+		$('.content').css('padding-left',10);
+		$(this).hide();
+		$('.del').show()
+		$('footer').hide()
+	})
+
+	//全部删除
+	var flag=false;
+	$('.allcheck').on('tap',function(){
+		if(!flag){
+			$('.check').attr('checked',' ');
+			$(this).addClass('have')
+			$(this).css('background-size','18px 18px');
+			// $('#tabbar-with-xiaoxi').css('padding-bottom','60')
+		}else{
+			$('.check').removeAttr('checked');
+			$(this).removeClass('have');
+			$(this).addClass('nothave');
+			$(this).css('background-size','18px 18px');
+			// $('#tabbar-with-xiaoxi').css('padding-bottom','0')
+		}
+		flag=!flag;
+	});
+	}
+look();
+ 
+  function time(){
+    //统计没有访问
+    $.post('{:U("Home/Index/time")}', {}, function(data) {
+    	// alert(data)
+      var strs= new Array(); //定义一数组 
+		strs=data.split("&"); //字符分割 
+		var zongtop = 0;
+		for (i=0;i<strs.length ;i++ ) { 
+           var name = strs[i].split("=");
+           if (name[1] != 0) {
+              $("#"+name).show();
+             $('#'+name[0]).text(name[1])
+		     zongtop += parseInt(name[1]);
+           }
+		} 
+		 
+		$.post('{:U("Home/Index/lookall")}',{}, function(data) {
+          // alert(data)
+			strall=data.split(",,"); //字符分割 
+ 			$(".list1").append(strall[1])
+  			if (zongtop) {
+			 zongtops = zongtop+parseInt(strall[0]);
+  			}else{
+			 zongtops = parseInt(strall[0]);
+   			}
+			if (zongtops != 0) {
+ 	 		 $('#zongtop').show();
+			 $('#zongtop').text(zongtops);
+			} 
+
+			look();
+		});
+   });
+ }
+
+
+ $('.delcancel').click(function(){
+ 	$('#iosDialog').hide();
+    $(".weui-mask").hide();
+ })
+
+ 
+ setTimeout(time(),1000);
+  mui('body').on('tap','.a',function(){document.location.href=this.href;});
+ 	</script>
+
+    
+</body>
+</html>

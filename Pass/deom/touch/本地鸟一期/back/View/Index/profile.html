@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>个人资料</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no" >
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/DateSelector.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/MultiPicker.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+
+	<style>
+	.mui-card{
+		box-shadow: none;
+	}
+	.avatar{
+		height: 42px;
+		line-height: 42px;
+		font-size: 16px;
+	}
+	.avatar a{
+		display: block;
+		color: #000;
+		background: url(__PUBLIC__/Home/img/right.png) no-repeat right center;
+		padding-right: 25px;
+		background-size: 18px 18px;
+		overflow: hidden;
+	}
+	.avatar a img{
+		float: right;
+	}
+	.uname{
+		line-height: 30px;
+		font-size: 16px;
+		padding-top: 10px;
+	}
+	.profile .item{
+		padding: 10px 15px;
+		font-size: 15px;
+		background: #f2f2f2;
+		border-radius: 4px;
+		background: #fff;
+		border-bottom: 1px solid #e6e6e6;
+		border-radius: 5px;
+	}
+	.profile .item a{
+		display: block;
+		color: #000;
+		background: url(__PUBLIC__/Home/img/right.png) no-repeat right center;
+		padding-right: 25px;
+		background-size: 18px 18px;
+		overflow: hidden;
+	}
+
+	.profile .item span{
+		float: right;
+		color: #808080;
+	}
+	.profile .item span.unfinished{
+		color: #fd5530;
+	}
+	.date-selector-btn-box{
+		background-color: #fd5530;
+	}
+	.profile .item input{
+		width: 80%;
+		margin-bottom: 0;
+		height: 25px;
+		font-size: 15px;
+		float: right;
+		border:none;
+		text-align: right;
+		padding-right: 0;
+		padding-left: 0;
+		color: #808080;
+	}
+	.profile .item input.unfinished{
+		color: #fd5530;
+	}
+	.multi-picker-btn-box{
+		background-color: #fd5530;
+	}
+	/*公用头部*/
+	.header{
+	    height: .9rem;
+	    background: #fd5530 !important;
+	    color: #fff;
+	    font-size: .32rem;
+	    line-height: .9rem;
+	    max-width: 1080px;
+	    position: relative;
+	    overflow: hidden;
+	}
+	.header a{
+		display: inline-block;
+		color: #fff;
+	}
+	.header .back{
+	    height: .9rem;
+	    line-height: .9rem;
+	    width: 17%;
+	    float: left;
+	}
+	.header .back i{
+	    width: 0.4rem;
+	    height: .9rem;
+	    display: inline-block;
+	    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+	    vertical-align: middle;
+	    background-size: .3rem;
+	}
+	.header .header_right{
+		float: right;
+		height: .9rem;
+		margin-right: .2rem;
+	}
+	.header .header_right i{
+	    width: 0.04rem;
+	    height: 0.5rem;
+	    display: inline-block;
+	    vertical-align: middle;
+	    background: #fff;
+	    margin: 0 .15rem;
+	}
+	.header .title{
+	    float: left;
+	    width: 70%;
+	    text-align: center;
+	    font-size: 0.38rem;
+	}
+	.header .share{
+	    height: .9rem;
+	    float: right;
+	    width: 12%;
+	    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+	    background-size: .5rem;
+	}
+	</style>
+</head>
+<body>
+
+<include file="Public/share" title='包含文件'/>
+	<!-- 共同顶部 s-->
+		<div class="header fn-clear">
+			<div class="back"><a href="javascript:history.go(-1)" class="a"><i></i>返回</a></div>
+			<div class="title">完善资料</div>
+		</div>
+	<!-- 共同顶部 e-->
+	<div class="mui-content">
+		<div class="mui-card" style="margin:0;margin-bottom: 10px;">
+			<div class="mui-card-content">
+				<h1 style="font-size: 16px;height: 35px;line-height: 35px;background: #f2f2f2;text-indent: 10px;margin: 0;">个人资料</h1>
+				<div class="mui-card-content-inner" style="padding-top: 10px;">
+					<div style="padding: 5px 0;border-bottom: 1px solid #ddd;">
+						<div class="avatar">
+							<!-- 头像
+							<a href="" style="float: right;border-radius: 50%;overflow: hidden;width: 42px;height: 42px;display: block;">
+								<img src="{$res_user.user_head}" alt="" style="width: 42px;height: 42px;"><span>></span>
+							</a> -->
+							<a href="__MODULE__/Index/changePic" class="arrow">
+								头像 <img src="{$res_user.user_head}" alt="" style="width: 42px;height: 42px;border-radius: 50%;" id="head">
+							</a>
+
+						</div>
+					</div>
+					<div class="uname">
+						用户ID
+						<span style="float: right;" id="user_id">
+						
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="profile " style="">
+			<div class="item">
+			<!-- href="__MODULE__/EditUser/EditNameView?user_id={$res_user.user_id}&user_name={$res_user.user_name}"  -->
+				<a class="arrow" id="user_name1">昵称：<span id="user_name">{$res_user.user_name}</span></a>
+			</div>
+			
+			<div class="item">
+				<a id="user_sex1" class="arrow">
+					性别:<span id="user_sex"></span>
+				</a>
+			</div>
+
+		 
+
+			<div class="item">
+				<!-- <a href="__MODULE__/EditUser/EditBrithdayView" class="arrow"> -->
+				<a class="arrow">
+ 					生日：<input type="text" value="" id="date-selector-inputs" readonly="true" onfocus="this.blur()">
+				</a>
+			</div>
+			 <!-- href="__MODULE__/EditUser/EditPhoneView?user_phone={$res_user.user_phone}" -->
+			<div class="item" >
+				<a class="arrow" id="user_phone1">
+				 	手机：<span id="user_phone"></span>
+				</a>
+			</div>
+			<div class="item">
+				<!-- <a href="__MODULE__/EditUser/EditRegionView?user_region={$res_user.user_region}" class="arrow"> -->
+				<a class="arrow">
+				  <div class="input">
+ 					地区：<input type="text" value="{$res_user.user_region}" id="multiPickerInput" readonly="true" onfocus="this.blur()">
+ 		             </div>
+
+				</a>
+			</div>
+			<!-- <div class="item" style="height: 30px;">
+				<a href="__MODULE__/EditUser/EditBrithdayView" class="arrow" style="height: 30px;">
+			</div> -->
+		</div>
+		<div class="profile " style="margin-bottom: 50px;">
+			<div style="background: #f2f2f2;text-indent: 10px;margin: 0;">
+				<h1 style="font-size: 16px;margin: 0;padding-top: 10px;padding-bottom: 3px;">公司信息</h1>
+				<p style="font-size: 12px;">(温馨提示：发布全职招聘岗位时，系统会默认调取公司信息)</p>
+			</div>
+			<div class="item" >
+				<a class="arrow" id="">
+				 	公司名称：<span id="">请填写公司名称</span>
+				</a>
+			</div>
+			<div class="item" >
+				<a class="arrow" id="">
+				 	区域：<span id="">县城</span>
+				</a>
+			</div>
+			<div class="item" >
+				<a class="arrow" id="">
+				 	地址：<span id="">请填写公司地址，20字以内</span>
+				</a>
+			</div>
+			<div class="item" >
+				<a class="arrow" id="">
+				 	公司简介：<span id="">请填写公司简介</span>
+				</a>
+			</div>
+			<div class="item" >
+				<a class="arrow" id="">
+				 	联系人：<span id="">如何称呼您</span>
+				</a>
+			</div>
+			
+		</div>
+
+	</div>
+	
+	<div id="targetContainers"></div>
+	<div id="targetContainer"></div>
+
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/DateSelector.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+
+    <script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/city.js"></script>
+	<script src="__PUBLIC__/Home/js/MultiPicker.js"></script>
+ 
+ 
+
+<script>
+
+// if(window.name != "Bencalie"){ 
+//  	//如果页面的 name 属性不是指定的名称就刷新它 
+// 	location.reload(); 
+// 	window.name = "Bencalie"; 
+// 	}else{ 
+// 	//如果页面的 name 属性是指定的名称就什么都不做，避免不断的刷新
+// 	window.name = ""; 
+// } 
+
+
+function time(){
+	   // alert(111);
+ 
+   $.post('{:U("Home/Index/user")}', {}, function(data) {
+      var json = eval("data"); 
+    
+      $.each(JSON.parse(json), function(idx, obj) {
+    
+          $("#head").attr('src',obj.user_head)
+          
+         
+          $("#user_name").text(obj.user_name)
+          
+          $('#user_id').text(obj.user_id)
+          $("#user_name1").attr('href','__MODULE__/EditUser/EditNameView?user_id='+obj.user_id+'&user_name='+obj.user_name)
+
+          if (!obj.user_birthday) {
+          	 $('#date-selector-inputs').val('待完善')
+          	 $('#date-selector-inputs').attr('class','unfinished')
+          }else{
+          	 $('#date-selector-inputs').val(obj.user_birthday)
+          }
+
+
+          if (!obj.user_phone) {
+          	 $('#user_phone').attr('class','unfinished')
+          	 $('#user_phone').text('待完善')
+          }else{
+          	 $('#user_phone').text(obj.user_phone)
+          }
+          $("#user_phone1").attr('href','__MODULE__/EditUser/EditPhoneView?user_id='+obj.user_id+'&user_phone='+obj.user_phone)
+          
+
+          if (!obj.user_autograph) {
+          	 $('#user_autograph').attr('class','unfinished')
+          	 $('#user_autograph').text('待完善')
+          }else{
+          	 $('#user_autograph').text(obj.user_autograph)
+          }
+          $("#user_autograph1").attr('href','__MODULE__/EditUser/EditAutographView?user_id='+obj.user_id+'&user_autograph='+obj.user_autograph)
+
+
+            if (!obj.user_region) {
+          	 $('#multiPickerInput').attr('class','unfinished')
+          	 $('#multiPickerInput').val('待完善')
+          }else{
+          	 $('#multiPickerInput').val(obj.user_region)
+          }
+ 
+		 if(obj.user_sex == 0){
+	      $('#user_sex').text('女')
+		 } else if(obj.user_sex == 1) {  
+	      $('#user_sex').text('男')
+		 }else{
+	      $('#user_sex').text('不知')
+			 }
+  
+          $("#user_sex1").attr('href','__MODULE__/EditUser/EditSexView?user_id='+obj.user_id+'&user_autograph='+obj.user_sex)
+       })
+   });
+}
+ 
+
+// $(function(){
+// 	alert(222)
+// })
+ setTimeout(time(),1000);
+
+
+
+new DateSelector({
+	        input : 'date-selector-inputs',//点击触发插件的input框的id
+	        container : 'targetContainers',//插件插入的容器id
+	        type : 0,
+	        //0：不需要tab切换，自定义滑动内容，建议小于三个；
+	        //1：需要tab切换，【年月日】【时分】完全展示，固定死，可设置开始年份和结束年份
+	        param : [1,1,1,0,0],
+	        //设置['year','month','day','hour','minute'],1为需要，0为不需要,需要连续的1
+	        beginTime : [],//如空数组默认设置成1970年1月1日0时0分开始，如需要设置开始时间点，数组的值对应param参数的对应值。
+	        endTime : [],//如空数组默认设置成次年12月31日23时59分结束，如需要设置结束时间点，数组的值对应param参数的对应值。
+	        recentTime : [],//如不需要设置当前时间，被为空数组，如需要设置的开始的时间点，数组的值对应param参数的对应值。
+	        success : function(arr){
+	            console.log(arr);
+	            var res=arr[0]+'-'+arr[1]+'-'+arr[2]+'';
+	            if (!res) {
+	            	layer.msg('请先选择内容')
+	            }else{
+	             var user_birthday = res;
+	             $.post('{:U("Home/EditUser/EditBrithday")}', {user_birthday:user_birthday}, function(data) { 
+	                if (data == 1) {
+	                  layer.msg('更新成功')
+			          console.log(res);
+                      $('#date-selector-inputs').val(res)
+	                }else{
+	                  layer.msg('更新失败')
+ 	                }
+	             });
+		        }
+	        }//回调
+	    });
+
+
+
+    //---------------------函数调用开始---------------------
+    new MultiPicker({
+        input: 'multiPickerInput',//点击触发插件的input框的id
+        container: 'targetContainer',//插件插入的容器id
+        jsonData: $city,
+        success: function (arr) {
+        	console.log(arr.length)
+        	console.log(arr[0].value)
+        	var str='';
+        	if(arr.length==3){
+        		str=arr[0].value+' '+arr[1].value+' '+arr[2].value;
+        	}else if(arr.length==2){
+        		str=arr[0].value+' '+arr[1].value;
+        	}else{
+        		str=arr[0].value
+        	}
+        	var strall = str.split('请选择');
+        	var user_region = strall[0];
+              $.post('{:U("Home/EditUser/EditRegion")}', {user_region:user_region}, function(data) { 
+	                if (data == 1) {
+	                  layer.msg('更新成功')
+ 	                 $('#multiPickerInput').val(strall[0])
+	                }else{
+	                  layer.msg('更新失败')
+ 	                }
+	             });
+
+        }//回调
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var modelType = "car", adminPath = "{#$adminPath#}";
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="pid" id="pid" value="{#$pid#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label for="user">发布会员：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="user" id="user" value="{#$username#}" autocomplete="off" />
+      <input type="hidden" name="uid" id="uid" value="{#$uid#}" />
+      <span class="input-tips"><s></s>请输入网站对应会员名</span>
+      <div id="userList" class="popup_key"></div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>车型：</label></dt>
+    <dd style="position:static;">
+      <div id="carBtn">
+        <a href="javascript:;" class="btn" id="cBrand" data-type="Brand" data-id="{#$brandid#}">{#$brandName#}<span class="caret"></span></a>
+        <a href="javascript:;" class="btn" id="cCar" data-type="Car" data-id="{#$cid#}">{#$cname#}<span class="caret"></span></a>
+        <a href="javascript:;" class="btn" id="cParam" data-type="Param" data-id="{#$pid#}">{#$pname#}<span class="caret"></span></a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="addr">所在区域：</label></dt>
+    <dd>
+      <span id="addrList">
+        <select name="addr" id="addr" class="input-medium">
+          <option value="">请选择</option>
+          {#foreach from=$addrList key=k item=v#}
+            <option value="{#$k#}"{#if $addr == $k#} selected{#/if#}>{#$v#}</option>
+          {#/foreach#}
+        </select>
+      </span>
+      <span class="input-tips"><s></s>请选择所在区域</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="fuel">油耗：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input type="text" class="input-mini" name="fuel" id="fuel" value="{#$fuel#}" data-regex="(3|100|\d{1}\.?\d+|\d{2}(\.?\d+)?|[3-9])" />
+        <span class="add-on" style="margin-right:10px;">L/100km</span>
+        <span class="input-tips"><s></s>请输入正确的油耗</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="isair">空调：</label></dt>
+    <dd class="radio">
+      {#html_radios name="isair" values=$isairopt checked=$isair output=$isairnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="condition">路况：</label></dt>
+    <dd>
+      <span id="conditionList">
+        <select name="condition" id="condition" class="input-medium">
+          {#html_options options=$conditionList selected=$condition#}
+        </select>
+      </span>
+      <span class="input-tips"><s></s>请选择燃料类型</span>
+    </dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

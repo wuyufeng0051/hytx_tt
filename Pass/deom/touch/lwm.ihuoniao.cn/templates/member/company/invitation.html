@@ -1,0 +1,30 @@
+{#$pageTitle = "邀请记录 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/invitation.css?v=1" media="all" />
+<script>var atpage = 1, totalCount = 0, pageSize = 12, state = '{#$state#}';</script>
+</head>
+
+{#$pageCurr = "message"#}
+
+<body>
+{#$pageCurr = "invitation_{#$module#}"#}
+{#include file="headSidebar.html"#}
+
+<div class="main">
+
+	<div class="nav-tabs fn-clear">
+		<ul class="fn-clear">
+			<li class="active"><a href="javascript:;">邀请记录 (<span id="totalCount">0</span>)</a></li>
+		</ul>
+	</div>
+	<div class="container">
+		<div class="list" id="list"><p class="loading"><img src="{#$cfg_staticPath#}images/ajax-loader.gif" />加载中，请稍候...</p></div>
+		<div class="pagination fn-clear"></div>
+	</div>
+
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/invitation.js?v=2"></script>
+</body>
+</html>

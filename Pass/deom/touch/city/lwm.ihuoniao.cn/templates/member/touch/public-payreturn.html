@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$title#}-{#$channelName#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css">
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/member/touch/css/public-payreturn.css">
+</head>
+
+{#$url = {#getUrlPath service='member' type='user' template='order' module={#$service#}#}#}
+{#if $service == "huodong"#}
+{#$url = {#getUrlPath service='member' type='user' template='record'#}#}
+{#/if#}
+<body>
+<div class="container">
+	<div class="header">
+		<div class="header-c">{#$title#}</div>
+		<div class="header-r"><a href="{#$url#}">完成</a></div>
+	</div>
+	{#if $state != 1#}
+	<div class="pay-icon failed"><img src="{#$cfg_basehost#}/templates/member/touch/images/pay-failed.png" /><p>支付失败</p></div>
+	<div class="btn">
+		<a href="{#$url#}" class="endpay">订单中心</a>
+	</div>
+	{#else#}
+	<div class="pay-icon"><img src="{#$cfg_basehost#}/templates/member/touch/images/pay-success.png" /><p>支付成功</p></div>
+	<div class="btn">
+		<a href="{#$channelDomain#}" class="repay">继续购物</a>
+		<a href="{#$url#}" class="endpay">查看订单</a>
+	</div>
+	<div class="tip">
+		<p>安全提醒：{#$cfg_shortname#}不会以任何理由要求您提供银行卡信息或支付额外费用，请谨防钓鱼链接或诈骗电话。</p>
+	</div>
+	{#/if#}
+</div>
+</body>
+</html>

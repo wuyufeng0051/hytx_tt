@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>{$title}</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css?v=10">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/_head.css">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+<!-- <div class="loading" ><img src="__PUBLIC__/Home/img/loading.gif" style="width: 30px;height: 30px;"><p style="text-align: center;color: #fff;">加载中，请稍等...</p></div> -->
+<!-- 共同顶部 s-->
+<div class="header fn-clear">
+    <div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+    <div class="share"></div>
+    <div class="header_right"><a href="javascript:;" id="fabu">发布</a><i></i><a href="__MODULE__/Index/my">我的</a></div>
+</div>
+<!-- 共同顶部 e-->
+<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/dating_list.css?v=22" />
+<script type="text/javascript" src="__PUBLIC__/Home/js/swiper.min.js"></script>
+<script src="__PUBLIC__/Home/js/layer.js"></script>
+<input type="hidden" id="sex_type" value="{$type}">
+<input type="hidden" id="current_page_num" value="{$page}">
+<div class="nav fn-clear">
+    <ul>
+        <li class=""><em>交友类型</em><i></i></li>
+        <li><em>年龄</em><i></i></li>
+        <li><em>婚姻状况</em><i></i></li>
+    </ul>
+</div>
+<div class="nav_list">
+    <div class="nav_de fn-hide" id="dating_type">
+        <ul>
+            <li data-type="0" stong="dating_type"><a href="#">不限</a></li>
+            <volist id="vo" name="dating_type">
+                <li data-type="{$vo['classify2_id']}" stong="dating_type"><a href="#">{$vo.classify2_name}</a></li>
+            </volist>
+        </ul>
+    </div>
+    <div class="nav_de fn-hide" id="dating_age">
+        <ul>
+            <volist id="vo" name="dating_age">
+                <li data-type="{$vo['query_id']}" stong="dating_age"><a href="#">{$vo.query_name}</a></li>
+            </volist>
+        </ul>
+    </div>
+    <div class="nav_de fn-hide">
+        <ul>
+            <li data-type="0" stong="marry_state"><a href="#">不限</a></li>
+            <volist id="vo" name="marry_state">
+                <li data-type="{$vo['classify2_id']}" stong="marry_state"><a href="#">{$vo.classify2_name}</a></li>
+            </volist>
+        </ul>
+    </div>
+</div>
+<!-- 广告幻灯片 s -->
+<div class="swiper-container1 picscroll">
+    <div class="swiper-container2">
+        <div class="swiper-wrapper">
+            <volist name="status" id="vo">
+                <div class="swiper-slide">
+                    <a><img src="__PUBLIC__/../{$vo['advertisement_img']}"></a>
+                </div>
+            </volist>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!-- 广告幻灯片 e -->
+<notempty name="res_all">
+<div class="dating_list">
+    <foreach name="res_all" item="val">
+    <div class="dating_detail fn-clear"><a href="__MODULE__/Dating/datingdetail/dating_id/{$val['dating_id']}">
+        <div class="dat_pic"><img src="{$val['imgs']}" alt=""></div>
+        <div class="dat_name">{$val['dating_nickname']}<em>{$val['dating_age']}岁</em><if condition="$val['dating_sex'] eq 0"><i class="women"></i><else/><i class="man"></i></if><if condition="$val['dating_is_top'] eq 1"><span>置顶</span><else/><span>{$val['dating_date']|substr=2,8|str_replace='-','.',###}</span></if></div>
+        <div class="dat_kind">交友类型：{$val['dating_type']}</div>
+        <div class="dat_info">婚姻状况：{$val['dating_marrystate']}</div>
+        <div class="dat_info">居住地：{$val['dating_address']}</div>
+    </a></div>
+    </foreach>
+    <if condition="$totalpage gt 1">
+        {$pageButton}
+    </if>
+    <div class="tips">共{$totalpage}页</div>
+</div>
+    <else/>
+    <div class="failed">
+        <div class="failed_pic"></div>
+        <h1>暂无此类信息，请看看别的吧~</h1>
+    </div>
+</notempty>
+<div class="disk"></div>
+<div class="failed fn-hide">
+    <div class="failed_pic"></div>
+    <h1>暂无此类信息，请看看别的吧~</h1>
+</div>
+<script>
+    if($('#page_type')[0]){
+        $('#page_type')[0].selectedIndex = -1;}
+    // 分页选择
+    function changepage(v){
+        window.location.href='__ROOT__'+v;
+    }
+    var dating_type=0,dating_age=0,marry_state=0,page=1,totalPage=0;
+    $('.nav_list .nav_de ul li ').click(function(){
+        var  x = $(this);
+        var  index = x.closest(".nav_de").index();
+        var  lead = $('.nav ul li').eq(index);
+        var txt = x.text();
+        x.addClass('nav_bc');
+        x.siblings('li').removeClass('nav_bc');
+        $('.disk').hide();
+        $('.nav_list .nav_de').hide();
+        lead.removeClass('nav_bac');
+        // $('body').removeClass('by');
+        lead.find('em').text(txt);
+        var p=$('#current_page_num').val();
+        if(x.attr('stong')=='dating_type') dating_type=x.data('type');
+        if(x.attr('stong')=='dating_age')  dating_age=x.data('type');
+        if(x.attr('stong')=='marry_state') marry_state=x.data('type');
+        getlist(p,dating_type,dating_age,marry_state);
+    })
+    function getlist(p,dating_type,dating_age,marry_state){
+        var sex_type=$('#sex_type').val();
+        $(".loading").show();
+        $.get('__CONTROLLER__/ajaxdating',{p:p,sex_type:sex_type,dating_type:dating_type,dating_age:dating_age,marry_state:marry_state},function(data){
+            if(data.status==1){
+                page=data.data.currentpage;
+                totalPage=data.data.totalpage;
+                $(".loading").fadeOut();
+                var list = data.data.res, html =[];
+                $(".dating_list").html("");
+                $(".failed").hide();
+                for(i = 0;i < list.length;i++){
+                    html.push('<div class="dating_detail fn-clear"><a href="__MODULE__/Dating/datingdetail/dating_id/'+list[i].dating_id+'">');
+                    html.push('<div class="dat_pic"><img src="'+list[i].imgs+'" alt=""></div>');
+                    list[i].dating_date=list[i].dating_date.substr(2,8);
+                    var reg=/-/g;
+                    list[i].dating_date=list[i].dating_date.replace(reg,'.');
+                    if(list[i].dating_sex==0){
+                        if(list[i].dating_is_top==1){
+                            html.push('<div class="dat_name">'+list[i].dating_nickname+'<em>'+list[i].dating_age+'岁</em><i class="women"></i><span>置顶</span></div>');
+                        }else{
+                            html.push('<div class="dat_name">'+list[i].dating_nickname+'<em>'+list[i].dating_age+'岁</em><i class="women"></i><span>'+list[i].dating_date+'</span></div>');
+                        }
+                    }else{
+                        if(list[i].dating_is_top==1){
+                            html.push('<div class="dat_name">'+list[i].dating_nickname+'<em>'+list[i].dating_age+'岁</em><i class="man"></i><span>置顶</span></div>');
+                        }else{
+                            html.push('<div class="dat_name">'+list[i].dating_nickname+'<em>'+list[i].dating_age+'岁</em><i class="man"></i><span>'+list[i].dating_date+'</span></div>');
+                        }
+                    }
+                    html.push('<div class="dat_kind">交友类型：'+list[i].dating_type+'</div>');
+                    html.push('<div class="dat_info">婚姻状况：'+list[i].dating_marrystate+'</div>');
+                    html.push('<div class="dat_info">居住地：'+list[i].dating_address+'</div>');
+                    html.push('</a></div>');
+                }
+                html.push('<div class="page_box">');
+                if(data.data.totalpage>1) {
+                    html.push('<div class="page fn-clear">');
+                    if (data.data.currentpage == 1)
+                        html.push('<a href="#" class="before">上一页</a>');
+                    else {
+                        html.push('<a href="#" class="before" style="color:#fd5530!important;">上一页</a>');
+                    }
+                    html.push(' <div class="page_box"> <span><em>' + data.data.currentpage + '</em>/' + data.data.totalpage + '<i></i></span>');
+                    html.push(' <select name="" id="page_type" onchange="selectChange(this.value)">');
+                    for (j = 1; j <= totalPage; j++) {
+                        html.push('<option value="' + j + '">' + j + '</option>');
+                    }
+                    html.push('</select></div>');
+                    if (data.data.currentpage == data.data.totalpage) {
+                        html.push('<a href="#" class="after">下一页</a></div>');
+                    } else {
+                        html.push('<a href="#" class="after" style="color:#fd5530!important;">下一页</a></div>');
+                    }
+                }
+                html.push('<div class="tips">共'+data.data.totalpage+'页</div></div>');
+                $('.dating_list').html(html.join(""));
+
+                if($('#page_type')[0]){
+                    $('#page_type')[0].selectedIndex = -1;}
+
+            }else{
+                $(".dating_list").html("");
+                $(".loading").fadeOut();
+                $(".failed").show();
+            }
+        })
+    }
+    // 上一页
+    $('body').delegate('.before', 'click', function () {
+        if(page > 1){
+            --page;
+            getlist(page,dating_type,dating_age,marry_state);
+        }
+    })
+    // 下一页
+    $('body').delegate('.after', 'click', function () {
+        if(page < totalPage){
+            ++page;
+            getlist(page,dating_type,dating_age,marry_state);
+        }
+    })
+    function selectChange(value){
+        getlist(value,dating_type,dating_age,marry_state);
+    }
+    $('#fabu').click(function () {
+        $.post('{:U("Home/Dating/judge")}', {}, function(data) {
+            if (data == 1) {
+                layer.msg('您已经发布过交友信息')
+            }else{
+                location.href="__MODULE__/Dating/issuedating"
+            }
+        });
+    })
+</script>
+<script type="text/javascript" src='__PUBLIC__/Home/js/dating_list.js?v=9'></script>
+</body>
+</html>

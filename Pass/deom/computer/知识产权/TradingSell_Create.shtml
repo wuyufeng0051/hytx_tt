@@ -1,0 +1,171 @@
+<!--#include file="_head.shtml"-->
+
+
+<link href="/Js/Validform/css/style.css" rel="stylesheet" />
+<script src="/Js/Validform/js/Validform_v5.3.2.js"></script>
+<script src="/Js/layer.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        $("form").Validform({
+            tiptype: 3,
+            postonce: true,
+            usePlugin: {
+                passwordstrength: {
+                    minLen: 6,
+                    maxLen: 18
+                }
+            }
+        });
+
+
+
+    })
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#sellBtn").click(function () {
+            var i = layer.open({
+                type: 1,
+                offset: ['80px', ''],
+                area: ['630px', '500px'],
+                title: "选择专利",
+                content: $("#sellDiv")
+            });
+            $("#sellDiv .btn").click(function () {
+                layer.close(i);
+            })
+        })
+       
+    })
+    function check_all() {
+        var objPatent = document.getElementsByName("patent");
+        if (document.getElementById("choose").checked == false) {
+            for (i = 0; i < objPatent.length; i++) {
+                objPatent[i].checked = false;
+            }           
+        } else {
+            for (i = 0; i < objPatent.length; i++) {
+                objPatent[i].checked = true;
+            }          
+        }
+    }
+    function CheckPatent() {
+        $("#spanClassTrademark").html("")
+        var objPatent = document.getElementsByName("patent");
+        $("#PatentID,#sellVerify").val("")
+        $("#spanClassPatent").html("")
+        var PatentVal = "";
+        for (i = 0; i < objPatent.length; i++) {
+            if (objPatent[i].checked == true) {
+                PatentVal += objPatent[i].id;
+                $("#spanClassPatent").append('<p>' + $("[for=" + objPatent[i].id + "]").text() + '</p>')
+                $("#sellVerify").val("true")
+            }
+        }
+        $("#PatentID").val(PatentVal)
+        if ($("#PatentID").val() == "") {
+            $(".ClassList").hide();
+        } else {
+            $(".ClassList").show();
+            $("#choosetrademark").hide();
+            $("#choosepatent").show();
+        }
+        $("#sellVerify").blur()
+        $("#CooperativeMode #02,#03,#04").show();
+        $("#TrademarkID").val("");
+    }
+
+
+</script>
+
+<form action="/TradingSell/Create" enctype="multipart/form-data" id="form1" method="post">
+  <div class="rBox">
+    <div class="local">
+      <span>交易平台</span>&gt;
+      <a href="/TradingSell">我要出售</a>&gt;
+      <span>专利添加出售</span></div>
+    <div class="box1 formEdit">
+      <div class="title">
+        <h3>出售信息</h3></div>
+      <div class="adminEdit rBgDiv">
+        <div class="box">
+          <input data-val="true" data-val-number="字段 Flag 必须是一个数字。" id="Flag" name="Flag" type="hidden" value="1" />
+          <dl>
+            <dt>
+              <em>*</em>名称：</dt>
+            <dd>
+              <input autocomplete="off" datatype="*" id="TradingName" name="TradingName" nullmsg="不能为空" style="width:450px" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>选择出售的知识产权：</dt>
+            <dd>
+              <button id="sellBtn" class="layerBtnStyle" type="button">选择专利</button>
+              
+              <input id="sellVerify" type="hidden" datatype="*" nullmsg="没有选择，请选择确定再提交" />
+              <input type="text" id="PatentID" name="PatentID" style="display: none" />
+              <div id="sellDiv" class="layerStyle">
+                <table class='sellTable' width='540px' border='0' cellpadding='0' cellspacing='0'></th>
+                  <th>
+                    <h4>专利名称(先托管才能出售)</h4></th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input id=bb5cee76-5748-4eee-900f-86de9cd3f5e0 type='radio' name='patent' />
+                      <label for='bb5cee76-5748-4eee-900f-86de9cd3f5e0'>一种智能控制开关</label></td>
+                  </tr>
+                </table>
+                <input class="btn sellDivYes" type="button" value="确认" onclick="CheckPatent()" /></div>
+              <table class="ClassList" cellpadding="0" cellspacing="0" border="1" style="display: none">
+                <tr id="choosepatent">
+                  <th>已选专利</th></tr>
+                <tr>
+                  <td>
+                    <span id="spanClassPatent"></span>
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>合作方式：</dt>
+            <dd id="CooperativeMode">
+              <p>
+                <input datatype="*" id="Assignment" name="PartnershipsForm" nullmsg="没有选择" type="checkbox" value="Assignment" />
+                <input name="PartnershipsForm" type="hidden" value="false" />
+                <label for="Assignment" id="Assignment">转让</label>
+                <input datatype="*" id="Permit" name="PartnershipsForm" nullmsg="没有选择" type="checkbox" value="Permit" />
+                <input name="PartnershipsForm" type="hidden" value="false" />
+                <label for="Permit" id="Permit">许可</label>
+                <input datatype="*" id="TechnicalService" name="PartnershipsForm" nullmsg="没有选择" type="checkbox" value="TechnicalService" />
+                <input name="PartnershipsForm" type="hidden" value="false" />
+                <label for="TechnicalService" id="TechnicalService">技术服务</label></p>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>拟出售金额：</dt>
+            <dd>
+              <input autocomplete="off" data-val="true" data-val-number="字段 AmountFir 必须是一个数字。" datatype="*" id="AmountFir" name="AmountFir" nullmsg="不能为空" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>具体描述：</dt>
+            <dd>
+              <textarea autocomplete="off" cols="20" id="TradingRemark" name="TradingRemark" rows="2" style="width:450px;height:300px"></textarea>
+            </dd>
+          </dl>
+          <div class="btnBox">
+            <input value="提交" class="btn" type="submit" />
+            <a class="btn return" href="javascript: history.go(-1)">返回</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+<!--#include file="_foot.shtml"-->

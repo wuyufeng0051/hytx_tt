@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>招聘求职</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta content="telephone=no" name="format-detection"> 
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style>
+	ul{padding: 0;margin:0;}
+	li{list-style: none;}
+	nav{width: 100%;padding: 15px 15px;background: #fff;}
+	nav ul{overflow: hidden;}
+	nav li{float: left;width: 33.33%;text-align:center;font-size: 15px;}
+	nav a{display: block;width: 100%;color: #333;border-right: 1px solid #d9d9d9;}
+	nav a.nobor{border-right: none;}
+	nav li img{display: block; width: 40px; height: 40px; margin: 0px auto;}
+	nav li span{display: block;line-height: 1.2;margin-top:8px;color: #666;}
+	nav li.cur span{color:#22a6f2;}
+	.mui-card{box-shadow: none;}
+	.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	.title{
+	    color: #000;
+	    padding-left: 40px;
+	    line-height: 32px;
+	    border-bottom: 1px solid #e6e6e6;
+	    margin: 0;
+	    font-size: 16px;
+	    font-weight: 600;
+	    background: #fff url(__PUBLIC__/Home/img/tuijian.png) no-repeat 15px 4px;
+	    background-size:20px 18px; 
+	}
+	.backTop {
+	    border-radius: 50%;
+	    position: fixed;
+	    right: 10px;
+	    bottom: 15px;
+	    width: 40px;
+	    height: 40px;
+	    z-index: 9999;
+	    text-align: center;
+	    font-size: 18px;
+	    color: #666666;
+	    padding-top: 8px;
+	    opacity: 0.8;
+	    border:2px solid #707070;
+	    background: #fff url(__PUBLIC__/Home/img/toTop.png) center center no-repeat;
+	    background-size: 20px 20px;
+	    /*display: none;*/
+	}
+	.heading{
+		display: -webkit-box;
+	    display: -webkit-flex;
+	    display: -ms-flexbox;
+	    display: flex;
+	    -webkit-box-align: center;
+	    -webkit-align-items: center;
+	    -ms-flex-align: center;
+	    align-items: center;
+	}
+	.heading span{
+		overflow: hidden;
+	    color: #111;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	    -webkit-box-flex: 1;
+	    -webkit-flex: 1;
+	    -ms-flex: 1;
+	    flex: 1;
+	    padding-right: 10px;
+	}
+	.heading em{
+		font-style: normal;
+	}
+	.mui-ellipsis-address{
+		display: -webkit-box;
+	    overflow: hidden;
+	    white-space: normal!important;
+	    text-overflow: ellipsis;
+	    word-wrap: break-word;
+	    -webkit-line-clamp: 1;
+	    -webkit-box-orient: vertical;
+	    line-height: 21px;
+	}
+	</style>
+</head>
+<body>
+
+<include file="Public/share" title='包含文件'/>
+
+	<div class="mui-content">
+		<nav>
+			<ul>
+				<li>
+					<a href="__MODULE__/JobHunt/fullTime">
+						<img src="__PUBLIC__/Home/img/full.png">
+						<span>全职招聘</span>
+					</a>
+				</li>
+				<li>
+					<a href="__MODULE__/JobHunt/partTime">
+						<img src="__PUBLIC__/Home/img/part.png">
+						<span>兼职招聘</span>
+					</a>
+				</li>
+				<li>
+					<a href="__MODULE__/JobHunt/resume" class="nobor">
+						<img src="__PUBLIC__/Home/img/resume.png">
+						<span>求职简历</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		
+		<!-- 广告 -->
+		 <div class="swiper-container">
+         <?php if(!empty($status)){ ?>
+          <div class="swiper-wrapper">
+		   <volist name="status" id="vo">
+            <div class="swiper-slide">
+               <a id="up" onclick="look(this)" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}">
+ 				  <img src="__PUBLIC__/../{$vo['advertisement_img']}">
+			   </a>
+		    </div>
+            </volist>
+		<?php } ?>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+ 
+  <h5 class="title">为你推荐</h5>
+<div id="top">
+	<!-- 遍历置顶 -->
+	<foreach name="all" item="vo" key="k">
+ <?php if(!empty($vo['recruit_id'])){ ?>
+		<div class="mui-card" style="margin:0;margin-bottom: 8px;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+				<!-- href="__MODULE__/JobHunt/fullTimeDetails?recruit_id={$vo.recruit_id}" -->
+					<a style="padding-bottom: 5px;display: block;color:#000;" stv="{$vo.recruit_id}" str="fullTime" class="topheight">
+						<div class="heading">
+						<span>{$vo.recruit_title}</span>
+						<em>置顶</em>
+ 						</div>
+						<div style="color:#ff7300;margin-bottom: 3px;">{$vo.recruit_wages}
+						<span style="margin-left: 10px;color: #8f8f94;">{$vo.recruit_position}</span></div>
+						<div style="width: 100%;float: left;">
+							<volist id="o" name="vo.recruit_welfare">
+							<span style="border:#38b8ea 1px solid;color:#38b8ea;border-radius: 2px ;padding: 0 2px;font-size: 12px;margin-right:5px;float: left;margin-bottom: 5px;">{$o}</span>
+						    </volist>	
+						</div>
+					</a>
+					<p style="margin:0;padding: 5px 0;border-top: 1px dotted #ddd;width: 100%;float: left;"><span style="mui-ellipsis-address" style="width: 80%;float: left;">{$vo.recruit_corporate}</span><span style="float: right;">{$vo.recruit_region}</span></p>
+				</div>
+			</div>
+		</div>
+    <?php }else if(!empty($vo['part_time_job_id'])){ ?>
+		<div class="mui-card" style="margin:0;margin-bottom:8px;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+				  <!-- href="__MODULE__/JobHunt/partTimeDetails?part_time_job_id={$vo.part_time_job_id}" -->
+					<a style="color: #000;" str="partTime" class="topheight" stv="{$vo.part_time_job_id}">
+						<div class="heading">
+							<span>{$vo['part_time_job_title']}</span>
+							<em>置顶</em>
+						</div>
+						<div>
+							<h2 style="font-size: 16px;color:#fd6a34;line-height: 21px;">
+							    <span style="margin-right: 20px;display: inline-block;font-weight: normal;">
+							    <?php if($vo['part_time_job_wages1'] == 0){ ?>
+							    面议
+							    <?php }else{ ?>
+							    {$vo.part_time_job_wages1}{$vo.part_time_job_wages2}
+							    <?php } ?>
+							    </span>
+                                <small style="border:1px solid #27b94c;color: #27b94c;font-weight: normal;border-radius: 2px;font-size: 12px;padding: 0px 4px;vertical-align: middle;">{$vo.part_time_job_term}</small>
+								<small style="border: #38b8ea 1px solid;vertical-align: middle;color: #38b8ea;border-radius: 2px;padding: 0 2px;font-size: 12px;font-weight: normal;margin-right: 4px;">{$vo.part_time_job_settlement}
+								</small>
+ 								<span style="font-size: 14px;color: #666;font-weight: normal;float: right;display: inline-block;">
+									{$vo.part_time_job_position}
+								</span>
+							</h2>
+						</div>
+						<p class="mui-ellipsis-address" style="margin:0;">{$vo.part_time_job_address}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+    <?php }else{ ?>
+		<div class="mui-card" style="margin:0;margin-bottom: 8px;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+				 <!-- href="__MODULE__/JobHunt/resumeDetails?resume_id={$vo.resume_id}"  -->
+					<a style="position: relative;padding-left: 70px;display: block;color:#000;" stv="{$vo.resume_id}" str="resume"  class="topheight">
+					 <div class="mui-media-object mui-pull-left img" style="width:60px; height: 60px; background-image: url(__PUBLIC__/../{$vo.imgs}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;position: absolute;left: 0;right: 0; " ></div>
+						<!-- <img src="__PUBLIC__/../{$vo.imgs}" alt="" style="position: absolute;left: 0;right: 0;width: 60px;height: 60px;"> -->
+ 						<div>{$vo.resume_name}
+							<span>{$vo.resume_birthday}岁</span>
+							<img src="__PUBLIC__/Home/img/women.png" alt="" style="height: 16px;vertical-align:text-bottom;">
+							<span style="float: right;">
+						    置顶</span>
+						</div>
+						<p style="margin-bottom: 0;">期望职位:{$vo.resume_position}</p>
+						<p style="margin-bottom: 0;">
+							<span style="margin-right: 8px;padding-left: 15px;background: url(__PUBLIC__/Home/img/xueli.png) no-repeat;background-size: 15px 15px;">{$vo.resume_education}</span>
+							<span style="padding-left: 15px;background: url(__PUBLIC__/Home/img/jinyan.png) no-repeat left center;
+							background-size: 14px 14px;">{$vo.resume_exp}</span>
+						</p>
+					</a>
+				</div>
+			</div>
+		</div>
+    <?php } ?>
+    </foreach>
+ 
+
+	<!-- 遍历普通 -->
+	<foreach name="res_all" item="vo" key="k">
+	 <?php if(!empty($vo['recruit_id'])){ ?>
+		<div class="mui-card" style="margin:0;margin-bottom: 8px;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+				 <!-- href="__MODULE__/JobHunt/fullTimeDetails?recruit_id={$vo.recruit_id}" -->
+					<a style="padding-bottom: 5px;display: block;color:#000;" stv="{$vo.recruit_id}" str="fullTime"  class="topheight" >
+						<div class="heading">
+						<span>{$vo.recruit_title}</span>
+						<em>{$vo.recruit_datetime}</em>
+ 						</div>
+						<div style="color:#ff7300;margin-bottom: 3px;">{$vo.recruit_wages}<span style="margin-left: 10px;color: #8f8f94;">{$vo.recruit_position}</span></div>
+						<div style="width: 100%;float: left;">
+							<volist id="o" name="vo.recruit_welfares">
+							<span style="border:#38b8ea 1px solid;color:#38b8ea;border-radius: 2px ;padding: 0 2px;font-size: 12px;margin-right:5px;float: left;margin-bottom: 5px;">{$o}</span>
+						    </volist>	
+						</div>
+					</a>
+					<p style="margin:0;padding: 5px 0;border-top: 1px dotted #ddd;width: 100%;float: left;"><span class="mui-ellipsis-address" style="width: 80%;float: left;">{$vo.recruit_corporate}</span><span style="float: right;">{$vo.recruit_region}</span></p>
+				</div>
+			</div>
+		</div>
+    <?php }else if(!empty($vo['part_time_job_id'])){ ?>
+		<div class="mui-card" style="margin:0;margin-bottom:8px;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+				<!-- href="__MODULE__/JobHunt/partTimeDetails?part_time_job_id={$vo.part_time_job_id}"  -->
+					<a style="color: #000;"  class="topheight" str="partTime" stv="{$vo.part_time_job_id}">
+						<div class="heading">
+							<span>{$vo['part_time_job_title']}</span>
+							<em>{$vo['part_time_job_time']}</em>
+						</div>
+						<div>
+							<h2 style="font-size: 16px;color:#fd6a34;line-height: 21px;">
+							    <span style="margin-right: 20px;display: inline-block;font-weight: normal;">
+							    <?php if($vo['part_time_job_wages1'] == 0){ ?>
+							    面议
+							    <?php }else{ ?>
+							    {$vo.part_time_job_wages1}{$vo.part_time_job_wages2}
+							    <?php } ?>
+							    </span>
+                                <small style="border:1px solid #27b94c;color: #27b94c;font-weight: normal;border-radius: 2px;font-size: 12px;padding: 0px 4px;vertical-align: middle;">{$vo.part_time_job_term}</small>
+								<small style="border: #38b8ea 1px solid;vertical-align: middle;color: #38b8ea;border-radius: 2px;padding: 0 2px;font-size: 12px;font-weight: normal;margin-right: 4px;">{$vo.part_time_job_settlement}
+								</small>
+ 								<span style="font-size: 14px;color: #666;font-weight: normal;float: right;display: inline-block;">
+									{$vo.part_time_job_position}
+								</span>
+							</h2>
+						</div>
+						<p class="mui-ellipsis-address" style="margin:0;">{$vo.part_time_job_address}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+    <?php }else{ ?>
+		<div class="mui-card" style="margin:0;margin-bottom: 8px;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+				<!-- href="__MODULE__/JobHunt/resumeDetails?resume_id={$vo.resume_id}"  -->
+					<a style="position: relative;padding-left: 70px;display: block;color:#000;" class="topheight" str="resume" stv="{$vo.resume_id}">
+
+					  <div class="mui-media-object mui-pull-left img" style="width:60px; height: 60px; background-image: url(__PUBLIC__/../{$vo.imgs}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;position: absolute;left: 0;right: 0; " ></div>
+						<!-- <img src="__PUBLIC__/../{$vo.imgs}" alt="" style="position: absolute;left: 0;right: 0;width: 60px;height: 60px;"> -->
+ 						<div>{$vo.resume_name}
+							<span>{$vo.resume_birthday}岁</span>
+							<img src="__PUBLIC__/Home/img/women.png" alt="" style="height: 16px;vertical-align:text-bottom;">
+							<span style="float: right;">
+						     {$vo.resume_time}</span>
+						</div>
+						<p style="margin-bottom: 0;">期望职位:{$vo.resume_position}</p>
+						<p style="margin-bottom: 0;">
+							<span style="margin-right: 8px;padding-left: 15px;background: url(__PUBLIC__/Home/img/xueli.png) no-repeat;background-size: 15px 15px;">{$vo.resume_education}</span>
+							<span style="padding-left: 15px;background: url(__PUBLIC__/Home/img/jinyan.png) no-repeat left center;
+							background-size: 14px 14px;">{$vo.resume_exp}</span>
+						</p>
+					</a>
+				</div>
+			</div>
+		</div>
+    <?php } ?>
+    </foreach>
+   </div>
+
+	</div>
+	<a id="scrollToTop" class="backTop"></a>
+
+    <div style="width:30%;margin:0 auto;color:#000;padding:5px;font-size:12px;color:#888;" id="load" srv="0">
+        往上滑加载更多
+    </div>
+
+
+    <input type="hidden" id="limit" value="0">
+    <input type="hidden" id="scrollTop" value="0">
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script>
+
+	function toploa(){
+	   $('.topheight').on('click', function() {
+	      var str = $(this).attr('str');
+	      var stv = $(this).attr('stv');
+	      var scrollTop =getScrollTop();
+ 	      $("#scrollTop").val(scrollTop);
+ 	      var top =$("#top").html();
+         
+
+         //判断是否删除
+         $.post('{:U("Home/Demo/look")}', {str:str,stv:stv}, function(daty){
+          
+         	if (daty == 1) {
+  	 	      // $.post('{:U("Home/JobHunt/sessionload")}', {top:top}, function(data) {
+	 		      if (str == "fullTime") {
+			        location.href="__MODULE__/JobHunt/fullTimeDetails?recruit_id="+stv;
+			      }else{
+			        location.href="__MODULE__/JobHunt/partTimeDetails?part_time_job_id="+stv
+			      }
+	 	      // });
+            }else{
+            	layer.msg('对不起,信息已删除')
+            }
+
+         });
+       
+
+
+	   });
+   }
+   toploa();
+   
+   
+   //如果之前滚动条的位置
+    function time(){
+      var limit = $("#limit").val();
+ 	  if (limit != 0) {
+ 	  	$.post('{:U("Home/JobHunt/sessionlook")}', {limit:limit},function(data){
+ 	  		if (data != 2) {
+ 	  		   $("#top").html("");
+  	  		   $("#top").append(data)
+  	  		    var tab = $("#top").text();
+				if (tab) {
+				var scrollTop = $("#scrollTop").val();
+				 window.scrollTo(0,scrollTop);
+				 toploa();
+				}
+			 }else{
+			 	$('#limit').val(0)
+			 	$("#scrollTop").val(0);
+			 }
+ 	  	});
+ 	  }
+    }
+    setTimeout(time(),1000);
+
+
+   //求滚动条的高度
+   function getScrollTop(){    
+	    var scrollTop=0;    
+	    if(document.documentElement&&document.documentElement.scrollTop){    
+	        scrollTop=document.documentElement.scrollTop;    
+	    }else if(document.body){    
+	        scrollTop=document.body.scrollTop;    
+	    }    
+	    return scrollTop;    
+	} 
+
+
+   //加载
+	  function loadclick(){
+		$(window).scroll(function(){
+		　　var scrollTop = $(this).scrollTop();
+		　　var scrollHeight = $(document).height();
+		　　var windowHeight = $(this).height();
+		　　if(scrollTop + windowHeight == scrollHeight){
+ 		    	var limit = parseInt($('#limit').val())+1;
+ 		    	$('#limit').val(limit);
+			      setTimeout(function(){ 
+					$.post('{:U("Home/JobHunt/loadtop")}',{limit:limit}, function(data) {
+ 					  if (data == 0) {
+  					  	var load = $("#load").text();
+                          $("#load").text('已经到底了！')
+ 					  }else{
+					    $("#top").append(data)
+ 					  }
+					   toploa();
+				   }) 
+			     },500);
+ 		　　 }
+		});
+	}	
+  
+   loadclick()
+
+		var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+		//屏幕高度
+		// var scrollH=document.documentElement.clientHeight;
+		// console.log(scrollH)
+		// window.onscroll=function(){
+	 	//    if($(window).scrollTop()>scrollH){
+		//          $('.backTop').show();
+		//     }else{
+		//          $('.backTop').hide();
+		//     }
+		// } 
+
+function look(obj){
+		 // $("[id=up]").each(function(){ 
+				//$(this).click(function(){
+		     		var id = $(obj).attr('str');
+		     		var type = $(obj).attr('stb');
+		     		var url = $(obj).attr('url');
+						// alert(id)
+				$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+		 	     		if (type == 0) {
+			     			 location.href="http://"+url;
+			     		}else if(type == 1){
+			     			 location.href= 'tel:' + url;
+			      		}else{
+			      			location.href=url;
+			      		}
+					});
+		    //	})
+		    //})
+	}	  
+		$("#scrollToTop").on("touchend", function(e) {
+			e.preventDefault();	
+		    mui.scrollTo(0,100);
+		});
+	</script>
+</body>
+</html>

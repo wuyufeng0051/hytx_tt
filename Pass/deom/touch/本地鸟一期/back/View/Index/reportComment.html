@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>举报</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css?v=5">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+
+	<style>
+	.title{
+		padding: 10px;
+		background:#fff;
+		border-bottom:1px solid #ddd;
+		color: #666;
+	}
+	.ul{
+		margin:0;
+	}
+	.ul li{
+		line-height: 40px;
+		border-bottom: 1px solid #ddd;
+	}
+	.ul li:last-child{
+		border:none;
+	}
+	.ul li span{
+		float: right;
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		margin-right: 10px;
+		background: url(__PUBLIC__/Home/img/duigou.png) no-repeat center center;
+		background-size: 24px 24px;
+		display: none;
+	}
+	/*公用头部*/
+	.header{
+	    
+	}
+	.header a{
+		display: inline-block;
+		color: #fff;
+	}
+	.header .back{
+	    height: .9rem;
+	    line-height: .9rem;
+	    width: 17%;
+	    float: left;
+	}
+	.header .back i{
+	    width: 0.4rem;
+	    height: .9rem;
+	    display: inline-block;
+	    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+	    vertical-align: middle;
+	    background-size: .3rem;
+	}
+	.header .header_right{
+		float: right;
+		height: .9rem;
+		margin-right: .2rem;
+	}
+	.header .header_right i{
+	    width: 0.04rem;
+	    height: 0.5rem;
+	    display: inline-block;
+	    vertical-align: middle;
+	    background: #fff;
+	    margin: 0 .15rem;
+	}
+	.header .title{
+	    float: left;
+	    width: 70%;
+	    text-align: center;
+	    font-size: 0.38rem;
+	}
+	.header .share_1{
+	    height: .9rem;
+	    float: right;
+	    width: 12%;
+	    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+	    background-size: .5rem;
+	    display: none;
+	}
+	.succeed_box{
+	    position: fixed;
+	    left: 50%;
+	    margin-left: -3rem;
+	    top: 25%;
+	    z-index: 12;
+	    background: url(__PUBLIC__/Home/images/pb_7.png) no-repeat top;
+	    width: 6rem;
+	    height: 6rem;
+	    background-size: 6rem;
+	    text-align: center;
+	    display: none; 
+	}
+	.succeed_box h1{
+	    font-size: .3rem;
+	    margin-top: 1.8rem;
+	    font-weight: bold;
+	    background: #fff;
+	    margin-bottom: 0;
+	    padding-top: .25rem;
+	    padding-bottom: 0.5rem;
+	    border-bottom: 0.02rem solid #dedede;
+	}
+	.succeed_box h2{
+	    font-size: .24rem;
+	    padding-top: .1rem;
+	    background: #fff;
+	    padding-bottom: .3rem;
+	    border-bottom: 0.04rem solid #e6e6e6;
+	    margin-top: 0;
+	    margin-bottom: 0;
+	}
+	.succeed_box h3{
+	    font-size: .24rem;
+	    padding-top: .1rem;
+	    background: #fff;
+	    padding: 0.1rem 0;
+	}
+	.succeed_box h2 em{
+	    color: #fe8267;
+	}
+	.succeed_box p{
+	    background: #fff;
+	    border-radius: 0 0 0.2rem 0.2rem;
+	    padding: 0.35rem 0;
+	}
+	.succeed_box p span{
+	    width: 60%;
+	    height: .75rem;
+	    color: #fff;
+	    font-size: 0.28rem;
+	    border-radius: 0.15rem;
+	    background: #fd5530;
+	    line-height: .75rem;
+	    display: block;
+	    margin:  0 auto;
+	}
+	.disk{
+	    background: #000;
+	    opacity: .5!important;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    z-index: 11;
+	    display: none;
+	}
+
+
+	</style>
+</head>
+<body>
+
+<include file="Public/share" title='包含文件'/>
+	<!-- 共同顶部 s-->
+	<div class="header fn-clear" style="height: .9rem;background: #fd5530 !important;color: #fff;font-size: .32rem;line-height: .9rem;max-width: 1080px;position: fixed;top:0;left:0;right:0;overflow: hidden;z-index: 10;">
+		<div class="back"><a class="a" href="javascript:history.go(-1)"><i></i>返回</a></div>
+		<div class="share_1"></div>
+	</div>
+	<!-- 共同顶部 e-->
+	<div class="mui-content" style="margin-top: .9rem;">
+		<div class="title">
+			<span style="color: #ff7400;font-weight: 600;">*</span>选择举报的原因
+		</div>
+
+		<ul class="mui-list-unstyled ul" style="padding-left: 10px;background: #fff;">  
+		  <volist name="res" id="vo">
+			<li class="jb" id={$vo.classify2_id}>{$vo.classify2_name}<span></span></li>
+		   </volist>
+ 		</ul>
+		<div class="submit" style="padding: 15px;">
+			<button class="mui-btn btn-block" style="background: #fd5530;width: 100%;color:#fff;line-height: 30px;border:none;font-size: 16px;" id="btn">提交</button>
+		</div>
+	</div>
+	<div class="succeed_box cheng">
+	    <h1>提交成功</h1>
+	    <p><a href="javascript:history.go(-1)"><span>确定</span></a></p>
+	</div>
+	<div class="disk"></div>
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script> 
+		$("#btn").click(function(){
+            var jb = $('.jb');
+            var report_cid = "{$report_cid}"
+ 
+        	var all="";
+        	//获取哪个选定
+        	$.each(jb,function(index,item){
+ 				var active = $(this).find('span').css('display');
+ 				 if (active == "block") {
+ 				 	var commentall = $(this).attr('id')
+ 				 	  all +=commentall +",";
+ 				 }
+         	});
+ 
+         	newall=all.substr(0,all.length-1);
+ 
+         	if (!newall) {
+         		layer.msg('请先选择举报原因')
+         	}else{
+	 			$.post('{:U("Home/Index/reportCommentadd")}', {report_reporttype:newall,report_cid:report_cid}, function(data) {
+	 				 if (data == 1) {
+	 				 	 // location.href="__MODULE__/Index/reportSucc?comment_id="+report_cid
+	 				 	 $(".succeed_box").show();
+	 				 	 $(".disk").show();
+	 				 }else{
+	 				 	layer.msg('系统正忙，请稍后再试')
+	 				 }
+	 			});
+	 		}
+		})
+		$('.ul li').on('click',function(){
+           $(this).find('span').toggle();
+ 		})
+	</script>
+</body>
+</html>

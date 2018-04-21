@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+
+<!--[if !IE]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+    <meta charset="utf-8"/>
+
+    <title>本地鸟后台 | 招聘求职</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <meta content="" name="description"/>
+
+    <meta content="" name="author"/>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL STYLES -->
+
+    <link href="media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/daterangepicker.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <!-- END PAGE LEVEL STYLES -->
+
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+<!-- BEGIN HEADER -->
+
+{include file="public/header" /}
+<!-- END HEADER -->
+<a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a>
+
+<!-- BEGIN CONTAINER -->
+
+<div class="page-container">
+
+    <!-- BEGIN SIDEBAR -->
+
+    {include file="public/sidebar" /}
+
+    <!-- END SIDEBAR -->
+
+    <!-- BEGIN PAGE -->
+
+    <div class="page-content">
+
+        <!-- BEGIN PAGE CONTAINER-->
+
+        <div class="container-fluid">
+
+            <!-- BEGIN PAGE HEADER & CONTENT-->
+
+            {if condition="null!==$Think.get.recruit_id"}
+            <!--全职招聘#####################################-->
+            {include file="job/form_quanzhi" /}
+            {/if}
+
+            {if condition="null!==$Think.get.part_time_job_id"}
+            <!--兼职招聘#####################################-->
+            {include file="job/form_jianzhi" /}
+            {/if}
+
+            {if condition="null!==$Think.get.resume_id"}
+            <!--求职简历#####################################-->
+            {include file="job/form_jianli" /}
+            {/if}
+
+            <!-- END PAGE HEADER & CONTENT -->
+
+        </div>
+
+        <!-- END PAGE CONTAINER-->
+
+    </div>
+
+    <!-- END PAGE -->
+
+</div>
+
+<!-- END CONTAINER -->
+
+<!-- BEGIN FOOTER -->
+
+{include file="public/footer" /}
+
+<!-- END FOOTER -->
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+<!-- BEGIN CORE PLUGINS -->
+
+<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+
+<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--[if lt IE 9]>
+
+<script src="media/js/excanvas.min.js"></script>
+
+<script src="media/js/respond.min.js"></script>
+
+<![endif]-->
+
+<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<script src="media/js/app.js" type="text/javascript"></script>
+
+<script src="media/js/index.js" type="text/javascript"></script>
+
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<script>
+
+    jQuery(document).ready(function () {
+
+        App.init(); // initlayout and core plugins
+
+    });
+
+    $(document).ready(function () {
+        $(".btn-qx").click(function () {
+            location.href = history.back(-1);
+        })
+
+        $(".btn-del").click(function () {
+            if (confirm('确定要删除吗?')) {
+                  var id= $("#str").val()
+                  var user_id = $("#sty").val()
+                  var name = $("#name").val()
+                  var del_reason = $(this).parent().parent().find("*[name='del_reason']").val();
+                  var del_title2 =$("*[name='del_title2']").val();
+                  var del_title =$("*[name='del_title']").val();
+
+               $.post('/admin/public/admin/job/del', {id:id,user_id:user_id,name:name,del_reason:del_reason,del_title:del_title,del_title2:del_title2},function(data) {
+                // alert(data)
+                     // history.go(-1);
+                     location.href="/admin/public/admin/job/index";
+               });
+
+                // //删除
+                // var _this=$(this);
+                // var name=_this.parent().prev().children('.controls').children().attr('name');
+                // var id=_this.parent().prev().children('.controls').children().val();
+                // var data = {}, key=name;
+                // data[key]=id;
+                // $.ajax({
+                //     type: 'GET',
+                //     url: 'del',
+                //     data:data,
+                //     success: function (data) {
+                //         if (data.code == 0) {
+                //             location.href= history.back(-1);
+                //         }
+                //     }
+                // });
+                // //回复原因
+                // var del_uid=_this.parent().prev().prev().prev().prev().children('.controls').children().val();
+                // var del_title=_this.parent().prev().prev().prev().children().children().val();
+                // var del_reason=_this.parent().prev().prev().children().children().val();
+                // $.ajax({
+                //     type: 'POST',
+                //     url: 'reason',
+                //     data:{
+                //         del_uid:del_uid,
+                //         del_title:del_title,
+                //         del_reason:del_reason,
+                //     },
+                //     success: function (data) {
+                //     }
+                // });
+            } else {
+                return false;
+            }
+        })
+
+    })
+
+</script>
+
+<!-- END JAVASCRIPTS -->
+
+</body>
+
+<!-- END BODY -->
+
+</html>

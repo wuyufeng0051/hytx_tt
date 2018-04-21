@@ -1,0 +1,51 @@
+ 
+ <volist name="res_all" id="vo" key="k">
+ <div class="mui-card" style="margin:0;border-bottom: 1px solid #e6e6e6;">
+		<div class="mui-card-content">
+			<div class="mui-card-content-inner">
+				<a class="avatar">
+					<img src="{$vo.user_head}" alt="">
+				</a>
+				<div class="uname">
+					{$vo.user_name}
+					<p style="margin:0;">{$vo.comment_date}</p>
+					<span id="zan" class="zan" str="{$vo.comment_id}">{$vo.comment_like}</span>
+				</div>
+				<div style="padding-left: 50px;position: relative;" class="text">{$vo.comment_content}
+
+				<div style="display: none;background: #323232;width: 150px;color:#fff;padding: 8px;border-radius: 4px;text-align: center;position: absolute;left: 50%;top:-50px;margin-left: -75px;z-index: 999;" class="options">
+					<a style="display: inline-block;width: 40px;border-right:1px solid #808080;color: #fff;" id="zan"  str="{$vo.comment_id}">赞</a>
+					<a class="topheight" str="{$vo.comment_id}" style="display: inline-block;width: 40px;border-right:1px solid #808080;color: #fff;">回复</a>
+					<?php if ($vo['comment_uid'] == $_SESSION['user_id']) { ?>
+					<a style="display: inline-block;width: 40px;color: #fff;" id="del" class="c{$vo.comment_id}" str="{$vo.comment_id}">删除</a>
+						<?php }else{ ?>
+					<a href="__MODULE__/Index/reportComment?comment_id={$vo.comment_id}" style="display: inline-block;width: 40px;color: #fff;">举报</a>
+					<?php } ?>
+				</div>
+				</div>
+				<div style="padding-left: 50px;">
+ 				<div class="huifu">
+ 				<volist name="vo.msg" id="v">
+					 <p class="xiangshis"><span id="{$v.postreply_id}" class="showff" stong="{$v.user_id}">{$v.user_name}</span>{$v.postreply_content}</p>
+					  <div id="d{$v.postreply_id}">
+						 <volist name="v.hf_back" id="vos">
+						   <p class="xiangshis"><span id="{$v.postreply_id}" class="showff" stong="{$vos.replyback_id}">{$vos.replyback_name}</span>回复 
+						      <span id="{$v.postreply_id}" class="showff" stong="{$vos.replyback_mid}">{$vos.replyback_mname} :</span>{$vos.replyback_desc}</p>
+						 </volist>
+					  </div>
+                </volist>
+				 
+				 <?php if($vo['msg_count'] > 0 ){ ?>
+					<a style="display: block;color: #999;border-top: 1px solid #ddd;margin-top: 5px;padding-top: 5px;" str="{$vo.comment_id}"  class="topheight">
+						查看全部{$vo.msg_count}条评论>
+					</a>
+                   <?php } ?>
+            
+				</div>
+			</div>
+			</div>
+			</div>
+		</div>
+</volist>
+
+ 

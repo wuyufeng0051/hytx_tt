@@ -1,0 +1,223 @@
+<!--#include file="_head.shtml"-->
+
+
+
+
+<link href="/Js/Validform/css/style.css" rel="stylesheet" />
+<link href="/css/HN_button.css" rel="stylesheet" />
+<script src="/Js/Validform/js/Validform_v5.3.2.js"></script>
+<script src="js/WdatePicker.js"></script>
+<script src="js/HN_load.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        $("form").Validform({
+            tiptype: 3,
+            postonce: true,
+            usePlugin: {
+                passwordstrength: {
+                    minLen: 6,
+                    maxLen: 18
+                }
+            }
+        });
+    })
+</script>
+
+
+<div class="rBox">
+  <div class="local">
+    <a href="#">首页</a>&gt;
+    <span>托管服务</span>&gt;
+    <a href="#">商标托管</a>&gt;
+    <span>添加商标</span></div>
+  <div class="box1 formEdit">
+    <div class="title">
+      <h3>商标信息</h3></div>
+    <div class="adminEdit rBgDiv">
+      <div class="box">
+        <form action="/Trademark/Create" id="form1" method="post">
+          <input id="TrademarkID" name="TrademarkID" type="hidden" value="6ae6725c-b3c9-4b37-8abd-0f5e54de6cac" />
+          <dl>
+            <dt>
+              <em>*</em>国际分类：</dt>
+            <dd>
+              <input autocomplete="off" class="text" datatype="*" id="IntCls" name="IntCls" nullmsg="不能为空" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>注册号/申请号：</dt>
+            <dd>
+              <input autocomplete="off" class="text" datatype="*" id="RegistCode" name="RegistCode" nullmsg="不能为空" type="text" value="" />
+              <a id="autoBtn" name="autoBtn" href="#">补全</a>
+              <span class="Validform_checktip">输入正确注册号点击按钮自动补全信息</span></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>商标名称：</dt>
+            <dd>
+              <input autocomplete="off" class="text" datatype="*" id="TrademarkName" name="TrademarkName" nullmsg="不能为空" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>商标类别：</dt>
+            <dd>
+              <input autocomplete="off" class="text" datatype="*" id="TrademarkType" name="TrademarkType" nullmsg="不能为空" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>组合类型：</dt>
+            <dd>
+              <dd>
+                <select autocomplete="off" datatype="*" id="CombinationType" name="CombinationType" nullmsg="没有选择">
+                  <option value="">请选择</option>
+                  <option value="ChineseImage">中文+图形</option>
+                  <option value="Image">图形</option>
+                  <option value="Number">数字</option>
+                  <option value="Chinese">中文</option>
+                  <option value="English">英文</option>
+                  <option value="EnglishImage">英文+图形</option>
+                  <option value="Combination">组合</option>
+                  <option value="ChineseEnglish">中文+英文</option></select>
+              </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>商标地域：</dt>
+            <dd>
+              <input autocomplete="off" class="text" datatype="*" id="TrademarkArea" name="TrademarkArea" nullmsg="不能为空" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>专用期权开始时间：</dt>
+            <dd>
+              <input autocomplete="off" class="Wdate" data-val="true" data-val-date="字段 RegistStartTime 必须是日期。" datatype="*" id="RegistStartTime" name="RegistStartTime" nullmsg="不能为空" onclick="WdatePicker({maxDate:&#39;#F{$dp.$D(\&#39;RegistEndTime\&#39;)}&#39;})" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>专用期权结束时间：</dt>
+            <dd>
+              <input autocomplete="off" class="Wdate" data-val="true" data-val-date="字段 RegistEndTime 必须是日期。" datatype="*" id="RegistEndTime" name="RegistEndTime" nullmsg="不能为空" onclick="WdatePicker({minDate:&#39;#F{$dp.$D(\&#39;RegistStartTime\&#39;)}&#39;})" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>申请日期：</dt>
+            <dd>
+              <input autocomplete="off" class="Wdate" data-val="true" data-val-date="字段 AppDate 必须是日期。" id="AppDate" name="AppDate" onclick="WdatePicker({minDate:&#39;#F{$dp.$D(\&#39;AppDate\&#39;)}&#39;})" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>申请人中文：</dt>
+            <dd>
+              <input autocomplete="off" class="text" id="ApplicantCn" name="ApplicantCn" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>申请人地址中文：</dt>
+            <dd>
+              <input autocomplete="off" class="text" id="AddressCn" name="AddressCn" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>申请人英文：</dt>
+            <dd>
+              <input autocomplete="off" class="text" id="ApplicantEn" name="ApplicantEn" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>申请人地址英文：</dt>
+            <dd>
+              <input autocomplete="off" class="text" id="AddressEn" name="AddressEn" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>代理公司：</dt>
+            <dd>
+              <input autocomplete="off" class="text" id="Agent" name="Agent" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>初审公告期号：</dt>
+            <dd>
+              <input autocomplete="off" class="text" id="AnnouncementIssue" name="AnnouncementIssue" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>初审公告日期：</dt>
+            <dd>
+              <input autocomplete="off" class="Wdate" data-val="true" data-val-date="字段 AnnouncementDate 必须是日期。" id="AnnouncementDate" name="AnnouncementDate" onclick="WdatePicker({minDate:&#39;#F{$dp.$D(\&#39;AnnouncementDate\&#39;)}&#39;})" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>注册公告期号：</dt>
+            <dd>
+              <input autocomplete="off" class="text" id="RegIssue" name="RegIssue" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>注册公告日期：</dt>
+            <dd>
+              <input autocomplete="off" class="Wdate" data-val="true" data-val-date="字段 RegDate 必须是日期。" id="RegDate" name="RegDate" onclick="WdatePicker({minDate:&#39;#F{$dp.$D(\&#39;RegDate\&#39;)}&#39;})" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>后期指定日期：</dt>
+            <dd>
+              <input autocomplete="off" class="Wdate" data-val="true" data-val-date="字段 Hqzdrq 必须是日期。" id="Hqzdrq" name="Hqzdrq" onclick="WdatePicker({minDate:&#39;#F{$dp.$D(\&#39;Hqzdrq\&#39;)}&#39;})" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>国际注册日期：</dt>
+            <dd>
+              <input autocomplete="off" class="Wdate" data-val="true" data-val-date="字段 Gjzcrq 必须是日期。" id="Gjzcrq" name="Gjzcrq" onclick="WdatePicker({minDate:&#39;#F{$dp.$D(\&#39;RegistStartTime\&#39;)}&#39;})" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>指定颜色：</dt>
+            <dd>
+              <input autocomplete="off" class="text" id="Color" name="Color" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>商品/服务列表：</dt>
+            <dd>
+              <textarea autocomplete="off" class="text" cols="20" id="Goods" name="Goods" rows="2"></textarea>
+            </dd>
+          </dl>
+          <dl>
+            <dt>商标状态：</dt>
+            <dd>
+              <textarea autocomplete="off" class="text" cols="20" id="Flow" name="Flow" rows="2"></textarea>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>商标图像：</dt>
+            <dd style="width: 500px">
+                <div id="filePicker1" class="webuploader-container filePicker" data-id="1">
+                <div class="webuploader-pick">
+                  <div class="btn">上传</div>
+                  <input type="file" name="filePicker2" id="load" class="load">
+                </div>
+              </div>
+              <div id="pic_box">
+                <div class="swiper-slide" ><div class="thumbnail"><img></div><div class="file-panel"><span class="del"></span></div></div>
+                <p>(最大上传附件大小为10M，允许上传的文件格式有：*.png;*.jpg;*.gif;)</p>
+              </div>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>商标注册证扫描件：</dt>
+            <dd style="width: 500px">
+              <div id="filePicker2" class="webuploader-container " data-id="2">
+                <div class="webuploader-pick">
+                  <div class="btn">上传</div>
+                  <input type="file"   name="filePicker2" id="load1" class="load1">
+                </div>
+              </div>
+              <div id="pic_box_1">
+                <div class="desc-box" ><div class="thumbnail"><img></div><div class="file-panel"><span class="cancel"></span></div></div>
+                <p>(最大上传附件大小为10M，允许上传的文件格式有：*.png;*.jpg;*.gif;)</p>
+              </div>
+            </dd>
+          </dl>
+          <div class="btnBox">
+            <input value="提交" class="btn" type="submit" />
+            <input type="button" value="返回" class="return btn" onclick="history.go(-1)" /></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--#include file="_foot.shtml"-->

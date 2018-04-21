@@ -1,0 +1,44 @@
+{#$pageTitle = "提现记录 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/withdraw_log.css?v=1" media="all" />
+<script>var atpage = 1, totalCount = 0, pageSize = 15, udomain = '{#$member_userDomain#}', bdomain = '{#$member_busiDomain#}';</script>
+</head>
+
+{#$pageCurr = "withdraw"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+
+	<div class="notice">公告：管理控制台改版啦，为便于您的操作，用户中心功能整合到管理控制台并对样式进行优化，欢迎体验！<a href="#" target="_blank">操作指南</a> <a href="#" target="_blank">建议反馈</a><em class="close">&times;</em></div>
+
+	<div class="nav-tabs fn-clear">
+		<ul class="fn-clear">
+			<li><a href="{#getUrlPath service='member' template='deposit'#}">账户充值</a></li>
+			<li><a href="{#getUrlPath service='member' template='withdraw'#}">余额提现</a></li>
+			<li class="active"><a href="javascript:;">提现记录</a></li>
+		</ul>
+	</div>
+	<div class="container">
+
+		<ul class="main-sub-tab">
+			<li class="sel">
+				<label data-id="" class="curr"><s></s>全部</label>
+				<label data-id="0"><s></s>审核中</label>
+				<label data-id="1"><s></s>成功</label>
+				<label data-id="2"><s></s>失败</label>
+			</li>
+		</ul>
+		
+		<div class="list" id="list"><p class="loading"><img src="{#$cfg_staticPath#}images/ajax-loader.gif" />加载中，请稍候...</p></div>
+		<div class="pagination fn-clear"></div>
+
+	</div>
+	
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/withdraw_log.js?v=2"></script>
+</body>
+</html>

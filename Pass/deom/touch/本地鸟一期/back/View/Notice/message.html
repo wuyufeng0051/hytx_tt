@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>系统公告</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+
+	<style>
+		img{
+			display: block;
+		}
+		section{
+			margin:8px 15px;
+			background: #fff;
+			border-radius: 5px;
+		}
+		section .inner{
+			padding: 10px;
+		}
+		section .inner h4{
+			font-size: 16px;
+			padding-right: 20px;
+			position: relative;
+		}
+		section .inner h4 .dot{
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			background: #ff2929;
+			border-radius: 5px;
+			position: absolute;
+			right: 0;
+			top:3px;
+		}
+		.mui-ellipsis-2{
+			line-height: 21px;
+		}
+		.new{
+			color:#f00;
+			float: right;
+			font-size: 12px;
+			line-height: 1;
+		}
+		#header i{
+		    width: 30px;
+		    height: 28px;
+		    display: inline-block;
+		    background: url(/Public/Home/img/back.png) no-repeat 9px 1px;
+		    vertical-align: middle;
+		    background-size: 15px;
+		}
+ 		.mui-bar{
+ 			background: #fd5530 !important;
+ 		}
+ 		.mui-bar h1{
+ 			color: #fff!important;
+ 		}
+ 		.mui-bar a{
+ 			color: #fff!important;
+ 			position: absolute;
+ 			top: 5px;
+ 			left: 5px;
+ 			height: 35px;
+ 			line-height: 35px;
+ 		}
+ 		.mui-title{
+			width: 55%!important;
+			margin: 0 auto!important;
+		}
+ 				/*公用头部*/
+	.header{
+	    height: .9rem;
+	    background: #fd5530 !important;
+	    color: #fff;
+	    font-size: .32rem;
+	    line-height: .9rem;
+	    max-width: 1080px;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    z-index: 10;
+	    overflow: hidden;
+	}
+	.header a{
+		display: inline-block;
+		color: #fff;
+	}
+	.header .back{
+	    height: .9rem;
+	    line-height: .9rem;
+	    width: 17%;
+	    float: left;
+	}
+	.header .back i{
+	    width: 0.4rem;
+	    height: .9rem;
+	    display: inline-block;
+	    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+	    vertical-align: middle;
+	    background-size: .3rem;
+	}
+	.header .header_right{
+		float: right;
+		height: .9rem;
+		margin-right: .2rem;
+	}
+	.header .header_right i{
+	    width: 0.04rem;
+	    height: 0.5rem;
+	    display: inline-block;
+	    vertical-align: middle;
+	    background: #fff;
+	    margin: 0 .15rem;
+	}
+	.header .title{
+	    float: left;
+	    width: 63%;
+	    text-align: center;
+	    font-size: 0.38rem;
+	}
+	.header .share{
+	    height: .9rem;
+	    float: right;
+	    width: 12%;
+	    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+	    background-size: .5rem;
+	}
+	</style>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+
+	<div class="header fn-clear">
+		<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+		<div class="title">系统公告</div>
+	</div>
+	<div class="mui-content" style="margin-top: .9rem;">
+ 
+
+ <!-- <iframe height=498 width=510 src='http://player.youku.com/embed/XODI2MzQ2Njgw' frameborder=0 'allowfullscreen'></iframe> -->
+  
+	
+	</div>
+ 
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script>
+	 function time(){
+	   $.post('{:U("Home/Notice/messages")}', {}, function(data) {
+	     $(".mui-content").append(data)
+	   });
+     }
+	setTimeout(time(),100);
+    </script>
+</body>
+</html>

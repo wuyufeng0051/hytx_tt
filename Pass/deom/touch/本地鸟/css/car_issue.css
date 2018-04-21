@@ -1,0 +1,470 @@
+body {
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.share{
+    display: none;
+}
+.header_right{
+    display: none;
+}
+.input-control {
+    padding: 0 1em;
+    border-bottom: 1px solid #D5DADC;
+    height: 1rem;
+    line-height: 1rem;
+    background: #fff;
+    font-size: 0.28rem;
+}
+.input-control span{
+	display: block;
+    float: left;
+    color: #222;
+    height: 3.5em;
+    min-width: 3.9em;
+    padding-right: 1em;
+}
+.input-control i{
+    display: inline-block;
+    width: .5rem;
+    height: .5rem;
+    margin-right: .2rem;
+    background: url(../images/yuan.png) no-repeat center;
+    background-size: .25rem;
+    float: left;
+    vertical-align: text-bottom;
+    margin-top: 0.25rem;
+}
+.input-control s{
+    float: left;
+    width: 0.12rem;
+    height: 0.13rem;
+    background: #FE5400 ;
+    border-radius: 100%;
+    margin-right: .2rem;
+    margin-top: .45rem;
+    margin-left: .18rem;
+}
+.input-control i.green{
+    background: url(../images/yuan_1.png) no-repeat center;
+    background-size: .25rem;
+}
+.input-control .user-fav{
+    float: left;
+    width: 72%;
+    position: relative;
+}
+.input-control .user-fav input{
+    border: none;
+    width: 80%;
+}
+.input-control .user-fav em{
+    color: #bfbfc0;
+}
+.input-control .user-fav .arrow{
+    float: right;
+    height: 0.3rem;
+    width: 0.3rem;
+}
+.input-control .user-fav .arrow img{
+    height: 0.3rem;
+    width: 0.3rem;
+    margin-top: .42rem;
+    transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+}
+.input-control .user-fav .arrow .bag_bc{
+    -webkit-transform: rotate(180deg);
+}
+.input-control .user-fav .arrow .sex_bc{
+    -webkit-transform: rotate(180deg);
+}
+.choice_box{
+    /*height: 1rem;*/
+    line-height: 1rem;
+    border-bottom: 1px solid #D5DADC;
+    padding: 0 1rem;
+    padding-top: 0.1rem;
+}
+.choice_box.bag_1{
+    line-height: 1rem;
+    border-bottom: 1px solid #D5DADC;
+    padding: 0 .3rem;
+}
+.choice_box.bag_1 ul li{
+    float: left;
+    width: 25%;
+    text-align: center;
+    font-size: .28rem;
+}
+.choice_box.sex_1 ul li{
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+.choice_box.sex_1 ul li i{
+    width: .4rem;
+    height: .4rem;
+    display: inline-block;
+    background: url(../images/yuan_2.png) no-repeat center;
+    background-size: .4rem;
+    vertical-align: text-bottom;
+    margin-right: .1rem;
+}
+.choice_box ul li i{
+    width: .4rem;
+    height: .4rem;
+    display: inline-block;
+    background: url(../images/yuan_2.png) no-repeat center;
+    background-size: .4rem;
+    vertical-align: text-bottom;
+    margin-right: .1rem;
+}
+.choice_box ul li.CB_bc i{
+    background: url(../images/yuan_3.png) no-repeat center;
+    background-size: .4rem;
+}
+.intro h1{
+    background: #e6e6e6;
+    font-size: .28rem;
+    padding-left: 0.5rem;
+    position: relative;
+    height: .7rem;
+    line-height: .7rem; 
+}
+.intro h1 em{
+    width: .11rem;
+    height: .11rem;
+    position: absolute;
+    top: .3rem;
+    left: 0.25rem;
+    background: #fd5530;
+    border-radius: 100%;
+}
+.intro_txt{
+    padding: 0 .2rem;
+    margin-top: 0.15rem;
+}
+.intro_txt .t1{
+    text-indent: 0.4rem;
+    display: block;
+    color: #898989;
+    display: none;
+}
+.intro_txt textarea{
+    width: 94%;
+    height: 3rem;
+    border: none;
+    padding: 0 .2rem;
+    resize:none;
+    font-size: .28rem;
+}
+.picture_1{
+    background: #e6e6e6;
+}
+.picture_1 .pic_list{
+    padding: 0 0.4rem;
+}
+.picture_1 ul li{
+    float: left;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 10px 1px rgba(0,0,0,.2);
+    margin-top: 0.3rem;
+    margin-bottom: 0.2rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right: .36rem;
+    background: #fff;
+}
+.picture_1 ul li img{
+    width: 1.3rem;
+    height: 1.3rem;
+}
+.picture_1 .uploadbtn{
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+}
+.picture_1 .uploadbtn input{
+    opacity: 0;
+}
+.picture_1 .uploadbtn em{
+    width: .7rem;
+    height: .7rem;
+    display: block;
+    margin: 0.1rem auto;
+    background: url(../images/shi.png) no-repeat center;
+    background-size: .7rem;
+}
+.picture_1 .uploadbtn p{
+    color: #bfbfc0;
+}
+.picture_1 .uploadbtn .webuploader-container div{
+    width: 1.3rem;
+    height: 1.3rem;
+}
+.picture_1 .pic_tips{
+    color: #bfbfc0;
+    padding-bottom: 0.2rem;
+}
+.picture_1 .cancel{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: .3rem;
+    height: .3rem;
+    background: url(../images/cha.png) no-repeat center;
+    background-size: .3rem;
+}
+.input-control .user-fav .get{
+    width: 1.5rem;
+    height: .45rem;
+    line-height: .45rem;
+    text-align: center;
+    border-radius: .04rem;
+    position: absolute;
+    right: 0;
+    top: .33rem;
+    border: 1px solid #FE5400;
+    color: #FE5400;
+}
+.agree{
+    line-height: 1.5rem;
+    background: #f3f3f3;
+    text-align: center;
+    font-size: .28rem;
+}
+.agree a{
+    color: #FE5400;
+}
+.agree i{
+    width: .4rem;
+    height: .4rem;
+    display: inline-block;
+    background: url(../images/yuan_2.png) no-repeat center;
+    background-size: .4rem;
+    vertical-align: text-bottom;
+    margin-right: .1rem;
+}
+.agree.agree_bc i{
+    width: .4rem;
+    height: .4rem;
+    display: inline-block;
+    background: url(../images/yuan_4.png) no-repeat center;
+    background-size: .4rem;
+    vertical-align: text-bottom;
+    margin-right: .1rem;
+}
+.btn{
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    font-size: 0.32rem;
+    color: #fff;
+    background: #fd5530;
+}
+.delete{
+    position: fixed;
+    left: 50%;
+    margin-left: -3rem;
+    top: 25%;
+    z-index: 12;
+    background: url(../images/pb_7.png) no-repeat top;
+    width: 6rem;
+    height: 6rem;
+    background-size: 6rem;
+    text-align: center;
+    display: none;
+}
+.delete h1{
+    font-size: .3rem;
+    margin-top: 1.8rem;
+    font-weight: bold;
+    background: #fff;
+}
+.delete h2{
+    font-size: .3rem;
+    padding-top: .1rem;
+    font-weight: bold;
+    background: #fff;
+    padding-bottom: .3rem;
+    border-bottom: 0.04rem solid #e6e6e6;
+}
+.de_foot{
+    width: 100%;
+    background: #fff;
+}
+.delete .de_btn{
+    width: 80%;
+    margin: 0 auto;
+    padding: .4rem 0
+}
+.delete .de_btn span{
+    background: #fd5530;
+    color: #fff;
+    padding: 0.15rem .8rem;
+    font-size: .28rem;
+    border-radius: 0.1rem;
+}
+.delete .de_btn span.sure{
+    margin-right: .4rem;
+}
+.disk {
+    background: #000;
+    opacity: .5!important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 11;
+    display: none;
+}
+.certfy ul li{
+    position: relative;
+}
+.certfy ul li i{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: .4rem;
+    height: .4rem;
+    background: url(../images/cha.png) no-repeat center;
+    background-size: .4rem;
+}
+.b_box{
+    background: #f2f2f2;
+    padding-bottom: 0.15rem;
+}
+.b_box .QR_code{
+    background: #fff;
+    height: 1rem;
+    line-height: 1rem;
+}
+.b_box .QR_code em{
+    float: left;
+    font-size: 0.3rem;
+    margin-left: 0.3rem;
+}
+.b_box .QR_code span{
+    float: right;
+    margin-right: .3rem;
+    color: #cccccc;
+}
+.b_box .QR_code span i{
+    font-style: normal;
+}
+.b_box .QR_code span img{
+    -webkit-transform: rotate(180deg);
+    width: .4rem;
+    height: .2rem;
+    margin-top: 0.41rem;
+    margin-right: 0.1rem;
+    margin-left: 0.2rem;
+}
+.pay h1{
+    background: #fff;
+    height: .7rem;
+    line-height: .7rem;
+    display: block;
+    width: 100%;
+    padding: 0 0.3rem 0 0.5rem;
+    font-size: 0.28rem;
+    position: relative;
+    color: #727171;
+}
+.pay h1 i{
+    width: 0.1rem;
+    height: 0.1rem;
+    border-radius: 100%;
+    background: #fd5530;
+    position: absolute;
+    left: 0.3rem;
+    top: 0.29rem;
+}
+.pay  ul li{
+    padding: 0.17rem .3rem;
+    background: #fff;
+}
+.pay  ul li:first-child{
+    border-top: 0.02rem solid #e6e6e6;
+    border-bottom: 0.02rem solid #e6e6e6;
+}
+.pay  ul li p{
+    font-size: 0.28rem;
+    color: #727171;
+    margin-bottom: 0.04rem;
+}
+.pay  ul li i{
+    display: inline-block;
+    width: 0.4rem;
+    height: 0.4rem;
+    background: url(../images/is_7.png) no-repeat center;
+    background-size: .4rem;
+    vertical-align: middle;
+    margin-top: -0.04rem;
+    margin-right: 0.15rem;
+}
+.pay  ul li.re_check i{
+    background: url(../images/is_6.png) no-repeat center;
+    background-size: .4rem;
+}
+.pay  ul li span{
+    color: #b5b5b6;
+}
+.succeed_box{
+    position: fixed;
+    left: 50%;
+    margin-left: -3rem;
+    top: 25%;
+    z-index: 12;
+    background: url(../images/pb_7.png) no-repeat top;
+    width: 6rem;
+    height: 6rem;
+    background-size: 6rem;
+    text-align: center;
+     display: none; 
+}
+.succeed_box h1{
+    font-size: .3rem;
+    margin-top: 1.8rem;
+    font-weight: bold;
+    background: #fff;
+}
+.succeed_box h2{
+    font-size: .24rem;
+    padding-top: .1rem;
+    background: #fff;
+    padding-bottom: .3rem;
+    border-bottom: 0.04rem solid #e6e6e6;
+}
+.succeed_box h3{
+    font-size: .24rem;
+    padding-top: .1rem;
+    background: #fff;
+    padding: : 0.1rem 0;
+}
+.succeed_box h2 em{
+    color: #fe8267;
+}
+.succeed_box p{
+    background: #fff;
+    border-radius: 0 0 0.2rem 0.2rem;
+    padding: 0.35rem 0;
+}
+.succeed_box p span{
+    width: 60%;
+    height: .75rem;
+    color: #fff;
+    font-size: 0.28rem;
+    border-radius: 0.15rem;
+    background: #fd5530;
+    line-height: .75rem;
+    display: block;
+    margin:  0 auto;
+}

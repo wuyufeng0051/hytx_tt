@@ -1,0 +1,297 @@
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css" media="all" />
+<script type="text/javascript">
+var photoSize = {#$photoSize*1024#};
+var photoType = '{#$photoType#}';
+</script>
+
+{#if $detail_name#}
+<a href="{#getUrlPath service='job' template='resume' id={#$detail_id#}#}" target="_blank" class="preview">查看我的简历</a>
+{#/if#}
+
+<div class="w-form">
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=job&action=updateResume">
+		{#if $detail_name#}
+		{#if $detail_state == 0#}<p class="state">您的简历正在审核中，审核通过即可投递简历！</p>{#/if#}
+		{#if $detail_state == 2#}<p class="state">您的简历审核失败，请检查您的简历内容！</p>{#/if#}
+		{#/if#}
+    <div class="thead" style="margin-top: 0;">基本资料{#if $detail_name#}<em>更新时间：{#$detail_pubdate|date_format:"%Y-%m-%d"#}</em>{#/if#}</div>
+    <div class="jtop fn-clear">
+      <div class="photo">
+				<div class="loading"></div>
+				<div class="ubtn"><div class="holder"><s></s>上传头像</div><input type="file" name="Filedata" class="Filedata" id="image"></div>
+        <img src="{#if $detail_photo == ""#}{#$cfg_staticPath#}images/blank.gif{#else#}{#$detail_photo#}{#/if#}" />
+				<input type="hidden" name="photo" id="litpic" value="{#$detail_photoSource#}" />
+      </div>
+      <div class="jcon">
+        <div class="fn-clear">
+          <dl class="fn-clear">
+            <dt>姓名：</dt>
+            <dd><input type="text" name="name" class="inp" id="name" value="{#$detail_name#}" /></dd>
+          </dl>
+          <dl class="fn-clear">
+            <dt>性别：</dt>
+            <dd>
+              <div class="radio">
+								<span data-id="0"{#if $detail_sex == 0 || $detail_sex == ""#} class="curr"{#/if#}>男</span>
+								<span data-id="1"{#if $detail_sex == 1#} class="curr"{#/if#}>女</span>
+								<input type="hidden" name="sex" id="sex" value="{#$detail_sex#}" />
+						  </div>
+            </dd>
+          </dl>
+        </div>
+        <div class="fn-clear">
+          <dl class="fn-clear">
+            <dt>出生日期：</dt>
+            <dd><input type="text" name="birth" class="inp" id="birth" readonly value="{#$detail_birth|date_format:"%Y-%m-%d"#}" /></dd>
+          </dl>
+          <dl class="fn-clear">
+            <dt>户籍地址：</dt>
+            <dd><input type="text" name="home" class="inp" id="home" value="{#$detail_home#}" /></dd>
+          </dl>
+        </div>
+        <div class="fn-clear">
+          <dl class="fn-clear">
+            <dt>现居地址：</dt>
+            <dd><input type="text" name="address" class="inp" id="address" value="{#$detail_address#}" /></dd>
+          </dl>
+          <dl class="fn-clear">
+            <dt>联系电话：</dt>
+            <dd><input type="text" name="phone" class="inp" id="phone" value="{#$detail_phone#}" /></dd>
+          </dl>
+        </div>
+        <div class="fn-clear">
+          <dl class="fn-clear">
+            <dt>邮箱：</dt>
+            <dd><input type="text" name="email" class="inp" id="email" value="{#$detail_email#}" /></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="thead">求职意向</div>
+    <div class="jcon">
+      <div class="fn-clear">
+        <dl class="fn-clear">
+          <dt>工作地点：</dt>
+          <dd id="selAddr">
+            <div class="sel-group">
+    					<button type="button" class="sel">{#if $detail_addr#}{#$detail_addrname#}{#else#}请选择{#/if#}<span class="caret"></span></button>
+    					<ul class="sel-menu">
+    						{#job action="addr" return="addr"#}
+    						<li><a href="javascript:;" data-id="{#$addr.id#}">{#$addr.typename#}</a></li>
+    						{#/job#}
+    					</ul>
+    				</div>
+    				<input type="hidden" name="addr" id="addr" value="{#$detail_addr#}" />
+          </dd>
+        </dl>
+        <dl class="fn-clear">
+          <dt>职位性质：</dt>
+          <dd>
+            <div class="radio">
+              <span data-id="0"{#if $detail_nature == 0 || $detail_nature == ""#} class="curr"{#/if#}>全职</span>
+              <span data-id="1"{#if $detail_nature == 1#} class="curr"{#/if#}>兼职</span>
+              <span data-id="2"{#if $detail_nature == 2#} class="curr"{#/if#}>临时</span>
+              <span data-id="3"{#if $detail_nature == 3#} class="curr"{#/if#}>实习</span>
+              <input type="hidden" name="nature" id="nature" value="{#$detail_nature#}" />
+            </div>
+          </dd>
+        </dl>
+      </div>
+      <div class="fn-clear">
+        <dl class="fn-clear">
+          <dt>意向职位：</dt>
+          <dd>
+						<div class="sel-group">
+    					<button type="button" class="sel" id="typename">{#if $detail_type#}{#$detail_typename#}{#else#}请选择{#/if#}<span class="caret"></span></button>
+    				</div>
+    				<input type="hidden" name="type" id="type" value="{#$detail_type#}" />
+					</dd>
+        </dl>
+        <dl class="fn-clear">
+          <dt>期望薪资：</dt>
+          <dd><input type="text" name="salary" class="inp" id="salary" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_salary#}" />&nbsp;&nbsp;元/月</dd>
+        </dl>
+      </div>
+      <div class="fn-clear">
+        <dl class="fn-clear">
+          <dt>到岗时间：</dt>
+          <dd>
+            <div class="sel-group">
+    					<button type="button" class="sel">{#if $detail_startwork#}{#$detail_startworkname#}{#else#}请选择{#/if#}<span class="caret"></span></button>
+    					<ul class="sel-menu">
+    						{#job action="item" return="item" type="4"#}
+    						<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+    						{#/job#}
+    					</ul>
+    				</div>
+    				<input type="hidden" name="startwork" id="startwork" value="{#$detail_startwork#}" />
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="thead">工作经历</div>
+    <div class="jcon">
+      <div class="fn-clear">
+        <dl class="fn-clear">
+          <dt>工作年限：</dt>
+          <dd><input type="text" name="workyear" class="inp" id="workyear" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_workyear#}" />&nbsp;&nbsp;年</dd>
+        </dl>
+      </div>
+
+			<div id="experience">
+				{#if $detail_experience#}
+				{#foreach from=$detail_experience item=experience#}
+				<div class="item">
+					<div class="con">
+						<div class="fn-clear">
+			        <dl class="fn-clear">
+			          <dt>公司名称：</dt>
+			          <dd><input type="text" class="inp company" value="{#$experience[0]#}" /></dd>
+			        </dl>
+			        <dl class="fn-clear">
+			          <dt>工作时间：</dt>
+			          <dd><input type="text" class="inp date1" id="date1" value="{#$experience[1]#}" /><em class="fn-left">&nbsp;-&nbsp;</em><input type="text" class="inp date2" id="date2" value="{#$experience[2]#}" /></dd>
+			        </dl>
+			      </div>
+						<div class="fn-clear">
+			        <dl class="fn-clear">
+			          <dt>所在部门：</dt>
+			          <dd><input type="text" class="inp bumen" value="{#$experience[3]#}" /></dd>
+			        </dl>
+			        <dl class="fn-clear">
+			          <dt>担任职位：</dt>
+			          <dd><input type="text" class="inp zhiwei" value="{#$experience[4]#}" /></dd>
+			        </dl>
+			      </div>
+						<div class="fn-clear">
+			        <dl class="single fn-clear">
+			          <dt>工作内容：</dt>
+			          <dd><textarea class="inp neirong">{#$experience[5]#}</textarea></dd>
+			        </dl>
+			      </div>
+					</div>
+					<div class="col"></div>
+					<span class="btn move" title="移动"><i></i></span>
+					<span class="btn del" title="删除"><i></i></span>
+					<span class="btn add" title="添加"><i></i></span>
+				</div>
+				{#/foreach#}
+				{#else#}
+				<div class="item">
+					<div class="con">
+						<div class="fn-clear">
+			        <dl class="fn-clear">
+			          <dt>公司名称：</dt>
+			          <dd><input type="text" class="inp company" /></dd>
+			        </dl>
+			        <dl class="fn-clear">
+			          <dt>工作时间：</dt>
+			          <dd><input type="text" class="inp date1" id="date1" /><em class="fn-left">&nbsp;-&nbsp;</em><input type="text" class="inp date2" id="date2" /></dd>
+			        </dl>
+			      </div>
+						<div class="fn-clear">
+			        <dl class="fn-clear">
+			          <dt>所在部门：</dt>
+			          <dd><input type="text" class="inp bumen" /></dd>
+			        </dl>
+			        <dl class="fn-clear">
+			          <dt>担任职位：</dt>
+			          <dd><input type="text" class="inp zhiwei" /></dd>
+			        </dl>
+			      </div>
+						<div class="fn-clear">
+			        <dl class="single fn-clear">
+			          <dt>工作内容：</dt>
+			          <dd><textarea class="inp neirong"></textarea></dd>
+			        </dl>
+			      </div>
+					</div>
+					<div class="col"></div>
+					<span class="btn move" title="移动"><i></i></span>
+					<span class="btn del" title="删除"><i></i></span>
+					<span class="btn add" title="添加"><i></i></span>
+				</div>
+				{#/if#}
+			</div>
+			<div class="fn-clear">
+				<dl class="fn-clear">
+					<dt>&nbsp;</dt>
+					<dd><a href="javascript:;" class="newbtn">添加</a></dd>
+				</dl>
+			</div>
+    </div>
+
+    <div class="thead">教育背景</div>
+    <div class="jcon">
+      <div class="fn-clear">
+        <dl class="fn-clear">
+          <dt>最高学历：</dt>
+          <dd>
+						<div class="sel-group">
+    					<button type="button" class="sel">{#if $detail_educational#}{#$detail_educationalname#}{#else#}请选择{#/if#}<span class="caret"></span></button>
+    					<ul class="sel-menu">
+    						{#job action="item" return="item" type="2"#}
+    						<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+    						{#/job#}
+    					</ul>
+    				</div>
+    				<input type="hidden" name="educational" id="educational" value="{#$detail_educational#}" />
+					</dd>
+        </dl>
+        <dl class="fn-clear">
+          <dt>毕业学院：</dt>
+          <dd><input type="text" name="college" class="inp" id="college" value="{#$detail_college#}" /></dd>
+        </dl>
+      </div>
+      <div class="fn-clear">
+        <dl class="fn-clear">
+          <dt>毕业时间：</dt>
+          <dd><input type="text" name="graduation" class="inp" id="graduation" readonly value="{#$detail_graduation|date_format:"%Y-%m-%d"#}" /></dd>
+        </dl>
+        <dl class="fn-clear">
+          <dt>所学专业：</dt>
+          <dd><input type="text" name="professional" class="inp" id="professional" value="{#$detail_professional#}" /></dd>
+        </dl>
+      </div>
+      <div class="fn-clear">
+        <dl class="fn-clear">
+          <dt>外语水平：</dt>
+          <dd><input type="text" name="language" class="inp" id="language" value="{#$detail_language#}" /></dd>
+        </dl>
+        <dl class="fn-clear">
+          <dt>计算机水平：</dt>
+          <dd><input type="text" name="computer" class="inp" id="computer" value="{#$detail_computer#}" /></dd>
+        </dl>
+      </div>
+      <div class="fn-clear">
+        <dl class="single fn-clear">
+          <dt>其他教育：</dt>
+          <dd><textarea name="education" id="education" class="inp">{#$detail_education#}</textarea></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="thead">自我描述</div>
+    <div class="jcon">
+      <dl class="single fn-clear">
+        <dt>个人评价：</dt>
+        <dd><textarea name="evaluation" id="evaluation" class="inp">{#$detail_evaluation#}</textarea></dd>
+      </dl>
+      <dl class="single fn-clear">
+        <dt>职业目标：</dt>
+        <dd><textarea name="objective" id="objective" class="inp">{#$detail_objective#}</textarea></dd>
+      </dl>
+      <dl class="single fn-clear">
+        <dt>&nbsp;</dt>
+        <dd><button class="submit" id="submit">保存简历</button></dd>
+      </dl>
+    </div>
+
+  </form>
+</div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/calendar/WdatePicker.js?v=2"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dragsort-0.5.1.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.ajaxFileUpload.js"></script>

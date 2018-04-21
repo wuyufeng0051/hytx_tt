@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+ <style type="text/css">.form-horizontal .form-group {height: 40px;margin: 15px 0;}</style>
+  <div class="main-content">
+      <div class="breadcrumbs" id="breadcrumbs">
+          <ul class="breadcrumb">
+              <li class="active">营销活动
+              </li>
+              <li class="active">微信现金红包
+              </li>
+              <li class="active">微信现金红包列表
+              </li>
+          </ul><!-- .breadcrumb -->
+      </div><!-- /section:basics/content.breadcrumbs -->
+      <div class="page-content">
+          <!-- /section:settings.box -->
+          <div class="page-content-area">
+              <div class="alert alert-danger">
+                  请先在系统设置-&gt;账号设置-&gt;营销设置中开启此功能！
+              </div>
+              <div class="alert alert-danger">
+                  使用微信红包前请务必仔细阅读<a href="#" target="_blank">《微信红包使用教程》</a>
+              </div>
+              <div class="row">
+                  <div class="col-xs-12">
+                      <div class="tabbable">
+                          <ul class="nav nav-tabs" id="myTab">
+                              <li >
+                                  <a href="wechat_gift.html">微信现金红包设置</a>
+                              </li>
+                              <li class="active">
+                                  <a href="wechat_gift_list.html">微信现金红包列表</a>
+                              </li>
+                              <li>
+                                  <a href="wechat_gift_record.html">微信现金红包发放记录</a>
+                              </li>
+                          </ul>
+                          <div class="tab-content">
+                              <a class="btn btn-success" href="wechat_gift_list_new.html">新建微信红包</a>
+                              <div id="weixin_coupon_list" class="grid-view">
+                                  <table class="table table-striped table-bordered table-hover">
+                                      <thead>
+                                          <tr>
+                                              <th id="weixin_coupon_list_c0">
+                                                  <a class="sort-link" href="#">红包名称</a>
+                                              </th>
+                                              <th id="weixin_coupon_list_c1">
+                                                  <a class="sort-link" href="#">红包金额</a>
+                                              </th>
+                                              <th id="weixin_coupon_list_c2">
+                                                  <a class="sort-link" href="#">发送者名称</a>
+                                              </th>
+                                              <th id="weixin_coupon_list_c3">
+                                                  <a class="sort-link" href="#">祝福语</a>
+                                              </th>
+                                              <th id="weixin_coupon_list_c4">
+                                                  <a class="sort-link" href="#">备注</a>
+                                              </th>
+                                              <th id="weixin_coupon_list_c5">
+                                                  状态
+                                              </th>
+                                              <th class="button-column" id="weixin_coupon_list_c6">
+                                                  操作
+                                              </th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr class="odd">
+                                              <td width="100">
+                                                  送红包啦！
+                                              </td>
+                                              <td width="100">
+                                                  1.00
+                                              </td>
+                                              <td width="100">
+                                                  金点外卖平台
+                                              </td>
+                                              <td width="100">
+                                                  祝您心想事成
+                                              </td>
+                                              <td width="100">
+                                                  分享转发有好礼
+                                              </td>
+                                              <td width="90">
+                                                  开启
+                                              </td>
+                                              <td nowrap="nowrap" width="40">
+                                                  <a title="修改" class="green" style="padding-right:8px;" href="#"></a><a title="删除" class="red" style="padding-right:8px;" href="#"></a>
+                                              </td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                                  <div class="summary">
+                                      第 1-1 条, 共 1 条.
+                                  </div>
+                                  <div class="keys" style="display:none" title="/wxcoupon/wxsetting">
+                                      <span>601</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div><!-- /.page-content-area -->
+      </div><!-- /.page-content -->
+  </div>
+  <div class="disk"></div>
+  <script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

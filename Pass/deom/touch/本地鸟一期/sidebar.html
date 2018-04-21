@@ -1,0 +1,121 @@
+<div class="page-sidebar nav-collapse collapse">
+
+    <!-- BEGIN SIDEBAR MENU -->
+
+    <ul class="page-sidebar-menu">
+
+        <li>
+            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+            <div class="sidebar-toggler hidden-phone"></div>
+            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+        </li>
+        <br/>
+        <li class="start  ">
+            <a href="../index/index.html">
+                <i class="icon-home"></i>
+                <span class="title">首页</span>
+                {if condition='$code=="index"'}
+                <span class="selected1"></span>
+                {/if}
+            </a>
+        </li>
+
+        <li class="">
+        
+            <a href="javascript:;">
+                <i class="分类管理"></i>
+                <span class="title">分类管理</span>
+                <span class=""></span>
+                <span class="arrow"></span>
+            </a>
+
+            <ul class="sub-menu">
+                 <li class="se">
+                   <a href="../Type/useragreement">用户协议编辑</a>
+                 </li>
+                 <li class="se">
+                   <a href="../Type/index">可编辑可修改</a>
+                 </li>
+                 <li class="se">
+                   <a href="../Type/number">可编辑只能修改数字</a>
+                 </li>
+             </ul>
+
+        </li>
+        <li class="">
+        
+            <a href="javascript:;">
+                <i class="icon-sitemap"></i>
+                <span class="title">更改后功能管理</span>
+                <span class=""></span>
+                <span class="arrow"></span>
+            </a>
+
+            <ul class="sub-menu">
+                 <li class="se">
+                   <a href="../Type/car_list">车辆信息</a>
+                 </li>
+                 <li class="se">
+                   <a href="../Type/che_list">顺路带货信息</a>
+                 </li>
+                 <li class="se">
+                   <a href="../Type/business_list">商家信息</a>
+                 </li>
+                 <li class="se">
+                   <a href="../Type/dating_list">交友信息</a>
+                 </li>
+                 <li class="se">
+                   <a href="../Type/secondhand_list">二手信息</a>
+                 </li>
+                 <li class="se">
+                   <a href="../Type/turntable">大转盘</a>
+                 </li>
+                 <li class="se">
+                   <a href="../job/index">招聘求职</a>
+                 </li>
+                 <li class="se">
+                   <a href="../estate/index">房产信息</a>
+                 </li>
+             </ul>
+
+        </li>
+
+        {volist name="menu" id="render"}
+        <li class="">
+            <a href="javascript:;">
+                <i class="{$render.menu_icon}"></i>
+                <span class="title">{$render.menu_name}</span>
+                <span class=""></span>
+                <span class="arrow"></span>
+            </a>
+
+            <ul class="sub-menu">
+                {volist name="render.list" id="render2"}
+                <li class="se">
+                    {if condition='$code==$render2.route'}
+                    <input class="selected" type="hidden" value="{$render2.route}"/>
+                    {/if}
+                    <a href="../{$render2.route}/index">
+                        {$render2.menu_name}</a>
+                </li>
+                {/volist}
+            </ul>
+        </li>
+        {/volist}
+
+    </ul>
+
+    <!-- END SIDEBAR MENU -->
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        var _this = $('.selected');
+        _this.parent().addClass('active');
+        _this.parent().parent().prev().children().eq(3).addClass('open');
+        _this.parent().parent().prev().children().eq(2).addClass('selected');
+        _this.parent().parent().parent().addClass('active');
+        $('.selected1').parent().parent().addClass('active');
+    })
+</script>

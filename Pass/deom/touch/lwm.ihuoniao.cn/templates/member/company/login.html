@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>商户登录-{#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/login.css?v=1" media="all" />
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', busiDomain = '{#$member_busiDomain#}';
+</script>
+</head>
+
+<body>
+<div class="head">
+	<div class="wrap fn-clear">
+		<div class="fn-left">
+			<a href="{#$member_busiDomain#}" target="_blank">商家</a>
+			<span class="spl">|</span>
+			<a href="{#$member_userDomain#}" target="_blank">个人</a>
+		</div>
+		<div class="fn-right">
+			<a href="{#$cfg_basehost#}" target="_blank">门户首页</a>
+			<span class="spl">|</span>
+			<a href="#" target="_blank">服务大厅</a>
+			<span class="spl">|</span>
+			<a href="#" target="_blank">提意见</a>
+			<span class="spl">|</span>
+			<a href="#" target="_blank">网站导航</a>
+		</div>
+	</div>
+</div>
+<div class="wrap top fn-clear">
+	<div class="logo">
+		<h1><a href="{#$cfg_basehost#}" target="_blank" title="{#$cfg_webname#}"><img src="{#$cfg_weblogo#}" alt="{#$cfg_webname#}" /></a></h1>
+		<span class="spl"></span>
+		<h2><a href="{#$member_busiDomain#}" title="商户登录">商户登录</a></h2>
+	</div>
+	<ul class="nav">
+		<li><a href="#">首 页</a></li>
+		<li><a href="#">产品服务</a></li>
+		<li><a href="#">商户入驻<s><i></i>入驻有惊喜</s></a></li>
+		<li><a href="#">合作案例</a></li>
+		<li><a href="#">如何签约</a></li>
+		<li><a href="#">开放平台</a></li>
+		<li><a href="#">联系客服</a></li>
+	</ul>
+</div>
+
+<!-- 大图幻灯 s -->
+<div class="banner">
+
+	<div class="wrap">
+		<div class="slide" id="slide">
+			{#myad id="114" type="slide"#}
+		</div>
+		<div id="slidebtn" class="slidebtn"></div>
+
+		<div class="logFrame">
+			<div class="login">
+				<h3>商户管理登录</h3>
+				<div class="err-tip fn-clear"><s></s><span>请输入登录用户名</span></div>
+				<dl class="username">
+					<dt><label for="username"><s></s></label></dt>
+					<dd><input type="text" class="login-input" name="username" id="username" autocomplete="off" /><span>邮箱/手机号/用户名</span></dd>
+				</dl>
+				<dl class="password">
+					<dt><label for="password"><s></s></label></dt>
+					<dd><input type="password" class="login-input" name="password" id="password" autocomplete="off" /><span>登录密码</span></dd>
+				</dl>
+				{#if $loginCode == 1#}
+				<dl class="vdimgck">
+					<dt><label for="vdimgck"><s></s></label></dt>
+					<dd><input type="text" class="login-input" name="vdimgck" id="vdimgck" maxlength="4" autocomplete="off" /><span>验证码</span><img src="/include/vdimgck.php" title="看不清？点击换一张" id="verifycode"></dd>
+				</dl>
+				{#/if#}
+				<input type="button" class="sbtn" id="submit" value="登录" />
+				<p><a href="{#$cfg_basehost#}/fpwd.html">忘记登录密码？</a></p>
+				<div class="qlogin">
+					{#siteConfig action="getLoginConnect"#}
+					<a href="{#$cfg_basehost#}/api/login.php?type={#$row.code#}" title="{#$row.name#}"><img src="/api/login/{#$row.code#}/img/24.png" /></a>
+				  {#/siteConfig#}
+				</div>
+			</div>
+			<div class="mbg"></div>
+		</div>
+
+	</div>
+</div>
+<!-- 大图幻灯 e -->
+
+<div class="wrap">
+	<h2 class="ptitle">{#$cfg_shortname#}的优势  多样性营销平台</h2>
+	<div class="mod-list fn-clear">
+		<dl><dt><img src="{#$templets_skin#}images/icon/website.gif" /></dt><dd><h4>在线DIy企业建站</h4><p>全新定义电脑+手机+微信网站,轻松简便,懒人建站神器</p></dd></dl>
+		<dl><dt><img src="{#$templets_skin#}images/icon/build.gif" /></dt><dd><h4>装修建材商城</h4><p>网络化与终端体验相集合的一站式无忧采购，价格透明,拒绝水分</p></dd></dl>
+		<dl><dt><img src="{#$templets_skin#}images/icon/dating.gif" /></dt><dd><h4>婚嫁摄影交友</h4><p>叙述有故事的浪漫,追求有灵魂的瞬间婚宴酒店预订、婚庆等服务</p></dd></dl>
+		<dl><dt><img src="{#$templets_skin#}images/icon/waimai.gif" /></dt><dd><h4>外卖订餐</h4><p>可通过PC端、手机端网上订外卖,足不出户,即可享受美食！</p></dd></dl>
+		<dl><dt><img src="{#$templets_skin#}images/icon/paper.gif" /></dt><dd><h4>电子报刊</h4><p>智能反解,功能强大，新型的媒报信息载体，轻松在线看报刊</p></dd></dl>
+		<dl><dt><img src="{#$templets_skin#}images/icon/car.gif" /></dt><dd><h4>选车、购车交易平台</h4><p>量身选爱车,全程购车服务,让购车更轻松! 让查、看、询、购一条龙服务</p></dd></dl>
+	</div>
+</div>
+
+<div class="footer">
+	<div class="wrap">
+		<p><a href="#" target="_blank">关于{#$cfg_shortname#}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" target="_blank">服务条款</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" target="_blank">广告服务</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" target="_blank">联系客服</a></p>
+		<p>Copyright &copy; {#$smarty.now|date_format:'%Y'#} {#$cfg_basehost|replace:"http://":""#} 版权所有 </p>
+	</div>
+</div>
+
+<span class="fn-hide" id="isLogin">{#$isLogin#}</span>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/login.js?v=1"></script>
+</body>
+</html>

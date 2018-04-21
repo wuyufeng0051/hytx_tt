@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{#$article_title#}</title>
+<meta name="keywords" content="{#$detail_keywords#}">
+<meta name="description" content="{#$detail_description#}">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/news.css?v=15">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', listid = {#$list_id#};
+</script>
+</head>
+
+<body>
+<header id="header">
+	<a class="person" href="{#$member_userDomain#}"></a>
+	<div class="btn_r">
+		<a href="" class="appdown"></a>
+		<a href="" class="emaildown"></a>
+	</div>
+	<div class="logo"><script src="/include/json.php?action=adjs&id=168" language="javascript"></script></div>
+</header>
+<div class="ad">
+	{#myad id="171"#}
+</div>
+<div class="main_content">
+	<nav class="nav">
+		<div class="navfixbox">
+			<div class="navbox clearfix">
+				<div id="nav">
+					<div class="clearfix" id="nav_list">
+						<div class="item" id="nav_item_0" data-id="0"><a href="javascript:;">推荐</a></div>
+						{#article action="type" return="type"#}
+						<div class="item" id="nav_item_{#$type.id#}" data-id="{#$type.id#}"><a href="javascript:;">{#$type.typename#}</a></div>
+						{#/article#}
+					</div>
+				</div>
+				<div class="btn_r"><a href="javascript:;" id="btn_toggle"></a></div>
+				<div class="bmline"></div>
+			</div>
+			<div class="sub_nav_pd"><div id="sub_navWrap"></div></div>
+		</div>
+	</nav>
+	<div class="clearfix" id="maincontent">
+		<div class="swrip-panel" id="chanel_0">
+			<div class="picscroll" id="picscroll">
+				<ul class="bd picscrollul">
+					{#myad id="172"#}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="footer">
+	<div class="copyright">©{#$smarty.now|date_format:"%Y"#}{#$cfg_shortname#}版权所有</div>
+</div>
+
+<div class="fixBtn">
+	<div id="backTop" class="btn"></div>
+</div>
+
+<!-- 弹出层 -->
+<div class="modal-msg modal">
+	<span class="txt"></span>
+</div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/common.js?v=15" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/slider.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/list.js?v=16" type="text/javascript"></script>
+</body>
+</html>

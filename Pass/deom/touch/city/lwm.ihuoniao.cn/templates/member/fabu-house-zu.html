@@ -1,0 +1,274 @@
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>小区名称：</dt>
+	<dd>
+		<input type="text" name="community" class="inp" id="community" size="40" maxlength="50" data-title="请优先选择下拉框中的小区" value="{#$detail_community#}" />
+		<a href="javascript:;" class="choBtn" id="chooseCommunity" title="选择系统提供的小区"><s></s></a>
+		<input type="hidden" name="communityid" id="communityid" value="{#$detail_communityid#}">
+		<span class="tip-inline"></span>
+		<br /><span id="communityAddr"></span>
+	</dd>
+</dl>
+<dl class="fn-clear community-addr{#if $detail_communityid == "" || $detail_communityid != 0#} fn-hide{#/if#}" data-required="1">
+	<dt><span>*</span>所在区域：</dt>
+	<dd id="selAddr">
+		<div class="sel-group" data-title="请选择小区所在区域">
+			<button type="button" class="sel">{#if $detail_addr#}{#$detail_addr[0]#} > {#$detail_addr[1]#}{#else#}请选择{#/if#}<span class="caret"></span></button>
+			<ul class="sel-menu">
+				{#house action="addr" return="addr"#}
+				<li><a href="javascript:;" data-id="{#$addr.id#}">{#$addr.typename#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+		<input type="hidden" name="addrid" id="addrid" value="{#$detail_addrid#}" />
+		<input type="text" name="address" class="inp" id="address" size="30" maxlength="50" data-title="请输入小区详细地址" value="{#$detail_address#}" />
+		<a href="javascript:;" class="getlnglat" id="getlnglat"><s></s>自动获取</a>
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>出租方式：</dt>
+	<dd>
+		<div class="radio rentype" data-title="请选择出租方式">
+			<span data-id="0"{#if $detail_rentype == "整租" || $detail_rentype == ""#} class="curr"{#/if#}>整租</span>
+			<span data-id="1"{#if $detail_rentype == "合租"#} class="curr"{#/if#}>合租</span>
+			<input type="hidden" name="rentype" id="rentype" value="{#if $detail_rentype == "合租"#}1{#else#}0{#/if#}" />
+		</div>
+		<div class="sel-group sharetype" style="margin-left:16px;{#if $detail_rentype != "合租"#} display:none;{#/if#}" data-title="请选择要出租的房间">
+			<button type="button" class="sel">{#if $detail_sharetype != ""#}{#$detail_sharetype#}{#else#}出租间{#/if#}<span class="caret"></span></button>
+			<ul class="sel-menu">
+				{#house action="item" return="item" type="7"#}
+				<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+		<input type="hidden" name="sharetype" id="sharetype" value="{#$detail_sharetypeid#}" />
+		<div class="sel-group sharesex" style="{#if $detail_rentype != "合租"#} display:none;{#/if#}" data-title="请选择男女限制">
+			<button type="button" class="sel">{#if $detail_sharesex == 0#}男女不限{#elseif $detail_sharesex == 1#}限男生{#elseif $detail_sharesex == 2#}限女生{#/if#}<span class="caret"></span></button>
+			<ul class="sel-menu">
+				<li><a href="javascript:;" data-id="0">男女不限</a></li>
+				<li><a href="javascript:;" data-id="1">限男生</a></li>
+				<li><a href="javascript:;" data-id="2">限女生</a></li>
+			</ul>
+		</div>
+		<input type="hidden" name="sharesex" id="sharesex" value="{#$detail_sharesex#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>租金：</dt>
+	<dd id="totalPrice">
+		<div class="input-append mr10">
+			<input id="price" name="price" type="text" size="6" maxlength="7" data-title="租金必须为数字型" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_price#}">
+			<span class="add-aft">元/月</span>
+		</div>
+		<div class="sel-group paytype" style="margin-top:-1px;" data-title="请选择租金压付方式">
+			<button type="button" class="sel">{#if $detail_paytype != ""#}{#$detail_paytype#}{#else#}租金压付方式{#/if#}<span class="caret"></span></button>
+			<ul class="sel-menu">
+				{#house action="item" return="item" type="5"#}
+				<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+		<input type="hidden" name="paytype" id="paytype" value="{#$detail_paytypeid#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear selectGroup" data-required="1">
+	<dt>户型：</dt>
+	<dd>
+		<div class="input-append mr10">
+			<select class="input-mini" type="text" name="room" id="room" data-val="{#$detail_room#}">
+        <option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select>
+			<span class="add-aft">室</span>
+		</div>
+		<div class="input-append mr10">
+			<select class="input-mini" type="text" name="hall" id="hall" data-val="{#$detail_hall#}">
+        <option value="0">0</option>
+        <option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select>
+			<span class="add-aft">厅</span>
+		</div>
+		<div class="input-append mr10">
+			<select class="input-mini" type="text" name="guard" id="guard" data-val="{#$detail_guard#}">
+        <option value="0">0</option>
+        <option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select>
+			<span class="add-aft">卫</span>
+		</div>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>参数：</dt>
+	<dd>
+		<div class="input-prepend input-append mr10">
+			<span class="add-bef">面积</span>
+			<input id="area" name="area" type="text" size="4" maxlength="7" data-title="面积必须为数字型" value="{#$detail_area#}">
+			<span class="add-aft">㎡</span>
+		</div>
+		<div class="input-prepend input-append mr10">
+			<span class="add-bef">第</span>
+			<input id="bno" name="bno" type="text" size="3" maxlength="3" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_bno#}">
+			<span class="add-aft">层</span>
+		</div>
+		<div class="input-prepend input-append mr10">
+			<span class="add-bef">共</span>
+			<input id="floor" name="floor" type="text" size="3" maxlength="3" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_floor#}">
+			<span class="add-aft">层</span>
+		</div>
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt>其它：</dt>
+	<dd>
+		<div class="sel-group" data-title="请选择物业类型">
+			<button type="button" class="sel">{#if $detail_protype != ""#}{#$detail_protype#}{#else#}物业类型{#/if#}<span class="caret"></span></button>
+			<ul class="sel-menu">
+				{#house action="item" return="item" type="1"#}
+				<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+		<input type="hidden" name="protype" id="protype" value="{#$detail_protypeid#}" />
+		<div class="sel-group" data-title="请选择装修情况">
+			<button type="button" class="sel">{#if $detail_zhuangxiu != ""#}{#$detail_zhuangxiu#}{#else#}装修情况{#/if#}<span class="caret"></span></button>
+			<ul class="sel-menu" id="selZhuangxiu">
+				{#house action="item" return="item" type="2"#}
+				<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+		<input type="hidden" name="zhuangxiu" id="zhuangxiu" value="{#$detail_zhuangxiuid#}" />
+		<div class="sel-group" data-title="请选房屋朝向">
+			<button type="button" class="sel">{#if $detail_direction != ""#}{#$detail_direction#}{#else#}房屋朝向{#/if#}<span class="caret"></span></button>
+			<ul class="sel-menu">
+				{#house action="item" return="item" type="4"#}
+				<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+		<input type="hidden" name="direction" id="direction" value="{#$detail_directionid#}" />
+		<div class="input-prepend input-append" style="margin-top:1px;">
+			<span class="add-bef">建筑年代</span>
+			<input id="buildage" name="buildage" type="text" size="4" maxlength="4" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_buildage#}">
+			<span class="add-aft">年</span>
+		</div>
+	</dd>
+</dl>
+<dl class="fn-clear">
+	<dt>特色：</dt>
+	<dd>
+		<div class="checkbox">
+			{#house action="item" return="item" type="6"#}
+			<label><input type="checkbox" name="config[]" value="{#$item.id#}"{#if $detail_config && in_array($item.typename, $detail_config)#} checked{#/if#}>{#$item.typename#}</label>
+			{#/house#}
+		</div>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>标题：</dt>
+	<dd>
+		<input type="text" name="title" class="inp" id="title" size="50" maxlength="50" data-title="请输入标题" value="{#$detail_title#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>代表图片：</dt>
+	<dd class="thumb fn-clear listImgBox fn-hide">
+		<div class="uploadinp filePicker thumbtn{#if $detail_litpic != ""#} fn-hide{#/if#}" id="filePicker1" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+		{#if $detail_litpic != ""#}
+		<ul id="listSection1" class="listSection thumblist fn-clear" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$detail_litpic#}' target="_blank" title=""><img alt="" src="{#changeFileSize url="$detail_litpic" type="small"#}" data-val="{#$detail_litpicSource#}"/></a><a class="reupload li-rm" href="javascript:;">删除图片</a></li></ul>
+		{#else#}
+		<ul id="listSection1" class="listSection thumblist fn-clear"></ul>
+		{#/if#}
+		<input type="hidden" name="litpic" value="{#$detail_litpicSource#}" class="imglist-hidden" id="litpic">
+	</dd>
+</dl>
+<dl class="fn-clear">
+	<dt>描述：</dt>
+	<dd>
+		<script id="note" name="note" type="text/plain" style="width:750px;height:300px">{#$detail_note#}</script>
+	</dd>
+</dl>
+<dl class="fn-clear">
+	<dt>图集：</dt>
+	<dd class="listImgBox fn-hide">
+		<div class="list-holder">
+			<ul id="listSection2" class="fn-clear listSection fn-hide"{#if $detail_imglist#} style="display: block;"{#/if#}>
+				{#foreach from=$detail_imglist key=k item=i#}
+				<li class="fn-clear" id="WU_FILE_1_{#$k#}">
+					<span class="li-move" title="拖动调整图片顺序">↕</span>
+					<a class="li-rm" href="javascript:;">×</a>
+					<div class="li-thumb" style="display: block;">
+						<div class="r-progress"><s></s></div>
+						<span class="ibtn">
+							<a href="javascript:;" class="Lrotate" title="逆时针旋转90度"></a>
+							<a href="javascript:;" class="Rrotate" title="顺时针旋转90度"></a>
+							<a href="{#$i.path#}" target="_blank" class="enlarge" title="放大"></a>
+						</span>
+						<span class="ibg"></span>
+						<img data-val="{#$i.pathSource#}" data-url="{#changeFileSize url="{#$i.path#}" type="small"#}" src="{#changeFileSize url="{#$i.path#}" type="small"#}" />
+					</div>
+					<textarea class="li-desc" placeholder="请输入图片描述" style="display: inline-block;">{#$i.info#}</textarea>
+				</li>
+				{#/foreach#}
+			</ul>
+			<input type="hidden" name="imglist" value="" class="imglist-hidden">
+		</div>
+		<div class="btn-section fn-clear">
+			<div class="uploadinp filePicker" id="filePicker2" data-type="desc" data-count="{#$atlasMax#}" data-size="{#$atlasSize#}" data-imglist=""><div id="flasHolder"></div><span>添加图片</span></div>
+			<div class="upload-tip">
+				<p><a href="javascript:;" class="fn-hide deleteAllAtlas"{#if $detail_imglist#} style="display: inline-block;"{#/if#}>删除所有</a>&nbsp;&nbsp;单张最大2M，最多{#$atlasMax#}张 <span class="fileerror"></span></p>
+			</div>
+		</div>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>联系人：</dt>
+	<dd>
+		<input type="text" name="person" class="inp" id="person" size="20" data-title="请输入联系人" value="{#if $detail_username != ""#}{#$detail_username#}{#else#}{#$userinfo.nickname#}{#/if#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>手机号码：</dt>
+	<dd>
+		<input type="text" name="tel" class="inp" id="tel" size="20" data-title="请输入手机号码" onkeyup="value=value.replace(/\D+/ig,'')" value="{#if $detail_contact != ""#}{#$detail_contact#}{#else#}{#$userinfo.phone#}{#/if#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+
+<script>
+	var map_city = '{#$cfg_mapCity#}';
+</script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8Fr4D4DMfOpwcwmwtOomfrEh"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.coord.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.autocomplete.min.js"></script>

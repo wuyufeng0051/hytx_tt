@@ -1,0 +1,70 @@
+/* 右侧在线客服 */
+.tran {-webkit-transition:all .3s;transition:all .3s;}
+.right_kf {position: fixed; left:100%; top:25%; margin-left: -57px; z-index: 2000;}
+.right_kf.open {margin-left: -170px;}
+
+.right_kf , .right_kf a {color: #fff;}
+.right_kf .closebox {height: 20px;margin-bottom: 10px;}
+.right_kf ul .item {position: relative;width: 244px;/*height: 55px;line-height: 55px;*/margin-bottom: 5px;margin-left: 0;border-top-left-radius: 28px;border-bottom-left-radius: 28px;}
+.right_kf ul .item.hover {margin-left: -10px;}
+.right_kf ul .item.kf_online {background: #02abf0;}
+.right_kf ul .item.kf_qq1 {background: #6eaaff;}
+.right_kf ul .item.kf_qq2 {background: #6eaaff;}
+.right_kf ul .item.kf_qq3 {background: #6ea9fc;}
+.right_kf ul .item.kf_qqq {background: #6ea9fc;}
+.right_kf ul .item.kf_tel {background: #edc835;}
+.right_kf ul .item.kf_workt {background: #fe6800;}
+.right_kf ul .item.kf_wx {background: #60bf14;}
+.right_kf ul .item i {display: inline-block;width: 48px;height: 48px;margin: 4px 8px 0 8px;}
+.right_kf ul .item a {display: block;}
+
+.right_kf .kf_online i {background-color: #02abf0;background-position: -51px 0;}
+.right_kf .kf_qq1 i {background-color: #6eaaff;background-position: -51px -48px;}
+.right_kf .kf_qq2 i {background-color: #6eaaff;background-position: 0 0;}
+.right_kf .kf_qq3 i {background-color: #6ea9fc;background-position: -51px -96px;}
+.right_kf .kf_qqq i {background-color: #6ea9fc;background-position: -92px -46px;}
+.right_kf .kf_tel i {background-color: #edc835;background-position: 0 -48px;}
+.right_kf .kf_workt i {background-color: #fe6800;background-position: 0 -96px;}
+.right_kf .kf_wx i {background-color: #60bf14;background-position: 0 -144px;}
+
+.right_kf li ul {height: 40px;padding:8px 0;overflow: hidden;}
+.right_kf li ul li {font-size: 12px;line-height: 20px;}
+
+.right_kf .close {position: absolute; right: 80px; top: -25px; display: inline-block; background-position: 0 -192px; height: 20px; width: 20px; border-radius: 50%; -webkit-border-radius: 50%;transition: transform .5s;}
+.right_kf .close:hover {-webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -ms-transform: rotate(180deg); -o-transform: rotate(180deg); transform: rotate(180deg);}
+.right_kf ul .item i {float: left;border-radius:50%;}
+.right_kf ul .item i ,.right_kf .close ,.kf_firstshow .kf_icon ,.right_kf em.go {background-image: url(../images/i.png?v=1);}
+
+/* 第一次打开页面 第三版 */
+.right_kf.kf_big {left: 50%; margin-left: -375px; width: 750px; height: 300px; background: url(../images/bg.png) left center no-repeat #fff; border-radius: 3px;}
+.right_kf.kf_big p ,.right_kf.kf_big li {font-size: 14px;line-height: 24px;}
+.right_kf.kf_big .s_in {margin-left: 390px; padding-top: 5px;}
+.right_kf.kf_big .item {margin-top: 22px; margin-left: 68px; width: 160px; height: 20px;line-height: 20px; padding: 10px 0 10px 20px; border-radius: 2px; -webkit-border-radius: 2px;}
+.right_kf.kf_big li ul {height: auto;padding:0;}
+.right_kf.kf_big li.item {height: auto;}
+.right_kf.kf_big li.kf_tel {padding:6px 0 6px 20px;}
+.right_kf.kf_big .kf_tel {height: 40px;}
+.right_kf.kf_big .kf_tel .tel {padding:0;}
+.right_kf.kf_big .c-hide ,.right_kf .c-show {display: none;}
+.right_kf.kf_big .c-show {display: block;}
+
+.right_kf.kf_big .item i {position: absolute;left: -68px;top:50%;margin-top: -24px;}
+.right_kf.kf_big .close {width: 15px;height: 15px;top: 5px; right: 5px;background-position: -66px -150px;}
+.right_kf.kf_big i s {position: absolute; top: 50%; right: -12px; margin-top: -6px; border-top: 6px dashed transparent; border-bottom: 6px dashed transparent;}
+.right_kf.kf_big .kf_online i s {border-right: 6px solid #6ea9fc;}
+.right_kf.kf_big .kf_tel i s {border-right: 6px solid #edc835;}
+.right_kf.kf_big .kf_workt i s {border-right: 6px solid #fe6800;}
+.right_kf.kf_big .tel li {list-style:disc inside;}
+.right_kf .c-title {padding:22px 0 5px;font-size: 14px;color: #000;line-height: 30px;}
+.right_kf em.go {display: inline-block;width: 15px;height: 15px;background-position: 0 -213px;vertical-align: middle;margin:-4px 0 0 25px;}
+
+/* 二维码弹窗 */
+.emwbox {z-index: 2002; display: none; position: fixed; top: 20%; left: 50%; margin-left: -130px; width: 260px; opacity: 0; padding: 10px 0; border-radius: 2px;background: #fff;text-align: center;}
+.emwbox img {width: 224px;height: 224px;margin-bottom: 5px;}
+
+.emwbox p {font-size: 14px;color: #333;}
+
+
+/* 在线沟通工具 */
+body {background: #fff;}
+#newBridge ,.lim_float_icon {z-index:-1000 !important;right: 50px !important;}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$detail_title#}外卖_{#$detail_title#}电话_{#$detail_title#}网上订餐_{#$detail_title#}菜单 - {#$waimai_title#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/sj-detail.css?v=11">
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$waimai_channelDomain#}';
+	var hideFileUrl = {#$cfg_hideUrl#};
+
+	var id = {#$detail_id#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+	var startMon = {#$detail_price#};  //起送费
+</script>
+</head>
+
+<body>
+
+<div class="head">
+	<div class="shop-info">
+		<div class="shop-info-img l"><a href="javascript:;"><img src="{#$detail_logo#}" alt="{#$detail_title#}"></a></div>
+		<div class="shop-txt">
+			<h3>{#$detail_title#}</h3>
+			<p>
+				{#if $detail_yy#}
+				{#if $detail_sale#}
+				<a href="javascript:;" class="shop-annouce">
+					<i><img src="{#$templets_skin#}images/rec.png" alt=""></i>
+					{#foreach from=$detail_sale item=sale#}
+					<span>满{#$sale[0]#}减{#$sale[1]#}元</span>
+					{#/foreach#}
+				</a>
+				{#/if#}
+				{#else#}
+				<span class="shop-txt-annouce">休息中，暂不营业！</span>
+				{#/if#}
+				<span class="shop-txt-store r{#if $detail_collect#} shou{#/if#}">{#if $detail_collect#}已{#/if#}收藏</span>
+			</p>
+		</div>
+	</div>
+	<div class="bg"></div>
+</div>
+<!-- 头部 end -->
+
+<!-- 点菜 -->
+<div class="content-box{#if $detail_yy == 1#} isyy{#/if#}">
+	<div class="menu-tab">
+		<ul>
+			<li class="active"><a href="javascript:;">点菜</a></li>
+			<!-- <li><a href="javascript:;">评价</a></li> -->
+			<li class="seller"><a href="javascript:;">商家</a></li>
+		</ul>
+	</div>
+	<div class="menu-info">
+		<div class="menu-con fn-clear">
+			<div class="menu-select-left l" id="menu-left">
+				<ul>
+					{#waimai action='menuType' return='menuType' store={#$detail_id#}#}
+					<li><a href="javascript:;">{#$menuType.typename#}</a></li>
+					{#/waimai#}
+				</ul>
+			</div>
+			<!-- <div class="h8"> -->
+				<div class="menu-select-right l" id="menu-right">
+					<div class="menu-box">
+						{#waimai action='menuType' return='menuType' store={#$detail_id#}#}
+						<div class="menu-select-box">
+							<div class="menu-select-tit"><span>{#$menuType.typename#}</span></div>
+							<div class="menu-select-con">
+								<ul>
+									{#waimai action='menu' return='menu' store={#$detail_id#} typeid={#$menuType.id#}#}
+									<li data-id="{#$menu.id#}">
+										{#if $menu.pics[0]#}
+										<div class="menu-select-img l"><img src="{#$menu.pics[0]#}" alt=""></div>
+										{#/if#}
+										<div class="menu-select-txt">
+											<h3>{#$menu.title#}</h3>
+											<p class="sale-num"><span>{#$menu.note#}</span></p>
+											<p>
+												<span class="sale-price">￥{#$menu.price#}</span>
+												{#if $detail_yy == 1#}
+												<span class="r"><span class="dn"><em class="num-rec">－</em><em class="num-account">0</em></span><em class="num-add">+</em></span>
+												{#/if#}
+											</p>
+										</div>
+										<div class="clear"></div>
+									</li>
+									{#/waimai#}
+								</ul>
+							</div>
+						</div>
+						{#/waimai#}
+					</div>
+				</div>
+			<!-- </div> -->
+
+		</div>
+		{#*<div class="menu-con menu-comment" id="menu-comment">
+			<div class="comment">
+				<div class="comment-tit">
+					<div class="comment-tit-l l">
+						<h1>4.8</h1>
+						<h2>综合评价</h2>
+						<p>商家好评率80%</p>
+					</div>
+					<div class="comment-tit-r l">
+						<div class="l comment-star-top">
+							<span class="l">配送评分</span>
+							<div class="judge-box">
+								<div class="judge-star l">
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+								</div>
+								<span class="sale-time r">4.9</span>
+								<div class="clear"></div>
+							</div>
+						</div>
+						<div class="l comment-star-bottom">
+							<span class="l">商家评分</span>
+							<div class="judge-box">
+								<div class="judge-star l">
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+								</div>
+								<span class="sale-time r">4.9</span>
+								<div class="clear"></div>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="comment-con">
+					<div class="comment-box">
+						<div class="comment-list">
+							<div class="comment-user">
+								<img src="{#$templets_skin#}upfile/user1.jpg" alt="">
+							</div>
+							<div class="comment-info">
+								<h3>qya182235522<em>2016.08.19</em></h3>
+								<div class="judge-box">
+									<div class="judge-star l">
+										<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+										<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+										<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+										<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+										<em><img src="{#$templets_skin#}images/star2.png" alt=""></em>
+									</div>
+									<span class="sale-time">42分钟送达</span>
+									<div class="clear"></div>
+								</div>
+								<div class="comment-txt">
+									分量少  但是挺好吃的
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>*#}
+		<div class="menu-con menu-seller">
+			<div class="seller-box">
+				<ul>
+					<li><a href="tel:{#$detail_tel#}"><i><img src="{#$templets_skin#}images/phone.png" alt=""></i><span>{#$detail_tel#}</span><em></em></a></li>
+					<li><a href="http://map.baidu.com/?newmap=1&s=con%26wd%3D{#$detail_addrName[0]#} {#$detail_addrName[1]#} {#$detail_address#}%26c%3D224&from=alamap" target="_blank"><i><img src="{#$templets_skin#}images/map.png" alt=""></i><span>{#$detail_addrName[0]#} {#$detail_addrName[1]#} {#$detail_address#}</span><em></em></a></li>
+					<li><i><img src="{#$templets_skin#}images/time.png" alt=""></i><span>配送时间：{#$detail_start1#}-{#$detail_end1#}{#if $detail_start2#} {#$detail_start2#}-{#$detail_end2#}{#/if#}</span></li>
+					{#*<li><a href="#"><i><img src="{#$templets_skin#}images/pic.png" alt=""></i><span>商家环境</span><em></em></a></li>
+					<li><i><img src="{#$templets_skin#}images/file.png" alt=""></i><span>配送服务：由商家提供配送服务</span></li>*#}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 点菜 end -->
+
+
+{#if $detail_yy == 1#}
+<div class="menu-select-bottom">
+	<div class="bottom-box">
+		<a href="javascript:;" class="cart l"><i>0</i></a>
+		<div class="account">
+			<span>共<em>￥0.00</em></span>
+			{#if $detail_peisong#}<span>另需配送费￥{#$detail_peisong#}</span>{#/if#}
+			<span class="starting r"><a data-href="{#getUrlPath service='waimai' template='confirm' param="id={#$detail_id#}"#}" class="grey">差<em>￥{#$detail_price#}</em>起送</a></span>
+		</div>
+		<div class="cart-box"><div class="title"><a href="javascript:;" class="right">[清空]</a></div></div>
+	</div>
+</div>
+{#/if#}
+<div class="mask"></div>
+<div class="infor-box">
+	<div class="infor"></div>
+	<div class="infor-msg">
+		<div class="shop-name">
+			<h3>{#$detail_title#}</h3>
+			<div class="judge-info">
+				<em>起送价￥{#$detail_price#}</em><i>|</i>
+				<em>配送费￥{#$detail_peisong#}</em><i>|</i>
+				<em>{#$detail_times#}分钟</em>
+			</div>
+		</div>
+		{#if $detail_notice#}
+		<div class="shop-msg">
+			<div class="infor-tit"><div class="line"></div><em>商家公告</em><div class="line"></div></div>
+			<div class="p-info">
+				<p>{#$detail_notice#}</p>
+			</div>
+		</div>
+		{#/if#}
+		<div class="shut"><span><img src="{#$templets_skin#}images/cha.png" alt=""></span></div>
+	</div>
+</div>
+
+<script src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.fly.min.js"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script src="{#$templets_skin#}js/sj-detail.js?v=31"></script>
+<script src="{#$templets_skin#}js/sj-detail1.js?v=11"></script>
+</body>
+</html>

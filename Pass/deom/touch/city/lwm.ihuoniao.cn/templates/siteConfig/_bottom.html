@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="{#$cfg_basehost#}/templates/siteConfig/touch/default/css/touch_common_bottom.css">
+
+<div class="btmMenu">
+	<ul class="bnav">
+		<li{#if $service == "siteConfig"#} class="active"{#/if#}>
+			<a href="{#$cfg_basehost#}">
+				<i class="iconnav bicon-1"></i>
+				<span>首页</span>
+			</a>
+		</li>
+		<li>
+			<a href="{#$member_userDomain#}">
+				<i class="iconnav bicon-2"><em>0</em></i>
+				<span>消息</span>
+			</a>
+		</li>
+		<li id="fabubtn">
+			<a href="javascript:;">
+				<i class="quan1"><em class="quan2"></em></i>
+				<span>发布</span>
+			</a>
+		</li>
+		<li>
+			<a href="{#$member_userDomain#}">
+				<i class="iconnav bicon-3"></i>
+				<span>购物车</span>
+			</a>
+		</li>
+		<li{#if $service == "member"#} class="active"{#/if#}>
+			<a href="{#$member_userDomain#}">
+				<i class="iconnav bicon-4"></i>
+				<span>我的</span>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<div class="fabuBox">
+  <div class="fabu">
+    <ul class="clearfix">
+      <li class="t1">
+				<a href="{#getUrlPath service='tieba' template='fabu'#}"><img src="{#$cfg_basehost#}/templates/siteConfig/touch/default/images/fabu_btn_1.png" alt=""></a>
+				<p>发布帖子</p>
+			</li>
+      <li class="t2">
+				<a href="{#getUrlPath service='member' type='user' template='fabu-article'#}"><img src="{#$cfg_basehost#}/templates/siteConfig/touch/default/images/fabu_btn_2.png" alt=""></a>
+				<p>新闻投稿</p>
+			</li>
+      <li class="t3">
+				<a href="{#getUrlPath service='member' type='user' template='fabu-info'#}"><img src="{#$cfg_basehost#}/templates/siteConfig/touch/default/images/fabu_btn_3.png" alt=""></a>
+				<p>发布二手信息</p>
+			</li>
+      <li class="t4">
+				<a href="{#getUrlPath service='member' type='user' template='fabu-house-sale'#}"><img src="{#$cfg_basehost#}/templates/siteConfig/touch/default/images/fabu_btn_4.png" alt=""></a>
+				<p>发布二手房</p>
+			</li>
+      <li class="t5">
+				<a href="{#getUrlPath service='member' type='user' template='fabu-house-zu'#}"><img src="{#$cfg_basehost#}/templates/siteConfig/touch/default/images/fabu_btn_5.png" alt=""></a>
+				<p>发布出租房</p>
+			</li>
+      <li class="t6">
+				<a href="{#getUrlPath service='member' type='user' template='fabu-house-xzl'#}"><img src="{#$cfg_basehost#}/templates/siteConfig/touch/default/images/fabu_btn_6.png" alt=""></a>
+				<p>发布写字楼</p>
+			</li>
+      <li class="t7">
+				<a href="{#getUrlPath service='member' type='user' template='fabu-house-sp'#}"><img src="{#$cfg_basehost#}/templates/siteConfig/touch/default/images/fabu_btn_7.png" alt=""></a>
+				<p>发布商铺</p>
+			</li>
+      <li class="t8">
+				<a href="{#getUrlPath service='member' type='user' template='fabu-house-cf'#}"><img src="{#$cfg_basehost#}/templates/siteConfig/touch/default/images/fabu_btn_8.png" alt=""></a>
+				<p>发布厂房、仓库</p>
+			</li>
+      <li class="t9">
+				<a href="{#getUrlPath service='member' type='user' template='fabu-resume'#}"><img src="{#$cfg_basehost#}/templates/siteConfig/touch/default/images/fabu_btn_9.png" alt=""></a>
+				<p>发布简历</p>
+			</li>
+    </ul>
+    <div class="cancel"></div>
+  </div>
+  <div class="bg"></div>
+</div>
+
+<script type="text/javascript" src="{#$cfg_basehost#}/templates/siteConfig/touch/default/js/touch_common_bottom.js"></script>

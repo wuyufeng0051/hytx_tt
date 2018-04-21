@@ -1,0 +1,135 @@
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/profile.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/psw.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/security-chemail.css?v=2" media="all" />
+
+  {#$pageTitle = "安全保护问题"#}
+  {#include file="top.html"#}
+
+  {#if $userinfo.question != 1#}
+
+  <div class="editForm" name="editForm">
+		<div class="edit-tip"><s></s><p>安全保护问题将作为您唯一的，通用的身份校验，请认真设置！<br />遗忘支付密码时，可以通过安全问题找回。</p></div>
+    <dl class="inpbox">
+      <dt><span>选择问题：</span></dt>
+      <dd class="sel-group">
+      	<em>我</em>
+      		<select class="q1">
+      			<option value="请选择">请选择</option>
+      			<option value="爸爸">爸爸</option>
+      			<option value="妈妈">妈妈</option>
+      			<option value="丈夫">丈夫</option>
+      			<option value="妻子">妻子</option>
+      			<option value="外公">外公</option>
+      			<option value="外婆">外婆</option>
+      			<option value="爷爷">爷爷</option>
+      			<option value="奶奶">奶奶</option>
+      			<option value="儿子">儿子</option>
+      			<option value="女儿">女儿</option>
+      			<option value="小学老师">小学老师</option>
+      			<option value="中学老师">中学老师</option>
+      			<option value="大学老师">大学老师</option>
+      		</select>
+      	<input type="hidden" id="q1" name="q1" />
+      	<em>的</em>
+      		<select class="q2">
+      			<option value="请选择">请选择</option>
+      			<option value="姓名">姓名</option>
+      			<option value="生日">生日</option>
+      			<option value="出生地">出生地</option>
+      		</select>
+      	<input type="hidden" id="q2" name="q2" />
+      </dd>
+    </dl>
+    <dl class="inpbox">
+      <dt><span>输入答案：</span></dt>
+      <dd><input type="text" id="answer" name="answer" placeholder="请输入您的密保答案" autocomplete="off" /></dd>
+    </dl>
+    <div class="submit">
+      <a href="javascript:;" id="question">确定提交</a>
+    </div>
+  </div>
+
+  {#else#}
+
+  <div class="tab">
+    <ul>
+      <li class="curr">修改</li>
+      <li>重置</li>
+    </ul>
+  </div>
+
+  <div class="main">
+
+    <div class="editForm paypwd" name="editForm">
+
+      <div class="edit-tip"><p>您接下来的操作涉及帐户安全，请先进行身份验证！</p></div>
+      <div class="authenticated">
+        <dl class="inpbox">
+          <dt><span>选择验证方式</span></dt>
+          <select class="w100 checkway" name="">
+            <option value="">请选择验证方式</option>
+            {#if $userinfo.phoneCheck == 1#}<option value="0">通过短信验证</option>{#/if#}
+            {#if $userinfo.emailCheck == 1#}<option value="1">通过邮箱验证</option>{#/if#}
+            {#if $userinfo.question == 1#}<option value="2">通过安全保护问题验证</option>{#/if#}
+          </select>
+        </dl>
+      </div>
+      <div class="authlist">
+        {#if $userinfo.phoneCheck == 1#}
+        <div class="item item0">
+          <dl class="inpbox">
+            <dt><span>手机号码：</span></dt>
+            <dd class="phoneNumber">{#$userinfo.phoneEncrypt#}</dd>
+          </dl>
+          <dl class="inpbox">
+            <dt><span>验证码：</span></dt>
+            <dd><input type="text" class="vdimgck" id="vdimgck" name="vdimgck" placeholder="6位数字" autocomplete="off" maxlength="6" onkeyup="value=value.replace(/\D+/ig,'')" /><a href="javascript:;" class="verifybtn" id="getPhoneAuthVerify">获取短信验证码</a></dd>
+          </dl>
+        </div>
+        {#/if#}
+        {#if $userinfo.emailCheck == 1#}
+        <div class="item item1">
+          <dl class="inpbox">
+            <dt><span>邮箱地址：</span></dt>
+            <dd>{#$userinfo.emailEncrypt#}</dd>
+          </dl>
+          <dl class="inpbox">
+            <dt><span>验证码：</span></dt>
+            <dd><input type="text" class="vdimgck" id="vdimgckEmail" name="vdimgck" placeholder="6位数字" autocomplete="off" maxlength="6" onkeyup="value=value.replace(/\D+/ig,'')" /><a href="javascript:;" class="verifybtn" id="getEmailAuthVerify">获取邮箱验证码</a></dd>
+          </dl>
+        </div>
+        {#/if#}
+        {#if $userinfo.question == 1#}
+        <div class="item item2">
+          <dl class="inpbox">
+            <dt><span>问题：</span></dt>
+            <dd class="sel-group">
+              <em>您{#$question1#}的{#$question2#}是？</em>
+            </dd>
+          </dl>
+          <dl class="inpbox">
+            <dt><span>答案：</span></dt>
+            <dd><input type="text" class="answer" id="answer" name="answer" placeholder="请输入您的密保答案" autocomplete="off" /></dd>
+          </dl>
+        </div>
+        {#/if#}
+      </div>
+      <div class="submit">
+          <a href="javascript:;" class="nextStep" id="chQuestionEdit">下一步</a>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  {#/if#}
+
+
+
+  <div class="error"></div>
+
+
+
+<script type="text/javascript" src="{#$templets_skin#}js/security-chphone.js?v=5"></script>

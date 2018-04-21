@@ -1,0 +1,220 @@
+<!-- #include file="_head.shtml"--> 
+
+
+
+
+
+<link href="/Js/Validform/css/style.css" rel="stylesheet" />
+<link href="/css/HN_button.css" rel="stylesheet" />
+<script src="/Js/Validform/js/Validform_v5.3.2.js"></script>
+<script src="js/WdatePicker.js"></script>
+<script src="js/HN_load.js"></script>
+
+
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+        $("form").Validform({
+            tiptype: 3,
+            postonce: true,
+            usePlugin: {
+                passwordstrength: {
+                    minLen: 6,
+                    maxLen: 18
+                }
+            }
+        });
+    })
+</script>
+
+<form action="" enctype="" id="" method="post">
+  <!--右边内容区-->
+  <div class="rBox">
+    <div class="local">
+      <a href="#">首页</a>&gt;
+      <span>托管服务</span>&gt;
+      <a href="#">我的专利</a>&gt;
+      <span>专利添加</span></div>
+    <div class="box1 formEdit">
+      <div class="title">
+        <h3>专利信息</h3></div>
+      <div class="adminEdit rBgDiv">
+        <div class="box">
+          <input id="PatentID" name="PatentID" type="hidden" value="">
+          <dl>
+            <dt>
+              <em>*</em>申请号：</dt>
+            <dd>
+              <input autocomplete="off" datatype="/^[0-9a-zA-Z\.]+$/" errormsg="申请号格式不正确" id="ApplyCode" name="ApplyCode" nullmsg="不能为空" type="text" value="">
+              <a id="autoBtn" name="autoBtn" href="#">补全</a>
+              <span class="Validform_checktip">输入正确申请号和专利类型点击按钮自动补全信息</span></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>专利类别：</dt>
+            <dd>
+              <select autocomplete="off" datatype="*" id="PatentType" name="PatentType" nullmsg="没有选择">
+                <option value="">请选择</option>
+                <option value="Invention">发明</option>
+                <option value="UtilityModel">实用新型</option>
+                <option value="AppearanceDesign">外观设计</option></select>
+              <span class="Validform_checktip"></span>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>行业类别：</dt>
+            <dd>
+              <select autocomplete="off" datatype="*" id="TradeType" name="TradeType" nullmsg="没有选择">
+                <option value="">请选择</option>
+                <option value="BiologicalMedicine">生物医药</option>
+                <option value="Internet">互联网及移动互联网</option>
+                <option value="Energy">新能源与节能环保</option>
+                <option value="NewMaterial">新材料</option>
+                <option value="AdvancedManufacturing">先进制造</option>
+                <option value="ElectronicInformation">电子信息</option></select>
+              <span class="Validform_checktip"></span>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>申请日期：</dt>
+            <dd>
+              <input autocomplete="off" class="Wdate" data-val="true" data-val-date="字段 ApplyTime 必须是日期。" datatype="*" id="ApplyTime" name="ApplyTime" nullmsg="不能为空" onclick="WdatePicker()" type="text" value="">
+              <span class="Validform_checktip"></span>
+            </dd>
+          </dl>
+          <dl>
+            <dt>公开日期：</dt>
+            <dd>
+              <input autocomplete="off" class="Wdate" data-val="true" data-val-date="字段 PublicTime 必须是日期。" id="PublicTime" name="PublicTime" onclick="WdatePicker()" type="text" value=""></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>专利名称：</dt>
+            <dd>
+              <input autocomplete="off" datatype="*" id="PatentName" name="PatentName" nullmsg="不能为空" style="width:450px" type="text" value="">
+              <span class="Validform_checktip"></span>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>发明人：</dt>
+            <dd>
+              <input autocomplete="off" datatype="*" id="Inventor" name="Inventor" nullmsg="不能为空" type="text" value="">
+              <span class="Validform_checktip"></span>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>法律状态：</dt>
+            <dd>
+              <select autocomplete="off" datatype="*" id="PatentState" name="PatentState" nullmsg="没有选择">
+                <option value="">请选择</option>
+                <option value="Investigate">审查</option>
+                <option value="Authorize">授权</option>
+                <option value="Invalid">无效</option>
+                <option value="Finish">终止</option>
+                <option value="Apply">申请</option>
+                <option value="Question">质押</option>
+                <option value="Review">复审</option></select>
+              <span class="Validform_checktip"></span>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>申请人：</dt>
+            <dd>
+              <input autocomplete="off" datatype="*" id="Applicant" name="Applicant" nullmsg="不能为空" type="text" value="">
+              <span class="Validform_checktip"></span>
+            </dd>
+          </dl>
+          <dl>
+            <dt>公开号：</dt>
+            <dd>
+              <input autocomplete="off" id="PublicCode" name="PublicCode" type="text" value=""></dd>
+          </dl>
+          <dl>
+            <dt>主分类号：</dt>
+            <dd>
+              <textarea autocomplete="off" cols="20" id="MainTypeCode" name="MainTypeCode" rows="2"></textarea>
+              <span class="Validform_checktip">每一个主分类号换一行</span></dd>
+          </dl>
+          <dl>
+            <dt>摘要：</dt>
+            <dd>
+              <textarea autocomplete="off" cols="20" id="Abstracts" name="Abstracts" rows="2"></textarea>
+            </dd>
+          </dl>
+          <dl>
+            <dt>优先权号：</dt>
+            <dd>
+              <input autocomplete="off" id="PriorityCode" name="PriorityCode" type="text" value=""></dd>
+          </dl>
+          <dl>
+            <dt>优先权日：</dt>
+            <dd>
+              <input autocomplete="off" class="Wdate" data-val="true" data-val-date="字段 PriorityTime 必须是日期。" id="PriorityTime" name="PriorityTime" onclick="WdatePicker()" type="text" value=""></dd>
+          </dl>
+          <dl>
+            <dt>上传图片：</dt>
+            <dd>
+      				<div id="filePicker1" class="webuploader-container filePicker" data-id="1">
+      					<div class="webuploader-pick">
+                  <div class="btn">上传</div>
+                  <input type="file" name="filePicker2" id="load" class="load">
+                </div>
+      				</div>
+      				<div id="pic_box">
+                <div class="swiper-slide" ><div class="thumbnail"><img></div><div class="file-panel"><span class="del"></span></div></div>
+      					<p>(最大上传附件大小为10M，允许上传的文件格式有：*.png;*.jpg;*.gif;)</p>
+      				</div>
+            </dd>
+          </dl>
+          <dl>
+            <dt>上传附图：</dt>
+            <dd>
+      				<div id="filePicker2" class="webuploader-container " data-id="2">
+      					<div class="webuploader-pick">
+                  <div class="btn">上传</div>
+                  <input type="file"   name="filePicker2" id="load1" class="load1">
+                </div>
+      				</div>
+      				<div id="pic_box_1">
+                <div class="desc-box" ><div class="thumbnail"><img></div><div class="file-panel"><span class="cancel"></span></div></div>
+      					<p>(最大上传附件大小为10M，允许上传的文件格式有：*.png;*.jpg;*.gif;)</p>
+      				</div>
+            </dd>
+          </dl>
+          <dl>
+            <dt>上传附件：</dt>
+            <dd>
+                <div class="webuploader-pick">
+                  <div class="btn">上传</div>
+                  <input type="file" class="load3">
+                </div>
+                <div class="pic_box_2">
+                  <img src="images/wenjian.png" alt="">
+                  <p>wenjian.opng</p>
+                  <em></em>
+                </div>
+                <div class="warning">多个文件请打包上传。<br>(允许上传的文件格式有：*.zip;*.doc;*.docx;*.xls;*.xlsx;*.pdf;)</div>
+            </dd>
+          </dl>
+	      <div class="btnBox">
+            <input value="提交" class="btn" type="submit">
+            <input value="返回" class="btn return" type="button" onclick="javascript: history.go(-1)">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+
+<!--#include file="_foot.shtml"-->

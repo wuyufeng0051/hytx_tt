@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var videoSize = {#$videoSize#}, videoType = "{#$videoType#}",
+	adminPath = "{#$adminPath#}", modelType = 'marry';
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="action" id="action" value="{#$action#}" />
+  <input type="hidden" name="cid" id="cid" value="{#$cid#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label for="title">视频名称：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="title" id="title" value="{#$title#}" maxlength="60" data-regex=".{2,60}" />
+      <span class="input-tips"><s></s>请输入视频名称，2-60位</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>视频类型：</label></dt>
+    <dd class="radio">
+      <input name="litpic" type="hidden" id="litpic" value="{#$video#}" />
+      {#html_radios name="typeidArr" values=$typeidArr checked=$typeid output=$typeidNames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  {#if $typeid == 0#}
+  <dl class="clearfix" id="type0">
+  {#else#}
+  <dl class="clearfix hide" id="type0">
+  {#/if#}
+    <dt>上传视频：</dt>
+    <dd>
+      {#if $typeid == 0 && $video != ""#}
+      <div id="license" class="uploadinp uploading" style="margin:0;"><span id="uploadBt"></span></div>
+      <div id="licenseFiles" style="display:inline-block;"><a href="/include/videoPreview.php?f=" data-id="{#$video#}">预览视频</a></div>
+      <a id="reupload" class="reupload" href="javascript:;" style="display:inline-block;">重新上传</a>
+      {#else#}
+      <div id="license" class="uploadinp" style="margin:0;"><span id="uploadBt"></span></div>
+      <div id="licenseFiles"><a href="/include/videoPreview.php?f=" data-id="">预览视频</a></div>
+      <a id="reupload" class="reupload" href="javascript:;">重新上传</a>
+      {#/if#}
+      <div id="licenseProgress" class="progressBar">
+        <i id="licenseProgressBar" class="progress"></i>
+        <span id="licensePercent">0%</span>
+        <a id="cancelUploadBt" href="javascript:;">取消</a>
+      </div>
+      <span class="help-inline">为了兼容手机端也能播放，请上传mp4格式视频！</span>
+    </dd>
+  </dl>
+  {#if $typeid == 1#}
+  <dl class="clearfix" id="type1">
+  {#else#}
+  <dl class="clearfix hide" id="type1">
+  {#/if#}
+    <dt><label for="videoUrl">视频地址：</label></dt>
+    <dd><input class="input-xxlarge" type="text" name="videoUrl" id="videoUrl" value="{#if $typeid == 1#}{#$video#}{#/if#}" placeholder="为了兼容手机端也能播放，暂时只支持优酷、腾讯的视频" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="weight">浏览量：</label></dt>
+    <dd><input class="input-mini" type="number" name="click" id="click" min="0" data-regex="[1-9]\d*" value="{#$click#}" /></dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

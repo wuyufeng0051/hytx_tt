@@ -1,0 +1,276 @@
+<div class="head">
+	<ul class="l">
+		<li class="index"><a href="{#$cfg_basehost#}" target="_blank"><s></s>网站首页</a></li>
+		<li class="ucenter"><a href="{#$member_busiDomain#}"><s></s>会员首页</a></li>
+		<li class="menu">
+			<a href="javascript:;"><s></s>商户菜单</a>
+			<div class="popup">
+				<s></s><b></b>
+				<div class="popupMenuList">
+					<dl class="item"><dt>商家配置</dt><dd><a href="{#getUrlPath service='member' template='config' action='business'#}">入驻信息</a></dd><dd><a href="{#getUrlPath service='member' template='business-about'#}">介绍管理</a></dd><dd><a href="{#getUrlPath service='member' template='business-news'#}">动态管理</a></dd><dd><a href="{#getUrlPath service='member' template='business-albums'#}">相册管理</a></dd><dd><a href="{#getUrlPath service='member' template='business-video'#}">视频管理</a></dd><dd><a href="{#getUrlPath service='member' template='business-panor'#}">全景管理</a></dd><dd><a href="{#getUrlPath service='member' template='business-comment'#}">点评管理</a></dd></dl>
+					{#if in_array("article", $installModuleArr)#}<dl class="item"><dt>新闻投稿</dt><dd><a href="{#getUrlPath service='member' template='manage' action='article'#}">管理投稿</a></dd><dd><a href="{#getUrlPath service='member' template='fabu' action='article'#}">发布投稿</a></dd></dl>{#/if#}
+					{#if in_array("info", $installModuleArr)#}<dl class="item"><dt>生活信息</dt><dd><a href="{#getUrlPath service='member' template='manage' action='info'#}">管理信息</a></dd><dd><a href="{#getUrlPath service='member' template='fabu' action='info'#}">发布信息</a></dd></dl>{#/if#}
+					{#if in_array("tuan", $installModuleArr)#}<dl class="item"><dt>团购</dt><dd><a href="{#getUrlPath service='member' template='config' action='tuan'#}">商铺配置</a></dd><dd><a href="{#getUrlPath service='member' template='manage' action='tuan'#}">管理团购</a></dd><dd><a href="{#getUrlPath service='member' template='verify' action='tuan'#}">验证团购券</a></dd><dd><a href="{#getUrlPath service='member' template='quan' action='tuan'#}">已消费团购券</a></dd><dd><a href="{#getUrlPath service='member' template='order' action='tuan'#}">订单管理</a></dd></dl>{#/if#}
+					{#if in_array("house", $installModuleArr)#}<dl class="item"><dt>房产</dt><dd><a href="{#getUrlPath service='member' template='config' action='house'#}">中介公司</a></dd><dd><a href="{#getUrlPath service='member' template='house-broker'#}">经纪人</a></dd></dl>{#/if#}
+					{#if in_array("shop", $installModuleArr)#}<dl class="item"><dt>商城</dt><dd><a href="{#getUrlPath service='member' template='config' action='shop'#}">商铺配置</a></dd><dd><a href="{#getUrlPath service='member' template='category' action='shop'#}">分类管理</a></dd><dd><a href="{#getUrlPath service='member' template='manage' action='shop'#}">商品管理</a></dd><dd><a href="{#getUrlPath service='member' template='order' action='shop'#}">订单管理</a></dd><dd><a href="{#getUrlPath service='member' template='logistic' action='shop'#}">运费模板</a></dd></dl>{#/if#}
+					{#if in_array("build", $installModuleArr)#}<dl class="item"><dt>建材</dt><dd><a href="{#getUrlPath service='member' template='config' action='build'#}">商铺配置</a></dd><dd><a href="{#getUrlPath service='member' template='manage' action='build'#}">商品管理</a></dd><dd><a href="{#getUrlPath service='member' template='order' action='build'#}">订单管理</a></dd></dl>{#/if#}
+					{#if in_array("furniture", $installModuleArr)#}<dl class="item"><dt>家具</dt><dd><a href="{#getUrlPath service='member' template='config' action='furniture'#}">商铺配置</a></dd><dd><a href="{#getUrlPath service='member' template='manage' action='furniture'#}">商品管理</a></dd><dd><a href="{#getUrlPath service='member' template='order' action='furniture'#}">订单管理</a></dd></dl>{#/if#}
+					{#if in_array("home", $installModuleArr)#}<dl class="item"><dt>家居</dt><dd><a href="{#getUrlPath service='member' template='config' action='home'#}">商铺配置</a></dd><dd><a href="{#getUrlPath service='member' template='manage' action='home'#}">商品管理</a></dd><dd><a href="{#getUrlPath service='member' template='order' action='home'#}">订单管理</a></dd></dl>{#/if#}
+					{#if in_array("renovation", $installModuleArr)#}<dl class="item"><dt>装修</dt><dd><a href="{#getUrlPath service='member' template='config' action='renovation'#}">公司信息</a></dd><dd><a href="{#getUrlPath service='member' template='team' action='renovation'#}">团队管理</a></dd><dd><a href="{#getUrlPath service='member' template='albums' action='renovation'#}">效果图</a></dd><dd><a href="{#getUrlPath service='member' template='case' action='renovation'#}">施工案例</a></dd><dd><a href="{#getUrlPath service='member' template='booking' action='renovation'#}">预约管理</a></dd></dl>{#/if#}
+					{#if in_array("job", $installModuleArr)#}<dl class="item"><dt>招聘</dt><dd><a href="{#getUrlPath service='member' template='config' action='job'#}">公司信息</a></dd><dd><a href="{#getUrlPath service='member' template='post'#}">职位管理</a></dd><dd><a href="{#getUrlPath service='member' template='resume' action='job'#}">简历管理</a></dd><dd><a href="{#getUrlPath service='member' template='invitation' action='job'#}">邀请记录</a></dd><dd><a href="{#getUrlPath service='member' template='collections' action='job'#}">简历收藏</a></dd></dl>{#/if#}
+
+					{#*
+					{#if in_array("marry", $installModuleArr)#}<dl class="item"><dt>婚嫁</dt><dd><a href="#">婚宴酒店</a></dd><dd><a href="#">婚纱摄影</a></dd><dd><a href="#">婚庆礼仪</a></dd><dd><a href="#">留言管理</a></dd><dd><a href="#">点评管理</a></dd><dd><a href="#">预约管理</a></dd></dl>{#/if#}
+					{#if in_array("car", $installModuleArr)#}<dl class="item"><dt>汽车</dt><dd><a href="#">店铺管理</a></dd><dd><a href="#">车型报价</a></dd><dd><a href="#">促销活动</a></dd><dd><a href="#">公司新闻</a></dd><dd><a href="#">询价管理</a></dd><dd><a href="#">预约管理</a></dd><dd><a href="#">留言管理</a></dd></dl>{#/if#}
+					*#}
+
+					{#if in_array("waimai", $installModuleArr)#}<dl class="item"><dt>外卖</dt><dd><a href="/wmsj/" target="_blank">管理外卖</a></dd></dl>{#/if#}
+					{#if in_array("tieba", $installModuleArr)#}<dl class="item"><dt>贴吧</dt><dd><a href="{#getUrlPath service='member' template='manage' action='tieba'#}">帖子管理</a></dd></dl>{#/if#}
+					{#if in_array("huodong", $installModuleArr)#}<dl class="item"><dt>活动</dt><dd><a href="{#getUrlPath service='member' template='huodong-join'#}">我参与的</a></dd><dd><a href="{#getUrlPath service='member' template='manage' action='huodong'#}">我的活动</a></dd><dd><a href="{#getUrlPath service='huodong' template='fabu'#}" target="_blank">发布新活动</a></dd></dl>{#/if#}
+					{#if in_array("website", $installModuleArr)#}<dl class="item"><dt>自助建站</dt><dd><a href="{#getUrlPath service='member' template='config' action='website'#}">站点配置</a></dd><dd><a href="{#getUrlPath service='member' template='dressup' action='website'#}">设计站点</a></dd><dd><a href="{#getUrlPath service='member' template='website-news'#}">新闻资讯</a></dd><dd><a href="{#getUrlPath service='member' template='website-guest'#}">留言管理</a></dd></dl>{#/if#}
+				</div>
+			</div>
+		</li>
+	</ul>
+	<ul class="r">
+		{#*
+		<li class="search">
+			<a href="javascript:;"><s></s>搜索</a>
+			<div class="sform">
+				<form action="#">
+					<input type="text" id="keyword" name="keyword" placeholder="搜索功能名称或关键字" />
+					<a type="submit" id="hseaBtn"><s></s></a>
+				</form>
+			</div>
+		</li>
+		*#}
+		<li class="message has">
+			<a href="javascript:;"><s></s><i>{#$userinfo.message#}</i>消息</a>
+			<div class="popup">
+				<s></s><b></b>
+				<ul class="mlist" data-url="{#getUrlPath service='member' template='message_detail' id="%id"#}"></ul>
+				<p><a href="{#getUrlPath service='member' template='message'#}">查看全部消息></a></p>
+			</div>
+		</li>
+		<li class="setting">
+			<a href="javascript:;"><s></s>设置</a>
+			<div class="popup">
+				<s></s><b></b>
+				<div class="link">
+					<a class="config" href="{#getUrlPath service='member' template='profile'#}"><i></i>账号设置</a>
+					<a class="security" href="{#getUrlPath service='member' template='security'#}"><i></i>安全中心</a>
+					<a class="connect" href="{#getUrlPath service='member' template='connect'#}"><i></i>社交帐号关联绑定</a>
+					<a class="record" href="{#getUrlPath service='member' template='loginrecord'#}"><i></i>帐号登录记录</a></div>
+			</div>
+		</li>
+		<li class="uinfo">
+			<a href="javascript:;"><s></s>{#$userinfo.nickname#}<i></i></a>
+			<div class="subnav"><a href="{#$cfg_basehost#}/logout.html">退出登录</a></div>
+		</li>
+	</ul>
+</div>
+
+<div class="sidebar">
+	<div class="sidebar-content">
+		<dl{#if $pageCurr == "config_business" || $pageCurr == "business_about" || $pageCurr == "fabu_business" || $pageCurr == "business_news" || $pageCurr == "business_albums" || $pageCurr == "business_video" || $pageCurr == "business_panor" || $pageCurr == "business_comment"#} class="active"{#/if#}>
+			<dt><s></s>商家配置</dt>
+			<dd>
+				<a{#if $pageCurr == "config_business"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='business'#}">入驻信息</a>
+				<a{#if $pageCurr == "business_about" || ($pageCurr == "fabu_business" && $type == "about")#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-about'#}">介绍管理</a>
+				<a{#if $pageCurr == "business_news" || ($pageCurr == "fabu_business" && $type == "news")#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-news'#}">动态管理</a>
+				<a{#if $pageCurr == "business_albums" || ($pageCurr == "fabu_business" && $type == "albums")#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-albums'#}">相册管理</a>
+				<a{#if $pageCurr == "business_video" || ($pageCurr == "fabu_business" && $type == "video")#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-video'#}">视频管理</a>
+				<a{#if $pageCurr == "business_panor" || ($pageCurr == "fabu_business" && $type == "panor")#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-panor'#}">全景管理</a>
+				<a{#if $pageCurr == "business_comment"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-comment'#}">点评管理</a>
+			</dd>
+		</dl>
+
+		{#if in_array("article", $installModuleArr)#}
+		<dl{#if $pageCurr == "manage_article" || $pageCurr == "fabu_article"#} class="active"{#/if#}>
+			<dt><s></s>新闻投稿</dt>
+			<dd>
+				<a{#if $pageCurr == "manage_article"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='manage' action='article'#}">管理投稿</a>
+				<a{#if $pageCurr == "fabu_article"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='fabu' action='article'#}">发布投稿</a>
+			</dd>
+		</dl>
+		{#/if#}
+		{#if in_array("info", $installModuleArr)#}
+		<dl{#if $pageCurr == "manage_info" || $pageCurr == "fabu_info"#} class="active"{#/if#}>
+			<dt><s></s>生活信息</dt>
+			<dd>
+				<a{#if $pageCurr == "manage_info"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='manage' action='info'#}">管理信息</a>
+				<a{#if $pageCurr == "fabu_info"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='fabu' action='info'#}">发布信息</a>
+			</dd>
+		</dl>
+		{#/if#}
+		{#if in_array("tuan", $installModuleArr)#}
+		<dl{#if $pageCurr == "manage_tuan" || $pageCurr == "fabu_tuan" || $pageCurr == "config_tuan" || $pageCurr == "verify_tuan" || $pageCurr == "quan_tuan" || $pageCurr == "order_tuan"#} class="active"{#/if#}>
+			<dt><s></s>团购</dt>
+			<dd>
+				<a{#if $pageCurr == "config_tuan"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='tuan'#}">商铺配置</a>
+				<a{#if $pageCurr == "manage_tuan" || $pageCurr == "fabu_tuan"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='manage' action='tuan'#}">管理团购</a>
+				<a{#if $pageCurr == "verify_tuan"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='verify' action='tuan'#}">验证团购券</a>
+				<a{#if $pageCurr == "quan_tuan"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='quan' action='tuan'#}">已消费团购券</a>
+				<a{#if $pageCurr == "order_tuan"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='order' action='tuan'#}">订单管理</a>
+			</dd>
+		</dl>
+		{#/if#}
+		{#if in_array("house", $installModuleArr)#}
+		<dl{#if $pageCurr == "config_house" || $pageCurr == "house_broker"#} class="active"{#/if#}>
+			<dt><s></s>房产</dt>
+			<dd>
+				<a{#if $pageCurr == "config_house"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='house'#}">中介公司</a>
+				<a{#if $pageCurr == "house_broker"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='house-broker'#}">经纪人</a>
+			</dd>
+		</dl>
+		{#/if#}
+		{#if in_array("shop", $installModuleArr)#}
+		<dl{#if $pageCurr == "config_shop" || $pageCurr == "category_shop" || $pageCurr == "manage_shop" || $pageCurr == "fabu_shop" || $pageCurr == "order_shop" || $pageCurr == "logistic_shop"#} class="active"{#/if#}>
+			<dt><s></s>商城</dt>
+			<dd>
+				<a{#if $pageCurr == "config_shop"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='shop'#}">商铺配置</a>
+				<a{#if $pageCurr == "category_shop"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='category' action='shop'#}">分类管理</a>
+				<a{#if $pageCurr == "manage_shop" || $pageCurr == "fabu_shop"#} class="curr"{#/if#}  href="{#getUrlPath service='member' template='manage' action='shop'#}">商品管理</a>
+				<a{#if $pageCurr == "order_shop"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='order' action='shop'#}">订单管理</a>
+				<a{#if $pageCurr == "logistic_shop"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='logistic' action='shop'#}">运费模板</a>
+			</dd>
+		</dl>
+		{#/if#}
+		{#if in_array("build", $installModuleArr)#}
+		<dl{#if $pageCurr == "config_build" || $pageCurr == "category_build" || $pageCurr == "manage_build" || $pageCurr == "fabu_build" || $pageCurr == "order_build" || $pageCurr == "logistic_build"#} class="active"{#/if#}>
+			<dt><s></s>建材</dt>
+			<dd>
+				<a{#if $pageCurr == "config_build"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='build'#}">商铺配置</a>
+				<a{#if $pageCurr == "manage_build" || $pageCurr == "fabu_build"#} class="curr"{#/if#}  href="{#getUrlPath service='member' template='manage' action='build'#}">商品管理</a>
+				<a{#if $pageCurr == "order_build"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='order' action='build'#}">订单管理</a>
+			</dd>
+		</dl>
+		{#/if#}
+		{#if in_array("furniture", $installModuleArr)#}
+		<dl{#if $pageCurr == "config_furniture" || $pageCurr == "category_furniture" || $pageCurr == "manage_furniture" || $pageCurr == "fabu_furniture" || $pageCurr == "order_furniture" || $pageCurr == "logistic_furniture"#} class="active"{#/if#}>
+			<dt><s></s>家具</dt>
+			<dd>
+				<a{#if $pageCurr == "config_furniture"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='furniture'#}">商铺配置</a>
+				<a{#if $pageCurr == "manage_furniture" || $pageCurr == "fabu_furniture"#} class="curr"{#/if#}  href="{#getUrlPath service='member' template='manage' action='furniture'#}">商品管理</a>
+				<a{#if $pageCurr == "order_furniture"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='order' action='furniture'#}">订单管理</a>
+			</dd>
+		</dl>
+		{#/if#}
+		{#if in_array("home", $installModuleArr)#}
+		<dl{#if $pageCurr == "config_home" || $pageCurr == "category_home" || $pageCurr == "manage_home" || $pageCurr == "fabu_home" || $pageCurr == "order_home" || $pageCurr == "logistic_home"#} class="active"{#/if#}>
+			<dt><s></s>家居</dt>
+			<dd>
+				<a{#if $pageCurr == "config_home"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='home'#}">商铺配置</a>
+				<a{#if $pageCurr == "manage_home" || $pageCurr == "fabu_home"#} class="curr"{#/if#}  href="{#getUrlPath service='member' template='manage' action='home'#}">商品管理</a>
+				<a{#if $pageCurr == "order_home"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='order' action='home'#}">订单管理</a>
+			</dd>
+		</dl>
+		{#/if#}
+		{#if in_array("renovation", $installModuleArr)#}
+		<dl{#if $pageCurr == "config_renovation" || $pageCurr == "team_renovation" || $pageCurr == "albums_renovation" || $pageCurr == "case_renovation" || $pageCurr == "booking_renovation"#} class="active"{#/if#}>
+			<dt><s></s>装修</dt>
+			<dd>
+				<a{#if $pageCurr == "config_renovation"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='renovation'#}">公司信息</a>
+				<a{#if $pageCurr == "team_renovation"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='team' action='renovation'#}">团队管理</a>
+				<a{#if $pageCurr == "albums_renovation"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='albums' action='renovation'#}">效果图</a>
+				<a{#if $pageCurr == "case_renovation"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='case' action='renovation'#}">施工案例</a>
+				<a{#if $pageCurr == "booking_renovation"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='booking' action='renovation'#}">预约管理</a>
+			</dd>
+		</dl>
+		{#/if#}
+		{#if in_array("job", $installModuleArr)#}
+		<dl{#if $pageCurr == "config_job" || $pageCurr == "post" || $pageCurr == "resume_job" || $pageCurr == "invitation_job" || $pageCurr == "collections_job"#} class="active"{#/if#}>
+			<dt><s></s>招聘</dt>
+			<dd>
+				<a{#if $pageCurr == "config_job"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='job'#}">公司信息</a>
+				<a{#if $pageCurr == "post"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='post'#}">职位管理</a>
+				<a{#if $pageCurr == "resume_job"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='resume' action='job'#}">简历管理</a>
+				<a{#if $pageCurr == "invitation_job"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='invitation' action='job'#}">邀请记录</a>
+				<a{#if $pageCurr == "collections_job"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='collections' action='job'#}">简历收藏</a>
+			</dd>
+		</dl>
+		{#/if#}
+
+
+		{#*
+		{#if in_array("marry", $installModuleArr)#}
+		<dl>
+			<dt><s></s>婚嫁</dt>
+			<dd>
+				<a href="#">婚宴酒店</a>
+				<a href="#">婚纱摄影</a>
+				<a href="#">婚庆礼仪</a>
+				<a href="#">留言管理</a>
+				<a href="#">点评管理</a>
+				<a href="#">预约管理</a>
+			</dd>
+		</dl>
+		{#/if#}
+		{#if in_array("car", $installModuleArr)#}
+		<dl>
+			<dt><s></s>汽车</dt>
+			<dd>
+				<a href="#">店铺管理</a>
+				<a href="#">车型报价</a>
+				<a href="#">促销活动</a>
+				<a href="#">公司新闻</a>
+				<a href="#">询价管理</a>
+				<a href="#">预约管理</a>
+				<a href="#">留言管理</a>
+			</dd>
+		</dl>
+		{#/if#}
+		*#}
+
+
+		{#if in_array("waimai", $installModuleArr)#}
+		<dl>
+			<dt><s></s>外卖</dt>
+			<dd>
+				<a href="/wmsj/" target="_blank">管理外卖</a>
+			</dd>
+		</dl>
+		{#/if#}
+		{#if in_array("tieba", $installModuleArr)#}
+		<dl{#if $pageCurr == "manage_tieba"#} class="active"{#/if#}>
+			<dt><s></s>贴吧</dt>
+			<dd>
+				<a{#if $pageCurr == "manage_tieba"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='manage' action='tieba'#}">帖子管理</a>
+			</dd>
+		</dl>
+		{#/if#}
+		{#if in_array("huodong", $installModuleArr)#}
+		<dl{#if $pageCurr == "huodong-join" || $pageCurr == "manage_huodong"#} class="active"{#/if#}>
+			<dt><s></s>活动</dt>
+			<dd>
+				<a{#if $pageCurr == "huodong-join"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='huodong-join'#}">我参与的</a>
+				<a{#if $pageCurr == "manage_huodong"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='manage' action='huodong'#}">我的活动</a>
+				<a href="{#getUrlPath service='huodong' template='fabu'#}" target="_blank">发布新活动</a>
+			</dd>
+		</dl>
+		{#/if#}
+		{#if in_array("website", $installModuleArr)#}
+		<dl{#if $pageCurr == "config_website" || $pageCurr == "website-news" || $pageCurr == "fabu_website" || $pageCurr == "website-guest"#} class="active"{#/if#}>
+			<dt><s></s>自助建站</dt>
+			<dd>
+				<a{#if $pageCurr == "config_website"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='website'#}">站点配置</a>
+				<a href="{#getUrlPath service='member' template='dressup' action='website'#}" target="_blank">设计站点</a>
+				<a{#if $pageCurr == "website-news" || $pageCurr == "fabu_website"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='website-news'#}">新闻资讯</a>
+				<a{#if $pageCurr == "website-guest"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='website-guest'#}">留言管理</a></dd>
+			</dd>
+		</dl>
+		{#/if#}
+
+		<dl{#if $pageCurr == "deposit" || $pageCurr == "withdraw" || $pageCurr == "convert" || $pageCurr == "record" || $pageCurr == "transfer" || $pageCurr == "point"#} class="active"{#/if#}>
+			<dt><s></s>财务信息</dt>
+			<dd{#if $pageCurr == "deposit" || $pageCurr == "withdraw" || $pageCurr == "convert" || $pageCurr == "record" || $pageCurr == "transfer" || $pageCurr == "point"#} style="display: block;"{#/if#}>
+				<a{#if $pageCurr == "deposit"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='deposit'#}">帐户充值</a>
+				<a{#if $pageCurr == "withdraw"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='withdraw'#}">余额提现</a>
+				<a{#if $pageCurr == "convert"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='convert'#}">现金与{#$cfg_pointName#}兑换</a>
+				<a{#if $pageCurr == "record"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='record'#}">交易记录明细</a>
+				<a{#if $pageCurr == "transfer"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='transfer'#}">{#$cfg_pointName#}转赠</a>
+				<a{#if $pageCurr == "point"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='point'#}">{#$cfg_pointName#}记录明细</a>
+			</dd>
+		</dl>
+	</div>
+</div>

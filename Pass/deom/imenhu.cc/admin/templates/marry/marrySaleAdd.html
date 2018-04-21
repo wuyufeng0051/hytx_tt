@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var thumbSize = {#$thumbSize#}, thumbType = "{#$thumbType#}",  //缩略图配置
+	adminPath = "{#$adminPath#}", modelType = 'marry';
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="action" id="action" value="{#$action#}" />
+  <input type="hidden" name="cid" id="cid" value="{#$cid#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label for="title">折扣名称：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="title" id="title" value="{#$title#}" maxlength="60" data-regex=".{2,60}" />
+      <span class="input-tips"><s></s>请输入折扣名称，2-60位</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>折扣缩略图：</dt>
+    <dd>
+      <input name="litpic" type="hidden" id="litpic" value="{#$litpic#}" />
+      {#if $litpic != ""#}
+      <div id="license" class="uploadinp uploading"><span id="uploadBt"></span></div>
+      <div id="licenseFiles" style="display:inline-block;"><a href='{#$cfg_attachment#}{#$litpic#}' title="" onClick="return false;" style="cursor:default;"><img alt="" src="{#$cfg_attachment#}{#$litpic#}&type=small" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;" style="display:inline-block;">删除图片</a>
+      {#else#}
+      <div id="license" class="uploadinp"><span id="uploadBt"></span></div>
+      <div id="licenseFiles"><a href="#" target="_blank" title=""><img alt="" src="" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;">删除图片</a>
+      {#/if#}
+      <div id="licenseProgress" class="progressBar">
+        <i id="licenseProgressBar" class="progress"></i>
+        <span id="licensePercent">0%</span>
+        <a id="cancelUploadBt" href="javascript:;">取消</a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>价格：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0">
+        <span class="add-on">原价</span>
+        <input class="input-mini" type="text" name="oprice" id="oprice" value="{#$oprice#}" />
+        <span class="add-on">元</span>
+      </div>
+      <div class="input-prepend input-append" style="margin:0 0 0 5px;">
+        <span class="add-on">优惠价</span>
+        <input class="input-mini" type="text" name="price" id="price" value="{#$price#}" />
+        <span class="add-on">元</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="note">折扣详细：</label></dt>
+    <dd>
+      <script id="content" name="content" type="text/plain" style="width:85%;height:500px">{#$content#}</script>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="weight">浏览量：</label></dt>
+    <dd><input class="input-mini" type="number" name="click" id="click" min="0" data-regex="[1-9]\d*" value="{#$click#}" /></dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$editorFile#}
+{#$jsFile#}
+</body>
+</html>

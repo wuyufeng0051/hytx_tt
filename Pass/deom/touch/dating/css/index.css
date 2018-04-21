@@ -1,0 +1,283 @@
+body{
+        background: rgb(238, 238, 238);
+}
+.foot{
+	    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+    background: #fff;
+}
+.foot ul{
+	width: 100%
+}
+.foot ul li{
+	width: 25%;
+    border-top: 0.02rem solid #f8f8f8;
+    float: left;
+    text-align: center;
+    height: 0.82rem;
+}
+.foot ul li a{
+	width: 100%;
+    float: left;
+    text-align: center;
+    height: 0.82rem;
+    padding-top: 0.05rem;
+}
+.foot ul li a i{
+	 width: 0.56rem;
+    height: 0.43rem;
+    background: url(../images/navBottBg.png) no-repeat center top;
+    background-size: 0.53rem;
+    background-position: 0 -2.2rem;
+    display: block;
+    margin: 0 auto
+}
+.foot ul .jh a{
+	color: #ff5e00;
+}
+.foot ul .jh a i{
+    background-position: 0 -2.09rem;
+}
+.foot ul .ss a i{
+    background-position: 0 -0.42rem;
+}
+.foot ul .vip a i{
+    background-position: 0 -4.14rem;
+}
+.foot ul .wd a i{
+	background-position: 0 -1.64rem;
+}
+.netbox {    
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(238, 238, 238);
+}
+.netbox input{
+    width: 1.06rem;
+    height: 1.06rem;
+    margin: 0 25px;
+    text-indent: -999em;
+    background: url(../images/aPic.png) no-repeat;
+    background-size: 100% auto;
+    border: none;
+}
+.netbox .not{
+    position:absolute; 
+    left: 1.5rem; 
+    top: 9.2rem;
+    background-position: 0 -1.06rem;
+}
+.netbox .yes{
+    position:absolute;
+    left: 4rem; 
+    top: 9.2rem;
+    border: none;
+    background-position: 0 0;
+}
+.yy{
+   background-position: 0 -2.12rem!important; 
+}
+.index-pic a{
+    position: absolute;
+    left: 50%;
+    top: 1.5rem;
+    background: url(../images/photoBg.gif)no-repeat;
+    background-size: 6rem;
+    width: 6rem;
+    height: 8rem;
+    margin-left: -3rem;
+}
+.index-pic a .pp{
+      width: 5.3rem;
+    height: 5.3rem;
+    margin: 0 auto;
+    display: block;
+    padding-top: 0.5rem;
+}
+.index-pic a span{
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-size: 0.35rem;
+    margin-top: 0.2rem;
+}
+.index-pic a span img{
+    width: 0.3rem;
+    height: 0.3rem;
+    vertical-align: text-center;
+}
+.index-pic a p{
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-size: 0.3rem;
+}
+.index-pic a p i{
+    font-style: normal;
+    margin-right: 0.2rem
+}
+.index-pic a p i:last-child{
+    margin-right: 0;
+}
+.index-pic .toleft{
+    -webkit-animation: moveToLeft .60s ease both;
+    z-index: 10;
+    -moz-animation: moveToLeft .60s ease both;
+    z-index: 10;
+    -o-animation: moveToLeft .60s ease both;
+    z-index: 10;
+    -ms-animation: moveToLeft .60s ease both;
+    z-index: 10;
+    animation: moveToLeft .60s ease both;
+    z-index: 10;
+}
+.index-pic .toright{
+        -webkit-animation: moveToRight .60s ease both;
+    z-index: 10;
+    -moz-animation: moveToRight .60s ease both;
+    z-index: 10;
+    -o-animation: moveToRight .60s ease both;
+    z-index: 10;
+    -ms-animation: moveToRight .60s ease both;
+    z-index: 10;
+    animation: moveToRight .60s ease both;
+    z-index: 10;
+}
+.index-pic .toleft b{
+    background: url(../images/xinsui.png) no-repeat center;
+    background-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    left: 50%;
+    top: 2.5rem;
+    margin-left: -1.5rem;
+    opacity: 0.7
+}
+.index-pic .toright b{
+    background: url(../images/heart2.png) no-repeat center;
+    background-size: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    left: 50%;
+    top: 2.5rem;
+    margin-left: -1.5rem;
+    opacity: 0.5
+}
+
+
+
+
+
+@-webkit-keyframes moveToLeft {
+    form {
+        -webkit-transform: rotate(0);
+    }
+    to {
+        -webkit-transform-origin:50% 0%; 
+        -webkit-transform: rotate(90deg);
+        filter:alpha(opacity=50); opacity:0.5;
+    }
+}
+
+@-webkit-keyframes moveToRight {
+    form {
+        -webkit-transform: rotate(0);
+    }
+    to {
+        -webkit-transform-origin:50% 0%; 
+        -webkit-transform: rotate(-90deg);
+        filter:alpha(opacity=50); opacity:0.5;
+    }
+}
+
+@-moz-keyframes moveToLeft {
+    form {
+        -moz-transform: rotate(0);
+    }
+    to {
+        -moz-transform-origin:50% 0%; 
+        -moz-transform: rotate(90deg);
+        filter:alpha(opacity=50); opacity:0.5;
+    }
+}
+@-moz-keyframes moveToRight {
+    form {
+        -moz-transform: rotate(0);
+    }
+    to {
+        -moz-transform-origin:50% 0%; 
+        -moz-transform: rotate(-90deg);
+        filter:alpha(opacity=50); opacity:0.5;
+    }
+}
+
+@-o-keyframes moveToLeft {
+    form {
+        -o-transform: rotate(0);
+    }
+    to {
+        -o-transform-origin:50% 0%; 
+        -o-transform: rotate(90deg);
+        filter:alpha(opacity=50); opacity:0.5;
+    }
+}
+@-o-keyframes moveToRight {
+    form {
+        -o-transform: rotate(0);
+    }
+    to {
+        -o-transform-origin:50% 0%; 
+        -o-transform: rotate(-90deg);
+        filter:alpha(opacity=50); opacity:0.5;
+    }
+}
+
+@-ms-keyframes moveToLeft {
+    form {
+        -ms-transform: rotate(0);
+    }
+    to {
+        -ms-transform-origin:50% 0%; 
+        -ms-transform: rotate(90deg);
+        filter:alpha(opacity=50); opacity:0.5;
+    }
+}
+@-ms-keyframes moveToRight {
+    form {
+        -ms-transform: rotate(0);
+    }
+    to {
+        -ms-transform-origin:50% 0%; 
+        -ms-transform: rotate(-90deg);
+        filter:alpha(opacity=50); opacity:0.5;
+    }
+}
+
+@keyframes moveToLeft {
+    form {
+        transform: rotate(0);
+    }
+    to {
+        transform-origin:50% 0%; 
+        transform: rotate(90deg);
+        filter:alpha(opacity=50); opacity:0.5;
+    }
+}
+@keyframes moveToRight {
+    form {
+        transform: rotate(0);
+    }
+    to {
+        transform-origin:50% 0%; 
+        transform: rotate(-90deg);
+        filter:alpha(opacity=50); opacity:0.5;
+    }
+}

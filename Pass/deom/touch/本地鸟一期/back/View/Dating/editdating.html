@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>我的发布</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/_head.css">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+</head>
+<body>
+    <style>
+        body{
+            margin-top: 0;
+        }
+        .header {
+            height: .9rem;
+            background: #fd5530 !important;
+            color: #fff;
+            font-size: .32rem;
+            line-height: .9rem;
+            max-width: 1080px;
+            position: relative;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 11;
+            overflow: hidden;
+        }
+    </style>
+<include file="Public/share" title='包含文件'/>
+<!-- 共同顶部 s-->
+<div class="header fn-clear">
+    <div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+    <div class="title">编辑个人资料</div>
+    <div class="share"></div>
+</div>
+<!-- 共同顶部 e-->
+<link rel="stylesheet" href="__PUBLIC__/Home/css/dating_issue.css?v=1">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/mobileSelect.css">
+<script type="text/javascript" src="__PUBLIC__/Home/js/mobileSelect.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.8.3.min.js"></script>
+
+<input type="hidden" value="{$dating_edit['dating_id']}" id="dating_id">
+<div class="info">
+    <span style="margin-right:0.4rem"><i></i>昵称</span>
+    <input type="text" placeholder="我是你女神" id="dating_nickname" value="{$dating_edit['dating_nickname']}">
+</div>
+<div class="info">
+    <span><i></i>性别</span>
+    <div class="choice" id="trigger1">{$dating_edit['dating_sex']==1?"帅哥":"美女"}</div>
+    <input type="hidden" id="dating_sex" value="{$dating_edit['dating_sex']}">
+    <i></i>
+</div>
+<div class="info">
+    <span><i></i>年龄</span>
+    <div class="choice" id="trigger2" data-id="">{$dating_edit['dating_birthyear']}</div>
+    <input type="hidden" id="dating_birthyear" value="{$dating_edit['dating_birthyear']}">
+    <i></i>
+</div>
+<div class="info">
+    <span><i></i>交友类型</span>
+    <div class="choice" id="trigger3" data-id="">{$dating_edit['cdating_type']}</div>
+    <input type="hidden" id="dating_type" value="{$dating_edit['dating_type']}">
+    <i></i>
+</div>
+<div class="info">
+    <span><i></i>婚姻状况</span>
+    <div class="choice" id="trigger4" data-id="">{$dating_edit['cdating_marrystate']}</div>
+    <input type="hidden" id="dating_marrystate" value="{$dating_edit['dating_marrystate']}">
+    <i></i>
+</div>
+<div class="info">
+    <span><i></i>身高</span>
+    <div class="choice" id="trigger5" data-id="">{$dating_edit['dating_height']}</div>
+    <input type="hidden" id="dating_height" value="{$dating_edit['dating_height']}">
+    <i></i>
+</div>
+<div class="info">
+    <span><i></i>学历</span>
+    <div class="choice" id="trigger6" data-id="">{$dating_edit['cdating_educate']}</div>
+    <input type="hidden" id="dating_educate" value="{$dating_edit['dating_educate']}">
+    <i></i>
+</div>
+<div class="info">
+    <span><i></i>职业</span>
+    <input type="text" placeholder="请输入职业 6个字以内" id="dating_job" value="{$dating_edit['dating_job']}">
+</div>
+<div class="info">
+    <span><i></i>月收入</span>
+    <div class="choice" id="trigger7" data-id="">{$dating_edit['cdating_monthincome']}</div>
+    <input type="hidden" id="dating_monthincome" value="{$dating_edit['dating_monthincome']}">
+    <i></i>
+</div>
+<div class="info">
+    <span><i></i>车房情况</span>
+    <div class="choice" id="trigger8" data-id="">{$dating_edit['cdating_has']}</div>
+    <input type="hidden" id="dating_has" value="{$dating_edit['dating_has']}">
+    <i></i>
+</div>
+<div class="info">
+    <span><i></i>居住地</span>
+    <input type="text" placeholder="请输入居住地" id="dating_address" value="{$dating_edit['dating_address']}">
+</div>
+<div class="intro">
+    <h1>征友条件</h1>
+    <div class="intro_txt">
+        <textarea name="" id="dating_condition" cols="30" rows="10" placeholder="请输入交友条件">{$dating_edit['dating_condition']}</textarea>
+    </div>
+</div>
+<div class="intro">
+    <h1>自我介绍</h1>
+    <div class="intro_txt">
+        <textarea name="" id="dating_introduction" cols="30" rows="10" placeholder="请输入自我介绍">{$dating_edit['dating_introduction']}</textarea>
+    </div>
+</div>
+<div class="certfy picture_2">
+    <div class="pic_list">
+        <div class="img-box">
+            <ul class="uploader-list fn-clear" id="fileList2">
+                <foreach name="dating_edit['imgs']" item="imgs">
+                    <li><img src="{$imgs['imgs_smallpath']}" data-imgid="{$imgs['imgs_id']}"/><i></i></li>
+                </foreach>
+                <li class="uploadbtn">
+                    <div id="filePicker2" data-type="atlas" data-amount="5" class="webuploader-container picker">
+                        <div class="webuploader-pick"><div class="webuploader-pick"><em></em><p>个人相册</p></div></div>
+                    </div>
+                </li>
+            </ul>
+            <p class="imgtip"></p>
+            <div class="pic_tips">（个人相册628X366长方形图片最佳，最多可上传9张） </div>
+        </div>
+    </div>
+</div>
+<div class="wechat">
+    <div class="info ">
+        <span>个人微信</span>
+        <input type="text" placeholder="请输入您的微信号" id="dating_weixin" value="{$dating_edit['dating_weixin']}" >
+    </div>
+</div>
+<div class="input-control fn-clear">
+    <s></s>
+    <span>联系人</span>
+    <div class="user-fav fn-clear">
+        <input type="text" class="time" placeholder="如何称呼您" id="dating_contact" value="{$dating_edit['dating_contact']}">
+    </div>
+</div>
+<?php if(!empty($u_res['user_phone'])){ ?>
+<div class="edit-item">
+    <div class="input-control fn-clear">
+        <s></s>
+        <span>联系电话</span>
+        <div class="user-fav fn-clear">
+            <input type="text" class="" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" disabled="disabled" placeholder="请输入电话" style="background: #fff;" value="{$u_res.user_phone}" id="contactphone">
+            <div class="get change">更换手机号</div>
+            <div class="get send" style="display: none;" id="emailsell">发送验证码</div>
+            <div class="get" id="hiddenbutton" style="display: none;width: 1.7rem"></div>
+        </div>
+    </div>
+</div>
+<div class="edit-item change_box" style="display: none;" id="yzm">
+    <div class="input-control fn-clear">
+        <s></s>
+        <span>验证码</span>
+        <div class="user-fav fn-clear">
+            <input type="text" class="" placeholder="请输入验证码">
+        </div>
+    </div>
+</div>
+<?php }else{ ?>
+<div class="edit-item">
+    <div class="input-control fn-clear">
+        <s></s>
+        <span>联系电话</span>
+        <div class="user-fav fn-clear">
+            <input type="text" class="" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" placeholder="请输入您的手机号码" id="contactphone">
+            <div class="get" id="emailsell" style="display: block">发送验证码</div>
+            <div class="get" id="hiddenbutton" style="display: none; width: 1.7rem">60秒</div>
+        </div>
+    </div>
+</div>
+<div class="edit-item" id="yzm">
+    <div class="input-control fn-clear">
+        <s></s>
+        <span>验证码</span>
+        <div class="user-fav fn-clear">
+            <input type="text" class="" placeholder="请输入验证码" id="code">
+        </div>
+    </div>
+</div>
+<?php } ?>
+<div class="da_bc">
+    <div class="info gongkai">
+        <span><i></i>电话号码是否公开显示</span>
+        <div class="choice" id="trigger9" data-id="1">{$dating_edit['dating_phoneisopen']==1?'公开':'不公开'}</div>
+        <input type="hidden" id="dating_phoneisopen" value="{$dating_edit['dating_phoneisopen']}">
+        <i></i>
+    </div>
+</div>
+<div class="agree agree_bc">
+    <i></i>我已阅读接受<a href="xieyi.shtml">《本地鸟用户协议》</a>
+</div>
+<div class="btn_box">
+    <div class="btn">确认修改</div>
+</div>
+<div class="delete">
+    <h1>提示：</h1>
+    <h2>是否删除？</h2>
+    <div class="de_foot"><div class="de_btn"><span class="sure">确定</span><span class="cancel">取消</span></div></div>
+</div>
+<div class="disk"></div>
+<!-- 申请已提交成功 s -->
+<div class="succeed_box cheng">
+    <h1>申请已提交成功</h1>
+    <h2>您可以在<em>个人中心-我的发布</em>进行管理</h2>
+    <p><a href="javascript:history.go(-1)"><span>确定</span></a></p>
+</div>
+<!-- 申请已提交成功 e -->
+<!-- 修改成功 s -->
+<div class="succeed_box cheng">
+    <h1>修改成功</h1>
+    <h2>您可以在<em>个人中心-我的发布</em>进行管理</h2>
+    <p><a href="javascript:history.go(-1);location.replace(document.referrer);"><span>确定</span></a></p>
+</div>
+<!-- 修改成功 e -->
+<script type="text/javascript" src="__PUBLIC__/Home/js/dating_edit.js?v=3"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="__PUBLIC__/Home/js/layer.js"></script>
+<script>
+    // 调用微信接口上传图片
+    wx.config({
+        debug: false,
+        appId: '<?php echo $signPackage["appId"];?>',
+        timestamp: '<?php echo $signPackage['timestamp'];?>',
+        nonceStr: '<?php echo $signPackage['nonceStr'];?>',
+        signature: '<?php echo $signPackage['signature'];?>',
+        jsApiList: [
+            // 所有要调用的 API 都要加到这个列表中
+            'chooseImage',
+            'uploadImage',
+            'downloadImage'
+        ]
+    });
+    var download_img=[];
+    var images = {
+        localId: [],
+        serverId: []
+    }
+    $("#filePicker2").click(function(){
+        var length = $('#fileList2 li').length;
+        var conunt = 10 - length;
+        if (conunt == 0) {
+
+        }else{
+            wx.ready(function(){
+                //拍照或从手机相册中选图接口
+                wx.chooseImage({
+                    count: conunt, // 最多能选择多少张图片，默认9
+                    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                    success: function (res) {
+                        var localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                        var localIdImg=localId.toString().split(",");
+                        //上传图片接口
+                        if (localIdImg.length == 0) {
+                            return;
+                        }
+                        var i = 0, length = images.localId.length;
+                        images.serverId = [];
+                        function upload() {
+                            wx.uploadImage({
+                                localId: localIdImg[i],
+                                success: function (res) {
+                                    $("#fileList2").prepend('<li><img src="'+localIdImg[i]+'" /><i></i></li>');
+                                    i++;
+                                    images.serverId.push(res.serverId);
+                                    download_img =images.serverId;
+                                    if (i < localIdImg.length) {
+                                        upload();
+                                    }
+                                    if ($('.picture_2 ul li').length > 9) {
+                                        var x = $('.picture_2 ul li');
+                                        x.closest('.uploader-list').find('.uploadbtn').hide();
+                                    }
+                                },
+                                fail: function (res) {
+                                    alert(JSON.stringify(res));
+                                }
+                            });
+                        }
+                        upload();
+                    }
+                });
+            });
+        }
+    });
+    $('.picture_2').delegate('#fileList2 li i','click',function(){
+        var x = $(this),
+            id = x.closest('li').find('img').data('imgid');
+        $('.delete').show();
+        $('.disk').show();
+        $('.delete .sure').click(function(){
+            if(id=='') {
+                find = x.closest('li');
+                find.remove();
+                if ($('.picture_2 ul li').length < 10) {
+                    $('.picture_2').find('.uploadbtn').show();
+                }
+                $('.delete').hide();
+                $('.disk').hide();
+            }else{
+                $.post("__MODULE__/Dating/delimg",{imgs_id:id},function(data) {
+                    if (data.status == "1") {
+                        find = x.closest('li');
+                        find.remove();
+                        if ($('.picture_2 ul li').length < 10) {
+                            $('.picture_2').find('.uploadbtn').show();
+                        }
+                        $('.delete').hide();
+                        $('.disk').hide();
+                    }else{
+                        $('.delete').hide();
+                        $('.disk').hide();
+                    }
+                })
+            }
+        })
+    })
+    // 提交成功弹出层
+    $('.btn').click(function(){
+        $.post('{:U("Home/Index/userRelease")}', {}, function(data) {
+            if (data == 1) {
+                layer.msg('对不起，您没有权利发布信息')
+            }else{
+                var bianhu = 0;
+                var css =  $("#yzm").css('display');
+                var dating_nickname = $('#dating_nickname').val();
+                var dating_sex = $('#dating_sex').val();
+                var dating_birthyear = $('#dating_birthyear').val();
+                var dating_type=$('#dating_type').val();
+                var dating_marrystate=$('#dating_marrystate').val();
+                var dating_height=$('#dating_height').val();
+                var dating_educate=$('#dating_educate').val();
+                var dating_job=$('#dating_job').val();
+                var dating_monthincome=$('#dating_monthincome').val();
+                console.log(dating_monthincome);
+                var dating_has=$('#dating_has').val();
+                var dating_address=$('#dating_address').val();
+                var dating_condition=$('#dating_condition').val();
+                var dating_introduction=$('#dating_introduction').val();
+                var dating_weixin=$('#dating_weixin').val();
+                var dating_contact = $('#dating_contact').val();//联系人
+                var dating_phone = $('#contactphone').val();//手机
+                var select = $('.agree_bc').text(); //协议
+                var code = $('#code').val();
+                var dating_phoneisopen=$('#dating_phoneisopen').val();
+                var dating_id=$('#dating_id').val();
+                $.post('{:U("Home/Index/lookcode")}', {}, function(data) {
+                    var newcode = data;
+                    if (!dating_nickname) {
+                        layer.msg('请先填写昵称')
+                    }else if(!dating_job){
+                        layer.msg('请输入职业')
+                    }else if(!dating_address){
+                        layer.msg('请输入居住地')
+                    }else if(!dating_contact){
+                        layer.msg('请先填写联系人')
+                    }else if(!dating_phone){
+                        layer.msg('请先填写手机号码')
+                    }else if(css == 'block'){
+                        if(!code){
+                            layer.msg('请先填写验证码')
+                        }else if(code != newcode){
+                            layer.msg('验证码不正确')
+                        }else{
+                            bianhu = 1;
+                        }
+                    }else{
+                        bianhu = 1;
+                    }
+
+                    if (bianhu == 1) {
+                        if(!select){
+                            layer.msg('请先阅读并同意《本地鸟用户协议》')
+                        }else{
+                            var index = layer.load(0, {shade: [0.5,'#000']}); //0代表加载的风格，支持0-2
+                            $.post("__MODULE__/Dating/editdating",{dating_id:dating_id,dating_nickname:dating_nickname,dating_sex:dating_sex,dating_birthyear:dating_birthyear,dating_type:dating_type,dating_marrystate:dating_marrystate,dating_height:dating_height,dating_educate:dating_educate,dating_job:dating_job,dating_monthincome:dating_monthincome,dating_has:dating_has,dating_address:dating_address,dating_condition:dating_condition,dating_introduction:dating_introduction,dating_weixin:dating_weixin,dating_contact:dating_contact,dating_phone:dating_phone,dating_phoneisopen:dating_phoneisopen,dating_imgs:download_img},function(data) {
+                                if (data.status == "1") {
+                                    layer.close(index);
+                                    //提交成功弹出层
+                                    $('.cheng').show();
+                                    $('.disk').show();
+                                }else{
+                                    alert(data.msg);
+                                }
+                            })
+                        }
+                    }
+                })
+            }
+        })
+    })
+</script>
+</body>
+</html>

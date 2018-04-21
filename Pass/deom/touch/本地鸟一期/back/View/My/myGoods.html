@@ -1,0 +1,722 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>商品详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no" >
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/photoswipe.css">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/default-skin.css">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+		<script type="text/javascript" src="__PUBLIC__/Home/js/jquery-2.1.3.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/js/photoswipe.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/js/photoswipe-ui-default.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/js/slider.js"></script>
+
+
+		<style>
+		.banner img{
+			width: 100%;
+			display: block;
+		}
+		.text{
+			background: #fff;
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+		.text .tips{
+			margin-top: 5px;
+		}
+		.text span{
+			font-size: 14px;
+			margin-right: 5px;
+		}
+		.details{
+			background: #fff;
+			margin-bottom: 10px;
+		}
+		.details .title{
+			padding:5px 10px;
+			border-bottom: 1px solid #ddd;
+			font-weight: 600;
+		}
+		.details .content{
+			padding: 10px;
+			font-size: 14px;color: #666;
+		}
+		/*轮播*/
+		.swiper-container img{
+			display: block;
+			width: 100%;
+			height: 250px;
+			object-fit: cover;
+		}
+		.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+		    bottom: 0px;
+		}
+		.swiper-pagination-bullet-active{
+			background: #ff7300;
+		}
+		</style>
+					<style type="text/css">
+	/*图片预览*/
+	.mui-preview-image.mui-fullscreen {
+		position: fixed;
+		z-index: 20;
+		background-color: #000;
+	}
+	.mui-preview-header,
+	.mui-preview-footer {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		z-index: 10;
+	}
+	.mui-preview-header {
+		height: 44px;
+		top: 0;
+	}
+	.mui-preview-footer {
+		height: 50px;
+		bottom: 0px;
+	}
+	.mui-preview-header .mui-preview-indicator {
+		display: block;
+		line-height: 25px;
+		color: #fff;
+		text-align: center;
+		margin: 15px auto 4;
+		width: 70px;
+		background-color: rgba(0, 0, 0, 0.4);
+		border-radius: 12px;
+		font-size: 16px;
+	}
+	.mui-preview-image {
+		display: none;
+		-webkit-animation-duration: 0.5s;
+		animation-duration: 0.5s;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+	}
+	.mui-preview-image.mui-preview-in {
+		-webkit-animation-name: fadeIn;
+		animation-name: fadeIn;
+	}
+	.mui-preview-image.mui-preview-out {
+		background: none;
+		-webkit-animation-name: fadeOut;
+		animation-name: fadeOut;
+	}
+	.mui-preview-image.mui-preview-out .mui-preview-header,
+	.mui-preview-image.mui-preview-out .mui-preview-footer {
+		display: none;
+	}
+	.mui-zoom-scroller {
+		position: absolute;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		-webkit-backface-visibility: hidden;
+	}
+	.mui-zoom {
+		-webkit-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+	}
+	.mui-slider .mui-slider-group .mui-slider-item img {
+		width: auto;
+		height: auto;
+		max-width: 100%;
+		max-height: 100%;
+	}
+	.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+		width: 100%;
+	}
+	.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+		display: inline-table;
+	}
+	.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.mui-preview-loading {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		display: none;
+	}
+	.mui-preview-loading.mui-active {
+		display: block;
+	}
+	.mui-preview-loading .mui-spinner-white {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -25px;
+		margin-top: -25px;
+		height: 50px;
+		width: 50px;
+	}
+	.mui-preview-image img.mui-transitioning {
+		-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+		transition: transform 0.5s ease, opacity 0.5s ease;
+	}
+	@-webkit-keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@-webkit-keyframes fadeOut {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	@keyframes fadeOut {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+	/*公用头部*/
+	.header{
+	    height: .9rem;
+	    background: #fd5530 !important;
+	    color: #fff;
+	    font-size: .32rem;
+	    line-height: .9rem;
+	    max-width: 1080px;
+	    position: fixed;
+	    left: 0;
+	    right: 0;
+	    top: 0;
+	    z-index: 10;
+	    overflow: hidden;
+	}
+	.header a{
+		display: inline-block;
+		color: #fff;
+	}
+	.header .back{
+	    height: .9rem;
+	    line-height: .9rem;
+	    width: 17%;
+	    float: left;
+	}
+	.header .back i{
+	    width: 0.4rem;
+	    height: .9rem;
+	    display: inline-block;
+	    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+	    vertical-align: middle;
+	    background-size: .3rem;
+	}
+	.header .header_right{
+		float: right;
+		height: .9rem;
+		margin-right: .2rem;
+	}
+	.header .header_right i{
+	    width: 0.04rem;
+	    height: 0.5rem;
+	    display: inline-block;
+	    vertical-align: middle;
+	    background: #fff;
+	    margin: 0 .15rem;
+	}
+	.header .title{
+	    float: left;
+	    width: 70%;
+	    text-align: center;
+	    font-size: 0.38rem;
+	}
+	.header .share_1{
+	    height: .9rem;
+	    float: right;
+	    width: 12%;
+	    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+	    background-size: .5rem;
+	}
+	.share_box {
+		display: block;
+		background: url(__PUBLIC__/Home/img/share.png) no-repeat 60px -20px;
+		background-size: 6rem;
+		position: fixed;
+		top: 2%;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 12;
+		display: none;
+	}
+	.disk{
+		background: #000;
+		opacity: .5!important;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 11 ;
+		display: none;
+	}
+	figure{
+		margin: 0;
+	}
+	figure img{
+		width: 100%;
+		height: 4rem;
+	}
+	.sw_bc {
+		position: absolute;
+		width: 1rem;
+		height: .35rem;
+		background: rgba(0, 0, 0, 0.39);
+		color: #fff;
+		line-height: .35rem;
+		left: 6.2rem;
+		bottom: 0.3rem;
+		border-radius: 0.1rem;
+	}
+	.tips{
+		text-align: left!important;
+	}
+</style>
+	</head>
+	<body>
+	
+	<include file="Public/share" title='包含文件'/>
+		<!-- 共同顶部 s-->
+		<div class="header fn-clear">
+			<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+			<div class="share_1"></div>
+		</div>
+		<!-- 共同顶部 e-->
+		<!-- 微信分享弹出层 s -->
+		<div class="share_box"></div>
+		<!-- 微信分享弹出层 e -->
+		<!-- 遮罩层 s -->
+		<div class="disk"></div>
+		<!-- 遮罩层 e -->
+		<div class="mui-content" style="margin-top: .9rem">
+			<!-- <div class="banner">
+			 <a id="up" str="{$status['advertisement_id']}" stb="{$status['advertisement_type']}" url="{$status['advertisement_url']}">
+				<img src="<?php
+						if (!empty($res['imgs_path'])) {
+							echo substr($res['imgs_path'], 1);
+						} else {
+							echo "__PUBLIC__/Home/img/shuijiao.jpg";
+						}
+				?>
+				" alt="">
+			 </a>
+			</div> -->
+			<!-- 图片轮播区 -->
+	<!-- 	<div class="swiper-container">
+	        <div class="swiper-wrapper">
+	          <volist name="res.imgs" id="vo">
+	            <div class="swiper-slide"><a><img src="__PUBLIC__/../{$vo.imgs_path}" style="object-fit: cover;" data-preview-src="" data-preview-group="1"></a></div>
+	          </volist>  
+	        </div>
+	        <div class="swiper-pagination"></div>
+	    </div> -->
+			<div class="my-gallery comment-pic-slide swiper-container"  itemscope itemtype="">
+				<div class="swiper-wrapper">
+				  <volist name="res.imgs" id="vo">
+					<figure itemprop="associatedMedia" itemscope itemtype="" class="swiper-slide">
+						<a href="__PUBLIC__/../{$vo.imgs_path}" itemprop="contentUrl" data-size="" >
+						<img src="__PUBLIC__/../{$vo.imgs_path}" itemprop="thumbnail" alt="Image description" />
+						</a>
+					</figure>
+	              </volist>
+				</div>
+			    <div class="swiper-pagination sw_bc"></div>
+			</div>
+			<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+			    <div class="pswp__bg"></div>
+			    <div class="pswp__scroll-wrap">
+			        <div class="pswp__container">
+			            <div class="pswp__item">
+			            	<div class="pswp__zoom-wrap">
+			            	</div>
+			            </div>
+			            <div class="pswp__item"></div>
+			            <div class="pswp__item"></div>
+			        </div>
+			        <div class="pswp__ui pswp__ui--hidden">
+			            <div class="pswp__top-bar">
+			                <div class="pswp__counter"></div>
+			                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+			                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+			                <div class="pswp__preloader">
+			                    <div class="pswp__preloader__icn">
+			                      <div class="pswp__preloader__cut">
+			                        <div class="pswp__preloader__donut"></div>
+			                      </div>
+			                    </div>
+			                </div>
+			            </div>
+			          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+			                <div class="pswp__share-tooltip"></div> 
+			            </div>
+			            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+			            </button>
+			            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+			            </button>
+			            <div class="pswp__caption">
+			                <div class="pswp__caption__center"></div>
+			            </div>
+			        </div>
+			    </div>
+			</div>  
+			<div class="text">
+				<h4>{$res['yjshop_title']}</h4>
+				<div class="tips">
+					<span style="color: #ff7400;">免费</span>
+					<span style="text-decoration:line-through;color: #ccc;">{$res['yjshop_price']}</span>
+					<span style="color: #999;">库存：{$res['yjshop_number']}</span>
+					<span style="color: #999;">已领取:
+					{$res['yjshop_num2']}
+				 
+					</span>	
+				</div>
+			</div>
+			<div class="details">
+				<div class="title">商品详情</div>
+				<div class="content">
+					{$res['yjshop_details']}
+				</div>
+			</div>
+			<div class="details">
+				<div class="title">免费领取规则</div>
+				<div class="content">
+					{$res['yjshop_rule']}
+				</div>
+			</div>
+			<div style="padding: 15px;">
+					<a str="{$yjshop_id}" id="yjshop_id" class="mui-btn mui-btn-danger" style="background-color: #fd5530 !important;top:5px;width: 100%;border:none;line-height: 30px;">马上提意见</a>
+				</div>
+		</div>
+		<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+		<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+		<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+		<script src="__PUBLIC__/Home/js/zoom.js"></script>
+		<script src="__PUBLIC__/Home/js/mui.previewimage.js"></script>
+		<script>
+
+		   $("#yjshop_id").click(function(){
+		   	var str=$(this).attr('str')
+          	location.href="__MODULE__/My/myAdviseForm?yjshop_id="+str;
+          })
+
+			$("[id=up]").each(function(){ 
+				$(this).click(function(){
+		     		var id = $(this).attr('str');
+		     		var type = $(this).attr('stb');
+		     		var url = $(this).attr('url');
+						// alert(id)
+				$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+		 	     		if (type == 0) {
+			     			 location.href="http://"+url;
+			     		}else if(type == 1){
+			     			 location.href= 'tel:' + url;
+			      		}else{
+			      			location.href=url;
+			      		}
+					});
+		    	})
+		    })
+			
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+			// var mySwiper = new Swiper('.swiper-container',{
+			//     pagination: '.swiper-pagination',
+			//     loop:true,
+			//     paginationClickable: true,
+			//     autoplayDisableOnInteraction : false,
+			//     autoHeight: true,
+			//     autoplay: 3000
+			// });
+			// mui.previewImage();
+			// 分享引导弹出层
+			$('.share_1').click(function(){
+				$('.share_box').show();
+				$('.disk').show();
+			})
+			$('.share_box').click(function(){
+				$('.share_box').hide();
+				$('.disk').hide();
+			})
+				// 顶部图片展示
+	var mySwiper = new Swiper('.swiper-container', {
+		loop : false,
+		pagination: '.swiper-pagination',
+		paginationType: 'fraction',
+	})
+		// 点击图片放大预览
+  	var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+    // parse slide data (url, title, size ...) from DOM elements 
+    // (children of gallerySelector)
+    var parseThumbnailElements = function(el) {
+        var thumbElements = el.childNodes,
+            numNodes = thumbElements.length,
+            items = [],
+            figureEl,
+            linkEl,
+            size,
+            item;
+
+        for(var i = 0; i < numNodes; i++) {
+
+            figureEl = thumbElements[i]; // <figure> element
+
+            // include only element nodes 
+            if(figureEl.nodeType !== 1) {
+                continue;
+            }
+
+            linkEl = figureEl.children[0]; // <a> element
+
+            size = linkEl.getAttribute('data-size').split('x');
+
+            // create slide object
+            item = {
+                src: linkEl.getAttribute('href'),
+                w: parseInt(size[0], 10),
+                h: parseInt(size[1], 10)
+            };
+
+
+
+            if(figureEl.children.length > 1) {
+                // <figcaption> content
+                item.title = figureEl.children[1].innerHTML; 
+            }
+
+            if(linkEl.children.length > 0) {
+                // <img> thumbnail element, retrieving thumbnail url
+                item.msrc = linkEl.children[0].getAttribute('src');
+            } 
+
+            item.el = figureEl; // save link to element for getThumbBoundsFn
+            items.push(item);
+        }
+
+        return items;
+    };
+
+    // find nearest parent element
+    var closest = function closest(el, fn) {
+        return el && ( fn(el) ? el : closest(el.parentNode, fn) );
+    };
+
+    // triggers when user clicks on thumbnail
+    var onThumbnailsClick = function(e) {
+        e = e || window.event;
+        e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+        var eTarget = e.target || e.srcElement;
+
+        // find root element of slide
+        var clickedListItem = closest(eTarget, function(el) {
+            return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+        });
+
+        if(!clickedListItem) {
+            return;
+        }
+
+        // find index of clicked item by looping through all child nodes
+        // alternatively, you may define index via data- attribute
+        var clickedGallery = clickedListItem.parentNode,
+            childNodes = clickedListItem.parentNode.childNodes,
+            numChildNodes = childNodes.length,
+            nodeIndex = 0,
+            index;
+
+        for (var i = 0; i < numChildNodes; i++) {
+            if(childNodes[i].nodeType !== 1) { 
+                continue; 
+            }
+
+            if(childNodes[i] === clickedListItem) {
+                index = nodeIndex;
+                break;
+            }
+            nodeIndex++;
+        }
+
+
+
+        if(index >= 0) {
+            // open PhotoSwipe if valid index found
+            openPhotoSwipe( index, clickedGallery );
+        }
+        return false;
+    };
+
+    // parse picture index and gallery index from URL (#&pid=1&gid=2)
+    var photoswipeParseHash = function() {
+        var hash = window.location.hash.substring(1),
+        params = {};
+
+        if(hash.length < 5) {
+            return params;
+        }
+
+        var vars = hash.split('&');
+        for (var i = 0; i < vars.length; i++) {
+            if(!vars[i]) {
+                continue;
+            }
+            var pair = vars[i].split('=');  
+            if(pair.length < 2) {
+                continue;
+            }           
+            params[pair[0]] = pair[1];
+        }
+
+        if(params.gid) {
+            params.gid = parseInt(params.gid, 10);
+        }
+
+        return params;
+    };
+
+    var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+        var pswpElement = document.querySelectorAll('.pswp')[0],
+            gallery,
+            options,
+            items;
+
+        items = parseThumbnailElements(galleryElement);
+
+        // define options (if needed)
+        options = {
+            fullscreenEl : false,
+            //点击图片关闭
+            tapToClose: true,
+            // define gallery index (for URL)
+            galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+            getThumbBoundsFn: function(index) {
+                // See Options -> getThumbBoundsFn section of documentation for more info
+                var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                    pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                    rect = thumbnail.getBoundingClientRect(); 
+
+                return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+            }
+
+        };
+
+        // PhotoSwipe opened from URL
+        if(fromURL) {
+            if(options.galleryPIDs) {
+                // parse real index when custom PIDs are used 
+                // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                for(var j = 0; j < items.length; j++) {
+                    if(items[j].pid == index) {
+                        options.index = j;
+                        break;
+                    }
+                }
+            } else {
+                // in URL indexes start from 1
+                options.index = parseInt(index, 10) - 1;
+            }
+        } else {
+            options.index = parseInt(index, 10);
+        }
+
+        // exit if index not found
+        if( isNaN(options.index) ) {
+            return;
+        }
+
+        if(disableAnimation) {
+            options.showAnimationDuration = 0;
+        }
+
+        // Pass data to PhotoSwipe and initialize it
+        gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+        gallery.init();
+    };
+
+    // loop through all gallery elements and bind events
+    var galleryElements = document.querySelectorAll( gallerySelector );
+
+    for(var i = 0, l = galleryElements.length; i < l; i++) {
+        galleryElements[i].setAttribute('data-pswp-uid', i+1);
+        galleryElements[i].onclick = onThumbnailsClick;
+    }
+
+    // Parse URL and open gallery if it contains #&pid=3&gid=1
+    var hashData = photoswipeParseHash();
+    if(hashData.pid && hashData.gid) {
+        openPhotoSwipe( hashData.pid ,  galleryElements[ hashData.gid - 1 ], true, true );
+    }
+};
+
+	// execute above function
+	initPhotoSwipeFromDOM('.my-gallery');
+
+	// 自动定义图片data-size
+	window.onload=function(){
+		auto_data_size();
+	};
+	function auto_data_size(){
+		var imgss= $("figure img");
+		$("figure img").each(function() {
+		var imgs = new Image();
+		imgs.src=$(this).attr("src");
+		var w = imgs.width,
+		h =imgs.height;
+		$(this).parent("a").attr("data-size","").attr("data-size",w+"x"+h);
+		})
+	};
+
+		</script>
+	</body>
+</html>

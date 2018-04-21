@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>客户端支付</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css">
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/member/touch/css/public-app-pay.css?v=3">
+</head>
+
+<body>
+<div class="container">
+	<!-- 头部 -->
+	<div class="header">
+		<div class="header-l"><a href="javascript:history.go(-1)"><img src="{#$cfg_basehost#}/templates/member/touch/images/left.png"></a></div>
+		<div class="header-c">支付订单</div>
+	</div>
+	<!-- 头部 end -->
+	<div class="cp-cnt cp-cnt-animation">
+		<svg viewBox="-10 -10 220 220"><g fill="none" stroke-width="6" transform="translate(100,100)"><path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="#FF9C05"></path><path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="#FF9C05"></path><path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="#FF9C05"></path><path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="#FF9C05"></path><path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="#FF9C05"></path><path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="#FF9C05"></path></g></svg>
+		<svg viewBox="-10 -10 220 220"><path d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="629" stroke-linecap="round"></path></svg>
+		<span class="second">1秒</span>
+	</div>
+	<p class="wait-p">正在尝试打开客户端</p>
+	<div class="tip">
+		<p>1. 如果已完成支付，请点击『支付完成』; </p>
+		<p>2. 如果未打开客户端或未完成支付，请点击『重新支付』以选择其他支付方式。</p>
+	</div>
+	<div class="btn">
+		<a href="javascript:;" class="repay">重新支付</a>
+		{#if $service == "article" || $service == "member" || $service == "house" || $service == "info"#}
+		<a href="{#getUrlPath service='member' type='user' template='record'#}" class="endpay">支付完成</a>
+		{#else#}
+		<a href="{#getUrlPath service='member' type='user' template='order' module={#$service#}#}" class="endpay">支付完成</a>
+		{#/if#}
+	</div>
+</div>
+<script type="text/javascript">
+	var appCall = '{#$appCall#}', ordernum = '{#$ordernum#}', orderInfo = {#if $appCall == "wechatPay"#}{#$orderInfo#}{#else#}'{#$orderInfo#}'{#/if#};
+</script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$cfg_basehost#}/templates/member/touch/js/public-app-pay.js?v=3"></script>
+</body>
+</html>

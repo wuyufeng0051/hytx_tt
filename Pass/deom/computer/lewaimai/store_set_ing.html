@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-hand-o-up"></i>
+        <a href="#">店内下单</a></li>
+      <li>
+        <a href="#">店内下单设置</a></li>
+      <li class="active">店铺设置</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.fieldblock input{height:30px;line-height:30px;} .form-submit-btn{padding-left:100px;height:60px;margin-top:30px;} .aa{display:none;} .clear{ clear:both; } .xxfield,.txfield,.selfdefine{width:1000px;heigth:40px;background:#f5f5f5;line-height:40px;border:1px solid #eeeeee;margin-top:10px;} .deletefield,.deleteselfdefine{width:40px;height:40px;float:right;background:#eeeeee;color:#FF0000;font-weight:bold;line-height:40px;text-align:center;cursor:pointer;} .save_field{margin-top:10px;width:60px;height:30px;background:#61b509;line-height:30px;color:#ffffff;font-weight:bold;text-align:center;font-size:16px;cursor:pointer;}</style>
+      <div id="hidecontent" style="display:none;">
+        <div id="hidexxfield">
+          <div class="xxfield fieldblock">(
+            <span style="font-weight:bold;">选项字段</span>)&nbsp;&nbsp;字段名:
+            <input type="text" style="width:80px;" class="name" name="field[name][]">&nbsp;&nbsp;&nbsp;&nbsp;选项值:
+            <input type="text" style="width:300px;" class="content" name="field[content][]">
+            <input type="hidden" class="type" name="field[type][]" value="1">
+            <div class="deletefield" title="删除选项字段">删除</div></div>
+        </div>
+        <div id="hidetxfield">
+          <div class="txfield fieldblock">(
+            <span style="font-weight:bold;">填写字段</span>)&nbsp;&nbsp;字段名:
+            <input type="text" style="width:80px;" class="name" name="field[name][]">&nbsp;&nbsp;&nbsp;&nbsp;提示语:
+            <input type="text" style="width:300px;" class="content" name="field[content][]">
+            <input type="hidden" class="type" name="field[type][]" value="2">
+            <div class="deletefield" title="删除选项字段">删除</div></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <form enctype="multipart/form-data" class="form-horizontal" id="shop-form" action="/tangshi/dianpusetting?shop_id=238848" method="post">
+            <div class="alert alert-danger" id="shop-form_es_" style="display:none">
+              <p>请更正下列输入错误:</p>
+              <ul>
+                <li>dummy</li></ul>
+            </div>
+            <div class="tabbable">
+              <ul class="nav nav-tabs tt" id="myTab">
+                <li class="active">
+                  <a data-toggle="tab" href="javascript:;" aria-expanded="true">基本设置</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="javascript:;" aria-expanded="false">支付方式</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="javascript:;" aria-expanded="false">预设选项</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="javascript:;" aria-expanded="false">店铺活动</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="javascript:;" aria-expanded="false">增值服务</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="javascript:;" aria-expanded="false">首页图</a></li>
+              </ul>
+              <div class="tab-content">
+                <div id="basicinfo" class="tab-pane active  tt_1">
+                  <div class="form-group">
+                    <label class="col-sm-1">
+                      <label for="TangshiShopSetting_order_title">店内下单订单标题</label></label>
+                    <input class="col-sm-2" name="TangshiShopSetting[order_title]" id="TangshiShopSetting_order_title" type="text" maxlength="100" value=""></div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="TangshiShopSetting_shopstatus">店铺状态</label>
+                    <select name="TangshiShopSetting[shopstatus]" id="TangshiShopSetting_shopstatus">
+                      <option value="OPEN" selected="selected">开启</option>
+                      <option value="CLOSED">关闭</option></select>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="用于店铺的临时关闭，关闭后顾客无法下单" title="" data-original-title="设置说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="TangshiShopSetting_closeinfo">店铺关闭提示信息</label>
+                    <textarea class="col-sm-3" rows="4" name="TangshiShopSetting[closeinfo]" id="TangshiShopSetting_closeinfo"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytTangshiShopSetting_shop_notice_used" type="hidden" value="0" name="TangshiShopSetting[shop_notice_used]">
+                        <input class="ace" name="TangshiShopSetting[shop_notice_used]" id="TangshiShopSetting_shop_notice_used" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="TangshiShopSetting_shop_notice_used">是否开启选购页面公告</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1">
+                      <label for="TangshiShopSetting_shop_notice">选购页面公告</label></label>
+                    <textarea class="col-sm-3" rows="5" name="TangshiShopSetting[shop_notice]" id="TangshiShopSetting_shop_notice"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="TangshiShopSetting_ordervalid">是否开启微信下单</label>
+                    <select name="TangshiShopSetting[ordervalid]" id="TangshiShopSetting_ordervalid">
+                      <option value="0">关闭</option>
+                      <option value="1" selected="selected">开启</option></select>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="关闭后顾客不能通过微信下单，只能浏览商品" title="" data-original-title="微信下单说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="TangshiShopSetting_ordervalid_remind">微信下单关闭提示信息</label>
+                    <textarea class="col-sm-3" rows="4" name="TangshiShopSetting[ordervalid_remind]" id="TangshiShopSetting_ordervalid_remind"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="TangshiShopSetting_is_show_waiter">是否显示呼叫服务员相关按钮</label>
+                    <select name="TangshiShopSetting[is_show_waiter]" id="TangshiShopSetting_is_show_waiter">
+                      <option value="1">显示</option>
+                      <option value="0" selected="selected">不显示</option></select>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="该功能必须配合收银机才能使用" title="" data-original-title="功能说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="tabbable">
+                    <ul class="nav nav-tabs yy" id="myTab">
+                      <li class="active">
+                        <a data-toggle="tab" href="javascript:;" aria-expanded="true">营业时间段1</a></li>
+                      <li class="">
+                        <a data-toggle="tab" href="javascript:;" aria-expanded="true">营业时间段2</a></li>
+                      <li class="">
+                        <a data-toggle="tab" href="javascript:;" aria-expanded="true">营业时间段3</a></li>
+                    </ul>
+                    <div class="tab-content">
+                      <div id="shop_time_1" class="tab-pane yy_1 in active">
+                        <div>
+                          <input id="TangshiShopSetting_shop_start_time" type="text" value="08:00:00" name="TangshiShopSetting[shop_start_time]" class="hasDatepicker">至
+                          <input id="TangshiShopSetting_shop_stop_time" type="text" value="20:00:00" name="TangshiShopSetting[shop_stop_time]" class="hasDatepicker">
+                          <div class="errorMessage" id="TangshiShopSetting_shop_start_time_em_" style="display:none"></div>
+                          <div class="errorMessage" id="TangshiShopSetting_shop_stop_time_em_" style="display:none"></div>
+                        </div>
+                      </div>
+                      <div id="shop_time_2" class="tab-pane yy_1">
+                        <div>
+                          <input id="TangshiShopSetting_shop_start_time_2" type="text" value="00:00:00" name="TangshiShopSetting[shop_start_time_2]" class="hasDatepicker">至
+                          <input id="TangshiShopSetting_shop_stop_time_2" type="text" value="00:00:00" name="TangshiShopSetting[shop_stop_time_2]" class="hasDatepicker">
+                          <div class="errorMessage" id="TangshiShopSetting_shop_start_time_2_em_" style="display:none"></div>
+                          <div class="errorMessage" id="TangshiShopSetting_shop_stop_time_2_em_" style="display:none"></div>
+                        </div>
+                      </div>
+                      <div id="shop_time_3" class="tab-pane yy_1">
+                        <div>
+                          <input id="TangshiShopSetting_shop_start_time_3" type="text" value="00:00:00" name="TangshiShopSetting[shop_start_time_3]" class="hasDatepicker">至
+                          <input id="TangshiShopSetting_shop_stop_time_3" type="text" value="00:00:00" name="TangshiShopSetting[shop_stop_time_3]" class="hasDatepicker">
+                          <div class="errorMessage" id="TangshiShopSetting_shop_start_time_3_em_" style="display:none"></div>
+                          <div class="errorMessage" id="TangshiShopSetting_shop_stop_time_3_em_" style="display:none"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="pay" class="tab-pane tt_1">
+                  <div class="alert alert-info">
+                    <button type="button" class="close" data-dismiss="alert">
+                      <i class="ace-icon fa fa-times"></i>
+                    </button>支付类型显示顺序的序号分别是:1代表现金支付、2代表余额支付、3代表在线支付,各支付之间用英文逗号(,)隔开,三个支付（123）都必须写上。
+                    <br>如果是设置在线支付在前面,后面是余额支付和现金支付,可以这样设置:3,2,1。如果设置不正确,就使用默认的顺序,即1,2,3(现金支付,余额支付,在线支付)。</div>
+                  <div class="form-group">
+                    <div class="radio">
+                      <label>支付类型显示顺序
+                        <input type="text" name="paytype_sequence" value="1,2,3"></label></div>
+                  </div>
+                  <div class="form-group">
+                    <div class="radio">
+                      <label>
+                        <input class="paycheck ace" type="checkbox" name="TangshiShopSetting[openpayone]" value="1" id="openpayone" checked="" onclick="check(this);">
+                        <span class="lbl">
+                          <label for="TangshiShopSetting_openpayone">现金支付</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="radio">
+                      <label>
+                        <input class="paycheck ace" type="checkbox" name="TangshiShopSetting[openpaytwo]" value="1" id="openpaytwo" onclick="check(this);">
+                        <span class="lbl">
+                          <label for="TangshiShopSetting_openpaytwo">余额支付</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="radio">
+                      <label>
+                        <input class="paycheck ace" type="checkbox" name="TangshiShopSetting[openpaythree]" value="1" id="openpaythree" onclick="check(this);if(this.checked){$('#online-pay').show(300)}else{$('#online-pay').hide(300)}">
+                        <span class="lbl">
+                          <label for="TangshiShopSetting_openpaythree">在线支付</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="widget-box" id="online-pay" style="display:none">
+                    <div class="widget-header">
+                      <h5>在线支付</h5></div>
+                    <div class="col-xs-12">
+                      <div class="alert alert-danger" style="margin-top: 15px;">点击查看教程
+                        <a href="#" target="_blank">《乐外卖不同在线支付方式的使用方法与区别》</a></div>
+                    </div>
+                    <div class="widget-body">
+                      <div class="widget-main">
+                        <div class="form-group">
+                          <label class="col-sm-2" for="TangshiShopSetting_open_zhifubao">是否开启乐外卖支付宝支付</label>
+                          <select name="TangshiShopSetting[open_zhifubao]" id="TangshiShopSetting_open_zhifubao">
+                            <option value="1" selected="selected">开启</option>
+                            <option value="0">关闭</option></select>
+                          <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="【所有类型微信公众号均可以使用】使用乐外卖的支付宝收款，然后在乐外卖后台将钱提现到商家的银行卡" title="" data-original-title="说明">
+                            <span class="ace-icon fa fa-info bigger-120"></span>
+                          </span>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-2" for="TangshiShopSetting_open_weixinzhifu">是否开启乐外卖微信支付</label>
+                          <select name="TangshiShopSetting[open_weixinzhifu]" id="TangshiShopSetting_open_weixinzhifu">
+                            <option value="1">开启</option>
+                            <option value="0" selected="selected">关闭</option></select>
+                          <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="【所有类型微信公众号均可以使用】使用乐外卖的微信支付收款，然后在乐外卖后台将钱提现到商家的银行卡。" title="" data-original-title="说明">
+                            <span class="ace-icon fa fa-info bigger-120"></span>
+                          </span>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-2" for="TangshiShopSetting_open_self_weixinzhifu">是否开启商家自己的微信支付</label>
+                          <select name="TangshiShopSetting[open_self_weixinzhifu]" id="TangshiShopSetting_open_self_weixinzhifu">
+                            <option value="1" selected="selected">开启</option>
+                            <option value="0">关闭</option></select>
+                          <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="【只有微信认证的服务号可以使用】这个微信支付需要商家在微信公众号后台自己申请,用户郅的钱会直接打到商家的对公账号,不需要通过乐外卖提现，需要先在“公众号设置=》微信支付”中设置好微信支付相关参数。不能与乐外卖微信支付同时使用，使用商家自己的微信支付请关闭乐外卖微信支付。" title="" data-original-title="说明">
+                            <span class="ace-icon fa fa-info bigger-120"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="pay_offline" class="widget-box">
+                    <div class="widget-header">
+                      <h5>现金支付金额限制</h5></div>
+                    <div class="col-xs-12">
+                      <div class="alert alert-danger" style="margin-top: 15px;">如订单金额大于现金支付限制金额，则客人无法选择现金支付</div></div>
+                    <div class="widget-body">
+                      <div class="widget-main">
+                        <div class="form-group">
+                          <label class="col-sm-2" for="TangshiShopSetting_is_pay_offline_limit">是否开启现金支付金额限制</label>
+                          <select name="TangshiShopSetting[is_pay_offline_limit]" id="TangshiShopSetting_is_pay_offline_limit">
+                            <option value="1">开启</option>
+                            <option value="0" selected="selected">关闭</option></select>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-2" for="TangshiShopSetting_pay_offline_limit">现金支付限制金额</label>
+                          <input class="col-sm-1" name="TangshiShopSetting[pay_offline_limit]" id="TangshiShopSetting_pay_offline_limit" type="text" value="0.00">元</div></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="options" class="tab-pane tt_1">
+                  <div id="yw0">
+                    <div class="alert in alert-block fade alert-info">
+                      <a href="#" class="close" data-dismiss="alert">×</a>字段名长度为1-10个字，不能为空;选项字段的选项值之间用逗号(,)分开,如1号桌,2号桌,3号桌..,每个选项值长度为1-20个字,不能为空;填写字段的提示语长度为0-100个字，可以为空;</div></div>
+                  <div>
+                    <div>
+                      <div class="btn btn-sm btn-success addxxfield">添加选项字段</div>
+                      <div class="btn btn-sm btn-success addtxfield">添加填写字段</div>
+                      <a class="btn btn-sm" style="background-color:#D15B47!important;border-color:#D15B47;" href="#" target="_blank">设置教程</a>
+                      <div class="clear"></div>
+                    </div>
+                    <div id="fieldcontent"></div>
+                  </div>
+                </div>
+                <div id="shopactivity" class="tab-pane tt_1">
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytTangshiShopSetting_is_coupon" type="hidden" value="0" name="TangshiShopSetting[is_coupon]">
+                        <input class="ace" name="TangshiShopSetting[is_coupon]" id="TangshiShopSetting_is_coupon" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="TangshiShopSetting_is_coupon">启用优惠券</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="TangshiShopSetting_coupon_max">优惠券最大面值</label>
+                    <input class="col-sm-1" name="TangshiShopSetting[coupon_max]" id="TangshiShopSetting_coupon_max" type="text" value="10.00">元</div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytTangshiShopSetting_is_only_member" type="hidden" value="0" name="TangshiShopSetting[is_only_member]">
+                        <input class="ace" name="TangshiShopSetting[is_only_member]" id="TangshiShopSetting_is_only_member" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="TangshiShopSetting_is_only_member">是否开启只有会员才能使用优惠券</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytTangshiShopSetting_is_only_online" type="hidden" value="0" name="TangshiShopSetting[is_only_online]">
+                        <input class="ace" name="TangshiShopSetting[is_only_online]" id="TangshiShopSetting_is_only_online" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="TangshiShopSetting_is_only_online">是否开启只有在线支付和余额付款才能使用优惠券</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytTangshiShopSetting_member_discount_type" type="hidden" value="0" name="TangshiShopSetting[member_discount_type]">
+                        <input class="ace" name="TangshiShopSetting[member_discount_type]" id="TangshiShopSetting_member_discount_type" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="TangshiShopSetting_member_discount_type">是否开启只有余额支付才能使用会员优惠</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytTangshiShopSetting_is_discount" type="hidden" value="0" name="TangshiShopSetting[is_discount]">
+                        <input class="ace" name="TangshiShopSetting[is_discount]" id="TangshiShopSetting_is_discount" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="TangshiShopSetting_is_discount">启用店铺打折</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="TangshiShopSetting_discount_value">店铺折扣值</label>
+                    <input class="col-sm-1" name="TangshiShopSetting[discount_value]" id="TangshiShopSetting_discount_value" type="text" value="10.0">
+                    <!-- <span class="ace-icon fa fa-info-sign bigger-150" data-rel="tooltip" data-placement="right" title="如8折输入8，88折输入8.8"></span> -->
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="如8折输入8，88折输入8.8" title="" data-original-title="会员折扣填写说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytTangshiShopSetting_discountlimitmember" type="hidden" value="0" name="TangshiShopSetting[discountlimitmember]">
+                        <input class="ace" name="TangshiShopSetting[discountlimitmember]" id="TangshiShopSetting_discountlimitmember" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="TangshiShopSetting_discountlimitmember">是否只有会员才能打折</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytTangshiShopSetting_open_promotion" type="hidden" value="0" name="TangshiShopSetting[open_promotion]">
+                        <input class="ace" name="TangshiShopSetting[open_promotion]" id="TangshiShopSetting_open_promotion" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="TangshiShopSetting_open_promotion">开启消费满减活动</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label style="padding-left:20px;">消费满多少元（整数）：
+                      <input type="text" name="promotions[0][amount]" value="" placeholder="这里填写满多少元,如满100元减8元，这里填100" size="50"></label>
+                    <br>
+                    <label style="padding-left:20px;">减多少元（整数）：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="text" name="promotions[0][discount]" value="" placeholder="这里填写减多少元,如满100元减8元，这里填8" size="50"></label>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="填写的必须是整数，如满100元减8元，满多少元的输入框填100，减多少元的输入框填8" title="" data-original-title="店铺消费满减的填写说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label style="padding-left:20px;">消费满多少元（整数）：
+                      <input type="text" name="promotions[1][amount]" value="" placeholder="这里填写满多少元,如满100元减8元，这里填100" size="50"></label>
+                    <br>
+                    <label style="padding-left:20px;">减多少元（整数）：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="text" name="promotions[1][discount]" value="" placeholder="这里填写减多少元,如满100元减8元，这里填8" size="50"></label>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="填写的必须是整数，如满100元减8元，满多少元的输入框填100，减多少元的输入框填8" title="" data-original-title="店铺消费满减的填写说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label style="padding-left:20px;">消费满多少元（整数）：
+                      <input type="text" name="promotions[2][amount]" value="" placeholder="这里填写满多少元,如满100元减8元，这里填100" size="50"></label>
+                    <br>
+                    <label style="padding-left:20px;">减多少元（整数）：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="text" name="promotions[2][discount]" value="" placeholder="这里填写减多少元,如满100元减8元，这里填8" size="50"></label>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="填写的必须是整数，如满100元减8元，满多少元的输入框填100，减多少元的输入框填8" title="" data-original-title="店铺消费满减的填写说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytTangshiShopSetting_open_fullcoupon" type="hidden" value="0" name="TangshiShopSetting[open_fullcoupon]">
+                        <input class="ace" name="TangshiShopSetting[open_fullcoupon]" id="TangshiShopSetting_open_fullcoupon" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="TangshiShopSetting_open_fullcoupon">是否开启满多少送优惠券功能</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label style="padding-left:20px;">消费满多少元（整数）：
+                      <input type="text" name="fullcoupon[0][full]" value="" placeholder="这里填写满多少元,如满100元，这里填100" size="50"></label>
+                    <label style="padding-left:20px;">送优惠券：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <select name="fullcoupon[0][coupon]" id="coupon">
+                        <option value="">请选择优惠券</option>
+                        <option value="28387">圣诞2元优惠券</option>
+                        <option value="29837">圣诞3元优惠券</option>
+                        <option value="29838">圣诞5元优惠券</option></select>
+                    </label>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="填写的必须是整数，如满100元送哪种优惠券，满多少元的输入框填100，选择需要赠送的优惠券" title="" data-original-title="店铺消费满送优惠券的填写说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label style="padding-left:20px;">消费满多少元（整数）：
+                      <input type="text" name="fullcoupon[1][full]" value="" placeholder="这里填写满多少元,如满100元，这里填100" size="50"></label>
+                    <label style="padding-left:20px;">送优惠券：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <select name="fullcoupon[1][coupon]" id="coupon">
+                        <option value="">请选择优惠券</option>
+                        <option value="28387">圣诞2元优惠券</option>
+                        <option value="29837">圣诞3元优惠券</option>
+                        <option value="29838">圣诞5元优惠券</option></select>
+                    </label>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="填写的必须是整数，如满100元送哪种优惠券，满多少元的输入框填100，选择需要赠送的优惠券" title="" data-original-title="店铺消费满送优惠券的填写说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label style="padding-left:20px;">消费满多少元（整数）：
+                      <input type="text" name="fullcoupon[2][full]" value="" placeholder="这里填写满多少元,如满100元，这里填100" size="50"></label>
+                    <label style="padding-left:20px;">送优惠券：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <select name="fullcoupon[2][coupon]" id="coupon">
+                        <option value="">请选择优惠券</option>
+                        <option value="28387">圣诞2元优惠券</option>
+                        <option value="29837">圣诞3元优惠券</option>
+                        <option value="29838">圣诞5元优惠券</option></select>
+                    </label>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="填写的必须是整数，如满100元送哪种优惠券，满多少元的输入框填100，选择需要赠送的优惠券" title="" data-original-title="店铺消费满送优惠券的填写说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                </div>
+                <div id="addservice" class="tab-pane tt_1">
+                  <div id="yw0">
+                    <div class="alert in alert-block fade alert-info">
+                      <a href="#" class="close" data-dismiss="alert">×</a>增值服务可设置名称,对应的增值服务费用,还有服务对应的时间,如果顾客是在那个时间内下的单,就会增加对应的费用</div></div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="TangshiShopSetting_open_addservice">是否开启增值服务</label>
+                    <select name="TangshiShopSetting[open_addservice]" id="TangshiShopSetting_open_addservice">
+                      <option value="0" selected="selected">关闭</option>
+                      <option value="1">开启</option></select>
+                  </div>
+                  <div class="widget-box">
+                    <div class="widget-header">
+                      <h5>增值服务</h5></div>
+                    <div class="widget-body">
+                      <div class="widget-main">
+                        <div style="margin:10px;width:1000px;float:left;">(1) &nbsp;&nbsp;名称:
+                          <input type="text" name="addservice[0][name]" value="">时间段:
+                          <input id="addservice_0_start" type="text" value="00:00" name="addservice[0][start]" class="hasDatepicker">至
+                          <input id="addservice_0_stop" type="text" value="00:00" name="addservice[0][stop]" class="hasDatepicker">&nbsp;&nbsp;价格:
+                          <input type="text" name="addservice[0][price]" value="0"></div>
+                        <div style="margin:10px;width:1000px;float:left;">(2) &nbsp;&nbsp;名称:
+                          <input type="text" name="addservice[1][name]" value="">时间段:
+                          <input id="addservice_1_start" type="text" value="00:00" name="addservice[1][start]" class="hasDatepicker">至
+                          <input id="addservice_1_stop" type="text" value="00:00" name="addservice[1][stop]" class="hasDatepicker">&nbsp;&nbsp;价格:
+                          <input type="text" name="addservice[1][price]" value="0"></div>
+                        <div style="margin:10px;width:1000px;float:left;">(3) &nbsp;&nbsp;名称:
+                          <input type="text" name="addservice[2][name]" value="">时间段:
+                          <input id="addservice_2_start" type="text" value="00:00" name="addservice[2][start]" class="hasDatepicker">至
+                          <input id="addservice_2_stop" type="text" value="00:00" name="addservice[2][stop]" class="hasDatepicker">&nbsp;&nbsp;价格:
+                          <input type="text" name="addservice[2][price]" value="0"></div>
+                        <div style="margin:10px;width:1000px;float:left;">(4) &nbsp;&nbsp;名称:
+                          <input type="text" name="addservice[3][name]" value="">时间段:
+                          <input id="addservice_3_start" type="text" value="00:00" name="addservice[3][start]" class="hasDatepicker">至
+                          <input id="addservice_3_stop" type="text" value="00:00" name="addservice[3][stop]" class="hasDatepicker">&nbsp;&nbsp;价格:
+                          <input type="text" name="addservice[3][price]" value="0"></div>
+                        <div style="margin:10px;width:1000px;float:left;">(5) &nbsp;&nbsp;名称:
+                          <input type="text" name="addservice[4][name]" value="">时间段:
+                          <input id="addservice_4_start" type="text" value="00:00" name="addservice[4][start]" class="hasDatepicker">至
+                          <input id="addservice_4_stop" type="text" value="00:00" name="addservice[4][stop]" class="hasDatepicker">&nbsp;&nbsp;价格:
+                          <input type="text" name="addservice[4][price]" value="0"></div>
+                        <div style="clear:both;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="printershopimg" style="height:350px;" class="tab-pane tt_1">
+                  <div class="alert alert-block alert-success">图片最大允许上传500K,支持jpg、png、jpeg格式的图片,为了达到最佳效果，建议上传400*400的图片</div>
+                  <div style="width:300px;height:50px;border-right:2px solid #ffffff;padding:0px;float:left;margin:0px;overflow:hidden;">
+                    <div class="btn btn-success" id="selectImg">选择图片</div>
+                    <button class="btn-success btn" onclick="$('#picselect').trigger('click');" type="button">上传本地图片</button>
+                    <div style="width:300px;display:none;">本地图片:
+                      <form id="wsyzxxnyxxn" action="/autoreply/uploadtemp" enctype="multipart/form-data" method="post">
+                        <input type="file" name="surface" id="picselect">
+                        <input type="hidden" name="imgmaxsize" value="512000">
+                        <input type="hidden" name="type" value="shop"></form></div>
+                  </div>
+                  <div id="shop_image" style="width: 100%; height: auto; float: left; margin: 0px; display: none;">
+                    <div style="margin-top:20px;height:20px;width:100%;">
+                      <div style="width:100%;">当前店铺图片(最多5张)</div>
+                      <div style="width:100%;height:auto;" id="imglist"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="clearfix form-actions save_data" style="">
+                  <button class="btn btn-info" type="submit">
+                    <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

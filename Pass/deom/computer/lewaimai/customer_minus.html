@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-group group-icon"></i>
+        <a href="#">客户管理</a></li>
+      <li>
+        <a href="#">顾客</a></li>
+      <li class="active">减积分</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <script type="text/javascript" src="/js/jquery.form.js"></script>
+      <script>var submittage = 'no';
+        $(function() {
+          $('#submit').on('click',
+          function() {
+            if (submittage == 'yes') {
+              return false;
+            } else {
+              submittage = 'yes';
+            }
+            var point = parseInt($('#point').val());
+            if (point > 0) {
+              $('#point').val(point)
+            } else {
+              bootbox.alert('减少积分不能小于0');
+              submittage = 'no';
+            }
+            if (confirm('确定要减少积分')) {
+              $('#form').ajaxSubmit(function(data) {
+                if (data == 'success') {
+                  bootbox.alert('减少成功');
+                  history.go( - 1);
+                } else {
+                  bootbox.alert('减少失败');
+                }
+                submittage = 'no';
+              });
+            } else {
+              submittage = 'no';
+            }
+          });
+        })</script>
+      <div class="row">
+        <div class="span10">
+          <div class="col-sm-6" style="width:100%;margin:0 auto;">
+            <a href="/customer/index" class="btn btn-success">返回顾客列表</a>
+            <div class="form" style="margin-top:10px;font-size:16px;line-height:30px;">
+              <form id="form" action="" method="post">
+                <br>顾客:zzx
+                <br>顾客ID:15817386
+                <br>目前积分数:0
+                <br>减少积分数:
+                <input type="text" value="30" name="point" id="point">
+                <br>
+                <input type="hidden" name="submit" value="aaa">
+                <br></form>
+              <button class="btn btn-success" id="submit">提交</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

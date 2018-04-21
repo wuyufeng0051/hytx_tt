@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>二手市场</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+</head>
+<style>
+    body{
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+    }
+    /*公用头部*/
+    .header{
+        height: .9rem;
+        background: #fd5530 !important;
+        color: #fff;
+        font-size: .32rem;
+        line-height: .9rem;
+        max-width: 1080px;
+        position: relative;
+        overflow: hidden;
+    }
+    .header a{
+        display: inline-block;
+        color: #fff;
+    }
+    .header .back{
+        height: .9rem;
+        line-height: .9rem;
+        width: 17%;
+        float: left;
+    }
+    .header .back i{
+        width: 0.4rem;
+        height: .9rem;
+        display: inline-block;
+        background: url(__PUBLIC__/Home/images/back.png) no-repeat 4px 10px;
+        vertical-align: middle;
+        background-size: .3rem;
+    }
+    .header .header_right{
+        float: right;
+        height: .9rem;
+        margin-right: .2rem;
+    }
+    .header .header_right i{
+        width: 0.04rem;
+        height: 0.5rem;
+        display: inline-block;
+        vertical-align: middle;
+        background: #fff;
+        margin: 0 .15rem;
+    }
+    .header .title{
+        float: left;
+        width: 70%;
+        text-align: center;
+        font-size: 0.38rem;
+    }
+    .header .share{
+        height: .9rem;
+        float: right;
+        width: 12%;
+        background: url(__PUBLIC__/Home/images/pb_11.png) no-repeat center;
+        background-size: .5rem;
+    }
+    ul li{
+        height: .9rem;
+        line-height: .9rem;
+        font-size: .3rem;
+        border-bottom: 0.02rem solid #dedede;
+        position:relative;
+    }
+    ul li a{
+        padding-left: 0.4rem;
+        display: block;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-user-select: none;
+        outline: 0;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-tap-highlight-color: transparent;
+    }
+    ul li a:hover em{
+        color: #fd5530!important;
+    }
+    ul li a i{
+        width: .5rem;
+        height: .5rem;
+        position: absolute;
+        top: 0.2rem;
+        right: 0.3rem;
+        background: url(__PUBLIC__/Home/images/arrowright.png) no-repeat center;
+        background-size: .5rem;
+    }
+    ul li:last-child{
+        margin-bottom: 1.2rem;
+    }
+    .cancle{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        height: .9rem;
+        line-height: .9rem;
+        font-size: .32rem;
+        color: #fff;
+        background: #fd5530 !important;
+    }
+    .cancle a{
+        color: #fff;
+    }
+</style>
+<body>
+<!-- 共同顶部 s-->
+<div class="header fn-clear">
+    <div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+    <div class="title">请选择发布的类别</div>
+</div>
+<!-- 共同顶部 e-->
+<ul>
+    <li><a href="__MODULE__/SecondHand/secondHandCarRelease"><em>出售二手车</em><i></i></a></li>
+    <li><a href="__MODULE__/SecondHand/secondHandGoodsRelease"><em>出售二手物品</em><i></i></a></li>
+    <li><a href="__MODULE__/SecondHand/buyRelease"><em>我要求购</em><i></i></a></li>
+</ul>
+<div class="cancle"><a href="javascript:history.go(-1)">取消</a></div>
+</body>
+</html>

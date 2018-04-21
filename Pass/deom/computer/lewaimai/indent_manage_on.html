@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-smile-o"></i>
+        <a href="#">外卖订单</a></li>
+      <li>
+        <a href="#">订单管理</a></li>
+      <li class="active">已确认订单</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.new_label { text-align: right; } .ness{ display: table; } .form-group { float: left; width: 50%; } .food_list{ list-style:none; margin:0px 50px; } .food_list span{ margin:5px 6px; display:inline-block; } .food_list span label{ width:140px; height:35px; line-height:17px; display:inline-block; overflow:hidden; font-size:14px; text-align:right; padding-right:5px; } .loading{ text-align: center; display: none; } .food_list center{ font-size:14px; font-weight:bold; color:red; } #new-order .alert-danger, #edit-order .alert-danger{ display:none; } .food_title{ height:30px; line-height:30px; font-size:18px; font-weight:bold; color:orange; cursor:pointer; } .spinner{ width:30px; } .ui-spinner{ vertical-align:top; } .yang{ margin-left:5px; border:1px solid #949290; border-radius:3px; cursor:pointer; } .xing{ margin-left:5px; border:1px solid red; border-radius:3px; cursor:pointer; } .cc{ border:1px solid #F59942; } .food{ display:none; } .pop-one{ width: 270px; background: #fff; border-radius:3px; position: fixed; top: 21%; left: 50%; margin-left: -135px; } .meng{ background:rgba(0,0,0,.5); position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index:9999; } .pop-one .pop-cont{ line-height: 25px; padding: 12px 10px; border-bottom: 1px solid #d2d6da; } .pop-bottom a{ text-align: center; height: 40px; line-height: 40px; color: #007aff; } .pop-bottom a:first-child{ border-right:1px solid #d2d6da; } .align-center, .div-align-center { text-align: center; } .meng p{text-align:left;} .feng p{text-align:left;} .geng p{text-align:left;} .webkit-box1 { display: -webkit-box; width: 100%; } .webkit-box1 >* { -webkit-box-flex: 1; width: 100%; display: block; } .order_true{cursor:pointer;} .feng{ background:rgba(0,0,0,.5); position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index:9999; } .geng{ background:rgba(0,0,0,.5); position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index:9999; } .aa{display:none;} #order-grid-confirmed .address_detail,#order-grid-confirmed .oldmemo,#order-grid-confirmed .oldconfigmemo{ font-size:12px; color:black; display:none; width:100%; }</style>
+      <div class="meng aa">
+        <div class="pop-one">
+          <div class="pop-cont align-center">
+            <p>
+              <span style="position:relative;top:-25px;">配送地址：</span>
+              <textarea class="delivery_address"></textarea>
+              <input type="hidden" class="orderid" value=""></p>
+          </div>
+          <div class="pop-bottom webkit-box1">
+            <a href="#" class="order_true">提交</a>
+            <a href="#" class="order_cancel">取消</a></div>
+        </div>
+      </div>
+      <div class="feng aa">
+        <div class="pop-one">
+          <div class="pop-cont align-center">
+            <p>
+              <span style="position:relative;top:-25px;">备注：</span>
+              <textarea class="newmemo"></textarea>
+              <input type="hidden" class="orid" value=""></p>
+          </div>
+          <div class="pop-bottom webkit-box1">
+            <a href="#" class="memo_true">提交</a>
+            <a href="#" class="order_cancel">取消</a></div>
+        </div>
+      </div>
+      <div class="geng aa">
+        <div class="pop-one">
+          <div class="pop-cont align-center">
+            <p>
+              <span style="position:relative;top:-25px;">商家备注：</span>
+              <textarea class="newconfigmemo"></textarea>
+              <input type="hidden" class="ordid" value=""></p>
+          </div>
+          <div class="pop-bottom webkit-box1">
+            <a href="#" class="configmemo_true">提交</a>
+            <a href="#" class="order_cancel">取消</a></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li >
+                <a href="indent_manage.html">未处理订单
+                  <span class="badge badge-danger">1</span></a>
+              </li>
+              <li>
+                <a href="indent_manage_down.html">已确认订单</a></li>
+              <li class="active">
+                <a href="indent_manage_on.html">配送中订单</a></li>
+              <li>
+                <a href="indent_manage_succeed.html">成功订单</a></li>
+              <li>
+                <a href="indent_manage_fail.html">失败订单</a></li>
+              <li>
+                <a href="indent_manage_cancel.html">已取消订单</a></li>
+              <li>
+                <a href="indent_manage_back.html">退款中订单</a></li>
+            </ul>
+            <div id="modal-reason" class="modal" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" id="modal-close-trigger" class="close" data-dismiss="modal" onclick="$('#modal-reason').hide()">×</button>
+                    <h4 class="blue bigger">请填写订单失败的原因</h4>
+                    <h6 class="red bigger">饿了么、美团外卖等第三方外卖平台订单设为失败将立即退款给顾客，请谨慎使用！</h6></div>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12">
+                        <textarea id="order_failed_reason" style="width:100%;"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-sm" onclick="$('#modal-reason').hide()">
+                      <i class="ace-icon fa fa-times"></i>取消</button>
+                    <button class="btn btn-sm btn-primary" onclick="GetFailedCheckbox()">
+                      <i class="ace-icon fa fa-check"></i>确定</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-content">
+              <label style="float:right;">
+                <select class="chosen-select" name="courier_id" id="courier_id" style="display: none;">
+                  <option value="0">请选择</option>
+                  <option value="36886">韦志强</option>
+                  <option value="37136">望开虎</option>
+                  <option value="39564">向俊</option>
+                  <option value="41246">汰渍洗衣</option>
+                  <option value="41841">梅虎</option>
+                  <option value="47888">郑鹏</option>
+                  <option value="49132">杜威</option>
+                  <option value="49878">张青松</option>
+                  <option value="50237">徐林</option>
+                  <option value="50837">向俊杰1</option>
+                  <option value="51177">傅德生</option>
+                  <option value="51440">张其叁</option>
+                  <option value="51626">王强</option>
+                  <option value="51641">韩和平</option>
+                  <option value="51728">杨兰贵</option>
+                  <option value="52012">黎晓宜</option>
+                  <option value="55907">黄烁</option></select>
+                <div class="chosen-container chosen-container-single" style="width: 88px;" title="" id="courier_id_chosen">
+                  <a class="chosen-single" tabindex="-1">
+                    <span>请选择</span>
+                    <div>
+                      <b>
+                      </b>
+                    </div>
+                  </a>
+                  <div class="chosen-drop">
+                    <div class="chosen-search">
+                      <input type="text" autocomplete="off"></div>
+                    <ul class="chosen-results"></ul>
+                  </div>
+                </div>
+                <a onclick="setCourier();" class="btn no-border btn-success">设置配送员</a>
+                <a onclick="cancelCourier();" class="btn no-border btn-danger">取消配送员</a>
+                <a href="#" class="btn no-border btn-primary">地图派单</a></label>
+              <div>
+                <button class="btn btn-success" onclick="GetSucceededCheckbox()">成功订单</button>
+                <button class="btn btn-danger" onclick="FailedReason()">失败订单</button>
+                <button class="btn btn-warning" onclick="setprinter();">打印订单</button></div>
+              <div id="order-grid-confirmed" class="grid-view">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th class="checkbox-column" id="order-grid-confirmed_c0">
+                        <input type="checkbox" value="1" name="order-grid-confirmed_c0_all" id="order-grid-confirmed_c0_all"></th>
+                      <th id="order-grid-confirmed_c1">订单编号</th>
+                      <th id="order-grid-confirmed_c2">店铺</th>
+                      <th id="order-grid-confirmed_c3">顾客ID</th>
+                      <th id="order-grid-confirmed_c4">姓名</th>
+                      <th id="order-grid-confirmed_c5">电话</th>
+                      <th id="order-grid-confirmed_c6">配送地址</th>
+                      <th id="order-grid-confirmed_c7">详情</th>
+                      <th id="order-grid-confirmed_c8">备注</th>
+                      <th id="order-grid-confirmed_c9">用户下单填写的预设字段值</th>
+                      <th id="order-grid-confirmed_c10">总价</th>
+                      <th id="order-grid-confirmed_c11">下单时间</th>
+                      <th id="order-grid-confirmed_c12">付款方式</th>
+                      <th id="order-grid-confirmed_c13">配送员</th>
+                      <th id="order-grid-confirmed_c14">商家备注</th>
+                      <th id="order-grid-confirmed_c15">系统备注</th>
+                      <th id="order-grid-confirmed_c16">取货状态</th>
+                      <th class="button-column" id="order-grid-confirmed_c17">操作</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr class="odd">
+                      <td width="30">
+                        <input value="34206421" id="order-grid-confirmed_c0_0" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">功夫煲仔饭20170316-3</td>
+                      <td width="70" style="word-break: break-all;">功夫煲仔饭</td>
+                      <td width="60">15706357</td>
+                      <td width="100">李先生</td>
+                      <td width="90" style="word-break: break-all;">13217170888</td>
+                      <td width="100" style="word-break: break-all;position:relative;">
+                        <div class="addressDiv">
+                          <div style="display:inline;">平湖大道6-2-h号 电影院旁“品胜数码”</div>
+                          <span style="margin-left: 5px; position: relative; display: none;" class="red">
+                            <i class="fa fa-pencil-square-o bigger-130" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                        <textarea class="address_detail" type="text" data-id="34206421" data-old="平湖大道6-2-h号 电影院旁“品胜数码”">平湖大道6-2-h号 电影院旁“品胜数码”</textarea></td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">土豆丝肉丝煲仔饭【1】份</div></td>
+                      <td style="word-break : break-all;position:relative;" width="80">
+                        <div class="memoDiv">
+                          <div style="display:inline;">&nbsp;</div>
+                          <span style="margin-left:5px;position: relative;display:none;" class="red">
+                            <i class="fa fa-pencil-square-o bigger-130" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                        <textarea class="oldmemo" type="text" data-id="34206421" data-old=""></textarea>
+                      </td>
+                      <td width="80" style="word-break: break-all;">
+                        <div style="background:#ddd;padding:1px;">配送时间：2017-03-16</div></td>
+                      <td width="50">17.60</td>
+                      <td width="75">2017-03-16 14:51:52</td>
+                      <td width="50">
+                        <b style="color:green">在线支付（商户自己的微信支付）</b></td>
+                      <td width="60" style="word-break: break-all;">杨兰贵(13310569089)</td>
+                      <td style="word-break : break-all;position:relative;" width="80">
+                        <div class="configmemoDiv">
+                          <div style="display:inline;">&nbsp;</div>
+                          <span style="margin-left:5px;position: relative;display:none;" class="red">
+                            <i class="fa fa-pencil-square-o bigger-130" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                        <textarea class="oldconfigmemo" type="text" data-id="34206421" data-old=""></textarea>
+                      </td>
+                      <td width="50"></td>
+                      <td width="50">未取货</td>
+                      <td class="button-column">
+                        <a title="查看" class="green" style="padding-right:8px;" href="#">
+                          <i class="ace-icon fa fa-search bigger-130"></i>
+                        </a>
+                        <a title="修改" class="edit" href="#">
+                          <i class="ace-icon fa fa-pencil bigger-130"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr class="even">
+                      <td width="30">
+                        <input value="34201010" id="order-grid-confirmed_c0_1" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">20170316-3</td>
+                      <td width="70" style="word-break: break-all;">苏州火鸟测试</td>
+                      <td width="60">15817386</td>
+                      <td width="100">zzx</td>
+                      <td width="90" style="word-break: break-all;">15104569999</td>
+                      <td width="100" style="word-break: break-all;position:relative;">
+                        <div class="addressDiv">
+                          <div style="display:inline;">苏州九龙医院-呼吸道门诊 快递员</div>
+                          <span style="margin-left:5px;position: relative;display:none;" class="red">
+                            <i class="fa fa-pencil-square-o bigger-130" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                        <textarea class="address_detail" type="text" data-id="34201010" data-old="苏州九龙医院-呼吸道门诊 快递员">苏州九龙医院-呼吸道门诊 快递员</textarea></td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">商品测试【1】"份"</div></td>
+                      <td style="word-break : break-all;position:relative;" width="80">
+                        <div class="memoDiv">
+                          <div style="display:inline;">&nbsp;</div>
+                          <span style="margin-left:5px;position: relative;display:none;" class="red">
+                            <i class="fa fa-pencil-square-o bigger-130" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                        <textarea class="oldmemo" type="text" data-id="34201010" data-old=""></textarea>
+                      </td>
+                      <td width="80" style="word-break: break-all;">
+                        <div style="background:#ddd;padding:1px;">配送时间：2017-03-16</div></td>
+                      <td width="50">0.01</td>
+                      <td width="75">2017-03-16 13:34:22</td>
+                      <td width="50">
+                        <b style="color:red">货到付款</b></td>
+                      <td width="60" style="word-break: break-all;">黄烁(15189079999)</td>
+                      <td style="word-break : break-all;position:relative;" width="80">
+                        <div class="configmemoDiv">
+                          <div style="display:inline;">&nbsp;</div>
+                          <span style="margin-left:5px;position: relative;display:none;" class="red">
+                            <i class="fa fa-pencil-square-o bigger-130" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                        <textarea class="oldconfigmemo" type="text" data-id="34201010" data-old=""></textarea>
+                      </td>
+                      <td width="50"></td>
+                      <td width="50">未取货</td>
+                      <td class="button-column">
+                        <a title="查看" class="green" style="padding-right:8px;" href="#">
+                          <i class="ace-icon fa fa-search bigger-130"></i>
+                        </a>
+                        <a title="修改" class="edit" href="#">
+                          <i class="ace-icon fa fa-pencil bigger-130"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="summary">第 1-2 条, 共 2 条.</div>
+                <div class="keys" style="display:none" title="/order/delivery">
+                  <span>34206421</span>
+                  <span>34201010</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="dialog-edit-order" class="hide">
+        <form id="edit-order" action="/order/editOrder" method="post">
+          <input type="hidden" name="Edit[id]" id="Edit_id" value="">
+          <div class="alert alert-danger"></div>
+          <div class="ness">
+            <div class="form-group">
+              <label class="col-sm-4 new_label" for="Edit[nickname]">姓名</label>
+              <input type="text" class="col-sm-5" name="Edit[nickname]" id="Edit_nickname"></div>
+            <div class="form-group">
+              <label class="col-sm-4 new_label" for="Edit[phone]">手机号</label>
+              <input type="text" class="col-sm-5" name="Edit[phone]" id="Edit_phone"></div>
+            <div class="form-group">
+              <label class="col-sm-4 new_label" for="Edit[address]">配送地址</label>
+              <input type="text" class="col-sm-5" name="Edit[address]" id="Edit_address"></div>
+            <div class="form-group">
+              <label class="col-sm-4 new_label" for="Edit[memo]">备注</label>
+              <input type="text" class="col-sm-5" name="Edit[memo]" id="Edit_memo"></div>
+            <div class="form-group">
+              <label class="col-sm-4 new_label" for="Edit[shop_id]">店铺</label>
+              <select name="Edit[shop_id]" id="Edit_shop_id">
+                <option value="">-请选择-</option>
+                <option value="171604">梁记粥铺</option>
+                <option value="179493">味美家煲仔饭</option>
+                <option value="188840">沐小卤卤肉饭</option>
+                <option value="191043">遍地香</option>
+                <option value="198384">蔡记兔头</option>
+                <option value="198470">大圣烧烤</option>
+                <option value="198789">五谷渔粉</option>
+                <option value="199278">茶粥坊</option>
+                <option value="201814">湖南米粉秭归旗舰店</option>
+                <option value="203781">桃园包子</option>
+                <option value="203806">龙虾甲鱼馆</option>
+                <option value="203914">羊子沟羊肉串</option>
+                <option value="204828">一号渔港</option>
+                <option value="205689">庙嘴泄滩包子</option>
+                <option value="205770">罗蒂爸爸</option>
+                <option value="206291">陕西红富士（金点自营）</option>
+                <option value="206593">五谷渔粉（茶粥坊店）</option>
+                <option value="206740">撮一顿川菜馆</option>
+                <option value="206902">老字号米酒汤圆（下酒菜 甜品）</option>
+                <option value="207170">易购24小时便利店</option>
+                <option value="207670">比得灌汤包</option>
+                <option value="207703">本素咖啡</option>
+                <option value="208291">龙潮美式瓦缸炭火烤鱼</option>
+                <option value="208570">金巷子</option>
+                <option value="209507">有意思</option>
+                <option value="210977">花之恋</option>
+                <option value="211219">老归州酒家</option>
+                <option value="212668">米桂坊过桥米线</option>
+                <option value="214250">郑记卤味</option>
+                <option value="214683">吾饮良品</option>
+                <option value="215141">馋嘴鱼莊</option>
+                <option value="216567">木炭原味儿烧烤</option>
+                <option value="216826">红油面馆</option>
+                <option value="216935">冰淋橙夏</option>
+                <option value="218162">怡满堂大药房</option>
+                <option value="221492">王胖子早点</option>
+                <option value="224050">阁楼咖啡</option>
+                <option value="224147">千里香馄饨王</option>
+                <option value="224187">周姐卤菜水饺</option>
+                <option value="224339">七里香万州面馆</option>
+                <option value="224370">小树鲜果（水果、零食）</option>
+                <option value="224467">粥公卤婆（烧烤）</option>
+                <option value="224543">邓记烤鱼</option>
+                <option value="225881">九三食府</option>
+                <option value="226578">原酒印象</option>
+                <option value="226584">乡风缘野鸡养殖农场</option>
+                <option value="226756">小牧场羊肉砂锅</option>
+                <option value="227334">惠姑家庭农场</option>
+                <option value="227431">杜康专卖店</option>
+                <option value="227490">炎锅家常菜（瓦罐汤）</option>
+                <option value="234626">秘制牛肉粉面馆</option>
+                <option value="234732">屈乡风味馆</option>
+                <option value="234765">吴妈面馆</option>
+                <option value="234772">可礼客中式快餐</option>
+                <option value="236441">蟹谢啦（香辣蟹钳）</option>
+                <option value="238113">天喔零食秭归店</option>
+                <option value="238848">正新鸡排（金城店）</option>
+                <option value="239273">嘛嘛香中式营养快餐</option>
+                <option value="240581">正宗片皮鸭</option>
+                <option value="242582">苏州火鸟测试</option>
+                <option value="186168">木语果蛋糕</option>
+                <option value="189027">肯德基</option>
+                <option value="190600">舒心批发超市</option>
+                <option value="193454">五色谷大酒库旗舰店</option>
+                <option value="189066">纯果乐</option>
+                <option value="191434">净果成人用品</option>
+                <option value="193156">麦佳乐蛋糕店</option>
+                <option value="195654">周黑鸭</option>
+                <option value="200063">欢乐家旗舰店</option>
+                <option value="189287">新派煲仔饭</option>
+                <option value="189881">矮子馅饼（秭归店）</option>
+                <option value="192626">巴黎天使</option>
+                <option value="194392">绿源清江尙品桶装系列纯净水天然水</option>
+                <option value="195171">子归醇</option>
+                <option value="196068">王梁记麻辣烫</option>
+                <option value="180884">四季花时尚饮品</option>
+                <option value="186549">香满园拉面馆</option>
+                <option value="187702">福和祥煲仔饭</option>
+                <option value="189341">韦一粮油</option>
+                <option value="190198">糖炒栗子</option>
+                <option value="194765">王老板烩面</option>
+                <option value="195667">花漫舞</option>
+                <option value="180758">安吉尔纯净水</option>
+                <option value="182990">沙县小吃信合店</option>
+                <option value="183295">坝头夜猫子小黄鱼</option>
+                <option value="186498">均瑶旗舰店</option>
+                <option value="188487">坝头米酒汤圆 萝卜饺子</option>
+                <option value="190211">庙嘴万州面</option>
+                <option value="193935">张氏茶油鸭</option>
+                <option value="197991">艳子农家小炒</option>
+                <option value="183123">功夫煲仔饭</option>
+                <option value="186255">巴东傅记羊肉面</option>
+                <option value="188260">坝头东北小吃</option>
+                <option value="191671">砂锅米线</option>
+                <option value="193993">正新鸡排</option>
+                <option value="195600">庙嘴炸酱面馆</option>
+                <option value="182341">一家人餐馆</option>
+                <option value="186189">妙味馄饨</option>
+                <option value="190154">一扫光零食量贩店</option>
+                <option value="186180">坝头火爆鱿鱼</option>
+                <option value="187913">红牛能量补给站</option>
+                <option value="189378">妙嘴小吃</option>
+                <option value="190159">零食加油站</option>
+                <option value="179446">测试店铺（勿点）</option>
+                <option value="187713">一品香</option>
+                <option value="190315">襄阳牛杂面</option>
+                <option value="192603">华莱士</option>
+                <option value="198327">真味酒楼</option>
+                <option value="210668">谭家村酒业</option>
+                <option value="186396">老家大锅台</option>
+                <option value="188519">坝头灌汤包</option>
+                <option value="189699">成都抄手</option>
+                <option value="189267">胖胖熊美食城</option>
+                <option value="180907">老字号鸡蛋饭</option>
+                <option value="182664">重庆小面</option>
+                <option value="183195">太陽·卤味坊</option>
+                <option value="191202">马大姐旗舰店</option>
+                <option value="193184">松滋杜婆鸡</option>
+                <option value="182536">坝头功夫鱿鱼</option>
+                <option value="186177">精武人家（小区店）</option>
+                <option value="194467">纸上烤鱼(国华盛景店)</option>
+                <option value="165797">凤凰楼</option>
+                <option value="190137">泄滩包子金城店</option>
+                <option value="186200">坝头台湾手抓饼</option>
+                <option value="188293">坝头碳烤小黄鱼</option>
+                <option value="195057">姨妹子菜馆</option>
+                <option value="202250">坝头米酒汤圆</option>
+                <option value="186588">坝头江湖翅客24号</option>
+                <option value="186570">坝头鸡翅包饭 烧烤</option>
+                <option value="183237">坝头盐都小吃</option>
+                <option value="188363">川府石锅鱼</option>
+                <option value="192207">时尚酒家</option>
+                <option value="183307">泽尚生活馆</option>
+                <option value="191240">万美菜馆</option>
+                <option value="209064">韩大大冒菜</option>
+                <option value="187677">程家菜馆</option>
+                <option value="189461">剑峰菜馆</option>
+                <option value="183336">朋友圈土菜馆</option>
+                <option value="187689">平价菜馆</option>
+                <option value="189248">馋神醉仙鸭</option>
+                <option value="189252">欣怡川菜馆</option>
+                <option value="187718">贵州花江狗肉（小区店）</option>
+                <option value="193139">郑记干锅</option>
+                <option value="195717">丰锅农家菜</option>
+                <option value="187896">河鲜馆</option>
+                <option value="187285">跑腿业务</option>
+                <option value="194234">五香嘴量贩休闲食品</option>
+                <option value="197223">麦点超市</option>
+                <option value="201368">家常菜馆</option>
+                <option value="202819">世纪华联</option>
+                <option value="203134">夷蒙概念牛肉</option>
+                <option value="205327">祥和飞锅万州面</option>
+                <option value="207984">品味烧烤</option>
+                <option value="210794">秋谷山纯粮酒</option>
+                <option value="212643">金烈火奶酪蛋糕</option>
+                <option value="217682">面相聚</option>
+                <option value="219509">山东口福饼</option>
+                <option value="224337">茶粥坊土钵菜</option>
+                <option value="224542">茶物语</option>
+                <option value="186611">坝头养生卤品</option>
+                <option value="188229">坝头刚子烧烤</option>
+                <option value="199721">鲜烫麻辣烫</option>
+                <option value="182550">维纳斯美容会所</option>
+                <option value="182875">网上营业厅</option>
+                <option value="186185">坝头铁板炒饭</option>
+                <option value="188558">韩国凉面</option>
+                <option value="192225">李功夫中华鸡排</option>
+                <option value="185223">宏发煤气</option>
+                <option value="188574">坝头那家粉</option>
+                <option value="189049">楚城小厨</option>
+                <option value="189030">辛勤小吃店</option>
+                <option value="188197">坝头开心花甲</option>
+                <option value="188456">坝头砂锅麻辣烫</option>
+                <option value="188186">坝头公园27号肉夹馍</option>
+                <option value="188194">坝头饮品庄园</option>
+                <option value="196345">三少食府</option>
+                <option value="186597">坝头澳洲大肉串</option>
+                <option value="181130">蒙古烤羊腿</option>
+                <option value="190390">万州烤鱼</option>
+                <option value="188710">小南园</option>
+                <option value="183168">老字号虾皇</option>
+                <option value="189072">大三峡</option></select>
+            </div>
+            <div class="ysxx-edit"></div>
+          </div>
+          <h4 style="margin-left:50px">
+            <b>商品清单：</b>
+          </h4>
+          <ul id="edit_food_list" class="food_list"></ul>
+          <div class="loading">
+            <img src="images/loading.gif"></div>
+        </form>
+      </div>
+      <script type="text/javascript" src="js/jquery.form.js"></script>
+      <script>function dothis() {
+          /*订单配送地址*/
+          updateInfo("#order-grid-confirmed .addressDiv", "#order-grid-confirmed .address_detail", "address", "配送地址不能为空！");
+          /*订单备注*/
+          updateInfo("#order-grid-confirmed .memoDiv", "#order-grid-confirmed .oldmemo", "memo", "订单备注不能为空！");
+          /*订单商家备注*/
+          updateInfo("#order-grid-confirmed .configmemoDiv", "#order-grid-confirmed .oldconfigmemo", "configmemo", "商家备注不能为空！");
+        }
+        function updateInfo(div, input, attribute, msg) {
+          $(div).click(function() {
+            $(this).hide();
+            $(this).next().show().focus();
+          });
+          $(input).blur(function() {
+            var _this = $(this),
+            content = _this.val();
+            if (content) {
+              _this.attr("disabled", true);
+              $.ajax({
+                url: "/order/orderUpdate",
+                type: "post",
+                data: {
+                  "id": _this.attr("data-id"),
+                  "content": content,
+                  "attribute": attribute
+                },
+                dataType: "json",
+                success: function(d) {
+                  if (d.status == "success") {
+                    _this.attr("data-old", _this.val());
+                    _this.prev().children("div").html(_this.val());
+                  } else {
+                    bootbox.alert(d.message);
+                    _this.prev().children("div").html(_this.attr("data-old"));
+                  }
+                  _this.hide();
+                  _this.prev().show();
+                  _this.attr("disabled", false);
+                }
+              });
+            } else {
+              //      bootbox.alert(msg);
+              if (_this.attr("data-old")) {
+                _this.prev().children("div").html(_this.attr("data-old"));
+              } else {
+                _this.prev().children("div").html("&nbsp;");
+              }
+              _this.hide();
+              _this.prev().show();
+            }
+          }).keyup(function() {
+            if (event.keyCode == 13) {
+              var _this = $(this),
+              content = _this.val();
+              if (content) {
+                _this.attr("disabled", true);
+                $.ajax({
+                  url: "/order/orderUpdate",
+                  type: "post",
+                  data: {
+                    "id": _this.attr("data-id"),
+                    "content": content,
+                    "attribute": attribute
+                  },
+                  dataType: "json",
+                  success: function(d) {
+                    if (d.status == "success") {
+                      _this.attr("data-old", _this.val());
+                      _this.prev().children("div").html(_this.val());
+                    } else {
+                      bootbox.alert(d.message);
+                      _this.prev().children("div").html(_this.attr("data-old"));
+                    }
+                    $(this).hide();
+                    $(this).prev().show();
+                    _this.attr("disabled", false);
+                  }
+                });
+              } else {
+                bootbox.alert(msg);
+                _this.prev().children("div").html(_this.attr("data-old"));
+                $(this).hide();
+                $(this).prev().show();
+              }
+            }
+          });
+        }
+        $(function() {
+          dothis();
+          /*修改*/
+          $(document).on("click", ".button-column .edit",
+          function() {
+            var id = $(this).attr("href");
+            var urls = "updateorder/" + id;
+            $.ajax({
+              url: "/order/getOrder",
+              type: "post",
+              data: {
+                "id": id
+              },
+              dataType: 'json',
+              success: function(d) {
+                if (d) {
+                  if (d.status == "error") {
+                    bootbox.alert(d.message);
+                    return false;
+                  }
+                  if (d.able) {
+                    window.location.href = urls;
+                  } else {
+                    bootbox.alert("余额付款和在线支付的订单不能修改！");
+                  }
+                } else {
+                  bootbox.alert("此订单不存在！");
+                }
+              }
+            });
+            return false;
+          });
+          /*点击店铺获取商品列表(修改)*/
+          $("#Edit_shop_id").on("change",
+          function() {
+            var shop_id = $(this).val();
+            $.ajax({
+              url: "/order/foodlist",
+              type: "post",
+              data: {
+                "shop_id": shop_id
+              },
+              dataType: "json",
+              beforeSend: function() {
+                $("#edit_food_list").empty();
+                $(".loading").show();
+              },
+              success: function(d) {
+                if (d.status == "error") {
+                  bootbox.alert(d.message);
+                  return false;
+                }
+                if (d.list) {
+                  var str = "";
+                  for (var i = 0; i < d.list.length; i++) {
+                    if (d.list[i].listfood.length > 0) {
+                      str += "<div class='food_title'>" + d.list[i].name + "</div>";
+                      for (var j = 0; j < d.list[i].listfood.length; j++) {
+                        str += '<li><input type="hidden" name="food_id[]" value="' + d.list[i].listfood[j].id + '" /><label title="' + d.list[i].listfood[j].name + '">' + d.list[i].listfood[j].name + '</label><input type="text" class="spinner" name="food_number[]" value="0" /></li>';
+                      }
+                    }
+                  }
+                  if (str == "") {
+                    str = "<center>无商品</center>";
+                  }
+                  $("#edit_food_list").html(str);
+                  spinner();
+                }
+                $(".loading").hide();
+              }
+            });
+          });
+
+          $(".memo").on('click',
+          function() {
+            var memo = $(this).parent().siblings('.oldmemo').val();
+            var id = $(this).parent().siblings('.oid').val();
+            $(".feng").removeClass('aa');
+            $(".newmemo").val(memo);
+            $(".orid").val(id);
+          }); $(".memo_true").on("click",
+          function() {
+            $(".feng").removeClass("aa");
+            var memo = $(this).parent().siblings('.pop-cont').find('p .newmemo').val();
+            var id = $(this).parent().siblings('.pop-cont').find('p .orid').val();
+            $.ajax({
+              url: "/order/updatememo",
+              type: "post",
+              data: {
+                "id": id,
+                "memo": memo
+              },
+              dataType: "json",
+              success: function(d) {
+                if (d.status == "error") {
+                  bootbox.alert(d.message);
+                  return false;
+                }
+                if (d) {
+                  $(this).text(memo);
+                }
+              }
+            });
+          });
+
+          $(".configmemo").on('click',
+          function() {
+            var configmemo = $(this).parent().siblings('.oldconfigmemo').val();
+            var id = $(this).parent().siblings('.oid').val();
+            $(".geng").removeClass('aa');
+            $(".newconfigmemo").val(configmemo);
+            $(".ordid").val(id);
+          }); $(".configmemo_true").on("click",
+          function() {
+            $(".geng").removeClass("aa");
+            var configmemo = $(this).parent().siblings('.pop-cont').find('p .newconfigmemo').val();
+            var id = $(this).parent().siblings('.pop-cont').find('p .ordid').val();
+            $.ajax({
+              url: "/order/updateconfigmemo",
+              type: "post",
+              data: {
+                "id": id,
+                "configmemo": configmemo
+              },
+              dataType: "json",
+              success: function(d) {
+                if (d.status == "error") {
+                  bootbox.alert(d.message);
+                  return false;
+                }
+                if (d) {
+                  $(this).text(configmemo);
+                }
+              }
+            });
+          });
+
+          $(".address").on('click',
+          function() {
+            var address = $(this).parent().siblings('.address_detail').val();
+            var id = $(this).parent().siblings('.oid').val();
+            $(".meng").removeClass('aa');
+            $(".delivery_address").val(address);
+            $(".orderid").val(id);
+          });
+
+          $(".order_cancel").on('click',
+          function() {
+            $(".meng").addClass('aa');
+            $(".feng").addClass('aa');
+            $(".geng").addClass('aa');
+          });
+          $(".order_true").on("click",
+          function() {
+            $(".meng").removeClass("aa");
+            var address = $(this).parent().siblings('.pop-cont').find('p .delivery_address').val();
+            var id = $(this).parent().siblings('.pop-cont').find('p .orderid').val();
+            $.ajax({
+              url: "/order/updateaddress",
+              type: "post",
+              data: {
+                "id": id,
+                "address": address
+              },
+              dataType: "json",
+              success: function(d) {
+                if (d.status == "error") {
+                  bootbox.alert(d.message);
+                  return false;
+                }
+                if (d) {
+                  $(this).text(address);
+                }
+              }
+            });
+          });
+
+          $('.addressDiv').mouseover(function() {
+            $(this).children("span").show();
+          });
+          $('.addressDiv').mouseout(function() {
+            $(this).children("span").hide();
+          });
+          $('.memoDiv').mouseover(function() {
+            $(this).children("span").show();
+          });
+          $('.memoDiv').mouseout(function() {
+            $(this).children("span").hide();
+          });
+          $('.configmemoDiv').mouseover(function() {
+            $(this).children("span").show();
+          });
+          $('.configmemoDiv').mouseout(function() {
+            $(this).children("span").hide();
+          });
+        });</script>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

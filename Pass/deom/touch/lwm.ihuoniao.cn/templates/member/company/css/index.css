@@ -1,0 +1,77 @@
+.main .l {padding-right: 422px;}
+.main .r {float: right; width: 405px;}
+.main .hline h3 {padding-top: 5px; font-size: 18px; color: #393f48; line-height: 50px;}
+.main .hitem {background-color: #fff; border-bottom: 3px solid #e3e4e8;}
+
+/* 帐户信息 */
+.account {padding: 23px 25px;}
+.account p {padding-top: 8px; line-height: 40px; color: #959596; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.account p strong {font-size: 22px; color: #ff3a2c; font-weight: 500; padding-right: 25px;}
+.account .btns {padding-top: 20px;}
+.account .btns a {float: left; line-height: 30px; padding: 0 33px; color: #fff; margin-right: 20px;}
+.account .btns .cz {background-color: #f77776;}
+.account .btns a:hover.cz {background-color: #e8605f; text-decoration: none;}
+.account .btns .tx {background-color: #90c664;}
+.account .btns a:hover.tx {background-color: #81b655; text-decoration: none;}
+.account .btns .link {color: #0088cc; margin: 0; padding: 0 10px;}
+
+/* 会员基本信息 */
+.hline .uinfo {padding: 22px 25px; overflow: hidden;}
+.hline .uinfo dl {height: 104px;}
+.hline .uinfo dt {float: left;}
+.hline .uinfo dt a {display: block; position: relative;}
+.hline .uinfo dt, .hline .uinfo dt a, .hline .uinfo dt a img {width: 100px; height: 100px; overflow: hidden;}
+.hline .uinfo dt a span {position: absolute; z-index: 2; left: 0; right: 0; bottom: -20px; height: 20px; line-height: 20px; text-align: center; font-size: 12px; color: #fff; background-color: #3e3f40; -webkit-transition: all .2s linear; -moz-transition: all .2s linear; transition: all .2s linear; filter: alpha(opacity=70); -moz-opacity: 0.7; -khtml-opacity: 0.7; opacity: 0.7;}
+.hline .uinfo dt a:hover span {bottom: 0;}
+.hline .uinfo dd {position: relative; overflow: hidden; padding-left: 25px;}
+.hline .uinfo dd .name {height: 27px; line-height: 27px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.hline .uinfo dd .name h2 {float: left; font-size: 18px;}
+.hline .uinfo dd .name .date {float: right; color: #a6a6a6;}
+
+/* 会员认证信息 */
+.hline .uinfo ul {padding-top: 20px; margin-left: -10px; width: 150%;}
+.hline .uinfo li {float: left;}
+.hline .uinfo li a {position: relative; color: #545454; display: block; padding: 0 12px;}
+.hline .uinfo li a s {display: block; margin: 0 auto 4px; width: 30px; height: 29px; overflow: hidden; background-image: url('../../images/certIcon.png'); -webkit-transition: all .2s linear; -moz-transition: all .2s linear; transition: all .2s linear;}
+.hline .uinfo li a:hover s {-webkit-transform: translate(0,-3px) scale(1.2); -moz-transform: translate(0,-3px) scale(1.2); -o-transform: translate(0,-3px) scale(1.2); transform: translate(0,-3px) scale(1.2);}
+.hline .uinfo li a.disable:before {position: absolute; z-index: 3; left: 42px; top: 16px; content: "!"; color: #fff; background-color: #d53838; font-weight: 700; text-align: center; line-height: 15px; width: 16px; height: 16px; border-radius: 50%;}
+.hline .uinfo li a.mobile s {background-position: 0 0;}
+.hline .uinfo li a.mobile.disable s {background-position: -30px 0;}
+.hline .uinfo li a.real s {background-position: 0 -174px;}
+.hline .uinfo li a.real.disable s {background-position: -30px -174px;}
+.hline .uinfo li a.email s {background-position: 0 -58px;}
+.hline .uinfo li a.email.disable s {background-position: -30px -58px;}
+.hline .uinfo li a.save s {background-position: 0 -87px;}
+.hline .uinfo li a.save.disable s {background-position: -30px -87px;}
+.hline .uinfo li a.pay s {background-position: 0 -116px;}
+.hline .uinfo li a.pay.disable s {background-position: -30px -116px;}
+.hline .uinfo li a.question s {background-position: 0 -145px;}
+.hline .uinfo li a.question.disable s {background-position: -30px -145px;}
+
+/* 日期&天气 */
+.date-weather {padding: 35px 0 20px; margin-bottom: -3px;}
+.date-weather li {float: left; width: 200px; height: 150px; text-align: center; font-size: 18px; color: #333;}
+.date-weather li.d {border-right: 1px solid #ececec;}
+.date-weather li.d strong {display: block; color: #ef5734; font-size: 60px; line-height: 55px; margin-bottom: 25px;}
+.date-weather li.weather1 .date, .date-weather li.weather1 .wind {display: none;}
+.date-weather li.weather1 .pic, .date-weather li.weather1 .weather {display: block;}
+.date-weather li.weather1 .pic {margin-bottom: 9px;}
+.date-weather li.weather1 .pic img {height: 63px; margin: 0 5px;}
+
+/* 待办事项 */
+.pending {padding: 10px 0 0;}
+.pending dl {float: left; width: 50%; margin-bottom: -1px; border-bottom: 1px solid #f5f5f5; height: 47px; line-height: 47px; font-size: 14px;}
+.pending dt {float: left; width: 60px; height: 47px; text-align: center;}
+.pending dt img {width: 30px; height: 30px; display: block; margin: 8px auto 0;}
+.pending dd {position: relative; padding-right: 10px; overflow: hidden; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.pending dd a {position: relative; margin-right: 22px;}
+.pending dd a .new {position: absolute; right: -15px; top: -13px; height: 13px; line-height: 13px; color: #fff; background-color: #62cc56; padding: 0 3px; font-size: 10px; font-style: normal; text-transform: uppercase; font-family: arial;}
+.pending dd a strong {font-size: 18px; color: #e50; font-weight: 500;}
+
+.main .module {margin: 20px 0; padding: 15px 0 0 15px;}
+.main .module a {float: left; width: 283px; height: 118px; border: 1px solid #fff; margin: 0 23px 20px 0;}
+.main .module a:hover {background-color: #fafafa; border-color: #f1f1f1; text-decoration: none;}
+.main .module dt {float: left; width: 65px; height: 63px; margin: 25px 0 0 21px;}
+.main .module dd {position: relative; overflow: hidden; padding: 0 10px 0 13px;}
+.main .module h5 {font-size: 18px; color: #4d4d4d; margin-top: 23px;}
+.main .module p {font-size: 14px; color: #999;}

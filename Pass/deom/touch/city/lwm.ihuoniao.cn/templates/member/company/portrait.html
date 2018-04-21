@@ -1,0 +1,67 @@
+{#$pageTitle = "修改头像 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/jquery.Jcrop.min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/portrait.css?v=1" media="all" />
+</head>
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+
+	<div class="notice">公告：管理控制台改版啦，为便于您的操作，用户中心功能整合到管理控制台并对样式进行优化，欢迎体验！<a href="#" target="_blank">操作指南</a> <a href="#" target="_blank">建议反馈</a><em class="close">&times;</em></div>
+
+	<div class="nav-tabs fn-clear">
+		<ul class="fn-clear">
+			<li><a href="{#getUrlPath service='member' template='profile'#}">基本资料</a></li>
+			<li class="active"><a href="javascript:;">修改头像</a></li>
+			<li><a href="{#getUrlPath service='member' template='connect'#}">社交账号关联绑定</a></li>
+		</ul>
+	</div>
+	<div class="container fn-clear">
+
+		<div class="m-left">
+			<div class="crop" id="crop"></div>
+			<div class="tips">支持jpg、jpeg、gif、png、bmp格式的图片（3M以下）</div>
+			<div class="btns normal fn-clear">
+				<input type="button" id="save" value="保存头像" class="save" disabled />
+				<div class="upload-form">
+					<input type="button" class="choose" value="选择图片" id="choose" />
+					<form method="post" id="uploadForm" action="/include/upload.inc.php" enctype="multipart/form-data">
+						<input type="hidden" name="mod" id="mod" value="siteConfig" />
+						<input type="hidden" name="type" id="type" value="card" />
+						<input type="hidden" name="filetype" id="filetype" value="image" />
+						<input type="file" name="Filedata" id="Filedata" accept=".gif,.jpeg,.jpg,.png" />
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="m-right">
+			<div class="preview fn-clear">
+				<div class="avatar-small">
+					<div class="pic"><img src="{#changeFileSize url="{#$userinfo.photo#}" type="small"#}" id="small" /></div>
+					<p>小头像</p>
+				</div>
+				<div class="avatar-middle">
+					<div class="pic"><img src="{#changeFileSize url="{#$userinfo.photo#}" type="middle"#}" id="middle" /></div>
+					<p>中头像150 * 200</p>
+				</div>
+				<div class="avatar-big">
+					<div class="pic"><img src="{#changeFileSize url="{#$userinfo.photo#}"#}" id="big" width="240"  /></div>
+					<p>大头像240 * 320</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.Jcrop.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.ajaxFileUpload.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/portrait.js?v=2"></script>
+</body>
+</html>

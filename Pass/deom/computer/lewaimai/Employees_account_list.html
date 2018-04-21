@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-gear gear-icon"></i>
+        <a href="#">系统设置</a></li>
+      <li class="active">员工帐号</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">
+              <i class="ace-icon fa fa-times"></i>
+            </button>如果您对员工帐号的功能和设置方法不熟悉，使用前请务必点击查看下面的员工帐号使用教程。
+            <br>
+            <a class="btn btn-danger" href="#" target="_blank">乐外卖员工帐号使用教程</a></div>
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li >
+                <a href="Employees_account.html">员工列表</a></li>
+              <li class="active">
+                <a href="Employees_account_list.html">停用列表</a></li>
+              <li>
+                <a href="Employees_account_person.html">员工角色</a></li>
+            </ul>
+            <div class="tab-content">
+              <div>
+                <a href="#" class="btn btn-success">新建员工账号</a></div>
+              <div id="yw0" class="grid-view">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th id="yw0_c0">
+                        <a class="sort-link" href="#">员工帐户</a></th>
+                      <th id="yw0_c1">登录帐号</th>
+                      <th id="yw0_c2">角色</th>
+                      <th id="yw0_c3">管理店铺</th>
+                      <th class="button-column" id="yw0_c4">操作</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr class="odd">
+                      <td width="120">私房菜</td>
+                      <td width="180">秭归金点子外卖平台:私房菜</td>
+                      <td width="180">商户</td>
+                      <td></td>
+                      <td width="90">
+                        <a style="cursor:pointer;" class="label label-sm label-info" title="还原" href="#">还原</a>
+                        <a style="cursor:pointer;" onclick="return completedelete();" class="label label-sm label-danger" title="删除" href="#">删除</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="120">鸡蛋饭</td>
+                      <td width="180">秭归金点子外卖平台:鸡蛋饭</td>
+                      <td width="180">商户</td>
+                      <td></td>
+                      <td width="90">
+                        <a style="cursor:pointer;" class="label label-sm label-info" title="还原" href="#">还原</a>
+                        <a style="cursor:pointer;" onclick="return completedelete();" class="label label-sm label-danger" title="删除" href="#">删除</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="120">秭归金点子外卖平台：梁记粥铺</td>
+                      <td width="180">秭归金点子外卖平台:秭归金点子外卖平台：梁记粥铺</td>
+                      <td width="180">商户</td>
+                      <td></td>
+                      <td width="90">
+                        <a style="cursor:pointer;" class="label label-sm label-info" title="还原" href="#">还原</a>
+                        <a style="cursor:pointer;" onclick="return completedelete();" class="label label-sm label-danger" title="删除" href="#">删除</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="summary">第 1-3 条, 共 3 条.</div>
+                <div class="keys" style="display:none" title="/config/blackemployee">
+                  <span>60144</span>
+                  <span>59071</span>
+                  <span>58292</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

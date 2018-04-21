@@ -1,0 +1,72 @@
+{#$cssFile = array("swiper.min.css", "order.css")#}
+{#include file='../_header.html' pageTitle='订单列表' cssFile=$cssFile goBack=1#}
+
+  <div class="tabs fn-clear">
+    <a href="javascript:;" class="active" data-state="2">未处理</a>
+    <a href="javascript:;" data-state="3">已确认</a>
+    <a href="javascript:;" data-state="4">已接单</a>
+    <a href="javascript:;" data-state="5">配送中</a>
+    <a href="javascript:;" data-state="1">成功</a>
+    <a href="javascript:;" data-state="7">失败</a>
+    <a href="javascript:;" data-state="6">已取消</a>
+  </div>
+  <div class="container">
+
+    <div id="tabs-container" class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" {#if empty($list)#}data-page="1" data-first="0" data-end="1"{#else#}data-page="2" data-first="0"{#/if#}>
+          <div class="loading" style="border-bottom: 0px solid transparent; height: 0px;" data-loading="false">下拉刷新...</div>
+          <div class="content-slide">
+            {#$count = 0#}
+            {#foreach from=$list item=l#}
+            <div class="item">
+              {#if $l.today#}<em class="tag">今日</em>{#/if#}
+              <a href="waimaiOrderDetail.php?id={#$l.id#}" class="fn-clear">
+                <div class="imgbox"><img src="{#$templets_skin#}images/timepicker2.png" alt="">{#$l.pubdate|date_format:"%H:%M"#}</div>
+                <div class="txtbox">
+                  <p class="title">{#$l.username#}&nbsp;&nbsp;{#$l.tel#}</p>
+                  <p>订单号：{#$l.shopname#}{#$l.ordernumstore#}</p>
+                </div>
+              </a>
+            </div>
+            {#/foreach#}
+            {#if empty($list)#}
+            <div class="load">暂无数据</div>
+            {#/if#}
+          </div>
+        </div>
+        <div class="swiper-slide" data-page="1" data-first="1">
+          <div class="loading" style="border-bottom: 0px solid transparent; height: 0px;" data-loading="false">下拉刷新...</div>
+          <div class="content-slide"></div>
+        </div>
+        <div class="swiper-slide" data-page="1" data-first="1">
+          <div class="loading" style="border-bottom: 0px solid transparent; height: 0px;" data-loading="false">下拉刷新...</div>
+          <div class="content-slide"></div>
+        </div>
+        <div class="swiper-slide" data-page="1" data-first="1">
+          <div class="loading" style="border-bottom: 0px solid transparent; height: 0px;" data-loading="false">下拉刷新...</div>
+          <div class="content-slide"></div>
+        </div>
+        <div class="swiper-slide" data-page="1" data-first="1">
+          <div class="loading" style="border-bottom: 0px solid transparent; height: 0px;" data-loading="false">下拉刷新...</div>
+          <div class="content-slide"></div>
+        </div>
+        <div class="swiper-slide" data-page="1" data-first="1">
+          <div class="loading" style="border-bottom: 0px solid transparent; height: 0px;" data-loading="false">下拉刷新...</div>
+          <div class="content-slide"></div>
+        </div>
+        <div class="swiper-slide" data-page="1" data-first="1">
+          <div class="loading" style="border-bottom: 0px solid transparent; height: 0px;" data-loading="false">下拉刷新...</div>
+          <div class="content-slide"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="blank"></div>
+
+  {#$jsFile = array("swiper.min.js", "drag-loading.js", "waimaiOrder.js")#}
+  {#include file='../_footer.html' curr='order'#}
+
+</body>
+</html>

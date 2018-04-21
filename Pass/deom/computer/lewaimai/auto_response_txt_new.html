@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-wechat wechat-icon"></i>
+      <li class="active">公众号设置</li>
+      <li class="active">自动回复</li>
+      <li>
+        <a href="#">关键词自动回复</a></li>
+      <li class="active">新建图文回复</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li >
+                <a href="auto_response.html">文字回复</a></li>
+              <li >
+                <a href="auto_response_pic.html">图片回复</a></li>
+              <li class="active">
+                <a href="auto_response_txt.html">图文回复</a></li>
+              <li>
+                <a href="auto_response_system.html">系统功能回复</a></li>
+              <li>
+                <a href="auto_response_other.html">第三方接口回复</a></li>
+            </ul>
+            <div class="tab-content">
+              <div>
+                <a href="#" class="btn btn-success" style="margin-bottom:20px;">返回列表</a></div>
+              <div class="form">
+                <form class="well" id="food-form" action="/autoreply/createnews" method="post">
+                  <p class="note">标有
+                    <span class="required" style="color:red;">*</span>的为必填选项</p>
+                  <div class="alert alert-danger" id="food-form_es_" style="display:none">
+                    <p>请更正下列输入错误:</p>
+                    <ul>
+                      <li>dummy</li></ul>
+                  </div>
+                  <br>关键词
+                  <span class="required" style="color:red;">*</span>：
+                  <br>
+                  <input class="span3" size="30" maxlength="30" name="Autoreply[text]" id="Autoreply_text" type="text">
+                  <br>
+                  <br>
+                  <input id="ytAutoreply_matchtype" type="hidden" value="" name="Autoreply[matchtype]">
+                  <span id="Autoreply_matchtype">
+                    <input id="Autoreply_matchtype_0" value="0" checked="checked" type="radio" name="Autoreply[matchtype]">
+                    <label for="Autoreply_matchtype_0">完全匹配，用户输入的和此关键词一样才会触发!</label>
+                    <br>
+                    <input id="Autoreply_matchtype_1" value="1" type="radio" name="Autoreply[matchtype]">
+                    <label for="Autoreply_matchtype_1">包含匹配 ，只要用户输入的文字包含本关键词就触发!</label></span>
+                  <br>
+                  <br>选择图文消息
+                  <br>
+                  <select name="Autoreply[reply_news_id]" id="Autoreply_reply_news_id"></select>
+                  <div class="form-actions">
+                    <button class="btn btn-info" type="submit">
+                      <i class="ace-icon fa fa-check bigger-110"></i>提交</button>
+                  </div>
+                </form>
+              </div>
+              <!-- form --></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

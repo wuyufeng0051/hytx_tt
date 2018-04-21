@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>本地鸟</title>
+	<link rel="stylesheet" href="css/re_public.css">
+	<link rel="stylesheet" href="css/_head.css">
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<script type="text/javascript" src="js/touchScale.js"></script>
+</head>
+<body>
+	<!-- 共同顶部 s-->
+		<div class="header fn-clear">
+			<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+			<div class="title">商家详情</div>
+			<div class="share"></div>
+			<div class="header_right"><a class="fa_btn" href="javascript:;">发布</a><i></i><a href="#">我的</a></div>
+		</div>
+	<!-- 共同顶部 e-->
+
+	<link rel="stylesheet" href="css/car.css">
+	<script type="text/javascript" src="js/slider.js"></script>
+
+	<!-- 广告幻灯片 s -->
+	<div class="picscroll">
+		<div class="bd" id="picscroll">
+		    <ul class="picscroll-pic">
+		      <li>
+		      	<a href="javascript:;"><img src="upfile/banner.png"></a>
+		      </li>
+		      <li>
+		      	<a href="javascript:;"><img src="upfile/banner.png"></a>
+		      </li>
+		      <li>
+		      	<a href="javascript:;"><img src="upfile/banner.png"></a>
+		      </li>
+		    </ul>
+		</div>
+	</div>
+	<!-- 广告幻灯片 e -->
+	<div class="intor_lead fn-clear">
+		<ul>
+			<li class="il_bc">顺路车</li>
+			<li>顺路货</li>
+		</ul>
+	</div>
+	<div class="car_list fn-clear">
+		<div class="car_tab">
+			<div class="car_sea fn-clear">
+				<div class="input"><i class="green"></i><input type="text" placeholder="输入始发地"></div>
+				<div class="input"><i class="red"></i><input type="text" placeholder="输入目的地"></div>
+				<a href="car_search_f.shtml"><div class="btn">搜索</div></a>
+			</div>
+			<div class="car_detail fn-clear"> <a href="car_detail.shtml">
+				<div class="car_pic"><img src="upfile/asdfasdad.png" alt=""></div>
+				<div class="cd_title"><i class="time"></i>今天15:30 <i class="man"></i> <span>大型车</span></div>
+				<ul>
+					<li><em class="start">起</em>湖西客运站</li>
+					<li><em class="end">终</em>米乐锦城时代广场</li>
+				</ul>
+			</a></div>
+			<div class="car_detail fn-clear"> <a href="car_detail.shtml">
+				<div class="car_pic"><img src="upfile/asdfasdad.png" alt=""></div>
+				<div class="cd_title"><i class="time"></i>今天15:30 <i class="man"></i> <span>大型车</span></div>
+				<ul>
+					<li><em class="start">起</em>湖西客运站</li>
+					<li><em class="end">终</em>米乐锦城时代广场</li>
+				</ul>
+			</a></div>
+			<div class="car_detail fn-clear"> <a href="car_detail.shtml">
+				<div class="car_pic"><img src="upfile/asdfasdad.png" alt=""></div>
+				<div class="cd_title"><i class="time"></i>今天15:30 <i class="women"></i> <span>大型车</span></div>
+				<ul>
+					<li><em class="start">起</em>湖西客运站</li>
+					<li><em class="end">终</em>米乐锦城时代广场</li>
+				</ul>
+			</a></div>
+			<div class="page fn-clear">
+				<a href="#" class="before">上一页</a>
+				<div class="page_box">
+					<span><em>1</em>/9<i></i></span>
+					<select name="" id="" onchange="selectChange()">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+					</select>
+				</div>
+				<a href="#" class="after">下一页</a>
+			</div>
+			<div class="tips">共9页</div>
+		</div>
+		<div class="car_tab fn-hide">
+			<div class="car_sea fn-clear">
+				<div class="input"><i class="green"></i><input type="text" placeholder="输入始发地"></div>
+				<div class="input"><i class="red"></i><input type="text" placeholder="输入目的地"></div>
+				<div class="btn">搜索</div>
+			</div>
+			<div class="car_detail fn-clear"> <a href="car_detail.shtml">
+				<div class="car_pic"><img src="upfile/asdfasdad.png" alt=""></div>
+				<div class="cd_title"><i class="time"></i>今天15:30 <i class="women"></i> <span>大型货</span></div>
+				<ul>
+					<li><em class="start">起</em>湖西客运站</li>
+					<li><em class="end">终</em>米乐锦城时代广场</li>
+				</ul>
+			</a></div>
+			<div class="car_detail fn-clear"> <a href="car_detail.shtml">
+				<div class="car_pic"><img src="upfile/asdfasdad.png" alt=""></div>
+				<div class="cd_title"><i class="time"></i>今天15:30 <i class="man"></i> <span>大型货</span></div>
+				<ul>
+					<li><em class="start">起</em>湖西客运站</li>
+					<li><em class="end">终</em>米乐锦城时代广场</li>
+				</ul>
+			</a></div>
+			<div class="car_detail fn-clear"> <a href="car_detail.shtml">
+				<div class="car_pic"><img src="upfile/asdfasdad.png" alt=""></div>
+				<div class="cd_title"><i class="time"></i>今天15:30 <i class="women"></i> <span>大型货</span></div>
+				<ul>
+					<li><em class="start">起</em>湖西客运站</li>
+					<li><em class="end">终</em>米乐锦城时代广场</li>
+				</ul>
+			</a></div>
+			<div class="page fn-clear">
+				<a href="#" class="before">上一页</a>
+				<div class="page_box">
+					<span><em>1</em>/9<i></i></span>
+					<select name="" id="" onchange="selectChange()">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+					</select>
+				</div>
+				<a href="#" class="after">下一页</a>
+			</div>
+			<div class="tips">共9页</div>
+		</div>
+	</div>
+	<!-- 发布弹出层 -->
+		<div class="fa_box fa_1">
+			<div class="fb_title">请选择您要发布的类型<i></i></div>
+			<ul>
+				<li><a href="car_issue_che.shtml">顺路车</a></li>
+				<li><a href="car_issue.shtml">顺路货</a></li>
+				<li><a href="fa_carinformation.shtml">车辆信息</a></li>
+			</ul>
+		</div>
+	<!-- 发布弹出层 -->
+	<div class="disk"></div>
+	<script>
+	// 分页选择
+	function selectChange(){
+		var x = $('.page_box span em'),
+			num = $('.page_box option:selected').val();
+		x.text(num);
+	}
+	$('.fa_btn').on('click',function(){
+		if ($('.fa_1').css("display") == "none") {
+			$('.fa_1').show();
+			$('.disk').show();
+			$('body').addClass('by');
+		}else{
+			$('.fa_1').hide();
+			$('.disk').hide();
+			$('body').removeClass('by');
+		}
+	})
+	$('.fa_box .fb_title i').click(function(){
+		$('.fa_1').hide();
+		$('.fa_2').hide();
+		$('body').removeClass('by');
+		$('.disk').hide();
+	})
+	$('.disk').click(function(){
+ 			$('.fa_1').hide();
+ 			$('.fa_2').hide();
+			$('body').removeClass('by');
+			$('.disk').hide();
+ 		})
+	</script>
+
+
+	<script type="text/javascript" src="js/car.js"></script>
+</body>
+</html>

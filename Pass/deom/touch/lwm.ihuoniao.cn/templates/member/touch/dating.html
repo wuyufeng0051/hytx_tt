@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>我的交友</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css?v=1">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v=1">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/dating.css?v=1">
+<script src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+
+  {#$pageTitle = "我的交友"#}
+  {#$backUrl = "{#getUrlPath service='member' type='user' template='index'#}"#}
+  {#include file="top.html"#}
+
+  <div class="content">
+    <!-- 发布列表 s -->
+    <div class="list">
+      <div class="model">
+        <img src="{#$templets_skin#}images/banner-dating.png" alt="">
+      </div>
+      <ul>
+        <li class="type">
+          <a href="{#getUrlPath service="member" type='user' template="dating-profile"#}">
+            <i class="icon icon1"></i>
+            <div class="title"><p>我的资料</div>
+            <i class="arrow"></i>
+          </a>
+        </li>
+        <li>
+          <a href="{#getUrlPath service="member" type="user" template="dating-review"#}">
+            <i class="icon icon2"></i>
+            <div class="title"><p>我的私信</div>
+            <i class="arrow"></i>
+          </a>
+        </li>
+        <li>
+          <a href="{#getUrlPath service="member" type="user" template="dating-visit"#}">
+            <i class="icon icon6"></i>
+            <div class="title"><p>我的人气</div>
+            <i class="arrow"></i>
+          </a>
+        </li>
+        <li>
+          <a href="{#getUrlPath service="member" type="user" template="dating-album"#}">
+            <i class="icon icon7"></i>
+            <div class="title"><p>我的相册</div>
+            <i class="arrow"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- 发布列表 e -->
+  </div>
+
+<script src="{#$templets_skin#}js/public.js?v=1"></script>
+</body>
+</html>

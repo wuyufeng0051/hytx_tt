@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-bicycle"></i>
+        <a href="#">跑腿</a></li>
+      <li class="active">跑腿订单</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li >
+                <a href="onfoot.html">待抢订单</a></li>
+              <li >
+                <a href="onfoot_down.html">已抢订单</a></li>
+              <li>
+                <a href="onfoot_succeed.html">成功订单</a></li>
+              <li class="active">
+                <a href="onfoot_fail.html">失败订单</a></li>
+              <li>
+                <a href="onfoot_cancel.html">取消订单</a></li>
+            </ul>
+            <div class="tab-content">
+              <div id="customerList" class="grid-view">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th id="customerList_c0">
+                        <a class="sort-link" href="#">订单编号</a></th>
+                      <th id="customerList_c1">服务类型</th>
+                      <th id="customerList_c2">服务内容</th>
+                      <th id="customerList_c3">
+                        <a class="sort-link" href="#">姓名</a></th>
+                      <th id="customerList_c4">
+                        <a class="sort-link" href="#">电话</a></th>
+                      <th id="customerList_c5">
+                        <a class="sort-link" href="#">地址</a></th>
+                      <th id="customerList_c6">
+                        <a class="sort-link" href="#">跑腿费</a></th>
+                      <th id="customerList_c7">
+                        <a class="sort-link" href="#">总金额</a></th>
+                      <th id="customerList_c8">支付方式</th>
+                      <th id="customerList_c9">配送员</th>
+                      <th id="customerList_c10">
+                        <a class="sort-link desc" href="#">下单时间</a></th>
+                      <th id="customerList_c11">
+                        <a class="sort-link" href="#">取消时间</a></th>
+                      <th id="customerList_c12">
+                        <a class="sort-link" href="#">失败原因</a></th>
+                      <th id="customerList_c13">退款状态</th>
+                      <th id="customerList_c14">操作</th></tr>
+                    <tr class="filters">
+                      <td>
+                        <input name="ErrandOrder[trade_no]" type="text"></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <input name="ErrandOrder[name]" type="text" maxlength="10"></td>
+                      <td>
+                        <input name="ErrandOrder[phone]" type="text" maxlength="20"></td>
+                      <td>
+                        <input name="ErrandOrder[address]" type="text" maxlength="200"></td>
+                      <td>
+                        <input name="ErrandOrder[delivery_fee]" type="text" maxlength="10"></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <input name="ErrandOrder[init_time]" type="text"></td>
+                      <td>
+                        <input name="ErrandOrder[complete_time]" type="text"></td>
+                      <td>
+                        <input name="ErrandOrder[failed_reason]" type="text"></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td></tr>
+                  </thead>
+                  <tbody>
+                    <tr class="odd">
+                      <td width="80">2017031654501005</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：周</div>
+                        <div>联系电话：18972560584</div>
+                        <div>货物类型：烧烤摊上炒饭一份，两个鸡柳一个鸡腿一包烟</div>
+                        <div>提货位置：烧烤摊夜宵摊</div>
+                        <div>送货位置：韩家老屋居民与花园小区对接铁门那里给我打电话</div>
+                        <div>备注信息：我的电话18972560584</div></td>
+                      <td width="80">周先生</td>
+                      <td width="80">18972560584</td>
+                      <td width="80">花园小区(丹阳路) 花园小区！阿海商店里面</td>
+                      <td width="80">50.00</td>
+                      <td width="80">50.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（商户自己的微信支付）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2017-03-16 01:54:41</td>
+                      <td width="80">2017-03-16 02:01:21</td>
+                      <td width="80">意打烊</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：退款成功</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-16 15:58:28</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170316529851513639789379717302</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="80">2017030310249995</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：熊映江</div>
+                        <div>联系电话：15271489305</div>
+                        <div>货物类型：怡宝矿泉水</div>
+                        <div>提货位置：庙嘴易购</div>
+                        <div>送货位置：柳树沟</div>
+                        <div>备注信息：给我买三瓶怡宝矿泉水</div></td>
+                      <td width="80">熊先生</td>
+                      <td width="80">15271489305</td>
+                      <td width="80">西楚路14号 柳树沟</td>
+                      <td width="80">10.00</td>
+                      <td width="80">10.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2017-03-03 03:29:43</td>
+                      <td width="80">2017-03-03 03:35:11</td>
+                      <td width="80">用户主动取消</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="80">2017030156555556</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：崔</div>
+                        <div>联系电话：13997689179</div>
+                        <div>货物类型：宵夜</div>
+                        <div>提货位置：随便，那家好吃搞那家</div>
+                        <div>送货位置：开明商务酒店406</div>
+                        <div>备注信息：土豆丝炒饭，魔芋四串（烧烤）</div></td>
+                      <td width="80">李</td>
+                      <td width="80">13997689179</td>
+                      <td width="80">平湖大道25-o号 开明商务酒店406</td>
+                      <td width="80">5.00</td>
+                      <td width="80">5.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2017-03-01 02:48:20</td>
+                      <td width="80">2017-03-01 02:48:44</td>
+                      <td width="80">用户主动取消</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="80">2017022199515298</td>
+                      <td width="80">在线叫车（即将上线，敬请期待）</td>
+                      <td width="150">
+                        <div>我的称呼：鲁</div>
+                        <div>联系电话：15926975569</div>
+                        <div>我的位置：花园小区啊海超市</div>
+                        <div>送达位置：信合</div>
+                        <div>下单须知：速度</div></td>
+                      <td width="80">鲁</td>
+                      <td width="80">15926975569</td>
+                      <td width="80">丹阳路40号 花园小区阿海超市</td>
+                      <td width="80">10.00</td>
+                      <td width="80">10.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2017-02-21 20:05:29</td>
+                      <td width="80">2017-02-21 20:06:24</td>
+                      <td width="80">叫车业务暂未开通，敬请期待</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="80">2017021154509753</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：谭先生</div>
+                        <div>联系电话：18727278112</div>
+                        <div>货物类型：两个腊肉炒饭，一份蛋炒饭不要辣椒，一份麻辣烫，四瓶矿泉水</div>
+                        <div>提货位置：帮我买哈</div>
+                        <div>送货位置：金城大酒店5068</div>
+                        <div>备注信息：谢谢！</div></td>
+                      <td width="80">谭先生</td>
+                      <td width="80">18727278112</td>
+                      <td width="80">馨港商务酒店 房间8531</td>
+                      <td width="80">5.00</td>
+                      <td width="80">5.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2017-02-11 22:41:23</td>
+                      <td width="80">2017-02-11 22:42:10</td>
+                      <td width="80">用户主动取消</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="80">2017021153524999</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：韩超</div>
+                        <div>联系电话：15872454005</div>
+                        <div>货物类型：大碗牛肉面</div>
+                        <div>提货位置：气象局才子拉面</div>
+                        <div>送货位置：花园小区40-2-219</div>
+                        <div>备注信息：加辣椒</div></td>
+                      <td width="80">韩超</td>
+                      <td width="80">15872454005</td>
+                      <td width="80">丹阳路40号 花园小区40-2-219</td>
+                      <td width="80">6.00</td>
+                      <td width="80">6.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2017-02-11 09:37:05</td>
+                      <td width="80">2017-02-11 09:55:54</td>
+                      <td width="80">用户主动取消</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="80">2017021110051569</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：韩超</div>
+                        <div>联系电话：15872454005</div>
+                        <div>货物类型：大碗牛肉拉面</div>
+                        <div>提货位置：气象局才子拉面</div>
+                        <div>送货位置：花园小区40-2-219</div>
+                        <div>备注信息：加辣椒</div></td>
+                      <td width="80">韩超</td>
+                      <td width="80">15872454005</td>
+                      <td width="80">丹阳路40号 花园小区40-2-219</td>
+                      <td width="80">6.00</td>
+                      <td width="80">6.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2017-02-11 09:05:26</td>
+                      <td width="80">2017-02-11 09:35:50</td>
+                      <td width="80">用户主动取消</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="80">2017020499975556</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：周立帆</div>
+                        <div>联系电话：13477161000</div>
+                        <div>货物类型：蛋糕</div>
+                        <div>提货位置：本素咖啡，平湖2路</div>
+                        <div>送货位置：平湖半岛</div>
+                        <div>备注信息：快</div></td>
+                      <td width="80">周女士</td>
+                      <td width="80">13477161000</td>
+                      <td width="80">桔颂路43号 本素咖啡</td>
+                      <td width="80">8.00</td>
+                      <td width="80">8.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2017-02-04 21:21:45</td>
+                      <td width="80">2017-02-04 21:30:58</td>
+                      <td width="80">用户主动取消</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="80">2017020451541015</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：寇女士</div>
+                        <div>联系电话：15872483709</div>
+                        <div>货物类型：砂锅牛肉米线一份 豆浆一份</div>
+                        <div>提货位置：茅坪镇镇政府旁 辣妹子餐馆</div>
+                        <div>送货位置：景城花苑1单元1号楼</div>
+                        <div>备注信息：速度</div></td>
+                      <td width="80">姜先生</td>
+                      <td width="80">13886661541</td>
+                      <td width="80">橘园街32号 橘园街13号4楼</td>
+                      <td width="80">5.00</td>
+                      <td width="80">5.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">梅虎</td>
+                      <td width="80">2017-02-04 09:46:33</td>
+                      <td width="80">2017-02-04 09:56:50</td>
+                      <td width="80">订购的商家没有营业</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="80">2017020355995710</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：向凌峰</div>
+                        <div>联系电话：18507203287</div>
+                        <div>货物类型：榴莲</div>
+                        <div>提货位置：坝头公园那里的物美超市</div>
+                        <div>送货位置：国贸下面的林业局宿舍楼</div>
+                        <div>备注信息：2月4号上午，帮忙在物美超市买一个榴莲，选个最小的。然后送到国贸下面。</div></td>
+                      <td width="80">向凌峰</td>
+                      <td width="80">15549382347</td>
+                      <td width="80">平湖南路4号 国贸后面林业局宿舍楼</td>
+                      <td width="80">10.00</td>
+                      <td width="80">10.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">望开虎</td>
+                      <td width="80">2017-02-03 20:22:44</td>
+                      <td width="80">2017-02-03 20:30:19</td>
+                      <td width="80">客户自己取消订单</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="80">2017020353101495</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：向倩</div>
+                        <div>联系电话：13477069916</div>
+                        <div>货物类型：早餐</div>
+                        <div>提货位置：幼儿园后湖南米粉</div>
+                        <div>送货位置：金城大酒店4158</div>
+                        <div>备注信息：一碗牛杂通心粉，一包蓝楼</div></td>
+                      <td width="80">向倩</td>
+                      <td width="80">13477069916</td>
+                      <td width="80">长宁大道25号 金城大酒店4158</td>
+                      <td width="80">5.00</td>
+                      <td width="80">5.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2017-02-03 10:57:01</td>
+                      <td width="80">2017-02-03 11:00:15</td>
+                      <td width="80">用户主动取消</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="80">2017012255100575</td>
+                      <td width="80">洗衣服务</td>
+                      <td width="150">
+                        <div>您的称呼：林女士</div>
+                        <div>联系方式：15572750419</div>
+                        <div>衣物类型：羽绒服</div>
+                        <div>待洗件数：1件</div>
+                        <div>提货位置：长林世纪城售楼部</div>
+                        <div>送货位置：长林世纪城售楼部</div>
+                        <div>备注信息：25号送到</div></td>
+                      <td width="80">林小姐</td>
+                      <td width="80">15572750419</td>
+                      <td width="80">长林世纪城售楼部</td>
+                      <td width="80">5.00</td>
+                      <td width="80">5.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2017-01-22 10:51:17</td>
+                      <td width="80">2017-01-22 10:53:26</td>
+                      <td width="80">用户主动取消</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="80">2017011956555757</td>
+                      <td width="80">在线叫车（即将上线，敬请期待）</td>
+                      <td width="150">
+                        <div>我的称呼：向女士</div>
+                        <div>联系电话：18807207000</div>
+                        <div>我的位置：湖景天成</div>
+                        <div>送达位置：邮政银行</div>
+                        <div>下单须知：急</div></td>
+                      <td width="80">向</td>
+                      <td width="80">18807207000</td>
+                      <td width="80">香山湖景天成 7号楼1002室</td>
+                      <td width="80">0.10</td>
+                      <td width="80">0.10</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2017-01-19 15:04:57</td>
+                      <td width="80">2017-01-19 15:05:59</td>
+                      <td width="80">暂时未开放，谢谢</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="80">2017010254975297</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：谭先生</div>
+                        <div>联系电话：15841553639</div>
+                        <div>货物类型：食物</div>
+                        <div>提货位置：坝头东北小吃火爆鱿鱼</div>
+                        <div>送货位置：金生源酒店8888房间</div>
+                        <div>备注信息：快点哦</div></td>
+                      <td width="80">谭先生</td>
+                      <td width="80">15871553639</td>
+                      <td width="80">天问路24号 金生源酒店</td>
+                      <td width="80">20.00</td>
+                      <td width="80">20.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2017-01-02 00:58:09</td>
+                      <td width="80">&nbsp;</td>
+                      <td width="80">用户主动取消</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="80">2017010257995157</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：谭先生</div>
+                        <div>联系电话：15871553639</div>
+                        <div>货物类型：食物</div>
+                        <div>提货位置：坝头东北小吃火爆鱿鱼</div>
+                        <div>送货位置：金生源酒店8888房间</div>
+                        <div>备注信息：速度点点</div></td>
+                      <td width="80">谭先生</td>
+                      <td width="80">15871553639</td>
+                      <td width="80">天问路24号 金生源酒店</td>
+                      <td width="80">10.00</td>
+                      <td width="80">10.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2017-01-02 00:43:00</td>
+                      <td width="80">&nbsp;</td>
+                      <td width="80">用户主动取消</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="80">2016122997999850</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：向</div>
+                        <div>联系电话：2992951</div>
+                        <div>货物类型：锅</div>
+                        <div>提货位置：图书馆403</div>
+                        <div>送货位置：国华盛景纸上烤鱼</div>
+                        <div>备注信息：早点去</div></td>
+                      <td width="80">向先生</td>
+                      <td width="80">18071329016</td>
+                      <td width="80">秭归县林业局 橘颂居委会对面</td>
+                      <td width="80">5.00</td>
+                      <td width="80">5.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2016-12-29 10:44:38</td>
+                      <td width="80">2016-12-29 10:49:39</td>
+                      <td width="80">点错</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="80">2016122254515210</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：开宇</div>
+                        <div>联系电话：18872539016</div>
+                        <div>货物类型：两碗干拌炸酱面</div>
+                        <div>提货位置：易购对面重庆碗碗鲜</div>
+                        <div>送货位置：国贸馨港酒店510</div>
+                        <div>备注信息：速度</div></td>
+                      <td width="80">开宇</td>
+                      <td width="80">18872539016</td>
+                      <td width="80">馨港商务酒店 国贸馨港酒店510</td>
+                      <td width="80">5.00</td>
+                      <td width="80">5.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2016-12-22 01:50:22</td>
+                      <td width="80">2016-12-22 01:52:06</td>
+                      <td width="80">不在配送时间内</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="80">2016122249101100</td>
+                      <td width="80">在线叫车（即将上线，敬请期待）</td>
+                      <td width="150">
+                        <div>我的称呼：玲玲</div>
+                        <div>联系电话：18827292830</div>
+                        <div>我的位置：新城华府</div>
+                        <div>送达位置：庙嘴</div>
+                        <div>下单须知：快点</div></td>
+                      <td width="80">邓从玲</td>
+                      <td width="80">18827292830</td>
+                      <td width="80">金城大酒店(宜昌秭归店) 长宁大道25号金城酒店前台</td>
+                      <td width="80">1.00</td>
+                      <td width="80">1.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2016-12-22 00:41:35</td>
+                      <td width="80">2016-12-24 09:33:28</td>
+                      <td width="80">无人接单</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="80">2016121248975248</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：高</div>
+                        <div>联系电话：18671792477</div>
+                        <div>货物类型：鸡翅</div>
+                        <div>提货位置：物美</div>
+                        <div>送货位置：油厂宿舍44……3……106</div>
+                        <div>备注信息：买一盒鸡翅中，买一盒鸡翅根</div></td>
+                      <td width="80">高</td>
+                      <td width="80">18671792477</td>
+                      <td width="80">丹阳路44-3号 油厂宿舍</td>
+                      <td width="80">5.00</td>
+                      <td width="80">5.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">不存在</td>
+                      <td width="80">2016-12-12 12:41:44</td>
+                      <td width="80">2016-12-12 13:19:03</td>
+                      <td width="80">售完</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="80">2016121110110050</td>
+                      <td width="80">代购代送</td>
+                      <td width="150">
+                        <div>姓名：王小波</div>
+                        <div>联系电话：13469876264</div>
+                        <div>货物类型：食物</div>
+                        <div>提货位置：平湖五路21号A+1时尚酒家</div>
+                        <div>送货位置：九里百丽</div>
+                        <div>备注信息：十二点二十前送到</div></td>
+                      <td width="80">王先生</td>
+                      <td width="80">13469876264</td>
+                      <td width="80">湖北秭归百丽鞋业公司 建东大道199号</td>
+                      <td width="80">5.00</td>
+                      <td width="80">5.00</td>
+                      <td width="80">
+                        <b style="color:green">在线支付（）</b></td>
+                      <td width="80">无</td>
+                      <td width="80">2016-12-11 11:09:31</td>
+                      <td width="80">&nbsp;</td>
+                      <td width="80">用户主动取消</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td>&nbsp;</td></tr>
+                  </tbody>
+                </table>
+                <div class="summary">第 1-20 条, 共 28 条.</div>
+                <div class="pager">
+                  <ul class="pagination" id="yw0">
+                    <li class="hidden hidden">
+                      <a href="#">&lt;&lt; 首页</a></li>
+                    <li class="prev hidden">
+                      <a href="#">
+                        <i class="ace-icon fa fa-angle-double-left"></i>
+                      </a>
+                    </li>
+                    <li class="page active">
+                      <a href="#">1</a></li>
+                    <li class="page">
+                      <a href="#">2</a></li>
+                    <li class="next">
+                      <a href="#">
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                      </a>
+                    </li>
+                    <li class="hidden">
+                      <a href="#">末页 &gt;&gt;</a></li>
+                  </ul>
+                </div>
+                <div class="keys" style="display:none" title="/errands/orderfailed">
+                  <span>155093</span>
+                  <span>139785</span>
+                  <span>137765</span>
+                  <span>130731</span>
+                  <span>122791</span>
+                  <span>122336</span>
+                  <span>122330</span>
+                  <span>118190</span>
+                  <span>117787</span>
+                  <span>117628</span>
+                  <span>117354</span>
+                  <span>112694</span>
+                  <span>110640</span>
+                  <span>95769</span>
+                  <span>95761</span>
+                  <span>92235</span>
+                  <span>85292</span>
+                  <span>85281</span>
+                  <span>76971</span>
+                  <span>76027</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="modal-reason" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" id="modal-close-trigger" class="close" data-dismiss="modal" onclick="$('#modal-reason').hide()">×</button>
+              <h4 class="blue bigger">请填写订单失败的原因</h4></div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12">
+                  <textarea id="order_failed_reason" style="width:100%;"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-sm" onclick="$('#modal-reason').hide()">
+                <i class="ace-icon fa fa-times"></i>取消</button>
+              <button class="btn btn-sm btn-primary" onclick="GetFailedCheckbox()">
+                <i class="ace-icon fa fa-check"></i>确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

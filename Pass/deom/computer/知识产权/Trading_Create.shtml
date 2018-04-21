@@ -1,0 +1,90 @@
+<!--#include file="_head.shtml"-->
+<link href="/Js/Validform/css/style.css" rel="stylesheet" />
+<script src="/Js/Validform/js/Validform_v5.3.2.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        $("form").Validform({
+            tiptype: 3,
+            postonce: true,
+            usePlugin: {
+                passwordstrength: {
+                    minLen: 6,
+                    maxLen: 18
+                }
+            }
+        });
+    })
+</script>
+
+
+<form action="" method="post">
+  <div class="rBox">
+    <div class="local">交易平台 > 需求新增</div>
+    <div class="box1 formEdit">
+      <div class="title">
+        <h3>需求新增</h3></div>
+      <div class="adminEdit rBgDiv">
+        <div class="box">
+          <dl>
+            <dt>
+              <em>*</em>需求标题：</dt>
+            <dd colspan="3">
+              <input autocomplete="off" class="text" datatype="*" id="TradingName" maxlength="50" name="TradingName" nullmsg="不能为空" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>联系人：</dt>
+            <dd colspan="3">
+              <input autocomplete="off" class="text" datatype="*" id="ContactMan" maxlength="50" name="ContactMan" nullmsg="不能为空" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>联系电话：</dt>
+            <dd colspan="3">
+              <input autocomplete="off" class="text" datatype="*" id="Tel" maxlength="50" name="Tel" nullmsg="不能为空" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>合作方式：</dt>
+            <dd colspan="3">
+              <select autocomplete="off" datatype="*" id="PartnerShips" name="PartnerShips" nullmsg="没有选择">
+                <option value="">请选择</option>
+                <option value="Assignment">转让</option>
+                <option value="Permit">许可</option>
+                <option value="TechnicalService">技术服务</option></select>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>求购类型：</dt>
+            <dd colspan="3">
+              <select autocomplete="off" datatype="*" id="TradingType" name="TradingType" nullmsg="没有选择">
+                <option value="">请选择</option>
+                <option value="TrademarkCategory">商标业务</option>
+                <option value="CopyRightCategory">版权业务</option>
+                <option value="PatentCategory">专利业务</option></select>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>所在地区：</dt>
+            <dd colspan="3">
+              <input autocomplete="off" class="text" datatype="*" id="TradingArea" maxlength="50" name="TradingArea" nullmsg="不能为空" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>具体描述：</dt>
+            <dd colspan="3">
+              <textarea autocomplete="off" cols="20" id="TradingRemark" name="TradingRemark" rows="2" style="width:450px;height:300px"></textarea>
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <div class="btnBox">
+        <input value="提交" class="btn" type="submit" />
+        <input type="button" class="return btn" value="返回" onclick="history.go(-1)"></div>
+    </div>
+  </div>
+</form>
+
+<!--#include file="_foot.shtml"-->

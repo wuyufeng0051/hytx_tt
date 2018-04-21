@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <title>乐外卖 - 财务统计</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <link rel="stylesheet" href="css/font-awesome.min.css" />
+      <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/chosen.min.css" />
+      <link rel="stylesheet" href="css/ace-fonts.min.css" />
+      <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+  </head>
+  <body class="no-skin">
+      <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+          <ul class="breadcrumb">
+            <i class="ace-icon fa fa-bar-chart-o bar-chart-o-icon"></i>
+            <li class="active">统计</li>
+            <li class="active">短信消费统计</li>
+            <li class="active">短信消费明细</li></ul>
+          <!-- .breadcrumb --></div>
+        <!-- /section:basics/content.breadcrumbs -->
+        <div class="page-content">
+          <!-- /section:settings.box -->
+          <div class="page-content-area">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="tabbable">
+                  <ul class="nav nav-tabs" id="myTab">
+                    <li>
+                      <a href="#">短信消费统计</a></li>
+                    <li class="active">
+                      <a href="#">短信消费明细</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div id="open" class="tab-pane active">
+                      <div id="order-grid-open" class="grid-view">
+                        <table class="table table-striped table-bordered table-hover">
+                          <thead>
+                            <tr>
+                              <th id="order-grid-open_c0">消费类型</th>
+                              <th id="order-grid-open_c1">相关用户名</th>
+                              <th id="order-grid-open_c2">
+                                <a class="sort-link" href="#">手机号</a></th>
+                              <th id="order-grid-open_c3">
+                                <a class="sort-link" href="#">内容</a></th>
+                              <th id="order-grid-open_c4">
+                                <a class="sort-link" href="#">短信条数</a></th>
+                              <th id="order-grid-open_c5">
+                                <a class="sort-link desc" href="#">发送时间</a></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="odd">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">13997728686</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-14 11:52:38</td></tr>
+                            <tr class="even">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">18271388606</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-14 11:09:44</td></tr>
+                            <tr class="odd">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">13886749780</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-14 00:52:31</td></tr>
+                            <tr class="even">
+                              <td width="160">首次下单短信验证</td>
+                              <td width="120">此顾客已删除</td>
+                              <td width="100">18608604052</td>
+                              <td>683805</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-13 22:12:41</td></tr>
+                            <tr class="odd">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">15872574257</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-13 21:49:32</td></tr>
+                            <tr class="even">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">15072556787</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-13 20:52:32</td></tr>
+                            <tr class="odd">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">13317566205</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-13 20:35:33</td></tr>
+                            <tr class="even">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">13487228378</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-13 16:54:39</td></tr>
+                            <tr class="odd">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">13872510913</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-13 12:26:41</td></tr>
+                            <tr class="even">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">18671748339</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-13 12:01:40</td></tr>
+                            <tr class="odd">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">15571714149</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-13 09:48:37</td></tr>
+                            <tr class="even">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">15872627891</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-13 01:00:31</td></tr>
+                            <tr class="odd">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">15327667306</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-12 23:33:32</td></tr>
+                            <tr class="even">
+                              <td width="160">取消订单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100"></td>
+                              <td>***订单取消通知*** “五谷鱼粉（茶粥坊店）”的一笔订单已被顾客取消，订单信息如下： （第1次下单） 订单编号：五谷渔粉（茶粥坊店）20161212-1 下单时间：2016-12-12 23:12:09 姓名：郑先生 电话：18871795773 地址：金色阳光(平湖大道) 三单元15楼 合计：￥16.00（未付款）</td>
+                              <td width="80">3</td>
+                              <td width="150">2016-12-12 23:30:49</td></tr>
+                            <tr class="odd">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">18672097821</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-12 22:23:33</td></tr>
+                            <tr class="even">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">15897517195</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-12 20:44:33</td></tr>
+                            <tr class="odd">
+                              <td width="160">首次下单短信验证</td>
+                              <td width="120">周海涛</td>
+                              <td width="100">18672668667</td>
+                              <td>265010</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-12 20:40:38</td></tr>
+                            <tr class="even">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">13487264538</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-12 16:49:39</td></tr>
+                            <tr class="odd">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">13693009335</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-12 16:33:38</td></tr>
+                            <tr class="even">
+                              <td width="160">5分钟未接单提醒</td>
+                              <td width="120">&nbsp;</td>
+                              <td width="100">2866881</td>
+                              <td>lewaimaiorder.wav</td>
+                              <td width="80">1</td>
+                              <td width="150">2016-12-12 13:53:35</td></tr>
+                          </tbody>
+                        </table>
+                        <div class="summary">第 1-20 条, 共 93 条.</div>
+                        <div class="pager">
+                          <ul class="pagination" id="yw0">
+                            <li class="hidden hidden">
+                              <a href="#">&lt;&lt; 首页</a></li>
+                            <li class="prev hidden">
+                              <a href="#">
+                                <i class="ace-icon fa fa-angle-double-left"></i>
+                              </a>
+                            </li>
+                            <li class="page active">
+                              <a href="#">1</a></li>
+                            <li class="page">
+                              <a href="#">2</a></li>
+                            <li class="page">
+                              <a href="#">3</a></li>
+                            <li class="page">
+                              <a href="#">4</a></li>
+                            <li class="page">
+                              <a href="#">5</a></li>
+                            <li class="next">
+                              <a href="#">
+                                <i class="ace-icon fa fa-angle-double-right"></i>
+                              </a>
+                            </li>
+                            <li class="hidden">
+                              <a href="#">末页 &gt;&gt;</a></li>
+                          </ul>
+                        </div>
+                        <div class="keys" style="display:none" title="/pay/phonemessagehistory">
+                          <span>1856644</span>
+                          <span>1856250</span>
+                          <span>1855743</span>
+                          <span>1855431</span>
+                          <span>1855372</span>
+                          <span>1855255</span>
+                          <span>1855218</span>
+                          <span>1854280</span>
+                          <span>1853367</span>
+                          <span>1853156</span>
+                          <span>1852418</span>
+                          <span>1852269</span>
+                          <span>1852159</span>
+                          <span>1852152</span>
+                          <span>1852006</span>
+                          <span>1851789</span>
+                          <span>1851780</span>
+                          <span>1850786</span>
+                          <span>1850737</span>
+                          <span>1850255</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
+
+  </body>
+
+</html>

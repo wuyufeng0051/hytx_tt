@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>现金与{#$cfg_pointName#}兑换 - {#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/convert.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var totalMoney = {#$userinfo.money#}, pointRatio = {#$cfg_pointRatio#}, pointName = '{#$cfg_pointName#}';
+</script>
+</head>
+
+<body>
+{#$pageTitle = "现金与"|cat:$cfg_pointName|cat:"兑换"#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="container fn-clear">
+
+		{#include file="sidebar.html"#}
+
+		<div class="main">
+
+			<ul class="main-tab">
+				<li class="curr"><a href="javascript:;">现金与{#$cfg_pointName#}兑换</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='transfer'#}">{#$cfg_pointName#}转赠</a></li>
+			</ul>
+
+			<div class="convert">
+
+				<form action="/include/ajax.php?service=member&action=convert" method="post" target="_blank" id="payform">
+					<dl class="fn-clear txt-inline">
+						<dt>可兑换现金：</dt>
+						<dd class="fn-clear">
+							<strong>&yen;{#$totalMoney#}</strong>
+							<em>【现金 >> {#$cfg_pointName#} （1: {#$cfg_pointRatio#}）】</em>
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt><label for="amount">兑换金额：</label></dt>
+						<dd class="fn-clear">
+							<input type="text" class="inp" name="amount" id="amount" />
+							<span class="tip-inline"><s></s>金额必须为整数或小数，小数点后不超过2位。</span>
+						</dd>
+					</dl>
+					<dl class="fn-clear txt-inline">
+						<dt>兑换数量：</dt>
+						<dd class="fn-clear"><strong id="count">0</strong>{#$cfg_pointName#}</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt><label for="paypwd">支付密码：</label></dt>
+						<dd class="fn-clear">
+							<input type="password" class="inp" name="paypwd" id="paypwd" />
+							<span class="tip-inline"><s></s>请输入支付密码，{#if $userinfo.paypwdCheck == 0#}您还未设置支付密码，请先<a href="{#getUrlPath service='member' type='user' template='security' doget='paypwdAdd'#}">设置支付密码</a>{#else#}如您忘记支付密码，请<a href="{#getUrlPath service='member' type='user' template='security' doget='paypwdEdit'#}">重置支付密码</a>{#/if#}！</span>
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>&nbsp;</dt>
+						<dd class="agree">
+							<label><input type="checkbox" name="agree" id="agree" checked />同意并接受</label> <a href="{#getUrlPath service='siteConfig' template='protocol' id='11'#}" target="_blank">《现金与{#$cfg_pointName#}兑换服务协议》</a><br />
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>&nbsp;</dt>
+						<dd><button type="button" id="tj">确认兑换</button></dd>
+					</dl>
+
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/convert.js"></script>
+</body>
+</html>

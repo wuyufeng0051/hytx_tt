@@ -1,0 +1,42 @@
+
+  <!-- 头部 s -->
+  <div class="header">
+    <div class="header-l">
+      {#if $backUrl != undefined && $backUrl != ''#}
+      <a href="{#$backUrl#}"><img src="{#$templets_skin#}images/back-r.png"></a>
+      {#else#}
+      <a href="javascript:;" onclick="history.go(-1)"><img src="{#$templets_skin#}images/back-r.png"></a>
+      {#/if#}
+    </div>
+    <div class="header-c">{#$pageTitle#}</div>
+    {#if $module == "resume"#}
+    <div class="header-r">
+      <a href="javascript:;" class="look">预览</a>
+    </div>
+    {#elseif $template=='protrait'#}
+    <div class="header-r">
+      <a href="javascript:;" class="reset">换一张</a><a href="javascript:;" id="save" class="disabled">保存</a>
+    </div>
+    {#elseif $template=='dating-album'#}
+    <div class="header-r">
+      <a href="{#getUrlPath service="member" type="user" template="dating-album-add"#}" class="reset">上传</a>
+    </div>
+    {#elseif $template=='dating-review-detail'#}
+    <div class="header-r">
+      <a href="javascript:;" class="reply">回复</a>
+    </div>
+    {#else#}
+    <div class="header-r">
+      <a href="javascript:;" class="screen"><img src="{#$templets_skin#}images/screen.png"></a>
+    </div>
+    {#/if#}
+
+    <div class="nav">
+      <ul class="fn-clear">
+        {#siteConfig action="siteModule" return="module"#}
+        <li><a href="{#$module.url#}" target="_blank"><span>{#$module.name#}</span></a></li>
+        {#/siteConfig#}
+      </ul>
+    </div>
+  </div>
+  <!-- 头部 s -->

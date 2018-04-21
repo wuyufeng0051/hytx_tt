@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>积分设置</title>
+{#$cssFile#}
+<script>
+var adminPath = "{#$adminPath#}";
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label for="pointName">积分名称：</label></dt>
+    <dd>
+      <input class="input-small" type="text" name="pointName" id="pointName" value="{#$pointName#}" data-regex=".*" />
+      <span class="input-tips"><s></s>自定义名称用于全站显示</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="pointRatio">积分兑换比率：</label></dt>
+    <dd>
+      <input class="input-small" type="number" name="pointRatio" id="pointRatio" value="{#$pointRatio#}" min="0" data-regex="[0-9]\d*" />
+      <span class="input-tips"><s></s>1元人民币可以兑换的积分比率</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="pointFee">积分转赠手续费：</label></dt>
+    <dd>
+      <input class="input-small" type="number" name="pointFee" id="pointFee" value="{#$pointFee#}" min="0" data-regex="0|\d*\.?\d+" />%
+      <span class="input-tips"><s></s>转赠1个积分需要收取的手续费</span>
+    </dd>
+  </dl>
+
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

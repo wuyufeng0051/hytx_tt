@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>火鸟门户 - 添加用户</title>
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/add.css">
+	<link rel="stylesheet" href="css/daterangepicker.css"/>
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/moment.min.js"></script>
+	<script type="text/javascript" src="js/jquery.daterangepicker.js"></script>
+	<script type="text/javascript" src="js/Validform_v5.3.2.js"></script>
+</head>
+<body>
+	<div class="lead">
+		<div class="lead_box">
+			<img src="images/logo.png" alt="">添加用户
+		</div>
+	</div>
+	<div class="w1200">
+		<div class="wrap">
+			<form class="form demoform">
+				<div class="input_box fn-clear">
+					<label for="">姓名：</label>
+					<div class="controls"><input type="text" nullmsg="请输入用户名！" datatype="s2-5" errormsg="昵称至少5个字符,最多16个字符！"></div>
+				</div>
+				<div class="input_box fn-clear">
+					<label for="">证件号：</label>
+					<div class="controls"><input type="text" style="width: 200px;"   nullmsg="请输入身份证号！" datatype="n18-18" errormsg="身份证号至少18个数字！"></div>
+				</div>
+				<div class="input_box fn-clear">
+					<label for="">手机号：</label>
+					<div class="controls"><input type="text" style="width: 200px;" nullmsg="请填写手机号！" datatype="m" errormsg="请输入您的手机号码！"></div>
+				</div>
+				<div class="input_box fn-clear">
+					<label for="">手机密码：</label>
+					<div class="controls"><input type="text" style="width: 200px;" nullmsg="请填写手机密码！" datatype="s6-10" errormsg="密码至少5个字符,最多10个字符！"></div>
+				</div>
+				<div class="input_box fn-clear">
+					<label for="">住址：</label>
+					<div class="controls"><input type="text" style="width: 300px;" nullmsg="请输入您的住址！" datatype="s"></div>
+				</div>
+				<div class="input_box fn-clear">
+					<label for="">单位名称：</label>
+					<div class="controls"><input type="text" style="width: 300px;" nullmsg="请输入单位名称！" datatype="s">
+					<a href="http://www.gsxt.gov.cn/index.html" style="float: left;line-height: 34px;margin-left: 10px;color: #18b8ec;" target="_blank">官网</a></div>
+				</div>
+				<div class="input_box fn-clear">
+					<label for="">地址：</label>
+					<div class="controls"><input type="text" style="width: 300px;" nullmsg="请输入单位地址！" datatype="s"></div>
+				</div>
+				<div class="input_box fn-clear">
+					<label for="">座机：</label>
+					<div class="controls"><input type="text" style="width: 200px;" nullmsg="请输入单位电话！" datatype="s"></div>
+				</div>
+				<div class="input_box fn-clear">
+					<label for="">借款平台：</label>
+					<select name="" id="">
+						<option value="">借贷宝</option>
+						<option value="">今借到</option>
+						<option value="">米房</option>
+						<option value="">无忧借条</option>
+						<option value="">银行卡</option>
+					</select>
+				</div>
+				<div class="input_box fn-clear">
+					<label for="">借款金额：</label>
+					<div class="controls"><input type="text" id="money" style="width: 100px;" nullmsg="请输入借款金额！" datatype="n"><em>元</em></div>
+				</div>
+				<div class="input_box fn-clear">
+					<label for="">利息：</label>
+					<div class="controls"><input readonly="readonly" id="money_li" type="text" style="width: 100px;"><em>元</em></div>
+				</div>
+				<div class="input_box fn-clear">
+					<label for="">出借日期：</label>
+					<div class="controls date">
+						<input type="text" style="width: 100px;" class="start"><em>-</em>
+						<input type="text" style="width: 100px;" class="end">
+					</div>
+					<!-- <div class="huo">获取</div> -->
+				</div>
+				<div class="input_box fn-clear">
+					<label for="">录入人：</label>
+					<div class="controls"><input type="text" style="width: 100px;" nullmsg="请填写录入人！"></div>
+				</div>
+				<input type="submit" class="btn" value="提 交">
+			</form>
+		</div>
+	</div>
+
+	
+	<script type="text/javascript">
+		$(function(){
+
+			$('.date').dateRangePicker({
+				separator : ' to ',
+				getValue: function()
+				{
+					if ($('.start').val() && $('.end').val() )
+						return $('.start').val() + ' to ' + $('.end').val();
+					else
+						return '';
+				},
+				setValue: function(s,s1,s2)
+				{
+					$('.start').val(s1);
+					$('.end').val(s2);
+				}
+			});
+			// 表单验证
+			$(".demoform").Validform({
+				tiptype:3
+			});
+
+			$('.huo').click(function(){
+				alert($('.date_picker').val())
+			})
+
+			// 计算金额
+			$('#money').keyup(function(){
+				var	y = $("#money").val();
+				var money = y * .25;
+				$('#money_li').val(money);
+			})
+			
+		})
+	</script>
+</body>
+</html>

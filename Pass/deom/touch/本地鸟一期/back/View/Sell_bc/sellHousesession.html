@@ -1,0 +1,27 @@
+  <foreach name="all_infos" item="vo" key="k">
+		<div class="mui-card" style="margin:0;margin-bottom: 8px;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+					<a style="border-bottom: 1px dotted #ddd;padding-bottom: 5px;color:#000;display: block;" href="__MODULE__/JobHunt/fullTimeDetails?recruit_id={$vo.recruit_id}">
+						<div class="heading">
+							<span>{$vo.recruit_title}</span>
+						<em>
+						 <?php if($vo['recruit_is_top'] == 1){ ?>
+						 置顶
+						 <?php }else{ ?>
+						 {$vo.recruit_datetime}
+						 <?php }?>
+						 </em>
+						 </div>
+						<div style="color:#ff7300;">{$vo.recruit_wages}<span style="margin-left: 10px;color: #8f8f94;">{$vo.recruit_position}</span></div>
+						<div>
+						<volist id="o" name="vo.recruit_welfare">
+					       <span style="border:#38b8ea 1px solid;color:#38b8ea;border-radius: 2px ;padding: 0 2px;font-size: 12px;margin-right:5px;">{$o}</span>
+					         </volist>	
+							</div>
+					</a>
+					<p style="margin:0;padding: 5px 0;">{$vo.recruit_corporate}<span style="float: right;">{$vo.recruit_region}</span></p>
+				</div>
+			</div>
+		</div>
+	</foreach>

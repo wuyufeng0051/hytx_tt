@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>商家入驻</title>
+	<link rel="stylesheet" href="css/re_public.css">
+	<link rel="stylesheet" href="css/_head.css">
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<script type="text/javascript" src="js/touchScale.js"></script>
+</head>
+<body>
+	<!-- 共同顶部 s-->
+		<div class="header fn-clear">
+			<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+			<div class="title">填写商家信息</div>
+			<div class="share"></div>
+			<div class="header_right"><a href="enter.shtml">商家入驻</a><i></i><a href="#">我的</a></div>
+		</div>
+	<!-- 共同顶部 e-->
+
+	<link rel="stylesheet" href="css/enter.css?v=2">
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=RlrCSDRWdEdwBmGizieNRp4z"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&amp;ak=RlrCSDRWdEdwBmGizieNRp4z&amp;services=&amp;t=20170717103214"></script>
+	<link rel="stylesheet" type="text/css" href="css/mobileSelect.css">
+    <script type="text/javascript" src="js/mobileSelect.js"></script>
+
+	<div class="write fn-clear">
+		<span><i></i>店铺名称</span><input type="text" placeholder="请输店铺名称 20字以内">
+	</div>
+	<div class="write choice fn-clear">
+		<span><i></i>店铺分类</span><em>请选择店铺所属分类  （可多选）</em><div class="arrow box_open"><img src="images/arrow.png" alt=""></div>
+	</div>
+	<div class="choice_box fn-clear">
+		<ul>
+			<li><i></i>餐饮美食</li>
+			<li><i></i>休闲娱乐</li>
+			<li><i></i>生活购物</li>
+			<li><i></i>生活购物</li>
+			<li><i></i>酒店住宿</li>
+			<li><i></i>快递物流</li>
+			<li><i></i>丽人美容</li>
+			<li><i></i>教育培训</li>
+			<li><i></i>服饰鞋包</li>
+			<li><i></i>电脑数码</li>
+			<li><i></i>摄影摄像</li>
+			<li><i></i>母婴周边</li>
+			<li><i></i>保险金融</li>
+			<li><i></i>汽车相关</li>
+			<li><i></i>运动健身</li>
+			<li><i></i>装修建材</li>
+			<li><i></i>家居家纺</li>
+			<li><i></i>家用电器</li>
+			<li><i></i>维修服务</li>
+			<li><i></i>鲜花庆典</li>
+			<li><i></i>生活服务</li>
+			<li><i></i>特产旅游</li>
+			<li><i></i>广告相关</li>
+			<li><i></i>办公用品</li>
+			<li><i></i>农林牧渔</li>
+			<li><i></i>医疗药店</li>
+			<li><i></i>其他类别</li>
+		</ul>
+	</div>
+	<div class="write fn-clear">
+		<span><i></i>详细地址</span><em id="lng"></em><input id="place" type="text" placeholder="请输入详细地址"><div class="location"><i></i><p>定位</p></div>
+	</div>
+	<div class="write fn-clear">
+		<span><i></i>营业时间</span>
+		<div type="text" id="starttime" >开店时间</div>
+		<div class="w_line">--</div>
+		<div type="text" id="endtime">关店时间</div>
+	</div>
+	<div class="tel_box">
+		<span><i></i>联系电话</span>
+		<div class="tel_list">
+			<div class="phone_num"><input type="text" placeholder="请输入手机号码（必填）"></div>
+			<input type="text" placeholder="请输入座机号码（可选填）">
+		</div>
+	</div>
+	<div class="certfy picture_1">
+		<div class="pic_list">
+	        <div class="img-box">
+				<ul class="uploader-list fn-clear" id="fileList1">
+					<li class="uploadbtn">
+						<div id="filePicker1" data-type="atlas" data-amount="1" class="webuploader-container picker">
+							<div class="webuploader-pick"><div class="webuploader-pick"><em></em><p>店铺头像</p></div></div>
+						</div>
+					</li>
+					<li class="thumbnail"><img src="images/bac.png" ></li>
+				</ul>
+	  		    <p class="imgtip"></p>
+	  		    <div class="pic_tips">(200X200最佳，正方形图片，用于分享朋友圈，只可以上传一张)</div>
+	  	    </div>
+		</div>
+    </div>
+    <div class="certfy picture_2">
+		<div class="pic_list">
+	        <div class="img-box">
+				<ul class="uploader-list fn-clear" id="fileList2">
+					<li class="uploadbtn">
+						<div id="filePicker2" data-type="atlas" data-amount="9" class="webuploader-container picker">
+							<div class="webuploader-pick"><div class="webuploader-pick"><em></em><p>店铺相册</p></div></div>
+						</div>
+					</li>
+				</ul>
+	  		    <p class="imgtip"></p>
+	  		    <div class="pic_tips">（店铺环境相册750X400长方形图片最佳，最多可上传9张）</div>
+	  	    </div>
+		</div>
+    </div>
+	<div class="intro">
+		<h1><em></em>商家介绍</h1>
+		<div class="intro_txt">
+		    <div class="t1">味觉餐厅，舌尖上的享受，感受家的感觉，精品食材， 美味享受。重庆巴水人家记忆茶餐厅环境优美，停车方便， 欢迎到店品尝。</div>
+			<div class="t1">味觉餐厅，舌尖上的享受，感受家的感觉，精品食材， 美味享受。重庆巴水人家记忆茶餐厅环境优美，停车方便， 欢迎到店品尝。味觉餐厅，舌尖上的享受，感受家的感觉，精品食材， 美味享受。重庆巴水人家记忆茶餐厅环境优美，停车方便， </div>
+			<textarea name="" id="" cols="30" rows="10" placeholder="请为您的店铺添加描述… 例如：公司简介、经营项目、服 务项目… 500字以内，不能填写电话号码。"></textarea>
+		</div>
+	</div>
+	<div class="certfy picture_3">
+		<div class="pic_list">
+	        <div class="img-box">
+				<ul class="uploader-list fn-clear" id="fileList3">
+					<li class="uploadbtn">
+						<div id="filePicker3" data-type="atlas" data-amount="9" class="webuploader-container picker">
+							<div class="webuploader-pick"><div class="webuploader-pick"><em></em><p>产品相册</p></div></div>
+						</div>
+					</li>
+				</ul>
+	  		    <p class="imgtip"></p>
+	  		    <div class="pic_tips">（产品、案例等相册750x400长方形图片最佳，最多可以上传9张） </div>
+	  	    </div>
+		</div>
+    </div>
+    <div class="b_box">
+    	<div class="QR_code fn-clear"><em>上传个人微信二维码</em><span><i>未上传</i><img src="images/arrow.png" alt=""></span></div>
+    </div>
+    <div class="b_box">
+		<div class="pay wei_pay">
+			<h1><i></i>选择入驻套餐（微信支付）</h1>
+			<ul>
+				<li><p><i></i>一年 费用198元</p><span>(备注:原价360元/年，活动期间原价打5.5折）</span></li>
+				<li><p><i></i>两年 费用288元</p><span>(备注:原价720元/年，活动期间原价打4折）</span></li>
+			</ul>
+		</div>
+    </div>
+    <div class="pay cash_pay">
+		<h1><i></i>选择入驻套餐（现金支付）</h1>
+		<ul>
+			<li class="re_check"><p><i></i>一年 费用198元</p><span>(备注:原价360元/年，活动期间原价打5.5折）</span></li>
+			<li><p><i></i>两年 费用288元</p><span>(备注:原价720元/年，活动期间原价打4折）</span></li>
+		</ul>
+	</div>
+	<div class="agreement"><i></i>我已阅读并同意<a href="xieyi.shtml">《本地鸟用户协议》</a></div>
+	<div class="btn">申请开通</div>
+	<!-- 遮罩层 s -->
+	<div class="disk"></div>
+	<!-- 遮罩层 e -->
+	<!-- 申请已提交成功 s -->
+	<div class="succeed_box cheng">
+		<h1>申请已提交成功</h1>
+		<h3>工作人员将在3个工作日内完成审核</h3>
+		<h2>您可以在<em>个人中心-我的发布</em>查看审核结果</h2>
+		<p><a href="javascript:history.go(-1)"><span>确定</span></a></p>
+	</div>
+	<!-- 申请已提交成功 e -->
+	<!-- 修改成功 s -->
+	<div class="succeed_box">
+		<h1>修改成功</h1>
+		<h2>您可以在<em>个人中心-我的发布</em>进行管理</h2>
+		<p><a href="javascript:history.go(-1)"><span>确定</span></a></p>
+	</div>
+	<!-- 修改成功 e -->
+	<!-- 选择地理位置 s -->
+	<div class="choice_location">
+		<ul>
+			<li class="now">我当前位置</li>
+			<li class="map">地图上选点</li>
+			<li class="close">关闭</li>
+		</ul>
+	</div>
+	<!-- 选择地理位置 e -->
+	<!-- 上传二维码弹出层 s -->
+	<div class="QR_box">
+		<h1>点击上传二维码</h1>
+		<div class="certfy picture_4">
+			<div class="pic_list">
+		        <div class="img-box">
+					<ul class="uploader-list fn-clear" id="fileList4">
+						<li class="uploadbtn">
+							<div id="filePicker4" data-type="atlas" data-amount="1" class="webuploader-container picker">
+								<div class="webuploader-pick"><div class="webuploader-pick"><em></em><p>上传</p></div></div>
+							</div>
+						</li>
+						<li class="thumbnail"><img src="images/bac.png" ></li>
+					</ul>
+		  		    <p class="imgtip"></p>
+		  	    </div>
+			</div>
+	    </div>
+	</div>
+	<div class="delete">
+		<h1>提示：</h1>
+		<h2>是否删除？</h2>
+		<div class="de_foot"><div class="de_btn"><span class="sure">确定</span><span class="cancel">取消</span></div></div>
+	</div>
+	<div class="map_box">
+		<div class="header fn-clear">
+			<div class="back"><i></i>返回</div>
+			<div class="sure">确定</div>
+		</div>
+		<iframe id="mapPage" width="100%" height="100%" frameborder=0 
+	    src="http://apis.map.qq.com/tools/locpicker?search=1&type=1&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp">
+		</iframe> 
+	</div>
+	<!-- 上传二维码弹出层 e -->
+	<script type="text/javascript" src="js/enter.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+</body>
+</html>

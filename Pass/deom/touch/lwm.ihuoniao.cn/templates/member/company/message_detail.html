@@ -1,0 +1,30 @@
+{#$pageTitle = "站内消息 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/message.css?v=1" media="all" />
+<script>var atpage = 1, totalCount = 0, pageSize = 12, state = '{#$state#}', url = '{#getUrlPath service="member" template="message_detail" id="%id"#}';</script>
+</head>
+
+{#$pageCurr = "message"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+
+	<div class="notice">公告：管理控制台改版啦，为便于您的操作，用户中心功能整合到管理控制台并对样式进行优化，欢迎体验！<a href="#" target="_blank">操作指南</a> <a href="#" target="_blank">建议反馈</a><em class="close">&times;</em></div>
+
+	<div class="container">
+		
+		<div class="content">
+			<h1 class="title">{#$title#}</h1>
+			<p class="time">{#$date#}</p>
+			<div class="cdetail">{#$body#}</div>
+		</div>
+
+	</div>
+	
+</div>
+
+{#include file="footer.html"#}
+</body>
+</html>

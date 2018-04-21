@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>活动报名 - {#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+</script>
+</head>
+
+<body>
+{#$pageTitle = "活动报名管理"#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="container fn-clear">
+		{#include file="sidebar.html"#}
+		<div class="main">
+
+			<ul class="main-tab">
+				<li class="curr"><a href="javascript:;">活动报名 (<span id="total">0</span>)</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='manage' action='huodong'#}">我的全部活动</a></li>
+			</ul>
+
+			<div class="list" id="list">
+				<table>
+					<thead class="thead">
+						<tr>
+							<th class="fir"></th>
+							<th>报名人</th>
+							<th style="padding-left: 20px;">联系方式</th>
+							<th style="padding-left: 20px;">报名时间</th>
+							<th style="padding-left: 20px;">费用项</th>
+							<th style="padding-left: 20px;">价格</th>
+						</tr>
+					</thead>
+					<tbody>
+						{#huodong action="regList" hid={#$id#}#}
+						<tr>
+							<td class="fir"></td>
+							<td>{#$row.nickname#}</td>
+							<td style="padding-left: 20px;">{#if $row.phone#}{#$row.phone#}{#else#}无{#/if#}</td>
+							<td style="padding-left: 20px;">{#$row.date|date_format:"%Y-%m-%d %H:%M:%S"#}</td>
+							<td style="padding-left: 20px;">{#if $row.title#}{#$row.title#}{#else#}免费{#/if#}</td>
+							<td style="padding-left: 20px;">{#$row.price|string_format:"%.2f"#}</td>
+						</tr>
+						{#/huodong#}
+						{#if $pageInfo['totalCount'] == 0#}
+						<tr>
+							<td colspan="6" class="empty"><p class="loading">暂无报名信息！</p></td>
+						</tr>
+						{#/if#}
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript">
+document.getElementById("total").innerHTML = "{#$pageInfo['totalCount']#}";
+</script>
+</body>
+</html>

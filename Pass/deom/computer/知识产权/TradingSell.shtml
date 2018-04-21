@@ -1,0 +1,55 @@
+<!--#include file="_head.shtml"-->
+
+<div class="rBox">
+  <div class="local">交易平台 > 发布出售</div>
+  <div class="box1">
+    <div class="title">
+      <h3>检索</h3></div>
+    <div class="search">
+      <form action="/TradingSell" data-ajax="true" data-ajax-method="Post" data-ajax-mode="replace" data-ajax-update="#List" id="searchForm" method="post">
+        <label for="#">搜索出售：</label>
+        <input class="text" id="TradingName" name="TradingName" type="text" value="" />
+        <input type="submit" class="submit" value="" /></form>
+      <div class="tab_1">
+        <a href="TradingSell_Create.shtml">我要出售专利</a>
+        <a href="#">我要出售商标</a>
+        <a href="#">我要出售版权</a></div>
+    </div>
+  </div>
+  <div class="box1">
+    <div class="title_t">
+      <h2>出售列表</h2></div>
+    <div class="listBox">
+      <div id="List">
+        <form action="/TradingSell/BatchDelete/1" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#List" id="delForm" method="post">
+          <table class="listTable">
+            <tr>
+              <th width="200px">名称</th>
+              <th width="100px">合作方式</th>
+              <th width="100px">发布时间</th>
+              <th width="80px">托管类型</th>
+              <th width="80px">操作</th></tr>
+            <tr class="">
+              <td>
+                <a href="#">test</a></td>
+              <td>许可</td>
+              <td>2017/6/14 16:50:34</td>
+              <td>商标</td>
+              <td class="operation">
+                <a class="del" data-ajax="true" data-ajax-method="Post" data-ajax-mode="replace" data-ajax-update="#List" href="#" title="删除">删除</a></td>
+            </tr>
+          </table>
+          <div class="page_b">
+            <div class="pull-left">当前为第 1 页,共 1 页 1 条记录</div>
+            <div class="pull-right">
+              <!--MvcPager v2.0 for ASP.NET MVC 4.0+ © 2009-2013 Webdiyer (http://www.webdiyer.com)--></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--#include file="_foot.shtml"-->

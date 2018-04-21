@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>订单详情</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v=33"></script>
+<link rel="stylesheet" type="text/css" href="/templates/courier/css/dingdanDetail.css">
+</head>
+
+<body>
+<!-- 头部 外卖订单详细头部 -->
+<div class="tongJi jk22">
+	<a href="javascript:;" onclick="history.go(-1);"><i></i></a>
+	<p><span>订单详情</span></p>
+</div>
+<div class="shangPin">
+<!-- 商品信息 -->
+	<div class="shangPinCao">
+		<div class="shangPin01 shangPin02">
+			<div class="shangpInfo fn-clear">
+				<i></i>
+				<span>商品信息</span>
+			</div>
+		</div>
+		<div class="shangPin01">
+			{#foreach from=$detail_food item=food#}
+			<div class="shangpInfo shangPin02 fn-clear">
+				<span class="niuRoubao">{#$food.title#}</span>
+				<s class="juLi">&yen; {#$food.price * $food.count#}</s>
+				<s>x{#$food.count#}</s>
+			</div>
+			{#/foreach#}
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo shangPin02 fn-clear">
+				{#foreach from=$detail_priceinfo item=price#}
+				<s class="amount">{#$price.body#}：<em style="margin-right: 20px;">&yen;{#$price.amount#}</em></s>
+				{#/foreach#}
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo shangPin02 fn-clear">
+			{#if $detail_paytype == '货到付款'#}
+				<s class="amount danger">待付金额：<span>&yen;{#$detail_amount#}</span></s>
+			{#else#}
+				<s class="amount">付款金额：<span>&yen;{#$detail_amount#}</span></s>
+			{#/if#}
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo fn-clear weiLa">
+				<span>订单备注：{#$detail_note#}</span>
+			</div>
+		</div>
+	</div>
+<!-- 商家信息 -->
+	<div class="shangPinCao">
+		<div class="shangPin01 shangPin02">
+			<div class="shangpInfo fn-clear">
+				<i class="yangZhe"></i>
+				<span>商家信息</span>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo shangPin02 fn-clear">
+				<span class="niuRoubao">店铺名称：{#$detail_shopname#}</span>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo shangPin02 fn-clear">
+				<a href="javascript:;" data-lng="{#$detail_coordY#}" data-lat="{#$detail_coordX#}" data-title="{#$detail_shopname#}" data-address="{#$detail_shopaddr#}" class="showmap"><i class="juLi02"></i></a>
+				<s class="juLi juLi01">店铺地址：{#$detail_shopaddr#}</s>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo fn-clear">
+				<a href="tel:{#$detail_shoptel#}"><i class="juLi05"></i></a>
+				<s class="juLi juLi01">店铺电话：{#$detail_shoptel#}</s>
+			</div>
+		</div>
+	</div>
+<!-- 买家信息 -->
+	<div class="shangPinCao">
+		<div class="shangPin01 shangPin02">
+			<div class="shangpInfo fn-clear">
+				<i class="yanjie"></i>
+				<span>买家信息</span>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo shangPin02 fn-clear">
+				<span class="niuRoubao">姓名：{#$detail_person#}</span>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo shangPin02 fn-clear">
+				<a href="javascript:;" data-lng="{#$detail_lng#}" data-lat="{#$detail_lat#}" data-title="{#$detail_person#}" data-address="{#$detail_address#}" class="showmap"><i class="juLi02"></i></a>
+				<s class="juLi juLi01">地址：{#$detail_address#}</s>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo fn-clear">
+				<a href="tel:{#$detail_tel#}"><i class="juLi05"></i></a>
+				<s class="juLi juLi01">电话：{#$detail_tel#}</s>
+			</div>
+		</div>
+	</div>
+<!-- 订单信息 -->
+	<div class="shangPinCao">
+		<div class="shangPin01 shangPin02">
+			<div class="shangpInfo fn-clear">
+				<i class="yanjie01"></i>
+				<span>订单信息</span>
+			</div>
+		</div>
+		<div class="bianHao">
+			<p class="num01">订单编号：{#$detail_ordernumstore#}</p>
+			<p>下单时间：{#$detail_pubdate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>
+			<p>订单状态：
+				{#if $detail_state == 0#}
+				未付款
+				{#elseif $detail_state == 1#}
+				完成
+				{#elseif $detail_state == 2#}
+				待确认
+				{#elseif $detail_state == 3#}
+				待配送
+				{#elseif $detail_state == 4#}
+				已接单
+				{#elseif $detail_state == 5#}
+				配送中
+				{#elseif $detail_state == 6#}
+				取消支付
+				{#elseif $detail_state == 7#}
+				交易失败
+				{#/if#}
+			</p>
+			<p>付款方式：<span>{#$detail_paytype#}</span></p>
+			{#if $detail_confirmdate#}<p>确认时间：{#$detail_confirmdate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>{#/if#}
+			{#if $detail_peidate#}<p>接单时间：{#$detail_peidate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>{#/if#}
+			{#if $detail_songdate#}<p>配送时间：{#$detail_songdate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>{#/if#}
+			{#if $detail_okdate#}<p>完成时间：{#$detail_okdate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>{#/if#}
+			{#if $detail_state == 6 || $detail_state == 7#}<p>失败原因：{#$detail_failed#}</p>{#/if#}
+		</div>
+	</div>
+<!-- 设为失败、确认取货、设为成功 -->
+	<div class="lingDian">
+		{#if $detail_state == 4#}<a href="javascript:;" data-state="5" class="lingDian01 lingDian03">已取货</a>{#/if#}
+		{#if $detail_state == 5#}<a href="javascript:;" data-state="1" class="lingDian01 lingDian03">确认成功</a>{#/if#}
+	</div>
+</div>
+
+<div class="mapPath">
+	<div id="mapPath"></div>
+	<div class="mapBtn">
+		<button id="closeMap"></button>
+	</div>
+</div>
+
+<!-- 友情提醒 -->
+<div class="youqingTixing"></div>
+
+<script type="text/javascript">
+	var id = {#$detail_id#};
+</script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak={#$site_map_key#}&services=&t={#$smarty.now#}"></script>
+<script type="text/javascript">
+$(function(){
+
+	//小地图
+	// $(".showmap").bind("click", function(){
+	// 	var t = $(this), lng = t.data("lng"), lat = t.data("lat");
+	// 	if(lng && lat){
+	// 		$(".mapPath").show();
+	// 		var map = new BMap.Map("mapPath");
+	// 		var mPoint = new BMap.Point(lng, lat);
+	// 		var marker = new BMap.Marker(mPoint);
+	// 		map.centerAndZoom(mPoint, 16);
+	// 		map.addOverlay(marker);
+	// 	}
+	// });
+	//
+	// //关闭大地图
+	// $("#closeMap").bind("click", function(){
+	// 	$(".mapPath").hide();
+	// });
+
+	//注册客户端webview
+    function setupWebViewJavascriptBridge(callback){
+      if(window.WebViewJavascriptBridge){
+        return callback(WebViewJavascriptBridge);
+      }else{
+        document.addEventListener("WebViewJavascriptBridgeReady", function() {
+          return callback(WebViewJavascriptBridge);
+        }, false);
+      }
+
+      if(window.WVJBCallbacks){return window.WVJBCallbacks.push(callback);}
+      window.WVJBCallbacks = [callback];
+      var WVJBIframe = document.createElement("iframe");
+      WVJBIframe.style.display = "none";
+      WVJBIframe.src = "wvjbscheme://__BRIDGE_LOADED__";
+      document.documentElement.appendChild(WVJBIframe);
+      setTimeout(function(){document.documentElement.removeChild(WVJBIframe) }, 0);
+    }
+
+	setupWebViewJavascriptBridge(function(bridge) {
+    	$(".showmap").bind("click", function(){
+			var t = $(this), lng = t.attr("data-lng"), lat = t.attr("data-lat"), title = t.attr("data-title"), address = t.attr("data-address");
+    		if (lat != "" && lng != "") {
+		        bridge.callHandler("skipAppMap", {
+		            "lat": lat,
+		            "lng": lng,
+		            "addrTitle": title,
+		            "addrDetail": address
+		        }, function(responseData) {});
+	        }
+    	})
+    });
+
+
+	//更新状态
+	$(".lingDian03").bind("click", function(){
+		var t = $(this), state = t.attr("data-state");
+		if(t.hasClass("disabled") || !id) return false;
+
+		t.addClass("disabled");
+		$('.youqingTixing').html('<i>操作中...</i>').show();
+
+		$.ajax({
+            url: '/include/ajax.php?service=waimai&action=peisong',
+            data: {
+                id: id,
+				state: state
+            },
+            type: 'get',
+            dataType: 'json',
+            success: function(data){
+				if(data && data.state == 100){
+					$('.youqingTixing').html('<i>操作成功！</i>').show();
+					setTimeout(function(){
+						location.reload();
+					}, 1000);
+				}else{
+					t.removeClass("disabled");
+					$('.youqingTixing').html('<i>'+data.info+'</i>').show();
+					setTimeout(function(){
+						$(".youqingTixing").hide();
+					}, 2000);
+				}
+			},
+			error: function(){
+				t.removeClass("disabled");
+				$('.youqingTixing').html('<i>网络错误，操作失败！</i>').show();
+				setTimeout(function(){
+					$(".youqingTixing").hide();
+				}, 2000);
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

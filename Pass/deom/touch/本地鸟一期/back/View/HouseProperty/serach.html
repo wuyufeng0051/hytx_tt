@@ -1,0 +1,387 @@
+        <foreach name="all" item="vo" key="k">
+   <?php if(!empty($vo['sellhouse_id'])){ ?>
+			<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" style="padding: 10px 10px;">
+					 <!-- href="__MODULE__/Sell/sellHouseDetails?sellhouse_id={$vo.sellhouse_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;" class="topheight" str="sellHouse" stv="{$vo.sellhouse_id}">
+						   <div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+							     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;" ></div>
+                            </div>
+
+							<div class="mui-ellipsis-2" style="height: 42px;">
+								{$vo.sellhouse_title}
+							</div>
+							<p style="margin-bottom: 0;font-size: 12px;">{$vo.sellhouse_type}&nbsp;&nbsp;{$vo.sellhouse_acreage}m<sup>2</sup>&nbsp;&nbsp;<!-- {$vo.sellhouse_class}&nbsp;&nbsp; --><span style="color: #ff7300;font-size: 16px;float: right;">
+							<?php if($vo['sellhouse_price'] == 0){  ?>
+								面议
+							<?php }else{ ?>
+							  {$vo['sellhouse_price']}万
+							<?php  } ?></span></p>
+							<p style="margin-bottom: 0;color: #666;font-size: 12px;width: 100%;height: 21px;">
+							 <strong class="mui-ellipsis-1" style="font-weight: normal;margin-right: 5px;">{$vo.sellhouse_address}</strong>  
+							 <span style="float: right;">置顶</span>
+                           </p>
+						</a>
+					</div>
+				</div>
+			</div>
+			<?php }else if(!empty($vo['sell_other_id'])){ ?>
+			<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" style="padding: 10px 10px;">
+						<?php if($vo['sell_other_type'] == 1){ ?>
+						 <!-- href="__MODULE__/Sell/sellShopDetails?sell_other_id={$vo.sell_other_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;" class="topheight" str="sellShop" stv="{$vo.sell_other_id}">
+					   <?php }else{ ?>
+					   <!-- href="__MODULE__/Sell/sellLandDetails?sell_other_id={$vo.sell_other_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;" class="topheight" str="sellLand" stv="{$vo.sell_other_id}">
+					   <?php } ?>
+							<div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+							     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;"></div>
+                            </div>
+							<div class="mui-ellipsis-2" style="height: 42px;">
+								{$vo.sell_other_title}
+							</div>
+							<p style="margin-bottom: 0;font-size: 16px;color: #ff7300;">
+							<?php if($vo['sell_other_price'] == 0){  ?>
+								面议
+							<?php }else{ ?>
+							  {$vo['sell_other_price']}万
+							<?php  } ?><span style="margin:0 5px;font-size: 12px;color: #666;">{$vo.sell_other_acreage}m<sup>2</sup></span><span style="margin:0 5px;font-size: 12px;color: #666;">
+							 <?php if(!empty($vo['sell_other_class'])){ ?>
+							   {$vo.sell_other_class}
+							  <?php }else{ ?>
+							   不限
+							  <?php } ?>
+							  </span></p>
+
+							<p style="margin-bottom: 0;color: #666;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-1" style="font-weight: normal;margin-right: 5px;">{$vo.sell_other_address}</strong>
+ 							 <span style="float: right;">置顶</span>
+                            </p>
+						</a>
+					</div>
+				</div>
+			</div>
+		 <?php }else if(!empty($vo['lease_id'])){ ?>
+			  <?php if($vo['lease_type'] == 0){ ?>
+				<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+					<div class="mui-card-content">
+						<div class="mui-card-content-inner" style="padding: 10px 10px;">
+						 <!-- href="__MODULE__/Rent/rentShopDetails?lease_id={$vo.lease_id}" -->
+							<a style="position: relative;padding-left: 90px;display: block;color:#000;" class="topheight" str="rentShop" stv="{$vo.lease_id}">
+	 							<div style="position: absolute;left: 0;width: 85px;height: 85px;">
+								     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; " ></div>
+	                            </div>
+								<div class="mui-ellipsis-2" style="height: 42px;">
+									{$vo.lease_title}
+								</div>
+								<p style="margin-bottom: 0;font-size: 12px;"><span style="color: #ff7300;font-size: 16px;">
+								<?php if($vo['lease_price'] == 0){ ?>
+								面议
+								<?php }else{ ?>
+								{$vo.lease_price}{$vo.lease_pricetype}
+								<?php } ?>
+								</span>&nbsp;&nbsp;{$vo.lease_class}&nbsp;&nbsp;<span style="color: #ff7300;font-size: 16px;float: right;"><?php if(empty($vo['lease_transfer'])){echo '出租';}else{echo '转让';} ?></span></p>
+								<p style="margin-bottom: 0;color: #666;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-1" style="font-weight: normal;margin-right: 5px;">{$vo.lease_address}</strong>
+ 									 <span style="float: right;">置顶</span>
+  						       </p>
+							</a>
+						</div>
+					</div>
+				</div>
+
+	     <?php }else if($vo['lease_type'] == 1){ ?>
+				<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" style="padding: 10px 10px;">
+					<!-- href="__MODULE__/Rent/rentLandDetails?lease_id={$vo.lease_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;height: 85px;color:#000;"  class="topheight" str="rentLand" stv="{$vo.lease_id}">
+							<div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+							     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; " ></div>
+	                        </div>
+							<div class="mui-ellipsis-2" style="height: 42px;">
+								{$vo.lease_title}
+							</div>
+							<p style="margin-bottom: 0;font-size: 12px;"><span style="color: #ff7300;font-size: 16px;"><?php if($vo['lease_price'] == 0){ ?>
+										 面议<?php }else{ ?>
+					                   {$vo.lease_price}{$vo.lease_pricetype}
+					                   <?php } ?></span>&nbsp;&nbsp;{$vo.lease_class}&nbsp;&nbsp;</p>
+							<p style="margin-bottom: 0;color: #666;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-1" style="font-weight: normal;margin-right: 5px;">{$vo.lease_address}</strong>
+ 
+							 <span style="float: right;">置顶</span>
+                              </p>
+						</a>
+					</div>
+				</div>
+			 </div>
+		 <?php }else if(!empty($vo['lease_id'])){ ?>
+		    <div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+					<div class="mui-card-content">
+						<div class="mui-card-content-inner" style="padding: 10px 10px;">
+						 <!-- href="__MODULE__/Rent/rentHouseDetails?lease_id={$vo.lease_id}" -->
+							<a style="position: relative;padding-left: 90px;display: block;color:#000;" class="topheight" str="rentHouse" stv="{$vo.lease_id}">
+							    <div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+								     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; " ></div>
+	                            </div>
+								<div class="mui-ellipsis-2" style="height: 42px">
+									{$vo.lease_title}
+								</div>
+								<p style="margin-bottom: 0;font-size: 12px;">{$vo.lease_room}&nbsp;&nbsp;<span style="float: right;color: #ff7300;font-size: 14px;">
+								<?php if($vo['lease_price'] == 0 ){ ?>
+								面议
+								<?php }else{ ?>
+								{$vo.lease_price}{$vo.lease_pricetype}
+								<?php } ?>
+								</span></p>
+								<p style="margin-bottom: 0;color: #000;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-1" style="font-weight: normal;margin-right: 5px;">{$vo.lease_address}</strong> 
+ 								 <span style="float: right;">置顶</span>
+ 							     </p>
+							</a>
+						</div>
+					</div>
+				</div>
+		   <?php } ?>
+		 <?php }else{ ?>
+		 <div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 10px 10px;">
+				   <?php if($vo['wanted_type'] == 1){ ?>
+				   <!-- href="__MODULE__/Wanted/wantedRentDetails?wanted_id={$vo.wanted_id}" -->
+					<a style="position: relative;padding-left: 90px;display: block;color:#000;height: 65px;" class="topheight" str="wantedRent" stv="{$vo.wanted_id}" >
+						<img src="__PUBLIC__/Home/img/qz.png" alt="" style="position: absolute;left: 0;width: 85px;height: 65px;">
+						<div class="mui-ellipsis-2" style="height: 42px;">
+							{$vo.wanted_title}
+						</div>
+						<p style="margin-bottom: 0;margin-top:5px;font-size: 12px;">
+						<span style="color: #ff7300;font-size: 16px;">
+                        	<?php if($vo['wanted_price'] == 0){ ?>
+							面议
+							<?php }else{ ?>
+							{$vo.wanted_price}
+							{$vo.wanted_pricetype}
+							<?php } ?>
+						</span>
+						&nbsp;&nbsp;{$vo.wanted_class}&nbsp;&nbsp;
+ 						<span style="float: right;">置顶</span>
+ 						 </p>
+
+					</a>
+				   <?php }else{ ?>
+				   <!-- href="__MODULE__/Wanted/wantedBuyDetails?wanted_id={$vo.wanted_id}" -->
+				   <a style="position: relative;padding-left: 90px;display: block;color:#000;height: 65px;" class="topheight" str="wantedBuy" stv="{$vo.wanted_id}" >
+						<img src="__PUBLIC__/Home/img/qg.png" alt="" style="position: absolute;left: 0;width: 85px;height: 65px;">
+						<div class="mui-ellipsis-2" style="height: 42px;">
+							{$vo.wanted_title}
+						</div>
+						<p style="margin-bottom: 0;margin-top:5px;font-size: 12px;">
+						<span style="color: #ff7300;font-size: 16px;">
+						    <?php if($vo['wanted_price'] == 0){ ?>
+							面议
+							<?php }else{ ?>
+							{$vo.wanted_price}
+							{$vo.wanted_pricetype}
+							<?php } ?>
+					    </span>
+						&nbsp;&nbsp;{$vo.wanted_class}&nbsp;&nbsp;
+ 						<span style="float: right;">置顶</span>
+ 						 </p>
+					</a>
+				   <?php } ?>
+				</div>
+			</div>
+		</div>
+		 <?php } ?>
+        </foreach>
+
+
+
+        <foreach name="allther" item="vo">
+         <?php if(!empty($vo['sellhouse_id'])){ ?>
+			<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" style="padding: 10px 10px;">
+					<!-- href="__MODULE__/Sell/sellHouseDetails?sellhouse_id={$vo.sellhouse_id}"  -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;" class="topheight" str="sellHouse" stv="{$vo.sellhouse_id}">
+						   <div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+							     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;" ></div>
+                            </div>
+
+							<div class="mui-ellipsis-2" style="height: 42px;">
+								{$vo.sellhouse_title}
+							</div>
+							<p style="margin-bottom: 0;font-size: 12px;">{$vo.sellhouse_type}&nbsp;&nbsp;{$vo.sellhouse_acreage}m<sup>2</sup>&nbsp;&nbsp;<!-- {$vo.sellhouse_class}&nbsp;&nbsp; --><span style="color: #ff7300;font-size: 16px;float: right;">
+							<?php if($vo['sellhouse_price'] == 0){  ?>
+								面议
+							<?php }else{ ?>
+							  {$vo['sellhouse_price']}万
+							<?php  } ?></span></p>
+							<p style="margin-bottom: 0;color: #666;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-1" style="font-weight: normal;margin-right: 5px;">{$vo.sellhouse_address}</strong><span style="float: right;" class="time">{$vo.sellhouse_date}</span></p>
+						</a>
+					</div>
+				</div>
+			</div>
+			<?php }else if(!empty($vo['sell_other_id'])){ ?>
+			<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" style="padding: 10px 10px;">
+						<?php if($vo['sell_other_type'] == 1){ ?>
+						<!-- href="__MODULE__/Sell/sellShopDetails?sell_other_id={$vo.sell_other_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;"  class="topheight" str="sellShop" stv="{$vo.sell_other_id}">
+					   <?php }else{ ?>
+					   <!-- href="__MODULE__/Sell/sellLandDetails?sell_other_id={$vo.sell_other_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;"  class="topheight" str="sellLand" stv="{$vo.sell_other_id}">
+					   <?php } ?>
+							<div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+							     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;"></div>
+                            </div>
+							<div class="mui-ellipsis-2" style="height: 42px;">
+								{$vo.sell_other_title}
+							</div>
+							<p style="margin-bottom: 0;font-size: 16px;color: #ff7300;">
+							<?php if($vo['sell_other_price'] == 0){  ?>
+								面议
+							<?php }else{ ?>
+							  {$vo['sell_other_price']}万
+							<?php  } ?><span style="margin:0 5px;font-size: 12px;color: #666;">{$vo.sell_other_acreage}m<sup>2</sup></span><span style="margin:0 5px;font-size: 12px;color: #666;">
+							 <?php if(!empty($vo['sell_other_class'])){ ?>
+							   {$vo.sell_other_class}
+							  <?php }else{ ?>
+							   不限
+							  <?php } ?>
+							  </span></p>
+
+							<p style="margin-bottom: 0;color: #666;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-1" style="font-weight: normal;margin-right: 5px;">{$vo.sell_other_address}</strong>
+							<span style="float: right;" class="time">{$vo.sell_other_time}</span>
+                              <inpty value="{$vo.sell_other_time}" class="times">
+							</p>
+						</a>
+					</div>
+				</div>
+			</div>
+		 <?php }else if(!empty($vo['lease_id'])){ ?>
+			  <?php if($vo['lease_type'] == 0){ ?>
+				<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+					<div class="mui-card-content">
+						<div class="mui-card-content-inner" style="padding: 10px 10px;">
+						<!-- href="__MODULE__/Rent/rentShopDetails?lease_id={$vo.lease_id}"  -->
+							<a style="position: relative;padding-left: 90px;display: block;color:#000;"   class="topheight" str="rentShop" stv="{$vo.lease_id}">
+	 							<div style="position: absolute;left: 0;width: 85px;height: 85px;">
+								     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; " ></div>
+	                            </div>
+								<div class="mui-ellipsis-2" style="height: 42px;">
+									{$vo.lease_title}
+								</div>
+								<p style="margin-bottom: 0;font-size: 12px;"><span style="color: #ff7300;font-size: 16px;">
+								<?php if($vo['lease_price'] == 0){ ?>
+								面议
+								<?php }else{ ?>
+								{$vo.lease_price}{$vo.lease_pricetype}
+								<?php } ?>
+								</span>&nbsp;&nbsp;{$vo.lease_class}&nbsp;&nbsp;<span style="color: #ff7300;font-size: 16px;float: right;"><?php if(empty($vo['lease_transfer'])){echo '出租';}else{echo '转让';} ?></span></p>
+								<p style="margin-bottom: 0;color: #666;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-1" style="font-weight: normal;margin-right: 5px;">{$vo.lease_address}</strong><span style="float: right;" class="time">{$vo.lease_time}</span>
+								 <inpty value="{$vo.sell_other_time}" class="times"></p>
+							</a>
+						</div>
+					</div>
+				</div>
+
+	     <?php }else if($vo['lease_type'] == 1){ ?>
+				<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" style="padding: 10px 10px;">
+					 <!-- href="__MODULE__/Rent/rentLandDetails?lease_id={$vo.lease_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;height: 85px;color:#000;" class="topheight" str="rentLand" stv="{$vo.lease_id}">
+							<div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+							     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; " ></div>
+	                        </div>
+							<div class="mui-ellipsis-2" style="height: 42px;">
+								{$vo.lease_title}
+							</div>
+							<p style="margin-bottom: 0;font-size: 12px;"><span style="color: #ff7300;font-size: 16px;"><?php if($vo['lease_price'] == 0){ ?>
+										 面议<?php }else{ ?>
+					                   {$vo.lease_price}{$vo.lease_pricetype}
+					                   <?php } ?></span>&nbsp;&nbsp;{$vo.lease_class}&nbsp;&nbsp;</p>
+							<p style="margin-bottom: 0;color: #666;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-1" style="font-weight: normal;margin-right: 5px;">{$vo.lease_address}</strong><span style="float: right;" class="time">{$vo.lease_time}</span>
+							 <inpty value="{$vo.sell_other_time}" class="times"></p>
+						</a>
+					</div>
+				</div>
+			 </div>
+		 <?php }else if(!empty($vo['lease_id'])){ ?>
+		    <div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+					<div class="mui-card-content">
+						<div class="mui-card-content-inner" style="padding: 10px 10px;">
+						 <!-- href="__MODULE__/Rent/rentHouseDetails?lease_id={$vo.lease_id}" -->
+							<a style="position: relative;padding-left: 90px;display: block;color:#000;" class="topheight" str="rentHouse" stv="{$vo.lease_id}">
+							    <div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+								     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; " ></div>
+	                            </div>
+								<div class="mui-ellipsis-2" style="height: 42px">
+									{$vo.lease_title}
+								</div>
+								<p style="margin-bottom: 0;font-size: 12px;">{$vo.lease_room}&nbsp;&nbsp;<span style="float: right;color: #ff7300;font-size: 14px;">
+								<?php if($vo['lease_price'] == 0 ){ ?>
+								面议
+								<?php }else{ ?>
+								{$vo.lease_price}{$vo.lease_pricetype}
+								<?php } ?>
+								</span></p>
+								<p style="margin-bottom: 0;color: #000;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-1" style="font-weight: normal;margin-right: 5px;">{$vo.lease_address}</strong><span style="float: right;" class="time">{$vo.lease_time}</span>
+								 <inpty value="{$vo.sell_other_time}" class="times">
+								 </p>
+							</a>
+						</div>
+					</div>
+				</div>
+		   <?php } ?>
+		 <?php }else{ ?>
+		 <div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 10px 10px;">
+				   <?php if($vo['wanted_type'] == 1){ ?>
+				    <!-- href="__MODULE__/Wanted/wantedRentDetails?wanted_id={$vo.wanted_id}" -->
+					<a style="position: relative;padding-left: 90px;display: block;color:#000;height: 65px;"  class="topheight" str="wantedRent" stv="{$vo.wanted_id}">
+						<img src="__PUBLIC__/Home/img/qz.png" alt="" style="position: absolute;left: 0;width: 85px;height: 65px;">
+						<div class="mui-ellipsis-2" style="height: 42px;">
+							{$vo.wanted_title}
+						</div>
+						<p style="margin-bottom: 0;margin-top:5px;font-size: 12px;">
+						<span style="color: #ff7300;font-size: 16px;">
+                        	<?php if($vo['wanted_price'] == 0){ ?>
+							面议
+							<?php }else{ ?>
+							{$vo.wanted_price}
+							{$vo.wanted_pricetype}
+							<?php } ?>
+						</span>
+						&nbsp;&nbsp;{$vo.wanted_class}&nbsp;&nbsp;
+						<span style="float: right;" class="time">{$vo.wanted_date}</span>
+						<inpty value="{$vo.sell_other_time}" class="times"></p></p>
+					</a>
+				   <?php }else{ ?>
+				   <!-- href="__MODULE__/Wanted/wantedBuyDetails?wanted_id={$vo.wanted_id}"  -->
+				   <a style="position: relative;padding-left: 90px;display: block;color:#000;height: 65px;" class="topheight" str="wantedBuy" stv="{$vo.wanted_id}">
+						<img src="__PUBLIC__/Home/img/qg.png" alt="" style="position: absolute;left: 0;width: 85px;height: 65px;">
+						<div class="mui-ellipsis-2" style="height: 42px;">
+							{$vo.wanted_title}
+						</div>
+						<p style="margin-bottom: 0;margin-top:5px;font-size: 12px;">
+						<span style="color: #ff7300;font-size: 16px;">
+						    <?php if($vo['wanted_price'] == 0){ ?>
+							面议
+							<?php }else{ ?>
+							{$vo.wanted_price}
+							{$vo.wanted_pricetype}
+							<?php } ?>
+					    </span>
+						&nbsp;&nbsp;{$vo.wanted_class}&nbsp;&nbsp;
+						<span style="float: right;" class="time">{$vo.wanted_date}</span>
+						<inpty value="{$vo.sell_other_time}" class="times"></p>
+					</a>
+				   <?php } ?>
+				</div>
+			</div>
+		</div>
+		 <?php } ?>
+        </foreach>

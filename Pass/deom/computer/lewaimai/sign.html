@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-flag-o flag-o-icon"></i>
+      <li class="active">营销活动</li>
+      <li>
+        <a href="#">签到</a></li>
+      <li class="active">签到设置</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.clear{ clear:both; } .fieldblock{width:100%;height:50px;background:#f5f5f5;line-height:50px;border:1px solid #eeeeee;margin:10px auto;} .deletefield{width:50px;height:50px;float:right;background:#eeeeee;color:#FF0000;font-weight:bold;line-height:50px;text-align:center;cursor:pointer;} .signinday{color:red;}</style>
+      <script>$(function() {
+          $('.deletefield').live('click',
+          function() {
+            $(this).parent('.fieldblock').remove();
+            resetsigninday();
+          });
+          $('.contenttype').live('change',
+          function() {
+            var value = $(this).val();
+            if (value == '0') {
+              $(this).parents('.fieldblock').children('.fieldblock30').children('.contentpoint').hide();
+              $(this).parents('.fieldblock').children('.fieldblock30').children('.contentcoupon').hide();
+            } else if (value == '1') {
+              $(this).parents('.fieldblock').children('.fieldblock30').children('.contentpoint').hide();
+              $(this).parents('.fieldblock').children('.fieldblock30').children('.contentcoupon').show();
+            } else if (value == '2') {
+              $(this).parents('.fieldblock').children('.fieldblock30').children('.contentcoupon').hide();
+              $(this).parents('.fieldblock').children('.fieldblock30').children('.contentpoint').show();
+            }
+          });
+          $('#addxhd').live('click',
+          function() {
+            var html = $('#fieldblocktemp').html();
+            $('#fieldblocklist').append(html);
+            resetsigninday();
+          });
+        });
+        function resetsigninday() {
+          var i = 1;
+          $('#fieldblocklist').children('.fieldblock').each(function() {
+            $(this).children('.fieldblock30').children('.signinday').html(i);
+            i++;
+          });
+        }
+        function checkcoupon() {
+          var tage = 'yes';
+          $('.contenttype').each(function() {
+            var type = $(this).val();
+            if (type == '1') {
+              var coupon = $(this).parents('.fieldblock').children('.fieldblock30').children('.contentcoupon').children('select').val();
+              if (coupon == null) {
+                bootbox.alert('请选择优惠券，如果没有优惠券，请先去设置优惠券');
+                tage = 'no';
+              }
+            }
+          });
+          if (tage == 'yes') {
+            return true;
+          } else {
+            return false;
+          }
+        }</script>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li class="active">
+                <a href="sign.html">签到设置</a></li>
+              <li>
+                <a href="sign_list.html">签到列表</a></li>
+            </ul>
+            <div class="tab-content">
+              <form enctype="multipart/form-data" class="form-horizontal" id="signin-form" action="/signin/config" method="post">
+                <div class="alert alert-danger" id="signin-form_es_" style="display:none">
+                  <p>请更正下列输入错误:</p>
+                  <ul>
+                    <li>dummy</li></ul>
+                </div>
+                <div style="width:100%;margin:0 auto;">
+                  <div class="alert alert-block alert-success" style="width:100%;margin:0 auto;">签到的类型分为周期型和平滑型两种，周期型是签到奖品按天循环完一遍后又回到最初的签到奖品;平滑型是签到奖品按天循环完一遍后将按最后的签到奖品进行下去</div>
+                  <div class="form-group" style="margin:10px 0px;">
+                    <label>是否开启签到功能</label>
+                    <br>
+                    <select name="SigninSet[is_open]" id="SigninSet_is_open">
+                      <option value="0">关闭</option>
+                      <option value="1" selected="selected">开启</option></select>
+                  </div>
+                  <div class="form-group" style="margin:10px 0px;">
+                    <label>签到的名称</label>
+                    <br>
+                    <input class="col-sm-3" rows="5" name="SigninSet[name]" id="SigninSet_name" type="text" maxlength="10" value="签到"></div>
+                  <div class="form-group" style="margin:10px 0px;">
+                    <label>签到的类型</label>
+                    <br>
+                    <select name="SigninSet[type]" id="SigninSet_type">
+                      <option value="0" selected="selected">周期型</option>
+                      <option value="1">平滑型</option></select>
+                  </div>
+                  <div class="form-group" style="margin:10px 0px;">
+                    <label>签到显示的类型</label>
+                    <br>
+                    <select name="SigninSet[show_type]" id="SigninSet_show_type">
+                      <option value="0">自己</option>
+                      <option value="1" selected="selected">全部</option></select>
+                  </div>
+                  <div class="form-group" style="margin:10px 0px;">
+                    <label>签到说明</label>
+                    <br>
+                    <textarea class="col-sm-3" rows="5" name="SigninSet[describe]" id="SigninSet_describe"></textarea>
+                  </div>
+                  <div class="widget-box" style="width:100%;margin-left:0px;padding:0px;">
+                    <div class="widget-header">
+                      <h5>签到奖品</h5></div>
+                    <div class="widget-body" style="padding:20px;" id="fieldblocklist">
+                      <div class="alert alert-block alert-success" style="width:100%;margin:0 auto;">设置的签到奖品对应的天数为连续签到的天数，如果某一天停止签到再签到，则对应第一天的奖品</div>
+                      <button class="btn btn-success" type="button" id="addxhd" style="margin-top:10px;">添加签到奖品</button>
+                      <div class="fieldblock">
+                        <div style="height:30px;line-height:30px;float:left;margin-top:10px;" class="fieldblock30">第
+                          <span class="signinday">1</span>天:
+                          <label>类型
+                            <select name="content[type][]" class="contenttype">
+                              <option value="0">普通</option>
+                              <option value="1">优惠券</option>
+                              <option value="2" selected="">积分</option></select>
+                          </label>
+                          <label>描述
+                            <input type="text" value="" name="content[des][]" style="height:30px;"></label>
+                          <label style="display:none;" class="contentcoupon">优惠券
+                            <select name="content[coupon][]">
+                              <option value="28387">圣诞2元优惠券</option>
+                              <option value="29837">圣诞3元优惠券</option>
+                              <option value="29838">圣诞5元优惠券</option></select>
+                          </label>
+                          <label style="display:;" class="contentpoint">积分
+                            <input type="text" name="content[point][]" value="1" style="height:30px;"></label></div>
+                        <div class="deletefield" style="" title="删除循环点">删除</div></div>
+                      <div class="fieldblock">
+                        <div style="height:30px;line-height:30px;float:left;margin-top:10px;" class="fieldblock30">第
+                          <span class="signinday">2</span>天:
+                          <label>类型
+                            <select name="content[type][]" class="contenttype">
+                              <option value="0">普通</option>
+                              <option value="1">优惠券</option>
+                              <option value="2" selected="">积分</option></select>
+                          </label>
+                          <label>描述
+                            <input type="text" value="" name="content[des][]" style="height:30px;"></label>
+                          <label style="display:none;" class="contentcoupon">优惠券
+                            <select name="content[coupon][]">
+                              <option value="28387">圣诞2元优惠券</option>
+                              <option value="29837">圣诞3元优惠券</option>
+                              <option value="29838">圣诞5元优惠券</option></select>
+                          </label>
+                          <label style="display:;" class="contentpoint">积分
+                            <input type="text" name="content[point][]" value="2" style="height:30px;"></label></div>
+                        <div class="deletefield" style="" title="删除循环点">删除</div></div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  <button class="btn btn-info" type="submit" style="margin-top:50px;" onclick="return checkcoupon();">
+                    <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="fieldblocktemp" style="display:none;">
+        <div class="fieldblock">
+          <div style="height:30px;line-height:30px;float:left;margin-top:10px;" class="fieldblock30">第
+            <span class="signinday"></span>天:
+            <label>类型
+              <select name="content[type][]" class="contenttype">
+                <option value="0">普通</option>
+                <option value="1">优惠券</option>
+                <option value="2">积分</option></select>
+            </label>
+            <label>描述
+              <input type="text" value="" name="content[des][]" style="height:30px;"></label>
+            <label style="display:none;" class="contentcoupon">优惠券
+              <select name="content[coupon][]">
+                <option value="28387">圣诞2元优惠券</option>
+                <option value="29837">圣诞3元优惠券</option>
+                <option value="29838">圣诞5元优惠券</option></select>
+            </label>
+            <label style="display:none;" class="contentpoint">积分
+              <input type="text" name="content[point][]" value="0" style="height:30px;"></label></div>
+          <div class="deletefield" style="" title="删除循环点">删除</div></div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

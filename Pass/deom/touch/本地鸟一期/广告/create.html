@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+
+<!--[if !IE]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+    <meta charset="utf-8"/>
+
+    <title>本地鸟后台 | 广告设置</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <meta content="" name="description"/>
+
+    <meta content="" name="author"/>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL STYLES -->
+
+    <link href="media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/daterangepicker.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/bootstrap-fileupload.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/datepicker.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END PAGE LEVEL STYLES --
+
+
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+
+</head>
+
+<!-- END HEAD -->
+
+    <!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+<!-- BEGIN HEADER -->
+
+{include file="public/header" /}
+<!-- END HEADER -->
+<a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a>
+
+<!-- BEGIN CONTAINER -->
+
+<div class="page-container">
+
+    <!-- BEGIN SIDEBAR -->
+
+    {include file="public/sidebar" /}
+
+    <!-- END SIDEBAR -->
+
+    <!-- BEGIN PAGE -->
+
+    <div class="page-content">
+
+        <!-- BEGIN PAGE CONTAINER-->
+
+        <div class="container-fluid">
+
+            <!-- BEGIN PAGE HEADER-->
+
+            <div class="row-fluid">
+
+                <div class="span12">
+
+                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+                    <h3 class="page-title">
+                        广告设置
+                    </h3>
+
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="index">广告设置</a>
+                            <i class="icon-angle-right"></i>
+                        </li>
+                        <li>添加</li>
+                    </ul>
+
+                    <!-- END PAGE TITLE & BREADCRUMB-->
+
+                </div>
+
+            </div>
+
+            <!-- END PAGE HEADER-->
+
+            <!-- BEGIN PAGE CONTENT-->
+
+            <form class="form-horizontal" enctype="multipart/form-data" method="post" action="change" id="form">
+                <div class="control-group">
+                    <label class="control-label"><font><font>图片上传:</font></font></label>
+                    <div class="controls">
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                            <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                <img src="" alt="">
+                            </div>
+                            <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                            <div>
+                                <span class="btn btn-file"><span class="fileupload-new"><font><font>选择图片</font></font></span>
+                                    <span class="fileupload-exists"><font><font>更改</font></font></span>
+                                    <input type="file" class="default" name="img"></span>
+                                <a href="#" class="btn fileupload-exists" data-dismiss="fileupload"><font><font>移除</font></font></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">商家:</label>
+                    <div class="controls">
+                        <input type="text" name="advertisement_store" value="" class="m-wrap ">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">价格:</label>
+                    <div class="controls">
+                        <input type="text" name="advertisement_price" value="" class="m-wrap ">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">开始时间:</label>
+                    <div class="controls">
+                        <input class="m-wrap m-ctrl-medium date-picker"  size="16" type="text" value="" name="advertisement_start">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">结束时间:</label>
+                    <div class="controls">
+                        <input class="m-wrap m-ctrl-medium date-picker"  size="16" type="text" value=""
+                               name="advertisement_end">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">链接类型:</label>
+                    <div class="controls">
+                        <select class="small m-wrap" tabindex="1" name="advertisement_type" style="text-align: center" id="type">
+                            <option> --请选择--</option>
+                            <option value="0">网址</option>
+                            <option value="1">手机号码</option>
+                            <option value="2">内链</option>
+                        </select>
+                        <a class="btn yellow Meduam" href="#form_modal" data-toggle="modal" style="display: none">编辑</a>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">链接:</label>
+                    <div class="controls">
+                        <input type="text" name="advertisement_url" value="" class="m-wrap large" id="url">
+                    </div>
+                </div>
+
+                <input type="hidden" name="advertisement_desc" value="{$desc}" class="m-wrap medium">
+
+                <div class="control-group">
+                    <label class="control-label">来源:</label>
+                    <div class="controls">
+                        <select class="Meduam m-wrap" tabindex="1" name="advertisement_source" id="source" disabled>
+                            {volist name='sel' id='qo'}
+                            <option value="{$qo.source}" {if condition="$Think.cookie.advertise==$qo.source" }selected{/if}>{$qo.desc}</option>
+                            {/volist}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group" hidden>
+                    <label class="control-label">来源描述:</label>
+
+                    <div class="controls">
+                        <select class="Meduam m-wrap" tabindex="1" name="advertisement_desc" id="desc" disabled>
+                            {volist name='sel' id='qo'}
+                            <option value="{$qo.desc}" {if condition="$Think.cookie.advertise==$qo.source" }selected{/if}>{$qo.desc}</option>
+                            {/volist}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">状态:</label>
+
+                    <div class="controls">
+                        <select class="small m-wrap" tabindex="1" name="advertisement_switch">
+                            <option value="0">开</option>
+                            <option value="1">关</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn blue btn-save"><i class="icon-ok"></i> 保存</button>
+                    <button type="button" class="btn btn-qx">取消</button>
+                </div>
+                {include file="advertise/tc" /}
+            </form>
+
+            <!-- END PAGE CONTENT -->
+
+        </div>
+
+        <!-- END PAGE CONTAINER-->
+
+    </div>
+
+    <!-- END PAGE -->
+
+</div>
+
+<!-- END CONTAINER -->
+
+<!-- BEGIN FOOTER -->
+
+{include file="public/footer" /}
+
+<!-- END FOOTER -->
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+<!-- BEGIN CORE PLUGINS -->
+
+<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+
+<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--[if lt IE 9]>
+
+<script src="media/js/excanvas.min.js"></script>
+
+<script src="media/js/respond.min.js"></script>
+
+<![endif]-->
+
+<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<script type="text/javascript" src="media/js/bootstrap-fileupload.js"></script>
+
+<script type="text/javascript" src="media/js/bootstrap-datepicker.js"></script>
+
+
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<script src="media/js/app.js" type="text/javascript"></script>
+
+<script src="media/js/index.js" type="text/javascript"></script>
+
+<script src="media/js/form-components.js"></script>
+
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<!-- 配置文件 -->
+<script type="text/javascript" src="/admin/public/utf8-php/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/admin/public/utf8-php/ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var editor = UE.getEditor('container');
+    var range = {$range};
+</script>
+
+<script>
+
+    jQuery(document).ready(function () {
+
+        App.init(); // initlayout and core plugins
+
+        // $(".ui-date-picker").datepicker();
+        // if (jQuery().datepicker) {
+        //     $('.date-picker').datepicker({
+        //         rtl: App.isRTL()
+        //     });
+        // }
+        $('.date-picker').datepicker({
+            language: 'cn',
+            autoclose: true,
+            todayHighlight: true
+        });
+
+    });
+
+    $(document).ready(function () {
+        $(".btn-save").click(function () {
+            $('#source').attr("disabled", false);
+            $('#desc').attr("disabled", false);
+            if (confirm('确定保存吗?')) {
+                location.href ='index?range='+ range +''
+            } else {
+                return false;
+            }
+        })
+
+        $(".btn-qx").click(function () {
+            location.href ='index?range='+ range +''
+        })
+
+        $("#type").change(function () {
+            var val = $(this).val();
+            if (val == 2) {
+                $('.yellow').click();
+                $('#url').val(null).attr({'placeholder':'内链自动生成','readonly':''});
+            } else {
+                $('#url'). removeAttr('readonly'). removeAttr('placeholder').val(null);
+            }
+        })
+
+    })
+
+</script>
+
+<!-- END JAVASCRIPTS -->
+
+</body>
+
+<!-- END BODY -->
+
+</html>

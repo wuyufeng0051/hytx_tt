@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>安全中心 - {#$cfg_webname#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/service.css?v=2" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#$pageTitle = "帮助中心"#}
+{#include file="top.html"#}
+
+  <!-- 列表 s -->
+  <div class="operate">
+    <div class="item">
+      <a href="javascript:;" class="title">关于我们</a>
+      <div class="subitem">
+        <ul>
+			{#siteConfig action="singel"#}
+			<li><a href="{#getUrlPath service='about' template='about' id={#$row.id#}#}">{#$row.title#}</a></li>
+			{#/siteConfig#}
+        </ul>
+      </div>
+    </div>
+	{#siteConfig action='helpsType' return='type'#}
+    <div class="item">
+      <a href="javascript:;" class="title">{#$type.typename#}</a>
+      <div class="subitem">
+        <ul>
+		  {#siteConfig action='helpsType' type={#$type.id#} return='type1'#}
+          <li><a href="{#getUrlPath service='siteConfig' template='help' id={#$type1.id#}#}">{#$type1.typename#}</a></li>
+		  {#/siteConfig#}
+        </ul>
+      </div>
+    </div>
+	{#/siteConfig#}
+  </div>
+  <!-- 列表 e -->
+
+
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v=5"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/service.js?v=5"></script>
+</body>
+</html>

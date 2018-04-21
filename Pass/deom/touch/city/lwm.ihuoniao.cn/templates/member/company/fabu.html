@@ -1,0 +1,36 @@
+{#if $do == "edit"#}
+{#$pageTitle = "修改信息 - "|cat:$detail_title|cat:" - "|cat:$cfg_webname#}
+{#else#}
+{#$pageTitle = "发布信息 - "|cat:$cfg_webname#}
+{#/if#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu-{#$module#}.css?v=2" media="all" />
+<script type="text/javascript">
+	var modelType = '{#$module#}', state = '{#$state#}', type = '{#$type#}', typeid = {#$typeid#}, uploadType = "thumb";
+	var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize#}, atlasType = '{#$atlasType#}', atlasMax = {#$atlasMax#};
+	var id = {#$id#};
+</script>
+</head>
+
+{#$pageCurr = "fabu_{#$module#}"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+	<div class="container fn-clear">
+		{#include file="fabu-$module.html"#}
+	</div>
+</div>
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/ueditor/ueditor.config.js?v=2'></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/ueditor/ueditor.all.js?v=1'></script>
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dragsort-0.5.1.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicUpload.js?v=4"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/fabu.js?v=2"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/fabu-{#$module#}.js?v=4"></script>
+{#if $type != ""#}<script type="text/javascript" src="{#$templets_skin#}js/fabu-{#$module#}-{#if $type == "qzu" || $type == "qgou"#}demand{#else#}{#$type#}{#/if#}.js?v=4"></script>{#/if#}
+</body>
+</html>

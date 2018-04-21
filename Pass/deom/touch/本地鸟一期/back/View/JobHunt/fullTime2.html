@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全职招聘</title>
+	<meta http-equiv="cache-control" content="public">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta content="telephone=no" name="format-detection" /> 
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style>
+	body{
+		padding-top: 95px;
+	}
+	.mui-card{
+		box-shadow: none;
+	}
+	.searchBar{
+		width: 100%;
+		height: 50px;
+		position: fixed;
+		top:0;
+		background: #fd5530;
+		z-index: 500;
+	}
+	
+	.search{
+		position: relative;
+		padding: 7px 10px;
+		padding-right: 95px;
+	}
+	.searchBar input{
+		margin: 0;
+		height: 36px;
+		line-height: 36px;
+		border:none;
+		font-size: 14px;
+		color: #fff;
+		padding-left: 30px;
+		background: #ff7558 url(__PUBLIC__/Home/img/search.png) no-repeat 10px center;
+		background-size: 16px 16px;
+		text-align: left;
+	}
+	::-webkit-input-placeholder{ 
+	    color:#fff;
+	}
+	.searchBar .search-r{
+		position: absolute;
+		right: 5px;
+		top:15px;
+		font-size: 14px;
+		color: #fff;
+	}
+	.searchBar .search-r span{
+		padding: 0 8px;
+		border-right: 1px solid #fff;
+	}
+	.searchBar .search-r span:last-child{
+		border:none;
+	}
+
+	.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	/*筛选*/
+	.bg{
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		background: #000000;
+		opacity: 0.5;
+		z-index: 100;
+		display: none;
+	}
+	.nav{
+		width: 100%;
+		position:fixed;
+		top: 50px;
+		z-index: 501;
+	    background: #fff;
+	    border-bottom: 1px solid #EAEAEA;
+	}
+	.nav .nav_ul{
+		list-style: none;
+		padding: 0px;
+		margin: 0px;
+		position: relative;
+		width: 100%;
+		float: left;
+	}
+	.nav .nav_ul li.nav_ul_li{
+		float: left;
+		width: 25%;
+	}
+	.nav .nav_ul li.nav_ul_li h1{
+		width: 100%;
+		padding:10px 0px;
+		text-align: center;
+		color: #333;;
+		font-size: 14px;
+		font-weight: normal;
+		cursor: pointer;
+		padding-top: 2px;
+	}
+	.nav .mui-icon{
+		font-size: 14px;
+	}
+	.nav_child{
+		list-style: none;
+		padding: 0px;
+		margin: 0px;
+		display: none;
+		float: left;
+		width: 100%;
+		position:absolute;
+		left: 0px;
+		top: 46px;
+		z-index:99999;
+		background: #fff;
+		overflow-y: scroll;
+		max-height: 252px;
+	}
+	.nav_child li{
+		float: left;
+		width: 100%;
+		border-top: 1px solid #EAEAEA;
+		padding:10.5px 15px;
+	}
+	.nav_child li a{
+		float: left;
+		width: 100%;
+		padding:10px 0px;
+		text-align:left;
+		text-indent: 15px;
+		font-family: "微软雅黑";
+		color: #000;
+		font-size: 12px;
+		font-weight: normal;
+		cursor: pointer;
+	}
+
+	.nav_child li a .mui-icon{
+		font-size: 18px;
+		display: none;
+		color: #ccc;
+		float: right;
+	}
+	
+	/*弹出层*/
+	.mui-popover-arrow{
+	    display: none;
+	}
+	.mui-popover{
+	    position: fixed;
+	    width: 80%;
+	    height: 161px;
+	    border-radius: 10px;
+	    left: 50%;
+	    top: 50%;
+	    margin: 0 auto;
+	    z-index: 9999;
+	    background-color: #fff;
+	    -webkit-transform: translateX(-50%) translateY(-50%);
+	    -moz-transform: translateX(-50%) translateY(-50%);
+	    -ms-transform: translateX(-50%) translateY(-50%);
+	    transform: translateX(-50%) translateY(-50%);
+	    overflow: hidden;
+	}
+	.mui-popover h4{
+		background-color: #ff7400;
+		color: #fff;
+		text-align: center;
+		padding:10px 0;
+		margin:0;
+		font-weight: normal;
+		text-indent: 5%;
+	}
+ 	.mui-popover h4 span{
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 25px;
+		line-height: 20px;
+		float: right;
+		margin-right: 10%;
+		position: relative;
+	}
+	.mui-popover ul{
+		padding:0;
+		margin:0;
+	}
+	.mui-popover ul li{
+		line-height: 40px;
+		text-align: center;
+		border-bottom: 1px solid #e6e6e6;
+	}
+	.mui-popover ul li a{
+		color:#000;
+	}
+	.backTop {
+	    border-radius: 50%;
+	    position: fixed;
+	    right: 10px;
+	    bottom: 15px;
+	    width: 40px;
+	    height: 40px;
+	    z-index: 50;
+	    text-align: center;
+	    font-size: 18px;
+	    color: #666666;
+	    padding-top: 8px;
+	    opacity: 0.8;
+	    border: 2px solid #707070;
+	    background: #fff url(__PUBLIC__/Home/img/toTop.png) center center no-repeat;
+	    background-size: 20px 20px;
+	    /* display: none; */
+	}
+	.heading{
+		display: -webkit-box;
+	    display: -webkit-flex;
+	    display: -ms-flexbox;
+	    display: flex;
+	    -webkit-box-align: center;
+	    -webkit-align-items: center;
+	    -ms-flex-align: center;
+	    align-items: center;
+	}
+	.heading span{
+		overflow: hidden;
+	    color: #111;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	    -webkit-box-flex: 1;
+	    -webkit-flex: 1;
+	    -ms-flex: 1;
+	    flex: 1;
+	    padding-right: 10px;
+	}
+	.heading em{
+		font-style: normal;
+	}
+	.title{
+	    color: #000;
+	    padding-left: 40px;
+	    line-height: 32px;
+	    border-bottom: 1px solid #e6e6e6;
+	    margin: 0;
+	    font-size: 16px;
+	    font-weight: 600;
+	    background: #fff url(__PUBLIC__/Home/img/tuijian.png) no-repeat 15px 4px;
+	    background-size:20px 18px; 
+	}
+	.mui-table-view-cell{
+		padding-left: 3%;
+		padding-right: 3%;	
+		position: static;
+	}
+	.mui-table-view-cell.mui-active{
+		background-color: #0062cc;
+	}
+	.mui-ellipsis-1{
+		display: -webkit-box;
+	    overflow: hidden;
+	    white-space: normal!important;
+	    text-overflow: ellipsis;
+	    word-wrap: break-word;
+	    -webkit-line-clamp: 1;
+	    -webkit-box-orient: vertical;
+	    height: 35px;
+	    line-height: 35px;
+	}
+	.nav_ul_li ul{
+		max-height: 295px;
+		overflow-y:scroll;
+		border-bottom: 0;
+	}
+	.mui-table-view:after{
+		height: 0;
+	}
+	.mui-table-view-cell:after{
+		height: 0;
+	}
+	.ellipsis{
+		display: -webkit-box;
+	    overflow: hidden;
+	    white-space: normal!important;
+	    text-overflow: ellipsis;
+	    word-wrap: break-word;
+	    -webkit-line-clamp: 1;
+	    -webkit-box-orient: vertical;
+	    height: 21px;
+	    line-height: 21px;
+	}
+	.mui-ellipsis-address{
+		display: -webkit-box;
+	    overflow: hidden;
+	    white-space: normal!important;
+	    text-overflow: ellipsis;
+	    word-wrap: break-word;
+	    -webkit-line-clamp: 1;
+	    -webkit-box-orient: vertical;
+	    height: 21px;
+	    line-height: 21px;
+	}
+	body{position: relative;}
+	.selectStyle{width: 100%;float: left;}
+	.selectStyle span{
+		border:#38b8ea 1px solid;
+		color:#38b8ea;
+		border-radius: 2px ;
+		padding: 0 2px;
+		font-size: 12px;
+		margin-right:5px;
+		float: left;
+		margin-bottom: 5px;
+	}
+	</style>
+</head>
+<body>
+
+<include file="Public/share" title='包含文件'/>
+	<div class="mui-content">
+	<form action="javascript:return true;">
+		<div class="searchBar">
+			<div class="search">
+			   <?php if(!empty($_GET)){ ?>
+			    <div style="overflow: hidden;height: 36px;color:#fff;line-height: 40px;">
+ 					  <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color:#fff;line-height: 35px;">
+ 					  </a>
+ 					  &nbsp;<span id="sousuo">搜索结果</span>
+ 				</div>
+			   <?php }else{ ?>
+				<div class="search-l">
+					<input type="search" placeholder="搜索职位或关键词" id="search">
+				</div>
+			   <?php } ?>
+				<div class="search-r">
+					<span id="fabu">发布</span><span><a href="__MODULE__/My/myRelease" style="color:#fff;">我的</a></span>	
+				</div>
+			</div>
+		</div>
+	</form>
+		<div class="bg"></div>
+		<!-- 筛选 -->
+		<div class="nav">
+			<ul class="nav_ul">
+				<li class="nav_ul_li filter1">
+					<h1 class="mui-ellipsis-1"><span id="num" stong="recruit_region">区域</span>
+						<span class="mui-icon mui-icon-arrowdown"></span>
+					</h1>
+					<ul class="mui-table-view nav_child">
+ 						<li id="chance" class="mui-table-view-cell"><a>不限</a></li>
+                        <volist id="vo" name="region_res">
+ 						<li id="chance" str="{$vo.classify2_id}" stong="recruit_region" class="mui-table-view-cell"><a>
+ 						{$vo.classify2_name}</a></li>
+ 						</volist>
+					</ul>
+				</li>
+				<li class="nav_ul_li filter2">
+					<h1 class="mui-ellipsis-1"><span id="num" stong="recruit_position">职位</span><span class="mui-icon mui-icon-arrowdown"></span></h1>
+					<ul class="mui-table-view nav_child">
+ 						   <li id="chance" str="" stong="recruit_position" class="mui-table-view-cell"><a>不限</a></li>
+					    <volist id="vo" name="position_res">
+ 						   <li id="chance" str="{$vo.classify2_id}" stong="recruit_position" class="mui-table-view-cell"><a>{$vo.classify2_name}</a></li>
+ 						</volist>
+					</ul>
+				</li>
+				<li class="nav_ul_li filter3">
+					<h1 class="mui-ellipsis-1"><span id="num" stong="recruit_wages">薪资</span><span class="mui-icon mui-icon-arrowdown"></span></h1>
+					<ul class="mui-table-view nav_child">
+ 						   <li id="chance" str="" stong="recruit_wages" class="mui-table-view-cell"><a>不限</a></li>
+						<volist id="vo" name="wages_res">
+ 						   <li id="chance" str="{$vo.classify2_id}" stong="recruit_wages" class="mui-table-view-cell"><a>{$vo.classify2_name}</a></li>
+ 						</volist>
+					</ul>
+				</li>
+				<li class="nav_ul_li filter4">
+					<h1 class="mui-ellipsis-1"><span id="num" stong="{$vo.query_type}">更多</span><span class="mui-icon mui-icon-arrowdown"></span></h1>
+					<ul class="mui-table-view nav_child">
+					  <li id="chance" str="" class="mui-table-view-cell"><a>不限</a></li>
+                      <volist name="query_res" id="vo">
+					  <li id="chance" str="{$vo.query_val}" stong="{$vo.query_type}" class="mui-table-view-cell"><a>{$vo.query_name}</a></li>
+					  </volist>
+					   <!--<volist id="vo" name="allonly">
+ 						   <li class="chance" id="{$vo.classify2_id}"><a>{$vo.classify2_name}</a></li>
+ 						</volist> -->
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+ 	   <!-- 广告 -->
+		 <div class="swiper-container">
+         <?php if(!empty($status)){ ?>
+          <div class="swiper-wrapper">
+		   <volist name="status" id="vo">
+            <div class="swiper-slide">
+               <a id="up" onclick="look(this)" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}">
+ 				  <img src="__PUBLIC__/../{$vo['advertisement_img']}">
+			   </a>
+		    </div>
+            </volist>
+		<?php } ?>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+
+     <!-- <h5 class="title">为你推荐</h5> -->
+        <div id="zong">
+	        <foreach name="all_infos" item="vo" key="k">
+				<div class="mui-card" style="margin:0;margin-bottom: 8px;">
+					<div class="mui-card-content">
+						<div class="mui-card-content-inner" style="padding: 5px 15px;">
+							<a style="padding-bottom: 5px;color:#000;display: block;" class="topheight" stv="{$vo.recruit_id}">
+								<div class="heading">
+									<span>{$vo.recruit_title}</span>
+								 <em>
+								 <?php if($vo['recruit_is_top'] == 1){ ?>
+								 置顶
+								 <?php }else{ ?>
+								 {$vo.recruit_datetime}
+								 <?php }?>
+								 </em>
+								 </div>
+								<div style="color:#ff7300;margin-bottom: 3px;">{$vo.recruit_wages}<span style="margin-left: 10px;color: #8f8f94;">{$vo.recruit_position}</span></div>
+								<div style="width: 100%;float: left;">
+								<volist id="o" name="vo.recruit_welfares">
+							       <span style="border:#38b8ea 1px solid;color:#38b8ea;border-radius: 2px ;padding: 0 2px;font-size: 12px;margin-right:5px;float: left;margin-bottom: 5px;">{$o}</span>
+ 						         </volist>	
+		 						</div>
+							</a>
+							<p style="margin:0;padding: 5px 0;border-top: 1px dotted #ddd;width: 100%;float: left;"><span class="ellipsis" style="width: 80%;float: left;">{$vo.recruit_corporate}</span><span style="float: right;">{$vo.recruit_region}</span></p>
+						</div>
+					</div>
+				</div>
+	        </foreach>
+        </div>
+   	</div>
+	<a style="display: none;" class="aaa"></a>
+	<div id="pop" class="mui-popover">
+		<h4>请选择您要发布的类别<span class="mui-icon mui-icon-close"></span></h4>
+		<ul class="mui-table-view">
+			<li class="mui-table-view-cell" style="padding:5.5px 0;"><a href="__MODULE__/JobHunt/fullTimeRelease">发布全职招聘</a></li>
+			<li class="mui-table-view-cell" style="padding:5.5px 0;"><a href="__MODULE__/JobHunt/partTimeRelease">发布兼职招聘</a></li>
+			<li class="mui-table-view-cell" style="padding:5.5px 0;"><a id="jianli">发布简历</a></li>
+		</ul>
+    </div>
+
+     <div style="width:30%;margin:0 auto;color:#000;padding:5px;font-size:12px;color:#888;" id="load" srv="0">
+        往上滑加载更多
+    </div>
+
+    <input type="hidden" id="limit" value="0">
+    <input type="hidden" id="scrollTop" value="0">
+    <input type="hidden" id="recruit_welfare" value="0">
+    <input type="hidden" id="is_look" >
+    <a id="scrollToTop" class="backTop"></a>
+
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+
+	<script>
+	// 本地存储新闻列表位置
+	// var toplineTop2 = localStorage.getItem('toplineTop');   //获取本地缓存滚动条距离顶部的距离 
+	// $(window).on('load',function(){
+ //        $(window).scrollTop(toplineTop2); //滚动条滚动到进入详情页时的位置
+ //    });
+	// localStorage.setItem('toplineTop',0);
+	var html2 = localStorage.getItem('localhtml');
+	// alert(localStorage.getItem('filter1'));
+	if(html2 == '' || html2 == undefined){
+	    localStorage.setItem('toplineTop',0);
+	    localStorage.setItem('pageNum',0);
+	}else{
+		$('#zong').html(html2);//将html填充进去
+		$('#limit').val(localStorage.getItem('pageNum'));    //将加载的页面数赋值给页面计数器
+		$('.filter1').find('#num').text(localStorage.getItem('filter1'));
+		$('.filter2').find('#num').text(localStorage.getItem('filter2'));
+		$('.filter3').find('#num').text(localStorage.getItem('filter3'));
+		$('.filter4').find('#num').text(localStorage.getItem('filter4'));
+		$('.filter4').find('#num').attr('stong',localStorage.getItem('filter4'));
+		$('#search').val(localStorage.getItem('searchtxt'));
+		if(localStorage.getItem('selectClass1') != 'undefined'){
+			$('.filter1').find('#num').attr('class',localStorage.getItem('selectClass1'));
+		}
+		if(localStorage.getItem('selectClass2') != 'undefined'){
+			$('.filter2').find('#num').attr('class',localStorage.getItem('selectClass2'));
+		}
+		if(localStorage.getItem('selectClass3') != 'undefined'){
+			$('.filter3').find('#num').attr('class',localStorage.getItem('selectClass3'));
+		}
+		if(localStorage.getItem('selectClass4') != 'undefined'){
+			$('.filter4').find('#num').attr('class',localStorage.getItem('selectClass4'));
+		}
+		if(localStorage.getItem('stong4') != 'undefined'){
+			$('.filter4').find('#num').attr('stong',localStorage.getItem('stong4'));
+		}
+		$(window).on('load',function(){
+            $(window).scrollTop(localStorage.getItem('toplineTop'));    //滚动条滚动到进入详情页时的位置
+            // console.log($(window).scrollTop())
+        });
+        selectLimit();
+		localStorage.setItem('localhtml','');   //清除缓存
+	    localStorage.setItem('toplineTop',0);
+	    localStorage.setItem('pageNum',0); 
+	    localStorage.setItem('filter1','区域'); 
+	    localStorage.setItem('filter2','职位'); 
+	    localStorage.setItem('filter3','薪资'); 
+	    localStorage.setItem('filter4','更多'); 
+	    localStorage.setItem('searchtxt','');  
+  		localStorage.setItem('selectClass1','undefined');  
+  		localStorage.setItem('selectClass2','undefined');  
+  		localStorage.setItem('selectClass3','undefined');  
+  		localStorage.setItem('selectClass4','undefined');  
+  		localStorage.setItem('stong4','undefined');  
+	}
+
+// href="__MODULE__/JobHunt/fullTimeDetails?recruit_id={$vo.recruit_id}"
+    function muicard(){
+    	var all = 0;
+    	var have = $('.mui-card')
+    	$.each(have,function(index,item){
+               all += 1; 
+    	})
+ 
+    	if (all < 10) {
+    		$('#load').hide(); 
+    	}else{
+    		$('#load').show(); 
+    	}
+    }
+
+   muicard();
+
+	//查看详情
+    function toploa(){
+	   $('.topheight').on('click', function() {
+	      var stv = $(this).attr('stv');
+	      var scrollTop =getScrollTop();
+ 	      $("#scrollTop").val(scrollTop);
+ 	      // var zong =$("#zong").html();
+
+         
+         //判断是否删除
+         $.post('{:U("Home/Demo/look")}', {str:'fullTime',stv:stv}, function(daty){
+            if (daty == 1) {
+	 	      // $.post('{:U("Home/JobHunt/fullTimesession")}', {zong:zong}, function(data) {
+	 	      		localStorage.setItem('toplineTop',$(window).scrollTop());  //页面滚动条距离顶部的高度存到缓存中
+	 	      		localStorage.setItem('localhtml',document.getElementById('zong').innerHTML);   //将html存到本地缓存中
+	 	      		localStorage.setItem('pageNum',$('#limit').val());  //将页面加载数量存到缓存中
+	 	      		localStorage.setItem('filter1',$('.filter1').find('#num').text());  //将筛选条件存入本地缓存
+	 	      		localStorage.setItem('filter2',$('.filter2').find('#num').text());  
+	 	      		localStorage.setItem('filter3',$('.filter3').find('#num').text());  
+	 	      		localStorage.setItem('filter4',$('.filter4').find('#num').text());  
+	 	      		localStorage.setItem('searchtxt',$('#search').val());  
+	 	      		localStorage.setItem('selectClass1',$('.filter1').find('#num').attr('class'));  
+	 	      		localStorage.setItem('selectClass2',$('.filter2').find('#num').attr('class'));  
+	 	      		localStorage.setItem('selectClass3',$('.filter3').find('#num').attr('class'));  
+	 	      		localStorage.setItem('selectClass4',$('.filter4').find('#num').attr('class'));  
+	 	      		localStorage.setItem('stong4',$('.filter4').find('#num').attr('stong'));  
+	 	      		// localStorage.setItem('linkwz',stv);  //页面滚动条距离顶部的高度存到缓存中
+	 		        location.href="__MODULE__/JobHunt/fullTimeDetails?recruit_id="+stv;
+	  	       // });
+
+             }else{
+            	layer.msg('对不起,信息已删除')
+            }
+         })
+	   });
+   }
+   toploa(); 
+
+
+   //求滚动条的高度
+   function getScrollTop(){    
+	    var scrollTop=0;    
+	    if(document.documentElement&&document.documentElement.scrollTop){    
+	        scrollTop=document.documentElement.scrollTop;    
+	    }else if(document.body){    
+	        scrollTop=document.body.scrollTop;    
+	    }    
+	    return scrollTop;
+	} 
+
+  
+
+   //如果之前滚动条的位置
+    function time(){
+    	muicard();
+        var is_look = $("#is_look").val();
+ 
+       var limit = $("#limit").val();
+
+ 	  // if (limit != 0) {
+ 	  	$.post('{:U("Home/JobHunt/lookfullTimesession")}', {limit:limit},function(data){
+ 	  		if (data == 2) {
+ 	  			$('#limit').val(0)
+			 	$("#scrollTop").val(0);
+			}else{
+   	  		   $("#zong").html("");
+  	  		   $("#zong").append(data)
+  	  		    var tab = $("#zong").text();
+				if (tab) {
+				var scrollTop = $("#scrollTop").val();
+				 window.scrollTo(0,scrollTop);
+				 toploa();  
+				  muicard();
+
+				}
+			 	
+			 }
+ 	  	});
+ 	  // }
+    }
+    setTimeout(time(),1000);
+
+
+
+	//加载
+	  function loadclick(){
+		$(window).scroll(function(){
+			// var if_get ='<?php echo $_GET["worder"]; ?>'
+ 		// 	if (if_get) {
+ 		// 	  //判断是否是get
+   //            $('#load').hide();
+ 		//     }else{
+			var is_look =  $("#is_look").val();
+			var recruit_welfare =  $("#recruit_welfare").val();
+            $("#load").show();
+		　　var scrollTop = $(this).scrollTop();
+		　　var scrollHeight = $(document).height();
+		　　var windowHeight = $(this).height();
+		　　if(scrollTop + windowHeight == scrollHeight){
+ 		    	var limit = parseInt($('#limit').val())+1;
+ 		    	  $('#limit').val(limit);
+   		    	 setTimeout(function(){
+		             $('#load').show();
+		           
+		             if ((is_look) || (recruit_welfare != 0)) {
+		              
+		           	 //判断是否是查询
+		        	  $.post('{:U("Home/JobHunt/fullTimeLook")}',{classify:is_look,recruit_welfare:recruit_welfare,limit:limit}, function(data){
+		        	  	   var ss =  data.split(",,");  
+                             if(ss[1]){
+						      $("#zong").append(ss[1])
+							 }else{
+							  $("#load").text('已经到底了！')	
+							 }
+						     toploa();
+		        	  })
+		             }else{
+		              
+		             	var sousuo = $("#sousuo").text();
+		             	 if (sousuo == "搜索结果") {
+		             		var ms = 1;
+		             	 }else{
+		             	 	var ms = 0;
+		             	 }
+		             	 // alert(ms)
+		  				  $.post('{:U("Home/JobHunt/loadfullTime")}',{limit:limit,ms:ms}, function(data) {
+						    if(data){
+						      $("#zong").append(data)
+							 }else{
+							  $("#load").text('已经到底了！')	
+							 }
+						     toploa();
+			               }) 
+		  		　    }
+	           },500);
+  		  // }
+  		  }
+		});
+	}	
+    loadclick()
+
+function look(obj){
+   //$("[id=up]").each(function(){ 
+		//$(this).click(function(){
+     		var id = $(obj).attr('str');
+     		var type = $(obj).attr('stb');
+     		var url = $(obj).attr('url');
+				// alert(id)
+		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+ 	     		if (type == 0) {
+	     			 location.href="http://"+url;
+	     		}else if(type == 1){
+	     			 location.href= 'tel:' + url;
+	      		}else{
+	      			location.href=url;
+	      		}
+			});
+    	//})
+    //})
+}		  
+
+	 $("#jianli").click(function(){
+		$.post('{:U("Home/JobHunt/judge")}', {}, function(data) {
+			 if (data == 1) {
+			   layer.msg('您已经发布过简历')
+			 }else{
+			 	location.href="__MODULE__/JobHunt/resumeRelease"
+			 }
+		});
+	})
+
+	function selectLimit(){
+		var classifys="";
+		 var recruit_welfare="";
+		 $("[id=num]").each(function(){
+         	var classall = $(this).attr('class');
+         	console.log(classall);
+         	var stong = $(this).attr('stong');
+         	if (classall != undefined) {
+         	  	if(stong == 'recruit_welfare'){
+	         		recruit_welfare +=classall+",";
+	         	}else if(stong == "recruit_sex"){
+	         		classifys += "("+stong+'='+classall+' or '+stong+'= 62 ) and ';
+	         	}else{
+		            classifys +=stong+'='+classall+' and ';
+	         	}
+         	}
+         })
+         var classify = classifys.substring(0,classifys.length-4);
+         if (classify) {
+         	 $("#load").hide();
+         }
+         $("#is_look").val(classify);
+         $("#recruit_welfare").val(recruit_welfare);
+	}
+
+
+
+     $('[id=chance]').each(function() {
+     	$(this).click(function(){
+     		//点击选择的值（id）
+     		var chanceclass =  $(this).attr('str');
+     		//选择的内容
+     		var chancename =  $(this).text()
+     		var stong =  $(this).attr('stong');
+     		//修改默认的值（圈子的内容）
+     		$(this).parent().parent().find('#num').text(chancename);
+     		//添加class（圈子的id）
+     		$(this).parent().parent().find('#num').attr('class',chanceclass);
+     		$(this).parent().parent().find('#num').attr('stong',stong);
+
+             //获取全部选中的查询
+     // 		$(this).addClass('have').siblings().removeClass('have');
+	    //   	 //选择的内容;
+	    //        var have=$('.have');
+	    //        var classifys="";
+	    //        var recruit_welfare=""
+	 			// $.each(have,function(index,item){
+					// var val = $(this).attr('str');
+					// var name = $(this).attr('stong');
+					// if (val) {
+	 			// 		if (name == 'recruit_welfare') {
+					// 		 recruit_welfare +=val+",";
+					// 	}else if(name == "recruit_sex"){
+	    //          	       classifys += "("+name+'='+val+' or '+name+'= 62 ) and ';
+ 	   //           	    }else{
+	    //          	       classifys +=name+'='+val+' and ';
+ 	   //           	    }
+	    //          	}
+	  		// 	})
+
+     //          var classify = classifys.substring(0,classifys.length-4);
+     //          if (classify) {
+     //         	 $("#load").hide();
+     //          }
+     //       var classifys="";
+          		 var classifys="";
+				 var recruit_welfare="";
+				 $("[id=num]").each(function(){
+		         	var classall = $(this).attr('class');
+		         	var stong = $(this).attr('stong');
+		         	// console.log(stong);
+		         	if (classall) {
+		         	  	if(stong == 'recruit_welfare'){
+			         		recruit_welfare +=classall+",";
+			         	}else if(stong == "recruit_sex"){
+			         		classifys += "("+stong+'='+classall+' or '+stong+'= 62 ) and ';
+			         	}else{
+				            classifys +=stong+'='+classall+' and ';
+			         	}
+		         	}
+		         })
+		         var classify = classifys.substring(0,classifys.length-4);
+		         if (classify) {
+		         	 $("#load").hide();
+		         }
+		         $("#is_look").val(classify);
+		         $("#recruit_welfare").val(recruit_welfare);
+              // $("#recruit_welfare").val(recruit_welfare);
+
+              // $("#is_look").val(classify);
+             
+              $("#limit").val(0)
+              $("#load").text('往上滑加载更多')
+              //查询内容
+              $('#zong').empty();
+             $.post('{:U("Home/JobHunt/fullTimeLook")}',{classify:classify,recruit_welfare:recruit_welfare,limit:0}, function(data){
+             	
+                 // alert(recruit_welfare)
+                var ss =  data.split(",,");  
+                if (ss[0] > 5) {
+                	 $('#load').show();
+                }else{
+                	 $('#load').hide();
+                 }
+
+                 $('#zong').append(ss[1])
+			       toploa(); 
+			       muicard();
+	 
+            })
+      	})
+     });
+
+		var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+
+		mui.init();
+      	
+      	window.onload = function() { 
+			setTimeout(function(){
+		    	$(".nav_child a").append('');
+		    },100);
+		}; 
+
+      	// 下拉菜单
+      	$(document).ready(function(){
+      		
+     		$(".nav_ul_li h1").click(function(){
+      			if($(this).parent().find(".nav_child").is(":hidden")){
+      				$(".nav_ul_li h1").css("color","#333");
+      				$(this).css("color","#ff7300");
+       				$(".nav_ul_li h1 .mui-icon").removeClass("mui-icon-arrowup");
+      				$(".nav_ul_li h1 .mui-icon").addClass("mui-icon-arrowdown");
+
+      				$(this).find(".mui-icon").removeClass("mui-icon-arrowdown");
+      				$(this).find(".mui-icon").addClass("mui-icon-arrowup");
+      				
+      				
+					$(".nav_child").hide();				
+      				$(this).parent().find(".nav_child").show();
+       				$(".bg").show();
+				}
+				else{
+					$(this).css("color","#333");
+ 					$(this).find(".mui-icon").removeClass("mui-icon-arrowup");
+      				$(this).find(".mui-icon").addClass("mui-icon-arrowdown");
+ 					$(".nav_child").hide();
+      				$(this).parent().find(".nav_child").hide();
+       				$(".bg").hide();
+				}
+    		})
+     		//点击蒙版下拉列表隐藏
+     		$(".bg").click(function(){
+     			$(".nav_child").hide();
+     			$(".nav_ul_li h1").css("color","#333");
+     			$(".nav_ul_li h1 .mui-icon").removeClass("mui-icon-arrowup");
+     			$(".nav_ul_li h1 .mui-icon").addClass("mui-icon-arrowdown");
+     			$(".bg").hide();
+     		})
+     		/*tap事件会造成穿透*/
+     		$(".nav_child a").on('click',function(){
+     			$(this).parent().parent().find(".mui-icon").hide();
+     			$(this).find(".mui-icon").show()
+     			/*隐藏遮罩层*/
+     			$('.bg').hide()
+     			$(".nav_child").hide();	
+     			$(".nav_ul_li h1").css("color","#333");
+     			$(".nav_ul_li h1 .mui-icon").removeClass("mui-icon-arrowup");
+  				$(".nav_ul_li h1 .mui-icon").addClass("mui-icon-arrowdown");
+     		});
+
+       	})
+
+      	// 弹出层
+      	var pop = document.getElementById("pop");
+        var mask = mui.createMask(function(){
+            pop.classList.remove('mui-active');
+        });
+        // 显示
+        mui('#fabu')[0].addEventListener('click',function(){
+            mask.show();//显示遮罩
+            pop.classList.add('mui-active');
+        })
+          //按钮关闭弹出框
+        $(".mui-icon-close").click(function(){
+         	pop.classList.remove('mui-active');
+         	mask.close();
+         	
+         })
+        //
+         $('#search').on('search', function(e){
+         	//搜索关键字
+         	val =  $('#search').val();
+         	if (!val) {
+         		layer.msg('请先输入关键字')
+         	}else{
+            window.location.href="__MODULE__/JobHunt/fullTime?worder="+val
+            }
+ 		});
+        
+         $("#scrollToTop").on("touchend", function(e) {
+			e.preventDefault();	
+		    mui.scrollTo(0,100);
+		});
+
+        	var u = navigator.userAgent;
+			var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+			var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+			if(isiOS == true)
+			{
+				$('.searchBar input').focus(function(){
+		         	$('.searchBar').css({'position':'absolute','top':'0','left':'0'});
+		         	$('.nav').css({'position':'absolute','top':'50px','left':'0'});
+	         	})
+	           $('.searchBar input').blur(function(){
+		         	$('.searchBar').css({'position':'fixed','top':'0','left':'0'});
+		         	$('.nav').css({'position':'fixed','top':'50px','left':'0'});
+	          })
+           }
+	</script>
+</body>
+</html>

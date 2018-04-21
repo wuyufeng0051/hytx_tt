@@ -1,0 +1,58 @@
+$(function(){
+
+	var mySwiper = new Swiper('.slideBox',{pagination : '.swiper-pagination',})
+
+
+	$('.newsbox .tab li').click(function(){
+		var t = $(this), index = t.index(), ul = $('.newsbox .list ul');
+		t.addClass('curr').siblings('li').removeClass('curr');
+		ul.hide().eq(index).show();
+	})
+
+
+	//微信分享
+	wx.config({
+	    debug: false,
+	    appId: wxconfig.appId,
+	    timestamp: wxconfig.timestamp,
+	    nonceStr: wxconfig.nonceStr,
+	    signature: wxconfig.signature,
+	    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone']
+	});
+	wx.ready(function() {
+	    wx.onMenuShareAppMessage({
+	        title: wxconfig.title,
+	        desc: wxconfig.description,
+	        link: wxconfig.link,
+	        imgUrl: wxconfig.imgUrl,
+	        trigger: function (res) {},
+	    });
+	    wx.onMenuShareTimeline({
+	        title: wxconfig.title,
+	        link: wxconfig.link,
+	        imgUrl: wxconfig.imgUrl,
+	    });
+	    wx.onMenuShareQQ({
+	        title: wxconfig.title,
+	        desc: wxconfig.description,
+	        link: wxconfig.link,
+	        imgUrl: wxconfig.imgUrl,
+	    });
+	    wx.onMenuShareWeibo({
+	        title: wxconfig.title,
+	        desc: wxconfig.description,
+	        link: wxconfig.link,
+	        imgUrl: wxconfig.imgUrl,
+	    });
+	    wx.onMenuShareQZone({
+	        title: wxconfig.title,
+	        desc: wxconfig.description,
+	        link: wxconfig.link,
+	        imgUrl: wxconfig.imgUrl,
+	    });
+	});
+
+
+
+
+})

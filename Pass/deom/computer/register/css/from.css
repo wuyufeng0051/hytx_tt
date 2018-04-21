@@ -1,0 +1,1029 @@
+﻿@charset "utf-8";
+
+*{word-wrap:break-word}
+html,body,h1,h2,h3,h4,h5,h6,hr,p,iframe,dl,dt,dd,ul,ol,li,pre,form,button,input,textarea,th,td,fieldset{margin:0;padding:0}
+ul,ol,dl{list-style-type:none}
+html,body{*position:static}
+html{font-family: sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:400}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}
+input,button{overflow: visible;vertical-align:middle;outline:none}
+body,th,td,button,input,select,textarea{font-family:"Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,tahoma,arial,"WenQuanYi Micro Hei",Verdana,sans-serif,"\5B8B\4F53";font-size:12px;color: #333;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing:grayscale}
+body{line-height:1.6}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+a,area{outline:none;blr:expression(this.onFocus=this.blur())}
+a{text-decoration:none;cursor: pointer}
+a:hover{text-decoration:underline;outline:none}
+a.ie6:hover{zoom:1}
+a:focus{outline:none}
+a:hover,a:active{outline:none}:focus{outline:none}
+sub,sup{vertical-align:baseline}
+button,input[type="button"], input[type="submit"] {line-height:normal !important;}
+/*img*/
+img{border:0;vertical-align:middle}
+a img,img{-ms-interpolation-mode:bicubic}
+.img-responsive{max-width: 100%;height: auto}
+
+/*IE下a:hover 背景闪烁*/
+*html{overflow:-moz-scrollbars-vertical;zoom:expression(function(ele){ele.style.zoom = "1";document.execCommand("BackgroundImageCache",false,true)}(this))}
+
+/*HTML5 reset*/
+header,footer,section,aside,details,menu,article,section,nav,address,hgroup,figure,figcaption,legend{display:block;margin:0;padding:0}time{display:inline}
+audio,canvas,video{display:inline-block;*display:inline;*zoom:1}
+audio:not([controls]){display:none}
+legend{width:100%;margin-bottom:20px;font-size:21px;line-height:40px;border:0;border-bottom:1px solid #e5e5e5}
+legend small{font-size:15px;color:#999}
+svg:not(:root) {overflow: hidden}
+fieldset {border-width:0;padding: 0.35em 0.625em 0.75em;margin: 0 2px;border: 1px solid #c0c0c0}
+input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button {height: auto}
+input[type="search"] {-webkit-appearance: textfield; /* 1 */-moz-box-sizing: content-box;-webkit-box-sizing: content-box; /* 2 */box-sizing: content-box}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration {-webkit-appearance: none}
+
+/**************头部**************/
+.warp{width:980px;margin:0 auto}
+.header-top .warp{padding:15px 0 15px 0}
+.header-top .warp .logo{float:left}
+.header-top .warp h2{float:left;border-left:2px solid #EDEDED;padding:0 10px;margin-top:30px;color:#666;font-size: 18px;}
+.container{height:580px;padding:10px;position: relative;}
+.container .login-bg{background:#D4DBCB url(../images/lbg.jpg) no-repeat top;overflow: hidden;background-size: cover;position: absolute;top: 0px;left: 0;bottom: 0px;right: 0;}
+.container .warp{/* margin-top:100px; *//* position: relative; */}
+
+/**************底部内容**************/
+.footer{padding:7px 0 9px;border-top:3px solid #F0EBD8;background-color: #fff;}
+.footer .footer-bottom{width:980px;margin:0 auto}
+.footer .footer-bottom .footer-menu{text-align:center;margin:5px 0}
+.footer .footer-bottom .footer-menu ul li{display:inline-block;color:#666;font-size:14px}
+.footer .footer-bottom .footer-menu ul li span{width:1px;height:12px;margin-top:7px;float:left;overflow:hidden;background:#e5e5e7 none repeat scroll 0 0}
+.footer .footer-bottom .footer-menu ul li a{color:#666;padding: 0px 5px;}
+.footer .footer-bottom .footer-copyroght{text-align:center;color:#9C9C9C}
+.footer .footer-bottom .footer-ico{margin-top:10px;text-align:center;}
+
+/*清楚浮动
+	Name:			style_clearfix
+	Example:		class="clearfix|cl"
+	Explain:		clearfix（简写cl）避免因子元素浮动而导致的父元素高度缺失能问题
+*/
+.cl:after,.clearfix:after{content:"\20";display:block;height:0;clear:both;visibility:hidden}.cl,.clearfix{zoom:1}
+
+/*2.1 栅格系统
+	Name:			style_span
+	Example:
+	<div class="responsive">
+	<div class="row cl" role="grid">
+	  <div class="col-1">……</div>
+	  ……
+	</div>
+	</div>
+	Explain:		栅格系统
+*/
+/*2.1 响应式栅格系统*/
+.row.cl{}
+.row{ box-sizing:border-box;}
+[class^="col-"],[class*=" col-"]{box-sizing:border-box; float:left;min-height: 1px;position: relative;}
+.col-1{width:8.33333%}
+.col-2{width:16.66667%}
+.col-3{width:25%}
+.col-4{width:33.33333%}
+.col-5{width:41.66667%}
+.col-6{width:50%}
+.col-7{width:58.33333%}
+.col-8{width:66.66667%}
+.col-9{width:75%}
+.col-10{width:83.33333%}
+.col-11{width:91.66667%}
+.col-12{width:100%}
+
+.col-offset-0{margin-left:0}
+.col-offset-1{margin-left:8.33333%}
+.col-offset-2{margin-left:16.66667%}
+.col-offset-3{margin-left:25%}
+.col-offset-4{margin-left:33.33333%}
+.col-offset-5{margin-left:41.66667%}
+.col-offset-6{margin-left:50%}
+.col-offset-7{margin-left:58.33333%}
+.col-offset-8{margin-left:66.66667%}
+.col-offset-9{margin-left:75%}
+.col-offset-10{margin-left:83.33333%}
+.col-offset-11{margin-left:91.66667%}
+
+.col-push-0{position:relative;left:0;right:auto}
+.col-pull-0{right:0;left:auto}
+.col-push-1{left:8.33333%;right:auto}
+.col-pull-1{right:8.33333%;left:auto}
+.col-push-2{left:16.66667%;right:auto}
+.col-pull-2{right:16.66667%;left:auto}
+.col-push-3{left:25%;right:auto}
+.col-pull-3{right:25%;left:auto}
+.col-push-4{left:33.33333%;right:auto}
+.col-pull-4{right:33.33333%;left:auto}
+.col-push-5{left:41.66667%;right:auto}
+.col-pull-5{right:41.66667%;left:auto}
+.col-push-6{left:50%;right:auto}
+.col-pull-6{right:50%;left:auto}
+.col-push-7{left:58.33333%;right:auto}
+.col-pull-7{right:58.33333%;left:auto}
+.col-push-8{left:66.66667%;right:auto}
+.col-pull-8{right:66.66667%;left:auto}
+.col-push-9{left:75%;right:auto}
+.col-pull-9{right:75%;left:auto}
+.col-push-10{left:83.33333%;right:auto}
+.col-pull-10{right:83.33333%;left:auto}
+.col-push-11{left:91.66667%;right:auto}
+.col-pull-11{right:91.66667%;left:auto}
+/*局部模块平分*/
+.col-1-1{ width:100%}
+.col-2-1{ width:50%}
+.col-3-1{ width:33.333333%}
+.col-3-2{ width:66.666667%}
+.col-4-1{ width:25%}
+.col-4-3{ width:75%}
+.col-5-1{ width:20%}
+.col-5-2{ width:40%}
+.col-5-3{ width:60%}
+.col-5-4{ width:80%}
+.col-6-1{ width:16.666667%}
+.col-6-5{ width:83.333333%}
+
+@media (max-width:767px){
+	.responsive [class^="col-"],.responsive [class*=" col-"]{float:none!important;width:auto!important;}
+	.responsive [class^="col-offset-"],.responsive [class*=" col-offset-"]{ margin-left:0px!important}
+}
+
+/*2.3 布局(固定)
+	Name:			style_Layout
+	Explain:		左右两栏|左中右三栏|上中下
+	Last Modify:	guojunhui
+*/
+.Hui-wraper,.wp{margin-left:auto;margin-right:auto;text-align:left;}
+.minWP{}
+.sd{float:right}
+.ct2 .mn{float:left}
+.ct2 .sd{float:right}
+.ct2_r .leftmenu{float:left}
+.ct2_r .mn{float:right}
+.ct3 .app{float:left;margin-right:20px}
+.ct3 .mn{float:left;border-left:solid 1px #ddd}
+.ct3 .sd{float:right}
+.w-1000{width:1000px}
+.w-980{width:980px}
+.w-300{width:300px}
+.w-200{width:200px}
+@media (max-width: 1000px) {
+	.Hui-wraper,.wp{ width:auto!important;padding:0 10px!important;}
+}
+/*3.0 基础样式*/
+/*3.1 排版*/
+/*3.1.1 标题
+	Example：
+	<h1>h1. 大标题<small>小标题</small></h1>
+    <h2>h2. 大标题<small>小标题</small></h2>
+    <h3>h3. 大标题<small>小标题</small></h3>
+    <h4>h4. 大标题<small>小标题</small></h4>
+    <h5>h5. 大标题<small>小标题</small></h5>
+    <h6>h6. 大标题<small>小标题</small></h6>
+*/
+h1,h2,h3,h4,h5,h6{font-weight:500;line-height:1.1;color:inherit}
+h1 small,h2 small,h3 small,h4 small,h5 small,h6 small,h1 .small,h2 .small,h3 .small,h4 .small,h5 .small,h6 .small{font-weight:400;line-height:1;color:#999}
+h1,h2,h3{padding-top:20px;padding-bottom:10px}
+h1 small,h2 small,h3 small,h1 .small,h2 .small,h3 .small{font-size:65%}
+h4,h5,h6{margin-top:10px;margin-bottom:10px}
+h4 small,h5 small,h6 small,h4 .small,h5 .small,h6 .small{font-size:75%}
+h1{font-size:36px}
+h2{font-size:30px}
+h3{font-size:18px}
+h4{font-size:18px}
+h5{font-size:14px}
+h6{font-size:12px}
+/**************登录页面**************/
+.container .side{float:left;overflow:hidden;position:relative;width:610px;height:490px;background-color:#fff}
+.container .login{float:right;width:290px;background-color:#fff;padding:0 30px 25px 30px;border-radius:2px}
+.container .login #login_btn{width:100%;height:48px;line-height:38px;font-size:20px}
+.container .login .mt-20{position: relative;}
+.container .login .placeholder-input{position: absolute; font-size: 18px;left: 10px;color: #D6D6D6;top: 10px;z-index: 11212;}
+.container .login .input-text{color: #999;}
+.container .warp{margin-top:100px;position: relative;}
+
+/**************找回密码**************/
+.header-top{box-shadow:0 2px 5px rgba(0,0,0,.2);width:100%;background-color: #fff;}
+.warp .passwd-title{margin:20px 0}
+.passwd-progress{margin-bottom:20px}
+.passwd-progress ul{border-radius:3px;overflow:hidden}
+.passwd-progress ul li{width:326px;background-color:#E4E4E4;text-align:center;font-size:14px;line-height:31px;float:left;position:relative}
+.passwd-progress ul li em{position:absolute;left:-16px;top:0;width:32px;height:31px;background:transparent url(../images/find-passwd.png) no-repeat scroll 0 0}
+.passwd-progress ul li.current{background-color:#3bb4f2;color:#fff}
+.form_content{margin:82px auto;width:500px;min-height:280px}
+.form_content .vcode-label{margin-top:5px;cursor:text;text-align:left;padding-right:10px}
+.form_content .vcode-label a{color:#666}
+.form_content .note a{color:#3E8CBD}
+.form_content .note2{margin-top:80px;color:grey;font-weight:700;font-size:14px}
+.form_content .note3 li{line-height:27px;padding:5px 0;color:grey;font-size:14px}
+/*3.1.2 强调
+	Example:
+	<p>这是段落，向下10像素间距</p>
+	<smail>小型文本，是父容器字体大小的85%</smail>
+	<strong>重要文本，加粗显示</strong>
+	<em>被强调的文本，斜体显示</em>
+	<u>带下划线的文本</u>
+	<cite>引用</cite>
+	<mark>突出显示文本</mark>
+	<del>带删除线的文本</del>
+	<pre class="prettyprint linenums">预格式化的文本</pre>
+*/
+p{margin-bottom:10px}	/*段落*/
+small{font-size:85%}	/*小型文本*/
+b,strong {font-weight: bold}	/*重要的文本，加粗*/
+em{font-style:italic}	/*被强调的文本*/
+i{}	/*斜体*/
+u{}	/*加下划线*/
+cite{font-style:normal}	/*引用*/
+mark{color:#000;background:#ff0}/*突出显示文本*/
+var{}	/*变量*/
+kbd{}	/*键盘文本*/
+code{}	/*计算机代码文本*/
+dfn{font-style: italic}	/*一个定义项目*/
+del{font-family:Simsun}	/*删除线*/
+code,kbd,pre,samp {font-family: monospace, serif;font-size: 1em}
+pre{white-space: pre-wrap}	/*预格式化的文本*/
+.uppercase{text-transform:uppercase} /*文字大写*/
+.lowercase{text-transform:lowercase} /*文字小写*/
+.capitalize{text-transform:capitalize} /*首字母大写*/
+.en{font-family:Arial!important}
+/*3.1.3 对齐
+	Name:			style_text-align
+	Example:		class="text-l|text-r|text-c|va-t|va-m|va-b"
+	Explain:		.text-水平对齐 （.text-l左对齐|.text-r右对齐|.text-c居中对齐）
+					.va-上下对齐 （.va-t 居上对齐|.va-m 居中对齐|.va-b 居下对齐）
+*/
+.text-l{text-align:left}.text-r{text-align:right}.text-c{text-align:center}
+.va *{vertical-align:sub!important;*vertical-align:middle!important;_vertical-align:middle!important}
+.va-t{vertical-align:top!important}.va-m{vertical-align:middle!important}.va-b{vertical-align:bottom!important}
+/*3.1.4 定位
+	Name:			style_position
+	Example:		class="pos-r|pos-a|pos-f"
+	Explain:		.pos-r 相对定位|.pos-a 绝对定位|.pos-f 固定
+*/
+.pos-r{position:relative}.pos-a{position:absolute}.pos-f{position:fixed}
+/*3.1.5 浮动
+	Name:			style_float
+	Example:		class="l|r"
+	Explain:		.l 左浮动|.r 右浮动
+*/
+.l,.f-l{float:left!important;_display:inline}
+.r,.f-r{float:right!important;_display:inline}
+
+[class*="span"].r,
+[class*="span"].f-r{float:right}
+
+/*控制元素对定位的位置：居左|居右|j居上|居下*/
+.left{ left:0; right:auto}
+.right{ right:0; left:auto}
+.top{ top:auto; bottom:0}
+.bottom{ top:0; bottom:auto}
+
+/*3.1.6 文字单行溢出省略号
+	Name:			style_text-overflow
+	Example:		class="text-overflow"
+*/
+.text-overflow{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/*3.1.7 线条
+	Name:			style_line
+	Example:		class="line"
+*/
+.line{font-size: 0px; line-height: 0px; border-top: solid 1px #eee; float: none}
+/*3.1.8 外边距
+	Name:			style_margin
+	Example:		class="mt-5|mt-10..."
+	Explain:		.mt表示上边距|.mb表示下边距|.ml表示左边距|.mr表示右边距
+*/
+.mt-5{margin-top:5px}.mt-10{margin-top:10px}.mt-15{margin-top:15px}.mt-20{margin-top:20px}.mt-25{margin-top:25px}.mt-30{margin-top:30px}.mt-35{margin-top:35px}.mt-40{margin-top:40px}.mt-50{margin-top:50px}
+.mb-5{margin-bottom:5px}.mb-10{margin-bottom:10px}.mb-15{margin-bottom:15px}.mb-20{margin-bottom:20px}.mb-30{margin-bottom:30px}.mb-40{margin-bottom:40px}.mb-50{margin-bottom:50px}
+.ml-5{margin-left:5px}.ml-10{margin-left:10px}.ml-15{margin-left:15px}.ml-20{margin-left:20px}.ml-30{margin-left:30px}.ml-40{margin-left:40px}.ml-50{margin-left:50px}
+.mr-5{margin-right:5px}.mr-10{margin-right:10px}.mr-15{margin-right:15px}.mr-20{margin-right:20px}.mr-30{margin-right:30px}.mr-40{margin-right:40px}.mr-50{margin-right:50px}
+/*3.1.9 内填充
+	Name:			style_padding
+	Example:		class="pt-5|pt-10|……"
+	Explain:		.pt表示上填充|.pb表示下填充|.pl表示左填充|.pr表示右填充
+*/
+.pt-5{padding-top:5px}.pt-10{padding-top:10px}.pt-20{padding-top:20px}
+.pb-5{padding-bottom:5px}.pb-10{padding-bottom:10px}.pb-20{padding-bottom:20px}
+.pl-5{padding-left:5px}.pl-10{padding-left:10px}.pl-20{padding-left:20px}
+.pr-5{padding-right:5px}.pr-10{padding-right:10px}.pr-20{padding-right:20px}
+.pd-5{padding:5px}.pd-10{padding:10px}.pd-15{padding:15px}.pd-20{padding:20px}.pd-30{padding:30px}.pd-40{padding:40px}
+/*3.1.10 边框，css3圆角
+	Name:			style-border
+	Example:		class="bk_gray radius"
+	Explain:		.bk_gray 边框|radius 圆角|round 椭圆 | circle 圆形
+*/
+.bk-gray{border:solid 1px #eee}
+.radius{border-radius:4px; overflow:hidden;behavior: url(http://lib.h-ui.net/ie-css3.htc)}
+.size-MINI.radius{ border-radius:3px}
+.size-L.radius{ border-radius:5px;}
+.size-XL.radius{ border-radius:6px;}
+.round{border-radius:1000px; overflow:hidden;behavior: url(http://lib.h-ui.net/ie-css3.htc)}
+.circle{ border-radius:50%; overflow:hidden;behavior: url(http://lib.h-ui.net/ie-css3.htc)}
+/*3.1.11 css3阴影
+	Name:			style_shadow
+	Example:		class="box_shadow|text-shadow"
+	Explain:		box_shadow 块级元素阴影，全局样式，可用在表格，文本框，文本域，div等块级元素上。
+					text-shadow 文字阴影
+*/
+.box-shadow{-webkit-box-shadow:0 1px 2px rgba(0,0,0,0.1);box-shadow:0 1px 2px rgba(0,0,0,0.1);behavior: url(http://lib.h-ui.net/ie-css3.htc)}
+.text-shadow{-webkit-text-shadow:0 0 2px rgba(0,0,0,0.2);text-shadow:0 0 2px rgba(0,0,0,0.2);behavior: url(http://lib.h-ui.net/ie-css3.htc)}
+/*3.1.12 行内分割竖线
+	Name:			style_pipe
+	Example:		<span class="pipe">|</span>
+*/
+.pipe{margin:0 5px;color:#CCC;font-size:10px!important}
+/*3.1.13 文字尺寸
+	Name:			style_font-size
+	Example:		class="f-12|f-14|f-16|f-18|f-20|f-24|f-26|f-28|f-30"
+	Explain:		12px字体|14px字体|16px字体|18px字体|20px字体|24px字体|26px字体|28px字体|30px字体
+*/
+.f-12{font-size:12px}.f-14{font-size:14px}.f-16{font-size:16px}.f-18{font-size:18px}.f-20{font-size:20px}.f-24{font-size:24px}.f-26{font-size:26px}.f-28{font-size:28px}.f-30{font-size:30px}
+/*3.1.14 文字行距
+	Name:			mod_line-height
+	Example:		class="lh-16|lh-18|lh-20|lh-22|lh-24|lh-26|lh-28|lh-30"
+	Explain:		16px行高|18px行高|20px行高|22px行高|24px行高|26px行高|30px行高
+*/
+.lh-16{line-height:16px}.lh-18{line-height:18px}.lh-20{line-height:20px}.lh-22{line-height:22px}.lh-24{line-height:24px}.lh-26{line-height:26px}.lh-28{line-height:28px}.lh-30{line-height:30px}
+/*2.0以前的兼容版本*/
+.l16{line-height:16px}.l18{line-height:18px}.l20{line-height:20px}.l22{line-height:22px}.l-24{line-height:24px}.l-26{line-height:26px}.l-28{line-height:28px}.l-30{line-height:30px}
+
+/*3.1.15 文字颜色
+	Name:			style_color
+	Example:		class="c-primary|c-sub|c-success|c-danger|c-warning|c-333|c-666|c-999|c-red|c-green|c-blue|c-white|c-black|c-orange"
+	Explain:		主要颜色|次主色|强调色—成功|强调色—危险|强调色—警告色|强调色—错误色|次主色—浅黑|辅助色—灰色|标准色—红色|标准色—绿色|标准色—蓝色|标准色—白色|标准色—黑色|标准色—橙色
+*/
+/*全局默认链接颜色*/
+body{ background-color:#fff; color:#333}
+.bg-fff{ background-color:#fff}
+a{color:#333}
+a:hover{color:#06c}
+
+/*主要颜色*/
+.c-primary,.c-primary a,a.c-primary{color:#1369C0}
+.c-primary a:hover,a.c-primary:hover{ color:#5a98de}
+/*次主色*/
+.c-secondary,.c-secondary a,a.c-secondary{color:#555}
+.c-secondary a:hover,a.c-secondary:hover{ color:#555}
+
+/*强调色—成功*/
+.c-success,.c-success a,a.c-success{color:#5eb95e}
+.c-success a:hover,a.c-success:hover{ color:#5eb95e}
+
+/*强调色—危险*/
+.c-danger,.c-danger a,a.c-danger{color:#dd514c}
+.c-danger a:hover,a.c-danger:hover{ color:#dd514c}
+
+/*强调色—警告*/
+.c-warning,.c-warning a,a.c-warning{color:#f37b1d}
+.c-warning a:hover,a.c-warning:hover{ color:#f37b1d}
+
+/*强调色—错误*/
+.c-error,.c-error a,a.c-error{color:#c00}
+.c-error a:hover,a.c-error:hover{ color:#c00}
+
+/*辅助色—浅黑*/
+.c-333,.c-333 a,a.c-333{color:#333}
+.c-333 a:hover,a.c-333:hover{ color:#333}
+
+/*辅助色—灰色*/
+.c-666,.c-666 a,a.c-666{color:#666}
+.c-666 a:hover,a.c-666:hover{ color:#666}
+.c-999,.c-999 a,a.c-999{color:#999}
+.c-999 a:hover,a.c-999:hover{color:#999}
+
+/*标准色—红色*/
+.c-red,.c-red a,a.c-red{color:red}
+.c-red a:hover,a.c-red:hover{ color:#red}
+/*标准色—绿色*/
+.c-green,.c-green a,a.c-green{color:green}
+.c-red a:hover,a.c-red:hover{color:green}
+/*标准色—蓝色*/
+.c-blue,.c-blue a,a.c-blue{color:blue}
+.c-blue a:hover,a.c-blue:hover{color:blue}
+/*标准色—白色*/
+.c-white,.c-white a,a.c-white{color:white}
+.c-white a:hover,a.c-white:hover{color:white}
+/*标准色—黑色*/
+.c-black,.c-black a{color:black}
+.c-black a:hover,a.c-black:hover{color:black}
+/*标准色—橙色*/
+.c-orange,.c-orange a,a.c-orange{color:orange}
+.c-orange a:hover,a.c-orange:hover{color:orange}
+
+/*3.1.16 文字颜色强调	从2.0起废弃3.1.16 文字强调，字体颜色全部放入到3.1.15
+	Example:		class="text-muted|text-primary|text-warning|text-error|text-danger|text-success|text-info"
+	Explain:		柔和|重要|警告|错误|危险|成功|信息
+*/
+
+
+/*3.1.17 缩略语
+	Example:		<abbr title="User Interface" class="initialism">UI</abbr>
+	Explain:		
+*/
+abbr[title],abbr[data-original-title]{cursor:help;border-bottom:1px dotted #999}
+abbr.initialism{font-size:90%;text-transform:uppercase}
+/*3.1.18 地址
+	Example:		<address>北京市海淀区上地……</address>
+	Explain:		
+*/
+address{display:block;margin-bottom:20px;font-style:normal;line-height:20px}
+/*3.1.19 引用
+	Example:		<blockquote>这是引用的内容</blockquote>
+	Explain:		
+*/
+blockquote{padding:0 0 0 15px;margin:0 0 20px;border-left:5px solid #eee}
+blockquote p{margin-bottom:0;font-size:17.5px;font-weight:300;line-height:1.25}
+blockquote small{display:block;line-height:20px;color:#999}
+blockquote small:before{content:'\2014 \00A0'}
+blockquote.text-r{padding-right:15px;padding-left:0;border-right:5px solid #eee;border-left:0}
+blockquote.text-r p,blockquote.text-r small{text-align:right}
+blockquote.text-r small:before{content:''}
+blockquote.text-r small:after{content:'\00A0 \2014'}
+q:before,q:after,blockquote:before,blockquote:after{content:""}
+q {/*短的引用*/quotes: "\201C" "\201D" "\2018" "\2019"}
+/*3.1.20 上标，下标
+	Example:		<sup>2</sup>	<sub>2<sub>
+	Explain:		上标|下标
+*/
+sub,sup{position:relative;font-size:75%;line-height:0;vertical-align:baseline}
+sup{top:-0.5em}sub{bottom:-0.25em}
+/*3.1.21 内容样式
+	Name:			style_content
+	Example:		<div class="content"><p>……</p></div>
+	Explain:		内容样式
+*/
+.content{position:relative;font-size:14px;line-height:1.6;overflow:hidden;text-align:left}
+.content h3{margin-top:20px;font-size:16px}
+.content p{margin-top:20px}
+	.indent{ text-indent:2em}
+.content img{max-width:100%}
+.content ul{text-indent:2em}
+@media (max-width: 480px) {
+	.content img{max-width:100%!important; height:auto!important;width:expression(this.width > 320 ? "320px" : this.width)!important}
+	*html .content img{width:expression(this.width>320&&this.width>this.height?320:auto)}
+}
+/*3.1.22 列表
+	Name:			style_ulolli
+	Example:		<ul class="tlist"><li>无序列表</li><li>无序列表</li><li>无序列表</li></ul>
+					<ol class="linenums"><li>有序列表</li><li>有序列表</li><li>有序列表</li></ol>
+	Explain:		
+*/
+ul.unstyled,ol.unstyled{margin-left:0;list-style:none}
+ul.inline,ol.inline{margin-left:0;list-style:none}
+ul.inline>li,ol.inline>li{display:inline-block;*display:inline;padding-right:5px;padding-left:5px;*zoom:1}
+.tlist li{line-height:22px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}/*禁止换行*/
+	.dot-1{padding-left:10px;background:url(../images/dot_1.gif) no-repeat 3px center}/*圆点*/
+	.box-1{padding-left:10px;background:url(../images/box_1.gif) no-repeat 3px center}/*小方块*/
+	.jt-1{padding-left:18px;background:url(../images/jt_1.gif) no-repeat 3px center}/*箭头1*/
+	.jt-2{padding-left:18px;background:url(../images/jt_2.gif) no-repeat 3px center}/*箭头2*/
+	.jt-3{padding-left:18px;background:url(../images/jt_3.gif) no-repeat 3px center}/*箭头3*/
+/*排行榜*/
+/*<ol class="top-list"><li class="top"><em>1</em><a href="#">排行榜列表</a><span class="date">12</span></li></ol>*/
+.top-list li{height: 20px;line-height: 20px;margin-bottom: 15px;overflow: hidden;padding-left: 30px;position: relative;text-overflow: ellipsis;vertical-align: bottom;white-space: nowrap}
+.top-list em {background-color: #F8F8F8;border: 1px solid #EBEBEB;color: #333;height: 18px;left: 0;line-height: 18px;position: absolute;text-align: center;top: 0;width: 20px; font-style:normal}
+.top-list .top em{background-color:#390;border:none;color: #fff;height: 20px;line-height: 20px;width: 22px}
+.top-list .date {color: #999;font-size: 12px;position: absolute;right: 0;top: 0}
+.tlist .time{font-size:12px; font-family:Arial; color:#999}
+
+.listview{}
+/*横向手机 竖向平板*/
+@media (max-width: 767px) {
+	.tlist li{position:relative; font-size:18px;border-bottom: 1px solid #eee}
+	.tlist li a{display:block;padding:0.7em 30px 0.7em 12px}
+	.dot_1{padding-left:0px}
+	.night .tlist li{border-bottom: 1px solid #1F1F1F}
+	.tlist .time{display:none}
+	.tlist i {background:url(../images/article/arrow.png) no-repeat 0 0; background-size:9px auto; height: 15px;margin-top: -7px;position: absolute;right:10px;top: 50%;width: 9px}
+	.night .tlist i{background-position:0 -75px}
+	
+}
+/*3.1.23 描述
+	Name:			style_dldtdd
+	Example:		<dl class="dl-horizontal cl"><dt>H-ui</dt><dd>基于Bootstrap框架的改进扩展的前端框架</dd></dl>
+	Explain:		.dl-horizontal 水平描述，默认不加为垂直模式。
+*/
+.dl-horizontal.cl{}
+.dl-horizontal dt{float:left;width:160px;overflow:hidden;clear:left;text-align:right;text-overflow:ellipsis;white-space:nowrap}
+.dl-horizontal dd{margin-left:180px}
+/*3.1.24 隐藏 显示
+  Name:				style_display
+  Example:    <div class="hide">隐藏的内容</div> <div class="show">显示的内容</div>
+  Explain:    		.hide 隐藏 / .show 显示
+*/
+.hide{display:none}[hidden]{display: none}
+.hidden{display:none!important;visibility:hidden!important}
+.f-hide{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}
+[class*="span"].hide,.row-fluid [class*="span"].hide{display:none}
+.show{display:block}
+.invisible{visibility:hidden}
+
+/*3.1.25 尺寸	新增尺寸全局类名，用于表单、按钮、表格、头像、标签等元素上，要与元素一起配合使用，方能看到效果*/
+.size-MINI{}/*迷你*/
+.size-S{}/*小*/
+.size-M{}/*中 缺省默认尺寸，可以不写，可以理解为：均码*/
+.size-L{}/*L*/
+.size-XL{}/*大*/
+.size-XXL{}/*加大*/
+.size-XXXL{}/*超大*/
+
+.input-text,.btn,.input-text.size-M,.btn.size-M{ font-size:14px; height:31px;line-height:1.42857;padding:4px}/*默认为M，可以不写，可以理解为：均码*/
+a.btn,a.btn.size-M,span.btn,span.btn.size-M{ line-height:21px}
+.btn,.btn.size-M{ padding:4px 12px}
+
+.input-text.size-MINI,.btn.size-MINI{font-size:12px; height:23px;padding:1px 2px;line-height:1.42857}/*迷你*/
+a.btn.size-MINI,span.btn.size-MINI{ line-height:21px}
+.btn.size-MINI{ padding:1px 4px}
+
+.input-text.size-S,.btn.size-S{font-size:12px; height:27px;padding:3px;line-height:1.42857;}/*小*/
+a.btn.size-S,span.btn.size-S{ line-height:19px}
+.btn.size-S{ padding:3px 8px}
+
+.input-text.size-L,.btn.size-L{font-size:16px; height:41px; padding:8px}/*大*/
+a.btn.size-L,span.btn.size-L{ line-height:23px}
+.btn.size-L{ padding:8px 16px}
+
+.input-text.size-XL,.btn.size-XL{font-size:16px; height:48px; padding:10px}/*特大*/
+a.btn.size-XL,span.btn.size-XL{ line-height:26px}
+.btn.size-XL{ padding:10px 24px}
+
+@media (max-width: 767px) {
+	.responsive .input-text.size-MINI,.responsive .btn.size-MINI{height:24px;}
+	.responsive .input-text.size-S,.responsive .btn.size-S{ font-size:14px; height:30px}
+	.responsive .input-text,.btn,.responsive .input-text.size-M,.responsive .btn.size-M{ font-size:16px; height:36px}
+	.responsive .input-text.size-L,.responsive .btn.size-L{ font-size:18px; height:42px}
+	.responsive .input-text.size-XL,.responsive .btn.size-XL{ font-size:20px; height:48px}
+}
+
+/*3.2 代码
+	Name:			style_pre
+
+	Example:		<code></code>,<pre class="prettyprint linenums">转义过的代码</pre>
+	Explain:		code：行内代码，pre：基本代码块;包装代码片段，.prettyprint颜色增强/.linenums显示行号
+*/
+code{padding:0 3px 2px;font-family:Monaco,Menlo,Consolas,"Courier New",monospace}
+pre .title,pre .keyword,pre .body,pre .des{color:#333}/*关键词*/
+
+pre{display:block;font-family:Monaco,Menlo,Consolas,"Courier New",monospace;padding:9.5px;margin-bottom:10px;font-size:12px;line-height:20px;word-break:break-all;word-wrap:break-word;white-space:pre;white-space:pre-wrap;background-color:#f5f5f5;border:1px solid #ccc;border-radius:4px;color:#333}
+.prettyprint{margin-bottom:20px;padding:8px;background-color:#f7f7f9;border:1px solid #e1e1e8}
+.prettyprint .com { color: #998;font-style:italic }/*注释*/
+.prettyprint .tag{color:#007}/*标签*/
+.prettyprint .lit { color: #195f91; }
+.prettyprint .pun,.prettyprint .opn,.prettyprint .clo { color: #93a1a1; }/*等于*/
+.prettyprint .fun { color: #dc322f; }
+.prettyprint .str,.prettyprint .atv { color: #D14; }/*值*/
+.prettyprint .kwd,.prettyprint .prettyprint .tag { color: #1e347b; }
+.prettyprint .typ,.prettyprint .atn,.prettyprint .dec,.prettyprint .var { color: teal; }/*文档声明，属性*/
+.prettyprint .pln { color: #48484c; }
+
+.prettyprint.linenums{box-shadow:inset 40px 0 0 #fbfbfc,inset 41px 0 0 #ececf0}
+.pre-scrollable{max-height:340px;overflow-y:scroll}
+ol.linenums{list-style:decimal outside none; margin-left:20px}
+ol.linenums li{ line-height:28px; padding-left:10px}
+pre ol.linenums{margin:0 0 0 33px}
+pre ol.linenums li{padding-left:12px;color:#bbb;line-height:18px;text-shadow:0 1px 0 #fff}
+
+@media (max-width: 767px) {
+	pre ol.linenums{ margin-left:0; list-style:none}
+}
+
+/*3.3 表格
+	Name:			style_table
+	Example:		<table class="table table-bordered table-striped table-condensed"><thead><tr><th>…</th></tr></thead><tbody><tr><td>…</td></tr></tbody></table>
+	Explain:		表格，None无样式，仅仅有列和行|.table行与行之间以水平线相隔|.table-bordered表格外围均有外边框|.table-striped奇数行背景设为浅灰色|.table-condensed竖直方向padding缩减一半，从8px变为4px，所有的 td 和 th 元素都受影响
+*/
+/*默认table*/
+table{width:100%;empty-cells:show;background-color:transparent;border-collapse:collapse;border-spacing:0}
+table th{text-align:left; font-weight:400}
+/*带水平线*/
+.table th{font-weight:bold}
+.table th,.table td{padding:8px;line-height:20px}
+.table td{text-align:left}
+.table tbody tr.success > td{background-color:#dff0d8}
+.table tbody tr.error > td{background-color:#f2dede}
+.table tbody tr.warning > td{background-color:#fcf8e3}
+.table tbody tr.info > td{background-color:#d9edf7}
+.table tbody + tbody{border-top:1px solid #ddd}
+.table .table{background-color:#fff}
+
+/*带横向分割线*/
+.table-border{border-top:1px solid #ddd}
+.table-border th,.table-border td{border-bottom:1px solid #ddd}
+
+/*th带背景*/
+.table-bg thead th{background-color:#FCFCFC;color:#999;}
+/*带外边框*/
+.table-bordered{border:1px solid #ddd;border-collapse:separate;*border-collapse:collapse;border-left:0}
+.table-bordered th,.table-bordered td{border-left:1px solid #ddd}
+.table-border.table-bordered{border-bottom:0}
+
+/*奇数行背景设为浅灰色*/
+.table-striped tbody > tr:nth-child(odd) > td,.table-striped tbody > tr:nth-child(odd) > th{background-color:#f9f9f9}
+/*竖直方向padding缩减一半*/
+.table-condensed th,.table-condensed td{padding:4px 5px}
+/*鼠标悬停样式*/
+.table-hover tbody tr:hover td,.table-hover tbody tr:hover th{background-color: #f5f5f5}
+/*定义颜色*/
+/*悬停在行*/
+.table tbody tr.active,.table tbody tr.active>td,.table tbody tr.active>th,.table tbody tr .active{background-color:#F5F5F5!important}
+/*成功或积极*/
+.table tbody tr.success,.table tbody tr.success>td,.table tbody tr.success>th,.table tbody tr .success{background-color:#DFF0D8!important}
+
+/*警告或出错*/
+.table tbody tr.warning,.table tbody tr.warning>td,.table tbody tr.warning>th,.table tbody tr .warning{background-color:#FCF8E3!important}
+/*危险*/
+.table tbody tr.danger,.table tbody tr.danger>td,.table tbody tr.danger>th,.table tbody tr .danger{background-color:#F2DEDE!important}
+
+/*表格文字对齐方式，默认是居左对齐*/
+.table .text-c th,.table .text-c td{text-align:center}/*整行居中*/
+.table .text-r th,.table .text-r td{text-align:right}/*整行居右*/
+.table th.text-l,.table td.text-l{text-align:left!important}/*单独列居左*/
+.table th.text-c,.table td.text-c{text-align:center!important}/*单独列居中*/
+.table th.text-r,.table td.text-r{text-align:right!important}/*单独列居右*/
+
+/*datatable*/
+table.dataTable {border-collapse: separate;border-spacing: 0;clear: both}
+table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc, table.dataTable thead .sorting {cursor: pointer; background-repeat:no-repeat;background-position:right center}
+table.dataTable thead .sorting{background-image:url(../images/sort_both.png)}
+table.dataTable thead .sorting_asc {background-image:url(../images/sort_asc.png)}
+table.dataTable thead .sorting_desc {background-image:url(../images/sort_desc.png)}
+.dataTables_wrapper .dataTables_length {float: left}
+.dataTables_wrapper .dataTables_filter {float: right;text-align: right}
+.dataTables_wrapper .dataTables_info {clear: both;float: left;padding-top:10px}
+.dataTables_wrapper .dataTables_paginate {float: right;padding-top:10px;text-align: right}
+.dataTable td.sorting_1 {background-color: #f5fafe}
+
+/*表格尺寸*/
+.table.size-MINI{}/*迷你*/
+.table.size-S{}/*小*/
+.table.size-M{}/*中*/
+.table.size-L{}/*默认为L，可以不写，可以理解为：均码*/
+.table.size-XL{}/*大*/
+.table.size-XXL{}/*加大*/
+.table.size-XXXL{}/*超大*/
+
+/*让表格支持响应式*/
+/*
+<div class="table-responsive">
+  <table class="table">
+    ...
+  </table>
+</div>
+*/
+@media (max-width: 767px) {
+  table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    border: 1px solid #dddddd;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch}
+  table-responsive > .table {
+    margin-bottom: 0}
+  table-responsive > .table > thead > tr > th,
+  table-responsive > .table > tbody > tr > th,
+  table-responsive > .table > tfoot > tr > th,
+  table-responsive > .table > thead > tr > td,
+  table-responsive > .table > tbody > tr > td,
+  table-responsive > .table > tfoot > tr > td {
+    white-space: nowrap}
+  table-responsive > .table-bordered {
+    border: 0}
+  table-responsive > .table-bordered > thead > tr > th:first-child,
+  table-responsive > .table-bordered > tbody > tr > th:first-child,
+  table-responsive > .table-bordered > tfoot > tr > th:first-child,
+  table-responsive > .table-bordered > thead > tr > td:first-child,
+  table-responsive > .table-bordered > tbody > tr > td:first-child,
+  table-responsive > .table-bordered > tfoot > tr > td:first-child {
+    border-left: 0}
+  table-responsive > .table-bordered > thead > tr > th:last-child,
+  table-responsive > .table-bordered > tbody > tr > th:last-child,
+  table-responsive > .table-bordered > tfoot > tr > th:last-child,
+  table-responsive > .table-bordered > thead > tr > td:last-child,
+  table-responsive > .table-bordered > tbody > tr > td:last-child,
+  table-responsive > .table-bordered > tfoot > tr > td:last-child {
+    border-right: 0}
+  table-responsive > .table-bordered > tbody > tr:last-child > th,
+  table-responsive > .table-bordered > tfoot > tr:last-child > th,
+  table-responsive > .table-bordered > tbody > tr:last-child > td,
+  table-responsive > .table-bordered > tfoot > tr:last-child > td {
+    border-bottom: 0}
+}
+
+/*3.4 表单
+	Name:			style_form
+	Example:
+	Explain:
+
+*/
+/*3.4.1 input,textarea 文本域 文本区域*/
+/*默认状态*/
+.input-text,.textarea{box-sizing:border-box;border:solid 1px #ddd;width:100%;
+    -webkit-transition:all 0.2s linear 0s;
+       -moz-transition:all 0.2s linear 0s;
+         -o-transition:all 0.2s linear 0s;
+            transition:all 0.2s linear 0s}
+.textarea{ height:100px; resize:none; font-size:14px; padding:4px}
+	.textarea-numberbar{ position:absolute; right:20px; bottom:5px; z-index:1; margin-bottom:0}
+	.textarea-length{ font-style:normal}
+.input-text:hover,.textarea:hover{border: solid 1px #3bb4f2}
+/*得到焦点后*/
+.input-text.focus,textarea.focus{border:solid 1px #0f9ae0 \9;border-color:rgba(82,168,236,0.8);box-shadow:0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6)}
+/*不可点击*/
+.input-text.disabled,.textarea.disabled,.input-text.disabled.focus,.textarea.disabled.focus{background-color:#ededed; cursor:default;border-color: #ddd;
+	-webkit-box-shadow:inset 0 2px 2px #e8e7e7;
+       -moz-box-shadow:inset 0 2px 2px #e8e7e7;
+            box-shadow:inset 0 2px 2px #e8e7e7}
+/*只读状态*/
+.input-text.disabled,.textarea.disabled{background-color:#e6e6e6; cursor:default}
+/*阴影*/
+.input-text.box-shadow,.textarea.box-shadow{-ms-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);box-shadow:inset 0 1px 1px rgba(0,0,0,0.075)}
+/*行内元素*/
+.input-text.inline{ display:inline-block; width:auto;}
+
+/*3.4.2 checkbox radio  单选 多选
+	Example:
+<div class="skin-minimal">
+  <div class="check-box">
+    <input type="checkbox" id="checkbox-1">
+    <label for="checkbox-1">复选框</label>
+  </div>
+</div>
+
+<div class="skin-minimal">
+  <div class="radio-box">
+    <input type="radio" id="minimal-radio-1" name="demo-radio1">
+    <label for="minimal-radio-1">单选按钮</label>
+  </div>
+</div>
+	Explain: 
+*/
+input[type="radio"],input[type="checkbox"] {line-height: normal; margin-top:-4px}
+.check-box,.radio-box{ display:inline-block; box-sizing:border-box; cursor:pointer; position:relative; padding-left:30px; padding-right:20px;}
+.icheckbox,
+.icheckbox-red,
+.icheckbox-green,
+.icheckbox-blue,
+.icheckbox-aero,
+.icheckbox-grey,
+.icheckbox-orange,
+.icheckbox-yellow,
+.icheckbox-pink,
+.icheckbox-purple,
+.iradio,
+.iradio-red,
+.iradio-green,
+.iradio-blue,
+.iradio-aero,
+.iradio-grey,
+.iradio-orange,
+.iradio-yellow,
+.iradio-pink,
+.iradio-purple {position: absolute;top:4px;left: 0}
+@media (max-width: 767px) {
+	.responsive .check-box,.responsive .radio-box{ display:block}
+}
+
+/*3.4.3 select 下拉框
+<span class="select-box">
+  <select class="select" size="1" name="demo">
+    <option value="1" selected>默认</option>
+    <option value="2">菜单二</option>
+    <option value="3">菜单三</option>
+  </select>
+</span>
+	Explain:	
+	select 是表单元素中最难美化的一个，有两种美化方式：
+		1、修改源生的，修改有限，只能修改个边框，背景，字体。优点：程序方便操作；缺点：丑，浏览器之间存在很大差异。
+		2、将源生的隐藏掉，用其他元素（如div li）通过js模拟下拉交互，然后再传值给源生的select。优点：好看，兼容好；缺点：代码冗余，依赖JS，不方便操作
+*/
+/*方法一、修改源生*/
+.select-box{box-sizing:border-box;vertical-align:middle; width:100%; display:inline-block;}
+	.select{border:solid 1px #ddd;box-sizing:border-box;cursor: pointer;line-height:normal;font-weight: normal;width:100%}
+.select-box .select{ border:none;}
+.select-box.inline,.select-box.inline .select{ width:auto}
+
+.select-box,
+.select-box.size-M{height:31px;padding:3px 0px;}
+	.select,.size-M .select{font-size: 14px;}
+
+.select-box.size-MINI{height:23px;padding:0px 5px;}
+	.size-MINI .select{font-size: 12px;}
+		
+.select-box.size-S{height:27px;padding:3px 5px;}
+	.size-S .select{font-size: 12px;}
+	
+.select-box.size-L{height:41px;padding:8px 5px;}
+	.size-L .select{font-size: 16px;}
+
+.select-box.size-XL{height:48px;padding:10px 5px;}
+	.size-XL .select{font-size: 18px;}
+.select-box select{padding: 5px}
+@media (max-width: 767px) {
+	.responsive .select-box{ border:none}
+	.responsive .select-box .select,.responsive .select{border:solid 1px #ddd; padding:10px;font-size:16px}
+	.responsive .select-box,.responsive .select-box.size-M,.responsive .select-box.size-MINI,.responsive .select-box.size-S,.responsive .select-box.size-L,.responsive .select-box.size-XL{ height:auto; padding:0;}
+}
+
+/*方法二、JS模拟
+<select name="demo" data-enabled="false">
+  <option value="1" selected>默认</option>
+  <option value="2">菜单二</option>
+  <option value="3">菜单三</option>
+</select>
+需要引用2个js文件
+<script type="text/javascript" src="lib/squid.js"></script> 
+<script type="text/javascript" src="lib/jselect-1.0.js"></script>
+页面调用方法 
+<script type="text/javascript">
+squid.swing.jselect()
+</script>
+*/
+.select-wrapper {position:relative; display:inline-block;font-size:14px;cursor:default}
+.select-default{zoom: 1;display:block; padding-left:10px; padding-right:30px;background-color:#fff;border:solid 1px #d0d0d0;height:34px;line-height:34px}
+.jsselect.radius{ overflow:visible}
+.jsselect.radius .select-default{ border-radius:4px}
+.jsselect.radius .select-list{border-radius:4px;border-top-left-radius:0;border-top-right-radius:0}
+.select-icon {position: absolute;height:8px;width:12px;right:10px;top:50%; margin-top:-4px;background: url(../images/iconpic-arrow-down2.png) no-repeat center}
+.select-icon:hover {}
+.unselectable {-moz-user-select: none;-khtml-user-select: none;-webkit-user-select: none;-o-user-select: none;user-select: none}
+.select-list {position:absolute;left:0; right:0;top:100%;z-index:1;line-height:34px;max-height:320px; overflow:auto;_height:expression(this.scrollHeight > 319 ? "320px" : "auto");background-color:#fff;background-clip: padding-box;-moz-box-shadow:0 1px 2px rgba(0, 1, 1, 0.2);-webkit-box-shadow:0 1px 2px rgba(0, 1, 1, 0.2);box-shadow:0 1px 2px rgba(0, 1, 1, 0.2);box-sizing:border-box;border:solid 1px #d0d0d0;behavior: url(../lib/ie-css3.htc)}
+.select-item {margin: 0;padding: 0}
+.select-option {background:#fff;line-height:34px;text-align:left;white-space:nowrap; cursor:pointer; border-bottom:1px solid #f2f2f2; padding:0 10px}
+.select-item .selected {background-color:#148cf1;color:#fff}
+
+/*3.4.4 input-file 文件上传
+	Example: 
+<span class="btn-upload">
+  <a style="z-index:2;" href="javascript:void();" class="btn btn-primary radius"><i class="iconfont">&#xf0020;</i> 浏览文件</a>
+  <input type="file" multiple name="file_0" class="input-file">
+</span>
+	Explain：把文件选择域设为透明,通过绝对定位覆盖在长的好看的按钮上面。
+*/
+.btn-upload{position: relative; display:inline-block;height:31px; *display:inline;overflow:hidden;vertical-align:middle;cursor:pointer}
+	.upload-url{cursor: pointer; width:300px;}
+	.input-file{position:absolute; right:0; top:0; cursor: pointer; z-index:1; font-size:30em;opacity:0;filter: alpha(opacity=0)}
+.form-group .upload-btn{ margin-left:-1px}
+.btn-upload .icon-add,.btn-upload .icon-minus{cursor: pointer;display: inline-block;font-family: Arial;font-size: 30px;height: 31px;line-height: 31px;text-align: center;vertical-align: middle;width: 36px}
+@media (max-width: 767px) {
+	.btn-upload{ position:static}
+		.input-file{ position:static; opacity:1; font-size:16px;}
+		.upload-btn{ display:none;}
+		.upload-url{ display:none}
+}
+
+/*数字表单*/
+.numberControlBox{display:inline-block;overflow:hidden;vertical-align: middle}
+.ncb-up,.ncb-down{font-size:0px;display:block;height:10px;background-color:#f4f4f4;background:-moz-linear-gradient(top,rgb(255,255,255) 0%,rgb(230,230,230) 50%,rgb(255,255,255) 100%);width:24px;border:1px solid #d1d1d1;cursor:pointer}
+.ncb-up{margin-bottom:1px}
+.numberControlBox .ncb_ico{display:block;height:10px;background-image:url(../img/icon-arrow.png);background-repeat:no-repeat}
+.ncb-up .ncb_ico{background-position: -22px center}
+.ncb-down .ncb_ico{background-position: 1px center}
+.ncb_btn_hover{border:1px solid #9dc7e7;background-color:#dff2fc;background:-moz-linear-gradient(top,rgb(255,255,255) 0%,rgb(210,237,250) 50%,rgb(255,255,255) 100%)}
+.ncb_btn_selected{border:1px solid #6198c2;background-color:#aee1fb;background:-moz-linear-gradient(top,rgb(255,255,255) 0%,rgb(174,225,251) 50%,rgb(255,255,255) 100%)}
+.input-text[type="number"]{width:80px}
+
+/*3.4.5 表单布局*/
+label,.placeholder{font-size:14px}
+.form legend{font-size:20px}/*表单名称*/
+.form .row{margin-top:15px;}/*表单行*/
+		.form-label{display:block; color:#555; }/*表单标题*/
+		.formControls{position:relative}/*表单控制区*/
+		.formControls > *{vertical-align:middle}
+			.placeholder{position:absolute; left:4px; top:4px;color:#c6c6c6; cursor:text}/*表单默认值*/	
+.form-horizontal .row{display:table;width:100%;}
+.form-horizontal .form-label{margin-top:3px;cursor:text;text-align:right; padding-right:10px}
+.form-horizontal .form-text{margin-top:3px;cursor:text;text-align:left;font-size: 14px; }
+.form-horizontal .formControls{ padding-right:10px}
+/*设置placeholder颜色*/
+::-webkit-input-placeholder {color:#b3b3b3}/* WebKit browsers */
+:-moz-placeholder {color:#b3b3b3}/* Mozilla Firefox 4 to 18 */
+::-moz-placeholder {color:#b3b3b3}/* Mozilla Firefox 19+ */
+:-ms-input-placeholder {color:#b3b3b3}/* Internet Explorer 10+ */
+.placeholder{color:#adb0be; position:absolute; z-index:9}/*不兼容placeholder属性的浏览器，可使用<span class="placeholder">表单默认值</span>*/
+@media (max-width: 767px) {
+	.responsive .form-label{ text-align:left;padding-right:0; font-size:16px; float:none}
+	.responsive .formControls{ padding-right:0; float:none; margin-top:10px}
+}
+/*3.4.6 表单验证*/
+/*文本框的错误状态*/
+.Validform_error{background-color:#fbe2e2; border-color:#c66161; color:#c00}
+.Validform_wrong,.Validform_right,.Validform_warning{display:inline-block;height:20px;font-size:12px;vertical-align:middle; padding-left:25px}
+/*错误*/
+.Validform_wrong{background:url(../images/icon_error_s.png) no-repeat 0 center;color:#ef392b}
+/*正确*/
+.Validform_right{background:url(../images/icon_right_s.png) no-repeat 0 center}
+/*警告*/
+.Validform_warning{background:url(../images/icon_warning_s.png) no-repeat 0 center;color:#777}
+
+/*密码等级*/
+.passwordStrength b{font-weight:400}
+.passwordStrength b,.passwordStrength span{display:inline-block; vertical-align:middle;line-height:16px;line-height:18px\9;height:16px}
+.passwordStrength span{width:57px;text-align:center;background-color:#d0d0d0;	border-right:1px solid #fff}
+.passwordStrength .last{border-right:none}
+.passwordStrength .bgStrength{color:#fff;background-color:#fcc900}
+/*Validform对话框*/
+#Validform_msg{font-size:14px;width:300px; -webkit-box-shadow:2px 2px 3px #aaa; -moz-box-shadow:2px 2px 3px #aaa; background:#fff; position:absolute; top:0px; right:50px; z-index:99999; display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999'); box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1)}
+#Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1}
+#Validform_msg .Validform_title{font-size:20px; padding:10px;text-align:left;color:#fff; position:relative; background-color:#fcc900}
+#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{position:absolute; right:8px; top:6px; color:#fff; text-decoration:none; font-family:Verdana}
+#Validform_msg a.Validform_close:hover{color:#fff}
+#Validform_msg .Validform_info{padding:10px;border:1px solid #bbb; border-top:none; text-align:left}
+@media (max-width: 767px) {
+	.responsive .Validform_checktip{margin-top:10px}
+}
+/*3.5 按钮
+	Name:			style_button
+	Example:		<button class="btn radius radius btn-primary|btn-info|btn-success|btn-warning|btn-danger|btn-inverse|btn-link" type="button">按钮</button>
+	Explain:		btn-primary：主要|btn-info：信息|btn-success：成功|btn-warning：警告|btn-danger：危险|btn-inverse：反向|btn-link：链接
+
+*/
+/*关闭*/
+.close{font-size:20px;color: #000;text-shadow: 0 1px 0 #fff;opacity: 0.2;filter: alpha(opacity=20)}
+.close:hover,.close:focus{color: #000;text-decoration: none;cursor: pointer;opacity: 0.4;filter: alpha(opacity=40)}
+
+button.close{padding:0;cursor:pointer;background:transparent;border: 0;-webkit-appearance: none}
+/*按钮*/
+.btn{display:inline-block;box-sizing:border-box;cursor:pointer;text-align:center;font-weight:400;white-space:nowrap;vertical-align: middle;-moz-padding-start:npx; -moz-padding-end:npx;border:solid 1px #ddd; background-color:#fff; width:auto;*zoom:1;*overflow:visible;
+	-webkit-transition:background-color .1s linear;
+		-moz-transition:background-color .1s linear;
+		-o-transition:background-color .1s linear;
+			transition:background-color .1s linear;}
+a.btn:hover,a.btn:focus,a.btn:active,a.btn.active,a.btn.disabled,a.btn[disabled]{text-decoration:none}
+.btn:active,.btn.active{background-color:#ccc}
+.btn:first-child{*margin-left:0}
+.btn.active,.btn:active{-moz-box-shadow:0 1px 8px rgba(0, 0, 0, 0.125) inset;-webkit-box-shadow:0 1px 8px rgba(0, 0, 0, 0.125) inset; box-shadow:0 1px 8px rgba(0, 0, 0, 0.125) inset;}
+
+/*默认——灰色	通常用于取消*/
+.btn-default{background-color:#e6e6e6;border-color:#e6e6e6}
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active{color:#333;background-color:#c7c7c7;border-color:#c7c7c7}
+
+/*主要——主色	通常用于确定、提交、购买、支付等*/
+.btn-primary{color:#fff;background-color:#3bb4f2; border-color:#3bb4f2}
+.btn-primary:hover{color:#fff;background-color:#0F9AE0; border-color:#0F9AE0}
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active{color:#fff;background-color:#0a6999;border-color:#0a6999}
+
+/*次要按钮*/
+.btn-secondary{color:#fff;background-color:#3bb4f2; border-color:#3bb4f2}
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary.active{color:#fff;background-color:#0f9ae0;border-color:#0f9ae0}
+
+/*成功*/
+.btn-success{color:#fff;background-color:#5eb95e; border-color:#5eb95e}
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active,
+.btn-success.active{color:#fff;background-color:#429842;border-color:#429842}
+
+/*警告*/
+.btn-warning{color:#fff;background-color:#f37b1d; border-color:#f37b1d}
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active,
+.btn-warning.active{color:#fff;background-color:#c85e0b;border-color:#c85e0b}
+
+/*危险*/
+.btn-danger{color:#fff;background-color:#dd514c; border-color:#dd514c}
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active,
+.btn-danger.active{color:#fff;background-color:#c62b26;border-color:#c62b26}
+
+/*链接*/
+.btn-link{color:#0e90d2;cursor:pointer;border-color:transparent;background-color:transparent;}
+.btn-link:hover,
+.btn-link:focus,
+.btn-link:active,
+.btn-link.active{color:#095f8a;text-decoration:underline;background-color:transparent}
+
+/*禁用状态*/
+.btn.disabled{cursor:not-allowed;background-image:none;opacity:.65;filter:alpha(opacity=65);box-shadow:none; pointer-events:none;}
+
+/*块级按钮*/
+.btn-block {-moz-box-sizing: border-box;display: block;padding-left: 0;padding-right: 0;width: 100%}
+
+/*表单组*/
+.form-group{ display:inline-block;vertical-align:middle}
+.form-group .input-text{ position:relative; vertical-align:top}
+.form-group.radius .input-text{border-radius:4px 0 0 4px}
+.form-group.round .input-text{border-radius:1000px 0 0 1000px}
+.form-group .btn{position:relative;margin-left:-1px}
+.form-group.radius .btn{ border-radius:0 4px 4px 0;}
+.form-group.round .btn{ border-radius:0 1000px 1000px 0;}
+
+/**************表单验证**************/
+.onShow{background:url(../images/onFocus.gif) no-repeat;padding-left:25px;font-size: 12px;line-height:30px;vertical-align:middle;padding-top: 4px;color:#9a9a9a;}
+.onFocus{background:url(../images/onFocus.gif) no-repeat;padding-left:25px;font-size: 12px;line-height:30px;vertical-align:middle;padding-top: 4px;color:#9a9a9a;}
+.onError{background:url(../images/onError.gif) no-repeat;padding-left:25px;font-size: 12px;line-height:30px;vertical-align:middle;padding-top: 4px;color:#fe0000;}
+.onCorrect{background:url(../images/onCorrect.gif) no-repeat;padding-left:25px;font-size: 12px;line-height:30px;vertical-align:middle;padding-top: 4px;color:#666;}
+.onLoad{background:url(../images/onLoad.gif) no-repeat 3px 3px;padding-left:25px;font-size: 12px;line-height:22px;vertical-align:middle;padding-top: 4px;}
+

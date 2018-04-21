@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-group group-icon"></i>
+        <a href="/customer/index">客户管理</a></li>
+      <li>
+        <a href="/member/index">会员</a></li>
+      <li class="active">会员设置</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <script type="text/javascript" src="/js/jquery.form.js"></script>
+      <script>$(function() {
+          $('#yw0').on('click',
+          function() {
+            $('#food-form').submit();
+          });
+        })
+
+        function configsubmit() {
+
+          if (document.getElementById('MemberConfig_is_onlinepay').checked) {
+            if (!document.getElementById('MemberConfig_open_self_weixinzhifu').checked) {
+              bootbox.alert('请选择一种支付方式');
+              return false;
+            }
+          }
+          $('#food-form').submit();
+        }</script>
+      <style>.width50{width:50px;}</style>
+      <div style="display:none;" id="upsendhtml">
+        <div class="upsendbox">
+          <span style="color:red;" class="upsendnumber"></span>充值:
+          <input value="0" name="upsend_key[]">元，送
+          <input value="0" name="upsend_val[]">元
+          <div class="upsenddelete">删除</div></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li >
+                <a href="cus_vip.html">会员列表</a></li>
+              <li>
+                <a href="cus_vip_list.html">被冻结会员列表</a></li>
+              <li class="active">
+                <a href="cus_vip_set.html">会员设置</a></li>
+            </ul>
+            <div class="tab-content">
+              <form enctype="multipart/form-data" class="form-horizontal" id="food-form" action="/member/config" method="post">
+                <div class="alert alert-danger" id="food-form_es_" style="display:none">
+                  <p>请更正下列输入错误:</p>
+                  <ul>
+                    <li>dummy</li></ul>
+                </div>
+                <div class="col-sm-14">
+                  <div class="widget-box">
+                    <div class="widget-header">
+                      <h4 class="smaller">会员开通设置
+                        <small>设置顾客自助开通会员方式</small></h4>
+                    </div>
+                    <div class="widget-body">
+                      <div class="widget-main">
+                        <div class="form-group">
+                          <div class="checkbox">
+                            <label>
+                              <input id="ytMemberConfig_is_userinfo_automember" type="hidden" value="0" name="MemberConfig[is_userinfo_automember]">
+                              <input class="ace" name="MemberConfig[is_userinfo_automember]" id="MemberConfig_is_userinfo_automember" value="1" checked="checked" type="checkbox">
+                              <span class="lbl">
+                                <label for="MemberConfig_is_userinfo_automember">可以通过填写会员信息自动开通会员</label></span>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="checkbox">
+                            <label>
+                              <input id="ytMemberConfig_is_balance" type="hidden" value="0" name="MemberConfig[is_balance]">
+                              <input class="ace" name="MemberConfig[is_balance]" id="MemberConfig_is_balance" value="1" checked="checked" type="checkbox">
+                              <span class="lbl">
+                                <label for="MemberConfig_is_balance">可以通过在线充值余额自动开通会员</label></span>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-1" for="MemberConfig_balance_value">一次性充值</label>
+                          <input class="col-sm-2" name="MemberConfig[balance_value]" id="MemberConfig_balance_value" type="text" value="100">
+                          <label>元可以开通会员</label></div>
+                        <div class="form-group">
+                          <label class="col-sm-1" for="MemberConfig_open_condition">开通条件</label>
+                          <textarea style="width: 30%; height: 100px; display: none;" name="MemberConfig[open_condition]" id="MemberConfig_open_condition"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-14">
+                  <div class="widget-box">
+                    <div class="widget-header">
+                      <h4 class="smaller">会员在线充值支付方式设置
+                        <small>设置顾客自助开通会员和会员充值时的支付方式</small></h4>
+                    </div>
+                    <div class="widget-body">
+                      <div class="widget-main">
+                        <div class="form-group">
+                          <div class="checkbox">
+                            <label>
+                              <input id="ytMemberConfig_is_onlinepay" type="hidden" value="0" name="MemberConfig[is_onlinepay]">
+                              <input class="ace" name="MemberConfig[is_onlinepay]" id="MemberConfig_is_onlinepay" value="1" checked="checked" type="checkbox">
+                              <span class="lbl">
+                                <label for="MemberConfig_is_onlinepay">是否开通会员在线充值</label></span>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="checkbox">
+                            <label>
+                              <input id="ytMemberConfig_open_self_weixinzhifu" type="hidden" value="0" name="MemberConfig[open_self_weixinzhifu]">
+                              <input class="ace" name="MemberConfig[open_self_weixinzhifu]" id="MemberConfig_open_self_weixinzhifu" value="1" checked="checked" type="checkbox">
+                              <span class="lbl">
+                                <label for="MemberConfig_open_self_weixinzhifu">是否打开自己的微信支付</label></span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-14">
+                  <div class="widget-box">
+                    <div class="widget-header">
+                      <h4 class="smaller">会员充值金额设置
+                        <small>这里可以设置顾客可以在线充值的会员金额，以及设置充值送的活动</small></h4>
+                    </div>
+                    <div class="widget-body">
+                      <div class="widget-main">
+                        <!-- <input type="hidden" name="MemberConfig[pic]" value="" id="pic"/>-->
+                        <div class="form-group">
+                          <label class="col-sm-1" for="MemberConfig_open_upsend">是否开通充值送</label>
+                          <select name="MemberConfig[open_upsend]" id="MemberConfig_open_upsend">
+                            <option value="0">关闭</option>
+                            <option value="1" selected="">开启</option></select>
+                        </div>
+                        <script>$(function() {
+                            $('#upsendadd').on('click',
+                            function() {
+                              var html = $('#upsendhtml').html();
+                              $('#upsendlist').append(html);
+                              sortupsendnumber();
+                            });
+                            $(document).on('click', '.upsenddelete',
+                            function() {
+                              $(this).parent('.upsendbox').remove();
+                              sortupsendnumber();
+                            });
+                            $('#MemberConfig_open_upsend').on('change',
+                            function() {
+                              var value = $(this).val();
+                              if (value == '0') {
+                                $('#upsendblock').hide();
+                              } else if (value == '1') {
+                                $('#upsendblock').show();
+                              }
+                            });
+                          });
+                          function sortupsendnumber() {
+                            var i = 1;
+                            $('#upsendlist').children('.upsendbox').children('.upsendnumber').each(function() {
+                              $(this).html(i + '、');
+                              i++;
+                            });
+                          }</script>
+                        <style>.upsendbox{ width:90%; height:30px; line-height:30px; margin:10px; font-size:14px; background:#eeeeee; } .upsendbox input{ height:30px; width:40px; } .upsendbox .upsenddelete{ float:right; width:40px; height:30px; line-height:30px; background:red; text-align:center; color:red; color:#ffffff; cursor:pointer; } #upsendadd{ width:100px; height:30px; line-height:30px; text-align:center; border:1px solid #cccccc; background:green; color:#ffffff; cursor:pointer; } .mysub{ display: block; width: 100%; background-color: #F5F5F5; border-top: 1px solid #E5E5E5; padding: 20px 20px 20px 25%; margin-top: 40px; margin-bottom: 10px; /*position:absolute;bottom:-100px;left:30%;margin-bottom:40px;*/ }</style>
+                        <div style="width:100%;margin:0 auto;border:1px solid #cccccc;margin-bottom:30px;display:;" id="upsendblock">
+                          <div style="width:100%;height:30px;line-height:30px;background:#eeeeee;font-size:12px;text-indent:10px;">充值送内容</div>
+                          <div style="padding:10px;" id="upsendlist">
+                            <div class="upsendbox" id="upsendadd">点击添加</div>
+                            <div class="upsendbox">
+                              <span style="color:red;" class="upsendnumber">1、</span>充值:
+                              <input value="100" name="upsend_key[]">元，送
+                              <input value="5" name="upsend_val[]">元
+                              <div class="upsenddelete">删除</div></div>
+                            <div class="upsendbox">
+                              <span style="color:red;" class="upsendnumber">2、</span>充值:
+                              <input value="200" name="upsend_key[]">元，送
+                              <input value="10" name="upsend_val[]">元
+                              <div class="upsenddelete">删除</div></div>
+                            <div class="upsendbox">
+                              <span style="color:red;" class="upsendnumber">3、</span>充值:
+                              <input value="500" name="upsend_key[]">元，送
+                              <input value="30" name="upsend_val[]">元
+                              <div class="upsenddelete">删除</div></div>
+                            <div class="upsendbox">
+                              <span style="color:red;" class="upsendnumber">4、</span>充值:
+                              <input value="1000" name="upsend_key[]">元，送
+                              <input value="80" name="upsend_val[]">元
+                              <div class="upsenddelete">删除</div></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-14">
+                  <div class="widget-box">
+                    <div class="widget-header">
+                      <h4 class="smaller">会员页面展示信息设置
+                        <small></small></h4>
+                    </div>
+                    <div class="widget-body">
+                      <div class="widget-main">
+                        <div class="form-group">
+                          <label class="col-sm-1" for="MemberConfig_card_name">会员卡名称</label>
+                          <input class="col-sm-2" name="MemberConfig[card_name]" id="MemberConfig_card_name" type="text" maxlength="10" value="金点外卖VIP卡"></div>
+                        <div class="form-group">
+                          <label class="col-sm-1" for="MemberConfig_member_privilege">会员特权</label>
+                          <textarea style="width: 30%; height: 100px; display: none;" name="MemberConfig[member_privilege]" id="MemberConfig_member_privilege">&lt;p&gt; 1：享受倒垃圾服务！ &lt;/p&gt; &lt;p&gt; 2：充值送好礼； &lt;/p&gt; &lt;p&gt; 3：定期参与平台会员回馈活动！ &lt;/p&gt;</textarea></div>
+                        <div class="form-group">
+                          <label class="col-sm-1">logo</label>
+                          <span class="col-sm-3" style="padding-left:0px;">
+                            <!-- <input id="ytshare-image-file" type="hidden" value="" name="MemberConfig[pic]"> -->
+                            <label class="ace-file-input">
+                              <input class="col-sm-1" id="share-image-file" size="200" onchange="previewshareimage(this)" name="MemberConfig[pic]" type="file">
+                              <span class="ace-file-container" data-title="选择">
+                                <span class="ace-file-name" data-title="图片(600像素 * 373像素)">
+                                  <i class=" ace-icon fa fa-upload"></i>
+                                </span>
+                              </span>
+                            </label>
+                          </span>
+                          <span style="color:red">(图片大小建议600像素*373像素)</span>
+                          <span style="color:red;line-height:34px;margin-left:20px;"></span>
+                        </div>
+                        <div>
+                          <img style="width:600px;height:373px" id="share_image_preview" src="images/card-bkg.png" alt="图片"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="clearfix mysub" style="">
+                  <div class="col-md-offset-3 col-md-9 ">
+                    <a class="btn btn-info" type="buttom" onclick="configsubmit();">
+                      <i class="ace-icon fa fa-check bigger-110"></i>保存</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div style="height:200px;"></div>
+        </div>
+      </div>
+      <script src="js/kindeditor.js"></script>
+      <script>KindEditor.ready(function(K) {
+          editor = K.create("#MemberConfig_open_condition, #MemberConfig_member_privilege", {
+            width: '30%',
+            resizeType: 1,
+            allowPreviewEmoticons: false,
+            allowImageUpload: true,
+            filterMode: true,
+            items: ['fontname', 'fontsize', 'forecolor', '|', 'bold', 'italic', 'underline', 'removeformat', '|', 'insertorderedlist', 'insertunorderedlist', '|', 'emoticons'],
+            afterBlur: function() {
+              this.sync();
+            }
+          });
+        });
+
+        function previewshareimage(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+              $('#share_image_preview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+          }
+
+        }</script>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

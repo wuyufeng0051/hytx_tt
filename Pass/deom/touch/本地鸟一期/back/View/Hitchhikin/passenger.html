@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>乘客信息</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style>
+	.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	.passenger{
+		padding: 10px;
+		color: #ff9702;
+		border-bottom: 1px solid #ddd;
+		padding-left: 30px;
+		background: #fff url(__PUBLIC__/Home/img/passenger.png) no-repeat 10px 10px;
+		background-size: 18px 18px;
+	}
+	.passenger span{
+		float: right;
+		color: #666;
+		margin:0  10px;
+	}
+	.passenger span:first-child{
+		border:none;
+	}
+	.search {
+		position: relative;
+		padding: 10px;
+		padding-right: 55px;
+		background:#fff;
+	}
+	.search .btn{
+		position: absolute;
+		right: 10px;
+		top:10px;
+		line-height: 32px;
+		background: #ff7300;
+		color: #fff;
+		text-align: center;
+		font-size: 14px;
+		padding: 0 8px;
+		border-radius: 3px;
+	}
+	.search input{
+		width: 45%;
+		float: left;
+		padding: 0;
+		height: 32px;
+		margin:0;
+		padding-left: 25px;
+		line-height: 32px;
+		border:none;
+		vertical-align:text-bottom;
+		font-size: 16px;
+	} 
+	.search input.qd{
+		background:  #f2f2f2 url(__PUBLIC__/Home/img/qidian.png) no-repeat 4px 7px;
+		background-size: 16px 16px;
+		width: 45%;
+		float: left;
+		padding: 0;
+		height: 32px;
+		margin:0;
+		padding-left: 25px;
+		line-height: 32px;
+		border:none;
+		vertical-align:text-bottom;
+		font-size: 16px;
+	}
+	.search input.zd{
+		background:  #f2f2f2  url(__PUBLIC__/Home/img/zhongdian.png) no-repeat 4px 7px;
+		background-size: 16px 16px;
+		width: 45%;
+		float: left;
+		padding: 0;
+		height: 32px;
+		margin:0;
+		padding-left: 25px;
+		line-height: 32px;
+		border:none;
+		vertical-align:text-bottom;
+		font-size: 16px;
+	}
+
+
+	/*弹出层*/
+	.mui-popover-arrow{
+	    display: none;
+	}
+	.mui-popover{
+	    position: fixed;
+	    width: 80%;
+	    height: 121px;
+	    border-radius: 10px;
+	    left: 50%;
+	    top: 50%;
+	    margin: 0 auto;
+	    z-index: 9999;
+	    background-color: #fff;
+	    -webkit-transform: translateX(-50%) translateY(-50%);
+	    -moz-transform: translateX(-50%) translateY(-50%);
+	    -ms-transform: translateX(-50%) translateY(-50%);
+	    transform: translateX(-50%) translateY(-50%);
+	    overflow: hidden;
+	}
+	.mui-popover h4{
+		background-color: #ff7400;
+		color: #fff;
+		text-align: center;
+		padding:10px 0;
+		margin:0;
+		font-weight: normal;
+		text-indent: 5%;
+	}
+	.mui-popover h4 span{
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 25px;
+		line-height: 20px;
+		float: right;
+		margin-right: 10%;
+		position: relative;
+		/*border-radius: 50%;
+		border:1px solid #fff;
+		width: 18px;
+		height: 18px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 18px;
+		line-height: 18px;
+		text-align: center;
+		margin-left: 10px;
+		position: relative;
+		top:1px;*/
+	}
+	.mui-popover ul{
+		padding:0;
+		margin:0;
+	}
+	.mui-popover ul li{
+		line-height: 40px;
+		text-align: center;
+		border-bottom: 1px solid #e6e6e6;
+	}
+	.mui-popover ul li a{
+		color:#000;
+	}
+
+	#fabu{
+		background: url(__PUBLIC__/Home/img/fabu.png) no-repeat left 2px;
+		background-size: 18px 16px;
+		padding-left: 25px;
+	}
+	#wode{
+		background: url(__PUBLIC__/Home/img/wode.png) no-repeat left -3px;
+		background-size: 24px 24px;
+		padding-left: 25px;
+	}
+	.passenger .line{
+		width: 1px;
+		height: 18px; 
+		background: #666;
+		display: inline-block;
+		margin: 0 3px;
+	}
+	.mui-card{
+		box-shadow: none;
+	}
+
+	.backTop {
+	    border-radius: 50%;
+	    position: fixed;
+	    right: 10px;
+	    bottom: 15px;
+	    width: 40px;
+	    height: 40px;
+	    z-index: 9999;
+	    text-align: center;
+	    font-size: 18px;
+	    color: #666666;
+	    padding-top: 8px;
+	    border: 2px solid #707070;
+	    background: #fff url(__PUBLIC__/Home/img/toTop.png) center center no-repeat;
+	    background-size: 20px 20px;
+	}
+	.mui-table-view-cell:after{position: static;}
+	.ellipsis{
+	    display: -webkit-box;
+	    overflow: hidden;
+	    white-space: normal!important;
+	    text-overflow: ellipsis;
+	    word-wrap: break-word;
+	    -webkit-line-clamp: 1;
+	    -webkit-box-orient: vertical;
+	}
+	</style>
+</head>
+<body>
+
+<include file="Public/share" title='包含文件'/>
+
+	<div class="mui-content">
+		<!-- 图片轮播区 -->
+		<?php if(!empty($status)){ ?>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+			<volist name="status" id="vo">
+			   <div class="swiper-slide">
+				    <a id="up" onclick="look(this)" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}">
+ 				     <img src="__PUBLIC__/../{$vo['advertisement_img']}">
+			       </a>
+				</div>
+			</volist>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+		<?php } ?>
+		<!-- 顶栏 -->
+		<!-- 顶栏 -->
+		<div class="passenger">
+			乘客信息
+			<span id="wode"><a href="__MODULE__/My/myRelease" style="color:#666;">我的</a></span>
+			<span class="line"></span>
+			<span id="fabu">发布</span>
+		</div>
+		<!-- 搜索 -->
+		<?php if(empty($_GET)){ ?>
+		<div class="search">
+			<div class="" style="overflow: hidden;">
+				<input type="text" style="margin-right: 5%;" placeholder="请输入起点" class="qd">
+				<input type="text" placeholder="请输入终点" class="zd">
+			</div>
+			<div class="btn">
+				搜索
+			</div>
+		</div>
+		<?php } ?>
+		<!-- 列表 -->
+	<div id="zong">
+      <volist name="res_freeride" id="vo">
+		<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;" id="{$vo.freeride_id}">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+					<a style="position: relative;display: block;color:#000;" str="{$vo.freeride_id}" class="topheight">
+						<!-- <img src="__PUBLIC__/../{$vo.imgs.0.imgs_path}" alt="" style="position: absolute;left: 0;right: 0;width: 60px;height: 60px;"> -->
+						<div>
+							<!-- <img src="__PUBLIC__/Home/img/time.png" alt="" style="height: 16px;vertical-align:middle;position: relative;top:-1px;"> -->
+							<?php if(!empty($vo['imgs_is'])){ ?>
+								<div class="mui-media-object mui-pull-left img" style=";width: 60px;height: 60px;margin-right: 10px; background-image: url({$vo.imgs.0}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; " ></div>
+							<?php }else{ ?>
+							    <div class="mui-media-object mui-pull-left img" style=";width: 60px;height: 60px;margin-right: 10px; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; " ></div>
+							<?php } ?>
+                            
+                            <img src="__PUBLIC__/Home/img/time.png" alt="" style="height: 16px;vertical-align:middle;position: relative;top:-1px;">
+
+							<span class="time">{$vo.time}</span>
+							<input type="hidden" class="times" value="{$vo.time}">
+							<!-- <span>{$vo.freeride_age}岁</span> -->
+							<?php if($vo['freeride_sex'] == 0){ ?>
+							<img src="__PUBLIC__/Home/img/women.png" alt="" style="height: 20px;vertical-align:top;">
+							<?php }else{ ?>
+							<img src="__PUBLIC__/Home/img/man.png" alt="" style="height: 20px;vertical-align:top;">
+							<?php }?>
+							
+						</div>
+					   <p style="margin-bottom: 0;color: #000;width: 100%;height: 21px;"><strong style="font-weight: normal;color:#64d06d;margin-right: 5px;float: left;">起</strong><span class="ellipsis" style="float: left;line-height: 21px;width: 45%;height: 21px;">{$vo.freeride_start}</span><span style="float: right;">{$vo.freeride_seat}人乘车</span></p>
+						<p style="margin-bottom: 0;color: #000;width: 100%;height: 21px;"><strong style="font-weight: normal;color:#e47437;margin-right: 5px;float: left;">终</strong><span class="ellipsis" style="float: left;line-height: 21px;width: 45%;height: 21px;">{$vo.freeride_end}</span><!-- <span style="float: right;"><?php if($vo['freeride_is_free'] == 0 ){ echo "不付费" ; }else{ echo "可付费" ;} ?></span> --></p>
+					</a>
+				</div>
+			</div>
+		</div>
+    </volist>
+  </div>
+	</div>
+	<a id="scrollToTop" class="backTop"></a>
+	<div id="pop" class="mui-popover">
+		<h4>请选择您要发布的类别<span class="mui-icon mui-icon-close"></span></h4>
+		<ul class="mui-table-view">
+			<li class="mui-table-view-cell" style="padding:5.5px 0;"><a href="__MODULE__/Hitchhikin/ownerRelease">我是车主</a></li>
+			<li class="mui-table-view-cell" style="padding:5.5px 0;"><a href="__MODULE__/Hitchhikin/passengerRelease">我是乘客</a></li>
+		</ul>
+    </div>
+
+    
+    <?php if(count($res_freeride) > 9){ ?>
+     <div style="width:30%;margin:0 auto;color:#000;padding:5px;font-size:12px;color:#888;" id="load" srv="0">
+        往上滑加载更多
+    </div>
+   <?php } ?>
+
+    <input type="hidden" id="limit" value="0">
+    <input type="hidden" id="scrollTop" value="0">
+
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script>
+     function muicard(){
+    	var all = 0;
+    	var have = $('.mui-card')
+    	$.each(have,function(index,item){
+               all += 1; 
+    	})
+ 
+    	if (all < 10) {
+    		$('#load').hide(); 
+    	}else{
+    		$('#load').show(); 
+    	}
+    }
+
+   muicard();
+
+	  function toploa(){
+	   $('.topheight').on('click', function() {
+	      var stv = $(this).attr('str');
+	      var scrollTop =getScrollTop();
+ 	      $("#scrollTop").val(scrollTop);
+ 	      var zong =$("#zong").html();
+
+ 	       $.post('{:U("Home/Demo/look")}', {str:'freeride',stv:stv}, function(daty){
+ 	       	 // alert(daty)
+             if (daty == 1) {
+ 		      $.post('{:U("Home/Hitchhikin/sessionpassenger")}', {zong:zong}, function(data) {
+		        location.href="__MODULE__/Hitchhikin/passengerDetails?freeride_id="+stv;
+	           });
+	         }else{
+	 	     	layer.msg('对不起,信息已删除')
+	 	     }
+	   	  })
+
+	   });
+     }
+     toploa(); 
+
+
+
+   //求滚动条的高度
+   function getScrollTop(){    
+	    var scrollTop=0;    
+	    if(document.documentElement&&document.documentElement.scrollTop){    
+	        scrollTop=document.documentElement.scrollTop;    
+	    }else if(document.body){    
+	        scrollTop=document.body.scrollTop;    
+	    }    
+	    return scrollTop;    
+	} 
+
+  
+
+   //如果之前滚动条的位置
+    function time(){
+      muicard();
+      var limit = $("#limit").val();
+ 	  if (limit != 0) {
+ 	  	$.post('{:U("Home/Hitchhikin/looksessionpassenger")}', {limit:limit},function(data){
+ 	  		if (data != 2) {
+   	  		   $("#zong").html("");
+  	  		   $("#zong").append(data)
+  	  		    var tab = $("#zong").text();
+				if (tab) {
+				var scrollTop = $("#scrollTop").val();
+				 window.scrollTo(0,scrollTop);
+				 toploa();
+				}
+			}else{
+			 	$('#limit').val(0)
+			 	$("#scrollTop").val(0);
+			 }
+ 	  	});
+ 	  }
+    }
+    setTimeout(time(),1000);
+
+
+
+	//加载
+	  function loadclick(){
+		$(window).scroll(function(){
+		　　var scrollTop = $(this).scrollTop();
+		　　var scrollHeight = $(document).height();
+		　　var windowHeight = $(this).height();
+		　　if(scrollTop + windowHeight == scrollHeight){
+ 		    	var limit = parseInt($('#limit').val())+1;
+ 		    	  $('#limit').val(limit);
+ 		    	  $("#load").show();
+                
+ 		    	 setTimeout(function(){
+ 					$.post('{:U("Home/Hitchhikin/passengerload")}',{limit:limit}, function(data) {
+   					    if(data != 0){
+					     $("#zong").append(data)
+						}else{
+						 $("#load").text('已经到底了！')	
+						}
+					   toploa();
+					   hello()
+					   // timeStamp()
+  				   }) 
+			     },500);
+  		　　 }
+		});
+	}	
+   
+
+    loadclick()
+
+
+function look(obj){
+	 //  $("[id=up]").each(function(){ 
+		// $(this).click(function(){
+     		var id = $(obj).attr('str');
+     		var type = $(obj).attr('stb');
+     		var url = $(obj).attr('url');
+				// alert(id)
+		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+ 	     		if (type == 0) {
+	     			 location.href="http://"+url;
+	     		}else if(type == 1){
+	     			 location.href= 'tel:' + url;
+	      		}else{
+	      			location.href=url;
+	      		}
+			});
+    // 	})
+    // })
+}
+
+      function hello(){ 
+		  $.post('{:U("Home/Hitchhikin/looktimeout")}',{},function(data) {
+		  	   var strs = data.split(',')
+		  	   for (i=0;i<strs.length ;i++ ) { 
+		  	      if ($('#'+strs[i])) {
+		           $('#'+strs[i]).remove();
+ 		  	      }
+				} 
+		  });
+		} 
+		//重复执行某个方法 
+		var t1 = window.setInterval(hello,60000); 
+
+		var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+
+		// 弹出层
+      	var pop = document.getElementById("pop");
+        var mask = mui.createMask(function(){
+            pop.classList.remove('mui-active');
+        });
+
+        // 显示
+        mui('#fabu')[0].addEventListener('click',function(){
+            mask.show();//显示遮罩
+            pop.classList.add('mui-active');
+        })
+         //按钮关闭弹出框
+        $(".mui-icon-close").click(function(){
+         	pop.classList.remove('mui-active');
+         	mask.close();
+         	
+         })
+        //
+   		$("#scrollToTop").on("touchend", function(e) {
+			e.preventDefault();	
+		    mui.scrollTo(0,100);
+		});
+
+	   //  function timeStamp(){
+		  // var time=$('.times') 
+		  // $.each(time,function(index,item){
+	   //      //获取当前时间值
+		  // 	var value = new Date($(this).val());
+		  //   var endtimes = fresh(value);
+		  //   //判断是不是今天
+	   //   	 if (d == 0) {
+	   //   	 	var dayend = '今天'+$(this).val().substr(11,5)
+	   //   	    $(this).parent().find('.time').text(dayend);
+	   //   	 }else{
+	   //   	 	var timenew = $(this).val();
+	   //   	 	var newdata = timenew.substr(2,14)
+	   //   	 	var newvalue = newdata+"后";
+	   //   	 	$(this).parent().find('.time').text(newvalue);
+	   //   	 }
+		  // })
+	   //   }
+
+       function fresh(newtime){
+        var endtime= newtime;
+        var nowtime = new Date();
+        //两时间差为毫秒数，除以1000则转换为秒数
+        var leftsecond=parseInt((endtime.getTime()-nowtime.getTime())/1000);
+        d=parseInt(leftsecond/(3600*24));//计算出相差天数
+        return d;
+      }
+
+      // timeStamp();
+     
+
+     $('.btn').click(function(){
+       var qd= $(".qd").val();
+      var zd= $(".zd").val();
+      if (!qd && !zd) {
+      	layer.msg('请先输入地址');
+       }else if (qd) {
+	      	$.post('{:U("Home/Hitchhikin/look")}',{look:qd,status:"freeride_start"}, function(data) {
+	      		 var freeride_start = data;
+       	      if(zd){
+		 	      	$.post('{:U("Home/Hitchhikin/look")}',{look:zd,status:"freeride_end"}, function(daty) {
+			      		    var freeride_end = daty;
+					      	var where = freeride_start+freeride_end
+					      	location.href="__MODULE__/Hitchhikin/passenger?where="+where
+			      	});
+        	  }else{
+                 	var where = freeride_start
+				    location.href="__MODULE__/Hitchhikin/passenger?where="+where
+        	  }
+	      	});
+       	 }else if(zd){
+              $.post('{:U("Home/Hitchhikin/look")}',{look:zd,status:"freeride_end"}, function(daty) {
+		      		 var freeride_end = daty;
+			       if(qd) {
+		        	 	$.post('{:U("Home/Hitchhikin/look")}',{look:qd,status:"freeride_start"}, function(data) {
+			      		 var freeride_start = data;
+			      		 var where = freeride_start;
+			      		 location.href="__MODULE__/Hitchhikin/passenger?where="+where
+					    });
+		        	 }else{
+		        	 	var where = freeride_end
+				        location.href="__MODULE__/Hitchhikin/passenger?where="+where
+		        	 }
+	        	});
+          }
+	})
+	</script>
+</body>
+</html>

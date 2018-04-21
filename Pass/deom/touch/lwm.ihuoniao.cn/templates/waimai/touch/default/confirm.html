@@ -1,0 +1,124 @@
+{#if $ispay != "1"#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$detail_title#}提交订单 - {#$detail_title#}外卖_{#$detail_title#}电话_{#$detail_title#}网上订餐_{#$detail_title#}菜单 - {#$waimai_title#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/buy.css">
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$waimai_channelDomain#}', templatePath = '{#$templets_skin#}';
+	var cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+	var id = {#$detail_id#};
+	var peisong = {#$detail_peisong#};
+	var storeUrl = '{#getUrlPath service="waimai" template="shop" id={#$detail_id#}#}';
+</script>
+</head>
+<body>
+<div class="container">
+<!-- 头部 -->
+	<div class="header">
+		<div class="header-l"><a href="javascript:window.history.go(-1)"><img src="{#$templets_skin#}images/left.png" alt=""></a></div>
+		<div class="header-address"><span>提交订单</span></div>
+		<div class="header-search"><img src="{#$templets_skin#}images/search.png" alt=""></div>
+	</div>
+<!-- 头部 end -->
+
+	<form id="checkout" method="post" action="{#getUrlPath service='waimai' template='confirm'#}" data-action="/include/ajax.php?service=waimai&action=pay">
+		<input type="hidden" name="id" id="id" value="{#$detail_id#}" />
+		<input type="hidden" name="ordernum" id="ordernum" value="{#$ordernum#}" />
+		<input type="hidden" name="paytype" id="paytype" value="wxpay" />
+		<input type="hidden" name="ispay" id="ispay" value="1" />
+	<!-- 内容 -->
+		<div class="content">
+			<div class="content-box">
+				<ul>
+					<li class="info-address-box">
+						{#member action="address"#}
+						{#if $_bindex.row == 1#}
+						<input type="hidden" name="addressid" id="addressid" value="{#$row.id#}" />
+						<a href="javascript:;" class="chooseAddress">
+							<div class="info-l">
+								<p><span>{#$row.person#}</span><span class="info-phone">{#if $row.mobile != ""#}{#$row.mobile#}{#/if#}
+								{#if $row.mobile != "" && $row.tel != ""#}/ {#$row.tel#}{#elseif $row.mobile == "" && $row.tel != ""#}{#$row.tel#}{#/if#}</span></p>
+								<p class="info-address">{#$row.addrname#} {#$row.address#}</p>
+							</div>
+							<div class="info-r"><i><img src="{#$templets_skin#}images/right1.png"></i></div>
+						</a>
+						{#/if#}
+						{#/member#}
+						{#if $pageInfo.totalCount == 0#}
+						<input type="hidden" name="addressid" id="addressid" value="" />
+						<a href="javascript:;" class="chooseAddress">
+							<div class="info-l" style="font-size: .3rem;">请先添加地址</div>
+							<div class="info-r"><i style="margin-top: 0;"><img src="{#$templets_skin#}images/right1.png"></i></div>
+						</a>
+						{#/if#}
+					</li>
+				</ul>
+			</div>
+
+			<div class="content-box">
+				<ul>
+					<li><a href="{#getUrlPath service='waimai' template='shop' id={#$detail_id#}#}"><div class="info-l"><strong class="info-tit">{#$detail_title#}</strong></div></a></li>
+					{#$totalPrice = 0#}
+	  			  	{#foreach from=$cartData item=cart#}
+					<li>
+						<a href="#">
+							<div class="info-l">
+								<span class="info-tit">{#$cart.name#}</span>
+								<span class="info-num">X<em>{#$cart.count#}</em></span>
+								<span class="info-price r">￥<em class="info-unit">{#($cart.price * $cart.count)|string_format:"%.2f"#}</em></span>
+							</div>
+						</a>
+					</li>
+					{#$totalPrice = $totalPrice + $cart.price * $cart.count#}
+	  			  {#/foreach#}
+				</ul>
+			</div>
+		</div>
+		<!-- 配送说明 -->
+		<div class="remark"><input placeholder="配送特殊说明，配送公司会尽量调节" name="note" /></div>
+		<!-- 配送说明 end-->
+
+		<div class="content-box">
+			<ul>
+				<li><strong class="info-tit">费用明细</strong></li>
+				{#if $detail_peisong#}<li>配送费：{#$detail_peisong#}元</li>{#/if#}
+				{#if $offer#}<li>优惠：{#$offer#}元</li>{#/if#}
+				<li>共计：{#($totalPrice+$detail_peisong-$offer)|string_format:"%.2f"#}元</li>
+			</ul>
+		</div>
+	<!-- 内容 end -->
+
+		<div class="submit"><a href="javascript:;" id="tj">提交订单</a></div>
+	</form>
+
+</div>
+
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<link rel="stylesheet" href="{#$cfg_basehost#}/templates/member/touch/css/sel-address.css" />
+<script type="text/javascript" src="{#$cfg_basehost#}/templates/member/touch/js/sel-address.js"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script src="{#$templets_skin#}js/buy.js"></script>
+</body>
+</html>
+{#else#}
+{#$channelName = $waimai_channelName#}
+{#$backUrl = "javascript:history.go(-1);"#}
+{#$title = "支付订单"#}
+{#$service = "waimai"#}
+
+{#$totalAmount = 0#}
+{#foreach from=$cartData item=cart#}
+{#$totalAmount = $totalAmount + $cart.price * $cart.count#}
+{#/foreach#}
+{#$totalAmount = ($totalAmount+$detail_peisong-$offer)|string_format:"%.2f"#}
+
+{#$orderTitle = "外卖订单"#}
+
+{#$paramsHtml = '<input type="hidden" name="id" id="id" value="'|cat:$detail_id|cat:'"><input type="hidden" name="addressid" id="addressid" value="'|cat:$addressid|cat:'" /><input type="hidden" name="note" id="note" value="'|cat:$note|cat:'" />'#}
+
+{#include file="../../../member/touch/public-pay.html"#}
+{#/if#}

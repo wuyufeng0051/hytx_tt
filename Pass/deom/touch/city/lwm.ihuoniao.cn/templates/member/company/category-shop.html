@@ -1,0 +1,57 @@
+<div class="tbar fn-clear">
+  <div class="operater">
+    <a href="javascript:;" class="label" id="addNewType"><i>+</i>新增一级分类</a>
+  </div>
+  <div class="opts">
+    <a href="javascript:;" id="unfold">展开</a>
+    <span>&nbsp;|&nbsp;</span>
+    <a href="javascript:;" id="fold">折叠</a>
+  </div>
+</div>
+
+<table class="cats-table">
+  <colgroup>
+    <col width="4%">
+    <col width="auto">
+    <col width="15%">
+    <col width="15%">
+  </colgroup>
+  <thead>
+    <tr>
+      <th><input type="checkbox" class="checkall" /></th>
+      <th class="tit"><a href="javascript:;" class="delchecked fn-hide">删除选中</a><span>分类名称</span></th>
+      <th>排序</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  {#foreach from=$typeList item=row#}
+  <tbody>
+    <tr class="sup" data-id="{#$row.id#}">
+      <td><input type="checkbox" name="ids" value="{#$row.id#}" /></td>
+      <td class="tit"><a href="javascript:;" class="fold"></a><input type="text" data-id="{#$row.id#}" value="{#$row.typename#}" /></td>
+      <td><a href="javascript:;" class="up">向上</a><a href="javascript:;" class="down">向下</a></td>
+      <td><a href="javascript:;" class="deletetr" title="删除">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#getUrlPath service='shop' template='store-detail' id={#$storeid#} typeid={#$row.id#}#}" class="editrow" title="查看" target="_blank">查看</a></td>
+    </tr>
+    {#if $row.lower#}
+    {#foreach from=$row.lower item=list#}
+    <tr class="sub" data-id="{#$list.id#}">
+      <td><input type="checkbox" name="ids" value="{#$list.id#}" /></td>
+      <td class="tit"><span class="plus-icon"></span><input type="text" data-id="{#$list.id#}" value="{#$list.typename#}" /></td>
+      <td><a href="javascript:;" class="up">向上</a><a href="javascript:;" class="down">向下</a></td>
+      <td><a href="javascript:;" class="deletetr" title="删除">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#getUrlPath service='shop' template='store-detail' id={#$storeid#} typeid={#$list.id#}#}" class="editrow" title="查看" target="_blank">查看</a></td>
+    </tr>
+    {#/foreach#}
+    {#/if#}
+    <tr class="add-sub" style="display: table-row;">
+      <td></td>
+      <td colspan="3" class="tit"><span class="plus-icon"></span><a href="javascript:;" class="add-type">添加下级分类</a></td>
+    </tr>
+  </tbody>
+  {#/foreach#}
+</table>
+
+<div class="tbar fn-clear">
+  <div class="operater">
+    <a href="javascript:;" class="label" id="addNewType1"><i>+</i>新增一级分类</a>
+  </div>
+</div>

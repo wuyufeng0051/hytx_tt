@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-wechat wechat-icon"></i>
+      <li class="active">公众号设置</li>
+      <li class="active">自动回复</li>
+      <li>
+        <a href="#">关键词搜索</a></li>
+      <li class="active">店铺搜索</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li class="active">
+                <a href="#">店铺搜索</a></li>
+              <li>
+                <a href="#">商品搜索</a></li>
+            </ul>
+            <div class="tab-content">
+              <form enctype="multipart/form-data" class="well" id="shop-form" action="/autoreply/shopsearch" method="post">
+                <div class="alert alert-danger" id="shop-form_es_" style="display:none">
+                  <p>请更正下列输入错误:</p>
+                  <ul>
+                    <li>dummy</li></ul>
+                </div>
+                <input id="ytKeywordSearch_is_shopsearch" type="hidden" value="0" name="KeywordSearch[is_shopsearch]">
+                <input name="KeywordSearch[is_shopsearch]" id="KeywordSearch_is_shopsearch" value="1" checked="checked" type="checkbox">
+                <label for="KeywordSearch_is_shopsearch">开启店铺搜索</label>
+                <br>
+                <input id="ytKeywordSearch_shop_match_type" type="hidden" value="" name="KeywordSearch[shop_match_type]">
+                <span id="KeywordSearch_shop_match_type">
+                  <input id="KeywordSearch_shop_match_type_0" value="0" type="radio" name="KeywordSearch[shop_match_type]">
+                  <label for="KeywordSearch_shop_match_type_0">精确匹配，用户输入的和店铺名称一样才会触发!</label>
+                  <br>
+                  <input id="KeywordSearch_shop_match_type_1" value="1" checked="checked" type="radio" name="KeywordSearch[shop_match_type]">
+                  <label for="KeywordSearch_shop_match_type_1">包含匹配 ，店铺名称只要包含用户输入的文字就触发!</label></span>
+                <br>
+                <input id="ytKeywordSearch_shop_no_result_show" type="hidden" value="0" name="KeywordSearch[shop_no_result_show]">
+                <input name="KeywordSearch[shop_no_result_show]" id="KeywordSearch_shop_no_result_show" value="1" type="checkbox">
+                <label for="KeywordSearch_shop_no_result_show">无匹配显示搜索结果</label>
+                <div class="form-actions">
+                  <button class="btn btn-info" type="submit">
+                    <i class="ace-icon fa fa-check bigger-110"></i>提交</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

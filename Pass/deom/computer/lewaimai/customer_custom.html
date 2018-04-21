@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="page-content">
+  <!-- /section:settings.box -->
+  <div class="page-content-area">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="tabbable">
+          <ul class="nav nav-tabs" id="myTab">
+              <li >
+                <a href="customer.html">顾客列表</a></li>
+              <li>
+                <a href="blacklist.html">黑名单</a></li>
+              <li >
+                <a href="label_management.html">标签管理</a></li>
+              <li class="active">
+                <a href="customer_custom.html">顾客自定义信息</a></li>
+            </ul>
+          <form enctype="multipart/form-data" class="form-horizontal" id="account-form" action="/customer/property" method="post">
+            <div class="tab-content">
+              <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert">
+                  <i class="ace-icon fa fa-times"></i>
+                </button>顾客自定义信息主要用于商家根据自身需要，设置一些自己想了解的顾客的信息如学校、宿舍楼、学号等
+                <a class="btn btn-sm" style="background-color:#528215!important;border-color:#528215;" href="#" target="_blank">设置教程</a>
+                <br></div>
+              <div class="form-group">
+                <label class="col-sm-1">顾客自定义字段名1</label>
+                <input class="col-sm-2" name="Admin[property_key1]" id="Admin_property_key1" type="text" maxlength="20" value="郑少雄"></div>
+              <div class="form-group">
+                <label class="col-sm-1">顾客自定义字段名2</label>
+                <input class="col-sm-2" name="Admin[property_key2]" id="Admin_property_key2" type="text" maxlength="20" value=""></div>
+            </div>
+            <div class="span12" style="margin-top:10px;">
+              <div class="form-actions">
+                <button class="btn btn-info" type="submit">
+                  <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.page-content-area --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

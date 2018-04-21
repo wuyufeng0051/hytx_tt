@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>register</title>
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/public.css">
+	<link rel="stylesheet" href="css/register.css">
+    <script src="js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+	<div class="w1200">
+	<div class="head_box">
+		<!-- 头部 s -->
+			<div class="wrap">
+				<div class="head fn-clear">
+					<div class="logo"><img src="images/logo.png" alt=""></div>
+					<div class="head_nav fn-clear">
+						<ul>
+							<li><a href="index.html">HOME</a></li>
+							<em>|</em>
+							<li><a href="about.html">ABOUT US</a></li>
+							<em>|</em>
+							<li><a href="list.html">PRODUCTS CATALOGUE</a></li>
+							<em>|</em>
+							<li><a href="download.html">DOWNLOAD</a></li>
+							<em>|</em>
+							<li><a href="help.html">HELP</a></li>
+						</ul>
+					</div>
+					<div class="log_in fn-clear">
+						<div class="login btn">
+							<a href="login.html">LOGIN</a>
+						</div>
+						<div class="registration btn">
+							<a href="register.html">REGISTRATION</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- 头部 e -->
+	</div>
+	<!-- 注册内容 s -->
+		<div id="form_box">
+		  <form id="erui_user_register" action="#" method="get">
+		    <div id="input">
+		      <!-- 用户名 -->
+		      <div class="user_box erui_uName_box">
+		        <span class="user_info">
+		          <span class="user_register_required">*</span>
+		          <span>User Name:</span></span>
+		        <input class="ph_input user_long" type="text" id="reg_user_name" placeholder="Please enter your user name" name="username" maxlength="26" checked>
+		        <strong class="reg_sign reg_uname_sign hidden" id="reg_uName_sign">
+		          <span id="reg_sign_symbol_box">
+		            <span id="reg_sign_symbol">x</span></span>8-20 characters including letters, numbers, or the underscore character</strong>
+		      </div>
+		      <!-- 密码 -->
+		      <div class="user_box erui_pwd1_box">
+		        <span class="user_info">
+		          <span class="user_register_required">*</span>
+		          <span>Create a Password:</span></span>
+		        <input class="ph_input user_long" id="register_pwd1" maxlength="26" type="password" placeholder="Please enter your password" name="password">
+		        <strong class="reg_sign">
+		          <span id="pwd1_msg" class="hidden"></span>
+		          <span id="pwd1_strength" class="hide">
+		            <span id="register_pwd1_dangerous" class="register_pwd1">Weak</span>
+		            <span id="register_pwd1_warn" class="register_pwd1">Moderate</span>
+		            <span id="register_pwd1_fine" class="register_pwd1">Strong</span></span>
+		        </strong>
+		      </div>
+		      <!-- 确认密码 -->
+		      <div class="user_box erui_pwd2_box">
+		        <span class="user_info">
+		          <span class="user_register_required">*</span>
+		          <span>Confirmed Password:</span></span>
+		        <input class="ph_input user_long" id="register_pwd2" maxlength="26" type="password" name="password" placeholder="Please enter your password again">
+		        <strong id="reg_pwd2_sign" class="reg_sign hidden">Passwords do not match.</strong></div>
+		      <!-- 公司名称 -->
+		      <div class="user_box erui_company_box">
+		        <span class="user_info">
+		          <span class="user_register_required">*</span>
+		          <span>Company Name:</span></span>
+		        <input class="ph_input user_long" id="company_name" type="text" name="register_company" placeholder="Please enter your company name">
+		        <strong id="reg_coName_sign" class="reg_sign hidden">Please enter your company name</strong></div>
+		      <!-- 公司验证邮箱 -->
+		      <div class="user_box erui_companyEmail_box">
+		        <span class="user_info">
+		          <span class="user_register_required">*</span>
+		          <span>Company Email:</span></span>
+		        <input class="ph_input user_long" id="register_email" type="text" name="email" placeholder="Please enter your company Email">
+		        <strong id="reg_email_sign" class="reg_sign hidden"></strong>
+		      </div>
+		      <!-- 联系人姓名 -->
+		      <div class="user_box erui_contactsName_box">
+		        <span class="user_info">
+		          <span class="user_register_required">*</span>
+		          <span>Contact Person:</span></span>
+		        <input class="ph_input user_long" type="text" id="reg_contacts_name" name="name" placeholder="Please enter your name">
+		        <strong id="reg_conName_sign" class="reg_sign hidden">Please enter the contact person's name</strong></div>
+		      <!-- 联系人手机 -->
+		      <div class="user_box erui_companyTel_box">
+		        <span class="user_info">
+		          <span class="user_register_required">*</span>
+		          <span>Cellphone Number:</span></span>
+		        <input class="ph_input user_long" type="tel" id="register_phone" name="telname" placeholder="Please enter your cellphone number">
+		        <strong id="reg_conName_phone_sign" class="reg_sign hidden"></strong>
+		      </div>
+		      <!-- 公司固话 -->
+		      <div class="user_box erui_contactsPhone_box">
+		        <span class="user_info">
+		          <span class="erui_contactsPhone_info">Office Number:</span></span>
+		        <input class="ph_input user_long erui_user_register_phoneNumber" id="register_tel" type="tel" name="phone_number" placeholder="Please enter your office number">
+		        <strong id="reg_conName_tel_sign" class="reg_sign hidden"></strong>
+		      </div>
+		      <!-- 国家 -->
+		      <div class="user_box erui_country_box">
+		        <!--<span class="user_info">-->
+		        <span id="country">Country:</span>
+		        <!--</span>-->
+		        <span class="reg_country_box" id="reg_country_box" style="position: relative;width: 287px;margin-left: 9px;">
+		          <select name="country" id="erui_register_country" style="width: 287px;height: 100%;outline: none;">
+		            <option value="Albania">Albania</option>
+		            <option value="Algeria">Algeria</option>
+		            <option value="America">America</option>
+		            <option value="Argentina">Argentina</option>
+		            <option value="Australia">Australia</option>
+		            <option value="Azerbaijan">Azerbaijan</option>
+		            <option value="Bahrein">Bahrein</option>
+		            <option value="Bangladesh">Bangladesh</option>
+		            <option value="Bolivia">Bolivia</option>
+		            <option value="Botswana">Botswana</option>
+		            <option value="Brazil">Brazil</option>
+		            <option value="Brunei Darussalam">Brunei Darussalam</option>
+		            <option value="Bulgaria">Bulgaria</option>
+		            <option value="Byelorussia">Byelorussia</option>
+		            <option value="Cameroon">Cameroon</option>
+		            <option value="Canada">Canada</option>
+		            <option value="Chad">Chad</option>
+		            <option value="Chile">Chile</option>
+		            <option value="China">China</option>
+		            <option value="Columbia">Columbia</option>
+		            <option value="Congo-Brazzaville">Congo-Brazzaville</option>
+		            <option value="Congo-Kinshasa">Congo-Kinshasa</option>
+		            <option value="Croatia">Croatia</option>
+		            <option value="Czech Repubic">Czech Repubic</option>
+		            <option value="Ecuador">Ecuador</option>
+		            <option value="Egypt">Egypt</option>
+		            <option value="Ethiopia">Ethiopia</option>
+		            <option value="France">France</option>
+		            <option value="Gabon">Gabon</option>
+		            <option value="Georgia">Georgia</option>
+		            <option value="Germany">Germany</option>
+		            <option value="Greece">Greece</option>
+		            <option value="Hungary">Hungary</option>
+		            <option value="Iceland">Iceland</option>
+		            <option value="India">India</option>
+		            <option value="Indonesia">Indonesia</option>
+		            <option value="Iraq">Iraq</option>
+		            <option value="Italy">Italy</option>
+		            <option value="Kampuchea (Cambodia)">Kampuchea (Cambodia)</option>
+		            <option value="Kazakhstan">Kazakhstan</option>
+		            <option value="Kenya">Kenya</option>
+		            <option value="Kuwait">Kuwait</option>
+		            <option value="Kyrghyzstan">Kyrghyzstan</option>
+		            <option value="Libya">Libya</option>
+		            <option value="Macedonia">Macedonia</option>
+		            <option value="Malaysia">Malaysia</option>
+		            <option value="Mexico">Mexico</option>
+		            <option value="Moldova, Republic of">Moldova, Republic of</option>
+		            <option value="Myanmar">Myanmar</option>
+		            <option value="Netherlands">Netherlands</option>
+		            <option value="Newzealand">Newzealand</option>
+		            <option value="Nigeria">Nigeria</option>
+		            <option value="Norway">Norway</option>
+		            <option value="Oman">Oman</option>
+		            <option value="Pakistan">Pakistan</option>
+		            <option value="Peru">Peru</option>
+		            <option value="Philippines">Philippines</option>
+		            <option value="Poland">Poland</option>
+		            <option value="Qatar">Qatar</option>
+		            <option value="Romania">Romania</option>
+		            <option value="Russia">Russia</option>
+		            <option value="Saudi Arabia">Saudi Arabia</option>
+		            <option value="Serbia">Serbia</option>
+		            <option value="Slovakia">Slovakia</option>
+		            <option value="Spain">Spain</option>
+		            <option value="Surinam">Surinam</option>
+		            <option value="Sweden">Sweden</option>
+		            <option value="Switzerland">Switzerland</option>
+		            <option value="Syria">Syria</option>
+		            <option value="Tajikistan">Tajikistan</option>
+		            <option value="Thailand">Thailand</option>
+		            <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+		            <option value="Tunisia">Tunisia</option>
+		            <option value="Turkey">Turkey</option>
+		            <option value="Turkmenistan">Turkmenistan</option>
+		            <option value="UAE (United Arab Emirates)">UAE (United Arab Emirates)</option>
+		            <option value="Ukraine">Ukraine</option>
+		            <option value="United Kingdom">United Kingdom</option>
+		            <option value="Uzbekistan">Uzbekistan</option>
+		            <option value="Venezuela">Venezuela</option>
+		            <option value="Vietnam">Vietnam</option>
+		            <option value="Yemen">Yemen</option></select>
+		          <i class="reg_tel_font" style="position: absolute;right: 0;top: 0;font-style: normal;">▼</i></span>
+		      </div>
+		      <!-- 详细地址 -->
+		      <div class="user_box erui_address_box">
+		        <span class="user_info">
+		          <span class="user_register_required">*</span>
+		          <span>Address:</span></span>
+		        <input type="text" class="ph_input user_long" id="register_address" name="address" placeholder="Please enter your company's address" style="transform: translateX(2px);">
+		        <strong id="reg_address_sign" class="reg_sign hidden">Please enter your company's address</strong></div>
+		      <!-- 提示信息 -->
+		      <label class="register_tip">Please confirm the above information. Our service staff will contact you later.</label></div>
+		    <div class="erui_register_submit_box" id="reg_btn_box">
+		      <input class="register_submit" id="register_submit_btn" value="Register Now" type="button"></div>
+		  </form>
+		</div>
+	<!-- 注册内容 e -->
+	<!-- 底部 s -->
+	<div class="footer">
+		<div class="foot_connect wrap fn-clear">
+			<ul>
+				<li class="foot_left">
+					<h1>PRODUCT CLASSIFICATION</h1>
+					<a href="#">TRIPLEX MUD PUMP</a>
+					<a href="#">PRESSURE CONTROL EQUIPMENT</a>
+					<a href="#">HANDING TOOL </a>
+					<a href="#">DOWNHOLE TOOL</a>
+				</li>
+				<li>
+					<h1>ABOUT US</h1>
+					<a href="#">CORPORATE CULTURE</a>
+					<a href="#">PRODUCT INTRODUCTION</a>
+					<a href="#">SERVICE TENET</a>
+				</li>
+				<li class="foot_right">
+					<h1>CONTACT US</h1>
+					<a href="javascript:;" class="tel"><i></i>400-800-8820</a>
+					<a href="javascript:;" class="qq"><i></i>1004367</a>
+					<a href="javascript:;" class="wechat"><i></i>1004367</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 底部 e -->
+	</div>
+    <script src="js/register.js"></script>
+</body>
+</html>

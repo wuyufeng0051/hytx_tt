@@ -1,0 +1,67 @@
+<script>
+//竞价默认价格，此值可在后台分类信息设置中修改
+var bidDefault = 5;
+//竞价默认增加预算价格，此值可在后台分类信息设置中修改
+var bidDefaultAdd = 2;
+</script>
+
+<ul class="main-tab">
+	<li data-id=""><a href="javascript:;">全部信息 (<span id="total">0</span>)</a></li>
+	<li data-id="1"><a href="javascript:;">已审核 (<span id="audit">0</span>)</a></li>
+	<li data-id="0"><a href="javascript:;">未审核 (<span id="gray">0</span>)</a></li>
+	<li data-id="2"><a href="javascript:;">审核拒绝 (<span id="refuse">0</span>)</a></li>
+	<li data-id="4"><a href="javascript:;">已过期 (<span id="expire">0</span>)</a></li>
+	<li class="add"><a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}">发布信息</a></li>
+</ul>
+
+<div class="bidJ-mask"></div>
+<div class="bidJ-pay" id="bid">
+	<div class="bidJ-pay-tit"><a href="javascript:;" class="close fn-right">×</a><h3>在线推广 - 竞价</h3></div>
+	<div class="bidJ-pay-box">
+		<div class="state1 fn-hide">
+			<div class="bidJ-pay-money fn-clear">
+				<span>竞价时长：</span>
+				<ul class="bidJ-pay-select">
+					<li>1天</li><li class="on">3天</li><li>7天</li><li>15天</li><li>30天</li><li>90天</li><li class="inp"><input type="text" value="" placeholder="其他" onKeyUp="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">天</li>
+				</ul>
+			</div>
+			<div class="bidJ-total fn-clear">
+				<div class="bid-budget fn-left">
+					<span class="fn-left">每日预算：</span><span class="bid-price"><i class="fn-left">￥</i><input type="text" value="" class="bid-inp" /></span>
+				</div>
+				<div class="bid-total fn-left">
+					<span class="bid-tit">总计价格：</span><span class="total-price">￥<em></em></span>
+				</div>
+			</div>
+		</div>
+		<div class="state2 fn-hide">
+			<div class="bidJ-total fn-clear">
+				<div class="bid-budget fn-left">
+					<span class="fn-left">当前每日预算：</span><span class="bid-price"><i class="fn-left">￥</i><strong id="currPrice">5.00</strong></span>
+				</div>
+				<div class="bid-total fn-left">
+					<span class="bid-tit">竞价结束时间：</span><span class="total-price" id="bidEnd">2016-10-13 17:30:21</span>
+				</div>
+			</div>
+			<div class="bidJ-total fn-clear">
+				<div class="bid-budget fn-left">
+					<span class="fn-left">每日增加预算：</span><span class="bid-price"><i class="fn-left">￥</i><input type="text" value="" class="bid-inp" /></span>
+				</div>
+				<div class="bid-total fn-left">
+					<span class="bid-tit">需要支付：</span><span class="total-price">￥<em></em></span>
+				</div>
+			</div>
+		</div>
+		<div class="bidJ-pay-way">
+			<h3>选择支付方式：</h3>
+			<ul class="fn-clear">
+				{#siteConfig action="payment"#}
+				<li{#if $_bindex.row == 1#} class="on"{#/if#} data-type="{#$row.pay_code#}"><a href="javascript:;" class="{#$row.pay_code#}" title="{#$row.pay_name#}"></a><em></em></li>
+				{#/siteConfig#}
+			</ul>
+		</div>
+	</div>
+	<div class="bidJ-sumbit">
+		<a href="javascript:;" target="_blank" data-url="{#$cfg_basehost#}/include/ajax.php?service=info&action=bid&aid=$aid&day=$day&price=$price&paytype=$paytype" data-url1="{#$cfg_basehost#}/include/ajax.php?service=info&action=bidIncrease&aid=$aid&price=$price&paytype=$paytype">马上竞价</a>
+	</div>
+</div>

@@ -1,0 +1,60 @@
+{#if $module == "resume"#}
+	{#$pageTitle = "简历管理"#}
+{#elseif $module == "collections"#}
+	{#$pageTitle = "收藏职位"#}
+{#elseif $module == "invitation"#}
+	{#$pageTitle = "面试邀请"#}
+{#elseif $module == "delivery"#}
+	{#$pageTitle = "投递记录"#}
+{#/if#}
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$pageTitle#} - 招聘求职 - {#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/job-{#$module#}.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="container fn-clear">
+
+		{#include file="sidebar.html"#}
+
+		<div class="main">
+
+			<ul class="main-tab">
+				<li{#if $module == "resume"#} class="curr"{#/if#}><a href="{#getUrlPath service='member' type='user' template='job' action='resume'#}">简历管理</a></li>
+				<li{#if $module == "collections"#} class="curr"{#/if#}><a href="{#getUrlPath service='member' type='user' template='job' action='collections'#}">收藏职位</a></li>
+				<li{#if $module == "delivery"#} class="curr"{#/if#}><a href="{#getUrlPath service='member' type='user' template='job' action='delivery'#}">投递记录</a></li>
+				<li{#if $module == "invitation"#} class="curr"{#/if#}><a href="{#getUrlPath service='member' type='user' template='job' action='invitation'#}">面试邀请</a></li>
+			</ul>
+
+			{#include file="job-$module.html"#}
+
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/fabu.js?v=1"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/job-{#$module#}.js?v=1"></script>
+</body>
+</html>

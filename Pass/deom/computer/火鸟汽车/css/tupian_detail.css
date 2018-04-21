@@ -1,0 +1,762 @@
+.none{
+	display: none;
+}
+.lead{
+    height: 40px;
+    background: #333;
+    width: 100%;
+    line-height: 40px;
+}
+.lead .lead_list{
+	width: 1200px;
+	margin: 0 auto;
+}
+.lead .lead_list span a{
+    padding: 0 10px;
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    text-align: center;
+    float: left;
+    background: #FF4F53;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+}
+.lead .lead_list ul{
+	float: left;
+    font-family: "宋体";
+    padding: 0 0 0 20px;
+}
+.lead .lead_list ul li{
+	float: left;
+    line-height: 40px;
+    height: 40px;
+    position: relative;
+    z-index: 8;
+}
+.lead .lead_list ul li a{
+	color: #afafaf;
+	font-size: 14px;
+}
+.lead .lead_list ul li a:hover{
+	color: #fff;
+}
+.lead .lead_list ul i{
+	padding: 0 8px;
+    float: left;
+    color: #999;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    font-style: normal;
+}
+.lead .lead_list ul li em{
+	position: relative;
+	padding: 0 20px 0 0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+.lead .lead_list ul li b{
+	    height: 5px;
+    display: block;
+    overflow: hidden;
+    width: 8px;
+    position: absolute;
+    right: 7px;
+    top: 4px;
+    background: url(../images/tools_selectcar_ico_arrow.gif) 0 0 no-repeat;
+}
+.lead .lead_list ul li.year:hover em b{
+	background-position: 0 -25px;
+}
+.lead .lead_list ul li.kind:hover em b{
+	background-position: 0 -25px;
+}
+.lead .lead_list ul li.year .year_list{
+    width: 77px;
+    right: -10px;
+    left: auto;
+    margin: 0;
+    display: none;
+    position: absolute;
+    border: 1px solid #333;
+    background: #fff;
+    border-width: 1px 1px 5px;
+    z-index: 10;
+    overflow: hidden;
+    zoom: 1;
+    top: 36px;
+    font-size: 12px;
+    text-align: center;
+}
+.lead .lead_list ul li.year .year_list ul{
+	padding-left: 0;
+}
+.lead .lead_list ul li.year .year_list ul li{
+    height: 28px;
+    width: 100%;
+    line-height: 28px;
+    margin: 0;
+    border-bottom: 1px #ebebeb solid;
+    background: #fff;
+}
+.lead .lead_list ul li.year .year_list ul li a{
+    background: #fff;
+    margin: 0;
+    line-height: 28px;
+    padding: 0 15px 0 10px;
+    height: 28px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    color: #33333e;
+    font-family: Tahoma;
+}
+.lead .lead_list ul li.year .year_list ul li a:hover{
+    background: #f2f2f2;
+    color: #c00;
+}
+.lead .lead_list ul li.year:hover .year_list{
+	display: block;
+}
+.lead .lead_list ul li.kind .kind_list{
+    display: none;
+    margin: 0;
+    position: absolute;
+    border: 1px solid #333;
+    background: #fff;
+    border-width: 1px 1px 5px;
+    z-index: 10;
+    overflow: hidden;
+    zoom: 1;
+    top: 36px;
+    left: 0;
+    font-size: 12px;
+}
+.lead .lead_list ul li.kind .kind_list ul{
+	padding-left: 0;
+}
+.lead .lead_list ul li.kind .kind_list ul li{
+    height: 28px;
+    width: 100%;
+    line-height: 28px;
+    margin: 0;
+    border-bottom: 1px #ebebeb solid;
+    background: #fff;
+}
+.lead .lead_list ul li.kind .kind_list ul li a{
+	background: #fff;
+    margin: 0;
+    line-height: 28px;
+    padding: 0 15px 0 10px;
+    height: 28px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    color: #33333e;
+    font-family: Tahoma;
+}
+.lead .lead_list ul li.kind .kind_list ul li a:hover{
+    background: #f2f2f2;
+    color: #c00;	
+}
+.lead .lead_list ul li.kind:hover .kind_list{
+	display: block;
+}
+
+
+
+.pic_banner{
+    width: 100%;
+    background: #000;
+    position: relative;
+    z-index: 5;
+}
+.pic_banner .banner{
+	width: 1200px;
+	margin:  0 auto;
+	position: relative;
+}
+.pic_banner .banner .bd{
+	width: 1200px;
+	height: 800px;
+	overflow: hidden;
+	display: block;
+}
+.pic_banner .banner .bd .big-item{
+	width: 1200px;
+	height: 800px;
+	display: block;
+}
+.pic_banner .banner .bd .big-item img{
+	width: 1200px;
+	height: 800px;
+}
+.pic_banner .banner .hd{
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+}
+.pic_banner .banner .hd ul{
+     width: 1089px;
+    height: 80px;
+    position: relative;
+}
+.pic_banner .banner .hd ul li{
+    width: 120px;
+    height: 80px;
+    float: left;
+    margin: 0 1px 0 0;
+    position: relative;
+}
+.pic_banner .banner .hd ul li span{
+    display: block;
+    position: absolute;
+    width: 113px;
+    height: 73px;
+    border: 4px solid #c00;
+    display: none;
+}
+.pic_banner .banner .hd ul li:hover span{
+	display: block;
+}
+.pic_banner .banner .hd ul li.on span{
+	display: block;
+}
+.pic_banner .banner .hd ul li img{
+    width: 120px;
+    height: 80px;
+    display: block;
+}
+.pic_banner .banner .hd .btn_prev{
+	width: 55px;
+    float: left;
+    height: 80px;
+    display: block;
+    overflow: hidden;
+    background: url(../images/btn_jt_img.png) no-repeat;
+    background-position: 5px -95px;
+    background-color:#292929;
+}
+.pic_banner .banner .hd .btn_prev:hover{
+    background-position: 5px 10px;
+    background-color: #3a3a3a;
+}
+.pic_banner .banner .hd .btn_next{
+	width: 55px;
+    float: right;
+    height: 80px;
+    display: block;
+    overflow: hidden;
+    background: url(../images/btn_jt_img.png) no-repeat;
+    background-position: -43px -93px;
+    background-color:#292929;
+}
+.pic_banner .banner .hd .btn_next:hover{
+    background-position: -43px 12px;
+    background-color: #3a3a3a;
+}
+.pic_banner .banner .prev{
+	z-index: 50;
+    display: block;
+    width: 40px;
+    height: 70px;
+    position: absolute;
+    top: 365px;
+    overflow: hidden;
+    text-indent: -1000px;
+    background: url(../images/pic_play_btn.png) no-repeat;
+    left: 15px;
+    background-position: 0 0;
+    display: none;
+}
+.pic_banner .banner .next{
+	z-index: 50;
+    display: block;
+    width: 40px;
+    height: 70px;
+    position: absolute;
+    top: 365px;
+    overflow: hidden;
+    text-indent: -1000px;
+    background: url(../images/pic_play_btn.png) no-repeat;
+    right: 15px;
+    background-position: -47px 0;
+    display: none;
+}
+.pic_banner .banner .flash:hover .prev{
+	display: block;
+}
+.pic_banner .banner .flash:hover .next{
+	display: block;
+}
+.loading{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    background-image: url(../images/loading.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: .4;
+    filter: alpha(opacity=40);
+    width: 1200px;
+    height: 800px;
+}
+.pic_banner .pic_box{
+	position: absolute;
+    right: -90px;
+    top: 9px;
+    width: 80px;
+    box-sizing: content-box;
+}
+.pic_banner .pic_box .pb_nav li{
+    width: 80px;
+    height: 50px;
+    margin: 0 0 5px;
+}
+.pic_banner .pic_box .pb_nav li a{
+	display: block;
+    width: 80px;
+    height: 50px;
+    text-decoration: none;
+    background: #292929;
+    vertical-align: middle;
+    transition: all .5s;
+    -moz-transition: all .5s;
+    -webkit-transition: all .5s;
+    -ms-transition: all .5s;
+}
+.pic_banner .pic_box .pb_nav li.pb_bc a{
+	background: #c00;
+	color: #fff;
+}
+.pic_banner .pic_box .pb_nav li.pb_bc a p{
+	color: #fff;
+}
+.pic_banner .pic_box .pb_nav li.pb_bc a span{
+	color: #fff;
+}
+.pic_banner .pic_box .pb_nav li a p{
+    height: 23px;
+    line-height: 23px;
+    text-align: center;
+    color: #666;
+    font-size: 18px;
+    padding: 8px 0 0 0;
+    box-sizing: content-box;
+}
+.pic_banner .pic_box .pb_nav li a span{
+    font-size: 10px;
+    color: #666;
+    width: 100%;
+    display: block;
+    text-align: center;
+    line-height: 14px;
+    font-family: "微软雅黑";
+}
+.pic_banner .pic_box .pb_nav li a:hover{
+	background: #3a3a3a;
+}
+.pic_banner .pic_box .pb_nav li a:hover p{
+	color: #fff;
+}
+.pic_banner .pic_box .color_box h1{
+	height: 33px;
+    line-height: 33px;
+    font-family: Tahoma;
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+}
+.pic_banner .pic_box .color_box ul{
+	width: 85px;
+    overflow: hidden;
+    height: auto;
+}
+.pic_banner .pic_box .color_box ul li{
+    float: left;
+    margin: 0 4px 4px 0;
+    width: 24px;
+    height: 18px;
+    _height: 20px;
+    overflow: hidden;
+}
+.pic_banner .pic_box .color_box ul li a{
+    display: block;
+    width: 22px;
+    height: 16px;
+    border: 1px solid #fff;
+}
+.pic_banner .pic_box .color_box ul li a:hover{
+	border: 3px solid #c00;
+    width: 18px;
+    height: 12px;
+}
+.pic_banner .pic_box .list a{
+    display: block;
+    text-align: center;
+    color: #999;
+    font-family: Tahoma;
+    font-size: 12px;
+    background: #292929;
+    text-decoration: none;
+    transition: all .5s;
+    -moz-transition: all .5s;
+    -webkit-transition: all .5s;
+    -ms-transition: all .5s;
+    width: 80px;
+    height: 32px;
+    line-height: 32px;
+    margin: 15px 0 0 0;
+}
+.pic_banner .pic_box .list a:hover{
+    background: #3a3a3a;
+    color: #fff;
+}
+.car_information{
+	width: 100%;
+    height: 180px;
+    background: #f7f7f7;
+    margin: 0 0 30px;
+}
+.car_information .infor_list{
+	width: 1200px;
+    margin: 0 auto;
+}
+.car_information .infor_list .infor_left{
+    padding: 30px 0 0 0;
+    float: left;
+    width: 600px;
+}
+.car_information .infor_list .infor_left .if_lead{
+	    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    margin: 0 0 10px;
+}
+.car_information .infor_list .infor_left .if_lead span a{
+	    max-width: 220px;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: bold;
+    float: left;
+    height: 30px;
+    overflow: hidden;
+}
+.car_information .infor_list .infor_left .if_lead .infor_nav{
+    width: 340px;
+    float: left;
+    padding: 0 0 0 10px;
+    font-family: "宋体";
+    position: relative;
+    top: 4px;
+}
+.car_information .infor_list .infor_left .if_lead .infor_nav a{
+	font-size: 14px;
+	color: #666;
+}
+.car_information .infor_list .infor_left .if_lead .infor_nav a:hover{
+	color: #ff4f53;
+}
+.car_information .infor_list .infor_left .if_lead .infor_nav i{
+	padding: 0 9px;
+    color: #ccc;
+    font-style: normal;
+}
+.car_information .infor_list .infor_left .infor_price{
+	    height: 26px;
+    line-height: 26px;
+    color: #666;
+    font-size: 20px;
+    margin: 0 0 20px;
+}
+.car_information .infor_list .infor_left .infor_price a{
+	color: #ff4f53;
+}
+.car_information .infor_list .infor_left .infor_btn{
+    height: 40px;
+    overflow: hidden;
+    padding: 0;
+}
+.car_information .infor_list .infor_left .infor_btn a{
+	    display: block;
+    float: left;
+    margin: 0 10px 0 0;
+    width: 105px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    color: #000;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 0 20px;
+    font-size: 16px;
+    height: 40px;
+    line-height: 38px;
+    background-color: #fff;
+}
+.car_information .infor_list .infor_left .infor_btn a:hover{
+    border-color: #EE3E42;
+    color: #EE3E42;
+}
+.car_information .infor_list .infor_left .infor_btn a.btn_bc{
+    background: #EE3E42;
+    color: #fff;
+}
+.car_information .infor_list .infor_right{
+    float: right;
+    width: 495px;
+    overflow: hidden;
+    padding: 31px 0 0 0;
+}
+.car_information .infor_list .infor_right .ir_l{
+    float: left;
+    background: #fff;
+    width: 220px;
+    padding: 7px 10px 10px;
+    border: 1px solid #e9e9e9;
+    display: block;
+    box-sizing: content-box;
+    height: 116px;
+    text-align: center;
+}
+.car_information .infor_list .infor_right .ir_l:hover{
+	border-color: #ff4f53;
+}
+.car_information .infor_list .infor_right .ir_l a{
+	display: block;
+}
+.car_information .infor_list .infor_right .ir_l p{
+    line-height: 38px;
+    padding: 0 0 3px;
+    border-bottom: 1px solid #d8d8d8;
+    font-weight: bold;
+    overflow: hidden;
+    font-size: 16px;
+    color: #333;
+    margin: 0 0 7px;
+}
+.car_information .infor_list .infor_right .ir_l span{
+	height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+    font-size: 18px;
+    color: #ff4f53;
+    display: block;
+    margin-bottom: 10px;
+}
+.car_information .infor_list .infor_right .ir_l em{
+	font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+}
+.car_information .infor_list .infor_right .ir_r{
+    float: left;
+    margin: 0 0 0 10px;
+    background: #fff;
+    width: 220px;
+    padding: 7px 10px 10px;
+    border: 1px solid #e9e9e9;
+    display: block;
+    box-sizing: content-box;
+    height: 116px;
+    text-align: center;
+}
+.car_information .infor_list .infor_right .ir_r:hover{
+	border-color: #ff4f53;
+}
+.car_information .infor_list .infor_right .ir_r a{
+	display: block;
+}
+.car_information .infor_list .infor_right .ir_r p{
+    line-height: 38px;
+    padding: 0 0 3px;
+    border-bottom: 1px solid #d8d8d8;
+    font-weight: bold;
+    overflow: hidden;
+    font-size: 16px;
+    color: #333;
+    margin: 0 0 7px;
+}
+.car_information .infor_list .infor_right .ir_r span{
+	height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+    font-size: 18px;
+    color: #ff4f53;
+    display: block;
+    margin-bottom: 10px;
+}
+.car_information .infor_list .infor_right .ir_r em{
+	font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+}
+.car_video{
+	width: 1200px;
+	margin: 0 auto;
+}
+.car_video .video{
+    width: 860px;
+    float: left;
+}
+.car_video .video .video_lead{
+    border-bottom: 2px solid #e5e5e5;
+    height: 47px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.car_video .video .video_lead h1{
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 42px;
+    color: #333;
+    width: 50%;
+    float: left;
+}
+.car_video .video .video_lead .more{
+	float: right;
+	line-height: 42px;
+	width: 50%;
+	text-align: right;
+	font-size: 14px;
+}
+.car_video .video .video_box{
+    width: 950px;
+    padding: 10px 0 0 0;
+}
+.car_video .video .video_box .vb{
+	width: 260px;
+    float: left;
+    margin: 0 40px 0 0;
+    padding: 0 0 20px;
+    box-sizing: content-box;
+}
+.car_video .video .video_box .vb .vb_txt{
+	width: 260px;
+	float: left;
+	margin: 0 20px 25px 0;
+	display: block;
+	position: relative;
+	overflow: hidden;
+}
+.car_video .video .video_box .vb .vb_txt .video_img{
+	width: 260px;
+    height: 150px;
+}
+.car_video .video .video_box .vb .vb_txt .video_img:hover .video_logo{
+    background: url(../images/icon-video-hover.png) 0 0 no-repeat;
+    top: 93px;
+}
+.car_video .video .video_box .vb .vb_txt .video_img img{
+	width: 260px;
+    height: 150px;
+}
+.car_video .video .video_box .vb .vb_txt .video_img .video_logo{
+	top: 93px;
+	left: 10px;
+	cursor:pointer;
+    width: 46px;
+    height: 46px;
+    position: absolute;
+    background: url(../images/icon-video.png) 0 0 no-repeat;
+    background-size: 46px;
+}
+.car_video .video .video_box .vb .vb_txt ul li.video_name{
+	height: 40px;
+	    margin: 10px 0;
+    overflow: hidden;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-weight: bold;
+    font-size: 14px;
+}
+.car_video .video .video_box .vb .vb_txt ul li.video_num p{
+	color: #999;
+	float: left;
+	padding: 0 10px 0 17px;
+    background: url(../images/icon-video-more.png) 0 0 no-repeat;
+    font-size: 14px;
+}
+.car_video .video .video_box .vb .vb_txt ul li.video_num p.v_price{
+    background-position: 0 -3px;
+}
+.car_video .video .video_box .vb .vb_txt ul li.video_num p.v_com{
+	background-position: 0 -27px;
+    padding-left: 18px;
+}
+.car_video .video .video_box .vb .vb_txt ul li.video_num p.v_time{
+    background-position: 0 -53px;
+    padding-left: 18px;
+}
+.car_video .kan{
+    width: 300px;
+    float: right;
+}
+.car_video .kan .history{
+    margin-bottom: 50px;
+}
+.car_video .kan .history h1{
+    padding-bottom: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 0;
+    line-height: 47px;
+	border-bottom: 2px solid #e5e5e5;
+	height: 47px
+}
+.car_video .kan .history .his_list{
+    position: relative;
+    width: 320px;
+}
+.car_video .kan .history .his_list ul li{
+	float: left;
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 140px;
+    text-align: center;
+}
+.car_video .kan .history .his_list ul li a{
+	display: block;
+}
+.car_video .kan .history .his_list ul li a img{
+    width: 140px;
+    height: 93px;
+}
+.car_video .kan .history .his_list ul li a p{
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.car_video .kan .history .his_list ul li a em{
+	color: #FF4F53;
+	font-size: 14px;
+}
+
+
+
+.foot{
+	clear: both;
+    font-size: 12px;
+    line-height: 16px;
+    background: #f7f7f7;
+    border-top: 1px solid #e1e1e1;
+    height: 42px;
+    color: #999;
+    margin-top: 80px;
+}

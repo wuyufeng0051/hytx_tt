@@ -1,0 +1,65 @@
+html {background: #E9E9E9; color: #969696;}
+
+#close, .login-qq, .login-sina, .login-wechat, #loginForm li .login-input {background: url('../images/pub.png?v=1') no-repeat;}
+
+.login-pup {position: relative; width: 648px; overflow: hidden; margin: 95px auto 0; border: 1px solid #c9c9c9; box-shadow: 0 0 2px #c9c9c9 inset; background-color: #fff;}
+#close {position: absolute; z-index: 1000; right: 10px; top: 10px; width: 15px; height: 15px; display: block; background-position: -100px -91px; font-size: 0; text-indent: -999em;}
+
+/* 第三方登录 */
+.login-left {float: left; width: 263px; padding: 30px 18px 12px 40px;}
+.login-right {float: right; position: relative; width: 255px; margin: 30px 40px 15px 0; padding-left: 30px; border-left: 1px #e9e9e9 solid;}
+.login-left h2, .login-right h2 {height: 30px; font-size: 16px; line-height: 30px; color: #444;}
+.login-left ul {padding-top: 20px;}
+.login-left ul li {margin-bottom: 10px;}
+.login-qq, .login-sina, .login-wechat {display: block; width: 250px; height: 45px; font-size: 0; text-indent: -9999em;}
+.login-qq {background-position: -35px -110px;}
+a:hover.login-qq {background-position: -35px -157px;}
+.login-sina {background-position: -35px -204px;}
+a:hover.login-sina {background-position: -35px -251px;}
+.login-wechat {background-position: -35px -298px;}
+a:hover.login-wechat {background-position: -35px -345px;}
+
+.login-left .more {margin: 20px 0 10px; position: relative; font-size: 12px; color: #969696;}
+.login-left .more a {display: inline-block; vertical-align: middle; width: 20px; height: 20px; margin-top: -3px; background: url('../images/sns.png') no-repeat; font-size: 0; text-indent: -999em;}
+.login-left .more a.login-qq {background-position: 0 -20px;}
+.login-left .more a.login-sina {background-position: 0 -60px;}
+.login-left .more a.login-wechat {background-position: 0 -180px;}
+.login-left .more a.login-weixin {background-position: 0 -40px;}
+.login-left .more a.login-alipay {background-position: 0 0;}
+.login-left .more a.login-baidu {background-position: 0 -80px;}
+.login-left .more a.login-tqq {background-position: 0 -100px;}
+.login-left .more a.login-360 {background-position: 0 -120px;}
+.login-left .more a.login-renren {background-position: 0 -140px;}
+.login-left .more a.login-douban {background-position: 0 -160px;}
+
+/* 帐号登录 */
+#loginForm {padding-top: 20px;}
+#loginForm li {position: relative; height: 42px; margin-bottom: 10px;}
+#loginForm li .login-input {width: 228px; height: 20px; border: 1px solid #ccc; padding: 9px 10px 10px 15px; background-repeat: repeat-x; outline: 0; font-size: 16px;}
+#loginForm li .err {background-position: 0 -45px; border-color: #e8b0af;}
+#loginForm li .login-input.focus {background-position: 0 0; border-color: #4ca5ea;}
+#loginForm li span {position: absolute; z-index: 100; left: 15px; top: 0; width: 250px; height: 42px; line-height: 42px; font-size: 16px;}
+#loginForm li.vdcode .login-input {width: 80px;}
+#loginForm li.vdcode span {width: 100px;}
+#loginForm li.vdcode img {display: inline-block; vertical-align: middle; margin: -5px 0 0 27px; *margin: -25px 0 0 24px; cursor: pointer;}
+#loginForm li.submit label {float: left; margin-top: 15px;}
+#loginForm li.submit input {vertical-align: middle; margin-right: 3px;}
+#loginForm li.submit .login-btn {float: right; width: 105px; height: 43px; overflow: hidden; line-height: 43px; text-align: center; font-size: 16px; background-color: #419ce3; border: 1px solid #419ce3; color: #ffffff;}
+#loginForm li.submit a:hover.login-btn {background-color: #61b1ef; text-decoration: none;}
+#loginForm li.submit .disabled, #loginForm li.submit a:hover.disabled {background-color: #ccc; border-color: #bbb;}
+#loginForm li.submit .unlogin {background-color: #f7f7f7; border: 1px solid #d1d1d1; color: #7e7e7e; cursor: default;}
+#loginForm li.submit a:hover.unlogin {background-color: #f7f7f7; border: 1px solid #d1d1d1; color: #7e7e7e; cursor: default;}
+.login-right .or {position: absolute; left: -10px; top: 50%; margin-top: -10px; width: 20px; height: 30px; display: block; background: #fff; line-height: 25px; font-size: 18px; color: #ccc; font-family: 'Consolas';}
+
+/* 错误提示 */
+.inptip {position: absolute; left: 270px; top: 0; border: 1px solid #bbb; background: #fff; font-size: 14px; border-radius: 4px; padding: 10px; padding-left: 32px; word-wrap: break-word; line-height: 19px;}
+.inptip s {position: absolute; left: -10px; top: 11px; width: 11px; height: 18px; overflow: hidden; background: url('../images/pub.png') -30px -90px;}
+.inptip i {position: absolute; left: 7px; top: 10px; width: 20px; height: 20px; overflow: hidden; background: url('../images/tips_20.png') no-repeat;}
+.success i {}
+.error i {background-position: 0 -20px;}
+.tip i {background-position: 0 -40px;}
+.success p {color: green;}
+.error p {color: red;}
+
+.login-foot {clear: both; height: 20px; background: #f4f4f4; border-top: 1px solid #c9c9c9; padding: 20px 38px; font-size: 14px;}
+.login-foot a {color: #529bef;}

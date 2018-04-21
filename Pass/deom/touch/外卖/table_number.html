@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+	<title>确认桌号</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/table_number.css">
+    <script type="text/javascript" src="js/touchScale.js"></script>
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="header-l"><a href="javascript:history.go(-1)"></a></div>
+		<div class="header-address">
+			<span>确认桌号</span>
+		</div>
+		<div class="header-search">
+			<a href="javascript:;" class="dropnav"></a>
+		</div>
+	</div>
+	<div class="table_head">
+		<div class="table_box">
+			<h1>请扫桌号二维码</h1>
+			<p>菜品已保存，入座后请扫桌上的桌号二维码下单</p>
+		</div>
+		<div class="table_btn fn-clear">
+			<a href="#" class="late">稍后下单</a>
+			<a href="javascript:;" class="write">输入桌号</a>
+		</div>
+	</div>
+	<div class="food_list">
+		<div class="food_lead fn-clear">
+			<em>鱼食饭稻土灶馆（平江路店）</em>
+			<a href="diancan.html">调整菜品</a>
+		</div>
+		<div class="food_con">
+			<ul>
+				<li><em class="f_name">清炒水剥虾仁</em><em class="f_num">x1</em><em class="f_price">￥<i>98</i></em></li>
+				<li><em class="f_name">清炒水剥虾仁</em><em class="f_num">x1</em><em class="f_price">￥<i>98</i></em></li>
+				<li><em class="f_name">清炒水剥虾仁</em><em class="f_num">x1</em><em class="f_price">￥<i>98</i></em></li>
+			</ul>
+		</div>
+	</div>
+	<div class="disk"></div>
+	<div class="sure_box ">
+		<h1>请在入座后扫餐桌上桌号二维码确认下单，您也可以手动输入桌号下单</h1>
+		<ul class="fn-clear">
+			<li class="sure_btn">手动输入</li>
+			<li class="cancel_btn">扫描桌号</li>
+		</ul>
+	</div>
+	<div class="number">
+		<input type="text" placeholder="请输入桌位号">
+		<span>确定</span>
+	</div>
+	<div class="fail_box">
+		<h1>桌号错误</h1>
+		<h2>请核对桌号后，重新输入</h2>
+		<ul class="fn-clear">
+			<li class="cancel_btn">取消</li>
+			<li class="rewrite_btn">重新输入</li>
+		</ul>
+	</div>
+	<div class="size_fail">
+		<h1>桌码格式非法</h1>
+		<p>知道了</p>
+	</div>
+    <script type="text/javascript" src="js/table_number.js"></script>
+</body>
+</html>

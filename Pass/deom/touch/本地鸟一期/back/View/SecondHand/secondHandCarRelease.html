@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二手车发布</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+	<style>
+	/*公用头部*/
+	.header{
+	    height: .9rem;
+	    background: #fd5530 !important;
+	    color: #fff;
+	    font-size: .32rem;
+	    line-height: .9rem;
+	    max-width: 1080px;
+	    position: relative;
+	    overflow: hidden;
+	}
+	.header a{
+		display: inline-block;
+		color: #fff;
+	}
+	.header .back{
+	    height: .9rem;
+	    line-height: .9rem;
+	    width: 17%;
+	    float: left;
+	}
+	.header .back i{
+	    width: 0.4rem;
+	    height: .9rem;
+	    display: inline-block;
+	    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+	    vertical-align: middle;
+	    background-size: .3rem;
+	}
+	.header .header_right{
+		float: right;
+		height: .9rem;
+		margin-right: .2rem;
+	}
+	.header .header_right i{
+	    width: 0.04rem;
+	    height: 0.5rem;
+	    display: inline-block;
+	    vertical-align: middle;
+	    background: #fff;
+	    margin: 0 .15rem;
+	}
+	.header .title_1{
+	    float: left;
+	    width: 63%;
+	    text-align: center;
+	    font-size: 0.38rem;
+	}
+	.header .share{
+	    height: .9rem;
+	    float: right;
+	    width: 12%;
+	    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+	    background-size: .5rem;
+	}
+	.title{
+		color: #000;
+	    padding-left: 15px;
+	    line-height: 32px;
+	    font-weight: normal;
+	    margin: 0;
+	    font-size: 16px;
+	    background: #f2f2f2;
+	}
+
+	.list .item{
+		border-bottom: 1px solid #ddd;
+	    padding: 10px;
+	    background: #fff;
+	    position: relative;
+	    padding-left: 95px;
+	}
+	.list .item span{
+		color: #fd5530;
+		margin-right: 5px;
+		position: relative;
+		top: 4px;
+	}
+	.list .item label{
+		font-size: 16px;
+		position: absolute;
+		left: 10px;
+	}
+	.list .item input{
+		border:none;
+		padding: 0;
+		width: auto;
+		margin:0;
+		line-height: 21px;
+		height: 21px;
+		width: 100%;
+	}
+	.list .item select{
+	    width: 100%;
+	    padding: 0;
+	    margin: 0;
+	    font-size: 16px;
+	    background: url(__PUBLIC__/Home/img/arrow.png) no-repeat right center;
+	    background-size: 16px 16px;
+	    height: 21px;
+	}
+	
+	.my{
+		display: inline-block;line-height: 21px;background: url(__PUBLIC__/Home/img/circle.png) left top no-repeat;padding-left: 20px;background-size: 20px 20px;margin-left: 10px;
+	}
+	.my.selects{
+		background:url(__PUBLIC__/Home/img/sec.png) left top no-repeat;
+		background-size: 20px 20px;
+	}
+	.ty{
+		padding-left: 20px;
+		background: url(__PUBLIC__/Home/img/tongyi1.png) no-repeat left center;
+		background-size: 16px 16px;
+	}
+	.ty.select{
+		background: url(__PUBLIC__/Home/img/tongyi.png) no-repeat left center;
+		background-size: 16px 16px;
+	}
+	/*#upload{overflow: hidden;}
+	#upload img{width: 100%; } 
+	#upload>div{float: left;margin-right: 10px;margin-bottom: 10px;}
+	.pro_img{width:79px;height: 79px;overflow:hidden;float:left;position: relative;}
+	.pro_img img{ position: absolute;left: 50%;top:50%;   transform: translate(-50%,-50%);width: 100%}
+	.pro_img input{position: absolute;width: 100%;height: 100%;margin:0;opacity:0;z-index: 100;}*/
+	.addpro_img{ width:100%; overflow:hidden;}
+	.addpro_img .pic_newbox{width: 100px;height: 100px;position: relative;float: left;margin-right: 10px;margin-bottom: 10px;}
+	.addpro_img .pic_newbox div{width: 100px;height: 20px;background-color: #303030;position: absolute;bottom: 0;left: 0;z-index: 100;opacity: 0.6}
+	.addpro_img .pic_newbox .delete_icon{position: absolute;left: 38px;bottom: 0px;z-index: 110;width: 20px;}
+	.addpro_img .addproimg input{position: absolute;width: 100px;height: 100px;margin:0;opacity:0;}
+	.addpro_img .addproimg img{width: 100px;height: 100px;}
+	.addpro_img .addproimg{width: 100px;height: 100px;position: relative;float: left;}
+	.Desc1{padding: 5px;margin-bottom: 0;border:none;}
+	.picture_1{
+		    /*background: #e6e6e6;*/
+		}
+		.picture_1 .pic_list{
+		    padding: 0 0.4rem;
+		}
+		.picture_1 ul li{
+		    float: left;
+		    position: relative;
+		    overflow: hidden;
+		    box-shadow: 0 1px 10px 1px rgba(0,0,0,.2);
+		    margin-top: 0.3rem;
+		    margin-bottom: 0.2rem;
+		    width: 1.3rem;
+		    height: 1.3rem;
+		    margin-right: .36rem;
+		    background: #fff;
+		}
+		.picture_1 ul li img{
+		    width: 1.3rem;
+		    height: 1.3rem;
+		}
+		.picture_1 .uploadbtn{
+		    width: 1.3rem;
+		    height: 1.3rem;
+		    text-align: center;
+		}
+		.picture_1 .uploadbtn input{
+		    opacity: 0;
+		}
+		.picture_1 .uploadbtn em{
+		    width: .7rem;
+		    height: .7rem;
+		    display: block;
+		    margin: 0.1rem auto;
+		    background: url(__PUBLIC__/Home/img/shi.png) no-repeat center;
+		    background-size: .7rem;
+		}
+		.picture_1 .uploadbtn p{
+		    color: #bfbfc0;
+		}
+		.picture_1 .uploadbtn .webuploader-container div{
+		    width: 1.3rem;
+		    height: 1.3rem;
+		}
+		.picture_1 .pic_tips{
+		    color: #bfbfc0;
+		    padding-bottom: 0.2rem;
+		    font-size: .24rem;
+		}
+		.picture_1 .cancel{
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    width: .3rem;
+		    height: .3rem;
+		    background: url(__PUBLIC__/Home/img/cha.png) no-repeat center;
+		    background-size: .3rem;
+		}
+		.delete{
+		    position: fixed;
+		    left: 50%;
+		    margin-left: -3rem;
+		    top: 25%;
+		    z-index: 12;
+		    background: url(__PUBLIC__/Home/img/pb_7.png) no-repeat top;
+		    width: 6rem;
+		    height: 6rem;
+		    background-size: 6rem;
+		    text-align: center;
+		    display: none;
+		}
+		.delete h1{
+		    font-size: .3rem;
+		    margin-top: 1.8rem;
+		    font-weight: bold;
+		    background: #fff;
+		    margin-bottom: 0!important;
+		}
+		.delete h2{
+		    font-size: .3rem;
+		    padding-top: .1rem;
+		    font-weight: bold;
+		    background: #fff;
+		    padding-bottom: .3rem;
+		    border-bottom: 0.04rem solid #e6e6e6;
+		    margin: 0!important;
+		}
+		.de_foot{
+		    width: 100%;
+		    background: #fff;
+		    border-bottom-right-radius:.2em;
+			border-bottom-left-radius:.2em;
+		}
+		.delete .de_btn{
+		    width: 80%;
+		    margin: 0 auto;
+		    padding: .4rem 0
+		}
+		.delete .de_btn span{
+		    background: #fd5530;
+		    color: #fff;
+		    padding: 0.15rem .8rem;
+		    font-size: .28rem;
+		    border-radius: 0.1rem;
+		}
+		.delete .de_btn span.sure{
+		    margin-right: .4rem;
+		}
+		.disk {
+		    background: #000;
+		    opacity: .3!important;
+		    position: fixed;
+		    top: 0;
+		    left: 0;
+		    right: 0;
+		    bottom: 0;
+		    z-index: 11;
+		    display: none;
+		}
+		.certfy ul li{
+		    position: relative;
+		}
+		.certfy ul li i{
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    width: .4rem;
+		    height: .4rem;
+		    background: url(__PUBLIC__/Home/img/cha.png) no-repeat center;
+		    background-size: .4rem;
+		}
+	.succeed_box{
+		position: fixed;
+		left: 50%;
+		margin-left: -3rem;
+		top: 25%;
+		z-index: 12;
+		background: url(__PUBLIC__/Home/images/pb_7.png) no-repeat top;
+		width: 6rem;
+		height: 6rem;
+		background-size: 6rem;
+		text-align: center;
+		display: none;
+	}
+	.succeed_box h1{
+		font-size: .3rem;
+		margin-top: 1.8rem;
+		font-weight: bold;
+		background: #fff;
+		margin-bottom:0px!important;
+		line-height: normal;
+	}
+	.succeed_box h2{
+		font-size: .24rem;
+		padding-top: .15rem;
+		background: #fff;
+		padding-bottom: .35rem;
+		border-bottom: 0.04rem solid #e6e6e6;
+		margin:0!important;
+		line-height: normal;
+	}
+	.succeed_box h3{
+		font-size: .24rem;
+		padding-top: .1rem;
+		background: #fff;
+		padding: 0.1rem 0;
+		margin: 0;
+	}
+	.succeed_box h2 em{
+		color: #fe8267;
+		margin-right: 0;
+	}
+	.succeed_box p{
+		background: #fff;
+		border-radius: 0 0 0.2rem 0.2rem;
+		padding: 0.35rem 0;
+	}
+	.succeed_box p span{
+		width: 60%;
+		height: .75rem;
+		color: #fff;
+		font-size: 0.28rem;
+		border-radius: 0.15rem;
+		background: #fd5530;
+		line-height: .75rem;
+		display: block;
+		margin:  0 auto;
+	}
+	</style>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+	<!-- 共同顶部 s-->
+		<div class="header fn-clear">
+			<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+			<div class="title_1">填写二手车信息</div>
+		</div>
+	<!-- 共同顶部 e-->
+	<div class="delete">
+	    <h1>提示：</h1>
+	    <h2>是否删除？</h2>
+	    <div class="de_foot"><div class="de_btn"><span class="sure">确定</span><span class="cancel">取消</span></div></div>
+	</div>
+	<div class="disk"></div>
+	<div class="mui-content">
+		<h3 class="title">车辆信息</h3>
+		<div style="overflow: hidden;background: #fff;border-bottom: 1px solid #ddd;">
+		<div class="certfy picture_1">
+			    <div class="pic_list">
+			        <div class="img-box">
+			            <ul class="uploader-list fn-clear" id="fileList1">
+			                <foreach name="shunlu_imgs" item="imgs">
+			                    <li><img src="{$imgs['imgs_smallpath']}" data-imgid="{$imgs['imgs_imgs_id']}"/><i></i></li>
+			                </foreach>
+			                <li class="uploadbtn">
+			                    <div id="filePicker1" data-type="atlas" data-amount="5" class="webuploader-container picker">
+			                        <div class="webuploader-pick"><div class="webuploader-pick"><em></em><p>相册</p></div></div>
+			                    </div>
+			                </li>
+			            </ul>
+			            <p class="imgtip"></p>
+			            <div class="pic_tips">请添加你的照片，最多添加9张</div>
+			        </div>
+			    </div>
+			</div>	
+ 		</div>
+		<div class="list">
+			<div class="item">
+				<label for=""><span>*</span>标题</label>
+				<!-- <input type="text" placeholder="请填写标题" name="usedcar_title" id="usedcar_title"> -->
+				<textarea type="text" rows="1" placeholder="请填写标题,20个字以内" maxlength="20" name="usedcar_title" id="usedcar_title" style="margin-bottom: 0;padding:0;border:none;outline: none;"></textarea>
+			</div>
+			<div class="item">
+				<label for=""><span>*</span>车辆类型</label>
+				<input type="text" placeholder="请填写电动车、面包车、轿车、货车等" name="usedcar_class" id="usedcar_class">
+			</div>
+			<div class="item" id="peice">
+				<label for=""><span>*</span>售价</label>
+				<input type="text" style="width: 33%;" placeholder="填写数字" name="usedcar_price" id="usedcar_price"  onkeyup="this.value=this.value.replace(/[^\d.]/g,'')">
+				<select name="usedcar_company" style="width: 40px;" id="usedcar_company">
+				  <option value="元">元</option>
+				  <option value="万">万</option>
+				</select>
+				<div class="my">面议</div>
+			</div>
+			
+			<div class="item">
+				<label for=""><span>*</span>车龄</label>
+				<input type="text" style="width: 33%;" placeholder="填写数字"  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="4" name="year" id="year" >年
+				<input type="text" style="width: 33%;" placeholder="填写数字"  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="2" name="month" id="month">个月
+			</div>
+			<div class="item">
+				<label for=""><span>*</span>来源</label>
+				<select name="usedcar_source" id="usedcar_source">
+				  <volist name="usedcar_source" id="vo">
+				    <option value="{$vo.classify2_id}">{$vo.classify2_name}</option>
+				  </volist>
+				</select>
+			</div>
+			<div class="item">
+				<label for=""><span>*</span>所在地</label>
+				<!-- <input type="text" placeholder="请填写车辆所在地址" name="usedcar_address" id="usedcar_address"> -->
+				<textarea type="text" rows="1" placeholder="请填写车辆所在地址,20个字以内" maxlength="20" name="usedcar_address" id="usedcar_address" style="margin-bottom: 0;padding:0;border:none;outline: none;"></textarea>
+			</div>
+			<div class="item" id="Desc1">
+				<label for="" style="top: 0;"><span>*</span>车辆信息</label>
+				<textarea type="text" rows="3" class="Desc1" placeholder="请填写车辆详细信息" name="usedcar_details" id="usedcar_details"></textarea>
+				<!-- <input type="text" placeholder="请填写车辆信息详细信息" name="usedcar_details" id="usedcar_details"> -->
+			</div>
+		</div>
+		<h3 class="title">联系人信息</h3>
+		<div class="list">
+			<div class="item">
+				<label for=""><span>*</span>联系人</label>
+				<input type="text" placeholder="请填写联系人" name="usedcar_name" id="usedcar_name">
+			</div>
+			<?php if(!empty($u_res['user_phone'])){ ?>
+			<div class="item" style="padding-left: 95px;padding-right: 85px;">
+				<label for=""><span>*</span>手机号码</label>
+				<input type="text" placeholder="请填写手机号" id="usedcar_phone" maxlength="11" value="{$u_res.user_phone}" disabled="disabled">
+				<input type="hidden" name="usedcar_phone" id="usedcar_phones">
+				<span style="position: absolute;right: 10px;top:9px;font-size: 12px;border:1px solid #fd5530;padding:0 4px;border-radius: 3px;color:#fd5530;" class="phonechange">更换手机号码</span>
+				<span style="position: absolute;right: 10px;top:9px;font-size: 12px;border:1px solid #fd5530;padding:0 4px;border-radius: 3px;color: #fd5530;display:none;" class="emailsell">发送验证码</span>
+				<span style="position: absolute;right: 10px;top:9px;font-size: 12px;border:1px solid #919191;padding:0 4px;border-radius: 3px;display:none;color:#919191" class="hidden_button"></span>
+			</div>
+			<?php }else{ ?>
+			<div class="item">
+				<label for=""><span>*</span>手机号码</label>
+				<input type="text" placeholder="请输入手机号码" id="usedcar_phone">
+				<input type="hidden" name="usedcar_phone" id="usedcar_phones">
+ 				<span style="position: absolute;right: 10px;top:9px;font-size: 12px;border:1px solid #fd5530;padding:0 4px;border-radius: 3px;color:#fd5530;" class="emailsell" >发送验证码</span>
+				<span style="position: absolute;right: 10px;top:9px;font-size: 12px;border:1px solid #919191;padding:0 4px;border-radius: 3px;display:none;color:#919191" class="hidden_button"></span>
+			</div>
+			<div class="item" id="yzm">
+				<label for=""><span>*</span>验证码</label>
+				<input type="text" placeholder="请填写验证码" id="code">
+			</div>
+
+			<?php } ?>
+			<div class="item" id="yzm" style="display:none;">
+				<label for=""><span>*</span>验证码</label>
+				<input type="text" placeholder="请填写验证码" id="code">
+			</div>
+		</div>
+		<div style="padding: 30px 15px;text-align: center;" id="read">
+			<span style="color: #666;font-size: 13px;">
+				<span class="ty select">我已阅读并同意</span><a style="color: #ff7300;"  href="__MODULE__/Index/userAgreement">《本地鸟用户协议》</a>
+			</span>
+			<a class="mui-btn mui-btn-danger" style="background-color: #fd5530;line-height: 28px;border:none;width: 100%;margin-top: 10px;" id="btotom">发布</a>
+		</div>
+	 </div>
+<!-- 申请已提交成功 s -->
+<div class="succeed_box cheng">
+	<h1>发布成功</h1>
+	<h2>您可以在<em>个人中心-我的发布</em>进行管理</h2>
+	<p><a href="javascript:history.go(-1)"><span>确定</span></a></p>
+</div>
+<!-- 申请已提交成功 e -->
+		<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+		<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+		<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+		<script src="__PUBLIC__/Home/js/layer.js"></script>
+		<script src="__PUBLIC__/Home/js/LocalResizeIMG.js"></script>
+		<script src="__PUBLIC__/Home/js/mobileBUGFix.mini.js"></script>
+		<script src="__PUBLIC__/Home/js/add_proimgCompress.js"></script>
+		<script src="__PUBLIC__/Home/js/countdown.js"></script>
+	<script>
+		wx.config({
+        debug: false,
+        appId: '<?php echo $signPackage["appId"];?>',
+        timestamp: '<?php echo $signPackage['timestamp'];?>',
+        nonceStr: '<?php echo $signPackage['nonceStr'];?>',
+        signature: '<?php echo $signPackage['signature'];?>',
+        jsApiList: [
+            // 所有要调用的 API 都要加到这个列表中
+            'chooseImage',
+            'uploadImage',
+            'downloadImage'
+        ]
+    });
+    var download_img=[];
+    var images = {
+        localId: [],
+        serverId: []
+    }
+    $("#filePicker1").click(function(){
+        var length = $('#fileList1 li').length;
+        var conunt = 10 - length;
+        if (conunt == 0) {
+
+        }else{
+            wx.ready(function(){
+                //拍照或从手机相册中选图接口
+                wx.chooseImage({
+                    count: conunt, // 最多能选择多少张图片，默认9
+                    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                    success: function (res) {
+                        var localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                        var localIdImg=localId.toString().split(",");
+                        //上传图片接口
+                        if (localIdImg.length == 0) {
+                            return;
+                        }
+                        var i = 0, length = images.localId.length;
+                        images.serverId = [];
+                        function upload() {
+                            wx.uploadImage({
+                                localId: localIdImg[i],
+                                success: function (res) {
+                                    $("#fileList1").prepend('<li><img src="'+localIdImg[i]+'" data-imgid="" /><i></i></li>');
+                                    i++;
+                                    images.serverId.push(res.serverId);
+                                    download_img =images.serverId;
+                                    if (i < localIdImg.length) {
+                                        upload();
+                                    }
+                                    if ($('.picture_1 ul li').length > 9) {
+                                        var x = $('.picture_1 ul li');
+                                        x.closest('.uploader-list').find('.uploadbtn').hide();
+                                    }
+                                },
+                                fail: function (res) {
+                                    alert(JSON.stringify(res));
+                                }
+                            });
+                        }
+                        upload();
+                    }
+                });
+            });
+        }
+    });
+    $('.picture_1').delegate('#fileList1 li i','click',function(){
+        var x = $(this),
+            id = x.closest('li').find('img').data('imgid');
+        $('.delete').show();
+        $('.disk').show();
+        $('.delete .sure').click(function(){
+            // getComments();
+            find = x.closest('li');
+            find.remove();
+            if ($('.picture_1 ul li').length < 9) {
+                $('.picture_1').find('.uploadbtn').show();
+            }
+            $('.delete').hide();
+            $('.disk').hide();
+        })
+    })
+    $('.delete .cancel').click(function(){
+      $('.delete').hide();
+      $('.disk').hide();
+    })
+    $('.disk').click(function(){
+      $('.delete').hide();
+      $('.disk').hide();
+    })
+       $(".phonechange").click(function(){
+			$(".emailsell").show();
+			$("#yzm").show();
+			$(".phonechange").hide();
+			$("#usedcar_phone").removeAttr("disabled");
+		  })
+
+
+	    $('#btotom').click(function(){
+	    	$.post('{:U("Home/Index/userRelease")}', {}, function(data) {
+        	if (data == 1) {
+        	 layer.msg('对不起，您没有权利发布信息')
+        	}else{
+
+	    	var bianhu = 0;
+          var css =  $("#yzm").css('display');
+	      //提交按钮
+    	  var peice = $('#peice').find('.selects').text();
+    	  var usedcar_price = $('#usedcar_price').val();//价格
+    	  var file1 = $('#file1').val();
+	      var usedcar_title = $('#usedcar_title').val();//标题
+	      var usedcar_class = $('#usedcar_class').val();//车辆类型
+	      var usedcar_address = $('#usedcar_address').val();//所在地
+	      var usedcar_details = $('#usedcar_details').val();//车辆信息
+	      var usedcar_name = $('#usedcar_name').val();//姓名
+	      var usedcar_phone = $('#usedcar_phone').val();//电话
+	      var selectread = $('#read').find('.select').text();
+	      var  myreg = /^1[34578]\d{9}$/; 
+          var year = parseInt($('#year').val()); //获取车龄的年龄
+          var month =parseInt($('#month').val());//获取车龄的月份
+          var myDate = new Date();
+          var nowyear =myDate.getFullYear();//获取完整的年份
+          var nowmonth = myDate.getMonth()+1;
+		  var usedcar_company=$('#usedcar_company option:selected').val();
+		  var usedcar_source=$('#usedcar_source option:selected').val();
+           if (month < 10 ) {
+             var months= '0'+month;
+           }else{
+           	 var months = month;
+           }
+          var time=year+months;
+          var timenow=nowyear+months;
+          // alert(time)
+           var code = $('#code').val();
+         $.post('{:U("Home/Index/lookcode")}', {}, function(data) {
+	     var newcode = data;
+		 var imgcount = download_img.length;//相册
+          if (imgcount == 0) {
+	      	 layer.msg('请先上传照片')
+ 	      }else if (!usedcar_title) {
+	      	 layer.msg('请先输入标题')
+	      }else if(!usedcar_class){
+             layer.msg('请先输入车辆类型')
+	      }else if(!usedcar_price & !peice){
+             layer.msg('请先输入价格')
+          }else  if(!year && !month){
+             layer.msg('请输入车龄')
+          }else if(year < 0){
+             layer.msg('车龄的年份小于为0')
+          // }else if(month < 0){
+          //    layer.msg('请正确输入月份')
+          }else if(month > 12){
+             layer.msg('月份不能大于12月')
+ 	      }else if(!usedcar_address){
+             layer.msg('请先输入所在地')
+	      }else if(!usedcar_details){
+	      	 layer.msg('请先输入车辆信息')
+	      }else if(!usedcar_name){
+             layer.msg('请先输入姓名')
+          }else if(!usedcar_phone){
+             layer.msg('请先输入电话')
+	      }else if(!myreg.test(usedcar_phone)){
+	      	layer.msg('请正确输入电话号码')
+     	 }else if(css == 'block'){       
+		    if(!code){
+		      layer.msg('请先填写验证码')
+		    }else if(code != newcode){
+			  layer.msg('验证码不正确')
+		    }else{
+		      bianhu = 1;
+		     }
+		}else{
+		   bianhu = 1;
+		}
+
+	     if(bianhu == 1){
+	      if(!selectread){
+	      	layer.msg('请先阅读并同意《本地鸟用户协议》')
+	      }else{
+              $.post("__MODULE__/SecondHand/addsecondHandCar",{usedcar_title:usedcar_title,usedcar_class:usedcar_class,usedcar_price:usedcar_price,year:year,month:month,usedcar_company:usedcar_company,usedcar_source:usedcar_source,usedcar_address:usedcar_address,usedcar_details:usedcar_details,usedcar_name:usedcar_name,usedcar_type:0,usedcar_imgs:download_img,usedcar_phone:usedcar_phone},function(data) {
+                  if (data.status == "1") {
+                      //提交成功弹出层
+                      $('.cheng').show();
+                      $('.disk').show();
+                  }else{
+                      alert(data.msg);
+                  }
+              })
+	      }
+	    }
+	    })
+       }
+      })
+    })
+
+
+
+     $(function(){
+		$('.emailsell').click(function(event) {
+			var  myreg = /^1[34578]\d{9}$/;
+			var usedcar_phone=$('#usedcar_phone').val();
+			if(myreg.test(usedcar_phone)){
+				$.post("{:U('Home/Index/code')}",{phone:usedcar_phone},function(msg){
+					//alert(msg)
+				})
+
+
+				var counricount = 179;
+				var countdowntime = setInterval(countdownauto, 1000);
+
+				  function countdownauto() {
+						counricount--;
+						// alert(counricount)
+	 				      if(counricount == 0) {
+					         $.post("http://www.bdniao.com/index.php/Home/Demo/countdown",{},function(dats){
+						     })
+	 				      	clearTimeout(time);
+	 				   }
+					}
+				 //时间倒叙
+					$(".hidden_button").text(60+'s后发送');
+					$(this).hide();
+					$(".hidden_button").show();
+					var icount = 59;
+					var time = setInterval(auto, 1000);
+
+					function auto() {
+						var s = icount+'s后再发送';
+						$(".hidden_button").text(s);
+						icount--;
+						if(icount == 0) {
+							clearTimeout(time);
+							$(".emailsell").show();
+							$(".hidden_button").hide();
+						}
+					}
+			}else{
+				layer.msg('请先输入正确的手机号码')
+			}
+		});
+		var Desc1 = document.getElementById("Desc1").offsetHeight+"px";
+     	$("#Desc1 label").css('line-height',Desc1);
+	 })
+
+
+		var flag=false;
+		$('.my').on('tap',function(){
+			if(flag){
+				$(this).addClass('selects');
+				$('#usedcar_price').attr('disabled','disabled');
+				$('#usedcar_price').val("");
+			}else{
+				$(this).removeClass('selects');
+				$('#usedcar_price').removeAttr('disabled');
+			}
+			flag=!flag;
+		})
+
+		var flag1=true;
+		$('.ty').on('tap',function(){
+			if(flag1){
+				$(this).addClass('select');
+			}else{
+				$(this).removeClass('select');
+			}
+			flag1=!flag1;
+		})
+
+		//图片上传
+
+	// 	name_pic=1;
+	// 	function t1(o){
+	// 		if(o==1 || name_pic!=1){
+	// 		var file="file"+o;
+	// 		var img="img"+o;
+	// 		var hid="hidden"+o;
+	// 		var aa="a"+o;
+	// 		}else{
+
+	// 		var file="file"+name_pic;
+	// 		var img="img"+name_pic;
+	// 		var hid="hidden"+name_pic;
+	// 		var aa="a"+name_pic;
+	// 		}
+	// 		var docObj = document.getElementById(file);
+	// 		var imgObjPreview = document.getElementById(img);
+	// 		var hidden=document.getElementById(hid);
+	// 		// alert(hidden);
+	// 		if (docObj.files && docObj.files[0]) {
+	// 			hidden.src=window.URL.createObjectURL(docObj.files[0]); //获取file文件的路径
+	// 			hidden.onload=function(){
+	// 				var width=hidden.width;
+	// 				var height=hidden.height;
+	// 				var a=document.getElementById(aa);
+	// 					if(width>height){
+	// 					imgObjPreview.style.cssText='width:100%';	//重写css样式
+	// 					}else{
+	// 					imgObjPreview.style.cssText='height:100%;width:auto;';					
+	// 					}
+	// 			imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+	// 			imgObjPreview.style.display = 'block';
+	// 			}
+	// 		}else{
+	// 			return false;
+	// 		}
+	// 		if(o==name_pic){
+	// 			var count=$('.pro_img').length;
+	// 			if(count<10){
+	// 			name_pic++;
+	// 		var pic_div="<div><a class='pro_img' id='a"+name_pic+"' ><input type='file' id='file"+name_pic+"'  accept='image/*' multiple='multiple' runat='server' capture='camera' name='pic[]' onchange='t1("+name_pic+")'/><img src='__PUBLIC__/Home/img/upload.jpg' id='img"+name_pic+"'></a><img  id='hidden"+name_pic+"' style='display:none;'></div>";
+	// 		$('#upload').append(pic_div); 
+	// 		var pcWidth=$('#upload').width()
+	// 	    var picImg=pcWidth/3-10;
+	// 	    $(".pro_img").width(picImg);
+	// 	    $(".pro_img").height(picImg);
+	// 		}		
+	// 	}
+
+	// }
+	// var pcWidth=$('#upload').width()
+ //    var picImg=pcWidth/3-10;
+ //    $(".pro_img").width(picImg);
+ //    $(".pro_img").height(picImg);
+	</script>
+</body>
+</html>

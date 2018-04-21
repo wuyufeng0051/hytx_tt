@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-flag-o flag-o-icon"></i>
+      <li class="active">营销活动</li>
+      <li>
+        <a href="#">积分</a></li>
+      <li class="active">积分兑换列表</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="span10">
+          <div class="col-sm-6" style="width:100%;margin:0 auto;">
+            <div class="tabbable">
+              <ul class="nav nav-tabs" id="myTab">
+                <li >
+                  <a href="integral.html">积分奖品管理</a></li>
+                <li class="active">
+                  <a href="integral_list.html">积分兑换列表</a></li>
+                <li>
+                  <a href="integral_set.html">积分兑换设置</a></li>
+                <li>
+                  <a href="integral_prize.html">积分兑换优惠券奖品</a></li>
+                <li>
+                  <a href="integral_rule.html">积分规则设置</a></li>
+              </ul>
+              <div class="tab-content">
+                <button type="button" class="btn btn-success" onclick="GetConfirmedCheckbox();">确认订单</button>
+                <div style="word-wrap:break-word; word-break:break-all;" id="yw0" class="grid-view">
+                  <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th class="checkbox-column" id="yw0_c0">
+                          <input type="checkbox" value="1" name="yw0_c0_all" id="yw0_c0_all"></th>
+                        <th id="yw0_c1">详情</th>
+                        <th id="yw0_c2">
+                          <a class="sort-link" href="#">姓名</a></th>
+                        <th id="yw0_c3">
+                          <a class="sort-link" href="#">顾客ID</a></th>
+                        <th id="yw0_c4">
+                          <a class="sort-link" href="#">电话</a></th>
+                        <th id="yw0_c5">
+                          <a class="sort-link" href="#">地址</a></th>
+                        <th id="yw0_c6">
+                          <a class="sort-link" href="#">备注</a></th>
+                        <th id="yw0_c7">
+                          <a class="sort-link" href="#">消耗的总积分</a></th>
+                        <th id="yw0_c8">
+                          <a class="sort-link desc" href="#">兑换时间</a></th>
+                        <th id="yw0_c9">
+                          <a class="sort-link" href="#">订单状态</a></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd">
+                        <td width="20">
+                          <input value="47571" id="yw0_c0_0" type="checkbox" name="selectorderlist[]"></td>
+                        <td width="130">懒人手机支架1个</td>
+                        <td width="60">向西子</td>
+                        <td width="60">
+                          <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">13429744</a>&nbsp;</td>
+                        <td width="90">18727284577</td>
+                        <td width="130">秭归县人民医院综合楼六楼五官科42床</td>
+                        <td>积分兑换</td>
+                        <td width="100">300</td>
+                        <td width="140">2017-02-20 13:47:37</td>
+                        <td width="60">
+                          <span class="label label-sm label-success">未处理</span>&nbsp;</td></tr>
+                      <tr class="even">
+                        <td width="20">
+                          <input value="46805" id="yw0_c0_1" type="checkbox" name="selectorderlist[]"></td>
+                        <td width="130">懒人手机支架1个</td>
+                        <td width="60">谢先生</td>
+                        <td width="60">
+                          <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">13685907</a>&nbsp;</td>
+                        <td width="90">18827269340</td>
+                        <td width="130">长宁三路75号 君临天下3号楼6楼</td>
+                        <td></td>
+                        <td width="100">300</td>
+                        <td width="140">2017-02-01 20:21:08</td>
+                        <td width="60">
+                          <span class="label label-sm label-danger">已处理</span>&nbsp;</td></tr>
+                      <tr class="odd">
+                        <td width="20">
+                          <input value="46439" id="yw0_c0_2" type="checkbox" name="selectorderlist[]"></td>
+                        <td width="130">懒人手机支架1个</td>
+                        <td width="60">席鑫</td>
+                        <td width="60">
+                          <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">13454802</a>&nbsp;</td>
+                        <td width="90">18671707553</td>
+                        <td width="130">创业园 橘园街84号</td>
+                        <td>积分兑换</td>
+                        <td width="100">300</td>
+                        <td width="140">2017-01-18 14:41:10</td>
+                        <td width="60">
+                          <span class="label label-sm label-danger">已处理</span>&nbsp;</td></tr>
+                      <tr class="even">
+                        <td width="20">
+                          <input value="46387" id="yw0_c0_3" type="checkbox" name="selectorderlist[]"></td>
+                        <td width="130">品牌自拍杆1个</td>
+                        <td width="60">胡华丽</td>
+                        <td width="60">
+                          <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">11937601</a>&nbsp;</td>
+                        <td width="90">13872597941</td>
+                        <td width="130">建平路2号 中硕美城</td>
+                        <td></td>
+                        <td width="100">500</td>
+                        <td width="140">2017-01-17 17:00:13</td>
+                        <td width="60">
+                          <span class="label label-sm label-danger">已处理</span>&nbsp;</td></tr>
+                      <tr class="odd">
+                        <td width="20">
+                          <input value="46299" id="yw0_c0_4" type="checkbox" name="selectorderlist[]"></td>
+                        <td width="130">懒人手机支架1个</td>
+                        <td width="60">陈倩</td>
+                        <td width="60">
+                          <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">12426919</a>&nbsp;</td>
+                        <td width="90">15897512263</td>
+                        <td width="130">君临天下(长宁大道) 君临天下11号楼2单元二楼</td>
+                        <td></td>
+                        <td width="100">300</td>
+                        <td width="140">2017-01-15 20:46:16</td>
+                        <td width="60">
+                          <span class="label label-sm label-danger">已处理</span>&nbsp;</td></tr>
+                      <tr class="even">
+                        <td width="20">
+                          <input value="46222" id="yw0_c0_5" type="checkbox" name="selectorderlist[]"></td>
+                        <td width="130">品牌蓝牙耳机1个</td>
+                        <td width="60">向先生</td>
+                        <td width="60">
+                          <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">13050669</a>&nbsp;</td>
+                        <td width="90">18062989738</td>
+                        <td width="130">建东大道142-a号 建东大道142号</td>
+                        <td>积分兑换</td>
+                        <td width="100">2000</td>
+                        <td width="140">2017-01-14 12:31:40</td>
+                        <td width="60">
+                          <span class="label label-sm label-danger">已处理</span>&nbsp;</td></tr>
+                      <tr class="odd">
+                        <td width="20">
+                          <input value="46103" id="yw0_c0_6" type="checkbox" name="selectorderlist[]"></td>
+                        <td width="130">品牌自拍杆2个</td>
+                        <td width="60">先生</td>
+                        <td width="60">
+                          <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">11135577</a>&nbsp;</td>
+                        <td width="90">15272180016</td>
+                        <td width="130">君临天下(长宁大道) 五号楼一单元</td>
+                        <td></td>
+                        <td width="100">1000</td>
+                        <td width="140">2017-01-12 11:53:50</td>
+                        <td width="60">
+                          <span class="label label-sm label-danger">已处理</span>&nbsp;</td></tr>
+                      <tr class="even">
+                        <td width="20">
+                          <input value="46063" id="yw0_c0_7" type="checkbox" name="selectorderlist[]"></td>
+                        <td width="130">品牌手机指环扣1个</td>
+                        <td width="60">向先生</td>
+                        <td width="60">
+                          <a title="查看顾客信息" style="cursor:pointer;" class="label label-sm label-success" href="#">11043226</a>&nbsp;</td>
+                        <td width="90">18071329016</td>
+                        <td width="130">平湖四路16-P号 茅坪政府对面中硕美诚电子商务</td>
+                        <td></td>
+                        <td width="100">200</td>
+                        <td width="140">2017-01-11 15:24:10</td>
+                        <td width="60">
+                          <span class="label label-sm label-danger">已处理</span>&nbsp;</td></tr>
+                    </tbody>
+                  </table>
+                  <div class="summary">第 1-8 条, 共 8 条.</div>
+                  <div class="keys" style="display:none" title="/point/pointprizeorder">
+                    <span>47571</span>
+                    <span>46805</span>
+                    <span>46439</span>
+                    <span>46387</span>
+                    <span>46299</span>
+                    <span>46222</span>
+                    <span>46103</span>
+                    <span>46063</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

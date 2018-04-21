@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+
+<!--[if !IE]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+    <meta charset="utf-8"/>
+
+    <title>本地鸟后台 | 首页</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <meta content="" name="description"/>
+
+    <meta content="" name="author"/>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+    <link href="media/css/base.css" rel="stylesheet" type="text/css"/>
+    
+    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL STYLES -->
+
+    <link href="media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/daterangepicker.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/datepicker.css" rel="stylesheet" type="text/css"/>
+
+    <script  type="text/javascript" src="media/My97DatePicker/WdatePicker.js" ></script>
+
+    <!-- END PAGE LEVEL STYLES -->
+
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+    <style>
+        html{background: #3d3d3d !important}
+        .top_box{height: 35px;line-height: 35px;font-size: 14px;margin-bottom: 15px;}
+        .top_box .add_business{background: #69c8ec;float: left;color: #fff;}
+        .top_box .add_business a{color: #fff;display:block;padding: 0 10px;}
+        .top_box .add_business a em{font-size: 20px;font-weight: bold;margin-right: 3px;}
+        .business_infor {margin-bottom: 15px;font-size: 14px;}
+        .business_infor em{color: red;font-weight: bold;}
+        .business_search_box{float: right;}
+        .business_search_box select{margin-bottom: 0;}
+        .business_search_box input{margin-bottom: 0;margin-top: 2px;}
+        .business_search_box .btn{height: 34px;}
+        .add_business:hover{background: #4facd0;}
+        .data_box {position: relative;float: right;border: 1px solid #e5e5e5;height: 32px;line-height: 32px;font-size: 14px;width: 100px;margin-top: 2px;text-indent: 10px;margin-right: 10px;}
+        .data_box span{display: block;cursor: pointer;font-style: normal;}
+        .data_box span em{font-style: normal;}
+        .data_box span i{width: 0;height: 0;border-left: 2.5px solid transparent;border-right: 2.5px solid transparent;border-top: 6px solid #000;position: absolute;right: 6px;top: 13px;font-style: normal;}
+        .data_box ul{position: absolute;left: -1px;right: 0;border: 1px solid #e5e5e5;border-top: none;width: 100px;background: #fff;display: none;}
+        .data_box ul li{height: 32px;line-height: 32px;cursor: pointer;}
+        .data_box ul li:hover{background: #f0f0f0;}
+        .data_choice{float: right;margin-right: 10px;display: none;}
+        .data_choice input {width: 100px;height: 24px;line-height: 24px;margin-bottom: 0;border: 1px solid #e5e5e5;}
+        .data_choice select {width: 72px;height: 34px;line-height: 34px;margin-bottom: 0;border: 1px solid #e5e5e5;}
+        .span12{position: relative;}
+        .portlet-body{padding: 0!important;}
+    </style>
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+<!-- BEGIN HEADER -->
+
+{include file="public/header" /}
+
+<!-- END HEADER -->
+
+<a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a>
+
+<!-- BEGIN CONTAINER -->
+
+<div class="page-container">
+
+    <!-- BEGIN SIDEBAR -->
+
+    {include file="public/sidebar" /}
+
+    <!-- END SIDEBAR -->
+
+    <!-- BEGIN PAGE -->
+
+    <div class="page-content">
+
+        <!-- BEGIN PAGE CONTAINER-->
+
+        <div class="container-fluid">
+
+            <!-- BEGIN PAGE HEADER-->
+
+            <div class="row-fluid">
+
+                <div class="span12">
+
+                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+                    <h3 class="page-title">
+                        首页
+                    </h3>
+
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="index">管理员信息</a>
+                            <i class="icon-angle-right"></i>
+                        </li>
+                        <li>{$rend.manager_name}</li>
+                    </ul>
+
+                    <!-- END PAGE TITLE & BREADCRUMB-->
+                    <div class="top_box fn-clear">
+                        <div class="welcome" style="float: left;font-size: 14px;">欢迎您回来，<a href="#" style="color: #4d90fe">{$rend.manager_acc}</a>！</div>
+                        <div class="business_search_box">
+                            <div class="clearfix">
+                                <!-- <select class=" m-wrap range1" style="width: 150px" tabindex="1" name="range1">
+                                    <option >全部</option>
+                                    <option >搜索标题</option>
+                                    <option >未加标签</option>
+                                    <option >未审核</option>
+                                    <option >分类</option>
+                                    <option >手机号码</option>
+                                    <option >用户ID</option>
+                                    <option >未支付商家</option>
+                                    <option >管理员录入</option>
+                                </select> -->
+                                <!-- <input type="text" placeholder="{$sel.b|default='请输入关键词'}" class="m-wrap medium range2" name="range2"> -->
+                                <div class="btn-group">
+                                    <button class="btn green btn-query">
+                                        查询
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="data_box">
+                            <span><em>全部</em><i></i></span>
+                            <ul>
+                                <li class="set_hide">全部</li>
+                                <li class="set_hide">今天</li>
+                                <li class="set_hide">最近一周</li>
+                                <li class="set_hide">最近一个月</li>
+                                <li class="set_hide">最近三个月</li>
+                                <li class="peronal_set">自定义时间</li>
+                            </ul>
+                        </div>
+                        <div class="data_choice">
+                            <input class=" date-picker"   type="text"> 
+                            <select name="" id="">
+                                <option value="">1:00</option>
+                                <option value="">2:00</option>
+                                <option value="">3:00</option>
+                                <option value="">4:00</option>
+                                <option value="">5:00</option>
+                                <option value="">6:00</option>
+                                <option value="">7:00</option>
+                                <option value="">8:00</option>
+                                <option value="">9:00</option>
+                                <option value="">10:00</option>
+                                <option value="">11:00</option>
+                                <option value="">12:00</option>
+                                <option value="">13:00</option>
+                                <option value="">14:00</option>
+                                <option value="">15:00</option>
+                                <option value="">16:00</option>
+                                <option value="">17:00</option>
+                                <option value="">18:00</option>
+                                <option value="">19:00</option>
+                                <option value="">20:00</option>
+                                <option value="">21:00</option>
+                                <option value="">22:00</option>
+                                <option value="">23:00</option>
+                                <option value="">24:00</option>
+                            </select>
+                            -
+                            <input class=" date-picker"   type="text"> 
+                            <select name="" id="">
+                                <option value="">1:00</option>
+                                <option value="">2:00</option>
+                                <option value="">3:00</option>
+                                <option value="">4:00</option>
+                                <option value="">5:00</option>
+                                <option value="">6:00</option>
+                                <option value="">7:00</option>
+                                <option value="">8:00</option>
+                                <option value="">9:00</option>
+                                <option value="">10:00</option>
+                                <option value="">11:00</option>
+                                <option value="">12:00</option>
+                                <option value="">13:00</option>
+                                <option value="">14:00</option>
+                                <option value="">15:00</option>
+                                <option value="">16:00</option>
+                                <option value="">17:00</option>
+                                <option value="">18:00</option>
+                                <option value="">19:00</option>
+                                <option value="">20:00</option>
+                                <option value="">21:00</option>
+                                <option value="">22:00</option>
+                                <option value="">23:00</option>
+                                <option value="">24:00</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- END PAGE HEADER-->
+            
+            <div class="portlet box ">
+                
+                <div class="portlet-body">
+                    
+                    <td class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable"
+                               aria-describedby="sample_1_info">
+                            <tr>
+                                <th style="width: 4%"></th>
+                                <th style="width: 6%">数据量</th>
+                                <th style="width: 6%">今日发布</th>
+                                <th style="width: 6%">浏览量</th>
+                                <th style="width: 6%">置顶数量</th>
+                                <th style="width: 6%">收入金额</th>
+                                <th style="width: 6%">购买简历</th>
+                                <th style="width: 6%">举报信息</th>
+                                <th style="width: 6%">未审核</th>
+                                <th style="width: 6%">未加标签</th>
+                            </tr>
+                            <tr>
+                                <td><a href="#">招聘求职</a></td>
+                                <td>3000条</td>
+                                <td>3000条</td>
+                                <td>90173次</td>
+                                <td>100条</td>
+                                <td>560元</td>
+                                <td>100份</td>
+                                <td><a href="#">3条</a></td>
+                                <td><a href="#">0</a></td>
+                                <td><a href="#">0</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">房产信息</a></td>
+                                <td>3000条</td>
+                                <td>3000条</td>
+                                <td>90173次</td>
+                                <td>100条</td>
+                                <td>560元</td>
+                                <td>无</td>
+                                <td><a href="#">3条</a></td>
+                                <td><a href="#">0</a></td>
+                                <td><a href="#">0</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">二手市场</a></td>
+                                <td>3000条</td>
+                                <td>3000条</td>
+                                <td>90173次</td>
+                                <td>100条</td>
+                                <td>560元</td>
+                                <td>无</td>
+                                <td><a href="#">3条</a></td>
+                                <td><a href="#">0</a></td>
+                                <td><a href="#">0</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">车辆信息</a></td>
+                                <td>3000条</td>
+                                <td>3000条</td>
+                                <td>90173次</td>
+                                <td>100条</td>
+                                <td>560元</td>
+                                <td>无</td>
+                                <td><a href="#">3条</a></td>
+                                <td><a href="#">0</a></td>
+                                <td><a href="#">0</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">顺路带货</a></td>
+                                <td>3000条</td>
+                                <td>3000条</td>
+                                <td>90173次</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td><a href="#">3条</a></td>
+                                <td><a href="#">0</a></td>
+                                <td><a href="#">0</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">商家信息</a></td>
+                                <td>3000条</td>
+                                <td>3000条</td>
+                                <td>90173次</td>
+                                <td>100条</td>
+                                <td>560元</td>
+                                <td>无</td>
+                                <td><a href="#">3条</a></td>
+                                <td><a href="#">0</a></td>
+                                <td><a href="#">0</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">相亲交友</a></td>
+                                <td>3000条</td>
+                                <td>3000条</td>
+                                <td>90173次</td>
+                                <td>100条</td>
+                                <td>560元</td>
+                                <td>无</td>
+                                <td><a href="#">3条</a></td>
+                                <td><a href="#">0</a></td>
+                                <td><a href="#">0</a></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>合计</td>
+                                <td>3000条</td>
+                                <td>3000条</td>
+                                <td>90173次</td>
+                                <td>100条</td>
+                                <td>560元</td>
+                                <td>无</td>
+                                <td>3条</td>
+                                <td><a href="#">0</a></td>
+                                <td><a href="#">0</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- BEGIN PAGE CONTENT-->
+
+            <!-- <form class="form-horizontal" action="change" id="form">
+                <div class="control-group">
+                    <label class="control-label">#:</label>
+                    <div class="controls" >
+                        <input type="text" name="manager_id" value="{$rend.manager_id}" class="m-wrap medium" readonly>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">用户名:</label>
+                    <div class="controls" >
+                        <input type="text" name="manager_acc" value="{$rend.manager_acc}" class="m-wrap medium" readonly>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">密码:</label>
+                    <div class="controls" >
+                        <input type="text" name="manager_pwd" value="{$rend.manager_pwd}" class="m-wrap medium" readonly>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">名称:</label>
+                    <div class="controls" >
+                        <input type="text" name="manager_name" value="{$rend.manager_name}" class="m-wrap medium" readonly>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">年龄:</label>
+                    <div class="controls" >
+                        <input type="text" name="manager_age" value="{$rend.manager_age}" class="m-wrap medium" readonly>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">性别:</label>
+                    <div class="controls">
+                        <label class="radio">
+                            <div class="radio"><span><input disabled type="radio" name="manager_sex" value="1" {if condition="$rend.manager_sex=='男'" }checked="" {/if}></span></div>男</label>
+                        <label class="radio">
+                            <div class="radio"><span><input disabled type="radio" name="manager_sex" value="0" {if condition="$rend.manager_sex=='女'" }checked="" {/if}></span></div>女</label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">联系方式:</label>
+                    <div class="controls" >
+                        <input type="text" name="manager_phone" value="{$rend.manager_phone}" class="m-wrap medium" readonly>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">联系地址:</label>
+                    <div class="controls">
+                        <textarea class="large m-wrap" name="manager_address" rows="5" readonly>{$rend.manager_address}</textarea>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">等级:</label>
+                    <div class="controls">
+                        <select class="small m-wrap" tabindex="1" name="manager_level" id="level" disabled>
+                            <option value="0" {if condition="$rend.manager_level=='区域总管理'" }selected{/if}>区域总管理</option>
+                            <option value="1" {if condition="$rend.manager_level=='区域管理'" }selected{/if}>区域管理</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">状态:</label>
+                    <div class="controls">
+                        <select class="small m-wrap" tabindex="1" name="manager_status" disabled>
+                            <option value="0" {if condition="$rend.manager_status=='可用'" }selected{/if}>可用</option>
+                            <option value="1" {if condition="$rend.manager_status=='不可用'" }selected{/if}>不可用</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group" id="power">
+                    <label class="control-label">权限:</label>
+                    <div class="controls">
+                        {volist name="menu" id="render" offset="0" length='9'}
+                        <label class="checkbox" >
+                            <input disabled name="manager_codes[]" type="checkbox" value='{$render.menu_id}' {if condition="false!==strpos($rend.manager_codes,','.$render.menu_id.',')" }checked="" {/if}>{$render.menu_name}
+                        </label>
+                        {/volist}
+                    </div>
+                </div>
+
+            </form> -->
+
+            <!-- END PAGE CONTENT -->
+
+        </div>
+
+        <!-- END PAGE CONTAINER-->
+
+    </div>
+
+    <!-- END PAGE -->
+
+</div>
+
+<!-- END CONTAINER -->
+
+<!-- BEGIN FOOTER -->
+
+{include file="public/footer" /}
+
+<!-- END FOOTER -->
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+<!-- BEGIN CORE PLUGINS -->
+
+<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+
+<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--[if lt IE 9]>
+
+<script src="media/js/excanvas.min.js"></script>
+
+<script src="media/js/respond.min.js"></script>
+
+<![endif]-->
+
+<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+
+<!-- END CORE PLUGINS -->
+<script type="text/javascript" src="media/js/bootstrap-datepicker.js"></script>
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<script src="media/js/app.js" type="text/javascript"></script>
+
+<script src="media/js/index.js" type="text/javascript"></script>
+
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<script>
+
+    jQuery(document).ready(function () {
+
+        App.init(); // initlayout and core plugins
+
+        var val=$('#level').val();
+        if(val==0){
+            $("#power").hide();
+        }else {
+            $("#power").show();
+        }
+        $('body').click(function(){
+            $('.data_box ul').hide();
+        })
+        $('.data_box span').click(function(){
+            if ($('.data_box ul').css("display") == "none") {
+                $('.data_box ul').show();
+            }else{
+                $('.data_box ul').hide();
+            }
+            return false
+        })
+        $('.data_box ul li').click(function(){
+            var x = $(this),
+                txt = x.text();
+            $('.data_box span em').text(txt);
+            $('.data_box ul').hide();
+        })
+        $('.peronal_set').click(function(){
+            $('.data_choice').show();
+        })
+        $('.set_hide').click(function(){
+            $('.data_choice').hide();
+        })
+        $('.date-picker').datepicker({
+            language: 'cn',
+            autoclose: true,
+            todayHighlight: true
+        });
+    });
+
+</script>
+
+<!-- END JAVASCRIPTS -->
+
+</body>
+
+<!-- END BODY -->
+
+</html>

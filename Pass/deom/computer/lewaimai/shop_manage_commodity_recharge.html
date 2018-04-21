@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">try {
+        ace.settings.check('breadcrumbs', 'fixed')
+      } catch(e) {}</script>
+    <ul class="breadcrumb">
+      <i class=""></i>
+      <li class="active">店铺管理</li>
+      <li>
+        <a href="/shop/index">店铺</a></li>
+      <li class="active">商品数量充值</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.chongzhi_pay_text { font-size: 16px; font-family: Helvetica, STHeiti, 'Microsoft YaHei', Verdana, Arial, Tahoma, sans-serif; margin: 20px 0 20px 0; } #chongzhi_pay { color: red; } .chajia_pay_text { font-size: 16px; font-family: Helvetica, STHeiti, 'Microsoft YaHei', Verdana, Arial, Tahoma, sans-serif; margin: 20px 0 20px 0; } #chajia_pay { color: red; } .should_pay_text { font-size: 16px; font-family: Helvetica, STHeiti, 'Microsoft YaHei', Verdana, Arial, Tahoma, sans-serif; margin: 20px 0 20px 0; } #should_pay { color: red; } .choose-paytype-text { font-size: 16px; font-family: Helvetica, STHeiti, 'Microsoft YaHei', Verdana, Arial, Tahoma, sans-serif; margin: 20px 0 10px 0; }</style>
+      <script>function money() {
+          var version = document.getElementById("pay_version").value;
+          var time = document.getElementById("pay_num").value;
+          if (version == 1) {
+            if (time == 1) {
+              var chongzhi_money = 500;
+            }
+            $("#chongzhi_pay").html(chongzhi_money);
+          } else if (version == 2) {
+            if (time == 1) {
+              var chongzhi_money = 1000;
+            }
+            $("#chongzhi_pay").html(chongzhi_money);
+          } else if (version == 3) {
+            if (time == 1) {
+              var chongzhi_money = 3000;
+            }
+            $("#chongzhi_pay").html(chongzhi_money);
+          }
+        }
+        var myFlag = true;
+        function submitorder() {
+          if (!myFlag) {
+            return '';
+          }
+          myFlag = false;
+          var pay_version = $("#pay_version").val();
+          var pay_num = $("#pay_num").val();
+          var charge_type = $("input:checked").val();
+
+          var postdata = JSON.parse("{}");
+          postdata.pay_version = pay_version;
+          postdata.pay_num = pay_num;
+          postdata.charge_type = charge_type;
+          postdata.chongzhi_type = 0;
+
+          $.ajax({
+            type: "POST",
+            url: "/food/paymember",
+            data: postdata,
+            dataType: "json",
+            success: function(data) {
+              if (data.status == "success") {
+                if (data.paytype == "zhifubao") {
+                  window.location.href = data.jump_url;
+                } else if (data.paytype == "weixinzhifu") {
+                  window.location.href = data.jump_url;
+                } else if (data.paytype == "balance") {
+                  window.location.href = "/shop/index";
+                }
+              } else {
+                alert(data.message);
+                myFlag = true;
+              }
+            },
+            error: function(data) {
+              alert("网络错误，发布订单失败！");
+              myFlag = true;
+            }
+          });
+        }
+
+        $(function() {
+          $(".btn-submitorder").on("click",
+          function() {
+            submitorder();
+          });
+        });</script>
+      <div class="row">
+        <div class="col-xs-12">
+          <label>充值商品数量</label>
+          <select onchange="money()" id="pay_version">
+            <option value="1">2000个</option>
+            <option value="2">10000个</option>
+            <option value="3">50000个</option></select>
+          <br>
+          <div style="height: 20px;"></div>
+          <label>充值时间</label>
+          <select onchange="money()" id="pay_num">
+            <option value="1">1年</option></select>
+          <p class="chongzhi_pay_text">充值金额：
+            <span id="chongzhi_pay">500</span>元</p>
+          <p class="choose-paytype-text">请选择支付方式</p>
+          <input type="radio" name="chargetype" value="0" checked="checked">
+          <img src="images/alipay.gif">
+          <input type="radio" name="chargetype" value="1">
+          <img src="images/weixinzhifu.jpg">
+          <input type="radio" name="chargetype" value="2">
+          <img src="images/balance.png">
+          <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+              <button class="btn btn-info btn-submitorder">
+                <i class="ace-icon fa fa-check bigger-110"></i>提交订单</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-gear gear-icon"></i>
+        <a href="#">系统设置</a></li>
+      <li>
+        <a href="#">员工帐号</a></li>
+      <li class="active">新建员工帐号</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.well{background-color: white;} .form-actions{height: 80px;margin-bottom: 0;}</style>
+      <div class="form">
+        <form class="well" id="food-form" action="/config/addemployee" method="post">
+          <p class="note">标有
+            <span class="required" style="color:red;">*</span>的为必填选项</p>
+          <div class="alert alert-danger" id="food-form_es_" style="display:none">
+            <p>请更正下列输入错误:</p>
+            <ul>
+              <li>dummy</li></ul>
+          </div>
+          <label>员工账号
+            <span style="color:red;">*</span>
+            <br>
+            <input class="span3" size="20" maxlength="30" name="EmployeesAccount[account]" id="EmployeesAccount_account" type="text"></label>
+          <div class="errorMessage" id="EmployeesAccount_account_em_" style="display:none"></div>
+          <br>
+          <br>
+          <label>密码
+            <span style="color:red;">*</span>
+            <br>
+            <input class="span3" size="20" maxlength="20" name="EmployeesAccount[password]" id="EmployeesAccount_password" type="password"></label>
+          <br>
+          <br>
+          <label>重新输入密码
+            <span style="color:red;">*</span>
+            <br>
+            <input class="span3" size="20" maxlength="20" name="EmployeesAccount[password2]" id="EmployeesAccount_password2" type="password"></label>
+          <br>
+          <br>
+          <label>员工角色
+            <span style="color:red;">*</span>
+            <select name="EmployeesAccount[role_id]" id="role_id">
+              <option value="0">请选择</option>
+              <option value="4604">商户</option>
+              <option value="4605">老板</option>
+              <option value="10169">财务</option>
+              <option value="11148">配送部</option></select>
+          </label>
+          <!-- <div class="form-actions">
+          <button type="submit" class="btn btn-app btn-xs btn-success"> -->
+          <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+              <button class="btn btn-info" type="submit">
+                <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+            </div>
+          </div>
+          <!-- </button> -->
+          <!-- </div> --></form>
+      </div>
+      <!-- form --></div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

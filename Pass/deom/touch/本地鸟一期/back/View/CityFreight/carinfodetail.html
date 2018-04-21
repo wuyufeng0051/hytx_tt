@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>{$res['carinfo_title']}</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/_head.css">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+</head>
+<body>
+<input type="hidden" id="Share_title" value = {$res['carinfo_title']}>
+<include file="Public/share" title='包含文件'/>
+<!-- 共同顶部 s-->
+<div class="header fn-clear">
+    <div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+    <div class="title">车辆详情</div>
+    <div class="share"></div>
+</div>
+<!-- 共同顶部 e-->
+
+<link rel="stylesheet" href="__PUBLIC__/Home/css/photoswipe.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/default-skin.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/vehicle_detail.css?v=10">
+<script type="text/javascript" src="__PUBLIC__/Home/js/swiper.min.js"></script>
+
+<!-- 商品图片展示 s-->
+<notempty name="res['imgs']">
+<div class="my-gallery comment-pic-slide swiper-container"  itemscope itemtype="">
+    <div class="swiper-wrapper">
+        <foreach name="res['imgs']" item="val">
+        <figure itemprop="associatedMedia" itemscope itemtype="" class="swiper-slide">
+            <a href="{$val['imgs_path']}" itemprop="contentUrl" data-size="" >
+                <img src="{$val['imgs_path']}" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+        </foreach>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+</notempty>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item">
+                <div class="pswp__zoom-wrap">
+                </div>
+            </div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 商品图片展示 e-->
+<div class="v_bc">
+    <div class="shop_infor fn-clear">
+        <div class="si_left">
+            <h1>{$res['carinfo_title']}</h1>
+            <p><em>发布：{$res['carinfo_date']|substr=0,10|str_replace='-','.',###}-{$res['carinfo_edate']|substr=0,10|str_replace='-','.',###}</em><em>浏览：{$res['carinfo_browse']}次</em></p>
+        </div>
+        <?php if(!empty($coll)){ ?>
+        <div class="si_right" id="collect" data-collectid="{$coll.collection_id}"><i class="cang"></i><p>已收藏</p></div>
+        <?php }else{ ?>
+        <div class="si_right" data-id="{$res['carinfo_id']}" id="collect"><i></i><p>收藏</p></div>
+        <?php } ?>
+    </div>
+</div>
+<div class="v_bc1">
+    <div class="type_title"><em>车辆类型：</em>{$res['carinfo_cartype']}</div>
+</div>
+<div class="type_txt">
+    <h1>车辆详情：</h1>{$res['carinfo_des']}
+</div>
+<div class="v_bc2">
+    <div class="report fn-clear">
+        <div class="report_left">
+            <h1>如果您认为此条信息为</h1><p>无效、虚假、诈骗信息、请立即举报！</p>
+        </div>
+        <div class="report_right">
+            <a href="__MODULE__/Report/report?report_cid={$res.carinfo_id}&report_uid={$res.carinfo_uid}&report_type=20">举报</a>
+        </div>
+    </div>
+</div>
+<!-- 广告幻灯片 s -->
+<div class="swiper-container1 picscroll">
+    <div class="swiper-container2">
+        <div class="swiper-wrapper">
+            <volist name="status" id="vo">
+                <div class="swiper-slide">
+                    <a><img src="__PUBLIC__/../{$vo['advertisement_img']}"></a>
+                </div>
+            </volist>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!-- 广告幻灯片 e -->
+<div class="contact fn-clear">
+    <div class="con_left">联系人：{$res['carinfo_contact']}</div>
+    <div class="con_right" data-phone="{$res['carinfo_phone']}"><i></i>电话联系</div>
+</div>
+<div class="phone">
+    <h1>提示</h1>
+    <h2>联系我时，请说是在<em>泸西本地鸟</em>上看到的，谢谢！</h2>
+    <ul>
+        <li><a><em></em><i></i></a></li>
+    </ul>
+    <div class="close"><i></i></div>
+</div>
+<div class="disk"></div>
+<!-- 微信分享弹出层 s -->
+<div class="share_box"></div>
+<!-- 微信分享弹出层 e -->
+
+<script>
+    $('#collect').click(function(){
+        //判断是否收藏
+        var carinfo_id=$(this).data('id');
+        var x = $(this),
+        find = x.find('i');
+        //判断是否收藏
+        if (find.hasClass('cang')) {
+            //否
+            var cid =x.data('collectid');
+            $.post('{:U("Home/Index/enshrinedel")}',{cid:cid}, function(data) {
+                if (data != 2) {
+                    find.removeClass('cang');
+                    x.data('collectid','');
+                    $('.si_right p').text("收藏");
+                }
+            });
+        }else{
+            //是
+            $.post('{:U("Home/Index/enshrine")}',{id:carinfo_id,classes:"collection_carinfoid"}, function(data) {
+                if (data != 2) {
+                    find.addClass('cang');
+                    x.data('collectid',data);
+                    $('.si_right p').text("已收藏");
+                }
+            });
+        }
+
+    })
+</script>
+
+
+<script type="text/javascript" src="__PUBLIC__/Home/js/photoswipe.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/photoswipe-ui-default.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/vehicle_detail.js"></script>
+</body>
+</html>

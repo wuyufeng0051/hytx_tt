@@ -1,0 +1,54 @@
+RewriteEngine On
+RewriteBase /
+ErrorDocument 404 /404.html
+
+#带www的域名301到不带www的域名
+#RewriteCond %{HTTP_HOST} ^www.(.*) [NC]
+#RewriteRule ^(.*)$ http://%1/$1 [R=301,NC,L]
+
+#不带www的域名301到带www的域名
+#RewriteCond %{HTTP_HOST} ^#nw_domain# [NC]
+#RewriteRule ^(.*)$ http://www.#nw_domain#/$1 [R=301,NC,L]
+
+RewriteCond %{REQUEST_METHOD} ^(OPTIONS)
+RewriteRule .* - [F]
+
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-f
+RewriteRule ^index.html$ index.php [NC,QSA]
+RewriteRule ^404.html$ index.php?service=siteConfig&template=404 [NC,QSA]
+RewriteRule ^mobile.html$ index.php?service=siteConfig&template=mobile [NC,QSA]
+RewriteRule ^ios/index.html$ index.php?service=siteConfig&template=app&page=index&type=ios [NC,QSA]
+RewriteRule ^ios/?$ index.php?service=siteConfig&template=app&page=index&type=ios [NC,QSA]
+RewriteRule ^ios/search.html$ index.php?service=siteConfig&template=app&page=search&type=ios [NC,QSA]
+RewriteRule ^android/index.html$ index.php?service=siteConfig&template=app&page=index&type=android [NC,QSA]
+RewriteRule ^android/?$ index.php?service=siteConfig&template=app&page=index&type=android [NC,QSA]
+RewriteRule ^android/search.html$ index.php?service=siteConfig&template=app&page=search&type=android [NC,QSA]
+RewriteRule ^about.html$ index.php?service=siteConfig&template=about [NC,QSA]
+RewriteRule ^about-(\d+).html$ index.php?service=siteConfig&template=about&id=$1 [NC,QSA]
+RewriteRule ^help.html$ index.php?service=siteConfig&template=help [NC,QSA]
+RewriteRule ^help-(\d+).html$ index.php?service=siteConfig&template=help&id=$1 [NC,QSA]
+RewriteRule ^help-detail-(\d+).html$ index.php?service=siteConfig&template=help-detail&id=$1 [NC,QSA]
+RewriteRule ^protocol-(\d+).html$ index.php?service=siteConfig&template=protocol&id=$1 [NC,QSA]
+RewriteRule ^complain-(\w+)-(\w+)-(\d+).html$ index.php?service=member&template=complain&module=$1&dopost=$2&aid=$3 [NC,QSA]
+RewriteRule ^login_popup.html$ index.php?service=member&template=login_popup [NC,QSA]
+RewriteRule ^login.html$ index.php?service=member&template=login [NC,QSA]
+RewriteRule ^loginCheck.html$ index.php?service=member&template=loginCheck [NC,QSA]
+RewriteRule ^loginFrame.html$ index.php?service=member&template=loginFrame [NC,QSA]
+RewriteRule ^sso.html$ index.php?service=member&template=sso [NC,QSA]
+RewriteRule ^logout.html$ index.php?service=member&template=logout [NC,QSA]
+RewriteRule ^fpwd.html$ index.php?service=member&template=fpwd [NC,QSA]
+RewriteRule ^resetpwd.html$ index.php?service=member&template=resetpwd [NC,QSA]
+RewriteRule ^register.html$ index.php?service=member&template=register [NC,QSA]
+RewriteRule ^registerCheck.html$ index.php?service=member&template=registerCheck [NC,QSA]
+RewriteRule ^registerCheck_v1.html$ index.php?service=member&template=registerCheck_v1 [NC,QSA]
+RewriteRule ^registerSuccess.html$ index.php?service=member&template=registerSuccess [NC,QSA]
+RewriteRule ^registerVerifyEmail.html$ index.php?service=member&template=registerVerifyEmail [NC,QSA]
+RewriteRule ^memberVerifyEmail.html$ index.php?service=member&template=memberVerifyEmail [NC,QSA]
+RewriteRule ^registerVerifyPhone.html$ index.php?service=member&template=registerVerifyPhone [NC,QSA]
+RewriteRule ^memberVerifyPhone.html$ index.php?service=member&template=memberVerifyPhone [NC,QSA]
+RewriteRule ^getUserInfo.html$ index.php?service=member&template=getUserInfo [NC,QSA]
+
+<ifmodule mod_deflate.c>
+AddOutputFilter DEFLATE html php js css
+</ifmodule>

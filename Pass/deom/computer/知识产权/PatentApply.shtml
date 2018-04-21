@@ -1,0 +1,315 @@
+<!--#include file="_head.shtml"-->
+<link href="/Js/Validform/css/style.css" rel="stylesheet" />
+<link href="/css/HN_button.css" rel="stylesheet" />
+<script src="/Js/Validform/js/Validform_v5.3.2.js"></script>
+<script src="js/HN_load.js"></script>
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+        $("form").Validform({
+            tiptype: 3,
+            postonce: true,
+            usePlugin: {
+                passwordstrength: {
+                    minLen: 6,
+                    maxLen: 18
+                }
+            }
+        });
+    })
+</script>
+
+<script type="text/javascript">$(function() {
+
+    $("#form1").Validform({
+      tiptype: 3,
+      postonce: true,
+      ajaxPost: true,
+      beforeSubmit: function(curform) {
+        var selectval = $("#SelectVal").val();
+        if (selectval) {
+          if (selectval == "zixuan" && $("input[name='AgentIDS']").val() == "") {
+            alert("请选择填写服务商");
+            return false;
+          } else if (selectval == "tuijian") {
+            var agents = [];
+            $("input[name='AgentIDS']:checked").each(function() {
+              agents.push($(this).val());
+            });
+            if (agents.length == 0) {
+              alert("请选择服务商");
+              return false;
+            }
+          }
+        } else {
+          alert("请选择推荐类型");
+          return false;
+        }
+
+        return true;
+      },
+    })
+
+
+    $("#tuijian").click(function() {
+      var technicals = [];
+      $("input[name='TechnicalField']:checked").each(function() {
+        technicals.push($(this).val());
+      });
+      var industrys = [];
+      $("input[name='IndustryField']:checked").each(function() {
+        industrys.push($(this).val());
+      });
+
+      if (technicals.length == "" || industrys.length == "") {
+        alert("请选择技术领域和行业领域");
+        return;
+      }
+      $("#Select_2").hide();
+      $("#Select_1").show();
+    });
+    $("#zixuan").click(function() {
+      var technicals = [];
+      $("input[name='TechnicalField']:checked").each(function() {
+        technicals.push($(this).val());
+      });
+      var industrys = [];
+      $("input[name='IndustryField']:checked").each(function() {
+        industrys.push($(this).val());
+      });
+
+      if (technicals.length == "" || industrys.length == "") {
+        alert("请选择技术领域和行业领域");
+        return;
+      }
+      $("#Select_1").hide();
+      $("#Select_2").show();
+    });
+
+    $("input[name='TechnicalField'],input[name='IndustryField']").click(function() {
+      $("input[name='selectAgent']").removeAttr("checked");
+      $("#Select").hide();
+      $("#SelectVal").val("");
+    });
+  });</script>
+<!--右边内容区-->
+<div class="rBox">
+  <div class="local">
+    <a href="#">首页</a>&gt;
+    <a href="#">专利申请</a>&gt;
+    <span>添加专利申请</span></div>
+  <div class="process_zl"></div>
+  <div class="box1 formEdit">
+    <div class="title">
+      <h3>专利申请信息</h3></div>
+    <div class="adminEdit rBgDiv">
+      <div class="box">
+        <form action="/PatentApply/Create" id="form1" method="post">
+          <input id="PatentApplyID" name="PatentApplyID" type="hidden" value="292f443d-7639-41d9-8a82-3311ec2806ea" />
+          <dl>
+            <dt>专利申请企业名称：</dt>
+            <dd>
+              <p>苏州和策信息技术有限公司</p>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>专利申请标题：</dt>
+            <dd>
+              <input autocomplete="off" class="text" datatype="*" id="PatentTitle" maxlength="50" name="PatentTitle" nullmsg="不能为空" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>专利申请联系人：</dt>
+            <dd>
+              <input autocomplete="off" datatype="*" id="Contact" maxlength="10" name="Contact" nullmsg="请填写申请联系人" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>联系电话：</dt>
+            <dd>
+              <input autocomplete="off" datatype="*" id="Tel" maxlength="11" name="Tel" nullmsg="请填写联系电话" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>技术领域：</dt>
+            <dd>
+              <p>
+                <input id="Machinery" name="TechnicalField" type="checkbox" value="Machinery" />
+                <label for="Machinery">机械</label>
+                <input id="Electron" name="TechnicalField" type="checkbox" value="Electron" />
+                <label for="Electron">电子通信</label>
+                <input id="Organism" name="TechnicalField" type="checkbox" value="Organism" />
+                <label for="Organism">生物医药</label>
+                <input id="ChemicalIndustry" name="TechnicalField" type="checkbox" value="ChemicalIndustry" />
+                <label for="ChemicalIndustry">化工</label>
+                <input id="Optics" name="TechnicalField" type="checkbox" value="Optics" />
+                <label for="Optics">物理光学</label>
+                <input id="Material" name="TechnicalField" type="checkbox" value="Material" datatype="*" nullmsg="最少选择一个" />
+                <label for="Material">材料</label></p>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>行业领域：</dt>
+            <dd>
+              <p>
+                <input id="BiologicalMedicine" name="IndustryField" type="checkbox" value="BiologicalMedicine" />
+                <label for="BiologicalMedicine">生物医药</label>
+                <input id="Internet" name="IndustryField" type="checkbox" value="Internet" />
+                <label for="Internet">互联网及移动互联网</label>
+                <input id="Energy" name="IndustryField" type="checkbox" value="Energy" />
+                <label for="Energy">新能源与节能环保</label>
+                <input id="NewMaterial" name="IndustryField" type="checkbox" value="NewMaterial" />
+                <label for="NewMaterial">新材料</label>
+                <input id="AdvancedManufacturing" name="IndustryField" type="checkbox" value="AdvancedManufacturing" />
+                <label for="AdvancedManufacturing">先进制造</label>
+                <input id="ElectronicInformation" name="IndustryField" type="checkbox" value="ElectronicInformation" datatype="*" nullmsg="最少选择一个" />
+                <label for="ElectronicInformation">电子信息</label></p>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>专利需求简介：</dt>
+            <dd>
+              <textarea autocomplete="off" class="text" cols="20" datatype="*" id="PatentSurvey" maxlength="1000" name="PatentSurvey" nullmsg="不能为空" rows="2" style="width:450px"></textarea>
+            </dd>
+          </dl>
+          <dl>
+            <dt>申请附件：</dt>
+            <dd style="width: 500px">
+              <div class="webuploader-pick">
+                  <div class="btn">上传</div>
+                  <input type="file" class="load3">
+                </div>
+                <div class="pic_box_2">
+                  <img src="images/wenjian.png" alt="">
+                  <p>wenjian.opng</p>
+                  <em></em>
+                </div>
+                <div class="warning">多个文件请打包上传。<br>(允许上传的文件格式有：*.zip;*.doc;*.docx;*.xls;*.xlsx;*.pdf;)</div>
+            </dd></dl>
+          <dl>
+            <dt>
+              <em>*</em>推荐类型：</dt>
+            <dd>
+              <p>
+                <input type="radio" id="tuijian" name="selectAgent" value="tuijian" />
+                <label for="tuijian">推荐代理商</label>
+                <input type="radio" id="zixuan" name="selectAgent" value="zixuan" />
+                <label for="zixuan">自选代理商</label></p>
+            </dd>
+          </dl>
+			<div id="Select_1" style="display: none;">
+			  <dl>
+			    <dt>
+			      <em>(可多选)</em>选择服务商：</dt>
+			    <dd>
+			      <label class="dls">
+			        <div class="t_1">
+			          <div class="input-r">
+			            <div class="ir" >
+			              <input type="checkbox" name="AgentIDS"  >
+			            </div>
+			          </div>
+			          <div class="pull-left">上海立群专利代理事务所</div>
+			          <div class="pull-right">联系人：黄震</div></div>
+			        <div class="b_box">
+			          <div class="pic">
+			            <img src="upfile/22b41ff6-6faf-4ace-b7bc-f8a24e316e64.png"></div>
+			          <div class="info">
+			            <p>业务领域：版权登记,专利无效,专利交易,专利维权,专利许可,版权纠纷,版权维权,商标申请,专利申请,版权诉讼,商标许可,商标交易,版权交易,专利纠纷,商标维权,版权许可,商标纠纷,商标诉讼,专利诉讼</p>
+			            <p>技术领域：物理光学,电子通信,机械,生物医药,化工,材料</p>
+			            <p>行业领域：电子信息,生物医药,互联网及移动互联网,新能源与节能环保,先进制造,新材料</p>
+			            <p>地域：北京,浙江,新加坡,加拿大,韩国,上海,日本,美国,欧洲,台湾,江苏,澳大利亚,广东</p>
+			          </div>
+			        </div>
+			      </label>
+			      <label class="dls">
+			        <div class="t_1">
+			          <div class="input-r">
+			           <div class="ir" >
+			              <input type="checkbox" name="AgentIDS" >
+			            </div>
+			          </div>
+			          <div class="pull-left">上海汉盛律师事务所</div>
+			          <div class="pull-right">联系人：朱以林</div></div>
+			        <div class="b_box">
+			          <div class="pic">
+			            <img src="upfile/22b41ff6-6faf-4ace-b7bc-f8a24e316e64.png"></div>
+			          <div class="info">
+			            <p>业务领域：版权登记,专利无效,专利交易,专利维权,专利许可,版权纠纷,版权维权,商标申请,专利申请,版权诉讼,商标许可,商标交易,版权交易,专利纠纷,商标维权,版权许可,商标纠纷,商标诉讼,专利诉讼,版权登记,版权交易,版权许可,专利维权,商标申请,专利诉讼,版权维权,专利申请,专利许可,商标纠纷,商标许可,专利无效,版权纠纷,商标维权,专利纠纷,专利交易,商标交易,版权诉讼,商标诉讼</p>
+			            <p>技术领域：物理光学,电子通信,机械,生物医药,化工,材料 ,物理光学,化工,电子通信,机械,材料 ,生物医药</p>
+			            <p>行业领域：电子信息,生物医药,互联网及移动互联网,新能源与节能环保,先进制造,新材料,电子信息,新材料,先进制造,生物医药,新能源与节能环保,互联网及移动互联网</p>
+			            <p>地域：北京,浙江,新加坡,加拿大,韩国,上海,日本,美国,欧洲,台湾,江苏,澳大利亚,广东,安徽,河南,宁夏,吉林,重庆,江苏,江西,青海,辽宁,广东,海南,天津,福建,台湾,西藏,美国,湖北,山东,浙江,北京,黑龙江,欧洲,新疆,贵州,澳大利亚,广西,四川,山西,河北,甘肃,内蒙古,湖南,日本,上海</p>
+			          </div>
+			        </div>
+			      </label>
+			      <label class="dls">
+			        <div class="t_1">
+			          <div class="input-r">
+			            <div class="ir" >
+			              <input type="checkbox" name="AgentIDS"  >
+			            </div>
+			          </div>
+			          <div class="pull-left">上海精晟知识产权代理有限公司</div>
+			          <div class="pull-right">联系人：沈先生</div></div>
+			        <div class="b_box">
+			          <div class="pic">
+			            <img src="upfile/22b41ff6-6faf-4ace-b7bc-f8a24e316e64.png"></div>
+			          <div class="info">
+			            <p>业务领域：版权登记,专利无效,专利交易,专利维权,专利许可,版权纠纷,版权维权,商标申请,专利申请,版权诉讼,商标许可,商标交易,版权交易,专利纠纷,商标维权,版权许可,商标纠纷,商标诉讼,专利诉讼,版权登记,版权交易,版权许可,专利维权,商标申请,专利诉讼,版权维权,专利申请,专利许可,商标纠纷,商标许可,专利无效,版权纠纷,商标维权,专利纠纷,专利交易,商标交易,版权诉讼,商标诉讼,专利维权,专利申请,专利许可,商标维权,版权纠纷,版权许可,商标交易,版权诉讼,专利无效,专利纠纷,专利诉讼,版权维权,商标纠纷,专利交易,商标申请,商标诉讼,商标许可,版权交易,版权登记</p>
+			            <p>技术领域：物理光学,电子通信,机械,生物医药,化工,材料 ,物理光学,化工,电子通信,机械,材料 ,生物医药,机械,生物医药,材料 ,化工,电子通信</p>
+			            <p>行业领域：电子信息,生物医药,互联网及移动互联网,新能源与节能环保,先进制造,新材料,电子信息,新材料,先进制造,生物医药,新能源与节能环保,互联网及移动互联网,电子信息,互联网及移动互联网,新能源与节能环保,生物医药,先进制造</p>
+			            <p>地域：北京,浙江,新加坡,加拿大,韩国,上海,日本,美国,欧洲,台湾,江苏,澳大利亚,广东,安徽,河南,宁夏,吉林,重庆,江苏,江西,青海,辽宁,广东,海南,天津,福建,台湾,西藏,美国,湖北,山东,浙江,北京,黑龙江,欧洲,新疆,贵州,澳大利亚,广西,四川,山西,河北,甘肃,内蒙古,湖南,日本,上海,山东,浙江,江苏,广东,天津,上海,北京,重庆</p>
+			          </div>
+			        </div>
+			      </label>
+			      <div class="page">
+			        <a href="javascript:toPage(2);">下一批</a></div>
+			    </dd>
+			  </dl>
+			  <link href="css/all.css" rel="stylesheet">
+			  <script src="js/icheck.min.js"></script>
+			  <script>$(function() {
+
+			      //CheckBox样式
+			      $('.dls input').iCheck({
+			        checkboxClass: 'icheckbox_square-green',
+			        radioClass: 'iradio_square-green',
+			        increaseArea: '20%' // optional
+			      });
+			    });
+			    var toPage = function(pageindex) {
+			      $("#id").val(pageindex); 
+			      $("#selectform").submit();
+			    }</script>
+			</div>
+			<div id="Select_2" style="display: none;">
+				<dl>
+				  <dt>服务商：</dt>
+				  <dd>
+				    <input autocomplete="off" id="AgentName" name="AgentName" type="text" value="" class="ui-autocomplete-input">
+				    <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>(输入服务商名称进行匹配)
+				    <input id="AgentIDS" name="AgentIDS" type="hidden" value="">
+				  </dd>
+			   </dl>
+			</div>
+          <div class="btnBox">
+            <input value="提交" class="btn" type="submit" />
+            <input type="button" value="返回" class="return btn" onclick="history.go(-1)" /></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+<!--#include file="_foot.shtml"-->

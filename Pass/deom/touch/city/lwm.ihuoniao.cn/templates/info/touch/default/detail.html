@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#} - {#$list_typename#} - {#$info_channelName#} - {#$cfg_webname#}</title>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel='stylesheet' href='{#$cfg_staticPath#}css/ui/photoswipe.css'>
+<link rel='stylesheet' href='{#$cfg_staticPath#}css/ui/photoswipe-default-skin.css'>
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/ui/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css">
+</head>
+
+<body>
+<div class="container">
+  <div class="header">
+    <a href="javascript:history.go(-1)" class="header-logo"><img src="{#$templets_skin#}images/left.png"></a>
+    <span class="header-tit">详情</span>
+    <a href="{#$member_userDomain#}" class="header-user"><img src="{#$templets_skin#}images/wo1.png"></a>
+  </div>
+
+  {#if $detail_imglist#}
+  <!-- 头部幻灯片 -->
+  <div class="wrapper">
+    <div class="my-gallery comment-pic-slide" itemscope itemtype="">
+      <div class="swiper-wrapper" id="picobj">
+        {#foreach from=$detail_imglist item=imglist key=key#}
+        <figure itemprop="associatedMedia" itemscope itemtype="" class="swiper-slide">
+          <a href="{#$imglist['path']#}" itemprop="contentUrl" data-size="100%x100%" class="picarr" id="pic{#$key#}">
+            <img src="{#changeFileSize url="{#$imglist['path']#}" type="small"#}" itemprop="thumbnail" alt="Image description" />
+          </a>
+        </figure>
+        {#/foreach#}
+      </div>
+      <div class="swiper-pagination swiper-pagination-fraction"></div>
+    </div>
+  </div>
+  <!-- 头部幻灯片 end -->
+  {#/if#}
+
+  <div class="info-box">
+    <h3>{#$detail_title#}</h3>
+    <p><span>发布时间 {#$detail_pubdate|date_format:'%y-%m-%d %H:%M'#}</span><span class="fn-right">已有{#$detail_click#}人浏览</span></p>
+  </div>
+
+  <div class="info-list">
+    <ul>
+      <li><span class="info-list-tit">分类：</span><span class="info-list-con">{#$list_crumbs#}</span></li>
+      <li><span class="info-list-tit">区域：</span><span class="info-list-con">{#$detail_address#}</span></li>
+      <li><span class="info-list-tit">期限：</span><span class="info-list-con"{#if $detail_isvalid#} style="color:#f00;"{#/if#}>{#$detail_validCeil#}</span></li>
+    </ul>
+  </div>
+  {#if $detail_item#}
+  <div class="info-list">
+    <ul>
+      {#foreach from=$detail_item item=item#}
+      {#if $item.value != ""#}
+      <li class="fn-clear"><span class="info-list-tit">{#$item.type#}：</span><span class="info-list-con">{#if $item.type == "价格"#}<em class="price">{#$item.value#}</em>元{#else#}{#$item.value#}{#/if#}&nbsp;</span></li>
+      {#/if#}
+      {#/foreach#}
+    </ul>
+  </div>
+  {#/if#}
+
+  <div class="info-detail">
+    <h3><span>详细信息</span></h3>
+    <div id="body">{#$detail_mbody#}</div>
+    <a href="javascript:;" class="all-detail"><span>查看全部</span></a>
+  </div>
+
+  {#if $detail_member#}
+  <div class="user">
+    <a href="{#getUrlPath service='info' template='store' id={#$detail_userid#}#}" class="fn-clear user-msg">
+      <div class="user-img">
+        <img src="{#if $detail_member['photo'] == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$detail_member['photo']#}" type="small"#}{#/if#}" onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_40.jpg';" />
+        <p>{#$detail_member['nickname']#}</p>
+      </div>
+      <div class="user-info">
+        <p class="num">在该类别发布过<em>{#$detail_storeCount#}条</em>信息</p>
+        <p class="time">{#$detail_member['regtime']|date_format:"%Y-%m-%d"#}注册</p>
+      </div>
+    </a>
+    <div class="user-goods">
+      <h3><span>TA的宝贝</span></h3>
+      <ul class="fn-clear">
+        {#info action="ilist" return="ilist" userid={#$detail_userid#} pageSize=3#}
+        <li>
+          <a href="{#$ilist.url#}">
+            <img src="{#changeFileSize url="{#$ilist.litpic#}" type="small"#}" alt="">
+            <p><span class="price">{#$ilist.title#}</span></p>
+          </a>
+        </li>
+        {#/info#}
+      </ul>
+    </div>
+  </div>
+  {#/if#}
+
+  <div class="footer">
+    <div class="footer-info">
+      <p>{#$detail_person#}({#if $detail_member['userType'] == 1#}个人{#elseif $detail_member['userType'] == 2#}商家{#else#}游客{#/if#})</p>
+      <p>{#$detail_telNum#}-{#$detail_teladdr#}</p>
+    </div>
+    <div class="footer-tel">
+      <a href="tel:{#$detail_telNum#}"><i></i>电话</a>
+    </div>
+    <div class="footer-msg">
+      <a href="sms:{#$detail_telNum#}"><i></i>短信</a>
+    </div>
+    {#if $detail_qq#}
+    <div class="footer-qq">
+      <a href="http://wpa.qq.com/msgrd?v=3&uin={#$detail_qq#}&site=qq&menu=yes" target="_blank"><i></i>QQ</a>
+    </div>
+    {#/if#}
+  </div>
+</div>
+
+<div class="pswp"tabindex="-1"role="dialog"aria-hidden="true"><div class="pswp__bg"></div><div class="pswp__scroll-wrap"><div class="pswp__container"><div class="pswp__item"></div><div class="pswp__item"></div><div class="pswp__item"></div></div><div class="pswp__ui pswp__ui--hidden"><div class="pswp__top-bar"><div class="pswp__counter"></div><button class="pswp__button pswp__button--close"title="Close (Esc)"></button><button class="pswp__button pswp__button--zoom"title="Zoom in/out"></button><div class="pswp__preloader"><div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class="pswp__share-tooltip"></div></div><button class="pswp__button pswp__button--arrow--left"title="Previous (arrow left)"></button><button class="pswp__button pswp__button--arrow--right"title="Next (arrow right)"></button><div class="pswp__caption"><div class="pswp__caption__center"></div></div></div></div></div>
+
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/iscroll.js"></script>
+<script src='{#$cfg_staticPath#}js/ui/photoswipe.min.js'></script>
+<script src='{#$cfg_staticPath#}js/ui/photoswipe-ui-default.min.js'></script>
+<script src="{#$cfg_staticPath#}js/ui/pic-swiper.js"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script src="{#$templets_skin#}js/detail.js"></script>
+</body>
+</html>

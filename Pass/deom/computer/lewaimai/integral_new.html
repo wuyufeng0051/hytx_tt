@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-flag-o flag-o-icon"></i>
+      <li class="active">营销活动</li>
+      <li>
+        <a href="#">积分</a></li>
+      <li class="active">新建积分奖品</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+                <li class="active">
+                  <a href="integral.html">积分奖品管理</a></li>
+                <li>
+                  <a href="integral_list.html">积分兑换列表</a></li>
+                <li>
+                  <a href="integral_set.html">积分兑换设置</a></li>
+                <li>
+                  <a href="integral_prize.html">积分兑换优惠券奖品</a></li>
+                <li>
+                  <a href="integral_rule.html">积分规则设置</a></li>
+              </ul>
+            <div class="tab-content">
+              <a href="#" class="btn btn-success" style="margin-bottom:10px;">返回奖品列表</a>
+              <style>.width50{width:50px;}</style>
+              <div class="form">
+                <form enctype="multipart/form-data" class="form-horizontal" id="food-form" action="/point/createpointprize" method="post">
+                  <p class="note">标有
+                    <span class="required" style="color:red;">*</span>的为必填选项</p>
+                  <div class="alert alert-danger" id="food-form_es_" style="display:none">
+                    <p>请更正下列输入错误:</p>
+                    <ul>
+                      <li>dummy</li></ul>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="PointPrize_is_open">上下架该奖品</label>
+                    <select class="col-sm-2" name="PointPrize[is_open]" id="PointPrize_is_open">
+                      <option value="0">下架</option>
+                      <option value="1" selected="selected">上架</option></select>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1 required" for="PointPrize_prize_name">奖品名称
+                      <span class="required">*</span></label>
+                    <input class="col-sm-2" name="PointPrize[prize_name]" id="PointPrize_prize_name" type="text" maxlength="20"></div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="PointPrize_prize_des">奖品描述</label>
+                    <textarea class="col-sm-2" name="PointPrize[prize_des]" id="PointPrize_prize_des"></textarea>
+                  </div>
+                  <label style="width: 300px; display: block;">
+                    <label for="PointPrize_prize_img">奖品图片</label>
+                    <input id="ytace-file-input" type="hidden" value="" name="PointPrize[prize_img]">
+                    <span class="ace-file-input">
+                      <input id="ace-file-input" size="550" onchange="preview(this)" name="PointPrize[prize_img]" type="file">
+                      <span class="ace-file-container" data-title="选择">
+                        <span class="ace-file-name" data-title="建议尺寸：400像素 * 400像素">
+                          <i class=" ace-icon fa fa-upload"></i>
+                        </span>
+                      </span>
+                    </span>
+                    <div>
+                      <img style="width:200px;height:200px" id="prize_img" src="upfile/LWM5875DD1323AFEXCJ4UVUP.jpg" alt="奖品图片"></div>
+                  </label>
+                  <div class="form-group">
+                    <label class="col-sm-1 required" for="PointPrize_prize_point">奖品所需积分
+                      <span class="required">*</span></label>
+                    <input class="col-sm-2" name="PointPrize[prize_point]" id="PointPrize_prize_point" type="text" maxlength="10"></div>
+                  <div class="clearfix form-actions">
+                    <div class="col-md-offset-3 col-md-9">
+                      <button class="btn btn-info" type="submit">
+                        <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- form --></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

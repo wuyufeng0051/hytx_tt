@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>用户登录</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/login_popup.css?v=3" media="all" />
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', redirectUrl = '{#$redirectUrl#}', site = '{#$site#}';
+</script>
+</head>
+
+<body>
+<div class="login-pup fn-clear">
+	<div class="login-left">
+		<h2>推荐使用</h2>
+		<ul>
+			{#siteConfig action="getLoginConnect" return="row1"#}
+		  {#if $_bindex.row1 == 1 || $_bindex.row1 == 2#}
+		  <li><a href="{#$cfg_basehost#}/api/login.php?type={#$row1.code#}" class="login-{#$row1.code#}" title="{#$row1.name#}">{#$row1.name#}</a></li>
+		  {#/if#}
+		  {#/siteConfig#}
+			<li class="more">
+			  更多&raquo;&nbsp;&nbsp;
+			  {#siteConfig action="getLoginConnect" return="row2"#}
+			  {#if $_bindex.row2 != 1 && $_bindex.row2 != 2#}
+			  <a href="{#$cfg_basehost#}/api/login.php?type={#$row2.code#}" class="login-{#$row2.code#}" title="{#$row2.name#}">{#$row2.name#}</a>
+			  {#/if#}
+			  {#/siteConfig#}
+			</li>
+		</ul>
+	</div>
+	<div class="login-right">
+		<h2>帐号登录</h2>
+		<form method="post" id="loginForm">
+			<ul>
+				<li><input type="text" class="login-input" name="loginuser" id="loginuser" autocomplete="off" /><span>邮箱/手机号/用户名</span></li>
+				<li><input type="password" class="login-input error" maxlength="40" name="loginpass" id="loginpass" /><span>密码</span></li>
+				{#if $loginCode == 1#}
+				<li class="vdcode"><input type="text" class="login-input" maxlength="4" name="logincode" id="logincode" autocomplete="off" /><span>验证码</span><img src="/include/vdimgck.php" title="看不清？点击换一张" id="verifycode" /></li>
+				{#/if#}
+				<li class="submit fn-clear">
+					<label><input type="checkbox" name="memberme" id="memberme" checked="checked" value="1" />记住登录状态</label>
+					<a href="javascript:;" id="submitLogin" class="login-btn">登录</a>
+				</li>
+			</ul>
+		</form>
+		<span class="or">or</span>
+	</div>
+	<div class="login-foot">
+		<a id="regbtn" target="_blank" href="{#$cfg_basehost#}/register.html">注册</a>&nbsp;或&nbsp;<a id="pwdbtn" target="_blank" href="{#$cfg_basehost#}/fpwd.html">找回密码</a>
+	</div>
+	<a href="javascript:;" title="关闭" id="close">关闭</a>
+</div>
+
+<span class="fn-hide" id="isLogin">{#$isLogin#}</span>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/login_popup.js?v=6"></script>
+</body>
+</html>

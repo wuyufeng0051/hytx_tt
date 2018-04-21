@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$detail_title#}提交订单 - {#$detail_title#}外卖_{#$detail_title#}电话_{#$detail_title#}网上订餐_{#$detail_title#}菜单 - {#$waimai_title#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0;">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/buy.css">
+</head>
+<body>
+<div class="container">
+<!-- 头部 -->
+	<div class="header">
+		<div class="header-l">
+			<a href="javascript:window.history.go(-1)"><img src="{#$templets_skin#}images/left.png" alt=""></a>
+		</div>
+		<div class="header-address">
+			<span>提交订单</span>
+		</div>
+		<div class="header-search">
+			<img src="{#$templets_skin#}images/search.png" alt="">
+		</div>
+	</div>
+<!-- 头部 end -->
+
+<!-- 内容 -->
+	<div class="content">
+		<div class="content-box">
+			<ul>
+				<li class="info-address-box">
+					<a href="javascript:;">
+						<div class="info-l">
+							<p><span>张小美 女士</span><span class="info-phone">13862405433</span></p>
+							<p class="info-address">绿地·华尔道名邸</p>
+						</div>
+						<div class="info-r">
+							<i><img src="{#$templets_skin#}images/right1.png" alt=""></i>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<div class="info-l">
+							<span class="info-tit">送达时间</span>
+							<select>
+								<option value="1">立即送出（大约11:00送达）</option>
+								<option value="2">11:20</option>
+								<option value="3">11:40</option>
+								<option value="4">12:00</option>
+							</select>
+
+						</div>
+						<div class="info-r">
+							<i><img src="{#$templets_skin#}images/right1.png" alt=""></i>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="content-box">
+			<ul>
+				<li>
+					<a href="javascript:;">
+						<div class="info-l">
+							<span class="info-tit">支付方式</span>
+							<select>
+								<option value="1">在线支付</option>
+								<option value="2">货到付款</option>
+							</select>
+
+						</div>
+						<div class="info-r">
+							<i><img src="{#$templets_skin#}images/right1.png" alt=""></i>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="content-box">
+			<ul>
+				<li>
+					<a href="#">
+						<div class="info-l">
+							<span class="info-tit">如意馄钝·饭（领汇店）</span>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="info-l">
+							<span class="info-tit">葱油饼</span>
+							<span class="info-num">X<em>2</em></span>
+							<span class="info-price r">￥<em class="info-unit">5</em></span>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="info-l">
+							<span class="info-tit">配送费</span>
+							<span class="info-price r">￥<em class="info-fee">3</em></span>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="info-l">
+							<span class="info-tit">总计</span>
+							<span class="info-price r">￥<em class="info-total"></em></span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 配送说明 -->
+	<form action="" method="get" class="remark">
+		<input placeholder="配送特殊说明，配送公司会尽量调节"></input>
+	</form>
+	<!-- 配送说明 end-->
+<!-- 内容 end -->
+
+	<div class="submit">
+		<a href="#">提交订单</a>
+	</div>
+
+</div>
+<script src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script src="{#$templets_skin#}js/buy.js"></script>
+</body>
+</html>

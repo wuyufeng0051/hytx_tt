@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-desktop desktop-icon"></i>
+        <a href="#">店铺</a></li>
+      <li>
+        <a href="#">店铺分类组合</a></li>
+      <li class="active">店铺分类组合详情</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style type="text/css">.pop-one{ background: #fff; border-radius:3px; position: fixed; top: 21%; left: 50%; margin-left: -135px; } .pop-two{ width:400px; background: #fff; border-radius:3px; position: fixed; top: 21%; left: 50%; margin-left: -135px; } .meng{ background:rgba(0,0,0,.5); position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index:9999; } .feng{ background:rgba(0,0,0,.5); position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index:9999; } .pop-one .pop-cont{ line-height: 25px; padding: 12px 10px; border-bottom: 1px solid #d2d6da; } .pop-bottom a{ text-align: center; height: 40px; line-height: 40px; color: #007aff; } .pop-bottom a:first-child{ border-right:1px solid #d2d6da; } .align-center, .div-align-center { text-align: center; } .webkit-box1 { display: -webkit-box; width: 100%; } .webkit-box1 >* { -webkit-box-flex: 1; width: 100%; display: block; } .order_true{cursor:pointer;} .aa{display:none;}</style>
+      <div class="meng aa">
+        <div class="pop-two">
+          <div class="pop-cont align-center">
+            <p>
+              <span style="position:relative;">店铺分类链接</span></p>
+            <p class="seeurl"></p>
+          </div>
+          <div class="pop-bottom webkit-box1">
+            <a class="order_true">确定</a></div>
+        </div>
+      </div>
+      <div class="feng aa">
+        <div class="pop-one">
+          <div class="pop-cont align-center">
+            <p>
+              <span style="position:relative;">店铺分类二维码</span></p>
+            <p id="seeticket"></p>
+          </div>
+          <div class="pop-bottom webkit-box1">
+            <a class="order_true">确定</a></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
+          <div>
+            <button class="btn btn-success" >添加</button>
+            <button class="btn btn-danger" >删除</button></div>
+          <div id="yw0" class="grid-view">
+            <table class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th class="checkbox-column" id="yw0_c0">
+                    <input type="checkbox" value="1" name="yw0_c0_all" id="yw0_c0_all"></th>
+                  <th id="yw0_c1">
+                    <a class="sort-link" href="#">店铺分类名称</a></th>
+                  <th id="yw0_c2">是否选取</th></tr>
+              </thead>
+              <tbody>
+                <tr class="odd">
+                  <td width="30">
+                    <input value="56824" id="yw0_c0_0" type="checkbox" name="selectorderlist[]"></td>
+                  <td>便民业务</td>
+                  <td>
+                    <div style="color:#82AF6F;font-weight:bolder">已选</div></td>
+                </tr>
+                <tr class="even">
+                  <td width="30">
+                    <input value="65580" id="yw0_c0_1" type="checkbox" name="selectorderlist[]"></td>
+                  <td>多味早餐</td>
+                  <td>
+                    <div style="color:#82AF6F;font-weight:bolder">已选</div></td>
+                </tr>
+                <tr class="odd">
+                  <td width="30">
+                    <input value="65581" id="yw0_c0_2" type="checkbox" name="selectorderlist[]"></td>
+                  <td>休闲零食</td>
+                  <td>
+                    <div style="color:#82AF6F;font-weight:bolder">已选</div></td>
+                </tr>
+                <tr class="even">
+                  <td width="30">
+                    <input value="65589" id="yw0_c0_3" type="checkbox" name="selectorderlist[]"></td>
+                  <td>卤味烧腊</td>
+                  <td>
+                    <div style="color:#82AF6F;font-weight:bolder">已选</div></td>
+                </tr>
+                <tr class="odd">
+                  <td width="30">
+                    <input value="67211" id="yw0_c0_4" type="checkbox" name="selectorderlist[]"></td>
+                  <td>年货专区</td>
+                  <td>
+                    <div style="color:#999;font-weight:bolder">未选择</div></td>
+                </tr>
+                <tr class="even">
+                  <td width="30">
+                    <input value="53107" id="yw0_c0_5" type="checkbox" name="selectorderlist[]"></td>
+                  <td>粉面小吃</td>
+                  <td>
+                    <div style="color:#82AF6F;font-weight:bolder">已选</div></td>
+                </tr>
+                <tr class="odd">
+                  <td width="30">
+                    <input value="53108" id="yw0_c0_6" type="checkbox" name="selectorderlist[]"></td>
+                  <td>中式快餐</td>
+                  <td>
+                    <div style="color:#82AF6F;font-weight:bolder">已选</div></td>
+                </tr>
+                <tr class="even">
+                  <td width="30">
+                    <input value="53109" id="yw0_c0_7" type="checkbox" name="selectorderlist[]"></td>
+                  <td>蔬果</td>
+                  <td>
+                    <div style="color:#82AF6F;font-weight:bolder">已选</div></td>
+                </tr>
+                <tr class="odd">
+                  <td width="30">
+                    <input value="53110" id="yw0_c0_8" type="checkbox" name="selectorderlist[]"></td>
+                  <td>酒水饮料</td>
+                  <td>
+                    <div style="color:#82AF6F;font-weight:bolder">已选</div></td>
+                </tr>
+                <tr class="even">
+                  <td width="30">
+                    <input value="53111" id="yw0_c0_9" type="checkbox" name="selectorderlist[]"></td>
+                  <td>能量西餐</td>
+                  <td>
+                    <div style="color:#82AF6F;font-weight:bolder">已选</div></td>
+                </tr>
+                <tr class="odd">
+                  <td width="30">
+                    <input value="53112" id="yw0_c0_10" type="checkbox" name="selectorderlist[]"></td>
+                  <td>跑腿业务</td>
+                  <td>
+                    <div style="color:#82AF6F;font-weight:bolder">已选</div></td>
+                </tr>
+                <tr class="even">
+                  <td width="30">
+                    <input value="53114" id="yw0_c0_11" type="checkbox" name="selectorderlist[]"></td>
+                  <td>鲜花蛋糕</td>
+                  <td>
+                    <div style="color:#82AF6F;font-weight:bolder">已选</div></td>
+                </tr>
+                <tr class="odd">
+                  <td width="30">
+                    <input value="56754" id="yw0_c0_12" type="checkbox" name="selectorderlist[]"></td>
+                  <td>夜宵烧烤</td>
+                  <td>
+                    <div style="color:#82AF6F;font-weight:bolder">已选</div></td>
+                </tr>
+                <tr class="even">
+                  <td width="30">
+                    <input value="68771" id="yw0_c0_13" type="checkbox" name="selectorderlist[]"></td>
+                  <td>测试</td>
+                  <td>
+                    <div style="color:#999;font-weight:bolder">未选择</div></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="summary">第 1-14 条, 共 14 条.</div>
+            <div class="keys" style="display:none" title="/shoptypecombin/infolist?combinid=4655">
+              <span>56824</span>
+              <span>65580</span>
+              <span>65581</span>
+              <span>65589</span>
+              <span>67211</span>
+              <span>53107</span>
+              <span>53108</span>
+              <span>53109</span>
+              <span>53110</span>
+              <span>53111</span>
+              <span>53112</span>
+              <span>53114</span>
+              <span>56754</span>
+              <span>68771</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

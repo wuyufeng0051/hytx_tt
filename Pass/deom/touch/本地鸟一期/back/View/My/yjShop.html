@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>意见商城</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+		<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+
+		<style>
+		/*公用头部*/
+		.header{
+		    height: .9rem;
+		    background: #fd5530 !important;
+		    color: #fff;
+		    font-size: .32rem;
+		    line-height: .9rem;
+		    max-width: 1080px;
+		    position: fixed;
+		    top: 0;
+		    left: 0;
+		    right: 0;
+		    z-index: 10;
+		    overflow: hidden;
+		}
+		.header a{
+			display: inline-block;
+			color: #fff;
+		}
+		.header .back{
+		    height: .9rem;
+		    line-height: .9rem;
+		    width: 17%;
+		    float: left;
+		}
+		.header .back i{
+		    width: 0.4rem;
+		    height: .9rem;
+		    display: inline-block;
+		    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+		    vertical-align: middle;
+		    background-size: .3rem;
+		}
+		.header .header_right{
+			float: right;
+			height: .9rem;
+			margin-right: .2rem;
+		}
+		.header .header_right i{
+		    width: 0.04rem;
+		    height: 0.5rem;
+		    display: inline-block;
+		    vertical-align: middle;
+		    background: #fff;
+		    margin: 0 .15rem;
+		}
+		.header .title{
+		    float: left;
+		    width: 70%;
+		    text-align: center;
+		    font-size: 0.38rem;
+		}
+		.header .share{
+		    height: .9rem;
+		    float: right;
+		    width: 12%;
+		    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+		    background-size: .5rem;
+		}
+		.title{
+			font-size: 15px;
+		    color: #000;
+		    padding-left: 15px;
+		    font-weight: inherit;
+		    line-height: 28px;
+		    border-bottom: 1px solid #e6e6e6;
+		    margin:0;
+		    padding: 8px 10px;
+		    padding-left: 30px;
+		    background: #fff url(__PUBLIC__/Home/img/xiaoxi.png) 10px  center no-repeat;
+		    background-size: 16px 16px;
+		    margin-bottom: 8px;
+		}
+		.title .arrowright{
+			display: inline-block;
+			width: 28px;
+			height: 28px;
+			background: url(__PUBLIC__/Home/img/right.png) right center no-repeat;
+			background-size: 20px 20px;
+			float: right;
+			vertical-align: middle;
+			margin-top: -1px;
+		}
+		.title span{
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			background: #fd2e1c;
+			line-height: 16px;
+			color: #fff;
+			text-align: center;
+			border-radius: 50%;
+			float: right;
+			margin-top: 5px;
+		}
+		.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{
+			height: 35px;
+			text-align: left;
+		}
+		/*轮播*/
+		.swiper-container img{
+			display: block;
+			width: 100%;
+		}
+		.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+		    bottom: 0px;
+		}
+		.swiper-pagination-bullet-active{
+			background: #ff7300;
+		}
+		.heading{
+			display: -webkit-box;
+		    display: -webkit-flex;
+		    display: -ms-flexbox;
+		    display: flex;
+		    -webkit-box-align: center;
+		    -webkit-align-items: center;
+		    -ms-flex-align: center;
+		    align-items: center;
+		}
+		.heading span{
+			overflow: hidden;
+		    color: #111;
+		    white-space: nowrap;
+		    text-overflow: ellipsis;
+		    -webkit-box-flex: 1;
+		    -webkit-flex: 1;
+		    -ms-flex: 1;
+		    flex: 1;
+		    padding-right: 10px;
+		}
+		.heading em{
+			font-style: normal;
+			color: #ff7300;
+		}
+
+		</style>
+	</head>
+	<body>
+	<include file="Public/share" title='包含文件'/>
+		<!-- 共同顶部 s-->
+			<div class="header fn-clear">
+				<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+			</div>
+		<!-- 共同顶部 e-->
+		<div class="mui-content" style="margin-top: .9rem;">
+			<!-- 图片轮播区 -->
+			<div class="swiper-container">
+			<div class="swiper-wrapper">
+			  <volist name="status" id="vo">
+				<div class="swiper-slide">
+				   <a id="up" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}" onclick="look(this)">
+ 				      <img src="__PUBLIC__/../{$vo['advertisement_img']}">
+					</a>
+				</div>
+			  </volist>
+ 			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+			<a href="__MODULE__/My/myAdvise"><h5 class="title">我提的意见<span class="arrowright" style="background-image:url(__PUBLIC__/Home/img/right.png)"></span> 
+			 <span id="num" style="display:none;"></span>
+		 
+			</h5></a>
+			<ul class="mui-table-view mui-grid-view">
+			<?php foreach ($res as $v ) {?>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="myGoods.html<?php echo '?yjshop_id=' . $v['yjshop_id']; ?>" class="a">
+		                <img class="mui-media-object" src="
+						<?php 
+						/*
+							echo "__PUBLIC__/Home/img/shuijiao.jpg";
+						*/
+						if (!empty($v['imgs_path'])) {
+							echo substr($v['imgs_path'], 1);
+						} else {
+							echo "__PUBLIC__/Home/img/shuijiao.jpg";
+						}
+						?>">
+						
+		                <div class="mui-media-body">
+		                	<div class="heading"><span><?php echo $v['yjshop_title'];?></span><em><?php echo '免费';//$v['yjshop_price']?></em></div>
+							<p style="margin-top: 5px;">库存：<?php echo $v['yjshop_number']?> <span style="float: right;">已兑<?php echo $v['yjshop_num2'];?></span></p>
+		                </div>
+	                </a>
+		        </li>
+			<?php }?>
+<!--
+		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="#">
+		                <img class="mui-media-object" src="__PUBLIC__/Home/img/shuijiao.jpg">
+		                <div class="mui-media-body">
+		                	双人伞 <span style="float: right;">免费</span>
+							<p style="margin-top: 5px;">库存：1000 <span style="float: right;">已领795</span></p>
+		                </div>
+	                </a>
+		        </li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="#">
+		                <img class="mui-media-object" src="__PUBLIC__/Home/img/shuijiao.jpg">
+		                <div class="mui-media-body">
+		                	<div class="heading"><span>双人伞哦哦哦哦哦哦哦哦哦</span><em>免费</em></div>
+							<p style="margin-top: 5px;">库存：1000 <span style="float: right;">已领795</span></p>
+		                </div>
+	                </a>
+		        </li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="#">
+		                <img class="mui-media-object" src="__PUBLIC__/Home/img/shuijiao.jpg">
+		                <div class="mui-media-body">
+		                	<div class="heading"><span>双人伞哦哦哦哦哦哦哦哦哦</span><em>免费</em></div>
+							<p style="margin-top: 5px;">库存：1000 <span style="float: right;">已领795</span></p>
+		                </div>
+	                </a>
+		        </li>
+-->
+		    </ul>
+
+
+
+		</div>
+		<div style="width:30%;margin:0 auto;color:#000;padding:5px;font-size:12px;color:#888;text-align: center;" id="bababa">已经到底了！</div>
+		<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+		<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+		<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+		<script>
+
+	function look(obj){
+	  // $("[id=up]").each(function(){ 
+		// $(this).click(function(){
+     		var id = $(obj).attr('str');
+     		var type = $(obj).attr('stb');
+     		var url = $(obj).attr('url');
+				// alert(id)
+		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+ 	     		if (type == 0) {
+	     			 location.href="http://"+url;
+	     		}else if(type == 1){
+	     			 location.href= 'tel:' + url;
+	      		}else{
+	      			location.href=url;
+	      		}
+			});
+    	// })
+    // })
+}
+		 function time(){
+		 	 $.post('{:U("Home/My/lookyj")}', {}, function(data) {
+		 	  
+		 	 	 if (data != 0) {
+		 	 	 	$('#num').show();
+		 	 	 	$("#num").text(data)
+		 	 	 }
+		 	 });
+		 }
+
+			 
+			 setTimeout(time(),1000);
+			 
+
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+			var mySwiper = new Swiper('.swiper-container',{
+			    pagination: '.swiper-pagination',
+			    loop:true,
+			    paginationClickable: true,
+			    autoplayDisableOnInteraction : false,
+			    autoHeight: true,
+			    autoplay: 3000
+			});
+
+			var imgw=$('.mui-media-object').width();
+			$('.mui-media-object').height(0.8*imgw)
+		</script>
+	</body>
+</html>

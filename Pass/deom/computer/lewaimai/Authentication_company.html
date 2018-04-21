@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">try {
+        ace.settings.check('breadcrumbs', 'fixed')
+      } catch(e) {}</script>
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-gear gear-icon"></i>
+        <a href="#">系统设置</a></li>
+      <li>
+        <a href="#">身份认证</a></li>
+      <li class="active">企业认证</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.ace-file-input a {display:none;} .aa{display:none;}</style>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li>
+                <a href="#">个人认证</a></li>
+              <li class="active">
+                <a href="#">企业认证</a></li>
+            </ul>
+            <div class="tab-content clearfix">
+              <form enctype="multipart/form-data" class="form-horizontal" id="shop-form" action="/validate/companyconfig" method="post">
+                <div id="basicinfo" class="tab-pane active"></div>
+                <div style="width:600px;border-right:2px solid #ffffff;padding:0px;float:left;margin:0px;overflow:hidden;">
+                  <div class="form-group" style="width:480px;margin-top:20px;">
+                    <div>
+                      <label class="col-sm-4" for="ValidateInfo_yingyezhizhao_num">营业执照注册号</label>
+                      <input name="ValidateInfo[yingyezhizhao_num]" id="ValidateInfo_yingyezhizhao_num" type="text" maxlength="255" value=""></div>
+                  </div>
+                  <div class="form-group" style="width:480px;margin-top:20px;">
+                    <div>
+                      <label class="col-sm-4" for="ValidateInfo_zuzhijigou_num">组织机构代码证号</label>
+                      <input name="ValidateInfo[zuzhijigou_num]" id="ValidateInfo_zuzhijigou_num" type="text" maxlength="255" value=""></div>
+                  </div>
+                  <div class="form-group" style="width:480px;margin-top:20px;">
+                    <div>
+                      <label class="col-sm-4" for="ValidateInfo_shuiwu_num">税务登记证号</label>
+                      <input name="ValidateInfo[shuiwu_num]" id="ValidateInfo_shuiwu_num" type="text" maxlength="255" value=""></div>
+                  </div>
+                  <div class="form-group" style="width:340px;padding-left:12px;margin-top:20px;">
+                    <label for="ValidateInfo_yingyezhizhao_pic">营业执照照片</label>
+                    <div>
+                      <input id="ytValidateInfo_yingyezhizhao_pic" type="hidden" value="" name="ValidateInfo[yingyezhizhao_pic]">
+                      <label class="ace-file-input">
+                        <input class="col-sm-4 id-input-file-2" size="50" onchange="preview_company_pic(this)" name="ValidateInfo[yingyezhizhao_pic]" id="ValidateInfo_yingyezhizhao_pic" type="file">
+                        <span class="ace-file-container" data-title="选择">
+                          <span class="ace-file-name" data-title="(建议尺寸：180像素 * 100像素)">
+                            <i class=" ace-icon fa fa-upload"></i>
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <img id="dis" style="width:180px;height:100px" title="营业执照" src="images/logo_1.png">
+                  <div class="form-group" style="width:340px;padding-left:12px;margin-top:20px;">
+                    <label for="ValidateInfo_zuzhijigou_pic">组织机构代码证照片</label>
+                    <div>
+                      <input id="ytValidateInfo_zuzhijigou_pic" type="hidden" value="" name="ValidateInfo[zuzhijigou_pic]">
+                      <label class="ace-file-input">
+                        <input class="col-sm-4 id-input-file-2" size="50" onchange="preview_zuzhijigou_pic(this)" name="ValidateInfo[zuzhijigou_pic]" id="ValidateInfo_zuzhijigou_pic" type="file">
+                        <span class="ace-file-container" data-title="选择">
+                          <span class="ace-file-name" data-title="(建议尺寸：180像素 * 100像素)">
+                            <i class=" ace-icon fa fa-upload"></i>
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <img id="dis1" style="width:180px;height:100px" title="组织机构代码证照片" src="images/logo_1.png">
+                  <div class="form-group" style="width:340px;padding-left:12px;margin-top:20px;">
+                    <label for="ValidateInfo_shuiwu_pic">税务登记证照片</label>
+                    <div>
+                      <input id="ytValidateInfo_shuiwu_pic" type="hidden" value="" name="ValidateInfo[shuiwu_pic]">
+                      <label class="ace-file-input">
+                        <input class="col-sm-4 id-input-file-2" size="50" onchange="preview_shuiwu_pic(this)" name="ValidateInfo[shuiwu_pic]" id="ValidateInfo_shuiwu_pic" type="file">
+                        <span class="ace-file-container" data-title="选择">
+                          <span class="ace-file-name" data-title="(建议尺寸：180像素 * 100像素)">
+                            <i class=" ace-icon fa fa-upload"></i>
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <img id="dis2" style="width:180px;height:100px" title="税务登记证照片" src="images/logo_1.png">
+                </div>
+              </form>
+              <div style="clear:both;"></div>
+              <div class="clearfix form-actions" style="">
+                <button class="btn btn-info btn-submit" style="margin-left:200px;">
+                  <i class="ace-icon fa fa-check bigger-110"></i>申请</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="height:100px;"></div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

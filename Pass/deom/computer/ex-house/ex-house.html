@@ -1,0 +1,2093 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <link href="css/base.css"rel="stylesheet">
+  <link href="css/ex-house.css"rel="stylesheet">
+  <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript">
+  var g_city_id = '3';
+  </script>
+  </head>
+<body >
+    <div class="navbar--container">
+      <div class="navbar--global">
+        <a class="navbar__brand"  href="second-hand.html">
+          <img class="logo" src="images/14727419025213.png" alt=""></a>
+        <ul class="ele__ul fn-clear">
+          <li class="">
+
+            <a href="second-hand.html" >首页</a></li>
+          <li>
+            <a href="#"  data-analytics-track-event='{"type":"m_nb002"}'>新房</a></li>
+          <li class="current_page">
+            <a class="ele__ul_li_a navbar__dropdown--title" id="esf-link" href="ex-house.html"  >二手房</a>
+<!--             <div class="navbar__dropdown--content">
+              <a class="current_page" href="#"  data-analytics-track-event='{"type":"m_nb007"}'>全部房源</a>
+              <a class="" href="#"  >地图找房</a>
+              <a class="" href="#"  >房价走势</a>
+              <a class="" href="#"  >全城小区</a>
+              <a class="" href="#"  >服务介绍</a></div> -->
+          </li>
+          <li class="">
+            <a href="#"  data-analytics-track-event='{"type":"m_nb004"}'>卖房</a></li>
+          <li>
+            <a id="esf-bbs-link" href="#"  data-analytics-track-event='{"type":"m_nb008"}'>社区</a></li>
+          <li>
+            <a data-analytics-track-event='{"type":"m_nb009"}'  href="#">多多速成班</a></li>
+          <li class="">
+            <!-- download/app=> foot/index/buy -->
+            <a href="#"  data-analytics-track-event='{"type":"m_nb006"}'>手机版</a></li>
+        </ul>
+        <div class="navbar__login--global pull-right">
+          <div class="navbar-login">
+            <div class="login-container">
+              <div class="hide" id="logout-panel">
+                <var>
+                  <a data-analytics-track-event='{"type":"m_lg001"}' href="#"></a>
+                </var>&nbsp;|&nbsp;
+                <span data-analytics-track-event='{"type":"m_lg002"}' id="btn-logout">退出</span></div>
+              <span data-analytics-track-event='{"type":"m_lg003"}' class="" id="btn-login">登录&nbsp;/&nbsp;注册</span></div>
+          </div>
+
+      </div>
+    </div>
+    <div class="filter__input--container">
+      <div class="filter-input fn-clear">
+        <form class="pull-left data-search-check">
+          <input type="text"  class="form-control no-border" name="query" value=""  placeholder="请输入小区名称">
+          <button  type="submit" class="btn" id="searchBtn">搜&nbsp;&nbsp;&nbsp;索</button>
+          <input type="hidden" name="city_id" value="3">
+          </form>
+      </div>
+    </div>
+    <div class="contain w1200">
+      <div class="bread-line fn-clear">
+        <a  href="#">房多多</a>
+        <a  href="#">&nbsp;&gt;&nbsp;苏州二手房</a></div>
+      <!-- 广告位下线 -->
+      <!-- 广告位下线 End -->
+      <div class="filter-checkbox">
+        <div class="hide">
+          <label>query</label>
+          <span>
+            <a nolimited class="" rel="nofollow" href="#"></a>
+          </span>
+        </div>
+        <div class="single-line new--verstion--tab">
+          <div class="tab-content">
+            <div class="tab-title">
+              <a href="#">
+                <span data-analytics-track-event='{"type":"m_fit001"}' class="active">区域筛选</span></a>
+           
+              <span class="pop-tips-map-container">
+                <a href="#" class="all_sale_map_entry_btn"  data-analytics-track-event='{"type":"m_mapEntry"}'>
+                  <i class="iconfont"></i>地图找房</a>
+              </span>
+            </div>
+            <div class="tab-body">
+              <span class="special__label">位置</span>
+              <!-- 区域模块 -->
+            <div class="tab-body-item show">
+              <div class="tab">
+                  <span class="oo bac">
+                    <a href="javascript:;">不限</a></span>
+                  <span  class="oo">
+                    <a href="javascript:;">园区</a></span>
+                  <span  class="oo">
+                    <a href="javascript:;">吴中</a></span>
+                  <span  class="oo">
+                    <a href="javascript:;">姑苏</a></span>
+                  <span class="oo">
+                    <a href="javascript:;">相城</a></span>
+                  <span class="oo">
+                    <a href="javascript:;">昆山</a></span>
+                  <span  class="oo">
+                    <a href="javascript:;">新区</a></span>
+                  <span  class="oo">
+                    <a href="javascript:;">吴江</a></span>
+              </div>
+              <div class="yu">
+                    <div class="item-child">
+                            <span class="bac">
+                              <a nolimited href="#">不限</a>
+                            </span>
+                            <span class=""><a href="#">师惠</a></span>
+                            <span class=""><a href="#">湖东</a></span>
+                            <span class=""><a href="#">双湖</a></span>
+                            <span class=""><a href="#">湖畔</a></span>
+                            <span class=""><a href="#">玲珑</a></span>
+                            <span class=""><a href="#">贵都</a></span>
+                            <span class=""><a href="#">娄葑</a></span>
+                            <span class=""><a href="#">东环</a></span>
+                            <span class=""><a href="#">新城</a></span>
+                            <span class=""><a href="#">独墅湖科教创新区</a></span>
+                            <span class=""><a href="#">景城邻里</a></span>
+                            <span class=""><a href="#">东沙湖邻里</a></span>
+                            <span class=""><a href="#">青剑湖</a></span>
+                            <span class=""><a href="#">胜浦</a></span>
+                            <span class=""><a href="#">唯亭</a></span>
+                            <span class=""><a href="#">斜塘</a></span>
+                            <span class=""><a href="#">跨塘</a></span>
+                    </div>
+                    <div class="item-child">
+                            <span class="bac">
+                            <a nolimited href="#">不限</a>
+                            </span>
+                            <span class=""><a href="#">城南街道</a></span>
+                            <span class=""><a href="#">长桥街道</a></span>
+                            <span class=""><a href="#">郭巷</a></span>
+                            <span class=""><a href="#">独墅湖</a></span>
+                            <span class=""><a href="#">苏苑街道</a></span>
+                            <span class=""><a href="#">木渎</a></span>
+                            <span class=""><a href="#">越溪</a></span>
+                            <span class=""><a href="#">光福</a></span>
+                            <span class=""><a href="#">横泾</a></span>
+                            <span class=""><a href="#">龙西街道</a></span>
+                            <span class=""><a href="#">香山街道</a></span>
+                            <span class=""><a href="#">临湖镇</a></span>
+                            <span class=""><a href="#">胥口</a></span>
+                            <span class=""><a href="#">东山</a></span>
+                            <span class=""><a href="#">西山</a></span>
+                            <span class=""><a href="#">甪直</a></span>
+                    </div>
+                    <div  class="item-child">
+                            <span class="bac">
+                            <a nolimited href="">不限</a>
+                            </span>
+                            <span class=""><a href="#">观前街道</a></span>
+                            <span class=""><a href="#">石路街道</a></span>
+                            <span class=""><a href="#">双塔街道</a></span>
+                            <span class=""><a href="#">城北街道</a></span>
+                            <span class=""><a href="#">彩香街道</a></span>
+                            <span class=""><a href="#">桃花坞街道</a></span>
+                            <span class=""><a href="#">平江路街道</a></span>
+                            <span class=""><a href="#">胥江街道</a></span>
+                            <span class=""><a href="#">友新街道</a></span>
+                            <span class=""><a href="#">葑门街道</a></span>
+                            <span class=""><a href="#">南门街道</a></span>
+                            <span class=""><a href="#">留园街道</a></span>
+                            <span class=""><a href="#">虎丘街道</a></span>
+                            <span class=""><a href="#">娄门街道</a></span>
+                            <span class=""><a href="#">苏锦街道</a></span>
+                            <span class=""><a href="#">白洋湾街道</a></span>
+                            <span class=""><a href="#">吴门桥街道</a></span>
+                    </div>
+                    <div  class="item-child">
+                            <span class="bac">
+                            <a nolimited href="#">不限</a>
+                            </span>
+                            <span class=""><a href="#">蠡口</a></span>
+                            <span class=""><a href="#">陆慕</a></span>
+                            <span class=""><a href="#">元和</a></span>
+                            <span class=""><a href="#">黄桥</a></span>
+                            <span class=""><a href="#">北桥</a></span>
+                            <span class=""><a href="#">经济开发区</a></span>
+                            <span class=""><a href="#">黄埭</a></span>
+                            <span class=""><a href="#">太平</a></span>
+                            <span class=""><a href="#">望亭</a></span>
+                            <span class=""><a href="#">渭塘</a></span>
+                            <span class=""><a href="#">阳澄湖镇</a></span>
+                    </div>
+                    <div  class="item-child">
+                            <span class="bac">
+                            <a  href="#">不限</a>
+                            </span>
+                            <span class=""><a href="#">昆山</a></span>
+                            <span class=""><a href="#">花桥</a></span>
+                            <span class=""><a href="#">玉山</a></span>
+                    </div>
+                    <div  class="item-child">
+                            <span class="bac">
+                            <a  href="#">不限</a>
+                            </span>
+                            <span class=""><a href="#">狮山</a></span>
+                            <span class=""><a href="#">枫桥</a></span>
+                            <span class=""><a href="#">浒墅关</a></span>
+                            <span class=""><a href="#">科技城</a></span>
+                            <span class=""><a href="#">横塘</a></span>
+                            <span class=""><a href="#">通安</a></span>
+                            <span class=""><a href="#">阳山</a></span>
+                            <span class=""><a href="#">镇湖</a></span>
+                            <span class=""><a href="#">东渚</a></span>
+                    </div>
+                            <div  class="item-child">
+                            <span class="bac">
+                            <a  href="#">不限</a>
+                            </span>
+                            <span class=""><a href="#">滨湖西城</a></span>
+                            <span class=""><a href="#">松陵</a></span>
+                    </div>
+              </div>
+          </div>  
+            </div>
+          </div>
+        </div>
+        <div data-analytics-track-event='{"type":"m_fit012"}' class="single-line tabb">
+          <label>预算</label>
+          <span data-analytics-track-event='{"type":"m_fit013","appendStr":"不限"}' class="bac">
+            <a nolimited rel="nofollow" href="#">不限</a></span>
+          <span data-analytics-track-event='{"type":"m_fit013","appendStr":"50以下"}' class="">
+            <a rel="nofollow" href="#">50万以下</a></span>
+          <span data-analytics-track-event='{"type":"m_fit013","appendStr":"50-100"}' class="">
+            <a rel="nofollow" href="#">50-100万</a></span>
+          <span data-analytics-track-event='{"type":"m_fit013","appendStr":"100-200"}' class="">
+            <a rel="nofollow" href="#">100-200万</a></span>
+          <span data-analytics-track-event='{"type":"m_fit013","appendStr":"200-300"}' class="">
+            <a rel="nofollow" href="#">200-300万</a></span>
+          <span data-analytics-track-event='{"type":"m_fit013","appendStr":"300-400"}' class="">
+            <a rel="nofollow" href="#">300-400万</a></span>
+          <span data-analytics-track-event='{"type":"m_fit013","appendStr":"400-500"}' class="">
+            <a rel="nofollow" href="#">400-500万</a></span>
+          <span data-analytics-track-event='{"type":"m_fit013","appendStr":"500-700"}' class="">
+            <a rel="nofollow" href="#">500-700万</a></span>
+        </div>
+        <div class="single-line tabb">
+          <label>户型</label>
+          <span data-analytics-track-event='{"type":"m_fit017","appendStr":"不限"}' class="bac">
+            <a nolimited rel="nofollow" href="javascript:;">不限</a></span>
+          <span data-analytics-track-event='{"type":"m_fit017","appendStr":"一室"}' class="">
+            <a rel="nofollow" href="#">一室</a></span>
+          <span data-analytics-track-event='{"type":"m_fit017","appendStr":"二室"}' class="">
+            <a rel="nofollow" href="#">二室</a></span>
+          <span data-analytics-track-event='{"type":"m_fit017","appendStr":"三室"}' class="">
+            <a rel="nofollow" href="#">三室</a></span>
+          <span data-analytics-track-event='{"type":"m_fit017","appendStr":"四室"}' class="">
+            <a rel="nofollow" href="#">四室</a></span>
+          <span data-analytics-track-event='{"type":"m_fit017","appendStr":"五室"}' class="">
+            <a rel="nofollow" href="#">五室</a></span>
+          <span data-analytics-track-event='{"type":"m_fit017","appendStr":"五室以上"}' class="">
+            <a rel="nofollow" href="#">五室以上</a></span>
+        </div>
+        <div data-analytics-track-event='{"type":"m_fit015_1"}' class="single-line tabb">
+          <label>面积</label>
+          <span class="bac">
+            <a rel="nofollow" nolimited href="#">不限</a></span>
+          <span data-analytics-track-event='{"type":"m_fit015_0","appendStr":"0-50"}' class="">
+            <a rel="nofollow" href="#">50平米以下</a></span>
+          <span data-analytics-track-event='{"type":"m_fit015_0","appendStr":"50-70"}' class="">
+            <a rel="nofollow" href="#">50-70平米</a></span>
+          <span data-analytics-track-event='{"type":"m_fit015_0","appendStr":"70-90"}' class="">
+            <a rel="nofollow" href="#">70-90平米</a></span>
+          <span data-analytics-track-event='{"type":"m_fit015_0","appendStr":"90-120"}' class="">
+            <a rel="nofollow" href="#">90-120平米</a></span>
+          <span data-analytics-track-event='{"type":"m_fit015_0","appendStr":"120-150"}' class="">
+            <a rel="nofollow" href="#">120-150平米</a></span>
+          <span data-analytics-track-event='{"type":"m_fit015_0","appendStr":"150-200"}' class="">
+            <a rel="nofollow" href="#">150-200平米</a></span>
+          <span data-analytics-track-event='{"type":"m_fit015_0","appendStr":"200-300"}' class="">
+            <a rel="nofollow" href="#">200-300平米</a></span>
+          <span data-analytics-track-event='{"type":"m_fit015_0","appendStr":"300-999999"}' class="">
+            <a rel="nofollow" href="#">300平米以上</a></span>
+        </div>
+        <!-- 房龄 -->
+        <div class="single-line tabb">
+          <label>房龄</label>
+          <span data-analytics-track-event='{"type": "m_fit021", "appendStr": "不限"}' class="bac">
+            <a rel="nofollow" nolimited href="#">不限</a></span>
+          <span data-analytics-track-event='{"type": "m_fit021", "appendStr": "1年"}' class="">
+            <a rel="nofollow" href="#">1年</a></span>
+          <span data-analytics-track-event='{"type": "m_fit021", "appendStr": "1-2年"}' class="">
+            <a rel="nofollow" href="#">1-2年</a></span>
+          <span data-analytics-track-event='{"type": "m_fit021", "appendStr": "2-5年"}' class="">
+            <a rel="nofollow" href="#">2-5年</a></span>
+          <span data-analytics-track-event='{"type": "m_fit021", "appendStr": "5-10年"}' class="">
+            <a rel="nofollow" href="#">5-10年</a></span>
+          <span data-analytics-track-event='{"type": "m_fit021", "appendStr": "10-20年"}' class="">
+            <a rel="nofollow" href="#">10-20年</a></span>
+          <span data-analytics-track-event='{"type": "m_fit021", "appendStr": "20-30年"}' class="">
+            <a rel="nofollow" href="#">20-30年</a></span>
+          <span data-analytics-track-event='{"type": "m_fit021", "appendStr": "大于30年"}' class="">
+            <a rel="nofollow" href="#">大于30年</a></span>
+        </div>
+        <!-- // 不限 上门实勘 满两年 满五唯一 无贷款 电梯房 地铁房 学区房 南北通透 产证已验 -->
+        <div class="special__tag tabb">
+          <div data-analytics-track-event='{"type":"m_fit018"}' class="single-line">
+            <label>特色</label>
+            <span data-analytics-track-event='{"type":"m_fit019","appendStr":"不限"}' class="bac">
+              <a nolimited rel="nofollow" href="#">不限</a></span>
+            <span data-analytics-track-event='{"type":"m_fit019","appendStr":"上门实勘"}' class=" ">
+              <a rel="nofollow" href="#">上门实勘</a></span>
+            <span data-analytics-track-event='{"type":"m_fit019","appendStr":"满两年"}' class=" ">
+              <a rel="nofollow" href="#">满两年</a></span>
+            <span data-analytics-track-event='{"type":"m_fit019","appendStr":"满五唯一"}' class="">
+              <a rel="nofollow" href="#">满五唯一</a></span>
+            <span data-analytics-track-event='{"type":"m_fit019","appendStr":"无贷款"}' class="">
+              <a rel="nofollow" href="#">无贷款</a></span>
+            <span data-analytics-track-event='{"type":"m_fit019","appendStr":"电梯房"}' class="">
+              <a rel="nofollow" href="#">电梯房</a></span>
+            <span data-analytics-track-event='{"type":"m_fit019","appendStr":"地铁房"}' class="">
+              <a rel="nofollow" href="#">靠近地铁</a></span>
+            <span data-analytics-track-event='{"type":"m_fit019","appendStr":"学区房"}' class="">
+              <a rel="nofollow" href="#">靠近学校</a></span>
+            <span data-analytics-track-event='{"type":"m_fit019","appendStr":"南北通透"}' class="">
+              <a rel="nofollow" href="#">南北通透</a></span>
+            <span data-analytics-track-event='{"type":"m_fit019","appendStr":"产证已验"}' class="">
+              <a rel="nofollow" href="#">产证已验</a></span>
+          <div id="multi-panel" class="single-line multi__choose__panel hide">
+            <a class="hide" href="#" id="current_url"></a>
+            <span class="ml0">
+              <a nolimited rel="nofollow" href="#">不限</a></span>
+            <span data-tag class="">
+              <a rel="nofollow" href="#">上门实勘</a></span>
+            <span data-tag class="">
+              <a rel="nofollow" href="#">满两年</a></span>
+            <span data-tag class="">
+              <a rel="nofollow" href="#">满五唯一</a></span>
+            <span data-tag class="">
+              <a rel="nofollow" href="#">无贷款</a></span>
+            <span data-tag class="">
+              <a rel="nofollow" href="#">电梯房</a></span>
+            <span data-tag class="">
+              <a rel="nofollow" href="#">靠近地铁</a></span>
+            <span data-tag class="">
+              <a rel="nofollow" href="#">靠近学校</a></span>
+            <span data-tag class="">
+              <a rel="nofollow" href="#">南北通透</a></span>
+            <span data-tag class="">
+              <a rel="nofollow" href="#">产证已验</a></span>
+            <!-- <span data-tag class=""><a rel="nofollow" href="#" >最近新上</a></span> -->
+            <a id="multi-choose-confirm" href="#" class="button">确认</a>
+            <span id="multi-choose-cancel" class="button">取消</span></div>
+        </div>
+      </div>
+      <div class="main fn-clear">
+        <div class="house-info pull-left">
+          <!-- 新房楼盘 -->
+          <!-- 二手房小区 -->
+          <!-- order-by -->
+          <div id="order-by-panel" class="list-title">
+            <div class="w1200 fn-clear">
+              <h4 class="title pull-left">共有
+                <span class="orange">12376</span>套房源(100%真房源，
+                <span class="orange-font">直约业主</span>轻松看房)</h4>
+              <div class="pull-right" id="orderby_panel">
+                <span data-analytics-track-event='{"type":"lp004_01"}' class="item active">
+                  <a href="#">智能排序</a></span>
+                <span data-analytics-track-event='{"type":"m_sort001"}' class="item">
+                  <a rel="nofollow" class="" href="#">单价&nbsp;
+                    <span class="desc"></span></a>
+                </span>
+                <span data-analytics-track-event='{"type":"m_sort004"}' data-analytics-track-event='{"type":"lp004"}' class="item">
+                  <a rel="nofollow" class="" href="#">总价&nbsp;
+                    <span class="desc"></span></a>
+                </span>
+                <span data-analytics-track-event='{"type":"m_sort002"}' class="item">
+                  <a rel="nofollow" class="" href="#">面积&nbsp;
+                    <span class="desc"></span></a>
+                </span>
+                <span data-analytics-track-event='{"type":"m_sort003"}' class="abb_pagination ">
+                  <a class="abb_prev" href="#" data-pagination-page="1" rel="prev"><i class='iconfont'></i></a>
+                <p>1 / 20</p>
+                  <a class="abb_next" href="#" data-pagination-page="2" rel="next">
+                    <i class='iconfont'></i></a>
+                </span>
+              </div>
+              <a data-analytics-track-event='{"type": "m_mapEntryFixed"}'  href="#" class="fixed-map-top-bar">
+                <i class="iconfont"></i>去地图查看</a></div>
+          </div>
+          <div id='placeH42' class="placeholder h42 hide"></div>
+          <!-- 区域/地铁列表页 -->
+          <div data-house-id="1038517" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/Fi3iNdvMKj7SsPj1UaUAG8aRvG_a.jpg" alt="双悦大厦"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">双悦大厦</span>
+                    <span class="type">2室1厅1卫</span>
+                    <span class="area">47.3平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >姑苏&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >城北街道</a></span>
+                  <span title="平江区石曲街">&nbsp;&nbsp; 平江区石曲街</span>
+                  <span title="10/10">&nbsp; &nbsp;10/10</span>
+                  <span title="16人预约看房">&nbsp;&nbsp;&nbsp;16人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="twoYear">满两年</span>
+                  <span class="elevator">电梯房</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <!-- 右： 学校名称 --></div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i  class="unfollow iconfont"></i>
+                  <i  class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">62</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>13107元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1038517" data-house-name="双悦大厦">降价通知我</a></div>
+          </div>
+          <div data-house-id="1458964" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/FhY7c4IiJ669iFWz_YEMJE_rbJg5.jpg" alt="中翔商贸城"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">中翔商贸城</span>
+                    <span class="type">2室1厅1卫</span>
+                    <span class="area">101.84平米</span></a>
+                  <div class="img-tag">
+                    <span class="new">新</span></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >相城&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >陆慕</a></span>
+                  <span title="相城相城大道728号">&nbsp;&nbsp; 相城相城大道728号</span>
+                  <span title="11/11">&nbsp; &nbsp;11/11</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="houseChecked">产证已验</span>
+                  <span class="metro">靠近地铁</span>
+                  <span class="elevator">电梯房</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <div class="info traffic fn-clear">
+                    <div class="pull-left icon">
+                      <i class="iconfont"></i></div>
+                    <p class="info-content pull-left">
+                      <a title="2号线阳澄湖中路" stop-propagation data-analytics-track-event='{"type":"lp011","appendStr":"2号线阳澄湖中路"}'  href="#">
+                        <span class="stationNo">
+                          <i class="hide icon-metro city-3-2"></i>
+                          <span class="">2号线</span></span>
+                        <span class="">阳澄湖中路</span>
+                        <span>(距离约1230米)</span></a>
+                    </p>
+                  </div>
+                  <!-- 右： 学校名称 --></div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "2"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "2"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">114</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>11194元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1458964" data-house-name="中翔商贸城">降价通知我</a></div>
+          </div>
+          <div data-house-id="1321770" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/FuxgX2q8vmXMfHlAukj1A4_z7maK.jpg" alt="东湖大郡三期"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">东湖大郡三期</span>
+                    <span class="type">2室2厅1卫</span>
+                    <span class="area">90平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >园区&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >湖东</a></span>
+                  <span title="园区会心街（天宝街附近）">&nbsp;&nbsp; 园区会心街（天宝街附近）</span>
+                  <span title="7/15">&nbsp; &nbsp;7/15</span>
+                  <span title="17人预约看房">&nbsp;&nbsp;&nbsp;17人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="fiveOnly">满五唯一</span>
+                  <span class="metro">靠近地铁</span>
+                  <span class="schoolHouse">靠近学校</span>
+                  <span class="elevator">电梯房</span>
+                  <span class="noDebt">无贷款</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <div class="info traffic fn-clear">
+                    <div class="pull-left icon">
+                      <i class="iconfont"></i></div>
+                    <p class="info-content pull-left">
+                      <a title="1号线南施街" stop-propagation data-analytics-track-event='{"type":"lp011","appendStr":"1号线南施街"}'  href="#">
+                        <span class="stationNo">
+                          <i class="hide icon-metro city-3-1"></i>
+                          <span class="">1号线</span></span>
+                        <span class="">南施街</span>
+                        <span>(距离约1099米)</span></a>
+                    </p>
+                  </div>
+                  <!-- 右： 学校名称 -->
+                  <div class="info fn-clear">
+                    <div class="pull-left">
+                      <i  class="iconfont-ed"></i></div>
+                    <p class="info-content pull-left">
+                      <a stop-propagation data-analytics-track-event='{"type":"lp012","appendStr":"苏州市工业园区第二实验小学"}'  href="#">苏州市工业园区第二实验小学</a></p>
+                  </div>
+                </div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "3"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "3"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">246</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>27333元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1321770" data-house-name="东湖大郡三期">降价通知我</a></div>
+          </div>
+          <div data-house-id="1412048" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/Fouv5pU5CfvPQYmNIn1Yd-fQt72Q.jpg" alt="雅戈尔太阳城"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">雅戈尔太阳城</span>
+                    <span class="type">3室2厅1卫</span>
+                    <span class="area">108.53平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >园区&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >东沙湖邻里</a></span>
+                  <span title="园区沈浒路与榭雨街交汇处（沙湖生态园附近）">&nbsp;&nbsp; 园区沈浒路与榭雨街交汇处（沙湖生态园附近）</span>
+                  <span title="16/30">&nbsp; &nbsp;16/30</span>
+                  <span title="4人预约看房">&nbsp;&nbsp;&nbsp;4人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="houseChecked">产证已验</span>
+                  <span class="metro">靠近地铁</span>
+                  <span class="elevator">电梯房</span>
+                  <span class="northSouth">南北通透</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <div class="info traffic fn-clear">
+                    <div class="pull-left icon">
+                      <i class="iconfont"></i></div>
+                    <p class="info-content pull-left">
+                      <a title="1号线钟南街" stop-propagation data-analytics-track-event='{"type":"lp011","appendStr":"1号线钟南街"}'  href="#">
+                        <span class="stationNo">
+                          <i class="hide icon-metro city-3-1"></i>
+                          <span class="">1号线</span></span>
+                        <span class="">钟南街</span>
+                        <span>(距离约1076米)</span></a>
+                    </p>
+                  </div>
+                  <!-- 右： 学校名称 --></div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "4"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "4"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">270</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>24877元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1412048" data-house-name="雅戈尔太阳城">降价通知我</a></div>
+          </div>
+          <div data-house-id="1061729" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/FoOLD9hq3hijItR2Vy4uHNiPJefW.jpg" alt="东方维罗纳"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">东方维罗纳</span>
+                    <span class="type">3室2厅1卫</span>
+                    <span class="area">107平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >园区&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >青剑湖</a></span>
+                  <span title="园区阳澄湖大道与星华街交汇处（中新科技城旁）">&nbsp;&nbsp; 园区阳澄湖大道与星华街交汇处（中新科技城旁）</span>
+                  <span title="3/27">&nbsp; &nbsp;3/27</span>
+                  <span title="20人预约看房">&nbsp;&nbsp;&nbsp;20人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="twoYear">满两年</span>
+                  <span class="elevator">电梯房</span>
+                  <span class="noDebt">无贷款</span>
+                  <span class="northSouth">南北通透</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <!-- 右： 学校名称 --></div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "5"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "5"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">220</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>20560元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1061729" data-house-name="东方维罗纳">降价通知我</a></div>
+          </div>
+          <div data-house-id="1087554" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/FoKAlXaMG5CJm7wHown_lWyOWrgb.jpg" alt="东湖大郡一期"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">东湖大郡一期</span>
+                    <span class="type">3室2厅2卫</span>
+                    <span class="area">142.25平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >园区&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >湖东</a></span>
+                  <span title="园区金鸡湖东（南施街与方洲路交汇处）">&nbsp;&nbsp; 园区金鸡湖东（南施街与方洲路交汇处）</span>
+                  <span title="2/11">&nbsp; &nbsp;2/11</span>
+                  <span title="19人预约看房">&nbsp;&nbsp;&nbsp;19人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="fiveYear">满五年</span>
+                  <span class="schoolHouse">靠近学校</span>
+                  <span class="elevator">电梯房</span>
+                  <span class="noDebt">无贷款</span>
+                  <span class="northSouth">南北通透</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <!-- 右： 学校名称 -->
+                  <div class="info fn-clear">
+                    <div class="pull-left">
+                      <i style="font-size: 20px;" class="iconfont-ed"></i></div>
+                    <p class="info-content pull-left">
+                      <a stop-propagation data-analytics-track-event='{"type":"lp012","appendStr":"苏州市工业园区第二实验小学"}'  href="#">苏州市工业园区第二实验小学</a></p>
+                  </div>
+                </div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "6"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "6"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">385</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>27065元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1087554" data-house-name="东湖大郡一期">降价通知我</a></div>
+          </div>
+          <div data-house-id="1125989" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/Fl-jA4bIue4ISFLhBheVuA7XVfW_.jpg" alt="新港名墅花园"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">新港名墅花园</span>
+                    <span class="type">3室2厅2卫</span>
+                    <span class="area">134.96平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >新区&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >浒墅关</a></span>
+                  <span title="新区鸿福路201号（文昌路与大同路交界处）">&nbsp;&nbsp; 新区鸿福路201号（文昌路与大同路交界处）</span>
+                  <span title="5/5">&nbsp; &nbsp;5/5</span>
+                  <span title="13人预约看房">&nbsp;&nbsp;&nbsp;13人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="fiveYear">满五年</span>
+                  <span class="noDebt">无贷款</span>
+                  <span class="northSouth">南北通透</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <!-- 右： 学校名称 --></div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "7"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "7"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">210</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>15560元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1125989" data-house-name="新港名墅花园">降价通知我</a></div>
+          </div>
+          <div data-house-id="1458861" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/FjD4hnbS8_cifzM5BAZu7L7XaLz0.jpg" alt="湖岸名家"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">湖岸名家</span>
+                    <span class="type">4室2厅2卫</span>
+                    <span class="area">75.09平米</span></a>
+                  <div class="img-tag">
+                    <span class="new">新</span></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >吴中&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >独墅湖</a></span>
+                  <span title="吴中通达路1555号(机场路与独墅湖路交汇处)">&nbsp;&nbsp; 吴中通达路1555号(机场路与独墅湖路交汇处)</span>
+                  <span title="6/6">&nbsp; &nbsp;6/6</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="houseChecked">产证已验</span>
+                  <span class="fiveOnly">满五唯一</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <!-- 右： 学校名称 --></div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "8"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "8"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">195</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>25968元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1458861" data-house-name="湖岸名家">降价通知我</a></div>
+          </div>
+          <div data-house-id="928694" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/FiFIdLAINdBEvJ0ynh4eQpbgltyY.jpg" alt="徐家浜二村"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">徐家浜二村</span>
+                    <span class="type">3室1厅2卫</span>
+                    <span class="area">106平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >园区&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >东环</a></span>
+                  <span title="园区东环路">&nbsp;&nbsp; 园区东环路</span>
+                  <span title="6/6">&nbsp; &nbsp;6/6</span>
+                  <span title="63人预约看房">&nbsp;&nbsp;&nbsp;63人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="twoYear">满两年</span>
+                  <span class="metro">靠近地铁</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <div class="info traffic fn-clear">
+                    <div class="pull-left icon">
+                      <i class="iconfont"></i></div>
+                    <p class="info-content pull-left">
+                      <a title="1号线东环路" stop-propagation data-analytics-track-event='{"type":"lp011","appendStr":"1号线东环路"}'  href="#">
+                        <span class="stationNo">
+                          <i class="hide icon-metro city-3-1"></i>
+                          <span class="">1号线</span></span>
+                        <span class="">东环路</span>
+                        <span>(距离约687米)</span></a>
+                    </p>
+                  </div>
+                  <!-- 右： 学校名称 --></div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "9"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "9"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">160</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>15094元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="928694" data-house-name="徐家浜二村">降价通知我</a></div>
+          </div>
+          <div data-house-id="1284636" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/Fi-fchH9IMqw7r8utmrwKjTuIqk7.jpg" alt="翡翠国际"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">翡翠国际</span>
+                    <span class="type">2室2厅1卫</span>
+                    <span class="area">86.17平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >园区&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >景城邻里</a></span>
+                  <span title="园区现代大道（紧邻白塘植物园）">&nbsp;&nbsp; 园区现代大道（紧邻白塘植物园）</span>
+                  <span title="9/16">&nbsp; &nbsp;9/16</span>
+                  <span title="15人预约看房">&nbsp;&nbsp;&nbsp;15人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="houseChecked">产证已验</span>
+                  <span class="fiveYear">满五年</span>
+                  <span class="metro">靠近地铁</span>
+                  <span class="schoolHouse">靠近学校</span>
+                  <span class="elevator">电梯房</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <div class="info traffic fn-clear">
+                    <div class="pull-left icon">
+                      <i class="iconfont"></i></div>
+                    <p class="info-content pull-left">
+                      <a title="1号线南施街" stop-propagation data-analytics-track-event='{"type":"lp011","appendStr":"1号线南施街"}'  href="#">
+                        <span class="stationNo">
+                          <i class="hide icon-metro city-3-1"></i>
+                          <span class="">1号线</span></span>
+                        <span class="">南施街</span>
+                        <span>(距离约453米)</span></a>
+                    </p>
+                  </div>
+                  <!-- 右： 学校名称 -->
+                  <div class="info fn-clear">
+                    <div class="pull-left">
+                      <i style="font-size: 20px;" class="iconfont-ed"></i></div>
+                    <p class="info-content pull-left">
+                      <a stop-propagation data-analytics-track-event='{"type":"lp012","appendStr":"苏州工业园区景城学校小学部"}'  href="#">苏州工业园区景城学校小学部</a></p>
+                  </div>
+                </div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "10"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "10"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">280</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>32493元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1284636" data-house-name="翡翠国际">降价通知我</a></div>
+          </div>
+          <div data-house-id="1347458" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/Fi3iNdvMKj7SsPj1UaUAG8aRvG_a.jpg" alt="湖左岸"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">湖左岸</span>
+                    <span class="type">3室2厅2卫</span>
+                    <span class="area">144.93平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >园区&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >师惠</a></span>
+                  <span title="园区园区星汉街108号">&nbsp;&nbsp; 园区园区星汉街108号</span>
+                  <span title="2/31">&nbsp; &nbsp;2/31</span>
+                  <span title="23人预约看房">&nbsp;&nbsp;&nbsp;23人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="houseChecked">产证已验</span>
+                  <span class="fiveOnly">满五唯一</span>
+                  <span class="metro">靠近地铁</span>
+                  <span class="schoolHouse">靠近学校</span>
+                  <span class="elevator">电梯房</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <div class="info traffic fn-clear">
+                    <div class="pull-left icon">
+                      <i class="iconfont"></i></div>
+                    <p class="info-content pull-left">
+                      <a title="1号线东方之门" stop-propagation data-analytics-track-event='{"type":"lp011","appendStr":"1号线东方之门"}'  href="#">
+                        <span class="stationNo">
+                          <i class="hide icon-metro city-3-1"></i>
+                          <span class="">1号线</span></span>
+                        <span class="">东方之门</span>
+                        <span>(距离约499米)</span></a>
+                    </p>
+                  </div>
+                  <!-- 右： 学校名称 -->
+                  <div class="info fn-clear">
+                    <div class="pull-left">
+                      <i style="font-size: 20px;" class="iconfont-ed"></i></div>
+                    <p class="info-content pull-left">
+                      <a stop-propagation data-analytics-track-event='{"type":"lp012","appendStr":"苏州市星海小学"}'  href="#">苏州市星海小学</a></p>
+                  </div>
+                </div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "11"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "11"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">460</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>31739元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1347458" data-house-name="湖左岸">降价通知我</a></div>
+          </div>
+          <div data-house-id="1382446" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/FhY7c4IiJ669iFWz_YEMJE_rbJg5.jpg" alt="南城丽景"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">南城丽景</span>
+                    <span class="type">3室2厅2卫</span>
+                    <span class="area">134.09平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >吴中&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >城南街道</a></span>
+                  <span title="吴中天灵路与枫津路交界处">&nbsp;&nbsp; 吴中天灵路与枫津路交界处</span>
+                  <span title="6/11">&nbsp; &nbsp;6/11</span>
+                  <span title="6人预约看房">&nbsp;&nbsp;&nbsp;6人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="houseChecked">产证已验</span>
+                  <span class="fiveYear">满五年</span>
+                  <span class="metro">靠近地铁</span>
+                  <span class="elevator">电梯房</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <div class="info traffic fn-clear">
+                    <div class="pull-left icon">
+                      <i class="iconfont"></i></div>
+                    <p class="info-content pull-left">
+                      <a title="2号线宝带桥南" stop-propagation data-analytics-track-event='{"type":"lp011","appendStr":"2号线宝带桥南"}'  href="#">
+                        <span class="stationNo">
+                          <i class="hide icon-metro city-3-2"></i>
+                          <span class="">2号线</span></span>
+                        <span class="">宝带桥南</span>
+                        <span>(距离约1185米)</span></a>
+                    </p>
+                  </div>
+                  <!-- 右： 学校名称 --></div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "12"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "12"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">225</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>16779元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1382446" data-house-name="南城丽景">降价通知我</a></div>
+          </div>
+          <div data-house-id="1401531" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/FuxgX2q8vmXMfHlAukj1A4_z7maK.jpg" alt="优山美地"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">优山美地</span>
+                    <span class="type">2室1厅1卫</span>
+                    <span class="area">62.01平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >园区&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >娄葑</a></span>
+                  <span title="园区通园路与独墅湖大道交汇处（娄葑镇政府南边）">&nbsp;&nbsp; 园区通园路与独墅湖大道交汇处（娄葑镇政府南边）</span>
+                  <span title="8/15">&nbsp; &nbsp;8/15</span>
+                  <span title="11人预约看房">&nbsp;&nbsp;&nbsp;11人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="houseChecked">产证已验</span>
+                  <span class="twoYear">满两年</span>
+                  <span class="elevator">电梯房</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <!-- 右： 学校名称 --></div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "13"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "13"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">135</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>21770元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1401531" data-house-name="优山美地">降价通知我</a></div>
+          </div>
+          <div data-house-id="1455037" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/Fouv5pU5CfvPQYmNIn1Yd-fQt72Q.jpg" alt="新馨花园"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">新馨花园</span>
+                    <span class="type">3室2厅2卫</span>
+                    <span class="area">118.21平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >园区&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >师惠</a></span>
+                  <span title="园区中新路5号（园区职业技术学院附近）">&nbsp;&nbsp; 园区中新路5号（园区职业技术学院附近）</span>
+                  <span title="4/5">&nbsp; &nbsp;4/5</span>
+                  <span title="2人预约看房">&nbsp;&nbsp;&nbsp;2人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="houseChecked">产证已验</span>
+                  <span class="fiveOnly">满五唯一</span>
+                  <span class="metro">靠近地铁</span>
+                  <span class="schoolHouse">靠近学校</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <div class="info traffic fn-clear">
+                    <div class="pull-left icon">
+                      <i class="iconfont"></i></div>
+                    <p class="info-content pull-left">
+                      <a title="1号线中央公园" stop-propagation data-analytics-track-event='{"type":"lp011","appendStr":"1号线中央公园"}'  href="#">
+                        <span class="stationNo">
+                          <i class="hide icon-metro city-3-1"></i>
+                          <span class="">1号线</span></span>
+                        <span class="">中央公园</span>
+                        <span>(距离约158米)</span></a>
+                    </p>
+                  </div>
+                  <!-- 右： 学校名称 -->
+                  <div class="info fn-clear">
+                    <div class="pull-left">
+                      <i style="font-size: 20px;" class="iconfont-ed"></i></div>
+                    <p class="info-content pull-left">
+                      <a stop-propagation data-analytics-track-event='{"type":"lp012","appendStr":"苏州市星海小学"}'  href="#">苏州市星海小学</a></p>
+                  </div>
+                </div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "14"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "14"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">465</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>39336元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1455037" data-house-name="新馨花园">降价通知我</a></div>
+          </div>
+          <div data-house-id="1304665" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/FoOLD9hq3hijItR2Vy4uHNiPJefW.jpg" alt="恒基水漾花城"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">恒基水漾花城</span>
+                    <span class="type">2室2厅1卫</span>
+                    <span class="area">80.14平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >相城&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >元和</a></span>
+                  <span title="相城区春申湖西路与御窑路交汇处西南角（四期位于相城实验中学西南面） ">&nbsp;&nbsp; 相城区春申湖西路与御窑路交汇处西南角（四期位于相城实验中学西南面）</span>
+                  <span title="6/11">&nbsp; &nbsp;6/11</span>
+                  <span title="7人预约看房">&nbsp;&nbsp;&nbsp;7人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="twoYear">满两年</span>
+                  <span class="elevator">电梯房</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <!-- 右： 学校名称 --></div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "15"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "15"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">175</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>21836元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1304665" data-house-name="恒基水漾花城">降价通知我</a></div>
+          </div>
+          <div data-house-id="1457951" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/FoKAlXaMG5CJm7wHown_lWyOWrgb.jpg" alt="淞泽家园八区"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">淞泽家园八区</span>
+                    <span class="type">3室2厅1卫</span>
+                    <span class="area">117平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >园区&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >独墅湖科教创新区</a></span>
+                  <span title="车坊普惠路">&nbsp;&nbsp; 车坊普惠路</span>
+                  <span title="15/19">&nbsp; &nbsp;15/19</span>
+                  <span title="1人预约看房">&nbsp;&nbsp;&nbsp;1人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="elevator">电梯房</span>
+                  <span class="noDebt">无贷款</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <!-- 右： 学校名称 --></div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "16"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "16"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">180</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>15384元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1457951" data-house-name="淞泽家园八区">降价通知我</a></div>
+          </div>
+          <div data-house-id="1403355" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/Fl-jA4bIue4ISFLhBheVuA7XVfW_.jpg" alt="三元三村"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">三元三村</span>
+                    <span class="type">2室1厅1卫</span>
+                    <span class="area">59.14平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >姑苏&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >彩香街道</a></span>
+                  <span title="姑苏西环路（金门路与西环路交叉口）">&nbsp;&nbsp; 姑苏西环路（金门路与西环路交叉口）</span>
+                  <span title="5/7">&nbsp; &nbsp;5/7</span>
+                  <span title="6人预约看房">&nbsp;&nbsp;&nbsp;6人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="twoYear">满两年</span>
+                  <span class="metro">靠近地铁</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <div class="info traffic fn-clear">
+                    <div class="pull-left icon">
+                      <i class="iconfont"></i></div>
+                    <p class="info-content pull-left">
+                      <a title="1号线西环路" stop-propagation data-analytics-track-event='{"type":"lp011","appendStr":"1号线西环路"}'  href="#">
+                        <span class="stationNo">
+                          <i class="hide icon-metro city-3-1"></i>
+                          <span class="">1号线</span></span>
+                        <span class="">西环路</span>
+                        <span>(距离约332米)</span></a>
+                    </p>
+                  </div>
+                  <!-- 右： 学校名称 --></div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "17"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "17"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">96</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>16232元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1403355" data-house-name="三元三村">降价通知我</a></div>
+          </div>
+          <div data-house-id="1102729" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="#" >
+                  <img src="images/FjD4hnbS8_cifzM5BAZu7L7XaLz0.jpg" alt="东湖林语"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">东湖林语</span>
+                    <span class="type">3室2厅2卫</span>
+                    <span class="area">140.07平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >园区&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >湖东</a></span>
+                  <span title="园区湖东津梁街128号（园区三中东南角）">&nbsp;&nbsp; 园区湖东津梁街128号（园区三中东南角）</span>
+                  <span title="24/27">&nbsp; &nbsp;24/27</span>
+                  <span title="15人预约看房">&nbsp;&nbsp;&nbsp;15人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="fiveYear">满五年</span>
+                  <span class="elevator">电梯房</span>
+                  <span class="noDebt">无贷款</span>
+                  <span class="northSouth">南北通透</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <!-- 右： 学校名称 --></div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "18"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "18"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">405</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>28914元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1102729" data-house-name="东湖林语">降价通知我</a></div>
+          </div>
+          <div data-house-id="1260788" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="images/FiFIdLAINdBEvJ0ynh4eQpbgltyY.jpg" >
+                  <img src="images/Fi3iNdvMKj7SsPj1UaUAG8aRvG_a.jpg" alt="天地源橄榄湾"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">天地源橄榄湾</span>
+                    <span class="type">3室2厅2卫</span>
+                    <span class="area">128.64平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >园区&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >斜塘</a></span>
+                  <span title="园区星湖街（星湖街与淞江路交汇处）">&nbsp;&nbsp; 园区星湖街（星湖街与淞江路交汇处）</span>
+                  <span title="1/16">&nbsp; &nbsp;1/16</span>
+                  <span title="32人预约看房">&nbsp;&nbsp;&nbsp;32人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="houseChecked">产证已验</span>
+                  <span class="elevator">电梯房</span>
+                  <span class="northSouth">南北通透</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <!-- 右： 学校名称 --></div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "19"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "19"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">300</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>23320元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1260788" data-house-name="天地源橄榄湾">降价通知我</a></div>
+          </div>
+          <div data-house-id="1448846" class="list-item fn-clear" data-analytics-track-event='{"type":"m_select", "appendStr": "1"}'>
+            <div class="bg_color fn-clear">
+              <div class="left__tag">
+                <span class="orange left__top">业主急售</span></div>
+              <div class="pull-left house_title">
+                <a href="images/Fi-fchH9IMqw7r8utmrwKjTuIqk7.jpg" >
+                  <img src="images/FhY7c4IiJ669iFWz_YEMJE_rbJg5.jpg" alt="新创大河山"></a>
+              </div>
+              <div go-to-detail class="content pull-left">
+                <div class="name-title fn-clear">
+                  <a  href="#" prevent-default>
+                    <span class="name">新创大河山</span>
+                    <span class="type">4室2厅3卫</span>
+                    <span class="area">224.25平米</span></a>
+                  <div class="img-tag"></div>
+                </div>
+                <div class="detail">
+                  <span>
+                    <a stop-propagation href="#" >新区&nbsp;</a></span>
+                  <span>
+                    <a stop-propagation href="#" >枫桥</a></span>
+                  <span title="新区何山路398号（湘江路与何山路交叉口）">&nbsp;&nbsp; 新区何山路398号（湘江路与何山路交叉口）</span>
+                  <span title="1/5">&nbsp; &nbsp;1/5</span>
+                  <span title="4人预约看房">&nbsp;&nbsp;&nbsp;4人预约看房</span></div>
+                <div class="tag-group">
+                  <!-- 满五唯一>满两年>地铁房>学区房>电梯房>无贷款>南北通透 -->
+                  <!-- 限制最大标签数为 maxTag -->
+                  <span class="fiveYear">满五年</span>
+                  <span class="noDebt">无贷款</span>
+                  <span class="northSouth">南北通透</span></div>
+                <div class="bottom-info fn-clear">
+                  <!-- 左： 业主说 -->
+                  <!-- 业主说下线 -->
+                  <!-- 业主说下线 -->
+                  <!-- 中： 地铁信息 -->
+                  <!-- 右： 学校名称 --></div>
+                <a class="hide btn" prevent-default href="#" >直约业主</a></div>
+              <div class="price-panel pull-right">
+                <div class="watch__house">
+                  <i data-analytics-track-event='{"type":"lp014", "appendStr": "20"}' class="unfollow iconfont"></i>
+                  <i data-analytics-track-event='{"type":"lp015", "appendStr": "20"}' class="followed iconfont"></i></div>
+                <!-- <span class="title">业主挂牌价</span> -->
+                <span go-to-detail class="content">370</span>
+                <span class="unit">万</span>
+                <h5 go-to-detail>16499元/平米</h5></div>
+              <a rel="nofollow" data-analytics-track-event='{"type":"lp010"}' class="help-me hide" href="#" data-open-pop="layer-discount" data-house-id="1448846" data-house-name="新创大河山">降价通知我</a></div>
+          </div>
+          <!-- 翻页 -->
+          <div id='bottom-page-pagination' class="page-pagination">
+            <ul class="fn-clear">
+              <li class="current">1</li>
+              <li>
+                <a href="#" data-pagination-page="2" rel="start nofollow">2</a></li>
+              <li>
+                <a href="#" data-pagination-page="3" rel="nofollow">3</a></li>
+              <li>
+                <a href="#" data-pagination-page="4" rel="nofollow">4</a></li>
+              <li>
+                <a href="#" data-pagination-page="5" rel="nofollow">5</a></li>
+              <li>
+                <a href="#" data-pagination-page="6" rel="nofollow">6</a></li>
+              <li class="no-border">
+                <a href="#" data-pagination-page="2" rel="next">&gt;</a></li>
+            </ul>
+          </div>
+          <!-- 翻页结束 -->
+          <!-- 推荐房源 -->
+        </div>
+        <div class="aside pull-right">
+          <div class="history__house" id="house-history">
+              <div class="title oppo">
+                我看过的房源
+                <i class="iconfont" ></i>
+              </div>
+              <div class="content fn-clear">
+                <div class="container__view">
+                    <div class="container__box">
+                      <ul class="ul__content">
+                        <li>
+                          <a  class="item clearfix" href="#" target="_blank">
+                            <div class="img__container">
+                              <img src="images/Fouv5pU5CfvPQYmNIn1Yd-fQt72Q.jpg" alt="中翔商贸城"></div>
+                            <div class="text__info">
+                              <div class="name">中翔商贸城</div>
+                              <div class="price">110万</div>
+                              <div class="flat">2室1厅1卫&nbsp;
+                                <span class="right">11/11层</span></div>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                </div>
+              </div>
+          </div>
+          <!-- find house -->
+          <div class="banner cursor js-open-find-house-3-0">
+            <img src="images/234454.jpg" alt=""></div>
+          <!-- find house End -->
+          <div id="hot-cell" class="right-side-bar-hot-cell">
+            <span class="title">热门小区</span>
+            <div class="hot">
+              <ul>
+                <li>
+                  <p><a href="#"><span>1</span>伟业迎春华府:在售28套</a></p>
+                  <div class="op po"><a href="#" class="fn-clear">
+                  <img src="images/to0la2cZZ1j0TYtWEoIXacTQl70.png">
+                  <span class="fn-left">
+                    <i class="ii">10439元/平米</i>
+                    <i class="yy">吴江-松陵</i>
+                  </span>
+                  </a></div>
+                </li>
+                <li>
+                  <p><a href="#"><span>1</span>伟业迎春华府:在售28套</a></p>
+                  <div class="op"><a href="#" class="fn-clear">
+                  <img src="images/to0la2cZZ1j0TYtWEoIXacTQl70.png">
+                  <span class="fn-left">
+                    <i class="ii">10439元/平米</i>
+                    <i class="yy">吴江-松陵</i>
+                  </span>
+                  </a></div>
+                </li>
+                <li>
+                  <p><a href="#"><span>2</span>伟业迎春华府:在售28套</a></p>
+                  <div class="op"><a href="#" class="fn-clear">
+                  <img src="images/to0la2cZZ1j0TYtWEoIXacTQl70.png">
+                  <span class="fn-left">
+                    <i class="ii">10439元/平米</i>
+                    <i class="yy">吴江-松陵</i>
+                  </span>
+                  </a></div>
+                </li>
+                <li>
+                  <p><a href="#"><span>3</span>伟业迎春华府:在售28套</a></p>
+                  <div class="op"><a href="#" class="fn-clear">
+                  <img src="images/to0la2cZZ1j0TYtWEoIXacTQl70.png">
+                  <span class="fn-left">
+                    <i class="ii">10439元/平米</i>
+                    <i class="yy">吴江-松陵</i>
+                  </span>
+                  </a></div>
+                </li>
+                <li>
+                  <p><a href="#"><span>4</span>伟业迎春华府:在售28套</a></p>
+                  <div class="op"><a href="#" class="fn-clear">
+                  <img src="images/to0la2cZZ1j0TYtWEoIXacTQl70.png">
+                  <span class="fn-left">
+                    <i class="ii">10439元/平米</i>
+                    <i class="yy">吴江-松陵</i>
+                  </span>
+                  </a></div>
+                </li>
+                <li>
+                  <p><a href="#"><span>5</span>伟业迎春华府:在售28套</a></p>
+                  <div class="op"><a href="#" class="fn-clear">
+                  <img src="images/to0la2cZZ1j0TYtWEoIXacTQl70.png">
+                  <span class="fn-left">
+                    <i class="ii">10439元/平米</i>
+                    <i class="yy">吴江-松陵</i>
+                  </span>
+                  </a></div>
+                </li>
+                 <li>
+                  <p><a href="#"><span>6</span>伟业迎春华府:在售28套</a></p>
+                  <div class="op"><a href="#" class="fn-clear">
+                  <img src="images/to0la2cZZ1j0TYtWEoIXacTQl70.png">
+                  <span class="fn-left">
+                    <i class="ii">10439元/平米</i>
+                    <i class="yy">吴江-松陵</i>
+                  </span>
+                  </a></div>
+                </li>
+                 <li>
+                  <p><a href="#"><span>7</span>伟业迎春华府:在售28套</a></p>
+                  <div class="op"><a href="#" class="fn-clear">
+                  <img src="images/to0la2cZZ1j0TYtWEoIXacTQl70.png">
+                  <span class="fn-left">
+                    <i class="ii">10439元/平米</i>
+                    <i class="yy">吴江-松陵</i>
+                  </span>
+                  </a></div>
+                </li>
+                 <li>
+                  <p><a href="#"><span>8</span>伟业迎春华府:在售28套</a></p>
+                  <div class="op"><a href="#" class="fn-clear">
+                  <img src="images/to0la2cZZ1j0TYtWEoIXacTQl70.png">
+                  <span class="fn-left">
+                    <i class="ii">10439元/平米</i>
+                    <i class="yy">吴江-松陵</i>
+                  </span>
+                  </a></div>
+                </li>
+                   <li>
+                  <p><a href="#"><span>9</span>伟业迎春华府:在售28套</a></p>
+                  <div class="op"><a href="#" class="fn-clear">
+                  <img src="images/to0la2cZZ1j0TYtWEoIXacTQl70.png">
+                  <span class="fn-left">
+                    <i class="ii">10439元/平米</i>
+                    <i class="yy">吴江-松陵</i>
+                  </span>
+                  </a></div>
+                </li>
+                <li class="rt">
+                  <p><a href="#"><span>10</span>伟业迎春华府:在售28套</a></p>
+                  <div class="op">
+                    <a href="#" class="fn-clear">
+                    <img src="images/to0la2cZZ1j0TYtWEoIXacTQl70.png">
+                    <span class="fn-left">
+                      <i class="ii">10439元/平米</i>
+                      <i class="yy">吴江-松陵</i>
+                    </span>
+                    </a>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+      </div>
+  </div>
+</div>
+<div id="everyone-look" class="guess__you__like">
+  <div data-reactroot="" class="recommend__house">
+    <div class="head clearfix">
+      <span class="title">大家都在看</span>
+      <div class="pull-right">
+        <span  class="left__arrow arrow prev">
+          <i class="iconfont"><</i></span>
+        <span  class="right__arrow arrow next">
+          <i class="iconfont">></i></span>
+      </div>
+    </div>
+    <div class="container__view">
+      <div class="content clearfix" id="slidebox" style="left: 0px;">
+        <a  class="house-style1" target="_blank" href="#">
+          <img class="house-img" src="images/Fl-jA4bIue4ISFLhBheVuA7XVfW_.jpg">
+          <p class="text name clearfix">
+            <span title="新馨花园" class=" left__text">新馨花园</span>
+            <span class="pull-right" style="display: none;">
+            0
+            人预约看房
+             </span></p>
+          <p class="text">
+            <span>2室2厅2卫</span>
+            <span>
+              96.87
+             平米
+             </span></p>
+          <p class="text tags clearfix">
+            <span class="saler tag">业主急售</span>
+            <span class="green tag">新</span>
+            <span class="tag fiveYear">满五年</span>
+            <span class="tag noDebt">无贷款</span>
+            <span class="tag northSouth">南北通透</span>
+            <span class="tag schoolHouse">靠近学校</span>
+            <span class="tag metro">靠近地铁</span>
+            </p>
+          <div class="price">
+            <span>
+              <span class="unit">￥</span>
+              <var>402</var>
+              万
+              </span></div>
+        </a>
+        <a  class="house-style1" target="_blank" href="#">
+          <img class="house-img" src="images/Fl-jA4bIue4ISFLhBheVuA7XVfW_.jpg">
+          <p class="text name clearfix">
+            <span title="新馨花园" class=" left__text">新馨花园</span>
+            <span class="pull-right" style="display: none;">
+            0
+            人预约看房
+             </span></p>
+          <p class="text">
+            <span>2室2厅2卫</span>
+            <span>
+              96.87
+             平米
+             </span></p>
+          <p class="text tags clearfix">
+            <span class="saler tag">业主急售</span>
+            <span class="green tag">新</span>
+            <span class="tag fiveYear">满五年</span>
+            <span class="tag noDebt">无贷款</span>
+            <span class="tag northSouth">南北通透</span>
+            <span class="tag schoolHouse">靠近学校</span>
+            <span class="tag metro">靠近地铁</span>
+            </p>
+          <div class="price">
+            <span>
+              <span class="unit">￥</span>
+              <var>402</var>
+              万
+              </span></div>
+        </a>
+        <a  class="house-style1" target="_blank" href="#">
+          <img class="house-img" src="images/Fl-jA4bIue4ISFLhBheVuA7XVfW_.jpg">
+          <p class="text name clearfix">
+            <span title="新馨花园" class=" left__text">新馨花园</span>
+            <span class="pull-right" style="display: none;">
+            0
+            人预约看房
+             </span></p>
+          <p class="text">
+            <span>2室2厅2卫</span>
+            <span>
+              96.87
+             平米
+             </span></p>
+          <p class="text tags clearfix">
+            <span class="saler tag">业主急售</span>
+            <span class="green tag">新</span>
+            <span class="tag fiveYear">满五年</span>
+            <span class="tag noDebt">无贷款</span>
+            <span class="tag northSouth">南北通透</span>
+            <span class="tag schoolHouse">靠近学校</span>
+            <span class="tag metro">靠近地铁</span>
+            </p>
+          <div class="price">
+            <span>
+              <span class="unit">￥</span>
+              <var>402</var>
+              万
+              </span></div>
+        </a>
+        <a  class="house-style1" target="_blank" href="#">
+          <img class="house-img" src="images/Fl-jA4bIue4ISFLhBheVuA7XVfW_.jpg">
+          <p class="text name clearfix">
+            <span title="新馨花园" class=" left__text">新馨花园</span>
+            <span class="pull-right" style="display: none;">
+            0
+            人预约看房
+             </span></p>
+          <p class="text">
+            <span>2室2厅2卫</span>
+            <span>
+              96.87
+             平米
+             </span></p>
+          <p class="text tags clearfix">
+            <span class="saler tag">业主急售</span>
+            <span class="green tag">新</span>
+            <span class="tag fiveYear">满五年</span>
+            <span class="tag noDebt">无贷款</span>
+            <span class="tag northSouth">南北通透</span>
+            <span class="tag schoolHouse">靠近学校</span>
+            <span class="tag metro">靠近地铁</span>
+            </p>
+          <div class="price">
+            <span>
+              <span class="unit">￥</span>
+              <var>402</var>
+              万
+              </span></div>
+        </a>
+        <a  class="house-style1" target="_blank" href="#">
+          <img class="house-img" src="images/Fl-jA4bIue4ISFLhBheVuA7XVfW_.jpg">
+          <p class="text name clearfix">
+            <span title="新馨花园" class=" left__text">新馨花园</span>
+            <span class="pull-right" style="display: none;">
+            0
+            人预约看房
+             </span></p>
+          <p class="text">
+            <span>2室2厅2卫</span>
+            <span>
+              96.87
+             平米
+             </span></p>
+          <p class="text tags clearfix">
+            <span class="saler tag">业主急售</span>
+            <span class="green tag">新</span>
+            <span class="tag fiveYear">满五年</span>
+            <span class="tag noDebt">无贷款</span>
+            <span class="tag northSouth">南北通透</span>
+            <span class="tag schoolHouse">靠近学校</span>
+            <span class="tag metro">靠近地铁</span>
+            </p>
+          <div class="price">
+            <span>
+              <span class="unit">￥</span>
+              <var>402</var>
+              万
+              </span></div>
+        </a>
+        <a  class="house-style1" target="_blank" href="#">
+          <img class="house-img" src="images/Fl-jA4bIue4ISFLhBheVuA7XVfW_.jpg">
+          <p class="text name clearfix">
+            <span title="新馨花园" class=" left__text">新馨花园</span>
+            <span class="pull-right" style="display: none;">
+            0
+            人预约看房
+             </span></p>
+          <p class="text">
+            <span>2室2厅2卫</span>
+            <span>
+              96.87
+             平米
+             </span></p>
+          <p class="text tags clearfix">
+            <span class="saler tag">业主急售</span>
+            <span class="green tag">新</span>
+            <span class="tag fiveYear">满五年</span>
+            <span class="tag noDebt">无贷款</span>
+            <span class="tag northSouth">南北通透</span>
+            <span class="tag schoolHouse">靠近学校</span>
+            <span class="tag metro">靠近地铁</span>
+            </p>
+          <div class="price">
+            <span>
+              <span class="unit">￥</span>
+              <var>402</var>
+              万
+              </span></div>
+        </a>
+        <a  class="house-style1" target="_blank" href="#">
+          <img class="house-img" src="images/Fl-jA4bIue4ISFLhBheVuA7XVfW_.jpg">
+          <p class="text name clearfix">
+            <span title="新馨花园" class=" left__text">新馨花园</span>
+            <span class="pull-right" style="display: none;">
+            0
+            人预约看房
+             </span></p>
+          <p class="text">
+            <span>2室2厅2卫</span>
+            <span>
+              96.87
+             平米
+             </span></p>
+          <p class="text tags clearfix">
+            <span class="saler tag">业主急售</span>
+            <span class="green tag">新</span>
+            <span class="tag fiveYear">满五年</span>
+            <span class="tag noDebt">无贷款</span>
+            <span class="tag northSouth">南北通透</span>
+            <span class="tag schoolHouse">靠近学校</span>
+            <span class="tag metro">靠近地铁</span>
+            </p>
+          <div class="price">
+            <span>
+              <span class="unit">￥</span>
+              <var>402</var>
+              万
+              </span></div>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="main-bottom">
+        <h6 class="title">房多多苏州二手房频道提供100%真实房源信息。</h6>
+        <dl class="content fn-clear">
+          <dt>苏州热门线路:</dt>
+          <dd class="district">
+            <span>
+              <a href="#">1号线二手房</a></span>
+            <span>
+              <a href="#">2号线二手房</a></span>
+          </dd>
+        </dl>
+        <hr>
+        <dl class="content fn-clear">
+          <dt>苏州热门区域:</dt>
+          <dd class="district">
+            <span>
+              <a   href="#">园区二手房</a></span>
+            <span>
+              <a   href="#">吴中二手房</a></span>
+            <span>
+              <a   href="#">姑苏二手房</a></span>
+            <span>
+              <a   href="#">相城二手房</a></span>
+            <span>
+              <a   href="#">昆山二手房</a></span>
+            <span>
+              <a   href="#">新区二手房</a></span>
+            <span>
+              <a   href="#">吴江二手房</a></span>
+          </dd>
+        </dl>
+        <hr>
+        <dl class="content fn-clear">
+          <dt>苏州热门板块:</dt>
+          <dd class="district">
+            <span>
+              <a  href="#">东渚二手房</a></span>
+            <span>
+              <a  href="#">独墅湖科教创新区二手房</a></span>
+            <span>
+              <a  href="#">阳澄湖镇二手房</a></span>
+            <span>
+              <a  href="#">东山二手房</a></span>
+            <span>
+              <a  href="#">光福二手房</a></span>
+            <span>
+              <a  href="#">郭巷二手房</a></span>
+            <span>
+              <a  href="#">娄门街道二手房</a></span>
+            <span>
+              <a  href="#">城北街道二手房</a></span>
+            <span>
+              <a  href="#">北桥二手房</a></span>
+            <span>
+              <a  href="#">通安二手房</a></span>
+            <span>
+              <a  href="#">青剑湖二手房</a></span>
+            <span>
+              <a  href="#">望亭二手房</a></span>
+            <span>
+              <a  href="#">白洋湾街道二手房</a></span>
+            <span>
+              <a  href="#">虎丘街道二手房</a></span>
+            <span>
+              <a  href="#">枫桥二手房</a></span>
+            <span>
+              <a  href="#">黄桥二手房</a></span>
+            <span>
+              <a  href="#">独墅湖二手房</a></span>
+            <span>
+              <a  href="#">友新街道二手房</a></span>
+            <span>
+              <a  href="#">吴门桥街道二手房</a></span>
+            <span>
+              <a  href="#">狮山二手房</a></span>
+          </dd>
+        </dl>
+        <hr>
+        <!-- 列表页 -->
+        <dl class="content fn-clear">
+          <dt>苏州热门小区:</dt>
+          <dd class="district">
+            <span>
+              <a  href="#">中吴红玺</a></span>
+            <span>
+              <a  href="#">新湖明珠城 望湖苑</a></span>
+            <span>
+              <a  href="#">招商小石城紫竹园</a></span>
+            <span>
+              <a  href="#">乐怡苑</a></span>
+            <span>
+              <a  href="#">安逸商业广场</a></span>
+            <span>
+              <a  href="#">嘉宝花园爱汀苑</a></span>
+            <span>
+              <a  href="#">金匙望湖</a></span>
+            <span>
+              <a  href="#">运河公馆</a></span>
+            <span>
+              <a  href="#">盘蠡新村</a></span>
+            <span>
+              <a  href="#">丰隆城市中心</a></span>
+            <span>
+              <a  href="#">湖滨花园</a></span>
+            <span>
+              <a  href="#">中昂太湖纯水岸花园</a></span>
+            <span>
+              <a  href="#">白马涧花园三区</a></span>
+            <span>
+              <a  href="#">恒熙湖庭</a></span>
+            <span>
+              <a  href="#">太湖温泉别苑</a></span>
+            <span>
+              <a  href="#">南山柠檬城</a></span>
+            <span>
+              <a  href="#">吴中东路小区</a></span>
+            <span>
+              <a  href="#">太湖相王府</a></span>
+            <span>
+              <a  href="#">壹克拉酒店公寓</a></span>
+            <span>
+              <a  href="#">安元佳苑二区</a></span>
+          </dd>
+        </dl>
+        <hr>
+        <dl class="content fn-clear">
+          <dt>全国热门二手房:</dt>
+          <dd>
+            <span>
+              <a  href="#">苏州二手房</a></span>
+            <span>
+              <a  href="#">上海二手房</a></span>
+            <span>
+              <a  href="#">南京二手房</a></span>
+            <span>
+              <a  href="#">广州二手房</a></span>
+            <span>
+              <a  href="#">深圳二手房</a></span>
+            <span>
+              <a  href="#">杭州二手房</a></span>
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="white-bg">
+      <div class="common-footer footer-minwd white-bg">
+        <!-- 宽屏 -->
+        <div class="row text-left">
+          <div class="pull-left col-sm-2">
+            <ul>
+              <li class="footer-title" data-toggle="collapse" data-target="#collapseExampleOne">关于我们</li>
+              <li>
+                <a data-analytics-track-event='{"type":"fo013"}'  rel="nofollow" href="#">了解房多多</a></li>
+              <li>
+                <a data-analytics-track-event='{"type":"fo012"}' class="orange-font"  rel="nofollow" href="#">加入房多多</a></li>
+              <li>
+                <a  rel="nofollow" href="#">联系我们</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-2">
+            <ul>
+              <li class="footer-title" data-toggle="collapse" data-target="#collapseExampleTwo">产品</li>
+              <li>
+                <a  rel="nofollow" href="#">我是买房者</a></li>
+              <li>
+                <a  rel="nofollow" href="#">我是业主</a></li>
+              <!-- <li><a  rel="nofollow" href="#">我是经纪人</a></li> --></ul>
+          </div>
+          <div class="col-sm-2">
+            <ul>
+              <li class="footer-title" data-toggle="collapse" data-target="#collapseExampleThree">服务支持</li>
+              <li>
+                <a  rel="nofollow" href="#">服务声明</a></li>
+              <li>
+                <a  rel="nofollow" href="#">常见问题</a></li>
+              <li>
+                <a  href="#">网站地图</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <ul>
+              <li class="footer-title" data-toggle="collapse" data-target="#collapseExampleFour">联系方式</li>
+              <li>
+                <a class="no-cursor" href="#">邮箱: service@fangdd.com</a></li>
+              <li>
+                <a class="no-cursor" href="#">服务热线:&nbsp;400-008-9900</a></li>
+            </ul>
+          </div>
+          <div class="pull-right col-sm-2">
+            <ul class="qr_code">
+              <li>
+                <img class="center-block img-responsive" src="images/34ad6759-e167-4a91-91d3-8a6be21ec273.png" alt=""></li>
+              <li class="text-center">下载APP,新上房源早知道</li></ul>
+          </div>
+        </div>
+        <h6 class="text-center">copyright © 2012-2017 www.fangdd.com All Rights Reserved 粤ICP备12079924号
+          <a  href="#">
+            <img style="display: inline-block;" src="images/ghs.png" />
+            <span>粤公网安备 44030502000415号</span></a>
+          <span class="">
+          </span>
+        </h6>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="js/ex-house.js"></script>
+
+   </body>
+
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>私信列表</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style type="text/css">
+	*{padding: 0;margin: 0;}
+	body{
+		font-family: "微软雅黑";
+		background-color: #fff;
+	}
+	/*轮播*/
+	.swiper-container{
+		margin-top: 45px;
+	}
+	.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	.banner{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 999;
+		height: 45px;
+		background-color: #fd5c30;
+
+	}
+	.banner a{
+		width: 25%;
+		float: left;
+		color: #fff;
+	}
+	.banner span{
+		width: 50%;
+		float: left;
+		text-align: center;
+		line-height: 45px;
+		color: #fff;
+	}
+	.clearbox{
+		width: 100%;
+		height: 45px;
+		background-color: #fff;
+		border:1px solid #ddd;
+	}
+	.clearbox div{
+		float: right;
+		margin-right: 10px;
+		height: 25px;
+		width: 55px;
+		line-height: 25px;
+		font-size: 13px;
+		border: 1px solid #a9a8a8;
+		text-align: center;
+		color: #888686;
+		border-radius: 5px;
+		margin-top: 10px;
+	}
+	.mui-card{
+		box-shadow: none;
+		margin: 0;
+		/*padding-bottom: 10px;*/
+		border-bottom: 1px solid #e6e6e6;
+		height: 60px;
+	}
+	.mui-pull-left{
+		position: relative;
+	}
+	.mui-pull-left div{
+		position: absolute;
+		right:-2px;
+		top:-2px;
+		background-color: #ff362f;
+		color: #fff;
+		width: 18px;
+		height: 18px;
+		line-height: 18px;
+		text-align: center; 
+		font-size: 12px;
+		border-radius: 50%;
+	}
+	.mui-card input{
+		float: left;
+		margin-top: 22px;
+		margin-left: 5px;
+		display: none;
+	}
+	.checkAll{
+		width: 100%;
+		height: 45px;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		background-color: #fff;
+		display: none;
+	}
+	.checkAll input{
+		float: left;
+		margin: 15px 10px 0 10px;
+	}
+	.checkAll span{
+		font-size: 13px;
+		line-height: 43px;
+	}
+	.checkAll .del{
+		color: #fff;
+		float: right;
+		width: 80px;
+		height: 28px;
+		line-height: 28px;
+		margin-top:7px;
+		margin-right: 10px;
+		background-color: #999999;
+		text-align: center;
+		font-size: 13px;
+	}
+	#cancelBtn{
+		display: none;
+	}
+	</style>
+<body>
+	<div class="mui-content">
+		<div class="banner">
+				<a href="#" onClick="javascript :history.back(-1);"><span><</span></a>
+	    		<span>收到的私信</span>
+		</div>
+		<!--图片轮播-->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<volist name="status" id="vo">
+				<div class="swiper-slide">
+					 <a id="up" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}">
+ 						<img src="__PUBLIC__/../{$vo['advertisement_img']}">
+					</a>
+				</div>
+			  </volist>
+ 			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+		<!--清空按钮-->
+		<div class="clearbox">
+			<div id="clearBtn">清 空</div>
+			<div id="cancelBtn">取 消</div>
+		</div>
+		<!--列表-->
+		<volist name="all" id="vo" >
+		<div class="zpmg">
+		<div class="mui-card">
+			<div class="mui-card-content">
+				<input name="groupCheckbox" class="select_one" type="checkbox"  onClick="selectone(this)" str="{$vo.user_id}" id="a{$vo.user_id}">
+				<div class="mui-card-content-inner" style="padding: 3px 8px 0 8px;">
+					<a href="__MODULE__/Msgbrid/chatmsg?chatinfo_main={$vo.user_id}" style="position:relative;padding-left: 50px;display: block;color: #000;">
+						<div style="position: absolute;left: 0;width: 45px;height: 45px;">
+							<div class="mui-media-object mui-pull-left img" style="width: 100%;height: 100%; background-image: url({$vo.user_head});background-repeat: no-repeat;background-position: 50% 50%;background-size: cover;"> 
+							 <?php if($vo['count'] != 0){ ?>
+								<div class="count">{$vo.count}</div>
+ 							 <?php }else{ ?>
+								<div class="count" style="display:none;">{$vo.count}</div>
+ 							 <?php } ?>
+							</div>
+						</div>
+						<h5 style="color: #000; margin-bottom: 5px;padding-top: 5px;">{$vo.user_name}<img style="height: 13px;margin-left:5px;" src="__PUBLIC__/Home/img/nv.png">
+						<span style="color: #808080;font-weight: normal;font-size: 12px;float: right;" class="chatinfo_date">{$vo.chatinfo_date}</span></h5>
+						<p style="font-size: 12px;" class="chatinfo_content">{$vo.chatinfo_content}</p>
+						<!-- <div class="operate" style="line-height: 21px; font-size: 16px;color: #1a1a1a;">今年下半年以来最强冷空气来袭，天气转冷，</div> -->
+					</a>
+				</div>
+			</div>
+		</div>
+		</div>
+		</volist> 
+	 <!--全选-->
+		<div class="checkAll">
+			<input onClick="selectall(this);" type="checkbox" name="selectAll" class="select_all"><span>全选</span>
+			<div class="del">删除</div>
+		</div>
+	</div>
+	 
+ 
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery1.9.0.min.js"></script>
+ 	<script type="text/javascript">
+ 
+  function is_open(){
+        time()
+    }
+
+  setTimeout("is_open()",5);
+
+      function time(){
+        $.post('{:U("Home/Msgbrid/is_new_msg")}', {}, function(data) {
+        	  var json = eval("data");   
+	          $.each(JSON.parse(json), function(idx, obj) {
+	            var id =$("#a"+obj.user_id).attr('id');
+	            // alert(id)
+ 	             if (id) {
+	             	//判断是不是有新的聊天记录
+	             	var count = $("#a"+obj.user_id).parent().find('.count').text();
+	             	var chatinfo = $("#a"+obj.user_id).parent();
+	             	if(count != obj.count){
+	             	  //是的话判断是不是还在历史记录里面
+                      if (obj.count != 0) {
+
+                      	//是不是为0（不是）
+	             	    chatinfo.find('.count').show();
+                        chatinfo.find('.count').text(obj.count)
+                        chatinfo.find('.chatinfo_content').text(obj.chatinfo_content)
+                        chatinfo.find('.chatinfo_date').text(obj.chatinfo_date)
+                       var html =  chatinfo.parent().parent().find('.mui-card').html();
+                       $(".clearbox").after('<div class="zpmg">'+html+'</div>')
+                       chatinfo.parent().parent().find('.mui-card').remove();
+                      }else{
+                      	  chatinfo.find('.count').hide();
+                      	  chatinfo.find('.count').text(0);
+                       }
+	             	}
+ 	             }else{
+ 	             	//不是在历史记录里面添加
+ 	             	$(".clearbox").after('<div class="zpmg">'
+											+'<div class="mui-card">'
+											+	'<div class="mui-card-content">'
+											+		'<input name="groupCheckbox" class="select_one" type="checkbox"  onClick="selectone(this)" str="'+obj.user_id+'" id="a'+obj.user_id+'">'
+											+		'<div class="mui-card-content-inner" style="padding: 3px 8px 0 8px;">'
+											+			'<a href="__MODULE__/Msgbrid/chatmsg?chatinfo_main='+obj.user_id+'" style="position:relative;padding-left: 50px;display: block;color: #000;">'
+											+				'<div style="position: absolute;left: 0;width: 45px;height: 45px;">'
+											+					'<div class="mui-media-object mui-pull-left img" style="width: 100%;height: 100%; background-image: url('+obj.user_head+');background-repeat: no-repeat;background-position: 50% 50%;background-size: cover;"> '
+											+		          	'<div class="count">'+obj.count+'</div>'
+											+					'</div>'
+											+				'</div>'
+											+				'<h5 style="color: #000; margin-bottom: 5px;padding-top: 5px;">'+obj.user_name+'<img style="height: 13px;margin-left:5px;" src="__PUBLIC__/Home/img/nv.png">'
+											+				'<span style="color: #808080;font-weight: normal;font-size: 12px;float: right;" class="chatinfo_date">'+obj.chatinfo_date+'</span></h5>'
+											+				'<p style="font-size: 12px;" class="chatinfo_content">'+obj.chatinfo_content+'</p>'
+ 											+			'</a>'
+											+		'</div>'
+											+	'</div>'
+											+'</div>'
+											+'</div>')
+									js()
+ 	             } 
+ 	          })
+          });
+		}
+
+      window.setInterval("time()",2000); 
+
+ 
+     function js(){
+
+	     $(".del").click(function(){
+	     	//选择内容清楚
+	     	var time=$('.select_one')
+	     	var chatinfo_id = ""; 
+            $.each(time,function(index,item){
+            	if($(this).is(':checked')) {
+            	  var id = $(this).attr('str');  //获取id
+                  chatinfo_id +=id+","
+                 }
+            });
+            chatinfo_id=chatinfo_id.substr(0,chatinfo_id.length- 1) 
+             $.post('{:U("Home/Msgbrid/delchatinfo")}', {chatinfo_id:chatinfo_id}, function(data) {
+
+                 strall=chatinfo_id.split(","); //字符分割 
+                $.each(strall, function(i,val){   
+ 			      var idww = $("#a"+val).parent().parent().parent().find('.mui-card').remove();
+ 			    }); 
+            });
+	     })
+      
+
+
+		      	//判断是不是全部选中
+			$(function(){
+				is_all_select();
+
+			});
+
+			
+			$('#clearBtn').on('tap',function(){
+					$('.checkAll').css('display','block');
+					$('.mui-card input').css('display','inline-block');
+					$('.mui-card-content-inner').css('margin-left','20px');
+					$('#clearBtn').css('display','none');
+					$('#cancelBtn').css('display','block');
+				})
+			$('#cancelBtn').on('tap',function(){
+					$('.checkAll').css('display','none');
+					$('.mui-card input').css('display','none');
+					$('.mui-card-content-inner').css('margin-left','0');
+					$('#cancelBtn').css('display','none');
+					$('#clearBtn').css('display','block');
+				})
+
+
+
+      }
+
+      
+      js()
+
+	   	$("[id=up]").each(function(){ 
+		$(this).click(function(){
+     		var id = $(this).attr('str');
+     		var type = $(this).attr('stb');
+     		var url = $(this).attr('url');
+				// alert(id)
+		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+ 	     		if (type == 0) {
+	     			 location.href="http://"+url;
+	     		}else if(type == 1){
+	     			 location.href= 'tel://' + url;
+	      		}else{
+	      			location.href=url;
+	      		}
+			});
+    	})
+    })
+
+
+
+//全选按钮功能
+			function selectall(that){
+				if(!that.checked){
+					$('.select_one').attr('checked',false);
+					$('.select_all').attr('checked',false);
+					$('.del').css('background-color','#999999');
+				}else{
+					$('.select_one').attr('checked',true);
+					$('.select_all').attr('checked',true);
+					$('.del').css('background-color','#fd5f30');
+				}
+				is_all_select();	
+
+			}
+
+			function selectone(strobj){
+				if(!strobj.checked && $("[class='select_one']:checkbox:checked").length==0)
+				{
+					$('.del').css('background-color','#999999');
+				}
+				else{
+					$('.del').css('background-color','#fd5f30');
+				}
+				is_all_select();	
+			}
+
+
+			//判断是不是全部选中
+			function is_all_select(){
+				if($("[class='select_one']:checkbox:checked").length==$(".select_one").length)
+				{
+					$('.select_all').attr('checked',true);		
+				}
+				else
+				{
+					$('.select_all').attr('checked',false);
+				}
+			}
+           
+
+         	var mySwiper = new Swiper('.swiper-container',{
+			    pagination: '.swiper-pagination',
+			    loop:true,
+			    paginationClickable: true,
+			    autoplayDisableOnInteraction : false,
+			    autoHeight: true,
+			    autoplay: 3000
+			});
+
+
+
+
+	
+	</script>
+</body>

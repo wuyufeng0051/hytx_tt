@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+    <script>
+      $(function($) { 
+          $('[data-rel="tooltip"]').tooltip();
+          $('[data-rel="popover"]').popover();
+        })
+      </script>
+  <script src="js/bootstrap.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-wechat wechat-icon"></i>
+        <a href="#">公众号设置</a></li>
+      <li>
+        <a href="#">微信支付</a></li>
+      <li>
+        <a href="#">微信支付设置</a></li>
+    </ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.col-sm-1{ width:140px; } .css_none{ display: none; }</style>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li class="active">
+                <a href="#">微信支付设置</a></li>
+              <li>
+                <a href="wechat_pay_list.html">微信支付申请列表</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert">
+                  <i class="ace-icon fa fa-times"></i>
+                </button>
+                <p>本功能适用于已成功申请微信支付商户号的用户，若您还没申请微信支付商户号，建议点击右侧的“微信支付申请列表”申请乐外卖微信支付服务商特约商户，或者使用乐外卖的“微信支付-代收”方式。
+                  <br>若您使用自己的微信支付，请务必在微信公众号管理后台的 “微信支付→开发配置，必须填写支付授权目录为：https://wap.lewaimai.com/lewaimaigod/” 否则将无法正常使用微信支付！</p>
+                <p>
+                  <a class="btn btn-info" href="#" target="_blank">微信支付参数填写教程</a>
+                  <a class="btn btn-danger" href="#" target="_blank">乐外卖不同在线支付方式的使用方法与区别</a>
+                  <a class="btn btn-success" href="#" target="_blank">微信支付申请教程</a></p>
+              </div>
+              <form enctype="multipart/form-data" class="form-horizontal" id="weixinzhifu-form" action="/wxconfig/weixinzhifu" method="post">
+                <div class="alert alert-danger" id="weixinzhifu-form_es_" style="display:none">
+                  <p>请更正下列输入错误:</p>
+                  <ul>
+                    <li>dummy</li></ul>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-1">
+                    <label for="WeixinzhifuAccount_weixinzhifu_type">微信支付类型</label></label>
+                  <select name="WeixinzhifuAccount[weixinzhifu_type]" id="WeixinzhifuAccount_weixinzhifu_type">
+                    <option value="1">乐外卖微信支付服务商特约商户（通过乐外卖提交资料申请的）</option>
+                    <option value="0" selected="selected">商户自己申请的微信支付</option></select>
+                </div>
+                <div class="form-group css_none" style="display: block;">
+                  <label class="col-sm-1">
+                    <label for="WeixinzhifuAccount_appid">微信公众号的appid</label></label>
+                  <input class="col-sm-2" name="WeixinzhifuAccount[appid]" id="WeixinzhifuAccount_appid" type="text" maxlength="50" value="wx1aa6efef3468ccc2">
+                  <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="对应微信公众平台》进入开发者中心》开发者ID》AppID(应用ID)" title="" data-original-title="appid设置说明">
+                    <span class="ace-icon fa fa-info bigger-120"></span>
+                  </span>
+                </div>
+                <div class="form-group css_none" style="display: block;">
+                  <label class="col-sm-1">
+                    <label for="WeixinzhifuAccount_appsecret">微信公众号的appsecret</label></label>
+                  <input class="col-sm-2" name="WeixinzhifuAccount[appsecret]" id="WeixinzhifuAccount_appsecret" type="text" maxlength="50" value="f46629cc3804bd147137b671a00abba5 ">
+                  <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="对应微信公众平台》进入开发者中心》开发者ID》AppSecret(应用密钥)" title="" data-original-title="AppSecret设置说明">
+                    <span class="ace-icon fa fa-info bigger-120"></span>
+                  </span>
+                </div>
+                <div class="form-group css_none" style="display: block;">
+                  <label class="col-sm-1">
+                    <label for="WeixinzhifuAccount_mchid">微信支付商户号</label></label>
+                  <input class="col-sm-2" name="WeixinzhifuAccount[mchid]" id="WeixinzhifuAccount_mchid" type="text" maxlength="50" value="1399228702">
+                  <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="微信团队的邮件中查看，微信公众号后台的“微信支付”中也可以查看" title="" data-original-title="MCHID设置说明">
+                    <span class="ace-icon fa fa-info bigger-120"></span>
+                  </span>
+                </div>
+                <div class="form-group css_block" style="display: none;">
+                  <label class="col-sm-1">
+                    <label for="WeixinzhifuAccount_mchid">微信支付商户号</label></label>
+                  <a class="btn btn-sm btn-success" href="#" id="WeixinzhifuAccount_mchid2" data="1" name="ceshi_mchid">提交微信支付申请资料</a></div>
+                <div class="form-group css_none" style="display: block;">
+                  <label class="col-sm-1">
+                    <label for="WeixinzhifuAccount_key">微信支付的key</label></label>
+                  <input class="col-sm-2" name="WeixinzhifuAccount[key]" id="WeixinzhifuAccount_key" type="text" maxlength="50" value="420527198903224913jindianwaimaii">
+                  <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="在微信支付商户平台的“账户设置->API安全->设置密匙”中进行设置，然后填写到这里" title="" data-original-title="Key设置说明">
+                    <span class="ace-icon fa fa-info bigger-120"></span>
+                  </span>
+                </div>
+                <div class="form-group css_none" style="display: block;">
+                  <label class="col-sm-1">
+                    <label for="WeixinzhifuAccount_apiclient_cert">微信支付证书[Apiclient Cert]</label></label>
+                  <textarea class="col-sm-4" style="height: 120px;" name="WeixinzhifuAccount[apiclient_cert]" id="WeixinzhifuAccount_apiclient_cert">-----BEGIN CERTIFICATE----- MIIEcTCCA9qgAwIBAgIDTvAIMA0GCSqGSIb3DQEBBQUAMIGKMQswCQYDVQQGEwJD TjESMBAGA1UECBMJR3Vhbmdkb25nMREwDwYDVQQHEwhTaGVuemhlbjEQMA4GA1UE ChMHVGVuY2VudDEMMAoGA1UECxMDV1hHMRMwEQYDVQQDEwpNbXBheW1jaENBMR8w HQYJKoZIhvcNAQkBFhBtbXBheW1jaEB0ZW5jZW50MB4XDTE2MTAxMTA3MzAwN1oX DTI2MTAwOTA3MzAwN1owgaExCzAJBgNVBAYTAkNOMRIwEAYDVQQIEwlHdWFuZ2Rv bmcxETAPBgNVBAcTCFNoZW56aGVuMRAwDgYDVQQKEwdUZW5jZW50MQ4wDAYDVQQL EwVNTVBheTE2MDQGA1UEAxQt56et5b2S5Y6/6IyF5Z2q6ZWH5a+M576O5Yac5Ymv 5Lqn5ZOB5om55Y+R6YOoMREwDwYDVQQEEwgxNTE4NjM2ODCCASIwDQYJKoZIhvcN AQEBBQADggEPADCCAQoCggEBAK57SntCUOgD0nIQavyEyhsRKsgpgBdZ5tYQHsDp lU5Bsv/f8AI65QvPzG+l49SpSRXjEovqF8qMNiY0h1ZZEsG6MhWx8jNfQt0lF0fe RATRxubaAjoYiFASi4equNyR6mNjFWu6uTq1dTfOIsT9hIlH5BF+b5gZg63gozIZ jMCdhjNmEQmiEmJwqF/p5NmSDU6h7XsLULaUqMvut7y2f0sNIO3S3JJAu7C5Vh7E wOKrvm4X/i+atdmmFL6fas2HFH0d5dwdISrHKNHnIXq7ZLori+FTzE0goqMO9otW BOfVy6AlYvtLjQmo2zJ2eGfLqokjqITvl7L1M76gVUas9hMCAwEAAaOCAUYwggFC MAkGA1UdEwQCMAAwLAYJYIZIAYb4QgENBB8WHSJDRVMtQ0EgR2VuZXJhdGUgQ2Vy dGlmaWNhdGUiMB0GA1UdDgQWBBQKhi9dKkjs9C+lqqAtnVG+d7tqHTCBvwYDVR0j BIG3MIG0gBQ+BSb2ImK0FVuIzWR+sNRip+WGdKGBkKSBjTCBijELMAkGA1UEBhMC Q04xEjAQBgNVBAgTCUd1YW5nZG9uZzERMA8GA1UEBxMIU2hlbnpoZW4xEDAOBgNV BAoTB1RlbmNlbnQxDDAKBgNVBAsTA1dYRzETMBEGA1UEAxMKTW1wYXltY2hDQTEf MB0GCSqGSIb3DQEJARYQbW1wYXltY2hAdGVuY2VudIIJALtUlyu8AOhXMA4GA1Ud DwEB/wQEAwIGwDAWBgNVHSUBAf8EDDAKBggrBgEFBQcDAjANBgkqhkiG9w0BAQUF AAOBgQApU4TxftWhoN66OqWDy52OnwZM02hKU8mQ0ebu09FbIDU/VR6yiNWJdOCL +rkipKWb3x1QmKO0nwG88v+hBKzxmjog+Cgv+qlmHL342DFDAf8hX1UXB05UpREm gTcEo/7FgiggX4gfgl0Nk5ZZp60UYlk/n9J04dj2RBGne7YFyQ== -----END CERTIFICATE-----</textarea>&nbsp;&nbsp;
+                  <a href="#" target="_blank" title="查看微信支付存储私钥文件及存储公钥文件填写教程" rel="tooltip" class="btn btn-sm btn-danger">填写教程</a></div>
+                <div class="form-group css_none" style="display: block;">
+                  <label class="col-sm-1">
+                    <label for="WeixinzhifuAccount_apiclient_key">微信支付证书[Apiclient Key]</label></label>
+                  <textarea class="col-sm-4" style="height: 120px;" name="WeixinzhifuAccount[apiclient_key]" id="WeixinzhifuAccount_apiclient_key">-----BEGIN PRIVATE KEY----- MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCue0p7QlDoA9Jy EGr8hMobESrIKYAXWebWEB7A6ZVOQbL/3/ACOuULz8xvpePUqUkV4xKL6hfKjDYm NIdWWRLBujIVsfIzX0LdJRdH3kQE0cbm2gI6GIhQEouHqrjckepjYxVrurk6tXU3 ziLE/YSJR+QRfm+YGYOt4KMyGYzAnYYzZhEJohJicKhf6eTZkg1Ooe17C1C2lKjL 7re8tn9LDSDt0tySQLuwuVYexMDiq75uF/4vmrXZphS+n2rNhxR9HeXcHSEqxyjR 5yF6u2S6K4vhU8xNIKKjDvaLVgTn1cugJWL7S40JqNsydnhny6qJI6iE75ey9TO+ oFVGrPYTAgMBAAECggEAb4MShhZLGQ2gSRAfIEZJ2OSu4ABOAh6N/k+NKCPhLYOl wAzCGtrDGjpzYQO3yWlr8VYPu2YgUG4uCVrXCCOjbjbu3Zi9v4FpfWbAK0ltVVsw 8MdyVujo7av8ivdccHO9RknEHfbXfSMNyF2xMQ8JzqcoptmUvrPHya/g/RsBLvQv qp0a9lM3dknNxbxOj1vuaJlrchA1KbDMSLO0LJoAq5iyHRpFChtIoZ9xW5ZYQUsO 3xt3BNsVcCmHSP0wHbPrr7nW/EG/QdEpGYNGle3Sjx3HZ7MSC15wA1cAY45ep9/B 0h3iHbNq7SqXAZHMbG/5CbS0zfiOAzH3u0KfMgDyyQKBgQDdSdE40ylJccKUriNr s/GG1Phrml7jdwYpaVrPm5Gqi4axNasCdWdh8S3uiw3DWceFr6GGNommnyvk+pCG giIjYR0iDjJPQPBrU+O6ytXhf+Qy/R7JmWttJa6RsWN41JDG4L1WLS/m1dsFNAeJ p97UN6R47H4BKLGaGcmkzssanwKBgQDJ2eADIOCLB2WFdZvJECWF89XeJaro24D9 g8pQ+O6fTrhnT33tEdoDJGKy7/00p5u9H0leHHdweXrOqWnGs3TflRim960H6MXV wj68TWfcE+lqTTCFEuSMydZVDfrrVcJdYNAwxT+dRnqlEQoUOISgCKTHDVnw4GgF mSmgQvnkDQKBgBvzdP/ufCqQufk5vbOe+QUE5ZQB3bZxlE+qxROwHMgj85Fyq/UV i0dtxVV6LvTb5D3Yn1hqjxyCwnKby6GR0moRnDJvBJ/KHhQQdpVjhXyEQPjHzBm+ zTjuJ4yzkVLz1o2oWYIHFyPbI10W41TZ5WV82cOEa64Ny9EhLL0qebEVAoGALc1R hoQ0T3fbMoBwXBxc11twARt8/5+nUl9QTjVeOCntsAuaoGu3k5TzDHVmeEc8EJsD 0+YTuCLomfJZPSxFbeJwGJsE2VGZaprMD4Bk+8xM38EqLFgQIl4+U0h70mDAXN31 /8sSV0bB16jZJ6N3fLTZZw2BhiX1lKefiW0JNRUCgYEAxmtm1/I+CB/EjEN/OsYF xOsCzeVERn0/r6K0BP4Y6lQZz91EqpAkYSWfc+6z6fR9PQonI+TQS3FB0zgOIM5U lisGzqqGI8kSCLcGZbNgmrh5Pi3OSlOeXkgrnJrk8781M5aciSJXtOFTJCAZUQQ2 sPWB8JHldyFVYpapGbIoXdU= -----END PRIVATE KEY-----</textarea></div>
+                <div class="form-actions">
+                  <button class="btn btn-info mysubmit" type="submit">
+                    <i class="ace-icon fa fa-check bigger-110"></i>保存设置</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

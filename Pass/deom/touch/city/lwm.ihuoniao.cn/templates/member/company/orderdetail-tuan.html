@@ -1,0 +1,226 @@
+{#if $detail_product.tuantype == 2#}
+
+{#$stateInfo = ""#}
+{#if $detail_orderstate == 0#}
+	{#$stateInfo = "等待买家付款"#}
+{#elseif $detail_orderstate == 1#}
+	{#$stateInfo = "买家已付款，待发货"#}
+{#elseif $detail_orderstate == 2#}
+	{#$stateInfo = "已过期"#}
+{#elseif $detail_orderstate == 3#}
+	{#$stateInfo = "交易成功"#}
+{#elseif $detail_orderstate == 6#}
+	{#if $detail_retState == 1#}
+		{#if $detail_expDate == 0#}
+			{#$stateInfo = "未发货，买家申请退款"#}
+		{#else#}
+			{#$stateInfo = "已发货，买家申请退款"#}
+		{#/if#}
+	{#else#}
+		{#$stateInfo = "已发货，等待买家收货"#}
+	{#/if#}
+{#elseif $detail_orderstate == 7#}
+	{#$stateInfo = "退款成功"#}
+{#/if#}
+<dl class="info-section">
+	<dt>
+		<span class="info-title">当前订单状态：</span><em class="info-text">{#$stateInfo#}</em>
+		{#if $detail_orderstate == 7#}
+		&nbsp;&nbsp;退款时间：{#$detail_retOkdate|date_format:"%Y-%m-%d %H:%M:%S"#}
+		{#/if#}
+	</dt>
+
+	{#* 买家已付款，待发货 *#}
+	{#if $detail_orderstate == 1#}
+	<dd class="last">
+		<p class="operation"><a href="javascript:;" class="fahuo">立即发货</a></p>
+	</dd>
+	{#/if#}
+
+
+	{#* 退款中 *#}
+	{#if ($detail_orderstate == 6 && $detail_retState == 1) || $detail_orderstate == 7#}
+	<dd class="last">
+
+		<ul class="retUl">
+			<li><label>退款原因：</label>{#$detail_retType#}</li>
+			<li><label>退款说明：</label>{#$detail_retNote#}</li>
+			{#if $detail_retPics|@count > 0#}
+			<li class="retPics"><label>退款凭证：</label>
+				{#foreach from=$detail_retPics item=pics key=k#}
+				<a href="{#$pics.path#}" target="_blank"><img src="{#changeFileSize url="{#$pics.path#}" type="small"#}" /></a>
+				{#/foreach#}
+			</li>
+			{#/if#}
+			<li><label>申请时间：</label>{#$detail_retDate|date_format:"%Y-%m-%d %H:%M:%S"#}</li>
+		</ul>
+
+		{#if $detail_retSnote != ""#}
+		<ul class="retUl store">
+			<li><label>卖家回复：</label>{#$detail_retSnote#}</li>
+			{#if $detail_retSpics|@count > 0#}
+			<li class="retPics"><label>回复凭证：</label>
+				{#foreach from=$detail_retSpics item=pics key=k#}
+				<a href="{#$pics.path#}" target="_blank"><img src="{#changeFileSize url="{#$pics.path#}" type="small"#}" /></a>
+				{#/foreach#}
+			</li>
+			{#/if#}
+			<li><label>回复时间：</label>{#$detail_retSdate|date_format:"%Y-%m-%d %H:%M:%S"#}</li>
+		</ul>
+		{#/if#}
+
+		{#if $detail_retState == 1#}
+		<p class="operation">
+			<a href="javascript:;" class="tuikuan">确定退款</a>
+			{#if $detail_retSnote == ""#}
+			<a href="javascript:;" class="huifu">回复</a>
+			{#/if#}
+		</p>
+		{#/if#}
+
+	</dd>
+	{#/if#}
+
+</dl>
+
+{#if $detail_orderstate == 1#}
+<dl class="bunch-section fh"{#if $rates == 1#} style="display: block;"{#/if#}>
+	<dt>发货</dt>
+	<dd>
+		<div class="formfield">
+			<label for="exp-company"><em>*</em> 快递公司：</label>
+			<input type="text" name="exp-company" id="exp-company" size="20" maxlength="20" />
+			<span class="input-tips"><s></s>请填写快递公司名称</span>
+		</div>
+		<div class="formfield">
+			<label for="exp-number"><em>*</em> 快递单号：</label>
+			<input type="text" name="exp-number" id="exp-number" size="25" maxlength="20" />
+			<span class="input-tips"><s></s>请填写快递单号</span>
+		</div>
+		<div class="btns">
+			<button type="button" class="cbtn" id="expBtn">确认</button>
+			<a href="javascript:;" class="cancel canExp">取消</a>
+		</div>
+	</dd>
+</dl>
+{#/if#}
+
+{#if $detail_retState == 1 && $detail_retSnote == ""#}
+<script>
+var atlasSize = {#$atlasSize*1024#};
+var atlasType = '{#$atlasType#}';
+var atlasMax  = 5;
+</script>
+<dl class="bunch-section hf"{#if $rates == 1#} style="display: block;"{#/if#}>
+	<dt>回复</dt>
+	<dd>
+		<div class="formfield">
+			<label for="exp-company"><em>*</em> 回复内容：</label>
+			<div class="textarea">
+				<textarea rows="5" id="ret-note"></textarea>
+				<span class="lim-count">还可输入 <strong>500</strong> 个字。</span>
+			</div>
+		</div>
+		<div class="formfield">
+			<label for="exp-number"> 上传凭证：</label>
+			<ul class="uploader-list" id="fileList"></ul>
+			<div class="uploader-btn fn-clear">
+				<div id="filePicker">上传图片</div>
+				<span class="utip">最多传5张，按住 Ctrl 或 Shift 可选择多张</span>
+			</div>
+			<p class="tips">* 请上传原创、真实、合法的图片，如果发现用户上传的图片有侵权内容，网站有权先行删除</p>
+		</div>
+		<div class="btns">
+			<button type="button" class="cbtn" id="hfBtn">确认</button>
+			<a href="javascript:;" class="cancel canHf">取消</a>
+		</div>
+	</dd>
+</dl>
+<script src="{#$cfg_staticPath#}js/ui/jquery.dragsort-0.5.1.min.js"></script>
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.min.js"></script>
+{#/if#}
+
+<dl class="bunch-section">
+
+	<dt>订单信息</dt>
+	<dd>
+		<ul class="flow-list fn-clear">
+			<li>订单编号：{#$detail_ordernum#}</li>
+			<li>下单时间：{#$detail_orderdate|date_format:"%Y-%m-%d %H:%M:%S"#}</li>
+			{#* if $detail_orderstate == 1 || ($detail_orderstate == 2 && $detail_paydate != 0) || $detail_orderstate == 3 || $detail_orderstate == 4 *#}
+			{#if $detail_paydate != 0#}
+			<li>付款方式：{#$detail_paytype#}</li>
+			<li>付款时间：{#$detail_paydate|date_format:"%Y-%m-%d %H:%M:%S"#}</li>
+			{#/if#}
+		</ul>
+	</dd>
+
+	{#if $detail_product.tuantype == 2#}
+	<dt>配送信息</dt>
+	<dd>
+		<ul>
+			<li>收货人：{#$detail_username#}</li>
+			<li>联系电话：{#$detail_usercontact#}</li>
+			<li>送货地址：{#$detail_useraddr#}</li>
+			<li>送货时间：
+			{#if $detail_deliveryType == 1#}
+			只工作日送货(双休日、假日不用送，写字楼/商用地址客户请选择)
+			{#elseif $detail_deliveryType == 2#}
+			只双休日、假日送货(工作日不用送)
+			{#elseif $detail_deliveryType == 3#}
+			学校地址/地址白天没人，请尽量安排其它时间送货 (特别安排可能会超出预计送货天数)
+			{#elseif $detail_deliveryType == 4#}
+			工作日、双休日与假日均可送货
+			{#/if#}
+			</li>
+			<li>配送说明：{#$detail_usernote#}</li>
+		</ul>
+	</dd>
+	{#/if#}
+
+	{#if ($detail_orderstate == 3 || $detail_orderstate == 4 || $detail_orderstate == 6 || $detail_orderstate == 7) && $detail_expDate != 0#}
+	<dt>快递信息</dt>
+	<dd>
+		<ul>
+			<li>快递公司：{#$detail_expCompany#}</li>
+			<li>快递单号：{#$detail_expNumber#}</li>
+			<li>发货时间：{#$detail_expDate|date_format:"%Y-%m-%d %H:%M:%S"#}</li>
+			<li>物流跟踪：<a href="https://www.baidu.com/s?wd={#$detail_expCompany#} {#$detail_expNumber#}" target="_blank" style="color:#027cff;">点击查看详细</a></li>
+		</ul>
+	</dd>
+	{#/if#}
+
+	<dt>团购信息</dt>
+	<dd>
+		<table class="info-table">
+			<tbody>
+				<tr>
+					<th class="left">团购项目</th>
+					<th width="100">单价</th>
+					<th width="10"></th>
+					<th width="100">数量</th>
+					{#if $detail_product.tuantype == 2#}
+					<th width="10"></th>
+					<th width="100">运费</th>
+					{#/if#}
+					<th width="10"></th>
+					<th width="200">支付金额</th>
+				</tr>
+				<tr>
+					<td class="left"><a class="deal-title" href="{#$detail_product.url#}" target="_blank">{#$detail_product.title#}</a></td>
+					<td><span class="money">&yen;</span>{#$detail_orderprice#}</td>
+					<td>x</td>
+					<td>{#$detail_procount#}</td>
+					{#if $detail_product.tuantype == 2#}
+					<td>+</td>
+					<td>{#$detail_freight#}</td>
+					{#/if#}
+					<td>=</td>
+					<td class="total"><span class="money">&yen;</span>{#$detail_totalmoney#}</td>
+				</tr>
+			</tbody>
+		</table>
+	</dd>
+</dl>
+
+{#/if#}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-group group-icon"></i>
+        <a href="#">客户管理</a></li>
+      <li>
+        <a href="#">会员</a></li>
+      <li class="active">修改会员</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-sm-12">
+          <form class="form-horizontal" id="member-form" action="/member/update/414262" method="post">
+            <div class="alert alert-danger" id="member-form_es_" style="display:none">
+              <p>请更正下列输入错误:</p>
+              <ul>
+                <li>dummy</li></ul>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="LewaimaiMember_num">会员编号</label></label>
+              <input class="col-sm-2" name="LewaimaiMember[num]" id="LewaimaiMember_num" type="text" maxlength="50" value="0000001"></div>
+            <button class="btn btn-info" type="submit">
+              <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

@@ -1,0 +1,319 @@
+{#$pageTitle = "商户会员中心 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v=1" media="all" />
+</head>
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+
+	<div class="notice">公告：管理控制台改版啦，为便于您的操作，用户中心功能整合到管理控制台并对样式进行优化，欢迎体验！<a href="#" target="_blank">操作指南</a> <a href="#" target="_blank">建议反馈</a><em class="close">&times;</em></div>
+
+	<!-- 基本信息&帐户信息 -->
+	<div class="hline fn-clear">
+		<div class="r">
+			<div class="hitem account">
+				<p>账户余额：<strong title="{#$userinfo.money#}">{#$userinfo.money#}</strong>可用{#$cfg_pointName#}：<strong title="{#$userinfo.point#}">{#$userinfo.point#}</strong></p>
+				<div class="btns fn-clear">
+					<a href="{#getUrlPath service='member' template='deposit'#}" class="cz">充值现金</a>
+					<a href="{#getUrlPath service='member' template='withdraw'#}" class="tx">余额提现</a>
+					<a href="{#getUrlPath service='member' template='record'#}" class="link">交易记录</a>
+				</div>
+			</div>
+		</div>
+		<div class="l">
+			<div class="hitem uinfo">
+				<dl class="fn-clear">
+					<dt><a href="{#getUrlPath service='member' template='portrait'#}"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#changeFileSize url="{#$userinfo.photo#}" type="middle"#}" /><span>上传头像</span></a></dt>
+					<dd>
+						<div class="name"><h2>{#$nowHour#}，{#$userinfo.nickname#}</h2>{#if $userinfo.lastlogintime#}<span class="date">上次登录时间 {#$userinfo.lastlogintime#}</span>{#/if#}</div>
+						<ul class="fn-clear">
+							<li><a href="{#getUrlPath service='member' template='security'#}" class="real{#if $userinfo.certifyState != 1#} disable{#/if#}"><s></s>企业认证</a></li>
+							<li><a href="{#getUrlPath service='member' template='security'#}" class="mobile{#if $userinfo.phoneCheck == 0#} disable{#/if#}"><s></s>手机认证</a></li>
+							<li><a href="{#getUrlPath service='member' template='security'#}" class="email{#if $userinfo.emailCheck == 0#} disable{#/if#}"><s></s>邮箱认证</a></li>
+							<li><a href="{#getUrlPath service='member' template='security'#}" class="save"><s></s>密码安全</a></li>
+							<li><a href="{#getUrlPath service='member' template='security'#}" class="pay{#if $userinfo.paypwdCheck == 0#} disable{#/if#}"><s></s>支付密码</a></li>
+							<li><a href="{#getUrlPath service='member' template='security'#}" class="question{#if $userinfo.question == 0#} disable{#/if#}"><s></s>安全问题</a></li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+
+	<!-- 待办事项&日期天气 -->
+	<div class="hline fn-clear">
+		<div class="r">
+			<h3>系统日历及天气情况</h3>
+			<div class="hitem date-weather">
+				<ul class="fn-clear">
+					<li class="d"><strong>{#getMyTime format="%d"#}</strong><p>{#getMyWeek prefix="星期"#}<br />{#getMyTime format="%Y"#}.{#getMyTime format="%m"#}</p></li>
+				</ul>
+			</div>
+		</div>
+		<div class="l">
+			<h3>待办事项快速通道</h3>
+			<div class="hitem pending fn-clear">
+				{#if in_array("article", $installModuleArr)#}
+				{#$audit = 0#}
+				{#$gray = 0#}
+				{#$refuse = 0#}
+				{#article action="alist" return="list" u="1" pageData="1" pageSize="1"#}
+				{#$audit = $list['audit']|string_format:"%d"#}
+				{#$gray = $list['gray']|string_format:"%d"#}
+				{#$refuse = $list['refuse']|string_format:"%d"#}
+				{#/article#}
+				{#if $audit > 0 || $gray > 0 || $refuse > 0#}
+				<dl>
+					<dt><img src="{#$templets_skin#}images/sicon/marry.gif" /></dt>
+					<dd>
+						<a href="{#getUrlPath service='member' template='manage' action='article'#}">新闻</a>
+						{#if $audit > 0#}<a href="{#getUrlPath service='member' template='manage' action='article' param='state=1'#}">投稿(<strong>{#$audit#}</strong>)</a>{#/if#}
+						{#if $gray > 0#}<a href="{#getUrlPath service='member' template='manage' action='article' param='state=0'#}">待审(<strong>{#$gray#}</strong>)</a>{#/if#}
+						{#if $refuse > 0#}<a href="{#getUrlPath service='member' template='manage' action='article' param='state=2'#}">拒绝(<strong>{#$refuse#}</strong>)</a>{#/if#}
+					</dd>
+				</dl>
+				{#/if#}
+				{#/if#}
+
+				{#if in_array("info", $installModuleArr)#}
+				{#$gray = 0#}
+				{#$refuse = 0#}
+				{#$expire = 0#}
+				{#info action="ilist" return="list" u="1" pageData="1" pageSize="1"#}
+				{#$gray = $list['gray']|string_format:"%d"#}
+				{#$refuse = $list['refuse']|string_format:"%d"#}
+				{#$expire = $list['expire']|string_format:"%d"#}
+				{#/info#}
+				{#if $gray > 0 || $refuse > 0 || $expire > 0#}
+				<dl>
+					<dt><img src="{#$templets_skin#}images/sicon/tuan.gif" /></dt>
+					<dd>
+						<a href="{#getUrlPath service='member' template='manage' action='info'#}">生活信息</a>
+						{#if $gray > 0#}<a href="{#getUrlPath service='member' template='manage' action='info' param='state=0'#}">待审(<strong>{#$gray#}</strong>)</a>{#/if#}
+						{#if $refuse > 0#}<a href="{#getUrlPath service='member' template='manage' action='info' param='state=2'#}">拒绝(<strong>{#$refuse#}</strong>)</a>{#/if#}
+						{#if $expire > 0#}<a href="{#getUrlPath service='member' template='manage' action='info' param='state=4'#}">过期(<strong>{#$expire#}</strong>)</a>{#/if#}
+					</dd>
+				</dl>
+				{#/if#}
+				{#/if#}
+
+				{#if in_array("tuan", $installModuleArr)#}
+				{#$refuse = 0#}
+				{#$ongoing = 0#}
+				{#$refunded = 0#}
+				{#tuan action="tlist" return="list" u="1" pageData="1" pageSize="1"#}
+				{#$refuse = $list['refuse']|string_format:"%d"#}
+				{#/tuan#}
+				{#tuan action="orderList" return="list" store="1" pageData="1" pageSize="1"#}
+				{#$ongoing = $list['ongoing']|string_format:"%d"#}
+				{#$refunded = $list['refunded']|string_format:"%d"#}
+				{#/tuan#}
+				{#if $refuse > 0 || $ongoing > 0 || $refunded > 0#}
+				<dl>
+					<dt><img src="{#$templets_skin#}images/sicon/website.gif" /></dt>
+					<dd>
+						<a href="{#getUrlPath service='member' template='manage' action='tuan'#}">团购</a>
+						{#if $refuse > 0#}<a href="{#getUrlPath service='member' template='manage' action='tuan' param='state=2'#}">拒绝(<strong>{#$refuse#}</strong>)</a>{#/if#}
+						{#if $ongoing > 0#}<a href="{#getUrlPath service='member' template='order' action='tuan' param='state=1'#}">待发货(<strong>{#$ongoing#}</strong>)</a>{#/if#}
+						{#if $refunded > 0#}<a href="{#getUrlPath service='member' template='order' action='tuan' param='state=4'#}">待退款(<strong>{#$refunded#}</strong>)</a>{#/if#}
+					</dd>
+				</dl>
+				{#/if#}
+				{#/if#}
+
+				{#if in_array("shop", $installModuleArr)#}
+				{#$ongoing = 0#}
+				{#$refunded = 0#}
+				{#shop action="orderList" return="list" store="1" pageData="1" pageSize="1"#}
+				{#$ongoing = $list['ongoing']|string_format:"%d"#}
+				{#$refunded = $list['refunded']|string_format:"%d"#}
+				{#/shop#}
+				{#if $ongoing > 0 || $refunded > 0#}
+				<dl>
+					<dt><img src="{#$templets_skin#}images/sicon/waimai.gif" /></dt>
+					<dd>
+						<a href="{#getUrlPath service='member' template='manage' action='shop'#}">商城</a>
+						{#if $ongoing > 0#}<a href="{#getUrlPath service='member' template='order' action='shop' param='state=1'#}">待发货(<strong>{#$ongoing#}</strong>)</a>{#/if#}
+						{#if $refunded > 0#}<a href="{#getUrlPath service='member' template='order' action='shop' param='state=4'#}">待退款(<strong>{#$refunded#}</strong>)</a>{#/if#}
+					</dd>
+				</dl>
+				{#/if#}
+				{#/if#}
+
+				{#if in_array("build", $installModuleArr)#}
+				{#$ongoing = 0#}
+				{#$refunded = 0#}
+				{#build action="orderList" return="list" store="1" pageData="1" pageSize="1"#}
+				{#$ongoing = $list['ongoing']|string_format:"%d"#}
+				{#$refunded = $list['refunded']|string_format:"%d"#}
+				{#/build#}
+				{#if $ongoing > 0 || $refunded > 0#}
+				<dl>
+					<dt><img src="{#$templets_skin#}images/sicon/shop.gif" /></dt>
+					<dd>
+						<a href="{#getUrlPath service='member' template='manage' action='build'#}">建材</a>
+						{#if $ongoing > 0#}<a href="{#getUrlPath service='member' template='order' action='build' param='state=1'#}">待发货(<strong>{#$ongoing#}</strong>)</a>{#/if#}
+						{#if $refunded > 0#}<a href="{#getUrlPath service='member' template='order' action='build' param='state=4'#}">待退款(<strong>{#$refunded#}</strong>)</a>{#/if#}
+					</dd>
+				</dl>
+				{#/if#}
+				{#/if#}
+
+				{#if in_array("furniture", $installModuleArr)#}
+				{#$ongoing = 0#}
+				{#$refunded = 0#}
+				{#furniture action="orderList" return="list" store="1" pageData="1" pageSize="1"#}
+				{#$ongoing = $list['ongoing']|string_format:"%d"#}
+				{#$refunded = $list['refunded']|string_format:"%d"#}
+				{#/furniture#}
+				{#if $ongoing > 0 || $refunded > 0#}
+				<dl>
+					<dt><img src="{#$templets_skin#}images/sicon/car.gif" /></dt>
+					<dd>
+						<a href="{#getUrlPath service='member' template='manage' action='furniture'#}">家具</a>
+						{#if $ongoing > 0#}<a href="{#getUrlPath service='member' template='order' action='furniture' param='state=1'#}">待发货(<strong>{#$ongoing#}</strong>)</a>{#/if#}
+						{#if $refunded > 0#}<a href="{#getUrlPath service='member' template='order' action='furniture' param='state=4'#}">待退款(<strong>{#$refunded#}</strong>)</a>{#/if#}
+					</dd>
+				</dl>
+				{#/if#}
+				{#/if#}
+
+				{#if in_array("home", $installModuleArr)#}
+				{#$ongoing = 0#}
+				{#$refunded = 0#}
+				{#home action="orderList" return="list" store="1" pageData="1" pageSize="1"#}
+				{#$ongoing = $list['ongoing']|string_format:"%d"#}
+				{#$refunded = $list['refunded']|string_format:"%d"#}
+				{#/home#}
+				{#if $ongoing > 0 || $refunded > 0#}
+				<dl>
+					<dt><img src="{#$templets_skin#}images/sicon/job.gif" /></dt>
+					<dd>
+						<a href="{#getUrlPath service='member' template='manage' action='home'#}">家居</a>
+						{#if $ongoing > 0#}<a href="{#getUrlPath service='member' template='order' action='home' param='state=1'#}">待发货(<strong>{#$ongoing#}</strong>)</a>{#/if#}
+						{#if $refunded > 0#}<a href="{#getUrlPath service='member' template='order' action='home' param='state=4'#}">待退款(<strong>{#$refunded#}</strong>)</a>{#/if#}
+					</dd>
+				</dl>
+				{#/if#}
+				{#/if#}
+
+				{#if in_array("renovation", $installModuleArr)#}
+				{#$state = 0#}
+				{#renovation action="rese" return="list" u="1" pageData="1" pageSize="1"#}
+				{#$state = $list['state0']|string_format:"%d"#}
+				{#/renovation#}
+				{#if $state > 0#}
+				<dl>
+					<dt><img src="{#$templets_skin#}images/sicon/house.gif" /></dt>
+					<dd>
+						<a href="{#getUrlPath service='member' template='config' action='renovation'#}">装修</a>
+						<a href="{#getUrlPath service='member' template='booking' action='renovation'#}">预约(<strong>{#$state#}</strong>)</a>
+					</dd>
+				</dl>
+				{#/if#}
+				{#/if#}
+
+				{#if in_array("job", $installModuleArr)#}
+				{#$state = 0#}
+				{#job action="deliveryList" return="list" type="company" state="0" pageData="1" pageSize="1"#}
+				{#$state = $list['state0']|string_format:"%d"#}
+				{#/job#}
+				{#if $state > 0#}
+				<dl>
+					<dt><img src="{#$templets_skin#}images/sicon/marry.gif" /></dt>
+					<dd>
+						<a href="{#getUrlPath service='member' template='config' action='job'#}">招聘</a>
+						<a href="{#getUrlPath service='member' template='resume-job'#}">简历(<strong>{#$state#}</strong>)</a>
+					</dd>
+				</dl>
+				{#/if#}
+				{#/if#}
+
+			</div>
+		</div>
+	</div>
+
+	<!-- 系统功能模块 -->
+	<div class="module hitem fn-clear">
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/website.png" /></dt>
+				<dd><h5>企业建站</h5><p>利用最新互联网技术打造高端移动商务平台</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/build.png" /></dt>
+				<dd><h5>建材产品</h5><p>网络化与终端体验相集合的一站式无忧采购</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/renovation.png" /></dt>
+				<dd><h5>装修房子</h5><p>价格透明,拒绝水分,实力公司保障施工效果</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/home.png" /></dt>
+				<dd><h5>生活家居</h5><p>有机家庭生活用品平台，社区消费尽在这里</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/tuan.png" /></dt>
+				<dd><h5>团购</h5><p>精选美食，娱乐等优质信息,尽享无敌折扣</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/shop.png" /></dt>
+				<dd><h5>购物商城</h5><p>超低折扣，品类齐全100%品质保证，购物有保障</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/job.png" /></dt>
+				<dd><h5>企业招聘</h5><p>名企信息，快速申请，轻松工作，满意招聘</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/house.png" /></dt>
+				<dd><h5>房屋租售</h5><p>优质房源，寻找你理想的特色住所，可信有保障</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/marry.png" /></dt>
+				<dd><h5>婚庆摄影</h5><p>叙述有故事的浪漫，追求有灵魂的瞬间</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/waimai.png" /></dt>
+				<dd><h5>外卖</h5><p>超值套餐等你来!贴心的订餐服务让生活更简单</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/car.png" /></dt>
+				<dd><h5>汽车</h5><p>量身选爱车，全程购车服务，让购车更轻松!</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/furniture.png" /></dt>
+				<dd><h5>家具商城</h5><p>品牌齐全，任你挑选，汇聚各类风格，一站购齐</p></dd>
+			</dl>
+		</a>
+	</div>
+
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v=1"></script>
+</body>
+</html>

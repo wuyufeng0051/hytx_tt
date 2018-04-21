@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-wechat wechat-icon"></i>
+      <li class="active">公众号设置</li>
+      <li class="active">自动回复</li>
+      <li>
+        <a href="#">关键词自动回复</a></li>
+      <li class="active">修改文字回复</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.comment{width:680px; margin:20px auto; position:relative} .comment h3{height:28px; line-height:28px} .com_form{width:100%; position:relative} .input{width:99%; height:60px; border:1px solid #ccc} .com_form p{height:28px; line-height:28px; position:relative} span.emotion{width:42px; height:20px; display:block; background:url(/img/qq/icon.gif) no-repeat 2px 2px; padding-left:20px; cursor:pointer} span.emotion:hover{background-position:2px -28px} .qqFace{margin-top:4px;background:#fff;padding:2px;border:1px #dfe6f6 solid;} .qqFace table td{padding:0px;} .qqFace table td img{cursor:pointer;border:1px #fff solid;} .qqFace table td img:hover{border:1px #0066cc solid;}</style>
+      <div class="form">
+        <form class="well" id="food-form" action="/autoreply/update/76020" method="post">
+          <p class="note">标有
+            <span class="required" style="color:red;">*</span>的为必填选项</p>
+          <div class="alert alert-danger" id="food-form_es_" style="display:none">
+            <p>请更正下列输入错误:</p>
+            <ul>
+              <li>dummy</li></ul>
+          </div>
+          <br>关键词
+          <span class="required" style="color:red;">*</span>：
+          <br>
+          <input class="span3" size="30" maxlength="30" name="Autoreply[text]" id="Autoreply_text" type="text" value="测试">
+          <br>
+          <br>
+          <input id="ytAutoreply_matchtype" type="hidden" value="" name="Autoreply[matchtype]">
+          <span id="Autoreply_matchtype">
+            <input id="Autoreply_matchtype_0" value="0" checked="checked" type="radio" name="Autoreply[matchtype]">
+            <label for="Autoreply_matchtype_0">完全匹配，用户输入的和此关键词一样才会触发!</label>
+            <br>
+            <input id="Autoreply_matchtype_1" value="1" type="radio" name="Autoreply[matchtype]">
+            <label for="Autoreply_matchtype_1">包含匹配 ，只要用户输入的文字包含本关键词就触发!</label></span>
+          <br>
+          <br>文字回复内容
+          <span class="required" style="color:red;">*</span>:
+          <br>
+          <textarea style="width: 400px;" rows="8" maxlength="1000" id="replytext" name="Autoreply[replytext]">测试 测试测试</textarea>
+          <span class="emotion"></span>
+          <br>
+          <div class="form-actions">
+            <button class="btn btn-info" type="submit">
+              <i class="ace-icon fa fa-check bigger-110"></i>提交</button>
+          </div>
+        </form>
+      </div>
+      <!-- form -->
+      <script src="js/jquery.qqFace.js"></script>
+      <script>$(function() {
+          $('.emotion').qqFace({
+            assign: 'replytext',
+            //给那个控件赋值
+            path: '/img/qq/' //表情存放的路径
+          });
+          $(".btn-info").click(function() {
+            var str = $(".replytext").val();
+            $("#show").html(replace_em(str));
+          });
+        });
+        //替换表情
+        function replace_em(str) {
+          str = str.replace(/\</g, '&lt;');
+          str = str.replace(/\>/g, '&gt;');
+          str = str.replace(/\n/g, '<br/>');
+          str = str.replace(/\[em_([0-9]*)\]/g, '<img src="face/$1.gif" border="0" />');
+          return str;
+        }</script>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+{#$pageTitle = "分类管理 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/category-{#$module#}.css" media="all" />
+<script type="text/javascript">
+	var modelType = '{#$module#}';
+</script>
+</head>
+
+{#$pageCurr = "category_{#$module#}"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+	<div class="container fn-clear">
+		{#include file="category-$module.html"#}
+	</div>
+</div>
+
+<div class="stopdrag">分类发生变化，请及时<a href="javascript:;">保存</a></div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/category-{#$module#}.js?v=1"></script>
+</body>
+</html>

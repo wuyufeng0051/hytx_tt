@@ -1,0 +1,429 @@
+<!--#include file="_head.shtml"-->
+
+
+<link href="/Js/Validform/css/style.css" rel="stylesheet" />
+<link href="/css/HN_button.css" rel="stylesheet" />
+<script src="/Js/Validform/js/Validform_v5.3.2.js"></script>
+<script src="js/HN_load.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        $("form").Validform({
+            tiptype: 3,
+            postonce: true,
+            usePlugin: {
+                passwordstrength: {
+                    minLen: 6,
+                    maxLen: 18
+                }
+            }
+        });
+    })
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#form1").Validform({
+            tiptype: 3,
+            postonce: true,
+            ajaxPost: true,
+            beforeSubmit: function (curform) {
+                var selectval = $("#SelectVal").val();
+                if (selectval) {
+                    if (selectval == "zixuan" && $("input[name='AgentIDS']").val() == "") {
+                        alert("请选择填写服务商");
+                        return false;
+                    } else if (selectval == "tuijian") {
+                        var agents = [];
+                        $("input[name='AgentIDS']:checked").each(function () {
+                            agents.push($(this).val());
+                        });
+                        if (agents.length == 0) {
+                            alert("请选择服务商");
+                            return false;
+                        }
+                    }
+                } else {
+                    alert("请选择推荐类型");
+                    return false;
+                }
+                return true;
+            },
+        })
+        $("#tuijian").click(function () {
+
+            var area = [];
+            $("input[name='DelegateArea']:checked").each(function () {
+                area.push($(this).val());
+            });
+            var business = $("#BusinessType").val()
+            if (area.length == "" || business.length == "") {
+                alert("请选择委托处置地和业务领域");
+                return;
+            }
+            $("#Select_2").hide();
+            $("#Select_1").show();
+        });
+        $("#zixuan").click(function () {
+
+            var area = [];
+            $("input[name='DelegateArea']:checked").each(function () {
+                area.push($(this).val());
+            });
+            var business = $("#BusinessType").val()
+            if (area.length == "" || business.length == "") {
+                alert("请选择委托处置地和业务领域");
+                return;
+            }
+            $("#Select_1").hide();
+            $("#Select_2").show();
+        });
+
+
+        $("input[name='DelegateArea']").click(function () {
+            $("input[name='selectAgent']").removeAttr("checked");
+            $("#Select").hide();
+            $("#SelectVal").val("");
+        });
+
+        $("#BusinessType").change(function () {
+            $("input[name='selectAgent']").removeAttr("checked");
+            $("#Select").hide();
+            $("#SelectVal").val("");
+        });
+    });
+</script>
+
+
+
+
+<div class="rBox">
+  <div class="local">
+    <a href="/admin">首页</a>&gt;
+    <a href="/Activist">维权申请</a>&gt;
+    <span>添加维权申请</span></div>
+  <div class="process_zl"></div>
+  <div class="box1 formEdit">
+    <div class="title">
+      <h3>维权申请信息</h3></div>
+    <div class="adminEdit rBgDiv">
+      <div class="box">
+        <form action="/Activist/Create" id="form1" method="post">
+          <input id="ActivistID" name="ActivistID" type="hidden" value="78f86a3f-07af-4db3-911b-2bc37c71958a" />
+          <dl>
+            <dt>
+              <em>*</em>联系人：</dt>
+            <dd>
+              <input Value="" autocomplete="off" class="text" datatype="*" id="ContactUser" name="ContactUser" nullmsg="不能为空" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>联系方式：</dt>
+            <dd>
+              <input Value="" autocomplete="off" class="text" datatype="*" id="ContactPhone" name="ContactPhone" nullmsg="不能为空" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>业务领域：</dt>
+            <dd>
+              <select autocomplete="off" class="text" datatype="*" id="BusinessType" name="BusinessType" nullmsg="请选择类型">
+                <option value="">请选择</option>
+                <option value="PatentActivist">专利维权</option>
+                <option value="TrademarkActivist">商标维权</option>
+                <option value="CopyRightActivist">版权维权</option></select>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>委托类型：</dt>
+            <dd>
+              <select autocomplete="off" class="text" datatype="*" id="DelegateType" name="DelegateType" nullmsg="请选择类型">
+                <option value="">请选择</option>
+                <option value="Complaint">投诉</option>
+                <option value="Customs">海关</option>
+                <option value="Judicial">司法</option>
+                <option value="Mediate">调解</option></select>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>委托处置地（地域）：</dt>
+            <dd>
+              <p>
+                <span class="checkboxLabel">
+                  <input id="BeiJing" name="DelegateArea" type="checkbox" value="BeiJing" />
+                  <label for="BeiJing">北京</label></span>
+                <span class="checkboxLabel">
+                  <input id="ShangHai" name="DelegateArea" type="checkbox" value="ShangHai" />
+                  <label for="ShangHai">上海</label></span>
+                <span class="checkboxLabel">
+                  <input id="GuangDong" name="DelegateArea" type="checkbox" value="GuangDong" />
+                  <label for="GuangDong">广东</label></span>
+                <span class="checkboxLabel">
+                  <input id="TianJin" name="DelegateArea" type="checkbox" value="TianJin" />
+                  <label for="TianJin">天津</label></span>
+                <span class="checkboxLabel">
+                  <input id="ChongQin" name="DelegateArea" type="checkbox" value="ChongQin" />
+                  <label for="ChongQin">重庆</label></span>
+                <span class="checkboxLabel">
+                  <input id="ZheJiang" name="DelegateArea" type="checkbox" value="ZheJiang" />
+                  <label for="ZheJiang">浙江</label></span>
+                <span class="checkboxLabel">
+                  <input id="JiangSu" name="DelegateArea" type="checkbox" value="JiangSu" />
+                  <label for="JiangSu">江苏</label></span>
+                <span class="checkboxLabel">
+                  <input id="SiChuan" name="DelegateArea" type="checkbox" value="SiChuan" />
+                  <label for="SiChuan">四川</label></span>
+                <span class="checkboxLabel">
+                  <input id="HaiNan" name="DelegateArea" type="checkbox" value="HaiNan" />
+                  <label for="HaiNan">海南</label></span>
+                <span class="checkboxLabel">
+                  <input id="ShanDong" name="DelegateArea" type="checkbox" value="ShanDong" />
+                  <label for="ShanDong">山东</label></span>
+                <span class="checkboxLabel">
+                  <input id="HuNan" name="DelegateArea" type="checkbox" value="HuNan" />
+                  <label for="HuNan">湖南</label></span>
+                <span class="checkboxLabel">
+                  <input id="HuBei" name="DelegateArea" type="checkbox" value="HuBei" />
+                  <label for="HuBei">湖北</label></span>
+                <span class="checkboxLabel">
+                  <input id="FuJian" name="DelegateArea" type="checkbox" value="FuJian" />
+                  <label for="FuJian">福建</label></span>
+                <span class="checkboxLabel">
+                  <input id="HeiLongJiang" name="DelegateArea" type="checkbox" value="HeiLongJiang" />
+                  <label for="HeiLongJiang">黑龙江</label></span>
+                <span class="checkboxLabel">
+                  <input id="LiaoNing" name="DelegateArea" type="checkbox" value="LiaoNing" />
+                  <label for="LiaoNing">辽宁</label></span>
+                <span class="checkboxLabel">
+                  <input id="AnHui" name="DelegateArea" type="checkbox" value="AnHui" />
+                  <label for="AnHui">安徽</label></span>
+                <span class="checkboxLabel">
+                  <input id="JiangXi" name="DelegateArea" type="checkbox" value="JiangXi" />
+                  <label for="JiangXi">江西</label></span>
+                <span class="checkboxLabel">
+                  <input id="QingHai" name="DelegateArea" type="checkbox" value="QingHai" />
+                  <label for="QingHai">青海</label></span>
+                <span class="checkboxLabel">
+                  <input id="Shaanxi" name="DelegateArea" type="checkbox" value="Shaanxi" />
+                  <label for="Shaanxi">陕西</label></span>
+                <span class="checkboxLabel">
+                  <input id="GuiZhou" name="DelegateArea" type="checkbox" value="GuiZhou" />
+                  <label for="GuiZhou">贵州</label></span>
+                <span class="checkboxLabel">
+                  <input id="JiLin" name="DelegateArea" type="checkbox" value="JiLin" />
+                  <label for="JiLin">吉林</label></span>
+                <span class="checkboxLabel">
+                  <input id="ShanXi" name="DelegateArea" type="checkbox" value="ShanXi" />
+                  <label for="ShanXi">山西</label></span>
+                <span class="checkboxLabel">
+                  <input id="HeNan" name="DelegateArea" type="checkbox" value="HeNan" />
+                  <label for="HeNan">河南</label></span>
+                <span class="checkboxLabel">
+                  <input id="HeBei" name="DelegateArea" type="checkbox" value="HeBei" />
+                  <label for="HeBei">河北</label></span>
+                <span class="checkboxLabel">
+                  <input id="GuangXi" name="DelegateArea" type="checkbox" value="GuangXi" />
+                  <label for="GuangXi">广西</label></span>
+                <span class="checkboxLabel">
+                  <input id="YunNan" name="DelegateArea" type="checkbox" value="YunNan" />
+                  <label for="YunNan">云南</label></span>
+                <span class="checkboxLabel">
+                  <input id="GanSu" name="DelegateArea" type="checkbox" value="GanSu" />
+                  <label for="GanSu">甘肃</label></span>
+                <span class="checkboxLabel">
+                  <input id="NeiMengGu" name="DelegateArea" type="checkbox" value="NeiMengGu" />
+                  <label for="NeiMengGu">内蒙古</label></span>
+                <span class="checkboxLabel">
+                  <input id="NingXia" name="DelegateArea" type="checkbox" value="NingXia" />
+                  <label for="NingXia">宁夏</label></span>
+                <span class="checkboxLabel">
+                  <input id="XiZang" name="DelegateArea" type="checkbox" value="XiZang" />
+                  <label for="XiZang">西藏</label></span>
+                <span class="checkboxLabel">
+                  <input id="XinJiang" name="DelegateArea" type="checkbox" value="XinJiang" />
+                  <label for="XinJiang">新疆</label></span>
+                <span class="checkboxLabel">
+                  <input id="TaiWan" name="DelegateArea" type="checkbox" value="TaiWan" />
+                  <label for="TaiWan">台湾</label></span>
+                <span class="checkboxLabel">
+                  <input id="America" name="DelegateArea" type="checkbox" value="America" />
+                  <label for="America">美国</label></span>
+                <span class="checkboxLabel">
+                  <input id="Europe" name="DelegateArea" type="checkbox" value="Europe" />
+                  <label for="Europe">欧洲</label></span>
+                <span class="checkboxLabel">
+                  <input id="Japan" name="DelegateArea" type="checkbox" value="Japan" />
+                  <label for="Japan">日本</label></span>
+                <span class="checkboxLabel">
+                  <input id="Canada" name="DelegateArea" type="checkbox" value="Canada" />
+                  <label for="Canada">加拿大</label></span>
+                <span class="checkboxLabel">
+                  <input id="Australia" name="DelegateArea" type="checkbox" value="Australia" />
+                  <label for="Australia">澳大利亚</label></span>
+                <span class="checkboxLabel">
+                  <input id="Singapore" name="DelegateArea" type="checkbox" value="Singapore" />
+                  <label for="Singapore">新加坡</label></span>
+                <span class="checkboxLabel">
+                  <input id="Korea" name="DelegateArea" type="checkbox" value="Korea" datatype="*" nullmsg="最少选择一个" />
+                  <label for="Korea">韩国</label></span>
+              </p>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>知识产权的名称及说明：</dt>
+            <dd>
+              <textarea autocomplete="off" class="text" cols="20" datatype="*" id="Explanation" name="Explanation" nullmsg="不能为空" rows="2" style="width:450px"></textarea>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>委托事项：</dt>
+            <dd>
+              <textarea autocomplete="off" class="text" cols="20" datatype="*" id="CommissionMatters" name="CommissionMatters" nullmsg="不能为空" rows="2" style="width:450px"></textarea>
+            </dd>
+          </dl>
+          <dl>
+            <dt>进出境地海关：</dt>
+            <dd>
+              <textarea autocomplete="off" class="text" cols="20" id="CustomsPosition" name="CustomsPosition" rows="2" style="width:450px"></textarea>
+            </dd>
+          </dl>
+          <dl>
+            <dt>申请附件：</dt>
+            <dd style="width: 500px">
+            <div class="webuploader-pick">
+                  <div class="btn">上传</div>
+                  <input type="file" class="load3">
+                </div>
+                <div class="pic_box_2">
+                  <img src="images/wenjian.png" alt="">
+                  <p>wenjian.opng</p>
+                  <em></em>
+                </div>
+                <div class="warning">多个文件请打包上传。<br>(允许上传的文件格式有：*.zip;*.doc;*.docx;*.xls;*.xlsx;*.pdf;)</div>
+              </dd></dl>
+          <dl>
+            <dt>
+              <em>*</em>推荐类型：</dt>
+            <dd>
+              <p>
+                <input type="radio" id="tuijian" name="selectAgent" value="tuijian" />
+                <label for="tuijian">推荐代理商</label>
+                <input type="radio" id="zixuan" name="selectAgent" value="zixuan" />
+                <label for="zixuan">自选代理商</label></p>
+            </dd>
+          </dl>
+                <div id="Select_1" style="display: none;">
+        <dl>
+          <dt>
+            <em>(可多选)</em>选择服务商：</dt>
+          <dd>
+            <label class="dls">
+              <div class="t_1">
+                <div class="input-r">
+                  <div class="ir" >
+                    <input type="checkbox" name="AgentIDS"  >
+                  </div>
+                </div>
+                <div class="pull-left">上海立群专利代理事务所</div>
+                <div class="pull-right">联系人：黄震</div></div>
+              <div class="b_box">
+                <div class="pic">
+                  <img src="upfile/22b41ff6-6faf-4ace-b7bc-f8a24e316e64.png"></div>
+                <div class="info">
+                  <p>业务领域：版权登记,专利无效,专利交易,专利维权,专利许可,版权纠纷,版权维权,商标申请,专利申请,版权诉讼,商标许可,商标交易,版权交易,专利纠纷,商标维权,版权许可,商标纠纷,商标诉讼,专利诉讼</p>
+                  <p>技术领域：物理光学,电子通信,机械,生物医药,化工,材料</p>
+                  <p>行业领域：电子信息,生物医药,互联网及移动互联网,新能源与节能环保,先进制造,新材料</p>
+                  <p>地域：北京,浙江,新加坡,加拿大,韩国,上海,日本,美国,欧洲,台湾,江苏,澳大利亚,广东</p>
+                </div>
+              </div>
+            </label>
+            <label class="dls">
+              <div class="t_1">
+                <div class="input-r">
+                 <div class="ir" >
+                    <input type="checkbox" name="AgentIDS" >
+                  </div>
+                </div>
+                <div class="pull-left">上海汉盛律师事务所</div>
+                <div class="pull-right">联系人：朱以林</div></div>
+              <div class="b_box">
+                <div class="pic">
+                  <img src="upfile/22b41ff6-6faf-4ace-b7bc-f8a24e316e64.png"></div>
+                <div class="info">
+                  <p>业务领域：版权登记,专利无效,专利交易,专利维权,专利许可,版权纠纷,版权维权,商标申请,专利申请,版权诉讼,商标许可,商标交易,版权交易,专利纠纷,商标维权,版权许可,商标纠纷,商标诉讼,专利诉讼,版权登记,版权交易,版权许可,专利维权,商标申请,专利诉讼,版权维权,专利申请,专利许可,商标纠纷,商标许可,专利无效,版权纠纷,商标维权,专利纠纷,专利交易,商标交易,版权诉讼,商标诉讼</p>
+                  <p>技术领域：物理光学,电子通信,机械,生物医药,化工,材料 ,物理光学,化工,电子通信,机械,材料 ,生物医药</p>
+                  <p>行业领域：电子信息,生物医药,互联网及移动互联网,新能源与节能环保,先进制造,新材料,电子信息,新材料,先进制造,生物医药,新能源与节能环保,互联网及移动互联网</p>
+                  <p>地域：北京,浙江,新加坡,加拿大,韩国,上海,日本,美国,欧洲,台湾,江苏,澳大利亚,广东,安徽,河南,宁夏,吉林,重庆,江苏,江西,青海,辽宁,广东,海南,天津,福建,台湾,西藏,美国,湖北,山东,浙江,北京,黑龙江,欧洲,新疆,贵州,澳大利亚,广西,四川,山西,河北,甘肃,内蒙古,湖南,日本,上海</p>
+                </div>
+              </div>
+            </label>
+            <label class="dls">
+              <div class="t_1">
+                <div class="input-r">
+                  <div class="ir" >
+                    <input type="checkbox" name="AgentIDS"  >
+                  </div>
+                </div>
+                <div class="pull-left">上海精晟知识产权代理有限公司</div>
+                <div class="pull-right">联系人：沈先生</div></div>
+              <div class="b_box">
+                <div class="pic">
+                  <img src="upfile/22b41ff6-6faf-4ace-b7bc-f8a24e316e64.png"></div>
+                <div class="info">
+                  <p>业务领域：版权登记,专利无效,专利交易,专利维权,专利许可,版权纠纷,版权维权,商标申请,专利申请,版权诉讼,商标许可,商标交易,版权交易,专利纠纷,商标维权,版权许可,商标纠纷,商标诉讼,专利诉讼,版权登记,版权交易,版权许可,专利维权,商标申请,专利诉讼,版权维权,专利申请,专利许可,商标纠纷,商标许可,专利无效,版权纠纷,商标维权,专利纠纷,专利交易,商标交易,版权诉讼,商标诉讼,专利维权,专利申请,专利许可,商标维权,版权纠纷,版权许可,商标交易,版权诉讼,专利无效,专利纠纷,专利诉讼,版权维权,商标纠纷,专利交易,商标申请,商标诉讼,商标许可,版权交易,版权登记</p>
+                  <p>技术领域：物理光学,电子通信,机械,生物医药,化工,材料 ,物理光学,化工,电子通信,机械,材料 ,生物医药,机械,生物医药,材料 ,化工,电子通信</p>
+                  <p>行业领域：电子信息,生物医药,互联网及移动互联网,新能源与节能环保,先进制造,新材料,电子信息,新材料,先进制造,生物医药,新能源与节能环保,互联网及移动互联网,电子信息,互联网及移动互联网,新能源与节能环保,生物医药,先进制造</p>
+                  <p>地域：北京,浙江,新加坡,加拿大,韩国,上海,日本,美国,欧洲,台湾,江苏,澳大利亚,广东,安徽,河南,宁夏,吉林,重庆,江苏,江西,青海,辽宁,广东,海南,天津,福建,台湾,西藏,美国,湖北,山东,浙江,北京,黑龙江,欧洲,新疆,贵州,澳大利亚,广西,四川,山西,河北,甘肃,内蒙古,湖南,日本,上海,山东,浙江,江苏,广东,天津,上海,北京,重庆</p>
+                </div>
+              </div>
+            </label>
+            <div class="page">
+              <a href="javascript:toPage(2);">下一批</a></div>
+          </dd>
+        </dl>
+        <link href="css/all.css" rel="stylesheet">
+        <script src="js/icheck.min.js"></script>
+        <script>$(function() {
+
+            //CheckBox样式
+            $('.dls input').iCheck({
+              checkboxClass: 'icheckbox_square-green',
+              radioClass: 'iradio_square-green',
+              increaseArea: '20%' // optional
+            });
+          });
+          var toPage = function(pageindex) {
+            $("#id").val(pageindex); 
+            $("#selectform").submit();
+          }</script>
+      </div>
+      <div id="Select_2" style="display: none;">
+        <dl>
+          <dt>服务商：</dt>
+          <dd>
+            <input autocomplete="off" id="AgentName" name="AgentName" type="text" value="" class="ui-autocomplete-input">
+            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>(输入服务商名称进行匹配)
+            <input id="AgentIDS" name="AgentIDS" type="hidden" value="">
+          </dd>
+         </dl>
+      </div>
+          <div class="btnBox">
+            <input value="提交" class="btn" type="submit" />
+            <input type="button" value="返回" class="return btn" onclick="history.go(-1)" /></div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+<!--#include file="_foot.shtml"-->

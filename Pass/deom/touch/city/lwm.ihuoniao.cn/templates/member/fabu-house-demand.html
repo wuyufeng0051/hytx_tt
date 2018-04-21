@@ -1,0 +1,69 @@
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>供求：</dt>
+	<dd>
+		<div class="radio" data-title="请选择供求">
+			<span data-id="0"{#if $detail_type == 0 || $detail_type == ""#} class="curr"{#/if#}>求租</span>
+			<span data-id="1"{#if $detail_type == 1#} class="curr"{#/if#}>求购</span>
+			<input type="hidden" name="category" id="category" value="{#if $detail_type != ""#}{#$detail_type#}{#else#}0{#/if#}" />
+		</div>
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>标题：</dt>
+	<dd>
+		<input type="text" name="title" class="inp" id="title" size="65" maxlength="50" data-title="请输入信息标题，5-50个字" value="{#$detail_title#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>描述：</dt>
+	<dd>
+		<textarea class="inp text" name="note" id="note" rows="15" cols="64" data-title="请输入描述，10-500个字">{#$detail_note#}</textarea>
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>类别：</dt>
+	<dd>
+		<div class="radio" data-title="请选择类别">
+			<span data-id="1"{#if $detail_action == 1 || $detail_action == ""#} class="curr"{#/if#}>新房</span>
+			<span data-id="2"{#if $detail_action == 2#} class="curr"{#/if#}>二手房</span>
+			<span data-id="3"{#if $detail_action == 3#} class="curr"{#/if#}>出租房</span>
+			<span data-id="4"{#if $detail_action == 4#} class="curr"{#/if#}>写字楼</span>
+			<span data-id="5"{#if $detail_action == 5#} class="curr"{#/if#}>商铺</span>
+			<span data-id="6"{#if $detail_action == 6#} class="curr"{#/if#}>厂房/仓库</span>
+			<input type="hidden" name="lei" id="lei" value="{#if $detail_action != ""#}{#$detail_action#}{#else#}1{#/if#}" />
+		</div>
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>所在区域：</dt>
+	<dd id="selAddr">
+		<div class="sel-group" data-title="请选择所在区域">
+			<button type="button" class="sel">{#if $detail_addrName != ""#}{#$detail_addrName#}{#else#}请选择{#/if#}<span class="caret"></span></button>
+			<ul class="sel-menu">
+				{#house action="addr" return="addr"#}
+				<li><a href="javascript:;" data-id="{#$addr.id#}">{#$addr.typename#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+		<input type="hidden" name="addrid" id="addrid" value="{#$detail_addrid#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>联系人：</dt>
+	<dd>
+		<input type="text" name="person" class="inp" id="person" size="20" data-title="请输入联系人" value="{#if $detail_person != ""#}{#$detail_person#}{#else#}{#$userinfo.nickname#}{#/if#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>手机号码：</dt>
+	<dd>
+		<input type="text" name="contact" class="inp" id="contact" size="20" data-title="请输入手机号码" onkeyup="value=value.replace(/\D+/ig,'')" value="{#if $detail_contactNum != ""#}{#$detail_contactNum#}{#else#}{#$userinfo.phone#}{#/if#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>顺路货</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css?v=1">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/_head.css">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/slider.js"></script>
+    <script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+</head>
+<body>
+    <style>
+        body{
+            margin-top: 0;
+        }
+        .header {
+            height: .9rem;
+            background: #fd5530 !important;
+            color: #fff;
+            font-size: .32rem;
+            line-height: .9rem;
+            max-width: 1080px;
+            position: relative;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 11;
+            overflow: hidden;
+        }
+    </style>
+<include file="Public/share" title='包含文件'/>
+<!-- 共同顶部 s-->
+<div class="header fn-clear">
+    <div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+    <div class="title">发布顺路货</div>
+    <div class="share"></div>
+</div>
+<!-- 共同顶部 e-->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/mobiscroll.css" />
+<link rel="stylesheet" href="__PUBLIC__/Home/css/car_issue.css">
+<script type="text/javascript" src="__PUBLIC__/Home/js/mobiscroll.js"></script>
+
+<div class="input-control fn-clear">
+    <i class="green"></i>
+    <div class="user-fav fn-clear">
+        <input type="text" value="" placeholder="输入始发地" id="startplace">
+    </div>
+</div>
+<div class="input-control fn-clear">
+    <i></i>
+    <div class="user-fav fn-clear">
+        <input type="text" value="" placeholder="输入目的地" id="endplace">
+    </div>
+</div>
+<div class="input-control fn-clear">
+    <s></s>
+    <span>发货时间</span>
+    <div class="user-fav fn-clear">
+        <div data-role="fieldcontain" class="dom_select">
+            <input name="valid" id="valid" class="demo-test-date" placeholder="请选择日期" value="" readonly="" type="text">
+        </div>
+    </div>
+</div>
+<div class="input-control fn-clear bag">
+    <s></s>
+    <span>货物</span>
+    <div class="user-fav fn-clear">
+        <em>请选择货物</em>
+        <div class="arrow "><img src="__PUBLIC__/Home/images/top-arrow.png" alt="" class="bag_bc"></div>
+    </div>
+</div>
+<div class="choice_box bag_1 sex_1 fn-hide fn-clear" id="goodstype">
+    <ul>
+        <li><i></i><em>小件货物</em></li>
+        <li><i></i><em>大件货物</em></li>
+    </ul>
+</div>
+<div class="intro">
+    <h1>备注</h1>
+    <div class="intro_txt">
+        <textarea name="" id="remark" cols="30" rows="10" placeholder="请输入备注信息 ..."></textarea>
+    </div>
+</div>
+<div class="certfy picture_1">
+    <div class="pic_list">
+        <div class="img-box">
+            <ul class="uploader-list fn-clear" id="fileList1">
+                <li class="uploadbtn">
+                    <div id="filePicker1" data-type="atlas" data-amount="5" class="webuploader-container picker">
+                        <div class="webuploader-pick"><div class="webuploader-pick"><em></em><p>货物相册</p></div></div>
+                    </div>
+                </li>
+            </ul>
+            <p class="imgtip"></p>
+            <div class="pic_tips">（货物相册129×129正方形图片最佳，最多可上传5张） </div>
+        </div>
+    </div>
+</div>
+<div class="input-control fn-clear">
+    <s></s>
+    <span>联系人</span>
+    <div class="user-fav fn-clear">
+        <input type="text" class="time" placeholder="如何称呼您" id="contactname">
+    </div>
+</div>
+<div class="input-control sex fn-clear">
+    <s></s>
+    <span>性别</span>
+    <div class="user-fav fn-clear">
+        <div class="flase_box"></div>
+        <div class="arrow "><img src="__PUBLIC__/Home/images/top-arrow.png" alt="" class="sex_bc"></div>
+    </div>
+</div>
+<div class="choice_box fn-clear fn-hide sex_1 sex_choice" id="goodssex">
+    <ul>
+        <li><i></i><em>男</em></li>
+        <li><i></i><em>女</em></li>
+    </ul>
+</div>
+<?php if(!empty($u_res['user_phone'])){ ?>
+<div class="edit-item">
+    <div class="input-control fn-clear">
+        <s></s>
+        <span>联系电话</span>
+        <div class="user-fav fn-clear">
+            <input type="text" class="" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" disabled="disabled" placeholder="请输入电话" style="background: #fff;" value="{$u_res.user_phone}" id="contactphone">
+            <div class="get change">更换手机号</div>
+            <div class="get send" style="display: none;" id="emailsell">发送验证码</div>
+            <div class="get" id="hiddenbutton" style="display: none;width: 1.7rem"></div>
+        </div>
+    </div>
+</div>
+<div class="edit-item change_box" style="display: none;" id="yzm">
+    <div class="input-control fn-clear">
+        <s></s>
+        <span>验证码</span>
+        <div class="user-fav fn-clear">
+            <input type="text" class="" placeholder="请输入验证码">
+        </div>
+    </div>
+</div>
+<?php }else{ ?>
+<div class="edit-item">
+    <div class="input-control fn-clear">
+        <s></s>
+        <span>联系电话</span>
+        <div class="user-fav fn-clear">
+            <input type="text" class="" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" placeholder="请输入您的手机号码" id="contactphone">
+            <div class="get" id="emailsell" style="display: block">发送验证码</div>
+            <div class="get" id="hiddenbutton" style="display: none; width: 1.7rem">60秒</div>
+        </div>
+    </div>
+</div>
+<div class="edit-item" id="yzm">
+    <div class="input-control fn-clear">
+        <s></s>
+        <span>验证码</span>
+        <div class="user-fav fn-clear">
+            <input type="text" class="" placeholder="请输入验证码" id="code">
+        </div>
+    </div>
+</div>
+<?php } ?>
+<div class="agree agree_bc">
+    <i></i>我已阅读并同意<a href="__MODULE__/Index/userAgreement">《本地鸟用户协议》</a>
+</div>
+<div class="delete">
+    <h1>提示：</h1>
+    <h2>是否删除？</h2>
+    <div class="de_foot"><div class="de_btn"><span class="sure">确定</span><span class="cancel">取消</span></div></div>
+</div>
+<!-- 申请已提交成功 s -->
+<div class="succeed_box cheng">
+    <h1>发布成功</h1>
+    <h2>您可以在<em>个人中心-我的发布</em>进行管理</h2>
+    <p><a href="javascript:history.go(-1)"><span>确定</span></a></p>
+</div>
+<!-- 申请已提交成功 e -->
+<div class="disk"></div>
+<div class="btn_box"><div class="btn">发布</div></div>
+<script type="text/javascript" src="__PUBLIC__/Home/js/mobiscroll.datetime.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/mobiscroll.select.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/car_issue.js?v=1"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="__PUBLIC__/Home/js/layer.js"></script>
+
+<script type="text/javascript">
+    wx.config({
+        debug: false,
+        appId: '<?php echo $signPackage["appId"];?>',
+        timestamp: '<?php echo $signPackage['timestamp'];?>',
+        nonceStr: '<?php echo $signPackage['nonceStr'];?>',
+        signature: '<?php echo $signPackage['signature'];?>',
+        jsApiList: [
+            // 所有要调用的 API 都要加到这个列表中
+            'chooseImage',
+            'uploadImage',
+            'downloadImage'
+        ]
+    });
+    var download_img=[];
+    var images = {
+        localId: [],
+        serverId: []
+    }
+    $("#filePicker1").click(function(){
+        var length = $('#fileList1 li').length;
+        var conunt = 6 - length;
+        if (conunt == 0) {
+
+        }else{
+            wx.ready(function(){
+                //拍照或从手机相册中选图接口
+                wx.chooseImage({
+                    count: conunt, // 最多能选择多少张图片，默认9
+                    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                    success: function (res) {
+                        var localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                        var localIdImg=localId.toString().split(",");
+                        //上传图片接口
+                        if (localIdImg.length == 0) {
+                            return;
+                        }
+                        var i = 0, length = images.localId.length;
+                        images.serverId = [];
+                        function upload() {
+                            wx.uploadImage({
+                                localId: localIdImg[i],
+                                success: function (res) {
+                                    $("#fileList1").prepend('<li><img src="'+localIdImg[i]+'" /><i></i></li>');
+                                    i++;
+                                    images.serverId.push(res.serverId);
+                                    download_img =images.serverId;
+                                    if (i < localIdImg.length) {
+                                        upload();
+                                    }
+                                    if ($('.picture_1 ul li').length > 5) {
+                                        var x = $('.picture_1 ul li');
+                                        x.closest('.uploader-list').find('.uploadbtn').hide();
+                                    }
+                                },
+                                fail: function (res) {
+                                    alert(JSON.stringify(res));
+                                }
+                            });
+                        }
+                        upload();
+                    }
+                });
+            });
+        }
+    });
+    $('.picture_1').delegate('#fileList1 li i','click',function(){
+        var x = $(this);
+        $('.delete').show();
+        $('.disk').show();
+        $('.delete .sure').click(function(){
+            find = x.closest('li');
+            find.remove();
+            if ($('.picture_1 ul li').length < 6) {
+                $('.picture_1').find('.uploadbtn').show();
+            }
+            $('.delete').hide();
+            $('.disk').hide();
+        })
+    })
+    $(function(){
+        $('.change').click(function(){
+            $(this).hide();
+            $(this).closest('.user-fav').find('input').removeAttr("disabled");
+            $('.change_box').show();
+            $('.send').show();
+        })
+    })
+    $('.btn').click(function(){
+        $.post('{:U("Home/Index/userRelease")}', {}, function(data) {
+            if (data == 1) {
+                layer.msg('对不起，您没有权利发布信息')
+            }else{
+                var bianhu = 0;
+                var css =  $("#yzm").css('display');
+                var shunlucar_startplace = $('#startplace').val(); //始发地
+                var shunlucar_endplace = $('#endplace').val(); //目的地
+                var shunlucar_starttime = $('#valid').val();//发车时间
+                var imgcount = download_img.length;//车辆相册
+                var shunlucar_contactname = $('#contactname').val();//联系人
+                var shunlucar_contactphone = $('#contactphone').val();//手机
+                var select = $('.agree_bc').text(); //协议
+                var code = $('#code').val();
+                var cartype=$('#goodstype').find('.CB_bc em').text();
+                var sex=$('#goodssex').find('.CB_bc em').text();
+                var shunlucar_remark=$('#remark').val();
+                $.post('{:U("Home/Index/lookcode")}', {}, function(data) {
+                    var newcode = data;
+                    if (!shunlucar_startplace) {
+                        layer.msg('请先填写始发地')
+                    }else if(!shunlucar_endplace){
+                        layer.msg('请先填写目的地')
+                    }else if(!shunlucar_starttime){
+                        layer.msg('请先选择发货时间')
+                    }else if(!cartype){
+                        layer.msg('请先选择货物类型')
+                    }else if(!shunlucar_contactname){
+                        layer.msg('请先填写联系人')
+                    }else if(!sex){
+                        layer.msg('请选择性别')
+                    }else if(!shunlucar_contactphone){
+                        layer.msg('请先填写手机号码')
+                    }else if(css == 'block'){
+                        if(!code){
+                            layer.msg('请先填写验证码')
+                        }else if(code != newcode){
+                            layer.msg('验证码不正确')
+                        }else{
+                            bianhu = 1;
+                        }
+                    }else{
+                        bianhu = 1;
+                    }
+
+                    if (bianhu == 1) {
+                        if(!select){
+                            layer.msg('请先阅读并同意《本地鸟用户协议》')
+                        }else{
+                            var index = layer.load(0, {shade: [0.5,'#000']}); //0代表加载的风格，支持0-2
+                            $.post("__MODULE__/CityFreight/addshunlu",{shunlu_startplace:shunlucar_startplace,shunlu_endplace:shunlucar_endplace,shunlu_starttime:shunlucar_starttime,shunlu_cartype:cartype,shunlu_remark:shunlucar_remark,shunlu_imgs:download_img,shunlu_contactname:shunlucar_contactname,shunlu_contactsex:sex,shunlu_contactphone:shunlucar_contactphone,shunlu_type:2},function(data) {
+                                if (data.status == "1") {
+                                    layer.close(index);
+                                    //提交成功弹出层
+                                    $('.cheng').show();
+                                    $('.disk').show();
+                                }else{
+                                    alert(data.msg);
+                                }
+                            })
+                        }
+                    }
+                })
+            }
+        })
+
+    })
+    $('#emailsell').click(function(event) {
+        var  myreg = /^1[34578]\d{9}$/;
+        var resume_phone=$('#contactphone').val();
+        if(myreg.test(resume_phone)){
+            $.post("{:U('Home/Index/code')}",{phone:resume_phone},function(msg){
+                //alert(msg)
+            })
+
+            var counricount = 179;
+            var countdowntime = setInterval(countdownauto, 1000);
+
+            function countdownauto() {
+                counricount--;
+                // alert(counricount)
+                if(counricount == 0) {
+                    $.post("http://www.bdniao.com/index.php/Home/Demo/countdown",{},function(dats){
+                    })
+                    clearTimeout(time);
+                }
+            }
+
+            //时间倒叙
+            $("#hiddenbutton").text(60+'s后发送');
+            $(this).hide();
+            $("#hiddenbutton").show();
+            var icount = 59;
+            var time = setInterval(auto, 1000);
+
+            function auto() {
+                var s = icount+'s后再发送';
+                $("#hiddenbutton").text(s);
+                icount--;
+                if(icount == 0) {
+                    clearTimeout(time);
+                    $("#emailsell").show();
+                    $("#hiddenbutton").hide();
+                }
+            }
+        }else{
+            layer.msg('请先输入正确的手机号码')
+        }
+    });
+</script>
+</body>
+</html>

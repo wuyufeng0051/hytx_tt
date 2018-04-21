@@ -1,0 +1,113 @@
+{#$pageTitle = "余额提现 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/withdraw.css?v=1" media="all" />
+<script>var money = {#$userinfo.money#}, withdrawLog = '{#getUrlPath service="member" template="withdraw_log_detail" id="%id%"#}';</script>
+</head>
+
+{#$pageCurr = "withdraw"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+
+	<div class="notice">公告：管理控制台改版啦，为便于您的操作，用户中心功能整合到管理控制台并对样式进行优化，欢迎体验！<a href="#" target="_blank">操作指南</a> <a href="#" target="_blank">建议反馈</a><em class="close">&times;</em></div>
+
+	<div class="nav-tabs fn-clear">
+		<ul class="fn-clear">
+			<li><a href="{#getUrlPath service='member' template='deposit'#}">账户充值</a></li>
+			<li class="active"><a href="javascript:;">余额提现</a></li>
+			<li><a href="{#getUrlPath service='member' template='withdraw_log'#}">提现记录</a></li>
+		</ul>
+	</div>
+	<div class="container">
+		
+		<div class="withdraw">
+			<dl class="fn-clear">
+				<dt>可提现金额：</dt>
+				<dd class="price">&yen;{#$userinfo.money#}</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>提现到：</dt>
+				<dd class="singel">
+					<input type="radio" name="type" id="t1" value="1" checked />
+					<label for="t1"><i></i> 银行卡</label>
+					<input type="radio" name="type" id="t2" value="2" />
+					<label for="t2"><i></i> 支付宝</label>
+				</dd>
+			</dl>
+			<div class="mitem" id="type1">
+				<dl class="fn-clear">
+					<dt>开户行：</dt>
+					<dd>
+						<input type="text" id="bank" name="bank" class="inp" maxlength="30" size="25" />
+						<a href="javascript:;" class="historyBank">历史记录<i></i></a>
+						<span class="tip-inline"><s></s>请输入开户行信息</span>
+					</dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>银行卡号：</dt>
+					<dd>
+						<input type="text" id="cardnum" name="cardnum" class="inp" maxlength="23" size="25" />
+						<span class="tip-inline"><s></s>请输入银行卡号</span>
+					</dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>开户人姓名：</dt>
+					<dd>
+						<input type="text" id="cardname" name="cardname" class="inp" maxlength="10" size="10" />
+						<span class="tip-inline"><s></s>请输入开户人姓名</span>
+					</dd>
+				</dl>
+			</div>
+			<div class="mitem fn-hide" id="type2">
+				<dl class="fn-clear">
+					<dt>收款人帐号：</dt>
+					<dd>
+						<input type="text" id="alipaynum" name="alipaynum" class="inp" maxlength="30" size="25" />
+						<a href="javascript:;" class="historyAlipay">历史记录<i></i></a>
+						<span class="tip-inline"><s></s>请输入支付宝帐号</span>
+					</dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>收款人姓名：</dt>
+					<dd>
+						<input type="text" id="alipayname" name="alipayname" class="inp" maxlength="10" size="10" />
+						<span class="tip-inline"><s></s>请输入收款人姓名</span>
+					</dd>
+				</dl>					
+			</div>
+			<dl class="fn-clear">
+				<dt>提现金额：</dt>
+				<dd>
+					<input type="text" id="amount" name="amount" class="inp" size="10" maxlength="10" />
+					<span class="tip-inline"><s></s>金额必须为整数或小数，小数点后不超过2位。</span>
+				</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>&nbsp;</dt>
+				<dd class="agree">
+					<label><input type="checkbox" name="agree" id="agree" checked />同意并接受</label> <a href="{#getUrlPath service='siteConfig' template='protocol' id='10'#}" target="_blank">《{#$cfg_shortname#}提现服务协议》</a><br />
+				</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>&nbsp;</dt>
+				<dd><input type="button" id="tj" value="申请提现" /></dd>
+			</dl>
+
+			<div class="tips">
+				<p>1. 到账时间：<br />&nbsp;&nbsp;&nbsp;&nbsp;银行卡提现3-5个工作日内到账；<br />&nbsp;&nbsp;&nbsp;&nbsp;支付宝提现2个工作日内到账；</p>
+				<p>2. 承诺及确认：<br />&nbsp;&nbsp;&nbsp;&nbsp;款项付至上述收款人及收款账号的责任完全由本人或本公司承担，且自贵司付款之日起本人就上述服务协议及相关服务再无任何争议。</p>
+			</div>
+		</div>
+
+	</div>
+	
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.inputmask.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/inputmask.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/withdraw.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>团购商家详情页</title>
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/index_public.css">
+	<link rel="stylesheet" href="css/newtemplets_public.css">
+	<link rel="stylesheet" href="css/shop_detail.css">
+	<script type="text/javascript"  src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body class="w1200">
+	<!-- 顶部公用信息 s-->
+	<div class="topInfo">
+		<div class="wrap fn-clear">
+			<div class="loginbox">
+							<div class="loginbefore fn-clear" id="navLoginAfter">
+					<a href="http://zzx.huoniaomenhu.com/register.html" class="regist">免费注册</a><span class="logint"><a href="http://zzx.huoniaomenhu.com/login.html">请登录</a></span><a class="loginconnect" href="http://zzx.huoniaomenhu.com/api/login.php?type=qq" target="_blank"><i class="picon picon-qq"></i>QQ登陆</a><a class="loginconnect" href="http://zzx.huoniaomenhu.com/api/login.php?type=wechat" target="_blank"><i class="picon picon-weixin"></i>微信登陆</a><a class="loginconnect" href="http://zzx.huoniaomenhu.com/api/login.php?type=sina" target="_blank"><i class="picon picon-weibo"></i>新浪登陆</a>
+				</div>
+						</div>
+			<ul class="menu topbarlink fn-clear">
+				<li class="dropdown user">
+					<a href="http://zzx.huoniaomenhu.com/u">我的会员中心<i class="picon picon-down"></i></a>
+					<div class="submenu">
+						<a href="http://zzx.huoniaomenhu.com/u/order.html" target="_blank">我的订单</a>
+						<a href="http://zzx.huoniaomenhu.com/u/record.html" target="_blank">交易明细</a>
+						<a href="http://zzx.huoniaomenhu.com/u/security.html" target="_blank">安全中心</a>
+					</div>
+				</li>
+				<li><a href="http://zzx.huoniaomenhu.com/mobile.html" target="_blank"><i class="picon picon-phone"></i>手机站</a><span class="separ">|</span>
+					<div class="pop">
+						<s></s>
+						<p>扫码访问<a href="http://zzx.huoniaomenhu.com/mobile.html" target="_blank"><img src="http://zzx.huoniaomenhu.com/include/qrcode.php?data=http://zzx.huoniaomenhu.com" width="150" height="150"></a></p>
+					</div>
+				</li>
+				<li><a href="javascript:;"><i class="picon picon-weixin"></i>微信公众平台</a><span class="separ">|</span>
+					<div class="pop" style="left: -26px;">
+						<s></s>
+						<p>微信扫码关注<img src="http://file.huoniaomenhu.com/uploads/siteConfig/card/large/2017/07/21/1500624133643.jpg" width="150" height="150"></p>
+					</div>
+				</li>
+				<li class="dropdown">
+					<a href="javascript:;">快速发布<i class="picon picon-down"></i></a>
+					<div class="submenu">
+						<a href="http://zzx.huoniaomenhu.com/u/fabu-article.html" target="_blank">新闻投稿</a>
+						<a href="http://zzx.huoniaomenhu.com/u/fabu-info.html" target="_blank">分类信息</a>
+						<a href="http://zzx.huoniaomenhu.com/u/config-house.html" target="_blank">发布房源</a>
+					</div>
+				</li>
+				<li class="dropdown webmap">
+					<a href="javascript:;">网站导航<i class="picon picon-down"></i></a>
+					<div class="submenu">
+						
+						<a href="http://zzx.huoniaomenhu.com/article" target="_blank">新闻资讯</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/image" target="_blank">图说新闻</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/info" target="_blank">分类信息</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/tuan" target="_blank">团购秒杀</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/house" target="_blank">房产门户</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/shop" target="_blank">商城系统</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/renovation" target="_blank">装修门户</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/job" target="_blank">招聘求职</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/dating" target="_blank">互动交友</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/marry" target="_blank">婚嫁酒店</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/waimai" target="_blank">美食外卖</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/zhuanti" target="_blank">拖拽专题</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/paper" target="_blank">电子报刊</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/website" target="_blank">自助建站</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/video" target="_blank">视频频道</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/huangye" target="_blank">便民黄页</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/vote" target="_blank">投票活动</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/tieba" target="_blank">贴吧社区</a>
+						
+						<a href="http://zzx.huoniaomenhu.com/huodong" target="_blank">同城活动</a>
+						
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 顶部公用信息 e-->
+	<!-- 新模板公用顶部 s -->
+	<div class="header1 wrap FestivalAD_header fn-clear">
+		<div class="logo"><a href="http://zzx.huoniaomenhu.com" title="火鸟网站管理系统V1_SP1"><img src="http://file.huoniaomenhu.com/uploads/siteConfig/logo/large/2017/08/25/1503624804621.png" alt="火鸟网站管理系统V1_SP1"></a></div>
+		<div class="search1 fn-clear">
+			<form action="http://zzx.huoniaomenhu.com/business/list.html">
+				<div class="type">
+					<dl>
+						<dt><em>全部</em><i></i></dt>
+						<dd>
+							<a href="javascript:;">商家</a>
+							<a href="javascript:;">店铺</a>
+						</dd>
+					</dl>
+				</div>
+				<input type="text" class="SearchFirst" name="keywords" value="" placeholder="搜索你想要的...">
+				<input type="submit" class="SearchButton" value="">
+			</form>
+		</div>
+		<div class="service">
+			<span></span>
+			<div class="tel">
+				<h1>客服热线</h1>
+				<p>4000-000-000</p>
+			</div>
+		</div>
+	</div>
+	<!-- 新模板公用顶部 e -->
+	<!-- 链接导航 s -->
+	<div class="link_location wrap">
+		<a href="#">首页</a><em>></em>
+		<a href="#">美食</a><em>></em>
+		<a href="#">自助餐</a><em>></em>
+		<a href="#">工业园区</a><em>></em>
+		<a href="#">东沙湖邻里中心</a><em>></em>
+		<a href="javascript:;">N多寿司（东沙湖店）</a>
+	</div>
+	<!-- 链接导航 e -->
+	<!-- 顶部商家信息 s -->
+	<div class="ShopInfo_box">
+		<div class="ShopInfo wrap">
+			<div class="shop_name">N多寿司（东沙湖店）</div>
+			<div class="report_btn"><a href="#"><i></i>举报</a></div>
+			<div class="ShopInfo_de  fn-clear">
+				<ul>
+					<li class="shop_location">
+						<i></i>
+						<p>地址</p>
+						<span>工业园区东沙湖路100号园区东沙湖邻里中心 负一楼D02 <a href="javascript:;"></a></span>
+					</li>
+					<li class="shop_tel">
+						<i></i>
+						<p>电话</p>
+						<span>0512-69997550</span>
+					</li>
+					<li class="shop_com">
+						<i></i>
+						<p>评论</p>
+						<span>1546</span>
+					</li>
+					<li class="shop_type">
+						<i></i>
+						<p>分类</p>
+						<span>小吃快餐</span>
+					</li>
+				</ul>
+				<div class="shop_tips"></div>
+			</div>
+		</div>
+	</div>
+	<!-- 顶部商家信息 e -->
+	<!-- 正在团购列表 s -->
+	<div class="Tuan wrap">
+		<div class="ShopDE_title fn-clear"><em>正在团购</em></div>
+		<div class="Tuan_List">
+			<div class="TuanContent fn-clear">
+				<div class="TuanInfo">
+					<div class="Tuan_pic"><img src="upfile/14213767538545.jpg" alt=""></div>
+					<p>招牌海苔寿司1份</p>
+					<span>已售   5353</span>
+				</div>
+				<div class="TuanTime">截止到2017.11.14	</div>
+				<div class="price">
+					<p><em>￥</em>45.00</p>
+					<span>门店价 <s>¥45.00</s></span>
+				</div>
+				<div class="TuanBtn"><a href="#">立即抢购</a></div>
+			</div>
+			<div class="TuanContent fn-clear">
+				<div class="TuanInfo">
+					<div class="Tuan_pic"><img src="upfile/14213767538545.jpg" alt=""></div>
+					<p>招牌海苔寿司1份</p>
+					<span>已售   5353</span>
+				</div>
+				<div class="TuanTime">截止到2017.11.14	</div>
+				<div class="price">
+					<p><em>￥</em>45.00</p>
+					<span>门店价 <s>¥45.00</s></span>
+				</div>
+				<div class="TuanBtn"><a href="#">立即抢购</a></div>
+			</div>
+			<div class="TuanContent fn-clear">
+				<div class="TuanInfo">
+					<div class="Tuan_pic"><img src="upfile/14213767538545.jpg" alt=""></div>
+					<p>招牌海苔寿司1份</p>
+					<span>已售   5353</span>
+				</div>
+				<div class="TuanTime">截止到2017.11.14	</div>
+				<div class="price">
+					<p><em>￥</em>45.00</p>
+					<span>门店价 <s>¥45.00</s></span>
+				</div>
+				<div class="TuanBtn"><a href="#">立即抢购</a></div>
+			</div>
+		</div>
+	</div>
+	<!-- 正在团购列表 e -->
+	<!-- 商家详情 s -->
+	<div class="Business wrap">
+		<div class="ShopDE_title fn-clear"><em>商家详情</em></div>
+		<div class="Business_list fn-clear">
+			<div class="business_pic"><img src="upfile/14213767538545.jpg" alt=""><em>共10张</em></div>
+			<div class="business_info">
+				<ul>
+					<li><em>营业时间：</em>14:00 - 16:00 </li>
+					<li><em>门店服务：</em> 支持WIFI 停车位收费标准：路边有收费停车位 </li>
+					<li><em>门店介绍：</em>西部牛扒城西餐厅劲爆开业，在这里除了能品尝到美味的牛排，还可品  尝到大师精心研制的各种西式点心、沙拉、美味锅仔和各色冰淇淋等西部牛扒城西餐厅劲爆开业，在这里除了能品尝到美味的牛排，还可品  尝到大师精心研制的各种西式点心、沙拉、美味锅仔和各色冰淇淋等西部牛扒城西餐厅劲爆开业，在这里除了能品尝到美味的牛排，还可品  尝到大师精心研制的各种西式点心、沙拉、美味锅仔和各色冰淇淋等西部牛扒城西餐厅劲爆开业，在这里除了能品尝到美味的牛排，还可品  尝到大师精心研制的各种西式点心、沙拉、美味锅仔和各色冰淇淋等</li>
+				</ul>
+			</div>
+			<div class="business_closest">
+				<div class="BC_lead fn-clear">
+					<ul>
+						<li class="BCL_bc">附近同类团购</li>
+						<li>附近同类商家</li>
+					</ul>
+				</div>
+				<div class="BC_box">
+					<div class="BC_list">
+						<div class="BC_connect fn-clear">
+							<div class="BCC_pic"><img src="upfile/14213767538545.jpg" alt=""></div>
+							<p>芝根芝底PIZZA披萨2选1</p>
+							<span>2298人已团购</span>
+							<div class="BCC_price">¥ 45.00</div>
+						</div>
+						<div class="BC_connect fn-clear">
+							<div class="BCC_pic"><img src="upfile/14213767538545.jpg" alt=""></div>
+							<p>芝根芝底PIZZA披萨2选1</p>
+							<span>2298人已团购</span>
+							<div class="BCC_price">¥ 45.00</div>
+						</div>
+						<div class="BC_connect fn-clear">
+							<div class="BCC_pic"><img src="upfile/14213767538545.jpg" alt=""></div>
+							<p>芝根芝底PIZZA披萨2选1</p>
+							<span>2298人已团购</span>
+							<div class="BCC_price">¥ 45.00</div>
+						</div>
+						<div class="BC_connect fn-clear">
+							<div class="BCC_pic"><img src="upfile/14213767538545.jpg" alt=""></div>
+							<p>芝根芝底PIZZA披萨2选1</p>
+							<span>2298人已团购</span>
+							<div class="BCC_price">¥ 45.00</div>
+						</div>
+					</div>
+					<div class="BC_list fn-hide">
+						<div class="BC_connect fn-clear">
+							<div class="BCC_pic"><img src="upfile/14213767538545.jpg" alt=""></div>
+							<p>芝根芝底PIZZA披萨2选1</p>
+							<span>2298人已团购</span>
+							<div class="BCC_price">¥ 45.00</div>
+						</div>
+						<div class="BC_connect fn-clear">
+							<div class="BCC_pic"><img src="upfile/14213767538545.jpg" alt=""></div>
+							<p>芝根芝底PIZZA披萨2选1</p>
+							<span>2298人已团购</span>
+							<div class="BCC_price">¥ 45.00</div>
+						</div>
+						<div class="BC_connect fn-clear">
+							<div class="BCC_pic"><img src="upfile/14213767538545.jpg" alt=""></div>
+							<p>芝根芝底PIZZA披萨2选1</p>
+							<span>2298人已团购</span>
+							<div class="BCC_price">¥ 45.00</div>
+						</div>
+						<div class="BC_connect fn-clear">
+							<div class="BCC_pic"><img src="upfile/14213767538545.jpg" alt=""></div>
+							<p>芝根芝底PIZZA披萨2选1</p>
+							<span>2298人已团购</span>
+							<div class="BCC_price">¥ 45.00</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 商家详情 e -->
+	<!-- 评论板块 s -->
+	<div class="Comment wrap">
+		<div class="ShopDE_title fn-clear"><em>消费评价</em></div>
+			<div class="review-list">
+
+			<!-- 筛选&&排序 -->
+			<ul class="filter fn-clear">
+				<li class="current" data-filter=""><a href="javascript:;">全部</a></li>
+				<li data-filter="pic" class=""><a href="javascript:;">晒图评价</a></li>
+				<li data-filter="lower" class=""><a href="javascript:;">只看低分</a></li>
+				<li class="fn-right">
+					<select>
+						<option value="default">默认排序</option>
+						<option value="time">时间排序</option>
+					</select>
+				</li>
+			</ul>
+			<!-- 列表 -->
+			<div class="ratelist">
+			  <p class="loading" style="display: none;">
+			    <img src="http://zzx.huoniaomenhu.com/static/images/loading_h8.gif"></p>
+			  <ul id="rateList">
+			    <li class="rate-item fn-clear">
+			      <div class="user-info">
+			        <img class="avatar" src="http://file.huoniaomenhu.com/uploads/siteConfig/photo/large/2016/11/23/14798633653561.jpg">
+			        <p>苏州酷曼软件技术有限公司</p>
+			      </div>
+			      <div class="review">
+			        <div class="info">
+			          <s>
+			            <i style="width: 100%;"></i>
+			          </s>
+			          <span class="time">2016-10-19</span></div>
+			        <div class="view">
+			          <p>学校地址/地址白天没人，请尽量安排其它时间送货 (特别安排可能会超出预计送货天数)配送说明：请尽快发货，谢谢！！！配送说明：请尽快发货，谢谢！！！</p>
+			          <div class="carousel">
+			            <div class="thumb">
+			              <div class="plist">
+			                <ul>
+			                  <li class="">
+			                    <a href="javascript:;">
+			                      <img src="http://file.huoniaomenhu.com/uploads/huodong/thumb/small/2016/12/23/14824874543696.jpg"></a>
+			                  </li>
+			                  <li>
+			                    <a href="javascript:;">
+			                      <img src="http://file.huoniaomenhu.com/uploads/huodong/thumb/small/2016/12/23/14824875134469.jpg"></a>
+			                  </li>
+			                  <li>
+			                    <a href="javascript:;">
+			                      <img src="http://file.huoniaomenhu.com/uploads/huodong/thumb/small/2016/12/24/1482545568948.jpg"></a>
+			                  </li>
+			                  <li>
+			                    <a href="javascript:;">
+			                      <img src="http://file.huoniaomenhu.com/uploads/huodong/thumb/small/2016/12/23/14824875679564.jpg"></a>
+			                  </li>
+			                  <li>
+			                    <a href="javascript:;">
+			                      <img src="http://file.huoniaomenhu.com/uploads/huodong/thumb/small/2016/12/24/14825481129404.gif"></a>
+			                  </li>
+			                  <li>
+			                    <a href="javascript:;">
+			                      <img src="http://file.huoniaomenhu.com/uploads/huodong/thumb/small/2016/12/24/14825546907242.gif"></a>
+			                  </li>
+			                  <ul></ul>
+			                </ul>
+			              </div>
+			            </div>
+			            <div class="album">
+			              <a href="javascript:;" hidefocus="true" class="prev"></a>
+			              <a href="javascript:;" hidefocus="true" class="close"></a>
+			              <a href="javascript:;" hidefocus="true" class="next"></a>
+			              <div class="albumlist">
+			                <div class="aitem">
+			                  <i>
+			                  </i>
+			                  <img src="http://file.huoniaomenhu.com/uploads/huodong/thumb/large/2016/12/23/14824874543696.jpg"></div>
+			                <div class="aitem" style="display: none;">
+			                  <i>
+			                  </i>
+			                  <img src="http://file.huoniaomenhu.com/uploads/huodong/thumb/large/2016/12/23/14824875134469.jpg"></div>
+			                <div class="aitem" style="display: none;">
+			                  <i>
+			                  </i>
+			                  <img src="http://file.huoniaomenhu.com/uploads/huodong/thumb/large/2016/12/24/1482545568948.jpg"></div>
+			                <div class="aitem" style="display: none;">
+			                  <i>
+			                  </i>
+			                  <img src="http://file.huoniaomenhu.com/uploads/huodong/thumb/large/2016/12/23/14824875679564.jpg"></div>
+			                <div class="aitem" style="display: none;">
+			                  <i>
+			                  </i>
+			                  <img src="http://file.huoniaomenhu.com/uploads/huodong/thumb/large/2016/12/24/14825481129404.gif"></div>
+			                <div class="aitem" style="display: none;">
+			                  <i>
+			                  </i>
+			                  <img src="http://file.huoniaomenhu.com/uploads/huodong/thumb/large/2016/12/24/14825546907242.gif"></div>
+			              </div>
+			            </div>
+			          </div>
+			        </div>
+			      </div>
+			    </li>
+			    <li class="rate-item fn-clear">
+			      <div class="user-info">
+			        <img class="avatar" src="http://file.huoniaomenhu.com/uploads/siteConfig/photo/large/2015/01/21/14218205952427.jpg">
+			        <p>叶萱</p>
+			      </div>
+			      <div class="review">
+			        <div class="info">
+			          <s>
+			            <i style="width: 80%;"></i>
+			          </s>
+			          <span class="time">2015-09-16</span></div>
+			        <div class="view">
+			          <p>挺不错的离家很近，位置也很好找，打过电话直接去拿的，蛋糕很漂亮有点小，不过三个人吃足够了！店家还送了蜡烛，服务员也很热情，对了，蜡烛是数字的哦！由于蛋糕拿回来还没来得及拍照就开吃了，所以这里就随便拍个吃过的照片吧！</p>
+			        </div>
+			      </div>
+			    </li>
+			  </ul>
+			  <!-- 分页 -->
+			  <div class="pagination fn-clear" style="display: none;">
+			    <div class="pagination-pages fn-clear"></div>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<!-- 评论板块 e -->
+	<!-- 底部 s -->
+	<div class="foot" >
+	  <div class="footer1 wrap">
+	    <div class="about fn-clear">
+	      <ul>
+	        
+	        <li><a href="http://zzx.huoniaomenhu.com/about-1.html">网站介绍</a></li>
+	        <em></em>
+	    		
+	        <li><a href="http://zzx.huoniaomenhu.com/about-2.html">关于我们</a></li>
+	        <em></em>
+	    		
+	        <li><a href="http://zzx.huoniaomenhu.com/about-3.html">服务条款</a></li>
+	        <em></em>
+	    		
+	        <li><a href="http://zzx.huoniaomenhu.com/about-4.html">广告服务</a></li>
+	        <em></em>
+	    		
+	        <li><a href="http://zzx.huoniaomenhu.com/about-5.html">招聘信息</a></li>
+	        <em></em>
+	    		
+	        <li><a href="http://zzx.huoniaomenhu.com/about-6.html">免责声明</a></li>
+	        <em></em>
+	    		
+	        <li><a href="http://zzx.huoniaomenhu.com/about-7.html">联系我们</a></li>
+	        <em></em>
+	    		
+	        <li><a href="http://zzx.huoniaomenhu.com/help.html">帮助中心</a></li>
+	      </ul>
+	    </div>
+	    <div class="power">
+	      <p></p><p>Copyright © 2017 苏州酷曼软件技术有限公司. All rights reserved.</p><p><a href="http://www.miibeian.gov.cn/" target="_blank">苏ICP备13047463号</a></p><p></p>
+	    </div>
+	  </div>
+	</div>
+	<!-- 底部 e -->
+	
+	<!-- 图片弹出层 s -->
+	<div class="disk"></div>
+	<div class="list">
+		<div class="close"></div>
+		<a href="javascript:;" class="next"></a>
+		<a href="javascript:;" class="prev"></a>
+		<div class="bd">
+			<div >
+				<a href="javascript:;">
+					<img src="upfile/__31987376__7846047.jpg">
+				</a>
+			</div>
+			<div >
+				<a href="javascript:;">
+					<img src="upfile/__31987376__9976272.jpg">
+				</a>
+			</div>
+			<div >
+				<a href="javascript:;">
+					<img src="upfile/__31987377__8335983.jpg">
+				</a>
+			</div>
+		</div>
+		<div class="page_count"></div>
+	</div>
+	<!-- 图片弹出层 e -->
+
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=RlrCSDRWdEdwBmGizieNRp4z"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+	<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+	<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+	<script type="text/javascript" src="js/layer.js"></script>
+	<script type="text/javascript" src="js/shop_detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-comments-o comments-o-icon"></i>
+      <li class="active">顾客交流</li>
+      <li>
+        <a href="#">系统邮箱</a></li>
+    </ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <script>var submittage = 'no';
+        var tosend = 1;
+        function issubmit() {
+          if (submittage == 'yes') {
+            return false;
+          } else {
+            submittage = 'yes';
+          }
+
+          var a = $("input[name=shop_ids]:checked");
+          var length = a.length;
+          var submit = 'submit';
+
+          var title = $('#title').val();
+          var content = $('#content').val();
+          var send_type = $('.send_type:checked').attr('value');
+          var customerids = $('#customerids').val();
+
+          if (send_type == 'all' && tosend) {
+            bootbox.alert('您的全顾客邮箱发送功能已到期或还没有开通，请先充值或续费！');
+            submittage = 'no';
+            return false;
+          }
+          if (send_type != 'bf' && send_type != 'all') {
+            bootbox.alert('收件人有误');
+            submittage = 'no';
+            return false;
+          }
+
+          if (title == '' || content == '') {
+            bootbox.alert('标题和内容不能为空');
+            submittage = 'no';
+            return false;
+          }
+
+          if (title.length > 30) {
+            bootbox.alert('标题长度不能大于30');
+            submittage = 'no';
+            return false;
+          }
+
+          if (content.length > 30000) {
+            bootbox.alert('内容太过长了');
+            submittage = 'no';
+            return false;
+          }
+          var url = "/message/box";
+          $.post(url, {
+            title: title,
+            content: content,
+            submit: submit,
+            send_type: send_type,
+            customerids: customerids
+          },
+          function(data) {
+            var ret = jQuery.parseJSON(data);
+            if (ret.status == "error") {
+              bootbox.alert(ret.message);
+              submittage = 'no';
+              return false;
+            }
+            if (ret.status == 'success') {
+              submittage = 'no';
+              window.location.href = url;
+              return false;
+            }
+          });
+          //    bootbox.confirm({
+          //      message: '邮件已发送，若顾客数量较多，全部发送完成需要几分钟到几十分钟不等，请耐心等待，不要重复点击发送！',
+          //      buttons: {
+          //        confirm: {
+          //         label: "知道了",
+          //         className: "btn-primary btn-sm",
+          //        },
+          //        cancel: {
+          //         label: "关闭",
+          //         className: "btn-sm",
+          //        }                 
+          //      },
+          //      callback: function(result) {
+          //        if(result) {
+          //          window.location.href = url;
+          //        }
+          //        else
+          //        {
+          //          window.location.href = url;
+          //        }
+          //      }
+          //      }
+          //    );
+          submittage = 'no';
+          return false;
+        }
+        function gklb(type) {
+          if (type == 'hide') {
+            $('#gklb').hide();
+          } else if (type == "show") {
+            $('#gklb').show();
+          }
+
+        }</script>
+      <div class="row">
+        <div class="col-xs-12">
+          <!--div class="alert alert-info">
+          <button type="button" class="close" data-dismiss="alert">
+          <i class="ace-icon fa fa-times"></i></button>
+          <p>
+          您还没有获得全顾客发放邮箱功能，不能使用全顾客发放邮箱功能，点击下面的按钮可进行充值。
+          </p>
+          <p>
+          <a class="btn btn-success" href="#" target="_blank">全顾客发放邮箱充值续费</a></p>
+          </div-->
+          <div style="margin-top:20px;width:400px;padding-top:10px;" id="fsyj">收件人:
+            <input type="radio" name="send_type" value="all" onclick="gklb('hide');" class="send_type" checked="">全部顾客
+            <input type="radio" name="send_type" value="bf" onclick="gklb('show');" class="send_type">指定顾客
+            <span id="gklb" style="display:none;">
+              <br>
+              <br>顾客ID：
+              <input type="text" name="customerid" value="" style="width:350px;" id="customerids"></span>
+            <br>
+            <br>标题：
+            <span style="color:red;">*不能为空，且最多30个字</span>
+            <br>
+            <input type="text" name="title" id="title">
+            <br>内容：
+            <br>
+            <!-- fck -start -->
+            <script type="text/javascript" charset="utf-8" src="js/kindeditor.js"></script>
+            <script type="text/javascript" charset="utf-8" src="js/lang/zh_CN.js"></script>
+            <script type="text/javascript">var editor;
+              KindEditor.ready(function(K) {
+                var width = $('textarea[name=content]').css('width');
+                var height = $('textarea[name=content]').css('height');
+                editor = K.create('textarea[name="content"]', {
+                  cssPath: 'js/plugins/code/prettify.css',
+                  uploadJson: 'js/php/upload_json.php?dir=file',
+                  fileManagerJson: 'js/php/file_manager_json.php',
+                  allowFileManager: false,
+                  width: width,
+                  height: height,
+                  items: ['undo', 'redo', '|', 'preview', 'cut', 'copy', 'paste', 'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript', 'superscript', '/', 'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'table', 'hr', 'emoticons', 'baidumap', 'link', 'unlink', ],
+                  afterBlur: function() {
+                    this.sync();
+                  }
+                });
+                K('input[name=setHtml]').click(function(e) {
+                  editor.html($('#con').html());
+                });
+                if ($('body').attr('module_name') == 'share') {
+                  $('.ke-toolbar').hide();
+                }
+                //prettyPrint();
+              });</script>
+            <!-- fck end -->
+            <textarea style="width: 300px; height: 300px; display: none;" id="content" name="content"></textarea>
+            <br>
+            <button class="btn btn-info btn-success" type="submit" onclick="return issubmit();return false;">发送邮件</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

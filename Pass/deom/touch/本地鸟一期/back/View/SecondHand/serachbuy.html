@@ -1,0 +1,31 @@
+<foreach name="res_wantbuy" item="vo" key="k">
+		 <div class="mui-card" >
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner">
+					<a stv="{$vo.wantbuy_id}" style="color: #333;" class="topheight">
+						<h4 class="heading"><span style="font-size: 16px;">{$vo.wantbuy_title}</span><em style="color: #ff7300;">
+							<?php if($vo['wantbuy_nature'] == 0){ ?>
+							 个人
+							<?php }else{ ?>
+							商家
+							<?php } ?>
+						 
+						</em></h4>
+						<p>
+						<?php if($vo['wantbuy_price'] == 0){ ?>
+							面议
+							<?php }else{ ?>
+							{$vo.wantbuy_price}{$vo.wantbuy_priceunit}
+							<?php } ?>
+                        <?php if($vo['wantbuy_is_top'] == 1){ ?>
+					      <span style="float: right;color: #8f8f94;">置顶</span>
+                        <?php }else{ ?>
+					      <span style="float: right;color: #8f8f94;" class="time">{$vo.wantbuy_date}</span>
+                          <input type="hidden" value="{$vo.wantbuy_date}" class="times">
+                        <?php } ?>
+					   </p>
+					</a>
+				</div>
+			</div>
+		 </div>
+        </foreach>

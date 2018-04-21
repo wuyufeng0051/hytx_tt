@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>泸西微城</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css"> -->
+	<style>
+	/*顶栏*/
+
+	.share1{
+		position: fixed;
+		padding: 10px;
+		height: 50px;
+		background: #fff;
+		width: 100%;
+		line-height: 40px;
+		font-size: 14px;
+		color: #666;
+		z-index: 100000;
+		top:0;
+	}
+	.share1 img{
+		height: 100%;
+		display: block;
+		float: left;
+		margin-right: 10px;
+	}
+	.share1 button{
+		border:1px solid  #ff7300;
+		background: #ff7300;
+		color: #fff;
+		padding: 4px 6px;
+		vertical-align: middle;
+		float: right;
+		/*margin: 5px 0;*/
+	}
+	/*遮罩层*/
+	#dialog{
+		display: none;
+	}
+	#dialog .mask{
+		position: fixed;
+	    z-index: 99;
+	    width: 100%;
+	    height: 100%;
+	    top: 0;
+	    left: 0;
+	    background: rgba(0,0,0,.6)
+	}
+	#dialog .popbox{
+		position: fixed;
+	    z-index:101;
+	    width: 240px;
+	    padding: 15px 30px;
+	    top: 50%;
+	    left: 50%;
+	    -webkit-transform: translate(-50%,-50%);
+	    transform: translate(-50%,-50%);
+	    text-align: center;
+	    overflow: hidden;
+	    background: #fff;
+	}
+	#dialog .popbox h4{
+		margin-bottom: 20px;
+		text-align: center;
+	}
+	#dialog .popbox h4 strong{
+		color: #ff7300;
+	}
+	#dialog .popbox img{
+		width: 100%;
+	}
+
+	</style>
+</head>
+<body>
+	<div class="share1" style="display:none;">
+		<img src="__PUBLIC__/Home/img/logo.png" alt="" style="height:35px;">
+		获取更多泸西本地信息
+		<button id="guanzhu">+  关注</button>
+	</div>
+	<div id="dialog">
+		<div class="mask"></div>
+		<div class="popbox">
+			<h4>长按下图关注<strong>本地鸟</strong></h4>
+			<!-- <img src="__PUBLIC__/Home/img/bendiniaologo.png" alt=""> -->
+			<img src="__PUBLIC__/Home/img/qrcode.png" alt="" >
+		</div>
+	</div>
+	<!-- <script src="__PUBLIC__/Home/js/mui.min.js"></script> -->
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script>
+		 
+		var is_open = {$is_open};
+
+		if(is_open == 1){
+			$('.share1').show();
+		}
+
+		$('#guanzhu').on('click',function(){
+			$('#dialog').toggle();
+		})
+
+	</script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+
+	<?php
+	Vendor('wechatupload.jssdk');
+	$jssdk = new \WechatJSSDK("wxdbd247b4802a1ed6", "36ba3bd3d22430bb815c72ea55798b06");
+	$signPackage = $jssdk->GetSignPackage();
+
+	?>
+
+	
+	 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	  <script type="text/javascript">
+		wx.config({
+			// debug: true,
+			appId: '<?php echo $signPackage["appId"];?>',
+			timestamp: '<?php echo $signPackage['timestamp'];?>',
+			nonceStr: '<?php echo $signPackage['nonceStr'];?>',
+			signature: '<?php echo $signPackage['signature'];?>',
+			jsApiList: [
+				// 所有要调用的 API 都要加到这个列表中
+				'checkJsApi',
+				'onMenuShareTimeline',
+				'onMenuShareAppMessage',
+				'previewImage'
+			]
+
+		});
+
+
+		wx.ready(function(){
+			wx.onMenuShareTimeline({
+				title: '更多本地信息免费发布查询，小伙伴都在玩，你还等什么?', // 分享标题
+				// link: '<?php echo LOGIN_URL.'?uid='.$_SESSION['user_id'];?>&bj=zy', // 分享链接
+				link: "{$share_url}",
+				imgUrl: 'http://www.bdniao.com/Public/Home/img/bendiniaologo111.png', // 分享图标
+				success: function () {
+					// 用户确认分享后执行的回调函数
+				},
+				cancel: function () {
+					// 用户取消分享后执行的回调函数
+				}
+			});
+
+			wx.onMenuShareAppMessage({
+				title: '我的分享', // 分享标题
+				desc: '更多本地信息免费发布查询，小伙伴都在玩，你还等什么?', // 分享描述
+				link: "{$share_url}", // 分享链接
+				imgUrl: 'http://www.bdniao.com/Public/Home/img/bendiniaologo111.png', // 分享图标
+				type: '', // 分享类型,music、video或link，不填默认为link
+				dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+				success: function () {
+					// 用户确认分享后执行的回调函数
+				},
+				cancel: function () {
+					// 用户取消分享后执行的回调函数
+				}
+			});
+
+		});
+	</script>
+ 
+</body>
+</html>

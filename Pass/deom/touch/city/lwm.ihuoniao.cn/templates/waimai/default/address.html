@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta name="format-detection" content="telephone=no" />
+<title>选择地址</title>
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/address.css">
+<script type="text/javascript">
+	var shopid = {#$detail_id#}, redirectUrl = '{#getUrlPath service="waimai" template="cart" id=$detail_id param="address=#id"#}';
+	var id = 0, lng = "", lat = "";
+</script>
+</head>
+
+<body>
+<div class="pageitem" id="main">
+	<div class="lead">
+		<p onclick="location.href='{#getUrlPath service='waimai' template='cart' id=$detail_id#}';"></p><span>选择地址</span><b><a href="javascript:;">编辑</a></b>
+	</div>
+	<div class="new_address fn-clear">
+		<a href="javascript:;" id="addNew"><em>新建地址</em><i></i></a>
+	</div>
+	<div class="Address_list">
+		{#waimai action="getMemberAddress" return="addr"#}
+		<div class="add_txt{#if ($_bindex.addr == 1 && !$address) || $address == $addr.id#} addbc{#/if#}" data-id="{#$addr.id#}" data-person="{#$addr.person#}" data-tel="{#$addr.tel#}" data-street="{#$addr.street#}" data-address="{#$addr.address#}" data-lng="{#$addr.lng#}" data-lat="{#$addr.lat#}">
+			<ul>
+				<li>联系人：{#$addr.person#}</li>
+				<li>电话：{#$addr.tel#}</li>
+				<li>地址：{#$addr.street#} {#$addr.address#}</li>
+			</ul>
+			<div class="dui"></div>
+			<div class="edit"><a href="javascript:;"><i></i></a><b></b></div>
+		</div>
+		{#/waimai#}
+	</div>
+</div>
+
+<div class="pageitem" id="add">
+	<div class="lead">
+		<p onclick="location.hash='main'"></p>
+		<span>新增地址</span>
+	</div>
+	<div class="edit_form">
+		<div class="edi">
+			<em>联系人</em><input type="text" placeholder="请输入联系人。" id="person">
+		</div>
+		<div class="edi">
+			<em>电话</em><input type="tel" placeholder="请输入联系人的电话。" id="tel">
+		</div>
+	</div>
+	<div class="edit_form1">
+		<div class="place">
+			<em>街道/小区/建筑</em>
+			<span id="local">
+				<i><b></b></i>
+				<strong>定位中...</strong>
+				<a href="javascript:;">手动定位 ></a>
+			</span>
+		</div>
+		<div class="place">
+			<em>详细地址</em><input type="text" placeholder="请填写详细地址。" id="address">
+		</div>
+	</div>
+	<div class="edi_button">
+		<button id="saveAddress">保存</button>
+	</div>
+	<div class="warning"></div>
+	<div class="wa">
+		<ul>
+			<li>请您确保</li>
+			<li>1)手机GPS（位置信息）为开启状态;</li>
+			<li>2)允许我们获取您的GPS定位（位置信息）权限;</li>
+			<li>如果出现无法定位或验证地址，请及时联系商户处理，否则有可能迟到或漏送哦。</li>
+		</ul>
+	</div>
+</div>
+
+<div class="pageitem" id="map">
+	<div class="lead">
+		<p onclick="location.hash='add'"></p>
+		<input type="text" id="searchAddr" placeholder="输入名称查找您所在的街道/小区/建筑等">
+	</div>
+	<div class="map">
+		<div id="mapdiv"></div>
+		<span class="mapcenter"></span>
+	</div>
+
+	<div class="mapresults">
+		<ul></ul>
+		<!-- <a href="javascript:;" class="elseStreet">没有找到您的建筑物？请点击这里！</a> -->
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+	var mapCity = '{#$cfg_mapCity#}';
+</script>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak={#$site_map_key#}&services=&t={#$smarty.now#}"></script>
+<script src="{#$templets_skin#}js/address.js"></script>
+</body>
+</html>

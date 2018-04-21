@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>订单评价 - {#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/write-comment-waimai.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/jquery.raty.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, id = {#$id#};
+
+	var modelType = '{#$module#}', tpldir = '{#$templets_skin#}';
+
+	var returnUrl = '{#getUrlPath service="member" type="user" template="orderdetail-waimai" id=$id#}';
+
+	var star = {#$common.star#}, starps = {#$common.starps#};
+
+	var modelType = 'waimai', state = '', type = '', typeid = 0;
+  	var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize*1024*1024#}, atlasType = '{#$atlasType#}', atlasMax = 5;
+
+</script>
+<body>
+<div class="rank_lead">
+	<ul>
+		<li{#if $common.isanony == 0#} class="rank_bc"{#/if#}>公开评论</li>
+		<li{#if $common.isanony == 1#} class="rank_bc"{#/if#}>匿名评论</li>
+	</ul>
+</div>
+<div class="com">
+	<div class="com_lead"><em>给店铺打分</em>
+		<div id="star" class="star"></div>
+	</div>
+	<div class="liuyan">
+		<textarea placeholder="这里填写评论内容。" id="content">{#$common.content#}</textarea>
+	</div>
+	<div class="com_lead"><em>给配送员打分</em>
+		<div id="starps" class="star"></div>
+	</div>
+	<div class="liuyan">
+		<textarea placeholder="这里填写评论内容。" id="contentps">{#$common.contentps#}</textarea>
+	</div>
+	<div class="img-box">
+      	<ul class="uploader-list fn-clear" id="fileList">
+        	<li class="uploadbtn">
+          		<div id="filePicker" class="webuploader-container">
+            		<div class="webuploader-pick">+</div>
+          		</div>
+    		</li>
+    		{#if $common.pics#}
+			{#foreach from=$common.pics key=k item=i#}
+			<li class="thumbnail" id="item_{#$k+1#}"><img src="{#changeFileSize url="{#getFilePath($i)#}" type="small"#}" data-val="{#$i#}" data-url="{#getFilePath($i)#}" alt=""><div class="file-panel"><span class="cancel"></span></div></li>
+			{#/foreach#}
+			{#/if#}
+      	</ul>
+		{#if $common.pics == ''#}
+	    <p class="imgtip">上传图片，最多五张</p>
+		{#/if#}
+    </div>
+	<input type="hidden" name="commonid" id="commonid" value="{#$common.id#}">
+</div>
+<div class="refresh">
+	<button class="submitBtn">提交</button>
+</div>
+
+<script src="http://ihuoniao.cn/static/js/webuploader/webuploader.js" type="text/javascript"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v=5"></script>
+<script src="{#$templets_skin#}/js/common.js?v=4" type="text/javascript"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/write-comment-waimai.js?v=1"></script>
+</body>
+</html>

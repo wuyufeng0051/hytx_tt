@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改签名</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no" >
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+	<style>
+	body{
+		background-color: #fff;
+	}
+		.input{
+			/*margin-top: 20px;*/
+			background:#fff;
+		}
+		.input textarea{
+			margin-bottom: 0;
+			border-right: 0;
+			border-left: 0;
+			border-radius: 0;
+			display: block;
+			border-top: 1px solid #ddd;
+			border-bottom: 1px solid #ddd;
+			font-size: 15px;
+		}
+		.btn{
+			margin-top: 50px;
+			line-height: 44px;
+			padding: 10px;
+		}
+		.btn button{
+			width: 100%;
+			background: #ff7300;
+			color: #fff;
+			line-height: 40px;
+			height: 40px;
+			padding: 0;
+			border:none;
+		}
+		.textcount{
+			position: absolute;
+			right: 10px;
+			bottom: 5px;
+			font-size: 13px;
+			color: #666666;
+		}
+			/*公用头部*/
+	.header{
+	    height: .9rem;
+	    background: #fd5530 !important;
+	    color: #fff;
+	    font-size: .32rem;
+	    line-height: .9rem;
+	    max-width: 1080px;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    z-index: 10;
+	    overflow: hidden;
+	}
+	.header a{
+		display: inline-block;
+		color: #fff;
+	}
+	.header .back{
+	    height: .9rem;
+	    line-height: .9rem;
+	    width: 17%;
+	    float: left;
+	}
+	.header .back i{
+	    width: 0.4rem;
+	    height: .9rem;
+	    display: inline-block;
+	    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+	    vertical-align: middle;
+	    background-size: .3rem;
+	}
+	.header .header_right{
+		float: right;
+		height: .9rem;
+		margin-right: .2rem;
+	}
+	.header .header_right i{
+	    width: 0.04rem;
+	    height: 0.5rem;
+	    display: inline-block;
+	    vertical-align: middle;
+	    background: #fff;
+	    margin: 0 .15rem;
+	}
+	.header .title_1{
+	    float: left;
+	    width: 70%;
+	    text-align: center;
+	    font-size: 0.38rem;
+	}
+	.header .share{
+	    height: .9rem;
+	    float: right;
+	    width: 12%;
+	    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+	    background-size: .5rem;
+	}
+	</style>
+</head>
+<body>
+	<!-- 共同顶部 s-->
+		<div class="header fn-clear">
+			<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+			<div class="title_1">修改签名</div>
+		</div>
+	<!-- 共同顶部 e-->
+<include file="Public/share" title='包含文件'/>
+
+	<div class="input" style="position: relative;margin-top: .9rem;">
+		<textarea id="txt" rows="4" maxlength="30" placeholder="一句话介绍自己，让志趣相投的人找到你" onkeyup="wordStatic(this)">{$autograph}</textarea>
+		<div class="textcount"><span id="txtnum">0</span>/30</div>
+	</div>
+	<div class="btn">
+		<button class="">保存</button>
+	</div>
+</body>
+
+<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+<script src="__PUBLIC__/Home/js/layer.js"></script>
+<script>
+	function req(){
+		location.href='__MODULE__/Index/profile';
+		//location= document.referrer
+		//history.go(-1);
+	}
+	$('button').click(function(){
+		var text = $('textarea').val()
+		if(text.length < 1){
+			layer.msg('请填写签名呐');
+			return ;
+		}
+		$.post('__MODULE__/EditUser/EditAutograph',{user_autograph:text},function(msg){
+			if(msg == 1){
+				layer.msg('已保存');
+				setTimeout('req()',1500);
+			}else{
+				layer.msg(msg);
+			}
+		})
+	})
+	function wordStatic(input){
+		//获取要显示已经输入字数文本框对象
+		var content = document.getElementById("txtnum");
+		if(content && input){
+			//获取输入框内容长度并更新到新的界面
+			var value = input.value;
+			//将换行符不计算为单词数
+			value = value.replace(/\n|\r/gi,"");
+			//更新计数
+			content.innerText = value.length;
+		}
+	}
+	$(function(){
+		//初始化文本框字数
+		var txt = document.getElementById("txt");
+		var txtcontent = txt.value;
+		var value = txtcontent.replace(/\n|\r/gi,"");
+		document.getElementById('txtnum').innerText = value.length;
+
+	})
+</script>
+</html>

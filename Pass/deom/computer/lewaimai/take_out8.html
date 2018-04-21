@@ -1,0 +1,1867 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.yiiactiveform.js"></script>
+    <script type="text/javascript" src="js/jquery.ba-bbq.js"></script>
+    <title>乐外卖 - 财务统计</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <link rel="stylesheet" href="css/font-awesome.min.css" />
+      <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/chosen.min.css" />
+      <link rel="stylesheet" href="css/ace-fonts.min.css" />
+      <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+      <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+        <div class="main-content">
+          <div class="breadcrumbs" id="breadcrumbs">
+            <ul class="breadcrumb">
+              <i class="ace-icon fa fa-bar-chart-o bar-chart-o-icon"></i>
+              <li class="active">统计</li>
+              <li class="active">财务统计</li>
+              <li class="active">营业额统计</li></ul>
+            </div>
+          <div class="page-content">
+            <div class="page-content-area">
+              <script type="text/javascript" src="js/highcharts.js"></script>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="tabbable">
+                    <ul class="nav nav-tabs" id="myTab">
+                      <li >
+                        <a href="take_out.html">外卖营业额统计</a></li>
+                      <li>
+                        <a href="#">订单按天统计</a></li>
+                      <li>
+                        <a href="#">订单按时间段统计</a></li>
+                      <li >
+                        <a href="take_out4.html" >店铺订单量排行统计</a></li>
+                      <li>
+                        <a href="#">店铺营业额排行统计</a></li>
+                      <li>
+                        <a href="#">外卖商品销量统计</a></li>
+                      <li>
+                        <a href="#">配送员统计</a></li>
+                      <li class="active">
+                        <a href="take_out8.html">财务结算</a></li>
+                      <li>
+                        <a href="take_out9.html">新财务结算</a></li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-pane active">
+                        <div class="widget-box">
+                          <div class="widget-header">
+                            <h5>营业额统计-条件选择</h5></div>
+                          <div class="widget-body" style="padding:20px;">
+                              <form id="exportorder-form" action="/statistics/chartrevenue" method="post">
+                                <label>统计时间段</label>
+                                <br />
+                              <input id="StatisticsForm_beginDate" type="text" value="2017-02-12" name="StatisticsForm[beginDate]" />至
+                              <input id="StatisticsForm_endDate" type="text" value="2017-03-14" name="StatisticsForm[endDate]" />
+                              <br />
+                              <br />
+                                <div class="span12">
+                                  <button type="submit" class="btn btn-success">查看统计</button></div>
+                              </form>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-2" style="margin-top: 15px;width:134px;">
+                          <a class="btn btn-success" href="#">导出成excel</a></div>
+                        <div class="col-xs-2" style="margin-top: 15px;width:114px;">
+                          <a class="btn btn-warning" href="set_money.html">设置提成</a></div>
+                        <div class="col-xs-2" style="margin-top: 15px;width:134px;">
+                          <a class="btn btn-danger" href="#" target="_blank">设置教程</a></div>
+                        <div class="col-xs-10" style="width:98%">
+                          <div id="yw0" class="grid-view">
+                            <table class="table table-striped table-bordered table-hover">
+                              <thead>
+                                <tr>
+                                  <th id="yw0_c0">店铺名</th>
+                                  <th id="yw0_c1">商家应得金额</th>
+                                  <th id="yw0_c2">平台应得金额</th>
+                                  <th id="yw0_c3">总交易额</th>
+                                  <th id="yw0_c4">货到付款交易额</th>
+                                  <th id="yw0_c5">余额付款交易额</th>
+                                  <th id="yw0_c6">在线支付交易额</th>
+                                  <th id="yw0_c7">商品原价总额</th>
+                                  <th id="yw0_c8">折扣优惠总额</th>
+                                  <th id="yw0_c9">满减优惠</th>
+                                  <th id="yw0_c10">会员优惠总额</th>
+                                  <th id="yw0_c11">配送费总额</th>
+                                  <th id="yw0_c12">增值服务费总额</th>
+                                  <th id="yw0_c13">优惠券总额</th>
+                                  <th id="yw0_c14">餐盒费（打包费）总额</th>
+                                  <th id="yw0_c15">首次下单减免总额</th></tr>
+                              </thead>
+                              <tbody>
+                                <tr class="odd">
+                                  <td style="width: 120px">凤凰楼</td>
+                                  <td>914.4</td>
+                                  <td>143.6</td>
+                                  <td>1058</td>
+                                  <td>166</td>
+                                  <td>0</td>
+                                  <td>892</td>
+                                  <td>951</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>45</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>65</td>
+                                  <td>3</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">梁记粥铺</td>
+                                  <td>826.2</td>
+                                  <td>163.8</td>
+                                  <td>990</td>
+                                  <td>263</td>
+                                  <td>0</td>
+                                  <td>727</td>
+                                  <td>864</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>78</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>54</td>
+                                  <td>6</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">测试店铺（勿点）</td>
+                                  <td>0.09</td>
+                                  <td>0.01</td>
+                                  <td>0.1</td>
+                                  <td>0.1</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0.1</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">味美家煲仔饭</td>
+                                  <td>3160.64</td>
+                                  <td>640.83</td>
+                                  <td>3801.47</td>
+                                  <td>689.48</td>
+                                  <td>0</td>
+                                  <td>3111.99</td>
+                                  <td>3503.4</td>
+                                  <td>272.93</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>398</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>215</td>
+                                  <td>42</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">老字号鸡蛋饭</td>
+                                  <td>1308.15</td>
+                                  <td>433.85</td>
+                                  <td>1742</td>
+                                  <td>397</td>
+                                  <td>0</td>
+                                  <td>1345</td>
+                                  <td>1483</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>206</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>56</td>
+                                  <td>3</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">一家人餐馆</td>
+                                  <td>466.65</td>
+                                  <td>105.35</td>
+                                  <td>572</td>
+                                  <td>32</td>
+                                  <td>0</td>
+                                  <td>540</td>
+                                  <td>510</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>26</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>39</td>
+                                  <td>3</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">重庆小面</td>
+                                  <td>397.8</td>
+                                  <td>130.2</td>
+                                  <td>528</td>
+                                  <td>67</td>
+                                  <td>0</td>
+                                  <td>461</td>
+                                  <td>428</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>69</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>40</td>
+                                  <td>9</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">沙县小吃信合店</td>
+                                  <td>810.22</td>
+                                  <td>250.98</td>
+                                  <td>1061.2</td>
+                                  <td>296</td>
+                                  <td>0</td>
+                                  <td>765.2</td>
+                                  <td>867.2</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>108</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>86</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">功夫煲仔饭</td>
+                                  <td>3437.4</td>
+                                  <td>562</td>
+                                  <td>3999.4</td>
+                                  <td>741.05</td>
+                                  <td>0</td>
+                                  <td>3258.35</td>
+                                  <td>3811</td>
+                                  <td>363.6</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>391</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>233</td>
+                                  <td>72</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">太陽·卤味坊</td>
+                                  <td>4704.75</td>
+                                  <td>833.25</td>
+                                  <td>5538</td>
+                                  <td>685</td>
+                                  <td>0</td>
+                                  <td>4853</td>
+                                  <td>5289</td>
+                                  <td>0</td>
+                                  <td>447</td>
+                                  <td>0</td>
+                                  <td>558</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>246</td>
+                                  <td>108</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">坝头盐都小吃</td>
+                                  <td>68</td>
+                                  <td>36</td>
+                                  <td>104</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>104</td>
+                                  <td>69</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>24</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>11</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">坝头夜猫子小黄鱼</td>
+                                  <td>285.6</td>
+                                  <td>88.4</td>
+                                  <td>374</td>
+                                  <td>17</td>
+                                  <td>0</td>
+                                  <td>357</td>
+                                  <td>336</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>41</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">朋友圈土菜馆</td>
+                                  <td>375.7</td>
+                                  <td>87.3</td>
+                                  <td>463</td>
+                                  <td>24</td>
+                                  <td>0</td>
+                                  <td>439</td>
+                                  <td>420</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>21</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>22</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">木语果蛋糕</td>
+                                  <td>140.25</td>
+                                  <td>30.75</td>
+                                  <td>171</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>171</td>
+                                  <td>165</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>6</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">精武人家（小区店）</td>
+                                  <td>3531.75</td>
+                                  <td>882.25</td>
+                                  <td>4414</td>
+                                  <td>708</td>
+                                  <td>0</td>
+                                  <td>3706</td>
+                                  <td>3865</td>
+                                  <td>0</td>
+                                  <td>143</td>
+                                  <td>0</td>
+                                  <td>411</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>290</td>
+                                  <td>9</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">坝头火爆鱿鱼</td>
+                                  <td>266.9</td>
+                                  <td>82.1</td>
+                                  <td>349</td>
+                                  <td>16</td>
+                                  <td>0</td>
+                                  <td>333</td>
+                                  <td>314</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>38</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">坝头铁板炒饭</td>
+                                  <td>11.05</td>
+                                  <td>4.95</td>
+                                  <td>16</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>16</td>
+                                  <td>12</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>1</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">妙味馄饨</td>
+                                  <td>224.4</td>
+                                  <td>75.6</td>
+                                  <td>300</td>
+                                  <td>26</td>
+                                  <td>0</td>
+                                  <td>274</td>
+                                  <td>240</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>39</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>24</td>
+                                  <td>3</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">坝头台湾手抓饼</td>
+                                  <td>114.75</td>
+                                  <td>53.25</td>
+                                  <td>168</td>
+                                  <td>14</td>
+                                  <td>0</td>
+                                  <td>154</td>
+                                  <td>135</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>33</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">巴东傅记羊肉面</td>
+                                  <td>175.53</td>
+                                  <td>48.97</td>
+                                  <td>224.5</td>
+                                  <td>81</td>
+                                  <td>0</td>
+                                  <td>143.5</td>
+                                  <td>189.5</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>21</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>17</td>
+                                  <td>3</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">坝头鸡翅包饭 烧烤</td>
+                                  <td>810.48</td>
+                                  <td>228.02</td>
+                                  <td>1038.5</td>
+                                  <td>216</td>
+                                  <td>0</td>
+                                  <td>822.5</td>
+                                  <td>941.5</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>94</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>12</td>
+                                  <td>9</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">坝头江湖翅客24号</td>
+                                  <td>95.63</td>
+                                  <td>22.87</td>
+                                  <td>118.5</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>118.5</td>
+                                  <td>112.5</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>6</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">程家菜馆</td>
+                                  <td>557.6</td>
+                                  <td>149.4</td>
+                                  <td>707</td>
+                                  <td>77</td>
+                                  <td>0</td>
+                                  <td>630</td>
+                                  <td>623</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>51</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>33</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">平价菜馆</td>
+                                  <td>130.05</td>
+                                  <td>31.95</td>
+                                  <td>162</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>162</td>
+                                  <td>143</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>9</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>10</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">福和祥煲仔饭</td>
+                                  <td>895.9</td>
+                                  <td>241.1</td>
+                                  <td>1137</td>
+                                  <td>373</td>
+                                  <td>0</td>
+                                  <td>764</td>
+                                  <td>993</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>86</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>61</td>
+                                  <td>3</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">一品香</td>
+                                  <td>1062.93</td>
+                                  <td>285.57</td>
+                                  <td>1348.5</td>
+                                  <td>102</td>
+                                  <td>0</td>
+                                  <td>1246.5</td>
+                                  <td>1174.5</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>107</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>76</td>
+                                  <td>9</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">河鲜馆</td>
+                                  <td>248.2</td>
+                                  <td>55.8</td>
+                                  <td>304</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>304</td>
+                                  <td>282</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>12</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>10</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">坝头刚子烧烤</td>
+                                  <td>2380</td>
+                                  <td>664</td>
+                                  <td>3044</td>
+                                  <td>405</td>
+                                  <td>0</td>
+                                  <td>2639</td>
+                                  <td>2800</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>256</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>12</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">坝头东北小吃</td>
+                                  <td>138.13</td>
+                                  <td>57.37</td>
+                                  <td>195.5</td>
+                                  <td>51.5</td>
+                                  <td>0</td>
+                                  <td>144</td>
+                                  <td>149.5</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>33</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>13</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">坝头碳烤小黄鱼</td>
+                                  <td>51</td>
+                                  <td>12</td>
+                                  <td>63</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>63</td>
+                                  <td>60</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">川府石锅鱼</td>
+                                  <td>22.1</td>
+                                  <td>3.9</td>
+                                  <td>26</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>26</td>
+                                  <td>25</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>1</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">坝头米酒汤圆 萝卜饺子</td>
+                                  <td>228.65</td>
+                                  <td>91.35</td>
+                                  <td>320</td>
+                                  <td>68.5</td>
+                                  <td>0</td>
+                                  <td>251.5</td>
+                                  <td>248</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>51</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>21</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">坝头灌汤包</td>
+                                  <td>201.45</td>
+                                  <td>80.55</td>
+                                  <td>282</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>282</td>
+                                  <td>237</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>48</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">沐小卤卤肉饭</td>
+                                  <td>1478.35</td>
+                                  <td>511.65</td>
+                                  <td>1990</td>
+                                  <td>420</td>
+                                  <td>0</td>
+                                  <td>1570</td>
+                                  <td>1946</td>
+                                  <td>0</td>
+                                  <td>282</td>
+                                  <td>0</td>
+                                  <td>216</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>125</td>
+                                  <td>15</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">肯德基</td>
+                                  <td>8830</td>
+                                  <td>87.51</td>
+                                  <td>8917.51</td>
+                                  <td>597.43</td>
+                                  <td>0</td>
+                                  <td>8320.08</td>
+                                  <td>8830</td>
+                                  <td>457.49</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>611</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>66</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">楚城小厨</td>
+                                  <td>124.95</td>
+                                  <td>28.05</td>
+                                  <td>153</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>153</td>
+                                  <td>142</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>6</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>5</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">欣怡川菜馆</td>
+                                  <td>9.78</td>
+                                  <td>4.72</td>
+                                  <td>14.5</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>14.5</td>
+                                  <td>11.5</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">胖胖熊美食城</td>
+                                  <td>66.3</td>
+                                  <td>20.7</td>
+                                  <td>87</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>87</td>
+                                  <td>74</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>9</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>4</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">新派煲仔饭</td>
+                                  <td>1966.05</td>
+                                  <td>345.15</td>
+                                  <td>2311.2</td>
+                                  <td>270</td>
+                                  <td>0</td>
+                                  <td>2041.2</td>
+                                  <td>2181</td>
+                                  <td>181.8</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>186</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>132</td>
+                                  <td>6</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">韦一粮油</td>
+                                  <td>178</td>
+                                  <td>0</td>
+                                  <td>178</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>178</td>
+                                  <td>178</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">妙嘴小吃</td>
+                                  <td>17</td>
+                                  <td>6</td>
+                                  <td>23</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>23</td>
+                                  <td>18</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>2</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">剑峰菜馆</td>
+                                  <td>31.45</td>
+                                  <td>11.55</td>
+                                  <td>43</td>
+                                  <td>43</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>34</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>6</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">矮子馅饼（秭归店）</td>
+                                  <td>130.9</td>
+                                  <td>41.1</td>
+                                  <td>172</td>
+                                  <td>28</td>
+                                  <td>0</td>
+                                  <td>144</td>
+                                  <td>154</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>24</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>6</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">泄滩包子金城店</td>
+                                  <td>337.03</td>
+                                  <td>113.47</td>
+                                  <td>450.5</td>
+                                  <td>153.5</td>
+                                  <td>0</td>
+                                  <td>297</td>
+                                  <td>396.5</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>60</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>6</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">一扫光零食量贩店</td>
+                                  <td>85.51</td>
+                                  <td>15.45</td>
+                                  <td>100.96</td>
+                                  <td>17</td>
+                                  <td>0</td>
+                                  <td>83.96</td>
+                                  <td>100.6</td>
+                                  <td>11.64</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>12</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">糖炒栗子</td>
+                                  <td>56.1</td>
+                                  <td>15.9</td>
+                                  <td>72</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>72</td>
+                                  <td>66</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>6</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">庙嘴万州面</td>
+                                  <td>1253.75</td>
+                                  <td>383.25</td>
+                                  <td>1637</td>
+                                  <td>358</td>
+                                  <td>0</td>
+                                  <td>1279</td>
+                                  <td>1359</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>168</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>116</td>
+                                  <td>6</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">襄阳牛杂面</td>
+                                  <td>393.55</td>
+                                  <td>123.45</td>
+                                  <td>517</td>
+                                  <td>37</td>
+                                  <td>0</td>
+                                  <td>480</td>
+                                  <td>413</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>57</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>50</td>
+                                  <td>3</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">舒心批发超市</td>
+                                  <td>136.8</td>
+                                  <td>29.2</td>
+                                  <td>166</td>
+                                  <td>26</td>
+                                  <td>0</td>
+                                  <td>140</td>
+                                  <td>152</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>14</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">砂锅米线</td>
+                                  <td>512.55</td>
+                                  <td>141.45</td>
+                                  <td>654</td>
+                                  <td>95</td>
+                                  <td>0</td>
+                                  <td>559</td>
+                                  <td>564</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>66</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>39</td>
+                                  <td>15</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">时尚酒家</td>
+                                  <td>578.85</td>
+                                  <td>141.15</td>
+                                  <td>720</td>
+                                  <td>108</td>
+                                  <td>0</td>
+                                  <td>612</td>
+                                  <td>648</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>39</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>33</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">巴黎天使</td>
+                                  <td>49.3</td>
+                                  <td>23.7</td>
+                                  <td>73</td>
+                                  <td>15</td>
+                                  <td>0</td>
+                                  <td>58</td>
+                                  <td>58</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>15</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">松滋杜婆鸡</td>
+                                  <td>107.1</td>
+                                  <td>33.9</td>
+                                  <td>141</td>
+                                  <td>37</td>
+                                  <td>0</td>
+                                  <td>104</td>
+                                  <td>120</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>15</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>6</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">正新鸡排</td>
+                                  <td>617.1</td>
+                                  <td>180.9</td>
+                                  <td>798</td>
+                                  <td>299</td>
+                                  <td>0</td>
+                                  <td>499</td>
+                                  <td>726</td>
+                                  <td>0</td>
+                                  <td>4</td>
+                                  <td>0</td>
+                                  <td>94</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>18</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">纸上烤鱼(国华盛景店)</td>
+                                  <td>60.35</td>
+                                  <td>13.65</td>
+                                  <td>74</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>74</td>
+                                  <td>68</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">王老板烩面</td>
+                                  <td>154.7</td>
+                                  <td>45.3</td>
+                                  <td>200</td>
+                                  <td>42</td>
+                                  <td>0</td>
+                                  <td>158</td>
+                                  <td>170</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>18</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>12</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">庙嘴炸酱面馆</td>
+                                  <td>136</td>
+                                  <td>42</td>
+                                  <td>178</td>
+                                  <td>65</td>
+                                  <td>0</td>
+                                  <td>113</td>
+                                  <td>143</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>18</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>17</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">周黑鸭</td>
+                                  <td>300.2</td>
+                                  <td>27</td>
+                                  <td>327.2</td>
+                                  <td>59.8</td>
+                                  <td>0</td>
+                                  <td>267.4</td>
+                                  <td>300.2</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>27</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">丰锅农家菜</td>
+                                  <td>413.1</td>
+                                  <td>96.9</td>
+                                  <td>510</td>
+                                  <td>34</td>
+                                  <td>0</td>
+                                  <td>476</td>
+                                  <td>461</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>27</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>25</td>
+                                  <td>3</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">王梁记麻辣烫</td>
+                                  <td>1167.05</td>
+                                  <td>385.95</td>
+                                  <td>1553</td>
+                                  <td>392.3</td>
+                                  <td>0</td>
+                                  <td>1160.7</td>
+                                  <td>1336</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>189</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>37</td>
+                                  <td>9</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">艳子农家小炒</td>
+                                  <td>546.55</td>
+                                  <td>138.45</td>
+                                  <td>685</td>
+                                  <td>156</td>
+                                  <td>0</td>
+                                  <td>529</td>
+                                  <td>603</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>48</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>40</td>
+                                  <td>6</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">五谷渔粉</td>
+                                  <td>1019.15</td>
+                                  <td>432.85</td>
+                                  <td>1452</td>
+                                  <td>323</td>
+                                  <td>0</td>
+                                  <td>1129</td>
+                                  <td>1199</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>174</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>94</td>
+                                  <td>15</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">坝头米酒汤圆</td>
+                                  <td>79.05</td>
+                                  <td>34.95</td>
+                                  <td>114</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>114</td>
+                                  <td>79</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>21</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>14</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">桃园包子</td>
+                                  <td>176.21</td>
+                                  <td>64.09</td>
+                                  <td>240.3</td>
+                                  <td>28.5</td>
+                                  <td>0</td>
+                                  <td>211.8</td>
+                                  <td>207.3</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>36</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">庙嘴泄滩包子</td>
+                                  <td>272.43</td>
+                                  <td>90.07</td>
+                                  <td>362.5</td>
+                                  <td>54.8</td>
+                                  <td>0</td>
+                                  <td>307.7</td>
+                                  <td>320.5</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>42</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">罗蒂爸爸</td>
+                                  <td>167.45</td>
+                                  <td>44.55</td>
+                                  <td>212</td>
+                                  <td>67</td>
+                                  <td>0</td>
+                                  <td>145</td>
+                                  <td>197</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>15</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">撮一顿川菜馆</td>
+                                  <td>416.5</td>
+                                  <td>101.5</td>
+                                  <td>518</td>
+                                  <td>44</td>
+                                  <td>0</td>
+                                  <td>474</td>
+                                  <td>465</td>
+                                  <td>0</td>
+                                  <td>5</td>
+                                  <td>0</td>
+                                  <td>39</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>25</td>
+                                  <td>6</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">易购24小时便利店</td>
+                                  <td>396.9</td>
+                                  <td>76.1</td>
+                                  <td>473</td>
+                                  <td>37</td>
+                                  <td>0</td>
+                                  <td>436</td>
+                                  <td>441</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>35</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">比得灌汤包</td>
+                                  <td>154.28</td>
+                                  <td>39.22</td>
+                                  <td>193.5</td>
+                                  <td>19</td>
+                                  <td>0</td>
+                                  <td>174.5</td>
+                                  <td>181.5</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>15</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">龙潮美式瓦缸炭火烤鱼</td>
+                                  <td>12.75</td>
+                                  <td>5.25</td>
+                                  <td>18</td>
+                                  <td>18</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>14</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>1</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">有意思</td>
+                                  <td>115.6</td>
+                                  <td>34.4</td>
+                                  <td>150</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>150</td>
+                                  <td>134</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>17</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>2</td>
+                                  <td>3</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">花之恋</td>
+                                  <td>91.8</td>
+                                  <td>19.2</td>
+                                  <td>111</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>111</td>
+                                  <td>108</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">老归州酒家</td>
+                                  <td>561.85</td>
+                                  <td>159.15</td>
+                                  <td>721</td>
+                                  <td>304</td>
+                                  <td>0</td>
+                                  <td>417</td>
+                                  <td>624</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>63</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>37</td>
+                                  <td>3</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">米桂坊过桥米线</td>
+                                  <td>673.2</td>
+                                  <td>199.8</td>
+                                  <td>873</td>
+                                  <td>74</td>
+                                  <td>0</td>
+                                  <td>799</td>
+                                  <td>736</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>84</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>56</td>
+                                  <td>3</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">吾饮良品</td>
+                                  <td>1444.15</td>
+                                  <td>369.24</td>
+                                  <td>1813.39</td>
+                                  <td>35.25</td>
+                                  <td>0</td>
+                                  <td>1778.14</td>
+                                  <td>1699</td>
+                                  <td>62.61</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>189</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>12</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">木炭原味儿烧烤</td>
+                                  <td>594.15</td>
+                                  <td>164.85</td>
+                                  <td>759</td>
+                                  <td>120</td>
+                                  <td>0</td>
+                                  <td>639</td>
+                                  <td>691</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>63</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>8</td>
+                                  <td>3</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">红油面馆</td>
+                                  <td>72.25</td>
+                                  <td>18.75</td>
+                                  <td>91</td>
+                                  <td>20</td>
+                                  <td>0</td>
+                                  <td>71</td>
+                                  <td>76</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>9</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>9</td>
+                                  <td>3</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">面相聚</td>
+                                  <td>487.48</td>
+                                  <td>161.02</td>
+                                  <td>648.5</td>
+                                  <td>84.5</td>
+                                  <td>0</td>
+                                  <td>564</td>
+                                  <td>573.5</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>81</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>6</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">千里香馄饨王</td>
+                                  <td>341.7</td>
+                                  <td>99.3</td>
+                                  <td>441</td>
+                                  <td>49.5</td>
+                                  <td>0</td>
+                                  <td>391.5</td>
+                                  <td>367</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>39</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>35</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">周姐卤菜水饺</td>
+                                  <td>1254.6</td>
+                                  <td>272.4</td>
+                                  <td>1527</td>
+                                  <td>424</td>
+                                  <td>0</td>
+                                  <td>1103</td>
+                                  <td>1468</td>
+                                  <td>0</td>
+                                  <td>96</td>
+                                  <td>0</td>
+                                  <td>165</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>8</td>
+                                  <td>18</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">小树鲜果（水果、零食）</td>
+                                  <td>98.18</td>
+                                  <td>26.32</td>
+                                  <td>124.5</td>
+                                  <td>35</td>
+                                  <td>0</td>
+                                  <td>89.5</td>
+                                  <td>115.5</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>9</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">粥公卤婆（烧烤）</td>
+                                  <td>706.35</td>
+                                  <td>197.65</td>
+                                  <td>904</td>
+                                  <td>219</td>
+                                  <td>0</td>
+                                  <td>685</td>
+                                  <td>777</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>79</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>54</td>
+                                  <td>6</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">茶物语</td>
+                                  <td>105.4</td>
+                                  <td>36.6</td>
+                                  <td>142</td>
+                                  <td>20</td>
+                                  <td>0</td>
+                                  <td>122</td>
+                                  <td>124</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>21</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">九三食府</td>
+                                  <td>1463.7</td>
+                                  <td>336.3</td>
+                                  <td>1800</td>
+                                  <td>363</td>
+                                  <td>0</td>
+                                  <td>1437</td>
+                                  <td>1653</td>
+                                  <td>0</td>
+                                  <td>70</td>
+                                  <td>0</td>
+                                  <td>160</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>69</td>
+                                  <td>12</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">炎锅家常菜（瓦罐汤）</td>
+                                  <td>318</td>
+                                  <td>53</td>
+                                  <td>371</td>
+                                  <td>13</td>
+                                  <td>0</td>
+                                  <td>358</td>
+                                  <td>318</td>
+                                  <td>0</td>
+                                  <td>4</td>
+                                  <td>0</td>
+                                  <td>35</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>25</td>
+                                  <td>3</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">秘制牛肉粉面馆</td>
+                                  <td>101</td>
+                                  <td>24</td>
+                                  <td>125</td>
+                                  <td>125</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>101</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>21</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>9</td>
+                                  <td>6</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">屈乡风味馆</td>
+                                  <td>192</td>
+                                  <td>9</td>
+                                  <td>201</td>
+                                  <td>84</td>
+                                  <td>0</td>
+                                  <td>117</td>
+                                  <td>192</td>
+                                  <td>0</td>
+                                  <td>13</td>
+                                  <td>0</td>
+                                  <td>12</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>10</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">吴妈面馆</td>
+                                  <td>119.5</td>
+                                  <td>37</td>
+                                  <td>156.5</td>
+                                  <td>91.5</td>
+                                  <td>0</td>
+                                  <td>65</td>
+                                  <td>119.5</td>
+                                  <td>0</td>
+                                  <td>5</td>
+                                  <td>0</td>
+                                  <td>30</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>12</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">蟹谢啦（香辣蟹钳）</td>
+                                  <td>815</td>
+                                  <td>55</td>
+                                  <td>870</td>
+                                  <td>38</td>
+                                  <td>0</td>
+                                  <td>832</td>
+                                  <td>815</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>55</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">正新鸡排（金城店）</td>
+                                  <td>12</td>
+                                  <td>3</td>
+                                  <td>15</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>15</td>
+                                  <td>12</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">嘛嘛香中式营养快餐</td>
+                                  <td>579</td>
+                                  <td>72</td>
+                                  <td>651</td>
+                                  <td>42</td>
+                                  <td>0</td>
+                                  <td>609</td>
+                                  <td>579</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>72</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 120px">正宗片皮鸭</td>
+                                  <td>20</td>
+                                  <td>3</td>
+                                  <td>23</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>23</td>
+                                  <td>20</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>3</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 120px">总计</td>
+                                  <td>60642.35</td>
+                                  <td>12824.38</td>
+                                  <td>73466.73</td>
+                                  <td>11501.71</td>
+                                  <td>0</td>
+                                  <td>61965.02</td>
+                                  <td>66900.8</td>
+                                  <td>1350.07</td>
+                                  <td>1069</td>
+                                  <td>0</td>
+                                  <td>6805</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>2753</td>
+                                  <td>573</td></tr>
+                              </tbody>
+                            </table>
+                            <div class="keys" style="display:none" title="/statistics/finance">
+                              <span>2</span>
+                              <span>3</span>
+                              <span>4</span>
+                              <span>5</span>
+                              <span>6</span>
+                              <span>7</span>
+                              <span>8</span>
+                              <span>9</span>
+                              <span>10</span>
+                              <span>11</span>
+                              <span>12</span>
+                              <span>13</span>
+                              <span>14</span>
+                              <span>15</span>
+                              <span>16</span>
+                              <span>17</span>
+                              <span>18</span>
+                              <span>19</span>
+                              <span>20</span>
+                              <span>21</span>
+                              <span>22</span>
+                              <span>23</span>
+                              <span>24</span>
+                              <span>25</span>
+                              <span>26</span>
+                              <span>27</span>
+                              <span>28</span>
+                              <span>29</span>
+                              <span>30</span>
+                              <span>31</span>
+                              <span>32</span>
+                              <span>33</span>
+                              <span>34</span>
+                              <span>35</span>
+                              <span>36</span>
+                              <span>37</span>
+                              <span>38</span>
+                              <span>39</span>
+                              <span>40</span>
+                              <span>41</span>
+                              <span>42</span>
+                              <span>43</span>
+                              <span>44</span>
+                              <span>45</span>
+                              <span>46</span>
+                              <span>47</span>
+                              <span>48</span>
+                              <span>49</span>
+                              <span>50</span>
+                              <span>51</span>
+                              <span>52</span>
+                              <span>53</span>
+                              <span>54</span>
+                              <span>55</span>
+                              <span>56</span>
+                              <span>57</span>
+                              <span>58</span>
+                              <span>59</span>
+                              <span>60</span>
+                              <span>61</span>
+                              <span>62</span>
+                              <span>63</span>
+                              <span>64</span>
+                              <span>65</span>
+                              <span>66</span>
+                              <span>67</span>
+                              <span>68</span>
+                              <span>69</span>
+                              <span>70</span>
+                              <span>71</span>
+                              <span>72</span>
+                              <span>73</span>
+                              <span>74</span>
+                              <span>75</span>
+                              <span>76</span>
+                              <span>77</span>
+                              <span>78</span>
+                              <span>79</span>
+                              <span>80</span>
+                              <span>81</span>
+                              <span>82</span>
+                              <span>83</span>
+                              <span>84</span>
+                              <span>85</span>
+                              <span>86</span>
+                              <span>87</span>
+                              <span>88</span>
+                              <span>89</span>
+                              <span>90</span>
+                              <span>91</span>
+                              <span>92</span>
+                              <span>93</span>
+                              <span>94</span></div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+        </div>
+        <!-- /.main-content -->
+      <!-- page specific plugin scripts -->
+      <script src="js/jquery-ui.min.js"></script>
+      <script src="js/jquery.ui.touch-punch.min.js"></script>
+      <script src="js/jquery.easypiechart.min.js"></script>
+      <script src="js/jquery.sparkline.min.js"></script>
+
+      <!-- 这里是与新订单提醒相关的内容 -->
+      <script type="text/javascript" src="js/jquery-ui-i18n.min.js"></script>
+      <script type="text/javascript">
+        jQuery(function($) {
+          jQuery('#StatisticsForm_beginDate').datepicker(jQuery.extend({
+            showMonthAfterYear: false
+          },
+          jQuery.datepicker.regional['zh_cn'], {
+            'showSecond': true,
+            'changeMonth': true,
+            'changeYear': true,
+            'tabularLevel': null,
+            'yearRange': '2013:2020',
+            'minDate': new Date(2013, 1, 1, 00, 00, 00),
+            'timeFormat': 'hh:mm:ss',
+            'dateFormat': 'yy-mm-dd',
+            'timeText': '时间',
+            'hourText': '时',
+            'minuteText': '分',
+            'secondText': '秒',
+            'currentText': '当前时间',
+            'closeText': '关闭',
+            'showOn': 'focus'
+          }));
+          jQuery('#StatisticsForm_endDate').datepicker(jQuery.extend({
+            showMonthAfterYear: false
+          },
+          jQuery.datepicker.regional['zh_cn'], {
+            'showSecond': true,
+            'changeMonth': true,
+            'changeYear': true,
+            'tabularLevel': null,
+            'yearRange': '2013:2020',
+            'minDate': new Date(2013, 1, 1, 00, 00, 00),
+            'timeFormat': 'hh:mm:ss',
+            'dateFormat': 'yy-mm-dd',
+            'timeText': '时间',
+            'hourText': '时',
+            'minuteText': '分',
+            'secondText': '秒',
+            'currentText': '当前时间',
+            'closeText': '关闭',
+            'showOn': 'focus'
+          }));
+          jQuery('#exportorder-form').yiiactiveform({
+            'validateOnSubmit': true,
+            'attributes': [{
+              'id': 'StatisticsForm_shop_id',
+              'inputID': 'StatisticsForm_shop_id',
+              'errorID': 'StatisticsForm_shop_id_em_',
+              'model': 'StatisticsForm',
+              'name': 'shop_id',
+              'enableAjaxValidation': false,
+              'clientValidation': function(value, messages, attribute) {
+
+                if (jQuery.trim(value) == '') {
+                  messages.push("\u5e97\u94fa\u540d\u79f0 \u4e0d\u53ef\u4e3a\u7a7a\u767d.");
+                }
+
+              }
+            }],
+            'errorCss': 'error'
+          });
+        });
+        </script>
+        <script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+
+</html>

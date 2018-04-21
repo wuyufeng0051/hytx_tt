@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+
+<!--[if !IE]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+    <meta charset="utf-8"/>
+
+    <title>本地鸟后台 | 未处理举报</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <meta content="" name="description"/>
+
+    <meta content="" name="author"/>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL STYLES -->
+
+    <link href="media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/daterangepicker.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <!-- END PAGE LEVEL STYLES -->
+
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+<!-- BEGIN HEADER -->
+
+{include file="public/header" /}
+<!-- END HEADER -->
+<a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a>
+
+<!-- BEGIN CONTAINER -->
+
+<div class="page-container">
+
+    <!-- BEGIN SIDEBAR -->
+
+    {include file="public/sidebar" /}
+
+    <!-- END SIDEBAR -->
+
+    <!-- BEGIN PAGE -->
+
+    <div class="page-content">
+
+        <!-- BEGIN PAGE CONTAINER-->
+
+        <div class="container-fluid">
+
+            <!-- BEGIN PAGE HEADER-->
+
+            <div class="row-fluid">
+
+                <div class="span12">
+
+                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+                    <h3 class="page-title">
+                        未处理举报
+                    </h3>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="index">未处理举报</a>
+                            <i class="icon-angle-right"></i>
+                        </li>
+                        <li>{$rend.report_id}</li>
+                    </ul>
+
+                    <!-- END PAGE TITLE & BREADCRUMB-->
+
+                </div>
+
+            </div>
+
+            <!-- END PAGE HEADER-->
+
+            <!-- BEGIN PAGE CONTENT-->
+
+            <form class="form-horizontal" action="change" id="form" method="post">
+
+                <input type="hidden" name="report_id" value="{$rend.report_id}" class="m-wrap medium" id="id">
+                <div class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label">图片:</label>
+                        <div class="controls">
+                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                {volist name='img' id='io'}
+                                <div class="fileupload-new thumbnail"
+                                     style="width: 200px;float:left; margin-right: 10px">
+                                    <img src="../../../../{$io.imgs_path}" alt="">
+                                </div>
+                                {/volist}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">举报描述:</label>
+                    <div class="controls">
+                        <textarea class="large m-wrap" rows="4" name="report_content" readonly="">{$rend.report_content}</textarea>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">举报原因:</label>
+                    <div class="controls">
+                        <textarea class="large m-wrap" rows="2" name="report_reporttype" readonly="">{$rend.report_reporttype}</textarea>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">被举报者:</label>
+                    <div class="controls">
+                        <input type="text" name="report_uid" value="{$rend.uid.user_name}" class="m-wrap medium" readonly="">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">举报标识:</label>
+                    <div class="controls" >
+                        <input type="text" name="report_cid" value="{$rend.report_cid}" class="m-wrap medium" readonly="">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">举报类型:</label>
+                    <div class="controls" >
+                        <input type="text" name="report_type" value="{$rend.report_type}" class="m-wrap medium" readonly="">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">发起用户:</label>
+                    <div class="controls" >
+                        <input type="text" name="report_uid" value="{$rend.uid.user_name}" class="m-wrap medium" readonly="">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">联系方式:</label>
+                    <div class="controls">
+                        <input type="text" name="report_contact" value="{$rend.report_contact}" class="m-wrap medium" readonly="">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">时间:</label>
+                    <div class="controls" >
+                        <input type="text" name="report_date" value="{$rend.report_date}" class="m-wrap medium" readonly="">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">举报回复:</label>
+                    <div class="controls" >
+                        <textarea name="" id="" cols="30" rows="10" style="width:500px!important;"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn blue btn-save"><i class="icon-ok"></i> 审核</button>
+                    <button type="button" class="btn btn-qx">返回</button>
+                </div>
+
+            </form>
+
+            <!-- END PAGE CONTENT -->
+
+        </div>
+
+        <!-- END PAGE CONTAINER-->
+
+    </div>
+
+    <!-- END PAGE -->
+
+</div>
+
+<!-- END CONTAINER -->
+
+<!-- BEGIN FOOTER -->
+
+{include file="public/footer" /}
+
+<!-- END FOOTER -->
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+<!-- BEGIN CORE PLUGINS -->
+
+<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+
+<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--[if lt IE 9]>
+
+<script src="media/js/excanvas.min.js"></script>
+
+<script src="media/js/respond.min.js"></script>
+
+<![endif]-->
+
+<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<script src="media/js/app.js" type="text/javascript"></script>
+
+<script src="media/js/index.js" type="text/javascript"></script>
+
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<script>
+
+    jQuery(document).ready(function () {
+
+        App.init(); // initlayout and core plugins
+
+    });
+
+$(".btn-save").click(function () {
+     if (confirm('确定已完成处理吗?')) {
+      var id = $('#id').val();
+      $("#form").submit();
+    } else {
+      return false;
+    }
+})
+
+    // $(document).ready(function () {
+    //     $(".btn-save").click(function () {
+    //         if (confirm('确定已完成处理吗?')) {
+    //             var id = $('#id').val();
+    //             alert(id)
+    //             var url = $('#form').attr('action')
+    //             $.ajax({
+    //                 type: 'GET',
+    //                 url: url,
+    //                 data: {report_id: id},
+    //                 success: function (data) {
+    //                     if (data.code == 0) {
+    //                         location.href = history.back(-1);
+    //                     }
+    //                 }
+    //             })
+    //         } else {
+    //             return false;
+    //         }
+    //     })
+
+        $(".btn-qx").click(function () {
+            location.href = history.back(-1);
+        })
+
+    // })
+
+</script>
+
+<!-- END JAVASCRIPTS -->
+
+</body>
+
+<!-- END BODY -->
+
+</html>

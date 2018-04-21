@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var addrListArr = {#$addrListArr#}, modelType = "car", adminPath = "{#$adminPath#}";
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="aid" id="aid" value="{#$aid#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt>经销商：</dt>
+    <dd><a href="javascript:;" class="btn" id="cOffer" data-id="{#$aid#}">{#$aname#}<span class="caret"></span></a></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="title">新闻标题：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="title" id="title" value="{#$title#}" maxlength="60" data-regex=".{2,60}" />
+      <span class="input-tips"><s></s>请输入新闻标题，2-60位</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>新闻内容：</dt>
+    <dd>
+      <script id="content" name="content" type="text/plain" style="width:85%;height:300px">{#$content#}</script>
+    </dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$editorFile#}
+{#$jsFile#}
+</body>
+</html>

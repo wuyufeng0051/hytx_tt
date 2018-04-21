@@ -1,0 +1,40 @@
+<div id="form_modal" class="modal hide fade" tabindex="-1" aria-labelledby="myModalLabel5" style="width: 1000px"
+     aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h3 id="myModalLabel5">内容编辑</h3>
+    </div>
+
+    <div class="modal-body">
+
+            <div class="control-group">
+                <label class="">标题:</label>
+                <div class="">
+                    <input type="text" name="content_title" value="{$tc.content_title}" class="m-wrap medium" >
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="">来源:</label>
+                <div class="">
+                    <input type="text" name="content_source" value="{$tc.content_source}" class="m-wrap medium" >
+                </div>
+            </div>
+
+            <div class="">
+                <label class="">内容:</label>
+                <div class=""  style="width:900px">
+                    <!-- 加载编辑器的容器 -->
+                    <script id="container" name="content_content" type="text/plain">{$tc.content_content}</script>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <!--<button type="button" class="btn green btn-primary" data-dismiss="modal">保存</button>-->
+            </div>
+
+
+    </div>
+</div>
+

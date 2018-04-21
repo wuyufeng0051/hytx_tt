@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-flag-o flag-o-icon"></i>
+      <li class="active">营销活动</li>
+      <li>
+        <a href="#">优惠券</a></li>
+      <li class="active">修改优惠券</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.width50{width:50px;} .modal-content{width:700px;} .errorMessage{color:red;}</style>
+      <script>$(function() {
+          var value = $('#shoptype').val();
+          if (value == '1') {
+            $('#shopidlist').show();
+          } else if (value == '0') {
+            $('#shopidlist').hide();
+          }
+          $('#shoptype').on('change',
+          function() {
+            var value = $(this).val();
+            if (value == '1') {
+              $('#shopidlist').show();
+            } else if (value == '0') {
+              $('#shopidlist').hide();
+            }
+          });
+        })</script>
+      <div class="form no-skin">
+        <form enctype="multipart/form-data" class="form-horizontal" id="food-form" action="/coupon/updatecoupon/28387" method="post">
+          <p class="note">标有
+            <span class="required" style="color:red;">*</span>的为必填选项</p>
+          <div class="alert alert-danger" id="food-form_es_" style="display:none">
+            <p>请更正下列输入错误:</p>
+            <ul>
+              <li>dummy</li></ul>
+          </div>
+          <label class="col-sm-1">优惠券名字
+            <span style="color:red;">*</span></label>
+          <input class="span2" name="Coupon[name]" id="Coupon_name" type="text" maxlength="20" value="圣诞2元优惠券">
+          <div class="errorMessage" id="Coupon_name_em_" style="display:none"></div>
+          <br>
+          <br>
+          <label class="col-sm-1">优惠券描述
+            <br></label>
+          <textarea class="span3" rows="4" name="Coupon[des]" id="Coupon_des"></textarea>
+          <br>
+          <br>
+          <label class="col-sm-1">优惠券面值
+            <span style="color:red">*</span></label>
+          <input class="span1 width50" name="Coupon[value]" id="Coupon_value" type="text" maxlength="10" value="2.0">元
+          <div class="errorMessage" id="Coupon_value_em_" style="display:none"></div>
+          <br>
+          <br>
+          <label class="col-sm-1">消费满多少元可用
+            <span style="color:red;">*</span></label>
+          <input class="span1 width50" name="Coupon[basic_price]" id="Coupon_basic_price" type="text" maxlength="10" value="25.0">元
+          <div class="errorMessage" id="Coupon_basic_price_em_" style="display:none"></div>
+          <br>
+          <br>
+          <label class="col-sm-1">截止时间类型:
+            <span style="color:red;">*</span></label>
+          <select class="span2" name="Coupon[deadline_type]" id="Coupon_deadline_type">
+            <option value="0" selected="selected">指定有效天数</option>
+            <option value="1">指定有效日期</option></select>
+          <br>
+          <br>
+          <label class="col-sm-1">有效天数
+            <span style="color:red;">*</span></label>
+          <input class="span1 width50" name="Coupon[validity]" id="Coupon_validity" type="text" value="10">天
+          <br>
+          <br>
+          <label class="col-sm-1">截止日期
+            <span style="color:red;">*</span></label>
+          <input id="Coupon_deadline" type="text" value="2016-12-31" name="Coupon[deadline]" class="hasDatepicker">
+          <br>
+          <br>
+          <label class="col-sm-1">优惠券适用店铺
+            <span style="color:red;"></span></label>
+          <select name="shoptype" id="shoptype">
+            <option value="0" selected="">全部店铺</option>
+            <option value="1">部分店铺</option></select>
+          <br>
+          <br>
+          <div style="display:none;" id="shopidlist">
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="238848" class="shopids">正新鸡排（金城店）</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="206593" class="shopids">五谷渔粉（茶粥坊店）</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="203781" class="shopids">桃园包子</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="227334" class="shopids">惠姑家庭农场</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="234765" class="shopids">吴妈面馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="242701" class="shopids">网上菜店</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="205327" class="shopids">祥和飞锅万州面</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="226578" class="shopids">原酒印象</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="211219" class="shopids">老归州酒家</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="234772" class="shopids">可礼客中式快餐</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="226584" class="shopids">乡风缘野鸡养殖农场</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="204828" class="shopids">一号渔港</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="203806" class="shopids">龙虾甲鱼馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="224542" class="shopids">茶物语</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="224543" class="shopids">邓记烤鱼</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="210977" class="shopids">花之恋</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="238113" class="shopids">天喔零食秭归店</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="179493" class="shopids">味美家煲仔饭</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="218162" class="shopids">怡满堂大药房</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="224050" class="shopids">阁楼咖啡</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="221492" class="shopids">王胖子早点</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="206902" class="shopids">老字号米酒汤圆（下酒菜 甜品）</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="207670" class="shopids">比得灌汤包</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="207170" class="shopids">易购24小时便利店</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="202819" class="shopids">世纪华联</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="191043" class="shopids">遍地香</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="198470" class="shopids">大圣烧烤</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="224337" class="shopids">茶粥坊土钵菜</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="217682" class="shopids">面相聚</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="224339" class="shopids">七里香万州面馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="171604" class="shopids">梁记粥铺</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="201814" class="shopids">湖南米粉秭归旗舰店</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="207703" class="shopids">本素咖啡</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="225881" class="shopids">九三食府</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="209507" class="shopids">有意思</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="215141" class="shopids">馋嘴鱼莊</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="197223" class="shopids">麦点超市</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="216935" class="shopids">冰淋橙夏</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="227431" class="shopids">杜康专卖店</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="210794" class="shopids">秋谷山纯粮酒</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="199278" class="shopids">茶粥坊</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="207984" class="shopids">品味烧烤</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="224370" class="shopids">小树鲜果（水果、零食）</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="219509" class="shopids">山东口福饼</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="205689" class="shopids">庙嘴泄滩包子</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="203134" class="shopids">夷蒙概念牛肉</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="234626" class="shopids">秘制牛肉粉面馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="198789" class="shopids">五谷渔粉</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="203914" class="shopids">羊子沟羊肉串</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="224147" class="shopids">千里香馄饨王</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="206740" class="shopids">撮一顿川菜馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="187285" class="shopids">跑腿业务</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="242582" class="shopids">苏州火鸟测试</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="201368" class="shopids">家常菜馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="236441" class="shopids">蟹谢啦（香辣蟹钳）</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="214683" class="shopids">吾饮良品</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="227490" class="shopids">炎锅家常菜（瓦罐汤）</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="208291" class="shopids">龙潮美式瓦缸炭火烤鱼</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="212643" class="shopids">金烈火奶酪蛋糕</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="188840" class="shopids">沐小卤卤肉饭</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="239273" class="shopids">嘛嘛香中式营养快餐</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="208570" class="shopids">金巷子</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="194234" class="shopids">五香嘴量贩休闲食品</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="224187" class="shopids">周姐卤菜水饺</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="212668" class="shopids">米桂坊过桥米线</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="226756" class="shopids">小牧场羊肉砂锅</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="240581" class="shopids">正宗片皮鸭</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="205770" class="shopids">罗蒂爸爸</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="206291" class="shopids">陕西红富士（金点自营）</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="224467" class="shopids">粥公卤婆（烧烤）</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="214250" class="shopids">郑记卤味</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="234732" class="shopids">屈乡风味馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="198384" class="shopids">蔡记兔头</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="216567" class="shopids">木炭原味儿烧烤</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="216826" class="shopids">红油面馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="186168" class="shopids">木语果蛋糕</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="189027" class="shopids">肯德基</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="190600" class="shopids">舒心批发超市</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="193454" class="shopids">五色谷大酒库旗舰店</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="186611" class="shopids">坝头养生卤品</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="195654" class="shopids">周黑鸭</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="200063" class="shopids">欢乐家旗舰店</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="193156" class="shopids">麦佳乐蛋糕店</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="189066" class="shopids">纯果乐</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="191434" class="shopids">净果成人用品</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="194392" class="shopids">绿源清江尙品桶装系列纯净水天然水</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="195171" class="shopids">子归醇</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="189287" class="shopids">新派煲仔饭</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="192626" class="shopids">巴黎天使</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="189881" class="shopids">矮子馅饼（秭归店）</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="196068" class="shopids">王梁记麻辣烫</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="199721" class="shopids">鲜烫麻辣烫</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="187702" class="shopids">福和祥煲仔饭</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="188229" class="shopids">坝头刚子烧烤</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="195667" class="shopids">花漫舞</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="180884" class="shopids">四季花时尚饮品</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="189341" class="shopids">韦一粮油</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="186549" class="shopids">香满园拉面馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="194765" class="shopids">王老板烩面</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="190198" class="shopids">糖炒栗子</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="190211" class="shopids">庙嘴万州面</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="180758" class="shopids">安吉尔纯净水</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="188487" class="shopids">坝头米酒汤圆 萝卜饺子</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="197991" class="shopids">艳子农家小炒</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="186498" class="shopids">均瑶旗舰店</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="193935" class="shopids">张氏茶油鸭</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="182990" class="shopids">沙县小吃信合店</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="183295" class="shopids">坝头夜猫子小黄鱼</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="195600" class="shopids">庙嘴炸酱面馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="182550" class="shopids">维纳斯美容会所</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="183123" class="shopids">功夫煲仔饭</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="188260" class="shopids">坝头东北小吃</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="186255" class="shopids">巴东傅记羊肉面</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="191671" class="shopids">砂锅米线</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="193993" class="shopids">正新鸡排</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="182341" class="shopids">一家人餐馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="186185" class="shopids">坝头铁板炒饭</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="182875" class="shopids">网上营业厅</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="188558" class="shopids">韩国凉面</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="192225" class="shopids">李功夫中华鸡排</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="186189" class="shopids">妙味馄饨</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="189049" class="shopids">楚城小厨</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="185223" class="shopids">宏发煤气</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="188574" class="shopids">坝头那家粉</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="190154" class="shopids">一扫光零食量贩店</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="187913" class="shopids">红牛能量补给站</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="186180" class="shopids">坝头火爆鱿鱼</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="189030" class="shopids">辛勤小吃店</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="189378" class="shopids">妙嘴小吃</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="190159" class="shopids">零食加油站</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="188197" class="shopids">坝头开心花甲</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="187713" class="shopids">一品香</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="192603" class="shopids">华莱士</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="190315" class="shopids">襄阳牛杂面</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="198327" class="shopids">真味酒楼</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="210668" class="shopids">谭家村酒业</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="179446" class="shopids">测试店铺（勿点）</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="189699" class="shopids">成都抄手</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="186396" class="shopids">老家大锅台</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="188519" class="shopids">坝头灌汤包</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="189267" class="shopids">胖胖熊美食城</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="182664" class="shopids">重庆小面</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="183195" class="shopids">太陽·卤味坊</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="180907" class="shopids">老字号鸡蛋饭</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="191202" class="shopids">马大姐旗舰店</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="188456" class="shopids">坝头砂锅麻辣烫</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="193184" class="shopids">松滋杜婆鸡</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="182536" class="shopids">坝头功夫鱿鱼</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="186177" class="shopids">精武人家（小区店）</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="194467" class="shopids">纸上烤鱼(国华盛景店)</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="188186" class="shopids">坝头公园27号肉夹馍</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="165797" class="shopids">凤凰楼</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="188194" class="shopids">坝头饮品庄园</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="190137" class="shopids">泄滩包子金城店</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="186200" class="shopids">坝头台湾手抓饼</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="196345" class="shopids">三少食府</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="202250" class="shopids">坝头米酒汤圆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="188293" class="shopids">坝头碳烤小黄鱼</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="186597" class="shopids">坝头澳洲大肉串</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="195057" class="shopids">姨妹子菜馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="181130" class="shopids">蒙古烤羊腿</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="186588" class="shopids">坝头江湖翅客24号</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="190390" class="shopids">万州烤鱼</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="186570" class="shopids">坝头鸡翅包饭 烧烤</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="183237" class="shopids">坝头盐都小吃</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="188363" class="shopids">川府石锅鱼</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="192207" class="shopids">时尚酒家</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="183307" class="shopids">泽尚生活馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="191240" class="shopids">万美菜馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="209064" class="shopids">韩大大冒菜</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="187677" class="shopids">程家菜馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="189461" class="shopids">剑峰菜馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="183336" class="shopids">朋友圈土菜馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="188710" class="shopids">小南园</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="187689" class="shopids">平价菜馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="189248" class="shopids">馋神醉仙鸭</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="189252" class="shopids">欣怡川菜馆</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="187718" class="shopids">贵州花江狗肉（小区店）</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="193139" class="shopids">郑记干锅</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="183168" class="shopids">老字号虾皇</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="195717" class="shopids">丰锅农家菜</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="189072" class="shopids">大三峡</div></label>
+            <label>
+              <div style="margin:5px;float:left;padding:5px;border:1px solid #999999;">
+                <input type="checkbox" name="shopids[]" value="187896" class="shopids">河鲜馆</div></label>
+            <div style="clear:both;"></div>
+          </div>
+          <br>
+          <label class="col-sm-1">是否关联商品:
+            <span style="color:red;">*</span>
+            <br></label>
+          <select class="span2" name="Coupon[is_relation_food]" id="Coupon_is_relation_food">
+            <option value="0" selected="selected">不关联</option>
+            <option value="1">关联</option></select>
+          <br>
+          <br>
+          <div id="relation_goods" style="display: none">已设置关联的商品:
+            <br>
+            <div class="widget-box">
+              <div class="widget-header">
+                <div class="widget-toolbar">
+                  <a href="#" style="margin-right:10px;">
+                    <i class="ace-icon fa fa-hand-o-right icon-animated-hand-pointer blue"></i>选择商品</a>
+                  <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                  </a>
+                  <!-- <a href="#" data-action="close">
+                  <i class="ace-icon fa fa-times"></i></a> -->
+                </div>
+              </div>
+              <div class="widget-body tags" style="display: block;width:100%;padding:10px">
+                <span class="tag">香菇鸡片
+                  <button type="button" onclick="removeFood(this,10869415)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869415"></span>
+                <span class="tag">番茄鸡蛋
+                  <button type="button" onclick="removeFood(this,10869416)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869416"></span>
+                <span class="tag">麻婆豆腐
+                  <button type="button" onclick="removeFood(this,10869417)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869417"></span>
+                <span class="tag">泡椒魔芋
+                  <button type="button" onclick="removeFood(this,10869418)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869418"></span>
+                <span class="tag">芹菜豆干
+                  <button type="button" onclick="removeFood(this,10869419)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869419"></span>
+                <span class="tag">家常土豆丝
+                  <button type="button" onclick="removeFood(this,10869420)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869420"></span>
+                <span class="tag">榨广椒土豆片
+                  <button type="button" onclick="removeFood(this,10869421)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869421"></span>
+                <span class="tag">火爆猪肝
+                  <button type="button" onclick="removeFood(this,10869422)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869422"></span>
+                <span class="tag">鱼香茄子
+                  <button type="button" onclick="removeFood(this,10869425)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869425"></span>
+                <span class="tag">宫爆鸡丁
+                  <button type="button" onclick="removeFood(this,10869426)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869426"></span>
+                <span class="tag">苦瓜炒鸡蛋
+                  <button type="button" onclick="removeFood(this,11754880)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11754880"></span>
+                <span class="tag">青椒肉丝
+                  <button type="button" onclick="removeFood(this,11754891)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11754891"></span>
+                <span class="tag">香菇肉丝
+                  <button type="button" onclick="removeFood(this,11754898)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11754898"></span>
+                <span class="tag">木耳青椒肉丝
+                  <button type="button" onclick="removeFood(this,11754902)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11754902"></span>
+                <span class="tag">木耳豆干肉丝
+                  <button type="button" onclick="removeFood(this,11754911)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11754911"></span>
+                <span class="tag">蒜台肉丝
+                  <button type="button" onclick="removeFood(this,11754938)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11754938"></span>
+                <span class="tag">酸豆角肉沫
+                  <button type="button" onclick="removeFood(this,11754945)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11754945"></span>
+                <span class="tag">新鲜豇豆肉沫
+                  <button type="button" onclick="removeFood(this,11754958)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11754958"></span>
+                <span class="tag">苦瓜炒小炒肉
+                  <button type="button" onclick="removeFood(this,11754972)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11754972"></span>
+                <span class="tag">农家小炒肉
+                  <button type="button" onclick="removeFood(this,11754996)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11754996"></span>
+                <span class="tag">肉沫豆角茄子
+                  <button type="button" onclick="removeFood(this,11755030)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11755030"></span>
+                <span class="tag">肉片千叶豆腐
+                  <button type="button" onclick="removeFood(this,11755119)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11755119"></span>
+                <span class="tag">红烧鸡块
+                  <button type="button" onclick="removeFood(this,11755133)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11755133"></span>
+                <span class="tag">青椒豆豉腊肉
+                  <button type="button" onclick="removeFood(this,11755149)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11755149"></span>
+                <span class="tag">青椒腊肉
+                  <button type="button" onclick="removeFood(this,11755157)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11755157"></span>
+                <span class="tag">泡仔姜牛肉丝
+                  <button type="button" onclick="removeFood(this,11755165)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11755165"></span>
+                <span class="tag">泡椒猪肚
+                  <button type="button" onclick="removeFood(this,11755183)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11755183"></span>
+                <span class="tag">火爆猪肚
+                  <button type="button" onclick="removeFood(this,11755231)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11755231"></span>
+                <span class="tag">火爆腰花
+                  <button type="button" onclick="removeFood(this,11755241)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="11755241"></span>
+                <span class="tag">土豆肉丝
+                  <button type="button" onclick="removeFood(this,10869427)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869427"></span>
+                <span class="tag">土豆烧牛腩
+                  <button type="button" onclick="removeFood(this,10869428)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869428"></span>
+                <span class="tag">青椒蒜台腊肉
+                  <button type="button" onclick="removeFood(this,10869430)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869430"></span>
+                <span class="tag">泡菜牛肉丝
+                  <button type="button" onclick="removeFood(this,10869438)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869438"></span>
+                <span class="tag">腊肉外婆菜
+                  <button type="button" onclick="removeFood(this,10869439)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869439"></span>
+                <span class="tag">火爆鸡杂
+                  <button type="button" onclick="removeFood(this,10869440)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869440"></span>
+                <span class="tag">泡菜鸡丝
+                  <button type="button" onclick="removeFood(this,10869441)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869441"></span>
+                <span class="tag">泡菜肉丝
+                  <button type="button" onclick="removeFood(this,10869449)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869449"></span>
+                <span class="tag">鱼香肉丝
+                  <button type="button" onclick="removeFood(this,10869450)" class="close">×</button>
+                  <input type="hidden" name="fid[]" value="10869450"></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-success" type="submit">保存</button></div>
+        </form>
+      </div>
+      <!-- form -->
+      <script src="/js/selectgoods.js"></script>
+      <script>var r = $('#Coupon_is_relation_food').val();
+
+        function removeFood(obj, id) {
+          $(obj).parent().remove();
+        }
+
+        function conSelHandleFunction() {
+
+          if (food[food.length - 1]) {
+            var tags = $('.tags').html();
+            for (i in food) {
+              tags += '<span class="tag">' + food[i] + '<button type="button" onClick="removeFood(this,i)" class="close">×</button><input type="hidden" name="fid[]" value="' + i + '"></span>';
+            }
+            $('.tags').html(tags);
+          }
+
+          closeWindow('#modal-wizard');
+        }
+
+        $(function() {
+
+          $('select[name="Coupon[is_relation_food]"]').change(function() {
+            if (this.value == 1) {
+              $("#relation_goods").show();
+            } else {
+              $("#relation_goods").hide();
+            }
+          })
+        })</script>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

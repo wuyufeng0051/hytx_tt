@@ -1,0 +1,18 @@
+<style media="screen">
+    .list {margin-top: 1rem;}
+    .food {color: #333; border-bottom: 1px solid #f4f4f4; padding: 0 0 .1rem; margin-bottom: .1rem;}
+</style>
+<script type="text/javascript">
+  var userid = {#$userid#}, detailUrl = '{#getUrlPath service='member' type='user' template='orderdetail' module='waimai' userid="%id%"#}';
+</script>
+<!-- <div class="tab">
+  <ul data-url="{#getUrlPath service='member' type='user' template='orderdetail' module='waimai' userid="%id%"#}">
+    {#waimai action='order' return='order' userid={#$userid#} pageSize='1'#}
+    {#/waimai#}
+  	<li data-id="" class="curr"><a href="javascript:;">全部 (<span id="total">{#$pageInfo.totalCount|string_format:"%d"#}</span>)</a></li>
+  	<li data-id="0"><a href="javascript:;">未付款 (<span id="state0">{#$pageInfo.state0|string_format:"%d"#}</span>)</a></li>
+  	<li data-id="1"><a href="javascript:;">已付款 (<span id="state1">{#$pageInfo.state1|string_format:"%d"#}</span>)</a></li>
+  	<li data-id="2"><a href="javascript:;">送餐中 (<span id="state2">{#$pageInfo.state2|string_format:"%d"#}</span>)</a></li>
+  	<li data-id="3"><a href="javascript:;">成功 (<span id="state3">{#$pageInfo.state3|string_format:"%d"#}</span>)</a></li>
+  </ul>
+</div> -->

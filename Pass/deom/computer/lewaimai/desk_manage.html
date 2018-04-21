@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-desktop desktop-icon"></i>
+        <a href="#">店铺</a></li>
+      <li class="active">桌位管理</li></ul>
+    <!-- .breadcrumb --></div>
+  <div class="page-content">
+    <div class="page-content-area">
+      <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert">
+          <i class="ace-icon fa fa-times"></i>
+        </button>
+        <p>您的当前版本为“皇冠会员”，每个店铺最多可新建200个桌位，乐外卖微信支付交易手续费0.6%，若服务到期将降级为免费版。</p>
+        <p>
+          <a class="btn btn-danger" href="#" target="_blank">【桌位管理】使用教程及场景说明</a></p>
+      </div>
+      <div id="shopList" class="grid-view">
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th id="shopList_c0">
+                <a class="sort-link" href="#">店铺名称</a></th>
+              <th id="shopList_c1">桌子/房间数量</th>
+              <th class="button-column" id="shopList_c2">管理</th></tr>
+            <tr class="filters">
+              <td>
+                <input name="Config[shopname]" type="text" maxlength="20"></td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td></tr>
+          </thead>
+          <tbody>
+            <tr class="odd">
+              <td width="100">正新鸡排（金城店）</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">五谷渔粉（茶粥坊店）</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">桃园包子</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">惠姑家庭农场</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">吴妈面馆</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">祥和飞锅万州面</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">原酒印象</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">老归州酒家</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">可礼客中式快餐</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">乡风缘野鸡养殖农场</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">一号渔港</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">龙虾甲鱼馆</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">茶物语</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">邓记烤鱼</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">花之恋</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">天喔零食秭归店</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">味美家煲仔饭</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">怡满堂大药房</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">阁楼咖啡</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">王胖子早点</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">老字号米酒汤圆（下酒菜 甜品）</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">比得灌汤包</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">易购24小时便利店</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">世纪华联</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">遍地香</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">大圣烧烤</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">茶粥坊土钵菜</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">面相聚</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">七里香万州面馆</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">梁记粥铺</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">湖南米粉秭归旗舰店</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">本素咖啡</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">九三食府</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">有意思</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">馋嘴鱼莊</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">麦点超市</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">冰淋橙夏</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">杜康专卖店</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">秋谷山纯粮酒</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">茶粥坊</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">品味烧烤</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">小树鲜果（水果、零食）</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">山东口福饼</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">庙嘴泄滩包子</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">夷蒙概念牛肉</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">秘制牛肉粉面馆</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">五谷渔粉</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">羊子沟羊肉串</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="odd">
+              <td width="100">千里香馄饨王</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+            <tr class="even">
+              <td width="100">撮一顿川菜馆</td>
+              <td width="50">0</td>
+              <td width="150px">
+                <a style="width: 150px;display:block;" class="label label-sm label-success" title="桌位管理" href="desk_manage_detail.html">桌位管理</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-danger" title="桌位类型设置" href="desk_manage_kind.html">桌位类型设置</a>
+                <a style="width: 150px;display:block;margin-top:10px;" class="label label-sm label-primary" title="人数规则设置" href="desk_manage_nunmber.html">人数规则设置</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="summary">第 1-50 条, 共 181 条.</div>
+        <div class="pager">
+          <ul class="pagination" id="yw0">
+            <li class="hidden hidden">
+              <a href="#">&lt;&lt; 首页</a></li>
+            <li class="prev hidden">
+              <a href="#">
+                <i class="ace-icon fa fa-angle-double-left"></i>
+              </a>
+            </li>
+            <li class="page active">
+              <a href="#">1</a></li>
+            <li class="page">
+              <a href="#">2</a></li>
+            <li class="page">
+              <a href="#">3</a></li>
+            <li class="page">
+              <a href="#">4</a></li>
+            <li class="next">
+              <a href="#">
+                <i class="ace-icon fa fa-angle-double-right"></i>
+              </a>
+            </li>
+            <li class="hidden">
+              <a href="#">末页 &gt;&gt;</a></li>
+          </ul>
+        </div>
+        <div class="keys" style="display:none" title="/shoptable/index">
+          <span>238848</span>
+          <span>206593</span>
+          <span>203781</span>
+          <span>227334</span>
+          <span>234765</span>
+          <span>205327</span>
+          <span>226578</span>
+          <span>211219</span>
+          <span>234772</span>
+          <span>226584</span>
+          <span>204828</span>
+          <span>203806</span>
+          <span>224542</span>
+          <span>224543</span>
+          <span>210977</span>
+          <span>238113</span>
+          <span>179493</span>
+          <span>218162</span>
+          <span>224050</span>
+          <span>221492</span>
+          <span>206902</span>
+          <span>207670</span>
+          <span>207170</span>
+          <span>202819</span>
+          <span>191043</span>
+          <span>198470</span>
+          <span>224337</span>
+          <span>217682</span>
+          <span>224339</span>
+          <span>171604</span>
+          <span>201814</span>
+          <span>207703</span>
+          <span>225881</span>
+          <span>209507</span>
+          <span>215141</span>
+          <span>197223</span>
+          <span>216935</span>
+          <span>227431</span>
+          <span>210794</span>
+          <span>199278</span>
+          <span>207984</span>
+          <span>224370</span>
+          <span>219509</span>
+          <span>205689</span>
+          <span>203134</span>
+          <span>234626</span>
+          <span>198789</span>
+          <span>203914</span>
+          <span>224147</span>
+          <span>206740</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

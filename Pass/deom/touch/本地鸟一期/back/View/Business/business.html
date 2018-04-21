@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>商家信息</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/_head.css">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/slider.js"></script>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+<!-- <div class="loading" ><img src="__PUBLIC__/Home/img/loading.gif" style="width: 30px;height: 30px;"><p style="text-align: center;color: #fff;">加载中，请稍等...</p></div> -->
+<!-- 共同顶部 s-->
+<div class="header fn-clear">
+    <div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+    <div class="title">商家详情</div>
+    <div class="share"></div>
+    <div class="header_right"><a href="__MODULE__/Business/businessenter">商家入驻</a><i></i><a href="__MODULE__/Index/my">我的</a></div>
+</div>
+<!-- 共同顶部 e-->
+<link rel="stylesheet" href="__PUBLIC__/Home/css/busness.css?v=1">
+<!-- 顶部固定搜索框 s-->
+<div class="search_box">
+    <div class="seach_pic"><img src="__PUBLIC__/Home/images/banner.png" alt=""></div>
+    <div class="sea_input fn-clear"><input type="text" placeholder="请输入您要查找的信息" value="{$Think.get.search}" id="search"><a href="javascript:;" id="searchbtn"><button><i></i>查找</button></a></div>
+</div>
+<!-- 顶部固定搜索框 e-->
+<!-- 推荐商家列表 s -->
+<empty name="res_all">
+    <div class="failed">
+        <div class="failed_pic"></div>
+        <h1>暂无此类信息，请看看别的吧~</h1>
+    </div>
+    <else/>
+<div class="merchant">
+    <div class="merchant_list" style="margin-top: 0.6rem;">
+        <foreach name="res_all" item="val">
+            <div class="mer_detail fn-clear" data-phone="{$val['business_phone']}" data-tel="{$val['business_tel']}"><a href="__MODULE__/Business/shopdetail/business_id/{$val['business_id']}">
+                <if condition="$val['business_is_activity'] eq 1">
+                    <div class="mer_pic"><img src="{$val['business_shopimg']}" alt=""><i class="huo"></i></div>
+                    <elseif condition="$val['business_is_top'] eq 1"/>
+                    <div class="mer_pic"><img src="{$val['business_shopimg']}" alt=""><i class="top"></i></div>
+                    <else/>
+                    <div class="mer_pic"><img src="{$val['business_shopimg']}" alt=""></div>
+                </if>
+                <h1>{$val['business_shopname']}</h1>
+                <p>营业时间：{$val['business_shopopen']}-{$val['business_shopclose']}</p>
+                <p><i></i>{$val['business_like']} 次</p>
+                <span>{$val['business_shopaddress']}</span>
+            </a>
+                <div class="tel"></div>
+            </div>
+        </foreach>
+    </div>
+</div>
+</empty>
+<!-- 推荐商家列表 e -->
+<div class="disk"></div>
+<div class="phone">
+    <h1>提示</h1>
+    <h2>联系我时，请说是在<em>泸西本地鸟</em>上看到的，谢谢！</h2>
+    <ul>
+        <li><a><em></em><i></i></a></li>
+        <li><a><em></em><i></i></a></li>
+    </ul>
+    <div class="close"><i></i></div>
+</div>
+<script>
+    $('#searchbtn').click(function(){
+        var searchval=$('#search').val();
+        window.location.href="__MODULE__/Business/business?search="+searchval;
+    })
+</script>
+
+
+<script type="text/javascript" src="__PUBLIC__/Home/js/search_succeed.js?v=2"></script>
+</body>
+</html>

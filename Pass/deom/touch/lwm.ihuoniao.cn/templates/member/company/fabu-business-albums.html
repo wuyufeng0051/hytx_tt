@@ -1,0 +1,61 @@
+<style media="screen">
+/* 图集 */
+.list-holder li {width:115px; height:86px;}
+.list-holder li a.li-rm {margin:-17px -14px 0 0;}
+.list-holder li .li-name {margin:20px 0 5px 0; width:94%;}
+.list-holder li .li-progress {width:100%; margin:0;}
+.list-holder li .li-thumb {margin:-5px 0 0 0;}
+</style>
+<div class="w-form">
+	{#if $storeid == 0#}
+	<p style="color: #f00; text-align: center; line-height: 300px;">请先配置站点信息！</p>
+	{#else#}
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=business&action={#if $id != ""#}editalbums&id={#$id#}{#else#}addalbums{#/if#}" data-url="{#getUrlPath service='member' template='business-albums'#}">
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>相册分类：</dt>
+			<dd id="selType">
+				<div class="sel-group" data-title="请选择相册分类">
+					<button type="button" class="sel">请选择<span class="caret"></span></button>
+					<ul class="sel-menu">
+						{#business action="albumstype"#}
+						<li><a href="javascript:;" data-id="{#$row.id#}">{#$row.typename#}</a></li>
+						{#/business#}
+					</ul>
+				</div>
+				<input type="hidden" name="typeid" id="typeid" value="" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>上传图片：</dt>
+			<dd class="listImgBox hide">
+				<div class="list-holder">
+					<ul id="listSection2" class="fn-clear listSection fn-hide"></ul>
+					<input type="hidden" name="pics" value='' class="imglist-hidden">
+				</div>
+				<div class="btn-section fn-clear">
+					<div class="uploadinp filePicker" id="filePicker2" data-type="album" data-count="50" data-size="2048" data-imglist=""><div id="flasHolder"></div><span>添加图片</span></div>
+					<div class="upload-tip">
+						<p><a href="javascript:;" class="fn-hide deleteAllAtlas">删除所有</a>&nbsp;&nbsp;单张最大2M，最多上传50张<span class="fileerror"></span></p>
+					</div>
+				</div>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>验证码：</dt>
+			<dd>
+				<input type="text" class="inp" maxlength="4" size="6" name="vdimgck" id="vdimgck" autocomplete="off" data-title="请输入验证码" />
+				<img src="/include/vdimgck.php" title="看不清？点击换一张" id="verifycode" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>&nbsp;</dt>
+			<dd><button class="submit" id="submit">确认提交</button></dd>
+		</dl>
+	</form>
+	{#/if#}
+</div>
+<script type="text/javascript">
+  var atlasMax = 50;
+</script>

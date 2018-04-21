@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-bicycle"></i>
+      <li class="active">跑腿</li>
+      <li class="active">跑腿设置</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <script>$(function() {
+          $("#checkimg").change(function() {
+            var v = $(this).val();
+            if (v == 2) {
+              $("#bendi").show();
+              $("#kongjian").hide();
+            } else if (v == 1) {
+              $("#kongjian").show();
+              $("#bendi").hide();
+            }
+          })
+        })
+
+        var shoppictage = 50;
+        function deleteshopimg(id, obj) {
+          $(obj).parent('.shopimgone').remove();
+          $('#' + id).remove();
+        }
+        function addshopimg(url, url1) {
+          var string = '';
+          string += '<div style="position:relative;float:left;margin-left:5px;margin-bottom:5px;width:180px;height:220px;" class="shopimgone deletefather">';
+          string += '<img src="' + url + '" style="width:180px;max-height:180px;"/>';
+          string += '<div style="position:absolute;top:0;left:0;width:180px;height:180px;line-height:180px;text-align:center;background:#eeeeee;display:none;top:0px;left:0px;cursor:pointer;color:red;border:1px solid red;" onclick=\'deleteshopimg("inputimgid' + shoppictage + '",this);\' class="deletebody">';
+          string += '删除';
+          string += '</div>';
+          string += '<input name="image[]" type="hidden" value="' + url1 + '"/>';
+          string += '<div style="position:absolute;width:180px;height:30px;bottom:0px;">';
+          string += 'URL:<input type="text" style="width:150px;height:30px;" name="imageurl[]" value=""/>';
+          string += '</div>';
+          string += '</div>';
+          $('#imglist').append(string);
+          shoppictage++;
+        }
+        $(function() {
+          $('.deletefather').live('mouseover',
+          function() {
+            $(this).children('.deletebody').show();
+          });
+          $('.deletefather').live('mouseout',
+          function() {
+            $(this).children('.deletebody').hide();
+          });
+          $('#submitautoreplysystem-form').on('click',
+          function() {
+            $('#autoreplysystem-form').submit();
+          });
+        });
+        function changeimageurl($key, obj) {
+          var value = $(obj).val();
+          alert(value);
+          exit;
+        }</script>
+      <style>.col-sm-4{ height:120px; }</style>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">
+              <i class="ace-icon fa fa-times"></i>
+            </button>
+            <p>大家使用跑腿功能前，请仔细阅读下面的《跑腿功能使用教程》</p>
+            <p>
+              <a class="btn btn-info" href="http://bbs.lewaimai.com/thread-10623-1-1.html" target="_blank">跑腿功能使用教程</a></p>
+          </div>
+          <form enctype="multipart/form-data" class="form-horizontal" id="autoreplysystem-form" action="/errands/setting" method="post">
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="ErrandSetting_is_order">是否允许配送员抢单</label></label>
+              <select class="span2" name="ErrandSetting[is_order]" id="ErrandSetting_is_order">
+                <option value="0" selected="selected">允许</option>
+                <option value="1">不允许</option></select>
+              <br>&nbsp;
+              <br></div>
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="ErrandSetting_is_show_price">是否在配送员app显示服务费</label></label>
+              <select class="span2" name="ErrandSetting[is_show_price]" id="ErrandSetting_is_show_price">
+                <option value="0">不显示</option>
+                <option value="1" selected="selected">显示</option></select>
+              <br>&nbsp;
+              <br></div>
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="ErrandSetting_phone">跑腿投诉电话</label></label>
+              <input name="ErrandSetting[phone]" id="ErrandSetting_phone" type="text" maxlength="20" value="07172992951"></div>
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="ErrandSetting_pagetitle">跑腿导航页标题</label></label>
+              <input name="ErrandSetting[pagetitle]" id="ErrandSetting_pagetitle" type="text" maxlength="30" value="秭归同城服务"></div>
+            <div style="height: 10px;"></div>
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="ErrandSetting_des_link">跑腿说明链接</label></label>
+              <input name="ErrandSetting[des_link]" id="ErrandSetting_des_link" type="text" maxlength="500" value=""></div>
+            <div style="margin-top:10px;">
+              <label>设置轮播图（最多5张，建议尺寸：640像素 * 398像素）</label>
+              <script type="text/javascript" src="/js/jquery.form.js"></script>
+              <div id="kongjian" style="width:400px;">
+                <div class="btn btn-success" id="selectImg">选择图片</div>
+                <button class="btn-success btn" onclick="$('#picselect').trigger('click');" type="button">上传本地图片</button>
+                <div style="width:300px;display:none;">本地图片:
+                  <form id="wsyzxxnyxxn" action="/autoreply/uploadtemp" enctype="multipart/form-data" method="post">
+                    <input type="file" name="surface" id="picselect">
+                    <input type="hidden" name="imgmaxsize" value="512000">
+                    <input type="hidden" name="type" value="shop"></form></div>
+              </div>
+              <div style="width:100%;height:auto;float:left;margin:0px;">
+                <div style="margin-top:20px;height:20px;width:100%;">
+                  <div style="width:100%;height:auto;" id="imglist">
+                    <div style="position:relative;float:left;margin-left:5px;margin-bottom:5px;width:180px;height:220px;" class="shopimgone deletefather">
+                      <img src="upfile/LWM580DB7E7249B63JQVTB5C.png" style="width:180px;height:auto;max-height:180px;">
+                      <div style="position:absolute;top:0;left:0;width:180px;height:180px;line-height:180px;text-align:center;background:#eeeeee;display:none;top:0px;left:0px;cursor:pointer;color:red;border:1px solid red;" onclick="deleteshopimg(&quot;inputimgid0&quot;,this);" class="deletebody">删除</div>
+                      <input name="image[]" type="hidden" value="upfile/LWM580DB7E7249B63JQVTB5C.png">
+                      <div style="position:absolute;width:180px;height:30px;bottom:0px;">URL:
+                        <input type="text" style="width:150px;height:30px;" name="imageurl[]" value=""></div></div>
+                  </div>
+                </div>
+              </div>
+              <div style="height:250px;"></div>
+              <div class="span12">
+                <div class="form-actions">
+                  <button class="btn btn-info" type="type" id="submitautoreplysystem-form">
+                    <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

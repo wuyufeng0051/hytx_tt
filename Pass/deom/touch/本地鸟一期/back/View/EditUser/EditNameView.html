@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改昵称</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no" >
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+
+	<style>
+	body{
+		background-color: #fff;
+	}
+		.input{
+			margin-top: 20px;
+			background:#fff;
+		}
+		.input input{
+			margin-bottom: 0;
+			border:1px solid #dddddd;
+			border-right: 0;
+			border-left: 0;
+			border-top: 0;
+			border-radius: 0;
+		}
+		.btn{
+			margin-top: 40px;
+			line-height: 44px;
+			padding: 10px;
+		}
+		.btn button{
+			width: 100%;
+			background: #fd5530;
+			color: #fff;
+			line-height: 40px;
+			height: 40px;
+			padding: 0;
+			border:none;
+		}
+		/*公用头部*/
+	.header{
+	    height: .9rem;
+	    background: #fd5530 !important;
+	    color: #fff;
+	    font-size: .32rem;
+	    line-height: .9rem;
+	    max-width: 1080px;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    z-index: 10;
+	    overflow: hidden;
+	}
+	.header a{
+		display: inline-block;
+		color: #fff;
+	}
+	.header .back{
+	    height: .9rem;
+	    line-height: .9rem;
+	    width: 17%;
+	    float: left;
+	}
+	.header .back i{
+	    width: 0.4rem;
+	    height: .9rem;
+	    display: inline-block;
+	    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+	    vertical-align: middle;
+	    background-size: .3rem;
+	}
+	.header .header_right{
+		float: right;
+		height: .9rem;
+		margin-right: .2rem;
+	}
+	.header .header_right i{
+	    width: 0.04rem;
+	    height: 0.5rem;
+	    display: inline-block;
+	    vertical-align: middle;
+	    background: #fff;
+	    margin: 0 .15rem;
+	}
+	.header .title_1{
+	    float: left;
+	    width: 70%;
+	    text-align: center;
+	    font-size: 0.38rem;
+	}
+	.header .share{
+	    height: .9rem;
+	    float: right;
+	    width: 12%;
+	    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+	    background-size: .5rem;
+	}
+	</style>
+</head>
+<body>
+	<!-- 共同顶部 s-->
+		<div class="header fn-clear">
+			<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+			<div class="title_1">修改昵称</div>
+		</div>
+	<!-- 共同顶部 e-->
+
+<include file="Public/share" title='包含文件'/>
+	<div class="input" style="margin-top: 1.3rem;"> 
+	 	<input type="text" maxlength="10" placeholder="给自己起个好名字吧" value="{$info['user_name']}" onkeyup="value=value.replace(/[^\w\u4E00-\u9FA5]/g, '')">
+  	</div>
+	<p style="margin-left: 10px;font-size: 13px;margin-top: 5px;">10个以内字符，仅使用汉字、字母、数字或下划线</p>
+	<div class="btn">
+		<button class="">保存</button>
+	</div>
+<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+<script src="__PUBLIC__/Home/js/layer.js"></script>
+ 
+<script>
+	function req(){
+		location.href='__MODULE__/Index/profile';
+		//location= document.referrer
+		//history.go(-1);
+	}
+	$('button').click(function(){
+		var name = $("[type='text']").val();
+		if(name == ''){
+			layer.msg('昵称不能为空');
+		}else{
+			$.post('__MODULE__/EditUser/EditName',{user_name:name,user_id:{$info['user_id']}},function(msg){
+				if(msg == 1){
+					layer.msg('已保存');
+				    // window.history.go(-1);
+ 					setTimeout('req()',1500);
+				}else{
+
+					layer.msg(msg);
+				}
+			})
+		}
+
+	})
+</script>
+</body>
+</html>

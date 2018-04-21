@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_shopname#}</title>
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/photoswipe.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/default-skin.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/xuangou.css?v=26">
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+</head>
+
+<body>
+{#if $detail_shop_notice_used && $detail_buy_notice#}
+<div class="notice">
+	<i></i>
+	<p><marquee behavior="scroll" scrollamount="2">{#$detail_buy_notice#}</marquee></p>
+	<a href="javascript:;">&times;</a>
+</div>
+{#/if#}
+
+<div class="head">
+	<div class="shop-info">
+		<div class="shop-info-img l"><a href="javascript:;"><img src="{#if $detail_shop_banner[0]#}{#$detail_shop_banner[0]#}{#else#}/static/images/shop.png{#/if#}"></a></div>
+		<div class="shop-txt">
+			<h3>{#$detail_shopname#}</h3>
+			<p>
+				<span class="shop-txt-store r{#if $collect#} shou{#/if#}">收藏</span>
+			</p>
+		</div>
+	</div>
+	<div class="bg"></div>
+</div>
+<div class="menu-tab">
+	<ul>
+		<li class="active"><a href="javascript:;">点菜</a></li>
+		<li><a href="javascript:;">评价</a></li>
+		<li class="seller"><a href="javascript:;">商家</a></li>
+	</ul>
+</div>
+
+<div class="main fn-clear{#if $detail_shop_notice_used && $detail_buy_notice#} show_notice{#/if#}">
+	<div class="menu-con" style="display: block;">
+		<div class="main_left">
+			<ul>
+				{#waimai action='foodType' return='type' shop={#$detail_id#}#}
+				<li{#if $_bindex.type == 1#} class="ml_bac"{#/if#} data-id="{#$type.id#}"><em>{#$type.title#}</em></li>
+				{#/waimai#}
+			</ul>
+		</div>
+		<div class="main_right">
+			<div class="main_box">
+				{#waimai action='foodType' return='type1' shop={#$detail_id#}#}
+				<div class="main_item" id="item{#$type1.id#}">
+					<div class="menu-select-tit"><span>{#$type1.title#}</span></div>
+					{#waimai action='food' return='food' shop={#$detail_id#} typeid={#$type1.id#}#}
+					<div class="car_t1 fn-clear" id="food{#$food.id#}" data-id="{#$food.id#}" data-title="{#$food.title#}" data-src="{#$food.pics[0]#}" data-price="{#$food.price#}" data-unit="{#$food.unit#}" data-dabao="{#if $food.is_dabao#}{#$food.dabao_money#}{#/if#}" data-stock="{#if $food.stockvalid#}{#$food.stock#}{#/if#}" data-nature='{#if $food.is_nature && $food.nature_json != "[]"#}{#$food.nature_json#}{#/if#}' data-limitfood="{#$food.is_limitfood#}"{#if $food.is_limitfood#} data-foodnum="{#$food.foodnum#}" data-stime="{#$food.start_time#}" data-etime="{#$food.stop_time#}" data-times='{#$food.limit_time_json#}'{#/if#}>
+						{#if $food.label#}<span class="label">{#$food.label#}</span>{#/if#}
+						<div class="car_pic"><img src="{#$food.pics[0]#}" onerror="this.src='/static/images/food.png'"></div>
+						<h1>{#$food.title#}</h1>
+						{#if $food.is_nature && $food.nature_json != '[]'#}<em class="nature_">多规格</em>{#/if#}
+						<h3>{#$food.descript#}&nbsp;</h3>
+						{#if $detail_showsales#}<h4>已售{#$food.sale#}{#$food.unit#}</h4>{#/if#}
+						<span class="fn-clear">
+							<em class='sale-price'>&yen;{#$food.price#}</em>
+							{#if $detail_unitshow#}<i>/{#$food.unit#}</i>{#/if#}
+							{#if $food.stockvalid && $food.stock == 0#}
+							<s class="nostock">已售完</s>
+							{#else#}
+							<p>{#if !$food.is_nature || $food.nature_json == "[]"#}<i class="reduce"></i>{#/if#}<strong class='num-account'>0</strong><b class="plus"></b></p>
+							{#/if#}
+						</span>
+					</div>
+					{#/waimai#}
+				</div>
+				{#/waimai#}
+			</div>
+		</div>
+	</div>
+	<div class="menu-con menu-comment" id="menu-comment">
+		<div class="comment">
+			<div class="comment-tit fn-clear">
+				<div class="comment-tit-l l">
+					<h1>{#$detail_common.star#}</h1>
+					<h2>综合评价</h2>
+					<p>商家好评率{#if $detail_common.totalCount == 0#}0{#else#}{#($detail_common.totalCount4 + $detail_common.totalCount5) / $detail_common.totalCount * 100#}{#/if#}%</p>
+				</div>
+				<div class="comment-tit-r l">
+					<div class="l comment-star-top">
+						<span class="l">配送评分</span>
+						<div class="judge-box">
+							<div class="judge-star l"><s style="width:{#$detail_common.starps / 5 * 100#}%"></s></div>
+							<span class="sale-time r">{#$detail_common.starps#}</span>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="l comment-star-bottom">
+						<span class="l">商家评分</span>
+						<div class="judge-box">
+							<div class="judge-star l"><s style="width:{#$detail_common.star / 5 * 100#}%"></s></div>
+							<span class="sale-time r">{#$detail_common.star#}</span>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="comment-con">
+				<div class="comment-box">
+					<div class="loading">评论加载中，请稍后···</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="menu-con menu-seller">
+		<div class="seller-box">
+			<ul>
+				<li><a href="tel:0512-67873735"><i><img src="{#$templets_skin#}images/phone_icon.png" alt=""></i><span>0512-67873735</span><em></em></a></li>
+				<li><a href="javascript:;" target="_blank" class="appMapBtn"><i><img src="{#$templets_skin#}images/map.png" alt=""></i><span>{#$detail_address#}</span></a></li>
+				<li><i><img src="{#$templets_skin#}images/time.png" alt=""></i><span>{#if $detail_start_time1 && $detail_start_time1 != "00:00" && $detail_end_time1 && $detail_end_time1 != "00:00"#}{#$detail_start_time1#}-{#$detail_end_time1#}{#/if#}{#if $detail_start_time2 && $detail_start_time2 != "00:00" && $detail_end_time2 && $detail_end_time2 != "00:00"#}; {#$detail_start_time2#}-{#$detail_end_time2#}{#/if#}{#if $detail_start_time3 && $detail_start_time3 != "00:00" && $detail_end_time3 && $detail_end_time3 != "00:00"#}; {#$detail_start_time3#}-{#$detail_end_time3#}{#/if#}</span></li>
+				<li><s>电话：</s><span>{#$detail_phone#}{#if $detail_callshow#}<a href="tel:{#$detail_phone#}" class="calltel"></a>{#/if#}</span></li>
+		{#if !$detail_show_basicprice#}<li><s>起送价：</s><span>
+            {#if $detail_open_range_delivery_fee#}
+                {#foreach from=$detail_range_delivery_fee_value item=range#}
+                    <p>{#$range[0]#}-{#$range[1]#}公里：{#$range[3]#}元</p>
+                {#/foreach#}
+            {#else#}
+            &yen;{#$detail_basicprice#}
+            {#/if#}
+        </span></li>{#/if#}
+		{#if !$detail_show_delivery#}<li><s>外送费：</s><span>
+            {#if $detail_open_range_delivery_fee#}
+                {#foreach from=$detail_range_delivery_fee_value item=range#}
+                    <p>{#$range[0]#}-{#$range[1]#}公里：{#$range[2]#}元</p>
+                {#/foreach#}
+            {#else#}
+            &yen;{#$detail_delivery_fee#}
+            {#/if#}
+            {#if $detail_delivery_fee_type != 1#}（{#if $detail_delivery_fee_type == 0#}订单金额达到起送价免外送费{#elseif $detail_delivery_fee_type == 2#}订单满{#$detail_delivery_fee_value#}元免外送费{#/if#}）{#/if#}
+        </span></li>{#/if#}
+		{#if !$detail_show_range#}<li><s>服务距离：</s><span>{#$detail_delivery_radius#}公里</span></li>{#/if#}
+		{#if $detail_delivery_area#}<li><s>配送区域：</s><span>{#$detail_delivery_area#}</span></li>{#/if#}
+
+        {#if $detail_selfdefine#}
+        {#foreach from=$detail_selfdefine item=self#}
+        <li><s>{#$self[1]#}：</s><span>{#if $self[0] == "link"#}<a href="{#$self[2]#}" target="_blank">{#$self[2]#}</a>{#else#}{#$self[2]#}{#/if#}</span></li>
+        {#/foreach#}
+        {#/if#}
+			</ul>
+		</div>
+		<div class="my-gallery certy" itemscope="" itemtype="" data-pswp-uid="1">
+			{#if $detail_shop_banner[0]#}
+			{#foreach from=$detail_shop_banner item=banner#}
+			<figure itemprop="associatedMedia" itemscope="" itemtype="">
+				<a href="{#$banner#}" itemprop="contentUrl" data-size="400x300">
+					<img src="{#$banner#}" itemprop="thumbnail" alt="">
+				</a>
+			</figure>
+			{#/foreach#}
+			{#/if#}
+		</div>
+	</div>
+</div>
+
+<div class="cart-box">
+	<div class="title"><h3>已选商品</h3><a href="javascript:;" class="right">[清空]</a></div>
+	<div class="con"></div>
+</div>
+<div class="mask_cart"></div>
+
+<div class="nature">
+	<h2><strong></strong><s>&times;</s></h2>
+	<div class="con"></div>
+	<div class="fot">
+		<span><i>&yen;</i><strong>0</strong></span>
+		<button class="confirm" disabled>选好了</button>
+	</div>
+</div>
+<div class="mask_nature"></div>
+<div class="cart-tips">点击购物车图标修改已选商品</div>
+<div class="price fn-clear">
+	<div class="gou"><em><i></i></em><b>0</b></div>
+	<div class="zong_p">总价：<em>&yen;<strong>0.00</strong></em></div>
+	<div class="ok"><a href="{#getUrlPath service='waimai' template='cart' id={#$detail_id#}#}">选好了</a></div>
+</div>
+
+{#*
+<div class="navtion fn-clear">
+	<ul>
+		<li class="shop"><a href="{#getUrlPath service='waimai' template='shop' id={#$detail_id#}#}"><i></i><span>首页</span></a></li>
+		<li class="xuangou nav_bc"><a href="{#getUrlPath service='waimai' template='buy' id={#$detail_id#}#}"><i></i><span>选购</span></a></li>
+		<li class="car"><a href="{#getUrlPath service='waimai' template='cart' id={#$detail_id#}#}"><i></i><span>购物车</span></a></li>
+		<li class="center"><a href="{#getUrlPath service='member' type='user'#}"><i></i><span>个人中心</span></a></li>
+	</ul>
+</div>
+*#}
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+          </div>
+
+        </div>
+</div>
+
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', tplUrl = '{#$templets_skin#}';
+	var shopid = {#$detail_id#}, id = {#$detail_id#}, nowDate = {#$smarty.now#}, nowTime = "{#$smarty.now|date_format:'%H:%M'#}";
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$detail_description#}',
+        "title": '{#if $detail_share_title#}{#$detail_share_title#}{#else#}{#$detail_shopname#}{#/if#}',
+        "imgUrl": '{#$detail_share_pic#}',
+        "link": '{#$detail_url#}',
+    };
+
+	{#if !$detail_status#}alert('{#if $detail_closeinfo#}{#$detail_closeinfo#}{#else#}{#$deatil_status#}该店铺关闭了，您暂时无法在该店铺下单。{#/if#}');{#/if#}
+	{#if $detail_status && !$detail_ordervalid#}alert('{#if $detail_closeorder#}{#$detail_closeorder#}{#else#}该店铺关闭了微信下单，您暂时无法在该店铺下单。{#/if#}');{#/if#}
+	{#if !$detail_yingye#}
+		{#if !$detail_yingyeWeek#}
+		alert('该店铺今天暂停营业！营业时间：星期{#$detail_weeks|replace:"1":"一"|replace:"2":"二"|replace:"3":"三"|replace:"4":"四"|replace:"5":"五"|replace:"6":"六"|replace:"7":"七"|replace:",":"，星期"#}');
+		{#else#}
+		alert('该店铺不在营业时间，您暂时无法在该店铺下单！营业时间：{#if $detail_start_time1 && $detail_start_time1 != "00:00" && $detail_end_time1 && $detail_end_time1 != "00:00"#}{#$detail_start_time1#}-{#$detail_end_time1#}{#/if#}{#if $detail_start_time2 && $detail_start_time2 != "00:00" && $detail_end_time2 && $detail_end_time2 != "00:00"#}; {#$detail_start_time2#}-{#$detail_end_time2#}{#/if#}{#if $detail_start_time3 && $detail_start_time3 != "00:00" && $detail_end_time3 && $detail_end_time3 != "00:00"#}; {#$detail_start_time3#}-{#$detail_end_time3#}{#/if#}');
+		{#/if#}
+	{#/if#}
+</script>
+
+<script src="{#$cfg_staticPath#}js/ui/jquery.fly.min.js"></script>
+<script src="{#$templets_skin#}js/photoswipe.min.js"></script>
+<script src="{#$templets_skin#}js/photoswipe-ui-default.min.js"></script>
+<script src="{#$templets_skin#}js/pic-swiper.js"></script>
+<script src="{#$templets_skin#}js/xuangou.js?v=20"></script>
+</body>
+</html>

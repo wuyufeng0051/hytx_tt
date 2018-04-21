@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>个人资料 - {#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/profile.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#$pageTitle = "个人基本资料"#}
+{#include file="top.html"#}
+
+<div class="imgbox">
+  <div class="addimg">
+    <ul id="litpic" class="{#if $userinfo.photo != ""#}haveimg{#else#}noimg{#/if#}">
+      {#if $userinfo.photo != ""#}
+      <li class="item" id="item_0"><a href="{#getUrlPath service='member' type='user' template='portrait'#}"><img src="{#$userinfo.photo#}" alt=""></a></li>
+      {#else#}
+      <a href="{#getUrlPath service='member' type='user' template='portrait'#}" class="goupphoto"></a>
+      {#/if#}
+    </ul>
+  </div>
+  <p class="uploader-btn"><a href="{#getUrlPath service='member' type='user' template='portrait'#}"><span>{#if $userinfo.photo != ""#}修改头像{#else#}设置头像{#/if#}</a></span></p>
+</div>
+<div class="list">
+  <form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=member&action=updateProfile">
+
+    <dl class="inpbox">
+      <dt><span>用户名</span></dt>
+      <dd>{#$userinfo.username#}</dd>
+    </dl>
+    <dl class="inpbox">
+      <dt><span>昵称</span></dt>
+      <dd><input type="text" name="nickname" id="nickname" autocomplete="off" value="{#$userinfo.nickname#}"></dd>
+    </dl>
+    <dl class="inpbox">
+      <dt><span>性别</span></dt>
+      <dd>
+        <select class="w100" name="sex" id="sex">
+          <option value="1"{#if $userinfo.sex == 1#} selected="selected"{#/if#}>男</option>
+          <option value="0"{#if $userinfo.sex == 0#} selected="selected"{#/if#}>女</option>
+        </select>
+      </dd>
+    </dl>
+    <dl class="inpbox">
+      <dt><span>QQ号码</span></dt>
+      <dd><input type="text" placeholder="请输入您常用的QQ号码" name="qq" id="qq" autocomplete="off" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$userinfo.qq#}"></dd>
+    </dl>
+    <dl class="inpbox">
+      <dt><span>所在区域：</span></dt>
+      <dd id="selAddr">
+        <div class="sel-group" data-title="请选择所在区域">
+          <select>
+            <option value="0">请选择</option>
+            {#siteConfig action="addr" return="addr"#}
+            <option value="{#$addr.id#}">{#$addr.typename#}</option>
+            {#/siteConfig#}
+          </select>
+        </div>
+        <input type="hidden" name="addr" id="addr" value="{#$userinfo.addrid#}" />
+      </dd>
+    </dl>
+    <dl class="inpbox">
+      <dt><span>出生日期</span></dt>
+      <dd><input type="date" placeholder="请填写出生日期" name="birthday" id="birth" autocomplete="off" value="{#$userinfo.birthday|date_format:'%Y-%m-%d'#}"></dd>
+    </dl>
+    <dl class="inpbox">
+      <dt><span>注册时间</span></dt>
+      <dd>{#$userinfo.regtime#}</dd>
+    </dl>
+
+    <div class="submit">
+        <a href="javascript:;" id="submit">提交修改</a>
+    </div>
+
+  </form>
+</div>
+
+
+
+<div class="error"></div>
+
+
+
+
+
+<script>
+var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize*1024*1024#}, atlasType = '{#$atlasType#}', atlasMax = 1, modelType = 'job', upType = 'photo';
+var areaLevel = '{#$detail_addrname#}';
+var typeidLevel = '{#if $userinfo.addrName != ""#}{#$userinfo.addrName#}{#/if#}', typeid = '{#$userinfo.addrid#}';
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/profile.js"></script>
+</body>
+</html>

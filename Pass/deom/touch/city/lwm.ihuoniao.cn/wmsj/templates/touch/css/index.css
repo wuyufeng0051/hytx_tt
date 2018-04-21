@@ -1,0 +1,174 @@
+
+/*头部*/
+.header-l .btn_shopclassify{display: block; width: 1rem; height: 1rem; background: url(../images/btn_shopclassify.png) center center no-repeat; background-size: .5rem auto;}
+.header-r .new_shop{display: block; width: 1rem; height: 1rem; background: url(../images/new_shop.png) center center no-repeat; background-size: .5rem auto;}
+
+/*搜索*/
+.search{position: fixed; top: 1rem; left: 0; right: 0; background: #efefef; z-index: 9;}
+.search a{display: block; margin: .1rem; color: #bbb; padding: .1rem 0 .1rem 1rem; background: #fff url(../images/search_icon.png) .2rem .07rem no-repeat; background-size: .5rem auto; border-radius: .06rem; font-size: .3rem;}
+
+.container{margin-top: 1rem; background: #efefef;}
+
+/*列表*/
+.list .item{background: #fff; border-radius: .06rem; margin: .1rem .1rem 0; padding: .2rem;}
+.list .item a{display: block;}
+.list .imgbox{width: 1.4rem; height: 1.4rem; overflow: hidden; border-radius: .1rem; float: left; margin-right: .3rem;}
+.list .imgbox img{width: 100%; height: 100%; display: block;}
+.list .txtbox{position: relative; overflow: hidden;}
+.list .txtbox p{color: #949494;}
+.list .txtbox .title{font-size: .36rem; display: -webkit-box; color: #333; margin-bottom: .05rem; height: .5rem; line-height: .5rem;}
+.list .txtbox .title .name{display: block; overflow: hidden; -webkit-box-flex: 1; text-overflow: ellipsis; white-space: nowrap;}
+.list .txtbox .title .state{display: block; width: 1.5rem; text-align: right;}
+.list .txtbox .title .state1{color: #888;}
+.list .txtbox .title .state2{color: #de0000;}
+
+.loading { line-height: 40px; height: 0; text-align: center; transition: height .25s, border-bottom-width .25s; background-color: #eee; font-size: 14px; overflow: hidden;}
+
+
+.load {padding:.3rem 0;text-align: center;}
+
+.has-switch {
+    display: inline-block;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    position: relative;
+    text-align: left;
+    overflow: hidden;
+    line-height: 8px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    min-width: 100px;
+}
+
+.has-switch > div.switch-on {
+    left: 0%;
+}
+
+.has-switch > div.switch-off {
+    left: -50%;
+}
+
+.has-switch > div {
+    display: inline-block;
+    width: 150%;
+    position: relative;
+    top: 0;
+}
+.has-switch input[type=checkbox] {
+    display: none;
+}
+
+.has-switch span.switch-primary, .has-switch span.switch-left {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #005fcc;
+    background-image: -moz-linear-gradient(top, #0044cc, #0088cc);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0044cc), to(#0088cc));
+    background-image: -webkit-linear-gradient(top, #0044cc, #0088cc);
+    background-image: -o-linear-gradient(top, #0044cc, #0088cc);
+    background-image: linear-gradient(to bottom, #0044cc, #0088cc);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0044cc', endColorstr='#ff0088cc', GradientType=0);
+    border-color: #0088cc #0088cc #005580;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.has-switch span.switch-left {
+    -webkit-border-top-left-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    border-top-left-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.has-switch span.switch-right {
+    color: #333333;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    background-color: #f0f0f0;
+    background-image: -moz-linear-gradient(top, #e6e6e6, #ffffff);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e6e6e6), to(#ffffff));
+    background-image: -webkit-linear-gradient(top, #e6e6e6, #ffffff);
+    background-image: -o-linear-gradient(top, #e6e6e6, #ffffff);
+    background-image: linear-gradient(to bottom, #e6e6e6, #ffffff);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe6e6e6', endColorstr='#ffffffff', GradientType=0);
+    border-color: #ffffff #ffffff #d9d9d9;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+.has-switch span.switch-small, .has-switch label.switch-small {
+    padding-bottom: 3px;
+    padding-top: 3px;
+    font-size: 12px;
+    line-height: 18px;
+}
+.has-switch span {
+    text-align: center;
+    z-index: 1;
+    width: 33%;
+}
+.has-switch span, .has-switch label {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.has-switch label {
+    text-align: center;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    z-index: 100;
+    width: 34%;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #f5f5f5;
+    background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+    background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+    border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.has-switch span, .has-switch label {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.has-switch > div.switch-animate {
+    -webkit-transition: left 0.5s;
+    -moz-transition: left 0.5s;
+    -o-transition: left 0.5s;
+    transition: left 0.5s;
+}

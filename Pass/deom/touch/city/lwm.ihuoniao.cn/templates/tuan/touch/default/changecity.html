@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>选择城市 - {#$tuan_title#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/city.css">
+</head>
+
+<body>
+<!-- 头部 -->
+<div class="header">
+	<div class="header-l">
+		<a href="{#$tuan_channelDomain#}"><img src="{#$templets_skin#}images/back-r.png"></a>
+	</div>
+	<div class="header-c">选择城市</div>
+</div>
+
+<!-- 选择城市 -->
+<div class="choose">
+	<div class="choose-tit">选择城市</div>
+	<div class="choose-box">
+		{#$city = 0#}
+		<ul class="table fn-clear">
+			{#tuan action="city"#}
+			{#$city = 1#}
+			<li><a href="{#$row.url#}">{#$row.name#}</a></li>
+			{#/tuan#}
+		</ul>
+		{#if $city == 0#}
+		请在后台添加要运营的城市！
+		{#/if#}
+	</div>
+</div>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+</body>
+</html>

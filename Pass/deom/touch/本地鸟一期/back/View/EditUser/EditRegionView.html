@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>泸西微城</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no" >
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/MultiPicker.css">
+	<style>
+		.input{
+			margin-top: 20px;
+			background:#fff;
+		}
+		.input input{
+			margin-bottom: 0;
+			border-right: 0;
+			border-left: 0;
+			border-radius: 0;
+		}
+		.btn{
+			margin-top: 50px;
+			line-height: 44px;
+			padding: 10px;
+		}
+		.btn button{
+			width: 100%;
+			background: #ff7300;
+			color: #fff;
+			line-height: 40px;
+			height: 40px;
+			padding: 0;
+			border:none;
+		}
+		.date-selector-btn-box{
+			background: #ff7400;
+		}
+	</style>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+
+	<div class="input">
+		<input type="text" value="{$region}" id="multiPickerInput" >
+	</div>
+	<div class="btn">
+		<button class="">保存</button>
+	</div>
+	<div id="targetContainer"></div>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/city.js"></script>
+	<script src="__PUBLIC__/Home/js/MultiPicker.js"></script>
+	<script>
+    //---------------------函数调用开始---------------------
+    new MultiPicker({
+        input: 'multiPickerInput',//点击触发插件的input框的id
+        container: 'targetContainer',//插件插入的容器id
+        jsonData: $city,
+        success: function (arr) {
+        	console.log(arr.length)
+        	console.log(arr[0].value)
+        	var str='';
+        	if(arr.length==3){
+        		str=arr[0].value+' '+arr[1].value+' '+arr[2].value;
+        	}else if(arr.length==2){
+        		str=arr[0].value+' '+arr[1].value;
+        	}else{
+        		str=arr[0].value
+        	}
+
+        
+	        $('#multiPickerInput').val(str)
+        }//回调
+    });
+    //---------------------函数调用结束---------------------
+</script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script>
+		function req(){
+			location.href='__MODULE__/Index/profile';
+			//location= document.referrer
+			//history.go(-1);
+		}
+		//保存按钮
+		$('button').click(function(){
+			var region = $('.input input').val();
+			if(region.length < 1){
+				later.msg('请选择地区');
+				return ;
+			}
+			$.post('__MODULE__/EditUser/EditRegion',{user_region:region},function(msg){
+				if(msg == 1){
+					layer.msg('已保存');
+					setTimeout('req()',1500);
+				}else{
+					layer.msg(msg);
+				}
+			})
+		})
+
+
+
+	</script>
+</body>
+</html>

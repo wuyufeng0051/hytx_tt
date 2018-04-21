@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_shopname#}</title>
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/shop.css?v=3">
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+</head>
+
+<body>
+<div class="lead"><span>{#$detail_shopname#}</span><b{#if $detail_collect#} class="lead_bc"{#/if#}></b></div>
+{#if $detail_shop_banner#}
+<div class="slideBox">
+  <div class="swiper-wrapper">
+    {#foreach from=$detail_shop_banner item=b#}
+    <div class="swiper-slide"><img src="{#$b#}"></div>
+    {#/foreach#}
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+{#/if#}
+<div class="shop_list fn-clear">
+	<ul>
+		<!-- <li class="message"><a href="message.html"><i></i><span>留言</span></a></li> -->
+		<li class="bill"><a href="{#getUrlPath service='waimai' template='buy' id={#$detail_id#}#}"><i></i><span>下单</span></a></li>
+		<!-- <li class="comment"><a href="comment.html"><i></i><span>评论</span></a></li>
+		<li class="dynamic"><a href="dynamic.html"><i></i><span>动态</span></a></li>
+		<li class="rank"><a href="rank.html"><i></i><span>排行</span></a></li>
+		<li class="email"><a href="email.html"><i></i><span>邮箱</span></a></li> -->
+		<li class="dan"><a href="{#getUrlPath service='member' type='user' template='order' module='waimai'#}"><i></i><span>订单</span></a></li>
+		<!-- <li class="sign"><a href="#"><i></i><span>签到</span></a></li>
+		<li class="integral"><a href="integral.html"><i></i><span>积分</span></a></li>
+		<li class="favorable"><a href="favorable.html"><i></i><span>优惠券</span></a></li>
+		<li class="datum"><a href="datum.html"><i></i><span>资料</span></a></li>
+		<li class="turntable"><a href="turntable.html"><i></i><span>大转盘</span></a></li>
+		<li class="member"><a href="member.html"><i></i><span>会员中心</span></a></li>
+		<li class="nav"><a href="nav.html"><i></i><span>导航</span></a></li> -->
+	</ul>
+</div>
+
+{#if $detail_shop_notice#}
+<div class="shop_information notice">
+	<h1><s></s>公告</h1>
+	<div class="note">{#$detail_shop_notice#}</div>
+</div>
+{#/if#}
+
+<div class="shop_information">
+	<h1>店铺信息</h1>
+	<ul>
+		<li><em>店铺类型：</em><span>{#$detail_typeName#}</span></li>
+		<li><em>营业时间：</em><span>
+			{#if $detail_start_time1 && $detail_start_time1 != "00:00" && $detail_end_time1 && $detail_end_time1 != "00:00"#}{#$detail_start_time1#}-{#$detail_end_time1#}{#/if#}{#if $detail_start_time2 && $detail_start_time2 != "00:00" && $detail_end_time2 && $detail_end_time2 != "00:00"#}; {#$detail_start_time2#}-{#$detail_end_time2#}{#/if#}{#if $detail_start_time3 && $detail_start_time3 != "00:00" && $detail_end_time3 && $detail_end_time3 != "00:00"#}; {#$detail_start_time3#}-{#$detail_end_time3#}{#/if#}
+		</span></li>
+		<li><em>店铺地址：</em><span>{#$detail_address#}</span><i><b></b></i></li>
+		<li><em>电话：</em><span>{#$detail_phone#}{#if $detail_callshow#}<a href="tel:{#$detail_phone#}" class="calltel"></a>{#/if#}</span></li>
+
+        <!-- 固定配送费 -->
+        {#if $detail_delivery_fee_mode == 1#}
+        <li><em>起送价：</em><span>{#$detail_basicprice#}</span></li>
+        <li><em>外送费：</em><span>{#$detail_delivery_fee#}{#if $detail_delivery_fee_type == 2#}（订单满{#$detail_delivery_fee_value#}元免外送费）{#/if#}</span></li>
+
+        <!-- 按距离 -->
+        {#elseif $detail_delivery_fee_mode == 3#}
+        <li><em>起送价：</em><span>
+            {#foreach from=$detail_range_delivery_fee_value item=range#}
+                <p>{#$range[0]#}-{#$range[1]#}公里：{#$range[3]#}元</p>
+            {#/foreach#}
+        </span></li>
+        <li><em>外送费：</em><span>
+            {#foreach from=$detail_range_delivery_fee_value item=range#}
+                <p>{#$range[0]#}-{#$range[1]#}公里：{#$range[2]#}元</p>
+            {#/foreach#}
+        </span></li>
+        {#/if#}
+
+		{#if !$detail_show_range#}<li><em>服务距离：</em><span>{#$detail_delivery_radius#}公里</span></li>{#/if#}
+		{#if $detail_delivery_area#}<li><em>配送区域：</em><span>{#$detail_delivery_area#}</span></li>{#/if#}
+
+        {#if $detail_selfdefine#}
+        {#foreach from=$detail_selfdefine item=self#}
+        <li><em>{#$self[1]#}：</em><span>{#if $self[0] == "link"#}<a href="{#$self[2]#}" target="_blank">{#$self[2]#}</a>{#else#}{#$self[2]#}{#/if#}</span></li>
+        {#/foreach#}
+        {#/if#}
+	</ul>
+</div>
+
+{#if $detail_open_addservice && $detail_addservice#}
+<div class="shop_information">
+    <h1>店铺增值服务</h1>
+    <ul>
+        {#foreach from=$detail_addservice item=add#}
+        {#if $add[0] != "" && $add[1] != "00:00" && $add[2] != "00:00"#}
+        <li><em>{#$add[0]#}：</em><span>{#$add[1]#}-{#$add[2]#} 加收 {#$add[3]#}元</span></li>
+        {#/if#}
+        {#/foreach#}
+    </ul>
+</div>
+{#/if#}
+
+<div class="new_com">
+	<div class="com_lead fn-clear"><em>最新评论</em><a href="{#getUrlPath service='waimai' template='comment' id=$detail_id#}" class="more">更多<i></i></a></div>
+	<div class="com_list">
+		<div class="loading">正在加载，请稍后</div>
+	</div>
+</div>
+
+<div class="foot">
+	<div class="footer">
+		<div class="ff fn-clear">
+			<img src="{#$templets_skin#}images/logo.png?v=2" alt="">
+			<h1>金点外卖</h1>
+			<p>{#$cfg_basehost|replace:"http://":""#}</p>
+		</div>
+		<span>酷曼软件提供技术支持</span>
+	</div>
+</div>
+
+<div class="navtion fn-clear">
+	<ul>
+		<li class="shop nav_bc"><a href="{#getUrlPath service='waimai' template='shop' id={#$detail_id#}#}"><i></i><span>首页</span></a></li>
+		<li class="xuangou"><a href="{#getUrlPath service='waimai' template='buy' id={#$detail_id#}#}"><i></i><span>选购</span></a></li>
+		<li class="car"><a href="{#getUrlPath service='waimai' template='cart' id={#$detail_id#}#}"><i></i><span>购物车</span></a></li>
+		<li class="center"><a href="{#getUrlPath service='member' type='user'#}"><i></i><span>个人中心</span></a></li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}';
+	var id = {#$detail_id#};
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$detail_description#}',
+        "title": '{#if $detail_share_title#}{#$detail_share_title#}{#else#}{#$detail_shopname#}{#/if#}',
+        "imgUrl": '{#$detail_share_pic#}',
+        "link": '{#$detail_url#}',
+    };
+
+	{#if !$detail_status#}alert('{#if $detail_closeinfo#}{#$detail_closeinfo#}{#else#}{#$deatil_status#}该店铺关闭了，您暂时无法在该店铺下单。{#/if#}');{#/if#}
+	{#if $detail_status && !$detail_ordervalid#}alert('{#if $detail_closeorder#}{#$detail_closeorder#}{#else#}该店铺关闭了微信下单，您暂时无法在该店铺下单。{#/if#}');{#/if#}
+	{#if !$detail_yingye#}
+		{#if !$detail_yingyeWeek#}
+		alert('该店铺今天暂停营业！营业时间：星期{#$detail_weeks|replace:"1":"一"|replace:"2":"二"|replace:"3":"三"|replace:"4":"四"|replace:"5":"五"|replace:"6":"六"|replace:"7":"七"|replace:",":"，星期"#}');
+		{#else#}
+		alert('该店铺不在营业时间，您暂时无法在该店铺下单！营业时间：{#if $detail_start_time1 && $detail_start_time1 != "00:00" && $detail_end_time1 && $detail_end_time1 != "00:00"#}{#$detail_start_time1#}-{#$detail_end_time1#}{#/if#}{#if $detail_start_time2 && $detail_start_time2 != "00:00" && $detail_end_time2 && $detail_end_time2 != "00:00"#}; {#$detail_start_time2#}-{#$detail_end_time2#}{#/if#}{#if $detail_start_time3 && $detail_start_time3 != "00:00" && $detail_end_time3 && $detail_end_time3 != "00:00"#}; {#$detail_start_time3#}-{#$detail_end_time3#}{#/if#}');
+		{#/if#}
+	{#/if#}
+</script>
+<script src="{#$templets_skin#}js/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/shop.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>我的窝</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style type="text/css">
+	*{margin: 0;padding:0;}
+	body{font-family: "微软雅黑";}
+	.head-content{width: 100%;float: left;padding-bottom: 10px;background-color: #fff;}
+	.head-content .head-content-inner{width: 92%;margin: 15px auto;}
+	.head-content .head-content-inner .headimg{width: 25%;float: left;}
+	.head-content .head-content-inner .headimg img{width: 96%;text-align: left;}
+	.wname{width: 69%;float: left;margin-left: 6%;font-weight: 600;color: #676767;font-size: 15px;padding-top: 3px;}
+	.wname img{height: 15px;margin-left: 10px;}
+	.wname h4{color: #000;font-size: 15px;margin-top: 10px;}
+	.head-item{width: 100%;float: left;}
+	.head-item ul{width: 100%;}
+	.head-item ul li{width: 100%;list-style: none;float: left;background-color: #fff;}
+	.head-item ul li:first-child{height: 45px;line-height: 45px;border-bottom:1px solid #ddd;}
+	.head-item ul li:nth-child(2){height: 45px;line-height: 45px;}
+	.head-item ul li:nth-child(4){height: 60px;border-bottom: 1px solid #ddd;}
+	.head-item ul li:last-child{height: 71px;line-height: 71px;border-bottom: 1px solid #efeff4;overflow: hidden;}
+	.head-item ul li .left{color: #000;float: left;margin-left: 4%;font-weight: 600;font-size: 15px;width: 20%;}
+	.head-item ul li .right{color: #8c8888;float: right;margin-right: 4%;font-size: 15px;width: 72%;text-align: right;}
+	.head-item ul li .right img{width: 55px;height: 55px;margin-right: 5px;margin-top: 8px;}
+	.btn-content{width: 100%;float: left;margin-top: 13px;}
+	.btn-content .btn1{width: 90%;height: 40px;line-height: 40px;color: #fff;background-color: #ff7300;border-radius: 5px;margin: 0 auto;text-align: center;font-weight: 600;}
+	.btn-content .btn2{width: 90%;height: 40px;line-height: 40px;border-radius: 5px;margin: 0 auto;border: 1px solid #b3b3b1;margin-top: 15px;text-align: center;font-weight: 600;}
+	.rightspecial{
+		display: -webkit-box;
+		overflow: hidden;
+		white-space: normal!important;
+		text-overflow: ellipsis;
+		word-wrap: break-word;
+		-webkit-line-clamp:2;
+		-webkit-box-orient:vertical;
+		height: 52px;
+		line-height: 21px;
+		text-align: left;
+		padding-top: 10px;
+		font-size: 13px;
+	}
+	p{width: 90%;float: left;text-align: right;margin-left: 5%;margin-top: 15px; color: #b3b3b1;}
+	.adbox{
+		width: 100%;
+		float: left;
+		margin-top: 50px;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 10px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	</style>
+</head>
+<body>
+	<div class="head-content">
+		<div class="head-content-inner">
+			<div class="headimg"><img src="{$r_user.user_head}"></div>
+			<div class="wname">{$r_user.user_name}<img src="__PUBLIC__/Home/img/nv.png">
+				<h4>&nbsp;{$r_user.user_region}</h4>
+			</div>
+		</div>	
+	</div>
+	<div style="width: 100%;height: 7px;background-color: #f2f2f2;float: left;"></div>
+	<div class="head-item">
+		<ul>
+			<li>
+				<a href="__MODULE__/Mybrid/main">
+					<span class="left">我的关注</span>
+					<div class="right"><span id='res_friends_m'>{$res_friends_m}</span>&nbsp;></div>
+				</a>
+			</li>
+			<li>
+				<a href="__MODULE__/Mybrid/vice">
+					<span class="left">粉丝</span>
+					<div class="right"><span id="res_friends_v">{$res_friends_v}</span>&nbsp;></div>
+				</a>
+			</li>
+			<li style="width: 100%;height: 7px;background-color: #f2f2f2;"></li>
+			<li>
+				<a>
+					<span class="left" style="height: 60px;line-height: 60px;">
+					个性签名</span>
+					<span class="right rightspecial">{$r_user.user_autograph}</span>
+				</a>
+			</li>
+			<li>
+				<a href="__MODULE__/Mybrid/myPost">
+					<span class="left">个人帖子</span>
+					<span class="right" style="text-align: left;">
+					   <?php if(!empty($post_res[0]['imgs'])){ ?>
+						<volist id="vo" name="post_res.0.imgs" >
+						  <img src="__PUBLIC__/../{$vo.imgs_smallpath}">
+		 				</volist>
+		 				<?php }else{ ?>
+		 				  {$post_res.0.post_content}
+		 				<?php } ?>
+					</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	
+	<!--广告-->
+	<div class="adbox">
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+ 				  <volist name="status" id="vo">
+					<div class="swiper-slide">
+						<a id="up" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}">
+	 						<img src="__PUBLIC__/../{$vo['advertisement_img']}" style="width:100%">
+						</a>
+					</div>
+				  </volist> 
+ 			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+	</div>
+
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script type="text/javascript">
+  	$("[id=up]").each(function(){ 
+		$(this).click(function(){
+     		var id = $(this).attr('str');
+     		var type = $(this).attr('stb');
+     		var url = $(this).attr('url');
+				// alert(id)
+		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+ 	     		if (type == 0) {
+	     			 location.href="http://"+url;
+	     		}else if(type == 1){
+	     			 location.href= 'tel://' + url;
+	      		}else{
+	      			location.href=url;
+	      		}
+			});
+    	})
+    })
+
+	function time(){
+	$.post('{:U("Home/Mybrid/numviceandmain")}', {}, function(data) {
+  			 strall=data.split(","); //字符分割 
+  			 $("#res_friends_m").text(strall[0])
+  			 $("#res_friends_v").text(strall[1])
+ 	});
+	} 
+	setTimeout(time(),500);
+
+	var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+	</script>
+
+</body>

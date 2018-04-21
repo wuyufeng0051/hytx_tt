@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-desktop desktop-icon"></i>
+      <li class="active">店铺</li>
+      <li>
+        <a href="#">桌位管理</a></li>
+      <li>
+        <a href="#">正新鸡排（金城店）桌位管理</a></li>
+      <li class="active">添加桌位</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-sm-12">
+          <form enctype="multipart/form-data" class="form-horizontal" id="yw0" action="/shoptable/create?shop_id=238848" method="post">
+            <div class="alert alert-danger" id="yw0_es_" style="display:none">
+              <p>请更正下列输入错误:</p>
+              <ul>
+                <li>dummy</li></ul>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="Shoptable_name">名称</label></label>
+              <input class="col-sm-1" style="width: 200px;" size="20" placeholder="如：大桌、小桌、东暖阁" name="Shoptable[name]" id="Shoptable_name" type="text" maxlength="255" value=""></div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Shoptable_limit_id">人数限制</label>
+              <select name="Shoptable[limit_id]" id="Shoptable_limit_id"></select>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Shoptable_选择类型">选择类型</label>
+              <select name="Shoptable[type_id]" id="Shoptable_type_id">
+                <option value="0" selected="selected">默认分类</option></select>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Shoptable_open_tea_fee">是否开启茶位费</label>
+              <select name="Shoptable[open_tea_fee]" id="Shoptable_open_tea_fee">
+                <option value="0" selected="selected">否</option>
+                <option value="1">是</option></select>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="Shoptable_tea_fee">茶位费</label></label>
+              <input class="col-sm-1" size="20" name="Shoptable[tea_fee]" id="Shoptable_tea_fee" type="text" maxlength="10" value="0.00"></div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Shoptable_open_table_fee">是否开启开台费</label>
+              <select name="Shoptable[open_table_fee]" id="Shoptable_open_table_fee">
+                <option value="0" selected="selected">否</option>
+                <option value="1">是</option></select>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="Shoptable_table_fee">开台费</label></label>
+              <input class="col-sm-1" size="20" name="Shoptable[table_fee]" id="Shoptable_table_fee" type="text" maxlength="10" value="0.00"></div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Shoptable_is_abled">使用状态</label>
+              <label>
+                <input value="1" name="Shoptable[is_abled]" id="Shoptable_is_abled" type="radio" checked="">可用</label>&nbsp;&nbsp;&nbsp;
+              <label>
+                <input value="0" name="Shoptable[is_abled]" id="Shoptable_is_abled" type="radio">暂停使用</label></div>
+            <div class="clearfix form-actions">
+              <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="submit">
+                  <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

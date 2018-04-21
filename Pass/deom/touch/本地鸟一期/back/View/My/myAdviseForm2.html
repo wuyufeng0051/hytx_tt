@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>用户反馈</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+		<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+
+		<style>
+		.mui-input-row label {
+		    line-height: 1.1;
+		    float: left;
+		    width: 35%;
+		    padding: 11px 15px;
+		    font-size: 16px;
+		}
+		textarea{
+			border:none;
+		}
+
+		ul{
+			list-style: none;
+			margin:0;
+			padding: 0;
+		}
+		.list{
+			margin-bottom: 10px;
+		}
+		.list .item{
+			border-bottom: 1px solid #ddd;
+			padding: 10px;
+			background: #fff;
+			position: relative;
+			padding-left: 95px;
+			margin-bottom: 10px;
+		}
+		.list .item label{
+			font-size: 16px;
+			position: absolute;
+			left: 10px;
+		}
+		.list .item1{
+			border-bottom: 1px solid #ddd;
+			padding: 10px;
+			background: #fff;
+
+		}
+		.list .item1 label{
+			font-size: 16px;
+		}
+		.list .item input{
+			border:none;
+			padding: 0;
+			width: auto;
+			margin:0;
+			height: 21px;
+			width: 100%;
+			border-radius: 0;
+		}
+		.bot{
+			background: #fff;
+			margin-top: 100px;
+			width: 100%;
+			padding: 10px;
+			font-size: 16px;
+		}
+		.bot h4{
+			font-size: 16px;
+			color: #fd5530;
+			line-height: 27px;
+		}
+		.bot a{
+			background: #fd5530;
+			color: #fff;
+			border:none;
+			font-size: 12px;
+			padding: 5px 10px;
+			float: right;
+		}
+		/*公用头部*/
+	.header{
+	    height: .9rem;
+	    background: #fd5530 !important;
+	    color: #fff;
+	    font-size: .32rem;
+	    line-height: .9rem;
+	    max-width: 1080px;
+	    position: relative;
+	    overflow: hidden;
+	}
+	.header a{
+		display: inline-block;
+		color: #fff;
+	}
+	.header .back{
+	    height: .9rem;
+	    line-height: .9rem;
+	    width: 17%;
+	    float: left;
+	}
+	.header .back i{
+	    width: 0.4rem;
+	    height: .9rem;
+	    display: inline-block;
+	    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+	    vertical-align: middle;
+	    background-size: .3rem;
+	}
+	.header .header_right{
+		float: right;
+		height: .9rem;
+		margin-right: .2rem;
+	}
+	.header .header_right i{
+	    width: 0.04rem;
+	    height: 0.5rem;
+	    display: inline-block;
+	    vertical-align: middle;
+	    background: #fff;
+	    margin: 0 .15rem;
+	}
+	.header .title{
+	    float: left;
+	    width: 70%;
+	    text-align: center;
+	    font-size: 0.38rem;
+	}
+	.header .share{
+	    height: .9rem;
+	    float: right;
+	    width: 12%;
+	    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+	    background-size: .5rem;
+	}
+		.succeed_box{
+			position: fixed;
+			left: 50%;
+			margin-left: -3rem;
+			top: 25%;
+			z-index: 12;
+			background: url(__PUBLIC__/Home/images/pb_7.png) no-repeat top;
+			width: 6rem;
+			height: 6rem;
+			background-size: 6rem;
+			text-align: center;
+			display: none;
+		}
+		.succeed_box h1{
+			font-size: .3rem;
+			margin-top: 1.8rem;
+			font-weight: bold;
+			background: #fff;
+			padding-top: .2rem;
+			padding-bottom: .3rem;
+			margin-bottom: 0;
+		}
+		.succeed_box h2{
+			font-size: .24rem;
+			padding-top: .1rem;
+			background: #fff;
+			padding-bottom: .3rem;
+			border-bottom: 0.04rem solid #e6e6e6;
+		}
+		.succeed_box h3{
+			font-size: .24rem;
+			padding-top: .1rem;
+			background: #fff;
+			padding: 0.1rem 0;
+		}
+		.succeed_box h2 em{
+			color: #fe8267;
+		}
+		.succeed_box p{
+			background: #fff;
+			border-radius: 0 0 0.2rem 0.2rem;
+			padding: 0.35rem 0;
+		}
+		.succeed_box p span{
+			width: 60%;
+			height: .75rem;
+			color: #fff;
+			font-size: 0.28rem;
+			border-radius: 0.15rem;
+			background: #fd5530;
+			line-height: .75rem;
+			display: block;
+			margin:  0 auto;
+		}
+		.disk {
+			background: #000;
+			opacity: .5!important;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 11;
+			display: none;
+		}
+		</style>
+	</head>
+	<body>
+	
+	<include file="Public/share" title='包含文件'/>
+		<!-- 共同顶部 s-->
+			<div class="header fn-clear">
+				<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+			</div>
+		<!-- 共同顶部 e-->
+		<div class="mui-content">
+			<div class="list">
+				<div class="item">
+					<label for="opinion_content2" style="font-size: 15px;font-weight: 600;"><span style="color: #fd5530;margin-right: 3px;">*</span>用户反馈：&nbsp;</label>
+					<textarea id="opinion_content2" type="text" rows="8" style="padding: 0;margin:0;font-size: 15px;" placeholder="请描述您遇到的问题或您的宝贵建议" ></textarea> 
+				</div>
+				<div class="item">
+					<label for="opinion_contact2" style="font-size: 15px;font-weight: 600;"><span style="color: #fd5530;margin-right: 3px;">*</span>联系方式：&nbsp;</label>
+					<input id='opinion_contact3' type="text" placeholder="请输入你的手机号码" style="font-size: 15px;">
+				</div>
+				<div style="padding: 15px;">
+					<a onclick="advise_post2()" href="javascript:;" href="" class="mui-btn mui-btn-danger" style="background-color: #fd5530;top:5px;width: 100%;border:none;line-height: 25px;">提交</a>
+				</div>
+			</div>
+			<div class="bot">
+				<h4>意见征集，好礼送不停！<a href="__MODULE__/My/yjShop.html" class="mui-btn">去意见商城</a></h4>
+				<p style="margin-bottom: 0;">为提供更好的用户体验，你可以对本平台的界面展示、功能使用、延伸服务等方面提出有益的意见以及建议，一经采用，必有礼品相送！赶快去意见商城提意见领取礼品吧！</p>
+			</div>
+			
+		</div>
+	<div class="succeed_box cheng">
+		<h1>提交成功</h1>
+		<p><a href="javascript:history.go(-1)"><span>确定</span></a></p>
+	</div>
+	<div class="disk"></div>
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script>
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+	</script>
+	<script>
+			function advise_post2() {
+				var opinion_content = document.getElementById("opinion_content2");
+				var opinion_contact = document.getElementById("opinion_contact3");
+				var wantbuy_phone=$('#opinion_contact3').val();
+
+				if (!opinion_content.value || !opinion_contact.value) {
+					layer.msg('请完善信息');
+				} else if(!wantbuy_phone){
+					layer.msg('请先输入联系方式');
+				} else {
+					var xmlhttp = new XMLHttpRequest();
+					xmlhttp.onreadystatechange = function() {
+						if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+							if (xmlhttp.responseText) {
+                                //提交成功弹出层
+                                $('.cheng').show();
+                                $('.disk').show();
+							} else {
+								layer.msg('提交未成功…');
+							}
+						}
+					}
+					xmlhttp.open("POST","__MODULE__/My/myAdvisePost2.html",true);
+					xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");              //or multipart/form-data
+					xmlhttp.send("opinion_content=" + opinion_content.value + "&opinion_contact=" + opinion_contact.value);
+				}
+			}
+		</script>
+	</body>
+</html>

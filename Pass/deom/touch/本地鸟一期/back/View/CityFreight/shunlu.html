@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>顺路带货</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css?v=1">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/_head.css">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/slider.js"></script>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+<!-- <div class="loading" ><img src="__PUBLIC__/Home/img/loading.gif" style="width: 30px;height: 30px;"><p style="text-align: center;color: #fff;">加载中，请稍等...</p></div> -->
+<!-- 共同顶部 s-->
+<div class="header fn-clear">
+    <div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+    <div class="title">商家详情</div>
+    <div class="share"></div>
+    <div class="header_right"><a class="fa_btn" href="javascript:;">发布</a><i></i><a href="__MODULE__/Index/my">我的</a></div>
+</div>
+<!-- 共同顶部 e-->
+<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/car.css?v=37">
+<script type="text/javascript" src="__PUBLIC__/Home/js/swiper.min.js"></script>
+<!-- 广告幻灯片 s -->
+<div class="swiper-container1 picscroll">
+    <div class="swiper-container2">
+        <div class="swiper-wrapper">
+            <volist name="status" id="vo">
+                <div class="swiper-slide">
+                    <a><img src="__PUBLIC__/../{$vo['advertisement_img']}"></a>
+                </div>
+            </volist>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!-- 广告幻灯片 e -->
+<div class="intor_lead fn-clear">
+    <ul>
+        <a href="__MODULE__/CityFreight/shunlu?type=1"><li class={$_REQUEST['type']!=2?"il_bc":""}>顺路车</li></a>
+        <a href="__MODULE__/CityFreight/shunlu?type=2"><li class={$_REQUEST['type']==2?"il_bc":""}>顺路货</li></a>
+    </ul>
+</div>
+<div class="car_list fn-clear">
+
+    <div class="car_tab">
+        <div class="car_sea fn-clear">
+            <form action="{:U('shunlu')}" method="get" id="searchform">
+            <input type="hidden" value="{$Think.get.type}" name="type">
+            <div class="input"><i class="green"></i><input type="text" placeholder="输入始发地" value="{$Think.get.startplace}" name="startplace"></div>
+            <div class="input"><i class="red"></i><input type="text" placeholder="输入目的地" value="{$Think.get.endplace}" name="endplace"></div>
+            <div class="btn">搜索</div>
+            </form>
+        </div>
+        <empty name="list">
+            <div class="failed">
+                <div class="failed_pic"></div>
+                <h1>暂无此类信息，请看看别的吧~</h1>
+            </div>
+            <else/>
+        <foreach name="list" item="vo">
+        <div class="car_detail fn-clear"> <a href="__MODULE__/CityFreight/shunludetail/shunlu_id/{$vo['shunlu_id']}">
+            <div class="car_pic"><img src="{$vo['shunlu_img']}" alt=""></div>
+            <div class="cd_title"><i class="time"></i>{$vo['shunlu_starttime']} <?php if($vo['shunlu_contactsex'] == '男'){ ?><i class="man"></i> <?php }else{ ?><i class="women"></i> <?php } ?> <span style="margin-top: 0.04rem;">{$vo['shunlu_cartype']}</span></div>
+            <ul>
+                <li><em class="start">起</em>{$vo['shunlu_startplace']}</li>
+                <li><em class="end">终</em>{$vo['shunlu_endplace']}</li>
+            </ul>
+        </a></div>
+        </foreach>
+        <if condition="$totalpage gt 1">
+            {$pageButton}
+        </if>
+        <div class="tips">共{$totalpage}页</div>
+        </empty>
+    </div>
+</div>
+<div class="disk"></div>
+<!-- 发布弹出层 -->
+<div class="fa_box fa_1">
+    <div class="fb_title">请选择您要发布的类型<i></i></div>
+    <ul>
+        <li><a href="__MODULE__/CityFreight/issuecar">顺路车</a></li>
+        <li><a href="__MODULE__/CityFreight/issuegoods">顺路货</a></li>
+        <li><a href="__MODULE__/CityFreight/issuecarinfo">车辆信息</a></li>
+    </ul>
+</div>
+<!-- 发布弹出层 -->
+<script>
+    if($('#page_type')[0]){
+    $('#page_type')[0].selectedIndex = -1;}
+    // 分页选择
+    function changepage(v){
+        window.location.href='__ROOT__'+v;
+    }
+    $('.fa_btn').on('click',function(){
+        if ($('.fa_1').css("display") == "none") {
+            $('.fa_1').show();
+            $('.disk').show();
+            $('body').addClass('by');
+        }else{
+            $('.fa_1').hide();
+            $('.disk').hide();
+            $('body').removeClass('by');
+        }
+    })
+    $('.fa_box .fb_title i').click(function(){
+        $('.fa_1').hide();
+        $('.fa_2').hide();
+        $('body').removeClass('by');
+        $('.disk').hide();
+    })
+    $('.disk').click(function(){
+        $('.fa_1').hide();
+        $('.fa_2').hide();
+        $('body').removeClass('by');
+        $('.disk').hide();
+    })
+    $('.btn').on('click',function(){
+        $('#searchform').submit();
+    })
+</script>
+
+<script type="text/javascript" src="__PUBLIC__/Home/js/car.js?v=1"></script>
+</body>
+</html>

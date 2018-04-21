@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{$res.content_title}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+
+	<style>
+	body{
+		margin-top: 1rem;
+		overflow-x:hidden; 
+	}
+	/*公用头部*/
+	.header{
+	    height: .9rem;
+	    background: #fd5530 !important;
+	    color: #fff;
+	    font-size: .32rem;
+	    line-height: .9rem;
+	    max-width: 1080px;
+	    position: fixed;
+	    left: 0;
+	    right: 0;
+	    top: 0;
+	    z-index: 11;
+	    overflow: hidden;
+	}
+	.header a{
+		display: inline-block;
+		color: #fff;
+	}
+	.header .back{
+	    height: .9rem;
+	    line-height: .9rem;
+	    width: 17%;
+	    float: left;
+	}
+	.header .back i{
+	    width: 0.4rem;
+	    height: .9rem;
+	    display: inline-block;
+	    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+	    vertical-align: middle;
+	    background-size: .3rem;
+	}
+	.header .header_right{
+		float: right;
+		height: .9rem;
+		margin-right: .2rem;
+	}
+	.header .header_right i{
+	    width: 0.04rem;
+	    height: 0.5rem;
+	    display: inline-block;
+	    vertical-align: middle;
+	    background: #fff;
+	    margin: 0 .15rem;
+	}
+	.header .title{
+	    float: left;
+	    width: 70%;
+	    text-align: center;
+	    font-size: 0.38rem;
+	}
+	.header .share_1{
+	    height: .9rem;
+	    float: right;
+	    width: 12%;
+	    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+	    background-size: .5rem;
+	}
+	.share_box {
+		display: block;
+		background: url(__PUBLIC__/Home/img/share.png) no-repeat 60px -20px;
+		background-size: 6rem;
+		position: fixed;
+		top: 2%;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 12;
+		display: none;
+	}
+	.disk{
+		background: #000;
+		opacity: .5!important;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 11 ;
+		display: none;
+	}
+	/*顶栏*/
+	.share{
+	    position: fixed;
+	    padding: 0 16px;
+	    height: 50px;
+	    background: #fff;
+	    width: 100%;
+	    line-height: 40px;
+	    font-size: 14px;
+	    color: #666;
+	    z-index: 100000;
+	    top: 0;
+	    margin-left: 0px;
+        border-bottom: 4px solid #dedede;
+	}
+	.share img{
+		height: 100%;
+		display: block;
+		float: left;
+		margin-right: 10px;
+		margin-left: -7px;
+	}
+	.share button{
+		border:1px solid  #ff7300;
+		background: #ff7300;
+		color: #fff;
+		padding: 4px 6px;
+		vertical-align: middle;
+		float: right;
+		margin: 5px 0;
+	}
+	/*遮罩层*/
+	#dialog{
+		display: none;
+	}
+	#dialog .mask{
+		position: fixed;
+	    z-index: 99;
+	    width: 100%;
+	    height: 100%;
+	    top: 0;
+	    left: 0;
+	    background: rgba(0,0,0,.6)
+	}
+	#dialog .popbox{
+		position: fixed;
+	    z-index:101;
+	    width: 240px;
+	    padding: 15px 30px;
+	    top: 50%;
+	    left: 50%;
+	    -webkit-transform: translate(-50%,-50%);
+	    transform: translate(-50%,-50%);
+	    text-align: center;
+	    overflow: hidden;
+	    background: #fff;
+	}
+	#dialog .popbox h4{
+		margin-bottom: 20px;
+		text-align: center;
+	}
+	#dialog .popbox h4 strong{
+		color: #ff7300;
+	}
+	#dialog .popbox img{
+		width: 100%;
+	}
+
+  .share button {
+    border: 1px solid #ff7300;
+    background: #ff7300;
+    color: #fff;
+    padding: 4px 6px;
+    vertical-align: middle;
+    float: right;
+    margin: 5px 0;
+    border-radius: 3px;
+	}
+	.foot_box{
+		height: .8rem;
+		line-height: .8rem;
+		font-size: .28rem;
+		margin: .1rem 0;
+	}
+	.foot_box span{
+		margin-left: 0.2rem;
+		color: #A0A0A0;
+	}
+	.foot_box span em{
+		color: #A0A0A0;
+		margin-right: 0.1rem;
+	}
+	.foot_box .zan i{
+		width: .5rem;
+		height: .5rem;
+		display: inline-block;
+		background: url(/Public/Home/img/zan_btn.png) no-repeat 4px 2px;
+		background-size: .35rem;
+		vertical-align: middle;
+	}
+	</style>
+</head>
+<body>
+	<input type="hidden" id="Share_title" value = {$res.content_title}>
+	<div class="share" style="display:none;">
+		<img src="__PUBLIC__/Home/img/logo.png" alt="" style="height:40px;">
+		获取更多泸西本地信息
+		<button id="guanzhu" style="float:right;">+  关注</button>
+	</div>
+	<div id="dialog">
+		<div class="mask"></div>
+		<div class="popbox">
+			<h4>长按下图关注<strong>本地鸟</strong></h4>
+			<!-- <img src="__PUBLIC__/Home/img/bendiniaologo.png" alt=""> -->
+			<img src="__PUBLIC__/Home/img/qrcode.png" alt="" >
+		</div>
+	</div>
+
+
+ 	<!-- 共同顶部 s-->
+		<div class="header fn-clear">
+			<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+			<div class="share_1"></div>
+		</div>
+	<!-- 共同顶部 e-->
+	<!-- 微信分享弹出层 s -->
+		<div class="share_box"></div>
+		<!-- 微信分享弹出层 e -->
+		<!-- 遮罩层 s -->
+		<div class="disk"></div>
+		<!-- 遮罩层 e -->
+    <h4 style="width: 98%;line-height:1.5;font-size:18px;font-weight: bold;padding-top: 10px;padding-left: 10px;">{$res.content_title}</h4>
+    <div  style="width: 98%;margin-top: 5px;border-bottom: 1px solid #ddd;color: #666;font-size: 14px;padding-bottom: 3px;padding-left: 10px;margin-bottom: 15px; ">&nbsp;来自：{$res.content_source}</div>
+    <div id="gallery" style="overflow-x: hidden;padding: 0 10px;">
+	{$res.content_content}
+    </div>
+    <div class="foot_box fn-clear" style="overflow-x: hidden;">
+    	<span style="font-size: .28rem;"><em style="font-size: .28rem;">阅读量</em>1200</span>
+    	<span class="zan" style="margin-left: 0.35rem;"><i></i>100</span>
+    </div>
+
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script>
+		 
+		var is_open = {$is_open};
+
+		if(is_open == 1){
+			$('.share').show();
+		}
+
+		$('#guanzhu').on('click',function(){
+			$('#dialog').toggle();
+		})
+
+	</script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+
+
+  <?php
+	Vendor('wechatupload.jssdk');
+	$jssdk = new \WechatJSSDK("wxdbd247b4802a1ed6", "36ba3bd3d22430bb815c72ea55798b06");
+	$signPackage = $jssdk->GetSignPackage();
+
+  ?>
+
+
+
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	  <script type="text/javascript">
+	  	$(function(){
+  			// 分享引导弹出层
+			$('.share_1').click(function(){
+				$('.share_box').show();
+				$('.disk').show();
+			})
+			$('.share_box').click(function(){
+				$('.share_box').hide();
+				$('.disk').hide();
+			})
+	  	})
+	  	var Sharetitle = "";
+	  	Sharetitle = $('#Share_title').val();
+		wx.config({
+			// debug: true,
+			appId: '<?php echo $signPackage["appId"];?>',
+			timestamp: '<?php echo $signPackage['timestamp'];?>',
+			nonceStr: '<?php echo $signPackage['nonceStr'];?>',
+			signature: '<?php echo $signPackage['signature'];?>',
+			jsApiList: [
+				// 所有要调用的 API 都要加到这个列表中
+				'checkJsApi',
+				'onMenuShareTimeline',
+				'onMenuShareAppMessage',
+				'previewImage'
+			]
+
+		});
+
+
+		wx.ready(function(){
+			wx.onMenuShareTimeline({
+				title: Sharetitle, // 分享标题
+				// link: '<?php echo LOGIN_URL.'?uid='.$_SESSION['user_id'];?>&bj=zy', // 分享链接
+				link: "{$share_url}",
+				imgUrl: 'http://www.bdniao.com/Public/Home/img/bendiniaologo11.png', // 分享图标
+				success: function () {
+					// 用户确认分享后执行的回调函数
+				},
+				cancel: function () {
+					// 用户取消分享后执行的回调函数
+				}
+			});
+
+			wx.onMenuShareAppMessage({
+				title: Sharetitle, // 分享标题
+				desc: '更多本地信息免费发布查询，小伙伴都在玩，你还等什么?', // 分享描述
+				link: "{$share_url}", // 分享链接
+				imgUrl: 'http://www.bdniao.com/Public/Home/img/bendiniaologo11.png', // 分享图标
+				type: '', // 分享类型,music、video或link，不填默认为link
+				dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+				success: function () {
+					// 用户确认分享后执行的回调函数
+				},
+				cancel: function () {
+					// 用户取消分享后执行的回调函数
+				}
+			});
+
+			var imgsObj = $('#gallery img');    
+		    var imgs = new Array();    
+		    for(var i = 0; i < imgsObj.size(); i++){    
+		        imgs.push("http://116.62.45.62"+imgsObj.eq(i).attr('src')+"");    
+		    }    
+		        
+		    $('#gallery img').on('click',function(){  
+		        wx.previewImage({
+				    current: "http://116.62.45.62"+ $(this).attr('src') +"" , // 当前显示图片的http链接
+				    urls: imgs  // 需要预览的图片http链接列表
+				}); 
+		    }); 
+
+		});
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>泸西微城</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.picker.min.css">
+	<style>
+	.title{
+		color: #000;
+	    padding-left: 15px;
+	    line-height: 32px;
+	    font-weight: normal;
+	    margin: 0;
+	    font-size: 16px;
+	    background: #f2f2f2;
+	}
+
+	.list .item{
+		border-bottom: 1px solid #ddd;
+	    padding: 10px;
+	    background: #fff;
+	    position: relative;
+	    padding-left: 95px;
+	}
+	.list .item label span{
+		color: #ff7400;
+		margin-right: 5px;
+		position: relative;
+		top: 4px;
+	}
+	.list .item label{
+		font-size: 16px;
+		position: absolute;
+		left: 10px;
+	}
+	.list .item input{
+		border:none;
+		padding: 0;
+		width: auto;
+		margin:0;
+		line-height: 21px;
+		height: 21px;
+		width: 100%;
+		text-align: left;
+	}
+	.list .item select{
+	    width: 100%;
+	    padding: 0;
+	    margin: 0;
+	    font-size: 16px;
+	    background: url(__PUBLIC__/Home/img/arrow.png) no-repeat right center;
+	    background-size: 16px 16px;
+	    height: 21px;
+	}
+	.yes.selected,.no.selected{
+		background:url(__PUBLIC__/Home/img/icon.png) no-repeat left 2px;
+		background-size: 16px 16px;
+	}
+	/**/
+	#upload{overflow: hidden;}
+	#upload img{width: 100%;} 
+	#upload>div{float: left;margin-right: 5px;margin-bottom: 5px;}
+	.pro_img{width:79px;height: 79px;overflow:hidden;float:left;position: relative;}
+	.pro_img img{ position: absolute;left: 50%;top:50%;   transform: translate(-50%,-50%);width: 100%}
+	.pro_img input{position: absolute;width: 100%;height: 100%;margin:0;opacity:0;z-index: 100;}
+
+
+	.my{
+		display: inline-block;line-height: 21px;background: url(__PUBLIC__/Home/img/circle.png) left top no-repeat;padding-left: 20px;background-size: 20px 20px;
+		margin-left: 20px;
+	}
+	.my.select{
+		background:url(__PUBLIC__/Home/img/sec.png) left top no-repeat;
+		background-size: 20px 20px;
+	}
+	.ty{
+		padding-left: 20px;
+		background: url(__PUBLIC__/Home/img/tongyi1.png) no-repeat left center;
+		background-size: 16px 16px;
+	}
+	.ty.select{
+		background: url(__PUBLIC__/Home/img/tongyi.png) no-repeat left center;
+		background-size: 16px 16px;
+	}
+	</style>
+</head>
+<body>
+
+<include file="Public/share" title='包含文件'/>
+
+	<div class="mui-content">
+		<h3 class="title">商铺信息编辑</h3>
+		<div style="overflow: hidden;background: #fff;border-bottom: 1px solid #ddd;padding: 10px 15px;">
+			<form action="{:U('Home/Sell/sellLandedit')}" enctype="multipart/form-data" method="post" id="form">
+			<input type="hidden" name="sell_other_id" value="<?php echo $sell_other_edit['sell_other_id'];?>">
+			<div id='upload'>
+			<div>
+			<a class='pro_img' id='a1' >
+			<input type='file' id='file1'  accept='image/*' multiple='multiple' name='pic[]' onchange='t1(1)'/>
+			<img src='__PUBLIC__/Home/img/upload.jpg' id='img1'></a>
+			<img  id='hidden1' style='display:none;'>
+			</div>
+			</div>
+			
+            <p style="font-size: 12px;">请添加你的照片；最多添加10张</p>
+		</div>
+		<div class="list">
+			<div class="item">
+				<label for=""><span>*</span>标题</label>
+				<input type="text" placeholder="请填写标题，20个字以内" id="sell_other_title" maxlength="20" name="sell_other_title" value="{$sell_other_edit['sell_other_title']}">
+			</div>
+			<div class="item">
+				<label for=""><span>*</span>类别</label>
+				<select name="sell_other_class">       
+				  <volist name="sell_other_class" id="vo">
+					<option value="{$vo.classify2_id}">{$vo.classify2_name}</option> 
+				  </volist>
+				</select>
+			</div>
+			<!-- <div class="item" id="face">
+				<label for=""><span>*</span>售价</label>
+				<input type="text" placeholder="请填写数字" style="width: 40%;" id="sell_other_price"  onkeyup="value=value.replace(/[^\d.]/g,'')" name="sell_other_price" value="<?php if ($sell_other_edit['sell_other_edit']) echo $sell_other_edit['sell_other_edit'];?>">万<div class="my<?php if (0 == $sell_other_edit['sell_other_edit']) echo ' select';?>">面议</div>
+			</div> -->
+
+			<?php if($sell_other_edit['sell_other_edit'] == 0){ ?>
+            <div class="item" id="face">
+				<label for=""><span>*</span>售价</label>
+				<input type="text" placeholder="请填写数字" style="width: 40%;" name="sell_other_price" id="sell_other_price"  onkeyup="value=value.replace(/[^\d.]/g,'')" disabled="disabled">万
+				<div class="my select">面议</div>
+			</div>
+			<?php }else{ ?>
+			<div class="item" id="face">
+				<label for=""><span>*</span>售价</label>
+				<input type="text" placeholder="请填写数字" style="width: 40%;" name="sell_other_price" id="sell_other_price"  onkeyup="value=value.replace(/[^\d.]/g,'')" value="{$sell_other_edit['sell_other_edit']}">万
+				<div class="my">面议</div>
+			</div>
+			<?php } ?>
+
+			<div class="item">
+				<label for=""><span>*</span>面积</label>
+				<input type="text" placeholder="请填写数字" style="width: 40%;" id="sell_other_acreage"  onkeyup="value=value.replace(/[^\d.]/g,'')" name="sell_other_acreage" value="<?php echo $sell_other_edit['sell_other_acreage'];?>">m<sup>2</sup>
+			</div>
+			<div class="item">
+				<label for=""><span>*</span>来源</label>
+				<select name="sell_other_source" >
+				  <volist name="sell_other_source" id="vo">
+					<option value="{$vo.classify2_id}">{$vo.classify2_name}</option>
+				  </volist>
+				</select>
+			</div>
+			<div class="item">
+				<label for=""><span>*</span>商铺地址</label>
+				<input type="text" placeholder="请填写商铺所在地址" id="sell_other_address" name="sell_other_address" value="<?php echo $sell_other_edit['sell_other_address'] ;?>">
+			</div>
+			<div class="item">
+				<label for=""><span>*</span>商铺描述</label>
+				<input type="text" placeholder="请填写商铺详细描述" id="sell_other_desc" name="sell_other_desc" value="<?php echo $sell_other_edit['sell_other_desc'] ;?>">
+			</div>
+		</div>
+		<h3 class="title">联系人信息</h3>
+		
+ 		<div class="list">
+			<div class="item">
+				<label for=""><span>*</span>联系人</label>
+				<input type="text" placeholder="请填写联系人" id="sell_other_name" name="sell_other_name" value="<?php echo $sell_other_edit['sell_other_name'] ;?>">
+			</div>
+			
+			<div class="item" style="padding-left: 95px;padding-right: 85px;">
+				<label for=""><span>*</span>手机号码</label>
+				<input type="text" placeholder="请填写手机号" name="sell_other_phone" id="sell_other_phone" value="<?php echo $sell_other_edit['sell_other_phone'] ;?>">
+				<span style="position: absolute;right: 10px;top:9px;font-size: 12px;border:1px solid #ff7400;padding:0 4px;border-radius: 3px;color: #ff7400;" class="emailsell">发送验证码</span>
+				<span style="position: absolute;right: 10px;top:9px;font-size: 12px;border:1px solid #919191;padding:0 4px;border-radius: 3px;display:none;color:#919191" class="hidden_button"></span>
+			</div>
+
+			<div class="item">
+				<label for=""><span>*</span>验证码</label>
+				<input type="text" placeholder="请填写验证码" id="code">
+			</div>
+		</div>
+		<div style="padding: 30px 15px;text-align: center;" id="queding">
+			<span style="color: #666;font-size: 13px;">
+				<span class="ty">我已阅读并同意</span><a style="color: #ff7300;" href="__MODULE__/Index/userAgreement">《本地鸟用户协议》</a>
+			</span>
+			<a  class="mui-btn mui-btn-danger" style="background-color: #ff7400;line-height: 28px;border:none;width: 100%;margin-top: 10px;" id="btn">确定</a>
+		</div>
+	</div>
+	 <input type="hidden" name="sell_other_type" value="1">
+	</form>
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/mui.picker.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script>
+	    $('#btn').click(function() {
+	      //点击发布
+	      var file1 = $('#file1').val();//图片
+	      var sell_other_title = $('#sell_other_title').val(); // 标题
+	      var face =$("#face").find('.select').text(); //面议价格
+	      var sell_other_price = $('#sell_other_price').val();//填写价格
+	      var sell_other_acreage = $('#sell_other_acreage').val();//面积
+	      var sell_other_address = $('#sell_other_address').val();//地址
+	      var sell_other_desc = $('#sell_other_desc').val();//描述
+	      var sell_other_name = $('#sell_other_name').val();//姓名
+	      var sell_other_phone = $('#sell_other_phone').val();//手机
+          var queding = $('#queding').find('.select').text();
+         var  myreg = /^1[34578]\d{9}$/; 
+          var code = $('#code').val();
+         $.post('{:U("Home/Index/lookcode")}', {}, function(data) {
+	   	    var newcode = data;
+			/*
+	       if (!file1) {
+	       	 layer.msg('请先添加照片')
+	       }else 
+			*/
+		   if(!sell_other_title){
+	       	 layer.msg('请先添加标题')
+	       }else if(!face & !sell_other_price){
+             layer.msg('请先填写价格')
+	       }else if(!sell_other_acreage){
+             layer.msg('请先填写面积')
+	       }else if(!sell_other_address){
+             layer.msg('请先填写地址')
+	       }else if(!sell_other_desc){
+	       	 layer.msg('请先填写详细描述')
+	       }else if(!sell_other_name){
+	       	 layer.msg('请先填写姓名')
+	       }else if(!sell_other_phone){
+	       	 layer.msg('请先填写手机号码')
+	       }else if(!myreg.test(sell_other_phone)){
+        	   layer.msg('请正确填写手机号码')
+		   //}else if(!code){
+		      //layer.msg('请先填写验证码')
+		   //}else if(code != newcode){
+		      //layer.msg('验证码不正确')
+	       }else if(!queding){
+	       	 layer.msg('请先阅读并同意《本地鸟用户协议》')
+	       }else{
+	       	 $('#form').submit();
+	       }
+	    });
+	})
+
+	  $(function(){
+		$('.emailsell').click(function(event) {
+			var  myreg = /^1[34578]\d{9}$/;
+			var sell_other_phone=$('#sell_other_phone').val();
+			if(myreg.test(sell_other_phone)){
+				$.post("{:U('Home/Index/code')}",{phone:sell_other_phone},function(msg){
+					alert(msg)
+				})
+				 //时间倒序
+					$(".hidden_button").text(60+'s后发送');
+					$(this).hide();
+					$(".hidden_button").show();
+					var icount = 59;
+					var time = setInterval(auto, 1000);
+
+					function auto() {
+						var s = icount+'s后再发送';
+						$(".hidden_button").text(s);
+						icount--;
+						if(icount == 0) {
+							clearTimeout(time);
+							$(".emailsell").show();
+							$(".hidden_button").hide();
+						}
+					}
+			}else{
+				layer.msg('请先输入正确的手机号码')
+			}
+		});
+	})
+
+
+
+		$('.options span').on('tap',function(){
+			$(this).addClass('selected').siblings().removeClass('selected');
+		})
+
+		var flag=false;
+		$('.my').on('tap',function(){
+			if(flag){
+				$(this).addClass('select');
+				$('#sell_other_price').val("");
+				$('#sell_other_price').attr('disabled','disabled');			
+			}else{
+				$(this).removeClass('select');
+				$('#sell_other_price').removeAttr('disabled');
+			}
+			flag=!flag;
+		});
+
+		var flag1=true;
+		$('.ty').on('tap',function(){
+			if(flag1){
+				$(this).addClass('select');
+			}else{
+				$(this).removeClass('select');
+			}
+			flag1=!flag1;
+		})
+		//
+		///****************图片**********************/
+		name_pic=1;
+		function t1(o){
+			if(o==1 || name_pic!=1){
+			var file="file"+o;
+			var img="img"+o;
+			var hid="hidden"+o;
+			var aa="a"+o;
+			}else{
+
+			var file="file"+name_pic;
+			var img="img"+name_pic;
+			var hid="hidden"+name_pic;
+			var aa="a"+name_pic;
+			}
+			var docObj = document.getElementById(file);
+			var imgObjPreview = document.getElementById(img);
+			var hidden=document.getElementById(hid);
+			// alert(hidden);
+			if (docObj.files && docObj.files[0]) {
+				hidden.src=window.URL.createObjectURL(docObj.files[0]); //获取file文件的路径
+				hidden.onload=function(){
+					var width=hidden.width;
+					var height=hidden.height;
+					var a=document.getElementById(aa);
+						if(width>height){
+						imgObjPreview.style.cssText='width:100%';	//重写css样式
+						}else{
+						imgObjPreview.style.cssText='height:100%;width:auto;';					
+						}
+				imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+				imgObjPreview.style.display = 'block';
+				}
+			}else{
+				return false;
+			}
+			if(o==name_pic){
+				var count=$('.pro_img').length;
+				if(count<6){
+				name_pic++;
+			var pic_div="<div><a class='pro_img' id='a"+name_pic+"' ><input type='file' id='file"+name_pic+"'  accept='image/*' multiple='multiple' name='pic[]' onchange='t1("+name_pic+")'/><img src='__PUBLIC__/Home/img/upload.jpg' id='img"+name_pic+"'></a><img  id='hidden"+name_pic+"' style='display:none;'></div>";
+			$('#upload').append(pic_div); 
+			var pcWidth=$('#upload').width()
+		    var picImg=pcWidth/3-10;
+		    $(".pro_img").width(picImg);
+		    $(".pro_img").height(picImg);
+			}		
+		}
+	}
+	//
+	var pcWidth=$('#upload').width()
+    var picImg=pcWidth/3-10;
+    $(".pro_img").width(picImg);
+    $(".pro_img").height(picImg);
+	</script>
+</body>
+</html>

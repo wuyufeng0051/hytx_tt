@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>回复私信</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style type="text/css">
+	*{padding: 0;margin: 0;}
+	body{
+		font-family: "微软雅黑";
+		background-color: #ebebeb;
+	}
+	.swiper-container2 img{
+		display: block;
+		width: 100%;
+		height: 180px;
+	}
+	.swiper-container2{
+		width: 100%;
+		height: 180px;
+	}
+	.swiper-container2 ul{
+		width: 100%;
+		height: 150px;
+		list-style: none;
+		overflow: hidden;
+		padding: 15px 10px 10px 7%;
+	}
+	.swiper-container2 ul li{
+		float: left;
+		width: 14.2%;
+		height: 35px;
+		line-height: 35px;
+		
+	}
+	.swiper-container2 ul li img{
+		width: 20px;
+		height: 20px;
+		padding-left: 3%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	ul{
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	.banner{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 999;
+		height: 35px;
+		background-color: #fd5c30;
+
+	}
+	.banner a{
+		width: 25%;
+		float: left;
+		color: #fff;
+	}
+	.banner span{
+		width: 50%;
+		float: left;
+		text-align: center;
+		line-height: 35px;
+		color: #fff;
+		font-size: 15px;
+	}
+	.msgList{
+		width: 100%;
+		float: left;
+		margin-top: 35px;
+		margin-bottom: 43px;
+	}
+	.msgList .sendTime{
+		width: 100%;
+		float: left;
+		text-align: center;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.msgList .sendTime span{
+		color: #fff;
+		background-color: #d1d1d1;
+		padding: 2px 5px;
+		font-size: 12px;
+	}
+	.msgList .chatBox{
+		width: 100%;
+		float: left;
+		margin-bottom: 13px;
+	}
+	.msgList .chatBox .photo{
+		width: 38px;
+		height: 38px;
+	}
+	.msgList .chatBox div{
+		color: #000;
+		font-size: 14px;
+		/*min-width: 35%;*/
+		max-width: 55%;
+		padding: 6px 10px;
+		border-radius: 5px;
+		line-height: 21px;
+	}
+	.msgList .chatBox div img{
+		width: 17px;
+		vertical-align: middle;
+		margin-left: 2px;
+		margin-right: 2px;
+		margin-top: -3px;
+	}
+	.msgList .left div{
+		background-color: #fff;
+		float: left;
+	}
+	.msgList .left .photo{
+		float: left;
+		margin: 0 8px 0 10px;
+	}
+	.msgList .right div{
+		background-color: #a5e35e;
+		float: right;
+	}
+	.msgList .right .photo{
+		float: right;
+		margin: 0 10px 0 8px;
+	}
+	.bottom{
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		height: 43px;
+		line-height: 43px;
+		background-color: #fff;
+	}
+	.bottom input{
+		float: left;
+		display: block;
+		height: 37px;
+		border: none;
+		border-bottom: 1px solid #ff7300;
+		width: 65%;
+		margin-left: 10px;
+		line-height: 37px;
+		font-size: 14px;
+		padding: 0;
+		padding-left: 3px;
+	}
+	.bottom img{
+		float: left;
+		width: 27px;
+		margin-left: 5%;
+		vertical-align: middle;margin-top: 10px;
+	}
+	.bottom div{
+		float: right;
+		color: #fff;
+		background-color: #ff7300;
+		width: 45px;
+		height: 28px;
+		line-height: 28px;
+		text-align: center;
+		font-size: 13px;
+		margin-right: 8px;
+		border-radius: 5px;
+		margin-top: 8px;
+	}
+	.biaoqinbox{
+		width: 100%;
+		height: 180px;
+		/*display: none;*/
+		color: #000;
+		overflow: hidden;
+		padding: 10px;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: 8888;
+		padding-top: 0;
+		background-color: #fff;
+	}
+	</style>
+</head>
+<body>
+	<div class="mui-content">
+		<!-- <div class="banner">
+				<a href="#" onClick="javascript :history.back(-1);"><span><</span></a>
+	    		<span>Sunday</span>
+		</div> -->
+		<!--消息列表-->
+		<div class="msgList" style="overflow:scroll; height: 100%; width: 100%; " id="interaction">
+		  <volist name="all" id="vo">
+		   <?php if(!empty($vo['vice'])){ ?>
+			<div class="sendTime"><span>{$vo.date}</span></div>
+			<div class="chatBox right">
+				<img class="photo" src="{$c_res.user_head}">
+				<div class="chatContent">{$vo.chatinfo_content}</div>
+			</div>
+			<?php }else{ ?>
+			<div class="sendTime"><span>{$vo.date}</span></div>
+			<div class="chatBox left">
+				<img class="photo" src="{$u_res.user_head}">
+				<div class="chatContent">{$vo.chatinfo_content}</div>
+			</div>	
+			<?php } ?>
+ 		  </volist>
+		</div>
+   
+
+		<!--发送-->
+		<div class="bottom">
+			<input type="text" id="comm">
+			<img class="expression" id="expression" src="__PUBLIC__/Home/img/biaoqin0.png">
+			<div id="send">发送</div>
+		</div>
+		<div class="biaoqinbox">
+				<!--图片轮播区-->
+		<div class="swiper-container2" style="position: relative;">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<a href="#">
+						<!-- <img src="img/yuantiao.jpg"> -->
+						<ul>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+							<li><img src="__PUBLIC__/Home/img/baioqin.png"></li>
+						</ul>
+						
+					</a>
+				</div>
+				 
+			</div>
+			<div class="swiper-pagination" style="position: absolute;bottom: 5px;"></div>
+		</div>
+		</div>
+	</div>
+
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+     
+	<script type="text/javascript">
+	//一开始
+    function changeHight(){
+    var height=$("#interaction").css('height');
+     
+       height=height.substr(0,height.length- 2) 
+  	   window.scrollTo(0,height);
+	// var afterHeight = $("#interaction").scrollTop(); 
+   }
+
+  setTimeout("changeHight()",5);
+
+   $('#send').click(function(){
+   	    var chatinfo_vice ="{$u_res.user_id}"
+   	    var comm = $("#comm").val();
+   	    if (!comm) {
+   	    	layer.msg('请先输入发送内容')
+   	    }else{
+	     	$.post('{:U("Home/Msgbrid/addmsg")}', {chatinfo_content:comm,chatinfo_vice:chatinfo_vice}, function(data) {
+	     		if (data == 1) {
+	     		 $("#comm").val("");
+	     		 // time()
+	     		}else{
+                 layer.msg('系统繁忙中,请稍后再试')
+	     		}
+	    	});
+        }
+   })
+ 
+
+  function time(){
+  	//添加聊天内容
+  	var chatinfo_main = "{$u_res.user_id}"
+  	var chatinfo_main_head = "{$u_res.user_head}"
+  	var chatinfo_vice_head = "{$c_res.user_head}"
+
+    $.post('{:U("Home/Msgbrid/chat_msg_add")}', {chatinfo_main:chatinfo_main}, function(data) {
+
+    	  var json = eval("data");   
+          $.each(JSON.parse(json), function(idx, obj) {
+          	  if (obj.vice) {
+           		 var nsg ='<div class="sendTime"><span>'+obj.date+'</span></div>'
+							+'<div class="chatBox right">'
+							+	'<img class="photo" src="'+chatinfo_vice_head+'">'
+							+	'<div class="chatContent">'+obj.chatinfo_content+'</div>'
+							+'</div>'	
+           	  }
+
+			   
+			   if (obj.main) { 
+ 			   var nsg ='<div class="sendTime"><span>'+obj.date+'</span></div>'
+						+'<div class="chatBox left">'
+						+	'<img class="photo" src="'+chatinfo_main_head+'">'
+						+	'<div class="chatContent">'+obj.chatinfo_content+'</div>'
+						+'</div>'	
+ 			    } 
+
+ 			    var chatinfo_id = obj.chatinfo_id;
+                 // $.post('{:U("Home/Msgbrid/saveload")}', {chatinfo_id:chatinfo_id}, function(daty) {
+                 //  });
+            
+				 $("#interaction").append(nsg)
+
+			     if (data) {
+			  	  changeHight()
+	 			 }
+
+
+           })
+    })
+ }
+
+      window.setInterval("time()",1000); 
+
+
+	$(function(){
+		$(".biaoqinbox").hide();
+	});
+	//选择表情
+		$('.expression').on('tap',function(){
+			$('.biaoqinbox').toggle();
+			$('.bottom').css('bottom','180px');
+			// $('body').animate({
+			// 	'scrollTop':"+=180px"
+			// },10);
+			if($('.biaoqinbox').css('display') == 'none')
+			{
+				$('.bottom').css('bottom','0');
+				document.getElementById("expression").src = "__PUBLIC__/Home/img/biaoqin0.png";
+			}
+			if($('.biaoqinbox').css('display') == 'block')
+			{
+				$('.bottom').css('bottom','180px');
+				document.getElementById("expression").src = "__PUBLIC__/Home/img/baioqin.png";
+			}
+		});
+		var mySwiper = new Swiper('.swiper-container2',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: false
+		});
+	</script>
+</body>

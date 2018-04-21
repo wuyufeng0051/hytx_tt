@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>同城货运</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/_head.css">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/slider.js"></script>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+<!-- <div class="loading" ><img src="__PUBLIC__/Home/img/loading.gif" style="width: 30px;height: 30px;"><p style="text-align: center;color: #fff;">加载中，请稍等...</p></div> -->
+<link rel="stylesheet" href="__PUBLIC__/Home/css/vehicle_information.css?v=5">
+<!-- 共同顶部 s-->
+<div class="header fn-clear">
+    <div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+    <div class="title">商家详情</div>
+    <div class="share"></div>
+    <div class="header_right"><a class="fa_btn" href="javascript:;">发布</a><i></i><a href="__MODULE__/Index/my">我的</a></div>
+</div>
+<!-- 共同顶部 e-->
+<!-- 顶部固定搜索框 s-->
+<div class="search_box">
+    <div class="seach_pic"><img src="__PUBLIC__/Home/images/banner_1.png" alt=""></div>
+    <div class="sea_input fn-clear"><input type="text" placeholder="请输入您要查找的信息" value="{$Think.get.search}" id="search"><a href="javascript:;" id="searchbtn"><button><i></i>查找</button></a></div>
+</div>
+<!-- 顶部固定搜索框 e-->
+<empty name="res_all">
+    <div class="failed">
+        <div class="failed_pic"></div>
+        <h1>暂无此类信息，请看看别的吧~</h1>
+    </div>
+    <else/>
+<div class="merchant">
+    <div class="merchant_list" style="margin-top: 0.6rem;">
+        <foreach name="res_all" item="val">
+            <div class="mer_detail fn-clear" data-phone="{$val['carinfo_phone']}"><a href="__MODULE__/CityFreight/carinfodetail/carinfo_id/{$val['carinfo_id']}">
+                <div class="mer_pic"><img src="{$val['imgs']}" alt=""><if condition="$val['carinfo_is_top'] eq 1"><i class="top"></i></if></div>
+                <h1>{$val['carinfo_title']}</h1>
+                <p>浏览：<em>{$val['carinfo_browse']}</em> 次</p>
+                <span>{$val['carinfo_cartype']}</span>
+            </a>
+                <div class="tel"></div>
+            </div>
+        </foreach>
+    </div>
+
+    </div>
+</empty>
+    <!--<div class="page fn-clear">-->
+        <!--<a href="#" class="before">上一页</a>-->
+        <!--<div class="page_box">-->
+            <!--<span><em>1</em>/9<i></i></span>-->
+            <!--<select name="" id="" onchange="selectChange()">-->
+                <!--<option value="1">1</option>-->
+                <!--<option value="2">2</option>-->
+                <!--<option value="3">3</option>-->
+                <!--<option value="4">4</option>-->
+                <!--<option value="5">5</option>-->
+                <!--<option value="6">6</option>-->
+            <!--</select>-->
+        <!--</div>-->
+        <!--<a href="#" class="after">下一页</a>-->
+    <!--</div>-->
+    <!--<div class="page_numb">共9页</div>-->
+</div>
+<div class="phone">
+    <h1>提示</h1>
+    <h2>联系我时，请说是在<em>泸西本地鸟</em>上看到的，谢谢！</h2>
+    <ul>
+        <li><a><em></em><i></i></a></li>
+    </ul>
+    <div class="close"><i></i></div>
+</div>
+<div class="disk"></div>
+<!-- 发布弹出层 -->
+<div class="fa_box fa_1">
+    <div class="fb_title">请选择您要发布的类型<i></i></div>
+    <ul>
+        <li><a href="__MODULE__/CityFreight/issuecar">顺路车</a></li>
+        <li><a href="__MODULE__/CityFreight/issuegoods">顺路货</a></li>
+        <li><a href="__MODULE__/CityFreight/issuecarinfo">车辆信息</a></li>
+    </ul>
+</div>
+<!-- 发布弹出层 -->
+<script>
+    window.onload=function(){
+
+        $('body').css('overflow','auto');
+        $('.loading').bind("touchmove",function(e){
+            e.preventDefault();
+        });
+
+        $(".loading").fadeOut();
+    }
+    $('.fa_btn').on('click',function(){
+        if ($('.fa_1').css("display") == "none") {
+            $('.fa_1').show();
+            $('.disk').show();
+            $('body').addClass('by');
+        }else{
+            $('.fa_1').hide();
+            $('.disk').hide();
+            $('body').removeClass('by');
+        }
+    })
+    $('.fa_box .fb_title i').click(function(){
+        $('.fa_1').hide();
+        $('.fa_2').hide();
+        $('body').removeClass('by');
+        $('.disk').hide();
+    })
+    $('.disk').click(function(){
+        $('.fa_1').hide();
+        $('.fa_2').hide();
+        $('body').removeClass('by');
+        $('.phone').hide();
+        $('.disk').hide();
+    })
+    $('#searchbtn').click(function(){
+        var searchval=$('#search').val();
+        window.location.href="__MODULE__/CityFreight/carinfo?search="+searchval;
+    })
+</script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/vehicle_information.js"></script>
+</body>
+</html>

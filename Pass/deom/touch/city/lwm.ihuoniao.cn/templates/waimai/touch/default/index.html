@@ -1,0 +1,152 @@
+{#if $typeid == ""#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$waimai_title#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0;">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/siteConfig/touch/default/css/touch_common.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css">
+<script src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+	<!-- 头部 -->
+	{#$pageTitle = '<a href="javascript:;" class="fn-clear"><em>定位中</em></a>'#}
+	{#*{#$pageTitle = '<a href="local.html" class="fn-clear"><em>定位中</em><i><img src="{#$templets_skin#}images/la.png" alt=""></i></a>'#}*#}
+	{#include file="../../../siteConfig/touch_top.html"#}
+	<!-- 头部 end -->
+
+	<!-- 滑动导航 -->
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<ul class="nav fn-clear">
+					{#waimai action='type' return='type'#}
+					<li>
+						<a href="{#getUrlPath service='waimai' template='index' param="typeid={#$type.id#}"#}">
+							<span class="icon-circle"><img src="{#$templets_skin#}images/nav{#$_bindex.type#}.png"></span><span class="icon-txt">{#$type.typename#}</span>
+						</a>
+					</li>
+					{#if !(($_bindex.type+1) % 9)#}
+				</ul>
+			</div>
+			<div class="swiper-slide">
+				<ul class="nav fn-clear">
+					{#/if#}
+					{#/waimai#}
+				</ul>
+			</div>
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+	<!-- 滑动导航 end -->
+
+	<!-- 附近商家列表 -->
+	<div class="near">
+		<div class="near-tit"><span>最新入驻商家</span></div>
+		<div class="near-box"></div>
+	</div>
+	<!-- 附近商家列表 end -->
+
+	<!-- 底部 -->
+	{#*
+	<div class="footer">
+		<div class="footer-l"><a href="{#$waimai_channelDomain#}" class="active"><i></i>首页</a></div>
+		<div class="footer-c"><a href="{#getUrlPath service="member" type="user" template="order" action="tuan"#}"><i></i>订单</a></div>
+		<div class="footer-r"><a href="{#$member_userDomain#}"><i></i>我的</a></div>
+	</div>
+	*#}
+	{#include file="../../../siteConfig/touch_bottom.html"#}
+	<!-- 底部 end  -->
+</div>
+
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js"></script>
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script src="{#$cfg_basehost#}/templates/siteConfig/touch/default/js/touch_common.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/index.js"></script>
+</body>
+</html>
+{#else#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$typename#} - {#$waimai_title#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0;">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/sj-list.css?v=1">
+</head>
+
+<body>
+<div class="container">
+	<!-- 头部 -->
+	<div class="header">
+		<div class="header-l"><a href="{#$waimai_channelDomain#}"><img src="{#$templets_skin#}images/left.png" alt=""></a></div>
+		<div class="header-address"><span>{#$typename#}</span></div>
+		<div class="header-search"></div>
+		{#*<div class="header-search"><a href="search.html"><img src="{#$templets_skin#}images/search1.png" alt=""></a></div>*#}
+	</div>
+	<!-- 头部 end -->
+
+	<!-- 筛选框 -->
+	<div class="choose-box">
+		<div class="choose-tab">
+			<ul>
+				<li class="tab-area"><a href="javascript:;"><i><span>{#if $typeid#}{#$typename#}{#else#}全部分类{#/if#}</span></i></a></li>
+				<li class="tab-price"><a href="javascript:;"><i><span>综合排序</span></i></a></li>
+				<li class="tab-type"><a href="javascript:;"><i><span>筛选</span></i></a></li>
+			</ul>
+		</div>
+		<div class="choose-local">
+			<div class="choose-slide choose-li" id="choose-classify">
+				<ul>
+					<li{#if !$typeid#} class="active"{#/if#} data-id=""><a href="javascript:;">全部商家</a></li>
+					{#waimai action='type' return='type'#}
+					<li{#if $typeid == $type.id#} class="active"{#/if#} data-id="{#$type.id#}"><a href="javascript:;">{#$type.typename#}</a></li>
+					{#/waimai#}
+				</ul>
+			</div>
+			<div class="choose-slide choose-li" id="choose-sort">
+				<ul>
+					<li class="active" data-id=""><a href="javascript:;">默认排序</a></li>
+					<li data-id="5"><a href="javascript:;">配送速度</a></li>
+					<li data-id="3"><a href="javascript:;">配送金额</a></li>
+					<li data-id="1"><a href="javascript:;">起送金额</a></li>
+				</ul>
+			</div>
+			<div class="choose-slide choose-a" id="choose-screen">
+				<ul>
+					<li id="peisong"><a href="javascript:;">免配送费</a></li>
+					<li id="supfapiao"><a href="javascript:;">可开发票</a></li>
+					<li id="online"><a href="javascript:;">在线支付</a></li>
+				</ul>
+				<div class="bottom-box">
+					<a class="clear-a l">重置</a>
+					<a class="confirm r">确定</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="white"></div>
+	<!-- 筛选框 end -->
+
+	<!-- 附近商家列表 -->
+	<div class="near">
+		<div class="near-box"></div>
+	</div>
+<!-- 附近商家列表 end -->
+
+</div>
+<div class="mask"></div>
+<script src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script src="{#$templets_skin#}js/iscroll.js"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script src="{#$templets_skin#}js/sj-list.js?v=1"></script>
+</body>
+</html>
+{#/if#}

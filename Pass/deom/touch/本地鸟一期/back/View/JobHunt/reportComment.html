@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>举报</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="css/mui.min.css">
+	<style>
+	.title{
+		padding: 10px;
+		background:#fff;
+		border-bottom:1px solid #ddd;
+		color: #666;
+	}
+	.ul{
+		margin:0;
+	}
+	.ul li{
+		line-height: 40px;
+		border-bottom: 1px solid #ddd;
+	}
+	.ul li:last-child{
+		border:none;
+	}
+	.ul li span{
+		float: right;
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		margin-right: 10px;
+		background: url(img/duigou.png) no-repeat center center;
+		background-size: 24px 24px;
+		display: none;
+	}
+	</style>
+</head>
+<body>
+
+<include file="Public/share" title='包含文件'/>
+
+	<div class="mui-content">
+		<div class="title">
+			<span style="color: #ff7400;font-weight: 600;">*</span>选择举报的原因
+		</div>
+		<ul class="mui-list-unstyled ul" style="padding-left: 10px;background: #fff;">
+			<li>广告<span></span></li>
+			<li>色情低俗<span></span></li>
+			<li>反动<span></span></li>
+			<li>谣言<span></span></li>
+			<li>欺诈或恶意营销<span></span></li>
+			<li>谩骂<span></span></li>
+		</ul>
+		<div class="submit" style="padding: 15px;">
+			<button class="mui-btn btn-block" style="background: #ff7400;width: 100%;color:#fff;line-height: 30px;border:none;font-size: 16px;">提交</button>
+		</div>
+	</div>
+	<script src="js/mui.min.js"></script>
+	<script src="js/zepto.min.js"></script>
+	<script> 
+		$('.ul li').on('tap',function(){
+			$(this).find('span').toggle();
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-smile-o"></i>
+        <a href="#">外卖订单</a></li>
+      <li>
+        <a href="#">订单管理</a></li>
+      <li class="active">未处理订单</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.new_label { text-align: right; } .ness{ display: table; } .form-group { float: left; width: 50%; } .food_list{ list-style:none; margin:0px 50px; } .food_list span{ margin:5px 6px; display:inline-block; } .food_list span label{ width:140px; height:35px; line-height:17px; display:inline-block; overflow:hidden; font-size:14px; text-align:right; padding-right:5px; } .loading{ text-align: center; display: none; } .food_list center{ font-size:14px; font-weight:bold; color:red; } #new-order .alert-danger, #edit-order .alert-danger{ display:none; } .food_title{ height:30px; line-height:30px; font-size:18px; font-weight:bold; color:orange; cursor:pointer; } .spinner{ width:30px; } .ui-spinner{ vertical-align:top; } .yang{ margin-left:5px; border:1px solid #949290; border-radius:3px; cursor:pointer; } .xing{ margin-left:5px; border:1px solid red; border-radius:3px; cursor:pointer; } .cc{ border:1px solid #F59942; } .food{ display:none; } /*新增*/ .pop-one{ width: 270px; background: #fff; border-radius:3px; position: fixed; top: 21%; left: 50%; margin-left: -135px; } .meng{ background:rgba(0,0,0,.5); position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index:9999; } .pop-one .pop-cont{ line-height: 25px; padding: 12px 10px; border-bottom: 1px solid #d2d6da; } .pop-bottom a{ text-align: center; height: 40px; line-height: 40px; color: #007aff; } .pop-bottom a:first-child{ border-right:1px solid #d2d6da; } .align-center, .div-align-center { text-align: center; } .meng p{text-align:left;} .feng p{text-align:left;} .geng p{text-align:left;} .webkit-box1 { display: -webkit-box; width: 100%; } .webkit-box1 >* { -webkit-box-flex: 1; width: 100%; display: block; } .order_true{cursor:pointer;} .feng{ background:rgba(0,0,0,.5); position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index:9999; } .geng{ background:rgba(0,0,0,.5); position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index:9999; } .aa{display:none;} #order-grid-open .address_detail,#order-grid-open .oldmemo,#order-grid-open .oldconfigmemo{ font-size:12px; color:black; display:none; width:100%; } .label-meituan { background-color:：#00c5a8; font-weight:bold; } .label-eleme { background-color:#32aaf5; font-weight:bold; }</style>
+      <div class="meng aa">
+        <div class="pop-one">
+          <div class="pop-cont align-center">
+            <p>
+              <span style="position:relative;top:-35px;">配送地址：</span>
+              <textarea class="delivery_address" cols="19" rows="3"></textarea>
+              <input type="hidden" class="orderid" value=""></p>
+          </div>
+          <div class="pop-bottom webkit-box1">
+            <a class="order_true">提交</a>
+            <a class="order_cancel">取消</a></div>
+        </div>
+      </div>
+      <div class="feng aa">
+        <div class="pop-one">
+          <div class="pop-cont align-center">
+            <p>
+              <span style="position:relative;top:-25px;">备注：</span>
+              <textarea class="newmemo"></textarea>
+              <input type="hidden" class="orid" value=""></p>
+          </div>
+          <div class="pop-bottom webkit-box1">
+            <a class="memo_true">提交</a>
+            <a class="order_cancel">取消</a></div>
+        </div>
+      </div>
+      <div class="geng aa">
+        <div class="pop-one">
+          <div class="pop-cont align-center">
+            <p>
+              <span style="position:relative;top:-35px;">商家备注：</span>
+              <textarea class="newconfigmemo" cols="19" rows="3"></textarea>
+              <input type="hidden" class="ordid" value=""></p>
+          </div>
+          <div class="pop-bottom webkit-box1">
+            <a class="configmemo_true">提交</a>
+            <a class="order_cancel">取消</a></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li >
+                <a href="indent_manage.html">未处理订单
+                  <span class="badge badge-danger">0</span></a>
+              </li>
+              <li>
+                <a href="indent_manage_down.html">已确认订单</a></li>
+              <li>
+                <a href="indent_manage_on.html">配送中订单</a></li>
+              <li>
+                <a href="indent_manage_succeed.html">成功订单</a></li>
+              <li class="active">
+                <a href="indent_manage_fail.html">失败订单</a></li>
+              <li>
+                <a href="indent_manage_cancel.html">已取消订单</a></li>
+              <li>
+                <a href="indent_manage_back.html">退款中订单</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert">
+                  <i class="ace-icon fa fa-times"></i>
+                </button>
+                <p>注意：对于失败订单中在线支付的订单和会员余额支付的订单，钱不会自动退还给顾客，您必须在失败订单列表中手动点击退款按钮进行退款操作才能完成给顾客退款。</p>
+              </div>
+              <div id="order-grid-failed" class="grid-view">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th class="checkbox-column" id="order-grid-failed_c0">
+                        <input type="checkbox" value="1" name="order-grid-failed_c0_all" id="order-grid-failed_c0_all"></th>
+                      <th id="order-grid-failed_c1">订单编号</th>
+                      <th id="order-grid-failed_c2">店铺</th>
+                      <th id="order-grid-failed_c3">顾客ID</th>
+                      <th id="order-grid-failed_c4">姓名</th>
+                      <th id="order-grid-failed_c5">电话</th>
+                      <th id="order-grid-failed_c6">配送地址</th>
+                      <th id="order-grid-failed_c7">详情</th>
+                      <th id="order-grid-failed_c8">备注</th>
+                      <th id="order-grid-failed_c9">总价</th>
+                      <th id="order-grid-failed_c10">下单时间</th>
+                      <th id="order-grid-failed_c11">付款方式</th>
+                      <th id="order-grid-failed_c12">商家备注</th>
+                      <th id="order-grid-failed_c13">配送员</th>
+                      <th id="order-grid-failed_c14">失败原因</th>
+                      <th id="order-grid-failed_c15">退款状态</th>
+                      <th class="button-column" id="order-grid-failed_c16">操作</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="34157988" id="order-grid-failed_c0_0" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">坝头碳烤小黄鱼20170316-1</td>
+                      <td width="80" style="word-break: break-all;">坝头碳烤小黄鱼</td>
+                      <td width="60">15609054</td>
+                      <td width="100">平平</td>
+                      <td width="90">18672566444</td>
+                      <td width="120" style="word-break: break-all;">平湖大道23号 清风明月养生会所</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤小黄鱼【6】条</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">21.00</td>
+                      <td width="85">2017-03-16 00:20:50</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（商户自己的微信支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">商家打样</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：退款成功</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-16 08:16:54</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170316541005013202848748655976</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="34063658" id="order-grid-failed_c0_1" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">比得灌汤包20170315-2</td>
+                      <td width="80" style="word-break: break-all;">比得灌汤包</td>
+                      <td width="60">13466797</td>
+                      <td width="100">周小姐</td>
+                      <td width="90">18695073416</td>
+                      <td width="120" style="word-break: break-all;">君临天下(长宁大道) 君临天下11-3-306</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">鲜肉灌汤包 【5】个</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">炸酱面【1】份</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">牛肉灌汤包【5】个</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">24.00</td>
+                      <td width="85">2017-03-15 09:23:05</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（商户自己的微信支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">包子卖完了</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="34048636" id="order-grid-failed_c0_2" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">木炭原味儿烧烤20170314-1</td>
+                      <td width="80" style="word-break: break-all;">木炭原味儿烧烤</td>
+                      <td width="60">12947990</td>
+                      <td width="100">周少杰</td>
+                      <td width="90">13872575502</td>
+                      <td width="120" style="word-break: break-all;">湖景天成10号楼601</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">馒头【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">黄瓜【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">冬瓜【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">藕【3】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">茄子蒜泥【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">鸡柳【2】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">土豆【2】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">臭豆腐【3】串</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">41.00</td>
+                      <td width="85">2017-03-14 21:26:24</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（商户自己的微信支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">商家没开门</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="34048362" id="order-grid-failed_c0_3" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">坝头灌汤包20170314-1</td>
+                      <td width="80" style="word-break: break-all;">坝头灌汤包</td>
+                      <td width="60">14246275</td>
+                      <td width="100">兰芳</td>
+                      <td width="90">13227282688</td>
+                      <td width="120" style="word-break: break-all;">建东大道151号 几里加油站斜对面龙翔家私</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">牛肉灌汤包【1】笼/6个</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">鲜肉灌汤包【1】笼/6个</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">19.00</td>
+                      <td width="85">2017-03-14 21:22:20</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（商户自己的微信支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">商家未开门</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="34046945" id="order-grid-failed_c0_4" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">有意思20170314-1</td>
+                      <td width="80" style="word-break: break-all;">有意思</td>
+                      <td width="60">13068934</td>
+                      <td width="100">韩艳芳</td>
+                      <td width="90">13100786667</td>
+                      <td width="120" style="word-break: break-all;">秭归县中医院 住院部八楼护士办公室</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">柠檬维果蜜汁【1】杯</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">雪碧【1】杯</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">水果沙拉【1】份</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">45.00</td>
+                      <td width="85">2017-03-14 21:03:36</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（商户自己的微信支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">黎晓宜(15572790877)</td>
+                      <td width="50">材料不足</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33949113" id="order-grid-failed_c0_5" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">20170313-1</td>
+                      <td width="80" style="word-break: break-all;">小树鲜果（水果、零食）</td>
+                      <td width="60">13068934</td>
+                      <td width="100">韩艳芳</td>
+                      <td width="90">13100786667</td>
+                      <td width="120" style="word-break: break-all;">秭归县中医院 住院部八楼护士办公室</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">海南木瓜【1】个</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">哈密瓜【1】斤</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">21.90</td>
+                      <td width="85">2017-03-13 20:48:00</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">货物不足，</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：退款成功</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-14 10:48:50</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170314501005452371031246579559</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33900621" id="order-grid-failed_c0_6" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">茶物语20170313-1</td>
+                      <td width="80" style="word-break: break-all;">茶物语</td>
+                      <td width="60">14586043</td>
+                      <td width="100">冀霜霜</td>
+                      <td width="90">15090910641</td>
+                      <td width="120" style="word-break: break-all;">秭归县中医院 门诊四楼对外联络办</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">小芋圆布丁奶茶【1】杯</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">13.00</td>
+                      <td width="85">2017-03-13 12:41:57</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">商家打样</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-13 12:45:36</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170313485010052216474826393896</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33895540" id="order-grid-failed_c0_7" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">正新鸡排20170313-1</td>
+                      <td width="80" style="word-break: break-all;">正新鸡排</td>
+                      <td width="60">14220984</td>
+                      <td width="100">屈</td>
+                      <td width="90">17371707873</td>
+                      <td width="120" style="word-break: break-all;">建平一路4-A号 西楚路100号优速快递，</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">香酥鸡柳【1】"份"</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">招牌鸡排+饮料【1】份</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">21.00</td>
+                      <td width="85">2017-03-13 12:12:55</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">杨兰贵(13310569089)</td>
+                      <td width="50">店铺关门</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33860802" id="order-grid-failed_c0_8" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">坝头刚子烧烤20170312-6</td>
+                      <td width="80" style="word-break: break-all;">坝头刚子烧烤</td>
+                      <td width="60">15738396</td>
+                      <td width="100">向小姐</td>
+                      <td width="90">18571002925</td>
+                      <td width="120" style="word-break: break-all;">二圣路31号 原创郭场鸡</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤臭豆腐【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤鸡爪【2】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤土豆【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤猪腰子【2】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤黄瓜【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤金针菇【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤黑椒牛肉串【5】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤脆骨【5】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤茄子【1】个</div></td>
+                      <td style="word-break : break-all;" width="80">茄子不要放太多蒜，腰子味重点</td>
+                      <td width="65">80.50</td>
+                      <td width="85">2017-03-12 23:07:50</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80">首单减免3.0元</td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">商家</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-12 23:09:42</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170312544998539706623841003396</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33860642" id="order-grid-failed_c0_9" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">坝头刚子烧烤20170312-5</td>
+                      <td width="80" style="word-break: break-all;">坝头刚子烧烤</td>
+                      <td width="60">14344022</td>
+                      <td width="100">胡</td>
+                      <td width="90">15549988599</td>
+                      <td width="120" style="word-break: break-all;">西楚二路48号</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤土豆【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤馒头【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤香菇【2】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤茄子【1】个</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤金针菇【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤火腿【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤脆骨【5】串</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">41.00</td>
+                      <td width="85">2017-03-12 22:57:27</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">雨天以收</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-12 23:00:53</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170312535551502038760886929302</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33849219" id="order-grid-failed_c0_10" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">坝头灌汤包20170312-1</td>
+                      <td width="80" style="word-break: break-all;">坝头灌汤包</td>
+                      <td width="60">15170472</td>
+                      <td width="100">黄先生</td>
+                      <td width="90">13972571888</td>
+                      <td width="120" style="word-break: break-all;">长宁大道5号 豪庭大酒店对面移民局宿舍一单元一楼</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">牛肉灌汤包【1】笼/6个</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">鲜肉灌汤包【2】笼/6个</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">26.00</td>
+                      <td width="85">2017-03-12 20:14:44</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">商家未接单</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-12 20:20:53</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170312534852519130691585953314</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33847533" id="order-grid-failed_c0_11" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">坝头鸡翅包饭 烧烤20170312-1</td>
+                      <td width="80" style="word-break: break-all;">坝头鸡翅包饭 烧烤</td>
+                      <td width="60">14906144</td>
+                      <td width="100">王舒雅</td>
+                      <td width="90">15090910092</td>
+                      <td width="120" style="word-break: break-all;">长宁大道 豪庭酒店大门正对面移民局宿舍2单元5楼2号</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">烤臭豆腐【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">烤魔芋【1】份</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">烤鸡翅包饭【1】份</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">21.00</td>
+                      <td width="85">2017-03-12 19:54:52</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">张青松(15334041394)</td>
+                      <td width="50">没出摊</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33794737" id="order-grid-failed_c0_12" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">程家菜馆20170312-4</td>
+                      <td width="80" style="word-break: break-all;">程家菜馆</td>
+                      <td width="60">15721419</td>
+                      <td width="100">胡兴媛</td>
+                      <td width="90">13477848000</td>
+                      <td width="120" style="word-break: break-all;">安泰诊所(长宁大道) 长宁大道23号</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">榨广椒炒鸡蛋（盖浇饭）【1】份</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">16.00</td>
+                      <td width="85">2017-03-12 12:52:13</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">张其叁(13774192817)</td>
+                      <td width="50">客人点重</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33794609" id="order-grid-failed_c0_13" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">程家菜馆20170312-3</td>
+                      <td width="80" style="word-break: break-all;">程家菜馆</td>
+                      <td width="60">15721419</td>
+                      <td width="100">胡兴媛</td>
+                      <td width="90">13477848000</td>
+                      <td width="120" style="word-break: break-all;">安泰诊所(长宁大道) 长宁大道23号</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">榨广椒炒鸡蛋（盖浇饭）【1】份</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">16.00</td>
+                      <td width="85">2017-03-12 12:51:29</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">客人点重</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33793033" id="order-grid-failed_c0_14" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">平价菜馆20170312-1</td>
+                      <td width="80" style="word-break: break-all;">平价菜馆</td>
+                      <td width="60">15721419</td>
+                      <td width="100">胡兴媛</td>
+                      <td width="90">13477848000</td>
+                      <td width="120" style="word-break: break-all;">安泰诊所(长宁大道) 长宁大道23号</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">苕粉肉丝（盖浇饭）【1】份</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">16.00</td>
+                      <td width="85">2017-03-12 12:42:36</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80">首单减免3.0元</td>
+                      <td width="80" style="word-break: break-all;">张其叁(13774192817)</td>
+                      <td width="50">商家打样</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33664626" id="order-grid-failed_c0_15" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">重庆小面20170311-5</td>
+                      <td width="80" style="word-break: break-all;">重庆小面</td>
+                      <td width="60">14536206</td>
+                      <td width="100">李梦娜</td>
+                      <td width="90">15171767127</td>
+                      <td width="120" style="word-break: break-all;">橘颂北路35号2-N 庙嘴86号</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">热干面【1】份</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">10.00</td>
+                      <td width="85">2017-03-11 11:34:12</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">杨兰贵(13310569089)</td>
+                      <td width="50">热干面卖完了</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-11 11:52:40</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170311565749516549895927052234</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33663950" id="order-grid-failed_c0_16" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">重庆小面20170311-4</td>
+                      <td width="80" style="word-break: break-all;">重庆小面</td>
+                      <td width="60">14536206</td>
+                      <td width="100">李梦娜</td>
+                      <td width="90">15171767127</td>
+                      <td width="120" style="word-break: break-all;">橘颂北路35号2-N 庙嘴86号</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">热干面【1】份</div></td>
+                      <td style="word-break : break-all;" width="80">加花生</td>
+                      <td width="65">10.00</td>
+                      <td width="85">2017-03-11 11:31:52</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">王强(15629379553)</td>
+                      <td width="50">没有了</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-11 11:35:14</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170311505453560124986077251249</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33644911" id="order-grid-failed_c0_17" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">吴妈面馆20170311-1</td>
+                      <td width="80" style="word-break: break-all;">吴妈面馆</td>
+                      <td width="60">14734360</td>
+                      <td width="100">何小姐</td>
+                      <td width="90">15572771143</td>
+                      <td width="120" style="word-break: break-all;">建平路15号 哎呀呀饰品店</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">麻辣苕粉【1】份</div></td>
+                      <td style="word-break : break-all;" width="80">少辣</td>
+                      <td width="65">8.00</td>
+                      <td width="85">2017-03-11 08:42:01</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">王强(15629379553)</td>
+                      <td width="50">点错</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33633050" id="order-grid-failed_c0_18" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">肯德基20170310-8</td>
+                      <td width="80" style="word-break: break-all;">肯德基</td>
+                      <td width="60">15597322</td>
+                      <td width="100">鲁小姐</td>
+                      <td width="90">18062396888</td>
+                      <td width="120" style="word-break: break-all;">丽晶城(丹阳路) 丽晶城小区5一124</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">芙蓉荟蔬汤【1】份</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">醇香土豆泥【1】份</div></td>
+                      <td style="word-break : break-all;" width="80">马上送</td>
+                      <td width="65">16.00</td>
+                      <td width="85">2017-03-10 21:53:49</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">杨兰贵(13310569089)</td>
+                      <td width="50">土豆泥没有了，给顾客打电话了，顾客要求取消订单</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33609139" id="order-grid-failed_c0_19" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">周姐卤菜水饺20170310-3</td>
+                      <td width="80" style="word-break: break-all;">周姐卤菜水饺</td>
+                      <td width="60">14734360</td>
+                      <td width="100">何小姐</td>
+                      <td width="90">15572771143</td>
+                      <td width="120" style="word-break: break-all;">建平路15号 哎呀呀饰品店</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">水果粥【1】份</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">猪肉韭菜水饺【1】份</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">18.00</td>
+                      <td width="85">2017-03-10 18:05:56</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">王强(15629379553)</td>
+                      <td width="50">已卖完</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-10 19:47:39</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170310984999103521233823444283</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33593286" id="order-grid-failed_c0_20" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">金点外卖20170310-3</td>
+                      <td width="80" style="word-break: break-all;">测试店铺（勿点）</td>
+                      <td width="60">15606113</td>
+                      <td width="100">豆子西安测试</td>
+                      <td width="90">18092975278</td>
+                      <td width="120" style="word-break: break-all;">秭归县人民政府 5号楼7号</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">牛肉包【10】个</div></td>
+                      <td style="word-break : break-all;" width="80">西安测试</td>
+                      <td width="65">3.10</td>
+                      <td width="85">2017-03-10 15:56:40</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">徐林(18062382839)</td>
+                      <td width="50">好</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33591800" id="order-grid-failed_c0_21" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">金点外卖20170310-2</td>
+                      <td width="80" style="word-break: break-all;">测试店铺（勿点）</td>
+                      <td width="60">15669596</td>
+                      <td width="100">西安</td>
+                      <td width="90">15349213171</td>
+                      <td width="120" style="word-break: break-all;">秭归县人民政府 11楼</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">牛肉包【10】个</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">0.10</td>
+                      <td width="85">2017-03-10 15:34:05</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80">首单减免3.0元</td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">因为是测试订单，西安测试</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-10 20:20:15</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170310102974914765240073550016</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33591395" id="order-grid-failed_c0_22" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">金点外卖20170310-1</td>
+                      <td width="80" style="word-break: break-all;">测试店铺（勿点）</td>
+                      <td width="60">15606113</td>
+                      <td width="100">豆子西安测试</td>
+                      <td width="90">18092975278</td>
+                      <td width="120" style="word-break: break-all;">秭归县人民政府 5号楼7号</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">牛肉包【10】个</div></td>
+                      <td style="word-break : break-all;" width="80">测试订单 西安</td>
+                      <td width="65">0.10</td>
+                      <td width="85">2017-03-10 15:27:09</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80">首单减免3.0元</td>
+                      <td width="80" style="word-break: break-all;">张其叁(13774192817)</td>
+                      <td width="50">测试</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-10 20:20:27</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170310985151557495024606637980</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33579835" id="order-grid-failed_c0_23" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">20170310-2</td>
+                      <td width="80" style="word-break: break-all;">嘛嘛香中式营养快餐</td>
+                      <td width="60">14014827</td>
+                      <td width="100">李小姐</td>
+                      <td width="90">13117295818</td>
+                      <td width="120" style="word-break: break-all;">天问路11号 湖景天成3号楼1303</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">肉沫豇豆（记得加米饭呦！不然没饭吃）【1】份</div></td>
+                      <td style="word-break : break-all;" width="80">加米饭</td>
+                      <td width="65">15.50</td>
+                      <td width="85">2017-03-10 12:55:18</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">店内忙</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-10 13:10:10</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170310505410053674536427576087</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33541692" id="order-grid-failed_c0_24" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">坝头刚子烧烤20170310-1</td>
+                      <td width="80" style="word-break: break-all;">坝头刚子烧烤</td>
+                      <td width="60">13666265</td>
+                      <td width="100">李女士</td>
+                      <td width="90">18671708311</td>
+                      <td width="120" style="word-break: break-all;">平湖二路4-B号 橘颂居委会对面舒心足浴</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤臭豆腐【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤藕片【4】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤香菇【2】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤培根【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤脆骨【10】串</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">39.00</td>
+                      <td width="85">2017-03-10 00:24:23</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">以收</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33540863" id="order-grid-failed_c0_25" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">坝头刚子烧烤20170309-4</td>
+                      <td width="80" style="word-break: break-all;">坝头刚子烧烤</td>
+                      <td width="60">15667157</td>
+                      <td width="100">卢凤和</td>
+                      <td width="90">15997573908</td>
+                      <td width="120" style="word-break: break-all;">滨湖路158号 滨湖路166号</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤火腿【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤奥尔良秘制烤翅【2】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤热狗【2】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤土豆【4】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">碳烤藕片【2】串</div></td>
+                      <td style="word-break : break-all;" width="80">12点半前到</td>
+                      <td width="65">37.00</td>
+                      <td width="85">2017-03-09 23:50:45</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80">首单减免3.0元</td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">以收</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-10 08:22:35</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170310985110044717930893845064</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33497781" id="order-grid-failed_c0_26" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">九三食府20170309-1</td>
+                      <td width="80" style="word-break: break-all;">九三食府</td>
+                      <td width="60">12627653</td>
+                      <td width="100">李天喜</td>
+                      <td width="90">13872482581</td>
+                      <td width="120" style="word-break: break-all;">秭归县人民医院-外科楼 二</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">香菇瘦肉粥【1】份</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">香蕉飞饼【1】份</div></td>
+                      <td style="word-break : break-all;" width="80">不要辣，尽快。</td>
+                      <td width="65">26.00</td>
+                      <td width="85">2017-03-09 16:26:13</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">张其叁(13774192817)</td>
+                      <td width="50">没有</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-09 16:43:41</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170309100481013163294758725248</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33494880" id="order-grid-failed_c0_27" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">肯德基20170309-8</td>
+                      <td width="80" style="word-break: break-all;">肯德基</td>
+                      <td width="60">11135577</td>
+                      <td width="100">王女士</td>
+                      <td width="90">13177068368</td>
+                      <td width="120" style="word-break: break-all;">橘颂路 橘颂居委会</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">百事可乐【1】大杯</div></td>
+                      <td style="word-break : break-all;" width="80">测试</td>
+                      <td width="65">11.93</td>
+                      <td width="85">2017-03-09 15:48:03</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">测试</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33493346" id="order-grid-failed_c0_28" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">20170309-1</td>
+                      <td width="80" style="word-break: break-all;">嘛嘛香中式营养快餐</td>
+                      <td width="60">14783638</td>
+                      <td width="100">王</td>
+                      <td width="90">1325896658886</td>
+                      <td width="120" style="word-break: break-all;">长宁大道47号 三号</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">腊肉【1】份</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">12.00</td>
+                      <td width="85">2017-03-09 15:24:11</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">未开始</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33470375" id="order-grid-failed_c0_29" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">肯德基20170309-4</td>
+                      <td width="80" style="word-break: break-all;">肯德基</td>
+                      <td width="60">12429617</td>
+                      <td width="100">梅虎</td>
+                      <td width="90">18307178128</td>
+                      <td width="120" style="word-break: break-all;">建平路1号（一扫光零食量贩秭归店）</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">新奥尔良烤鸡腿堡【1】个</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">葡式蛋挞【1】1只</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">薯条（小份）【1】"份"</div></td>
+                      <td style="word-break : break-all;" width="80">测试，不要抢</td>
+                      <td width="65">29.78</td>
+                      <td width="85">2017-03-09 11:49:19</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">黎晓宜(15572790877)</td>
+                      <td width="50">测试</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33466935" id="order-grid-failed_c0_30" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">老归州酒家20170309-2</td>
+                      <td width="80" style="word-break: break-all;">老归州酒家</td>
+                      <td width="60">13074024</td>
+                      <td width="100">谭尧军</td>
+                      <td width="90">18086371687</td>
+                      <td width="120" style="word-break: break-all;">庙嘴经济园区加油站后面70号</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">青椒肉丝（炒菜）【1】份</div></td>
+                      <td style="word-break : break-all;" width="80">打两盒饭</td>
+                      <td width="65">26.00</td>
+                      <td width="85">2017-03-09 11:36:27</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">张其叁(13774192817)</td>
+                      <td width="50">买家点单重复</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33460096" id="order-grid-failed_c0_31" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">肯德基20170309-3</td>
+                      <td width="80" style="word-break: break-all;">肯德基</td>
+                      <td width="60">11135577</td>
+                      <td width="100">王女士</td>
+                      <td width="90">13177068368</td>
+                      <td width="120" style="word-break: break-all;">橘颂路 橘颂居委会</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">新奥尔良烤鸡腿堡【1】个</div></td>
+                      <td style="word-break : break-all;" width="80">测试</td>
+                      <td width="65">17.45</td>
+                      <td width="85">2017-03-09 11:08:37</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">黎晓宜(15572790877)</td>
+                      <td width="50">测试</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33458216" id="order-grid-failed_c0_32" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">肯德基20170309-2</td>
+                      <td width="80" style="word-break: break-all;">肯德基</td>
+                      <td width="60">11135577</td>
+                      <td width="100">王女士</td>
+                      <td width="90">13177068368</td>
+                      <td width="120" style="word-break: break-all;">橘颂路 橘颂居委会</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">老北京鸡肉卷【1】个</div></td>
+                      <td style="word-break : break-all;" width="80">测试</td>
+                      <td width="65">15.75</td>
+                      <td width="85">2017-03-09 10:59:27</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">没货</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33457968" id="order-grid-failed_c0_33" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">肯德基20170309-1</td>
+                      <td width="80" style="word-break: break-all;">肯德基</td>
+                      <td width="60">11135577</td>
+                      <td width="100">郑女士</td>
+                      <td width="90">13207208860</td>
+                      <td width="120" style="word-break: break-all;">橘颂社区居委会 金点子广告</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">新奥尔良烤鸡腿堡【1】个</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">17.45</td>
+                      <td width="85">2017-03-09 10:58:06</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">没货</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33457833" id="order-grid-failed_c0_34" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">金点外卖20170309-1</td>
+                      <td width="80" style="word-break: break-all;">测试店铺（勿点）</td>
+                      <td width="60">11135577</td>
+                      <td width="100">谭先生</td>
+                      <td width="90">18371838393</td>
+                      <td width="120" style="word-break: break-all;">润恒·国华盛景 三单元30楼</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">牛肉包【11】个</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">3.11</td>
+                      <td width="85">2017-03-09 10:57:24</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">测试</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33449456" id="order-grid-failed_c0_35" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">比得灌汤包20170309-1</td>
+                      <td width="80" style="word-break: break-all;">比得灌汤包</td>
+                      <td width="60">15193543</td>
+                      <td width="100">黄磊</td>
+                      <td width="90">13972562294</td>
+                      <td width="120" style="word-break: break-all;">平湖大道40-x号 西楚路一号一水厂宿舍1单元7楼</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">豆浆【1】杯</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">热干面【1】份</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">鲜肉灌汤包 【2】个</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">牛肉灌汤包【5】个</div></td>
+                      <td style="word-break : break-all;" width="80">快一点</td>
+                      <td width="65">20.40</td>
+                      <td width="85">2017-03-09 09:20:54</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">包子卖完了</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33397298" id="order-grid-failed_c0_36" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">20170308-1</td>
+                      <td width="80" style="word-break: break-all;">正新鸡排（金城店）</td>
+                      <td width="60">11135577</td>
+                      <td width="100">谭先生</td>
+                      <td width="90">18371838393</td>
+                      <td width="120" style="word-break: break-all;">润恒·国华盛景 三单元30楼</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">鸡排【1】份</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">10.00</td>
+                      <td width="85">2017-03-08 15:31:17</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">张青松(15334041394)</td>
+                      <td width="50">测试</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-08 17:39:44</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170308485755506434282092490805</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33396800" id="order-grid-failed_c0_37" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">20170308-1</td>
+                      <td width="80" style="word-break: break-all;">已删除</td>
+                      <td width="60">11135577</td>
+                      <td width="100">谭先生</td>
+                      <td width="90">18371838393</td>
+                      <td width="120" style="word-break: break-all;">润恒·国华盛景 三单元30楼</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">鸡排【1】份</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">10.00</td>
+                      <td width="85">2017-03-08 15:23:27</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">测试</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-08 17:39:36</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170308569855986383686112960394</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33352717" id="order-grid-failed_c0_38" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">比得灌汤包20170308-2</td>
+                      <td width="80" style="word-break: break-all;">比得灌汤包</td>
+                      <td width="60">14754835</td>
+                      <td width="100">田金波</td>
+                      <td width="90">13872476264</td>
+                      <td width="120" style="word-break: break-all;">长宁大道10号 医疗中心外科楼3楼医生办公室</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">鲜肉灌汤包 【5】个</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">黑米粥【1】份</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">11.50</td>
+                      <td width="85">2017-03-08 09:27:33</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">张青松(15334041394)</td>
+                      <td width="50">卖完了</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-08 09:36:21</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170308535450563006297710857891</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33351478" id="order-grid-failed_c0_39" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">泄滩包子金城店20170308-1</td>
+                      <td width="80" style="word-break: break-all;">泄滩包子金城店</td>
+                      <td width="60">15597322</td>
+                      <td width="100">鲁小姐</td>
+                      <td width="90">18062396888</td>
+                      <td width="120" style="word-break: break-all;">天问路7号 国华御景小区2号楼2单元24楼</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">蒸饺【1】份</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">猪肉包【2】个</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">牛肉包【1】个</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">9.50</td>
+                      <td width="85">2017-03-08 08:59:36</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80">首单减免3.0元</td>
+                      <td width="80" style="word-break: break-all;">向俊杰1(18674206729)</td>
+                      <td width="50">不卖个，按份卖的</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-08 09:16:44</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170308999754997261031395073947</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33322838" id="order-grid-failed_c0_40" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">20170307-2</td>
+                      <td width="80" style="word-break: break-all;">粥公卤婆（烧烤）</td>
+                      <td width="60">13591621</td>
+                      <td width="100">颜进</td>
+                      <td width="90">18086240811</td>
+                      <td width="120" style="word-break: break-all;">三溪路124号 二医院 二楼215病室</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">排骨粥【1】份</div></td>
+                      <td style="word-break : break-all;" width="80">清淡。</td>
+                      <td width="65">17.00</td>
+                      <td width="85">2017-03-07 18:33:24</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">杜威(13986828531)</td>
+                      <td width="50">没东西</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-07 18:49:51</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170307102534846002119439478299</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33270604" id="order-grid-failed_c0_41" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">梁记粥铺20170307-1</td>
+                      <td width="80" style="word-break: break-all;">梁记粥铺</td>
+                      <td width="60">11135577</td>
+                      <td width="100">杨先生</td>
+                      <td width="90">13997657092</td>
+                      <td width="120" style="word-break: break-all;">花园小区(丹阳路) 40-7-251</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">山珍老鸭粥【1】份</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">17.00</td>
+                      <td width="85">2017-03-07 11:22:19</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">错</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33257133" id="order-grid-failed_c0_42" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">比得灌汤包20170307-1</td>
+                      <td width="80" style="word-break: break-all;">比得灌汤包</td>
+                      <td width="60">14754835</td>
+                      <td width="100">田金波</td>
+                      <td width="90">13872476264</td>
+                      <td width="120" style="word-break: break-all;">长宁大道10号 医疗中心外科楼3楼医生办公室</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">鲜肉灌汤包 【5】个</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">黑米粥【1】份</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">11.50</td>
+                      <td width="85">2017-03-07 09:32:02</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">向俊杰1(18674206729)</td>
+                      <td width="50">包子买完了</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-07 10:20:03</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170307519854545592041700792746</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33194351" id="order-grid-failed_c0_43" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">谢蟹啦20170306-1</td>
+                      <td width="80" style="word-break: break-all;">蟹谢啦（香辣蟹钳）</td>
+                      <td width="60">14906144</td>
+                      <td width="100">王舒雅</td>
+                      <td width="90">15090910092</td>
+                      <td width="120" style="word-break: break-all;">秭归县环保局 屈原路12号自来水公司三楼314（圣玛丽楼上）</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">香酥鱿鱼【1】份</div></td>
+                      <td style="word-break : break-all;" width="80">多放辣。</td>
+                      <td width="65">45.00</td>
+                      <td width="85">2017-03-06 12:36:09</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">无货</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-06 15:34:23</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170306102555113898799406955631</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33187503" id="order-grid-failed_c0_44" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">凤凰楼20170306-1</td>
+                      <td width="80" style="word-break: break-all;">凤凰楼</td>
+                      <td width="60">11135577</td>
+                      <td width="100">郑</td>
+                      <td width="90">13207208860</td>
+                      <td width="120" style="word-break: break-all;">屈原路2号1-1601 丰辰大厦二单元三楼</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">米饭【3】人</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">洋芋沫沫炒腊肉【1】份</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">下饭四季豆【1】份</div></td>
+                      <td style="word-break : break-all;" width="80">不要辣</td>
+                      <td width="65">62.00</td>
+                      <td width="85">2017-03-06 12:00:11</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">向俊杰1(18674206729)</td>
+                      <td width="50">退单</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-06 12:06:29</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170306535757520375320590698207</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="33027578" id="order-grid-failed_c0_45" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">吾饮良品20170304-3</td>
+                      <td width="80" style="word-break: break-all;">吾饮良品</td>
+                      <td width="60">13570433</td>
+                      <td width="100">董小姐</td>
+                      <td width="90">15571759866</td>
+                      <td width="120" style="word-break: break-all;">兰蕙路2-h号 秭归县山水龙城12号楼4单元12楼</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">蜂蜜柚子茶【1】杯</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">有颗青柠檬绿茶【1】杯</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">红豆双皮奶【1】杯</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">29.35</td>
+                      <td width="85">2017-03-04 17:59:39</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">张其叁(13774192817)</td>
+                      <td width="50">商家已售完</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-04 21:51:36</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170304561015298296623864535279</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="33026299" id="order-grid-failed_c0_46" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">矮子馅饼（秭归店）20170304-1</td>
+                      <td width="80" style="word-break: break-all;">矮子馅饼（秭归店）</td>
+                      <td width="60">13570433</td>
+                      <td width="100">董小姐</td>
+                      <td width="90">15571759866</td>
+                      <td width="120" style="word-break: break-all;">兰蕙路2-h号 秭归县山水龙城12号楼4单元12楼</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">绿豆味【1】斤</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">黑芝麻味【1】斤</div></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="65">27.00</td>
+                      <td width="85">2017-03-04 17:52:01</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">今天已经卖完了，不好意思啊！</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-04 21:51:32</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170304525251974004447296087015</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="32965702" id="order-grid-failed_c0_47" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">木语果蛋糕20170304-1</td>
+                      <td width="80" style="word-break: break-all;">木语果蛋糕</td>
+                      <td width="60">12455591</td>
+                      <td width="100">刘玉丹</td>
+                      <td width="90">13217275173</td>
+                      <td width="120" style="word-break: break-all;">橘园街32号 秭归县茅坪镇桔园街10号1楼</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">水果蛋糕8寸【1】磅</div></td>
+                      <td style="word-break : break-all;" width="80">12点送</td>
+                      <td width="65">88.00</td>
+                      <td width="85">2017-03-04 10:03:11</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">顾客退单</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-04 10:13:33</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170304100979998713992798361560</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="odd">
+                      <td width="20">
+                        <input value="32959627" id="order-grid-failed_c0_48" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">太陽·卤味坊20170304-2</td>
+                      <td width="80" style="word-break: break-all;">太陽·卤味坊</td>
+                      <td width="60">15325801</td>
+                      <td width="100">周女士</td>
+                      <td width="90">18140041980</td>
+                      <td width="120" style="word-break: break-all;">金桔路3号3单元305（外贸宿舍）</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">招牌猪小肚【2】个</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">特色鸡蛋炒粉/面（炒粉）【1】份</div></td>
+                      <td style="word-break : break-all;" width="80">炒粉里面放点豆芽，菜！</td>
+                      <td width="65">22.00</td>
+                      <td width="85">2017-03-04 00:54:23</td>
+                      <td width="75">
+                        <b style="color:green">在线支付（乐外卖支付宝支付）</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">无</td>
+                      <td width="50">炒粉卖完了</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:red;font-weight:bold;">已退款</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款状态：处理中（最长处理时间3个工作日）</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款时间：2017-03-04 10:13:26</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款流水号：20170304545598490681528566136184</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">退款操作员帐号：秭归金点子外卖平台</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                    <tr class="even">
+                      <td width="20">
+                        <input value="32944308" id="order-grid-failed_c0_49" type="checkbox" name="selectorderlist[]"></td>
+                      <td width="70">坝头鸡翅包饭 烧烤20170303-2</td>
+                      <td width="80" style="word-break: break-all;">坝头鸡翅包饭 烧烤</td>
+                      <td width="60">14929250</td>
+                      <td width="100">颜小姐</td>
+                      <td width="90">13207226916</td>
+                      <td width="120" style="word-break: break-all;">平湖半岛 11号楼1902</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">烤臭豆腐【1】串</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">热狗【1】份</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">烤脆骨【3】份</div>
+                        <div style="background:#ddd;padding:1px;margin:3px 0px;">猪肉串【1】串</div></td>
+                      <td style="word-break : break-all;" width="80">只有一个五十的，需要带零钱</td>
+                      <td width="65">17.50</td>
+                      <td width="85">2017-03-03 19:43:48</td>
+                      <td width="75">
+                        <b style="color:red">货到付款</b></td>
+                      <td style="word-break : break-all;" width="80"></td>
+                      <td width="80" style="word-break: break-all;">王强(15629379553)</td>
+                      <td width="50">顾客点重了</td>
+                      <td width="120" style="word-break : break-all; ">
+                        <div style="color:green;font-weight:bold;">未退款</div></td>
+                      <td width="180">
+                        <a style="cursor:pointer;" class="label label-sm label-success" title="查看详情" href="#">查看详情</a>
+                        <a style="cursor:pointer;" class="label label-sm label-danger" title="退款" href="#">退款</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="summary">第 1-50 条, 共 475 条.</div>
+                <div class="pager">
+                  <ul class="pagination" id="yw0">
+                    <li class="hidden hidden">
+                      <a href="#">&lt;&lt; 首页</a></li>
+                    <li class="prev hidden">
+                      <a href="#">
+                        <i class="ace-icon fa fa-angle-double-left"></i>
+                      </a>
+                    </li>
+                    <li class="page active">
+                      <a href="#">1</a></li>
+                    <li class="page">
+                      <a href="#">2</a></li>
+                    <li class="page">
+                      <a href="#">3</a></li>
+                    <li class="page">
+                      <a href="#">4</a></li>
+                    <li class="page">
+                      <a href="#">5</a></li>
+                    <li class="page">
+                      <a href="#">6</a></li>
+                    <li class="page">
+                      <a href="#">7</a></li>
+                    <li class="page">
+                      <a href="#">8</a></li>
+                    <li class="page">
+                      <a href="#">9</a></li>
+                    <li class="page">
+                      <a href="#">10</a></li>
+                    <li class="next">
+                      <a href="#">
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                      </a>
+                    </li>
+                    <li class="hidden">
+                      <a href="#">末页 &gt;&gt;</a></li>
+                  </ul>
+                </div>
+                <div class="keys" style="display:none" title="/order/viewfailed">
+                  <span>34157988</span>
+                  <span>34063658</span>
+                  <span>34048636</span>
+                  <span>34048362</span>
+                  <span>34046945</span>
+                  <span>33949113</span>
+                  <span>33900621</span>
+                  <span>33895540</span>
+                  <span>33860802</span>
+                  <span>33860642</span>
+                  <span>33849219</span>
+                  <span>33847533</span>
+                  <span>33794737</span>
+                  <span>33794609</span>
+                  <span>33793033</span>
+                  <span>33664626</span>
+                  <span>33663950</span>
+                  <span>33644911</span>
+                  <span>33633050</span>
+                  <span>33609139</span>
+                  <span>33593286</span>
+                  <span>33591800</span>
+                  <span>33591395</span>
+                  <span>33579835</span>
+                  <span>33541692</span>
+                  <span>33540863</span>
+                  <span>33497781</span>
+                  <span>33494880</span>
+                  <span>33493346</span>
+                  <span>33470375</span>
+                  <span>33466935</span>
+                  <span>33460096</span>
+                  <span>33458216</span>
+                  <span>33457968</span>
+                  <span>33457833</span>
+                  <span>33449456</span>
+                  <span>33397298</span>
+                  <span>33396800</span>
+                  <span>33352717</span>
+                  <span>33351478</span>
+                  <span>33322838</span>
+                  <span>33270604</span>
+                  <span>33257133</span>
+                  <span>33194351</span>
+                  <span>33187503</span>
+                  <span>33027578</span>
+                  <span>33026299</span>
+                  <span>32965702</span>
+                  <span>32959627</span>
+                  <span>32944308</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="dialog-add-order" title="新建订单" style="overflow-y:visible;" class="hide">
+        <form id="new-order" action="/order/newOrder" method="post">
+          <div class="alert alert-danger"></div>
+          <div class="ness">
+            <div class="form-group">
+              <label class="col-sm-4 new_label" for="New[nickname]">姓名</label>
+              <input type="text" class="col-sm-5" name="New[nickname]"></div>
+            <div class="form-group">
+              <label class="col-sm-4 new_label" for="New[phone]">手机号</label>
+              <input type="text" class="col-sm-5" name="New[phone]"></div>
+            <div class="form-group">
+              <label class="col-sm-4 new_label" for="New[address]">配送地址</label>
+              <input type="text" class="col-sm-5" name="New[address]"></div>
+            <div class="form-group">
+              <label class="col-sm-4 new_label" for="New[memo]">备注</label>
+              <input type="text" class="col-sm-5" name="New[memo]"></div>
+            <div class="form-group">
+              <label class="col-sm-4 new_label" for="New[shop_id]">店铺</label>
+              <select name="New[shop_id]" id="New_shop_id">
+                <option value="">-请选择-</option>
+                <option value="171604">梁记粥铺</option>
+                <option value="179493">味美家煲仔饭</option>
+                <option value="188840">沐小卤卤肉饭</option>
+                <option value="191043">遍地香</option>
+                <option value="198384">蔡记兔头</option>
+                <option value="198470">大圣烧烤</option>
+                <option value="198789">五谷渔粉</option>
+                <option value="199278">茶粥坊</option>
+                <option value="201814">湖南米粉秭归旗舰店</option>
+                <option value="203781">桃园包子</option>
+                <option value="203806">龙虾甲鱼馆</option>
+                <option value="203914">羊子沟羊肉串</option>
+                <option value="204828">一号渔港</option>
+                <option value="205689">庙嘴泄滩包子</option>
+                <option value="205770">罗蒂爸爸</option>
+                <option value="206291">陕西红富士（金点自营）</option>
+                <option value="206593">五谷渔粉（茶粥坊店）</option>
+                <option value="206740">撮一顿川菜馆</option>
+                <option value="206902">老字号米酒汤圆（下酒菜 甜品）</option>
+                <option value="207170">易购24小时便利店</option>
+                <option value="207670">比得灌汤包</option>
+                <option value="207703">本素咖啡</option>
+                <option value="208291">龙潮美式瓦缸炭火烤鱼</option>
+                <option value="208570">金巷子</option>
+                <option value="209507">有意思</option>
+                <option value="210977">花之恋</option>
+                <option value="211219">老归州酒家</option>
+                <option value="212668">米桂坊过桥米线</option>
+                <option value="214250">郑记卤味</option>
+                <option value="214683">吾饮良品</option>
+                <option value="215141">馋嘴鱼莊</option>
+                <option value="216567">木炭原味儿烧烤</option>
+                <option value="216826">红油面馆</option>
+                <option value="216935">冰淋橙夏</option>
+                <option value="217682">面相聚</option>
+                <option value="218162">怡满堂大药房</option>
+                <option value="221492">王胖子早点</option>
+                <option value="224050">阁楼咖啡</option>
+                <option value="224147">千里香馄饨王</option>
+                <option value="224187">周姐卤菜水饺</option>
+                <option value="224339">七里香万州面馆</option>
+                <option value="224370">小树鲜果（水果、零食）</option>
+                <option value="224467">粥公卤婆（烧烤）</option>
+                <option value="224543">邓记烤鱼</option>
+                <option value="225881">九三食府</option>
+                <option value="226578">原酒印象</option>
+                <option value="226584">乡风缘野鸡养殖农场</option>
+                <option value="226756">小牧场羊肉砂锅</option>
+                <option value="227334">惠姑家庭农场</option>
+                <option value="227431">杜康专卖店</option>
+                <option value="227490">炎锅家常菜（瓦罐汤）</option>
+                <option value="234626">秘制牛肉粉面馆</option>
+                <option value="234732">屈乡风味馆</option>
+                <option value="234765">吴妈面馆</option>
+                <option value="234772">可礼客中式快餐</option>
+                <option value="236441">蟹谢啦（香辣蟹钳）</option>
+                <option value="238113">天喔零食秭归店</option>
+                <option value="238848">正新鸡排（金城店）</option>
+                <option value="239273">嘛嘛香中式营养快餐</option>
+                <option value="240581">正宗片皮鸭</option>
+                <option value="186168">木语果蛋糕</option>
+                <option value="189027">肯德基</option>
+                <option value="190600">舒心批发超市</option>
+                <option value="193454">五色谷大酒库旗舰店</option>
+                <option value="189066">纯果乐</option>
+                <option value="191434">净果成人用品</option>
+                <option value="193156">麦佳乐蛋糕店</option>
+                <option value="195654">周黑鸭</option>
+                <option value="200063">欢乐家旗舰店</option>
+                <option value="189287">新派煲仔饭</option>
+                <option value="189881">矮子馅饼（秭归店）</option>
+                <option value="192626">巴黎天使</option>
+                <option value="194392">绿源清江尙品桶装系列纯净水天然水</option>
+                <option value="195171">子归醇</option>
+                <option value="196068">王梁记麻辣烫</option>
+                <option value="180884">四季花时尚饮品</option>
+                <option value="186549">香满园拉面馆</option>
+                <option value="187702">福和祥煲仔饭</option>
+                <option value="189341">韦一粮油</option>
+                <option value="190198">糖炒栗子</option>
+                <option value="194765">王老板烩面</option>
+                <option value="195667">花漫舞</option>
+                <option value="180758">安吉尔纯净水</option>
+                <option value="182990">沙县小吃信合店</option>
+                <option value="183295">坝头夜猫子小黄鱼</option>
+                <option value="186498">均瑶旗舰店</option>
+                <option value="188487">坝头米酒汤圆 萝卜饺子</option>
+                <option value="190211">庙嘴万州面</option>
+                <option value="193935">张氏茶油鸭</option>
+                <option value="197991">艳子农家小炒</option>
+                <option value="183123">功夫煲仔饭</option>
+                <option value="186255">巴东傅记羊肉面</option>
+                <option value="188260">坝头东北小吃</option>
+                <option value="191671">砂锅米线</option>
+                <option value="193993">正新鸡排</option>
+                <option value="195600">庙嘴炸酱面馆</option>
+                <option value="182341">一家人餐馆</option>
+                <option value="186189">妙味馄饨</option>
+                <option value="190154">一扫光零食量贩店</option>
+                <option value="186180">坝头火爆鱿鱼</option>
+                <option value="187913">红牛能量补给站</option>
+                <option value="189378">妙嘴小吃</option>
+                <option value="190159">零食加油站</option>
+                <option value="179446">测试店铺（勿点）</option>
+                <option value="187713">一品香</option>
+                <option value="190315">襄阳牛杂面</option>
+                <option value="192603">华莱士</option>
+                <option value="198327">真味酒楼</option>
+                <option value="210668">谭家村酒业</option>
+                <option value="186396">老家大锅台</option>
+                <option value="188519">坝头灌汤包</option>
+                <option value="189699">成都抄手</option>
+                <option value="189267">胖胖熊美食城</option>
+                <option value="180907">老字号鸡蛋饭</option>
+                <option value="182664">重庆小面</option>
+                <option value="183195">太陽·卤味坊</option>
+                <option value="191202">马大姐旗舰店</option>
+                <option value="193184">松滋杜婆鸡</option>
+                <option value="182536">坝头功夫鱿鱼</option>
+                <option value="186177">精武人家（小区店）</option>
+                <option value="194467">纸上烤鱼(国华盛景店)</option>
+                <option value="165797">凤凰楼</option>
+                <option value="190137">泄滩包子金城店</option>
+                <option value="186200">坝头台湾手抓饼</option>
+                <option value="188293">坝头碳烤小黄鱼</option>
+                <option value="195057">姨妹子菜馆</option>
+                <option value="202250">坝头米酒汤圆</option>
+                <option value="186588">坝头江湖翅客24号</option>
+                <option value="186570">坝头鸡翅包饭 烧烤</option>
+                <option value="183237">坝头盐都小吃</option>
+                <option value="188363">川府石锅鱼</option>
+                <option value="192207">时尚酒家</option>
+                <option value="183307">泽尚生活馆</option>
+                <option value="191240">万美菜馆</option>
+                <option value="209064">韩大大冒菜</option>
+                <option value="187677">程家菜馆</option>
+                <option value="189461">剑峰菜馆</option>
+                <option value="183336">朋友圈土菜馆</option>
+                <option value="187689">平价菜馆</option>
+                <option value="189248">馋神醉仙鸭</option>
+                <option value="189252">欣怡川菜馆</option>
+                <option value="187718">贵州花江狗肉（小区店）</option>
+                <option value="193139">郑记干锅</option>
+                <option value="195717">丰锅农家菜</option>
+                <option value="187896">河鲜馆</option>
+                <option value="187285">跑腿业务</option>
+                <option value="194234">五香嘴量贩休闲食品</option>
+                <option value="197223">麦点超市</option>
+                <option value="201368">家常菜馆</option>
+                <option value="202819">世纪华联</option>
+                <option value="203134">夷蒙概念牛肉</option>
+                <option value="205327">祥和飞锅万州面</option>
+                <option value="207984">品味烧烤</option>
+                <option value="210794">秋谷山纯粮酒</option>
+                <option value="212643">金烈火奶酪蛋糕</option>
+                <option value="219509">山东口福饼</option>
+                <option value="224337">茶粥坊土钵菜</option>
+                <option value="224542">茶物语</option>
+                <option value="186611">坝头养生卤品</option>
+                <option value="188229">坝头刚子烧烤</option>
+                <option value="199721">鲜烫麻辣烫</option>
+                <option value="182550">维纳斯美容会所</option>
+                <option value="182875">网上营业厅</option>
+                <option value="186185">坝头铁板炒饭</option>
+                <option value="188558">韩国凉面</option>
+                <option value="192225">李功夫中华鸡排</option>
+                <option value="185223">宏发煤气</option>
+                <option value="188574">坝头那家粉</option>
+                <option value="189049">楚城小厨</option>
+                <option value="189030">辛勤小吃店</option>
+                <option value="188197">坝头开心花甲</option>
+                <option value="188456">坝头砂锅麻辣烫</option>
+                <option value="188186">坝头公园27号肉夹馍</option>
+                <option value="188194">坝头饮品庄园</option>
+                <option value="196345">三少食府</option>
+                <option value="186597">坝头澳洲大肉串</option>
+                <option value="181130">蒙古烤羊腿</option>
+                <option value="190390">万州烤鱼</option>
+                <option value="188710">小南园</option>
+                <option value="183168">老字号虾皇</option>
+                <option value="189072">大三峡</option></select>
+            </div>
+            <div class="ysxx-new"></div>
+          </div>
+          <h4 style="margin-left:50px">
+            <b>商品清单：</b>
+          </h4>
+          <ul id="food_list" class="food_list"></ul>
+          <div class="loading">
+            <img src="images/loading.gif"></div>
+          <div class="list" style="color:red;text-align:center;font-size:16px;">
+            <span></span>
+            <b>
+            </b>
+          </div>
+        </form>
+      </div>
+      <div id="dialog-edit-order" class="hide" title="修改订单">
+        <form id="edit-order" action="/order/editOrder" method="post">
+          <input type="hidden" name="Edit[id]" id="Edit_id" value="">
+          <div class="alert alert-danger"></div>
+          <div class="ness">
+            <div class="form-group">
+              <label class="col-sm-4 new_label" for="Edit[nickname]">姓名</label>
+              <input type="text" class="col-sm-5" name="Edit[nickname]" id="Edit_nickname"></div>
+            <div class="form-group">
+              <label class="col-sm-4 new_label" for="Edit[phone]">手机号</label>
+              <input type="text" class="col-sm-5" name="Edit[phone]" id="Edit_phone"></div>
+            <div class="form-group">
+              <label class="col-sm-4 new_label" for="Edit[address]">配送地址</label>
+              <input type="text" class="col-sm-5" name="Edit[address]" id="Edit_address"></div>
+            <div class="form-group">
+              <label class="col-sm-4 new_label" for="Edit[memo]">备注</label>
+              <input type="text" class="col-sm-5" name="Edit[memo]" id="Edit_memo"></div>
+            <div class="form-group">
+              <label class="col-sm-4 new_label" for="Edit[shop_id]">店铺</label>
+              <select name="Edit[shop_id]" id="Edit_shop_id">
+                <option value="">-请选择-</option>
+                <option value="171604">梁记粥铺</option>
+                <option value="179493">味美家煲仔饭</option>
+                <option value="188840">沐小卤卤肉饭</option>
+                <option value="191043">遍地香</option>
+                <option value="198384">蔡记兔头</option>
+                <option value="198470">大圣烧烤</option>
+                <option value="198789">五谷渔粉</option>
+                <option value="199278">茶粥坊</option>
+                <option value="201814">湖南米粉秭归旗舰店</option>
+                <option value="203781">桃园包子</option>
+                <option value="203806">龙虾甲鱼馆</option>
+                <option value="203914">羊子沟羊肉串</option>
+                <option value="204828">一号渔港</option>
+                <option value="205689">庙嘴泄滩包子</option>
+                <option value="205770">罗蒂爸爸</option>
+                <option value="206291">陕西红富士（金点自营）</option>
+                <option value="206593">五谷渔粉（茶粥坊店）</option>
+                <option value="206740">撮一顿川菜馆</option>
+                <option value="206902">老字号米酒汤圆（下酒菜 甜品）</option>
+                <option value="207170">易购24小时便利店</option>
+                <option value="207670">比得灌汤包</option>
+                <option value="207703">本素咖啡</option>
+                <option value="208291">龙潮美式瓦缸炭火烤鱼</option>
+                <option value="208570">金巷子</option>
+                <option value="209507">有意思</option>
+                <option value="210977">花之恋</option>
+                <option value="211219">老归州酒家</option>
+                <option value="212668">米桂坊过桥米线</option>
+                <option value="214250">郑记卤味</option>
+                <option value="214683">吾饮良品</option>
+                <option value="215141">馋嘴鱼莊</option>
+                <option value="216567">木炭原味儿烧烤</option>
+                <option value="216826">红油面馆</option>
+                <option value="216935">冰淋橙夏</option>
+                <option value="217682">面相聚</option>
+                <option value="218162">怡满堂大药房</option>
+                <option value="221492">王胖子早点</option>
+                <option value="224050">阁楼咖啡</option>
+                <option value="224147">千里香馄饨王</option>
+                <option value="224187">周姐卤菜水饺</option>
+                <option value="224339">七里香万州面馆</option>
+                <option value="224370">小树鲜果（水果、零食）</option>
+                <option value="224467">粥公卤婆（烧烤）</option>
+                <option value="224543">邓记烤鱼</option>
+                <option value="225881">九三食府</option>
+                <option value="226578">原酒印象</option>
+                <option value="226584">乡风缘野鸡养殖农场</option>
+                <option value="226756">小牧场羊肉砂锅</option>
+                <option value="227334">惠姑家庭农场</option>
+                <option value="227431">杜康专卖店</option>
+                <option value="227490">炎锅家常菜（瓦罐汤）</option>
+                <option value="234626">秘制牛肉粉面馆</option>
+                <option value="234732">屈乡风味馆</option>
+                <option value="234765">吴妈面馆</option>
+                <option value="234772">可礼客中式快餐</option>
+                <option value="236441">蟹谢啦（香辣蟹钳）</option>
+                <option value="238113">天喔零食秭归店</option>
+                <option value="238848">正新鸡排（金城店）</option>
+                <option value="239273">嘛嘛香中式营养快餐</option>
+                <option value="240581">正宗片皮鸭</option>
+                <option value="186168">木语果蛋糕</option>
+                <option value="189027">肯德基</option>
+                <option value="190600">舒心批发超市</option>
+                <option value="193454">五色谷大酒库旗舰店</option>
+                <option value="189066">纯果乐</option>
+                <option value="191434">净果成人用品</option>
+                <option value="193156">麦佳乐蛋糕店</option>
+                <option value="195654">周黑鸭</option>
+                <option value="200063">欢乐家旗舰店</option>
+                <option value="189287">新派煲仔饭</option>
+                <option value="189881">矮子馅饼（秭归店）</option>
+                <option value="192626">巴黎天使</option>
+                <option value="194392">绿源清江尙品桶装系列纯净水天然水</option>
+                <option value="195171">子归醇</option>
+                <option value="196068">王梁记麻辣烫</option>
+                <option value="180884">四季花时尚饮品</option>
+                <option value="186549">香满园拉面馆</option>
+                <option value="187702">福和祥煲仔饭</option>
+                <option value="189341">韦一粮油</option>
+                <option value="190198">糖炒栗子</option>
+                <option value="194765">王老板烩面</option>
+                <option value="195667">花漫舞</option>
+                <option value="180758">安吉尔纯净水</option>
+                <option value="182990">沙县小吃信合店</option>
+                <option value="183295">坝头夜猫子小黄鱼</option>
+                <option value="186498">均瑶旗舰店</option>
+                <option value="188487">坝头米酒汤圆 萝卜饺子</option>
+                <option value="190211">庙嘴万州面</option>
+                <option value="193935">张氏茶油鸭</option>
+                <option value="197991">艳子农家小炒</option>
+                <option value="183123">功夫煲仔饭</option>
+                <option value="186255">巴东傅记羊肉面</option>
+                <option value="188260">坝头东北小吃</option>
+                <option value="191671">砂锅米线</option>
+                <option value="193993">正新鸡排</option>
+                <option value="195600">庙嘴炸酱面馆</option>
+                <option value="182341">一家人餐馆</option>
+                <option value="186189">妙味馄饨</option>
+                <option value="190154">一扫光零食量贩店</option>
+                <option value="186180">坝头火爆鱿鱼</option>
+                <option value="187913">红牛能量补给站</option>
+                <option value="189378">妙嘴小吃</option>
+                <option value="190159">零食加油站</option>
+                <option value="179446">测试店铺（勿点）</option>
+                <option value="187713">一品香</option>
+                <option value="190315">襄阳牛杂面</option>
+                <option value="192603">华莱士</option>
+                <option value="198327">真味酒楼</option>
+                <option value="210668">谭家村酒业</option>
+                <option value="186396">老家大锅台</option>
+                <option value="188519">坝头灌汤包</option>
+                <option value="189699">成都抄手</option>
+                <option value="189267">胖胖熊美食城</option>
+                <option value="180907">老字号鸡蛋饭</option>
+                <option value="182664">重庆小面</option>
+                <option value="183195">太陽·卤味坊</option>
+                <option value="191202">马大姐旗舰店</option>
+                <option value="193184">松滋杜婆鸡</option>
+                <option value="182536">坝头功夫鱿鱼</option>
+                <option value="186177">精武人家（小区店）</option>
+                <option value="194467">纸上烤鱼(国华盛景店)</option>
+                <option value="165797">凤凰楼</option>
+                <option value="190137">泄滩包子金城店</option>
+                <option value="186200">坝头台湾手抓饼</option>
+                <option value="188293">坝头碳烤小黄鱼</option>
+                <option value="195057">姨妹子菜馆</option>
+                <option value="202250">坝头米酒汤圆</option>
+                <option value="186588">坝头江湖翅客24号</option>
+                <option value="186570">坝头鸡翅包饭 烧烤</option>
+                <option value="183237">坝头盐都小吃</option>
+                <option value="188363">川府石锅鱼</option>
+                <option value="192207">时尚酒家</option>
+                <option value="183307">泽尚生活馆</option>
+                <option value="191240">万美菜馆</option>
+                <option value="209064">韩大大冒菜</option>
+                <option value="187677">程家菜馆</option>
+                <option value="189461">剑峰菜馆</option>
+                <option value="183336">朋友圈土菜馆</option>
+                <option value="187689">平价菜馆</option>
+                <option value="189248">馋神醉仙鸭</option>
+                <option value="189252">欣怡川菜馆</option>
+                <option value="187718">贵州花江狗肉（小区店）</option>
+                <option value="193139">郑记干锅</option>
+                <option value="195717">丰锅农家菜</option>
+                <option value="187896">河鲜馆</option>
+                <option value="187285">跑腿业务</option>
+                <option value="194234">五香嘴量贩休闲食品</option>
+                <option value="197223">麦点超市</option>
+                <option value="201368">家常菜馆</option>
+                <option value="202819">世纪华联</option>
+                <option value="203134">夷蒙概念牛肉</option>
+                <option value="205327">祥和飞锅万州面</option>
+                <option value="207984">品味烧烤</option>
+                <option value="210794">秋谷山纯粮酒</option>
+                <option value="212643">金烈火奶酪蛋糕</option>
+                <option value="219509">山东口福饼</option>
+                <option value="224337">茶粥坊土钵菜</option>
+                <option value="224542">茶物语</option>
+                <option value="186611">坝头养生卤品</option>
+                <option value="188229">坝头刚子烧烤</option>
+                <option value="199721">鲜烫麻辣烫</option>
+                <option value="182550">维纳斯美容会所</option>
+                <option value="182875">网上营业厅</option>
+                <option value="186185">坝头铁板炒饭</option>
+                <option value="188558">韩国凉面</option>
+                <option value="192225">李功夫中华鸡排</option>
+                <option value="185223">宏发煤气</option>
+                <option value="188574">坝头那家粉</option>
+                <option value="189049">楚城小厨</option>
+                <option value="189030">辛勤小吃店</option>
+                <option value="188197">坝头开心花甲</option>
+                <option value="188456">坝头砂锅麻辣烫</option>
+                <option value="188186">坝头公园27号肉夹馍</option>
+                <option value="188194">坝头饮品庄园</option>
+                <option value="196345">三少食府</option>
+                <option value="186597">坝头澳洲大肉串</option>
+                <option value="181130">蒙古烤羊腿</option>
+                <option value="190390">万州烤鱼</option>
+                <option value="188710">小南园</option>
+                <option value="183168">老字号虾皇</option>
+                <option value="189072">大三峡</option></select>
+            </div>
+            <div class="ysxx-edit"></div>
+          </div>
+          <h4 style="margin-left:50px">
+            <b>商品清单：</b>
+          </h4>
+          <ul id="edit_food_list" class="food_list"></ul>
+          <div class="loading">
+            <img src="images/loading.gif"></div>
+        </form>
+      </div>
+      <div id="modal-reason" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" id="modal-close-trigger" class="close" data-dismiss="modal" onclick="$('#modal-reason').hide()">×</button>
+              <h4 class="blue bigger">请填写订单失败的原因</h4>
+              <h6 class="red bigger">饿了么、美团外卖等第三方外卖平台订单设为失败将立即退款给顾客，请谨慎使用！</h6></div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12">
+                  <textarea id="order_failed_reason" style="width:100%;"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-sm" onclick="$('#modal-reason').hide()">
+                <i class="ace-icon fa fa-times"></i>取消</button>
+              <button class="btn btn-sm btn-primary" onclick="GetFailedCheckbox()">
+                <i class="ace-icon fa fa-check"></i>确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

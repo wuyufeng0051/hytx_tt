@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>编辑信息</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta content="telephone=no" name="format-detection">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+	<style>
+	.title{
+		color: #000;
+	    padding-left: 15px;
+	    line-height: 32px;
+	    font-weight: normal;
+	    margin: 0;
+	    font-size: 16px;
+	    background: #f2f2f2;
+	}
+
+	.list .item{
+		border-bottom: 1px solid #ddd;
+	    padding: 10px;
+	    background: #fff;
+	    position: relative;
+	    padding-left: 95px;
+	}
+	.list .item span{
+		color: #fd5530 ;
+		margin-right: 5px;
+		position: relative;
+		top: 4px;
+	}
+	.list .item label{
+		font-size: 16px;
+		position: absolute;
+		left: 10px;
+	}
+	.list .item input{
+		border:none;
+		padding: 0;
+		width: auto;
+		margin:0;
+		line-height: 21px;
+		height: 21px;
+		width: 100%;
+	}
+	.list .item select{
+	    width: 100%;
+	    padding: 0;
+	    margin: 0;
+	    font-size: 16px;
+	    background: url(__PUBLIC__/Home/img/arrow.png) no-repeat right center;
+	    background-size: 16px 16px;
+	    height: 21px;
+	}
+	.my{
+		display: inline-block;margin-left: 10px;line-height: 21px;background: url(__PUBLIC__/Home/img/circle.png) left top no-repeat;padding-left: 20px;background-size: 20px 20px;
+	}
+	.my.select{
+		background:url(__PUBLIC__/Home/img/sec.png) left top no-repeat;
+		background-size: 20px 20px;
+	}
+	.ty{
+		padding-left: 20px;
+		background: url(__PUBLIC__/Home/img/tongyi1.png) no-repeat left center;
+		background-size: 16px 16px;
+	}
+	.ty.active{
+		background: url(__PUBLIC__/Home/img/tongyi.png) no-repeat left center;
+		background-size: 16px 16px;
+	}
+	.Desc1{padding: 5px;margin-bottom: 0;border:none;}
+	.header{height:.9rem;background:#fd5530 !important;color:#fff;font-size:.32rem;line-height:.9rem;max-width:1080px;position:relative;overflow:hidden;}.header a{display:inline-block;color:#fff;}.header .back{height:.9rem;line-height:.9rem;width:17%;float:left;}.header .back i{width:0.4rem;height:.9rem;display:inline-block;background:url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;vertical-align:middle;background-size:.3rem;}.header .header_right{float:right;height:.9rem;margin-right:.2rem;}.header .header_right i{width:0.04rem;height:0.5rem;display:inline-block;vertical-align:middle;background:#fff;margin:0 .15rem;}.header .title_1{float:left;width:63%;text-align:center;font-size:0.38rem;}.header .share{height:.9rem;float:right;width:12%;background:url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;background-size:.5rem;}.picture_1{}.picture_1 .pic_list{padding:0 0.4rem;}.picture_1 ul li{float:left;position:relative;overflow:hidden;box-shadow:0 1px 10px 1px rgba(0,0,0,.2);margin-top:0.3rem;margin-bottom:0.2rem;width:1.3rem;height:1.3rem;margin-right:.36rem;background:#fff;}.picture_1 ul li img{width:1.3rem;height:1.3rem;}.picture_1 .uploadbtn{width:1.3rem;height:1.3rem;text-align:center;}.picture_1 .uploadbtn input{opacity:0;}.picture_1 .uploadbtn em{width:.7rem;height:.7rem;display:block;margin:0.1rem auto;background:url(__PUBLIC__/Home/img/shi.png) no-repeat center;background-size:.7rem;}.picture_1 .uploadbtn p{color:#bfbfc0;}.picture_1 .uploadbtn .webuploader-container div{width:1.3rem;height:1.3rem;}.picture_1 .pic_tips{color:#bfbfc0;padding-bottom:0.2rem;}.picture_1 .cancel{position:absolute;right:0;top:0;width:.3rem;height:.3rem;background:url(__PUBLIC__/Home/img/cha.png) no-repeat center;background-size:.3rem;}.delete{position:fixed;left:50%;margin-left:-3rem;top:25%;z-index:12;background:url(__PUBLIC__/Home/img/pb_7.png) no-repeat top;width:6rem;height:6rem;background-size:6rem;text-align:center;display:none;}.delete h1{font-size:.3rem;margin-top:1.8rem;font-weight:bold;background:#fff;margin-bottom:0!important;}.delete h2{font-size:.3rem;padding-top:.1rem;font-weight:bold;background:#fff;padding-bottom:.3rem;border-bottom:0.04rem solid #e6e6e6;margin:0!important;}.de_foot{width:100%;background:#fff;border-bottom-right-radius:.2em;border-bottom-left-radius:.2em;}.delete .de_btn{width:80%;margin:0 auto;padding:.4rem 0}.delete .de_btn span{background:#fd5530;color:#fff;padding:0.15rem .8rem;font-size:.28rem;border-radius:0.1rem;}.delete .de_btn span.sure{margin-right:.4rem;}.disk{background:#000;opacity:.3!important;position:fixed;top:0;left:0;right:0;bottom:0;z-index:11;display:none;}.certfy ul li{position:relative;}.certfy ul li i{position:absolute;right:0;top:0;width:.4rem;height:.4rem;background:url(__PUBLIC__/Home/img/cha.png) no-repeat center;background-size:.4rem;}.succeed_box{position:fixed;left:50%;margin-left:-3rem;top:25%;z-index:12;background:url(__PUBLIC__/Home/images/pb_7.png) no-repeat top;width:6rem;height:6rem;background-size:6rem;text-align:center;display:none;}.succeed_box h1{font-size:.3rem;margin-top:1.8rem;font-weight:bold;background:#fff;margin-bottom:0px!important;line-height:normal;}.succeed_box h2{font-size:.24rem;padding-top:.15rem;background:#fff;padding-bottom:.35rem;border-bottom:0.04rem solid #e6e6e6;margin:0!important;line-height:normal;}.succeed_box h3{font-size:.24rem;padding-top:.1rem;background:#fff;padding:0.1rem 0;margin:0;}.succeed_box h2 em{color:#fe8267;margin-right:0;}.succeed_box p{background:#fff;border-radius:0 0 0.2rem 0.2rem;padding:0.35rem 0;}.succeed_box p span{width:60%;height:.75rem;color:#fff;font-size:0.28rem;border-radius:0.15rem;background:#fd5530;line-height:.75rem;display:block;margin:0 auto;}
+	</style>
+</head>
+<body>
+
+<include file="Public/share" title='包含文件'/>
+	<!-- 共同顶部 s-->
+	<div class="header fn-clear">
+		<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+		<div class="title_1">编辑兼职信息</div>
+	</div>
+	<!-- 共同顶部 e-->
+	<!-- 申请已提交成功 s -->
+	<div class="succeed_box cheng">
+	    <h1>修改成功</h1>
+	    <h2>您可以在<em>个人中心-我的发布</em>进行管理</h2>
+	    <p><a href="javascript:history.go(-1);location.replace(document.referrer);"><span>确定</span></a></p>
+	</div>
+	<div class="disk"></div>
+	<!-- 申请已提交成功 e -->
+	<div class="mui-content">
+		<h3 class="title">兼职信息</h3>
+		<div class="list">
+			<div class="item">
+				<label for=""><span>*</span>标题</label>
+				<!-- <input type="text" placeholder="请填写标题" id="part_time_job_title" value="{$jianzhi_edit['part_time_job_title']}" maxlength="20"> -->
+				<textarea type="text" rows="1" placeholder="请填写标题,20个字以内" maxlength="20" id="part_time_job_title" style="margin-bottom: 0;padding:0;border:none;outline: none;">{$jianzhi_edit['part_time_job_title']}</textarea>
+			</div>
+			<div class="item">
+				<label for=""><span>*</span>职位</label>
+				<select name="" id="part_time_job_position">
+				  <volist id="vo" name="position_res">
+				  <if condition="$vo.classify2_id == $jianzhi_edit['part_time_job_position']">
+				    <option selected value="{$vo.classify2_id}">{$vo.classify2_name}</option>
+				  <else />
+				    <option value="{$vo.classify2_id}">{$vo.classify2_name}</option>
+				  </if>
+				  </volist>
+				</select>
+				<!-- 促销/导购  传单派发  钟点工  学生兼职  家教  艺术老师
+				服务员  会计 礼仪/模特  驻唱/演出 其他兼职
+				 -->
+			</div>
+			<div class="item">
+				<label for=""><span>*</span>招聘人数</label>
+				<input type="text" placeholder="请填写招聘人数"  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" id="part_time_job_people_num" value="{$jianzhi_edit['part_time_job_people_num']}">
+			</div>
+			<div class="item">
+				<label for=""><span>*</span>兼职期限</label>
+				<select id="part_time_job_term">
+                  <volist id="vo" name="term_res">
+				  <if condition="$vo.classify2_id == $jianzhi_edit['part_time_job_term']">
+                   <option selected value="{$vo.classify2_id}">{$vo.classify2_name}</option>
+				   <else />
+                   <option value="{$vo.classify2_id}">{$vo.classify2_name}</option>
+				  </if>
+                  </volist>
+ 				</select>
+			</div>
+			<!-- 职位：促销/导购  传单派发  钟点工  学生兼职  家教  艺术老师
+			服务员  会计 礼仪/模特  驻唱/演出 其他兼职-->
+			<div class="item" id="Desc1">
+				<label for="" style="top: 0;">&nbsp;&nbsp;职位描述</label>
+				<!-- <input type="text" placeholder="请填写职位描述" id="part_time_job_desc" value="{$jianzhi_edit['part_time_job_desc']}"> -->
+				<textarea type="text" rows="3" class="Desc1" placeholder="请填写职位描述" id="part_time_job_desc">{$jianzhi_edit['part_time_job_desc']}</textarea>
+			</div>
+			<div class="item">
+				<label for=""><span>*</span>薪资</label>
+				<?php if($jianzhi_edit['part_time_job_wages1'] == 0){ ?>
+				<input type="text" style="width: 33%;" placeholder="填写数字"  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" id="part_time_job_wages1" disabled="disabled">
+				<?php }else{ ?>
+				<input type="text" style="width: 33%;" placeholder="填写数字"  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" id="part_time_job_wages1" value="<?php echo $jianzhi_edit['part_time_job_wages1']; ?>">
+				<?php } ?>
+
+				<select name="" style="width:60px;" id="part_time_job_wages2">
+				   <volist id="vo" name="wages2_res">
+				   <if condition="$vo.classify2_id == $jianzhi_edit['part_time_job_wages2']">
+                    <option selected="selected" value="{$vo.classify2_id}" >{$vo.classify2_name}</option>
+					<else />
+                    <option value="{$vo.classify2_id}" >{$vo.classify2_name}</option>
+				   </if>
+                   </volist>
+				</select>
+				<div class="my<?php echo ($jianzhi_edit['part_time_job_wages1'] > 0 ? '' : ' select');?>">面议</div>
+			</div>
+
+			<div class="item">
+				<label for=""><span>*</span>结算方式</label>
+				<select name="" id="part_time_job_settlement" >   
+				  <volist id="vo" name="settlement_res">
+				  <?php if($vo['classify2_id'] ==  $jianzhi_edit['part_time_job_settlement'] ){ ?>
+                   <option  value="{$vo.classify2_id}" selected="selected">{$vo.classify2_name}</option>
+ 				  <?php	}else{ ?>
+                   <option value="{$vo.classify2_id}">{$vo.classify2_name}</option>
+				  <?php	} ?>
+				   
+                  </volist>
+				</select>
+			</div>
+			<div class="item">
+				<label for=""><span>*</span>工作地址</label>
+				<!-- <input type="text" placeholder="请填写工作地址" id="part_time_job_address"
+				value="{$jianzhi_edit['part_time_job_address']}"> -->
+				<textarea type="text" rows="1" placeholder="请填写工作地址,20个字以内" maxlength="20" id="part_time_job_address" style="margin-bottom: 0;padding:0;border:none;outline: none;">{$jianzhi_edit['part_time_job_address']}</textarea>
+			</div>
+		</div>
+		<h3 class="title">联系人信息</h3>
+		<div class="list">
+			<div class="item">
+				<label for=""><span>*</span>联系人</label>
+				<input type="text" placeholder="请填写联系人" id="part_time_job_name" 
+				value="{$jianzhi_edit['part_time_job_name']}">
+			</div>
+			<div class="item" style="padding-right: 85px;">
+				<label for=""><span>*</span>联系电话</label>
+				<input type="text" placeholder="请填写电话" id="part_time_job_phone"
+				value="{$jianzhi_edit['part_time_job_phone']}" disabled="disabled">
+				
+				<span style="position: absolute;right: 10px;top:9px;font-size: 12px;border:1px solid #fd5530 ;padding:0 4px;border-radius: 3px;color:#fd5530 ;" class="phonechange">更换手机号码</span>
+				<span style="position: absolute;right: 10px;top:9px;font-size: 12px;border:1px solid #fd5530 ;padding:0 4px;border-radius: 3px;display:none;color: #fd5530 ;" class="emailsell">发送验证码</span>
+				<span style="position: absolute;right: 10px;top:9px;font-size: 12px;border:1px solid #919191;padding:0 4px;border-radius: 3px;display:none;color:#919191" class="hidden_button"></span>
+				
+			</div>
+			
+			<div class="item" style="display:none;" id="yzm">
+				<label for=""><span>*</span>验证码</label>
+				<input type="text" placeholder="请填写验证码" id="code">
+			</div>
+			
+			
+
+		</div>
+		<div style="padding: 30px 15px;text-align: center;">
+			<span  style="color: #666;font-size: 13px;">
+				<span class="ty select">我已阅读并同意</span><a style="color: #ff7300;" href="__MODULE__/Index/userAgreement">《本地鸟用户协议》</a>
+			</span>
+			<a class="mui-btn mui-btn-danger" style="background-color: #fd5530 ;line-height: 28px;border:none;width: 100%;margin-top: 10px;" id="btn">确定修改</a>
+		</div>
+		 <input type="hidden" id="existencedel">
+	</div>
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script src="__PUBLIC__/Home/js/countdown.js"></script>
+	<script>
+
+	  // $(".my").click(function(){
+   //  	var part_time_job_wages1 = $("#part_time_job_wages1").attr('disabled');
+    	 
+   //  	if (part_time_job_wages1 == 'disabled') {
+   //  	   $("#part_time_job_wages1").removeAttr('disabled');
+   //  	}else{
+   //  	   $("#part_time_job_wages1").val("");
+   //  	   $("#part_time_job_wages1").attr('disabled');
+   //   	}
+   //  })
+   $(".phonechange").click(function(){
+		$(".emailsell").show();
+		$("#yzm").show();
+		$(".phonechange").hide();
+		$("#part_time_job_phone").removeAttr("disabled");
+	})
+
+       
+		var flag=false;
+		$('.my').on('tap',function(){
+			if(flag){
+				$(this).addClass('select');
+				$('#part_time_job_wages1').val("");
+				$('#part_time_job_wages1').attr('disabled','disabled');				
+			}else{
+				$(this).removeClass('select');
+				$('#part_time_job_wages1').removeAttr('disabled');
+			}
+			flag=!flag;
+		})
+
+		var flag1=true;
+		$('.ty').on('tap',function(){
+			if(flag1){
+				$(this).addClass('active');
+			}else{
+				$(this).removeClass('active');
+			}
+			flag1=!flag1;
+		})
+
+
+        //发布
+		$("#btn").click(function(){
+		$.post('{:U("Home/Index/userRelease")}', {}, function(data) {
+    	if (data == 1) {
+    	 layer.msg('对不起，您没有权利发布信息')
+    	}else{
+    		var part_time_job_id = {$jianzhi_edit['part_time_job_id']};
+		 var bianhu = 0;
+        var css =  $("#yzm").css('display');
+        //获取发布兼职的标题part_time_job_title
+        var part_time_job_title = $('#part_time_job_title').val();
+        //获取兼职的职位
+        var part_time_job_position=$('#part_time_job_position').find("option:selected").val();
+        //获取兼职的招聘人数
+        var part_time_job_people_num = $('#part_time_job_people_num').val();
+        //获取兼职的兼职期限
+        var part_time_job_term =$('#part_time_job_term').find("option:selected").val();
+        //获取职位描述
+        var part_time_job_desc =$('#part_time_job_desc').val();
+        //获取薪资（手动输入数字）
+        var part_time_job_wages1=$('#part_time_job_wages1').val();
+         //获取薪资（选择面议）
+        var select=$('.select').text();
+        //获取薪资单位
+        var part_time_job_wages2=$('#part_time_job_wages2').find("option:selected").val();
+        //获取结算方式
+        var part_time_job_settlement = $('#part_time_job_settlement').find("option:selected").val();
+        //获取联系人姓名
+        var part_time_job_name=$('#part_time_job_name').val();
+        //获取联系人电话
+        var part_time_job_phone=$('#part_time_job_phone').val();
+        //获取联系人地址
+        var part_time_job_address=$('#part_time_job_address').val();
+        //判断是否选择
+        var active = $('.active').text();
+ 
+         var code = $('#code').val();
+       $.post('{:U("Home/Index/lookcode")}', {}, function(data) {
+	   	 var newcode = data;
+        if (!part_time_job_title) {
+          layer.msg('请先填写标题')
+        }else if (!part_time_job_position) {
+          layer.msg('请先选择职位');
+        }else if(!part_time_job_people_num){
+          layer.msg('请先填写的招聘人数');
+        }else if(!part_time_job_term){
+          layer.msg('请先选择兼职的期限')
+        }else if (!part_time_job_wages1 & !select) {
+          layer.msg('请先选择薪资')
+        }else if(!part_time_job_settlement){
+          layer.msg('请先选择结算方式')
+        }else if (!part_time_job_name) {
+          layer.msg('请先填写联系人姓名')
+        }else if (!part_time_job_phone) {
+          layer.msg('请先填写联系人电话')
+        }else if(css == 'block'){       
+ 	        if(!code){
+	          layer.msg('请先填写验证码')
+ 	        }else if(code != newcode){
+	      	  layer.msg('验证码不正确')
+	        }else{
+		       bianhu = 1;
+ 	        }
+        }else{
+	       bianhu = 1;
+        }
+ 
+        if (bianhu == 1) {
+         if (!part_time_job_address) {
+          layer.msg('请先填写工作地址')
+        }else if(!active){
+    	//判断是否选择同意协议
+        layer.msg('请先阅读并同意《本地鸟用户协议》');
+        }else{
+        	//提交到addaparttime页面
+	        $.post("{:U('Home/Edit/addPartTimeEdit')}",{part_time_job_id:part_time_job_id,part_time_job_title:part_time_job_title,part_time_job_position:part_time_job_position,part_time_job_people_num:part_time_job_people_num,part_time_job_term:part_time_job_term,part_time_job_settlement:part_time_job_settlement,part_time_job_name:part_time_job_name,part_time_job_phone:part_time_job_phone,part_time_job_address:part_time_job_address,part_time_job_desc:part_time_job_desc,part_time_job_wages2:part_time_job_wages2,part_time_job_wages1:part_time_job_wages1}, function(data) {
+	        	// alert(data);
+	        	 if (data == 1) {
+                     //提交成功弹出层
+                     $('.cheng').show();
+                     $('.disk').show();
+ 	        	 }else{
+	        	 	layer.msg(data);
+	        	 }
+	        });
+          }
+	     }
+		})
+       }
+      })
+      })
+	  
+
+       
+	$(function(){
+		$('.emailsell').click(function(event) {
+			var  myreg = /^1[34578]\d{9}$/;
+			var part_time_job_phone=$('#part_time_job_phone').val();
+			if(myreg.test(part_time_job_phone)){
+				$.post("{:U('Home/Index/code')}",{phone:part_time_job_phone},function(msg){
+					//alert(msg)
+				})
+
+				var counricount = 179;
+				var countdowntime = setInterval(countdownauto, 1000);
+
+				  function countdownauto() {
+						counricount--;
+						// alert(counricount)
+	 				      if(counricount == 0) {
+					         $.post("http://www.bdniao.com/index.php/Home/Demo/countdown",{},function(dats){
+						     })
+	 				      	clearTimeout(time);
+	 				   }
+					}
+
+				 //时间倒叙
+					$(".hidden_button").text(60+'s后发送');
+					$(this).hide();
+					$(".hidden_button").show();
+					var icount = 59;
+					var time = setInterval(auto, 1000);
+
+					function auto() {
+						var s = icount+'s后再发送';
+						$(".hidden_button").text(s);
+						icount--;
+						if(icount == 0) {
+							clearTimeout(time);
+							$(".emailsell").show();
+							$(".hidden_button").hide();
+						}
+					}
+			}else{
+				layer.msg('请先输入正确的手机号码')
+			}
+		});
+	})
+ 
+	$(document).ready(function(){
+     	var Desc1 = document.getElementById("Desc1").offsetHeight+"px";
+     	$("#Desc1 label").css('line-height',Desc1);
+     })
+	</script>
+</body>
+</html>

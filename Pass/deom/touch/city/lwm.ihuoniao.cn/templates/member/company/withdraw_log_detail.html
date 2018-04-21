@@ -1,0 +1,69 @@
+{#$pageTitle = "提现记录详细 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/withdraw_log_detail.css?v=1" media="all" />
+</head>
+
+{#$pageCurr = "withdraw"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+
+	<div class="notice">公告：管理控制台改版啦，为便于您的操作，用户中心功能整合到管理控制台并对样式进行优化，欢迎体验！<a href="#" target="_blank">操作指南</a> <a href="#" target="_blank">建议反馈</a><em class="close">&times;</em></div>
+
+	<div class="nav-tabs fn-clear">
+		<ul class="fn-clear">
+			<li><a href="{#getUrlPath service='member' template='deposit'#}">账户充值</a></li>
+			<li><a href="{#getUrlPath service='member' template='withdraw'#}">余额提现</a></li>
+			<li class="active"><a href="javascript:;">提现记录</a></li>
+		</ul>
+	</div>
+	<div class="container">
+
+		<dl class="info-section">
+			{#if $state == 0#}
+				{#$stateTxt = "审核中"#}
+				{#if $bank == "alipay"#}
+					{#$stateNote = "支付宝提现2个工作日内到账；"#}
+				{#else#}
+					{#$stateNote = "银行卡提现3-5个工作日内到账；"#}
+				{#/if#}
+			{#elseif $state == 1#}
+				{#$stateTxt = "成功"#}
+				{#$stateNote = $note#}
+				{#$stateData = "<p>到账时间："|cat:$rdate|cat:"</p>"#}
+			{#elseif $state == 2#}
+				{#$stateTxt = "失败"#}
+				{#$stateNote = $note#}
+				{#$stateData = "<p>操作时间："|cat:$rdate|cat:"</p>"#}
+			{#/if#}
+			<dt><span class="info-title">提现状态：</span><em class="info-text">{#$stateTxt#}</em></dt>	
+			<dd class="last"><p>{#$stateNote#}</p>{#$stateData#}</dd>
+		</dl>
+
+		<dl class="bunch-section">
+			<dt>提现信息</dt>
+			<dd>
+				<ul>
+					{#if $bank == "alipay"#}
+					<li>收款人帐号：{#$cardnum#}</li>
+					<li>收款人姓名：{#$cardname#}</li>
+					{#else#}
+					<li>提现银行：{#$bank#}</li>
+					<li>提现卡号：{#$cardnum#}</li>
+					<li>收&nbsp;&nbsp;款&nbsp;&nbsp;人：{#$cardname#}</li>
+					{#/if#}
+					<li>申请时间：{#$tdate#}</li>
+					<li>提现金额：<strong>&yen;{#$amount#}</strong></li>
+				</ul>
+			</dd>
+		</dl>		
+
+	</div>
+	
+</div>
+
+{#include file="footer.html"#}
+</body>
+</html>

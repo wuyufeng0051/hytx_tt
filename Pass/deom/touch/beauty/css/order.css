@@ -1,0 +1,230 @@
+body{
+	background: #f1f4fd
+}
+.order_lead{
+	height: .9rem;
+	line-height: .9rem;
+	background: #312e41;
+	color: #fff;
+	text-align: center;
+	font-size: 0.36rem;
+	position: relative;
+}
+.order_lead .to_left{
+	background: url(../images/toleft.png) no-repeat center;
+	background-size: 0.6rem;
+	height: 0.6rem;
+	width: 0.6rem;
+	display: inline-block;
+	position: absolute;
+	left: 0.2rem;
+	top: 0.15rem;
+}
+.person_infor{
+	padding: 0.2rem;
+	background: #fff;
+}
+.person_infor .infor_left{
+	float: left;
+	width: 2.5rem;
+	position: relative;
+	margin-right: 0.2rem;
+}
+.person_infor .infor_left img{
+	width: 2.5rem;
+	height: 2.5rem;
+}
+.person_infor .infor_left span{
+    position: absolute;
+    top: 0.07rem;
+    left: 0.07rem;
+    width: 1.3rem;
+    height: 0.35rem;
+    font-size: 0.24rem;
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    text-align: center;
+}
+.infor_right{
+	width: 60%;
+	overflow: hidden;
+}
+.infor_right .infor_lead{
+	font-size: 0.3rem;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+	height: 0.4rem;
+	overflow: hidden;
+}
+.infor_right .infor_price{
+	font-size: 0.3rem;
+	color: #f5597e;
+	margin-bottom: 0.5rem;
+		height: 0.4rem;
+	overflow: hidden;
+}
+.infor_right .infor_l1{
+	font-size:0.3rem;
+	color: #a4a4a6;
+		height: 0.4rem;
+	overflow: hidden;
+}
+.f_kind .kind_lead{
+	font-size: 0.3rem;
+	background: #f1f4fd;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	text-indent: 0.2rem;
+}
+.f_kind ul{
+	background: #fff;
+	padding: 0.2rem;
+}
+.f_kind ul li{
+	float: left;
+	width: 31%;
+	font-size: 0.3rem;
+	border: 1px solid #e8e8e8;
+	text-align: center;
+	margin: 0.05rem;
+	border-radius: 0.5rem;
+	height:0.6rem;
+	line-height:0.6rem;
+}
+.kind_bc {
+	background: #ffe554;
+}
+.f_time .f_lead{
+	font-size: 0.3rem;
+	background: #f1f4fd;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	text-indent: 0.2rem;
+}
+.f_time .time_choice{
+	height: 0.8rem;
+	line-height: 0.8rem;
+	font-size: 0.3rem;
+	text-indent: 0.2rem;
+	background: #fff;
+}
+.f_time .time_choice em{
+	background: url(../images/toright.png) no-repeat center;
+	background-size: 0.4rem;
+	width: 0.4rem;
+	height: 0.4rem;
+	display: inline-block;	
+	float: right;
+	margin-top: 0.2rem;
+}
+.f_place .p_lead{
+	font-size: 0.3rem;
+	background: #f1f4fd;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	text-indent: 0.2rem;
+}
+.f_place .time_choice{
+	height: 0.8rem;
+	line-height: 0.8rem;
+	font-size: 0.3rem;
+	text-indent: 0.2rem;
+	background: #fff;
+}
+.f_place .time_choice em{
+	background: url(../images/toright.png) no-repeat center;
+	background-size: 0.4rem;
+	width: 0.4rem;
+	height: 0.4rem;
+	display: inline-block;	
+	float: right;
+	margin-top: 0.2rem;
+}
+.al-toggle-button{
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    width: 52px;
+    height: 32px;
+    background: #dfdfdf;
+    border-radius: 16px;
+    border: 1px solid #dfdfdf;
+    outline: 0;
+    box-sizing: border-box;
+}
+.al-toggle-button:checked{
+    border-color: #04be02;
+    background-color: #04be02;
+}
+.al-toggle-button:before, .al-toggle-button:after{
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    border-radius: 15px;
+    transition: transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
+    -webkit-transition: -webkit-transform 0.3s;
+}
+.al-toggle-button:before{
+    width: 50px;
+    background-color: #fdfdfd;
+}
+.al-toggle-button:after{
+    width: 30px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.al-toggle-button:checked:before{
+    transform: scale(0);
+    -webkit-transform: scale(0);
+}
+.al-toggle-button:checked:after{
+    transform: translateX(20px);
+    -webkit-transform: translateX(20px);
+}
+.subsidy{
+	height: 1rem;
+	line-height: 1rem;
+	text-indent: 0.2rem;
+	font-size: 0.3rem;
+	margin-bottom: 1.1rem;
+}
+.subsidy .al-toggle-button{
+	float: right;
+	margin: 0.2rem 0.2rem 0 0;
+}
+.or_submit{
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #fff;
+	font-size: 0.3rem;
+	height: 1rem;
+	line-height: 1rem;
+	border-top: 1px solid #ededed;
+	
+}
+.or_submit p{
+	float: left;
+	margin-left: 0.2rem;
+}
+.or_submit p em{
+	color: #f16884;
+}
+.or_submit p i{
+	font-style: normal;
+	color: #f16884;
+}
+.or_submit a{
+	float: right;
+	height: 1rem;
+	background: #7a7a84;
+	color:#fff;
+	width: 2rem;
+	text-align: center;
+}

@@ -1,0 +1,90 @@
+<!--#include file="_head.shtml"-->
+
+	<link rel="stylesheet" href="css/report.css">
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+
+	<div class="report_box">
+		<div class="re_title"><em>*</em>选择举报原因<span>（可多选）</span></div>
+		<div class="choice_box fn-clear">
+			<ul>
+				<li>信息虚假</li>
+				<li>恶意骚扰</li>
+				<li class="mar">涉黄违法</li>
+				<li>欺诈骗钱</li>
+				<li>冒牌侵权</li>
+				<li class="mar">其他原因</li>
+			</ul>
+		</div>
+	</div>
+	<div class="report_box">
+		<div class="re_title"><em>*</em>选择举报原因<span>（可多选）</span></div>
+		<textarea name="" id="" cols="30" rows="10" placeholder="请简明扼要的阐述你的理由；以便工作人员更好的判断（0-200字）"></textarea>
+	</div>
+	<div class="certfy picture_1">
+		<div class="pic_list">
+	        <div class="img-box">
+	  		    <div class="pic_tips">上传图片凭证<em>(支持jpg，jpeg，png格式，最多6张，每张不超过3M)</em></div>
+				<ul class="uploader-list fn-clear" id="fileList1">
+					<li class="uploadbtn">
+						<div id="filePicker1" data-type="atlas" data-amount="6" class="webuploader-container picker">
+							<div class="webuploader-pick"><div class="webuploader-pick"><em></em><p>添加图片</p></div></div>
+						</div>
+					</li>
+				</ul>
+	  		    <p class="imgtip"></p>
+	  	    </div>
+		</div>
+    </div>
+	<div class="edit-item">
+		<div class="input-control fn-clear">
+			<i>*</i>
+			<span>联系电话</span>
+			<div class="user-fav fn-clear">
+				<input type="text" class="" placeholder="请输入电话">
+				<div class="get">发送验证码</div>
+			</div>
+		</div>		
+	</div>
+	<div class="edit-item">
+		<div class="input-control fn-clear">
+			<i>*</i>
+			<span>验证码</span>
+			<div class="user-fav fn-clear">
+				<input type="text" class="" placeholder="请输入验证码">
+			</div>
+		</div>		
+	</div>
+	<div class="warning">
+		<div class="warning_txt">
+			<h1>举报须知</h1>
+			<h2>您应该保证你的投诉行为基于善意，并代表您本人真实意思，禁止恶意举报。除法律法规规定的情形外，未经本人许可，本地鸟不会向第三方公开、透露您的个人信息。</h2>
+			<p>举报信息一经查实，必有好礼相送。欢迎广大用户监督举报。</p>
+		</div>
+	</div>
+	<!-- 申请已提交成功 s -->
+	<div class="succeed_box cheng">
+		<h1>提交成功</h1>
+		<p><a href="javascript:history.go(-1)"><span>确定</span></a></p>
+	</div>
+	<!-- 申请已提交成功 e -->
+	<div class="disk"></div>
+	<div class="btn"><span>提交</span></div>
+	<script type="text/javascript" src="js/report.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script> 
+	<script>
+		$('.btn').click(function(){
+			$('.cheng').show();
+			$('.disk').show();
+		})
+		$('.cheng p span').click(function(){
+			$('.cheng').hide();
+			$('.disk').hide();
+		})
+		$('.disk').click(function(){
+			$('.cheng').hide();
+			$('.disk').hide();
+	    $('.delete').hide();
+		})
+	</script>
+</body>
+</html>

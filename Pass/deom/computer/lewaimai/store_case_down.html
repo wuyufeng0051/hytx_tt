@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="page-content">
+  <!-- /section:settings.box -->
+  <div class="page-content-area">
+    <style>.new_label { text-align: right; } .ness{ display: table; } .form-group { float: left; width: 50%; } .food_list{ list-style:none; margin:0px 50px; } .food_list span{ margin:5px 6px; display:inline-block; } .food_list span label{ width:140px; height:35px; line-height:17px; display:inline-block; overflow:hidden; font-size:14px; text-align:right; padding-right:5px; } .loading{ text-align: center; display: none; } .food_list center{ font-size:14px; font-weight:bold; color:red; } #new-order .alert-danger, #edit-order .alert-danger{ display:none; } .food_title{ height:30px; line-height:30px; font-size:18px; font-weight:bold; color:orange; cursor:pointer; } .spinner{ width:30px; } .ui-spinner{ vertical-align:top; } .yang{ margin-left:5px; border:1px solid #949290; border-radius:3px; cursor:pointer; } .xing{ margin-left:5px; border:1px solid red; border-radius:3px; cursor:pointer; } .cc{ border:1px solid #F59942; } .food{ display:none; } .pop-one{ width: 270px; background: #fff; border-radius:3px; position: fixed; top: 21%; left: 50%; margin-left: -135px; } .meng{ background:rgba(0,0,0,.5); position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index:9999; } .pop-one .pop-cont{ line-height: 25px; padding: 12px 10px; border-bottom: 1px solid #d2d6da; } .pop-bottom a{ text-align: center; height: 40px; line-height: 40px; color: #007aff; } .pop-bottom a:first-child{ border-right:1px solid #d2d6da; } .align-center, .div-align-center { text-align: center; } .meng p{text-align:left;} .feng p{text-align:left;} .geng p{text-align:left;} .webkit-box1 { display: -webkit-box; width: 100%; } .webkit-box1 >* { -webkit-box-flex: 1; width: 100%; display: block; } .order_true{cursor:pointer;} .feng{ background:rgba(0,0,0,.5); position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index:9999; } .geng{ background:rgba(0,0,0,.5); position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index:9999; } .aa{display:none;} #order-grid-open .oldmemo,#order-grid-open .oldconfigmemo{ font-size:12px; color:black; display:none; width:100%; }</style>
+    <div class="feng aa">
+      <div class="pop-one">
+        <div class="pop-cont align-center">
+          <p>
+            <span style="position:relative;top:-25px;">备注：</span>
+            <textarea class="newmemo"></textarea>
+            <input type="hidden" class="orid" value=""></p>
+        </div>
+        <div class="pop-bottom webkit-box1">
+          <a class="memo_true">提交</a>
+          <a class="order_cancel">取消</a></div>
+      </div>
+    </div>
+    <div class="geng aa">
+      <div class="pop-one">
+        <div class="pop-cont align-center">
+          <p>
+            <span style="position:relative;top:-35px;">商家备注：</span>
+            <textarea class="newconfigmemo" cols="19" rows="3"></textarea>
+            <input type="hidden" class="ordid" value=""></p>
+        </div>
+        <div class="pop-bottom webkit-box1">
+          <a class="configmemo_true">提交</a>
+          <a class="order_cancel">取消</a></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="tabbable">
+          <ul class="nav nav-tabs" id="myTab">
+              <li >
+                <a href="store_case.html">未处理订单
+                  <span class="badge badge-danger">1</span></a>
+              </li>
+              <li class="active">
+                <a href="store_case_down.html">已确认订单</a></li>
+              <li>
+                <a href="store_case_succeed.html">成功订单</a></li>
+              <li>
+                <a href="store_case_fail.html">失败订单</a></li>
+              <li>
+                <a href="store_case_cancel.html">已取消订单</a></li>
+            </ul>
+          <div class="tab-content">
+            <div>
+              <button class="btn btn-success" onclick="GetSucceededCheckbox()">成功订单</button>
+              <button class="btn btn-danger" onclick="GetFailedCheckbox()">失败订单</button>
+              <button class="btn btn-warning" onclick="setprinter();">打印订单</button></div>
+            <div id="order-grid-open" class="grid-view">
+              <table class="table table-striped table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th class="checkbox-column" id="order-grid-open_c0">
+                      <input type="checkbox" value="1" name="order-grid-open_c0_all" id="order-grid-open_c0_all"></th>
+                    <th id="order-grid-open_c1">
+                      <a class="sort-link" href="#">订单编号</a></th>
+                    <th id="order-grid-open_c2">店铺</th>
+                    <th id="order-grid-open_c3">
+                      <a class="sort-link" href="#">顾客ID</a></th>
+                    <th id="order-grid-open_c4">
+                      <a class="sort-link desc" href="#">下单时间</a></th>
+                    <th id="order-grid-open_c5">详情</th>
+                    <th id="order-grid-open_c6">桌子</th>
+                    <th id="order-grid-open_c7">茶位费</th>
+                    <th id="order-grid-open_c8">
+                      <a class="sort-link" href="#">开台费</a></th>
+                    <th id="order-grid-open_c9">
+                      <a class="sort-link" href="#">备注</a></th>
+                    <th id="order-grid-open_c10">
+                      <a class="sort-link" href="#">预设选项</a></th>
+                    <th id="order-grid-open_c11">
+                      <a class="sort-link" href="#">订单总价</a></th>
+                    <th id="order-grid-open_c12">
+                      <a class="sort-link" href="#">支付方式</a></th>
+                    <th id="order-grid-open_c13">
+                      <a class="sort-link" href="#">商家备注</a></th>
+                    <th class="button-column" id="order-grid-open_c14">操作</th></tr>
+                  <tr class="filters">
+                    <td>&nbsp;</td>
+                    <td>
+                      <input name="TangshiOrder[order_num]" type="text" maxlength="50"></td>
+                    <td>
+                      <input name="TangshiOrder[shopName]" type="text"></td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td></tr>
+                </thead>
+                <tbody>
+                  <tr class="odd selected">
+                    <td width="30">
+                      <input value="222708" id="order-grid-open_c0_0" type="checkbox" name="selectorderlist[]"></td>
+                    <td width="70">2017031610251509</td>
+                    <td width="70" style="word-break: break-all;">苏州火鸟测试</td>
+                    <td width="60">15817386</td>
+                    <td width="75">2017-03-16 14:29:03</td>
+                    <td width="120">
+                      <div style="background:#ddd;padding:1px;margin:3px 0px;">商品测试【1】份</div></td>
+                    <td width="120">大桌</td>
+                    <td width="120">无</td>
+                    <td width="60">0.00</td>
+                    <td style="word-break : break-all;position:relative;" width="80">
+                      <div class="memoDiv" style="display: block;">
+                        <div style="display:inline;">&nbsp;</div>
+                        <span style="margin-left: 5px; position: relative; display: none;" class="red">
+                          <i class="fa fa-pencil-square-o bigger-130" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                      <textarea class="oldmemo" type="text" data-id="222708" data-old="" style="display: none;"></textarea>
+                    </td>
+                    <td width="80" style="word-break: break-all;"></td>
+                    <td width="50">0.00</td>
+                    <td width="50">
+                      <b style="color:red">现金支付</b></td>
+                    <td style="word-break : break-all;position:relative;" width="80">
+                      <div class="configmemoDiv">
+                        <div style="display:inline;">&nbsp;</div>
+                        <span style="margin-left: 5px; position: relative; display: none;" class="red">
+                          <i class="fa fa-pencil-square-o bigger-130" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                      <textarea class="oldconfigmemo" type="text" data-id="222708" data-old=""></textarea>
+                    </td>
+                    <td class="button-column">
+                      <a title="查看" class="green" style="padding-right:8px;" href="#">
+                        <i class="ace-icon fa fa-search bigger-130"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="summary">第 1-1 条, 共 1 条.</div>
+              <div class="keys" style="display:none" title="/tangshi/viewconfirmed">
+                <span>222708</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="/js/jquery.form.js"></script>
+    <script>function dothis() {
+        /*订单备注*/
+        updateInfo("#order-grid-open .memoDiv", "#order-grid-open .oldmemo", "memo", "订单备注不能为空！");
+        /*订单商家备注*/
+        updateInfo("#order-grid-open .configmemoDiv", "#order-grid-open .oldconfigmemo", "configmemo", "商家备注不能为空！");
+      }
+      function updateInfo(div, input, attribute, msg) {
+        $(div).click(function() {
+          $(this).hide();
+          $(this).next().show().focus();
+        });
+        $(input).blur(function() {
+          var _this = $(this),
+          content = _this.val();
+          if (content) {
+            _this.attr("disabled", true);
+            $.ajax({
+              url: "/tangshi/orderUpdate",
+              type: "post",
+              data: {
+                "id": _this.attr("data-id"),
+                "content": content,
+                "attribute": attribute
+              },
+              dataType: "json",
+              success: function(d) {
+                if (d.status == "success") {
+                  _this.attr("data-old", _this.val());
+                  _this.prev().children("div").html(_this.val());
+                } else {
+                  bootbox.alert(d.message);
+                  _this.prev().children("div").html(_this.attr("data-old"));
+                }
+                _this.hide();
+                _this.prev().show();
+                _this.attr("disabled", false);
+              }
+            });
+          } else {
+            //      bootbox.alert(msg);
+            if (_this.attr("data-old")) {
+              _this.prev().children("div").html(_this.attr("data-old"));
+            } else {
+              _this.prev().children("div").html("&nbsp;");
+            }
+            _this.hide();
+            _this.prev().show();
+          }
+        }).keyup(function() {
+          if (event.keyCode == 13) {
+            var _this = $(this),
+            content = _this.val();
+            if (content) {
+              _this.attr("disabled", true);
+              $.ajax({
+                url: "/tangshi/orderUpdate",
+                type: "post",
+                data: {
+                  "id": _this.attr("data-id"),
+                  "content": content,
+                  "attribute": attribute
+                },
+                dataType: "json",
+                success: function(d) {
+                  if (d.status == "success") {
+                    _this.attr("data-old", _this.val());
+                    _this.prev().children("div").html(_this.val());
+                  } else {
+                    bootbox.alert(d.message);
+                    _this.prev().children("div").html(_this.attr("data-old"));
+                  }
+                  $(this).hide();
+                  $(this).prev().show();
+                  _this.attr("disabled", false);
+                }
+              });
+            } else {
+              bootbox.alert(msg);
+              _this.prev().children("div").html(_this.attr("data-old"));
+              $(this).hide();
+              $(this).prev().show();
+            }
+          }
+        });
+      }
+      $(function() {
+        dothis();
+        $(".memo").on('click',
+        function() {
+          var memo = $(this).parent().siblings('.oldmemo').val();
+          var id = $(this).parent().siblings('.oid').val();
+          $(".feng").removeClass('aa');
+          $(".newmemo").val(memo);
+          $(".orid").val(id);
+        }); $(".memo_true").on("click",
+        function() {
+          $(".feng").addClass("aa");
+          var memo = $(this).parent().siblings('.pop-cont').find('p .newmemo').val();
+          var id = $(this).parent().siblings('.pop-cont').find('p .orid').val();
+          $.ajax({
+            url: "/tangshi/updatememo",
+            type: "post",
+            data: {
+              "id": id,
+              "memo": memo
+            },
+            dataType: "json",
+            success: function(d) {
+              if (d.status == "error") {
+                bootbox.alert(d.message);
+                return false;
+              }
+              if (d) {
+                //$(this).text(memo);
+                window.location.href = "/tangshi/viewopen";
+              }
+            }
+          });
+        });
+
+        $(".configmemo").on('click',
+        function() {
+          var configmemo = $(this).parent().siblings('.oldconfigmemo').val();
+          var id = $(this).parent().siblings('.oid').val();
+          $(".geng").removeClass('aa');
+          $(".newconfigmemo").val(configmemo);
+          $(".ordid").val(id);
+        }); $(".configmemo_true").on("click",
+        function() {
+          $(".geng").removeClass("aa");
+          var configmemo = $(this).parent().siblings('.pop-cont').find('p .newconfigmemo').val();
+          var id = $(this).parent().siblings('.pop-cont').find('p .ordid').val();
+          $.ajax({
+            url: "/tangshi/updateconfigmemo",
+            type: "post",
+            data: {
+              "id": id,
+              "configmemo": configmemo
+            },
+            dataType: "json",
+            success: function(d) {
+              if (d.status == "error") {
+                bootbox.alert(d.message);
+                return false;
+              }
+              if (d) {
+                //$(this).text(configmemo);
+                window.location.href = "/tangshi/viewopen";
+              }
+            }
+          });
+        });
+        $(".order_cancel").on('click',
+        function() {
+          $(".meng").addClass('aa');
+          $(".feng").addClass('aa');
+          $(".geng").addClass('aa');
+        });
+        $('.memoDiv').mouseover(function() {
+          $(this).children("span").show();
+        });
+        $('.memoDiv').mouseout(function() {
+          $(this).children("span").hide();
+        });
+        $('.configmemoDiv').mouseover(function() {
+          $(this).children("span").show();
+        });
+        $('.configmemoDiv').mouseout(function() {
+          $(this).children("span").hide();
+        });
+      });</script>
+  </div>
+  <!-- /.page-content-area --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

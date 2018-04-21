@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>匠心居</title>
+<!--#include virtual="public.shtml"-->
+<link rel="stylesheet" type="text/css" href="css/load.css">
+</head>
+<body>
+<!--#include virtual="top.shtml"-->
+<div class="load">
+	<img src="images/login_bg.jpg" alt="">
+	<div class="form-box fr loginV2" style="display:block;">
+			<ul class="form-tab fn-clear">
+				<li class="tab-li"><a href="javascript:;" >微信登录<i class="icon"></i></a></li>
+				<li class="tab-li cur"><a href="javascript:;">账号登录</a></li>
+			</ul>
+			<div class="form-con">
+				<div class="weixin-login" style="display:none;">
+					<div class="wx-box fn-clear">
+						<a href="javascript:;" class="wx-img-box">
+						</a>
+					</div>
+					<p class="wx-text">微信扫一扫  快速登录</p>
+					<p class="wx-help"><a href="javascript:;" class="help-a">如何使用？</a></p>
+				</div>
+				<div class="login-normal" style="display:block;">
+					<form>
+						<div class="form-error" style=""><i></i><label class="text"></label></div>
+						<dl class="top2 fn-clear">
+							<dt>账户名：</dt>
+							<dd><input type="text" name="loginName" id="normalUser" class="input-text" autocomplete="off" placeholder="用户名/邮箱/手机号"></dd>
+						</dl>
+						<dl class="top1 fn-clear">
+							<dt>密<em></em>码：</dt>
+							<dd><input type="password" name="password" id="normalPassword" class="input-text" placeholder="请输入密码"></dd>
+						</dl>
+						
+						<div class="form-remember memCheck">
+							
+							<input name="rememberName" type="checkbox" id="remUser" class="rem-check" style="display:none;" checked="checked">
+							<span class="rem-box rem-box-r"><input name="rememberMe" type="checkbox" id="remLogin" class="rem-check">三个月之内免登录</span> 
+						</div>
+						<div class="btn-box fn-clear">
+							<input id="normalSubmit" class="btn-settlement" type="submit" value="登    录" tjjj="passport.button.login">
+						
+						</div>
+						<div class="link-box fn-clear">
+                            <a href="#">注册</a>
+                            <a href="#" class="forght">忘记密码？</a>
+                        </div>
+					</form>
+					<div class="login-short fn-clear">
+					   <div class="short-left">
+							<h3>使用合作账号登录：</h3>
+							<ul class="fn-clear">
+								<li class="qq"><a a="" href="#" ></a></li>
+								<li class="sina"><a href="#" ></a></li>
+								<li class="weixin"><a href="javascript:gotoWxTab();"></a></li>
+							</ul>
+						</div>
+					   <div class="short-right">
+                            <h3>您还可以选择：</h3>
+                            <p class="phone-short fn-clear">
+                                <i class="phone"></i>
+                                <a href="javascript:;" tjjj="" class="txt phoneLogin">手机快捷登录</a>
+                            </p>
+                       </div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<!--#include virtual="footer.shtml"-->
+<script type="text/javascript" src="js/load.js"></script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var adminPath = "{#$adminPath#}", mapCity = "{#$mapCity#}", tagsLength = {#$tagsLength#}, graspLength = {#$graspLength#}, learnLength = {#$learnLength#};
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label for="user">所属会员：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="user" id="user" value="{#$username#}" autocomplete="off" />
+      <input type="hidden" name="userid" id="userid" value="{#$userid#}" />
+      <span class="input-tips"><s></s>请输入网站对应会员名</span>
+      <div id="userList" class="popup_key"></div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="typeid">会员类型：</label></dt>
+    <dd>
+      <span id="typeList">
+        <select name="typeid" id="typeid" class="input-medium">
+          {#html_options options=$typeList selected=$typeid#}
+        </select>
+      </span>
+      <span class="input-tips"><s></s>请选择交友目的</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="purpose">交友目的：</label></dt>
+    <dd>
+      <span id="purposeList">
+        <select name="purpose" id="purpose" class="input-medium">
+          {#html_options options=$purposeList selected=$purpose#}
+        </select>
+      </span>
+      <span class="input-tips"><s></s>请选择交友目的</span>
+    </dd>
+  </dl>
+  <dl class="clearfix hide">
+    <dt><label>对象年龄范围：</label></dt>
+    <dd>
+      <div class="input-prepend input-append">
+        <span class="add-on">最小</span>
+        <select name="fromage" id="fromage" class="input-mini" style="margin:0;">
+          {#html_options options=$fromageList selected=$fromage#}
+        </select>
+        <span class="add-on">最大</span>
+        <select name="toage" id="toage" class="input-mini" style="margin:0;">
+          {#html_options options=$toageList selected=$toage#}
+        </select>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="dincome">所在区域：</label></dt>
+    <dd style="overflow:visible;" id="addrArr">
+      <div class="btn-group" style="margin-left:10px;">
+        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">{#$addre#}<span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="javascript:;" data-id="0">请选择</a></li>
+          {#foreach from=$addrListArr item=addr#}
+          <li><a href="javascript:;" data-id="{#$addr.id#}">{#$addr.typename#}</a></li>
+          {#/foreach#}
+        </ul>
+      </div>
+      <input type="hidden" name="addrid" id="addrid" value="{#$addrid#}" />
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="tags">交友标签：</label></dt>
+    <dd>
+      <div class="selectedTags">{#$tagsSelected#}</div>
+      <input type="hidden" name="tags" id="tags" value="{#$tags#}" />
+      <button class="btn chooseData" type="button">选择</button>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="grasp">会的技能：</label></dt>
+    <dd>
+      <div class="selectedTags">{#$graspSelected#}</div>
+      <input type="hidden" name="grasp" id="grasp" value="{#$grasp#}" />
+      <button class="btn chooseData" type="button">选择</button>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="learn">想学的技能：</label></dt>
+    <dd>
+      <div class="selectedTags">{#$learnSelected#}</div>
+      <input type="hidden" name="learn" id="learn" value="{#$learn#}" />
+      <button class="btn chooseData" type="button">选择</button>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="lnglat">坐标：</label></dt>
+    <dd>
+      <input type="text" class="input-xlarge" name="lnglat" id="lnglat" value="{#$lnglat#}" />
+      <img src="{#$adminPath#}../static/images/admin/markditu.jpg" id="mark" style="cursor:pointer;" title="标注地图位置" />
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="sign">个性签名：</label></dt>
+    <dd>
+      <input class="input-xxlarge" type="text" name="sign" id="sign" value="{#$sign#}" maxlength="100" data-regex=".{0,100}" />
+      <span class="input-tips"><s></s>请输入个性签名，100个字符以内</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="note">自我介绍：</label></dt>
+    <dd>
+      <textarea class="input-xxlarge" rows="5" name="note" id="note" data-regex=".*">{#$note#}</textarea>
+      <span class="input-tips"><s></s>请输入自我介绍</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="marriage">婚姻情况：</label></dt>
+    <dd>
+      <span id="marriageList">
+        <select name="marriage" id="marriage" class="input-medium">
+          {#html_options options=$marriageList selected=$marriage#}
+        </select>
+      </span>
+      <label for="height" style="width: 95px; text-align: right;">身高：</label>
+      <span id="heightList">
+        <select name="height" id="height" class="input-medium">
+          {#html_options options=$heightList selected=$height#}
+        </select>
+      </span>
+      <label for="bodytype" style="width: 95px; text-align: right;">体型：</label>
+      <span id="bodytypeList">
+        <select name="bodytype" id="bodytype" class="input-medium">
+          {#html_options options=$bodytypeList selected=$bodytype#}
+        </select>
+      </span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="housetag">居住情况：</label></dt>
+    <dd>
+      <span id="housetagList">
+        <select name="housetag" id="housetag" class="input-medium">
+          {#html_options options=$housetagList selected=$housetag#}
+        </select>
+      </span>
+      <label for="workstatus" style="width: 95px; text-align: right;">工作状态：</label>
+      <span id="workstatusList">
+        <select name="workstatus" id="workstatus" class="input-medium">
+          {#html_options options=$workstatusList selected=$workstatus#}
+        </select>
+      </span>
+      <label for="income" style="width: 95px; text-align: right;">收入：</label>
+      <span id="incomeList">
+        <select name="income" id="income" class="input-medium">
+          {#html_options options=$incomeList selected=$income#}
+        </select>
+      </span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="education">学历：</label></dt>
+    <dd>
+      <span id="educationList">
+        <select name="education" id="education" class="input-medium">
+          {#html_options options=$educationList selected=$education#}
+        </select>
+      </span>
+      <label for="smoke" style="width: 95px; text-align: right;">吸烟：</label>
+      <span id="smokeList">
+        <select name="smoke" id="smoke" class="input-medium">
+          {#html_options options=$smokeList selected=$smoke#}
+        </select>
+      </span>
+      <label for="drink" style="width: 95px; text-align: right;">饮酒：</label>
+      <span id="drinkList">
+        <select name="drink" id="drink" class="input-medium">
+          {#html_options options=$drinkList selected=$drink#}
+        </select>
+      </span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="workandrest">作息时间：</label></dt>
+    <dd>
+      <span id="workandrestList">
+        <select name="workandrest" id="workandrest" class="input-medium">
+          {#html_options options=$workandrestList selected=$workandrest#}
+        </select>
+      </span>
+      <label for="cartag" style="width: 95px; text-align: right;">购车情况：</label>
+      <span id="cartagList">
+        <select name="cartag" id="cartag" class="input-medium">
+          {#html_options options=$cartagList selected=$cartag#}
+        </select>
+      </span>
+      <label for="maxconsume" style="width: 95px; text-align: right;">最大消费：</label>
+      <span id="maxconsumeList">
+        <select name="maxconsume" id="maxconsume" class="input-medium">
+          {#html_options options=$maxconsumeList selected=$maxconsume#}
+        </select>
+      </span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="romance">最喜欢制造浪漫：</label></dt>
+    <dd>
+      <span id="romanceList">
+        <select name="romance" id="romance" class="input-medium">
+          {#html_options options=$romanceList selected=$romance#}
+        </select>
+      </span>
+      <span class="input-tips"><s></s>请选择您最否喜欢制造浪漫</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>属性：</dt>
+    <dd class="radio">{#html_checkboxes name='property' values=$propertyVal output=$propertyList selected=$property separator="&nbsp;&nbsp;"#}</dd>
+  </dl>
+  <div style="padding: 15px 15px 0;">
+    <blockquote>
+      <p>择偶条件</p>
+    </blockquote>
+  </div>
+  <dl class="clearfix">
+    <dt><label>年龄范围：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin: 0;">
+        <select name="dfage" id="dfage" class="input-mini" style="margin:0;">
+          {#html_options options=$fromageList selected=$dfage#}
+        </select>
+        <span class="add-on">至</span>
+        <select name="dtage" id="dtage" class="input-mini" style="margin:0;">
+          {#html_options options=$toageList selected=$dtage#}
+        </select>
+      </div>
+      <label style="width: 95px; margin-left: 8px; text-align: right;">身高范围：</label>
+      <div class="input-prepend input-append" style="margin: 0;">
+        <select name="dfheight" id="dfheight" style="width: 65px; margin:0;">
+          {#html_options options=$heightList selected=$dfheight#}
+        </select>
+        <span class="add-on">至</span>
+        <select name="dtheight" id="dtheight" style="width: 65px; margin:0;">
+          {#html_options options=$heightList selected=$dtheight#}
+        </select>
+      </div>
+      <label style="width: 95px; margin-left: -1px; text-align: right;">收入：</label>
+      <span id="incomeList">
+        <select name="dincome" id="dincome" class="input-medium">
+          {#html_options options=$incomeList selected=$dincome#}
+        </select>
+      </span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="dmarriage">婚姻情况：</label></dt>
+    <dd>
+      <span id="dmarriageList">
+        <select name="dmarriage" id="dmarriage" class="input-medium">
+          {#html_options options=$marriageList selected=$dmarriage#}
+        </select>
+      </span>
+      <label for="dhousetag" style="width: 95px; text-align: right;">居住情况：</label>
+      <span id="dhousetagList">
+        <select name="dhousetag" id="dhousetag" class="input-medium">
+          {#html_options options=$housetagList selected=$dhousetag#}
+        </select>
+      </span>
+      <label for="deducation" style="width: 95px; text-align: right;">学历：</label>
+      <span id="deducationList">
+        <select name="deducation" id="deducation" class="input-medium">
+          {#html_options options=$educationList selected=$deducation#}
+        </select>
+      </span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="dincome">区域：</label></dt>
+    <dd style="overflow:visible;" id="addrList">
+      <div class="btn-group" style="margin-left:10px;">
+        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">{#$addrName#}<span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="javascript:;" data-id="0">请选择</a></li>
+          {#foreach from=$addrListArr item=addrlist#}
+          <li><a href="javascript:;" data-id="{#$addrlist.id#}">{#$addrlist.typename#}</a></li>
+          {#/foreach#}
+        </ul>
+      </div>
+      <input type="hidden" name="addr" id="addr" value="{#$addr#}" />
+    </dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><button class="btn btn-large btn-success" type="submit" name="button" id="btnSubmit">确认提交</button></dd>
+  </dl>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

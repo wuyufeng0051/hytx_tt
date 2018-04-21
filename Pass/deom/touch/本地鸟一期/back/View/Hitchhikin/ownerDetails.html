@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>车主详情页</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style>
+	body{
+		padding-bottom: 44px;
+	}
+	.info{
+		background:#fff;
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+	.info h4{
+		margin:0;
+	}
+	.info h4 span{
+		font-weight: normal;
+		font-size: 14px;
+	}
+	.info .tips{
+		padding-top:8px;
+		font-size: 14px;
+	}
+	.info .tips span{
+		border-right: 1px solid #ddd;
+		padding-right: 5px;
+		color:#999;
+	}
+	.info .tips span:last-child{
+		border:none;
+	}
+	.report{
+		background: #fceecb;
+		height: 50px;
+		position: relative;
+		padding: 5px 10px;
+		padding-right: 70px;
+		margin:5px 0;
+	}
+	.report .text{
+		border-right: 1px solid #d9d9d9;
+		font-size: 14px;
+	}
+	.report p{
+		margin:0;
+		color: #ff7300;
+		/*font-weight: bold;*/
+		font-size: 14px;
+	}
+	.report a{
+		width: 50px;
+		position: absolute;
+		right: 10px;
+		top:15px;
+		display: block;
+		background: #ff7300;
+		color: #fff;
+		border-radius: 10px;
+		padding: 2px 5px;
+		text-align: center;
+		line-height: 24px;
+		height: 24px;
+		border-left: 1px solid #d9d9d9;
+		font-size: 16px;
+	}
+	.details{
+		padding: 20px 10px 30px;
+		background: #fff;
+ 	}
+ 	.details .time{
+ 		font-size: 14px;
+ 	}
+ 	.details p{
+ 		margin-bottom: 0;
+ 		line-height: 25px;
+ 		color: #000;
+ 	}
+ 	ul{
+ 		list-style: none;
+ 		padding: 0;
+ 		margin:0;
+ 	}
+ 	.list{
+		overflow: hidden;
+		
+		position: relative;
+		left:2px;
+ 	}
+ 	.list li{
+ 		float: left;
+ 		width: 20%;
+		border-right: 4px solid #fff;
+		border-bottom: 4px solid #fff;
+ 		overflow: hidden;
+ 		border-radius: 3px;
+ 	}
+
+ 	.list li img{
+ 		width: 100%;
+ 		height: 100px;
+ 		object-fit: cover;
+ 	}
+	</style>
+	<style type="text/css">
+	/*图片预览*/
+	.mui-preview-image.mui-fullscreen {
+		position: fixed;
+		z-index: 20;
+		background-color: #000;
+	}
+	.mui-preview-header,
+	.mui-preview-footer {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		z-index: 10;
+	}
+	.mui-preview-header {
+		height: 44px;
+		top: 0;
+	}
+	.mui-preview-footer {
+		height: 50px;
+		bottom: 0px;
+	}
+	.mui-preview-header .mui-preview-indicator {
+		display: block;
+		line-height: 25px;
+		color: #fff;
+		text-align: center;
+		margin: 15px auto 4;
+		width: 70px;
+		background-color: rgba(0, 0, 0, 0.4);
+		border-radius: 12px;
+		font-size: 16px;
+	}
+	.mui-preview-image {
+		display: none;
+		-webkit-animation-duration: 0.5s;
+		animation-duration: 0.5s;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+	}
+	.mui-preview-image.mui-preview-in {
+		-webkit-animation-name: fadeIn;
+		animation-name: fadeIn;
+	}
+	.mui-preview-image.mui-preview-out {
+		background: none;
+		-webkit-animation-name: fadeOut;
+		animation-name: fadeOut;
+	}
+	.mui-preview-image.mui-preview-out .mui-preview-header,
+	.mui-preview-image.mui-preview-out .mui-preview-footer {
+		display: none;
+	}
+	.mui-zoom-scroller {
+		position: absolute;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		-webkit-backface-visibility: hidden;
+	}
+	.mui-zoom {
+		-webkit-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+	}
+	.mui-slider .mui-slider-group .mui-slider-item img {
+		width: auto;
+		height: auto;
+		max-width: 100%;
+		max-height: 100%;
+	}
+	.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+		width: 100%;
+	}
+	.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+		display: inline-table;
+	}
+	.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.mui-preview-loading {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		display: none;
+	}
+	.mui-preview-loading.mui-active {
+		display: block;
+	}
+	.mui-preview-loading .mui-spinner-white {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -25px;
+		margin-top: -25px;
+		height: 50px;
+		width: 50px;
+	}
+	.mui-preview-image img.mui-transitioning {
+		-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+		transition: transform 0.5s ease, opacity 0.5s ease;
+	}
+	@-webkit-keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@-webkit-keyframes fadeOut {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	@keyframes fadeOut {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+	.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	</style>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+
+	<div class="mui-content">
+		<div class="info">
+			<h4>{$res_freeride.freeride_name}<span>(
+			 <?php if($res_freeride['freeride_sex'] == 0){echo '女' ; }else{echo '男' ;}?>/{$res_freeride.freeride_age}岁/ <?php if($res_freeride['freeride_type'] == 0){echo '车主' ; }else{echo '乘客' ;}?>)</span></h4>
+			 <div class="tips">
+				<span>{$res_freeride.freeride_models}</span>
+				<span>剩余{$res_freeride.freeride_seat}座</span>
+				<!-- <span><?php if($res_freeride['freeride_is_free'] == 0 ){ echo "收费" ; }else{ echo "免费" ;} ?></span> -->
+			</div>
+
+		</div>
+
+		<div class="details">
+			<div class="time">
+				<span>出发时间：</span><span class="times">{$res_freeride.time}</span>
+			</div>
+			<p>
+				<span style="color: #64d06d;display: inline-block;width: 70px;text-align: right;">起点：</span>{$res_freeride.freeride_start}
+			</p>
+			<p>
+				<span style="color: #e2671c;display: inline-block;width: 70px;text-align: right;">终点：</span>{$res_freeride.freeride_end}
+			</p>
+			<p style="position: relative;padding-left: 70px;margin-bottom: 20px;min-height: 25px;">
+				<span style="color: #666;display: inline-block;width: 70px;text-align: right;position: absolute;top:0;left:0;">备注：</span>{$res_freeride.freeride_remarks}
+			</p>
+			<ul class="list">
+			   <volist name="res_freeride.imgs" id="vo">
+				<li>
+					<img src="__PUBLIC__/../{$vo.imgs_path}" data-preview-src="" data-preview-group="1" style="height:50px;heoght:50px;">
+					<!-- <div style="background-image: url(__PUBLIC__/../{$vo.imgs_path});" ></div> -->
+				</li>
+			   </volist>
+ 			</ul>
+		</div>
+
+		<!-- 举报 -->
+		<div class="report">
+			<div class="text">
+				<span>如果您认为此条信息为</span>
+				<p>无效、虚假、诈骗信息、请立即举报！</p>
+			</div>
+			<a class="a" href="__MODULE__/Report/report?report_cid={$res_freeride.freeride_id}&report_uid={$res_freeride.freeride_uid}&report_type=19&title={$res_freeride.freeride_start}-{$res_freeride.freeride_end}">举报</a>
+ 
+		</div>
+		<!-- 广告 -->
+		<?php if(!empty($status)){ ?>
+        <div class="ad" style="overflow: hidden;">
+			<!--  <a id="up" str="{$status['advertisement_id']}" stb="{$status['advertisement_type']}" url="{$status['advertisement_url']}">
+			    <img src="__PUBLIC__/../{$status['advertisement_img']}" style="width: 100%;display: block;height:80px;">
+	        </a> -->
+	         <div class="swiper-container">
+	 			 	<div class="swiper-wrapper">
+            			<volist name="status" id="vo">
+            			<div class="swiper-slide">
+              				 <a id="up" onclick="look(this)" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}">
+ 				 			 <img src="__PUBLIC__/../{$vo['advertisement_img']}" style="width: 100%;display: block;">
+			  			 </a>
+		    			</div>
+		    		 </volist>
+			        </div>
+			        <div class="swiper-pagination"></div>
+			 </div>
+ 		</div>
+ 		<?php } ?>
+ 		<div style="height:15px;" ></div>
+	</div>
+
+	<footer class="mui-bar mui-bar-footer" style="height: 50px;padding: 5px 10px;">
+		<div style="position: relative;padding-right: 40px;">
+			<h4 style="margin:0;line-height: 24px;font-size: 14px;">联系人:{$res_freeride.freeride_name}</h4>
+			<p style="color:#999;font-size: 13px;margin-bottom: 0;">联系我时,请说是在泸西本地鸟上看到的,谢谢</p>
+			<a class="a" href="tel:{$res_freeride.freeride_phone}" style="display: block;width: 40px;height: 40px;position: absolute;right: 10px;top:0px;" ><img src="__PUBLIC__/Home/img/phone.png" width="40px;" alt=""></a>
+		</div>
+	</footer>
+
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zoom.js"></script>
+	<script src="__PUBLIC__/Home/js/mui.previewimage.js"></script>
+	<script>
+	 mui('body').on('tap','.a',function(){document.location.href=this.href;});
+	 function look(obj){
+	// $("[id=up]").each(function(){ 
+	// 	$(this).click(function(){
+     		var id = $(obj).attr('str');
+     		var type = $(obj).attr('stb');
+     		var url = $(obj).attr('url');
+				// alert(id)
+		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+ 	     		if (type == 0) {
+	     			 location.href="http://"+url;
+	     		}else if(type == 1){
+	     			 location.href= 'tel:' + url;
+	      		}else{
+	      			location.href=url;
+	      		}
+			});
+    // 	})
+    // })
+}
+    
+	// function timeStamp(){
+	//   var time=$('.times')
+	//   $.each(time,function(index,item){
+	   
+ //     //获取当前时间值
+	//   	var value = new Date($(this).text());
+	//     var endtimes = fresh(value);
+	//     //判断是不是今天
+ //     	 if (d == 0) {
+ //     	 	var dayend = '今天'+$(this).text().substr(11,5)
+ //     	    $(this).text(dayend);
+ //     	 }else{
+ //     	 	   var timenew = $(this).text();
+ //     	     	var newdata = timenew.substr(2,14)
+	//      	 	var newvalue = newdata+"后";
+	//      	 	$(this).text(newvalue);
+ //     	 }
+	//   })
+ //     }
+
+       function fresh(newtime){
+        var endtime= newtime;
+        var nowtime = new Date();
+        //两时间差为毫秒数，除以1000则转换为秒数
+        var leftsecond=parseInt((endtime.getTime()-nowtime.getTime())/1000);
+        d=parseInt(leftsecond/(3600*24));//计算出相差天数
+        return d;
+      }
+
+      // timeStamp();
+
+		var flag=true; 
+		$('#zhankai').on('tap',function(){
+			if(flag){
+				$('#word').height('auto');
+				$(this).html('收起')
+			}else{
+				$('#word').height('42px');
+				$(this).html('展开')
+			}
+			flag=!flag;
+		})
+
+		var w=$('.list li').width()
+		$('.list li').height(w)
+		var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+ 
+		// 图片预览
+		mui.previewImage();
+	</script>
+</body>
+</html>

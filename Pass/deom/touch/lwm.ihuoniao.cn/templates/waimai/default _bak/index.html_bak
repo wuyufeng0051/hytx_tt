@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$title#}</title>
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css">
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+</head>
+
+<body>
+{#if $banner#}
+<div class="slideBox">
+  <div class="swiper-wrapper">
+    {#foreach from=$banner item=b#}
+    <div class="swiper-slide"><a href="{#$b.link#}"><img src="{#$b.pic#}" alt="{#$b.title#}"></a></div>
+    {#/foreach#}
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+{#/if#}
+<div class="index_search" onclick="location.href='{#getUrlPath service='waimai' template='search'#}'"><span><input type="text" placeholder="请输入店铺名和商品名" disabled></span></div>
+{#if $tubiao#}
+<div class="leader fn-clear">
+	<ul>
+        {#foreach from=$tubiao item=t#}
+		<li><a href="{#$t.link#}"><img src="{#$t.pic#}" alt=""><em>{#$t.title#}</em></a></li>
+        {#/foreach#}
+	</ul>
+</div>
+{#/if#}
+{#if $ad1#}
+<div class="slideBox">
+  <div class="swiper-wrapper">
+    {#foreach from=$ad1 item=b#}
+    <div class="swiper-slide"><a href="{#$b.link#}"><img src="{#$b.pic#}" alt="{#$b.title#}"></a></div>
+    {#/foreach#}
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+{#/if#}
+{#if $huodong#}
+<div class="module fn-clear">
+	<ul>
+        {#$i = 1#}
+        {#foreach from=$huodong item=h#}
+		<li class="huodong{#$i#}">
+			<a href="{#$h.link#}">
+				<p>{#$h.title#}</p>
+				<span>{#$h.desc#}</span>
+                <img src="{#$h.pic#}" />
+			</a>
+		</li>
+        {#$i = $i + 1#}
+        {#/foreach#}
+	</ul>
+</div>
+{#/if#}
+<div class="tel">客服电话：{#$tel#}</div>
+<div class="main">
+	<div class="main_lead">活动店铺</div>
+	<div class="main_list">
+
+        {#waimai action='shopList' ids={#$shop#}#}
+		<div class="main_com fn-clear"><a href="{#$row.url#}">
+			<div class="mc_img"><img src="{#$row.pic|replace:'large':'small'#}" onerror="this.src='/static/images/shop.png'" alt="{#$row.shopname#}">{#if !$row.yingye#}<img class="xx" src="/static/images/xx.png" />{#/if#}</div>
+			<div class="shop_infor">
+				<h1>{#$row.shopname#}</h1>
+				<div class="evaluate">
+					<span><em></em></span><i>已售120单</i>{#if $row.delivery_service#}<b>{#$row.delivery_service#}</b>{#/if#}
+				</div>
+				<div class="price">
+					起送价￥{#$row.basicprice#}<em>|</em>外送费￥{#$row.delivery_fee#}
+				</div>
+				<div class="favorable">
+					<ul>
+                        {#if $row.is_first_discount#}<li class="shou"><em>首</em>新用户立减{#$row.first_discount#}元</li>{#/if#}
+                        {#if $row.is_discount#}<li class="zhe"><em>折</em>可享受全店{#$row.discount_value#}折</li>{#/if#}
+						{#if $row.open_promotion#}<li class="jian"><em>减</em>消费
+                            {#foreach from=$row.promotions item=p#}
+                            {#if $p[0] && $p[1]#}
+                            满{#$p[0]#}元减{#$p[1]#}元；
+                            {#/if#}
+                            {#/foreach#}
+                        </li>{#/if#}
+					</ul>
+				</div>
+			</div>
+			{#if $row.description#}<div class="tejia">{#$row.description#}</div>{#/if#}
+		</a></div>
+        {#/waimai#}
+
+	</div>
+</div>
+<div class="foot">
+	<div class="footer">
+		<div class="ff fn-clear">
+			<img src="{#$templets_skin#}images/logo.png?v=2" alt="">
+			<h1>金点外卖</h1>
+			<p>{#$cfg_basehost|replace:"http://":""#}</p>
+		</div>
+		<span>酷曼软件提供技术支持</span>
+	</div>
+</div>
+
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$description#}',
+        "title": '{#$title#}',
+        "imgUrl": '{#$share_pic#}',
+        "link": '{#$cfg_basehost#}',
+    };
+</script>
+<script src="{#$templets_skin#}js/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/index.js?v=1"></script>
+</body>
+</html>

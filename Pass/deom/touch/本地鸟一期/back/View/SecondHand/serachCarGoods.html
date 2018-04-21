@@ -1,0 +1,32 @@
+        <foreach name="res_seconed" item="vo" key="k">
+		<div class="mui-card" style="margin:0;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 11px 15px;">
+					<a style="position: relative;padding-left: 85px;display: block;color:#000;height: 75px;"  stv="{$vo.usedcar_id}" class="topheight">
+						<img src="__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}" alt="" style="position: absolute;left: 0;right: 0;width: 75px;height: 75px;">
+						<div class="panel-body">
+							<h4 class="mui-ellipsis" style="font-size: 16px;">{$vo.usedcar_title}</h4>
+							<p class="mui-ellipsis">
+							<?php if($vo['usedcar_price'] == 0){ ?>
+							面议
+							<?php }else{ ?>
+							{$vo.usedcar_price}{$vo.usedcar_company}
+							<?php } ?>
+							<span style="float: right;">{$vo.usedcar_source}</span></p>
+							<p class="mui-ellipsis">车龄:{$vo.usedcar_age}
+							<?php if($vo['usedcar_is_top'] == 1){ ?>
+							<span style="float: right;">
+                             置顶
+							</span>
+							<?php }else{ ?>
+							<span style="float: right;" class="time">
+							{$vo.usedcar_date}</span>
+							<?php } ?>
+							<input type="hidden" value="{$vo.usedcar_date}" class="times">  
+							</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		</foreach>

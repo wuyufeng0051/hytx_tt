@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+	<title>进店外卖 服务到家</title>
+	<script src="js/zepto.min.js"></script>
+	<script src="js/kit.js"></script>
+	<script src="js/anim.js"></script>
+	<script src="js/array.js"></script>
+	<script src="js/starlevel.js"></script>
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/jia.css">
+</head>
+<body>
+	<div class="rank_lead">
+		<ul>
+			<li class="rank_bc">公开评论</li>
+			<li>匿名评论</li>
+		</ul>
+	</div>
+	<div class="com">
+		<div class="com_lead"><em>给店铺打分</em>
+			<div class="five-star-level">
+				<ul class="five-star-level-choose">
+					<li class="starlevel-value-1 starlevel-box"></li>
+					<li class="starlevel-value-2 starlevel-box"></li>
+					<li class="starlevel-value-3 starlevel-box"></li>
+					<li class="starlevel-value-4 starlevel-box"></li>
+					<li class="starlevel-value-5 starlevel-box"></li>
+				</ul>
+				<a class="studyCatPicker" href="#" id="J_BtnCatePicker"></a>
+			</div>
+		</div>
+		<div class="liuyan">
+			<textarea placeholder="这里填写评论内容。"></textarea>
+		</div>
+	</div>
+	<div class="refresh">
+		<button>提交</button>
+	</div>
+		<script>
+			(new $kit.ui.StarLevel({
+				where : $kit.el('.five-star-level')[0],
+				starLevelContainerCls : 'five-star-level-choose',
+				succesTipsFn : function(level) {
+					var tips = $kit.el8id('J_LevelChooseSuccessTips');
+					$kit.anim.motion({
+						duration : 1000,
+						el : tips,
+						from : {
+							opacity : 0,
+							display : 'block'
+						},
+						to : {
+							opacity : 1
+						},
+						fx : $kit.anim.Fx.easeInQuad,
+						then : function() {
+							setTimeout(function() {
+								$kit.anim.motion({
+									duration : 1000,
+									el : tips,
+									from : {
+										opacity : 1,
+										display : 'block'
+									},
+									to : {
+										opacity : 0,
+										display : 'none'
+									},
+									fx : $kit.anim.Fx.easeInQuad,
+									timeout : 'timeout_starlevel'
+								});
+							}, 500);
+						},
+						timeout : 'timeout_starlevel'
+					});
+				}
+			})).init();
+
+		</script>
+
+	<script src="js/public.js"></script>
+</body>
+</html>

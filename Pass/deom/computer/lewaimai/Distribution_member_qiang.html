@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-gear gear-icon"></i>
+      <li class="active">系统设置</li>
+      <li>
+        <a href="#">配送员管理</a></li>
+      <li class="active">配送员抢单管理</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">
+              <i class="ace-icon fa fa-times"></i>
+            </button>APP配送员必须与群组进行绑定，才能收到推送信息及抢单！</div>
+          <div class="space-10"></div>
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li >
+                <a href="Distribution_member.html">配送员列表</a></li>
+              <li >
+                <a href="Distribution_member_list.html">群组列表</a></li>
+              <li>
+                <a href="#">配送员位置分布</a></li>
+              <li class="active">
+                <a href="Distribution_member_qiang.html">配送员抢单管理</a></li>
+              <li>
+                <a href="Distribution_member_comment.html">配送员评论</a></li>
+            </ul>
+            <div class="tab-content">
+              <form enctype="multipart/form-data" class="form-horizontal" id="account-form" action="/courier/couriergraborder" method="post">
+                <div class="alert alert-danger" id="account-form_es_" style="display:none">
+                  <p>请更正下列输入错误:</p>
+                  <ul>
+                    <li>dummy</li></ul>
+                </div>
+                <div style="margin-left:5px;">
+                  <label style="margin-right:20px">是否允许配送员抢单</label>
+                  <select class="span2" name="Admin[allow_courier_grab_order]" id="Admin_allow_courier_grab_order">
+                    <option value="0">关闭</option>
+                    <option value="1" selected="selected">开启</option></select>
+                  <br>&nbsp;
+                  <br>
+                  <label style="margin-right:20px">订单是否需要确认后才能接单</label>
+                  <select class="span2" name="Admin[is_confirm_order]" id="Admin_is_confirm_order">
+                    <option value="0">关闭</option>
+                    <option value="1" selected="selected">开启</option></select>
+                  <br>&nbsp;
+                  <br>
+                  <label style="margin-right:20px">取货时是否进行位置验证</label>
+                  <select class="span2" name="Admin[is_check_courier_location]" id="Admin_is_check_courier_location">
+                    <option value="0">关闭</option>
+                    <option value="1" selected="selected">开启</option></select>
+                  <br>&nbsp;
+                  <br>
+                  <label style="margin-right:20px">取货时自定义最小验证距离</label>
+                  <input class="span2" name="Admin[courier_location_range]" id="Admin_courier_location_range" type="text" value="100">&nbsp;&nbsp;米</div>
+                <div class="span12" style="margin-top:10px;">
+                  <div class="form-actions">
+                    <button class="btn btn-info" type="submit">
+                      <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-smile-o"></i>
+        <a href="#">外卖订单</a></li>
+      <li class="active">导出订单</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <div class="alert alert-info">
+              <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+              </button>
+              <p>导出订单主要适用于对账，其内容主要是以订单为中心，统计订单以及每个订单详细的结算信息，方便与商家对账。
+                <br>导出分拣单主要适用于分拣、采购和配送管理，尤其是先预定后进行采购配送的店铺，其内容主要是以商品为中心，统计商品的销售情况，方便商家分拣采购和配送的商品。</p>
+              <p>
+                <a class="btn btn-danger" href="#" target="_blank">订单使用教程</a></p>
+            </div>
+            <ul class="nav nav-tabs" id="myTab">
+              <li class="active">
+                <a href="#">导出订单</a></li>
+              <li>
+                <a href="#">导出分拣单</a></li>
+            </ul>
+            <div class="tab-content">
+              <!-- <div class="col-xs-4"> -->
+              <form id="exportorder-form" action="/order/exportorder" method="post">
+                <div class="alert alert-danger" id="exportorder-form_es_" style="display:none">
+                  <p>请更正下列输入错误:</p>
+                  <ul>
+                    <li>dummy</li></ul>
+                </div>
+                <div class="control-group">
+                  <label class="control-label bolder blue">店铺类型</label>
+                  <div class="radio">
+                    <label>
+                      <input name="ExportOrderForm[shop_type]" value="0" type="radio" class="ace" checked="checked">
+                      <span class="lbl" style="z-index: 1">全部店铺</span></label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input name="ExportOrderForm[shop_type]" value="1" type="radio" class="ace">
+                      <span class="lbl" style="z-index: 1">单个店铺</span></label>
+                  </div>
+                </div>
+                <hr>
+                <div>
+                  <label for="form-field-select-1">单个店铺名称</label>
+                  <div class="chosen-container chosen-container-single" style="width: 240px;" title="" id="form_field_select_3_chosen">
+                    <a class="chosen-single" tabindex="-1">
+                      <span>梁记粥铺</span>
+                      <div>
+                        <b>
+                        </b>
+                      </div>
+                    </a>
+                    <div class="chosen-drop">
+                      <div class="chosen-search">
+                        <input type="text" autocomplete="off"></div>
+                      <ul class="chosen-results">
+                          <li class="active-result result-selected" data-option-array-index="0">梁记粥铺</li>
+                          <li class="active-result" data-option-array-index="1">味美家煲仔饭</li>
+                          <li class="active-result" data-option-array-index="2">沐小卤卤肉饭</li>
+                          <li class="active-result" data-option-array-index="3">遍地香</li>
+                          <li class="active-result" data-option-array-index="4">蔡记兔头</li>
+                          <li class="active-result" data-option-array-index="5">大圣烧烤</li>
+                          <li class="active-result" data-option-array-index="6">五谷渔粉</li>
+                          <li class="active-result" data-option-array-index="7">湖南米粉秭归旗舰店</li>
+                          <li class="active-result" data-option-array-index="8">桃园包子</li>
+                          <li class="active-result" data-option-array-index="9">龙虾甲鱼馆</li>
+                          <li class="active-result" data-option-array-index="10">羊子沟羊肉串</li>
+                          <li class="active-result" data-option-array-index="11">一号渔港</li>
+                          <li class="active-result" data-option-array-index="12">庙嘴泄滩包子</li>
+                          <li class="active-result" data-option-array-index="13">罗蒂爸爸</li>
+                          <li class="active-result" data-option-array-index="14">陕西红富士（金点自营）</li>
+                          <li class="active-result" data-option-array-index="15">五谷渔粉（茶粥坊店）</li>
+                          <li class="active-result" data-option-array-index="16">撮一顿川菜馆</li>
+                          <li class="active-result" data-option-array-index="17">老字号米酒汤圆（下酒菜 甜品）</li>
+                          <li class="active-result" data-option-array-index="18">易购24小时便利店</li>
+                          <li class="active-result" data-option-array-index="19">比得灌汤包</li>
+                          <li class="active-result" data-option-array-index="20">本素咖啡</li>
+                          <li class="active-result" data-option-array-index="21">龙潮美式瓦缸炭火烤鱼</li>
+                          <li class="active-result" data-option-array-index="22">金巷子</li>
+                          <li class="active-result" data-option-array-index="23">有意思</li>
+                          <li class="active-result" data-option-array-index="24">花之恋</li>
+                          <li class="active-result" data-option-array-index="25">老归州酒家</li>
+                          <li class="active-result" data-option-array-index="26">米桂坊过桥米线</li>
+                          <li class="active-result" data-option-array-index="27">郑记卤味</li>
+                          <li class="active-result" data-option-array-index="28">吾饮良品</li>
+                          <li class="active-result" data-option-array-index="29">馋嘴鱼莊</li>
+                          <li class="active-result" data-option-array-index="30">木炭原味儿烧烤</li>
+                          <li class="active-result" data-option-array-index="31">红油面馆</li>
+                          <li class="active-result" data-option-array-index="32">冰淋橙夏</li>
+                          <li class="active-result" data-option-array-index="33">怡满堂大药房</li>
+                          <li class="active-result" data-option-array-index="34">王胖子早点</li>
+                          <li class="active-result" data-option-array-index="35">阁楼咖啡</li>
+                          <li class="active-result" data-option-array-index="36">周姐卤菜水饺</li>
+                          <li class="active-result" data-option-array-index="37">七里香万州面馆</li>
+                          <li class="active-result" data-option-array-index="38">小树鲜果（水果、零食）</li>
+                          <li class="active-result" data-option-array-index="39">粥公卤婆（烧烤）</li>
+                          <li class="active-result" data-option-array-index="40">茶物语</li>
+                          <li class="active-result" data-option-array-index="41">邓记烤鱼</li>
+                          <li class="active-result" data-option-array-index="42">九三食府</li>
+                          <li class="active-result" data-option-array-index="43">原酒印象</li>
+                          <li class="active-result" data-option-array-index="44">乡风缘野鸡养殖农场</li>
+                          <li class="active-result" data-option-array-index="45">小牧场羊肉砂锅</li>
+                          <li class="active-result" data-option-array-index="46">惠姑家庭农场</li>
+                          <li class="active-result" data-option-array-index="47">杜康专卖店</li>
+                          <li class="active-result" data-option-array-index="48">炎锅家常菜（瓦罐汤）</li>
+                          <li class="active-result" data-option-array-index="49">秘制牛肉粉面馆</li>
+                          <li class="active-result" data-option-array-index="50">屈乡风味馆</li>
+                          <li class="active-result" data-option-array-index="51">吴妈面馆</li>
+                          <li class="active-result" data-option-array-index="52">可礼客中式快餐</li>
+                          <li class="active-result" data-option-array-index="53">蟹谢啦（香辣蟹钳）</li>
+                          <li class="active-result" data-option-array-index="54">天喔零食秭归店</li>
+                          <li class="active-result" data-option-array-index="55">正新鸡排（金城店）</li>
+                          <li class="active-result" data-option-array-index="56">嘛嘛香中式营养快餐</li>
+                          <li class="active-result" data-option-array-index="57">正宗片皮鸭</li>
+                          <li class="active-result" data-option-array-index="58">苏州火鸟测试</li>
+                          <li class="active-result" data-option-array-index="59">金点生鲜超市</li>
+                          <li class="active-result" data-option-array-index="60">木语果蛋糕</li>
+                          <li class="active-result" data-option-array-index="61">肯德基</li>
+                          <li class="active-result" data-option-array-index="62">舒心批发超市</li>
+                          <li class="active-result" data-option-array-index="63">五色谷大酒库旗舰店</li>
+                          <li class="active-result" data-option-array-index="64">纯果乐</li>
+                          <li class="active-result" data-option-array-index="65">净果成人用品</li>
+                          <li class="active-result" data-option-array-index="66">麦佳乐蛋糕店</li>
+                          <li class="active-result" data-option-array-index="67">周黑鸭</li>
+                          <li class="active-result" data-option-array-index="68">欢乐家旗舰店</li>
+                          <li class="active-result" data-option-array-index="69">新派煲仔饭</li>
+                          <li class="active-result" data-option-array-index="70">矮子馅饼（秭归店）</li>
+                          <li class="active-result" data-option-array-index="71">巴黎天使</li>
+                          <li class="active-result" data-option-array-index="72">绿源清江尙品桶装系列纯净水天然水</li>
+                          <li class="active-result" data-option-array-index="73">子归醇</li>
+                          <li class="active-result" data-option-array-index="74">王梁记麻辣烫</li>
+                          <li class="active-result" data-option-array-index="75">四季花时尚饮品</li>
+                          <li class="active-result" data-option-array-index="76">香满园拉面馆</li>
+                          <li class="active-result" data-option-array-index="77">福和祥煲仔饭</li>
+                          <li class="active-result" data-option-array-index="78">坝头刚子烧烤</li>
+                          <li class="active-result" data-option-array-index="79">韦一粮油</li>
+                          <li class="active-result" data-option-array-index="80">糖炒栗子</li>
+                          <li class="active-result" data-option-array-index="81">王老板烩面</li>
+                          <li class="active-result" data-option-array-index="82">花漫舞</li>
+                          <li class="active-result" data-option-array-index="83">安吉尔纯净水</li>
+                          <li class="active-result" data-option-array-index="84">沙县小吃信合店</li>
+                          <li class="active-result" data-option-array-index="85">坝头夜猫子小黄鱼</li>
+                          <li class="active-result" data-option-array-index="86">均瑶旗舰店</li>
+                          <li class="active-result" data-option-array-index="87">坝头米酒汤圆 萝卜饺子</li>
+                          <li class="active-result" data-option-array-index="88">庙嘴万州面</li>
+                          <li class="active-result" data-option-array-index="89">张氏茶油鸭</li>
+                          <li class="active-result" data-option-array-index="90">艳子农家小炒</li>
+                          <li class="active-result" data-option-array-index="91">功夫煲仔饭</li>
+                          <li class="active-result" data-option-array-index="92">巴东傅记羊肉面</li>
+                          <li class="active-result" data-option-array-index="93">坝头东北小吃</li>
+                          <li class="active-result" data-option-array-index="94">砂锅米线</li>
+                          <li class="active-result" data-option-array-index="95">正新鸡排</li>
+                          <li class="active-result" data-option-array-index="96">庙嘴炸酱面馆</li>
+                          <li class="active-result" data-option-array-index="97">一家人餐馆</li>
+                          <li class="active-result" data-option-array-index="98">妙味馄饨</li>
+                          <li class="active-result" data-option-array-index="99">一扫光零食量贩店</li>
+                          <li class="active-result" data-option-array-index="100">坝头火爆鱿鱼</li>
+                          <li class="active-result" data-option-array-index="101">红牛能量补给站</li>
+                          <li class="active-result" data-option-array-index="102">妙嘴小吃</li>
+                          <li class="active-result" data-option-array-index="103">零食加油站</li>
+                          <li class="active-result" data-option-array-index="104">测试店铺（勿点）</li>
+                          <li class="active-result" data-option-array-index="105">一品香</li>
+                          <li class="active-result" data-option-array-index="106">坝头开心花甲</li>
+                          <li class="active-result" data-option-array-index="107">襄阳牛杂面</li>
+                          <li class="active-result" data-option-array-index="108">华莱士</li>
+                          <li class="active-result" data-option-array-index="109">真味酒楼</li>
+                          <li class="active-result" data-option-array-index="110">谭家村酒业</li>
+                          <li class="active-result" data-option-array-index="111">老家大锅台</li>
+                          <li class="active-result" data-option-array-index="112">坝头灌汤包</li>
+                          <li class="active-result" data-option-array-index="113">成都抄手</li>
+                          <li class="active-result" data-option-array-index="114">胖胖熊美食城</li>
+                          <li class="active-result" data-option-array-index="115">老字号鸡蛋饭</li>
+                          <li class="active-result" data-option-array-index="116">重庆小面</li>
+                          <li class="active-result" data-option-array-index="117">太陽·卤味坊</li>
+                          <li class="active-result" data-option-array-index="118">马大姐旗舰店</li>
+                          <li class="active-result" data-option-array-index="119">松滋杜婆鸡</li>
+                          <li class="active-result" data-option-array-index="120">坝头功夫鱿鱼</li>
+                          <li class="active-result" data-option-array-index="121">精武人家（小区店）</li>
+                          <li class="active-result" data-option-array-index="122">纸上烤鱼(国华盛景店)</li>
+                          <li class="active-result" data-option-array-index="123">凤凰楼</li>
+                          <li class="active-result" data-option-array-index="124">泄滩包子金城店</li>
+                          <li class="active-result" data-option-array-index="125">坝头台湾手抓饼</li>
+                          <li class="active-result" data-option-array-index="126">坝头碳烤小黄鱼</li>
+                          <li class="active-result" data-option-array-index="127">姨妹子菜馆</li>
+                          <li class="active-result" data-option-array-index="128">坝头米酒汤圆</li>
+                          <li class="active-result" data-option-array-index="129">坝头江湖翅客24号</li>
+                          <li class="active-result" data-option-array-index="130">坝头鸡翅包饭 烧烤</li>
+                          <li class="active-result" data-option-array-index="131">坝头盐都小吃</li>
+                          <li class="active-result" data-option-array-index="132">川府石锅鱼</li>
+                          <li class="active-result" data-option-array-index="133">时尚酒家</li>
+                          <li class="active-result" data-option-array-index="134">泽尚生活馆</li>
+                          <li class="active-result" data-option-array-index="135">万美菜馆</li>
+                          <li class="active-result" data-option-array-index="136">韩大大冒菜</li>
+                          <li class="active-result" data-option-array-index="137">剑峰菜馆</li>
+                          <li class="active-result" data-option-array-index="138">朋友圈土菜馆</li>
+                          <li class="active-result" data-option-array-index="139">平价菜馆</li>
+                          <li class="active-result" data-option-array-index="140">馋神醉仙鸭</li>
+                          <li class="active-result" data-option-array-index="141">欣怡川菜馆</li>
+                          <li class="active-result" data-option-array-index="142">贵州花江狗肉（小区店）</li>
+                          <li class="active-result" data-option-array-index="143">郑记干锅</li>
+                          <li class="active-result" data-option-array-index="144">丰锅农家菜</li>
+                          <li class="active-result" data-option-array-index="145">河鲜馆</li>
+                          <li class="active-result" data-option-array-index="146">跑腿业务</li>
+                          <li class="active-result" data-option-array-index="147">五香嘴量贩休闲食品</li>
+                          <li class="active-result" data-option-array-index="148">麦点超市</li>
+                          <li class="active-result" data-option-array-index="149">茶粥坊</li>
+                          <li class="active-result" data-option-array-index="150">家常菜馆</li>
+                          <li class="active-result" data-option-array-index="151">世纪华联</li>
+                          <li class="active-result" data-option-array-index="152">夷蒙概念牛肉</li>
+                          <li class="active-result" data-option-array-index="153">祥和飞锅万州面</li>
+                          <li class="active-result" data-option-array-index="154">品味烧烤</li>
+                          <li class="active-result" data-option-array-index="155">秋谷山纯粮酒</li>
+                          <li class="active-result" data-option-array-index="156">金烈火奶酪蛋糕</li>
+                          <li class="active-result" data-option-array-index="157">面相聚</li>
+                          <li class="active-result" data-option-array-index="158">山东口福饼</li>
+                          <li class="active-result" data-option-array-index="159">千里香馄饨王</li>
+                          <li class="active-result" data-option-array-index="160">茶粥坊土钵菜</li>
+                          <li class="active-result" data-option-array-index="161">坝头养生卤品</li>
+                          <li class="active-result" data-option-array-index="162">鲜烫麻辣烫</li>
+                          <li class="active-result" data-option-array-index="163">维纳斯美容会所</li>
+                          <li class="active-result" data-option-array-index="164">网上营业厅</li>
+                          <li class="active-result" data-option-array-index="165">坝头铁板炒饭</li>
+                          <li class="active-result" data-option-array-index="166">韩国凉面</li>
+                          <li class="active-result" data-option-array-index="167">李功夫中华鸡排</li>
+                          <li class="active-result" data-option-array-index="168">宏发煤气</li>
+                          <li class="active-result" data-option-array-index="169">坝头那家粉</li>
+                          <li class="active-result" data-option-array-index="170">楚城小厨</li>
+                          <li class="active-result" data-option-array-index="171">辛勤小吃店</li>
+                          <li class="active-result" data-option-array-index="172">坝头砂锅麻辣烫</li>
+                          <li class="active-result" data-option-array-index="173">坝头公园27号肉夹馍</li>
+                          <li class="active-result" data-option-array-index="174">坝头饮品庄园</li>
+                          <li class="active-result" data-option-array-index="175">三少食府</li>
+                          <li class="active-result" data-option-array-index="176">坝头澳洲大肉串</li>
+                          <li class="active-result" data-option-array-index="177">蒙古烤羊腿</li>
+                          <li class="active-result" data-option-array-index="178">万州烤鱼</li>
+                          <li class="active-result" data-option-array-index="179">程家菜馆</li>
+                          <li class="active-result" data-option-array-index="180">小南园</li>
+                          <li class="active-result" data-option-array-index="181">老字号虾皇</li>
+                          <li class="active-result" data-option-array-index="182">大三峡</li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <label for="id-date-picker-1">起始时间</label>
+                <div class="row">
+                  <div class="col-xs-8 col-sm-4">
+                    <div class="input-group">
+                      <input class="form-control date-picker hasDatepicker" id="ExportOrderForm_beginDate" type="text" name="ExportOrderForm[beginDate]">
+                      <span class="input-group-addon">
+                        <i class="ace-icon fa fa-calendar bigger-110"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <label for="id-date-picker-1">截止时间</label>
+                <div class="row">
+                  <div class="col-xs-8 col-sm-4">
+                    <div class="input-group">
+                      <input class="form-control date-picker hasDatepicker" id="ExportOrderForm_endDate" type="text" name="ExportOrderForm[endDate]">
+                      <span class="input-group-addon">
+                        <i class="ace-icon fa fa-calendar bigger-110"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="control-group">
+                  <label class="control-label bolder blue">选择订单状态</label>
+                  <div class="checkbox">
+                    <label>
+                      <input name="ExportOrderForm[isOpen]" value="1" type="checkbox" class="ace">
+                      <span class="lbl" style="z-index: 1">未处理订单</span></label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input name="ExportOrderForm[isConfirmed]" value="1" type="checkbox" class="ace">
+                      <span class="lbl" style="z-index: 1">已确认订单</span></label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input name="ExportOrderForm[isSucceeded]" value="1" class="ace" type="checkbox">
+                      <span class="lbl" style="z-index: 1">成功订单</span></label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input name="ExportOrderForm[isFailed]" value="1" class="ace" type="checkbox">
+                      <span class="lbl" style="z-index: 1">失败订单</span></label>
+                  </div>
+                </div>
+                <div class="clearfix form-actions">
+                  <div class="col-md-offset-3 col-md-9">
+                    <button class="btn btn-info" type="button" id="export_btn">
+                      <i class="ace-icon fa fa-check bigger-110"></i>导出</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $("#ExportOrderForm_beginDate").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+    $("#ExportOrderForm_endDate").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+})
+</script>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

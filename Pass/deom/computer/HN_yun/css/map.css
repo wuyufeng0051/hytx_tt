@@ -1,0 +1,200 @@
+.MapBox{
+	height: 1179px;
+	/*position: relative;*/
+	background: #0e0e2a;
+}
+.MapBox_bc{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: url(../images/page-bg.jpg) 0 0 repeat;
+    background-size: 800px auto;
+    width: 2400px;
+    -webkit-animation: bg 90s linear infinite;
+    -moz-animation: bg 90s linear infinite;
+    -o-animation: bg 90s linear infinite;
+    animation: bg 90s linear infinite;
+}
+.MapBox_bc1{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background: url(../images/bg-dot.png) 0 0 repeat;
+  background-size: 600px auto;
+  width: 1800px;
+  -webkit-animation: bg2 90s linear infinite;
+  -moz-animation: bg2 90s linear infinite;
+  -o-animation: bg2 90s linear infinite;
+  animation: bg2 90s linear infinite;
+}
+@-webkit-keyframes masked-animation {
+  0%{ background-position: 0 0;}
+  100% { background-position: -100% 0;}
+}
+@keyframes bg {
+  0% {  transform: translate3d(0,0,0); }
+  100% { transform: translate3d(-800px,0,0);}
+}
+@keyframes bg2 {
+  0% { transform: translate3d(-800px,0,0); }
+  100% { transform: translate3d(0,0,0);}
+}
+@-webkit-keyframes bg {
+  0% {  transform: translate3d(0,0,0); }
+  100% { transform: translate3d(-800px,0,0);}
+}
+@-webkit-keyframes bg2 {
+  0% { transform: translate3d(-800px,0,0); }
+  100% { transform: translate3d(0,0,0);}
+}
+@-moz-keyframes bg {
+  0% {  transform: translate3d(0,0,0); }
+  100% { transform: translate3d(-800px,0,0);}
+}
+@-moz-keyframes bg2 {
+  0% { transform: translate3d(-800px,0,0); }
+  100% { transform: translate3d(0,0,0);}
+}
+@-o-keyframes bg {
+  0% {  transform: translate3d(0,0,0); }
+  100% { transform: translate3d(-800px,0,0);}
+}
+@-o-keyframes bg2 {
+  0% { transform: translate3d(-800px,0,0); }
+  100% { transform: translate3d(0,0,0);}
+}
+
+.Footer{
+	margin-top: 0;
+}
+#ChinaMap{
+  margin: 0 auto!important;
+  padding-top: 100px;
+}
+.Map{
+	height: 768px;
+	/*background: url(../images/map.png) no-repeat center 135px;
+	padding-top: 200px;*/
+	/*position: relative;*/
+}
+.Point1{
+    position: absolute;
+    right: 239px;
+    top: 294px;
+    cursor: pointer;
+}
+.Point1 i{
+	color: #fff;
+	font-style: normal;
+	padding-top: 15px;
+	font-size: 14px;
+}
+.Point1 i:after{
+    content: "";
+    width: 11px;
+    height: 11px;
+    border-radius: 11px;
+    background: #2397ff;
+    position: absolute;
+    top: -14px;
+    left: 13px;
+}
+.mapTipText{
+    width: 431px;
+    height: 306px;
+    position: relative;
+}
+.PointBox{
+    width: 431px;
+    height: 306px;
+    position: absolute;
+    right: 50%;
+    top: -25px;
+    margin-right: -95px;
+    z-index: 2;
+    background: url(../images/mapde.png) no-repeat center;
+    padding-top: 17px;
+    padding-left: 15px;
+    /*display: none;*/
+}
+.PointBox .Manner{
+	background-size: 100%;
+	position: relative;
+}
+.PointBox .Manner .Mannerlead{
+	height: 41px;
+	text-align: center;
+	line-height: 41px;
+	color: #fff;
+	font-size: 16px;
+}
+.PointBox .Manner .Mannerlead em{
+	position: absolute;
+	width: 26px;
+	height: 26px;
+	right: 10px;
+	top: 8px;
+	background: url(../images/mapcha.png) no-repeat center;
+	cursor: pointer;
+}
+.MannerList{
+    margin-top: 8px;
+    padding-left: 15px;
+    overflow-y: auto;
+    height: 255px;
+    width: 413px;
+}
+.MannerList ul li{
+    float: left;
+    margin-right: 10px;
+    width: 188px;
+    box-sizing: border-box;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.MannerList ul li:hover{
+	border-bottom: 1px solid #23d8ff;
+}
+.MannerList ul li a{
+	color: #fff;
+	font-size: 14px;
+}
+.MannerList ul li a span{
+	display: block;
+}
+.MannerList ul li a p{
+	font-size: 12px;
+}
+.OtherBtn{
+	width: 176px;
+	height: 68px;
+	line-height: 68px;
+	color: #fff;
+	text-align: center;
+	font-size: 16px;
+	margin: 0 auto;
+	background: url(../images/other.png) no-repeat center;
+	cursor: pointer;
+	position: relative;
+	z-index: 2;
+  margin-top: 200px;
+}
+.MannerList::-webkit-scrollbar {
+    width:7px;
+    height:7px;
+}
+.MannerList::-webkit-scrollbar-button{
+    background-color:#FF7677;
+    display: none;
+}
+.MannerList::-webkit-scrollbar-track-piece {
+    background:none;
+}
+.MannerList::-webkit-scrollbar-thumb{
+    background:#053a68;
+    border-radius:4px;
+}
+

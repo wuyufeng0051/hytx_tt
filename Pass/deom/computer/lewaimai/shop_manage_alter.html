@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+      <script>
+      $(function($) { 
+          $('[data-rel="tooltip"]').tooltip();
+          $('[data-rel="popover"]').popover();
+        })
+      </script>
+      <script src="js/bootstrap.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-desktop desktop-icon"></i>
+        <a href="#">店铺</a></li>
+      <li class="active">新建店铺</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+      <style>#df_area{ padding-left:20px; } .fieldblock input{height:30px;line-height:30px;} .selfdefineblock input{height:30px;line-height:30px;} .rangedeliveryfeeblock input{height:30px;line-height:30px;} .form-submit-btn{padding-left:100px;height:60px;margin-top:30px;} .aa{display:none;} .amap-sug-result{ z-index:1051; width:500px; } .col-sm-1 { width: 10.33333333%; }</style>
+      <style>.clear{ clear:both; } .addfield{margin-top:-10px;width:120px;height:30px;background:#27B3EF;line-height:30px;color:#ffffff;font-weight:bold;text-align:center;font-size:16px;cursor:pointer;float:left;margin-right:10px;} #filecontent{width:1000px;height:auto;margin-top:10px;} .xxfield,.txfield,.selfdefine,.rangedeliveryfee{width:1000px;heigth:40px;background:#f5f5f5;line-height:40px;border:1px solid #eeeeee;margin-top:10px;} .deletefield,.deleteselfdefine,.deleterangedeliveryfee{width:40px;height:40px;float:right;background:#eeeeee;color:#FF0000;font-weight:bold;line-height:40px;text-align:center;cursor:pointer;} .save_field{margin-top:10px;width:60px;height:30px;background:#61b509;line-height:30px;color:#ffffff;font-weight:bold;text-align:center;font-size:16px;cursor:pointer;} .map-search-result{border:1px solid #d1d1d1;width:500px;height:auto;z-index:1055;margin-top: 0px;position: absolute;background-color:#fefefe;}</style>
+      <!-- <div style="position:fixed;width:830px;height:650px;z-index:99999;margin:auto;left:0; right:0; top:0; bottom:0;display:none;background:#eeeeee;" id="picwindow">
+      <div style="width:830px;height:30px;background:#aaaaaa;"><span style="color:#ffffff;float:right;display:block;width:50px;height:30px;line-height:30px;text-align:center;cursor:pointer" onclick="openpicwindow();">关闭</span></div>
+      <iframe src="" style="width:830px;height:620px;border:0px;" scrolling="no"></iframe>
+      </div> -->
+      <div id="hidecontent" style="display:none;">
+        <div id="hidexxfield">
+          <div class="xxfield fieldblock">(
+            <span style="font-weight:bold;">选项字段</span>)&nbsp;&nbsp;字段名:
+            <input type="text" style="width:80px;" class="name" name="field[name][]">&nbsp;&nbsp;&nbsp;&nbsp;选项值:
+            <input type="text" style="width:300px;" class="content" name="field[content][]">
+            <input type="hidden" class="type" name="field[type][]" value="1">
+            <div class="deletefield" title="删除选项字段">删除</div></div>
+        </div>
+        <div id="hidetxfield">
+          <div class="txfield fieldblock">(
+            <span style="font-weight:bold;">填写字段</span>)&nbsp;&nbsp;字段名:
+            <input type="text" style="width:80px;" class="name" name="field[name][]">&nbsp;&nbsp;&nbsp;&nbsp;提示语:
+            <input type="text" style="width:300px;" class="content" name="field[content][]">
+            <input type="hidden" class="type" name="field[type][]" value="2">
+            <div class="deletefield" title="删除选项字段">删除</div></div>
+        </div>
+        <!-- 自定义显示项 -->
+        <div id="hideselfdefine">
+          <div class="selfdefine selfdefineblock">项目类型:
+            <select class="selfdefine-type" name="selfdefine[type][]">
+              <option value="content">内容</option>
+              <option value="link">外链</option></select>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="selfdefine_name">自定义显示项:</span>
+            <input type="text" style="width:80px;" class="name" name="selfdefine[name][]">&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="selfdefine_value">选项值:</span>
+            <input type="text" style="width:300px;" class="content" name="selfdefine[content][]">
+            <div class="deleteselfdefine" title="删除自定义显示项">删除</div></div>
+        </div>
+        <!-- 不同距离外送费 -->
+        <div id="hiderangedeliveryfee">
+          <div class="rangedeliveryfee rangedeliveryfeeblock ">配送距离&nbsp;
+            <input type="text" style="width:80px;" class="name" name="rangedeliveryfee[start][]" value="0">&nbsp;公里至&nbsp;
+            <input type="text" style="width:80px;" class="name" name="rangedeliveryfee[stop][]" value="0">&nbsp;公里，外送费&nbsp;
+            <input type="text" style="width:80px;" class="content" name="rangedeliveryfee[value][]" value="0">&nbsp;元，起送价&nbsp;
+            <input type="text" style="width:80px;" class="content" name="rangedeliveryfee[minvalue][]" value="0">&nbsp;元
+            <div class="deleterangedeliveryfee" title="删除自定义显示项">删除</div></div>
+        </div>
+      </div>
+      <style>input[type=checkbox].ace.ace-switch.ace-switch-5+.lbl::before { content: "开启a0\a0\a0\a0\a0关闭"; }</style>
+      <div class="row">
+        <div class="col-sm-12">
+          <form enctype="multipart/form-data" class="form-horizontal" id="shop-form" action="/shop/create" method="post">
+            <div class="alert alert-danger" id="shop-form_es_" style="display:none">
+              <p>请更正下列输入错误:</p>
+              <ul>
+                <li>dummy</li></ul>
+            </div>
+            <input name="oldAdminId" value="56695" type="hidden">
+            <div class="tabbable tt">
+              <ul class="nav nav-tabs" id="myTab">
+                <li class="active">
+                  <a data-toggle="tab" href="#" aria-expanded="true">基本信息</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="#" aria-expanded="false">营业信息</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="#" aria-expanded="false">外送费</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="#" aria-expanded="false">店铺显示</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="#" aria-expanded="false">支付方式</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="#">配送时间</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="#">预设选项</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="#">店铺活动</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="#">订单提醒</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="#">店铺图片</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="#">增值服务</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="#">自定义显示内容</a></li>
+                <li class="">
+                  <a data-toggle="tab" href="#" aria-expanded="false">分享店铺设置</a></li>
+              </ul>
+              <div class="tab-content">
+                <div id="basicinfo" class="tab-pane active tt_1">
+                  <div class="form-group ">
+                    <label class="col-sm-1">
+                      <label for="Config_tag">编号</label></label>
+                    <input class="col-sm-2" name="Config[tag]" id="Config_tag" type="text" value="0">
+                    <!-- <span class="help-inline col-xs-12 col-sm-7"> -->
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="bottom" data-content="决定展示顺序，编号越小越靠前" title="" data-original-title="编号说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                    <!-- </span> --></div>
+                  <div class="form-group ">
+                    <label class="col-sm-1">
+                      <label for="Config_shopname">店铺名称</label></label>
+                    <input class="col-sm-2" size="20" maxlength="20" name="Config[shopname]" id="Config_shopname" type="text"></div>
+                  <div class="form-group ">
+                    <label class="col-sm-1">
+                      <label for="Config_type_id">店铺分类</label></label>
+                    <select class="col-sm-2" name="Config[type_id]" id="Config_type_id">
+                      <option value="56824">便民业务</option>
+                      <option value="65580">多味早餐</option>
+                      <option value="65581">休闲零食</option>
+                      <option value="65589">卤味烧腊</option>
+                      <option value="67211">年货专区</option>
+                      <option value="53107">粉面小吃</option>
+                      <option value="53108">中式快餐</option>
+                      <option value="53109">蔬果</option>
+                      <option value="53110">酒水饮料</option>
+                      <option value="53111">能量西餐</option>
+                      <option value="53112">跑腿业务</option>
+                      <option value="53114">鲜花蛋糕</option>
+                      <option value="56754">夜宵烧烤</option>
+                      <option value="68771">测试</option>
+                      <option value="0" selected="selected">默认分类</option></select>
+                  </div>
+                  <div class="form-group ">
+                    <label class="col-sm-1">
+                      <label for="Config_category_id">行业类型</label></label>
+                    <select class="col-sm-2" name="Config[category_id]" id="Config_category_id">
+                      <option value="1" selected="selected">中式快餐</option>
+                      <option value="9">西式快餐</option>
+                      <option value="10">粉面小吃</option>
+                      <option value="11">夜宵</option>
+                      <option value="12">日韩料理</option>
+                      <option value="6">零食</option>
+                      <option value="2">便利店</option>
+                      <option value="3">饮品</option>
+                      <option value="4">水果</option>
+                      <option value="5">甜品</option>
+                      <option value="7">蛋糕面包</option>
+                      <option value="8">生活服务</option>
+                      <option value="13">火锅</option>
+                      <option value="14">自助餐</option>
+                      <option value="15">烧烤</option>
+                      <option value="16">海鲜</option>
+                      <option value="17">咖啡</option>
+                      <option value="18">下午茶</option></select>&nbsp;&nbsp;
+                    <a href="#" target="_blank" title="行业类型选择教程" rel="tooltip" class="btn btn-sm btn-danger">行业类型选择教程</a></div>
+                  <div class="form-group ">
+                    <label class="col-sm-1">
+                      <label for="Config_orderphone">联系电话</label></label>
+                    <input class="col-sm-2" name="Config[orderphone]" id="Config_orderphone" type="text" maxlength="20" value=""></div>
+                  <div class="form-group ">
+                    <label class="col-sm-1">
+                      <label for="Config_shopaddress">店铺地址</label></label>
+                    <textarea class="col-sm-3" rows="5" name="Config[shopaddress]" id="Config_shopaddress"></textarea>
+                  </div>
+                  <div class="form-group ">
+                    <label class="col-sm-1">
+                      <label for="Config_QQ">QQ</label></label>
+                    <input class="col-sm-2" name="Config[QQ]" id="Config_QQ" type="text" maxlength="16" value="0">&nbsp;&nbsp;
+                    <a href="#" target="_blank" title="查看QQ设置教程" rel="tooltip" class="btn btn-sm btn-danger">设置教程</a>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="如果为0则默认不显示QQ，不为0则显示" title="" data-original-title="设置QQ说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group ">
+                    <label class="col-sm-1">
+                      <label for="Config_shopdes">店铺描述</label></label>
+                    <textarea class="col-sm-3" rows="5" name="Config[shopdes]" id="Config_shopdes"></textarea>
+                  </div>
+                  <div class="form-group ">
+                    <label class="col-sm-1">
+                      <label for="Config_coordinate_x">店铺纬度</label></label>
+                    <input class="col-sm-2" id="coordinate_x_" name="Config[coordinate_x]" type="text" value="0.000000">&nbsp;&nbsp;
+                    <!--<div class="btn btn-sm btn-danger" onclick="ViewCoordinateCourse()">经纬度设置教程</div>-->
+                    <a href="#" role="button" class="btn btn-sm btn-success" data-toggle="modal">自动获取经纬度</a></div>
+                  <div class="form-group ">
+                    <label class="col-sm-1">
+                      <label for="Config_coordinate_y">店铺经度</label></label>
+                    <input class="col-sm-2" id="coordinate_y_" name="Config[coordinate_y]" type="text" value="0.000000"></div>
+                </div>
+                <div id="businessinfo" class="tab-pane tt_1">
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_shopstatus">店铺状态</label>
+                    <select name="Config[shopstatus]" id="Config_shopstatus">
+                      <option value="OPEN" selected="selected">开启</option>
+                      <option value="CLOSED">关闭</option></select>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="用于店铺的临时关闭，关闭后顾客无法下单" title="" data-original-title="设置说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_closeinfo">店铺关闭提示信息</label>
+                    <textarea class="col-sm-3" rows="4" name="Config[closeinfo]" id="Config_closeinfo"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_ordervalid">微信下单</label>
+                    <select name="Config[ordervalid]" id="Config_ordervalid">
+                      <option value="0">关闭</option>
+                      <option value="1" selected="selected">开启</option></select>
+                    <!-- <span class="ace-icon fa fa-info-sign bigger-150" data-rel="tooltip" data-placement="right" title="关闭后顾客不能通过微信下单，只能浏览商品"></span> -->
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="关闭后顾客不能通过微信下单，只能浏览商品" title="" data-original-title="微信下单说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_ordervalid_remind">微信下单关闭提示信息</label>
+                    <textarea class="col-sm-3" rows="4" name="Config[ordervalid_remind]" id="Config_ordervalid_remind"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_is_merchant_deliver">开启商家配送功能</label>
+                    <select name="Config[is_merchant_deliver]" id="Config_is_merchant_deliver">
+                      <option value="0">关闭</option>
+                      <option value="1" selected="selected">开启</option></select>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_open_selftake">开启到店自取功能</label>
+                    <select name="Config[open_selftake]" id="Config_open_selftake">
+                      <option value="0" selected="selected">关闭</option>
+                      <option value="1">开启</option></select>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_open_limitcancelorder">是否允许顾客取消未处理订单</label>
+                    <select name="Config[open_limitcancelorder]" id="Config_open_limitcancelorder">
+                      <option value="0" selected="selected">不允许</option>
+                      <option value="1">允许</option></select>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="此设置只针对货到付款订单和余额支付订单，在线支付的订单顾客始终无法取消" title="" data-original-title="设置说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_weeks">营业星期</label>
+                    <input type="checkbox" value="1" name="weeks[]" checked="">星期一
+                    <input type="checkbox" value="2" name="weeks[]" checked="">星期二
+                    <input type="checkbox" value="3" name="weeks[]" checked="">星期三
+                    <input type="checkbox" value="4" name="weeks[]" checked="">星期四
+                    <input type="checkbox" value="5" name="weeks[]" checked="">星期五
+                    <input type="checkbox" value="6" name="weeks[]" checked="">星期六
+                    <input type="checkbox" value="7" name="weeks[]" checked="">星期日</div>
+                  <div class="tabbable">
+                    <ul class="nav nav-tabs" id="myTab">
+                      <li class="active">
+                        <a data-toggle="tab" href="#" aria-expanded="false">营业时间段1</a></li>
+                      <li class="">
+                        <a data-toggle="tab" href="#" aria-expanded="false">营业时间段2</a></li>
+                      <li class="">
+                        <a data-toggle="tab" href="#" aria-expanded="false">营业时间段3</a></li>
+                    </ul>
+                    <div class="tab-content">
+                      <div id="shop_time_1" class="tab-pane in active">
+                        <div>
+                          <input id="Config_shop_start_time" type="text" value="08:00:00" name="Config[shop_start_time]" class="hasDatepicker">至
+                          <input id="Config_shop_stop_time" type="text" value="20:00:00" name="Config[shop_stop_time]" class="hasDatepicker">
+                          <div class="errorMessage" id="Config_shop_start_time_em_" style="display:none"></div>
+                          <div class="errorMessage" id="Config_shop_stop_time_em_" style="display:none"></div>
+                        </div>
+                      </div>
+                      <div id="shop_time_2" class="tab-pane">
+                        <div>
+                          <input id="Config_shop_start_time_2" type="text" value="00:00:00" name="Config[shop_start_time_2]" class="hasDatepicker">至
+                          <input id="Config_shop_stop_time_2" type="text" value="00:00:00" name="Config[shop_stop_time_2]" class="hasDatepicker">
+                          <div class="errorMessage" id="Config_shop_start_time_2_em_" style="display:none"></div>
+                          <div class="errorMessage" id="Config_shop_stop_time_2_em_" style="display:none"></div>
+                        </div>
+                      </div>
+                      <div id="shop_time_3" class="tab-pane">
+                        <div>
+                          <input id="Config_shop_start_time_3" type="text" value="00:00:00" name="Config[shop_start_time_3]" class="hasDatepicker">至
+                          <input id="Config_shop_stop_time_3" type="text" value="00:00:00" name="Config[shop_stop_time_3]" class="hasDatepicker">
+                          <div class="errorMessage" id="Config_shop_start_time_3_em_" style="display:none"></div>
+                          <div class="errorMessage" id="Config_shop_stop_time_3_em_" style="display:none"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="space"></div>
+                  <div class="form-group"></div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_delivery_radius">店铺服务最大距离</label>
+                    <input class="col-sm-1" size="10" maxlength="10" name="Config[delivery_radius]" id="Config_delivery_radius" type="text" value="1.0">
+                    <span style="font-size: 14px;float: left;">公里</span>
+                    <span class="help-inline col-xs-12 col-sm-7">
+                      <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="bottom" data-content="该设置仅在开启了系统设置中的顾客位置验证才生效，不在服务范围的顾客无法下单" title="" data-original-title="设置说明">
+                        <span class="ace-icon fa fa-info bigger-120"></span>
+                      </span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1">
+                      <label for="Config_area">配送区域</label></label>
+                    <textarea class="col-sm-3" rows="4" name="Config[area]" id="Config_area"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_auth_type">订单短信验证类型</label>
+                    <select name="Config[auth_type]" id="Config_auth_type">
+                      <option value="0" selected="selected">不进行短信验证</option>
+                      <option value="1">首次下单短信验证</option></select>
+                    <!-- <span class="ace-icon fa fa-info-sign bigger-150" data-rel="tooltip" data-placement="right" title="短信余额不足将无法进行验证"></span> -->
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="短信余额不足将无法进行验证" title="" data-original-title="提示：">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                </div>
+                <div id="deliveryfee" class="tab-pane tt_1">
+                  <div class="form-group">
+                    <label class="col-sm-1">起送价格</label>
+                    <input class="col-sm-1" size="10" maxlength="10" name="Config[basicprice]" id="Config_basicprice" type="text" value="10.0">元
+                    <span class="required">*</span></div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_delivery_fee">外送费</label>
+                    <input class="col-sm-1" size="10" maxlength="10" name="Config[delivery_fee]" id="Config_delivery_fee" type="text" value="3.0">元
+                    <span class="required">*</span></div>
+                  <style>#perioddeliveryfeebox{ margin:10px; height:auto; } .perioddeliveryfeeitem{ margin:10px 0px; }</style>
+                  <div class="form-group">
+                    <div class="radio">
+                      <label>
+                        <input id="ytConfig_delivery_fee_valid" type="hidden" value="0" name="Config[delivery_fee_valid]">
+                        <input class="ace" name="Config[delivery_fee_valid]" id="Config_delivery_fee_valid" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_delivery_fee_valid">不足起送价格收取外送费照样送</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label bolder blue">达到起送价格</label>
+                    <div class="radio">
+                      <label>
+                        <input name="Config[reach_delivery_fee_type]" value="0" type="radio" class="ace" checked="checked">
+                        <span class="lbl" style="z-index: 1">免外送费</span></label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input name="Config[reach_delivery_fee_type]" value="1" type="radio" class="ace">
+                        <span class="lbl" style="z-index: 1">照样收取外送费</span></label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input name="Config[reach_delivery_fee_type]" value="2" type="radio" class="ace">
+                        <span class="lbl" style="z-index: 1">达到</span>
+                        <input size="10" maxlength="10" name="Config[no_delivery_fee_value]" id="Config_no_delivery_fee_value" type="text" value="0.0">
+                        <span class="lbl" style="z-index: 1">元免外送费</span></label>
+                    </div>
+                  </div>
+                  <div class="form-group" style="margin-top:20px;">
+                    <label class="col-sm-2" for="Config_open_range_delivery_fee">是否打开按距离收取不同外送费</label>
+                    <select name="Config[open_range_delivery_fee]" id="Config_open_range_delivery_fee">
+                      <option value="0" selected="selected">关闭</option>
+                      <option value="1">开启</option></select>
+                  </div>
+                  <div class="widget-box">
+                    <div class="widget-header">
+                      <h5>设置不同配送距离的外送费和起送价</h5></div>
+                    <div class="widget-body">
+                      <div class="widget-main">
+                        <div>
+                          <div class="btn btn-sm btn-success addrangedeliveryfee">添加不同距离外送费</div>
+                          <div class="clear"></div>
+                        </div>
+                        <div id="rangedeliveryfeecontent"></div>
+                        <div style="clear:both;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="delivertime" class="tab-pane tt_1">
+                  <div class="alert alert-block alert-success">
+                    <button type="button" class="close" data-dismiss="alert">
+                      <i class="ace-icon fa fa-times"></i>
+                    </button>
+                    <p>点击查看教程
+                      <a href="#" target="_blank">《如何利用配送时间功能最大化配送效率，提高业绩》</a></p>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2" for="Config_opendelivertime">是否开启配送时间限制</label>
+                    <select name="Config[opendelivertime]" id="Config_opendelivertime">
+                      <option value="0" selected="selected">关闭</option>
+                      <option value="1">开启</option></select>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2" for="Config_is_nowdelivery">是否开启尽快送达</label>
+                    <select name="Config[is_nowdelivery]" id="Config_is_nowdelivery">
+                      <option value="0" selected="selected">关闭</option>
+                      <option value="1">开启</option></select>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2" for="Config_days">配送时间关联的天数</label>
+                    <select name="Config[days]" id="Config_days">
+                      <option value="1" selected="selected">一天</option>
+                      <option value="2">二天</option>
+                      <option value="3">三天</option>
+                      <option value="4">四天</option>
+                      <option value="5">五天</option>
+                      <option value="6">六天</option>
+                      <option value="7">七天</option></select>
+                  </div>
+                  <h3 class="header smaller lighter green"></h3>
+                  <div class="form-group">
+                    <label class="col-sm-2" for="Config_is_delivertimerange">是否开启最少提前多少分钟下单</label>
+                    <select name="Config[is_delivertimerange]" id="Config_is_delivertimerange">
+                      <option value="0" selected="selected">开启</option>
+                      <option value="1">关闭</option></select>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2" for="Config_delivertimerange">最少提前多少分钟下单</label>
+                    <input class="col-sm-1" size="10" maxlength="3" name="Config[delivertimerange]" id="Config_delivertimerange" type="text" value="30">分钟</div>
+                  <h3 class="header smaller lighter green"></h3>
+                  <div class="form-group">
+                    <label class="col-sm-2" for="Config_open_schedule">是否开启提前下单算预定功能</label>
+                    <select name="Config[open_schedule]" id="Config_open_schedule">
+                      <option value="0" selected="selected">关闭</option>
+                      <option value="1">开启</option></select>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2" for="Config_leadtimes">提前多少分钟算预定</label>
+                    <input class="col-sm-1" size="10" maxlength="3" name="Config[leadtimes]" id="Config_leadtimes" type="text" value="300">分钟</div>
+                  <div class="form-group">
+                    <label class="col-sm-2" for="Config_schedule_delivery">预定的配送费</label>
+                    <input class="col-sm-1" size="10" maxlength="3" name="Config[schedule_delivery]" id="Config_schedule_delivery" type="text" value="0.00">元</div>
+                  <div class="widget-box">
+                    <div class="widget-header">
+                      <h5>配送时间段</h5></div>
+                    <br>
+                    <div class="form-group">
+                      <label class="col-sm-2" style="margin-left:10px;" for="Config_open_time_delivery">是否开启配送时间配送费功能</label>
+                      <select name="Config[open_time_delivery]" id="Config_open_time_delivery">
+                        <option value="0" selected="selected">关闭</option>
+                        <option value="1">开启</option></select>
+                    </div>
+                    <div class="widget-body">
+                      <div class="widget-main">
+                        <div style="margin:10px;width:1000px;float:left;">(1) 时间段:
+                          <input id="delivertime_0_start" type="text" value="00:00" name="delivertime[0][start]" class="hasDatepicker">至
+                          <input id="delivertime_0_stop" type="text" value="00:00" name="delivertime[0][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[0][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(2) 时间段:
+                          <input id="delivertime_1_start" type="text" value="00:00" name="delivertime[1][start]" class="hasDatepicker">至
+                          <input id="delivertime_1_stop" type="text" value="00:00" name="delivertime[1][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[1][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(3) 时间段:
+                          <input id="delivertime_2_start" type="text" value="00:00" name="delivertime[2][start]" class="hasDatepicker">至
+                          <input id="delivertime_2_stop" type="text" value="00:00" name="delivertime[2][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[2][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(4) 时间段:
+                          <input id="delivertime_3_start" type="text" value="00:00" name="delivertime[3][start]" class="hasDatepicker">至
+                          <input id="delivertime_3_stop" type="text" value="00:00" name="delivertime[3][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[3][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(5) 时间段:
+                          <input id="delivertime_4_start" type="text" value="00:00" name="delivertime[4][start]" class="hasDatepicker">至
+                          <input id="delivertime_4_stop" type="text" value="00:00" name="delivertime[4][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[4][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(6) 时间段:
+                          <input id="delivertime_5_start" type="text" value="00:00" name="delivertime[5][start]" class="hasDatepicker">至
+                          <input id="delivertime_5_stop" type="text" value="00:00" name="delivertime[5][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[5][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(7) 时间段:
+                          <input id="delivertime_6_start" type="text" value="00:00" name="delivertime[6][start]" class="hasDatepicker">至
+                          <input id="delivertime_6_stop" type="text" value="00:00" name="delivertime[6][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[6][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(8) 时间段:
+                          <input id="delivertime_7_start" type="text" value="00:00" name="delivertime[7][start]" class="hasDatepicker">至
+                          <input id="delivertime_7_stop" type="text" value="00:00" name="delivertime[7][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[7][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(9) 时间段:
+                          <input id="delivertime_8_start" type="text" value="00:00" name="delivertime[8][start]" class="hasDatepicker">至
+                          <input id="delivertime_8_stop" type="text" value="00:00" name="delivertime[8][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[8][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(10) 时间段:
+                          <input id="delivertime_9_start" type="text" value="00:00" name="delivertime[9][start]" class="hasDatepicker">至
+                          <input id="delivertime_9_stop" type="text" value="00:00" name="delivertime[9][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[9][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(11) 时间段:
+                          <input id="delivertime_10_start" type="text" value="00:00" name="delivertime[10][start]" class="hasDatepicker">至
+                          <input id="delivertime_10_stop" type="text" value="00:00" name="delivertime[10][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[10][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(12) 时间段:
+                          <input id="delivertime_11_start" type="text" value="00:00" name="delivertime[11][start]" class="hasDatepicker">至
+                          <input id="delivertime_11_stop" type="text" value="00:00" name="delivertime[11][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[11][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(13) 时间段:
+                          <input id="delivertime_12_start" type="text" value="00:00" name="delivertime[12][start]" class="hasDatepicker">至
+                          <input id="delivertime_12_stop" type="text" value="00:00" name="delivertime[12][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[12][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(14) 时间段:
+                          <input id="delivertime_13_start" type="text" value="00:00" name="delivertime[13][start]" class="hasDatepicker">至
+                          <input id="delivertime_13_stop" type="text" value="00:00" name="delivertime[13][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[13][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(15) 时间段:
+                          <input id="delivertime_14_start" type="text" value="00:00" name="delivertime[14][start]" class="hasDatepicker">至
+                          <input id="delivertime_14_stop" type="text" value="00:00" name="delivertime[14][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[14][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(16) 时间段:
+                          <input id="delivertime_15_start" type="text" value="00:00" name="delivertime[15][start]" class="hasDatepicker">至
+                          <input id="delivertime_15_stop" type="text" value="00:00" name="delivertime[15][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[15][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(17) 时间段:
+                          <input id="delivertime_16_start" type="text" value="00:00" name="delivertime[16][start]" class="hasDatepicker">至
+                          <input id="delivertime_16_stop" type="text" value="00:00" name="delivertime[16][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[16][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(18) 时间段:
+                          <input id="delivertime_17_start" type="text" value="00:00" name="delivertime[17][start]" class="hasDatepicker">至
+                          <input id="delivertime_17_stop" type="text" value="00:00" name="delivertime[17][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[17][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(19) 时间段:
+                          <input id="delivertime_18_start" type="text" value="00:00" name="delivertime[18][start]" class="hasDatepicker">至
+                          <input id="delivertime_18_stop" type="text" value="00:00" name="delivertime[18][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[18][delivery_value]">元</div>
+                        <div style="margin:10px;width:1000px;float:left;">(20) 时间段:
+                          <input id="delivertime_19_start" type="text" value="00:00" name="delivertime[19][start]" class="hasDatepicker">至
+                          <input id="delivertime_19_stop" type="text" value="00:00" name="delivertime[19][stop]" class="hasDatepicker">&nbsp;&nbsp;&nbsp; 配送费:
+                          <input type="text" value="0" style="width:80px;" name="delivertime[19][delivery_value]">元</div>
+                        <div style="clear:both;"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="clear:both;"></div>
+                </div>
+                <div id="show" class="tab-pane tt_1">
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_notice">店铺公告</label>
+                    <div class="ke-container ke-container-default" style="width: 30%;">
+                      <div style="display:block;" class="ke-toolbar" unselectable="on">
+                        <span class="ke-outline" data-name="fontname" title="字体" unselectable="on">
+                          <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontname" unselectable="on"></span>
+                        </span>
+                        <span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on">
+                          <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span>
+                        </span>
+                        <span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on">
+                          <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span>
+                        </span>
+                        <span class="ke-inline-block ke-separator"></span>
+                        <span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on">
+                          <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span>
+                        </span>
+                        <span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on">
+                          <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span>
+                        </span>
+                        <span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on">
+                          <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span>
+                        </span>
+                        <span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on">
+                          <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span>
+                        </span>
+                        <span class="ke-outline" data-name="link" title="超级链接" unselectable="on">
+                          <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span>
+                        </span>
+                        <span class="ke-inline-block ke-separator"></span>
+                        <span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on">
+                          <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span>
+                        </span>
+                        <span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on">
+                          <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span>
+                        </span>
+                        <span class="ke-inline-block ke-separator"></span>
+                        <span class="ke-outline" data-name="emoticons" title="插入表情" unselectable="on">
+                          <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-emoticons" unselectable="on"></span>
+                        </span>
+                      </div>
+                      <div style="display: block; height: 100px;" class="ke-edit">
+                        <iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" tabindex="" style="width: 100%; height: 100px;"></iframe>
+                        <textarea class="ke-edit-textarea" hidefocus="true" tabindex="" style="width: 100%; height: 100px; display: none;"></textarea>
+                      </div>
+                      <div class="ke-statusbar">
+                        <span class="ke-inline-block ke-statusbar-center-icon"></span>
+                        <span class="ke-inline-block ke-statusbar-right-icon" style="visibility: hidden;"></span>
+                      </div>
+                    </div>
+                    <textarea class="span3" rows="4" name="Config[notice]" id="Config_notice" style="display: none;"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_shop_notice_used" type="hidden" value="0" name="Config[shop_notice_used]">
+                        <input class="ace" name="Config[shop_notice_used]" id="Config_shop_notice_used" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_shop_notice_used">是否开启选购页面公告</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1">
+                      <label for="Config_shop_notice">选购页面公告</label></label>
+                    <textarea class="col-sm-3" rows="5" name="Config[shop_notice]" id="Config_shop_notice"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_linktype">进入店铺链接类型</label>
+                    <select name="Config[linktype]" id="Config_linktype">
+                      <option value="0" selected="selected">首页</option>
+                      <option value="1">选购</option></select>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="这个决定进入店铺时候显示的页面是店铺信息页面还是商品选购页面" title="" data-original-title="设置说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_callshow">店铺首页显示拨打电话</label>
+                    <select name="Config[callshow]" id="Config_callshow">
+                      <option value="0" selected="selected">不显示</option>
+                      <option value="1">显示</option></select>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_unitshow">商品单位</label>
+                    <select name="Config[unitshow]" id="Config_unitshow">
+                      <option value="0" selected="selected">不显示</option>
+                      <option value="1">显示</option></select>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_is_opencomment">评论功能</label>
+                    <select name="Config[is_opencomment]" id="Config_is_opencomment">
+                      <option value="1" selected="selected">开启</option>
+                      <option value="0">关闭</option></select>
+                  </div>
+                  <!--是否开启在微信店铺列表中显示销售量，显示店铺到客户所在位置的距离>
+                  <div class="form-group"></div>
+                  <div class="form-group"></div-->
+                  <!--是否开启在微信店铺列表中显示销售量，显示店铺到客户所在位置的距离-->
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_showtype">展示风格</label>
+                    <select name="Config[showtype]" id="Config_showtype">
+                      <option value="1">文字展示</option>
+                      <option value="2" selected="selected">小图展示</option>
+                      <option value="3">中图展示</option>
+                      <option value="4">大图展示</option></select>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_food_showtype">商品详情显示风格</label>
+                    <select name="Config[food_showtype]" id="Config_food_showtype">
+                      <option value="0" selected="selected">弹框显示</option>
+                      <option value="1">新页面显示</option></select>
+                  </div>
+                  <div class="form-group">
+                    <select name="Config[showsales]" id="Config_showsales">
+                      <option value="1">显示</option>
+                      <option value="0" selected="selected">不显示</option></select>
+                    <label class="col-sm-1" for="Config_showsales">选购页面是否显示商品销量</label></div>
+                  <div class="form-group">
+                    <select name="Config[is_show_basicprice]" id="Config_is_show_basicprice">
+                      <option value="0" selected="selected">显示</option>
+                      <option value="1">不显示</option></select>
+                    <label class="col-sm-1" for="Config_is_show_basicprice">店铺首页是否显示起送价</label></div>
+                  <div class="form-group">
+                    <select name="Config[is_show_delivery]" id="Config_is_show_delivery">
+                      <option value="0" selected="selected">显示</option>
+                      <option value="1">不显示</option></select>
+                    <label class="col-sm-1" for="Config_is_show_delivery">店铺首页是否显示外送费</label></div>
+                  <div class="form-group">
+                    <select name="Config[is_show_range]" id="Config_is_show_range">
+                      <option value="0" selected="selected">显示</option>
+                      <option value="1">不显示</option></select>
+                    <label class="col-sm-1" for="Config_is_show_range">店铺首页是否显示服务距离</label></div>
+                  <div class="form-group">
+                    <select name="Config[is_show_area]" id="Config_is_show_area">
+                      <option value="0" selected="selected">显示</option>
+                      <option value="1">不显示</option></select>
+                    <label class="col-sm-1" for="Config_is_show_area">店铺首页是否显示配送区域</label></div>
+                  <div class="form-group">
+                    <select name="Config[is_show_delivery_service]" id="Config_is_show_delivery_service">
+                      <option value="1">显示</option>
+                      <option value="0" selected="selected">不显示</option></select>
+                    <label class="col-sm-1" for="Config_is_show_delivery_service">店铺列表是否显示配送服务商名称</label></div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_delivery_service">配送服务商名称</label>
+                    <input class="col-sm-3" size="20" maxlength="255" placeholder="输入配送服务商，如：乐外卖专送" name="Config[delivery_service]" id="Config_delivery_service" type="text"></div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_memo_hint">购物车页面订单备注提示</label>
+                    <input class="col-sm-3" size="20" maxlength="20" name="Config[memo_hint]" id="Config_memo_hint" type="text" value="如：不要辣、12点前送到"></div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_address_hint">地址提示</label>
+                    <input class="col-sm-3" size="20" maxlength="20" name="Config[address_hint]" id="Config_address_hint" type="text" value="如：XX小区5号楼318"></div>
+                  <div class="form-group">
+                    <label class="col-sm-1">
+                      <label for="Config_order_prefix">订单编号前缀</label></label>
+                    <input class="col-sm-2" name="Config[order_prefix]" id="Config_order_prefix" type="text" maxlength="20" value="">
+                    <span class="help-inline col-xs-12 col-sm-7">
+                      <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="bottom" data-content="需要去“系统设置-》帐号设置-》显示设置”中，将订单编号显示类型设置为按店铺编号才有效" title="" data-original-title="设置说明">
+                        <span class="ace-icon fa fa-info bigger-120"></span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                <div id="pay" class="tab-pane tt_1">
+                  <div class="alert alert-info">
+                    <button type="button" class="close" data-dismiss="alert">
+                      <i class="ace-icon fa fa-times"></i>
+                    </button>支付类型显示顺序的序号分别是:1代表货到付款、2代表余额支付、3代表在线支付,各支付之间用英文逗号(,)隔开,三个支付（123）都必须写上。
+                    <br>如果是设置在线支付在前面,后面是余额支付和货到付款,可以这样设置:3,2,1。如果设置不正确,就使用默认的顺序,即1,2,3(货到付款,余额支付,在线支付)。</div>
+                  <div class="form-group">
+                    <div class="radio">
+                      <label>支付类型显示顺序
+                        <input type="text" name="paytype_sequence" value="1,2,3"></label></div>
+                  </div>
+                  <div class="form-group">
+                    <div class="radio">
+                      <label>
+                        <input class="paycheck ace" type="checkbox" name="Config[openpayone]" value="1" id="openpayone" onclick="check(this);">
+                        <span class="lbl">
+                          <label for="Config_openpayone">货到付款</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="radio">
+                      <label>
+                        <input class="paycheck ace" type="checkbox" name="Config[openpaytwo]" value="1" onclick="check(this);">
+                        <span class="lbl">
+                          <label for="Config_openpaytwo">余额支付</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="radio">
+                      <label>
+                        <input class="paycheck ace" type="checkbox" name="Config[openpaythree]" value="1" checked="" onclick="check(this);if(this.checked){$('#online-pay').show(300)}else{$('#online-pay').hide(300)}">
+                        <span class="lbl">
+                          <label for="Config_openpaythree">在线支付</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <!--<div class="alert alert-danger">
+                  <button type="button" class="close" data-dismiss="alert">
+                  <i class="ace-icon fa fa-times"></i></button>
+                  您还没有通过实名验证或未设置自己的提现账号，请先到“系统设置=》身份认证”中完成实名认证并在“账户余额=》提现账号设置”里设置自己的提现账号信息才能开通在线支付和余额支付。
+                  <br></div>-->
+                  <div class="widget-box" id="online-pay">
+                    <div class="widget-header">
+                      <h5>在线支付</h5></div>
+                    <div class="col-xs-12">
+                      <div class="alert alert-danger" style="margin-top: 15px;">点击查看教程
+                        <a href="#" target="_blank">《乐外卖不同在线支付方式的使用方法与区别》</a></div>
+                    </div>
+                    <div class="widget-body">
+                      <div class="widget-main">
+                        <div class="form-group">
+                          <label class="col-sm-2" for="Config_open_zhifubao">是否开启乐外卖支付宝支付</label>
+                          <select name="Config[open_zhifubao]" id="Config_open_zhifubao">
+                            <option value="1" selected="selected">开启</option>
+                            <option value="0">关闭</option></select>
+                          <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="【所有类型微信公众号均可以使用】使用乐外卖的支付宝收款，然后在乐外卖后台将钱提现到商家的银行卡。" title="" data-original-title="说明">
+                            <span class="ace-icon fa fa-info bigger-120"></span>
+                          </span>
+                        </div>
+                        <!--div class="form-group">
+                        <span class="help-button"  data-rel="popover" data-trigger="hover" data-placement="right" data-content="【所有类型微信公众号均可以使用】使用乐外卖的财付通收款，然后在乐外卖后台将钱提现到商家的银行卡。" title="" data-original-title="说明">
+                        <span class="ace-icon fa fa-info bigger-120"></span></span>
+                        </div-->
+                        <div class="form-group">
+                          <label class="col-sm-2" for="Config_open_weixinzhifu">是否开启乐外卖微信支付</label>
+                          <select name="Config[open_weixinzhifu]" id="Config_open_weixinzhifu">
+                            <option value="1">开启</option>
+                            <option value="0" selected="selected">关闭</option></select>
+                          <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="【所有类型微信公众号均可以使用】使用乐外卖的微信支付收款，然后在乐外卖后台将钱提现到商家的银行卡。" title="" data-original-title="说明">
+                            <span class="ace-icon fa fa-info bigger-120"></span>
+                          </span>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-2" for="Config_open_self_weixinzhifu">是否开启商家自己的微信支付</label>
+                          <select name="Config[open_self_weixinzhifu]" id="Config_open_self_weixinzhifu">
+                            <option value="1" selected="selected">开启</option>
+                            <option value="0">关闭</option></select>
+                          <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="【只有微信认证的服务号可以使用】这个微信支付需要商家在微信公众号后台自己申请,用户郅的钱会直接打到商家的对公账号,不需要通过乐外卖提现，需要先在“公众号设置=》微信支付”中设置好微信支付相关参数。不能与乐外卖微信支付同时使用，使用商家自己的微信支付请关闭乐外卖微信支付。" title="" data-original-title="说明">
+                            <span class="ace-icon fa fa-info bigger-120"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="pay_offline" class="widget-box">
+                    <div class="widget-header">
+                      <h5>货到付款金额限制</h5></div>
+                    <div class="col-xs-12">
+                      <div class="alert alert-danger" style="margin-top: 15px;">如订单金额大于货到付款限制金额，则客人无法选择货到付款</div></div>
+                    <div class="widget-body">
+                      <div class="widget-main">
+                        <div class="form-group">
+                          <label class="col-sm-2" for="Config_is_pay_offline_limit">是否开启货到付款金额限制</label>
+                          <select name="Config[is_pay_offline_limit]" id="Config_is_pay_offline_limit">
+                            <option value="1">开启</option>
+                            <option value="0" selected="selected">关闭</option></select>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-2" for="Config_pay_offline_limit">货到付款限制金额</label>
+                          <input class="col-sm-1" name="Config[pay_offline_limit]" id="Config_pay_offline_limit" type="text" value="0.0">元</div></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="options" class="tab-pane tt_1">
+                  <div id="yw0">
+                    <div class="alert in alert-block fade alert-info">
+                      <a href="#" class="close" data-dismiss="alert">×</a>字段名长度为1-10个字，不能为空;选项字段的选项值之间用逗号(,)分开,如1号桌,2号桌,3号桌..,每个选项值长度为1-20个字,不能为空;填写字段的提示语长度为0-100个字，可以为空;</div></div>
+                  <div>
+                    <div>
+                      <div class="btn btn-sm btn-success addxxfield">添加选项字段</div>
+                      <div class="btn btn-sm btn-success addtxfield">添加填写字段</div>
+                      <a class="btn btn-sm" style="background-color:#D15B47!important;border-color:#D15B47;" href="#" target="_blank">设置教程</a>
+                      <div class="clear"></div>
+                    </div>
+                    <div id="fieldcontent"></div>
+                  </div>
+                </div>
+                <div id="shopactivity" class="tab-pane tt_1">
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_is_first_discount" type="hidden" value="0" name="Config[is_first_discount]">
+                        <input class="ace" name="Config[is_first_discount]" id="Config_is_first_discount" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_is_first_discount">是否开启店铺首单减免功能</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_first_discount">店铺首单减免金额</label>
+                    <input class="col-sm-1" name="Config[first_discount]" id="Config_first_discount" type="text" value="0.0">元</div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_is_coupon" type="hidden" value="0" name="Config[is_coupon]">
+                        <input class="ace" name="Config[is_coupon]" id="Config_is_coupon" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_is_coupon">启用优惠券</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_coupon_max">优惠券最大面值</label>
+                    <input class="col-sm-1" name="Config[coupon_max]" id="Config_coupon_max" type="text" value="10.0">元</div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_is_only_online" type="hidden" value="0" name="Config[is_only_online]">
+                        <input class="ace" name="Config[is_only_online]" id="Config_is_only_online" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_is_only_online">是否开启只有在线支付和余额付款才能使用优惠券</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_is_only_promotion" type="hidden" value="0" name="Config[is_only_promotion]">
+                        <input class="ace" name="Config[is_only_promotion]" id="Config_is_only_promotion" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_is_only_promotion">是否开启只有在线支付和余额付款才进行满减优惠</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_is_only_discount" type="hidden" value="0" name="Config[is_only_discount]">
+                        <input class="ace" name="Config[is_only_discount]" id="Config_is_only_discount" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_is_only_discount">是否开启只有在线支付和余额付款才能打折</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_member_discount_type" type="hidden" value="0" name="Config[member_discount_type]">
+                        <input class="ace" name="Config[member_discount_type]" id="Config_member_discount_type" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_member_discount_type">是否开启只有余额支付才能使用会员优惠、会员打折、会员免配送费</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_is_discount" type="hidden" value="0" name="Config[is_discount]">
+                        <input class="ace" name="Config[is_discount]" id="Config_is_discount" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_is_discount">启用店铺打折</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_discount_value">店铺折扣值</label>
+                    <input class="col-sm-1" name="Config[discount_value]" id="Config_discount_value" type="text" value="10.0">
+                    <!-- <span class="ace-icon fa fa-info-sign bigger-150" data-rel="tooltip" data-placement="right" title="如8折输入8，88折输入8.8"></span> -->
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="如8折输入8，88折输入8.8" title="" data-original-title="会员折扣填写说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_discountlimitmember" type="hidden" value="0" name="Config[discountlimitmember]">
+                        <input class="ace" name="Config[discountlimitmember]" id="Config_discountlimitmember" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_discountlimitmember">是否只有会员才能打折</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_is_delivery_free" type="hidden" value="0" name="Config[is_delivery_free]">
+                        <input class="ace" name="Config[is_delivery_free]" id="Config_is_delivery_free" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_is_delivery_free">启用会员免配送费</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_open_promotion" type="hidden" value="0" name="Config[open_promotion]">
+                        <input class="ace" name="Config[open_promotion]" id="Config_open_promotion" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_open_promotion">开启消费满减活动</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label style="padding-left:20px;">消费满多少元（整数）：
+                      <input type="text" name="promotions[0][amount]" value="" placeholder="这里填写满多少元,如满100元减8元，这里填100" size="50"></label>
+                    <br>
+                    <label style="padding-left:20px;">减多少元（整数）：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="text" name="promotions[0][discount]" value="" placeholder="这里填写减多少元,如满100元减8元，这里填8" size="50"></label>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="填写的必须是整数，如满100元减8元，满多少元的输入框填100，减多少元的输入框填8" title="" data-original-title="店铺消费满减的填写说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label style="padding-left:20px;">消费满多少元（整数）：
+                      <input type="text" name="promotions[1][amount]" value="" placeholder="这里填写满多少元,如满100元减8元，这里填100" size="50"></label>
+                    <br>
+                    <label style="padding-left:20px;">减多少元（整数）：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="text" name="promotions[1][discount]" value="" placeholder="这里填写减多少元,如满100元减8元，这里填8" size="50"></label>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="填写的必须是整数，如满100元减8元，满多少元的输入框填100，减多少元的输入框填8" title="" data-original-title="店铺消费满减的填写说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label style="padding-left:20px;">消费满多少元（整数）：
+                      <input type="text" name="promotions[2][amount]" value="" placeholder="这里填写满多少元,如满100元减8元，这里填100" size="50"></label>
+                    <br>
+                    <label style="padding-left:20px;">减多少元（整数）：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="text" name="promotions[2][discount]" value="" placeholder="这里填写减多少元,如满100元减8元，这里填8" size="50"></label>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="填写的必须是整数，如满100元减8元，满多少元的输入框填100，减多少元的输入框填8" title="" data-original-title="店铺消费满减的填写说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_open_fullcoupon" type="hidden" value="0" name="Config[open_fullcoupon]">
+                        <input class="ace" name="Config[open_fullcoupon]" id="Config_open_fullcoupon" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_open_fullcoupon">是否开启满多少送优惠券功能</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label style="padding-left:20px;">消费满多少元（整数）：
+                      <input type="text" name="fullcoupon[0][full]" value="" placeholder="这里填写满多少元,如满100元，这里填100" size="50"></label>
+                    <label style="padding-left:20px;">送优惠券：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <select name="fullcoupon[0][coupon]" id="coupon">
+                        <option value="">请选择优惠券</option>
+                        <option value="32000">金点生鲜3元抵用券</option>
+                        <option value="32001">金点生鲜5元体验券</option>
+                        <option value="32002">金点生鲜10元优惠券</option></select>
+                    </label>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="填写的必须是整数，如满100元送哪种优惠券，满多少元的输入框填100，选择需要赠送的优惠券" title="" data-original-title="店铺消费满送优惠券的填写说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label style="padding-left:20px;">消费满多少元（整数）：
+                      <input type="text" name="fullcoupon[1][full]" value="" placeholder="这里填写满多少元,如满100元，这里填100" size="50"></label>
+                    <label style="padding-left:20px;">送优惠券：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <select name="fullcoupon[1][coupon]" id="coupon">
+                        <option value="">请选择优惠券</option>
+                        <option value="32000">金点生鲜3元抵用券</option>
+                        <option value="32001">金点生鲜5元体验券</option>
+                        <option value="32002">金点生鲜10元优惠券</option></select>
+                    </label>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="填写的必须是整数，如满100元送哪种优惠券，满多少元的输入框填100，选择需要赠送的优惠券" title="" data-original-title="店铺消费满送优惠券的填写说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label style="padding-left:20px;">消费满多少元（整数）：
+                      <input type="text" name="fullcoupon[2][full]" value="" placeholder="这里填写满多少元,如满100元，这里填100" size="50"></label>
+                    <label style="padding-left:20px;">送优惠券：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <select name="fullcoupon[2][coupon]" id="coupon">
+                        <option value="">请选择优惠券</option>
+                        <option value="32000">金点生鲜3元抵用券</option>
+                        <option value="32001">金点生鲜5元体验券</option>
+                        <option value="32002">金点生鲜10元优惠券</option></select>
+                    </label>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="填写的必须是整数，如满100元送哪种优惠券，满多少元的输入框填100，选择需要赠送的优惠券" title="" data-original-title="店铺消费满送优惠券的填写说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_open_full_gift" type="hidden" value="0" name="Config[open_full_gift]">
+                        <input class="ace" name="Config[open_full_gift]" id="Config_open_full_gift" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_open_full_gift">是否开启满多少送优惠券礼包功能</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label style="padding-left:20px;">消费满多少元（整数）：
+                      <input type="text" name="full_gift[full]" value="" placeholder="这里填写满多少元,如满100元，这里填100" size="50"></label>
+                    <label style="padding-left:20px;">送优惠券礼包：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <select name="full_gift[gift_id]" id="coupon">
+                        <option value="">请选择优惠券</option>
+                        <option value="1021">金点生鲜优惠大礼包礼包</option></select>
+                    </label>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="填写的必须是整数，如满100元送哪种优惠券，满多少元的输入框填100，选择需要赠送的优惠券" title="" data-original-title="店铺消费满送优惠券的填写说明">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                </div>
+                <div id="orderattention" class="tab-pane tt_1">
+                  <div class="alert alert-block alert-success">
+                    <button type="button" class="close" data-dismiss="alert">
+                      <i class="ace-icon fa fa-times"></i>
+                    </button>
+                    <p>注意：
+                      <br>1.短信订单提醒每67个字（包含中文、英文、数字、标点等）扣除1条短信余额，超过67个字将扣除多条短信余额。
+                      <br>2.邮箱订单提醒建议使用QQ邮箱并将service@email.lewaimai.com加入白名单防止收不到邮件或者邮件出现在垃圾信箱。</p></div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_order_voice_remind" type="hidden" value="0" name="Config[order_voice_remind]">
+                        <input class="ace" name="Config[order_voice_remind]" id="Config_order_voice_remind" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_order_voice_remind">外卖订单5分钟未确认自动给商家拨打语音电话通知（需要充值短信余额）</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_voice_phone">接收语音通知电话号码</label>
+                    <input class="col-sm-2" size="10" maxlength="20" name="Config[voice_phone]" id="Config_voice_phone" type="text" value=""></div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_smsvalid" type="hidden" value="0" name="Config[smsvalid]">
+                        <input class="ace" name="Config[smsvalid]" id="Config_smsvalid" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_smsvalid">短信订单提醒</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_sms_phone">接收短信手机号码</label>
+                    <input class="col-sm-2" size="10" maxlength="20" name="Config[sms_phone]" id="Config_sms_phone" type="text" value=""></div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_emailvalid" type="hidden" value="0" name="Config[emailvalid]">
+                        <input class="ace" name="Config[emailvalid]" id="Config_emailvalid" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_emailvalid">邮箱订单提醒</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_email_address">接收订单email地址</label>
+                    <input class="col-sm-2" size="10" maxlength="50" name="Config[email_address]" id="Config_email_address" type="text" value="">&nbsp;&nbsp;
+                    <a href="#" target="_blank" title="查看微信订单提醒设置教程" rel="tooltip" class="btn btn-sm btn-danger">设置教程</a></div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="ytConfig_weixinvalid" type="hidden" value="0" name="Config[weixinvalid]">
+                        <input class="ace" name="Config[weixinvalid]" id="Config_weixinvalid" value="1" type="checkbox">
+                        <span class="lbl">
+                          <label for="Config_weixinvalid">微信订单提醒</label></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_lewaimai_customerid">乐外卖顾客ID</label>
+                    <input class="col-sm-2" name="Config[lewaimai_customerid]" id="Config_lewaimai_customerid" type="text">&nbsp;&nbsp;
+                    <a href="#" target="_blank" title="查看微信订单提醒设置教程" rel="tooltip" class="btn btn-sm btn-danger">设置教程</a>
+                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="初次设置必看！" title="" data-original-title="初次设置必看！">
+                      <span class="ace-icon fa fa-info bigger-120"></span>
+                    </span>
+                  </div>
+                  <!--<div class="form-group"></div>
+                  <div class="form-group">
+                  <div class="checkbox">
+                  <label>
+                  <span class="lbl"></span></label>
+                  </div>
+                  </div>
+                  <div class="form-group"></div>-->
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_auto_printer">是否开启自动打印外卖新订单</label>
+                    <select name="Config[auto_printer]" id="Config_auto_printer">
+                      <option value="1" selected="selected">开启</option>
+                      <option value="0">不开启</option></select>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_showordernum">打印是否显示下单次数</label>
+                    <select name="Config[showordernum]" id="Config_showordernum">
+                      <option value="1" selected="selected">显示</option>
+                      <option value="0">不显示</option></select>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_showordernum_type">显示下单次数类型</label>
+                    <select name="Config[showordernum_type]" id="Config_showordernum_type">
+                      <option value="1" selected="selected">平台</option>
+                      <option value="0">店铺</option></select>
+                  </div>
+                </div>
+                <div id="addservice" class="tab-pane tt_1">
+                  <div id="yw0">
+                    <div class="alert in alert-block fade alert-info">
+                      <a href="#" class="close" data-dismiss="alert">×</a>增值服务可设置名称（名称不能重复）,对应的增值服务费用,还有服务对应的时间,如果顾客是在那个时间内下的单,就会增加对应的费用！</div></div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_open_addservice">是否开启增值服务</label>
+                    <select name="Config[open_addservice]" id="Config_open_addservice">
+                      <option value="0" selected="selected">关闭</option>
+                      <option value="1">开启</option></select>
+                  </div>
+                  <div class="widget-box">
+                    <div class="widget-header">
+                      <h5>增值服务</h5></div>
+                    <div class="widget-body">
+                      <div class="widget-main">
+                        <div style="margin:10px;width:1000px;float:left;">(1) &nbsp;&nbsp;名称:
+                          <input type="text" name="addservice[0][name]" value="">时间段:
+                          <input id="addservice_0_start" type="text" value="00:00" name="addservice[0][start]" class="hasDatepicker">至
+                          <input id="addservice_0_stop" type="text" value="00:00" name="addservice[0][stop]" class="hasDatepicker">&nbsp;&nbsp;价格:
+                          <input type="text" name="addservice[0][price]" value="0"></div>
+                        <div style="margin:10px;width:1000px;float:left;">(2) &nbsp;&nbsp;名称:
+                          <input type="text" name="addservice[1][name]" value="">时间段:
+                          <input id="addservice_1_start" type="text" value="00:00" name="addservice[1][start]" class="hasDatepicker">至
+                          <input id="addservice_1_stop" type="text" value="00:00" name="addservice[1][stop]" class="hasDatepicker">&nbsp;&nbsp;价格:
+                          <input type="text" name="addservice[1][price]" value="0"></div>
+                        <div style="margin:10px;width:1000px;float:left;">(3) &nbsp;&nbsp;名称:
+                          <input type="text" name="addservice[2][name]" value="">时间段:
+                          <input id="addservice_2_start" type="text" value="00:00" name="addservice[2][start]" class="hasDatepicker">至
+                          <input id="addservice_2_stop" type="text" value="00:00" name="addservice[2][stop]" class="hasDatepicker">&nbsp;&nbsp;价格:
+                          <input type="text" name="addservice[2][price]" value="0"></div>
+                        <div style="margin:10px;width:1000px;float:left;">(4) &nbsp;&nbsp;名称:
+                          <input type="text" name="addservice[3][name]" value="">时间段:
+                          <input id="addservice_3_start" type="text" value="00:00" name="addservice[3][start]" class="hasDatepicker">至
+                          <input id="addservice_3_stop" type="text" value="00:00" name="addservice[3][stop]" class="hasDatepicker">&nbsp;&nbsp;价格:
+                          <input type="text" name="addservice[3][price]" value="0"></div>
+                        <div style="margin:10px;width:1000px;float:left;">(5) &nbsp;&nbsp;名称:
+                          <input type="text" name="addservice[4][name]" value="">时间段:
+                          <input id="addservice_4_start" type="text" value="00:00" name="addservice[4][start]" class="hasDatepicker">至
+                          <input id="addservice_4_stop" type="text" value="00:00" name="addservice[4][stop]" class="hasDatepicker">&nbsp;&nbsp;价格:
+                          <input type="text" name="addservice[4][price]" value="0"></div>
+                        <div style="clear:both;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="selfdefine" class="tab-pane tt_1">
+                  <div id="yw0">
+                    <div class="alert in alert-block fade alert-info">
+                      <a href="#" class="close" data-dismiss="alert">×</a>设置自定义项以及对应的值，用于显示在店铺首页的店铺信息部分中。（例如：微信公众号等）;
+                      <p>
+                        <a class="btn btn-danger" href="#" target="_blank">设置教程</a></p>
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+                      <div class="btn btn-sm btn-success addselfdefine">添加自定义显示项</div>
+                      <div class="clear"></div>
+                    </div>
+                    <div id="selfdefinecontent"></div>
+                  </div>
+                </div>
+                <div id="shareaward" class="tab-pane tt_1">
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_share_title">分享标题</label>
+                    <input class="col-sm-1" name="Config[share_title]" id="Config_share_title" type="text" maxlength="200" value="">
+                    <span style="color:red;line-height:34px;margin-left:20px;">（不设置默认为【店铺名称】微信店铺）</span></div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Config_share_image">分享图片</label>
+                    <span class="col-sm-3" style="padding-left:0px;">
+                      <input id="ytshare-image-file" type="hidden" value="" name="Config[share_image]">
+                      <label class="ace-file-input">
+                        <input class="col-sm-1" id="share-image-file" size="200" onchange="previewshareimage(this)" name="Config[share_image]" type="file">
+                        <span class="ace-file-container" data-title="选择">
+                          <span class="ace-file-name" data-title="分享图片(120像素 * 120像素)">
+                            <i class=" ace-icon fa fa-upload"></i>
+                          </span>
+                        </span>
+                      </label>
+                    </span>
+                    <span style="color:red;line-height:34px;margin-left:20px;">（图片文件大小不能超过100KB,不设置默认为店铺图片的第一张）</span></div>
+                  <div>
+                    <img id="dis" title="分享图片" style="width:120px;height:120px" src="images/fenxiangjiangli.png">
+                    </div>
+                </div>
+                <div class="clearfix form-actions save_data" style="position:absolute;left:0px;right:0px;bottom:-120px;">
+                  <button class="btn btn-info" type="submit" style="margin-left:200px;" onclick="return checkFrom(this.form)">
+                    <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+                </div>
+                <div id="inputimglist" style="display:none;"></div>
+                <div id="printershopimg" class="tab-pane tt_1">
+                  <div class="alert alert-block alert-success">图片最大允许上传300K,支持jpg、png、jpeg格式的图片，为了达到最佳效果，建议上传宽度为600像素的图片</div>
+                  <div style="width:300px;height:50px;border-right:2px solid #ffffff;padding:0px;float:left;margin:0px;overflow:hidden;">
+                    <!-- <div class="btn btn-success" style="float:left;" onclick="addprice();">图片空间</div>&nbsp;&nbsp;&nbsp; -->
+                    <div class="btn btn-success" id="selectImg">选择图片</div>&nbsp;&nbsp;&nbsp;
+                    <button class="btn-success btn" onclick="$('#picselect').trigger('click');" type="button">上传本地图片</button>
+                    <div style="width:300px;display:none;">本地图片:
+                      <form id="wsyzxxnyxxn" action="/autoreply/uploadtemp" enctype="multipart/form-data" method="post">
+                        <input type="file" name="surface" id="picselect">
+                        <input type="hidden" name="imgmaxsize" value="307200">
+                        <input type="hidden" name="type" value="shop"></form></div>
+                  </div>
+                  <div id="shop_image" style="width:100%;height:auto;float:left;margin:0px;display:none;">
+                    <div style="margin-top:20px;height:20px;width:100%;">
+                      <div style="width:100%;">当前店铺图片(最多5张)</div>
+                      <div style="width:100%;height:auto;" id="imglist"></div>
+                    </div>
+                  </div>
+                  <div style="clear:both;height:50px;"></div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <script type="text/javascript" src="/js/jquery.form.js"></script>
+      <div id="modal-table" class="modal fade" tabindex="-1">
+        <div class="modal-dialog" style="width:80%;">
+          <div class="modal-content" style="width:100%;">
+            <div class="modal-header no-padding" style="width:100%;">
+              <div class="table-header">
+                <button id="close_button" type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <span class="white">×</span></button>拖拽地图或滚动滚轮缩放地图,鼠标点击您店铺所在位置,点击上方气球自动获取经纬度</div>
+            </div>
+            <div class="modal-body no-padding" style="width:100%;">
+              <input type="text" placeholder="输入名称查找您所在的城市、区域、街道名等" id="tipinput" value="" style="width:500px;">
+              <span style="color:red;font-weight:bold;font-size:16px;">⇦请在左侧框输入您的店铺地址进行搜索定位</span>
+              <div class="map-search-result" style="display:none;" id="map_search_result"></div>
+              <div style="width: 100%; height: 600px; min-height: 600px; position: relative; background: rgb(252, 249, 242);" id="mapContainer" class="amap-container">
+                <object style="display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;" type="text/html" data="about:blank"></object>
+                <div class="amap-maps">
+                  <div class="amap-drags">
+                    <div class="amap-layers" style="transform: translateZ(0px);">
+                      <div class="amap-markers" style="position: absolute; z-index: 120; top: 0px; left: 0px;"></div>
+                      <canvas class="amap-labels" style="position: absolute; z-index: 99; height: 0px; width: 0px; top: 0px; left: 0px;" width="0" height="0"></canvas>
+                    </div>
+                    <div class="amap-overlays"></div>
+                  </div>
+                </div>
+                <div style="display: none;"></div>
+                <div class="amap-controls">
+                  <div class="amap-geolocation-con" style="position: absolute; z-index: 9999; right: 10px; bottom: 20px;">
+                    <div class="amap-geo"></div>
+                  </div>
+                  <div class="amap-toolbar" style="left: 10px; top: 10px; visibility: visible;">
+                    <div class="amap-pancontrol" style="position: relative; display: block;">
+                      <div class="amap-pan-left"></div>
+                      <div class="amap-pan-top"></div>
+                      <div class="amap-pan-right"></div>
+                      <div class="amap-pan-bottom"></div>
+                    </div>
+                    <div class="amap-locate" style="position: relative; left: 17px; display: block;"></div>
+                    <div class="amap-zoomcontrol" style="position: relative; left: 14px;">
+                      <div class="amap-zoom-plus"></div>
+                      <div class="amap-zoom-ruler" style="display: block;">
+                        <div class="amap-zoom-mask" style="height: 137px;"></div>
+                        <div class="amap-zoom-cursor" style="top: 137px;"></div>
+                        <div class="amap-zoom-labels">
+                          <div class="amap-zoom-label-street"></div>
+                          <div class="amap-zoom-label-city"></div>
+                          <div class="amap-zoom-label-province"></div>
+                          <div class="amap-zoom-label-country"></div>
+                        </div>
+                      </div>
+                      <div class="amap-zoom-minus amap-zoom-minus2"></div>
+                    </div>
+                  </div>
+                </div>
+                <a class="amap-logo" href="#" target="_blank">
+                  <img src="https://webapi.amap.com/theme/v1.3/autonavi.png"></a>
+                <div class="amap-copyright" style="display: none;">
+                  <!--v1.3.24-->© 2017 AutoNavi
+                  <span class="amap-mcode">- GS(2016)710号</span></div>
+              </div>
+            </div>
+            <div class="modal-footer no-margin-top">
+              <button class="btn btn-sm btn-success pull-right" data-dismiss="modal">
+                <i class="ace-icon fa fa-times"></i>关闭</button>
+            </div>
+          </div>
+          <!-- /.modal-content --></div>
+        <!-- /.modal-dialog --></div>
+      <!-- PAGE CONTENT ENDS -->
+      <div style="height:100px;"></div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

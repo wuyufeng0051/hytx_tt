@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_shopname#}</title>
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/xuangou.css?v=2">
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+</head>
+
+<body>
+{#if $detail_shop_notice_used && $detail_buy_notice#}
+<div class="notice">
+	<i></i>
+	<p><marquee behavior="scroll" scrollamount="2">{#$detail_buy_notice#}</marquee></p>
+	<a href="javascript:;">&times;</a>
+</div>
+{#/if#}
+
+<div class="main fn-clear{#if $detail_shop_notice_used && $detail_buy_notice#} show_notice{#/if#}">
+	<div class="main_left">
+		<ul>
+			{#waimai action='foodType' return='type' shop={#$detail_id#}#}
+			<li{#if $_bindex.type == 1#} class="ml_bac"{#/if#} data-id="{#$type.id#}"><em>{#$type.title#}</em></li>
+			{#/waimai#}
+		</ul>
+	</div>
+
+	<div class="main_right">
+
+		{#waimai action='foodType' return='type1' shop={#$detail_id#}#}
+		<div class="main_item fn-hide" id="item{#$type1.id#}"{#if $_bindex.type1 == 1#} style="display: block;"{#/if#}>
+			{#waimai action='food' return='food' shop={#$detail_id#} typeid={#$type1.id#}#}
+			<div class="car_t1 fn-clear" id="food{#$food.id#}" data-id="{#$food.id#}" data-title="{#$food.title#}" data-src="{#$food.pics[0]#}" data-price="{#$food.price#}" data-unit="{#$food.unit#}" data-dabao="{#if $food.is_dabao#}{#$food.dabao_money#}{#/if#}" data-stock="{#if $food.stockvalid#}{#$food.stock#}{#/if#}" data-nature='{#if $food.is_nature && $food.nature_json != "[]"#}{#$food.nature_json#}{#/if#}' data-limitfood="{#$food.is_limitfood#}"{#if $food.is_limitfood#} data-foodnum="{#$food.foodnum#}" data-stime="{#$food.start_time#}" data-etime="{#$food.stop_time#}" data-times='{#$food.limit_time_json#}'{#/if#}>
+				{#if $food.label#}<span class="label">{#$food.label#}</span>{#/if#}
+				<div class="car_pic"><img src="{#$food.pics[0]#}" onerror="this.src='/static/images/food.png'"></div>
+				<h1>{#$food.title#}</h1>
+				{#if $food.is_nature && $food.nature_json != '[]'#}<em class="nature_">多规格</em>{#/if#}
+				<h3>{#$food.descript#}&nbsp;</h3>
+				{#if $detail_showsales#}<h4>已售{#$food.sale#}{#$food.unit#}</h4>{#/if#}
+				<span class="fn-clear">
+					<em class='sale-price'>&yen;{#$food.price#}</em>
+					{#if $detail_unitshow#}<i>/{#$food.unit#}</i>{#/if#}
+					{#if $food.stockvalid && $food.stock == 0#}
+					<s class="nostock">已售完</s>
+					{#else#}
+					<p>{#if !$food.is_nature || $food.nature_json == "[]"#}<i class="reduce"></i>{#/if#}<strong class='num-account'>0</strong><b class="plus"></b></p>
+					{#/if#}
+				</span>
+			</div>
+			{#/waimai#}
+		</div>
+		{#/waimai#}
+
+	</div>
+</div>
+
+<div class="cart-box">
+	<div class="title"><h3>已选商品</h3><a href="javascript:;" class="right">[清空]</a></div>
+	<div class="con"></div>
+</div>
+<div class="mask_cart"></div>
+
+<div class="nature">
+	<h2><strong></strong><s>&times;</s></h2>
+	<div class="con"></div>
+	<div class="fot">
+		<span><i>&yen;</i><strong>0</strong></span>
+		<button class="confirm" disabled>选好了</button>
+	</div>
+</div>
+<div class="mask_nature"></div>
+
+<div class="price fn-clear">
+	<div class="gou"><em><i></i></em><b>0</b></div>
+	<div class="zong_p">总价：<em>&yen;<strong>0.00</strong></em></div>
+	<div class="ok"><a href="{#getUrlPath service='waimai' template='cart' id={#$detail_id#}#}">选好了</a></div>
+</div>
+
+
+<div class="navtion fn-clear">
+	<ul>
+		<li class="shop"><a href="{#getUrlPath service='waimai' template='shop' id={#$detail_id#}#}"><i></i><span>首页</span></a></li>
+		<li class="xuangou nav_bc"><a href="{#getUrlPath service='waimai' template='buy' id={#$detail_id#}#}"><i></i><span>选购</span></a></li>
+		<li class="car"><a href="{#getUrlPath service='waimai' template='cart' id={#$detail_id#}#}"><i></i><span>购物车</span></a></li>
+		<li class="center"><a href="{#getUrlPath service='member' type='user'#}"><i></i><span>个人中心</span></a></li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+	var shopid = {#$detail_id#}, nowDate = {#$smarty.now#}, nowTime = "{#$smarty.now|date_format:'%H:%M'#}";
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$detail_description#}',
+        "title": '{#if $detail_share_title#}{#$detail_share_title#}{#else#}{#$detail_shopname#}{#/if#}',
+        "imgUrl": '{#$detail_share_pic#}',
+        "link": '{#$detail_url#}',
+    };
+
+	{#if !$detail_status#}alert('{#if $detail_closeinfo#}{#$detail_closeinfo#}{#else#}{#$deatil_status#}该店铺关闭了，您暂时无法在该店铺下单。{#/if#}');{#/if#}
+	{#if $detail_status && !$detail_ordervalid#}alert('{#if $detail_closeorder#}{#$detail_closeorder#}{#else#}该店铺关闭了微信下单，您暂时无法在该店铺下单。{#/if#}');{#/if#}
+	{#if !$detail_yingye#}
+		{#if !$detail_yingyeWeek#}
+		alert('该店铺今天暂停营业！营业时间：星期{#$detail_weeks|replace:"1":"一"|replace:"2":"二"|replace:"3":"三"|replace:"4":"四"|replace:"5":"五"|replace:"6":"六"|replace:"7":"七"|replace:",":"，星期"#}');
+		{#else#}
+		alert('该店铺不在营业时间，您暂时无法在该店铺下单！营业时间：{#if $detail_start_time1 && $detail_start_time1 != "00:00" && $detail_end_time1 && $detail_end_time1 != "00:00"#}{#$detail_start_time1#}-{#$detail_end_time1#}{#/if#}{#if $detail_start_time2 && $detail_start_time2 != "00:00" && $detail_end_time2 && $detail_end_time2 != "00:00"#}; {#$detail_start_time2#}-{#$detail_end_time2#}{#/if#}{#if $detail_start_time3 && $detail_start_time3 != "00:00" && $detail_end_time3 && $detail_end_time3 != "00:00"#}; {#$detail_start_time3#}-{#$detail_end_time3#}{#/if#}');
+		{#/if#}
+	{#/if#}
+</script>
+
+<script src="{#$cfg_staticPath#}js/ui/jquery.fly.min.js"></script>
+<script src="{#$templets_skin#}js/xuangou.js"></script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var thumbSize = {#$thumbSize#}, thumbType = "{#$thumbType#}",  //缩略图配置
+	modelType = "car", adminPath = "{#$adminPath#}",
+	addrid = {#$addr#}, addrListArr = {#$addrListArr#}, 
+	mapCity = "{#$mapCity#}", basehost = '{#$basehost#}', subdomain = '{#$subdomain#}';
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label for="user">管理会员：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="user" id="user" autocomplete="off" value="{#$username#}" />
+      <input type="hidden" name="userid" id="userid" value="{#$userid#}" />
+      <span class="input-tips" style="display:inline-block;"><s></s>此会员可以管理经销商信息</span>
+      <div id="userList" class="popup_key"></div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="title">经销商名称：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="title" id="title" value="{#$title#}" maxlength="60" data-regex=".{3,60}" />
+      <span class="input-tips"><s></s>请输入经销商名称，3-60位</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="subtitle">简称：</label></dt>
+    <dd>
+      <input class="input-medium" type="text" name="subtitle" id="subtitle" value="{#$subtitle#}" maxlength="30" data-regex=".{2,30}" />
+      <span class="input-tips"><s></s>请输入经销商简称，2-30位</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>访问方式：</label></dt>
+    <dd class="radio">
+      {#html_radios name="domaintype" values=$domaintype checked=$domaintypeChecked output=$domaintypeNames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  {#if $domaintypeChecked == 0#}
+  <div id="domainObj" class="hide" style="background:#f5f5f5; padding:5px 0;">
+  {#else#}
+  <div id="domainObj" style="background:#f5f5f5; padding:5px 0;">
+  {#/if#}
+    <dl class="clearfix">
+      <dt><label for="domain">绑定域名：</label></dt>
+      <dd>
+        <div class="input-prepend input-append">
+          <span class="add-on">http://</span>
+          {#if $domaintypeChecked == 1#}
+          <input class="input-large" type="text" name="domain" id="domain" value="{#$domain#}" />
+          <span class="add-on" style="display:none;">
+          {#else#}
+          <input class="input-mini" type="text" name="domain" id="domain" value="{#$domain#}" />
+          <span class="add-on">
+          {#/if#}
+          {#if $customSubDomain == 0#}
+          .{#$subdomain#}
+          {#else#}
+          .{#$subdomain#}.{#$basehost#}
+          {#/if#}</span>
+        </div>
+        <span class="input-tips" style="display:inline-block; margin-bottom:10px;"><s></s>此功能只针对已认证中介</span>
+      </dd>
+    </dl>
+    <dl class="clearfix">
+      <dt><label for="domainexp">过期时间：</label></dt>
+      <dd><input class="input-medium" id="domainexp" name="domainexp" type="text" value="{#$domainexp#}" /></dd>
+    </dl>
+    <dl class="clearfix">
+      <dt><label for="domaintip">过期提示：</label></dt>
+      <dd>
+        <textarea name="domaintip" id="domaintip" class="input-xxlarge" rows="5">{#$domaintip#}</textarea>
+      </dd>
+    </dl>
+  </div>
+  <dl class="clearfix">
+    <dt><label for="levaltype">经销商类型：</label></dt>
+    <dd>
+      <span id="levaltypeList">
+        <select name="levaltype" id="levaltype" class="input-large">
+          {#html_options options=$levaltypeList selected=$levaltype#}
+        </select>
+      </span>
+      <span class="input-tips"><s></s>请选择经销商类型</span>
+    </dd>
+  </dl>  
+  <dl class="clearfix">
+    <dt>公司LOGO：</dt>
+    <dd>
+      <input name="litpic" type="hidden" id="litpic" value="{#$litpic#}" />
+      {#if $litpic != ""#}
+      <div id="license" class="uploadinp uploading"><span id="uploadBt"></span></div>
+      <div id="licenseFiles" style="display:inline-block;"><a href='{#$cfg_attachment#}{#$litpic#}' target="_blank"><img alt="" src="{#$cfg_attachment#}{#$litpic#}&type=small" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;" style="display:inline-block;">删除图片</a>
+      {#else#}
+      <div id="license" class="uploadinp"><span id="uploadBt"></span></div>
+      <div id="licenseFiles"><a href="#" target="_blank" title=""><img alt="" src="" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;">删除图片</a>
+      {#/if#}
+      <div id="licenseProgress" class="progressBar">
+        <i id="licenseProgressBar" class="progress"></i>
+        <span id="licensePercent">0%</span>
+        <a id="cancelUploadBt" href="javascript:;">取消</a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="brand">主营品牌：</label></dt>
+    <dd>
+      <div class="selectedTags">{#$brandSelected#}</div>
+      <input class="input-large" type="hidden" name="brand" id="brand" value="{#$brand#}" />
+      <button class="btn chooseBrand" type="button">选择</button>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="website">官方网站：</label></dt>
+    <dd>
+      <div class="input-prepend input-append">
+        <span class="add-on">http://</span>
+        <input class="input-large" type="text" name="website" id="website" value="{#$website#}" maxlength="60" data-regex=".*" style="margin-right:10px;" />
+        <span class="input-tips"><s></s>请输入经销商官方网站</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="xiaoshou">销售区域：</label></dt>
+    <dd>
+      <span id="xiaoshouList">
+        <select name="xiaoshou" id="xiaoshou" class="input-large">
+          {#html_options options=$xiaoshouList selected=$xiaoshou#}
+        </select>
+      </span>
+      <span class="input-tips"><s></s>请选择销售区域</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="tel">电话：</label></dt>
+    <dd>
+      <input class="input-large" type="text" name="tel" id="tel" value="{#$tel#}" maxlength="30" data-regex=".{8,30}" />
+      <span class="input-tips"><s></s>请输入联系电话，8-30位</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="fax">传真：</label></dt>
+    <dd>
+      <input class="input-large" type="text" name="fax" id="fax" value="{#$fax#}" maxlength="30" data-regex=".{8,30}" />
+      <span class="input-tips"><s></s>请输入联系传真，8-30位</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="email">邮箱：</label></dt>
+    <dd>
+      <input class="input-large" type="text" name="email" id="email" value="{#$email#}" maxlength="50" data-regex="\w+((-w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+" />
+      <span class="input-tips"><s></s>请输入联系邮箱，5-50位</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="addr">所在区域：</label></dt>
+    <dd>
+      <span id="addrList">
+        <select name="addr" id="addr" class="input-large"></select>
+      </span>
+      <span class="input-tips"><s></s>请选择经销商所在区域</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="address">详细地址：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="address" id="address" value="{#$address#}" maxlength="30" data-regex=".{2,30}" />
+      <img src="{#$adminPath#}../static/images/admin/markditu.jpg" id="mark" style="cursor:pointer;" title="标注地图位置" />
+      <span class="input-tips"><s></s>请输入经销商详细地址，2-30位</span>
+      <input type="hidden" name="lnglat" id="lnglat" value="{#$lnglat#}" />
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="postcode">邮编：</label></dt>
+    <dd>
+      <input class="input-small" type="text" name="postcode" id="postcode" value="{#$postcode#}" maxlength="6" data-regex="[1-9]\d{5}" />
+      <span class="input-tips"><s></s>请输入联系邮编</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>经销商介绍：</dt>
+    <dd>
+      <script id="note" name="note" type="text/plain" style="width:85%;height:500px">{#$note#}</script>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="weight">排序：</label></dt>
+    <dd>
+      <input class="input-mini" type="number" name="weight" id="weight" min="0" data-regex="[1-9]\d*" value="{#$weight#}" />
+      <span class="input-tips"><s></s>必填，排序越大，越排在前面</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="state">显示状态：</label></dt>
+    <dd class="radio">
+      {#html_radios name="state" values=$stateopt checked=$state output=$statenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>其它设置：</label></dt>
+    <dd class="radio">
+      <label><input type="checkbox" name="rec" value="1"{#if $rec == 1#} checked{#/if#} />推荐</label>
+    </dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$editorFile#}
+{#$jsFile#}
+</body>
+</html>

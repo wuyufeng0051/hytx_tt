@@ -1,0 +1,48 @@
+<!--#include file="_head.shtml"-->
+
+<div class="rBox">
+  <div class="local">
+    <a href="#">首页</a>&gt;
+    <a href="#">留言管理</a></div>
+  <div class="box1">
+    <div class="title">
+      <h3>检索</h3></div>
+    <div class="search">
+      <form action="" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#List" id="searchForm" method="post">
+        <label for="#">搜索留言：</label>
+        <input class="text" id="WordsContent" name="WordsContent" placeholder="留言内容" type="text" value="" />
+        <input type="submit" class="submit" value="" /></form>
+    </div>
+  </div>
+  <div class="box1">
+    <div class="title_t">
+      <h2>留言列表</h2></div>
+    <div id="List" class="listBox">
+      <script src="/Js/adminList.js"></script>
+      <form action="" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#List" id="delForm" method="post">
+        <table class="listTable">
+          <tr>
+            <th width="100px">接收人</th>
+            <th width="100px">留言内容</th>
+            <th width="100px">操作</th></tr>
+          <tr class="">
+            <td>上海新诤信知识产权服务股份有限公司</td>
+            <td>
+              <a href="Words_detail.shtml">测试~</a></td>
+            <td class="operation">
+              <a href="Words_detail.shtml">查看</a>
+              <a class="del" data-ajax="true" data-ajax-method="Post" data-ajax-mode="replace" data-ajax-update="#List" href="#" title="删除">删除</a></tr>
+        </table>
+        <div class="page_b">
+          <div class="pull-left">当前为第 1 页,共 1 页 1 条记录</div>
+          <div class="pull-right">
+        </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!--#include file="_foot.shtml"-->

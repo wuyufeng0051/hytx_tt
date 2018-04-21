@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>消息提醒</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style type="text/css">
+	*{padding: 0;margin: 0;}
+	body{
+		font-family: "微软雅黑";
+		background-color: #fff;
+	}
+	/*轮播*/
+	.swiper-container{
+		margin-top: 45px;
+	}
+	.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	.banner{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 999;
+		height: 45px;
+		background-color: #fd5c30;
+
+	}
+	.banner a{
+		width: 25%;
+		float: left;
+		color: #fff;
+	}
+	.banner span{
+		width: 50%;
+		float: left;
+		text-align: center;
+		line-height: 45px;
+		color: #fff;
+	}
+	.item{
+		width: 100%;
+	}
+	.item ul{
+		width: 100%;
+		list-style: none;
+	}
+	.item ul li{
+		width: 100%;
+		height: 48px;
+		border-bottom: 1px solid #ddd;
+		background-color: #fff;
+	}
+	.item ul li .left{
+		float: left;
+	}
+	.item ul li .left img{
+		width: 21px;
+		height: 21px;
+		vertical-align: middle;
+		margin-left: 13px;
+		margin-right: 10px;
+	}
+	.item ul li .left span{
+		line-height: 48px;
+		color: #000;
+		font-size: 15px;
+	}
+	.item ul li .right{
+		float: right;
+		color: #adacac;
+		margin-right: 10px;
+		height: 48px;
+		padding-top: 10px;
+	}
+	.item ul li .right span{
+		width: 20px;
+		height: 20px;
+		display: block;
+		color: #fff;
+		line-height: 48px;
+		background-color: #f32e28;
+		font-size: 11px;
+		border-radius: 50%;
+		float: left;
+		text-align: center;
+		line-height: 20px;
+		
+	}
+	</style>
+</head>
+<body>
+	<div class="mui-content">
+		<div class="banner">
+				<a href="#" onClick="javascript :history.back(-1);"><span><</span></a>
+	    		<span>提醒</span>
+		</div>
+		<!--图片轮播-->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+			    <volist name="status" id="vo">
+				<div class="swiper-slide">
+					 <a id="up" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}">
+ 						<img src="__PUBLIC__/../{$vo['advertisement_img']}">
+					</a>
+				</div>
+			  </volist>
+				 
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+		<!--列表-->
+		<div class="item">
+			<ul>
+				<li>
+					<a href="__MODULE__/Msgbrid/chatinfo">
+						<div class="left">
+							<img src="__PUBLIC__/Home/img/remind_xinxi.png">
+							<span>收到的私信</span>
+						</div>
+						<div class="right">
+ 							<span id="chatinfo_count" style="display:none">{$chatinfo_count}</span>
+ 							&nbsp;&nbsp;>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="__MODULE__/Msgbrid/comment">
+						<div class="left">
+							<img src="__PUBLIC__/Home/img/remind_pinlun.png">
+							<span>收到的评论</span>
+						</div>
+						<div class="right">
+ 							<span id="comment_count" style="display:none">{$comment_count}</span>
+ 							&nbsp;&nbsp;>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="__MODULE__/Msgbrid/like">
+						<div class="left">
+							<img src="__PUBLIC__/Home/img/remind_zan.png">
+							<span>收到的赞</span>
+						</div>
+						<div class="right">
+ 							<span id="like_count" style="display:none">{$like_count}</span>
+							&nbsp;&nbsp;>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script type="text/javascript">
+     setTimeout(time(),500);
+    
+     function time(){
+     	$.post('{:U("Home/Msgbrid/msgbridload")}', {}, function(data) {
+     		 strall=data.split(","); //字符分割 
+     		 if (strall[2] != 0) {
+      		 	$("#chatinfo_count").show();
+     		 	$("#chatinfo_count").text(strall[2]);
+     		 }
+     		  if(strall[1] != 0){
+                $("#comment_count").show();
+     		 	$("#comment_count").text(strall[1]);
+     		 }
+     		  if(strall[0] != 0){
+                $("#like_count").show();
+     		 	$("#like_count").text(strall[0]);
+     		 }
+     	});
+     }
+
+   	$("[id=up]").each(function(){ 
+		$(this).click(function(){
+     		var id = $(this).attr('str');
+     		var type = $(this).attr('stb');
+     		var url = $(this).attr('url');
+				// alert(id)
+		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+ 	     		if (type == 0) {
+	     			 location.href="http://"+url;
+	     		}else if(type == 1){
+	     			 location.href= 'tel://' + url;
+	      		}else{
+	      			location.href=url;
+	      		}
+			});
+    	})
+    })
+
+
+	var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+	</script>
+</body>

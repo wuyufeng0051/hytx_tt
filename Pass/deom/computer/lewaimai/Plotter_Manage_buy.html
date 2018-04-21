@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-star"></i>
+      <li class="active">产品购买</li>
+      <li class="active">打印机SN和KEY</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.current {border-color: #fa3!important;} .a-choose {display:block;float:left;padding:5px;margin-right:15px;width:80px;text-align:center; border:1px solid #ccc;font-size:14px;cursor:pointer;} a:hover{text-decoration:none;}</style>
+      <div class="row">
+        <div class="col-sm-12">
+          <form class="form-horizontal" id="food-form" action="/printer/paysnkey" method="post">
+            <div class="alert alert-danger" id="food-form_es_" style="display:none">
+              <p>请更正下列输入错误:</p>
+              <ul>
+                <li>dummy</li></ul>
+            </div>
+            <div class="alert alert-info">
+              <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+              </button>
+              <p>购买SN和KEY用于兼容用户自己的有线打印机，目前已支持所有型号（佳博、芯烨、爱普生等）和接口类型（包括USB口、串口、并口、网口）的58mm热敏打印机，购买成功后请下载有线打印机管理程序并按照教程操作。</p>
+              <p>
+                <a class="btn btn-success" href="#" target="_blank">查看详情</a></p>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Pay_pay_num">SN数量</label>
+              <input value="1" onblur="tt(this)" name="Pay[pay_num]" id="Pay_pay_num" type="text"></div>
+            <p>应付金额
+              <span id="smspay_money" style="color: red; font-weight: bold; font-size: 18px;">100</span>元</p>
+            <p>支付方式：</p>
+            <label>
+              <input type="radio" name="Pay[pay_type]" value="0" id="zxzf_0" checked="checked">
+              <img src="images/alipay.gif"></label>
+            <label>
+              <input type="radio" name="Pay[pay_type]" value="1" id="zxzf_1">
+              <img src="images/weixinzhifu.jpg"></label>
+            <label>
+              <input type="radio" name="Pay[pay_type]" value="2" id="zxzf_0">
+              <img src="images/balance.png"></label>
+            <input type="hidden" name="b_id" value="0" id="hide_b_id">
+            <div class="clearfix form-actions">
+              <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="submit">
+                  <i class="ace-icon fa fa-check bigger-110"></i>确认购买</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

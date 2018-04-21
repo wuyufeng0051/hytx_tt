@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<title>绑定手机号码</title>
+<link rel="stylesheet" href="{$Think.const.HOME_CSS}register.css">
+<link rel="stylesheet" href="{$Think.const.HOME_CSS}weui.min.css">
+</head>
+<body ontouchstart>
+	<div class="weui_cells_title">选择</div>
+	<div class="weui_cells">
+        <div class="weui_cell weui_cell_select weui_select_after">
+            <div class="weui_cell_hd">
+                <label for="" class="weui_label">国家/地区</label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <select class="weui_select" name="select2">
+                    <option value="1">中国</option>
+                    <option value="2">美国</option>
+                    <option value="3">英国</option>
+                </select>
+            </div>
+        </div>
+    </div>
+	<div class="weui_cells">
+        <div class="weui_cell weui_cell_select weui_select_before">
+            <div class="weui_cell_hd">
+                <select class="weui_select" name="select2">
+                    <option value="1">+86</option>
+                    <option value="2">+80</option>
+                    <option value="3">+84</option>
+                    <option value="4">+87</option>
+                </select>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="number" pattern="[0-9]*" id="phone" placeholder="请输入号码">
+            </div>
+        </div>
+    </div>
+    <div class="weui_cells">
+    	<div class="weui_cell vcode">
+            <div class="weui_cell_hd"><label class="weui_label">验证码</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="number" placeholder="输入验证码" id="code">
+            </div>
+            <div class="weui_cell_ft">
+                 <a class="weui_label" id="show-dialog"  >获取验证码</a>
+            </div>
+    	</div>
+    </div>
+    <div class="weui_opr_area">
+        <p class="weui_btn_area">
+            <input id="yzm" type="hidden">
+            <input id="yphone" type="hidden">
+            <a href="#" class="weui_btn weui_btn_primary" id="f2">确定</a>
+            <a href="#" class="weui_btn weui_btn_default">取消</a>
+        </p>
+    </div>
+	<div class="weui_dialog_confirm" id="dialog" style="display: none;">
+    <div class="weui_mask"></div>
+    <div class="weui_dialog">
+        <div class="weui_dialog_hd"><strong class="weui_dialog_title">确认手机号码</strong></div>
+        <div class="weui_dialog_bd">我们将发送验证码短信到这个号码，+86 12341234</div>
+        <div class="weui_dialog_ft">
+            <a href="javascript:;" class="weui_btn_dialog default" id="confirm">取消</a>
+            <a href="javascript:;" class="weui_btn_dialog primary" id="cancel">确定</a>
+        </div>
+    </div>
+</div>
+    
+<script src="js/zepto.min.js"></script>
+<script>
+    // $('#show-dialog').on('click',function(){
+    //     $('#dialog').show();
+    // });
+    // $('#cancel').on('click',function(){
+    //     $('#dialog').hide();
+    // });
+</script>
+
+<script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+	$('#show-dialog').click(function(){
+        var phone=$('#phone').val();
+        var phonekey= /^[0-9-]{11}$/;
+        if(!phonekey.test(phone)){
+            alert('请输入11位手机号');
+        }else{
+             $.post('__MODULE__/Login/code', {user_phone:phone}, function(data) {
+                alert(data)
+                $("#yzm").val(data);
+                $("#yphone").val(phone);
+            });            
+        }   
+         
+    });
+   
+ 
+  $('#f2').click(function(){
+    var code=$('#code').val();
+    var phone=$('#phone').val();
+    var yphone=$('#yphone').val();
+    var yzm=$('#yzm').val();
+     if (yphone !== phone) {
+          alert('请不要修改手机号')
+     }else if (yzm !== code) {
+          alert('验证码不正确')
+     }else{
+          window.location.href="__MODULE__/index/index";
+        }
+   });
+ 
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{#if !$nobtm#}
+<!-- 底部 s -->
+<div class="footer">
+	<ul class="fn-clear">
+		<li class="foot2{#if $curr == 'shop'#} curr{#/if#}"><a href="/wmsj/index.php"><i></i>店铺</a></li>
+		<li class="foot1{#if $curr == 'order'#} curr{#/if#}"><a href="/wmsj/order/waimaiOrder.php"><i></i>订单</a></li>
+		<li class="foot3{#if $curr == 'statistics'#} curr{#/if#}"><a href="/wmsj/statistics/tj-waimai.php"><i></i>统计</a></li>
+		<li class="foot4{#if $curr == 'comment'#} curr{#/if#}"><a href="/wmsj/message/waimaiCommon.php"><i></i>评论</a></li>
+	</ul>
+</div>
+<!-- 底部 e -->
+{#/if#}
+{#if $jsFile#}
+  {#foreach $jsFile as $val#}
+  {#if substr($val, 0, 1) == "/"#}
+  <script src="{#$val#}" type="text/javascript"></script>
+  {#else#}
+  <script src="{#$templets_skin#}js/{#$val#}" type="text/javascript"></script>
+  {#/if#}
+  {#/foreach#}
+{#/if#}

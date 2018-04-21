@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的收藏</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no" >
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/issue_cang.css?v=1">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+
+	
+	<style>
+	.mui-bar-nav.mui-bar .mui-icon {
+	    margin-right: -10px;
+	    margin-left: -18px;
+	    padding-right: 10px;
+	    padding-left: 10px;
+	}
+	.item{
+	    /*height: 100px;
+	    position: relative;
+	    font-size: 14px;
+	    background: #fff;
+	    margin-bottom: 8px;*/
+	    position: relative;
+	}
+	.check_box {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    height: 100%;
+	    width: 40px;
+	}
+	.check{
+		height: 34px;
+	    padding: 7px 10px;
+	    display: block;
+	    background-image: url(__PUBLIC__/Home/img/fang.png);
+	    background-size: 20px 20px;
+	    background-clip: content-box;
+	    background-origin: content-box;
+	    margin-top: 30px;
+	}
+	.check[checked]{
+		background-image: url(__PUBLIC__/Home/img/fang1.png);
+	}
+	.goods-info{
+		padding-left: 40px;
+	    height: 100%;
+	    width: 100%;
+        padding-right: 10px;
+	}
+	.goods-info .imgbox{
+		height: 100px;
+	    width: 90px;
+	    float: left;
+	    padding: 10px;
+	    padding-left: 0;
+	}
+	.goods-info .imgbox img {
+	    width: 100%;
+	    height: 100%;
+	    display: block;
+	}
+    .info-box {
+	    overflow: hidden;
+	    padding-top: 10px;
+	    padding-right: 10px;
+	}
+	.p-name{
+		height: 42px;
+	    width: 100%;
+	}
+	.p1{
+		color: #ff7730;
+		font-size: 14px;
+		width: 100%;
+	}
+	.p1 span{
+		float: right;
+	}
+	.p2{
+		color: #999;
+		font-size: 14px;
+		display: -webkit-box;
+	    display: -webkit-flex;
+	    display: -ms-flexbox;
+	    display: flex;
+	    -webkit-box-align: center;
+	    -webkit-align-items: center;
+	    -ms-flex-align: center;
+	    align-items: center;
+	    width: 100%;
+	}
+	.p1 small{
+		color: #999;
+		margin-left: 10px;
+	}
+	.p1 i{
+	    border: #38b8ea 1px solid;
+	    color: #38b8ea;
+	    border-radius: 2px;
+	    padding: 0 2px;
+	    font-size: 12px;
+	    font-style: normal;
+	    margin-left: 5px;
+	}
+	.p3{width: 100%;height: 21px;}
+	.p3 i{
+	    border: #38b8ea 1px solid;
+	    color: #38b8ea;
+	    border-radius: 2px;
+	    padding: 0 2px;
+	    font-size: 12px;
+	    font-style: normal;
+	    margin-right: 5px;
+	    float: left;
+	    display: block;
+	    height: 19px;
+	    line-height: 19px;
+	    margin-bottom: 3px;
+	}
+	.p2 span{
+		overflow: hidden;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	    -webkit-box-flex: 1;
+	    -webkit-flex: 1;
+	    -ms-flex: 1;
+	    flex: 1;
+	    padding-right: 10px;
+	}
+	.p2 em{
+		font-style: normal;
+	}
+	.allcheck{
+		padding: 6px;
+		display: inline-block;
+		margin:5px;
+		padding-left: 25px;
+		background: url(__PUBLIC__/Home/img/fang.png) no-repeat left 5px;
+		background-size: 18px 18px;
+	}
+	.allchoice{
+		background: url(__PUBLIC__/Home/img/fang1.png) no-repeat left 5px;
+		background-size: 18px 18px;
+	}
+	footer{
+		display: none;
+	}
+	.check_box{
+		display: none;
+	}
+	.goods-info{
+		padding-left: 10px;
+	}
+	.cancel{
+		display: none;
+	}
+	.divtext{
+		min-height: 21px;
+		line-height: 21px;
+		max-height: 84px;
+		width: 220px;
+		border:1px solid #000;
+		overflow: hidden;
+		overflow-y:auto;
+		-webkit-user-select: auto;
+		z-index: 999;
+	}
+	.divtext::-webkit-scrollbar {
+	    display: none;
+	}
+	#header{
+		background: #fd5530 !important;
+	}
+	.issue_list{
+		margin-top: 1.1rem;
+		padding-bottom: 1rem;
+	}
+	.pl{
+		padding-left: 40px!important;
+	}
+	.house .house_detail{
+		width: 100%!important;
+	}
+	.second .se_detail{
+		width: 100%!important;
+	}
+	</style>
+</head>
+<body>
+
+<include file="Public/share" title='包含文件'/>
+
+	<header id="header" class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="javascript:history.go(-1)" style="color: #fff;"><em style="font-size: 16px;font-style: normal;">返回</em></a>
+		<h1 class="mui-title" style="color: #fff;">我的收藏</h1>
+		<button class="mui-btn mui-btn-link mui-pull-right cancel" style="color: #fff;height: 30px;margin-top: 8px;line-height: 30px;padding: 0 8px;">取消</button>
+		</a><button class="mui-btn mui-btn-link mui-pull-right del" style="color: #fff;height: 30px;margin-top: 8px;line-height: 30px;padding: 0 8px;">删除</button>
+	</header>
+	<footer class="mui-bar mui-bar-footer">
+		<span class="allcheck">全选</span>
+		<button class="mui-btn mui-pull-right del_btn" style="top:5px;padding:6px 30px;background: #ff7
+		300;border:none;background: #fd5530 !important;color: #fff;">删除</button>
+	</footer>
+<div class="issue_list">
+	<foreach name="all" item="v">
+		<?php if($v['collection']['post_type'] == 12){ ?>
+		<div class="item">
+			<div class="check_box">
+                <a class="check" id=<?php echo $v['collection_id'];?> ></a>
+            </div>
+			<div class="goods-info is_txt iss_txt dataval" data-ztype="{$v['collection']['post_ztype']}" data-table="{$v['collection']['post_table']}" data-id="{$v['collection']['post_id']}" data-edit="{$v['collection']['post_edit']}"><a href="__MODULE__/Dating/datingdetail/dating_id/{$v['collection']['post_id']}">
+				<div class="dating_detail fn-clear">
+					<div class="dat_pic"><img src="{$v['collection']['dating_imgs']}" alt=""></div>
+					<div class="dat_name">{$v['collection']['dating_nickname']}<em>{$v['collection']['dating_age']}岁</em><if condition="$v['collection']['dating_sex'] eq 0"><i class="women"></i><else/><i class="man"></i></if><span>{$v['collection']['post_date']|substr=2,8|str_replace='-','.',###}</span></div>
+					<div class="dat_kind">交友类型：{$v['collection']['dating_type']}</div>
+					<div class="dat_info">婚姻状况：{$v['collection']['dating_marrystate']}</div>
+					<div class="dat_info">居住地：{$v['collection']['dating_address']}</div>
+				</div>
+			</a>
+			</div>
+		</div>
+		<?php } ?>
+		<?php if($v['collection']['post_type'] == 11){ ?>
+		<div class="item">
+			<div class="check_box">
+                <a class="check" id=<?php echo $v['collection_id'];?> ></a>
+            </div>
+			<div class="goods-info iss_txt normal dataval" data-ztype="{$v['collection']['post_ztype']}" data-table="{$v['collection']['post_table']}" data-id="{$v['collection']['post_id']}" data-edit="{$v['collection']['post_edit']}">
+				<div class="iss_detail fn-clear"><a href="__MODULE__/Business/shopdetail/business_id/{$v['collection']['post_id']}">
+					<div class="iss_pic"><img src="{$v['collection']['business_shopimg']}" alt=""></div>
+					<h1>{$v['collection']['business_shopname']}</h1>
+					<p>营业时间：{$v['collection']['business_shopopen']}-{$v['collection']['business_shopclose']}</p>
+					<p><i></i>{$v['collection']['business_like']} 次</p>
+					<span>{$v['collection']['business_shopaddress']}</span>
+				</a>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		<?php if($v['collection']['post_type'] == 10){ ?>
+		<div class="item">
+			<div class="check_box">
+                <a class="check" id=<?php echo $v['collection_id'];?> ></a>
+            </div>
+		<div class=" goods-info iss_txt car_is dataval" data-ztype="{$v['collection']['post_ztype']}" data-table="{$v['collection']['post_table']}" data-id="{$v['collection']['post_id']}" data-edit="{$v['collection']['post_edit']}">
+				<div class="mer_detail fn-clear"><a href="__MODULE__/CityFreight/carinfodetail/carinfo_id/{$v['collection']['post_id']}">
+					<div class="mer_pic"><img src="{$v['collection']['carinfo_img']}" alt=""></div>
+					<h1>{$v['collection']['carinfo_title']}</h1>
+					<p>浏览：<em>{$v['collection']['carinfo_browse']}</em> 次</p>
+					<span>{$v['collection']['carinfo_cartype']}</span>
+				</a>
+				</div>
+		</div>
+		</div>
+		<?php } ?>
+		<?php if($v['collection']['post_type'] == 2){ ?>
+		<div class="item">
+			<div class="check_box">
+                <a class="check" id=<?php echo $v['collection_id'];?> ></a>
+            </div>
+		<div class=" goods-info job_jl fn-clear dataval" data-ztype="{$v['collection']['post_ztype']}" data-table="{$v['collection']['post_table']}" data-id="{$v['collection']['post_id']}" data-edit="{$v['collection']['post_edit']}">
+			<div class="job_jldetail fn-clear">
+				<a href="{$v['collection']['post_link']}">
+					<div class="job_lpic"><img src="{$v['collection']['imgs_smallpath']}" alt=""></div>
+					<div class="job_title">{$v['collection']['post_title']} {$v['collection']['resume_birthday']}岁 <?php if($v['collection']['resume_sex'] == 1){ ?><i class="man"></i> <?php }else{ ?><i class="women"></i> <?php } ?></div>
+					<p>期望职位：{$v['collection']['resume_position']}</p>
+					<p>{$v['collection']['resume_education']}　{$v['collection']['resume_exp']}</p>
+				</a>
+			</div>
+		</div>
+		</div>
+		<?php } ?>
+		<?php if($v['collection']['post_type'] == 5){ ?>
+		<div class="item">
+			<div class="check_box">
+                <a class="check" id=<?php echo $v['collection_id'];?> ></a>
+            </div>
+		<div class=" goods-info house dataval" data-ztype="{$v['collection']['post_ztype']}" data-table="{$v['collection']['post_table']}" data-id="{$v['collection']['post_id']}" data-edit="{$v['collection']['post_edit']}">
+			<a href="{$v['collection']['post_link']}">
+				<div class="house_detail fn-clear">
+					<div class="house_lpic"><img src="{$v['collection']['imgs_smallpath']}" alt=""></div>
+					<div class="house_title">{$v['collection']['post_title']}</div>
+					<?php if($v['collection']['post_ztype'] == 6){ ?>
+					<div class="house_infor fn-clear"><span>{$v['collection']['lease_room']} {$v['collection']['lease_config']}</span><em>{$v['collection']['post_price']}</em></div>
+					<?php } ?>
+					<?php if($v['collection']['post_ztype'] == 7){ ?>
+					<div class="house_infor fn-clear"><i>{$v['collection']['post_price']}</i><span>{$v['collection']['lease_class']}</span><em>{$v['collection']['post_type_name']}</em></div>
+					<?php } ?>
+					<?php if($v['collection']['post_ztype'] == 8){ ?>
+					<div class="house_infor fn-clear"><i>{$v['collection']['post_price']}</i><span>{$v['collection']['lease_class']}</span></div>
+					<?php } ?>
+					<div class="house_local fn-clear"><span>{$v['collection']['lease_address']}</span></div>
+				</div>
+			</a>
+		</div>
+		</div>
+		<?php } ?>
+		<?php if($v['collection']['post_type'] == 3||$v['collection']['post_type'] == 4){ ?>
+		<div class="item">
+			<div class="check_box">
+                <a class="check" id=<?php echo $v['collection_id'];?> ></a>
+            </div>
+		<div class="goods-info house dataval" data-ztype="{$v['collection']['post_ztype']}" data-table="{$v['collection']['post_table']}" data-id="{$v['collection']['post_id']}" data-edit="{$v['collection']['post_edit']}">
+			<a href="{$v['collection']['post_link']}">
+				<div class="house_detail fn-clear">
+					<div class="house_lpic"><img src="{$v['collection']['imgs_smallpath']}" alt=""></div>
+					<div class="house_title">{$v['collection']['post_title']}</div>
+					<?php if($v['collection']['post_ztype'] == 3){ ?>
+					<div class="house_infor fn-clear"><span>{$v['collection']['sellhouse_type']} {$v['collection']['sellhouse_acreage']}m<sup>2</sup></span><em>{$v['collection']['post_price']}</em></div>
+					<?php } ?>
+					<?php if($v['collection']['post_ztype'] == 4){ ?>
+					<div class="house_infor fn-clear"><i>{$v['collection']['post_price']}</i><span>{$v['collection']['sell_other_acreage']}m<sup>2</sup>　{$v['collection']['sell_other_class']}</span></div>
+					<?php } ?>
+					<?php if($v['collection']['post_ztype'] == 5){ ?>
+					<div class="house_infor fn-clear"><i>{$v['collection']['post_price']}</i><span>{$v['collection']['sell_other_class']}</span></div>
+					<?php } ?>
+					<div class="house_local fn-clear"><span>{$v['collection']['post_addr']}</span></div>
+				</div>
+			</a>
+		</div>
+		</div>
+		<?php } ?>
+		<?php if($v['collection']['post_type'] == 0||$v['collection']['post_type'] == 1){ ?>
+		<div class="item">
+			<div class="check_box">
+                <a class="check" id=<?php echo $v['collection_id'];?> ></a>
+            </div>
+		<div class="goods-info job_detail dataval" style="padding-top: .3rem" data-ztype="{$v['collection']['post_ztype']}" data-table="{$v['collection']['post_table']}" data-id="{$v['collection']['post_id']}" data-edit="{$v['collection']['post_edit']}">
+			<div class="job_box">
+				
+				<a href="{$v['collection']['post_link']}">
+					<h1>{$v['collection']['post_title']}</h1>
+				</a>
+				<?php if($v['collection']['post_ztype'] == 0){ ?>
+				<a href="{$v['collection']['post_link']}">
+					<div class="jib_money">{$v['collection']['post_price']}<em>{$v['collection']['post_position']}</em></div></a>
+				<a href="{$v['collection']['post_link']}"><div class="job_type fn-clear">
+					<ul>
+						<volist id="o" name="v.recruit_welfares">
+							<li>{$o}</li>
+						</volist>
+					</ul>
+				</div></a>
+				<a href="{$v['collection']['post_link']}"><div class="company fn-clear">
+					<div class="place">{$v['collection']['post_address']}</div>
+					<div class="home">{$v['collection']['recruit_region']}</div>
+				</div></a>
+				<?php } ?>
+				<?php if($v['collection']['post_ztype'] == 1){ ?>
+				<a href="{$v['collection']['post_link']}"><div class="jib_money duan fn-clear"><i>{$v['collection']['post_price']}</i><ul><li class="green">{$v['collection']['part_time_job_term']}</li><li class="blue">{$v['collection']['part_time_job_settlement']}</li></ul><div class="job_position">{$v['collection']['post_position']}</div></div></a>
+				<a href="{$v['collection']['post_link']}"><div class="com_1">
+					<div class="home">{$v['collection']['post_address']}</div>
+				</div></a>
+				<?php } ?>
+			</div>
+
+		</div>
+		</div>
+		<?php } ?>
+		<?php if($v['collection']['post_type'] == 7){ ?>
+		<div class="item">
+			<div class="check_box">
+                <a class="check" id=<?php echo $v['collection_id'];?> ></a>
+            </div>
+		<div class="goods-info second dataval" data-ztype="{$v['collection']['post_ztype']}" data-table="{$v['collection']['post_table']}" data-id="{$v['collection']['post_id']}" data-edit="{$v['collection']['post_edit']}">
+			<a href="{$v['collection']['post_link']}">
+				<div class="se_detail fn-clear">
+					<div class="se_lpic"><img src="{$v['collection']['imgs_smallpath']}" alt=""></div>
+					<div class="se_title">{$v['collection']['post_title']}</div>
+					<div class="se_price fn-clear"><span>{$v['collection']['post_price']}</span><em>{$v['collection']['usedcar_source']}</em></div>
+					<div class="se_new fn-clear"><span>{$v['collection']['usedcar_age']}</span></div>
+				</div>
+			</a>
+		</div>
+		</div>
+		<?php } ?>
+		<?php if($v['collection']['post_type'] == 6){ ?>
+		<div class="item">
+			<div class="check_box">
+                <a class="check" id=<?php echo $v['collection_id'];?> ></a>
+            </div>
+		<div class="goods-info second dataval wanted" data-ztype="{$v['collection']['post_ztype']}" data-table="{$v['collection']['post_table']}" data-id="{$v['collection']['post_id']}" data-edit="{$v['collection']['post_edit']}">
+			<a href="{$v['collection']['post_link']}">
+				<div class="se_detail fn-clear">
+					<div class="se_lpic"><img src="{$v['collection']['imgs_smallpath']}" alt=""></div>
+					<div class="se_title">{$v['collection']['post_title']}</div>
+					<div class="wanted_tips"><em class={$v['collection']['post_type_name']=='求购'?"buy":"rent"}>{$v['collection']['post_type_name']}</em></div>
+					<div class="wanted_infor fn-clear"><span>{$v['collection']['post_price']}</span><em>{$v['collection']['wanted_class']}</em><i>{$v['collection']['post_date']|substr=2,8}</i></div>
+				</div>
+			</a>
+		</div>
+		</div>
+		<?php } ?>
+		<?php if($v['collection']['post_type'] == 8){ ?>
+		<div class="item">
+			<div class="check_box">
+                <a class="check" id=<?php echo $v['collection_id'];?> ></a>
+            </div>
+		<div class="goods-info second dataval" style="padding-top: .3rem!important" data-ztype="{$v['collection']['post_ztype']}" data-table="{$v['collection']['post_table']}" data-id="{$v['collection']['post_id']}" data-edit="{$v['collection']['post_edit']}">
+			<a href="{$v['collection']['post_link']}">
+				<div class="se_detail fn-clear" style="padding-top: 0.01rem;">
+					<div class="se_title second_want_title fn-clear" style="height: .5rem;line-height: .5rem"><span>{$v['collection']['post_title']}</span><em>个人</em></div>
+					<div class="se_price fn-clear"><span>{$v['collection']['post_price']}</span></div>
+				</div>
+			</a>
+		</div>
+		</div>
+		<?php } ?>
+	</foreach>
+</div>
+<!-- 发布列表 e-->
+<!-- 遮罩层 s -->
+<div class="disk"></div>
+<!-- 遮罩层 e -->
+<div class="delete">
+	<h1>提示：</h1>
+	<h2>是否删除？</h2>
+	<div class="de_foot"><div class="de_btn"><span class="sure">确定</span><span class="cancel1">取消</span></div></div>
+</div>
+<script src="__PUBLIC__/Home/js/layer.js"></script>
+<script>
+		var checkBtn = document.getElementsByClassName('check');
+	    for(var j = 0 ; j < checkBtn.length; j++){
+	        checkBtn[j].onclick = function(){
+	            var hasChecked = this.getAttribute('checked');
+	            if(hasChecked !== null){
+	                this.removeAttribute('checked');
+	            }else{
+	                this.setAttribute('checked',' ');
+	            }
+	        }
+	    }
+	    var flag=true;
+	    $('.allcheck').on('click',function(){
+	    	if(flag){
+	    		$('.check').attr('checked',' ');
+	    		$('.allcheck').addClass('allchoice');
+	    	}else{
+	    		$('.check').removeAttr('checked');
+	    		$('.allcheck').removeClass('allchoice');
+	    	}
+	    	flag=!flag;
+	    });
+
+	    $('.cancel').on('click',function(){
+	    	$('.check_box').hide();
+	    	$('footer').hide();
+	    	$('.goods-info').removeClass('pl');
+	    	$(this).hide();
+	    	$('.del').show();
+	    	$('.delete').hide();
+	    	$('.disk').hide();
+	    })
+	    $('.cancel1').on('click',function(){
+	    	$('.delete').hide();
+	    	$('.disk').hide();
+	    })
+	    $('.del').on('click',function(){
+	    	$('.check_box').show();
+	    	$('footer').show();
+	    	$('.goods-info').addClass('pl');
+	    	$(this).hide();
+	    	$('.cancel').show();
+	    	$('.check').removeAttr('checked');
+	    })
+
+
+		$y = '';
+	    $('.del_btn').on('click',function(){
+
+	    	// var r=confirm("要删除吗？");
+	    	$('.delete').show();
+	    	$('.disk').show();
+          // if (r==true){
+          	$(".sure").click(function(){
+
+				$('.check').each(function(){
+					if ($(this).attr('checked') != null) {
+						$y += $y == '' ? '' : ',';
+						$y += $(this).attr('id');
+						$('.delete').hide();
+				    	$('.disk').hide();
+						$(this).parents('.item').fadeOut(300);
+					}
+				});
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						//alert(xmlhttp.responseText);
+						if (xmlhttp.responseText) {
+							layer.msg('刪除成功！');
+						} else {
+							layer.msg('刪除未成功…');
+						}
+					}
+				}
+				xmlhttp.open("POST","__MODULE__/My/myCollectDelete.html",true);
+				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");              //or multipart/form-data
+				xmlhttp.send('deleteid=' + $y);
+
+				//$.post( "__MODULE__/My/myCollectDelete.html", { deleteid: $y }).done(function( data ) {
+					//alert( "Data Loaded: " + data );
+				//});
+				$y = '';
+          	})
+
+			// }
+
+	    });
+		/*
+		*/
+
+    // // 删除
+    // $('.delete_btn').click(function(){
+    //     var x = $(this),
+    //         post_ztype = x.closest('.dataval').data('ztype'),
+    //         post_table = x.closest('.dataval').data('table'),
+    //         post_id = x.closest('.dataval').data('id');
+    //     $('.delete').show();
+    //     $('.disk').show();
+    //     $('.delete .sure').click(function(){
+    //         $.post("__MODULE__/My/myPostDelete",{post_ztype:post_ztype,post_table:post_table,post_id:post_id},function(data) {
+    //             if (data.status == "1") {
+    //                 //提交成功弹出层
+    //                 x.closest('.iss_txt').fadeOut(300);
+    //                 x.closest('.job_detail').fadeOut(300);
+    //                 x.closest('.job_jl').fadeOut(300);
+    //                 x.closest('.house').fadeOut(300);
+    //                 x.closest('.second').fadeOut(300);
+    //                 $('.delete').hide();
+    //                 $('.disk').hide();
+    //             }else{
+    //                 //window.location.reload();
+    //             }
+    //         })
+    //     })
+    // })
+
+</script>
+</body>
+</html>

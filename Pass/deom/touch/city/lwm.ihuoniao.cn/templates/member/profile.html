@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>个人登录记录 - {#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/profile.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#$pageTitle = "个人基本资料"#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="container fn-clear">
+
+		{#include file="sidebar.html"#}
+
+		<div class="main">
+
+			<ul class="main-tab">
+				<li class="curr"><a href="javascript:;">基本资料</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='portrait'#}">{#if $userinfo.photo != ""#}修改头像{#else#}设置头像{#/if#}</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='security' doget='chpassword'#}">修改密码</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='connect'#}">社交帐号</a></li>
+			</ul>
+
+			<div class="w-form">
+				<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=member&action=updateProfile">
+					<dl class="fn-clear">
+						<dt>用户名：</dt>
+						<dd>
+							{#$userinfo.username#}
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>昵称：</dt>
+						<dd>
+							{#$userinfo.nickname#}
+							<a href="{#getUrlPath service='member' type='user' template='security' doget='chnickname'#}" class="link">修改昵称&raquo;</a>
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>性别：</dt>
+						<dd>
+							<div class="radio">
+								<span data-id="1"{#if $userinfo.sex == 1#} class="curr"{#/if#}>男</span>
+								<span data-id="0"{#if $userinfo.sex == 0#} class="curr"{#/if#}>女</span>
+								<input type="hidden" name="sex" id="sex" value="{#$userinfo.sex#}" />
+							</div>
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>QQ号码：</dt>
+						<dd><input type="text" name="qq" class="inp" id="qq" size="20" autocomplete="off" onkeyup="value=value.replace(/\D+/ig,'')" placeholder="请输入您常用的QQ号码" value="{#$userinfo.qq#}" /></dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>所在区域：</dt>
+						<dd id="selAddr">
+							<div class="sel-group" data-title="请选择所在区域">
+								<button type="button" class="sel">{#if $userinfo.addrName != ""#}{#$userinfo.addrName#}{#else#}请选择{#/if#}<span class="caret"></span></button>
+								<ul class="sel-menu">
+									{#siteConfig action="addr" return="addr"#}
+									<li><a href="javascript:;" data-id="{#$addr.id#}">{#$addr.typename#}</a></li>
+									{#/siteConfig#}
+								</ul>
+							</div>
+							<input type="hidden" name="addr" id="addr" value="{#$userinfo.addrid#}" />
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>出生日期：</dt>
+						<dd><input type="text" name="birthday" class="inp" id="birthday" size="15" readonly placeholder="点击选择日期" value="{#$userinfo.birthday|date_format:'%Y-%m-%d'#}" /></dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>注册时间：</dt>
+						<dd>
+							{#$userinfo.regtime#}
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>&nbsp;</dt>
+						<dd><button class="submit" id="submit">提交修改</button></dd>
+					</dl>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/calendar/WdatePicker.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/fabu.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/profile.js"></script>
+</body>
+</html>

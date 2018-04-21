@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>找回密码</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fpwd.css?v=3" media="all" />
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}', staticPath = '{#$cfg_staticPath#}';
+  var geetest = {#$cfg_geetest#};
+</script>
+</head>
+
+<body>
+<div class="reg-pup">
+  <h2>找回密码</h2>
+  <a href="{#$cfg_basehost#}" title="返回首页" id="close">返回首页</a>
+  <form class="form-horizontal" action="">
+    <ul>
+      <li class="mtype">
+        <label><input type="radio" name="type" value="1" checked="checked" />邮箱找回</label>
+        <label><input type="radio" name="type" value="2" />手机找回</label>
+      </li>
+      <li class="eobj"><input type="text" class="login-input" name="email" id="email" autocomplete="off" /><span>邮箱</span></li>
+      <li class="pobj fn-hide"><input type="text" class="login-input" max-length="11" name="phone" id="phone" autocomplete="off" /><span>手机号码</span></li>
+      {#if !$cfg_geetest#}
+      <li class="vdcode"><input type="text" class="login-input" maxlength="4" name="vericode" id="vericode" autocomplete="off" /><span>验证码</span><img src="/include/vdimgck.php" title="看不清？点击换一张" id="verifycode" /></li>
+      {#/if#}
+      <li class="pobj vdimgck fn-hide">
+        <input type="text" class="login-input" max-length="6" name="vdimgck" id="vdimgck" autocomplete="off" /><span>短信验证码</span>
+        <a href="javascript:;" class="verifybtn" id="getPhoneVerify">获取短信验证码</a>
+      </li>
+      <li class="submit fn-clear">
+        <a href="javascript:;" id="submitFpwd" class="login-btn">确认</a>
+      </li>
+    </ul>
+    <div id="popup-captcha"></div>
+  </form>
+  <div class="login-foot">
+    我知道密码了， <a href="{#$cfg_basehost#}/login.html">立即登录</a>
+  </div>
+</div>
+
+<div id="particles-js"></div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/particles.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+{#if $cfg_geetest#}<script type="text/javascript" src="http://static.geetest.com/static/tools/gt.js"></script>{#/if#}
+<script type="text/javascript" src="{#$templets_skin#}js/fpwd.js?v=3"></script>
+</body>
+</html>

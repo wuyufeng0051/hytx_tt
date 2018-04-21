@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+  </head>
+  <body class="no-skin">
+        <div class="main-content">
+          <div class="breadcrumbs" id="breadcrumbs">
+            <ul class="breadcrumb">
+              <i class="ace-icon fa fa-bar-chart-o bar-chart-o-icon"></i>
+              <li class="active">统计</li>
+              <li>
+                <a href="/statistics/chartorder">外卖统计</a></li>
+              <li>
+                <a href="/statistics/finance">财务结算</a></li>
+            </ul>
+          </div>
+          <!-- /section:basics/content.breadcrumbs -->
+          <div class="page-content">
+            <div class="page-content-area">
+              <style>td,th{ text-align:center; font-size:14px; } p{ color:#CC0000; }</style>
+              <div class="row">
+                <div class="col-sm-12">
+                  <form enctype="multipart/form-data" class="form-horizontal" id="food-form" action="/tichengsetting/update/24871" method="post">
+                    <div class="alert alert-danger" id="food-form_es_" style="display:none">
+                      <p>请更正下列输入错误:</p>
+                      <ul>
+                        <li>dummy</li></ul>
+                    </div>
+                    <div class="tabbable">
+                      <!-- 基本信息start -->
+                      <div class="tab-pane active">
+                        <div class="widget-box" style="width:550px;">
+                          <div class="widget-header">
+                            <h5>收入项</h5></div>
+                          <div class="widget-body" style="padding:20px;width:500px;">
+                            <table class="table table-striped table-bordered table-hover">
+                              <thead>
+                                <tr>
+                                  <th>项目</th>
+                                  <th>谁来承担这笔费用</th>
+                                  <th>是否参与分成</th></tr>
+                              </thead>
+                              <tbody>
+                                <tr class="odd">
+                                  <td>配送费：</td>
+                                  <td>
+                                    <select name="TichengSetting[is_chengdan_delivery]" id="TichengSetting_is_chengdan_delivery">
+                                      <option value="0" selected="selected">平台</option>
+                                      <option value="1">商家</option></select>
+                                  </td>
+                                  <td>
+                                    <select name="TichengSetting[is_ticheng_delivery]" id="TichengSetting_is_ticheng_delivery">
+                                      <option value="0" selected="selected">否</option></select>
+                                  </td>
+                                </tr>
+                                <tr class="odd">
+                                  <td>餐盒费：</td>
+                                  <td>
+                                    <select name="TichengSetting[is_chengdan_dabao]" id="TichengSetting_is_chengdan_dabao">
+                                      <option value="0">平台</option>
+                                      <option value="1" selected="selected">商家</option></select>
+                                  </td>
+                                  <td>
+                                    <select name="TichengSetting[is_ticheng_dabao]" id="TichengSetting_is_ticheng_dabao">
+                                      <option value="0">否</option>
+                                      <option value="1" selected="selected">是</option></select>
+                                  </td>
+                                </tr>
+                                <tr class="odd">
+                                  <td>增值服务费：</td>
+                                  <td>
+                                    <select name="TichengSetting[is_chengdan_addservice]" id="TichengSetting_is_chengdan_addservice">
+                                      <option value="0" selected="selected">平台</option>
+                                      <option value="1">商家</option></select>
+                                  </td>
+                                  <td>
+                                    <select name="TichengSetting[is_ticheng_addservice]" id="TichengSetting_is_ticheng_addservice">
+                                      <option value="0" selected="selected">否</option></select>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <p>注：此处是收入项。</p>
+                            <p>（1）如果选择商家承担，则该项收入会计入商家应得金额中；如果该项收入参与分成，则平台会从该项收入中按比例抽成，如果该项收入不参与分成，则该项收入全部归商家，平台不参与抽成</p>
+                            <p>（2）如果选择平台承担，则该项收入由平台收取，不计入商家应得金额中</p>
+                          </div>
+                        </div>
+                        <div class="widget-box" style="width:550px;">
+                          <div class="widget-header">
+                            <h5>扣除项</h5></div>
+                          <div class="widget-body" style="padding:20px;width:500px;">
+                            <table class="table table-striped table-bordered table-hover">
+                              <thead>
+                                <tr>
+                                  <th>项目</th>
+                                  <th>谁来承担这笔费用</th>
+                                  <th>是否参与分成</th></tr>
+                              </thead>
+                              <tbody>
+                                <tr class="odd">
+                                  <td>折扣：</td>
+                                  <td>
+                                    <select name="TichengSetting[is_chengdan_discount]" id="TichengSetting_is_chengdan_discount">
+                                      <option value="0" selected="selected">平台</option>
+                                      <option value="1">商家</option></select>
+                                  </td>
+                                  <td>
+                                    <select name="TichengSetting[is_ticheng_discount]" id="TichengSetting_is_ticheng_discount">
+                                      <option value="0" selected="selected">否</option></select>
+                                  </td>
+                                </tr>
+                                <tr class="odd">
+                                  <td>满减：</td>
+                                  <td>
+                                    <select name="TichengSetting[is_chengdan_promotion]" id="TichengSetting_is_chengdan_promotion">
+                                      <option value="0" selected="selected">平台</option>
+                                      <option value="1">商家</option></select>
+                                  </td>
+                                  <td>
+                                    <select name="TichengSetting[is_ticheng_promotion]" id="TichengSetting_is_ticheng_promotion">
+                                      <option value="0" selected="selected">否</option></select>
+                                  </td>
+                                </tr>
+                                <tr class="odd">
+                                  <td>会员优惠：</td>
+                                  <td>
+                                    <select name="TichengSetting[is_chengdan_member]" id="TichengSetting_is_chengdan_member">
+                                      <option value="0" selected="selected">平台</option>
+                                      <option value="1">商家</option></select>
+                                  </td>
+                                  <td>
+                                    <select name="TichengSetting[is_ticheng_member]" id="TichengSetting_is_ticheng_member">
+                                      <option value="0" selected="selected">否</option></select>
+                                  </td>
+                                </tr>
+                                <tr class="odd">
+                                  <td>优惠券：</td>
+                                  <td>
+                                    <select name="TichengSetting[is_chengdan_coupon]" id="TichengSetting_is_chengdan_coupon">
+                                      <option value="0" selected="selected">平台</option>
+                                      <option value="1">商家</option></select>
+                                  </td>
+                                  <td>
+                                    <select name="TichengSetting[is_ticheng_coupon]" id="TichengSetting_is_ticheng_coupon">
+                                      <option value="0" selected="selected">否</option></select>
+                                  </td>
+                                </tr>
+                                <tr class="odd">
+                                  <td>首单减免：</td>
+                                  <td>
+                                    <select name="TichengSetting[is_chengdan_firstdiscount]" id="TichengSetting_is_chengdan_firstdiscount">
+                                      <option value="0" selected="selected">平台</option>
+                                      <option value="1">商家</option></select>
+                                  </td>
+                                  <td>
+                                    <select name="TichengSetting[is_ticheng_firstdiscount]" id="TichengSetting_is_ticheng_firstdiscount">
+                                      <option value="0" selected="selected">否</option></select>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <p>注：此处是扣除项，请注意与收入项的区别</p>
+                            <p>（1）如果选择商家承担，则该项费用会在商家应得金额中扣除；如果该项费用参与分成，则平台也会按比例扣除抽成，如果该项费用不参与分成，则该项费用全部由商家承担，平台不扣除抽成</p>
+                            <p>（2）如果选择平台承担，则该项费用由平台承担，不从商家应得金额中扣除</p>
+                          </div>
+                        </div>
+                        <div class="widget-box" style="width:550px;">
+                          <div class="widget-header">
+                            <h5>设置分成</h5></div>
+                          <div class="widget-body" style="padding:20px;width:500px;">
+                            <div class="form-group">
+                              <label class="col-sm-3">
+                                <label for="TichengSetting_fencheng_percent">平台抽成比例</label></label>
+                              <input class="col-sm-2" name="TichengSetting[fencheng_percent]" id="TichengSetting_fencheng_percent" type="text" value="15.00">
+                              <label class="col-sm-1" style="font-size: 20px;">%</label></div>
+                            <div class="form-group">
+                              <label class="col-sm-3">
+                                <label for="TichengSetting_is_deduct_offline">是否扣除货到付款额</label></label>
+                              <select name="TichengSetting[is_deduct_offline]" id="TichengSetting_is_deduct_offline">
+                                <option value="0" selected="selected">否</option>
+                                <option value="1">是</option></select>
+                            </div>
+                            <p>注：此处如果实际交易中货到付款的钱已经被商家收取，则需要从商家应得金额中扣除货到付款额，请选择“是”。如果被平台收取，则不需要扣除，请选择“否”。</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="clearfix form-actions" style="width:550px;">
+                        <div class="col-md-offset-3 col-md-9">
+                          <button class="btn btn-info" type="submit">
+                            <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <script>$(function() {
+                  $("#TichengSetting_is_chengdan_delivery").change(function() {
+                    $('#TichengSetting_is_ticheng_delivery').html("");
+                    var val = $(this).val();
+                    var ops = "";
+                    if (val == 0) {
+                      ops = "<option value='0'>否</option>";
+                      $('#TichengSetting_is_ticheng_delivery').html(ops);
+                    } else {
+                      ops = "<option value='0'>否</option><option value='1'>是</option>";
+                      $('#TichengSetting_is_ticheng_delivery').html(ops);
+                    }
+                  });
+                  $("#TichengSetting_is_ticheng_delivery").change(function() {
+                    var val = $(this).val();
+                    var val1 = $("#TichengSetting_is_chengdan_delivery").val();
+                    if (val == 1 && val1 == 0) {
+                      //平台承担费用不能选择参与分成，正常情况不会走到这里
+                      $("#TichengSetting_is_chengdan_delivery").val(1)
+                    }
+                  });
+                  $("#TichengSetting_is_chengdan_dabao").change(function() {
+                    $('#TichengSetting_is_ticheng_dabao').html("");
+                    var val = $(this).val();
+                    var ops = "";
+                    if (val == 0) {
+                      ops = "<option value='0'>否</option>";
+                      $('#TichengSetting_is_ticheng_dabao').html(ops);
+                    } else {
+                      ops = "<option value='0'>否</option><option value='1'>是</option>";
+                      $('#TichengSetting_is_ticheng_dabao').html(ops);
+                    }
+                  });
+                  $("#TichengSetting_is_ticheng_delivery").change(function() {
+                    var val = $(this).val();
+                    var val1 = $("#TichengSetting_is_chengdan_dabao").val();
+                    if (val == 1 && val1 == 0) {
+                      //平台承担费用不能选择参与分成，正常情况不会走到这里
+                      $("#TichengSetting_is_chengdan_dabao").val(1)
+                    }
+                  });
+                  $("#TichengSetting_is_chengdan_addservice").change(function() {
+                    $('#TichengSetting_is_ticheng_addservice').html("");
+                    var val = $(this).val();
+                    var ops = "";
+                    if (val == 0) {
+                      ops = "<option value='0'>否</option>";
+                      $('#TichengSetting_is_ticheng_addservice').html(ops);
+                    } else {
+                      ops = "<option value='0'>否</option><option value='1'>是</option>";
+                      $('#TichengSetting_is_ticheng_addservice').html(ops);
+                    }
+                  });
+                  $("#TichengSetting_is_ticheng_addservice").change(function() {
+                    var val = $(this).val();
+                    var val1 = $("#TichengSetting_is_chengdan_addservice").val();
+                    if (val == 1 && val1 == 0) {
+                      //平台承担费用不能选择参与分成，正常情况不会走到这里
+                      $("#TichengSetting_is_chengdan_addservice").val(1)
+                    }
+                  });
+                  $("#TichengSetting_is_chengdan_discount").change(function() {
+                    $('#TichengSetting_is_ticheng_discount').html("");
+                    var val = $(this).val();
+                    var ops = "";
+                    if (val == 0) {
+                      ops = "<option value='0'>否</option>";
+                      $('#TichengSetting_is_ticheng_discount').html(ops);
+                    } else {
+                      ops = "<option value='0'>否</option><option value='1'>是</option>";
+                      $('#TichengSetting_is_ticheng_discount').html(ops);
+                    }
+                  });
+                  $("#TichengSetting_is_ticheng_discount").change(function() {
+                    var val = $(this).val();
+                    var val1 = $("#TichengSetting_is_chengdan_discount").val();
+                    if (val == 1 && val1 == 0) {
+                      //平台承担费用不能选择参与分成，正常情况不会走到这里
+                      $("#TichengSetting_is_chengdan_discount").val(1)
+                    }
+                  });
+                  $("#TichengSetting_is_chengdan_promotion").change(function() {
+                    $('#TichengSetting_is_ticheng_promotion').html("");
+                    var val = $(this).val();
+                    var ops = "";
+                    if (val == 0) {
+                      ops = "<option value='0'>否</option>";
+                      $('#TichengSetting_is_ticheng_promotion').html(ops);
+                    } else {
+                      ops = "<option value='0'>否</option><option value='1'>是</option>";
+                      $('#TichengSetting_is_ticheng_promotion').html(ops);
+                    }
+                  });
+                  $("#TichengSetting_is_ticheng_promotion").change(function() {
+                    var val = $(this).val();
+                    var val1 = $("#TichengSetting_is_chengdan_promotion").val();
+                    if (val == 1 && val1 == 0) {
+                      //平台承担费用不能选择参与分成，正常情况不会走到这里
+                      $("#TichengSetting_is_chengdan_promotion").val(1)
+                    }
+                  });
+                  $("#TichengSetting_is_chengdan_member").change(function() {
+                    $('#TichengSetting_is_ticheng_member').html("");
+                    var val = $(this).val();
+                    var ops = "";
+                    if (val == 0) {
+                      ops = "<option value='0'>否</option>";
+                      $('#TichengSetting_is_ticheng_member').html(ops);
+                    } else {
+                      ops = "<option value='0'>否</option><option value='1'>是</option>";
+                      $('#TichengSetting_is_ticheng_member').html(ops);
+                    }
+                  });
+                  $("#TichengSetting_is_ticheng_member").change(function() {
+                    var val = $(this).val();
+                    var val1 = $("#TichengSetting_is_chengdan_member").val();
+                    if (val == 1 && val1 == 0) {
+                      //平台承担费用不能选择参与分成，正常情况不会走到这里
+                      $("#TichengSetting_is_chengdan_member").val(1)
+                    }
+                  });
+                  $("#TichengSetting_is_chengdan_coupon").change(function() {
+                    $('#TichengSetting_is_ticheng_coupon').html("");
+                    var val = $(this).val();
+                    var ops = "";
+                    if (val == 0) {
+                      ops = "<option value='0'>否</option>";
+                      $('#TichengSetting_is_ticheng_coupon').html(ops);
+                    } else {
+                      ops = "<option value='0'>否</option><option value='1'>是</option>";
+                      $('#TichengSetting_is_ticheng_coupon').html(ops);
+                    }
+                  });
+                  $("#TichengSetting_is_ticheng_coupon").change(function() {
+                    var val = $(this).val();
+                    var val1 = $("#TichengSetting_is_chengdan_coupon").val();
+                    if (val == 1 && val1 == 0) {
+                      //平台承担费用不能选择参与分成，正常情况不会走到这里
+                      $("#TichengSetting_is_chengdan_coupon").val(1)
+                    }
+                  });
+                  $("#TichengSetting_is_chengdan_firstdiscount").change(function() {
+                    $('#TichengSetting_is_ticheng_firstdiscount').html("");
+                    var val = $(this).val();
+                    var ops = "";
+                    if (val == 0) {
+                      ops = "<option value='0'>否</option>";
+                      $('#TichengSetting_is_ticheng_firstdiscount').html(ops);
+                    } else {
+                      ops = "<option value='0'>否</option><option value='1'>是</option>";
+                      $('#TichengSetting_is_ticheng_firstdiscount').html(ops);
+                    }
+                  });
+                  $("#TichengSetting_is_ticheng_firstdiscount").change(function() {
+                    var val = $(this).val();
+                    var val1 = $("#TichengSetting_is_chengdan_firstdiscount").val();
+                    if (val == 1 && val1 == 0) {
+                      //平台承担费用不能选择参与分成，正常情况不会走到这里
+                      $("#TichengSetting_is_chengdan_firstdiscount").val(1)
+                    }
+                  });
+                });</script>
+            </div>
+          </div>
+        </div>
+  </body>
+
+</html>

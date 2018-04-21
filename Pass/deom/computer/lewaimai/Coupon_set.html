@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-flag-o flag-o-icon"></i>
+      <li class="active">营销活动</li>
+      <li class="active">优惠券</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li >
+                <a href="Coupon.html">优惠券发放列表</a></li>
+              <li >
+                <a href="Coupon_list.html">优惠券列表</a></li>
+              <li>
+                <a href="Coupon_gift.html">优惠券组合礼包</a></li>
+              <li class="active">
+                <a href="Coupon_set.html">优惠券设置</a></li>
+            </ul>
+            <div class="tab-content">
+              <script>function checkcoupon() {
+                  var value = $('#coupon_id').val();
+                  if (value == null) {
+                    bootbox.alert('请选择一张优惠券，如果没有优惠券，请先去创建优惠券');
+                    return false;
+                  } else {
+                    return true;
+                  }
+                }</script>
+              <form action="" method="post">
+                <label>首次进入店铺时自动发放优惠券</label>
+                <br>
+                <label>
+                  <input type="radio" name="open_autocoupon" value="1" checked="">开启</label>&nbsp;&nbsp;&nbsp;
+                <label>
+                  <input type="radio" value="0" name="open_autocoupon">关闭</label>
+                <!--<label></label>-->
+                <br>
+                <br>
+                <label>选择首次进入店铺时自动发放的优惠券
+                  <br>
+                  <select name="coupon_id" id="coupon_id">
+                    <option value="28387">圣诞2元优惠券</option>
+                    <option value="29837">圣诞3元优惠券</option>
+                    <option value="29838">圣诞5元优惠券</option></select>
+                </label>
+                <br>
+                <br>
+                <label>发放张数
+                  <br>
+                  <select name="coupon_num">
+                    <option value="1" selected="">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option></select>
+                </label>
+                <br>
+                <br>
+                <input type="hidden" name="submit" value="submit">
+                <button type="submit" class="btn btn-success" onclick="return checkcoupon();">保存</button>
+                <br></form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

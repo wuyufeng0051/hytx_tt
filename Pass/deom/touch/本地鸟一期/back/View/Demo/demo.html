@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>发布动态</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<style>
+	body{
+		font-family: "microsoft yahei",sans-serif;
+		background: #fff;
+		/*padding-top: 5px;*/
+	}
+/*
+	textarea{
+		border:none;
+	}
+
+	ul{
+		list-style: none;
+		margin:0;
+		padding: 0;
+	}
+	#uploaderFiles li{
+		float: left;
+	    margin-right: 9px;
+	    margin-bottom: 9px;
+	    width: 79px;
+	    height: 79px;
+	}
+	#uploaderFiles li img{
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+	.uploader-inputbox{
+		float: left;
+	    position: relative;
+	    margin-right: 9px;
+	    margin-bottom: 9px;
+	    width: 79px;
+	    height: 79px;
+	    background: url(__PUBLIC__/Home/img/upload.jpg) no-repeat;
+	    background-size: 79px 79px;
+
+	}
+	.uploader-input{
+		display: none;
+	}	*/
+	.pro_img{ width:100%; overflow:hidden; border:0px red solid; }
+	.pro_img img.pic_new{ width:79px;height: 79px;}
+	.pro_img {position:relative}
+	.pro_img .pic_newbox{width: 100px;height: 100px;position: relative;float: left;margin-left: 10px;margin-bottom: 10px;}
+	.pro_img .pic_newbox div{width: 100px;height: 20px;background-color: #303030;position: absolute;bottom: 0;left: 0;z-index: 777;opacity: 0.6}
+	.pro_img .pic_newbox .delete_icon{position: absolute;left: 38px;bottom: 0px;z-index: 888;width: 20px;}
+	.pro_img .addproimg input{position: absolute;width: 79px;height: 79px;margin:0;opacity:0;}
+	.pro_img .addproimg{width: 79px;height: 79px;position: relative;float: left;margin-left: 10px;}
+	.pop{height: 160px;}
+	#content{border: 1px solid #878585;margin-left: 5%;margin-right: 5%;width: 90%;padding: 3px;}
+	.operateBtn{width: 100%;height: 35px;border-top:1px solid #ddd;}
+	.operateBtn div{text-align: center;line-height: 35px;color: #af589c;font-size: 15px;}
+	</style>
+</head>
+<body>
+	<div class="mui-content" style="background-color:#fff">
+ 
+		<form method="post" action="{:U('Home/Demo/imgadd')}" enctype="multipart/form-data" id="form">
+		<!-- 	<div class="mui-input-row" style="border-bottom:1px solid #e6e6e6;">
+				<label>添加标题:</label>
+				<input type="text" placeholder="普通输入框" name="post_title" id="post_title">
+			</div> -->
+			<div class="mui-input-row" style="border-bottom:1px solid #e6e6e6;s">
+				<textarea id="textarea" rows="5" placeholder="在此输入内容" name="post_desc"  ></textarea>
+			</div>
+
+			<div style="padding:10px 15px;" id="add">
+
+
+			<!-- <div id="add1"></div> -->
+ 			 <div class="pro_img">
+				<div class="addproimg">
+					 <input id="file1"  type="file" accept="image/*"  name='post_img'  multiple="" style="opacity: 0">
+					 <img src="__PUBLIC__/Home/img/add.png" id="img1" >
+				 </div>
+				</div>	
+ 			</div>
+            <input type="hidden" id="picnew" name="picnew">
+
+
+
+       </form>
+	</div>
+
+
+
+
+
+	<div class="" style="padding: 100px 20px;margin-top:10px;">
+		<button type="button" class="mui-btn mui-btn-danger mui-btn-block" id='tijiao' style="background-color:#cc2929;padding: 10px;">确定</button>
+	</div>
+
+	<!-- <div class="pop">
+		<div style="width: 100%;height: 35px;line-height: 35px;text-align: center;font-size: 15px;">内容编辑</div>
+		<textarea id="content" type="text" rows="2"></textarea>
+		<textarea id="content" rows="5" cols="20" ></textarea>
+		<div class="operateBtn">
+			<div style="float: left;border-right: 1px solid #ddd;width: 49%" onclick="closetest()">取消</div>	
+			<div style="float: right;width: 50%;" onclick="submitSure()">确定</div>
+		</div>
+	</div> -->
+
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/LocalResizeIMG.js"></script>
+	<script src="__PUBLIC__/Home/js/mobileBUGFix.mini.js"></script>
+	<script>
+ 
+
+
+	$(document).ready(function(e) {
+   $('#file1').localResizeIMG({
+      width: 440,
+      quality: 0.8,
+      success: function (result) {  
+          var submitData={
+                base64_string:result.clearBase64, 
+            }; 
+        $.ajax({
+           type: "POST",
+           url: "{:U('Home/Demo/addimg')}",
+           data: submitData,
+           binary:"json",
+           success: function(data){
+           	   // alert(data)
+           	   $(".addproimg").before('<div><div class="pic_newbox"><img class="pic_new" style="width:100px;height:100px;" src="__PUBLIC__/../'+data+'">'
+                  +'<div class="delpic"></div>'
+                  +'<img class="delete_icon delpic" src="__PUBLIC__/Home/img/delete_pic.png">'
+                  +'</div></div>')
+           	    delpiconly()
+                numberall()
+             }
+        }); 
+      }
+  });
+  });
+
+
+function  numberall(){
+	 var all = 0;
+	 var have = $('.pic_new')
+	 $.each(have,function(index,item){
+          all +=1;
+	 })
+	 // alert(all)
+	 if (all > 5) {
+	 	// alert(2)
+	 	 $(".addproimg").hide();
+	 }else{
+	 	 $(".addproimg").show();
+
+	 }
+}
+  
+
+$("#tijiao").click(function() {
+	    var have = $('.pic_new')
+	    var all ="";
+    	$.each(have,function(index,item){
+    	var srcnew = $(this).attr('src')
+              all += srcnew+"&"; 
+    	}) 
+
+         // var newall = all.substr(0,-2)
+        // alert(newall)
+       	$('#picnew').val(all); 
+    	$('#form').submit();
+	 
+});
+
+function delpiconly(){
+$(".delpic").click(function(){
+  var ss = $(this).parent().parent().find('.pic_newbox').remove();
+  numberall()
+})
+ 
+ }
+
+	// 		///****************图片**********************/
+	// 	name_pic=1;
+	// 	function t1(o){
+	// 		if(o==1 || name_pic!=1){
+	// 		var file="file"+o;
+	// 		var img="img"+o;
+	// 		var hid="hidden"+o;
+	// 		var hidimg = "hidimg"+o;
+	// 		var aa="a"+o;
+	// 		}else{
+
+	// 		var file="file"+name_pic;
+	// 		var img="img"+name_pic;
+	// 		var hid="hidden"+name_pic;
+	// 		var hidimg="hidimg"+name_pic;
+	// 		var aa="a"+name_pic;
+	// 		}
+	// 		var docObj = document.getElementById(file);
+	// 		var imgObjPreview = document.getElementById(img);
+	// 		var hidden=document.getElementById(hid);
+	// 		var hidimg=document.getElementById(hidimg);
+	// 		// alert(hidden);
+	// 		if (docObj.files && docObj.files[0]) {
+	// 			hidden.src=window.URL.createObjectURL(docObj.files[0]); //获取file文件的路径
+	// 			hidden.onload=function(){
+	// 				var width=hidden.width;
+	// 				var height=hidden.height;
+	// 				var a=document.getElementById(aa);
+	// 					if(width>height){
+	// 					imgObjPreview.style.cssText='width:100%';	//重写css样式
+	// 					}else{
+	// 					imgObjPreview.style.cssText='height:100%;width:auto;';					
+	// 					}
+	// 			imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+
+	// 			var reader = new FileReader();
+ //                reader.readAsDataURL(docObj.files[0]);
+ //                reader.onload = function(e){
+ //                 	var mb = (e.total/1024)/1024;
+	// 				// if(mb >= 2){
+	// 				// 	layer.msg('图片超过2M');
+	// 				// 	return;
+	// 				// };
+	// 			//画布方式压缩图片质量和物理文件大小
+	// 				var img = document.createElement("img");
+	// 					img.src = this.result;
+                    
+	// 				//图片一旦加载完就执行
+	// 				img.onload = function(){
+	// 					alert(111)
+	// 					width = img.naturalWidth;
+	// 					height = img.naturalHeight;
+	// 					if(width > 10000){
+	// 						width = width/16;
+	// 						height = height/16;
+	// 						img.width =width;
+	// 						img.height = height;
+
+	// 					}
+	// 					//创建画布
+	// 					canvas = document.createElement("canvas"),
+	// 					drawer = canvas.getContext("2d");
+	// 					//设置画布高度
+	// 					canvas.width = width;
+	// 					canvas.height = height;
+
+	// 					drawer.drawImage(img, 0, 0 ,canvas.width,canvas.height);
+	// 					src = canvas.toDataURL("image/jpeg", 0.6);
+	// 					// hidimg.attr('src',src);
+ //                        $.post('{:U("Home/Demo/img")}', {src:src}, function(data) {
+ //                        	alert(data)
+	//                        hidimg.value=data;
+ //                        });
+ 
+	// 			}
+	// 		}
+
+	// 			imgObjPreview.style.display = 'block';
+
+
+	// 			}
+	// 		}else{
+	// 			return false;
+	// 		}
+	// 		if(o==name_pic){
+	// 			var count=$('.pro_img').length;
+	// 			if(count<10){
+	// 			name_pic++;
+	// 		var pic_div="<div><a class='pro_img' id='a"+name_pic+"' ><input type='file' id='file"+name_pic+"'  accept='image/*' multiple='multiple' runat='server' capture='camera'  onchange='t1("+name_pic+")'/><img src='__PUBLIC__/Home/img/upload.jpg' id='img"+name_pic+"'></a><img  id='hidden"+name_pic+"' style='display:none;'><input class='pic_new' type='hidden' id='hidimg"+name_pic+"'></div>";
+	// 		$('#upload').append(pic_div); 
+	// 		var pcWidth=$('#upload').width()
+	// 	    var picImg=pcWidth/3-10;
+	// 	    $(".pro_img").width(picImg);
+	// 	    $(".pro_img").height(picImg);
+	// 		}		
+	// 	}
+	// }
+	// //
+	// var pcWidth=$('#upload').width()
+ //    var picImg=pcWidth/3-10;
+ //    $(".pro_img").width(picImg);
+ //    $(".pro_img").height(picImg);
+
+
+
+
+ 
+
+ 
+
+	</script>
+</body>
+</html>

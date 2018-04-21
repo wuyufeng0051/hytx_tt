@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-wechat wechat-icon"></i>
+      <li class="active">公众号设置</li>
+      <li class="active">自动回复</li>
+      <li class="active">图片素材</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.box { float:left; margin:15px 10px; width:170px; height:220px; border: 1px solid #e7e7eb; } .boximg { width: 170px; height: 170px; display: table-cell; text-align: center; vertical-align: middle; } .boximg .imagesclass { max-width:170px; max-height:170px; margin:auto auto; vertical-align: middle; } .boxcontroller{ height:30px; line-height:30px; text-align:center; background-color: #f4f5f9; border-top: 1px solid #e7e7eb; } .boxcontroller a{color:#c9bfbf} .boxcontroller a:hover{color:#222} .imagename{ width: 170px; height:20px; text-align:center; line-height:20px; overflow:hidden; display: block; cursor: pointer; } /* .img_pick{height:auto;position:relative;}*/ .img_pick{ height: 0; clear: both; } .inner_container_box { background-color: #fff; border: 1px solid #ccc; line-height: 1.6; font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif; color: #222; font-size: 14px; } .media-list { width:100%; min-height: 530px; float:left; } .group_list{ width:13%; min-height: 530px; float:left; } .group_list .num { display: inline-block; padding-left: 3px; font-style: normal; color: #8d8d8d; } dl{display: block;} dd { display: block; } .inner_menu_link strong { display: inline-block; margin-top: -2px; width: auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-wrap: normal; max-width: 80px; font-weight: 400; font-style: normal; vertical-align: middle; cursor: pointer; } .inner_menu_item { position: relative; line-height: 32px; } dd { display: block; } .inner_menu_item a:hover{ background-color: #f4f5f9; color: #222; text-decoration: none; } .inner_menu_item.selected { background-color: #f4f5f9; } .inner_menu_link { display: block; color: #222; padding-left: 1em; text-decoration: none; } .media-list p{display:block} .global_mod.float_layout { } .global_mod { padding: 10px 20px; } .global_mod.float_layout .global_info { float: left; } .global_mod .global_info { margin-top: 4px; } .global_mod .global_info a{ margin:0 15px; } a { color: #459ae9; text-decoration: none; } .global_mod .global_extra { text-align: right; } .upload_box { position: relative; z-index: 1; } .upload_box { display: inline-block; line-height: 1.6; vertical-align: middle; } .r { float: right; } .upload_area { position: relative; display: inline-block; vertical-align: middle; } .upload_area a:hover{ color:#fff; text-decoration: none; } .mini_tips.weak_text { color: #8d8d8d; } .img_water_tips { margin-right: 1em; line-height: 32px; } element.style { position: absolute; top: 0px; left: 0px; width: 106px; height: 32px; overflow: hidden; bottom: auto; right: auto; } .upload-btn { min-width: 60px; } .upload-btn_primary { background-color: #44b549; background-image: -moz-linear-gradient(top,#44b549 0,#44b549 100%); background-image: -webkit-gradient(linear,0 0,0 100%,from(#44b549),to(#44b549)); background-image: -webkit-linear-gradient(top,#44b549 0,#44b549 100%); background-image: -o-linear-gradient(top,#44b549 0,#44b549 100%); background-image: linear-gradient(to bottom,#44b549 0,#44b549 100%); border-color: #44b549; color: #fff; } .upload-btn_primary_disabled { background-color: #e7e7eb ; background-image: -moz-linear-gradient(top,#e7e7eb 0,#e7e7eb 100%); background-image: -webkit-gradient(linear,0 0,0 100%,from(#e7e7eb),to(#e7e7eb)); background-image: -webkit-linear-gradient(top,#e7e7eb 0,#e7e7eb 100%); background-image: -o-linear-gradient(top,#e7e7eb 0,#e7e7eb 100%); background-image: linear-gradient(to bottom,#e7e7eb 0,#e7e7eb 100%); border-color: #e7e7eb; color: #a5a6aa; } .upload-btn { display: inline-block; overflow: visible; padding: 0 22px; height: 30px; line-height: 30px; vertical-align: middle; text-align: center; text-decoration: none; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; font-size: 14px; border-width: 1px; border-style: solid; cursor: pointer; } .oper_group { padding: 10px 20px; background-color: #f4f5f9; border-bottom: 1px solid #e7e7eb; } .group { } .oper_group .frm_controls { width: 68px; height: 30px; line-height: 30px; } .oper_group .oper_ele { margin-right: 1em; } .frm_controls { display: table-cell; vertical-align: top; float: none; width: auto; } .l { float: left; } .frm_radio_label, .frm_checkbox_label { display: inline-block; text-align: left; cursor: pointer; margin-right: 1em; } label { cursor: default; } Inherited from div.frm_controls.oper_ele.l.oper_group .frm_controls { width: 68px; height: 30px; line-height: 30px; } input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; } .frm_radio, .frm_checkbox { position: absolute; left: -999em; } .btn_disabled{ background-image: linear-gradient(to bottom,#e7e7eb 0,#e7e7eb 100%); border-color: #dadbe0; color: #a5a6aa; text-decoration: none; cursor: default; } .btn_disabled_over{color: #a5a6aa;} .btn_abled{ background-color:#fff; border-color: #e7e7eb; color: #222; cursor:pointer; } .btn_abled_over{ background-image: linear-gradient(to bottom,#e7e7eb 0,#e7e7eb 100%); border-color: #e7e7eb; color: #222; } .form-control { width:150px; height: 34px; padding: 6px 12px; background-color: #fff; color:#222; /* border: 1px solid #ccc;*/ border-radius: 4px; -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075); /* box-shadow: inset 0 1px 1px rgba(0,0,0,.075); */ /* -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; */ -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; /* transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; */ display:inline; } .popover-box { width: 300px; z-index: 200; position:absolute; top:20%; left:30%; background-color: #fff; color:#222; border: 1px solid #ccc; padding:30px; line-height: 1.6; font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif; font-size: 14px; } .frm_input_box input{width:210px;} .popover-box .popover_bar{ padding:30px 0; }</style>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li class="active">
+                <a href="#">图片</a></li>
+            </ul>
+            <div class="tab-content ">
+              <div class="inner_container_box clearfix">
+                <!-- main start -->
+                <div class="media-list ">
+                  <div class="global_mod float_layout clearfix">
+                    <p class="global_info">未分组</p>
+                    <div class="global_extra">
+                      <form action="" method="post" id="upload_form" enctype="multipart/form-data">
+                        <input type="hidden" name="upload_group" value="未分组">
+                        <div class="upload_box align_right r">
+                          <input type="file" multiple="multiple" name="file[]" accept="image/*" style="display: none;">
+                          <span class="upload_area ">
+                            <a id="js_upload" class="upload-btn upload-btn_primary" style="">本地上传</a></span>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="oper_group group clearfix">
+                    <div class="frm_controls oper_ele l">
+                      <label class="frm_checkbox_label" for="js_all" id="all_checked">
+                        <input id="js_all" type="checkbox" class="ace">
+                        <span class="lbl">全选</span></label>
+                    </div>
+                    <!-- 暂时不做 <span id="js_batchmove" class="upload-btn upload-btn_default oper_ele l js_popover btn_disabled">移动分组</span>
+                    -->
+                    <span id="delselimg" class="upload-btn upload-btn_default oper_ele l js_popover btn_disabled">删除</span></div>
+                  <div class="clearfix">
+                    <form id="deleteform" action="/picture/delete" method="post">
+                      <div class="img_pick">
+                        <div id="nowselectimagebox" style="display:none;position:fixed;top:50px;z-index:99999;">
+                          <img src="" id="nowselectimage"></div>
+                        <div class="box">
+                          <div class="boximg">
+                            <img class="imagesclass" src="upfile/0-w94.jpeg"></div>
+                          <label class="imagename">
+                            <!-- <i class="icon_checkbox"></i> -->
+                            <input type="checkbox" name="deleteimages[]" value="VIHrUm1k8pMpDzJk8oyZdf-hzI8R4G9FlILbdTdp4oY" class="ace">
+                            <span class="lbl iname">1824207447925515</span></label>
+                        </div>
+                        <div class="box">
+                          <div class="boximg">
+                            <img class="imagesclass" src="upfile/0-w97.jpeg"></div>
+                          <label class="imagename">
+                            <!-- <i class="icon_checkbox"></i> -->
+                            <input type="checkbox" name="deleteimages[]" value="VIHrUm1k8pMpDzJk8oyZdW2Fh-wmmbns9QH0wSNY4rU" class="ace">
+                            <span class="lbl iname">54fff7728be66.jp</span></label>
+                        </div>
+                        <div class="box">
+                          <div class="boximg">
+                            <img class="imagesclass" src="upfile/0-w96.jpeg"></div>
+                          <label class="imagename">
+                            <!-- <i class="icon_checkbox"></i> -->
+                            <input type="checkbox" name="deleteimages[]" value="VIHrUm1k8pMpDzJk8oyZdTUGAMFFYnbLwQigAReEgUI" class="ace">
+                            <span class="lbl iname">对对对.jpg</span></label>
+                        </div>
+                        <div class="box">
+                          <div class="boximg">
+                            <img class="imagesclass" src="upfile/0-w95.jpeg"></div>
+                          <label class="imagename">
+                            <!-- <i class="icon_checkbox"></i> -->
+                            <input type="checkbox" name="deleteimages[]" value="VIHrUm1k8pMpDzJk8oyZdVIx4vy_RmQMoIuYKSygDS0" class="ace">
+                            <span class="lbl iname">下载.jpg</span></label>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="dataTables_paginate  clearfix" style="margin: 10px;">
+                    <ul class="pagination">
+                      <li class="paginate_button previous disabled">
+                        <a href="#">上一页</a></li>
+                      <li class="paginate_button next ">
+                        <a href="#">下一页</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- main end --></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popover-box  pos_center" style="width:500px;padding:15px;display:none" id="uploadimg"></div>
+      <div class="modal-backdrop  in" id="zhezhao" style="z-index:100;display:none"></div>
+
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

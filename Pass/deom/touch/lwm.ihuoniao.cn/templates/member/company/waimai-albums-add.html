@@ -1,0 +1,75 @@
+{#$pageTitle = "相册管理 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/waimai-albums.css" media="all" />
+<script type="text/javascript">
+	var modelType = 'waimai';
+	var atlasSize = {#$atlasSize#}, atlasType = '{#$atlasType#}', atlasMax = 50;
+	var storeid = {#$storeid#};
+
+</script>
+</head>
+
+{#$pageCurr = "waimai-albums"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+	<div class="container fn-clear">
+		<div class="w-form">
+			<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=waimai&action={#if $id != ""#}editAlbums&id={#$id#}{#else#}addAlbums{#/if#}" data-url="{#getUrlPath service='member' template='waimai-albums'#}">
+				<dl class="fn-clear" data-required="1">
+					<dt><span>*</span>相册分类：</dt>
+					<dd id="selType">
+						<div class="sel-group" data-id="请选择相册分类">
+							<button type="button" class="sel">请选择<span class="caret"></span></button>
+							<ul class="sel-menu">
+								{#waimai action='albumType' store={#$storeid#}#}
+								<li><a href="javascript:;" data-id="{#$row.id#}">{#$row.typename#}</a></li>
+								{#/waimai#}
+							</ul>
+						</div>
+						<input type="hidden" name="typeid" id="typeid" />
+						<span class="tip-inline"></span>
+					</dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt><span>*</span>图集：</dt>
+					<dd class="listImgBox">
+						<div class="list-holder">
+							<ul id="listSection2" class="fn-clear listSection fn-hide"></ul>
+							<input type="hidden" name="imglist" value="" class="imglist-hidden" id="litpic">
+						</div>
+		        <div class="btn-section fn-clear">
+							<div class="uploadinp filePicker" id="filePicker2" data-type="desc" data-count="50" data-size="{#$atlasSize#}" data-imglist=""><div id="flasHolder"></div><span>添加图片</span></div>
+							<div class="upload-tip">
+								<p><a href="javascript:;" class="fn-hide deleteAllAtlas"{#if $detail_pics#} style="display: inline-block;"{#/if#}>删除所有</a>&nbsp;&nbsp;单张最大{#$atlasSize/1024#}M，最多50张 <span class="fileerror"></span></p>
+							</div>
+						</div>
+					</dd>
+				</dl>
+				<dl class="fn-clear" data-required="1">
+					<dt><span>*</span>验证码：</dt>
+					<dd>
+						<input type="text" class="inp" maxlength="4" size="6" name="vdimgck" id="vdimgck" autocomplete="off" data-title="请输入验证码" />
+						<img src="/include/vdimgck.php" title="看不清？点击换一张" id="verifycode" />
+						<span class="tip-inline"></span>
+					</dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>&nbsp;</dt>
+					<dd><button class="submit" id="submit">{#if $id == 0#}确认提交{#else#}提交修改{#/if#}</button></dd>
+				</dl>
+			</form>
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dragsort-0.5.1.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/fabu.js?v=1"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/waimai-albums-add.js?v=1"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicUpload.js?v=4"></script>
+</body>
+</html>

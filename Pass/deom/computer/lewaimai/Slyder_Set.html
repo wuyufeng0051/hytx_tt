@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-flag-o flag-o-icon"></i>
+      <li class="active">营销活动</li>
+      <li>
+        <a href="#">大转盘抽奖</a></li>
+      <li class="active">设置奖项</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <script>$(function() {
+          $('.type').on('change',
+          function() {
+            var value = $(this).val();
+            if (value == '0') {
+              $(this).parents('tr').children('td').children('.point').show();
+              $(this).parents('tr').children('td').children('.coupon').hide();
+            } else if (value == '1') {
+              $(this).parents('tr').children('td').children('.point').hide();
+              $(this).parents('tr').children('td').children('.coupon').hide();
+            } else if (value == '2') {
+              $(this).parents('tr').children('td').children('.point').hide();
+              $(this).parents('tr').children('td').children('.coupon').show();
+            }
+          });
+        });</script>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li >
+                <a href="Slyder_Adventures.html">基本配置</a></li>
+              <li class="active">
+                <a href="Slyder_Set.html">设置奖项</a></li>
+              <li>
+                <a href="Slyder_List.html">中奖列表</a></li>
+            </ul>
+            <div class="tab-content">
+              <div id="yw0">
+                <div class="alert in alert-block fade alert-info">
+                  <a href="#" class="close" data-dismiss="alert">×</a>中奖概率是百分之几，比如一等奖填写的是3，则一等奖的中奖概率是3%，支持2位小数（如0.05%），中奖概率总和不要设置大于100;各奖项说明为必填项。
+                  <br>奖项类型分为三种:1、普通：一般为线下的商品，可根据顾客提供的顾客ID或者手机中奖界面，后台进行确认操作;2、优惠券:中奖会自动发放设置的优惠券；3、积分：中奖会自动发放相应的积分；</div></div>
+              <form id="form1" action="" method="post" name="form1">
+                <table class="table table-striped" style="margin-top:10px;">
+                  <tbody>
+                    <tr>
+                      <th>奖项</th>
+                      <th>奖项说明</th>
+                      <th style="width:100px;">奖品类型</th>
+                      <th style="width:200px;">优惠券</th>
+                      <th style="width:80px;">积分</th>
+                      <th>中奖概率</th>
+                      <th>奖品数量</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <td style="width: 100px;">一等奖</td>
+                      <td>
+                        <textarea name="describe[0]">优惠券5元</textarea>
+                        <br></td>
+                      <td>
+                        <select name="type[0]" class="type">
+                          <option value="1">普通</option>
+                          <option value="2" selected="">优惠券</option>
+                          <option value="0">积分</option></select>
+                      </td>
+                      <td>
+                        <select name="coupon_id[0]" class="coupon" style="display:;">
+                          <option value="28387">圣诞2元优惠券</option>
+                          <option value="29837">圣诞3元优惠券</option>
+                          <option value="29838">圣诞5元优惠券</option></select>
+                      </td>
+                      <td>
+                        <input type="text" value="0" name="point[0]" style="width:40px;display:none;" class="point"></td>
+                      <td>
+                        <input type="text" name="chance[0]" value="30.00" style="width:100px;"></td>
+                      <td>
+                        <input type="text" name="award_num[0]" value="0" style="width:40px;"></td>
+                      <td>
+                        <input type="hidden" value="38467" name="award_id[0]" style="width:60px;"></td>
+                    </tr>
+                    <tr>
+                      <td style="width: 100px;">二等奖</td>
+                      <td>
+                        <textarea name="describe[1]">优惠券3元</textarea>
+                        <br></td>
+                      <td>
+                        <select name="type[1]" class="type">
+                          <option value="1">普通</option>
+                          <option value="2" selected="">优惠券</option>
+                          <option value="0">积分</option></select>
+                      </td>
+                      <td>
+                        <select name="coupon_id[1]" class="coupon" style="display:;">
+                          <option value="28387" selected="">圣诞2元优惠券</option>
+                          <option value="29837">圣诞3元优惠券</option>
+                          <option value="29838">圣诞5元优惠券</option></select>
+                      </td>
+                      <td>
+                        <input type="text" value="0" name="point[1]" style="width:40px;display:none;" class="point"></td>
+                      <td>
+                        <input type="text" name="chance[1]" value="50.00" style="width:100px;"></td>
+                      <td>
+                        <input type="text" name="award_num[1]" value="52" style="width:40px;"></td>
+                      <td>
+                        <input type="hidden" value="38468" name="award_id[1]" style="width:60px;"></td>
+                    </tr>
+                    <tr>
+                      <td style="width: 100px;">三等奖</td>
+                      <td>
+                        <textarea name="describe[2]">积分</textarea>
+                        <br></td>
+                      <td>
+                        <select name="type[2]" class="type">
+                          <option value="1">普通</option>
+                          <option value="2">优惠券</option>
+                          <option value="0" selected="">积分</option></select>
+                      </td>
+                      <td>
+                        <select name="coupon_id[2]" class="coupon" style="display:none;">
+                          <option value="28387">圣诞2元优惠券</option>
+                          <option value="29837">圣诞3元优惠券</option>
+                          <option value="29838">圣诞5元优惠券</option></select>
+                      </td>
+                      <td>
+                        <input type="text" value="5" name="point[2]" style="width:40px;display:;" class="point"></td>
+                      <td>
+                        <input type="text" name="chance[2]" value="20.00" style="width:100px;"></td>
+                      <td>
+                        <input type="text" name="award_num[2]" value="23" style="width:40px;"></td>
+                      <td>
+                        <input type="hidden" value="38469" name="award_id[2]" style="width:60px;"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div style="height:80px;width:100%;margin-top:20px;padding-top:20px;padding-bottom:20px;background:#f9f9f9;">
+                  <div class="col-md-offset-3 col-md-9">
+                    <button class="btn btn-info" type="submit">
+                      <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="page-content">
+  <!-- /section:settings.box -->
+  <div class="page-content-area">
+    <style>.remarkInput{ font-size:12px; color:black; display:none; width:500px; } .remarkDiv{ width:500px; min-height:18px; }</style>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="tabbable">
+          <ul class="nav nav-tabs" id="myTab">
+              <li >
+                <a href="customer.html">顾客列表</a></li>
+              <li>
+                <a href="blacklist.html">黑名单</a></li>
+              <li class="active">
+                <a href="label_management.html">标签管理</a></li>
+              <li>
+                <a href="customer_custom.html">顾客自定义信息</a></li>
+            </ul>
+          <div class="tab-content">
+            <div style="margin-bottom:20px;">
+              <a id="add-remark" class="btn btn-success">新建标签</a></div>
+            <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>标签名</th>
+                  <th>操作</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="yi">
+                    <div class="remarkDiv"></div>
+                    <input class="remarkInput" type="text" value="" data-old=""></td>
+                  <td class="er">
+                    <div class="hidden-sm hidden-xs btn-group">
+                      <button class="btn btn-xs btn-danger delete-remark" data-remark="">
+                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                      </button>
+                      <button class="btn-xs green update-remark" data-remark="">
+                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="yi">
+                    <div class="remarkDiv">火鸟测试</div>
+                    <input class="remarkInput" type="text" value="火鸟测试" data-old="火鸟测试"></td>
+                  <td class="er">
+                    <div class="hidden-sm hidden-xs btn-group">
+                      <button class="btn btn-xs btn-danger delete-remark" data-remark="火鸟测试">
+                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                      </button>
+                      <button class="btn-xs green update-remark" data-remark="火鸟测试">
+                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>$(function() {
+        $(".delete-remark").click(function() {
+          $.ajax({
+            url: "/customer/deleteremark",
+            type: "post",
+            data: {
+              "remark": $(this).attr("data-remark")
+            },
+            dataType: "json",
+            success: function(d) {
+              if (d.status == "error") {
+                bootbox.alert(d.message);
+                return false;
+              }
+              if (d.returncode) {
+                location.reload();
+              } else {
+                bootbox.alert(d.returnmsg);
+              }
+            }
+          });
+        });
+        $(".update-remark").click(function() {
+          var a = $(this).parent().parent().prev('td').find('.remarkInput').val();
+
+          bootbox.dialog({
+            message: "<input id='add-remark-value' class='bootbox-input bootbox-input-text form-control' autocomplete='off' type='text' value='" + a + "'>",
+            title: "请输入您要修改的标签名",
+            buttons: {
+              success: {
+                label: "确定",
+                className: "btn-success",
+                callback: function() {
+                  if ($("#add-remark-value").val() != "" && $("#add-remark-value").val() != null) {
+                    $.ajax({
+                      url: "/customer/updateremark",
+                      type: "post",
+                      data: {
+                        "remark": $("#add-remark-value").val(),
+                        "old": a
+                      },
+                      dataType: "json",
+                      success: function(d) {
+                        if (d.status == "error") {
+                          bootbox.alert(d.message);
+                          return false;
+                        }
+                        if (d.returncode) {
+                          location.reload();
+                        } else {
+                          bootbox.alert(d.returnmsg);
+                        }
+                      }
+                    });
+                  } else {
+                    bootbox.alert('标签名不能为空！');
+                  }
+                }
+              },
+              danger: {
+                label: "取消",
+                className: "btn-danger",
+                callback: function() {
+                  bootbox.hideAll();
+                }
+              }
+            }
+          });
+        });
+        $("#add-remark").click(function() {
+          bootbox.dialog({
+            message: "<input id='add-remark-value' class='bootbox-input bootbox-input-text form-control' autocomplete='off' type='text'>",
+            title: "请输入您要添加的标签名",
+            buttons: {
+              success: {
+                label: "确定",
+                className: "btn-success",
+                callback: function() {
+                  if ($("#add-remark-value").val() != "" && $("#add-remark-value").val() != null) {
+                    $.ajax({
+                      url: "/customer/addremark",
+                      type: "post",
+                      data: {
+                        "remark": $("#add-remark-value").val()
+                      },
+                      dataType: "json",
+                      success: function(d) {
+                        if (d.status == "error") {
+                          bootbox.alert(d.message);
+                          return false;
+                        }
+                        if (d.returncode) {
+                          location.reload();
+                        } else {
+                          bootbox.alert(d.returnmsg);
+                        }
+                      }
+                    });
+                  } else {
+                    bootbox.alert('标签名不能为空！');
+                  }
+                }
+              },
+              danger: {
+                label: "取消",
+                className: "btn-danger",
+                callback: function() {
+                  bootbox.hideAll();
+                }
+              }
+            }
+          });
+        });
+        /*修改标签名*/
+        $(".remarkDiv").click(function() {
+          $(this).hide();
+          $(this).next().show().focus();
+        });
+        $(".remarkInput").blur(function() {
+          var _this = $(this),
+          content = _this.val(),
+          old = _this.attr("data-old");
+          if (content) {
+            _this.attr("disabled", true);
+            $.ajax({
+              url: "/customer/updateremark",
+              type: "post",
+              data: {
+                "old": old,
+                "remark": content
+              },
+              dataType: "json",
+              success: function(d) {
+                if (d.status == "error") {
+                  bootbox.alert(d.message);
+                  return false;
+                }
+                if (d.returncode) {
+                  _this.attr("data-old", _this.val());
+                  _this.prev().html(_this.val());
+                } else {
+                  bootbox.alert(d.renturnmsg);
+                  _this.prev().html(_this.attr("data-old"));
+                }
+                _this.hide();
+                _this.prev().show();
+                _this.attr("disabled", false);
+              }
+            });
+          } else {
+            bootbox.alert("标签名不能为空！");
+            _this.prev().html(_this.attr("data-old"));
+            _this.hide();
+            _this.prev().show();
+          }
+        }).keyup(function() {
+          if (event.keyCode == 13) {
+            var _this = $(this),
+            content = _this.val(),
+            old = _this.attr("data-old");
+            if (content) {
+              _this.attr("disabled", true);
+              $.ajax({
+                url: "/customer/updateremark",
+                type: "post",
+                data: {
+                  "old": old,
+                  "remark": content
+                },
+                dataType: "json",
+                success: function(d) {
+                  if (d.status == "error") {
+                    bootbox.alert(d.message);
+                    return false;
+                  }
+                  if (d.returncode) {
+                    _this.attr("data-old", _this.val());
+                    _this.prev().html(_this.val());
+                  } else {
+                    bootbox.alert(d.renturnmsg);
+                    _this.prev().html(_this.attr("data-old"));
+                  }
+                  _this.hide();
+                  _this.prev().show();
+                  _this.attr("disabled", false);
+                }
+              });
+            } else {
+              //bootbox.alert("标签名不能为空！");
+              _this.prev().html(_this.attr("data-old"));
+              $(this).hide();
+              $(this).prev().show();
+            }
+          }
+        });
+      });</script>
+  </div>
+  <!-- /.page-content-area --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

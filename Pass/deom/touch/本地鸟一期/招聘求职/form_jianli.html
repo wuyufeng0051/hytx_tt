@@ -1,0 +1,205 @@
+<div class="row-fluid">
+
+    <div class="span12">
+        <h3 class="page-title">
+            招聘求职
+        </h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="index">招聘求职</a>
+                <i class="icon-angle-right"></i>
+            </li>
+
+            <li>
+                <a href="index?range=jianli">求职简历</a>
+                <i class="icon-angle-right"></i>
+            </li>
+            <li>{$rend.resume_name}</li>
+        </ul>
+    </div>
+</div>
+
+<form class="form-horizontal" action="change" id="form">
+
+    <input type="hidden" name="resume_id" value="{$rend.resume_id}" class="m-wrap medium" id="id">
+
+    <div class="control-group">
+        <label class="control-label">图片:</label>
+        <div class="controls">
+            <div class="fileupload fileupload-new" data-provides="fileupload">
+                {volist name='img' id='io'}
+                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;float:left; margin-right: 10px">
+                    <img src="../../../../{$io.imgs_path}" style="height: 150px">
+                </div>
+                {/volist}
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">姓名:</label>
+        <div class="controls" >
+            <input type="text" name="resume_name" value="{$rend.resume_name}" class="m-wrap medium" readonly>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">性别:</label>
+        <div class="controls">
+            <label class="radio">
+                <div class="radio"><input disabled type="radio" name="resume_sex" value="1" {if condition="$rend.resume_sex=='男'" }checked="" {/if}></div>男</label>
+            <label class="radio">
+                <div class="radio"><input disabled type="radio" name="resume_sex" value="0" {if condition="$rend.resume_sex=='女'" }checked="" {/if}></div>女</label>
+        </div>
+    </div>
+
+<!--     <div class="control-group">
+        <label class="control-label">年龄:</label>
+        <div class="controls" >
+            <input type="text" name="resume_age" value="{$rend.resume_age}" class="m-wrap medium" readonly>
+        </div>
+    </div> -->
+
+    <div class="control-group">
+        <label class="control-label">出生年份:</label>
+        <div class="controls" >
+            <input type="text" name="resume_birthday" value="{$rend.resume_birthday}" class="m-wrap medium" readonly>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">学历:</label>
+        <div class="controls" >
+            <select class="small m-wrap" tabindex="1" name="resume_education" disabled>
+ 
+                     <option  selected="selected">{$rend['resume_education']}</option>
+          
+            </select>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">个人经验:</label>
+        <div class="controls" >
+            <select class="small m-wrap" tabindex="1" name="resume_exp" disabled>
+                
+                <option selected >{$rend.resume_exp}</option>
+                 
+            </select>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">联系方式:</label>
+        <div class="controls" >
+            <input type="text" name="resume_phone" value="{$rend.resume_phone}" class="m-wrap medium" readonly>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">期望职位:</label>
+        <div class="controls" >
+            <input type="text" name="resume_position" value="{$rend.position.classify2_name}" class="m-wrap medium" readonly>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">期望工资:</label>
+        <div class="controls" >
+            <select class="small m-wrap" tabindex="1" name="resume_wages"  disabled>
+                {volist name='wages' id='wo'}
+                <option value="{$wo.classify2_id}" {if condition="$rend.resume_wages==$wo.classify2_id"}selected{/if}>{$wo.classify2_name}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">工作经历:</label>
+        <div class="controls">
+            <textarea class="large m-wrap" name="resume_salary" rows="5" readonly>{$rend.resume_salary}</textarea>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">自我介绍:</label>
+        <div class="controls">
+            <textarea class="large m-wrap" name="resume_introduce" rows="5" readonly>{$rend.resume_introduce}</textarea>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">发布者id:</label>
+        <div class="controls" >
+            <input type="text" name="resume_uid" value="{$rend.resume_uid}" class="m-wrap medium" readonly>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">发布时间:</label>
+        <div class="controls" >
+            <input type="text" name="resume_time" value="{$rend.resume_time}" class="m-wrap medium"  readonly>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">置顶:</label>
+        <div class="controls">
+            <select class="small m-wrap" tabindex="1" name="resume_is_top" disabled>
+                <option value="0" {if condition="$rend.resume_is_top=='否'"}selected{/if}>否</option>
+                <option value="1" {if condition="$rend.resume_is_top=='是'"}selected{/if}>是</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">状态:</label>
+        <div class="controls">
+            <select class="small m-wrap" tabindex="1" name="resume_status" id="resume_status">
+                <option value="0" {if condition="$rend.resume_status==0"}selected{/if}>正常</option>
+                <option value="-1" {if condition="$rend.resume_status==-1"}selected{/if}>已删</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button type="button" class="btn blue btn-save"><i class="icon-ok"></i> 保存</button>
+        <!-- <button type="button" class="btn btn-qx">返回</button> -->
+        <button type="button" class="btn red" href="#form_modal" data-toggle="modal" >删除</button>
+    </div>
+    {include file="job/tc_jianli2" /}
+
+</form>
+<input type="hidden" id="sty" value="{$rend.resume_id}">
+<input type="hidden" id="str" value="{$rend.resume_uid}">
+<input type="hidden" id="name" value="resume_id">
+
+<script>
+    $(document).ready(function () {
+        $(".btn-save").click(function(){
+            if(confirm('确定保存吗?')) {
+                var url = $('#form').attr('action');
+                var id=$('#id').val();
+                var resume_status=$('#resume_status').val();
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data:{
+                        resume_id:id,
+                        resume_status:resume_status
+                    },
+                    success: function (data) {
+                        if (data.code == 0) {
+                            location.href = history.back(-1);
+                        }
+                    }
+                });
+                return false;
+            }else {
+                return false;
+            }
+        })
+    })
+
+</script>
+

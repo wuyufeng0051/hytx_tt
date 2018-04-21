@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>在线充值 - {#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/deposit.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var pointRatio = {#$cfg_pointRatio#}, pointName = '{#$cfg_pointName#}';
+</script>
+</head>
+
+<body>
+{#$pageTitle = "帐户充值"#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="container fn-clear">
+
+		{#include file="sidebar.html"#}
+
+		<div class="main">
+
+			<ul class="main-tab">
+				<li class="curr"><a href="javascript:;">在线充值</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='withdraw'#}">我要提现</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='withdraw_log'#}">提现记录</a></li>
+				<!-- <li><a href="{#getUrlPath service='member' type='user' template='record'#}">充值记录</a></li> -->
+				<li class="tmoney">当前账户余额：<strong>{#$totalMoney#}</strong>元</li>
+			</ul>
+
+			<div class="deposit">
+
+				<form action="/include/ajax.php?service=member&action=deposit" method="post" target="_blank" id="payform">
+					<input type="hidden" name="paytype" id="paytype" value="" />
+
+					<dl class="fn-clear">
+						<dt>支付方式：</dt>
+						<dd class="fn-clear" id="payType">
+							{#$hasPayment = ""#}
+							{#siteConfig action="payment"#}
+							{#if $row.pay_code == "alipay"#}
+								{#$hasPayment = 1#}
+							{#/if#}
+							<a href="javascript:;" class="bank-icon{#if $_bindex.row == 1#} active{#/if#}" title="{#$row.name#}" data-type="{#$row.pay_code#}"><span class="{#$row.pay_code#}"></span><b></b></a>
+							{#/siteConfig#}
+							{#if $hasPayment#}
+							<a href="javascript:;" class="bank-icon" title="储蓄卡网银"><span class="bankpayment"></span><b></b></a>
+							{#/if#}
+							<!-- <a href="javascript:;" class="bank-icon active" title="支付宝"><span class="alipay"></span><b></b></a>
+							<a href="javascript:;" class="bank-icon" title="微信支付"><span class="wechat"></span><b></b></a>
+							<a href="javascript:;" class="bank-icon" title="财付通"><span class="tenpay"></span><b></b></a>
+							<a href="javascript:;" class="bank-icon" title="储蓄卡网银"><span class="bankpayment"></span><b></b></a>
+							<a href="javascript:;" class="bank-icon" title="银联在线"><span class="unionpay"></span><b></b></a>
+							<a href="javascript:;" class="bank-icon" title="百度钱包"><span class="baidu"></span><b></b></a>
+							<a href="javascript:;" class="bank-icon" title="京东钱包"><span class="jdpay"></span><b></b></a>
+							<a href="javascript:;" class="bank-icon" title="易宝支付"><span class="yeepay"></span><b></b></a>
+							<a href="javascript:;" class="bank-icon" title="PayPal"><span class="paypal"></span><b></b></a> -->
+							<!-- <a href="javascript:;" class="bank-icon" title="手机支付"><span class="mobile"></span><b></b></a> -->
+							<!-- <a href="javascript:;" class="bank-icon" title="充值卡"><span class="mobilecard"></span><b></b></a> -->
+						</dd>
+					</dl>
+
+					{#if $hasPayment#}
+					<!-- 储蓄卡网银 s -->
+					<dl class=="fn-clear" id="bankList">
+						<dt>选择银行：</dt>
+						<dd>
+							<div class="hasChooseBank">
+								<a href="javascript:;" class="bank-icon" title="中国工商银行"><span class="icbc"></span></a>
+								<a href="javascript:;" class="chooseBankBtn"><s></s>选择其他银行</a>
+							</div>
+							<div class="bankList fn-clear">
+								<a href="javascript:;" class="bank-icon active" title="中国工商银行" data-type="alipay$ICBC-DEBIT"><span class="icbc"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="中国建设银行" data-type="alipay$CCB"><span class="ccb"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="中国银行" data-type="alipay$BOCB2C"><span class="boc"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="交通银行" data-type="alipay$COMM"><span class="comm"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="中国农业银行" data-type="alipay$ABC"><span class="abc"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="招商银行" data-type="alipay$CMB"><span class="cmb"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="邮政储蓄银行" data-type="alipay$POSTGC"><span class="psbc"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="中国光大银行" data-type="alipay$CEB-DEBIT"><span class="ceb"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="中国民生银行" data-type="alipay$CMBC"><span class="cmbc"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="平安银行" data-type="alipay$SPABANK"><span class="pingan"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="浦发银行" data-type="alipay$SPDB"><span class="spdb"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="中信银行" data-type="alipay$CITIC-DEBIT"><span class="ecitic"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="兴业银行" data-type="alipay$CIB"><span class="cib"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="广发银行" data-type="alipay$GDB"><span class="cgb"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="北京银行" data-type="alipay$BJBANK"><span class="beijing"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="北京农商银行" data-type="alipay$BJRCB"><span class="bjrcb"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="富滇银行" data-type="alipay$FDB"><span class="fudian"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="宁波银行" data-type="alipay$NBBANK"><span class="nbcb"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="上海银行" data-type="alipay$SHBANK"><span class="shanghai"></span><b></b></a>
+								<a href="javascript:;" class="bank-icon" title="上海农商银行" data-type="alipay$SHRCB"><span class="srcb"></span><b></b></a>
+							</div>
+							<div class="bankTips">
+								<p class="line"><s></s>建议使用IE浏览器，以便正常使用网银。</p>
+							</div>
+						</dd>
+					</dl>
+					<!-- 储蓄卡网银 e -->
+					{#/if#}
+
+					<!-- 充值卡 s -->
+					<dl class="fn-clear" id="prepaidCard">
+						<dt><label for="paycard">充值卡号：</label></dt>
+						<dd class="fn-clear">
+							<input type="text" class="inp" name="paycard" id="paycard" />
+							<span class="tip-inline"><s></s>请输入正确的充值卡号！</span>
+						</dd>
+					</dl>
+					<!-- 充值卡 e -->
+
+					<dl class="fn-clear enterAmount">
+						<dt><label for="amount">充值金额：</label></dt>
+						<dd class="fn-clear">
+							<input type="text" class="inp" name="amount" id="amount" />
+							<span class="tip-inline"><s></s>金额必须为整数或小数，小数点后不超过2位。</span>
+						</dd>
+					</dl>
+					<dl class="fn-clear verifyAmount">
+						<dt>确认金额：</dt>
+						<dd class="fn-clear"></dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>&nbsp;</dt>
+						<dd class="agree">
+							<label><input type="checkbox" name="agree" id="agree" checked />同意并接受</label> <a href="{#getUrlPath service='siteConfig' template='protocol' id='9'#}" target="_blank">《{#$cfg_shortname#}充值服务协议》</a><br />
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>&nbsp;</dt>
+						<dd><button type="button" id="tj">确认支付</button></dd>
+					</dl>
+
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="pay-pop" id="feedback">
+	<a href="javascript:;" class="pop-close"></a>
+	<div class="pop-border"></div>
+	<div class="pop-main">
+		<div class="pop-title">在新打开的页面上完成付款！</div>
+		<div class="pop-con">
+			<p><i class="icon01"></i><span>如已经支付成功，请点击</span><a class="red" href="{#getUrlPath service='member' type='user' template='record'#}">已完成付款</a></p>
+			<p><i class="icon02"></i><span>如付款遇到问题，您可以</span><a class="gray" href="javascript:;">重新支付</a><em>或</em><a class="gray" href="javascript:;">选择其他支付方式</a></p>
+			<div class="question"><a href="#" target="_blank">支付常见问题</a><span>|</span>客服电话：{#$cfg_hotline#}</div>
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/deposit.js"></script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-wechat wechat-icon"></i>
+      <li class="active">公众号设置</li>
+      <li class="active">公众号自定义菜单</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-xs-12">
+          <style type="text/css">td { height: 30px; padding: 0; margin: 0; } .mainmenunum { color: #ff0000; font-weight: bold; }</style>
+          <div>
+            <a class="btn btn-success" href="#" target="_blank">设置教程</a></div>
+          <div class="space-10"></div>
+          <div>
+            <form id="form1" name="form1" method="post" action="">
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <th scope="col">菜单序号</th>
+                    <th scope="col">菜单名称</th>
+                    <th scope="col">触发方式</th>
+                    <th scope="col">消息关键词</th>
+                    <th scope="col">跳转网页地址</th></tr>
+                  <tr>
+                    <td class="mainmenunum">主菜单1</td>
+                    <td>
+                      <input name="custommenu[1][name]" type="text" class="span2" id="1_name" value=""></td>
+                    <td>
+                      <select name="custommenu[1][type]" class="span2" id="1_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[1][key]" type="text" class="span2" id="1_key" value=""></td>
+                    <td>
+                      <input name="custommenu[1][url]" type="text" class="span3" id="1_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>子菜单1</td>
+                    <td>
+                      <input name="custommenu[11][name]" type="text" class="span2" id="11_name" value=""></td>
+                    <td>
+                      <select name="custommenu[11][type]" class="span2" id="11_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[11][key]" type="text" class="span2" id="11_key" value=""></td>
+                    <td>
+                      <input name="custommenu[11][url]" type="text" class="span3" id="11_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>子菜单2</td>
+                    <td>
+                      <input name="custommenu[12][name]" type="text" class="span2" id="12_name" value=""></td>
+                    <td>
+                      <select name="custommenu[12][type]" class="span2" id="12_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[12][key]" type="text" class="span2" id="12_key" value=""></td>
+                    <td>
+                      <input name="custommenu[12][url]" type="text" class="span3" id="12_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>子菜单3</td>
+                    <td>
+                      <input name="custommenu[13][name]" type="text" class="span2" id="13_name" value=""></td>
+                    <td>
+                      <select name="custommenu[13][type]" class="span2" id="13_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[13][key]" type="text" class="span2" id="13_key" value=""></td>
+                    <td>
+                      <input name="custommenu[13][url]" type="text" class="span3" id="13_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>子菜单4</td>
+                    <td>
+                      <input name="custommenu[14][name]" type="text" class="span2" id="14_name" value=""></td>
+                    <td>
+                      <select name="custommenu[14][type]" class="span2" id="14_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[14][key]" type="text" class="span2" id="14_key" value=""></td>
+                    <td>
+                      <input name="custommenu[14][url]" type="text" class="span3" id="14_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>子菜单5</td>
+                    <td>
+                      <input name="custommenu[15][name]" type="text" class="span2" id="15_name" value=""></td>
+                    <td>
+                      <select name="custommenu[15][type]" class="span2" id="15_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[15][key]" type="text" class="span2" id="15_key" value=""></td>
+                    <td>
+                      <input name="custommenu[15][url]" type="text" class="span3" id="15_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td class="submenuname">&nbsp;</td>
+                    <td class="key">&nbsp;</td>
+                    <td class="key">&nbsp;</td>
+                    <td class="key">&nbsp;</td></tr>
+                  <tr>
+                    <td class="mainmenunum">主菜单2</td>
+                    <td>
+                      <input name="custommenu[2][name]" type="text" class="span2" id="2_name" value=""></td>
+                    <td>
+                      <select name="custommenu[2][type]" class="span2" id="2_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[2][key]" type="text" class="span2" id="2_key" value=""></td>
+                    <td>
+                      <input name="custommenu[2][url]" type="text" class="span3" id="2_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>子菜单1</td>
+                    <td>
+                      <input name="custommenu[21][name]" type="text" class="span2" id="21_name" value=""></td>
+                    <td>
+                      <select name="custommenu[21][type]" class="span2" id="21_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[21][key]" type="text" class="span2" id="21_key" value=""></td>
+                    <td>
+                      <input name="custommenu[21][url]" type="text" class="span3" id="21_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>子菜单2</td>
+                    <td>
+                      <input name="custommenu[22][name]" type="text" class="span2" id="22_name" value=""></td>
+                    <td>
+                      <select name="custommenu[22][type]" class="span2" id="22_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[22][key]" type="text" class="span2" id="22_key" value=""></td>
+                    <td>
+                      <input name="custommenu[22][url]" type="text" class="span3" id="22_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>子菜单3</td>
+                    <td>
+                      <input name="custommenu[23][name]" type="text" class="span2" id="23_name" value=""></td>
+                    <td>
+                      <select name="custommenu[23][type]" class="span2" id="23_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[23][key]" type="text" class="span2" id="23_key" value=""></td>
+                    <td>
+                      <input name="custommenu[23][url]" type="text" class="span3" id="23_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>子菜单4</td>
+                    <td>
+                      <input name="custommenu[24][name]" type="text" class="span2" id="24_name" value=""></td>
+                    <td>
+                      <select name="custommenu[24][type]" class="span2" id="24_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[24][key]" type="text" class="span2" id="24_key" value=""></td>
+                    <td>
+                      <input name="custommenu[24][url]" type="text" class="span3" id="24_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>子菜单5</td>
+                    <td>
+                      <input name="custommenu[25][name]" type="text" class="span2" id="25_name" value=""></td>
+                    <td>
+                      <select name="custommenu[25][type]" class="span2" id="25_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[25][key]" type="text" class="span2" id="25_key" value=""></td>
+                    <td>
+                      <input name="custommenu[25][url]" type="text" class="span3" id="25_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td class="submenuname">&nbsp;</td>
+                    <td class="key">&nbsp;</td>
+                    <td class="key">&nbsp;</td>
+                    <td class="key">&nbsp;</td></tr>
+                  <tr>
+                    <td class="mainmenunum">主菜单3</td>
+                    <td>
+                      <input name="custommenu[3][name]" type="text" class="span2" id="3_name" value=""></td>
+                    <td>
+                      <select name="custommenu[3][type]" class="span2" id="3_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[3][key]" type="text" class="span2" id="3_key" value=""></td>
+                    <td>
+                      <input name="custommenu[3][url]" type="text" class="span3" id="3_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>子菜单1</td>
+                    <td>
+                      <input name="custommenu[31][name]" type="text" class="span2" id="31_name" value=""></td>
+                    <td>
+                      <select name="custommenu[31][type]" class="span2" id="31_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[31][key]" type="text" class="span2" id="31_key" value=""></td>
+                    <td>
+                      <input name="custommenu[31][url]" type="text" class="span3" id="31_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>子菜单2</td>
+                    <td>
+                      <input name="custommenu[32][name]" type="text" class="span2" id="32_name" value=""></td>
+                    <td>
+                      <select name="custommenu[32][type]" class="span2" id="32_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[32][key]" type="text" class="span2" id="32_key" value=""></td>
+                    <td>
+                      <input name="custommenu[32][url]" type="text" class="span3" id="32_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>子菜单3</td>
+                    <td>
+                      <input name="custommenu[33][name]" type="text" class="span2" id="33_name" value=""></td>
+                    <td>
+                      <select name="custommenu[33][type]" class="span2" id="33_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[33][key]" type="text" class="span2" id="33_key" value=""></td>
+                    <td>
+                      <input name="custommenu[33][url]" type="text" class="span3" id="33_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>子菜单4</td>
+                    <td>
+                      <input name="custommenu[34][name]" type="text" class="span2" id="34_name" value=""></td>
+                    <td>
+                      <select name="custommenu[34][type]" class="span2" id="34_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[34][key]" type="text" class="span2" id="34_key" value=""></td>
+                    <td>
+                      <input name="custommenu[34][url]" type="text" class="span3" id="34_url" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>子菜单5</td>
+                    <td>
+                      <input name="custommenu[35][name]" type="text" class="span2" id="35_name" value=""></td>
+                    <td>
+                      <select name="custommenu[35][type]" class="span2" id="35_type" value="0">
+                        <option value="0" selected="selected">发送消息</option>
+                        <option value="1">跳转到网页</option>
+                        <option value="2">调用扫码</option>
+                        <option value="3">弹出地址位置</option></select>
+                    </td>
+                    <td>
+                      <input name="custommenu[35][key]" type="text" class="span2" id="35_key" value=""></td>
+                    <td>
+                      <input name="custommenu[35][url]" type="text" class="span3" id="35_url" value=""></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="form-actions">
+                <button class="btn btn-success" type="submit">保存</button></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

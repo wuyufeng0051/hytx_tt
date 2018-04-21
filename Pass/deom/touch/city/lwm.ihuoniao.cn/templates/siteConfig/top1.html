@@ -1,0 +1,60 @@
+<script type="text/javascript">var cookiePre = '{#$cfg_cookiePre#}';</script>
+<!-- 顶部信息 s -->
+<div class="topInfo">
+	<div class="wrap fn-clear">
+		<div class="loginbox">
+			{#if $userinfo#}
+			{#$userDomain = $member_userDomain#}
+			{#if $userinfo.userType == 2#}
+			{#$userDomain = $member_busiDomain#}
+			{#/if#}
+			<div class="loginafter fn-clear">
+				<span class="fn-left">欢迎您回来，</span><a href="{#$userDomain#}" target="_blank">{#$userinfo.nickname#}</a><a href="{#$cfg_basehost#}/logout.html" class="logout">退出</a>
+			</div>
+			{#else#}
+			<div class="loginbefore fn-clear">
+				<a href="{#$cfg_basehost#}/register.html" class="regist">免费注册</a><span class="logint"><a href="{#$cfg_basehost#}/login.html">请登录</a></span><a class="loginconnect" href="{#$cfg_basehost#}/api/login.php?type=qq" target="_blank"><i class="picon picon-qq"></i>QQ登陆</a><a  class="loginconnect"href="{#$cfg_basehost#}/api/login.php?type=wechat" target="_blank"><i class="picon picon-weixin"></i>微信登陆</a><a class="loginconnect" href="{#$cfg_basehost#}/api/login.php?type=sina" target="_blank"><i class="picon picon-weibo"></i>新浪登陆</a>
+			</div>
+			{#/if#}
+		</div>
+		<ul class="menu topbarlink fn-clear">
+			<li class="dropdown user">
+				<a href="{#$member_userDomain#}">我的会员中心<i class="picon picon-down"></i></a>
+				<div class="submenu">
+					<a href="{#getUrlPath service='member' type='user' template='order'#}" target="_blank">我的订单</a>
+					<a href="{#getUrlPath service='member' type='user' template='record'#}" target="_blank">交易明细</a>
+					<a href="{#getUrlPath service='member' type='user' template='security'#}" target="_blank">安全中心</a>
+				</div>
+			</li>
+			<li><a href="{#getUrlPath service="siteConfig" template="mobile"#}" target="_blank"><i class="picon picon-phone"></i>手机站</a><span class="separ">|</span>
+				<div class="pop">
+					<s></s>
+					<p>扫码访问<a href="{#getUrlPath service="siteConfig" template="mobile"#}" target="_blank"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" width="150" height="150" /></a></p>
+				</div>
+			</li>
+			<li><a href="javascript:;"><i class="picon picon-weixin"></i>微信公众平台</a><span class="separ">|</span>
+				<div class="pop" style="left: -26px;">
+					<s></s>
+					<p>微信扫码关注<img src="{#$cfg_weixinQr#}" width="150" height="150" /></p>
+				</div>
+			</li>
+			<li class="dropdown">
+				<a href="javascript:;">快速发布<i class="picon picon-down"></i></a>
+				<div class="submenu">
+					<a href="{#getUrlPath service='member' type='user' template='fabu' action='article'#}" target="_blank">新闻投稿</a>
+					<a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}" target="_blank">分类信息</a>
+					<a href="{#getUrlPath service='member' type='user' template='config' action='house'#}" target="_blank">发布房源</a>
+				</div>
+			</li>
+			<li class="dropdown webmap">
+				<a href="javascript:;">网站导航<i class="picon picon-down"></i></a>
+				<div class="submenu">
+					{#siteConfig action="siteModule" return="module"#}
+					<a href="{#$module.url#}" target="_blank">{#$module.name#}</a>
+					{#/siteConfig#}
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- 顶部信息 e -->

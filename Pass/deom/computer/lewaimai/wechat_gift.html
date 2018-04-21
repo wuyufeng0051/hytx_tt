@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+  <style type="text/css">.form-horizontal .form-group {height: 40px;margin: 15px 0;}.mycss{margin-left: 200px;}</style>
+  <div class="main-content">
+      <div class="breadcrumbs" id="breadcrumbs">
+          <ul class="breadcrumb">
+              <li class="active">营销活动
+              </li>
+              <li class="active">微信现金红包
+              </li>
+              <li class="active">微信现金红包设置
+              </li>
+          </ul><!-- .breadcrumb -->
+      </div><!-- /section:basics/content.breadcrumbs -->
+      <div class="page-content">
+          <!-- /section:settings.box -->
+          <div class="page-content-area">
+              <script type="text/javascript">
+              </script>
+              <div class="alert alert-danger">
+                  使用微信红包前请务必仔细阅读<a href="#" target="_blank">《微信红包使用教程》</a>
+              </div>
+              <div class="row">
+                  <div class="col-xs-12">
+                      <div class="tabbable">
+                          <ul class="nav nav-tabs" id="myTab">
+                              <li class="active">
+                                  <a href="wechat_gift.html">微信现金红包设置</a>
+                              </li>
+                              <li>
+                                  <a href="wechat_gift_list.html">微信现金红包列表</a>
+                              </li>
+                              <li>
+                                  <a href="wechat_gift_record.html">微信现金红包发放记录</a>
+                              </li>
+                          </ul>
+                          <div class="tab-content">
+                              <form enctype="multipart/form-data" class="form-horizontal" id="weixin-coupon-form" action="/wxcoupon/index" method="post" name="weixin-coupon-form">
+                                  <div class="alert alert-danger" id="weixin-coupon-form_es_" style="display:none">
+                                      <p>
+                                          请更正下列输入错误:
+                                      </p>
+                                      <ul>
+                                          <li>dummy
+                                          </li>
+                                      </ul>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-sm-3 control-label">是否开启关注红包</label>
+                                      <div class="col-sm-2">
+                                          <select class="span2 mycoupon" name="Admin[is_subscribe_coupon]" id="Admin_is_subscribe_coupon">
+                                              <option value="0" selected="selected">
+                                                  关闭
+                                              </option>
+                                              <option value="1">
+                                                  开启
+                                              </option>
+                                          </select>
+                                      </div>
+                                  </div>
+                                  <div class="form-group" style="display:none" id="mycoupon">
+                                      <label class="col-sm-3 control-label">关注自动发放的红包名称</label>
+                                      <div class="col-sm-3">
+                                          <select name="WeixinCoupon[id]">
+                                              <option selected value="601">
+                                                  送红包啦！
+                                              </option>
+                                          </select>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-sm-3 control-label">是否开启给指定客户发红包功能</label>
+                                      <div class="col-sm-2">
+                                          <select class="span2" name="Admin[is_single_hongbao]" id="Admin_is_single_hongbao">
+                                              <option value="0" selected="selected">
+                                                  关闭
+                                              </option>
+                                              <option value="1">
+                                                  开启
+                                              </option>
+                                          </select>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-sm-3 control-label">是否开启指定区域</label>
+                                      <div class="col-sm-2">
+                                          <select class="span2 areas" name="Admin[is_area]" id="Admin_is_area">
+                                              <option value="0" selected="selected">
+                                                  关闭
+                                              </option>
+                                              <option value="1">
+                                                  开启
+                                              </option>
+                                          </select>
+                                      </div>
+                                  </div>
+                                  <div style="display:none;margin:12px" id="myArea">
+                                      <label class="required col-sm-3 control-label">关注自动发红包的指定城市</label>
+                                      <fieldset>
+                                          <select name="Admin[area_province]" class="col-sm-2">
+                                              <option value="">
+                                                  请选择省份
+                                              </option>
+                                              <option value="北京市">
+                                                  北京市
+                                              </option>
+                                              <option value="天津市">
+                                                  天津市
+                                              </option>
+                                              <option value="河北省">
+                                                  河北省
+                                              </option>
+                                              <option value="山西省">
+                                                  山西省
+                                              </option>
+                                              <option value="内蒙古自治区">
+                                                  内蒙古自治区
+                                              </option>
+                                              <option value="辽宁省">
+                                                  辽宁省
+                                              </option>
+                                              <option value="吉林省">
+                                                  吉林省
+                                              </option>
+                                              <option value="黑龙江省">
+                                                  黑龙江省
+                                              </option>
+                                              <option value="上海市">
+                                                  上海市
+                                              </option>
+                                              <option value="江苏省">
+                                                  江苏省
+                                              </option>
+                                              <option value="浙江省">
+                                                  浙江省
+                                              </option>
+                                              <option value="安徽省">
+                                                  安徽省
+                                              </option>
+                                              <option value="福建省">
+                                                  福建省
+                                              </option>
+                                              <option value="江西省">
+                                                  江西省
+                                              </option>
+                                              <option value="山东省">
+                                                  山东省
+                                              </option>
+                                              <option value="河南省">
+                                                  河南省
+                                              </option>
+                                              <option value="湖北省">
+                                                  湖北省
+                                              </option>
+                                              <option value="湖南省">
+                                                  湖南省
+                                              </option>
+                                              <option value="广东省">
+                                                  广东省
+                                              </option>
+                                              <option value="广西壮族自治区">
+                                                  广西壮族自治区
+                                              </option>
+                                              <option value="海南省">
+                                                  海南省
+                                              </option>
+                                              <option value="重庆市">
+                                                  重庆市
+                                              </option>
+                                              <option value="四川省">
+                                                  四川省
+                                              </option>
+                                              <option value="贵州省">
+                                                  贵州省
+                                              </option>
+                                              <option value="云南省">
+                                                  云南省
+                                              </option>
+                                              <option value="西藏自治区">
+                                                  西藏自治区
+                                              </option>
+                                              <option value="陕西省">
+                                                  陕西省
+                                              </option>
+                                              <option value="甘肃省">
+                                                  甘肃省
+                                              </option>
+                                              <option value="青海省">
+                                                  青海省
+                                              </option>
+                                              <option value="宁夏回族自治区">
+                                                  宁夏回族自治区
+                                              </option>
+                                              <option value="新疆维吾尔自治区">
+                                                  新疆维吾尔自治区
+                                              </option>
+                                              <option value="香港特别行政区">
+                                                  香港特别行政区
+                                              </option>
+                                              <option value="澳门特别行政区">
+                                                  澳门特别行政区
+                                              </option>
+                                              <option value="台湾省">
+                                                  台湾省
+                                              </option>
+                                              <option value="其它">
+                                                  其它
+                                              </option>
+                                          </select><select name="Admin[area_city]" class="col-sm-2">
+                                              <option value="">
+                                                  请选择城市
+                                              </option>
+                                          </select>
+                                      </fieldset>
+                                  </div>
+                                  <div class="form-actions">
+                                      <button class="btn btn-info mycss" type="submit">保存</button>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          <script type="text/javascript">
+            $('.areas').change(function(){
+              var is_area = $(this).val();
+              if(is_area == '1'){
+              $('#myArea').css('display','block');
+              }else{
+              $('#myArea').css('display','none');
+              }
+              });
+
+              $('.mycoupon').change(function(){
+              var is_coupon = $(this).val();
+              if(is_coupon == '1'){
+              $('#mycoupon').css('display','block');
+              }else{
+              $('#mycoupon').css('display','none');
+              }
+              });
+              </script>
+          </div><!-- /.page-content-area -->
+      </div><!-- /.page-content -->
+  </div>
+  <div class="disk"></div>
+  <script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+  <div class="main-content">
+    <div class="breadcrumbs" id="breadcrumbs">
+      <ul class="breadcrumb">
+        <i class="ace-icon fa fa-desktop desktop-icon"></i>
+        <li class="active">店铺</li>
+        <li>
+          <a href="#">店铺导航设置</a></li>
+      </ul>
+    </div>
+    <div class="page-content">
+      <!-- /section:settings.box -->
+      <div class="page-content-area">
+        <style>.aa{display:none;}</style>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="alert alert-block alert-success">
+              <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+              </button>
+              <p>店铺导航功能主要适用于有多个店铺的情况，为用户提供一个信息展示、店铺分类导航、店铺推荐的入口，引导用户更方便的下单。
+                <br></p>
+              <p>
+                <a class="btn btn-success" href="#" target="_blank">店铺导航设置教程</a></p>
+            </div>
+            <div class="tabbable">
+              <ul class="nav nav-tabs" id="myTab">
+                <li >
+                  <a href="shop_navigation.html">基本信息设置</a></li>
+                <li>
+                  <a href="shop_navigation_banner.html">首页轮播图设置</a></li>
+                <li >
+                  <a href="shop_navigation_kindset.html">店铺分类导航设置</a></li>
+                <li class="active">
+                  <a href="shop_navigation_activity.html">店铺导航活动区域设置</a></li>
+                <li>
+                  <a href="shop_navigation_recoset.html">推荐店铺设置</a></li>
+                <li>
+                  <a href="shop_navigation_share.html">店铺导航分享朋友圈设置</a></li>
+              </ul>
+              <div class="tab-content">
+                <form enctype="multipart/form-data" class="form-horizontal" id="autoreplysystem-form" action="/autoreplysystem/shopindexactive" method="post">
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label class="col-sm-2" for="Shopindex_is_open_active">是否显示四块活动区域</label>
+                      <select name="Shopindex[is_open_active]" id="Shopindex_is_open_active">
+                        <option value="1" selected="selected">开启</option>
+                        <option value="0">关闭</option></select>
+                    </div>
+                  </div>
+                  <span style="color:#FF0000">第一块区域</span>
+                  <div class="form-group">
+                    <label class="col-sm-1">主标题</label>
+                    <input placeholder="控制在7个字以内" name="Shopindexs[0][title]" type="text" value="新闻动态"></div>
+                  <div class="form-group">
+                    <label class="col-sm-1">副标题</label>
+                    <input placeholder="控制在10个字以内" name="Shopindexs[0][desc]" type="text" value="实时了解秭归动态"></div>
+                  <div class="form-group">
+                    <label class="col-sm-1">链接</label>
+                    <input name="Shopindexs[0][link]" type="text" value="http://www.hbzg.gov.cn/">(例如：'https://wap.lewaimai.com/index.php?r=lewaimaishow/lewaimaigod&amp;adminId=1&amp;shopId=2928')</div>
+                  <div class="form-group">
+                    <label class="col-sm-1">logo</label>
+                    <span class="col-sm-3" style="padding-left:0px;">
+                      <input id="ytshare-image-file0" type="hidden" value="" name="Shopindexs[0][logo]">
+                      <label class="ace-file-input" style="display: block;">
+                        <span class="ace-file-input">
+                          <input class="col-sm-1" id="share-image-file0" size="200" onchange="previewshareimage(this,0)" name="Shopindexs[0][logo]" type="file">
+                          <span class="ace-file-container" data-title="选择">
+                            <span class="ace-file-name" data-title="分享图片(40像素 * 40像素)">
+                              <i class=" ace-icon fa fa-upload"></i>
+                            </span>
+                          </span>
+                        </span>
+                        <span class="ace-file-container" data-title="选择">
+                          <span class="ace-file-name" data-title="图片(40像素 * 40像素)">
+                            <i class=" ace-icon fa fa-upload"></i>
+                          </span>
+                        </span>
+                      </label>
+                    </span>
+                    <span style="color:red">(建议上传40*40的图片)</span>
+                    <span style="color:red;line-height:34px;margin-left:20px;"></span>
+                  </div>
+                  <div>
+                    <img style="width:40px;height:40px" id="share_image_preview0" src="images/LWM585496731A660SUZHKWIG.png" alt="图片"></div>
+                  <div style="height:30px;"></div>
+                  <span style="color:#FF0000">第二块区域</span>
+                  <div class="form-group">
+                    <label class="col-sm-1">主标题</label>
+                    <input placeholder="控制在7个字以内" name="Shopindexs[1][title]" type="text" value="秭归论坛"></div>
+                  <div class="form-group">
+                    <label class="col-sm-1">副标题</label>
+                    <input placeholder="控制在10个字以内" name="Shopindexs[1][desc]" type="text" value="寻找有共同话题的朋友"></div>
+                  <div class="form-group">
+                    <label class="col-sm-1">链接</label>
+                    <input name="Shopindexs[1][link]" type="text" value="https://shequ.yunzhijia.com/thirdapp/forum/network/582c597fe4b056d58136a370">(例如：'https://wap.lewaimai.com/index.php?r=lewaimaishow/lewaimaigod&amp;adminId=1&amp;shopId=2928')</div>
+                  <div class="form-group">
+                    <label class="col-sm-1">logo</label>
+                    <span class="col-sm-3" style="padding-left:0px;">
+                      <input id="ytshare-image-file1" type="hidden" value="" name="Shopindexs[1][logo]">
+                      <label class="ace-file-input" style="display: block;">
+                        <span class="ace-file-input">
+                          <input class="col-sm-1" id="share-image-file1" size="200" onchange="previewshareimage(this,1)" name="Shopindexs[1][logo]" type="file">
+                          <span class="ace-file-container" data-title="选择">
+                            <span class="ace-file-name" data-title="分享图片(40像素 * 40像素)">
+                              <i class=" ace-icon fa fa-upload"></i>
+                            </span>
+                          </span>
+                        </span>
+                        <span class="ace-file-container" data-title="选择">
+                          <span class="ace-file-name" data-title="图片(40像素 * 40像素)">
+                            <i class=" ace-icon fa fa-upload"></i>
+                          </span>
+                        </span>
+                      </label>
+                    </span>
+                    <span style="color:red">(建议上传40*40的图片)</span>
+                    <span style="color:red;line-height:34px;margin-left:20px;"></span>
+                  </div>
+                  <div>
+                    <img style="width:40px;height:40px" id="share_image_preview1" src="images/LWM585496735EFB4BTQUYWLU.png" alt="图片"></div>
+                  <div style="height:30px;"></div>
+                  <span style="color:#FF0000">第三块区域</span>
+                  <div class="form-group">
+                    <label class="col-sm-1">主标题</label>
+                    <input placeholder="控制在7个字以内" name="Shopindexs[2][title]" type="text" value="跑腿业务"></div>
+                  <div class="form-group">
+                    <label class="col-sm-1">副标题</label>
+                    <input placeholder="控制在10个字以内" name="Shopindexs[2][desc]" type="text" value="您说话，我跑腿"></div>
+                  <div class="form-group">
+                    <label class="col-sm-1">链接</label>
+                    <input name="Shopindexs[2][link]" type="text" value="https://wap.lewaimai.com/index.php?r=showerrand/index&amp;adminId=56695">(例如：'https://wap.lewaimai.com/index.php?r=lewaimaishow/lewaimaigod&amp;adminId=1&amp;shopId=2928')</div>
+                  <div class="form-group">
+                    <label class="col-sm-1">logo</label>
+                    <span class="col-sm-3" style="padding-left:0px;">
+                      <input id="ytshare-image-file2" type="hidden" value="" name="Shopindexs[2][logo]">
+                      <label class="ace-file-input" style="display: block;">
+                        <span class="ace-file-input">
+                          <input class="col-sm-1" id="share-image-file2" size="200" onchange="previewshareimage(this,2)" name="Shopindexs[2][logo]" type="file">
+                          <span class="ace-file-container" data-title="选择">
+                            <span class="ace-file-name" data-title="分享图片(40像素 * 40像素)">
+                              <i class=" ace-icon fa fa-upload"></i>
+                            </span>
+                          </span>
+                        </span>
+                        <span class="ace-file-container" data-title="选择">
+                          <span class="ace-file-name" data-title="图片(40像素 * 40像素)">
+                            <i class=" ace-icon fa fa-upload"></i>
+                          </span>
+                        </span>
+                      </label>
+                    </span>
+                    <span style="color:red">(建议上传40*40的图片)</span>
+                    <span style="color:red;line-height:34px;margin-left:20px;"></span>
+                  </div>
+                  <div>
+                    <img style="width:40px;height:40px" id="share_image_preview2" src="images/LWM585496A47C901RNCSFVTS.png" alt="图片"></div>
+                  <div style="height:30px;"></div>
+                  <span style="color:#FF0000">第四块区域</span>
+                  <div class="form-group">
+                    <label class="col-sm-1">主标题</label>
+                    <input placeholder="控制在7个字以内" name="Shopindexs[3][title]" type="text" value="积分兑换"></div>
+                  <div class="form-group">
+                    <label class="col-sm-1">副标题</label>
+                    <input placeholder="控制在10个字以内" name="Shopindexs[3][desc]" type="text" value="消费送积分、积分抵消费"></div>
+                  <div class="form-group">
+                    <label class="col-sm-1">链接</label>
+                    <input name="Shopindexs[3][link]" type="text" value="https://wap.lewaimai.com/index.php?r=showerrand/index&amp;adminId=56695">(例如：'https://wap.lewaimai.com/index.php?r=lewaimaishow/lewaimaigod&amp;adminId=1&amp;shopId=2928')</div>
+                  <div class="form-group">
+                    <label class="col-sm-1">logo</label>
+                    <span class="col-sm-3" style="padding-left:0px;">
+                      <input id="ytshare-image-file3" type="hidden" value="" name="Shopindexs[3][logo]">
+                      <label class="ace-file-input" style="display: block;">
+                        <span class="ace-file-input">
+                          <input class="col-sm-1" id="share-image-file3" size="200" onchange="previewshareimage(this,3)" name="Shopindexs[3][logo]" type="file">
+                          <span class="ace-file-container" data-title="选择">
+                            <span class="ace-file-name" data-title="分享图片(40像素 * 40像素)">
+                              <i class=" ace-icon fa fa-upload"></i>
+                            </span>
+                          </span>
+                        </span>
+                        <span class="ace-file-container" data-title="选择">
+                          <span class="ace-file-name" data-title="图片(40像素 * 40像素)">
+                            <i class=" ace-icon fa fa-upload"></i>
+                          </span>
+                        </span>
+                      </label>
+                    </span>
+                    <span style="color:red">(建议上传40*40的图片)</span>
+                    <span style="color:red;line-height:34px;margin-left:20px;"></span>
+                  </div>
+                  <div>
+                    <img style="width:40px;height:40px" id="share_image_preview3" src="images/LWM58549673AB6CBSSDK97QL.png" alt="图片"></div>
+                  <div style="height:30px;"></div>
+                </form>
+                <div class="span12">
+                  <div class="form-actions">
+                    <button class="btn btn-info" type="type" id="submitautoreplysystem-form">
+                      <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>
+  <div class="disk"></div>
+  <script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

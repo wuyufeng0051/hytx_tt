@@ -1,0 +1,108 @@
+body,html{
+	background: #eeeeee;
+}
+.rank_lead{
+	width: 60%;
+	background: #fff;
+	height: .8rem;
+	line-height: .8rem;
+	margin: 0 auto;
+	border-radius: 0.1rem;
+	margin-top: 0.4rem;
+	margin-bottom: 0.4rem;
+	overflow: hidden;
+	border: 0.02rem solid #eb5147;
+}
+.rank_lead ul li{
+	float: left;
+	width: 50%;
+	box-sizing:border-box;
+	text-align: center;
+	font-size: 0.29rem;
+	color: #eb5147;
+}
+.rank_lead ul li:last-child{
+	border-left: 0.02rem solid #eb5147;
+}
+.rank_bc{
+	color: #fff!important;
+	background: #eb5147;
+}
+.liuyan{
+    background: #fff;
+    padding: .3rem .3rem;
+}
+.liuyan textarea {
+    width: 100%;
+    height: 1.5rem;
+    text-indent: 0.2rem;
+    font-size: 0.28rem;
+    border: none;
+    overflow: hidden;
+    resize: none;
+}
+.com_lead em{
+	height: 1rem;
+	line-height: 1rem;
+	padding-left: 0.5rem;
+	font-size: .3rem;
+}
+.five-star-level-choose {
+	height: 22px;
+}
+ul.five-star-level-choose {
+	display: inline-block;
+}
+.five-star-level-choose li {
+	float: left;
+	display: block;
+	width: 0.6rem;
+	height: 0.6rem;
+	background-size: 0.6rem 0.6rem;
+	background-image: url(../images/starGhost.png);
+	cursor: pointer;
+	-webkit-transition: all 300ms ease-out 0ms;
+	cursor: pointer;
+}
+.starlevel-move li {
+}
+.starlevel-chosen-container li.starlevel-chosen {
+	-webkit-transform: scale(1);
+}
+.starlevel-chosen-container li:not(.starlevel-chosen) {
+	background-image: url(../images/star_3.png);
+}
+.starlevel-chosen-container li.starlevel-chosen ~ li {
+	-webkit-transform: scale(1);
+	background-size: 0.6rem 0.6rem;
+	background-image: url(../images/starGhost.png);
+}
+.starlevel-move li.starlevel-hover {
+	-webkit-transform: scale(2)!important;
+	z-index: 999!important;
+}
+.starlevel-chosen-container li.starlevel-chosen {
+	background-image: url(../images/star_3.png);
+	-webkit-transform: scale(1);
+}
+.tips {
+	display: none;
+}
+.five-star-level{
+	float: right;
+	margin-top: 0.2rem;
+}
+.refresh {
+	margin: 1rem 0;
+}
+.refresh button{
+	width: 90%;
+	background: #e95249;
+	border: none;
+	border-radius: 0.24rem;
+	height: .8rem;
+	color: #fff;
+	font-size: 0.36rem;
+	display: block;
+	margin: 0 auto;
+}

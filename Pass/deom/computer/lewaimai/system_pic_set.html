@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content"> 
+   <div class="breadcrumbs" id="breadcrumbs"> 
+    <ul class="breadcrumb"> 
+     <i class="ace-icon fa fa-gear gear-icon"></i>
+     <li class="active">系统设置</li>
+     <li><a href="#">系统功能图文</a></li>
+     <li class="active">开始点单</li> 
+    </ul>
+    <!-- .breadcrumb --> 
+   </div> 
+   <!-- /section:basics/content.breadcrumbs --> 
+   <div class="page-content"> 
+    <!-- /section:settings.box --> 
+    <div class="page-content-area"> 
+     <div class="row"> 
+      <div class="col-xs-12"> 
+       <div class="alert alert-block alert-success"> 
+        <button type="button" class="close" data-dismiss="alert"> <i class="ace-icon fa fa-times"></i> </button> 
+        <p> 系统功能对应的链接可以放在自定义菜单中，如果没有自定义菜单，可以通过关键词自动回复设置系统功能。<br /> </p> 
+       </div> 
+       <div class="tabbable"> 
+        <ul class="nav nav-tabs" id="myTab"> 
+         <li class="active"> <a href="#"> 开始点单 </a> </li> 
+         <li> <a href="#"> 订单查询 </a> </li> 
+         <li> <a href="#"> 个人中心 </a> </li> 
+         <li> <a href="#"> 大转盘抽奖 </a> </li> 
+         <li> <a href="#"> 会员中心 </a> </li> 
+         <li> <a href="#"> 优惠券 </a> </li> 
+         <li> <a href="#"> 我的邮箱 </a> </li> 
+         <li> <a href="#"> 积分 </a> </li> 
+         <li> <a href="#"> 签到 </a> </li> 
+         <li> <a href="#"> 收藏 </a> </li> 
+         <li> <a href="#"> 店铺导航 </a> </li> 
+         <li> <a href="#"> 跑腿 </a> </li> 
+         <li> <a href="#"> 团购 </a> </li> 
+        </ul> 
+        <div class="tab-content"> 
+         <div class="alert alert-info"> 
+          <button type="button" class="close" data-dismiss="alert"> <i class="ace-icon fa fa-times"></i> </button> 你的&quot;开始点单&quot;对应的前端界面网址为: 
+          <br /> https://wap.lewaimai.com/index.php?r=lewaimaishow/allshop&amp;adminId=56695
+          <br /> 
+          <a class="btn btn-danger" href="#" target="_blank">乐外卖后台功能链接说明教程</a> 
+         </div> 
+         <style>
+          .aa{display:none;}
+          </style> 
+         <form enctype="multipart/form-data" class="form-horizontal" id="autoreplysystem-form" action="/autoreplysystem/index" method="post"> 
+          <div class="alert alert-danger" id="autoreplysystem-form_es_" style="display:none">
+           <p>请更正下列输入错误:</p> 
+           <ul>
+            <li>dummy</li>
+           </ul>
+          </div> 
+          <div class="form-group"> 
+           <label class="col-sm-1"><label for="AutoreplySystem_headerfont">头部文字信息</label></label> 
+           <textarea class="col-sm-4 col-sm-500" size="25" maxlength="200" style="height:150px;" name="AutoreplySystem[headerfont]" id="AutoreplySystem_headerfont">您好！欢迎光临金点外卖平台！</textarea> 
+          </div> 
+          <div class="form-group"> 
+           <label class="col-sm-1"><label for="AutoreplySystem_describe">描述文字信息</label></label> 
+           <textarea class="col-sm-4 col-sm-500" size="15" maxlength="200" style="height:150px;" name="AutoreplySystem[describe]" id="AutoreplySystem_describe">快来点我</textarea> 
+          </div> 
+          <div class="form-group" style="margin-bottom:0px;"> 
+           <label class="col-sm-3"><label for="AutoreplySystem_img">图片</label>（建议尺寸：360像素 * 200像素)</label> 
+          </div> 
+          <div class="form-group" style="width:400px;padding-left:12px;"> 
+           <input id="ytace-file-input" type="hidden" value="" name="AutoreplySystem[img]" />
+           <label class="ace-file-input"><input class="col-sm-4" id="ace-file-input" size="50" onchange="preview1(this)" name="AutoreplySystem[img]" type="file" /><span class="ace-file-container" data-title="选择"><span class="ace-file-name" data-title="上传图片..."><i class=" ace-icon fa fa-upload"></i></span></span></label> 
+          </div> 
+          <div> 
+           <img style="width:360px;height:200px" id="img" src="upfile/LWM579AF501B1A279U0FHIAL.jpg" alt="图文图片" /> 
+          </div> 
+          <div class="span12"> 
+           <div class="form-actions"> 
+            <button class="btn btn-info" type="submit"> <i class="ace-icon fa fa-check bigger-110"></i> 保存 </button> 
+           </div> 
+          </div> 
+         </form> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div>
+    <!-- /.page-content-area --> 
+   </div>
+   <!-- /.page-content --> 
+  </div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

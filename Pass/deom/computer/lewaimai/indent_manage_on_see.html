@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-smile-o"></i>
+        <a href="#">外卖订单</a></li>
+      <li>
+        <a href="#">订单管理</a></li>
+      <li class="active">查看订单</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.detail-view tr { height:30px; line-height:30px; } td { width: 80px; }</style>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 widget-container-span ui-sortable">
+          <button class="btn btn-success" onclick="GetSucceededCheckbox()">成功订单</button>
+          <button class="btn btn-danger" onclick="GetFailedCheckbox()">失败订单</button>
+          <button class="btn btn-warning" onclick="setprinter();">打印订单</button>
+          <div class="widget-box">
+            <div class="widget-header header-color-blue">
+              <h5 class="bigger lighter">
+                <i class="icon-table"></i>订单详情</h5>
+            </div>
+            <div class="widget-body">
+              <div class="widget-main no-padding">
+                <table class="table table-striped table-bordered table-hover">
+                  <tbody>
+                    <tr>
+                      <td>订单编号</td>
+                      <td>
+                        <a href="#">味美家煲仔饭20170316-1</a></td>
+                    </tr>
+                    <tr>
+                      <td>店铺</td>
+                      <td>
+                        <a href="#">味美家煲仔饭</a></td>
+                    </tr>
+                    <tr>
+                      <td>顾客ID</td>
+                      <td>
+                        <a href="#">13116473</a></td>
+                    </tr>
+                    <tr>
+                      <td>姓名</td>
+                      <td>
+                        <a href="#">王民东</a></td>
+                    </tr>
+                    <tr>
+                      <td>电话</td>
+                      <td>
+                        <a href="#">15672501641</a></td>
+                    </tr>
+                    <tr>
+                      <td>配送地址</td>
+                      <td>
+                        <a href="#">平湖大道10-a号 建设局718</a></td>
+                    </tr>
+                    <tr>
+                      <td>详情</td>
+                      <td>
+                        <a href="#">家常土豆丝 【1】份 ¥11.5</a></td>
+                    </tr>
+                    <tr>
+                      <td>备注</td>
+                      <td>
+                        <a href="#"></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>预设字段</td>
+                      <td>
+                        <a href="#"></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>是否打折</td>
+                      <td>
+                        <a href="#">是</a></td>
+                    </tr>
+                    <tr>
+                      <td>折扣值</td>
+                      <td>
+                        <a href="#">8.50</a></td>
+                    </tr>
+                    <tr>
+                      <td>是否使用优惠券</td>
+                      <td>
+                        <a href="#">否</a></td>
+                    </tr>
+                    <tr>
+                      <td>优惠券面值</td>
+                      <td>
+                        <a href="#">0.00</a></td>
+                    </tr>
+                    <tr>
+                      <td>是否会员优惠</td>
+                      <td>
+                        <a href="#">否</a></td>
+                    </tr>
+                    <tr>
+                      <td>会员优惠金额</td>
+                      <td>
+                        <a href="#">0.00</a></td>
+                    </tr>
+                    <tr>
+                      <td>打包费</td>
+                      <td>
+                        <a href="#">1</a></td>
+                    </tr>
+                    <tr>
+                      <td>配送费</td>
+                      <td>
+                        <a href="#">3.00</a></td>
+                    </tr>
+                    <tr>
+                      <td>首单减免</td>
+                      <td>
+                        <a href="#">0.0</a></td>
+                    </tr>
+                    <tr>
+                      <td>总价</td>
+                      <td>
+                        <a href="#">13.78</a></td>
+                    </tr>
+                    <tr>
+                      <td>付款方式</td>
+                      <td>
+                        <a href="#">在线支付（商户自己的微信支付）</a></td>
+                    </tr>
+                    <tr>
+                      <td>订单总积分</td>
+                      <td>
+                        <a href="#">13</a></td>
+                    </tr>
+                    <tr>
+                      <td>配送员</td>
+                      <td>
+                        <a href="#">张其叁</a></td>
+                    </tr>
+                    <tr>
+                      <td>下单时间</td>
+                      <td>
+                        <a href="#">2017-03-16 11:48:30</a></td>
+                    </tr>
+                    <tr>
+                      <td>确认时间</td>
+                      <td>
+                        <a href="#">2017-03-16 11:48:35</a></td>
+                    </tr>
+                    <tr>
+                      <td>配送时间</td>
+                      <td>
+                        <a href="#"></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>取货时间</td>
+                      <td>
+                        <a href="#"></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>完成时间</td>
+                      <td>
+                        <a href="#"></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>订单状态</td>
+                      <td>
+                        <a href="#">已确认(未取货)</a></td>
+                    </tr>
+                    <tr>
+                      <td>订单来源</td>
+                      <td>
+                        <a href="#">乐外卖订单</a></td>
+                    </tr>
+                    <!-- <tr>
+                    <td>设置配送员时间</td>
+                    <td><a href="#"></a></td></tr> -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

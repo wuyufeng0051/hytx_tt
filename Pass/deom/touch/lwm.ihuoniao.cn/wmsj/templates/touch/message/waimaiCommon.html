@@ -1,0 +1,126 @@
+{#$cssFile = array("/static/css/ui/photoswipe.css", "/static/css/ui/photoswipe-default-skin.css", "comment.css")#}
+{#include file='../_header.html' pageTitle='评论管理' cssFile=$cssFile goBack=1#}
+<!-- 列表 s -->
+<div class="container">
+    <div class="loading" data-loading="false" style="border-bottom: 0px solid transparent; height: 0px;">
+        下拉刷新...
+    </div>
+    <div class="list">
+      {#foreach $list as $key => $value#}
+      <div class="comment-list" data-id="{#$value.id#}">
+          <div class="comment-user">
+              <img src="/static/images/default_user.jpg">
+          </div>
+          <div class="comment-info">
+              <h3>{#$value.username#}<em>{#$value.pubdatef#}</em> </h3>
+              <h3>店铺名称：{#$value.shopname#}</h3>
+              <h3>订单编号：{#$value.ordernumstore#}</h3>
+              <div class="judge-box">
+                  <div class="judge-star l">
+                      <s style="width:{#$value.star/5*100#}%;"></s>
+                  </div>
+                  <span class="sale-time">：店铺评分</span>
+                  <div class="clear"></div>
+              </div>
+              <div class="judge-box">
+                  <div class="judge-star l">
+                      <s style="width:{#$value.starps/5*100#}%;"></s>
+                  </div>
+                  <span class="sale-time">：配送评分，{#$value.time#}分钟送达</span>
+                  <div class="clear"></div>
+              </div>
+              <div class="comment-txt">{#$value['content']#}</div>
+              {#if $value.pics#}
+              <div class="my-gallery" data-pswp-uid="1" itemscope="" itemtype="">
+                {#foreach from=$value.picsf key=k item=i#}
+                <figure itemprop="associatedMedia">
+                    <a data-size="300x228" href="{#$i#}" itemprop="contentUrl">
+                        <img alt="Image description" itemprop="thumbnail" src="{#$i|replace:'large':'small'#}">
+                    </a>
+                </figure>
+                {#/foreach#}
+              </div>
+              {#/if#}
+              <div class="state {#if $value.replydate != 0#}ok{#/if#}">
+                {#if $value.replydate != 0#}
+                <p class="content">回复内容：{#$value.reply#}</p>
+                <p class="time">回复时间：{#$value.replydatef#}</p>
+                <p class="btns"><a href="javascript:;" class="btn">已回复</a></p>
+                {#else#}
+                <p class="btns"><a href="javascript:;" class="btn reply">回复</a></p>
+                {#/if#}
+              </div>
+          </div>
+      </div>
+      {#/foreach#}
+      <div class="load">
+          正在加载，请稍后···
+      </div>
+    </div>
+</div>
+<!-- 列表 e -->
+
+<div class="failbox">
+  <div class="mask"></div>
+  <form class="whyform" method="post">
+    <p>请填写回复内容</p>
+    <textarea name="fail" class="textarea"></textarea>
+    <p class="btn"><a href="javascript:;" class="sure" id="failedObj">确定</a><a href="javascript:;" class="cancel">取消</a></p>
+  </form>
+</div>
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+          </div>
+
+        </div>
+</div>
+
+<div class="blank">
+</div>
+{#$jsFile = array("drag-loading.js", "/static/js/ui/photoswipe.min.js", "/static/js/ui/photoswipe-ui-default.min.js", "/static/js/ui/pic-swiper.js", "comment.js")#}
+  {#include file='../_footer.html' curr='comment'#}

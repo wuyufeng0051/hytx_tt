@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>我的关注</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style type="text/css">
+	body{
+		background-color: #fff;
+		font-family: "微软雅黑";
+	}
+	.mui-card{
+		box-shadow: none;
+	}
+	.banner{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 999;
+		height: 45px;
+		background-color: #fd5c30;
+
+	}
+	.banner a{
+		width: 25%;
+		float: left;
+		color: #fff;
+	}
+	.banner span{
+		width: 50%;
+		float: left;
+		text-align: center;
+		line-height: 45px;
+		color: #fff;
+	}
+	.mui-card{
+		border-bottom: 1px solid #ddd;height: 70px;margin: 0;
+	}
+	</style>
+</head>
+<body>
+	<div class="mui-content">
+		<div class="banner">
+				<a href="#" onClick="javascript :history.back(-1);"><span><</span></a>
+	    		<span>我的关注</span>
+		</div>
+		<div style="margin-top: 45px;" id="zong">
+		 
+	    </div>
+    </div>
+
+	</div>
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script type="text/javascript">
+       function time(){
+        $.post('{:U("Home/Mybrid/mainload")}', {}, function(data) {
+        	$("#zong").append(data)
+        });
+       } 
+      setTimeout(time(),500);
+	</script>
+</body>

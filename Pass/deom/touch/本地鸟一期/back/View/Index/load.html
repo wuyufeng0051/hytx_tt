@@ -1,0 +1,77 @@
+ 				 <volist name="n_res" id="vo">
+				  <?php if($vo['look_status'] == 1){ ?>
+				   <li class="item look">
+					<div class="check_box">
+		                 <a href="#" class="check" id="{$vo.look_id}"></a>
+		             </div>
+		             <div class="content" style="padding-left: 10px;padding-top:10px;padding-right: 10px;">
+		             	<a  class="look_is" style="display: block;"  stv="{$vo.look_id}" str="a1" sta="1">
+		             	<img src="__PUBLIC__/Home/img/xiaoxi6.png" alt="" width="36px;">
+		             	  <p style="font-size: 14px;color: #333;">置顶过期提醒
+		             	   <?php if($vo['look_type'] == 0){ ?>
+			             	<span class="mui-badge" id="top" style="background-color:#f00;font-size:6px;height:12px;width:10px;"></span>
+                            <?php } ?>
+
+		             	   <span style="float: right;">{$vo.look_date}
+		             	  </span></p>
+		             	<p style="font-size: 12px;color: #999;height:18px;overflow: hidden;">您好，您发布的信息置顶已快过期</p>
+		             	</a>
+		             </div>
+				    </li>
+				    <?php }else if($vo['look_status']  == 2){ ?>
+ 				   <li class="item look">
+					<div class="check_box">
+		                 <a href="#" class="check" id="{$vo.look_id}"></a>
+		             </div>
+		             <div class="content" style="padding-left: 10px;padding-top:10px;padding-right: 10px;">
+		             	<a style="display: block;"  class="look_is" stv="{$vo.look_id}" str="a1" sta="1">
+		             	<img src="__PUBLIC__/Home/img/xiaoxi6.png" alt="" width="36px;">
+		             	  <p style="font-size: 14px;color: #333;">置顶提醒
+		             	    <?php if($vo['look_type'] == 0){ ?>
+			             	<span class="mui-badge" id="top" style="background-color:#f00;font-size:6px;height:12px;width:10px;"></span>
+                            <?php } ?>
+
+		             	  <span style="float: right;">{$vo.look_date}
+		             	  </span></p>
+		             	<p style="font-size: 12px;color: #999;height:18px;overflow: hidden;">您好，您发布的信息已置顶成功，点击查看</p>
+		             	</a>
+		             </div>
+				    </li>
+				  <?php }else if(!empty($vo['castresume_id'])){ ?>
+				    <li class="item castresume">
+						 <div class="check_box">
+			                 <a href="#" class="check" id="{$vo.castresume_id}" ></a>
+			             </div>
+			              <!-- href="__MODULE__/JobHunt/resumeDetails?resume_id={$vo.castresume_resumeid}" -->
+			             <div class="content" style="padding-left: 10px;padding-top:10px;padding-right: 10px;">
+			             	<a class="look_is"  style="display: block;" str="{$vo.castresume_resumeid}" stv="{$vo.castresume_id}" sta="2">
+			             	<img src="__PUBLIC__/Home/img/xiaoxi4.png" alt="" width="36px;">
+			             	<p style="font-size: 14px;color: #333;">收到简历
+			             	<?php if($vo['castresume_status'] == 0){ ?>
+			             	<span class="mui-badge" id="top" style="background-color:#f00;font-size:6px;height:12px;width:10px;"></span>
+                            <?php } ?>
+			             	 <span style="float: right;">{$vo.castresume_date}</span></p>
+			             	<p style="font-size: 12px;color: #999;height:18px;overflow: hidden;">您好，您收到一份新简历，点击查看</p>
+			             	</a>
+			             </div>
+					</li>
+				  <?php }else if($vo['look_status'] == 0){ ?>
+					<li class="item look">
+						<div class="check_box">
+			                 <a href="#" class="check" id="{$vo.look_id}" ></a>
+			             </div>
+			             <div class="content" style="padding-left: 10px;padding-top:10px;padding-right: 10px;">
+			             	<a str="{$vo.look_rid}" class="look_is" style="display: block;" stv="{$vo.look_id}" sta="3">
+			             	<img src="__PUBLIC__/Home/img/xiaoxi5.png" alt="" width="36px;">
+			             	<p style="font-size: 14px;color: #333;">已购简历
+			             	<?php if($vo['look_type'] == 0){ ?>
+			             	<span class="mui-badge" id="top" style="background-color:#f00;font-size:6px;height:12px;width:10px;"></span>
+                            <?php } ?>
+			             	<span style="float: right;">{$vo.look_date}</span></p>
+			             	<p style="font-size: 12px;color: #999;height:18px;overflow: hidden;">您好，您已成功购买一份新简历，点击查看</p>
+			             	</a>
+			             </div>
+					</li>
+				  <?php } ?>
+				</volist>
+  

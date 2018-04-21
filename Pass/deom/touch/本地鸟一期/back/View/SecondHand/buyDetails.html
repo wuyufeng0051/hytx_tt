@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>求购专区详情</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+	<style>
+	body{
+		padding-bottom: 44px;
+		background: #fff;
+		margin-top: .9rem;
+	}
+	.info{
+		padding: 10px;
+		background: #fff;
+		display: -webkit-flex;
+		margin-bottom: 10px;
+	}
+	.left{
+		flex: 1;
+		border-right: 1px solid #ddd;
+	}
+	.left h4{
+		font-size: 16px;
+	}
+	.left div{
+		font-size: 14px;
+		color: #bcbcbc;
+	}
+	.right{
+		width: 60px;
+		text-align: center;
+	}
+	.right img{
+		display: block;
+		margin:auto;
+	}
+	.right span{
+		display: block;
+		color: #9a9a9a;
+		font-size: 14px;
+	}
+	.content{
+		padding: 10px;
+		background: #fff;
+		border-bottom: 1px solid #f2f2f2;
+	}
+	.content h3{
+		color: #fd7201;
+		font-size: 18px;
+	}
+	.content p{
+		margin-bottom: 0;
+	}
+	.content p span{
+		color:#000;
+	}
+	.content p .span{
+		border:1px solid #ff7200;
+		color: #ff7200;
+		border-radius: 2px;
+		padding: 0 2px;
+		margin-right: 3px;
+		font-size: 13px;
+	}
+	.description{
+		background: #fff;
+		padding: 10px;
+	}
+	.description p{
+		margin-bottom: 0;
+		font-size: 14px;
+	}
+	.report{
+		background: #fceecb;
+		height: 50px;
+		position: relative;
+		padding: 5px 10px;
+		padding-right: 70px;
+		margin:5px 0;
+	}
+	.report .text{
+		border-right: 1px solid #d9d9d9;
+		font-size: 14px;
+	}
+	.report p{
+		margin:0;
+		color: #ff7300;
+		/*font-weight: bold;*/
+		font-size: 14px;
+	}
+	.report a{
+		width: 50px;
+		position: absolute;
+		right: 10px;
+		top:15px;
+		display: block;
+		background: #ff7300;
+		color: #fff;
+		border-radius: 10px;
+		padding: 2px 5px;
+		text-align: center;
+		line-height: 24px;
+		height: 24px;
+		border-left: 1px solid #d9d9d9;
+		font-size: 16px;
+	}
+	</style>
+	<style type="text/css">
+	/*图片预览*/
+	.mui-preview-image.mui-fullscreen {
+		position: fixed;
+		z-index: 20;
+		background-color: #000;
+	}
+	.mui-preview-header,
+	.mui-preview-footer {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		z-index: 10;
+	}
+	.mui-preview-header {
+		height: 44px;
+		top: 0;
+	}
+	.mui-preview-footer {
+		height: 50px;
+		bottom: 0px;
+	}
+	.mui-preview-header .mui-preview-indicator {
+		display: block;
+		line-height: 25px;
+		color: #fff;
+		text-align: center;
+		margin: 15px auto 4;
+		width: 70px;
+		background-color: rgba(0, 0, 0, 0.4);
+		border-radius: 12px;
+		font-size: 16px;
+	}
+	.mui-preview-image {
+		display: none;
+		-webkit-animation-duration: 0.5s;
+		animation-duration: 0.5s;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+	}
+	.mui-preview-image.mui-preview-in {
+		-webkit-animation-name: fadeIn;
+		animation-name: fadeIn;
+	}
+	.mui-preview-image.mui-preview-out {
+		background: none;
+		-webkit-animation-name: fadeOut;
+		animation-name: fadeOut;
+	}
+	.mui-preview-image.mui-preview-out .mui-preview-header,
+	.mui-preview-image.mui-preview-out .mui-preview-footer {
+		display: none;
+	}
+	.mui-zoom-scroller {
+		position: absolute;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		-webkit-backface-visibility: hidden;
+	}
+	.mui-zoom {
+		-webkit-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+	}
+	.mui-slider .mui-slider-group .mui-slider-item img {
+		width: auto;
+		height: auto;
+		max-width: 100%;
+		max-height: 100%;
+	}
+	.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+		width: 100%;
+	}
+	.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+		display: inline-table;
+	}
+	.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.mui-preview-loading {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		display: none;
+	}
+	.mui-preview-loading.mui-active {
+		display: block;
+	}
+	.mui-preview-loading .mui-spinner-white {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -25px;
+		margin-top: -25px;
+		height: 50px;
+		width: 50px;
+	}
+	.mui-preview-image img.mui-transitioning {
+		-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+		transition: transform 0.5s ease, opacity 0.5s ease;
+	}
+	@-webkit-keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@-webkit-keyframes fadeOut {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	@keyframes fadeOut {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	/*公用头部*/
+	.header{
+	    height: .9rem;
+	    background: #fd5530 !important;
+	    color: #fff;
+	    font-size: .32rem;
+	    line-height: .9rem;
+	    max-width: 1080px;
+	    position: fixed;
+	    left: 0;
+	    right: 0;
+	    top: 0;
+	    z-index: 11;
+	    overflow: hidden;
+	}
+	.header a{
+		display: inline-block;
+		color: #fff;
+	}
+	.header .back{
+	    height: .9rem;
+	    line-height: .9rem;
+	    width: 17%;
+	    float: left;
+	}
+	.header .back i{
+	    width: 0.4rem;
+	    height: .9rem;
+	    display: inline-block;
+	    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+	    vertical-align: middle;
+	    background-size: .3rem;
+	}
+	.header .header_right{
+		float: right;
+		height: .9rem;
+		margin-right: .2rem;
+	}
+	.header .header_right i{
+	    width: 0.04rem;
+	    height: 0.5rem;
+	    display: inline-block;
+	    vertical-align: middle;
+	    background: #fff;
+	    margin: 0 .15rem;
+	}
+	.header .title{
+	    float: left;
+	    width: 70%;
+	    text-align: center;
+	    font-size: 0.38rem;
+	}
+	.header .share_1{
+	    height: .9rem;
+	    float: right;
+	    width: 12%;
+	    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+	    background-size: .5rem;
+	}
+	.share_box {
+		display: block;
+		background: url(__PUBLIC__/Home/img/share.png) no-repeat 60px -20px;
+		background-size: 6rem;
+		position: fixed;
+		top: 2%;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 12;
+		display: none;
+	}
+	.disk{
+		background: #000;
+		opacity: .5!important;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 11 ;
+		display: none;
+	}
+	.contact{
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: #fff;
+		height: 1.2rem;
+		line-height: 1.2rem;
+	    box-shadow: 1px 0px 9px #bfb9b9;
+	    z-index: 10;
+	}
+	.contact .con_left{
+		float: left;
+		width: 65%;
+		height: .8rem;
+		line-height: .8rem;
+		border-right: 0.02rem solid #757575;
+		margin-top: .2rem;
+		text-align: center;
+		font-size: .3rem;
+		font-weight: bold;
+	}
+	.contact .con_right{
+		width: 34%;
+		color: #fc5430;
+		float: left;
+		text-align: center;
+		font-size: .3rem;
+	}
+	.contact .con_right i{
+		width: .5rem;
+		height: .5rem;
+		display: inline-block;
+		vertical-align: middle;
+		background: url(__PUBLIC__/Home/img/pb_13.png) no-repeat center;
+		background-size: .5rem;
+		margin-right: .1rem;
+	}
+	.phone{
+	    position: fixed;
+	    left: 50%;
+	    margin-left: -2.9rem;
+	    top: 20%;
+	    z-index: 12;
+	    background: url(__PUBLIC__/Home/img/pb_7.png) no-repeat top;
+	    width: 5.96rem;
+	    height: 6rem;
+	    background-size: 6rem;
+	    text-align: center;
+	    display: none;
+	}
+	.phone h1{
+		font-size: .3rem;
+		margin-top: 1.8rem;
+		font-weight: bold;
+		background: #fff;
+		margin-bottom: 0;
+	}
+	.phone h2{
+		font-size: .24rem;
+		padding-top: .2rem;
+		background: #fff;
+		padding-bottom: .3rem;
+		font-weight: bold;
+		margin: 0;
+	}
+	.phone h2 em{
+		color: #fe8267;
+		font-weight: bold;
+	}
+	.phone ul{
+		background: #fff;
+	}
+	.phone ul li:nth-child(2){
+		border-top: none;
+	}
+	.phone ul li{
+		position: relative;
+		height: .9rem;
+		line-height: .9rem;
+		border-bottom: 1px solid #e6e6e6;
+		border-top: 1px solid #e6e6e6;
+	}
+	.phone ul li a{
+		display: block;
+		font-size: .32rem;
+		color: #2956c0;
+	}
+	.phone ul li a i{
+		position: absolute;
+		right: 0.5rem;
+		top: .25rem;
+		width: .4rem;
+		height: .4rem;
+		background: url(__PUBLIC__/Home/img/pb_8.png) no-repeat center;
+		background-size: .4rem;
+	}
+	.phone .close{
+		background: #fff;
+		border-radius: 0 0 0.2rem 0.2rem;
+	}
+	.phone .close i{
+		width: .7rem;
+		height: 1.1rem;
+		display: block;
+		margin: 0 auto;
+		background: url(__PUBLIC__/Home/img/pb_9.png) no-repeat center;
+		background-size: .7rem;
+		padding-top: .2rem;
+		padding-bottom: .2rem;
+	}
+</style>
+</head>
+<body>
+<input type="hidden" id="Share_title" value = {$res_wantbuy.wantbuy_title}>
+<include file="Public/share" title='包含文件'/>
+	<!-- 共同顶部 s-->
+	<div class="header fn-clear">
+		<div class="back"><a class="a" href="javascript:history.go(-1)"><i></i>返回</a></div>
+		<div class="share_1"></div>
+	</div>
+	<!-- 共同顶部 e-->
+	<!-- 微信分享弹出层 s -->
+	<div class="share_box"></div>
+	<!-- 微信分享弹出层 e -->
+	<!-- 遮罩层 s -->
+	<div class="disk"></div>
+	<!-- 遮罩层 e -->
+	<div class="mui-content">
+		<div style="width: 100%;height: 10px;background: #f2f2f2;"></div>
+		<div class="info">
+			<div class="left">
+				<h4>{$res_wantbuy.wantbuy_title}</h4>
+				<div>
+					<span>发布:{$res_wantbuy.wantbuy_date}</span>
+					<span style="margin-left: 30px;">浏览:{$res_wantbuy.wantbuy_browse}次</span>
+				</div>
+			</div>
+			<?php if(!empty($coll)){ ?>
+				<div class="right" id="collect">
+					<img src="__PUBLIC__/Home/img/zan1.png" alt="" width="28">
+					<span class='{$res_wantbuy.wantbuy_id}' id="{$coll.collection_id}">已收藏</span>
+				</div>
+			<?php }else{ ?>
+			    <div class="right" id="collect">
+					<img src="__PUBLIC__/Home/img/collect.png" alt="" width="28">
+					<span class='{$res_wantbuy.wantbuy_id}'>收藏</span>
+				</div>
+			<?php } ?>
+		</div>
+		<div class="content">
+			<h3><span style="color: #8f8f94;font-size: 14px;font-weight: normal;">期望价格:&nbsp;</span>
+		    <?php if($res_wantbuy['wantbuy_price'] == 0){ ?>
+			面议
+			<?php }else{ ?>
+			{$res_wantbuy.wantbuy_price}{$res_wantbuy.wantbuy_priceunit}
+			<?php } ?>
+			</h3>
+			<p>买家性质:&nbsp;<span>
+		   
+			            <?php if($res_wantbuy['wantbuy_nature'] == 0){ ?>
+						 个人
+						<?php }else{  ?>
+						 商家
+						<?php } ?>
+		   </span></p>
+		</div>
+		<div class="description">
+			<p style="color: #000;"><span style="color: #8f8f94;font-size: 14px;">求购要求:</span><br>
+			{$res_wantbuy.wantbuy_desc}</p>
+		</div>
+
+		<!-- 举报 -->
+		<div class="report">
+			<div class="text">
+				<span>如果您认为此条信息为</span>
+				<p>无效、虚假、诈骗信息、请立即举报！</p>
+			</div>
+			<a href="__MODULE__/Report/report?report_cid={$res_wantbuy.wantbuy_id}&report_uid={$res_wantbuy.wantbuy_uid}&report_type=17&title={$res_wantbuy.wantbuy_title}">举报</a>
+		</div>
+		<!-- 广告 -->
+		<!-- <?php if(!empty($status)){ ?> -->
+		<div class="ad" style="margin-bottom: 20px;">
+			<!-- <volist name="status" id="vo" >
+		        <a id="up" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}">
+				      <img src="__PUBLIC__/../{$vo['advertisement_img']}" style="width: 100%;display: block;">
+		        </a>
+ 
+	     </volist> -->
+			<div class="swiper-container" style="position: relative;">
+				<div class="swiper-wrapper">
+	 				  <volist name="status" id="vo">
+						<div class="swiper-slide">
+							<a id="up" onclick="look(this)" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}">
+		 						<img src="__PUBLIC__/../{$vo['advertisement_img']}" style="width:100%">
+							</a>
+						</div>
+					  </volist> 
+	 			</div>
+				<div class="swiper-pagination" style="bottom: 10px;position: absolute;"></div>
+			</div>
+		</div>
+		</div>
+		<!-- <?php } ?> -->
+	</div>
+<!-- 	<footer class="mui-bar mui-bar-footer" style="padding: 5px 10px;height: 50px;">
+		<div style="position: relative;padding-right: 40px;">
+			<h4 style="margin:0;line-height: 24px;font-size: 14px;">联系人:{$res_wantbuy.wantbuy_name}</h4>
+			<p style="color:#999;font-size: 13px;margin-bottom: 0;">联系我时,请说是在泸西本地鸟上看到的,谢谢</p>
+			<a href="tel:{$res_wantbuy.wantbuy_phone}" style="display: block;width: 40px;height: 40px;position: absolute;right: 0;top:0px;" class="a"><img src="__PUBLIC__/Home/img/phone.png" width="40px;" alt=""></a>
+		</div>
+	</footer> -->
+	<div class="contact fn-clear">
+		<div class="con_left">联系人：{$res_wantbuy.wantbuy_name}</div>
+		<div class="con_right"><i></i>电话联系</div>
+	</div>
+	<!-- 联系方式弹出层 s -->
+	<div class="phone">
+		<h1>提示</h1>
+		<h2>联系我时，请说是在<em>泸西本地鸟</em>上看到的，谢谢！</h2>
+		<ul>
+			<li><a href="tel:{$res_wantbuy.wantbuy_phone}">{$res_wantbuy.wantbuy_phone}<i></i></a></li>
+		</ul>
+		<div class="close"><i></i></div>
+	</div>
+	<!-- 联系方式弹出层 e -->
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zoom.js"></script>
+	<script src="__PUBLIC__/Home/js/mui.previewimage.js"></script>
+	<script>
+
+		  // $("[id=up]").each(function(){ 
+		// $(this).click(function(){
+		function look(obj){
+     		var id = $(obj).attr('str');
+     		var type = $(obj).attr('stb');
+     		var url = $(obj).attr('url');
+				// alert(id)
+		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+ 	     		if (type == 0) {
+	     			 location.href="http://"+url;
+	     		}else if(type == 1){
+	     			 location.href= 'tel:' + url;
+	      		}else{
+	      			location.href=url;
+	      		}
+			});
+	     }
+    // 	})
+    // })
+		
+		$('#collect').on('tap',function(){	
+		//判断是否收藏
+        var src = "__PUBLIC__/Home/img/"+"collect.png";
+        //获取图片路径
+		var srcs = $(this).find('img').attr('src');  
+		var id = $(this).find('span').attr('class');
+		var thiss =$(this);
+	    //判断是否收藏
+         if (srcs == src) {
+         	//是
+         	$.post('{:U("Home/Index/enshrine")}',{id:id,classes:"collection_secondhandgoodsid"}, function(data) {
+         		if (data != 2) {
+		           thiss.find('img').attr('src', '__PUBLIC__/Home/img/zan1.png');
+		           thiss.find('span').attr('id',data)
+	               thiss.find('span').html('已收藏')
+         		}
+         	 });
+         }else{
+         	//否
+             var cid =thiss.find('span').attr('id');
+ 
+             $.post('{:U("Home/Index/enshrinedel")}',{cid:cid}, function(data) {
+         		if (data != 2) {
+		           thiss.find('img').attr('src', '__PUBLIC__/Home/img/collect.png');
+		           thiss.attr('id',"")
+		           thiss.find('span').html('收藏')
+         		}
+         	 });
+         }
+ 
+	 })
+		var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+	});
+			// 分享引导弹出层
+	$('.share_1').click(function(){
+		$('.share_box').show();
+		$('.disk').show();
+	})
+	$('.share_box').click(function(){
+		$('.share_box').hide();
+		$('.disk').hide();
+	})
+		// 联系方式弹出层
+	$('.con_right').click(function(){
+		$('.phone').show();
+		$('.disk').show();
+	})
+	$('.close').click(function(){
+		$('.phone').hide();
+		$('.disk').hide();
+	})
+	$('.disk').click(function(){
+		$('.phone').hide();
+		$('.disk').hide();
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>泸西微城</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no" >
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<style>
+	.top{
+		line-height: 40px;
+		background: #fff;
+		padding: 0 10px;
+		font-size: 14px;
+	}
+	.top strong{
+		color:#ff7300;
+		margin-right: 10px;
+		font-size: 16px;
+	}
+	#card{
+
+	}
+	#card .avatar{
+		width: 85px;
+		height: 85px;
+		float: left;
+		overflow: hidden;
+
+	}
+	#card .avatar img{
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+	#card .uname{
+		margin-left: 90px;
+		height: 85px;
+		font-size: 16px;
+		padding-right: 20px;
+	}
+	#card .uname .d2{
+		margin-bottom: 0;
+		font-size: 14px;
+	}
+	</style>
+</head>
+<body>
+	<div class="mui-content">
+		<div class="top"><strong>置顶</strong>能让你的信息更靠前!</div>
+		
+		<?php foreach ($res as $v) {?>
+		<div class="mui-card" style="margin:0;margin-top: 8px;border-bottom: 1px solid #e6e6e6;" id="card">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner">
+					<a class="avatar">
+						<img src="__PUBLIC__/Home/img/avatar.jpg" alt="">
+					</a>
+					<div class="uname mui-ellipsis">
+						<?php echo $v['post_title'];?>
+						<!--
+						<div style="color: #cc2929;">置顶剩余时间：3小时</div>
+						-->
+						<div class="d2" style="color:#4dcd5e;">显示中<span style="color: #666;margin-left: 10px;color: #666;">发布于:<?php echo $v['post_date'];?></span></div>
+						<div class="d2" style="color: #666;">浏览：<span style="color: #ff7400;"><?php echo $v['post_browse'];?></span>次</div>
+					</div>
+					<div style="margin-top: 15px;border-top: 1px solid #ccc;padding-top: 10px;line-height: 26px;text-align: right;">
+						<!--
+						<span style="border-radius: 4px;padding: 4px 6px;border:1px solid #ff7400;color: #ff7400;margin-right:5px;">编辑</span>
+						-->
+						<span style="border-radius: 4px;padding: 4px 6px;border:1px solid #ff7400;color: #ff7400;margin-right:5px;"><?php echo ($v['post_is_top'] == 1 ? '已' : '未');?>置顶</span>
+						<span style="border-radius: 4px;padding: 4px 6px;border:1px solid #ff7400;color: #ff7400;">删除</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php }?>
+
+
+	</div>
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+</body>
+</html>

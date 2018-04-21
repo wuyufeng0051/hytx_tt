@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>出售</title>
+	<meta http-equiv="cache-control" content="public">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style>
+	body{
+		padding-top: 50px;
+	}
+	.searchBar{
+		width: 100%;
+		height: 50px;
+		position: fixed;
+		top:0;
+		background: #fd5530;
+		z-index: 100;
+	}
+	.search{
+		position: relative;
+		padding: 7px 10px;
+		padding-right: 95px;
+	}
+	.searchBar input{
+		margin: 0;
+		height: 36px;
+		line-height: 36px;
+		border:none;
+		font-size: 14px;
+		color: #fff;
+		padding-left: 30px;
+		background: #ff7558 url(__PUBLIC__/Home/img/search.png) no-repeat 10px center;
+		background-size: 16px 16px;
+		text-align: left;
+	}
+	::-webkit-input-placeholder { 
+	    color:#fff;
+	}
+	.searchBar .search-r{
+		position: absolute;
+		right: 5px;
+		top:15px;
+		font-size: 14px;
+		color: #fff;
+	}
+	.searchBar .search-r a{
+		padding: 0 8px;
+		border-right: 1px solid #fff;
+		color:#fff;
+	}
+	.searchBar .search-r a:last-child{
+		border:none;
+	}
+	
+	/*轮播*/
+	.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	
+	.nav1{
+		height: 90px;
+	    width: 100%;
+	   /* border-bottom: 1px solid #e0e0e0;*/
+	    padding: 0 3.125%;
+	    background: #fff;
+	    padding-top: 11px;
+	}
+	ul{
+		padding: 0;
+		margin:0;
+		list-style: none;
+	}
+	.nav1 ul{
+	    width: 100%;
+	}
+	.nav1 ul li{
+		width: 33.33%;
+		height: 69px;
+	    float: left;
+	}
+	.nav1 ul li a{
+	    display: block;
+	    width: 100%;
+	    height: 100%;
+	    text-align: center;
+
+	}
+	.nav1 ul li a img{
+	    display: block;
+	    width: 40px;
+	    height: 40px;
+	    margin: 0 auto;
+	}
+	.nav1 ul li a p{
+	    font-size: 12px;
+	    color: #808080;
+	    margin-top: 6px;
+	    margin-bottom: 0;
+	}
+	.title {
+	    color: #000;
+	    padding-left: 40px;
+	    line-height: 32px;
+	    border-bottom: 1px solid #e6e6e6;
+	    margin: 0;
+	    font-size: 16px;
+	    font-weight: 600;
+	    background: #fff url(__PUBLIC__/Home/img/tuijian.png) no-repeat 15px 4px;
+	    background-size: 20px 18px;
+	}
+	.mui-popover-arrow{
+	    display: none;
+	}
+	.mui-popover{
+	    position: fixed;
+	    width: 80%;
+	    border-radius: 10px;
+	    left: 50%;
+	    top: 50%;
+	    margin: 0 auto;
+	    z-index: 9999;
+	    background-color: #fff;
+	    -webkit-transform: translateX(-50%) translateY(-50%);
+	    -moz-transform: translateX(-50%) translateY(-50%);
+	    -ms-transform: translateX(-50%) translateY(-50%);
+	    transform: translateX(-50%) translateY(-50%);
+	    overflow: hidden;
+	}
+	.mui-popover h4{
+		background-color: #ff7400;
+		color: #fff;
+		text-align: center;
+		padding:10px 0;
+		margin:0;
+		font-weight: normal;
+		text-indent: 5%;
+	}
+	.mui-popover h4 span{
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 25px;
+		line-height: 20px;
+		float: right;
+		margin-right: 10%;
+		position: relative;
+		/*border-radius: 50%;
+		border:1px solid #fff;
+		width: 18px;
+		height: 18px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 18px;
+		line-height: 18px;
+		text-align: center;
+		margin-left: 10px;
+		position: relative;
+		top:1px;*/
+	}
+	.mui-popover ul{
+		padding:0;
+		margin:0;
+	}
+	.mui-popover ul li{
+		line-height: 40px;
+		text-align: center;
+		border-bottom: 1px solid #e6e6e6;
+	}
+	.mui-popover ul li a{
+		color:#000;
+	}
+	.mui-card{
+		box-shadow: none;
+	}
+	.backTop {
+	    border-radius: 50%;
+	    position: fixed;
+	    right: 10px;
+	    bottom: 15px;
+	    width: 40px;
+	    height: 40px;
+	    text-align: center;
+	    font-size: 18px;
+	    color: #666666;
+	    padding-top: 8px;
+	    border:2px solid #707070;
+	    background: #fff url(__PUBLIC__/Home/img/toTop.png) center center no-repeat;
+	    background-size: 20px 20px;
+	}
+	.mui-action-back.mui-icon.mui-icon-left-nav.mui-pull-left{
+		color: #fff;
+		vertical-align: middle;
+		margin-top: 6px;
+	}
+	.mui-table-view-cell{
+		padding-left: 3%;
+		padding-right: 3%;	
+		position: static;
+	}
+	.mui-table-view-cell.mui-active{
+		background-color: #0062cc;
+	}
+	.mui-ellipsis-address{
+		display: -webkit-box;
+	    overflow: hidden;
+	    white-space: normal!important;
+	    text-overflow: ellipsis;
+	    word-wrap: break-word;
+	    -webkit-line-clamp: 1;
+	    -webkit-box-orient: vertical;
+	    line-height: 21px;
+	    width: 55%;
+	    /*display: block;*/
+	    height: 21px;
+	    float: left;
+	}
+	</style>
+</head>
+<body>
+
+<include file="Public/share" title='包含文件'/>
+
+	<div class="mui-content">
+	<form action="javascript:return true;">
+		<div class="searchBar">
+			<div class="search">
+				<!-- <div class="search-l">
+					<input type="search" placeholder="搜索名称或关键词" id="search">
+				</div> -->
+				<div style="height: 36px;overflow: hidden;">
+					<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+					<span style="color:#fff;line-height:38px;">出售</span>
+				</div>
+				<div class="search-r">
+					<a id="fabu">发布</a><a href="__MODULE__/My/myRelease" style="color:#fff;">我的</a>	
+				</div>
+			</div>
+		</div>
+	</form>
+		
+		<!-- 广告 -->
+		<!-- 图片轮播区 -->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+			  <volist name="status" id="vo">
+				<div class="swiper-slide">
+					  <a id="up" onclick="look(this)" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}">
+			             <img src="__PUBLIC__/../{$vo['advertisement_img']}" style="width: 100%;display: block;">
+	                  </a>
+				</div>
+			  </volist>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+
+
+		<nav class="nav1">
+				<ul>
+					<li>
+						<a href="__MODULE__/Sell/sellHouse" class="a">
+							<img src="__PUBLIC__/Home/img/s1.png">
+							<p>住房</p>
+						</a>
+					</li>
+					<li>
+						<a href="__MODULE__/Sell/sellShop" class="a">
+							<img src="__PUBLIC__/Home/img/s2.png">
+							<p>商铺</p>
+						</a>
+					</li>
+					<li>
+						<a href="__MODULE__/Sell/sellLand" class="a">
+							<img src="__PUBLIC__/Home/img/s3.png">
+							<p>车位/土地/其他</p>
+						</a>
+					</li>
+				</ul>
+			</nav>
+           <h5 class="title">为你推荐</h5>
+           <div id="zong">
+			<foreach item="vo" name="all" key="k">
+			<?php if(!empty($vo['sellhouse_id'])){ ?>
+			<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" style="padding: 10px 10px;">
+					<!-- href="__MODULE__/Sell/sellHouseDetails?sellhouse_id={$vo.sellhouse_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;" str="sellHouse" class="topheight" stv="{$vo.sellhouse_id}">
+						   <div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+							     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_path}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;" ></div>
+                            </div>
+
+							<div class="mui-ellipsis-2" style="height: 42px;">
+								{$vo.sellhouse_title}
+							</div>
+							<p style="margin-bottom: 0;font-size: 12px;">{$vo.sellhouse_type}&nbsp;&nbsp;{$vo.sellhouse_class}&nbsp;&nbsp;<span style="color: #ff7300;font-size: 16px;float: right;">
+							<?php if($vo['sellhouse_price'] == 0){  ?>
+								面议
+							<?php }else{ ?>
+
+							  {$vo['sellhouse_price']}万
+
+							<?php  } ?>
+
+							</span></p>
+ 							<p style="margin-bottom: 0;color: #666;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-address" style="font-weight: normal;margin-right: 5px;">{$vo.sellhouse_address}</strong>
+ 
+ 							<span style="float: right;">置顶</span>
+ 							 
+ 							</p>
+						</a>
+					</div>
+				</div>
+			</div>
+			<?php }else{ ?>
+			<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" style="padding: 10px 10px;">
+					<?php if($vo['sell_other_type'] == 1){ ?>
+					 <!-- href="__MODULE__/Sell/sellShopDetails?sell_other_id={$vo.sell_other_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;"  str="sellShop" class="topheight" stv="{$vo.sell_other_id}">
+					<?php }else{ ?>
+					 <!-- href="__MODULE__/Sell/sellLandDetails?sell_other_id={$vo.sell_other_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;"  str="sellLand" class="topheight" stv="{$vo.sell_other_id}">
+					<?php } ?>
+							<div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+							     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_path}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;"></div>
+                            </div>
+							<div class="mui-ellipsis-2" style="height: 42px;">
+								{$vo.sell_other_title}
+							</div>
+							<p style="margin-bottom: 0;font-size: 16px;color: #ff7300;">
+							<?php if($vo['sell_other_price'] == 0){  ?>
+								面议
+							<?php }else{ ?>
+							  {$vo['sell_other_price']}万
+							<?php  } ?>
+							<span style="margin:0 5px;font-size: 12px;color: #666;">{$vo.sell_other_acreage}m<sup>2</sup></span><span style="margin:0 5px;font-size: 12px;color: #666;">
+							  <?php if(!empty($vo['sell_other_class'])){ ?>
+							   {$vo.sell_other_class}
+							  <?php }else{ ?>
+							   不限
+							  <?php } ?>
+							</span></p>
+							<p style="margin-bottom: 0;color: #666;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-address" style="font-weight: normal;margin-right: 5px;">{$vo.sell_other_address}</strong>
+ 
+  							<span style="float: right;">置顶</span>
+  							</p>
+						</a>
+					</div>
+				</div>
+			</div>
+ 			<?php } ?>
+			</foreach>
+			
+           <foreach item="vo" name="zongall">
+			<?php if(!empty($vo['sellhouse_id'])){ ?>
+			<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" style="padding: 10px 10px;">
+					 <!-- href="__MODULE__/Sell/sellHouseDetails?sellhouse_id={$vo.sellhouse_id}"  -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;" str="sellHouse" class="topheight" stv="{$vo.sellhouse_id}">
+						   <div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+							     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_path}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;" ></div>
+                            </div>
+
+							<div class="mui-ellipsis-2" style="height: 42px;">
+								{$vo.sellhouse_title}
+							</div>
+							<p style="margin-bottom: 0;font-size: 12px;">{$vo.sellhouse_type}&nbsp;&nbsp;{$vo.sellhouse_class}&nbsp;&nbsp;<span style="color: #ff7300;font-size: 16px;float: right;">
+							<?php if($vo['sellhouse_price'] == 0){  ?>
+								面议
+							<?php }else{ ?>
+							  {$vo['sellhouse_price']}万
+							<?php  } ?></span></p>
+							<p style="margin-bottom: 0;color: #666;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-address" style="font-weight: normal;margin-right: 5px;">{$vo.sellhouse_address}</strong><span style="float: right;" class="time">{$vo.sellhouse_date}</span></p>
+						</a>
+					</div>
+				</div>
+			</div>
+			<?php }else{ ?>
+			<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" style="padding: 10px 10px;">
+						<?php if($vo['sell_other_type'] == 1){ ?>
+						<!-- href="__MODULE__/Sell/sellShopDetails?sell_other_id={$vo.sell_other_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;" str="sellShop" class="topheight" stv="{$vo.sell_other_id}">
+					   <?php }else{ ?>
+					   <!-- href="__MODULE__/Sell/sellLandDetails?sell_other_id={$vo.sell_other_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;" str="sellLand" class="topheight" stv="{$vo.sell_other_id}">
+					   <?php } ?>
+							<div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+							     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_path}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;"></div>
+                            </div>
+							<div class="mui-ellipsis-2" style="height: 42px;">
+								{$vo.sell_other_title}
+							</div>
+							<p style="margin-bottom: 0;font-size: 16px;color: #ff7300;">
+							<?php if($vo['sell_other_price'] == 0){  ?>
+								面议
+							<?php }else{ ?>
+							  {$vo['sell_other_price']}万
+							<?php  } ?>
+
+						<span style="margin:0 5px;font-size: 12px;color: #666;">{$vo.sell_other_acreage}m<sup>2</sup></span><span style="margin:0 5px;font-size: 12px;color: #666;">
+							 <?php if(!empty($vo['sell_other_class'])){ ?>
+							   {$vo.sell_other_class}
+							  <?php }else{ ?>
+							   不限
+							  <?php } ?></span></p>
+
+							<p style="margin-bottom: 0;color: #666;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-address" style="font-weight: normal;margin-right: 5px;">{$vo.sell_other_address}</strong>
+							<span style="float: right;" class="time">{$vo.sell_other_time}</span></p>
+						</a>
+					</div>
+				</div>
+			</div>
+ 			<?php } ?>
+			</foreach>
+		</div>	
+	</div>
+	<a id="scrollToTop" class="backTop"></a>
+	<div id="pop" class="mui-popover">
+		<h4>请选择您要发布的类别<span class="mui-icon mui-icon-close"></span></h4>
+		<ul class="mui-table-view">
+			<li class="mui-table-view-cell" style="padding:5px 0;"><a href="__MODULE__/Sell/sellHouseRelease">住房出售</a></li>
+			<li class="mui-table-view-cell" style="padding:5px 0;"><a href="__MODULE__/Sell/sellShopRelease">商铺出售</a></li>
+			<li class="mui-table-view-cell" style="padding:5px 0;"><a href="__MODULE__/Sell/sellLandRelease">仓库/土地/其它出售</a></li>
+		</ul>
+    </div>
+
+     <?php if(count($all) + count($zongall) > 3){ ?>
+     <div style="width:30%;margin:0 auto;color:#000;padding:5px;font-size:12px;color:#888;" id="load" srv="0">
+         往上滑加载更多
+    </div>
+    <?php } ?>
+
+    <input type="hidden" id="limit" value="0">
+    <input type="hidden" id="scrollTop" value="0">
+
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/time.js"></script>
+	<script>
+		 var html2 = localStorage.getItem('localhtml');
+		// alert(localStorage.getItem('filter1'));
+		if(html2 == '' || html2 == undefined){
+		    localStorage.setItem('toplineTop',0);
+		    localStorage.setItem('pageNum',0);
+		}else{
+			$('#zong').html(html2);//将html填充进去
+			$('#limit').val(localStorage.getItem('pageNum'));    //将加载的页面数赋值给页面计数器
+			 $(window).on('load',function(){
+	            $(window).scrollTop(localStorage.getItem('toplineTop'));    //滚动条滚动到进入详情页时的位置
+	            // console.log($(window).scrollTop())
+	        });
+			localStorage.setItem('localhtml','');   //清除缓存
+		    localStorage.setItem('toplineTop',0);
+		    localStorage.setItem('pageNum',0); 
+		}
+	function toploa(){
+	   $('.topheight').on('click', function() {
+	      var str = $(this).attr('str');
+	      var stv = $(this).attr('stv');
+	      var scrollTop =getScrollTop();
+		      $("#scrollTop").val(scrollTop);
+		      var zong =$("#zong").html();
+         
+        $.post('{:U("Home/Demo/look")}', {str:str,stv:stv}, function(daty){
+    
+        	if (daty == 1) {
+           
+			      // $.post('{:U("Home/Sell/sellsession")}', {zong:zong}, function(data) {
+		      	   if(str == "sellHouse"){
+		      	   		 localmsg();
+			      	  	 location.href="__MODULE__/Sell/sellHouseDetails?sellhouse_id="+stv;
+		      	   }else if(str == "sellShop"){
+		      	   		 localmsg();
+			      	  	 location.href="__MODULE__/Sell/sellShopDetails?sell_other_id="+stv;
+		      	   }else {
+		      	   		 localmsg();
+			      	  	 location.href="__MODULE__/Sell/sellLandDetails?sell_other_id="+stv;
+			       }
+			       // });
+
+
+        	}else{
+	         layer.msg('对不起,信息已删除')
+	 	     }
+	    	 })
+ 
+
+	   });
+	 }
+	 toploa(); 
+	 //点击进入详情页时存储列表的html，滚动条的高度，页码数
+	 function localmsg(){
+	 	localStorage.setItem('toplineTop',$(window).scrollTop());  //页面滚动条距离顶部的高度存到缓存中
+		localStorage.setItem('localhtml',document.getElementById('zong').innerHTML);   //将html存到本地缓存中
+		localStorage.setItem('pageNum',$('#limit').val());  //将页面加载数量存到缓存中
+	 }
+
+	   //求滚动条的高度
+	   function getScrollTop(){
+		    var scrollTop=0;    
+		    if(document.documentElement&&document.documentElement.scrollTop){    
+		        scrollTop=document.documentElement.scrollTop;    
+		    }else if(document.body){    
+		        scrollTop=document.body.scrollTop;    
+		    }    
+		    return scrollTop;    
+		} 
+
+	   //如果之前滚动条的位置
+	  //   function time(){
+	  //     var limit = $("#limit").val();
+	 	//   if (limit != 0) {
+	 	//   	$.post('{:U("Home/Sell/looksellsession")}', {limit:limit},function(data){
+	 	//   		if (data != 2) {
+	  //  	  		   $("#zong").html("");
+	  // 	  		   $("#zong").append(data)
+	  // 	  		    var tab = $("#zong").text();
+			// 		if (tab) {
+			// 		var scrollTop = $("#scrollTop").val();
+			// 		 window.scrollTo(0,scrollTop);
+			// 		 toploa();
+			// 		}
+			// 	}else{
+			// 	 	$('#limit').val(0)
+			// 	 	$("#scrollTop").val(0);
+			// 	 }
+	 	//   	});
+	 	//   }
+	  //   }
+	  // setTimeout(time(),1000);
+
+       	//加载
+	  function loadclick(){
+		$(window).scroll(function(){
+		　　var scrollTop = $(this).scrollTop();
+		　　var scrollHeight = $(document).height();
+		　　var windowHeight = $(this).height();
+		　　if(scrollTop + windowHeight == scrollHeight){
+ 		    	var limit = parseInt($('#limit').val())+1;
+ 		    	  $('#limit').val(limit);
+ 		    	  // $("#load").show();
+ 		    	 setTimeout(function(){
+ 		    	  // $("#load").hide();
+					$.post('{:U("Home/Sell/loadsellsession")}',{limit:limit},function(data){
+						if (data == 0) {
+							$("#load").text("已经到底了！");
+						}else{
+  					        $("#zong").append(data);
+  					    }
+  					  toploa(); 
+  					  timeStamp()
+   				   }) 
+			     },500);
+  		　　 }
+		});
+	}	
+   
+    loadclick()
+
+
+function look(obj){
+	// $("[id=up]").each(function(){ 
+	// 	$(this).click(function(){
+     		var id = $(obj).attr('str');
+     		var type = $(obj).attr('stb');
+     		var url = $(obj).attr('url');
+				// alert(id)
+		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+ 	     		if (type == 0) {
+	     			 location.href="http://"+url;
+	     		}else if(type == 1){
+	     			 location.href= 'tel:' + url;
+	      		}else{
+	      			location.href=url;
+	      		}
+			});
+    // 	})
+    // })
+}
+	function timeStamp(){
+	var time=$('.time')
+	$.each(time,function(index,item){
+	 if ($(this).text().length > 13) {
+	   var timeText=$(this).text();
+ 	    getDateDiff(stringToTime(timeText))
+	    $(this).text(getDateDiff(stringToTime(timeText)))
+	  }
+	})
+	}
+
+	timeStamp()
+
+		var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+
+		mui.init();
+      	
+
+        // 弹出层
+      	var pop = document.getElementById("pop");
+        var mask = mui.createMask(function(){
+            pop.classList.remove('mui-active');
+        });
+         //按钮关闭弹出框
+        $(".mui-icon-close").click(function(){
+         	pop.classList.remove('mui-active');
+         	mask.close();
+         	
+         })
+        // 显示
+        mui('#fabu')[0].addEventListener('click',function(){
+            mask.show();//显示遮罩
+            pop.classList.add('mui-active');
+        })
+        //
+         $('#search').on('search', function(e){
+         		alert(111111)
+		});
+	    $("#scrollToTop").on("touchend", function(e) {
+			e.preventDefault();	
+		    mui.scrollTo(0,100);
+		});
+	</script>
+</body>
+</html>

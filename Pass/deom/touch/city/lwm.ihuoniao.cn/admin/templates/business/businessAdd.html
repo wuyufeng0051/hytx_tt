@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var atlasSize = {#$atlasSize#}, atlasType = "{#$atlasType#}", atlasMax = 0;  //图集配置
+var imglist = {"imgpics": {#$pics#}, "certify": {#$certify#}, "banner": {#$banner#}}, mapCity = "{#$cfg_mapCity#}",
+	typeid = {#$typeid#}, addrid = {#$addrid#}, typeListArr = {#$typeListArr#}, addrListArr = {#$addrListArr#}, action = '{#$action#}', modelType = '{#$action#}', adminPath = "{#$adminPath#}";
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label for="title">店铺名称：</label></dt>
+    <dd>
+      <input class="input-xxlarge" type="text" name="title" id="title" data-regex=".{2,60}" maxlength="60" value="{#$title#}" />
+      <span class="input-tips"><s></s>请输入店铺名称。</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>店铺LOGO：</dt>
+		<dd class="thumb clearfix listImgBox">
+			<div class="uploadinp filePicker thumbtn{#if $logo != ""#} hide{#/if#}" id="filePicker1" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+			{#if $logo != ""#}
+			<ul id="listSection1" class="listSection thumblist clearfix" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$logo#}' target="_blank" title=""><img alt="" src="/include/attachment.php?f={#$logo#}" data-val="{#$logo#}" data-url="/include/attachment.php?f={#$logo#}" width="100"/></a><a class="reupload li-rm" href="javascript:;">删除图片</a></li></ul>
+			{#else#}
+			<ul id="listSection1" class="listSection thumblist clearfix"></ul>
+			{#/if#}
+			<input type="hidden" name="logo" value="{#$logo#}" class="imglist-hidden" id="logo">
+		</dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="typeid">经营品类：</label></dt>
+    <dd>
+      <span id="typeList">
+        <select name="typeid" id="typeid" class="input-large"></select>
+      </span>
+      <span class="input-tips"><s></s>请选择经营品类</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="addrid">所属地区：</label></dt>
+    <dd>
+      <span id="addrList">
+        <select name="addrid" id="addrid" class="input-large"></select>
+      </span>
+      <span class="input-tips"><s></s>请选择所属地区</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="address">详细地址：</label></dt>
+    <dd>
+      <input class="input-large" type="text" name="address" id="address" value="{#$address#}" maxlength="60" data-regex=".{2,60}" />
+      <img src="{#$adminPath#}../static/images/admin/markditu.jpg" id="mark" style="cursor:pointer;" title="标注地图位置" />
+      <span class="input-tips"><s></s>请输入详细地址，2-60位</span>
+      <input type="hidden" name="lnglat" id="lnglat" value="{#$lnglat#}" />
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="wechatname">微信名称：</label></dt>
+    <dd><input class="input-large" type="text" name="wechatname" id="wechatname" value="{#$wechatname#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="wechatcode">微信号：</label></dt>
+    <dd><input class="input-large" type="text" name="wechatcode" id="wechatcode" value="{#$wechatcode#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>微信二维码：</label></dt>
+		<dd class="thumb clearfix listImgBox">
+			<div class="uploadinp filePicker thumbtn{#if $wechatqr != ""#} hide{#/if#}" id="filePicker2" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+			{#if $wechatqr != ""#}
+			<ul id="listSection2" class="listSection thumblist clearfix" style="display:inline-block;"><li id="WU_FILE_2_1"><a href='{#$wechatqr#}' target="_blank" title=""><img alt="" src="/include/attachment.php?f={#$wechatqr#}" data-val="{#$wechatqr#}" data-url="/include/attachment.php?f={#$wechatqr#}" width="100"/></a><a class="reupload li-rm" href="javascript:;">删除图片</a></li></ul>
+			{#else#}
+			<ul id="listSection2" class="listSection thumblist clearfix"></ul>
+			{#/if#}
+			<input type="hidden" name="wechatqr" value="{#$wechatqr#}" class="imglist-hidden" id="wechatqr">
+		</dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="tel">联系电话：</label></dt>
+    <dd><input type="text" class="input-large" id="tel" name="tel" value="{#$tel#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="qq">联系QQ：</label></dt>
+    <dd><input type="text" class="input-large" id="qq" name="qq" value="{#$qq#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>幻灯图片：</dt>
+		<dd class="listImgBox hide">
+			<div class="list-holder">
+				<ul id="listSection3" class="clearfix listSection piece"></ul>
+				<input type="hidden" name="pics" value='{#$imglist#}' class="imglist-hidden">
+			</div>
+			<div class="btn-section clearfix">
+				<div class="uploadinp filePicker" id="filePicker3" data-type="album" data-count="999" data-size="{#$atlasSize#}" data-imglist="imgpics"><div id="flasHolder"></div><span>添加图片</span></div>
+				<div class="upload-tip">
+					<p><a href="javascript:;" class="hide deleteAllAtlas">删除所有</a>&nbsp;&nbsp;{#$atlasType|replace:"*.":""|replace:";":"、"#}&nbsp;&nbsp;单张最大{#$atlasSize/1024#}M<span class="fileerror"></span></p>
+				</div>
+			</div>
+		</dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>店铺图集：</dt>
+		<dd class="listImgBox hide">
+			<div class="list-holder">
+				<ul id="listSection4" class="clearfix listSection piece"></ul>
+				<input type="hidden" name="certify" value='{#$certify#}' class="imglist-hidden">
+			</div>
+			<div class="btn-section clearfix">
+				<div class="uploadinp filePicker" id="filePicker4" data-type="album" data-count="999" data-size="{#$atlasSize#}" data-imglist="certify"><div id="flasHolder"></div><span>添加图片</span></div>
+				<div class="upload-tip">
+					<p><a href="javascript:;" class="hide deleteAllAtlas">删除所有</a>&nbsp;&nbsp;{#$atlasType|replace:"*.":""|replace:";":"、"#}&nbsp;&nbsp;单张最大{#$atlasSize/1024#}M<span class="fileerror"></span></p>
+				</div>
+			</div>
+		</dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>经营许可证：</label></dt>
+		<dd class="thumb clearfix listImgBox">
+			<div class="uploadinp filePicker thumbtn{#if $license != ""#} hide{#/if#}" id="filePicker5" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+			{#if $license != ""#}
+			<ul id="listSection5" class="listSection thumblist clearfix" style="display:inline-block;"><li id="WU_FILE_5_1"><a href='{#$license#}' target="_blank" title=""><img alt="" src="/include/attachment.php?f={#$license#}" data-val="{#$license#}" data-url="/include/attachment.php?f={#$license#}" width="100"/></a><a class="reupload li-rm" href="javascript:;">删除图片</a></li></ul>
+			{#else#}
+			<ul id="listSection5" class="listSection thumblist clearfix"></ul>
+			{#/if#}
+			<input type="hidden" name="license" value="{#$license#}" class="imglist-hidden" id="license">
+		</dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>其他证明文件：</dt>
+		<dd class="listImgBox hide">
+			<div class="list-holder">
+				<ul id="listSection6" class="clearfix listSection piece"></ul>
+				<input type="hidden" name="banner" value='{#$banner#}' class="imglist-hidden">
+			</div>
+			<div class="btn-section clearfix">
+				<div class="uploadinp filePicker" id="filePicker6" data-type="album" data-count="999" data-size="{#$atlasSize#}" data-imglist="banner"><div id="flasHolder"></div><span>添加图片</span></div>
+				<div class="upload-tip">
+					<p><a href="javascript:;" class="hide deleteAllAtlas">删除所有</a>&nbsp;&nbsp;{#$atlasType|replace:"*.":""|replace:";":"、"#}&nbsp;&nbsp;单张最大{#$atlasSize/1024#}M<span class="fileerror"></span></p>
+				</div>
+			</div>
+		</dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="opentime">营业时间：</label></dt>
+    <dd><input type="text" class="input-large" id="opentime" name="opentime" value="{#$opentime#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="amount">人均消费：</label></dt>
+    <dd><input type="text" class="input-large" id="amount" name="amount" value="{#$amount#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="parking">停车位：</label></dt>
+    <dd><input type="text" class="input-large" id="parking" name="parking" value="{#$parking#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="state">店铺状态：</label></dt>
+    <dd class="radio">
+      <select name="state" id="state" class="input-medium">
+        {#html_options options=$stateList selected=$state#}
+      </select>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>认证信息：</label></dt>
+    <dd>
+		{#foreach from=$authArr item=auth#}
+		<label><input type="checkbox" name="authattr[]" value="{#$auth.id#}"{#if $authattr && in_array($auth.id, $authattr)#} checked{#/if#} />{#$auth.typename#}</label>&nbsp;&nbsp;
+		{#/foreach#}
+		<a href="businessAuthAttr.php" class="btn btn-info btn-mini" style="display: inline-block; vertical-align: middle;" id="customRz">自定义认证属性</a>
+	</dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><button class="btn btn-large btn-success" type="submit" name="button" id="btnSubmit">确认提交</button></dd>
+  </dl>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

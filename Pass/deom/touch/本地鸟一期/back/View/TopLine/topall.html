@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>评论详情</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+
+	<style>
+	body,.mui-content{
+		background: #fff;
+	}
+	.ad img{
+		width: 100%;
+		display: block;
+	}
+	.hot {
+	    font-size: 15px;
+	    color: #000;
+	    padding-left: 15px;
+	    font-weight: inherit;
+	    line-height: 32px;
+	    border-bottom: 1px solid #e6e6e6;
+	    margin: 0;
+	    padding-top: 5px;
+	}
+	.no-comment{
+		text-align: center;
+		display: none;
+	}
+	.no-comment img{
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+	#footer{
+		background: #fff;
+		z-index:999;
+	}
+	#footer .input{
+		/*margin-right: 65px;*/
+	}
+	#footer button{
+		position: absolute;
+		right: 6px;
+		top: 5px;
+		color: #fff;
+		height: 35px;
+	}
+	#footer input{
+		height: 35px;
+		margin-top:5px;
+		border:none;
+		border-bottom: 1px solid #ddd;
+		padding-left: 0;
+	}
+	#footer textarea{
+		height: 40px;
+		margin-top:5px;
+		border:none;
+		border-bottom: 1px solid #ddd;
+		padding-left: 0;
+		padding-top: 0px;
+		/*max-height: 60px;*/ 
+		margin-bottom: 3px;
+	}
+	.avatar{
+		width: 42px;
+		height: 42px;
+		float: left;
+		overflow: hidden;
+		border-radius: 50%;
+	}
+	.avatar img{
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+	.uname{
+		margin-left: 50px;
+		height: 42px;
+		font-size: 16px;
+		position: relative;
+		color: #666;
+	}
+	.uname .UeserId{
+		float: left;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		width: 90%;
+	}
+	.zan{
+		    padding-right: 20px;
+    background: url(/Public/Home/img/zan.png) no-repeat right 2px;
+    background-size: 16px;
+    position: absolute;
+    right: 0;
+    top: 24px;
+    color: #999;
+	}
+	.mui-card{
+		box-shadow: none;
+	}
+	.huifu{
+		/*padding: 8px;*/
+		/*background: #f2f2f2;*/
+	}
+	.huifu p{
+		margin:0;
+		font-size: 14px;
+		color: #333;
+	}
+	.huifu p span{
+		color: #3c689b;
+		margin-right: 10px;
+	}
+    
+
+    .weui-mask {
+	    position: fixed;
+	    z-index: 1000;
+	    top: 0;
+	    right: 0;
+	    left: 0;
+	    bottom: 0;
+	    background: rgba(0, 0, 0, .6);
+	}
+
+	.weui-mask_transparent{
+	    position: fixed;
+	    z-index: 1000;
+	    top: 0;
+	    right: 0;
+	    left: 0;
+	    bottom: 0;
+	}
+	.weui-dialog {
+	    position: fixed;
+	    z-index: 5000;
+	    width: 80%;
+	    max-width: 300px;
+	    top: 50%;
+	    left: 50%;
+	    -webkit-transform: translate(-50%, -50%);
+	    transform: translate(-50%, -50%);
+	    background-color: #FFFFFF;
+	    text-align: center;
+	    border-radius: 3px;
+	    overflow: hidden;
+	}
+	.weui-dialog__hd {
+	    padding: 1.3em 1.6em 0.5em;
+	}
+	.weui-dialog__title {
+	    font-weight: 400;
+	    font-size: 18px;
+	}
+	.weui-dialog__bd {
+	    padding: 0 1.6em 0.8em;
+	    min-height: 40px;
+	    font-size: 15px;
+	    line-height: 1.3;
+	    word-wrap: break-word;
+	    word-break: break-all;
+	    color: #999999;
+	}
+	.weui-dialog__ft {
+	    position: relative;
+	    line-height: 48px;
+	    font-size: 18px;
+	    display: -webkit-box;
+	    display: -webkit-flex;
+	    display: flex;
+	}
+	.weui-dialog__btn_default {
+	    color: #353535;
+	}
+	.weui-dialog__btn {
+	    display: block;
+	    -webkit-box-flex: 1;
+	    -webkit-flex: 1;
+	    flex: 1;
+	    color: #ff7400;
+	    text-decoration: none;
+	    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	    position: relative;
+	}
+	.weui-dialog__ft:after {
+	    content: " ";
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	    right: 0;
+	    height: 1px;
+	    border-top: 1px solid #D5D5D6;
+	    color: #D5D5D6;
+	    -webkit-transform-origin: 0 0;
+	    transform-origin: 0 0;
+	    -webkit-transform: scaleY(0.5);
+	    transform: scaleY(0.5);
+	}
+	.weui-dialog__btn:after {
+	    content: " ";
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	    width: 1px;
+	    bottom: 0;
+	    border-left: 1px solid #D5D5D6;
+	    color: #D5D5D6;
+	    -webkit-transform-origin: 0 0;
+	    transform-origin: 0 0;
+	    -webkit-transform: scaleX(0.5);
+	    transform: scaleX(0.5);
+	}
+
+	.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+/*	#comm::-webkit-input-placeholder {
+    padding-top: 10px;
+}*/
+	body{position: relative;height: 100%;}
+	.disk{
+		background: #000;
+		opacity: .5!important;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 11 ;
+		display: none;
+	}
+	.mui-bar.add{
+		background: #f8f8f8!important;
+		padding: 10px;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 12;
+		height: auto!important;
+	}
+	.mui-bar.add .mui-btn{
+		display: none;
+	}
+	.mui-bar.add .input{
+		margin: 0!important;
+	}
+	.mui-bar.add textarea{
+		height: 100px!important;
+		background: #fff!important;
+		position: relative!important;
+		width: 100%!important;
+		border: 1px solid #dedede!important;
+		margin-bottom: 10px!important;
+		padding: 10px!important;
+		line-height: 1!important;
+		opacity: 1!important;
+	}
+	.mui-bar .con_btn{
+		display: none;
+	}
+	.mui-bar.add .con_btn{
+		display: block;
+	}
+	.add .con_btn .biao{
+	    float: right;
+	    width: 65px;
+	    height: 35px;
+	    line-height: 35px;
+	    text-align: center;
+	    background: #fd5530;
+	    color: #fff;
+	}
+	.mui-bar.add .cancle{
+	    float: right;
+	    width: 65px;
+	    height: 35px;
+	    line-height: 35px;
+	    text-align: center;
+	    background: #f8f8f8;
+	    border: 1px solid #ddd;
+	    color: #000;
+	    margin-right: 10px;
+	}
+	.xiao_box{
+		position: relative;
+	}
+	.xiao_box .xiao_img{
+		float: right;
+		/*margin-right: 21px;*/
+	}
+	.xiao_box .xiao_img img{
+		width: 30px;
+		height: 30px;
+	}
+	.xiao_box .xiao_hide_box{
+		position: absolute;
+		right: 32px;
+		top: -2px;
+	    background: url(/Public/Home/img/222.png) no-repeat center;
+	    background-size: 170px;
+	    width: 173px;
+	    height: 35px;
+	    display: none;
+	    margin-right: 4px;
+	}
+	.xiao_box .xiao_hide_box ul li{
+		float: left;
+		color: #fff;
+		line-height: 35px;
+		text-align: center;
+		width: 50%;
+	}
+		/*公用头部*/
+	.header{
+	    height: .9rem;
+	    background: #fd5530 !important;
+	    color: #fff;
+	    font-size: .32rem;
+	    line-height: .9rem;
+	    max-width: 1080px;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    overflow: hidden;
+	    z-index: 10;
+	}
+	.header a{
+		display: inline-block;
+		color: #fff;
+	}
+	.header .back{
+	    height: .9rem;
+	    line-height: .9rem;
+	    width: 17%;
+	    float: left;
+	}
+	.header .back i{
+	    width: 0.4rem;
+	    height: .9rem;
+	    display: inline-block;
+	    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+	    vertical-align: middle;
+	    background-size: .3rem;
+	}
+	.header .header_right{
+		float: right;
+		height: .9rem;
+		margin-right: .2rem;
+	}
+	.header .header_right i{
+	    width: 0.04rem;
+	    height: 0.5rem;
+	    display: inline-block;
+	    vertical-align: middle;
+	    background: #fff;
+	    margin: 0 .15rem;
+	}
+	.header .title_1{
+	    float: left;
+	    width: 70%;
+	    text-align: center;
+	    font-size: 0.38rem;
+	}
+	.header .share{
+	    height: .9rem;
+	    float: right;
+	    width: 12%;
+	    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+	    background-size: .5rem;
+	}
+	</style>
+	
+</head>
+<body>
+
+<include file="Public/share" title='包含文件'/>
+	<!-- 共同顶部 s-->
+		<div class="header fn-clear">
+			<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+			<!-- <div class="title_1">评论详情</div> -->
+		</div>
+	<!-- 共同顶部 e-->
+    <div class="js_dialog" id="iosDialog" style="display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__hd">
+            	<textarea type="text" rows="3"  placeholder="请输入回复内容" maxlength="80" id="desc" style="padding: 3px 5px;"></textarea>
+            </div>
+             <div class="weui-dialog__ft">
+                  <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" id="cance">取消</a>
+                  <a class="weui-dialog__btn" id="backhuifu">回复</a>
+             </div>
+        </div>
+    </div>
+    <div class="disk"></div>
+	<footer class="mui-bar mui-bar-footer" id="footer" style="height: 55px;">
+		<div style="padding: 0 10px;">
+			<div class="input">
+				<textarea style="z-index: 999;position: relative;opacity: 0;width: 100%;font-size: 16px;" name="" id="comm" cols="30" rows="10" placeholder="说两句再走吧··· 80个字以内"></textarea>
+				<span style="position: absolute;left: 10px;top:0px;width: 75%;background: #e6e6e6;color: #71706f;height: 35px;border-radius: 5px;margin-top: 10px;font-size: 16px;padding: 0;padding-left: 10px;line-height: 35px;overflow: hidden;">说两句再走吧··· 80个字以内</span>
+				<div class="con_btn fn-clear"><div class="biao" id='hf'>发表</div><div class="cancle">取消</div></div>
+			</div>
+			<button type="button" class="mui-btn" style="background: url(__PUBLIC__/Home/img/pinglun_1.png) no-repeat left;padding-left: 24px;border:none;background-size: 20px;color: #fd5530 !important;font-size: 16px;margin-top: 3px;" >评论</button>
+		</div>
+	</footer>
+	<div class="mui-content" style="padding-bottom:0px;margin-top: .9rem;">
+ 		<h5 class="hot">最新评论(<span id="newcomm"><?php  echo $comment_count;  ?></span>)</h5>
+       <div id="zong" style="margin-bottom: 55px;">
+			<div class="comment">
+				<!-- 暂无评论的时候  -->
+				<?php if($comment_count<= 0){ ?>
+				<div class="no-comment">
+					<img src="__PUBLIC__/Home/img/pen.png">
+					<p>暂无评论，快留下你的牛评！</p>
+				</div>
+	            <?php }  ?>
+	           <div id="commentall">
+	           <volist name="res_all" id="vo" key="k">
+	             <div class="mui-card" style="margin:0;border-bottom: 1px solid #e6e6e6;">
+					<div class="mui-card-content">
+						<div class="mui-card-content-inner">
+							<a class="avatar">
+								<img src="{$vo.comment_userhead}">
+							</a>
+							<div class="uname">
+								<em style="color: #306dd8;">{$vo.comment_username}</em>
+								<p style="margin:0;">{$vo.comment_date|substr=5,5}</p>
+								<span id="zan" class="zan" str="{$vo.comment_id}">{$vo.comment_like}</span>
+							</div>
+							<div style="margin-left: 50px;margin-top: 10px;" class="text">{$vo.comment_content}</div>
+							<div class="xiao_box fn-clear">
+								<div class="xiao_img"><img src="__PUBLIC__/Home/img/211.png" alt=""></div>
+								<div class="xiao_hide_box fn-clear">
+									<ul>
+										<?php if ($vo['comment_uid'] == $_SESSION['user_id']) { ?>
+										<li><a style="display: inline-block;width: 40px;color: #fff;" id="del" class="c{$vo.comment_id}" str="{$vo.comment_id}">删除</a></li>
+										<?php }else{ ?>
+										<li><a href="__MODULE__/Index/reportComment?comment_id={$vo.comment_id}" style="display: inline-block;width: 40px;color: #fff;">举报</a></li>
+										<?php } ?>
+
+										<li><a href="__MODULE__/TopLine/topcomment?comment_id={$vo.comment_id}" style="display: inline-block;width: 100%;color: #fff;">回复</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div>
+			 				<div class="huifu">
+			 				<volist name="vo.reply" id="v">
+								  <div class="mui-card" style="margin:0;background: #f5f5f5;border-bottom: 1px solid #e7e7e7">
+										<div class="mui-card-content">
+											<div class="mui-card-content-inner" >
+												<a class="avatar">
+													<img src="{$v.comment_userhead}" alt="">
+												</a>
+												<div class="uname fn-clear">
+													<div class="UeserId">
+														<span id="{$v.comment_id}" class="showff" style="color: #306dd8;" stong="{$v.comment_uid}">{$v.comment_username}</span>
+														<span style="margin:0 5px;color: #333;">回复</span>
+														<span id="{$vo.postreply_id}" class="showff" style="color: #306dd8;" stong="{$vo.user_id}">{$v.comment_isusername}</span>
+													</div>
+													<p style="margin:0;float: left;width: 100%;">{$v.comment_date|substr=5,5}</p>
+													<input type="hidden" value="{$v.comment_id}">
+													<span class="zan" id="zan" str="{$v.comment_id}">{$v.comment_like}</span>
+												</div>
+												<div style="margin-left: 50px;margin-top: 10px;">
+													{$v.comment_content}
+					 							</div>
+												<div class="xiao_box fn-clear">
+													<div class="xiao_img"><img src="__PUBLIC__/Home/img/211.png" alt=""></div>
+													<div class="xiao_hide_box fn-clear">
+														<ul>
+															<?php if ($v['comment_uid'] == $_SESSION['user_id']) { ?>
+															<li><a style="display: inline-block;width: 100%;color: #fff;" id="del"  str="{$v.comment_id}">删除</a></li>
+															<?php }else{ ?>
+															<li><a href="__MODULE__/Index/reportComment?comment_id={$vo.comment_id}" style="display: inline-block;width: 100%;color: #fff;">举报</a></li>
+															<?php } ?>
+															<li><a href="__MODULE__/TopLine/topcomment?comment_id={$v.comment_id}" style="display: inline-block;width: 100%;color: #fff;">回复</a></li>
+														</ul>
+													</div>
+												</div>
+					 						</div>
+					 					</div>
+									</div>
+		                    </volist>
+							 
+							 <?php if($vo['reply_count'] > 3 ){ ?>
+								<div class="more" style="padding-top: 8px;padding-bottom: 8px;padding-left: 118px;background: #f5f5f5;">
+									<div class="mui-ellipsis" style="width: auto;margin-right: 10px;background: #969593;color: #fff;text-align: center;border-radius: 5px;height: 30px;line-height: 30px;">
+										<a href="__MODULE__/TopLine/topcomment?comment_id={$vo.comment_id}" str="{$vo.comment_id}" style="color: #fff;">共{$vo.reply_count}条回复，点击查看更多回复>></a>
+									</div>
+								</div>
+		                       <?php } ?>
+			            	
+							</div>
+						</div>
+	 				</div>
+ 				</div>
+	           </volist>
+	          </div>
+	  		</div>
+  	   </div>
+	</div>
+</div>
+
+<input type="hidden" value="{$commentAndReply.0.topline_id}" id="topline_id">
+ <!-- <div style="width:30%;margin:0 auto;color:#000;padding:5px;font-size:12px;color:#888;height:10px;" id="load">往上滑加载更多</div> -->
+
+ <input type="hidden" id="limit" value="0">
+ <input type="hidden" id="scrollTop" value="0">
+
+ <input type="hidden" id="replyback_muid">
+ <input type="hidden" id="replyback_fid">
+
+<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+<script src="__PUBLIC__/Home/js/layer.js"></script>
+<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+<script>
+    $('.comment').delegate('#del','click',function(){
+        var comment_id = $(this).attr('str');
+        var thiss=$(this);
+        if(confirm("确定删除？")){
+            $.post('{:U("Home/TopLine/delcomm")}',{comment_id:comment_id}, function(data) {
+                if (data == 1) {
+                    thiss.closest('.mui-card-content').remove();
+                    thiss.closest('.mui-card').remove();
+                    var newcomms = parseInt($("#newcomm").text())-1;
+                    $("#newcomm").text(newcomms);
+                    layer.msg('删除成功', {
+                        time: 1000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function(){
+                        window.location.reload();
+                    });
+                }else{
+                    layer.msg('系统繁忙中，请稍后再试');
+                }
+            });
+        }
+    })
+function look(obj) {
+    // $("[id=up]").each(function(){
+    // $(this).click(function(){
+    var id = $(obj).attr('str');
+    var type = $(obj).attr('stb');
+    var url = $(obj).attr('url');
+    // alert(id)
+    $.post('{:U("Home/Index/addTraffic")}', {id: id}, function (data) {
+        if (type == 0) {
+            location.href = "http://" + url;
+        } else if (type == 1) {
+            location.href = 'tel:' + url;
+        } else {
+            location.href = url;
+        }
+    });
+    // 	})
+    // })
+}
+	//回复
+    $('#hf').click(function(){
+    	var topline_id ='{$lineid}';
+    	var comm = $("#comm").val();
+        if (!comm) {
+          layer.msg('请先输入内容')
+        }else{
+    	$.post('{:U("Home/TopLine/addTopLineComment")}',{topline_id:topline_id,comm:comm}, function(data) {
+    		 if(data == 1){
+    		 	layer.msg('评论已发表 审核中')
+      		}else if(data != 3){
+      		 	// alert(data)
+    		 	//添加评论的条数
+    		 	 var newcomms = $("#newcomm").text();
+    		 	   var number = parseInt(newcomms)+1;
+    		 	   $("#newcomm").text(number)
+				strs=data.split(","); //字符分割 
+                 $('#commentall').prepend('<div class="mui-card" style="margin:0;border-bottom: 1px solid #e6e6e6;">'
+                     +	'<div class="mui-card-content">'
+                     +		'<div class="mui-card-content-inner">'
+                     +			'<a class="avatar">'
+                     +				'<img src="'+strs[1]+'" alt="">'
+                     +			'</a>'
+                     +			'<div class="uname">'
+                     +				'<em style="color: #306dd8;">'+strs[0]+'</em>'
+                     +				'<p style="margin:0;">'+strs[2]+'</p>'
+                     +				'<span id="zan"  class="zan" str="'+strs[3]+'">0</span>'
+                     +			'</div>'
+                     +			'<div style="padding-left: 50px;position: relative;" class="text">'
+                     +			  comm
+                     +			'</div>'
+                     +			'<div class="xiao_box fn-clear">'
+                     +			'<div class="xiao_img"><img src="__PUBLIC__/Home/img/211.png" alt=""></div>'
+                     +			'<div class="xiao_hide_box fn-clear">'
+                     +			'<ul>'
+                     +			'<li id="del" class="d'+strs[3]+'" str="'+strs[3]+'">删除</li>'
+                     +			'<li><a href="__MODULE__/TopLine/topcomment?comment_id='+strs[3]+'" style="display: inline-block;width: 100%;color: #fff;">回复</li>'
+                     +			'</ul>'
+                     +			'</div>'
+                     +		'</div>'
+                     +			'<div style="padding-left: 50px;">'
+                     +			'</div>'
+                     +		'</div>'
+                     +	'</div>'
+                     +'</div>')
+                 layer.msg('发表成功', {
+                     time: 1000 //2秒关闭（如果不配置，默认是3秒）
+                 }, function(){
+                     window.location.reload();
+                 });
+                    zan()
+    		 }else{
+    		 	layer.msg('系统繁忙,请稍后再试')
+    		 }
+    		 $("#comm").val("");
+
+    	});
+		}
+    })
+    zan()
+    function zan(){
+        //点赞
+        $('.comment').delegate('#zan','click',function(){
+            var thiss =$(this).parent().parent().parent().find('.zan')
+            var like = $(this).parent().parent().parent().find('.zan').text();
+            var comment_id = $(this).attr('str');
+
+            //获取评论的id
+            $.post('{:U("Home/TopLine/addTopLineLike")}',{comment_id:comment_id}, function(data) {
+                if (data == 1) {
+                    //加评论的条数
+                    var likenum = parseInt(like)+1;
+                    thiss.text(likenum)
+                }else if(data == 2){
+                    layer.msg('系统繁忙中，请稍后再试')
+                }else{
+                    layer.msg('您已点赞过')
+                }
+            });
+        })
+    }
+
+var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+
+	var u = navigator.userAgent;
+ 	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+	if(isiOS == true){	
+		// $('#footer').css({'width': '100%','height': '55px','text-align': 'center';'position': 'absolute', 'bottom': '0','left': '0'});
+		// $('.mui-content').css({'height': '100%','overflow': 'auto','padding-bottom': '80px';});
+		$('#footer .input textarea').focus(function(){
+			$('.mui-bar').addClass('add');
+			$('.disk').show();
+			$('#footer').css({'position':'fixed','bottom':'62px','left':'0'});
+			$('.input span').hide();
+		});
+		$('#footer .input textarea').blur(function(){
+			$('#footer').css({'position':'fixed','bottom':'0','left':'0'});
+		});
+	}else{
+		$('#footer .input textarea').focus(function(){
+			$('.mui-bar').addClass('add');
+			$('.disk').show();
+			$('#footer').css({'position':'fixed','bottom':'-5px;','left':'0'});
+			$('.input span').hide();
+		});
+		$('#footer .input textarea').blur(function(){
+			$('#footer').css({'position':'fixed','bottom':'0','left':'0'});
+		});
+	}
+	$('.biao').click(function(){
+		$('.mui-bar').removeClass('add');
+		$('.disk').hide();
+		$('.input span').show();
+	})
+	$('.cancle').click(function(){
+		$('.mui-bar').removeClass('add');
+		$('.disk').hide();
+		$('.input span').show();
+	})
+	$('.disk').click(function(){
+		$('.mui-bar').removeClass('add');
+		$('.disk').hide();
+		$('.input span').show();
+	})
+	$('.comment').delegate('.xiao_img','click',function(){
+		var x = $(this),
+			find = x.closest('.xiao_box').find('.xiao_hide_box');
+		if (find.css("display") == "none") {
+			find.show();
+		}else{
+			find.hide();
+		}
+		return false
+	})
+	$('body').click(function(){
+		var x = $('.xiao_hide_box');
+		x.hide();
+	})
+	</script>
+</body>
+</html>

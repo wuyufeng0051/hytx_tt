@@ -1,0 +1,133 @@
+{#if $do == "add" || $id != 0#}
+{#if $do == "add"#}
+{#$pageTitle = "新增运费模板 - "|cat:$cfg_webname#}
+{#else#}
+{#$pageTitle = "修改运费模板 - "|cat:$cfg_webname#}
+{#/if#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css?v=2" media="all" />
+<script type="text/javascript">
+	var id = {#$id#};
+	var manageUrl = '{#getUrlPath service="member" template="logistic" action="$module"#}';
+</script>
+</head>
+
+{#$pageCurr = "logistic_{#$module#}"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+	<div class="container fn-clear">
+		<div class="w-form">
+			<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service={#$module#}&action={#if $id != 0#}logisticEdit&id={#$id#}{#else#}logisticAdd{#/if#}">
+				<dl class="fn-clear" data-required="1">
+					<dt>名称：</dt>
+					<dd><input type="text" name="title" class="inp" id="title" size="39" maxlength="50" value="{#$title#}" /></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>是否包邮：</dt>
+					<dd>
+						<div class="radio bearFreight">
+							<span data-id="0"{#if $bearFreight == "" || $bearFreight == 0#} class="curr"{#/if#}>自定义邮费</span>
+							<span data-id="1"{#if $bearFreight == 1#} class="curr"{#/if#}>免邮费</span>
+							<input type="hidden" name="bearFreight" id="bearFreight" value="{#if $bearFreight == ""#}0{#else#}{#$bearFreight#}{#/if#}">
+						</div>
+					</dd>
+				</dl>
+				<div id="freight">
+					<dl class="fn-clear">
+						<dt>计价方式：</dt>
+						<dd>
+							<div class="radio valuation">
+								<span data-id="0"{#if $valuation == "" || $valuation == 0#} class="curr"{#/if#}>按件数</span>
+								<span data-id="1"{#if $valuation == 1#} class="curr"{#/if#}>按重量</span>
+								<span data-id="2"{#if $valuation == 2#} class="curr"{#/if#}>按体积</span>
+								<input type="hidden" name="valuation" id="valuation" value="{#if $valuation == ""#}0{#else#}{#$valuation#}{#/if#}">
+							</div>
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>默认运费：</dt>
+						<dd>
+							<div class="input-append">
+								<input id="express_start" name="express_start" type="text" size="8" value="{#$express_start#}">
+								<span class="add-center"><i class="param" style="font-style:normal;">{#if $valuationTxt#}{#$valuationTxt#}{#else#}件{#/if#}</i>以内</span>
+								<input id="express_postage" name="express_postage" class="add-right" type="text" size="8" value="{#$express_postage#}">
+								<span class="add-aft">元</span>
+							</div>
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>每增加：</dt>
+						<dd>
+							<div class="input-append">
+								<input id="express_plus" name="express_plus" type="text" size="8" value="{#$express_plus#}">
+								<span class="add-center"><i class="param" style="font-style:normal;">{#if $valuationTxt#}{#$valuationTxt#}{#else#}件{#/if#}</i>，运费增加</span>
+								<input id="express_postageplus" name="express_postageplus" class="add-right" type="text" size="8" value="{#$express_postageplus#}">
+								<span class="add-aft">元</span>
+							</div>
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>包邮条件：</dt>
+						<dd>
+							<div class="input-append">
+								<span class="add-bef">满</span>
+								<input id="preferentialStandard" name="preferentialStandard" class="add-right" type="text" size="8" value="{#$preferentialStandard#}">
+								<span class="add-center"><i class="param" style="font-style:normal;">{#if $valuationTxt#}{#$valuationTxt#}{#else#}件{#/if#}</i>，</span>
+								<input id="preferentialMoney" name="preferentialMoney" class="add-right" type="text" size="8" value="{#$preferentialMoney#}">
+								<span class="add-aft">元以上包邮</span>
+							</div>
+						</dd>
+					</dl>
+				</div>
+				<dl class="fn-clear">
+					<dt>&nbsp;</dt>
+					<dd><button class="submit" id="submit">{#if $id == 0#}确认提交{#else#}提交修改{#/if#}</button></dd>
+				</dl>
+			</form>
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/fabu.js?v=2"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/logisticAdd.js?v=2"></script>
+</body>
+</html>
+
+{#else#}
+{#$pageTitle = "运费模板 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/logistic.css" media="all" />
+<script type="text/javascript">
+	var module = '{#$module#}';
+	var editUrl = '{#getUrlPath service="member" template="logistic" action="$module" id="%id%"#}';
+</script>
+</head>
+
+{#$pageCurr = "logistic_{#$module#}"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+	<div class="nav-tabs fn-clear">
+		<ul class="fn-clear">
+			<li class="active"><a href="javascript:;">运费模板</a></li>
+		</ul>
+		<a href="{#getUrlPath service='member' template='logistic' action='shop' param='do=add'#}" class="btn add">新增运费模板</a>
+	</div>
+	<div class="container fn-clear">
+		<div class="list">
+			{#include file="logistic-$module.html"#}
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/logistic.js?v=2"></script>
+</body>
+</html>
+{#/if#}

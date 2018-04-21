@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>搜索</title>
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/loca_ing.css">
+</head>
+
+<body>
+<div class="location_input">
+	<input type="text" id="keywords" name="keywords" placeholder="输入地址搜索周边商家">
+</div>
+<div class="click"><span>点击定位当前位置</span></div>
+<div class="history"><ul></ul></div>
+<div class="all_shan"><p>清空历史记录</p></div>
+
+<script type="text/javascript">
+	var mapCity = '{#$cfg_mapCity#}';
+</script>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak={#$site_map_key#}&services=&t={#$smarty.now#}"></script>
+<script src="{#$templets_skin#}js/local.js?v=1"></script>
+</body>
+</html>

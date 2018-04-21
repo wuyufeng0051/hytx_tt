@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-flag-o flag-o-icon"></i>
+      <li class="active">营销活动</li>
+      <li class="active">群发短信</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <script>$(function() {
+          $(".btn-submitorder").on("click",
+          function() {
+            submitorder();
+          });
+        });
+        function isOrderNum(s) { //是否为正整数  
+          var re = /^[0-9]*[1-9][0-9]*$/;
+          return re.test(s)
+        }
+        function change(obj) {
+          if ($(obj).val() == 3) {
+            $('#customer_order').show();
+          } else {
+            $('#customer_order').hide();
+            $('#Pay_order_num').val('');
+          }
+        }</script>
+      <style>.current {border-color: #fa3!important;} .a-choose {display:block;float:left;padding:5px;margin-right:15px;width:80px;text-align:center; border:1px solid #ccc;font-size:14px;cursor:pointer;} a:hover{text-decoration:none;}</style>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-horizontal">
+            <div class="form-group">
+              <label class="col-sm-1" for="Pay_pay_desc">短信内容</label>
+              <textarea class="col-sm-2" rows="6" name="Pay[content]" id="pay_content"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Pay_pay_num">发送对象</label>
+              <select onchange="change(this)" name="Pay[to_send]" id="pay_to_send">
+                <option value="0">请选择</option>
+                <option value="1">全部顾客</option>
+                <option value="2">全部会员</option>
+                <option value="3">顾客订单数</option></select>
+            </div>
+            <div class="form-group" style="display: none;" id="customer_order">
+              <label class="col-sm-1">顾客下单次数</label>
+              <input value="" name="Pay[order_num]" id="Pay_order_num" style="width:50px;" type="text">
+              <span style="font-size:14px;">单以上的顾客</span></div>
+            <div class="clearfix form-actions " style="position:absolute;left:0px;right:0px;bottom:-120px;">
+              <button class="btn btn-info btn-submitorder" type="button" style="margin-left:200px;">
+                <i class="ace-icon fa fa-check bigger-110"></i>发送</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

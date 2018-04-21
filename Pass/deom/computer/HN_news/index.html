@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" class="w1200">
+<head>
+	<meta charset="UTF-8">
+	<title>火鸟新闻</title>
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/index.css">
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<!-- 头部开始 -->
+<div class="topInfo">
+  <div class="wrap fn-clear">
+    <div class="loginbox">
+      <div class="loginbefore fn-clear">
+        <a href="http://ihuoniao.cn/register.html" class="regist">免费注册</a>
+        <span class="logint">
+          <a href="http://ihuoniao.cn/login.html">请登录</a></span>
+        <a class="loginconnect" href="http://ihuoniao.cn/api/login.php?type=qq" target="_blank">
+          <i class="picon picon-qq"></i>QQ登陆</a>
+        <a class="loginconnect" href="http://ihuoniao.cn/api/login.php?type=wechat" target="_blank">
+          <i class="picon picon-weixin"></i>微信登陆</a>
+        <a class="loginconnect" href="http://ihuoniao.cn/api/login.php?type=sina" target="_blank">
+          <i class="picon picon-weibo"></i>新浪登陆</a>
+      </div>
+    </div>
+    <ul class="menu topbarlink fn-clear">
+      <li class="dropdown user">
+        <a href="http://ihuoniao.cn/u">我的会员中心
+          <i class="picon picon-down"></i></a>
+        <div class="submenu">
+          <a href="http://ihuoniao.cn/u/order.html" target="_blank">我的订单</a>
+          <a href="http://ihuoniao.cn/u/record.html" target="_blank">交易明细</a>
+          <a href="http://ihuoniao.cn/u/security.html" target="_blank">安全中心</a></div>
+      </li>
+      <li>
+        <a href="http://ihuoniao.cn/mobile.html" target="_blank">
+          <i class="picon picon-phone"></i>手机站</a>
+        <span class="separ">|</span>
+        <div class="pop">
+          <s>
+          </s>
+          <p>扫码访问
+            <a href="http://ihuoniao.cn/mobile.html" target="_blank">
+              <img src="http://ihuoniao.cn/include/qrcode.php?data=http://ihuoniao.cn" width="150" height="150"></a></p>
+        </div>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <i class="picon picon-weixin"></i>微信公众平台</a>
+        <span class="separ">|</span>
+        <div class="pop" style="left: -26px;">
+          <s>
+          </s>
+          <p>微信扫码关注
+            <img src="http://ihuoniao.cn/uploads/siteConfig/card/large/2017/03/14/14894884674812.jpg" width="150" height="150"></p></div>
+      </li>
+      <li class="dropdown">
+        <a href="javascript:;">快速发布
+          <i class="picon picon-down"></i></a>
+        <div class="submenu">
+          <a href="http://ihuoniao.cn/u/fabu-article.html" target="_blank">新闻投稿</a>
+          <a href="http://ihuoniao.cn/u/fabu-info.html" target="_blank">分类信息</a>
+          <a href="http://ihuoniao.cn/u/config-house.html" target="_blank">发布房源</a></div>
+      </li>
+      <li class="dropdown webmap">
+        <a href="javascript:;">网站导航
+          <i class="picon picon-down"></i></a>
+        <div class="submenu">
+          <a href="http://ihuoniao.cn/article" target="_blank">新闻</a>
+          <a href="http://ihuoniao.cn/info" target="_blank">信息</a>
+          <a href="http://ihuoniao.cn/tuan" target="_blank">团购</a>
+          <a href="http://ihuoniao.cn/house" target="_blank">房产</a>
+          <a href="http://ihuoniao.cn/shop" target="_blank">商城</a>
+          <a href="http://ihuoniao.cn/build" target="_blank">建材</a>
+          <a href="http://ihuoniao.cn/furniture" target="_blank">家具</a>
+          <a href="http://ihuoniao.cn/home" target="_blank">家居</a>
+          <a href="http://ihuoniao.cn/renovation" target="_blank">装修</a>
+          <a href="http://ihuoniao.cn/job" target="_blank">招聘</a>
+          <a href="http://ihuoniao.cn/dating" target="_blank">交友</a>
+          <a href="http://ihuoniao.cn/marry" target="_blank">婚嫁</a>
+          <a href="http://ihuoniao.cn/waimai" target="_blank">外卖</a>
+          <a href="http://ihuoniao.cn/zhuanti" target="_blank">专题</a>
+          <a href="http://ihuoniao.cn/car" target="_blank">汽车</a>
+          <a href="http://ihuoniao.cn/paper" target="_blank">报刊</a>
+          <a href="http://ihuoniao.cn/jianzhan" target="_blank">自助建站</a>
+          <a href="http://tieba.ihuoniao.cn" target="_blank">贴吧社区</a>
+          <a href="http://ihuoniao.cn/huodong" target="_blank">同城活动</a>
+          <a href="http://ihuoniao.cn/video" target="_blank">视频频道</a>
+          <a href="http://ihuoniao.cn/huangye" target="_blank">便民黄页</a>
+          <a href="http://ihuoniao.cn/image" target="_blank">图说新闻</a>
+          <a href="http://ihuoniao.cn/vote" target="_blank">投票活动</a></div>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- 头部开始 -->
+<!-- 主要内容开始 -->
+	<div class="main fn-clear">
+	<!-- 导航条开始 -->
+		<div class="main_left">
+			<div class="logo"><a href="#">首页</a></div>
+			<div class="box_list">
+				<div class="box fn-clear">
+					<h1><a href="list.html">新闻</a></h1>
+					<p>
+						<a href="list.html">社会</a>
+						<a href="list.html">军事</a>
+						<a href="list.html">历史</a>
+					</p>
+				</div>
+				<div class="box fn-clear">
+					<h1><a href="list.html">娱乐</a></h1>
+					<p>
+						<a href="list.html">视频</a>
+						<a href="list.html">会员</a>
+						<a href="list.html">美剧</a>
+					</p>
+				</div>
+				<div class="box fn-clear">
+					<h1><a href="list.html">体育</a></h1>
+					<p>
+						<a href="list.html">CBA</a>
+						<a href="list.html">NBA</a>
+						<a href="list.html">中超</a>
+					</p>
+				</div>
+				<div class="box fn-clear">
+					<h1><a href="list.html">财经</a></h1>
+					<p>
+						<a href="list.html">宏观</a>
+						<a href="list.html">理财</a>
+						<a href="list.html">股票</a>
+					</p>
+				</div>
+				<div class="box fn-clear">
+					<h1><a href="list.html">汽车</a></h1>
+					<p>
+						<a href="list.html">侃车</a>
+						<a href="list.html">车型</a>
+						<a href="list.html">车贷</a>
+					</p>
+				</div>
+				<div class="box fn-clear">
+					<h1><a href="list.html">房产</a></h1>
+					<p>
+						<a href="list.html">新房</a>
+						<a href="list.html">家居</a>
+						<a href="list.html">看房团</a>
+					</p>
+				</div>
+				<div class="box fn-clear">
+					<h1><a href="list.html">教育</a></h1>
+					<p>
+						<a href="list.html">科技</a>
+						<a href="list.html">母婴</a>
+						<a href="list.html">美食</a>
+					</p>
+				</div>
+				<div class="box fn-clear">
+					<h1><a href="list.html">时尚</a></h1>
+					<p>
+						<a href="list.html">文化</a>
+						<a href="list.html">健康</a>
+						<a href="list.html">游戏</a>
+					</p>
+				</div>
+				<div class="box fn-clear">
+					<h1><a href="list.html">旅游</a></h1>
+					<p>
+						<a href="list.html">动漫</a>
+						<a href="list.html">星座</a>
+						<a href="list.html">宠物</a>
+					</p>
+				</div>
+				<div class="box fn-clear">
+					<h1><a href="list.html">警法</a></h1>
+					<p>
+						<a href="list.html">彩票</a>
+						<a href="list.html">搞笑</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	<!-- 导航条结束 -->
+	<!-- 新闻内容开始 -->
+		<div class="main_middle">
+			<div class="search">
+				<form action="">
+					<input type="text">
+					<a href="#"><i></i></a>
+				</form>
+			</div>
+			<div class="banner">
+				<div class="list">
+					<div class="bd">
+						<div class="slideshow-item">
+							<a href="#"><img src="upfile/134413655_600_300_1492389963057.png" alt=""></a>
+							<div class="slideinfo">
+								<h3><a href="#" style="cursor:default;">土耳其修宪公投：不同政见团体发生交火致3死</a></h3>
+								<p></p>
+								<div class="bg"></div>
+							</div>
+						</div>
+						<div class="slideshow-item none">
+							<a href="#"><img src="upfile/134346360_600_300_1492343273338.png" alt=""></a>
+							<div class="slideinfo">
+								<h3><a href="javascript:;" style="cursor:default;">不可思议！爱睡懒觉罪魁祸首竟是人造光？</a></h3>
+								<p></p>
+								<div class="bg"></div>
+							</div>
+						</div>
+						<div class="slideshow-item none">
+							<a href="#"><img src="upfile/134344499_600_300_1492343685136.png" alt=""></a>
+							<div class="slideinfo">
+								<h3><a href="javascript:;" style="cursor:default;">土耳其修宪公投：不同政见团体发生交火致3死</a></h3>
+								<p></p>
+								<div class="bg"></div>
+							</div>
+						</div>
+						<div class="slideshow-item none">
+							<a href="#"><img src="upfile/134288050_600_300_1492305616434.png" alt=""></a>
+							<div class="slideinfo">
+								<h3><a href="javascript:;" style="cursor:default;">老年人缘何青睐免费遗嘱库? 遗嘱内容90%是房产</a></h3>
+								<p></p>
+								<div class="bg"></div>
+							</div>
+						</div>
+						<div class="slideshow-item none">
+							<a href="#"><img src="upfile/134284032_600_300_1492305253579.png" alt=""></a>
+							<div class="slideinfo">
+								<h3><a href="javascript:;" style="cursor:default;">相比原著，电影版的《怒》都有哪些改动？</a></h3>
+								<p></p>
+								<div class="bg"></div>
+							</div>
+						</div>
+						<div class="slideshow-item none">
+							<a href="#"><img src="upfile/134238370_600_300_1492305409535.png" alt=""></a>
+							<div class="slideinfo">
+								<h3><a href="javascript:;" style="cursor:default;">跪了！175cm的他是地球上跳最高的小个子！</a></h3>
+								<p></p>
+								<div class="bg"></div>
+							</div>
+						</div>
+						<div class="slideshow-item none">
+							<a href="#"><img src="upfile/134170924_600_300_0.jpeg" alt=""></a>
+							<div class="slideinfo">
+								<h3><a href="javascript:;" style="cursor:default;">意大利117岁老人去世 全球最后一位19世纪生人走了</a></h3>
+								<p></p>
+								<div class="bg"></div>
+							</div>
+						</div>
+					</div>
+					<div class="hd">
+						<ul>
+							<li class="on"><i></i><a href="javascript:;">新闻</a></li>
+							<li><i></i><a href="javascript:;">财经</a></li>
+							<li><i></i><a href="javascript:;">历史</a></li>
+							<li><i></i><a href="javascript:;">科技</a></li>
+							<li><i></i><a href="javascript:;">时尚</a></li>
+							<li><i></i><a href="javascript:;">文化</a></li>
+							<li><i></i><a href="javascript:;">娱乐</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="news_b1 fn-clear">
+				<ul>
+					<li><i></i><a href="#">习近平为何强调国家安全是头等大事</a></li>
+					<li><i></i><a href="#">习近平为何强调国家安全是头等大事</a></li>
+					<li><i></i><a href="#">习近平为何强调国家安全是头等大事</a></li>
+					<li><i></i><a href="#">习近平为何强调国家安全是头等大事</a></li>
+				</ul>
+			</div>
+			<div class="news_b2 fn-clear">
+				<div class="nb_pic"><img src="upfile/134421480_450_300_0.jpeg" alt=""></div>
+				<h2><a href="#">土耳其修宪公投初步计票：超过51%选民赞成修宪</a></h2>
+				<div class="other"><span class="lei">新闻</span><span class="point">·</span><span class="paper">中国青年网</span><span class="point">·</span><span class="time">今天 03:36</span><a href="#"><i></i></a></div>
+			</div>
+			<div class="news_b3">
+				<h3><a href="#">林忆莲夺冠：陪了我们30年，她为什么还能赢得这么好看？</a></h3>
+				<div class="nb3_pic fn-clear">
+					<ul>
+						<li><a href="#"><img src="upfile/134389822_450_300_0.jpeg" alt=""></a></li>
+						<li><a href="#"><img src="upfile/134389822_450_300_1.jpeg" alt=""></a></li>
+						<li><a href="#"><img src="upfile/134389822_450_300_2.jpeg" alt=""></a></li>
+						<li><a href="#"><img src="upfile/134389822_450_300_3.jpeg" alt=""></a></li>
+					</ul>
+				</div>
+				<div class="other"><span class="lei"> 社会 </span><span class="point">·</span><span class="paper">世界华人周刊</span><span class="point">·</span><span class="time">昨天 20:51</span><a href="#"><i></i></a></div>
+			</div>
+			<div class="news_b2 fn-clear">
+				<div class="nb_pic"><img src="upfile/134421480_450_300_0.jpeg" alt=""></div>
+				<h2><a href="#">土耳其修宪公投初步计票：超过51%选民赞成修宪</a></h2>
+				<div class="other"><span class="lei">新闻</span><span class="point">·</span><span class="paper">中国青年网</span><span class="point">·</span><span class="time">今天 03:36</span><a href="#"><i></i></a></div>
+			</div>
+			<div class="news_b2 fn-clear">
+				<div class="nb_pic"><img src="upfile/134421480_450_300_0.jpeg" alt=""></div>
+				<h2><a href="#">土耳其修宪公投初步计票：超过51%选民赞成修宪</a></h2>
+				<div class="other"><span class="lei">新闻</span><span class="point">·</span><span class="paper">中国青年网</span><span class="point">·</span><span class="time">今天 03:36</span><a href="#"><i></i></a></div>
+			</div>
+						<div class="news_b2 fn-clear">
+				<div class="nb_pic"><img src="upfile/134421480_450_300_0.jpeg" alt=""></div>
+				<h2><a href="#">土耳其修宪公投初步计票：超过51%选民赞成修宪</a></h2>
+				<div class="other"><span class="lei">新闻</span><span class="point">·</span><span class="paper">中国青年网</span><span class="point">·</span><span class="time">今天 03:36</span><a href="#"><i></i></a></div>
+			</div>
+			<div class="news_b3">
+				<h3><a href="#">林忆莲夺冠：陪了我们30年，她为什么还能赢得这么好看？</a></h3>
+				<div class="nb3_pic fn-clear">
+					<ul>
+						<li><a href="#"><img src="upfile/134389822_450_300_0.jpeg" alt=""></a></li>
+						<li><a href="#"><img src="upfile/134389822_450_300_1.jpeg" alt=""></a></li>
+						<li><a href="#"><img src="upfile/134389822_450_300_2.jpeg" alt=""></a></li>
+						<li><a href="#"><img src="upfile/134389822_450_300_3.jpeg" alt=""></a></li>
+					</ul>
+				</div>
+				<div class="other"><span class="lei"> 社会 </span><span class="point">·</span><span class="paper">世界华人周刊</span><span class="point">·</span><span class="time">昨天 20:51</span><a href="#"><i></i></a></div>
+			</div>
+			<div class="news_b2 fn-clear">
+				<div class="nb_pic"><img src="upfile/134421480_450_300_0.jpeg" alt=""></div>
+				<h2><a href="#">土耳其修宪公投初步计票：超过51%选民赞成修宪</a></h2>
+				<div class="other"><span class="lei">新闻</span><span class="point">·</span><span class="paper">中国青年网</span><span class="point">·</span><span class="time">今天 03:36</span><a href="#"><i></i></a></div>
+			</div>
+			<div class="news_b2 fn-clear">
+				<div class="nb_pic"><img src="upfile/134421480_450_300_0.jpeg" alt=""></div>
+				<h2><a href="#">土耳其修宪公投初步计票：超过51%选民赞成修宪</a></h2>
+				<div class="other"><span class="lei">新闻</span><span class="point">·</span><span class="paper">中国青年网</span><span class="point">·</span><span class="time">今天 03:36</span><a href="#"><i></i></a></div>
+			</div>
+						<div class="news_b2 fn-clear">
+				<div class="nb_pic"><img src="upfile/134421480_450_300_0.jpeg" alt=""></div>
+				<h2><a href="#">土耳其修宪公投初步计票：超过51%选民赞成修宪</a></h2>
+				<div class="other"><span class="lei">新闻</span><span class="point">·</span><span class="paper">中国青年网</span><span class="point">·</span><span class="time">今天 03:36</span><a href="#"><i></i></a></div>
+			</div>
+			<div class="news_b3">
+				<h3><a href="#">林忆莲夺冠：陪了我们30年，她为什么还能赢得这么好看？</a></h3>
+				<div class="nb3_pic fn-clear">
+					<ul>
+						<li><a href="#"><img src="upfile/134389822_450_300_0.jpeg" alt=""></a></li>
+						<li><a href="#"><img src="upfile/134389822_450_300_1.jpeg" alt=""></a></li>
+						<li><a href="#"><img src="upfile/134389822_450_300_2.jpeg" alt=""></a></li>
+						<li><a href="#"><img src="upfile/134389822_450_300_3.jpeg" alt=""></a></li>
+					</ul>
+				</div>
+				<div class="other"><span class="lei"> 社会 </span><span class="point">·</span><span class="paper">世界华人周刊</span><span class="point">·</span><span class="time">昨天 20:51</span><a href="#"><i></i></a></div>
+			</div>
+			<div class="news_b2 fn-clear">
+				<div class="nb_pic"><img src="upfile/134421480_450_300_0.jpeg" alt=""></div>
+				<h2><a href="#">土耳其修宪公投初步计票：超过51%选民赞成修宪</a></h2>
+				<div class="other"><span class="lei">新闻</span><span class="point">·</span><span class="paper">中国青年网</span><span class="point">·</span><span class="time">今天 03:36</span><a href="#"><i></i></a></div>
+			</div>
+			<div class="news_b2 fn-clear">
+				<div class="nb_pic"><img src="upfile/134421480_450_300_0.jpeg" alt=""></div>
+				<h2><a href="#">土耳其修宪公投初步计票：超过51%选民赞成修宪</a></h2>
+				<div class="other"><span class="lei">新闻</span><span class="point">·</span><span class="paper">中国青年网</span><span class="point">·</span><span class="time">今天 03:36</span><a href="#"><i></i></a></div>
+			</div>
+		</div>
+	<!-- 新闻内容结束 -->
+	<!-- 更多内容开始 -->
+		<div class="main_right">
+			<div class="mr_news">
+				<div class="ad_1"><a href="#"><img src="upfile/frag_item_1492385780931_1.jpg" alt=""></a></div>
+				<div class="mr_list">
+					<ul>
+						<li><i></i><a href="#">漂洋过海来看你 | 郑楚成贴心男保姆</a></li>
+						<li><i></i><a href="#">胡迪尼与道尔 | 开启悬疑探案之旅</a></li>
+						<li><i></i><a href="#">神探狄仁杰4 | 狄公元芳华丽回归</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="ad_2"><img src="upfile/ChAKr1jZ-mqAJta3AAB3RF7H5-U104300x250.jpg" alt=""></div>
+			<div class="house">
+				<div class="house_list">
+					<h1><a href="#">房产</a></h1>
+					<div class="banner">
+						<div class="list">
+							<div class="bd">
+								<div class="slideshow-item">
+									<a href="#"><img src="upfile/134413655_600_300_1492389963057.png" alt=""></a>
+									<div class="slideinfo">
+										<h3><a href="#" style="cursor:default;">土耳其修宪公投：不同政见团体发生交火致3死</a></h3>
+										<p></p>
+										<div class="bg"></div>
+									</div>
+								</div>
+								<div class="slideshow-item none">
+									<a href="#"><img src="upfile/134346360_600_300_1492343273338.png" alt=""></a>
+									<div class="slideinfo">
+										<h3><a href="javascript:;" style="cursor:default;">不可思议！爱睡懒觉罪魁祸首竟是人造光？</a></h3>
+										<p></p>
+										<div class="bg"></div>
+									</div>
+								</div>
+								<div class="slideshow-item none">
+									<a href="#"><img src="upfile/134344499_600_300_1492343685136.png" alt=""></a>
+									<div class="slideinfo">
+										<h3><a href="javascript:;" style="cursor:default;">土耳其修宪公投：不同政见团体发生交火致3死</a></h3>
+										<p></p>
+										<div class="bg"></div>
+									</div>
+								</div>
+								<div class="slideshow-item none">
+									<a href="#"><img src="upfile/134288050_600_300_1492305616434.png" alt=""></a>
+									<div class="slideinfo">
+										<h3><a href="javascript:;" style="cursor:default;">老年人缘何青睐免费遗嘱库? 遗嘱内容90%是房产</a></h3>
+										<p></p>
+										<div class="bg"></div>
+									</div>
+								</div>
+								<div class="slideshow-item none">
+									<a href="#"><img src="upfile/134284032_600_300_1492305253579.png" alt=""></a>
+									<div class="slideinfo">
+										<h3><a href="javascript:;" style="cursor:default;">相比原著，电影版的《怒》都有哪些改动？</a></h3>
+										<p></p>
+										<div class="bg"></div>
+									</div>
+								</div>
+								<div class="slideshow-item none">
+									<a href="#"><img src="upfile/134238370_600_300_1492305409535.png" alt=""></a>
+									<div class="slideinfo">
+										<h3><a href="javascript:;" style="cursor:default;">跪了！175cm的他是地球上跳最高的小个子！</a></h3>
+										<p></p>
+										<div class="bg"></div>
+									</div>
+								</div>
+								<div class="slideshow-item none">
+									<a href="#"><img src="upfile/134170924_600_300_0.jpeg" alt=""></a>
+									<div class="slideinfo">
+										<h3><a href="javascript:;" style="cursor:default;">意大利117岁老人去世 全球最后一位19世纪生人走了</a></h3>
+										<p></p>
+										<div class="bg"></div>
+									</div>
+								</div>
+							</div>
+							<div class="hd">
+								<ul>
+									<li class="on"><i></i>新闻</li>
+									<li><i></i>财经</li>
+									<li><i></i>历史</li>
+									<li><i></i>科技</li>
+									<li><i></i>时尚</li>
+									<li><i></i>文化</li>
+									<li><i></i>娱乐</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="house_news">
+						<div class="hn_lead fn-clear">
+							<ul>
+								<li class="hn_bc"><span>新房</span></li>
+								<li><span>家居</span></li>
+								<li><span>直播</span></li>
+							</ul>
+						</div>
+						<div class="hn_list">
+							<div class="hn_txt">
+								<ul>
+									<li><a href="#"><em></em>东城区北新桥年内2000处违建恢复原貌</a></li>
+									<li><a href="#"><em></em>东城区北新桥年内2000处违建恢复原貌</a></li>
+									<li><a href="#"><em></em>东城区北新桥年内2000处违建恢复原貌</a></li>
+									<li><a href="#"><em></em>东城区北新桥年内2000处违建恢复原貌</a></li>
+									<li><a href="#"><em></em>东城区北新桥年内2000处违建恢复原貌</a></li>
+								</ul>
+							</div>
+							<div class="hn_txt none">
+								<ul>
+									<li><a href="#"><em></em>焦点嘉宴落幕 搜狐副总裁透露生态战略方向</a></li>
+									<li><a href="#"><em></em>焦点嘉宴落幕 搜狐副总裁透露生态战略方向</a></li>
+									<li><a href="#"><em></em>焦点嘉宴落幕 搜狐副总裁透露生态战略方向</a></li>
+									<li><a href="#"><em></em>焦点嘉宴落幕 搜狐副总裁透露生态战略方向</a></li>
+									<li><a href="#"><em></em>焦点嘉宴落幕 搜狐副总裁透露生态战略方向</a></li>
+								</ul>
+							</div>
+							<div class="hn_txt none">
+								<ul>
+									<li><a href="#"><em></em>海淀启动幼儿招生工作 20日起采集入园信息</a></li>
+									<li><a href="#"><em></em>海淀启动幼儿招生工作 20日起采集入园信息</a></li>
+									<li><a href="#"><em></em>海淀启动幼儿招生工作 20日起采集入园信息</a></li>
+									<li><a href="#"><em></em>海淀启动幼儿招生工作 20日起采集入园信息</a></li>
+									<li><a href="#"><em></em>海淀启动幼儿招生工作 20日起采集入园信息</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="house_search">
+							<input type="text" placeholder="试试输入楼盘名或位置">
+							<a href="#">搜索</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="car">
+				<div class="car_list">
+					<h1><a href="#">汽车</a></h1>
+					<div class="banner">
+						<div class="list">
+							<div class="bd">
+								<div class="slideshow-item">
+									<a href="#"><img src="upfile/134413655_600_300_1492389963057.png" alt=""></a>
+									<div class="slideinfo">
+										<h3><a href="#" style="cursor:default;">土耳其修宪公投：不同政见团体发生交火致3死</a></h3>
+										<p></p>
+										<div class="bg"></div>
+									</div>
+								</div>
+								<div class="slideshow-item none">
+									<a href="#"><img src="upfile/134346360_600_300_1492343273338.png" alt=""></a>
+									<div class="slideinfo">
+										<h3><a href="javascript:;" style="cursor:default;">不可思议！爱睡懒觉罪魁祸首竟是人造光？</a></h3>
+										<p></p>
+										<div class="bg"></div>
+									</div>
+								</div>
+								<div class="slideshow-item none">
+									<a href="#"><img src="upfile/134344499_600_300_1492343685136.png" alt=""></a>
+									<div class="slideinfo">
+										<h3><a href="javascript:;" style="cursor:default;">土耳其修宪公投：不同政见团体发生交火致3死</a></h3>
+										<p></p>
+										<div class="bg"></div>
+									</div>
+								</div>
+								<div class="slideshow-item none">
+									<a href="#"><img src="upfile/134288050_600_300_1492305616434.png" alt=""></a>
+									<div class="slideinfo">
+										<h3><a href="javascript:;" style="cursor:default;">老年人缘何青睐免费遗嘱库? 遗嘱内容90%是房产</a></h3>
+										<p></p>
+										<div class="bg"></div>
+									</div>
+								</div>
+								<div class="slideshow-item none">
+									<a href="#"><img src="upfile/134284032_600_300_1492305253579.png" alt=""></a>
+									<div class="slideinfo">
+										<h3><a href="javascript:;" style="cursor:default;">相比原著，电影版的《怒》都有哪些改动？</a></h3>
+										<p></p>
+										<div class="bg"></div>
+									</div>
+								</div>
+								<div class="slideshow-item none">
+									<a href="#"><img src="upfile/134238370_600_300_1492305409535.png" alt=""></a>
+									<div class="slideinfo">
+										<h3><a href="javascript:;" style="cursor:default;">跪了！175cm的他是地球上跳最高的小个子！</a></h3>
+										<p></p>
+										<div class="bg"></div>
+									</div>
+								</div>
+								<div class="slideshow-item none">
+									<a href="#"><img src="upfile/134170924_600_300_0.jpeg" alt=""></a>
+									<div class="slideinfo">
+										<h3><a href="javascript:;" style="cursor:default;">意大利117岁老人去世 全球最后一位19世纪生人走了</a></h3>
+										<p></p>
+										<div class="bg"></div>
+									</div>
+								</div>
+							</div>
+							<div class="hd">
+								<ul>
+									<li class="on"><i></i>新闻</li>
+									<li><i></i>财经</li>
+									<li><i></i>历史</li>
+									<li><i></i>科技</li>
+									<li><i></i>时尚</li>
+									<li><i></i>文化</li>
+									<li><i></i>娱乐</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="car_search">
+						<div class="cs_lead fn-clear"><em><span>快速找车</span></em></div>
+						<div class="csea fn-clear">
+							<input type="text" placeholder="请输入搜索车型">
+							<a href="#">搜索</a>
+						</div>
+						<div class="car_kind fn-clear">
+							<ul>
+								<li class="ck_1"><a href="#"><span>两厢轿车</span></a></li>
+								<li class="ck_2"><a href="#"><span>三厢轿车</span></a></li>
+								<li class="ck_3"><a href="#"><span>SUV</span></a></li>
+								<li class="ck_4"><a href="#"><span>MPV</span></a></li>
+								<li class="ck_5"><a href="#"><span>跑车</span></a></li>
+								<li class="ck_6"><a href="#"><span>旅行车</span></a></li>
+								<li class="ck_7"><a href="#"><span>敞篷车</span></a></li>
+								<li class="ck_8"><a href="#"><span>皮卡</span></a></li>
+							</ul>
+						</div>
+						<div class="car_kind2 fn-clear">
+							<ul>
+								<li><a href="#">5-10万</a></li>
+								<li><a href="#">5-10万</a></li>
+								<li><a href="#">5-10万</a></li>
+								<li><a href="#">5-10万</a></li>
+								<li><a href="#">5-10万</a></li>
+								<li><a href="#">5-10万</a></li>
+								<li><a href="#">5-10万</a></li>
+								<li class="more"><a href="#">精准选车</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="hot">
+				<h1><em>24小时热文</em></h1>
+				<div class="hot_txt fn-clear">
+					<div class="hot_pic"><a href="#"><img src="upfile/134352899_450_300_0.png" alt=""><span>1</span></a></div>
+					<h2><a href="#">全国公积金缴存超十万亿 异地贷款仍然“章太多”</a></h2>
+				</div>
+				<div class="hot_txt fn-clear">
+					<div class="hot_pic"><a href="#"><img src="upfile/134352899_450_300_0.png" alt=""><span>2</span></a></div>
+					<h2><a href="#">全国公积金缴存超十万亿 异地贷款仍然“章太多”</a></h2>
+				</div>
+				<div class="hot_txt fn-clear">
+					<div class="hot_pic"><a href="#"><img src="upfile/134352899_450_300_0.png" alt=""><span>3</span></a></div>
+					<h2><a href="#">全国公积金缴存超十万亿 异地贷款仍然“章太多”</a></h2>
+				</div>
+				<div class="hot_txt fn-clear">
+					<div class="hot_pic"><a href="#"><img src="upfile/134352899_450_300_0.png" alt=""></a></div>
+					<h2><a href="#">全国公积金缴存超十万亿 异地贷款仍然“章太多”</a></h2>
+				</div>
+				<div class="hot_txt fn-clear">
+					<div class="hot_pic"><a href="#"><img src="upfile/134352899_450_300_0.png" alt=""></a></div>
+					<h2><a href="#">全国公积金缴存超十万亿 异地贷款仍然“章太多”</a></h2>
+				</div>
+			</div>
+		</div>
+	<!-- 更多内容结束 -->
+	</div>
+<!-- 主要内容结束 -->
+	<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

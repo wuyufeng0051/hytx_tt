@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0;">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>新房楼盘</title>
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/estate-list.css?v=5">
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css">
+</head>
+<body>
+<div class="container">
+<div>
+	<div id="scroller">
+		<div class="header">
+			<div class="header-l">
+				<a href="index.html"><img src="{#$templets_skin#}images/back-r.png"></a>
+			</div>
+			<div class="header-c">
+				<a href="#">苏州新房</a>
+			</div>
+			<div class="header-r">
+				<span class="h-user"><a href="#"><img src="{#$templets_skin#}images/user.png"></a></span>
+				<span class="h-menu"><img src="{#$templets_skin#}images/menu.png"></span>
+			</div>
+		</div>
+		<form class="search-box" action="" method="get">
+			<div class="search l">
+				<i></i>
+				<input type="text" placeholder="万科新品 12500元/m?起">
+			</div>
+			<div class="search-btn r">
+				<input type="submit" name="" value="搜索">
+			</div>
+			<div class="clear"></div>
+		</form>
+		<div class="choose-box-blank">
+			<div class="choose-box">
+				<ul class="choose">
+					<li class="tab-area"><a href="javascript:;"><i><span>位置</span></i></a></li>
+					<li class="tab-price"><a href="javascript:;"><i><span>价格</span></i></a></li>
+					<li class="tab-type"><a href="javascript:;"><i><span>类型</span></i></a></li>
+					<li class="tab-more"><a href="javascript:;"><i><span>更多</span></i></a></li>
+				</ul>
+				<div>
+					<div>
+						<div class="choose-local choose-area">
+							<div class="choose-local-first l" id="scroll-first">
+								<ul>
+									<li class="active" id="area">区域</li>
+									<li id="subway">地铁</li>
+								</ul>
+							</div>
+							<div class="choose-local-second l" id="area-box">
+									<ul>
+										<li class=" active"><a href="javascript:;">不限</a></li>
+										<li><a href="javascript:;">园区</a></li>
+										<li><a href="javascript:;">吴中</a></li>
+										<li><a href="javascript:;">姑苏</a></li>
+										<li><a href="javascript:;">相城</a></li>
+										<li><a href="javascript:;">相城</a></li>
+										<li><a href="javascript:;">相城</a></li>
+										<li><a href="javascript:;">相城</a></li>
+										<li><a href="javascript:;">相城</a></li>
+										<li><a href="javascript:;">相城</a></li>
+										<li><a href="javascript:;">新区</a></li>
+										<li><a href="javascript:;">吴江</a></li>
+										<li><a href="javascript:;">其他</a></li>
+										<li><a href="javascript:;">其他</a></li>
+										<li><a href="javascript:;">其他</a></li>
+										<li><a href="javascript:;">其他</a></li>
+										<li><a href="javascript:;">其他</a></li>
+										<li><a href="javascript:;">其他</a></li>
+									</ul>
+							</div>
+							<div class="choose-local-second l" id="subway-box">
+									<ul>
+										<li class="active"><a href="javascript:;">不限</a></li>
+										<li><a href="javascript:;">一号线</a></li>
+										<li><a href="javascript:;">二号线</a></li>
+									</ul>
+							</div>
+							<div class="area-third">
+								<div class="choose-local-third l" id="scroll-third">
+									<div class="scroll">
+
+									</div>
+								</div>
+							</div>
+							<div class="subway-third">
+								<div class="choose-local-third l" id="scroll-third-s">
+								<div class="scroll">
+
+								</div>
+
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="choose-local choose-price" id="scroll-price">
+								<ul class="scroll">
+									<li class="active"><a href="javascript:;">不限</a></li>
+									<li><a href="javascript:;">8千以下</a></li>
+									<li><a href="javascript:;">8千-1万</a></li>
+									<li><a href="javascript:;">1-1.5万</a></li>
+									<li><a href="javascript:;">1.5-2万</a></li>
+									<li><a href="javascript:;">2.5-3万</a></li>
+									<li><a href="javascript:;">3万以上</a></li>
+									<li><a href="javascript:;">3万以上</a></li>
+									<li><a href="javascript:;">3万以上</a></li>
+									<li><a href="javascript:;">3万以上</a></li>
+									<li><a href="javascript:;">3万以上</a></li>
+									<li><a href="javascript:;">3万以上</a></li>
+									<li><a href="javascript:;">3万以上</a></li>
+									<li><a href="javascript:;">3万以上</a></li>
+									<li><a href="javascript:;">3万以上</a></li>
+									<li><a href="javascript:;">3万以上</a></li>
+									<li><a href="javascript:;">3万以上</a></li>
+								</ul>
+
+							<div class="clear"></div>
+						</div>
+						<div class="choose-local choose-type" id="scroll-type">
+								<ul class="scroll">
+									<li class="active"><a href="javascript:;">不限</a></li>
+									<li><a href="javascript:;">住宅</a></li>
+									<li><a href="javascript:;">公寓</a></li>
+									<li><a href="javascript:;">别墅</a></li>
+									<li><a href="javascript:;">商住</a></li>
+									<li><a href="javascript:;">平房</a></li>
+									<li><a href="javascript:;">商住两住</a></li>
+									<li><a href="javascript:;">商住两住</a></li>
+									<li><a href="javascript:;">商住两住</a></li>
+									<li><a href="javascript:;">酒店式公寓</a></li>
+									<li><a href="javascript:;">其它</a></li>
+								</ul>
+							<div class="clear"></div>
+						</div>
+						<div class="choose-local choose-more" id="more-box">
+							<div class="choose-more-box">
+								<div class="choose-more-condition">
+									<h3>销售状态</h3>
+									<ul>
+										<li><a href="javascript:;">不限</a></li>
+										<li><a href="javascript:;">待售</a></li>
+										<li><a href="javascript:;">在售</a></li>
+										<li><a href="javascript:;">尾盘</a></li>
+										<li><a href="javascript:;">售完</a></li>
+									</ul>
+								</div>
+								<div class="choose-more-condition">
+									<h3>开盘时间</h3>
+									<ul>
+										<li><a href="javascript:;">不限</a></li>
+										<li><a href="javascript:;">今日开盘</a></li>
+										<li><a href="javascript:;">明日开盘</a></li>
+										<li><a href="javascript:;">昨日开盘</a></li>
+										<li><a href="javascript:;">本月开盘</a></li>
+										<li><a href="javascript:;">下月开盘</a></li>
+										<li><a href="javascript:;">上月开盘</a></li>
+									</ul>
+								</div>
+								<div class="choose-more-condition">
+									<h3>装修情况</h3>
+									<ul>
+										<li><a href="javascript:;">不限</a></li>
+										<li><a href="javascript:;">毛坯</a></li>
+										<li><a href="javascript:;">普通装修</a></li>
+										<li><a href="javascript:;">精装修</a></li>
+										<li><a href="javascript:;">豪华装修</a></li>
+										<li><a href="javascript:;">其他</a></li>
+									</ul>
+								</div>
+								<div class="choose-more-condition">
+									<h3>建筑类型</h3>
+									<ul>
+										<li><a href="javascript:;">不限</a></li>
+										<li><a href="javascript:;">低层</a></li>
+										<li><a href="javascript:;">高层</a></li>
+										<li><a href="javascript:;">小高层</a></li>
+										<li><a href="javascript:;">联排别墅</a></li>
+										<li><a href="javascript:;">公寓</a></li>
+									</ul>
+								</div>
+								<div class="choose-more-condition">
+									<h3>开盘时间</h3>
+									<ul>
+										<li><a href="javascript:;">不限</a></li>
+										<li><a href="javascript:;">今日开团</a></li>
+										<li><a href="javascript:;">明日开团</a></li>
+										<li><a href="javascript:;">昨日开团</a></li>
+										<li><a href="javascript:;">本月开团</a></li>
+										<li><a href="javascript:;">下月开团</a></li>
+										<li><a href="javascript:;">上月开团</a></li>
+									</ul>
+								</div>
+								<div class="reset">重置</div>
+							</div>
+							<div class="confirm">确认</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<!-- 白色底层 -->
+					<div class="white"></div>
+
+				</div>
+			</div>
+		</div>
+		<div class="house-list" id="house-list">
+			<div class="house-box">
+				<a href="estate-detail.html">
+					<div class="house-item">
+						<div class="house-img l">
+							<img src="{#$templets_skin#}update/img1.jpg">
+						</div>
+						<dl class="l">
+							<dt>首开国风美唐<span>新房&二手</span></dt>
+							<dd class="item-area"><em>园区 东环路</em><span class="price r">49000元/㎡</span></dd>
+							<dd class="item-type-1"><span>二居(<em>15</em>)</span><span>三居(<em>10</em>)</span><span>其他(<em>6</em>)</span></dd>
+							<dd class="item-type-2"><span>昌平 回龙观</span><span>普通住宅</span></dd>
+						</dl>
+					</div>
+					<div class="clear"></div>
+				</a>
+
+			</div>
+			<div class="house-box">
+			<a href="estate-detail.html">
+				<div class="house-item">
+					<div class="house-img l">
+						<img src="{#$templets_skin#}update/r1.jpg">
+					</div>
+					<dl class="l">
+						<dt>牛驼温泉孔雀城<span>新房&二手</span></dt>
+						<dd class="item-area"><em>新区 东环路</em><span class="price r">170万元/套起</span></dd>
+						<dd class="item-type-1"><span>二居(<em>6</em>)</span><span>三居(<em>5</em>)</span><span>其他(<em>38</em>)</span></dd>
+						<dd class="item-type-2"><span>北京周边 固安</span><span>别墅</span></dd>
+					</dl>
+				</div>
+				<div class="clear"></div>
+				</a>
+			</div>
+			<div class="house-box">
+			<a href="estate-detail.html">
+				<div class="house-item">
+					<div class="house-img l">
+						<img src="{#$templets_skin#}update/r2.jpg">
+					</div>
+					<dl class="l">
+						<dt>爱晚大爱城<span>新房&二手</span></dt>
+						<dd class="item-area"><em>园区 东环路</em><span class="price r">13000元/㎡</span></dd>
+						<dd class="item-type-1"><span>一居(<em>1</em>)</span><span>二居(<em>9</em>)</span><span>三居(<em>8</em>)</span><span>其他(<em>7</em>)</span></dd>
+						<dd class="item-type-2"><span>北京周边 香河</span><span>普通住宅 别墅</span></dd>
+					</dl>
+				</div>
+				<div class="clear"></div>
+				</a>
+			</div>
+			<div class="house-box">
+			<a href="estate-detail.html">
+				<div class="house-item">
+					<div class="house-img l">
+						<img src="{#$templets_skin#}update/r3.jpg">
+					</div>
+					<dl class="l">
+						<dt>首开华润城<span>在售</span></dt>
+						<dd class="item-area"><em>园区 东环路</em><span class="price r">70000元/㎡</span></dd>
+						<dd class="item-type-1"><span>二居(<em>1</em>)</span><span>三居(<em>6</em>)</span></dd>
+						<dd class="item-type-2"><span>丰台 花乡</span><span>普通住宅</span></dd>
+					</dl>
+				</div>
+				<div class="clear"></div>
+				</a>
+			</div>
+			<div class="house-box">
+			<a href="estate-detail.html">
+				<div class="house-item">
+					<div class="house-img l">
+						<img src="{#$templets_skin#}update/r4.jpg">
+					</div>
+					<dl class="l">
+						<dt>新地国际家园<span>新房&二手</span></dt>
+						<dd class="item-area"><em>姑苏区</em><span class="price r">42000元/㎡</span></dd>
+						<dd class="item-type-1"><span>二居(<em>1</em>)</span><span>三居(<em>10</em>)</span><span>其他(<em>1</em>)</span></dd>
+						<dd class="item-type-2"><span>通州 商务园区</span><span>普通住宅</span></dd>
+					</dl>
+				</div>
+				<div class="clear"></div>
+				</a>
+			</div>
+			<div class="house-box">
+			<a href="estate-detail.html">
+				<div class="house-item">
+					<div class="house-img l">
+						<img src="{#$templets_skin#}update/r5.jpg">
+					</div>
+					<dl class="l">
+						<dt>首尔·甜城<span>新房&二手</span></dt>
+						<dd class="item-area"><em>园区 东环路</em><span class="price r">2500元/㎡</span></dd>
+						<dd class="item-type-1"><span>一居(<em>8</em>)</span><span>二居(<em>50</em>)</span><span>三居(<em>32</em>)</span><span>其他(<em>15</em>)</span></dd>
+						<dd class="item-type-2"><span>北京周边 燕郊</span><span>普通住宅</span></dd>
+					</dl>
+				</div>
+				<div class="clear"></div>
+				</a>
+			</div>
+			<div class="house-box">
+			<a href="estate-detail.html">
+				<div class="house-item">
+					<div class="house-img l">
+						<img src="{#$templets_skin#}update/r6.jpg">
+					</div>
+					<dl class="l">
+						<dt>首尔·甜城<span>新房&二手</span></dt>
+						<dd class="item-area"><em>园区 东环路</em><span class="price r">8300元/㎡</span></dd>
+						<dd class="item-type-1"><span>一居(<em>8</em>)</span><span>二居(<em>50</em>)</span><span>三居(<em>32</em>)</span><span>其他(<em>15</em>)</span></dd>
+						<dd class="item-type-2"><span>北京周边 燕郊</span><span>普通住宅</span></dd>
+					</dl>
+				</div>
+				<div class="clear"></div>
+				</a>
+			</div>
+			<div class="house-box">
+			<a href="estate-detail.html">
+				<div class="house-item">
+					<div class="house-img l">
+						<img src="{#$templets_skin#}update/r7.jpg">
+					</div>
+					<dl class="l">
+						<dt>首尔·甜城<span>新房&二手</span></dt>
+						<dd class="item-area"><em>园区 东环路</em><span class="price r">25800元/㎡</span></dd>
+						<dd class="item-type-1"><span>一居(<em>8</em>)</span><span>二居(<em>50</em>)</span><span>三居(<em>32</em>)</span><span>其他(<em>15</em>)</span></dd>
+						<dd class="item-type-2"><span>北京周边 燕郊</span><span>普通住宅</span></dd>
+					</dl>
+				</div>
+				<div class="clear"></div>
+				</a>
+			</div>
+			<div class="house-box">
+			<a href="estate-detail.html">
+				<div class="house-item">
+					<div class="house-img l">
+						<img src="{#$templets_skin#}update/r8.jpg">
+					</div>
+					<dl class="l">
+						<dt>首尔·甜城<span>新房&二手</span></dt>
+						<dd class="item-area"><em>园区 东环路</em><span class="price r">60000元/㎡</span></dd>
+						<dd class="item-type-1"><span>一居(<em>8</em>)</span><span>二居(<em>50</em>)</span><span>三居(<em>32</em>)</span><span>其他(<em>15</em>)</span></dd>
+						<dd class="item-type-2"><span>北京周边 燕郊</span><span>普通住宅</span></dd>
+					</dl>
+				</div>
+				<div class="clear"></div>
+			</a>
+			</div>
+		</div>
+		<!-- 底部 -->
+		<div class="footer swiper-slide allowSwipeToNext">
+			<div class="login-bar">
+				<!-- 登录前 -->
+				<div class="unlogin">
+					<a href="#">登录</a>
+					<em>|</em>
+					<a href="#">注册</a>
+				</div>
+			</div>
+			<div class="copyright">
+				<div class="foot-info">
+					<div class="foot-link">
+						<a href="http://ihuoniao.cn/">首页</a><em>|</em>
+						<a href="#">进货单</a><em>|</em>
+						<a href="#">收藏夹</a><em>|</em>
+						<a href="#">我的火鸟</a>
+					</div>
+					<ul class="foot-item">
+						<li>
+							<a href="#">
+								<div class="item-img">
+									<img src="{#$templets_skin#}images/foot1.jpg">
+								</div>
+								<span>客户端</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="item-img">
+									<img src="{#$templets_skin#}images/foot2.jpg">
+								</div>
+								<span>触屏版</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="item-img">
+									<img src="{#$templets_skin#}images/foot3.jpg">
+								</div>
+								<span>电脑版</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<p class="info-last">火鸟门户版权所有 1999-2016 </p>
+			</div>
+		</div>
+		<div class="mask"></div>
+	</div>
+</div>
+<div class="nav">
+	<div class="nav-list">
+		<a href="estate-list.html" class="nav-item">
+	  			<div class="nav-img nav-img-1"><img src="{#$templets_skin#}images/t1.jpg"></div>新房
+	  		</a>
+	  		<a href="esf.html" class="nav-item">
+	  			<div class="nav-img nav-img-2"><img src="{#$templets_skin#}images/t2.jpg"></div>二手房
+	  		</a>
+	  		<a href="zf.html" class="nav-item">
+	  			<div class="nav-img nav-img-3"><img src="{#$templets_skin#}images/t3.jpg"></div>租房
+	  		</a>
+	  		<a href="sp.html" class="nav-item">
+	  			<div class="nav-img nav-img-4"><img src="{#$templets_skin#}images/t4.jpg"></div>商铺
+	  		</a>
+	  		<a href="xzl.html" class="nav-item">
+	  			<div class="nav-img nav-img-5"><img src="{#$templets_skin#}images/t5.jpg"></div>写字楼
+	  		</a>
+	  		<a href="cff.html" class="nav-item">
+	  			<div class="nav-img nav-img-6"><img src="{#$templets_skin#}images/t6.jpg"></div>厂房
+	  		</a>
+	  		<a href="calculator_sy.html" class="nav-item">
+	  			<div class="nav-img nav-img-7"><img src="{#$templets_skin#}images/t7.jpg"></div>房贷计算器
+	  		</a>
+	  		<a href="zx.html" class="nav-item">
+	  			<div class="nav-img nav-img-8"><img src="{#$templets_skin#}images/t8.jpg"></div>资讯
+	  		</a>
+		<div class="clear"></div>
+</div>
+<a href="#" class="backtop"><img src="{#$templets_skin#}images/backtop.png"></a>
+</div>
+	<script src="{#$templets_skin#}js/jquery-1.10.1.min.js"></script>
+	<script src="{#$templets_skin#}js/iscroll.js"></script>
+	<script src="{#$templets_skin#}js/public.js"></script>
+    <script src="{#$templets_skin#}js/estate-list.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+
+  <!-- 头部 -->
+  <div class="header">
+    <div class="header-l">
+      <a href="{#getUrlPath service='business' template='list'#}"><img src="{#$templets_skin#}images/left1.png"></a>
+    </div>
+    <div class="header-c">
+      <a href="javascript:;"><span>{#$detail_title#}</span></a>
+    </div>
+    <div class="header-r">
+      <a href="javascript:;"></a>
+    </div>
+  </div>
+  <!-- 头部 end-->
+
+  <!-- 导航条 -->
+  <div class="swiper-container" id="swiper-container1">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide{#if $pageCurr == "detail"#} active-nav{#/if#}"><a href="javascript:;" data-url="{#getUrlPath service='business' template='detail' bid={#$detail_id#}#}">首页</a></div>
+      <div class="swiper-slide{#if $pageCurr == "intro"#} active-nav{#/if#}"><a href="javascript:;" data-url="{#getUrlPath service='business' template='intro' bid={#$detail_id#}#}">介绍</a></div>
+      <div class="swiper-slide{#if $pageCurr == "news"#} active-nav{#/if#}"><a href="javascript:;" data-url="{#getUrlPath service='business' template='news' bid={#$detail_id#}#}">动态</a></div>
+      <div class="swiper-slide{#if $pageCurr == "video"#} active-nav{#/if#}"><a href="javascript:;" data-url="{#getUrlPath service='business' template='video' bid={#$detail_id#}#}">视频</a></div>
+      <div class="swiper-slide{#if $pageCurr == "panor"#} active-nav{#/if#}"><a href="javascript:;" data-url="{#getUrlPath service='business' template='panor' bid={#$detail_id#}#}">全景</a></div>
+      {#if $detail_store['shop']#}<div class="swiper-slide{#if $pageCurr == "shop"#} active-nav{#/if#}"><a href="javascript:;" data-url="{#getUrlPath service='business' template='shop' bid={#$detail_id#}#}">商品</a></div>{#/if#}
+      {#if $detail_store['house']#}<div class="swiper-slide{#if $pageCurr == "house-sale"#} active-nav{#/if#}"><a href="javascript:;" data-url="{#getUrlPath service='business' template='house-sale' bid={#$detail_id#}#}">二手房</a></div>{#/if#}
+      {#if $detail_store['house']#}<div class="swiper-slide{#if $pageCurr == "house-zu"#} active-nav{#/if#}"><a href="javascript:;" data-url="{#getUrlPath service='business' template='house-zu' bid={#$detail_id#}#}">租房</a></div>{#/if#}
+      {#if $detail_store['job']#}<div class="swiper-slide{#if $pageCurr == "job"#} active-nav{#/if#}"><a href="javascript:;" data-url="{#getUrlPath service='business' template='job' bid={#$detail_id#}#}">招聘</a></div>{#/if#}
+      {#if $detail_store['waimai']#}<div class="swiper-slide{#if $pageCurr == "waimai"#} active-nav{#/if#}"><a href="javascript:;" data-url="{#getUrlPath service='business' template='waimai' bid={#$detail_id#}#}">外卖</a></div>{#/if#}
+    </div>
+  </div>
+  <!-- 导航条 end-->

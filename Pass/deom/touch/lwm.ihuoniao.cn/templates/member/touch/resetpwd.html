@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>重置密码</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/reset.css">
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}';
+</script>
+</head>
+
+<body>
+	<div class="container">
+		<!-- 头部 -->
+		<div class="header">
+			<div class="header-l"><a href="javascript:history.go(-1)"><img src="{#$templets_skin#}images/arrow.png" alt=""></a></div>
+			<div class="header-c">重置密码</div>
+			<div class="header-r"><a href="{#$cfg_basehost#}/login.html">登录</a></div>
+		</div>
+		<!-- 头部 end -->
+		<div class="form-box">
+			{#if $empty == "yes"#}
+		  <div class="empty">对不起，链接已失效，点击<a href="{#$cfg_basehost#}">这里</a>回首页！</div>
+		  {#else#}
+			<form id="resetForm" action="">
+				<input type="hidden" name="data" id="data" value="{#$data#}" />
+				<input type="password" name="npwd" placeholder="新密码" class="password">
+				<input type="password" name="npwd1" placeholder="再输一次" class="repassword">
+				<div class="login-btn"><input type="submit" value="确定"></div>
+			</form>
+			{#/if#}
+		</div>
+	</div>
+	<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+	<script src="{#$templets_skin#}js/public.js"></script>
+	<script src="{#$templets_skin#}js/reset.js"></script>
+</body>
+</html>

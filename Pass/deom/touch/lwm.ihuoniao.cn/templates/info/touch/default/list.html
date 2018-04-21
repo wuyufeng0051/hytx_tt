@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#if $list_seotitle != ""#}{#$list_seotitle#}{#else#}{#$list_typename#}{#/if#} - {#$info_channelName#} - {#$cfg_webname#}</title>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css">
+<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+	var hideFileUrl ={#$cfg_hideUrl#};
+	var page = 1;
+	var pageSize = 20;
+</script>
+</head>
+
+<body>
+<div class="header">
+  <form action="" method="get">
+		<a href="javascript:history.go(-1)" class="header-logo"><img src="{#$templets_skin#}images/left.png"></a>
+    <input type="text" class="header-search" name="keywords" placeholder="请输入要搜索的关键字">
+		<a href="javascript:;" class="header-user">筛选</a>
+  </form>
+</div>
+
+<div class="screen-info">
+  <div class="screen" id="screen">
+    <div class="scroll-screen">
+	  <div id="filter"></div>
+	  {#*
+	  <div class="screen-box" id="valid">
+        <h3>有效期</h3>
+        <ul class="fn-clear">
+          <li class="active" data-id="0">不限</li>
+          <li data-id="3">三天</li>
+          <li data-id="7">一周</li>
+          <li data-id="30">一个月</li>
+          <li data-id="90">三个月</li>
+        </ul>
+      </div>
+	  *#}
+    </div>
+  </div>
+  <a href="javascript:;" class="confirm">确认</a>
+</div>
+
+<!-- 列表 -->
+<div class="list">
+  <div class="choose">
+    <div class="choose-tab">
+      <ul>
+        <li data-type="addrid" data-id=""><span>区域</span></li>
+        <li data-type="typeid" data-id="{#$list_id#}"><span>{#$list_typename#}</span></li>
+				<li data-type="orderby" data-id=""><span>排序</span></li>
+      </ul>
+    </div>
+    <div class="choose-box">
+      <div class="choose-local dn" id="area-box">
+        <div class="choose-stage-l">
+          <div id="choose-area">
+            <ul>
+							<li data-id="">不限</li>
+							{#info action="addr" return="addr"#}
+	            <li data-id="{#$addr.id#}">{#$addr.typename#}</li>
+							{#/info#}
+            </ul>
+          </div>
+        </div>
+        <div class="choose-stage-r"><div id="choose-area-second"><ul></ul></div></div>
+      </div>
+      <div class="choose-local dn" id="info-box">
+        <div class="choose-stage-l">
+          <div id="choose-info">
+            <ul>
+							<li data-id="">全部分类</li>
+							{#info action="type" return="type"#}
+              <li data-id="{#$type.id#}"{#if $list_id == $type.id#} class="active"{#/if#}>{#$type.typename#}</li>
+							{#/info#}
+            </ul>
+          </div>
+        </div>
+        <div class="choose-stage-r"><div id="choose-info-second"><ul></ul></div></div>
+      </div>
+      <div class="choose-local dn">
+        <div id="choose-sort">
+          <ul>
+						<li data-id="0">默认排序</li>
+            <li data-id="1">最新发布</li>
+            <li data-id="2">按浏览量</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="goods-list">
+    <ul class="fn-clear"></ul>
+    <h2 class="empty">加载中...</h2>
+  </div>
+  <div class="mask"></div>
+  <a href="javascript:scroll(0,0)" class="scrollTop"><i></i></a>
+</div>
+<!-- 列表 end-->
+
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/iscroll.js"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script src="{#$templets_skin#}js/list.js"></script>
+</body>
+</html>

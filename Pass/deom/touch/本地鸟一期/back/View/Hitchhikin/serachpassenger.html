@@ -1,0 +1,30 @@
+     <volist name="res_freeride" id="vo">
+		<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;" id="{$vo.freeride_id}">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 5px 15px;">
+					<a style="position: relative;display: block;color:#000;" str="{$vo.freeride_id}" class="topheight">
+ 						<div>
+
+ 							<?php if(!empty($vo['imgs_is'])){ ?>
+								<div class="mui-media-object mui-pull-left img" style=";width: 60px;height: 60px;margin-right: 10px; background-image: url({$vo.imgs.0}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; " ></div>
+							<?php }else{ ?>
+							    <div class="mui-media-object mui-pull-left img" style=";width: 60px;height: 60px;margin-right: 10px; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; " ></div>
+							<?php } ?>
+
+							<span class="time">{$vo.time}</span>
+							<input type="hidden" class="times" value="{$vo.time}">
+							<span>{$vo.freeride_age}岁</span>
+							<?php if($vo['freeride_sex'] == 0){ ?>
+							<img src="__PUBLIC__/Home/img/women.png" alt="" style="height: 20px;vertical-align:top;">
+							<?php }else{ ?>
+							<img src="__PUBLIC__/Home/img/man.png" alt="" style="height: 20px;vertical-align:top;">
+							<?php }?>
+							
+						</div>
+					   <p style="margin-bottom: 0;color: #000;width: 100%;height: 21px;"><strong style="font-weight: normal;color:#64d06d;margin-right: 5px;float: left;">起</strong><span class="ellipsis" style="float: left;line-height: 21px;width: 45%;height: 21px;">{$vo.freeride_start}</span><span style="float: right;">{$vo.freeride_seat}人乘车</span></p>
+						<p style="margin-bottom: 0;color: #000;width: 100%;height: 21px;"><strong style="font-weight: normal;color:#e47437;margin-right: 5px;float: left;">终</strong><span class="ellipsis" style="float: left;line-height: 21px;width: 45%;height: 21px;">{$vo.freeride_end}</span><!-- <span style="float: right;"><?php if($vo['freeride_is_free'] == 0 ){ echo "不付费" ; }else{ echo "可付费" ;} ?> --></span></p>
+					</a>
+				</div>
+			</div>
+		</div>
+    </volist>

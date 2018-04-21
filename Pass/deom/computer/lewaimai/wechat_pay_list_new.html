@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-wechat wechat-icon"></i>
+        <a href="#">公众号设置</a></li>
+      <li>
+        <a href="#">微信支付</a></li>
+      <li>
+        <a href="#">微信支付申请列表&gt;&gt;微信支付申请资料提交</a></li>
+    </ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.ace-file-input a {display:none;} .aa{display:none;}</style>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">
+              <i class="ace-icon fa fa-times"></i>
+            </button>
+            <p>您可以在本页面提交申请微信支付所需要的各项资料，由乐外卖帮您申请微信支付，申请成功后，您将获得一个由微信支付官方分配的微信支付特约商户号，可以在公众号支付、智能收银机微信支付等所有需要微信支付的地方使用。</p>
+            <p>注意：（1）由乐外卖帮您申请的微信支付，资金由微信支付官方和您直接结算，资金不经过乐外卖；（2）微信支付费率为微信支付官方标准0.6%；（3）没有微信公众号也可以在乐外卖后台申请微信支付，但是必须绑定好经过认证的微信公众服务号才能正常使用自己申请的微信支付；更多详情请点击下面的按钮查看详细教程</p>
+            <p>
+              <a class="btn btn-success" href="#" target="_blank">乐外卖微信支付申请教程</a></p>
+          </div>
+          <p class="badge badge-success">当前微信支付申请状态：未申请</p>
+          <form enctype="multipart/form-data" class="form-horizontal" id="weixinzhifu-form" action="/wxconfig/weixinzhifuapply" method="post">
+            <div class="alert alert-danger" id="weixinzhifu-form_es_" style="display:none">
+              <p>请更正下列输入错误:</p>
+              <ul>
+                <li>dummy</li></ul>
+            </div>
+            <div class="row">
+              <div class="span10">
+                <div class="col-sm-6" style="width:100%;margin:0 auto;">
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_contact_name">联系人姓名</label></label>
+                    <input class="col-sm-2" placeholder="" name="WeixinzhifuFuwushangApply[contact_name]" id="WeixinzhifuFuwushangApply_contact_name" type="text" maxlength="20"></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_phone">联系人手机</label></label>
+                    <input class="col-sm-2" placeholder="必须是手机号码" name="WeixinzhifuFuwushangApply[phone]" id="WeixinzhifuFuwushangApply_phone" type="text" maxlength="20"></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_email">联系人邮箱</label></label>
+                    <input class="col-sm-2" name="WeixinzhifuFuwushangApply[email]" id="WeixinzhifuFuwushangApply_email" type="text" maxlength="50"></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_shopname">商户简称</label></label>
+                    <input class="col-sm-3" placeholder="该名称将于在支付完成页面向消费者进行展示" name="WeixinzhifuFuwushangApply[shopname]" id="WeixinzhifuFuwushangApply_shopname" type="text" maxlength="50"></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_shoptype">经营类目</label></label>
+                    <input class="col-sm-3" placeholder="如快餐店、便利店、奶茶店、餐饮管理公司" name="WeixinzhifuFuwushangApply[shoptype]" id="WeixinzhifuFuwushangApply_shoptype" type="text" maxlength="50"></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_shopdes">售卖商品简述</label></label>
+                    <input class="col-sm-2" name="WeixinzhifuFuwushangApply[shopdes]" id="WeixinzhifuFuwushangApply_shopdes" type="text" maxlength="200"></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_kefuphone">客服电话</label></label>
+                    <input class="col-sm-2" name="WeixinzhifuFuwushangApply[kefuphone]" id="WeixinzhifuFuwushangApply_kefuphone" type="text" maxlength="50"></div>
+                  <!-- --------------------- -->
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_companyname">公司名称(营业执照名称)</label></label>
+                    <input class="col-sm-2" name="WeixinzhifuFuwushangApply[companyname]" id="WeixinzhifuFuwushangApply_companyname" type="text" value=""></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_site">公司网站</label></label>
+                    <input class="col-sm-2" placeholder="非互联网公司可无需填写" name="WeixinzhifuFuwushangApply[site]" id="WeixinzhifuFuwushangApply_site" type="text" maxlength="50" value=""></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_address">注册地址</label></label>
+                    <input class="col-sm-2" name="WeixinzhifuFuwushangApply[address]" id="WeixinzhifuFuwushangApply_address" type="text" value=""></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_license_num">营业执照注册号</label></label>
+                    <input class="col-sm-2" name="WeixinzhifuFuwushangApply[license_num]" id="WeixinzhifuFuwushangApply_license_num" type="text" value=""></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_business_range">经营范围</label></label>
+                    <input class="col-sm-2" name="WeixinzhifuFuwushangApply[business_range]" id="WeixinzhifuFuwushangApply_business_range" type="text" value=""></div>
+                  <!-- --------------------- -->
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_bank_account">开户名称</label></label>
+                    <input class="col-sm-2" name="WeixinzhifuFuwushangApply[bank_account]" id="WeixinzhifuFuwushangApply_bank_account" type="text" maxlength="50"></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_bank_name">开户银行</label></label>
+                    <input class="col-sm-2" placeholder="如招商银行、中国工商银行" name="WeixinzhifuFuwushangApply[bank_name]" id="WeixinzhifuFuwushangApply_bank_name" type="text" maxlength="50"></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_bank_province">开户银行省份</label></label>
+                    <input class="col-sm-2" name="WeixinzhifuFuwushangApply[bank_province]" id="WeixinzhifuFuwushangApply_bank_province" type="text" maxlength="50"></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_bank_city">开户银行城市</label></label>
+                    <input class="col-sm-2" name="WeixinzhifuFuwushangApply[bank_city]" id="WeixinzhifuFuwushangApply_bank_city" type="text" maxlength="50"></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_bank_zhihang">开户银行支行名称</label></label>
+                    <input class="col-sm-3" placeholder="一定要准确填写，如“深圳市南油支行”" name="WeixinzhifuFuwushangApply[bank_zhihang]" id="WeixinzhifuFuwushangApply_bank_zhihang" type="text" maxlength="50"></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_bank_card">开户银行卡号</label></label>
+                    <input class="col-sm-2" name="WeixinzhifuFuwushangApply[bank_card]" id="WeixinzhifuFuwushangApply_bank_card" type="text" maxlength="50"></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_public_account">微信公众账号</label></label>
+                    <input class="col-sm-2" name="WeixinzhifuFuwushangApply[public_account]" id="WeixinzhifuFuwushangApply_public_account" type="text" value=""></div>
+                  <div class="form-group">
+                    <label class="col-sm-2">
+                      <label for="WeixinzhifuFuwushangApply_appid">微信APPID</label></label>
+                    <input class="col-sm-2" name="WeixinzhifuFuwushangApply[appid]" id="WeixinzhifuFuwushangApply_appid" type="text" value=""></div>
+                  <div class="form-group" style="width:592px;padding-left:12px;margin-top:20px;">
+                    <div>
+                      <input id="ytid-input-file-1" type="hidden" value="" name="WeixinzhifuFuwushangApply[shenfenzheng_zheng_img]">
+                      <label class="ace-file-input">
+                        <input class="col-sm-4" id="id-input-file-1" size="50" onchange="preview(this)" name="WeixinzhifuFuwushangApply[shenfenzheng_zheng_img]" type="file">
+                        <span class="ace-file-container" data-title="选择">
+                          <span class="ace-file-name" data-title="身份证正面图片">
+                            <i class=" ace-icon fa fa-upload"></i>
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <img id="shenfenzheng_zheng_img_dis" style="width:360px;height:200px" title="身份证正面图片" src="images/logo_1.png">
+                    <img style="width:360px;height:200px" id="shenfenzheng_zheng_img" class="aa shenfenzheng_zheng_img_paly"  alt="身份证正面图片22"></div>
+                  <div class="form-group" style="width:592px;padding-left:12px;margin-top:20px;">
+                    <div>
+                      <input id="ytid-input-file-2" type="hidden" value="" name="WeixinzhifuFuwushangApply[shenfenzheng_fan_img]">
+                      <label class="ace-file-input">
+                        <input class="col-sm-4" id="id-input-file-2" size="50" onchange="preview2(this)" name="WeixinzhifuFuwushangApply[shenfenzheng_fan_img]" type="file">
+                        <span class="ace-file-container" data-title="选择">
+                          <span class="ace-file-name" data-title="身份证反面图片">
+                            <i class=" ace-icon fa fa-upload"></i>
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <img id="shenfenzheng_fan_img_dis" style="width:360px;height:200px" title="身份证反面图片" src="images/logo_1.png">
+                    <img style="width:360px;height:200px" id="shenfenzheng_fan_img" class="aa shenfenzheng_fan_img_paly"  alt="身份证反面图片"></div>
+                  <div class="form-group" style="width:592px;padding-left:12px;margin-top:20px;">
+                    <div>
+                      <input id="ytid-input-file-3" type="hidden" value="" name="WeixinzhifuFuwushangApply[licence_img]">
+                      <label class="ace-file-input">
+                        <input class="col-sm-4" id="id-input-file-3" size="50" onchange="preview3(this)" name="WeixinzhifuFuwushangApply[licence_img]" type="file">
+                        <span class="ace-file-container" data-title="选择">
+                          <span class="ace-file-name" data-title="营业执照图片">
+                            <i class=" ace-icon fa fa-upload"></i>
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <img id="licence_img_dis" style="width:360px;height:200px" title="营业执照照片" src="images/logo_1.png">
+                    <img style="width:360px;height:200px" id="licence_img" class="aa licence_img_paly"  alt="营业执照照片"></div>
+                  <div class="form-group" style="width:592px;padding-left:12px;margin-top:20px;">
+                    <div>
+                      <input id="ytid-input-file-4" type="hidden" value="" name="WeixinzhifuFuwushangApply[zuzhijigou_img]">
+                      <label class="ace-file-input">
+                        <input class="col-sm-4" id="id-input-file-4" size="50" onchange="preview4(this)" name="WeixinzhifuFuwushangApply[zuzhijigou_img]" type="file">
+                        <span class="ace-file-container" data-title="选择">
+                          <span class="ace-file-name" data-title="组织机构代码证图片（企业需要，个体户不需要）">
+                            <i class=" ace-icon fa fa-upload"></i>
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <img id="zuzhijigou_img_dis" style="width:360px;height:200px" title="组织机构代码证照片" src="images/logo_1.png">
+                    <img style="width:360px;height:200px" id="zuzhijigou_img" class="aa zuzhijigou_img_paly"  alt="组织机构代码证照片"></div>
+                  <div class="form-group" style="width:592px;padding-left:12px;margin-top:20px;">
+                    <div>
+                      <input id="ytid-input-file-5" type="hidden" value="" name="WeixinzhifuFuwushangApply[buchong_img]">
+                      <label class="ace-file-input">
+                        <input class="col-sm-4" id="id-input-file-5" size="50" onchange="preview5(this)" name="WeixinzhifuFuwushangApply[buchong_img]" type="file">
+                        <span class="ace-file-container" data-title="选择">
+                          <span class="ace-file-name" data-title="补充证件（如食品流通许可证、餐饮服务许可证、娱乐经营许可证）">
+                            <i class=" ace-icon fa fa-upload"></i>
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <img id="buchong_img_dis" style="width:360px;height:200px" title="补充证件照片" src="images/logo_1.png">
+                    <img style="width:360px;height:200px" id="buchong_img" class="aa buchong_img_paly"  alt="补充证件照片"></div>
+                  <div class="form-actions">
+                    <button class="btn btn-info" type="submit">
+                      <i class="ace-icon fa fa-check bigger-110"></i>提交申请</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>本地鸟</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<style>
+	body{
+		height: 100vh;
+		background: url(__PUBLIC__/Home/img/login.jpg) no-repeat;
+		background-size: cover;
+	}
+	.hd{
+		text-align: center;
+		padding-top: 100px;
+	}
+	.hd .avatar{
+		border-radius: 50% 50%;
+		width: 75px;
+		height: 75px;
+		display: inline-block;
+		overflow: hidden;
+	}
+	.hd .avatar img{
+		width: 100%;
+		height: 100%;
+	}
+	.hd p{
+		font-size: 18px;
+		color: #666;
+		margin: 20px 0;
+	}
+	.form{
+		margin: 50px;
+		background: rgba(230,230,230,.6);
+	}
+	.form-group{
+		padding: 10px 0;
+	}
+	.form label{
+		
+	}
+	.form input{
+		margin-bottom: 0;
+		border: 0;
+		font-size: 16px;
+		background: none;
+		padding-left: 50px;
+		
+	}
+	.form .user{
+		background: url(__PUBLIC__/Home/img/user.png) no-repeat 20px 11px;
+		background-size: 13px 15px;
+	}
+	.form .password{
+		background: url(__PUBLIC__/Home/img/password.png) no-repeat 20px 11px;
+		background-size: 13px 15px;
+	}
+	.form .form-group:first-child{
+		border-bottom: 1px solid #fff;
+	}
+	.btn{
+		padding: 50px;
+		/*padding-bottom: 0;*/
+	}
+	.btn button{
+		width: 100%;
+		height: 44px;
+		background: #ff7300;
+		color: #fff;
+		border-color: #ff7300;
+		font-size: 18px;
+	}
+	</style>
+</head>
+<body>
+	<div class="hd">
+		<div class="avatar">
+			<img src="__PUBLIC__/Home/img/photo.jpeg" alt="">
+		</div>
+		<p>昵称昵称昵称</p>
+	</div>
+	<div class="form">
+		<div class="form-group">
+			<label for=""></label>
+			<input type="text" placeholder="请输入你的账号" class="user" id="user_account">
+		</div>
+		<div class="form-group">
+			<label for=""></label>
+			<input type="password" placeholder="请输入你的密码" class="password" id="user_pwd">
+		</div>
+	</div>
+	<div class="btn">
+		<button id="login">登录</button>
+	</div>
+    <script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/time.js"></script>
+	<script>
+       $("#login").click(function(){
+       	 var user_account = $('#user_account').val();
+       	 var password = $('#password').val();
+       	 if (user_account) {
+       	 	 
+       	 }
+       })
+	</script>
+</body>
+</html>

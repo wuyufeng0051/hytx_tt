@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>会员中心 - {#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+
+	var money = {#$userinfo.money#}, freeze = {#$userinfo.freeze#}, point = {#$userinfo.point#};
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="container fn-clear">
+
+		{#include file="sidebar.html"#}
+
+		<div class="main">
+
+			<!-- 会员基本信息 s -->
+			<div class="banner"{#if $bannerUrl#} style="background-image: url('{#$bannerUrl#}');"{#/if#}>
+				<a href="javascript:;" class="conbg" id="customBanner" title="自定义封面背景图片">自定义封面背景图片</a>
+				<dl class="uinfo">
+					<dt>
+						<a href="{#getUrlPath service='member' type='user' template='portrait'#}">
+							<img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="middle"#}{#/if#}" />
+							<span>上传头像</span>
+						</a>
+					</dt>
+					<dd>
+						<div class="name"><h2><span>{#$nowHour#}，{#$userinfo.nickname#}</span><em></em></h2></div>
+						<ul class="fn-clear">
+							<li><a href="{#getUrlPath service='member' type='user' template='security' doget='chphone'#}" class="mobile{#if $userinfo.phoneCheck == 0#} disable{#/if#}"><s></s>手机认证</a></li>
+							<li><a href="{#if $userinfo.certifyState != 1#}{#getUrlPath service='member' type='user' template='security' doget='chCertify'#}{#else#}{#getUrlPath service='member' type='user' template='security' doget='shCertify'#}{#/if#}" class="real{#if $userinfo.certifyState != 1#} disable{#/if#}"><s></s>实名认证</a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='security' doget='chemail'#}" class="email{#if $userinfo.emailCheck == 0#} disable{#/if#}"><s></s>邮箱认证</a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='security' doget='chpassword'#}" class="save"><s></s>密码安全</a></li>
+							<li><a href="{#if $userinfo.paypwdCheck == 0#}{#getUrlPath service='member' type='user' template='security' doget='paypwdAdd'#}{#else#}{#getUrlPath service='member' type='user' template='security' doget='paypwdEdit'#}{#/if#}" class="pay{#if $userinfo.paypwdCheck == 0#} disable{#/if#}"><s></s>支付密码</a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='security' doget='question'#}" class="question{#if $userinfo.question == 0#} disable{#/if#}"><s></s>安全问题</a></li>
+						</ul>
+					</dd>
+				</dl>
+				<div class="bot">
+					{#if $userinfo.lastlogintime#}
+					<div class="l">最近一次登录：{#$userinfo.lastlogintime#}&nbsp;&nbsp;&nbsp;&nbsp;{#$userinfo.lastloginipaddr#}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#getUrlPath service='member' type='user' template='loginrecord'#}">查看更多</a></div>
+					{#else#}
+					<div class="l"><a href="{#getUrlPath service='member' type='user' template='loginrecord'#}">查看登录记录</a></div>
+					{#/if#}
+					{#$level = "高"#}
+					{#$text = "点击查看"#}
+					{#$cla = "l1"#}
+					{#if $userinfo.security < 100 && $userinfo.security > 40#}
+						{#$level = "中"#}
+						{#$text = "立即提升"#}
+						{#$cla = "l2"#}
+					{#elseif $userinfo.security <= 40#}
+						{#$level = "低"#}
+						{#$text = "立即提升"#}
+						{#$cla = "l2"#}
+					{#/if#}
+					<div class="r">安全等级：{#$level#}<a href="{#getUrlPath service='member' type='user' template='security'#}" class="{#$cla#}">{#$text#}</a></div>
+					<div class="bg"></div>
+				</div>
+			</div>
+			<!-- 会员基本信息 e -->
+
+			<!-- 资产&天气 s -->
+			<div class="mon-dwea">
+				<div class="money">
+					<div id="chart"></div>
+					<div class="cinfo">
+						<p>帐户资产总额&nbsp;&nbsp;</p>
+						<strong>{#$userinfo.money + $userinfo.freeze#}</strong>
+					</div>
+					<div class="tmon pop"><s></s><dl class="popup"><dt><em></em></dt><dd>帐户资产总额，包括可用余额、冻结金额。<br />但不包含帐户{#$cfg_pointName#}。</dd></dl></div>
+					<ul id="chart-detail">
+						<li class="m1">
+							<div>
+								<label>可用余额<div class="pop"><s></s><dl class="popup"><dt><em></em></dt><dd>可用余额，可以直接用于分类信息竞价，房源信息置顶推广，也可以提现</dd></dl></div></label>
+								<br />{#$userinfo.money#}
+							</div>
+							<i></i>
+						</li>
+						<li class="m2">
+							<div>
+								<label>冻结金额<div class="pop"><s></s><dl class="popup"><dt><em></em></dt><dd>不可用余额是指用户办理一些特殊业务时，本人账户中暂时不能使用的那部分资金。</dd></dl></div></label>
+								<br />{#$userinfo.freeze#}
+							</div>
+							<i></i>
+						</li>
+						<li class="m3">
+							<div>
+								<label>帐户{#$cfg_pointName#}<div class="pop"><s></s><dl class="popup"><dt><em></em></dt><dd>{#$cfg_pointName#}可兑换帐户余额，支持商品{#$cfg_pointName#}购买，可以用于网站消费，商品补价兑换。</dd></dl></div></label>
+								<br />{#$userinfo.point#}
+							</div>
+							<i></i>
+						</li>
+					</ul>
+				</div>
+				<div class="date-weather">
+					<h5>我的日历天气状况</h5>
+					<ul class="fn-clear">
+						<li class="d"><strong>{#getMyTime format="%d"#}</strong><p>{#getMyWeek prefix="星期"#}<br />{#getMyTime format="%Y"#}.{#getMyTime format="%m"#}</p></li>
+					</ul>
+				</div>
+			</div>
+			<!-- 资产&天气 e -->
+
+			<!-- 系统消息 s -->
+			<div class="message">
+				<ul class="tab">
+					<li class="curr"><a href="javascript:;">系统消息提醒</a></li>
+
+					{#if in_array("shop", $installModuleArr)#}
+					{#$shopCount = 0#}
+					{#shop action="orderList" return="list" pageData="1" pageSize="1"#}
+					{#$shopCount = $list['success']#}
+					{#/shop#}
+					<li><a href="{#getUrlPath service='member' type='user' template='order' module='shop'#}">我购买的商品{#if $shopCount > 0#}<em>{#$shopCount|string_format:"%d"#}</em>{#/if#}</a></li>
+					{#/if#}
+
+					{#if in_array("tuan", $installModuleArr)#}
+					{#$unpaid = 0#}
+					{#$ongoing = 0#}
+					{#tuan action="orderList" return="list" pageData="1" pageSize="1"#}
+					{#$unpaid = $list['unpaid']#}
+					{#$ongoing = $list['ongoing']#}
+					{#/tuan#}
+					<li><a href="{#getUrlPath service='member' type='user' template='order' module='tuan'#}">我团购的订单{#if $ongoing > 0 && $unpaid > 0#}<em>{#if $ongoing > 0#}未消费：{#$ongoing|string_format:"%d"#}{#/if#} {#if $unpaid > 0#}未付款：{#$unpaid|string_format:"%d"#}{#/if#}</em>{#/if#}</a></li>
+					{#/if#}
+				</ul>
+				<div class="con">
+					<div class="item fn-clear">
+						{#if in_array("article", $installModuleArr)#}
+						<dl class="fn-clear">
+							<dt>新闻</dt>
+							<dd>
+								{#article action="alist" return="list" u="1" pageData="1" pageSize="1"#}
+								<ul>
+									<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='article'#}">发布新闻投稿</a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=1'#}">已经通过审核<em>{#$list['audit']|string_format:"%d"#}</em></a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=0'#}">未审核<em>{#$list['gray']|string_format:"%d"#}</em></a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=2'#}">审核拒绝<em>{#$list['refuse']|string_format:"%d"#}</em></a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='article'#}">我的全部投稿<em>{#$list['totalCount']|string_format:"%d"#}</em></a></li>
+								</ul>
+								<h5>
+									<a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=0'#}">{#$list['gray']|string_format:"%d"#}</a>待审
+									<a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=1'#}">{#$list['audit']|string_format:"%d"#}</a>通过
+									<a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=2'#}">{#$list['refuse']|string_format:"%d"#}</a>拒绝
+								</h5>
+								<p>全方位的新闻资讯，最全的时事热点</p>
+								{#/article#}
+							</dd>
+						</dl>
+						{#/if#}
+
+						{#if in_array("info", $installModuleArr)#}
+						<dl class="fn-clear">
+							<dt>生活</dt>
+							<dd>
+								{#info action="ilist" return="list" u="1" pageData="1" pageSize="1"#}
+								<ul>
+									<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}">发布分类信息</a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='info' param='state=1'#}">已经通过审核<em>{#$list['audit']|string_format:"%d"#}</em></a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='info' param='state=0'#}">未审核<em>{#$list['gray']|string_format:"%d"#}</em></a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='info' param='state=2'#}">审核拒绝<em>{#$list['refuse']|string_format:"%d"#}</em></a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='info' param='state=4'#}">已经过期<em>{#$list['expire']|string_format:"%d"#}</em></a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='info'#}">我的全部信息<em>{#$list['totalCount']|string_format:"%d"#}</em></a></li>
+								</ul>
+								<h5>
+									<a href="{#getUrlPath service='member' type='user' template='manage' action='info' param='state=0'#}">{#$list['gray']|string_format:"%d"#}</a>待审
+									<a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=1'#}">{#$list['audit']|string_format:"%d"#}</a>通过
+									<a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=2'#}">{#$list['refuse']|string_format:"%d"#}</a>拒绝
+									<a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=4'#}">{#$list['expire']|string_format:"%d"#}</a>过期
+								</h5>
+								<p>最新、最全的本地生活服务信息发布</p>
+								{#/info#}
+							</dd>
+						</dl>
+						{#/if#}
+
+						{#if in_array("house", $installModuleArr)#}
+						<dl class="fn-clear">
+							<dt>房源</dt>
+							<dd>
+								<ul>
+									{#$gray = 0#}
+									{#$audit = 0#}
+									{#$refuse = 0#}
+									{#house action="demand" typeid="0" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost='qzu'#}">求租<em>{#$list['totalCount']|string_format:"%d"#}</em></a></li>
+									{#/house#}
+									{#house action="demand" typeid="1" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost='qgou'#}">求购<em>{#$list['totalCount']|string_format:"%d"#}</em></a></li>
+									{#/house#}
+									{#house action="saleList" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost='sale'#}">二手房<em>{#$list['totalCount']|string_format:"%d"#}</em></a></li>
+									{#/house#}
+									{#house action="zuList" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost='zu'#}">租房<em>{#$list['totalCount']|string_format:"%d"#}</em></a></li>
+									{#/house#}
+
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost='xzl'#}">写字楼
+									{#house action="xzlList" type="1" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>售{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									{#house action="xzlList" type="0" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>租{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									</a></li>
+
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost='sp'#}">商铺
+									{#house action="spList" type="2" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>转{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									{#house action="spList" type="1" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>售{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									{#house action="spList" type="0" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>租{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									</a></li>
+
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost='cf'#}">厂房/仓库
+									{#house action="cfList" type="1" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>转{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									{#house action="cfList" type="2" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>售{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									{#house action="cfList" type="0" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>租{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									</a></li>
+								</ul>
+								<h5>
+									<a href="javascript:;">{#$gray|string_format:"%d"#}</a>待审
+									<a href="javascript:;">{#$audit|string_format:"%d"#}</a>通过
+									<a href="javascript:;">{#$refuse|string_format:"%d"#}</a>拒绝
+								</h5>
+								<p>房产信息免费发布出租、出售房原等 </p>
+							</dd>
+						</dl>
+						{#/if#}
+
+						{#if in_array("job", $installModuleArr)#}
+						<dl class="fn-clear">
+							<dt>招聘</dt>
+							<dd>
+								{#job action="invitationList" type="person" state="0" return="list" pageData="1" pageSize="1"#}
+								<h5><a href="{#getUrlPath service='member' type='user' template='job' action='invitation'#}">{#$list.state0|string_format:"%d"#}</a>份面试通知</h5>
+								<p>为求职者提供最新最全的招聘信息 </p>
+								{#/job#}
+							</dd>
+						</dl>
+						{#/if#}
+
+						{#if in_array("dating", $installModuleArr)#}
+						<dl class="fn-clear">
+							<dt>交友</dt>
+							<dd>
+								{#dating action="review" return="list" pageData="1" pageSize="99999999"#}
+								<h5><a href="{#getUrlPath service='member' type='user' template='dating' action='review'#}">{#$list.noread|string_format:"%d"#}</a>条私信</h5>
+								<p>婚恋交友平台，让缘分千万里挑一 </p>
+								{#/dating#}
+							</dd>
+						</dl>
+						{#/if#}
+
+						{#if in_array("waimai", $installModuleArr)#}
+						<dl class="fn-clear">
+							<dt>外卖</dt>
+							<dd>
+								<h5><a href="#">0</a>最新订单<a href="#">0</a>全部订单</h5>
+								<p>众多优质外卖商家，方便网上订餐服务 </p>
+							</dd>
+						</dl>
+						{#/if#}
+					</div>
+				</div>
+			</div>
+			<!-- 系统消息 e -->
+
+			<!-- 模块集合 s -->
+			<div class="modules">
+				<ul class="fn-clear">
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/website.png" /><h5>企业建站</h5><p>利用最新互联网技术打造高端移动商务平台</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/build.png" /><h5>建材产品</h5><p>网络化与终端体验相集合的一站式无忧采购</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/renovation.png" /><h5>装修房子</h5><p>价格透明,拒绝水分,实力公司保障施工效果</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/tuan.png" /><h5>团购</h5><p>精选美食，娱乐等优质信息,尽享无敌折扣</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/paper.png" /><h5>电子报刊</h5><p>智能反解,功能强大，新型的媒报信息载体</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/job.png" /><h5>企业招聘</h5><p>名企信息，快速申请，轻松工作，满意招聘</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/marry.png" /><h5>婚庆摄影</h5><p>叙述有故事的浪漫,追求有灵魂的瞬间</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/waimai.png" /><h5>外卖</h5><p>超值套餐等你来!贴心的订餐服务让生活更简单</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/car.png" /><h5>汽车</h5><p>量身选爱车,全程购车服务,让购车更轻松!</p></a></li>
+				</ul>
+			</div>
+			<!-- 模块集合 e -->
+
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/raphael.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js"></script>
+</body>
+</html>

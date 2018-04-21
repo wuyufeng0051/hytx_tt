@@ -1,0 +1,358 @@
+<!--#include file="_head.shtml"-->
+
+
+
+
+
+
+		<div class="content_box">
+			<div class="content">
+				<div class="con_txt">
+					<div class="lead">
+						<ul class="fn-clear">
+							<li><a href="#">首页</a></li><em>/</em>
+							<li><a href="#">效果中心</a></li><em>/</em>
+							<li><a href="#">广告效果分析</a></li><em>/</em>
+							<li class="lead_bc"><a href="#">整体效果报告</a></li>
+						</ul>
+						<div class="tips">
+							<p>以下数据有半个小时延迟,竞价次数不能查询今日数据</p>
+						</div>
+					</div>
+					<div class="screen fn-clear">
+						<div class="week">
+							<em>选择时段</em>
+							<ul>
+								<li class="scr_bc">本周</li>
+								<li>上周</li>
+								<li>本月</li>
+								<li>最近三十天</li>
+								<li class="ziding">自定义时段</li>
+							</ul>
+						</div>
+						<div class="time fn-clear none">
+							<i>选择时段:</i>
+							<div class="begin">
+								<input id="StatisticsForm_beginDate" type="text" value="2017-02-12" name="StatisticsForm[beginDate]" />
+								<p><s></s></p>
+							</div>
+							<span>至</span>
+							<div class="end">
+	                            <input id="StatisticsForm_endDate" type="text" value="2017-03-14" name="StatisticsForm[endDate]" />
+	                            <p><s></s></p>
+							</div>
+						</div>
+						<div class="type">
+							<i>投放类型</i>
+							<select style="">
+                          		<option value="-1">全部</option>
+                          		<option value="0">PC投放</option>
+                          		<option value="1">移动投放</option>
+                          	</select>
+						</div>
+						<div class="keuxan">
+							<i>可选指标</i>
+							<label for="id_select"></label>
+							<select id="id_select" class="selectpicker bla bla bli" multiple data-live-search="true">
+							    <option>cow</option>
+							    <option>bull</option>
+							    <option>ASD</option>
+							    <option selected>Bla</option>
+							    <option>Ble</option>
+							    </optgroup>
+						    </select>
+						</div>
+						<div class="bttn">
+							<button>查询</button>
+							<button>导出</button>
+						</div>
+					</div>
+					<div class="menu_box">
+						<div class="menu_1">
+							<table>
+								<thead>
+									<th>曝光次数</th>
+									<th>曝光人数</th>
+									<th>点击次数</th>
+									<th>点击人数</th>
+									<th>点击率</th>
+									<th>到达次数</th>
+									<th>到达人数</th>
+									<th>到达率</th>
+									<th>二跳数</th>
+									<th>二跳率</th>
+									<th>点击转化率</th>
+									<th>曝光转化</th>
+									<th>曝光转化率</th>
+									<th>人均访问深度</th>
+									<th>广告花费</th>
+									<th>广告花费</th>
+								</thead>
+								<thead class="m1_con">
+									<th>100,368	</th>
+									<th>408	</th>
+									<th>406	</th>
+									<th>0.41%	</th>
+									<th>0	</th>
+									<th>0</th>
+									<th>0.00%	</th>
+									<th>0</th>
+									<th>0.00%</th>
+									<th>0	</th>
+									<th>0</th>
+									<th>0</th>
+									<th>0</th>
+									<th>0</th>
+									<th>0</th>
+									<th>0</th>
+								</thead>
+							</table>
+						</div>
+						<div class="cartogram">
+							<div id="container" style="min-width:400px;height:400px"></div>
+							<script>var chart = new Highcharts.Chart('container', {
+								    title: {
+								        text: '投放汇总趋势',
+								        x: -20
+								    },
+								    subtitle: {
+								        text: '',
+								        x: -20
+								    },
+								    xAxis: {
+								        categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+								    },
+								    yAxis: {
+								        title: {
+								            text: '曝光次数'
+								        },
+								        plotLines: [{
+								            value: 0,
+								            width: 1,
+								            color: '#808080'
+								        }]
+								    },
+								    tooltip: {
+								        valueSuffix: '次'
+								    },
+								    legend: {
+								        layout: 'vertical',
+								        align: 'right',
+								        verticalAlign: 'middle',
+								        borderWidth: 0
+								    },
+								    series: [{
+								        name: '曝光次数',
+								        data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+								    },] // {
+								    //     name: '纽约',
+								    //     data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+								    // }, {
+								    //     name: '柏林',
+								    //     data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+								    // }, {
+								    //     name: '伦敦',
+								    //     data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+								    // }
+								    // 
+								});
+	                            </script>
+							<div class="menu_2">
+								<div class="m2_lead">
+									<table>
+										<thead>
+											<th>日期</th>
+											<th>曝光次数<i></i><em></em></th>
+											<th>曝光人数<i></i><em></em></th>
+											<th>点击次数<i></i><em></em></th>
+											<th>点击人数<i></i><em></em></th>
+											<th>点击率<i></i><em></em></th>
+											<th>到达次数<i></i><em></em></th>
+											<th>到达率<i></i><em></em></th>
+											<th>二跳数<i></i><em></em></th>
+											<th>二跳率<i></i><em></em></th>
+											<th>点击转化<i></i><em></em></th>
+											<th>点击转化率<i></i><em></em></th>
+											<th>曝光转化<i></i><em></em></th>
+											<th>曝光转化率<i></i><em></em></th>
+											<th>人均访问深度<i></i><em></em></th>
+										</thead>
+									</table>
+								</div>
+								<div class="m2_min">
+									<table>
+										<thead class="m2_bc">
+											<th>2017-04-20</th>
+											<th>1</th>
+											<th>2</th>
+											<th>54</th>
+											<th>345</th>
+											<th>10%</th>
+											<th>1234</th>
+											<th>1%</th>
+											<th>234</th>
+											<th>12%</th>
+											<th>123</th>
+											<th>56%</th>
+											<th>0</th>
+											<th>0.00%</th>
+											<th>0.00</th>
+										</thead>
+										<thead class="">
+											<th>2017-04-20</th>
+											<th>1</th>
+											<th>2</th>
+											<th>54</th>
+											<th>345</th>
+											<th>10%</th>
+											<th>1234</th>
+											<th>1%</th>
+											<th>234</th>
+											<th>12%</th>
+											<th>123</th>
+											<th>56%</th>
+											<th>0</th>
+											<th>0.00%</th>
+											<th>0.00</th>
+										</thead>
+										<thead class="m2_bc">
+											<th>2017-04-20</th>
+											<th>1</th>
+											<th>2</th>
+											<th>54</th>
+											<th>345</th>
+											<th>10%</th>
+											<th>1234</th>
+											<th>1%</th>
+											<th>234</th>
+											<th>12%</th>
+											<th>123</th>
+											<th>56%</th>
+											<th>0</th>
+											<th>0.00%</th>
+											<th>0.00</th>
+										</thead>
+										<thead class="">
+											<th>2017-04-20</th>
+											<th>1</th>
+											<th>2</th>
+											<th>54</th>
+											<th>345</th>
+											<th>10%</th>
+											<th>1234</th>
+											<th>1%</th>
+											<th>234</th>
+											<th>12%</th>
+											<th>123</th>
+											<th>56%</th>
+											<th>0</th>
+											<th>0.00%</th>
+											<th>0.00</th>
+										</thead>
+										<thead class="m2_bc">
+											<th>2017-04-20</th>
+											<th>1</th>
+											<th>2</th>
+											<th>54</th>
+											<th>345</th>
+											<th>10%</th>
+											<th>1234</th>
+											<th>1%</th>
+											<th>234</th>
+											<th>12%</th>
+											<th>123</th>
+											<th>56%</th>
+											<th>0</th>
+											<th>0.00%</th>
+											<th>0.00</th>
+										</thead>
+										<thead class="">
+											<th>2017-04-20</th>
+											<th>1</th>
+											<th>2</th>
+											<th>54</th>
+											<th>345</th>
+											<th>10%</th>
+											<th>1234</th>
+											<th>1%</th>
+											<th>234</th>
+											<th>12%</th>
+											<th>123</th>
+											<th>56%</th>
+											<th>0</th>
+											<th>0.00%</th>
+											<th>0.00</th>
+										</thead>
+										<thead class="m2_bc">
+											<th>2017-04-20</th>
+											<th>1</th>
+											<th>2</th>
+											<th>54</th>
+											<th>345</th>
+											<th>10%</th>
+											<th>1234</th>
+											<th>1%</th>
+											<th>234</th>
+											<th>12%</th>
+											<th>123</th>
+											<th>56%</th>
+											<th>0</th>
+											<th>0.00%</th>
+											<th>0.00</th>
+										</thead>
+										<thead class="">
+											<th>2017-04-20</th>
+											<th>1</th>
+											<th>2</th>
+											<th>54</th>
+											<th>345</th>
+											<th>10%</th>
+											<th>1234</th>
+											<th>1%</th>
+											<th>234</th>
+											<th>12%</th>
+											<th>123</th>
+											<th>56%</th>
+											<th>0</th>
+											<th>0.00%</th>
+											<th>0.00</th>
+										</thead>
+									</table>
+								</div>
+							</div>
+							<div class="menu_foot fn-clear">
+								<div class="mf_left">
+									<span>
+										每页显示
+										<select name="" id="">
+											<option value="">10</option>
+											<option value="">20</option>
+											<option value="">30</option>
+											<option value="">50</option>
+										</select>
+										项
+									</span>
+									<em>显示1到10项/共25项</em>
+								</div>
+								<div class="mf_right fn-clear">
+									<a href="#">首页</a>
+									<a href="#"><</a>
+									<a href="#" class="mf_bc">1</a>
+									<a href="#">2</a>
+									<a href="#">3</a>
+									<a href="#">></a>
+									<a href="#">末页</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+		
+<!--#include file="_foot.shtml"-->

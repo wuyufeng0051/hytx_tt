@@ -1,0 +1,447 @@
+
+<div class="gz-address">
+
+  <div class="gz-addr-wrap" id="gzAddNewObj">
+
+    {#include file="top.html"#}
+
+    <div class="main">
+      <div class="imgbox">
+        <div class="addimg">
+          <ul id="fileList"{#if $detail_photo == ""#} class="noimg"{#/if#}>
+            {#if $detail_photo != ""#}
+            <li class="thumbnail" id="item_0"><img src="{#$detail_photo#}" data-val="{#$detail_photoSource#}" data-url="{#changeFileSize url="{#$detail_photo#}" type="small"#}" alt=""><div class="file-panel"><span class="cancel"></span></div></li>
+            {#/if#}
+            <li class="uploadbtn add">
+    	        <div id="filePicker" class="webuploader-container">
+    	          <div class="webuploader-pick"></div>
+    	          <div id="rt_rt_1b5mb0qo71j791ejf1ilj2mt1ie81" style="position: absolute; top: 0px; left: 0px; overflow: hidden; bottom: 0px; right: 0px;">
+    	            <input type="file" name="file" class="webuploader-element-invisible" multiple="multiple" accept="image/jpeg,image/png,image/gif">
+    	            <label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);"></label>
+    	          </div>
+    	        </div>
+    	      </li>
+          </ul>
+        </div>
+        <p class="uploader-btn"><span>上传头像</span></p>
+      </div>
+      <div class="list" style="margin-top:0;">
+        <form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=job&action=updateResume">
+          <p class="title"><span>基本资料</span></p>
+
+          <div class="modulebox">
+            <div class="ml4r">
+      				<dl class="inpbox">
+                <dt><span><label for="name">姓名</label></span></dt>
+          			<dd><input type="text" name="name" id="name" placeholder="请填写姓名" value="{#$detail_name#}"></dd>
+          		</dl>
+            </div>
+        		<div class="ml4r">
+        			<div data-role="fieldcontain" class="dom_select">
+        				<label for="sex">性别</label>
+                <select id="sex" name="sex" class="demo-test-select" data-role="none">
+                  <option value="0"{#if $detail_sex == 0 || $detail_sex == ""#} selected="selected"{#/if#}>男</option>
+                  <option value="1"{#if $detail_sex == 1#} selected="selected"{#/if#}>女</option>
+                </select>
+              </div>
+            </div>
+            <div class="ml4r">
+              <div data-role="fieldcontain" class="dom_select">
+                <label for="birth">出生日期</label>
+          			<input placeholder="请填写出生日期" name="birth" id="birth" autocomplete="off" value="{#$detail_birth|date_format:"%Y-%m-%d"#}" class="demo-test-date">
+              </div>
+            </div>
+            <div class="ml4r">
+              <dl class="inpbox">
+          			<dt><span><label for="home">户籍地址</label></span></dt>
+          			<dd><input type="text" placeholder="请填写户籍地址" name="home" id="home" autocomplete="off" value="{#$detail_home#}"></dd>
+          		</dl>
+            </div>
+            <div class="ml4r">
+              <dl class="inpbox">
+          			<dt><span><label for="address">现居地址</label></span></dt>
+          			<dd><input type="text" placeholder="请填写现居地址" name="address" id="address" autocomplete="off" value="{#$detail_address#}"></dd>
+          		</dl>
+            </div>
+            <div class="ml4r">
+              <dl class="inpbox">
+          			<dt><span><label for="phone">联系电话</label></span></dt>
+          			<dd><input type="text" name="phone" class="inp" id="phone" placeholder="请填写联系电话" value="{#$detail_phone#}"></dd>
+          		</dl>
+            </div>
+            <div class="ml4r">
+              <dl class="inpbox">
+          			<dt><span><label for="email">邮箱</label></span></dt>
+          			<dd><input type="text" name="email" class="inp" id="email" placeholder="请填写邮箱" value="{#$detail_email#}"></dd>
+          		</dl>
+            </div>
+          </div>
+
+          <p class="title"><span>求职意向</span></p>
+
+          <div class="modulebox">
+            <div class="ml4r">
+              <dl class="inpbox fn-clear gz-addr-seladdr">
+                <dt><span><label for="addr">工作地点</label></span></dt>
+                <dd class="selgroup"><p>{#if $detail_addr#}{#$detail_addrname#}{#else#}<font style="color: #aaa;">请选择</font>{#/if#}</p></dd>
+                <input type="hidden" name="addr" id="addr" value="{#$detail_addr#}">
+              </dl>
+            </div>
+        		<div class="ml4r">
+        			<div data-role="fieldcontain" class="dom_select">
+        				<label for="nature">职位性质</label>
+                <select id="nature" name="nature" class="demo-test-select" data-role="none">
+                  <option value="0"{#if $detail_nature == 0 || $detail_nature == ""#} selected="selected"{#/if#}>全职</option>
+                  <option value="1"{#if $detail_nature == 1#} selected="selected"{#/if#}>兼职</option>
+                  <option value="2"{#if $detail_nature == 2#} selected="selected"{#/if#}>临时</option>
+                  <option value="3"{#if $detail_nature == 3#} selected="selected"{#/if#}>实习</option>
+                </select>
+              </div>
+            </div>
+            <div class="ml4r">
+              <dl class="inpbox gz-addr-type">
+          			<dt><span><label for="type">意向职位</label></span></dt>
+          			<dd class="selgroup"><p>{#if $detail_type#}{#$detail_typename#}{#else#}<font style="color: #aaa;">请选择</font>{#/if#}</p></dd>
+                <input type="hidden" name="type" id="type" value="{#$detail_type#}" />
+          		</dl>
+            </div>
+            <div class="ml4r">
+              <dl class="inpbox">
+          			<dt><span><label for="salary">期望薪资</label></span></dt>
+          			<dd><input type="text" name="salary" class="inp" id="salary" onkeyup="value=value.replace(/\D+/ig,'')" placeholder="请填写期望薪资" value="{#$detail_salary#}" style="position: relative; right: 0.9rem; padding-right: 1.3rem;"><i class="unit_br">元/月</i></dd>
+          		</dl>
+            </div>
+            <div class="ml4r">
+              <div data-role="fieldcontain" class="dom_select">
+                <label for="startwork">到岗时间</label>
+                <select id="startwork" name="startwork" class="demo-test-select" data-role="none">
+                  <option>请选择</option>
+                  {#job action="item" return="item" type="4"#}
+                  <option value="{#$item.id#}"{#if $detail_startwork == $item.id#} selected="selected"{#/if#}>{#$item.typename#}</option>
+                  {#/job#}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <p class="title"><span>工作经历</span></p>
+
+          <div class="ml4r bbottom">
+            <dl class="inpbox">
+        			<dt><span><label for="workyear">工作年限</label></span></dt>
+        			<dd><input type="text" name="workyear" class="inp" id="workyear" onkeyup="value=value.replace(/\D+/ig,'')" placeholder="请填写工作年限" value="{#$detail_workyear#}" style="right: .5rem; padding-right: 0.9rem;"><i class="unit_br">年</i></dd>
+        		</dl>
+          </div>
+          <div id="experience">
+            {#if $detail_experience#}
+            {#foreach from=$detail_experience item=experience#}
+            <div class="experience">
+              <div class="modulebox">
+                <div class="ml4r">
+                  <dl class="inpbox">
+              			<dt><span><label for="company">公司名称</label></span></dt>
+              			<dd><input type="text" class="inp company" placeholder="请填写公司名称" value="{#$experience[0]#}" id="company"></dd>
+              		</dl>
+                </div>
+                <div class="ml4r">
+                  <dl class="inpbox ex_date">
+              			<dt><span>工作时间</span></dt>
+              			<dd>
+                      <div data-role="fieldcontain" class="dom_select date1">
+                  			<input autocomplete="off" class="demo-test-date" placeholder="请选择" value="{#$experience[1]#}">
+                      </div><font>至</font>
+                      <div data-role="fieldcontain" class="dom_select date2">
+                   			<input autocomplete="off" class="demo-test-date" placeholder="请选择" value="{#$experience[2]#}">
+                      </div>
+                    </dd>
+              		</dl>
+                </div>
+                <div class="ml4r">
+                  <dl class="inpbox">
+              			<dt><span><label for="bumen">所在部门</label></span></dt>
+              			<dd><input type="text" class="inp bumen" value="{#$experience[3]#}" id="bumen"></dd>
+              		</dl>
+                </div>
+                <div class="ml4r">
+                  <dl class="inpbox">
+              			<dt><span><label for="zhiwei">担任职位</label></span></dt>
+              			<dd><input type="text" class="inp zhiwei" value="{#$experience[4]#}" id="zhiwei"></dd>
+              		</dl>
+                </div>
+              </div>
+          		<div class="mulinpbox mb4r">
+          			<p class="multit">工作内容</p>
+          			<div class="mulcon">
+          				<textarea class="textarea neirong">{#$experience[5]#}</textarea>
+          			</div>
+          		</div>
+              <div class="exbtn">
+                <a href="javascript:;" class="btn add">继续添加</a><a href="javascript:;" class="btn del">删除</a>
+              </div>
+            </div>
+            {#/foreach#}
+            {#else#}
+            <div class="experience">
+              <div class="ml4r">
+                <dl class="inpbox">
+                  <dt><span><label for="company">公司名称</label></span></dt>
+                  <dd><input type="text" class="inp company" placeholder="请填写公司名称" id="company"></dd>
+                </dl>
+              </div>
+              <div class="ml4r">
+                <dl class="inpbox ex_date">
+                  <dt><span>工作时间</span></dt>
+                  <dd>
+                    <div data-role="fieldcontain" class="dom_select date1">
+                      <input autocomplete="off" class="demo-test-date" placeholder="2017-01-01">
+                    </div><font>至</font>
+                    <div data-role="fieldcontain" class="dom_select date2">
+                      <input autocomplete="off" class="demo-test-date" placeholder="2017-01-01">
+                    </div>
+                  </dd>
+                </dl>
+              </div>
+              <div class="ml4r">
+                <dl class="inpbox">
+                  <dt><span>所在部门</span></dt>
+                  <dd><input type="text" class="inp bumen" placeholder="请填写所在部门"></dd>
+                </dl>
+              </div>
+              <div class="ml4r">
+                <dl class="inpbox">
+                  <dt><span>担任职位</span></dt>
+                  <dd><input type="text" class="inp zhiwei" placeholder="请填写担任职位"></dd>
+                </dl>
+              </div>
+          		<div class="mulinpbox mb4r">
+          			<p class="multit">工作内容</p>
+          			<div class="mulcon">
+          				<textarea placeholder="请输入" class="textarea"></textarea>
+          			</div>
+          		</div>
+              <div class="exbtn">
+                <a href="javascript:;" class="btn add">继续添加</a><a href="javascript:;" class="btn del">删除</a>
+              </div>
+            </div>
+            {#/if#}
+          </div>
+
+          <p class="title"><span>教育背景</span></p>
+
+          <div class="modulebox">
+            <div class="ml4r">
+              <div data-role="fieldcontain" class="dom_select">
+        				<label for="educational">最高学历</label>
+                <select id="educational" name="educational" class="demo-test-select" data-role="none">
+                  <option>请选择</option>
+                  {#job action="item" return="item" type="2"#}
+                  <option value="{#$item.id#}"{#if $detail_educational == $item.id#} selected="selected"{#/if#}>{#$item.typename#}</option>
+                  {#/job#}
+                </select>
+        			</div>
+        		</div>
+            <div class="ml4r">
+              <dl class="inpbox">
+          			<dt><span><label for="college">毕业学院</label></span></dt>
+          			<dd><input type="text" class="inp" id="college" name="college" value="{#$detail_college#}" placeholder="请选择毕业学院"></dd>
+          		</dl>
+            </div>
+            <div class="ml4r">
+              <div data-role="fieldcontain" class="dom_select">
+                <label for="graduation">毕业时间</label>
+          			<input name="graduation" id="graduation" autocomplete="off" value="{#$detail_graduation|date_format:"%Y-%m-%d"#}" class="demo-test-date">
+              </div>
+            </div>
+            <div class="ml4r">
+              <dl class="inpbox">
+          			<dt><span><label for="professional">所学专业</label></span></dt>
+          			<dd><input type="text" class="inp" value="{#$detail_professional#}" name="professional" id="professional" placeholder="请填写所学专业"></dd>
+          		</dl>
+            </div>
+            <div class="ml4r">
+              <dl class="inpbox">
+          			<dt><span><label for="language">外语水平</label></span></dt>
+          			<dd><input type="text" class="inp" value="{#$detail_language#}" name="language" id="language" placeholder="请填写外语水平"></dd>
+          		</dl>
+            </div>
+            <div class="ml4r">
+              <dl class="inpbox">
+          			<dt><span><label for="computer">计算机水平</label></span></dt>
+          			<dd><input type="text" class="inp" value="{#$detail_computer#}" name="computer" id="computer" placeholder="请填写计算机水平"></dd>
+          		</dl>
+            </div>
+          </div>
+          <div class="mulinpbox">
+            <p class="multit">其他教育</p>
+            <div class="mulcon">
+              <textarea placeholder="请输入" name="education" class="textarea" id="education">{#$detail_education#}</textarea>
+            </div>
+          </div>
+
+          <p class="title"><span>自我描述</span></p>
+
+          <div class="mulinpbox">
+            <p class="multit">个人评价</p>
+            <div class="mulcon">
+              <textarea placeholder="请输入" name="evaluation" class="textarea" id="evaluation">{#$detail_evaluation#}</textarea>
+            </div>
+          </div>
+          <div class="mulinpbox">
+            <p class="multit">职业目标</p>
+            <div class="mulcon">
+              <textarea placeholder="请输入" name="objective" class="textarea" id="objective">{#$detail_objective#}</textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="submit">
+          <a href="javascript:;" id="submit">保存简历</a>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="gz-sel-addr gz-sel-addr-hide" id="gzSelAddr">
+		<div class="gz-sel-addr-header">
+			<h3>选择地区</h3>
+			<button class="gz-sel-addr-close" id="gzSelAddrCloseBtn"></button>
+		</div>
+		<ul class="gz-sel-addr-nav"></ul>
+		<div class="gz-sel-addr-list"></div>
+	</div>
+  <div class="gz-sel-addr gz-sel-type-hide" id="gzSelType">
+    <div class="gz-sel-type-header">
+      <h3>选择意向职位</h3>
+      <button class="gz-sel-type-close" id="gzSelAddrCloseBtn"></button>
+    </div>
+    <ul class="gz-sel-type-nav"></ul>
+    <div class="gz-sel-type-list"></div>
+  </div>
+
+	<div class="gz-sel-addr-mask"></div>
+	<div class="gz-sel-type-mask"></div>
+
+</div>
+<div class="error"></div>
+
+<div class="myresume">
+  <div class="top fn-clear">
+    <div class="top-l fn-left" id="lookback"><a href="javascript:;">返回</a></div>
+  </div>
+  <div class="imgbox">
+    <div class="addimg">
+      <span><img src="/static/images/default_user.jpg" alt="" class="photo"></span>
+    </div>
+    <p class="uploader-btn"><span class="name"></span></p>
+  </div>
+
+  <div class="module">
+    <div class="title">基本信息</div>
+    <dl class="ritem">
+      <dt>性别</dt>
+      <dd class="sex"></dd>
+    </dl>
+    <dl class="ritem">
+      <dt>籍贯</dt>
+      <dd class="home"></dd>
+    </dl>
+    <dl class="ritem">
+      <dt>现居</dt>
+      <dd class="address"></dd>
+    </dl>
+  </div>
+  <div class="module">
+    <div class="title">联系方式</div>
+    <dl class="ritem">
+      <dt>联系电话</dt>
+      <dd class="phone"></dd>
+    </dl>
+    <dl class="ritem">
+      <dt>电子邮箱</dt>
+      <dd class="email"></dd>
+    </dl>
+  </div>
+  <div class="module">
+    <div class="title">求职意向</div>
+    <dl class="ritem">
+      <dt>意向地点</dt>
+      <dd class="addr"></dd>
+    </dl>
+    <dl class="ritem">
+      <dt>职位性质</dt>
+      <dd class="nature"></dd>
+    </dl>
+    <dl class="ritem">
+      <dt>意向职位</dt>
+      <dd class="type"></dd>
+    </dl>
+    <dl class="ritem">
+      <dt>期望薪资</dt>
+      <dd><font class="salary"></font> 元/月</dd>
+    </dl>
+    <dl class="ritem">
+      <dt>到岗时间</dt>
+      <dd class="startwork"></dd>
+    </dl>
+  </div>
+  <div class="module">
+    <div class="title">工作经历</div>
+    <dl class="ritem">
+      <dt>工作年限</dt>
+      <dd class="workyear"></dd>
+    </dl>
+    <div class="experienceCon">
+    </div>
+  </div>
+  <div class="module">
+    <div class="title">教育背景</div>
+    <dl class="ritem">
+      <dt>最高学历</dt>
+      <dd class="educational"></dd>
+    </dl>
+    <dl class="ritem">
+      <dt>毕业学院</dt>
+      <dd class="college"></dd>
+    </dl>
+    <dl class="ritem">
+      <dt>毕业时间</dt>
+      <dd class="graduation"></dd>
+    </dl>
+    <dl class="ritem">
+      <dt>所学专业</dt>
+      <dd class="professional"></dd>
+    </dl>
+    <dl class="ritem">
+      <dt>外语水平</dt>
+      <dd class="language"></dd>
+    </dl>
+    <dl class="ritem">
+      <dt>计算机水平</dt>
+      <dd class="computer"></dd>
+    </dl>
+    <dl class="ritem">
+      <dt>其他教育</dt>
+      <dd class="education"></dd>
+    </dl>
+  </div>
+  <div class="module">
+    <div class="title">自我描述</div>
+    <dl class="ritem">
+      <dt>个人评价</dt>
+      <dd class="evaluation"></dd>
+    </dl>
+    <dl class="ritem">
+      <dt>职业目标</dt>
+      <dd class="objective"></dd>
+    </dl>
+  </div>
+</div>
+<script>
+var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize*1024*1024#}, atlasType = '{#$atlasType#}', atlasMax = 1, modelType = 'job', upType = 'photo';
+var areaLevel = '{#$detail_addrname#}';
+</script>
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/common.js?v=4" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/gz-resume.js?v=4" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/gz-resume-type.js?v=4" type="text/javascript"></script>

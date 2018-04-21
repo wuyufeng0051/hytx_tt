@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>{#$cfg_webname#}</title>
+<meta name="keywords" content="{#$cfg_keywords#}">
+<meta name="description" content="{#$cfg_description#}">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/mobile.css">
+<script type="text/javascript" src="{#$templets_skin#}js/mobile.js"></script>
+</head>
+
+<body>
+<div class="pc_bg">
+    <div class="pc_box" id="pc_box">
+        <div class="pc_table1">
+            <h3>{#$cfg_shortname#}</h3>
+            <p>携手各地城市打造本地第一门户网站</p>
+            <div class="app_box">
+                <div class="app_code2">
+                    <img class="code2" src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}/mobile.html" alt="扫一扫，立即下载"/>
+                    <span class="font">扫一扫，立即下载</span>
+                </div>
+                <div class="app">
+                    <a href="{#$cfg_app_ios_download#}"><img class="ios" src="{#$templets_skin#}images/pc_ios.png"></a>
+                    <a href="{#$cfg_app_android_download#}"><img src="{#$templets_skin#}images/pc_android.png"></a>
+                </div>
+            </div>
+        </div>
+        <div class="pc_table2">
+            <img src="{#$templets_skin#}images/pc_iphone.png">
+        </div>
+    </div>
+    <div class="line">
+        {#$cfg_powerby#}
+    </div>
+</div>
+</body>
+</html>

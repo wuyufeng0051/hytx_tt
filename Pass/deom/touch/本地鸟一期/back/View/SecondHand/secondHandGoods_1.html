@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二手物品</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style>
+	body{
+		padding-top: 50px;
+	}
+	.searchBar{
+		width: 100%;
+		height: 50px;
+		position: fixed;
+		top:0;
+		background: #fd5530;
+		z-index: 100;
+	}
+	.search{
+		position: relative;
+		padding: 7px 10px;
+		padding-right: 95px;
+	}
+	.searchBar input{
+		margin: 0;
+		height: 36px;
+		line-height: 36px;
+		border:none;
+		font-size: 14px;
+		color: #fff;
+		padding-left: 30px;
+		background: #ff7558 url(__PUBLIC__/Home/img/search.png) no-repeat 10px center;
+		background-size: 16px 16px;
+		text-align: left;
+	}
+	::-webkit-input-placeholder { 
+	    color:#fff;
+	}
+	.searchBar .search-r{
+		position: absolute;
+		right: 5px;
+		top:15px;
+		font-size: 14px;
+		color: #fff;
+	}
+	.searchBar .search-r a{
+		padding: 0 8px;
+		border-right: 1px solid #fff;
+		color:#fff;
+	}
+	.searchBar .search-r a:last-child{
+		border:none;
+	}
+	#list .mui-media-object {
+	    line-height: 75px;
+	    width: 75px;
+	    max-width: 75px;
+	    height: 75px;
+	}
+	#list .p1{
+		line-height: 25px;
+		/*color: #666;*/
+		color: #f8512d;
+	}
+	#list h4{
+		font-weight: normal;
+		font-size: 16px;
+		margin:5px 0;
+	}
+	#list .mui-table-view-cell:after {
+	    position: absolute;
+	    right: 0;
+	    bottom: 0;
+	    left: 0px;
+	    height: 1px;
+	    content: '';
+	    -webkit-transform: scaleY(.5);
+	    transform: scaleY(.5);
+	    background-color: #c8c7cc;
+	}
+
+	.mui-popover-arrow{
+	    display: none;
+	}
+	.mui-popover{
+	    position: fixed;
+	    width: 80%;
+	    height: 161px;
+	    border-radius: 10px;
+	    left: 50%;
+	    top: 50%;
+	    margin: 0 auto;
+	    z-index: 9999;
+	    background-color: #fff;
+	    -webkit-transform: translateX(-50%) translateY(-50%);
+	    -moz-transform: translateX(-50%) translateY(-50%);
+	    -ms-transform: translateX(-50%) translateY(-50%);
+	    transform: translateX(-50%) translateY(-50%);
+	    overflow: hidden;
+	}
+	.mui-popover h4{
+		background-color: #ff7400;
+		color: #fff;
+		text-align: center;
+		padding:10px 0;
+		margin:0;
+		font-weight: normal;
+		text-indent: 5%;
+	}
+	.mui-popover h4 span{
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 25px;
+		line-height: 20px;
+		float: right;
+		margin-right: 10%;
+		position: relative;
+	}
+	.mui-popover ul{
+		padding:0;
+		margin:0;
+	}
+	.mui-popover ul li{
+		line-height: 40px;
+		text-align: center;
+		border-bottom: 1px solid #e6e6e6;
+	}
+	.mui-popover ul li a{
+		color:#000;
+	}
+	/*轮播*/
+	.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	.backTop {
+	    border-radius: 50%;
+	    position: fixed;
+	    right: 10px;
+	    bottom: 15px;
+	    width: 40px;
+	    height: 40px;
+	    text-align: center;
+	    font-size: 18px;
+	    color: #666666;
+	    padding-top: 8px;
+	    border:2px solid #707070;
+	    background: #fff url(__PUBLIC__/Home/img/toTop.png) center center no-repeat;
+	    background-size: 20px 20px;
+	}
+	.panel-body{
+		overflow: hidden;
+	}
+	.panel-body h4{
+		font-weight: normal;
+	}
+	.panel-body p{
+		margin:0;
+		line-height: 25px;
+	}
+	.panel-body p:nth-child(2){
+		color: #ff7300;
+	}
+	.mui-card{
+		box-shadow: none;
+		border-bottom: 1px solid #ddd;
+	}
+	.mui-table-view-cell{
+		padding-left: 3%;
+		padding-right: 3%;	
+		position: static;
+	}
+	.mui-table-view-cell.mui-active{
+		background-color: #0062cc;
+	}
+	body{position: relative;}
+	</style>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+
+	<div class="mui-content">
+	<form action="javascript:return true;">
+		<div class="searchBar">
+			<div class="search">
+				<?php if(!empty($_GET)){ ?>
+			    <div style="overflow: hidden;height: 36px;color:#fff;line-height: 40px;">
+ 					  <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color:#fff;line-height: 35px;">
+ 					  </a>
+ 					  &nbsp;搜索结果
+ 				</div>
+			   <?php }else{ ?>
+				<div class="search-l">
+					<input type="search" placeholder="搜索宝贝名称或关键词" id="search">
+				</div>
+			   <?php } ?>
+				<div class="search-r">
+					<a  id="fabu">发布</a><a href="__MODULE__/My/myRelease" style="color:#fff;">我的</a>	
+				</div>
+			</div>
+		</div>
+	</form>
+		
+		<!-- 广告 -->
+		<!-- 图片轮播区 -->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+			 <volist name="status" id="vo" >
+				<div class="swiper-slide">
+				   <a id="up" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}" onclick="look(this)">
+ 				      <img src="__PUBLIC__/../{$vo['advertisement_img']}" style="width: 100%;display: block;">
+			        </a>
+				</div>
+             </volist>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+      
+      <div id="zong">
+        <foreach item="vo" name="res_seconed" key="k">
+		<div class="mui-card" style="margin:0;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 11px 15px;">
+				<!-- href="__MODULE__/SecondHand/secondHandGoodsDetails?usedcar_id={$vo.usedcar_id}" -->
+					<a style="position: relative;padding-left: 85px;display: block;color:#000;height: 75px;" class="topheight"  stv="{$vo.usedcar_id}">
+						<img src="__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}" alt="" style="position: absolute;left: 0;right: 0;width: 75px;height: 75px;">
+						<div class="panel-body">
+							<h4 class="mui-ellipsis" style="font-size: 16px;">{$vo.usedcar_title}</h4>
+							<p class="mui-ellipsis">
+							<?php if($vo['usedcar_price'] == 0){ ?>
+							面议
+							<?php }else{ ?>
+							{$vo.usedcar_price}
+							{$vo.usedcar_company}
+							<?php } ?>
+							<span style="float: right;">{$vo.usedcar_source}</span></p>
+							<p class="mui-ellipsis">{$vo.usedcar_news}
+							 <?php if($vo['usedcar_is_top'] == 1){ ?>
+							<span style="float: right;">置顶</span>
+							 <?php }else{ ?>
+							<span style="float: right;" class="time">{$vo.usedcar_date}</span>
+							<input type="hidden" class="times" value="{$vo.usedcar_date}">
+							 <?php } ?>
+							</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		</foreach>
+	  </div>
+	</div>
+	<a id="scrollToTop" class="backTop"></a>
+	<div id="pop" class="mui-popover">
+		<h4>请选择您要发布的类别<span class="mui-icon mui-icon-close"></span></h4>
+		<ul class="mui-table-view">
+			<li class="mui-table-view-cell" style="padding:5.5px 0;"><a href="__MODULE__/SecondHand/secondHandCarRelease">出售二手车</a></li>
+			<li class="mui-table-view-cell" style="padding:5.5px 0;"><a href="__MODULE__/SecondHand/secondHandGoodsRelease">出售二手物品</a></li>
+			<li class="mui-table-view-cell" style="padding:5.5px 0;"><a href="__MODULE__/SecondHand/buyRelease">我要求购</a></li>
+		</ul>
+    </div>
+
+    <?php if(count($res_seconed) > 4){ ?>
+     <div style="width:30%;margin:0 auto;color:#000;padding:5px;font-size:12px;color:#888;" id="load" srv="0">
+        往上滑加载更多
+    </div>
+   <?php } ?>
+
+    <input type="hidden" id="limit" value="0">
+    <input type="hidden" id="scrollTop" value="0">
+
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/time.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script>
+
+	 function muicard(){
+    	var all = 0;
+    	var have = $('.mui-card')
+    	$.each(have,function(index,item){
+               all += 1; 
+    	})
+ 
+    	if (all < 10) {
+    		$('#load').hide(); 
+    	}else{
+    		$('#load').show(); 
+    	}
+    }
+
+   muicard();
+
+
+	  function toploa(){
+	   $('.topheight').on('click', function() {
+	      var stv = $(this).attr('stv');
+	      var scrollTop =getScrollTop();
+		      $("#scrollTop").val(scrollTop);
+		      var zong =$("#zong").html();
+
+       $.post('{:U("Home/Demo/look")}', {str:'HandGoods',stv:stv}, function(daty){
+        
+     	   if (daty == 1) {
+		      $.post('{:U("Home/SecondHand/HandGoodssession")}', {zong:zong}, function(data) {
+ 			        location.href="__MODULE__/SecondHand/secondHandGoodsDetails?usedcar_id="+stv;
+ 		       });
+      }else{
+	         layer.msg('对不起,信息已删除')
+	 	     }
+		  })
+
+
+	   });
+	 }
+	 toploa(); 
+
+
+	   //求滚动条的高度
+	   function getScrollTop(){    
+		    var scrollTop=0;    
+		    if(document.documentElement&&document.documentElement.scrollTop){    
+		        scrollTop=document.documentElement.scrollTop;    
+		    }else if(document.body){    
+		        scrollTop=document.body.scrollTop;    
+		    }    
+		    return scrollTop;    
+		} 
+
+	   //如果之前滚动条的位置
+	    function time(){
+	      var limit = $("#limit").val();
+	 	  if (limit != 0) {
+	 	  	$.post('{:U("Home/SecondHand/lookHandGoodssession")}', {limit:limit},function(data){
+	 	  		if (data != 2) {
+	   	  		   $("#zong").html("");
+	  	  		   $("#zong").append(data)
+	  	  		    var tab = $("#zong").text();
+					if (tab) {
+					var scrollTop = $("#scrollTop").val();
+					 window.scrollTo(0,scrollTop);
+					 toploa();
+					}
+				}else{
+				 	$('#limit').val(0)
+				 	$("#scrollTop").val(0);
+				 }
+	 	  	});
+	 	  }
+	    }
+	    setTimeout(time(),1000);
+
+      //加载
+	  function loadclick(){
+		$(window).scroll(function(){
+			var if_get ='<?php echo $_GET["worder"] ; ?>'
+ 			if (if_get) {
+  			  //判断是否是get
+             var ms = 1;
+ 		    }else{
+             var ms = 0;
+ 		    }
+		　　var scrollTop = $(this).scrollTop();
+		　　var scrollHeight = $(document).height();
+		　　var windowHeight = $(this).height();
+		　　if(scrollTop + windowHeight == scrollHeight){
+ 		    	var limit = parseInt($('#limit').val())+1;
+ 		    	  $('#limit').val(limit);
+ 		    	  $("#load").show();
+ 		    	 setTimeout(function(){
+ 		    	  // $("#load").hide();
+					$.post('{:U("Home/SecondHand/secondHandGoodsload")}',{ms:ms,limit:limit}, function(data) {
+   					   if(data != 0){
+					     $("#zong").append(data)
+						}else{
+						 $("#load").text('已经到底了！')	
+						}
+
+  					  toploa(); 
+  					  timeStamp()
+				      muicard();
+   				   }) 
+			     },500);
+  		　　 }
+ 		});
+	}	
+    loadclick()
+
+  function look(obj){
+	 //  $("[id=up]").each(function(){ 
+		// $(this).click(function(){
+     		var id = $(obj).attr('str');
+     		var type = $(obj).attr('stb');
+     		var url = $(obj).attr('url');
+				// alert(id)
+		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+ 	     		if (type == 0) {
+	     			 location.href="http://"+url;
+	     		}else if(type == 1){
+	     			 location.href= 'tel:' + url;
+	      		}else{
+	      			location.href=url;
+	      		}
+			});
+    // 	})
+    // })
+}
+		  
+	  function timeStamp(){
+		var time=$('.times')
+		$.each(time,function(index,item){
+		 if ($(this).val().length > 13) {
+		   var timeText=$(this).val();
+	 	    getDateDiff(stringToTime(timeText))
+		    $(this).parent().find('.time').text(getDateDiff(stringToTime(timeText)))
+		  }
+		 })
+		}
+
+		timeStamp()
+
+		var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+		mui.init();
+		// 弹出层
+      	var pop = document.getElementById("pop");
+        var mask = mui.createMask(function(){
+            pop.classList.remove('mui-active');
+        });
+        // 显示
+        mui('#fabu')[0].addEventListener('click',function(){
+            mask.show();//显示遮罩
+            pop.classList.add('mui-active');
+        })
+          //按钮关闭弹出框
+        $(".mui-icon-close").click(function(){
+         	pop.classList.remove('mui-active');
+         	mask.close();
+         	
+         })
+        //移动端搜索
+          $('#search').on('search', function(e){
+         	//搜索关键字
+         	val =  $('#search').val();
+         	if (!val) {
+         		layer.msg('请先输入关键字')
+         	}else{
+            window.location.href="__MODULE__/SecondHand/secondHandGoods?worder="+val
+	        }
+ 		});
+        //返回顶部
+        $("#scrollToTop").on("touchend", function(e) {
+			e.preventDefault();	
+		    mui.scrollTo(0,100);
+		});
+
+		var u = navigator.userAgent;
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		if(isiOS == true)
+		{
+			$('.searchBar input').focus(function(){
+	         	$('.searchBar').css({'position':'absolute','top':'0','left':'0'});
+         	})
+           $('.searchBar input').blur(function(){
+	         	$('.searchBar').css({'position':'fixed','top':'0','left':'0'});
+          })
+       }
+	</script>
+</body>
+</html>

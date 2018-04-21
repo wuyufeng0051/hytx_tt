@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>站内消息 - {#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/message_detail.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+
+<div class="wrap">
+	<div class="container fn-clear">
+
+
+		<div class="main">
+			<div class="header">
+		    <div class="header-l">
+		      <a href="javascript:;" onclick="history.go(-1)"><img src="{#$templets_skin#}images/back-r.png"></a>
+		    </div>
+		    <div class="header-c">我的消息</div>
+		    <div class="header-r">
+		      <a href="javascript:;" class="screen"><img src="{#$templets_skin#}images/screen.png"></a>
+		    </div>
+		  </div>
+
+			<div class="content">
+				<h1 class="title">{#$title#}</h1>
+				<p class="time">{#$date#}</p>
+				<div class="cdetail">{#$body#}</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

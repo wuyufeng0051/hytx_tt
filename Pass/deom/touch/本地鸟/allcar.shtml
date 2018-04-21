@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>本地鸟</title>
+	<link rel="stylesheet" href="css/re_public.css">
+	<link rel="stylesheet" href="css/_head.css">
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<script type="text/javascript" src="js/touchScale.js"></script>
+</head>
+<body>
+	<!-- 共同顶部 s-->
+		<div class="header fn-clear">
+			<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+			<div class="title">商家详情</div>
+			<div class="share"></div>
+			<div class="header_right"><a class="fa_btn" href="javascript:;">发布</a><i></i><a href="#">我的</a></div>
+		</div>
+	<!-- 共同顶部 e-->
+
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/allcar.css">
+	<script type="text/javascript" src="js/slider.js"></script>
+	<script type="text/javascript" src="js/swiper.min.js"></script>
+	<!-- 顶部固定搜索框 s-->
+		<div class="search_box">
+			<div class="seach_pic"><img src="images/banner_1.png" alt=""></div>
+			<div class="sea_input fn-clear"><input type="text" placeholder="请输入您要查找的信息"><a href="search_succeed.shtml"><button><i></i>查找</button></a></div>
+		</div>
+	<!-- 顶部固定搜索框 e-->
+	<!-- 便携工具列表 s-->
+		<div class="tools_box">
+			<div class="swiper-container" id="swiper-container2">
+			    <div class="swiper-wrapper quan_list">
+			      	<div class="swiper-slide fn-clear">
+			      		<ul>
+			      			<li class="sj_1"><a href="car.shtml"><i></i>顺路带点货</a></li>
+			      			<li class="sj_2"><a href="vehicle_information.shtml"><i></i>出租车</a></li>
+			      			<li class="sj_3"><a href="vehicle_information.shtml"><i></i>三轮车</a></li>
+			      			<li class="sj_4"><a href="vehicle_information.shtml"><i></i>大货车</a></li>
+			      			<li class="sj_5"><a href="vehicle_information.shtml"><i></i>小货车</a></li>
+			      			<li class="sj_6"><a href="vehicle_information.shtml"><i></i>拖拉机</a></li>
+			      			<li class="sj_7"><a href="vehicle_information.shtml"><i></i>工程车</a></li>
+			      			<li class="sj_8"><a href="vehicle_information.shtml"><i></i>道路救援</a></li>
+			      		</ul>
+			      	</div>
+			    </div>
+			</div>
+			<!-- <div class="swiper-pagination swiper-pagination-bullets"></div> -->
+		</div>
+	<!-- 便携工具列表 e-->
+	<!-- 广告幻灯片 s -->
+	<div class="picscroll">
+		<div class="bd" id="picscroll">
+		    <ul class="picscroll-pic">
+		      <li>
+		      	<a href="javascript:;"><img src="upfile/banner.png"></a>
+		      </li>
+		       <li>
+		      	<a href="javascript:;"><img src="upfile/banner.png"></a>
+		      </li>
+		      <li>
+		      	<a href="javascript:;"><img src="upfile/banner.png"></a>
+		      </li>
+		    </ul>
+		</div>
+	</div>
+	<!-- 广告幻灯片 e -->
+	<div class="merchant">
+		<div class="merchant_list" style="margin-top: 0.6rem;">
+			<div class="mer_detail fn-clear"><a href="vehicle_detail.shtml">
+				<div class="mer_pic"><img src="upfile/asdfasdad.png" alt=""><i class="top"></i></div>
+				<h1>解放牌大货车常年找货</h1>
+				<p>浏览：<em>8888</em> 次</p>
+				<span>大货车</span>
+				</a>
+				<div class="tel"></div>
+			</div>
+			<div class="mer_detail fn-clear"><a href="vehicle_detail.shtml">
+				<div class="mer_pic"><img src="upfile/asdfasdad.png" alt=""></div>
+				<h1>解放牌大货车常年找货</h1>
+				<p>浏览：<em>8888</em> 次</p>
+				<span>大货车</span>
+				</a>
+				<div class="tel"></div>
+			</div>
+		</div>
+		<div class="page fn-clear">
+			<a href="#" class="before">上一页</a>
+			<div class="page_box">
+				<span><em>1</em>/9<i></i></span>
+				<select name="" id="" onchange="selectChange()">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+				</select>
+			</div>
+			<a href="#" class="after">下一页</a>
+		</div>
+		<div class="page_numb">共9页</div>
+	</div>
+	<div class="disk"></div>
+	<div class="phone">
+		<h1>提示</h1>
+		<h2>联系我时，请说是在<em>泸西本地鸟</em>上看到的，谢谢！</h2>
+		<ul>
+			<li><a href="tel:13888888888">13888888888<i></i></a></li>
+			<li><a href="tel:0873-6666666">0873-6666666<i></i></a></li>
+		</ul>
+		<div class="close"><i></i></div>
+	</div>
+	<!-- 发布弹出层 -->
+		<div class="fa_box fa_1">
+			<div class="fb_title">请选择您要发布的类型<i></i></div>
+			<ul>
+				<li><a href="car_issue_che.shtml">顺路车</a></li>
+				<li><a href="car_issue.shtml">顺路货</a></li>
+				<li><a href="fa_carinformation.shtml">车辆信息</a></li>
+			</ul>
+		</div>
+	<!-- 发布弹出层 -->
+	<script>
+	// 分页选择
+	function selectChange(){
+		var x = $('.page_box span em'),
+			num = $('.page_box option:selected').val();
+		x.text(num);
+	}
+	$('.fa_btn').on('click',function(){
+		if ($('.fa_1').css("display") == "none") {
+			$('.fa_1').show();
+			$('.disk').show();
+			$('body').addClass('by');
+		}else{
+			$('.fa_1').hide();
+			$('.disk').hide();
+			$('body').removeClass('by');
+		}
+	})
+	$('.fa_box .fb_title i').click(function(){
+		$('.fa_1').hide();
+		$('.fa_2').hide();
+		$('body').removeClass('by');
+		$('.disk').hide();
+	})
+	$('.disk').click(function(){
+ 			$('.fa_1').hide();
+ 			$('.fa_2').hide();
+			$('body').removeClass('by');
+			$('.disk').hide();
+ 		})
+	</script>
+
+
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

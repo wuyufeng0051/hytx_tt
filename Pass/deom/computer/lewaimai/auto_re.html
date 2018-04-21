@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-wechat wechat-icon"></i>
+      <li class="active">公众号设置</li>
+      <li class="active">自动回复</li>
+      <li>
+        <a href="#">非关键词自动回复</a></li>
+      <li class="active">关注时回复</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <link rel="stylesheet" href="#">
+      <style>.comment{width:680px; margin:20px auto; position:relative} .comment h3{height:28px; line-height:28px} .com_form{width:100%; position:relative} .input{width:99%; height:60px; border:1px solid #ccc} .com_form p{height:28px; line-height:28px; position:relative} span.emotion{width:42px; height:20px; display:block; background:url(/img/qq/icon.gif) no-repeat 2px 2px; padding-left:20px; cursor:pointer} span.emotion:hover{background-position:2px -28px} .qqFace{margin-top:4px;background:#fff;padding:2px;border:1px #dfe6f6 solid;} .qqFace table td{padding:0px;} .qqFace table td img{cursor:pointer;border:1px #fff solid;} .qqFace table td img:hover{border:1px #0066cc solid;} .sel_img_view .imagename { height: 42px; line-height: 17px; width: 117px; text-align: left; overflow: hidden; display: block; padding: 0 9px; border: 0px solid #e7e7eb; }</style>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li class="active">
+                <a href="auto_re.html">关注时回复</a></li>
+              <li>
+                <a href="auto_re_fail.html">无效词自动回复</a></li>
+              <li>
+                <a href="auto_re_pic.html">图片自动回复</a></li>
+              <li>
+                <a href="auto_re_talk.html">语音自动回复</a></li>
+            </ul>
+            <div class="tab-content">
+              <form class="form-horizontal" id="food-form" action="/autoreply/subscribe" method="post">
+                <div class="alert alert-danger" id="food-form_es_" style="display:none">
+                  <p>请更正下列输入错误:</p>
+                  <ul>
+                    <li>dummy</li></ul>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-header">
+                    <h5>关注时自动回复</h5></div>
+                  <div class="widget-body" style="padding:20px;">
+                    <div class="form-group">
+                      <div class="checkbox">
+                        <label>
+                          <input id="ytSubscribe_reply_valid" type="hidden" value="0" name="Subscribe[reply_valid]">
+                          <input class="ace" name="Subscribe[reply_valid]" id="Subscribe_reply_valid" value="1" checked="checked" type="checkbox">
+                          <span class="lbl">
+                            <label for="Subscribe_reply_valid">开启关注时自动回复</label></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-header">
+                    <h5>关注时回复类型</h5></div>
+                  <div class="widget-body" style="padding:20px;">
+                    <input id="ytSubscribe_reply_type" type="hidden" value="" name="Subscribe[reply_type]">
+                    <span id="Subscribe_reply_type">
+                      <input id="Subscribe_reply_type_0" value="0" checked="checked" type="radio" name="Subscribe[reply_type]">
+                      <label for="Subscribe_reply_type_0">文字回复</label>
+                      <br>
+                      <input id="Subscribe_reply_type_1" value="1" type="radio" name="Subscribe[reply_type]">
+                      <label for="Subscribe_reply_type_1">图文回复</label>
+                      <br>
+                      <input id="Subscribe_reply_type_2" value="2" type="radio" name="Subscribe[reply_type]">
+                      <label for="Subscribe_reply_type_2">系统功能回复</label>
+                      <br>
+                      <input id="Subscribe_reply_type_3" value="3" type="radio" name="Subscribe[reply_type]">
+                      <label for="Subscribe_reply_type_3">第三方接口回复</label>
+                      <br>
+                      <input id="Subscribe_reply_type_4" value="5" type="radio" name="Subscribe[reply_type]">
+                      <label for="Subscribe_reply_type_4">图片回复</label></span>
+                  </div>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-header">
+                    <h5>回复的文字内容</h5></div>
+                  <div class="widget-body" style="padding:20px;">
+                    <textarea class="span6 autosize-transition form-control" rows="10" maxlength="1000" id="replytext" name="Subscribe[reply_text]">感谢您关注金点外卖，秭归人自己的外卖系统。 新开放九里工业区，金缸城等区域的配送， 平台现正在做活动，欢迎新老顾客下单！ 客服热线：0717-2822222 13207208860</textarea>
+                    <span class="emotion"></span>
+                  </div>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-header">
+                    <h5>回复的图文消息</h5></div>
+                  <div class="widget-body" style="padding:20px;">
+                    <select name="Subscribe[reply_news_id]" id="Subscribe_reply_news_id"></select>
+                  </div>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-header">
+                    <h5>回复的系统功能</h5></div>
+                  <div class="widget-body" style="padding:20px;">
+                    <select name="Subscribe[reply_system_type]" id="Subscribe_reply_system_type">
+                      <option value="1" selected="selected">开始点单</option>
+                      <option value="2">订单查询</option>
+                      <option value="3">个人信息</option>
+                      <option value="4">大转盘抽奖</option>
+                      <option value="5">会员中心</option>
+                      <option value="6">优惠券</option>
+                      <option value="7">我的邮箱</option>
+                      <option value="8">积分</option>
+                      <option value="9">签到</option>
+                      <option value="10">多客服</option>
+                      <option value="11">我的收藏</option>
+                      <option value="12">店铺导航</option></select>
+                  </div>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-header">
+                    <h5>回复的第三方接口</h5></div>
+                  <div class="widget-body" style="padding:20px;">
+                    <select name="Subscribe[reply_otherinterface_id]" id="Subscribe_reply_otherinterface_id"></select>
+                  </div>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-header">
+                    <h5>回复的图片内容</h5></div>
+                  <div class="widget-body" style="padding:20px;">
+                    <div class="btn btn-success" id="selectImg">选择图片</div></div>
+                  <div style="width:100%;height:auto;float:left;margin:0px;margin-left:15px;">
+                    <div style="margin-top:20px;height:20px;width:100%;">
+                      <div style="width:100%;height:auto;" id="imglist"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="inputimglist" style="display:none;"></div>
+                <div style="clear:both;"></div>
+                <div class="form-actions">
+                  <button class="btn btn-info" type="submit">
+                    <i class="ace-icon fa fa-check bigger-110"></i>提交</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="/js/jquery.qqFace.js"></script>
+      <script>$(function() {
+          $('.emotion').qqFace({
+            assign: 'replytext',
+            //给那个控件赋值
+            path: '/img/qq/' //表情存放的路径
+          });
+          $(".btn-info").click(function() {
+            var str = $("#replytext").val();
+            $("#show").html(replace_em(str));
+          });
+        });
+        //替换表情
+        function replace_em(str) {
+          str = str.replace(/\</g, '&lt;');
+          str = str.replace(/\>/g, '&gt;');
+          str = str.replace(/\n/g, '<br/>');
+          str = str.replace(/\[em_([0-9]*)\]/g, '<img src="face/$1.gif" border="0" />');
+          return str;
+        }</script>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

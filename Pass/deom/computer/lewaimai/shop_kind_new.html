@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+      <script>
+      $(function($) { 
+          $('[data-rel="tooltip"]').tooltip();
+          $('[data-rel="popover"]').popover();
+        })
+      </script>
+  <script src="js/bootstrap.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-desktop desktop-icon"></i>
+        <a href="#">店铺</a></li>
+      <li>
+        <a href="#">店铺分类</a></li>
+      <li class="active">新建店铺分类</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-sm-12">
+          <form enctype="multipart/form-data" class="form-horizontal" id="shoptype-form" action="/shoptype/create" method="post">
+            <div class="alert alert-danger" id="shoptype-form_es_" style="display:none">
+              <p>请更正下列输入错误:</p>
+              <ul>
+                <li>dummy</li></ul>
+            </div>
+            <!---->
+            <input name="oldAdminId" value="56695" type="hidden">
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="ShopType_tag">店铺分类编号</label></label>
+              <input class="col-sm-1" size="10" maxlength="10" name="ShopType[tag]" id="ShopType_tag" type="text" value="0">
+              <!-- <span class="ace-icon fa fa-info-sign bigger-150" data-rel="tooltip" data-placement="right" title="决定展示顺序，编号越小越靠前"></span> -->
+              <span class="help-button">
+                <span class="ace-icon fa fa-info bigger-120" data-rel="popover" data-trigger="hover" data-placement="right" data-content="决定展示顺序，编号越小越靠前" title="" data-original-title="店铺分类编号说明"></span>
+                <div class="popover fade right in" style="top:-24px;left:300.39px;display:none;">
+                  <div class="arrow" style="top:50%;"></div>
+                  <h3 class="popover-title">店铺分类编号说明</h3>
+                  <div class="popover-content">决定展示顺序，编号越小越靠前</div>
+                </div>
+              </span>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="ShopType_name">店铺分类名称</label></label>
+              <input class="col-sm-1" size="10" maxlength="10" name="ShopType[name]" id="ShopType_name" type="text"></div>
+            <div class="clearfix form-actions">
+              <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="submit">
+                  <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+  <div class="disk"></div>
+
+  <script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

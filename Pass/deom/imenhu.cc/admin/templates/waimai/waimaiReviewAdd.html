@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var atlasSize = {#$atlasSize#}, atlasType = "{#$atlasType#}",  //缩略图配置
+	modelType = "waimai", adminPath = "{#$adminPath#}", imglist = {#$imglist#};
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label for="user">评论会员：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="user" id="user" autocomplete="off" value="{#$username#}" />
+      <input type="hidden" name="userid" id="userid" value="{#$userid#}" />
+      <span class="input-tips" style="display:inline-block;"><s></s>请输入评论会员</span>
+      <div id="userList" class="popup_key"></div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="storeName">评论餐厅：</label></dt>
+    <dd style="position:static;">
+      <input class="input-xlarge" type="text" name="storeName" id="storeName" autocomplete="off" value="{#$storeName#}" />
+      <input type="hidden" name="store" id="store" value="{#$store#}" />
+      <span class="input-tips" style="display:inline-block;"><s></s>请输入餐厅名称</span>
+      <div id="storeList" class="popup_key"></div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>总体评价：<input type="hidden" name="rating" id="rating" value="{#$rating#}" /></dt>
+    <dd>
+      <div class="pingfen" data-sync="rating">
+        <div class="pingfen_selected" style="width:{#$rating*20#}%;"></div>
+      </div>
+      <span class="pingfen_tip">请选择总体评价</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="note">评论内容：</label></dt>
+    <dd>
+      <textarea name="note" id="note" class="input-xxlarge" rows="5">{#$note#}</textarea>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>上传图片：</dt>
+    <dd>
+      <div class="list-holder">
+        <ul id="listSection" class="piece clearfix"></ul>
+      </div>
+      <div class="btn-section">
+        <div class="uploadinp"><div id="flasHolder"></div></div>
+        <div class="upload-tip">
+          <p><a href="javascript:;" id="deleteAllAtlas">删除所有</a>&nbsp;&nbsp;{#$atlasType|replace:"*.":""|replace:";":"、"#}，单张最大{#$atlasSize/1024#}M</p>
+        </div>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

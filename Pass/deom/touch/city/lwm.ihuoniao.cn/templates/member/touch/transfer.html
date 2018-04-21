@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$cfg_pointName#}转赠 - {#$cfg_webname#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/money.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/transfer.css?v=2" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var totalPoint = {#$userinfo.point#}, pointFee = {#$cfg_pointFee#}, pointName = '{#$cfg_pointName#}';
+</script>
+</head>
+<body>
+
+	{#include file="_top.html"#}
+
+
+	<form action="/include/ajax.php?service=member&action=transfer" method="post" target="_blank" id="payform">
+		<div class="numbox">
+			<span>可转赠积分：</span><strong>{#$userinfo.point#}</strong>
+		</div>
+		<p class="bili mb20">手续费：{#$cfg_pointFee#}%</p>
+
+		<dl class="inpbox">
+			<dt><span>对方用户名</span></dt>
+			<dd><input type="text" placeholder="请输入要转给的会员用户名" id="user" name="user"></dd>
+		</dl>
+
+		<dl class="inpbox mb20">
+			<dt><span>转赠数量</span></dt>
+			<dd><input type="text" placeholder="请输入要兑换的金额" id="amount" name="amount"></dd>
+		</dl>
+
+		<div class="numbox price">
+			<span>手续费：</span><strong id="fee">0</strong>
+			<span>对方实际收到：</span><strong id="true">0</strong>
+		</div>
+
+
+		<dl class="inpbox">
+			<dt><span>支付密码</span></dt>
+			<dd><input type="password" placeholder="请输入支付密码" id="paypwd" name="paypwd"></dd>
+		</dl>
+
+		<a href="javascript:;" id="tj">确认转赠</a>
+		<input type="hidden" name="agree" id="agree" value="1" />
+	</form>
+
+	<div class="error"></div>
+
+
+
+
+
+
+
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v=5"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/order.js?v=5"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/transfer.js?v=4"></script>
+</body>
+</html>

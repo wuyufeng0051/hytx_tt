@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-flag-o flag-o-icon"></i>
+      <li class="active">营销活动</li>
+      <li>
+        <a href="#">优惠券组合礼包</a></li>
+    </ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.form{ padding:10px 30px; background-color:#f2f2f2; border:1px solid #cccccc; } .form label{ display:block; } .form .row{ margin-bottom:20px; } /* .form .row .required{ color:red; } */ .form #CouponPackage_rule_desc{ width:100%; } .coupon_list_layout table{ width:100%; background-color:#fff; } .coupon_list_layout table{ font-size:16px; } .coupon_list_layout table td{ text-align:center; height:30px; } .coupon_list_layout table td select{ width:150px; } .coupon_list_layout table td input{ width:250px; } .errorSummary{ color:red; } .coupon_disabled { display:none; } .del_btn{ color: #dd5a43!important; cursor: pointer; }</style>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li >
+                <a href="Coupon.html">优惠券发放列表</a></li>
+              <li >
+                <a href="Coupon_list.html">优惠券列表</a></li>
+              <li class="active">
+                <a href="Coupon_gift.html">优惠券组合礼包</a></li>
+              <li>
+                <a href="Coupon_set.html">优惠券设置</a></li>
+            </ul>
+            <div class="tab-content">
+              <a href="#" class="btn btn-success">返回优惠券组合列表</a>
+              <br>
+              <br>
+              <div class="form">
+                <form id="coupon-package-form" action="/couponpackage/create" method="post">
+                  <div class="row">
+                    <label for="CouponPackage_name" class="required">组合名称
+                      <span class="required">*</span></label>
+                    <input size="60" maxlength="200" name="CouponPackage[name]" id="CouponPackage_name" type="text"></div>
+                  <div class="row">
+                    <label for="CouponPackage_可领取总人数">可领取总人数</label>
+                    <input name="CouponPackage[coupon_num]" id="CouponPackage_coupon_num" type="text" value="0">人</div>
+                  <div class="row">
+                    <label for="CouponPackage_start_date" class="required">领取的起止时间
+                      <span class="required">*</span></label>
+                    <input id="CouponPackage_start_date" type="text" name="CouponPackage[start_date]" class="hasDatepicker">~
+                    <input id="CouponPackage_end_date" type="text" name="CouponPackage[end_date]" class="hasDatepicker"></div>
+                  <div class="row">
+                    <label for="CouponPackage_活动规则说明（内容不超出200字）">活动规则说明（内容不超出200字）</label>
+                    <textarea rows="6" cols="50" name="CouponPackage[rule_desc]" id="CouponPackage_rule_desc"></textarea>
+                  </div>
+                  <div class="row">
+                    <label for="CouponPackage_coupon_list">优惠券列表</label>
+                    <div class="coupon_list_layout">
+                      <table>
+                        <tbody>
+                          <tr class="th">
+                            <td>优惠券</td>
+                            <td>发放数量</td>
+                            <td>使用链接地址</td></tr>
+                          <tr>
+                            <td>
+                              <select name="coupon_id[]">
+                                <option value="28387">圣诞2元优惠券</option>
+                                <option value="29837">圣诞3元优惠券</option>
+                                <option value="29838">圣诞5元优惠券</option></select>
+                            </td>
+                            <td>
+                              <select name="num[]">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option></select>
+                            </td>
+                            <td>
+                              <input type="text" name="linkurl[]" value=""></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                          </tr>
+                          <tr class="coupon_disabled" style="display: none;">
+                            <td>
+                              <select name="coupon_id[]" disabled="disabled">
+                                <option value="28387">圣诞2元优惠券</option>
+                                <option value="29837">圣诞3元优惠券</option>
+                                <option value="29838">圣诞5元优惠券</option></select>
+                            </td>
+                            <td>
+                              <select name="num[]" disabled="disabled">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option></select>
+                            </td>
+                            <td>
+                              <input type="text" name="linkurl[]" value="" disabled="disabled"></td>
+                            <td>
+                              <a title="删除" class="del_btn">
+                                <i class="ace-icon fa fa-trash-o bigger-240"></i>
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                          </tr>
+                          <tr class="coupon_disabled" style="display: none;">
+                            <td>
+                              <select name="coupon_id[]" disabled="disabled">
+                                <option value="28387">圣诞2元优惠券</option>
+                                <option value="29837">圣诞3元优惠券</option>
+                                <option value="29838">圣诞5元优惠券</option></select>
+                            </td>
+                            <td>
+                              <select name="num[]" disabled="disabled">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option></select>
+                            </td>
+                            <td>
+                              <input type="text" name="linkurl[]" value="" disabled="disabled"></td>
+                            <td>
+                              <a title="删除" class="del_btn">
+                                <i class="ace-icon fa fa-trash-o bigger-240"></i>
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <button class="btn btn-success add_coupon_list" style="width: 200px;margin-top:20px;">添加</button></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <button class="btn btn-success" style="width: 200px;margin-top:20px;" onclick="$('#coupon-package-form').submit();">保存</button></div>
+          </div>
+        </div>
+      </div>
+      <script>$(function() {
+
+          switchInput('.coupon_disabled', 'close');
+
+          $('.add_coupon_list').click(function() {
+            var flag = true;
+            $('.coupon_list_layout').find('tr').each(function() {
+              if (flag) {
+                if ($(this).css('display') == 'none') {
+                  switchInput(this, 'open');
+                  flag = false;
+                }
+              }
+            }) return false;
+          })
+
+          $('.del_btn').click(function() {
+
+            $(this).parents('tr').each(function() {
+              switchInput(this, 'close')
+            });
+          })
+        })
+
+        function switchInput(obj, type) {
+          if (type == 'close') {
+            $(obj).find('input').attr('disabled', true);
+            $(obj).find('select').attr('disabled', true);
+            $(obj).hide();
+          }
+          if (type == 'open') {
+            $(obj).find('input').attr('disabled', false);
+            $(obj).find('select').attr('disabled', false);
+            $(obj).show();
+          }
+
+        }</script>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

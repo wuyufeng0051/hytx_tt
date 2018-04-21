@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+
+<!--[if !IE]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+    <meta charset="utf-8"/>
+
+    <title>本地鸟后台 | 用户列表</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <meta content="" name="description"/>
+
+    <meta content="" name="author"/>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/base.css" rel="stylesheet" type="text/css"/>
+
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL STYLES -->
+
+    <link href="media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/daterangepicker.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/error.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END PAGE LEVEL STYLES -->
+
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+
+    <style type="text/css">
+        .dataTable{
+            border-collapse: collapse;
+            table-layout:fixed
+        }
+        .dataTable td {
+            text-overflow:ellipsis;
+            overflow:hidden;
+            white-space: nowrap;}
+    </style>
+    <style>
+        html{background: #3d3d3d !important}
+        .top_box{height: 35px;line-height: 35px;font-size: 14px;margin-bottom: 15px;}
+        .top_box .add_business{background: #69c8ec;float: left;color: #fff;}
+        .top_box .add_business a{color: #fff;display:block;padding: 0 10px;}
+        .top_box .add_business a em{font-size: 20px;font-weight: bold;margin-right: 3px;}
+        .business_infor {margin-bottom: 15px;font-size: 14px;}
+        .business_infor em{color: red;font-weight: bold;font-style: normal;}
+        .business_search_box{float: right;}
+        .business_search_box select{margin-bottom: 0;}
+        .business_search_box input{margin-bottom: 0;margin-top: 2px;}
+        .business_search_box .btn{height: 34px;}
+        .add_business:hover{background: #4facd0;}
+        .data_box {position: relative;float: left;border: 1px solid #e5e5e5;height: 32px;line-height: 32px;font-size: 14px;width: 100px;text-indent: 10px;margin-right: 10px;}
+        .data_box span{display: block;cursor: pointer;}
+        .data_box span i{width: 0;height: 0;border-left: 2.5px solid transparent;border-right: 2.5px solid transparent;border-top: 6px solid #000;position: absolute;right: 6px;top: 13px;}
+        .data_box ul{position: absolute;left: -1px;right: 0;border: 1px solid #e5e5e5;border-top: none;width: 100px;background: #fff;display: none;}
+        .data_box ul li{height: 32px;line-height: 32px;cursor: pointer;}
+        .data_box ul li:hover{background: #f0f0f0;}
+        .data_choice{float: left;margin-right: 10px;display: none;}
+        .data_choice input {width: 100px;height: 24px;line-height: 24px;margin-bottom: 0;border: 1px solid #e5e5e5;}
+        .data_choice select {width: 72px;height: 34px;line-height: 34px;margin-bottom: 0;border: 1px solid #e5e5e5;}
+        .span12{position: relative;}
+        .warning {position: absolute;right: 0;top: 4px;background: #3d3d3d !important;color: #fff;font-size: 16px;padding: 8px 20px;border-radius: 5px!important;}
+        .warning em{color: red;}
+        .portlet-body td em{padding: 0 5px;height: 13px; font-size: 11px !important;line-height: 13px;padding: 4px 10px;color: #fff;cursor: pointer;margin-right: 5px;}
+        .portlet-body td em:last-child{margin-right: 0;}
+        .portlet-body td em i{margin-right: 3px;}
+        .portlet-body td em  .biao_icon{width: 12px;height: 12px;display: inline-block;background: url(media/image/edit.png) no-repeat center;background-size: 11px;}
+        .portlet-body td .biao_btn:hover .biao_icon{background: url(media/image/edit2.png) no-repeat center;background-size: 11px;}
+        .biao_btn{background: #35aa47;position: relative;}
+        .biao_btn:hover .biao_box{display: block;}
+        .biao_box{position: absolute;left: 0;right: 0;background: #fff;border: 1px solid #e5e5e5;border-top: none;color: #000;top:21px;display: none;}
+        .biao_box ul li{height: 21px;line-height: 21px;}
+        .biao_box ul li:hover{background: #f0f0f0;}
+        .bian_btn{background: #4d90fe;}
+        .shan_btn{background: #bb2413;}
+        .disk{position: fixed;left: 0;right: 0;top: 0;bottom: 0;background: #000;opacity: .4;z-index: 10;display: none;}
+        .biao_box1{position: fixed;top: 30%;left: 50%;margin-left: -250px;z-index: 11;background: #fff;width: 500px;display: none;}
+        .biao_box1 h1{height: 40px;line-height: 40px;background: #f6f6f6;border-bottom: 1px solid #e7e7e7;font-size: 17px;padding-left: 10px;}
+        .biao_box1 .done{padding: 0 10px;line-height: 25px;padding-bottom: 6px;font-size: 14px;margin-top: 10px;}
+        .biao_box1 .done span{display: inline-block;background-color: #81befb;border: 1px solid #70b0f0;padding: 0 5px;color: #fff;margin: 0 4px 4px 0;}
+        .biao_box1 .done span em{font-size: 10px;color: #fff;line-height: 25px;padding-left: 5px;display: inline-block;vertical-align: bottom;}
+        .biao_box1 .biao_list{padding: 0 10px;margin: 10px 0;}
+        .biao_box1 .biao_list span{    display: inline-block;margin: 0 4px 4px 0;padding: 0 5px;color: #a0a0a0;line-height: 25px;border: 1px solid #e6e6e6;background-color: #fff;cursor: pointer;}
+        .biao_box1 .biao_list span i{font-style: normal;}
+        .biao_box1 .biao_list span em{    font-size: 10px;color: #a0a0a0;line-height: 25px;padding-left: 5px;display: inline-block;vertical-align: bottom;}
+        .biao_box1 .biao_list span.del{background: red;color: #fff;}
+        .biao_box1 .biao_list span.del em {color: #fff;}
+        .biao_box1 .bottom_btn {white-space: nowrap;padding: 10px 15px;text-align: right;background-color: #f6f6f6;border-top: solid 1px #e9e9e9;}
+        .biao_box1 .bottom_btn .sure{color:#fff;border-color:#106bab #106bab #0d68a9;text-shadow:0 -1px #1c5e91;background:#1771b2;background:linear-gradient(top,#2981c4,#1771b2);background:-moz-linear-gradient(top,#2981c4,#1771b2);background:-webkit-gradient(linear,0% 0%,0% 100%,from(#2981c4),to(#1771b2));background:-o-linear-gradient(top,#2981c4,#1771b2);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2981c4',endColorstr='#1771b2');    font-size: 12px; padding: 3px 20px 3px 22px;font-size:12px;padding:3px 20px 3px 22px;padding:5px 20px 2px 22px\0;margin-left:6px;cursor:pointer;display:inline-block;text-align:center;letter-spacing:3px;overflow:visible;border-radius:2px;}
+        .biao_box1 .bottom_btn .clo{font-size:12px;padding:3px 20px 3px 22px;padding:5px 20px 2px 22px\0;margin-left:6px;cursor:pointer;display:inline-block;text-align:center;letter-spacing:3px;overflow:visible;color:#333;border-radius:2px;border:solid 1px #c4c4c4;background:#fafafa;background:linear-gradient(top,#ffffff,#f4f4f4);background:-moz-linear-gradient(top,#ffffff,#f4f4f4);background:-webkit-gradient(linear,0% 0%,0% 100%,from(#ffffff),to(#f4f4f4));background:-o-linear-gradient(top,#ffffff,#f4f4f4);-moz-transition:-moz-box-shadow linear .2s;-webkit-transition:-webkit-box-shadow linear .2s;transition:box-shadow linear .2s;}
+        .biao_list .bb_bc{ background-color: #a4d2ff!important; border-color: #a4d2ff!important;color: #000!important;}
+        .biao_list .bb_bc em{color: #000!important;}
+        .biao_add{padding: 0 10px;width: 50px;height: 20px;line-height: 20px; margin-left: 10px;color: #333;text-align: center;text-shadow: 0 1px 1px rgba(255,255,255,0.75); vertical-align: middle;cursor: pointer;background-color: #f5f5f5; background-image: -moz-linear-gradient(top,#fff,#e6e6e6);background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);background-image: -o-linear-gradient(top,#fff,#e6e6e6);background-image: linear-gradient(to bottom,#fff,#e6e6e6);background-repeat: repeat-x;border: 1px solid #ccc;border-color: #e6e6e6 #e6e6e6 #bfbfbf;border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);border-bottom-color: #b3b3b3;-webkit-border-radius: 4px;-moz-border-radius: 4px; border-radius: 4px;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);padding: 5px 10px;margin-bottom: 10px;display: inline-block;}
+        .biao_edit{padding: 0 10px;width: 50px;height: 20px;line-height: 20px; margin-left: 10px;color: #333;text-align: center;text-shadow: 0 1px 1px rgba(255,255,255,0.75); vertical-align: middle;cursor: pointer;background-color: #f5f5f5; background-image: -moz-linear-gradient(top,#fff,#e6e6e6);background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);background-image: -o-linear-gradient(top,#fff,#e6e6e6);background-image: linear-gradient(to bottom,#fff,#e6e6e6);background-repeat: repeat-x;border: 1px solid #ccc;border-color: #e6e6e6 #e6e6e6 #bfbfbf;border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);border-bottom-color: #b3b3b3;-webkit-border-radius: 4px;-moz-border-radius: 4px; border-radius: 4px;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);padding: 5px 10px;margin-bottom: 10px;display: inline-block;}
+        .add_box{padding: 0 10px;display: none;}
+        .add_box textarea{width: 96%;height: 100px;resize: none;margin-bottom: 10px;padding: 10px}
+        .addb_sure{text-align: right;display: none;}
+        .addb_sure span{color:#fff;border-color:#106bab #106bab #0d68a9;text-shadow:0 -1px #1c5e91;background:#1771b2;background:linear-gradient(top,#2981c4,#1771b2);background:-moz-linear-gradient(top,#2981c4,#1771b2);background:-webkit-gradient(linear,0% 0%,0% 100%,from(#2981c4),to(#1771b2));background:-o-linear-gradient(top,#2981c4,#1771b2);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2981c4',endColorstr='#1771b2');font-size: 12px; font-size:12px;padding:5px;margin-left:6px;cursor:pointer;display:inline-block;text-align:center;letter-spacing:3px;overflow:visible;border-radius:2px;width: 75px;margin-bottom: 10px;margin-right: 10px;}
+        .shen{color: red}
+        .wei{color: blue}
+        .green{color: #35aa47}
+        .page_num{margin-left: 10px;font-size: 14px;}
+        .portlet-body td a{color: #005580;}
+    </style>
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+<!-- BEGIN HEADER -->
+
+{include file="public/header" /}
+<!-- END HEADER -->
+<a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a>
+
+<!-- BEGIN CONTAINER -->
+
+<div class="page-container">
+
+    <!-- BEGIN SIDEBAR -->
+
+    {include file="public/sidebar" /}
+
+    <!-- END SIDEBAR -->
+
+    <!-- BEGIN PAGE -->
+
+    <div class="page-content">
+
+        <!-- BEGIN PAGE CONTAINER-->
+
+        <div class="container-fluid">
+
+            <!-- BEGIN PAGE HEADER-->
+
+            <div class="row-fluid">
+
+                <div class="span12">
+
+                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+                    <h3 class="page-title">
+                        用户列表
+                    </h3>
+
+                    <ul class="breadcrumb">
+                        <li><a href="index">用户列表</a></li>
+                    </ul>
+
+                    <!-- END PAGE TITLE & BREADCRUMB-->
+
+                </div>
+
+            </div>
+
+            <!-- END PAGE HEADER-->
+
+            <!-- BEGIN PAGE CONTENT-->
+
+            <div class="portlet box light-grey">
+
+                <div class="portlet-body">
+
+                    <div class="clearfix">
+                        <div class="btn-group">
+                            <a href="create">
+                                <button class="btn green">添加 <i class="icon-plus"></i></button>
+                            </a>
+                        </div>
+
+                        <div style="float:right;">
+                            <div class="data_box">
+                            <span><em>全部</em><i></i></span>
+                            <ul>
+                                <li class="set_hide">全部</li>
+                                <li class="set_hide">今天</li>
+                                <li class="set_hide">最近一周</li>
+                                <li class="set_hide">最近一个月</li>
+                                <li class="set_hide">最近三个月</li>
+                                <li class="peronal_set">自定义时间</li>
+                            </ul>
+                        </div>
+                        <div class="data_choice">
+                            <input class=" date-picker" type="text"> 
+                            <select name="" id="">
+                                <option value="">1:00</option>
+                                <option value="">2:00</option>
+                                <option value="">3:00</option>
+                                <option value="">4:00</option>
+                                <option value="">5:00</option>
+                                <option value="">6:00</option>
+                                <option value="">7:00</option>
+                                <option value="">8:00</option>
+                                <option value="">9:00</option>
+                                <option value="">10:00</option>
+                                <option value="">11:00</option>
+                                <option value="">12:00</option>
+                                <option value="">13:00</option>
+                                <option value="">14:00</option>
+                                <option value="">15:00</option>
+                                <option value="">16:00</option>
+                                <option value="">17:00</option>
+                                <option value="">18:00</option>
+                                <option value="">19:00</option>
+                                <option value="">20:00</option>
+                                <option value="">21:00</option>
+                                <option value="">22:00</option>
+                                <option value="">23:00</option>
+                                <option value="">24:00</option>
+                            </select>
+                            -
+                            <input class=" date-picker" type="text"> 
+                            <select name="" id="">
+                                <option value="">1:00</option>
+                                <option value="">2:00</option>
+                                <option value="">3:00</option>
+                                <option value="">4:00</option>
+                                <option value="">5:00</option>
+                                <option value="">6:00</option>
+                                <option value="">7:00</option>
+                                <option value="">8:00</option>
+                                <option value="">9:00</option>
+                                <option value="">10:00</option>
+                                <option value="">11:00</option>
+                                <option value="">12:00</option>
+                                <option value="">13:00</option>
+                                <option value="">14:00</option>
+                                <option value="">15:00</option>
+                                <option value="">16:00</option>
+                                <option value="">17:00</option>
+                                <option value="">18:00</option>
+                                <option value="">19:00</option>
+                                <option value="">20:00</option>
+                                <option value="">21:00</option>
+                                <option value="">22:00</option>
+                                <option value="">23:00</option>
+                                <option value="">24:00</option>
+                            </select>
+                        </div>
+                            <select class=" m-wrap range1" style="width: 150px" tabindex="1" name="range1">
+                                <option value="">全部</option>
+                                <option value="">用户名</option>
+                                <option value="user_name"{if condition="$sel.a=='user_name'"}selected{/if}>用户ID</option>
+                                <option value="user_phone"{if condition="$sel.a=='user_phone'"}selected{/if}>手机号码</option>
+                                <option value="">绑定手机用户</option>
+                                <option value="">能看不能发</option>
+                                <option value="">禁止访问</option>
+                            </select>
+                            <input type="text" placeholder="{$sel.b|default='请输入关键词'}" class="m-wrap small range2" name="range2">
+                            <div class="btn-group">
+                                <button class="btn green btn-query">
+                                    查询
+                                </button>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="btn-group" style="float: right">
+                                <a href="expUser" >
+                                    <button class="btn green">
+                                        导出数据
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="business_infor">共有 <em>199</em> 名用户，绑定手机用户 <em>233</em> 名，今注册用户 <em>155</em> 名</div>
+
+                    <div class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable"
+                               aria-describedby="sample_1_info">
+                            <tr>
+                                <th style="width: 50px">用户ID</th>
+                                <th>用户名</th>
+                                <th style="width: 150px">注册时间</th>
+                                <th style="width: 50px">性别</th>
+                                <th>手机</th>
+                                <th style="width: 90px">登录次数</th>
+                                <!-- <th style="width: 90px">查看简历次数</th> -->
+                                <th style="width: 90px">状态</th>
+                                <th>编辑</th>
+                            </tr>
+                            {volist name='list' id='vo'}
+                            <tr>
+                                <td>{$vo.user_id}</td>
+                                <td><a href="edit?id={$vo.user_id}">{$vo.user_name}</a></td>
+                                <td>{$vo.user_datetime}</td>
+                                <td>{$vo.user_sex}</td>
+                                <td>{$vo.user_phone}</td>
+                                <td>{$vo.user_seenum}</td>
+                                <td>正常</td>
+                                <!-- <td>能看不能发</td> -->
+                                <!-- <td>禁止访问</td> -->
+                                <td>
+                                    <a href="edit?id={$vo.user_id}" class="btn mini blue "><i
+                                            class="icon-tags"></i> 修改</a>
+                                    <!--{if condition="$vo.user_status == 0"}-->
+                                    <!--<a href="del?id={$vo.user_id}" class="btn mini blue btn-del"><i-->
+                                            <!--class="icon-trash"></i> 加入黑名单</a>-->
+                                    <!--{else /}-->
+                                    <!--<a href="del?id={$vo.user_id}" class="btn mini black btn-del"><i-->
+                                            <!--class="icon-trash"></i> 移出黑名单</a>-->
+                                    <!--{/if}-->
+                                    <a href="delete?id={$vo.user_id}" class="btn mini red btn-delete"><i
+                                            class="icon-trash"></i> 删除</a>
+                                </td>
+                            </tr>
+                            {/volist}
+                        </table>
+                        <div class="page_num">共1300条</div>
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <div class="dataTables_paginate paging_bootstrap pagination">
+                                    {$page}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- END PAGE CONTENT -->
+
+        </div>
+
+        <!-- END PAGE CONTAINER-->
+
+    </div>
+
+    <!-- END PAGE -->
+
+</div>
+
+<!-- END CONTAINER -->
+
+<!-- BEGIN FOOTER -->
+
+{include file="public/footer" /}
+
+<!-- END FOOTER -->
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+<!-- BEGIN CORE PLUGINS -->
+
+<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+
+<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--[if lt IE 9]>
+
+<script src="media/js/excanvas.min.js"></script>
+
+<script src="media/js/respond.min.js"></script>
+
+<![endif]-->
+
+<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<script src="media/js/app.js" type="text/javascript"></script>
+
+<script src="media/js/index.js" type="text/javascript"></script>
+
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<script>
+
+    jQuery(document).ready(function () {
+
+        App.init(); // initlayout and core plugins
+
+    });
+
+    $(document).ready(function () {
+        $(".btn-del").click(function () {
+            if (confirm('确定进行此操作吗?')) {
+                var _this = $(this);
+                var url = _this.attr('href');
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    success: function (data) {
+                        if (data.code == 0) {
+                            _this.removeClass('blue').addClass('black').html('<i class="icon-trash"></i> ' + data.message);
+                        } else {
+                            _this.removeClass('black').addClass('blue').html('<i class="icon-trash"></i> ' + data.message);
+                        }
+                    }
+                });
+                return false;
+            } else {
+                return false;
+            }
+        })
+
+        $(".btn-delete").click(function () {
+            if (confirm('确定要删除吗?')) {
+                var _this = $(this);
+                var url = _this.attr('href');
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    success: function (data) {
+                        if (data.code == 0) {
+                            _this.parent().parent().remove();
+                        }
+                    }
+                });
+                return false;
+            } else {
+                return false;
+            }
+        })
+
+        $(".btn-query").click(function () {
+            var range1 = $(".range1").val()
+            var range2 = $(".range2").val()
+            location.href = 'index?range1=' + range1 + '&range2=' + range2;
+        })
+          $('.date-picker').datepicker({
+            language: 'cn',
+            autoclose: true,
+            todayHighlight: true
+        });
+
+    $('body').click(function(){
+        $('.data_box ul').hide();
+    })
+    $('.data_box span').click(function(){
+        if ($('.data_box ul').css("display") == "none") {
+            $('.data_box ul').show();
+        }else{
+            $('.data_box ul').hide();
+        }
+        return false
+    })
+    $('.data_box ul li').click(function(){
+        var x = $(this),
+            txt = x.text();
+        $('.data_box span em').text(txt);
+        $('.data_box ul').hide();
+    })
+    $('.peronal_set').click(function(){
+        $('.data_choice').show();
+    })
+    $('.set_hide').click(function(){
+        $('.data_choice').hide();
+    })
+
+    })
+
+</script>
+
+<!-- END JAVASCRIPTS -->
+
+</body>
+
+<!-- END BODY -->
+
+</html>

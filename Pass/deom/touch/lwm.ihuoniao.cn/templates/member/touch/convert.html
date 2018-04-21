@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>现金与{#$cfg_pointName#}兑换 - {#$cfg_webname#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/money.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/convert.css?v=2" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var totalMoney = {#$userinfo.money#}, pointRatio = {#$cfg_pointRatio#}, pointName = '{#$cfg_pointName#}';
+</script>
+</head>
+<body>
+
+{#include file="_top.html"#}
+
+	<form action="/include/ajax.php?service=member&action=convert" method="post" target="_blank" id="payform">
+		<div class="numbox">
+			<span>可提现金额：</span><strong>¥{#$userinfo.money#}</strong>
+		</div>
+		<p class="bili">现金 : 积分 （1 : 100）</p>
+
+		<div class="numbox price">
+			<span>兑换数量：</span><strong id="count">0</strong><em class="unit">积分</em>
+		</div>
+
+		<dl class="inpbox">
+			<dt><span>兑换金额</span></dt>
+			<dd><input type="text" placeholder="请输入要兑换的金额" id="amount" name="amount"></dd>
+		</dl>
+
+		<dl class="inpbox">
+			<dt><span>支付密码</span></dt>
+			<dd><input type="password" placeholder="请输入支付密码" id="paypwd" name="paypwd"></dd>
+		</dl>
+		<dl class="inpbox pwdoper">
+			<div class="inner">{#if $userinfo.paypwdCheck == 0#}您还未设置支付密码，请先<a href="{#getUrlPath service='member' type='user' template='security' doget='paypwdAdd'#}">设置支付密码</a>{#else#}如您忘记支付密码，请<a href="{#getUrlPath service='member' type='user' template='security' doget='paypwdEdit'#}">重置支付密码</a>{#/if#}！</div>
+		</dl>
+
+		<input type="hidden" name="agree" id="agree" value="1" />
+
+		<a href="javascript:;" id="tj">确认兑换</a>
+	</form>
+
+	<div class="error"></div>
+
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v=5"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/order.js?v=5"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/convert.js?v=4"></script>
+</body>
+</html>

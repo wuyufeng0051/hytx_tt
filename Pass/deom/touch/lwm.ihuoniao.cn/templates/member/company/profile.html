@@ -1,0 +1,89 @@
+{#$pageTitle = "帐号设置 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css?v=1" media="all" />
+</head>
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+
+	<div class="notice">公告：管理控制台改版啦，为便于您的操作，用户中心功能整合到管理控制台并对样式进行优化，欢迎体验！<a href="#" target="_blank">操作指南</a> <a href="#" target="_blank">建议反馈</a><em class="close">&times;</em></div>
+
+	<div class="nav-tabs fn-clear">
+		<ul class="fn-clear">
+			<li class="active"><a href="javascript:;">基本资料</a></li>
+			<li><a href="{#getUrlPath service='member' template='portrait'#}">修改头像</a></li>
+			<li><a href="{#getUrlPath service='member' template='connect'#}">社交账号关联绑定</a></li>
+		</ul>
+	</div>
+	<div class="container">
+		
+		<div class="w-form">
+			<form action="/include/ajax.php?service=member&action=updateProfile" method="post">
+				<dl class="fn-clear">
+					<dt><label>用户名：</label></dt>
+					<dd>{#$userinfo.username#}</dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt><label for="company">公司名称：</label></dt>
+					<dd><input type="text" name="company" class="inp" id="company" size="40" placeholder="请输入公司全称" value="{#$userinfo.company#}" /></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt><label>所在区域：</label></dt>
+					<dd id="selAddr">
+						<div class="sel-group" data-title="请选择所在区域">
+							<button type="button" class="sel">{#if $userinfo.addrName != ""#}{#$userinfo.addrName#}{#else#}请选择{#/if#}<span class="caret"></span></button>
+							<ul class="sel-menu">
+								{#siteConfig action="addr" return="addr"#}
+								<li><a href="javascript:;" data-id="{#$addr.id#}">{#$addr.typename#}</a></li>
+								{#/siteConfig#}
+							</ul>
+						</div>
+						<input type="hidden" name="addr" id="addr" value="{#$userinfo.addrid#}" />
+					</dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt><label for="address">详细地址：</label></dt>
+					<dd><input type="text" name="address" class="inp" id="address" size="40" placeholder="请输入公司详细地址" value="{#$userinfo.address#}" /></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>联系人：</dt>
+					<dd><input type="text" name="person" class="inp" id="person" size="20" autocomplete="off" placeholder="请输入公司联系人" value="{#$userinfo.person#}" /></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>性别：</dt>
+					<dd>
+						<div class="radio">
+							<span data-id="1"{#if $userinfo.sex == 1#} class="curr"{#/if#}>男</span>
+							<span data-id="0"{#if $userinfo.sex == 0#} class="curr"{#/if#}>女</span>
+							<input type="hidden" name="sex" id="sex" value="{#$userinfo.sex#}" />
+						</div>
+					</dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>QQ号码：</dt>
+					<dd><input type="text" name="qq" class="inp" id="qq" size="20" autocomplete="off" onkeyup="value=value.replace(/\D+/ig,'')" placeholder="请输入常用的QQ号码" value="{#$userinfo.qq#}" /></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>注册时间：</dt>
+					<dd>
+						{#$userinfo.regtime#}
+					</dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>&nbsp;</dt>
+					<dd><button class="submit" id="sbtn">提交修改</button></dd>
+				</dl>
+			</form>
+		</div>
+
+	</div>
+	
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/fabu.js?v=2"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/profile.js?v=2"></script>
+</body>
+</html>

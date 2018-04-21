@@ -1,0 +1,40 @@
+{#$pageTitle = "社交账号关联绑定 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/connect.css?v=1" media="all" />
+</head>
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+
+	<div class="notice">公告：管理控制台改版啦，为便于您的操作，用户中心功能整合到管理控制台并对样式进行优化，欢迎体验！<a href="#" target="_blank">操作指南</a> <a href="#" target="_blank">建议反馈</a><em class="close">&times;</em></div>
+
+	<div class="nav-tabs fn-clear">
+		<ul class="fn-clear">
+			<li><a href="{#getUrlPath service='member' template='profile'#}">基本资料</a></li>
+			<li><a href="{#getUrlPath service='member' template='portrait'#}">修改头像</a></li>
+			<li class="active"><a href="javascript:;">社交账号关联绑定</a></li>
+		</ul>
+	</div>
+	<div class="container fn-clear">
+
+		<div class="tip"><s></s>绑定社交帐号，绑定后可以使用以下帐号直接登录网站！</div>
+
+		<ul class="connect">
+			{#siteConfig action="getUserBindLoginConnect"#}
+			<li{#if $row.state == 0#} class="fail"{#else#} class="ok" data-id="{#$row.code#}"{#/if#}>
+				<div class="l"><img src="{#$cfg_basehost#}/api/login/{#$row.code#}/img/32.png" />{#$row.name#}快捷登录</div>
+				<div class="r">{#if $row.state == 0#}<a href="{#$cfg_basehost#}/api/login.php?type={#$row.code#}">立即绑定</a>{#else#}<a href="javascript:;">解除绑定</a>{#/if#}</div>
+			</li>
+			{#/siteConfig#}
+		</ul>
+
+	</div>
+	
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/connect.js?v=2"></script>
+</body>
+</html>

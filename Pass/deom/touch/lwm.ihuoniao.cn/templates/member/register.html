@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>用户注册</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}../siteConfig/default/css/index_public.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/register_v1.css?v=4" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+    var geetest = {#$cfg_geetest#};
+</script>
+</head>
+
+<body>
+{#include file="../siteConfig/top1.html"#}
+
+<!-- head s -->
+<div class="wrap header fn-clear">
+	<div class="logo">
+		<a href="{#$cfg_basehost#}" title="{#$cfg_webname#}"><img src="{#$cfg_weblogo#}" alt="{#$cfg_webname#}"><h2>{#$cfg_shortname#}</h2><span>地方最大最全生活网</span></a>
+	</div>
+	<dl class="kefu fn-clear">
+		<dt><img src="{#$templets_skin#}images/kf_tel.png" alt=""></dt>
+		<dd>
+			<p class="p1">客服热线</p>
+			<p class="p2">{#$cfg_hotline#}</p>
+		</dd>
+	</dl>
+</div>
+
+<div class="split-line"></div>
+
+<!-- head e -->
+<div class="wrap">
+	<div class="registerwrap fn-clear">
+		<div class="register">
+			<div class="tab-head">
+				<ul class="tab-nav fn-clear">
+					<li class="active"><a href="javascript:;">用户名注册</a></li>
+					<li><a href="javascript:;">邮箱注册</a></li>
+					<li><a href="javascript:;">手机号注册</a></li>
+				</ul>
+				<div class="mark"><em></em></div>
+			</div>
+			<div class="tab-body">
+				<div class="tab-pane" style="display:block;">
+					<form action="" class="registform">
+						<div class="form-row fn-clear">
+							<span class="type">我要注册：</span>
+							<div class="field">
+								<div class="usertype">
+									<label class="selected"><i class="regicon radionicon"></i><input type="radio" name="type" checked="true">个人会员</label>
+									<label><i class="regicon radionicon"></i><input type="radio" name="type">企业商家会员</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-row fn-clear type01">
+							<span class="type">用户名：</span>
+							<div class="field">
+								<input type="text" class="inp username1" placeholder="请输入您的用户名" />
+								<span class="error"></span>
+							</div>
+						</div>
+						<div class="form-row fn-clear type02">
+							<span class="type">邮箱地址：</span>
+							<div class="field">
+								<input type="text" class="inp username2" placeholder="请输入您的邮箱账号">
+								<a href="javascript:;" class="sendvdimgck sendvdimgck2 m"><i class="regicon regmail"></i>发送</a>
+								<span class="error"></span>
+							</div>
+						</div>
+						<div class="form-row fn-clear type03">
+							<span class="type">手机号码：</span>
+							<div class="field">
+								<input type="text" class="inp username3" placeholder="请输入您的手机号码" />
+								<a href="javascript:;" class="sendvdimgck sendvdimgck3 m"><i class="regicon regmail"></i>发送</a>
+								<span class="error"></span>
+							</div>
+						</div>
+						<div class="form-row fn-clear dtvdimgck">
+							<span class="type">验证码：</span>
+							<div class="field">
+								<input type="text" class="inp yzm2" placeholder="请输入您获得的验证码" />
+								<span id="djs"></span>
+								<span class="error"></span>
+								<p class="vdimgckinfo"></p>
+							</div>
+						</div>
+						<div class="form-row fn-clear">
+							<span class="type">密码：</span>
+							<div class="field">
+								<input type="password" class="inp password" placeholder="密码长度6~16，字母区分大小写" />
+								<span class="error"></span>
+							</div>
+						</div>
+						<div class="form-row fn-clear">
+							<span class="type">密码确认：</span>
+							<div class="field">
+								<input type="password" class="inp repassword" placeholder="重新输入一次密码" />
+								<span class="error"></span>
+							</div>
+						</div>
+						<div class="form-row fn-clear type01">
+							<span class="type">验证码：</span>
+							<div class="field">
+								<input type="text" class="inp yzm" placeholder="请输入验证码" />
+								<img src="/include/vdimgck.php" class="vdimgck" alt="">
+								<a href="javascript:;" class="change">看不清？换一张</a>
+								<span class="error error1"></span>
+							</div>
+						</div>
+						<div class="form-row btnwrap fn-clear">
+							<span class="type">提交：</span>
+							<div class="field">
+								<input type="submit" class="submit" value="立即注册" />
+								<div class="agreement">
+									<label class="checked"><i class="regicon iconcheck"></i>同意</label>
+									<a href="{#getUrlPath service='siteConfig' template='protocol' id='21'#}" target="_blank">《会员注册协议》</a>
+								</div>
+							</div>
+						</div>
+                        <div id="popup-captcha"></div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="gologin">
+			<p class="title">已经注册了？点击<a href="login.html">登陆</a>或使用下面合作账号直接登陆</p>
+			<div class="otherlogin fn-clear">
+				<a href="/api/login.php?type=qq" class="qqlogin"><i class="regicon regqq"></i><span>QQ登陆</span></a>
+				<a href="/api/login.php?type=wechat" class="wxlogin"><i class="regicon regwx"></i><span>微信登陆</span></a>
+			</div>
+			<dl class="info">
+				<dt>说明</dt>
+				<dd>1、您可以通过注册用户名、邮箱或者手机号来登陆；</dd>
+				<dd>2、如果忘记密码，请<a href="fpwd.html">找回密码</a>或者拨打我们的客服热线<span>{#$cfg_hotline#}</span>咨询帮助；</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+
+{#include file="../siteConfig/footer1.html"#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+{#if $cfg_geetest#}<script type="text/javascript" src="http://static.geetest.com/static/tools/gt.js"></script>{#/if#}
+<script type="text/javascript" src="{#$templets_skin#}js/register_v1.js?v=2"></script>
+</body>
+</html>

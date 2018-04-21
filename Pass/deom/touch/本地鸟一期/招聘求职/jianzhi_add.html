@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+
+<!--[if !IE]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+    <meta charset="utf-8"/>
+
+    <title>本地鸟后台 | 招聘求职</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <meta content="" name="description"/>
+
+    <meta content="" name="author"/>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/base.css" rel="stylesheet" type="text/css"/>
+
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL STYLES -->
+
+    <link href="media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/daterangepicker.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/datepicker.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END PAGE LEVEL STYLES -->
+
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+    <style>
+        html{background: #3d3d3d !important}
+        .control-group select{   margin-left: 20px;width: 150px;border: 1px solid #e5e5e5;height: 35px;line-height: 35px;font-size: 14px;}
+        .control-group .choice{margin-left: 20px;height: 35px;line-height: 35px;    color: #333;text-align: center;text-shadow: 0 1px 1px rgba(255,255,255,0.75); vertical-align: middle;cursor: pointer;background-color: #f5f5f5; background-image: -moz-linear-gradient(top,#fff,#e6e6e6);background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);background-image: -o-linear-gradient(top,#fff,#e6e6e6);background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+    background-repeat: repeat-x;border: 1px solid #ccc;border-color: #e6e6e6 #e6e6e6 #bfbfbf;border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);border-bottom-color: #b3b3b3;-webkit-border-radius: 4px;-moz-border-radius: 4px; border-radius: 4px;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);padding: 5px 10px;}
+        .control-group .pay_type{margin-left: 20px;float: left;}
+        .control-group .pay_type ul li{float: left;padding: 0 15px;height: 35px;line-height: 35px;font-size: 14px;margin-right: 10px;background: #f5f5f5;border: 1px solid #f5f5f5;cursor: pointer;position: relative;margin-bottom: 10px;}
+        .control-group .pay_type ul li.pt_bc{border: 1px solid #4d90fe;}
+        .control-group .pay_type ul li.pt_bc i{background: url(media/image/dui.png) no-repeat center;background-size: 18px;width: 18px;height: 18px;position: absolute;right: 0px;bottom: 0px;}
+        .control-group .busi_choice{margin-left: 20px;float: left;}
+        .control-group .busi_choice ul li{float: left;padding: 0 15px;height: 35px;line-height: 35px;font-size: 14px;margin-right: 10px;background: #f5f5f5;border: 1px solid #f5f5f5;cursor: pointer;position: relative;margin-bottom: 10px;}
+        .control-group .busi_choice ul li.pt_bc{border: 1px solid #4d90fe;}
+        .control-group .busi_choice ul li.pt_bc i{background: url(media/image/dui.png) no-repeat center;background-size: 18px;width: 18px;height: 18px;position: absolute;right: 0px;bottom: 0px;}
+        .control-group textarea{border: 1px solid #e5e5e5;float: left;margin-left: 20px;height: 155px;width: 480px;resize:none;padding: 10px;}
+        .active_box{margin-left: 180px;border: 1px solid #e5e5e5;width: 38%;padding: 10px;margin-top: 15px;}
+        .active_box .control-label{width: 80px;}
+        .active_box .controls{float: left;margin-left: 20px;}
+        .active_box textarea{border: 1px solid #e5e5e5;float: left;margin-left: 20px;height: 155px;width: 85%;resize:none;padding: 10px;}
+        .add_btn{height: 35px;line-height: 35px;text-align: center;font-size: 16px;background: #e8e8e8;cursor: pointer;width: 68%;margin: 0 auto;border-radius: 5px!important;color: #fff}
+        .add_btn:hover{background: #4d90fe;color: #fff;}
+        .add_btn em{font-weight: bold;font-size: 18px;margin-right: 5px;}
+        .ab_box .control-group{position: relative;}
+        .ab_box .control-group i{position: absolute;font-size: 20px;font-weight: bold;width: 30px;height: 30px;background: #f5f5f5;line-height: 26px;text-align: center;font-style: normal;right: 21px;top: 2px;opacity: .7;cursor: pointer;color: #9a9494;}
+        .ab_box .control-group i:hover{opacity: 1;color: #000;}
+        .disk{position: fixed;left: 0;right: 0;top: 0;bottom: 0;background: #000;opacity: .4;z-index: 10;display: none;}
+        .biao_box1{position: fixed;top: 115px;left: 50%;margin-left: -370px;z-index: 11;background: #fff;width: 800px;display: none;}
+        .biao_box1 h1{height: 40px;line-height: 40px;background: #f6f6f6;border-bottom: 1px solid #e7e7e7;font-size: 17px;padding-left: 10px;}
+        .biao_box1 .done{padding: 0 10px;line-height: 25px;padding-bottom: 6px;font-size: 14px;margin-top: 10px;}
+        .biao_box1 .done span{display: inline-block;background-color: #81befb;border: 1px solid #70b0f0;padding: 0 5px;color: #fff;margin: 0 4px 4px 0;}
+        .biao_box1 .done span em{font-size: 10px;color: #fff;line-height: 25px;padding-left: 5px;display: inline-block;vertical-align: bottom;}
+        .biao_box1 .biao_list{padding: 0 10px;margin: 10px 0;height: 150px;overflow-y: auto;}
+        .biao_box1 .biao_list span{    display: inline-block;margin: 0 4px 4px 0;padding: 0 5px;color: #a0a0a0;line-height: 25px;border: 1px solid #e6e6e6;background-color: #fff;cursor: pointer;}
+        .biao_box1 .biao_list span i{font-style: normal;}
+        .biao_box1 .biao_list span em{    font-size: 10px;color: #a0a0a0;line-height: 25px;padding-left: 5px;display: inline-block;vertical-align: bottom;}
+        .biao_box1 .biao_list span.del{background: red;color: #fff;}
+        .biao_box1 .biao_list span.del em {color: #fff;}
+        .biao_box1 .bottom_btn {white-space: nowrap;padding: 10px 15px;text-align: right;background-color: #f6f6f6;border-top: solid 1px #e9e9e9;}
+        .biao_box1 .bottom_btn {white-space: nowrap;padding: 10px 15px;text-align: right;background-color: #f6f6f6;border-top: solid 1px #e9e9e9;}
+        .biao_box1 .bottom_btn .sure{color:#fff;border-color:#106bab #106bab #0d68a9;text-shadow:0 -1px #1c5e91;background:#1771b2;background:linear-gradient(top,#2981c4,#1771b2);background:-moz-linear-gradient(top,#2981c4,#1771b2);background:-webkit-gradient(linear,0% 0%,0% 100%,from(#2981c4),to(#1771b2));background:-o-linear-gradient(top,#2981c4,#1771b2);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2981c4',endColorstr='#1771b2');    font-size: 12px; padding: 3px 20px 3px 22px;font-size:12px;padding:3px 20px 3px 22px;padding:5px 20px 2px 22px\0;margin-left:6px;cursor:pointer;display:inline-block;text-align:center;letter-spacing:3px;overflow:visible;border-radius:2px;}
+        .biao_box1 .bottom_btn .clo{font-size:12px;padding:3px 20px 3px 22px;padding:5px 20px 2px 22px\0;margin-left:6px;cursor:pointer;display:inline-block;text-align:center;letter-spacing:3px;overflow:visible;color:#333;border-radius:2px;border:solid 1px #c4c4c4;background:#fafafa;background:linear-gradient(top,#ffffff,#f4f4f4);background:-moz-linear-gradient(top,#ffffff,#f4f4f4);background:-webkit-gradient(linear,0% 0%,0% 100%,from(#ffffff),to(#f4f4f4));background:-o-linear-gradient(top,#ffffff,#f4f4f4);-moz-transition:-moz-box-shadow linear .2s;-webkit-transition:-webkit-box-shadow linear .2s;transition:box-shadow linear .2s;}
+        .biao_list .bb_bc{ background-color: #a4d2ff!important; border-color: #a4d2ff!important;color: #000!important;}
+        .biao_list .bb_bc em{color: #000!important;}
+        .biao_add{padding: 0 10px;width: 50px;height: 20px;line-height: 20px; margin-left: 10px;color: #333;text-align: center;text-shadow: 0 1px 1px rgba(255,255,255,0.75); vertical-align: middle;cursor: pointer;background-color: #f5f5f5; background-image: -moz-linear-gradient(top,#fff,#e6e6e6);background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);background-image: -o-linear-gradient(top,#fff,#e6e6e6);background-image: linear-gradient(to bottom,#fff,#e6e6e6);background-repeat: repeat-x;border: 1px solid #ccc;border-color: #e6e6e6 #e6e6e6 #bfbfbf;border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);border-bottom-color: #b3b3b3;-webkit-border-radius: 4px;-moz-border-radius: 4px; border-radius: 4px;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);padding: 5px 10px;margin-bottom: 10px;display: inline-block}
+        .biao_edit{padding: 0 10px;width: 50px;height: 20px;line-height: 20px; margin-left: 10px;color: #333;text-align: center;text-shadow: 0 1px 1px rgba(255,255,255,0.75); vertical-align: middle;cursor: pointer;background-color: #f5f5f5; background-image: -moz-linear-gradient(top,#fff,#e6e6e6);background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);background-image: -o-linear-gradient(top,#fff,#e6e6e6);background-image: linear-gradient(to bottom,#fff,#e6e6e6);background-repeat: repeat-x;border: 1px solid #ccc;border-color: #e6e6e6 #e6e6e6 #bfbfbf;border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);border-bottom-color: #b3b3b3;-webkit-border-radius: 4px;-moz-border-radius: 4px; border-radius: 4px;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);padding: 5px 10px;margin-bottom: 10px;display: inline-block;}
+        .add_box{padding: 0 10px;display: none;}
+        .add_box textarea{width: 96%;height: 100px;resize: none;margin-bottom: 10px;padding: 10px}
+        .addb_sure{text-align: right;display: none;}
+        .addb_sure span{color:#fff;border-color:#106bab #106bab #0d68a9;text-shadow:0 -1px #1c5e91;background:#1771b2;background:linear-gradient(top,#2981c4,#1771b2);background:-moz-linear-gradient(top,#2981c4,#1771b2);background:-webkit-gradient(linear,0% 0%,0% 100%,from(#2981c4),to(#1771b2));background:-o-linear-gradient(top,#2981c4,#1771b2);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2981c4',endColorstr='#1771b2');font-size: 12px; font-size:12px;padding:5px;margin-left:6px;cursor:pointer;display:inline-block;text-align:center;letter-spacing:3px;overflow:visible;border-radius:2px;width: 75px;margin-bottom: 10px;margin-right: 10px;}
+        .tips_box {margin-left: 20px;display: inline-block;}
+        .tips_box span{display: inline-block;margin: 0 4px 4px 0;padding: 0 5px;color: #000!important;line-height: 25px;border: 1px solid #a4d2ff!important;background-color: #a4d2ff!important;cursor: pointer;}
+        .tips_box span i{font-style: normal;}
+        .tips_box span em{    font-size: 10px;color: #000;line-height: 25px;padding-left: 5px;display: inline-block;vertical-align: bottom;}
+        #map{height: 500px;width: 700px;}
+        .map_box{position: fixed;top: 5%;left: 50%;margin-left: -320px;z-index: 11;display: none;}
+        .search{position:absolute;left:75px;top:53px;z-index:500;background:rgba(255,255,255,0.8);padding:5px;}
+        .map_title{height:40px;line-height:40px;font-size:17px;color:#333;padding-left:15px;background:#f6f6f6;border-bottom:1px solid #e7e7e7;}
+        .map_title i{font-style: normal;float: right;font-size: 18px;margin-right: 10px;cursor: pointer;padding: 0 10px;}
+        .map_foot{white-space:nowrap;padding:10px 15px;text-align:right;background-color:#f6f6f6;border-top:solid 1px #e9e9e9;}
+        .map_foot input{font-size:12px;padding:3px 20px 3px 22px;padding:5px 20px 2px 22px\0;margin-left:6px;cursor:pointer;display:inline-block;text-align:center;height:25px;letter-spacing:3px;overflow:visible;color:#333;border-radius:2px;border:solid 1px #c4c4c4;background:#fafafa;background:linear-gradient(top,#ffffff,#f4f4f4);background:-moz-linear-gradient(top,#ffffff,#f4f4f4);background:-webkit-gradient(linear,0% 0%,0% 100%,from(#ffffff),to(#f4f4f4));background:-o-linear-gradient(top,#ffffff,#f4f4f4);-moz-transition:-moz-box-shadow linear .2s;-webkit-transition:-webkit-box-shadow linear .2s;transition:box-shadow linear .2s;}
+        .map_foot input.map_sure{color:#fff;border-color:#106bab #106bab #0d68a9;text-shadow:0 -1px #1c5e91;background:#1771b2;background:linear-gradient(top,#2981c4,#1771b2);background:-moz-linear-gradient(top,#2981c4,#1771b2);background:-webkit-gradient(linear,0% 0%,0% 100%,from(#2981c4),to(#1771b2));background:-o-linear-gradient(top,#2981c4,#1771b2);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2981c4',endColorstr='#1771b2');}
+    </style>
+    <style>
+        .certfy ul li{width:150px;height:150px;margin-right:10px;margin-bottom: 10px;float: left;position: relative;background: #000;border-radius: 5px;overflow: hidden;}
+        .picture .pic_list .webuploader-container div{width: 150px;height: 150px;}
+        .certfy ul li input{position: absolute;left: 0;right: 0;top: 0;bottom: 0;opacity: 0;}
+        .webuploader-pick img{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);}
+        .thumbnail{padding: 0;}
+        .thumbnail img{ width: 100%;height: 100%;}
+        .file-panel{position: absolute;right: 10px;top: 10px;width: 15px;height: 15px;}
+        .file-panel .cancel{width: 100%;height: 100%;background: url(media/image/cha_de.png) no-repeat center;background-size: 15px;display: block;cursor: pointer;}
+        .control-group .money_choice{margin-left: 20px;float: left;}
+        .control-group .money_choice ul li{float: left;padding: 0 15px;height: 35px;line-height: 35px;font-size: 14px;margin-right: 10px;background: #f5f5f5;border: 1px solid #f5f5f5;cursor: pointer;position: relative;margin-bottom: 10px;}
+        .control-group .money_choice ul li.pt_bc{border: 1px solid #4d90fe;}
+        .control-group .money_choice ul li.pt_bc i{background: url(media/image/dui.png) no-repeat center;background-size: 18px;width: 18px;height: 18px;position: absolute;right: 0px;bottom: 0px;}
+    </style>
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+<!-- BEGIN HEADER -->
+
+{include file="public/header" /}
+<!-- END HEADER -->
+<a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a>
+
+<!-- BEGIN CONTAINER -->
+
+<div class="page-container">
+
+    <!-- BEGIN SIDEBAR -->
+
+    {include file="public/sidebar" /}
+
+    <!-- END SIDEBAR -->
+
+    <!-- BEGIN PAGE -->
+
+    <div class="page-content">
+
+        <!-- BEGIN PAGE CONTAINER-->
+
+        <div class="container-fluid">
+
+            <!-- BEGIN PAGE HEADER-->
+
+            <div class="row-fluid">
+
+                <div class="span12">
+
+                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+                    <h3 class="page-title">
+                        招聘信息
+                    </h3>
+
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="index">添加兼职</a>
+                        </li>
+                    </ul>
+
+                    <!-- END PAGE TITLE & BREADCRUMB-->
+
+                </div>
+
+            </div>
+
+            <!-- END PAGE HEADER-->
+
+            <!-- BEGIN PAGE CONTENT-->
+
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">发布者:</label>
+                    <div class="controls" >
+                        <input type="text" name="user_id" value="管理员" class="m-wrap medium" readonly="readonly">
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label">标题:</label>
+                    <div class="controls" >
+                        <input type="text"  value="" class="m-wrap medium" id="title" style="width: 350px!important;">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">发布时间:</label>
+                    <div class="controls" >
+                        <input type="text"  value="" class="m-wrap medium date-picker" id="start">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">职位:</label>
+                    <select name="" id="">
+                      <!-- <option value="">请选择职位</option> -->
+                        <option value="33">销售/导购</option>
+                        <option value="2707">传单派发</option>
+                        <option value="2708">钟点工</option>
+                        <option value="2709">学生兼职</option>
+                        <option value="2710">家教</option>
+                        <option value="2711">艺术老师</option>
+                        <option value="2712">服务员</option>
+                        <option value="2713">会计/出纳</option>
+                        <option value="2714">礼仪/模特</option>
+                        <option value="2715">驻唱/演出</option>
+                        <option value="2716">其他兼职</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">招聘人数:</label>
+                    <div class="controls" >
+                        <input type="text"  value="" class="m-wrap medium" id="per_num">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">兼职期限:</label>
+                    <select name="" id="">
+                      <option value="68">长期</option>
+                      <option value="69">短期</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">职位描述:</label>
+                    <textarea name="" id="miaoshu" cols="30" rows="10" placeholder="请输入信息"></textarea>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">薪资:</label>
+                    <div class="money_choice fn-clear">
+                        <ul>
+                            <li class="pt_bc face"><i></i>面议</li>
+                            <li class=" price"><i></i>价格</li>
+                        </ul>
+                        <input type="text"  value="" id="price_number" class="m-wrap medium price_input" style="display: none;margin-top: 10px;">
+                        <select name="" id="" class="yuan" style="width: 100px;margin-top: 10px;display: none;">
+                            <option value="">元/天</option>
+                            <option value="">元/月</option>
+                            <option value="">元/次</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">结算方式:</label>
+                    <select name="" id="">
+                        <option value="43">日结</option>
+                        <option value="44">周结</option>
+                        <option value="45">月结</option>
+                        <option value="46">完工结算</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">工作地址:</label>
+                    <div class="controls">
+                        <input type="text" id="place" value="" class="m-wrap medium" style="width: 490px!important;" placeholder="请填写工作地址,20个字以内">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">联系人:</label>
+                    <div class="controls">
+                        <input type="text" id="relation"  value="" class="m-wrap medium">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">联系人电话:</label>
+                    <div class="controls">
+                        <input type="text" id="relation_tel"  value="" class="m-wrap medium">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">审核员:</label>
+                    <div class="controls" >
+                        <input type="text"  value="" class="m-wrap medium" id="assessor">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">置顶</label>
+                    <div class="controls">
+                        <label class="radio">
+                            <div class="radio"><input type="radio" name="top" value="1"  ></div>
+                            置顶
+                        </label>
+                        <label class="radio">
+                            <div class="radio"><input type="radio" name="top" value="0" checked="checked"></div>
+                            无
+                        </label>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">审核</label>
+                    <div class="controls">
+                        <label class="radio">
+                            <div class="radio"><input type="radio" name="shen" value="1"  ></div>
+                            已审核
+                        </label>
+                        <label class="radio">
+                            <div class="radio"><input type="radio" name="shen" value="0" checked="checked"></div>
+                            未审核
+                        </label>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">上/下架</label>
+                    <div class="controls">
+                        <label class="radio">
+                            <div class="radio"><input type="radio" name="up" value="1" checked="checked" ></div>
+                            上架
+                        </label>
+                        <label class="radio">
+                            <div class="radio"><input type="radio" name="up" value="0" ></div>
+                            下架
+                        </label>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn blue btn-save"><i class="icon-ok"></i> 保存</button>
+                    <button type="button" class="btn btn-qx" >取消</button>
+                </div>
+            </div>
+
+            <!-- END PAGE CONTENT -->
+
+        </div>
+
+        <!-- END PAGE CONTAINER-->
+
+    </div>
+
+    <!-- END PAGE -->
+
+</div>
+
+<!-- END CONTAINER -->
+
+<!-- BEGIN FOOTER -->
+
+{include file="public/footer" /}
+
+<!-- END FOOTER -->
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+<!-- BEGIN CORE PLUGINS -->
+
+<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+
+<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--[if lt IE 9]>
+
+<script src="media/js/excanvas.min.js"></script>
+
+<script src="media/js/respond.min.js"></script>
+
+<![endif]-->
+
+<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script type="text/javascript" src="media/js/bootstrap-datepicker.js"></script>
+
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<script src="media/js/app.js" type="text/javascript"></script>
+
+<script src="media/js/index.js" type="text/javascript"></script>
+
+<script src="media/js/form-components.js"></script>
+
+<script src="media/js/webuploader.js"></script>
+
+<script  type="text/javascript" src="media/js/layer.js" ></script>
+
+<!-- END PAGE LEVEL SCRIPTS -->
+<script>
+    $(document).ready(function(){
+        
+        App.init(); // initlayout and core plugins
+        // $(".btn-save").click(function(){
+
+        //     if (confirm('确定保存吗?')) {
+        //         var url = $('#form').attr('action');
+        //         var datas = $('#form').serialize();
+        //         $.ajax({
+        //             type: 'POST',
+        //             url: url,
+        //             data: datas,
+        //             success: function (data) {
+        //                 alert(data)
+        //                 if (data.code == 0) {
+        //                     location.href = history.back(-1);
+        //                 }
+        //             }
+        //         });
+        //         return false;
+        //     }else {
+        //         return false
+        //     }
+        // })
+
+        $(".btn-qx").click(function () {
+            location.href = history.back(-1);
+        })
+
+        $('.date-picker').datepicker({
+            // rtl: App.isRTL()
+            language: 'cn',
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        $('.busi_choice ul li').click(function(){
+            var x = $(this);
+            if (x.hasClass('pt_bc')) {
+                x.removeClass('pt_bc')
+            }else{
+                x.addClass('pt_bc')
+            }
+        })
+        $('.add_btn').click(function(){ 
+            // var length = ($('.ab_box .control-group').length)+1;
+            $('.ab_box').append('<div class="control-group"><label class="control-label">活动内容:</label><textarea name=""id=""cols="30"rows="10"></textarea><i>×</i></div>')
+        })
+
+        $('.ab_box').delegate(".control-group i","click",function(){
+            var x = $(this),
+            find = x.closest('.control-group');
+            find.remove();
+        })
+
+        // 表单验证
+        $(".btn-save").click(function(){
+            if ($('#start').val() == "") {
+                layer.msg('请选择发布时间！');
+            }else if ($('#name').val() == "") {
+                layer.msg('请填写姓名！');
+            }else if ($('#jingli').val() == "") {
+                layer.msg('请填写工作经历！');
+            }else if ($('#intro').val() == "") {
+                layer.msg('请填写自我介绍！');
+            }else if ($('#tel').val() == "") {
+                layer.msg('请输入联系人电话！');
+            }else if ($('#assessor').val() == "") {
+                layer.msg('请填写审核员！');
+            }else{
+
+            }
+        })
+        $('.money_choice ul li').click(function(){
+            var x = $(this),
+                index = x.index();
+            x.addClass('pt_bc').siblings().removeClass('pt_bc');
+            if ($('.price').hasClass('pt_bc')) {
+                $('.price_input').show();
+                $('.yuan').show();
+            }else{
+                $('.price_input').hide();
+                $('.yuan').hide();
+            }
+        })
+     
+    });
+</script>
+<!-- END JAVASCRIPTS -->
+
+</body>
+
+<!-- END BODY -->
+
+</html>

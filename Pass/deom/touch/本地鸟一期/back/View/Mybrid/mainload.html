@@ -1,0 +1,21 @@
+<volist name="friends_res" id="v">
+ <div class="mui-card">
+      <div class="mui-card-content">
+        <div class="mui-card-content-inner" style="padding: 7px 15px;">
+          <a style="position: relative;padding-left: 70px;display: block;color:#000;" href="__MODULE__/Mybrid/taBrid?user_id={$v.user_id}">
+            <img src="{$v.user_head}" alt="" style="position: absolute;left: 0;right: 0;width: 56px;height: 56px;">
+	            <p style="margin-bottom: 0;color: #5a87a8;padding-top: 4px;font-size: 15px;">{$v.user_name}<img style="height: 15px;margin-left: 10px;" src="__PUBLIC__/Home/img/nan.png"><span style="float: right;">
+	            <?php if($v['friends_is'] == 1){ ?>
+	            <img style="width: 20px;margin-right: 10px;" src="__PUBLIC__/Home/img/yiguanzu.png"></span></p>
+            <p style="margin-bottom: 0;color: #606161;padding-top: 5px;font-size: 12px;">{$v.user_region}
+            <span style="color: #000;font-size: 12px;position: absolute;right: 0;">已关注&nbsp;</span></p>
+             &nbsp;&nbsp;</span></p>
+	            <?php }else{ ?>
+	              <img style="width: 20px;margin-right: 10px;" src="__PUBLIC__/Home/img/xhgz.png"></span></p>
+              <p style="margin-bottom: 0;color: #606161;padding-top: 5px;font-size: 12px;">{$v.user_region}<span style="color: #000;font-size: 12px;position: absolute;right: 0;">互相关注</span></p>
+	            <?php } ?>
+          </a>
+        </div>
+      </div>
+  </div>
+</volist>  

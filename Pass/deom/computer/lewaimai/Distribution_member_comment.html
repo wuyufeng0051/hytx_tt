@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">try {
+        ace.settings.check('breadcrumbs', 'fixed')
+      } catch(e) {}</script>
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-gear gear-icon"></i>
+      <li class="active">系统设置</li>
+      <li>
+        <a href="#">配送员管理</a></li>
+      <li class="active">配送员评论</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.peisongyuan-xing { position: absolute; top: 30px; left: 130px; margin: 0; } .shoplist-item-xingxing-bkg { position: absolute; z-index: 1; left: 0; top: 110px; width: 75px; height: 14px; background: url(../img/xingxing_small_row_black.png) no-repeat; background-size: 76px 14px; } .shoplist-item-xingxing-front { width: 76px; height: 14px; float:left; background: url(../img/xingxing_small_row.png) no-repeat; background-size: 76px 14px; /* display:inline-block; */ /* vertical-align: middle; */ } .shoplist-item-xingxing-score{ position:absolute; left:81px; display:inline; color:red; }</style>
+      <script>$(function() {
+          $('#courier_id').change(function() {
+            var courier_id = $('#courier_id').val();
+            window.location.href = "/courier/comment/courier_id/" + courier_id;
+          });
+        })</script>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">
+              <i class="ace-icon fa fa-times"></i>
+            </button>APP配送员必须与群组进行绑定，才能收到推送信息及抢单！</div>
+          <div class="space-10"></div>
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li>
+                <a href="#">配送员列表</a></li>
+              <li>
+                <a href="#">群组列表</a></li>
+              <li>
+                <a href="#">配送员位置分布</a></li>
+              <li>
+                <a href="#">配送员抢单管理</a></li>
+              <li class="active">
+                <a href="#">配送员评论</a></li>
+            </ul>
+            <div class="tab-content">
+              <label>选择配送员
+                <div class="chosen-container chosen-container-single" style="width: 102px;" title="" id="form_field_select_3_chosen">
+                  <a class="chosen-single" tabindex="-1">
+                    <span>全部配送员</span>
+                    <div>
+                      <b>
+                      </b>
+                    </div>
+                  </a>
+                  <div class="chosen-drop">
+                    <div class="chosen-search">
+                      <input type="text" autocomplete="off"></div>
+                    <ul class="chosen-results">
+                      <li class="active-result result-selected" data-option-array-index="0">全部配送员</li>
+                      <li class="active-result" data-option-array-index="1">韦志强</li>
+                      <li class="active-result" data-option-array-index="2">望开虎</li>
+                      <li class="active-result" data-option-array-index="3">向俊</li>
+                      <li class="active-result" data-option-array-index="4">汰渍洗衣</li>
+                      <li class="active-result" data-option-array-index="5">梅虎</li>
+                      <li class="active-result" data-option-array-index="6">郑鹏</li>
+                      <li class="active-result" data-option-array-index="7">杜威</li>
+                      <li class="active-result" data-option-array-index="8">张青松</li>
+                      <li class="active-result" data-option-array-index="9">徐林</li>
+                      <li class="active-result" data-option-array-index="10">向俊杰1</li>
+                      <li class="active-result" data-option-array-index="11">傅德生</li>
+                      <li class="active-result" data-option-array-index="12">张其叁</li>
+                      <li class="active-result" data-option-array-index="13">王强</li>
+                      <li class="active-result" data-option-array-index="14">韩和平</li>
+                      <li class="active-result" data-option-array-index="15">杨兰贵</li>
+                      <li class="active-result" data-option-array-index="16">黎晓宜</li>
+                      <li class="active-result" data-option-array-index="17">黄烁</li></ul>
+                  </div>
+                </div>
+                <br></label>
+              <br>
+              <br>
+              <label>选择配送员打分
+                <div class="chosen-container chosen-container-single" style="width: 88px;" title="" id="form_field_select_3_chosen">
+                  <a class="chosen-single" tabindex="-1">
+                    <span>全部分数</span>
+                    <div>
+                      <b>
+                      </b>
+                    </div>
+                  </a>
+                  <div class="chosen-drop">
+                    <div class="chosen-search">
+                      <input type="text" autocomplete="off"></div>
+                    <ul class="chosen-results">
+                      <li class="active-result result-selected" data-option-array-index="0">全部分数</li>
+                      <li class="active-result" data-option-array-index="1">1</li>
+                      <li class="active-result" data-option-array-index="2">2</li>
+                      <li class="active-result" data-option-array-index="3">3</li>
+                      <li class="active-result" data-option-array-index="4">4</li>
+                      <li class="active-result" data-option-array-index="5">5</li></ul>
+                  </div>
+                </div>
+                <br></label>
+              <div id="yw0" class="grid-view">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th id="yw0_c0">
+                        <a class="sort-link" href="#">配送员</a></th>
+                      <th id="yw0_c1">
+                        <a class="sort-link" href="#">顾客id</a></th>
+                      <th id="yw0_c2">
+                        <a class="sort-link" href="#">评论者姓名</a></th>
+                      <th id="yw0_c3">
+                        <a class="sort-link" href="#">内容</a></th>
+                      <th id="yw0_c4">
+                        <a class="sort-link" href="#">打分</a></th>
+                      <th id="yw0_c5">
+                        <a class="sort-link" href="#">订单id</a></th>
+                      <th id="yw0_c6">
+                        <a class="sort-link" href="#">评论时间</a></th>
+                      <th id="yw0_c7">
+                        <a class="sort-link" href="#">评论类型</a></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="odd">
+                      <td width="40">杨兰贵&nbsp;</td>
+                      <td width="20">15838238</td>
+                      <td width="40">徐先生</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34604732</a>&nbsp;</td>
+                      <td width="40">2017-03-20 12:25:12</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="40">杨兰贵&nbsp;</td>
+                      <td width="20">14439386</td>
+                      <td width="40">向</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34616348</a>&nbsp;</td>
+                      <td width="40">2017-03-20 12:03:28</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="40">杨兰贵&nbsp;</td>
+                      <td width="20">12500107</td>
+                      <td width="40">望萌</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34389760</a>&nbsp;</td>
+                      <td width="40">2017-03-20 00:20:58</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="40">张其叁&nbsp;</td>
+                      <td width="20">12500107</td>
+                      <td width="40">望萌</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34502891</a>&nbsp;</td>
+                      <td width="40">2017-03-20 00:20:51</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="40">杜威&nbsp;</td>
+                      <td width="20">12391278</td>
+                      <td width="40">陈兰</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34588325</a>&nbsp;</td>
+                      <td width="40">2017-03-19 23:58:13</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="40">黎晓宜&nbsp;</td>
+                      <td width="20">12345609</td>
+                      <td width="40">马芹</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34582649</a>&nbsp;</td>
+                      <td width="40">2017-03-19 22:37:45</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="40">徐林&nbsp;</td>
+                      <td width="20">15345924</td>
+                      <td width="40">张爱莉</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34578830</a>&nbsp;</td>
+                      <td width="40">2017-03-19 21:50:52</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="40">黎晓宜&nbsp;</td>
+                      <td width="20">12984239</td>
+                      <td width="40">马女士</td>
+                      <td width="60">这外卖小哥是个什么素质啊，到楼下了进不来不知道先打电话吗？扯开了嗓子在楼下叫。叫完了再打电话！</td>
+                      <td width="20">1</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34581469</a>&nbsp;</td>
+                      <td width="40">2017-03-19 21:47:23</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="40">张青松&nbsp;</td>
+                      <td width="20">12984239</td>
+                      <td width="40">马女士</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34302876</a>&nbsp;</td>
+                      <td width="40">2017-03-19 21:24:29</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="40">杜威&nbsp;</td>
+                      <td width="20">15238421</td>
+                      <td width="40">蔡小姐</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34577867</a>&nbsp;</td>
+                      <td width="40">2017-03-19 21:01:16</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="40">杜威&nbsp;</td>
+                      <td width="20">15238421</td>
+                      <td width="40">蔡小姐</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34577233</a>&nbsp;</td>
+                      <td width="40">2017-03-19 21:01:02</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="40">杜威&nbsp;</td>
+                      <td width="20">15238421</td>
+                      <td width="40">蔡小姐</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34577373</a>&nbsp;</td>
+                      <td width="40">2017-03-19 21:00:41</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="40">张青松&nbsp;</td>
+                      <td width="20">14059593</td>
+                      <td width="40">李</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34552704</a>&nbsp;</td>
+                      <td width="40">2017-03-19 20:46:13</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="40">黎晓宜&nbsp;</td>
+                      <td width="20">13837530</td>
+                      <td width="40">黄先生</td>
+                      <td width="60">小哥服务态度热情 周到，好几次外卖到了还麻烦小哥帮买烟 十分感谢。</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34575348</a>&nbsp;</td>
+                      <td width="40">2017-03-19 20:42:17</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="40">张青松&nbsp;</td>
+                      <td width="20">13687226</td>
+                      <td width="40">王旭</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34568469</a>&nbsp;</td>
+                      <td width="40">2017-03-19 20:18:33</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="40">杨兰贵&nbsp;</td>
+                      <td width="20">15472084</td>
+                      <td width="40">周亚男</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34543838</a>&nbsp;</td>
+                      <td width="40">2017-03-19 19:46:43</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="40">张青松&nbsp;</td>
+                      <td width="20">13068972</td>
+                      <td width="40">张</td>
+                      <td width="60">好评！</td>
+                      <td width="20">1</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34562619</a>&nbsp;</td>
+                      <td width="40">2017-03-19 19:31:25</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="40">黎晓宜&nbsp;</td>
+                      <td width="20">12498428</td>
+                      <td width="40">向丹丹</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34557486</a>&nbsp;</td>
+                      <td width="40">2017-03-19 18:28:59</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="40">黎晓宜&nbsp;</td>
+                      <td width="20">13477057</td>
+                      <td width="40">王超</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34546720</a>&nbsp;</td>
+                      <td width="40">2017-03-19 17:32:56</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="40">徐林&nbsp;</td>
+                      <td width="20">15720977</td>
+                      <td width="40">颜妍</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34400011</a>&nbsp;</td>
+                      <td width="40">2017-03-19 16:56:08</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="40">杨兰贵&nbsp;</td>
+                      <td width="20">12635443</td>
+                      <td width="40">周周</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34534884</a>&nbsp;</td>
+                      <td width="40">2017-03-19 16:25:40</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="40">徐林&nbsp;</td>
+                      <td width="20">13919972</td>
+                      <td width="40">何明华</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34535223</a>&nbsp;</td>
+                      <td width="40">2017-03-19 16:23:32</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="40">杨兰贵&nbsp;</td>
+                      <td width="20">14439386</td>
+                      <td width="40">向</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34528166</a>&nbsp;</td>
+                      <td width="40">2017-03-19 14:23:50</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="40">徐林&nbsp;</td>
+                      <td width="20">13311983</td>
+                      <td width="40">洪凯</td>
+                      <td width="60">好评！相当迅速</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34523502</a>&nbsp;</td>
+                      <td width="40">2017-03-19 13:41:14</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="40">杨兰贵&nbsp;</td>
+                      <td width="20">13281996</td>
+                      <td width="40">宋女士</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34519778</a>&nbsp;</td>
+                      <td width="40">2017-03-19 13:24:02</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="40">张青松&nbsp;</td>
+                      <td width="20">15091359</td>
+                      <td width="40">董丹</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34505981</a>&nbsp;</td>
+                      <td width="40">2017-03-19 12:33:09</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="40">张其叁&nbsp;</td>
+                      <td width="20">15091359</td>
+                      <td width="40">董丹</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34505535</a>&nbsp;</td>
+                      <td width="40">2017-03-19 12:32:43</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="40">张青松&nbsp;</td>
+                      <td width="20">15889002</td>
+                      <td width="40">王青松</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34491757</a>&nbsp;</td>
+                      <td width="40">2017-03-19 12:20:23</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="odd">
+                      <td width="40">张青松&nbsp;</td>
+                      <td width="20">15889002</td>
+                      <td width="40">王青松</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34494696</a>&nbsp;</td>
+                      <td width="40">2017-03-19 12:20:07</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                    <tr class="even">
+                      <td width="40">张其叁&nbsp;</td>
+                      <td width="20">15471250</td>
+                      <td width="40">袁先生</td>
+                      <td width="60">好评！</td>
+                      <td width="20">5</td>
+                      <td width="20">
+                        <a title="查看外卖订单" style="cursor:pointer;" class="label label-sm label-success" href="#">34503559</a>&nbsp;</td>
+                      <td width="40">2017-03-19 12:11:53</td>
+                      <td width="20">外卖&nbsp;</td></tr>
+                  </tbody>
+                </table>
+                <div class="summary">第 1-30 条, 共 2859 条.</div>
+                <div class="pager">
+                  <ul class="pagination" id="yw1">
+                    <li class="hidden hidden">
+                      <a href="#">&lt;&lt; 首页</a></li>
+                    <li class="prev hidden">
+                      <a href="#">
+                        <i class="ace-icon fa fa-angle-double-left"></i>
+                      </a>
+                    </li>
+                    <li class="page active">
+                      <a href="#">1</a></li>
+                    <li class="page">
+                      <a href="#">2</a></li>
+                    <li class="page">
+                      <a href="#">3</a></li>
+                    <li class="page">
+                      <a href="#">4</a></li>
+                    <li class="page">
+                      <a href="#">5</a></li>
+                    <li class="page">
+                      <a href="#">6</a></li>
+                    <li class="page">
+                      <a href="#">7</a></li>
+                    <li class="page">
+                      <a href="#">8</a></li>
+                    <li class="page">
+                      <a href="#">9</a></li>
+                    <li class="page">
+                      <a href="#">10</a></li>
+                    <li class="next">
+                      <a href="#">
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                      </a>
+                    </li>
+                    <li class="hidden">
+                      <a href="#">末页 &gt;&gt;</a></li>
+                  </ul>
+                </div>
+                <div class="keys" style="display:none" title="/courier/comment">
+                  <span>1026840</span>
+                  <span>1026592</span>
+                  <span>1025539</span>
+                  <span>1025538</span>
+                  <span>1025471</span>
+                  <span>1025144</span>
+                  <span>1024911</span>
+                  <span>1024893</span>
+                  <span>1024769</span>
+                  <span>1024624</span>
+                  <span>1024621</span>
+                  <span>1024619</span>
+                  <span>1024548</span>
+                  <span>1024520</span>
+                  <span>1024319</span>
+                  <span>1024013</span>
+                  <span>1023861</span>
+                  <span>1023318</span>
+                  <span>1022860</span>
+                  <span>1022578</span>
+                  <span>1022388</span>
+                  <span>1022375</span>
+                  <span>1021564</span>
+                  <span>1021247</span>
+                  <span>1021065</span>
+                  <span>1020360</span>
+                  <span>1020353</span>
+                  <span>1020199</span>
+                  <span>1020194</span>
+                  <span>1020102</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>function select_courier() {
+          var id = $(".courier_id").val();
+          var score = $(".courier_score").val();
+          window.location.href = "/courier/comment?courier_id=" + id + "&score=" + score;
+        }</script>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

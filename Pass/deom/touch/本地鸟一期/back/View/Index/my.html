@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>个人中心</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/iconfont.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style>
+	.banner img{
+	   width: 100%;
+	}
+	ul{
+		padding: 0;
+		margin:0;
+		list-style: none;
+	}
+	.nav,.nav1{
+		height: 90px;
+	    width: 100%;
+	    padding: 0 3.125%;
+	    background: #fff;
+	    padding-top: 15px;
+	    margin-bottom: 5px;
+	}
+	.nav ul,.nav1 ul{
+	    width: 100%;
+	}
+	.nav ul li{
+	    width: 25%;
+	    height: 69px;
+	    float: left;
+	}
+	.nav1 ul li{
+		width: 33.33%;
+		height: 69px;
+	    float: left;
+	}
+	.nav ul li a,.nav1 ul li a{
+	    display: block;
+	    width: 100%;
+	    height: 100%;
+	    text-align: center;
+
+	}
+	.nav ul li a img,.nav1 ul li a img{
+	    display: block;
+	    width: 40px;
+	    height: 40px;
+	    margin: 0 auto;
+	}
+	.nav ul li a p,.nav1 ul li a p{
+	    font-size: 12px;
+	    color: #808080;
+	    margin-top: 6px;
+	    margin-bottom: 0;
+	}
+	.title{
+		font-size: 15px;
+	    color: #000;
+	    padding-left: 15px;
+	    line-height: 32px;
+	    background: #fff;
+	    border-bottom: 1px solid #e6e6e6;
+	    margin:0;
+	    padding-top: 5px;
+	}
+	/*轮播*/
+	.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	/*底部颜色*/
+	.mui-bar-tab .mui-tab-item.mui-active {
+	    color: #f9512d;
+	}
+	/*列表*/
+	.uname{
+		font-size: 16px;
+		color: #333;
+		font-weight: bold;
+	}
+	.imgbox{
+		overflow: hidden;
+		position: relative;
+		right: -1.5px;
+	}
+	.imgbox li{
+		overflow: hidden;
+		float: left;
+		width: 33%;
+		list-style: none;
+		border:2px solid #fff;
+	}
+	.imgbox li img{
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	/*九宫格*/
+	#grid{
+		background: #fff;
+		overflow: hidden;
+	}
+	#grid li{
+		width: 33.33%;
+		float: left;
+	    padding: 11px 15px;
+	    vertical-align: top;
+	    border-right: 1px solid #eee;
+	    border-bottom: 1px solid #eee;
+	    text-align: center;
+	}
+	#grid li img{
+		width: 50px;
+		height: 50px;
+	}
+	#grid li span{
+		display: block;
+		font-size: 15px;
+	    line-height: 15px;
+	    display: block;
+	    width: 100%;
+	    height: 15px;
+	    margin-top: 8px;
+	    text-overflow: ellipsis;
+	    color: #333;
+	    overflow: hidden;
+	}
+	/*弹出层*/
+	.mui-popover-arrow{
+	    display: none;
+	}
+	.mui-popover{
+	    position: fixed;
+	    width: 80%;
+	    border-radius: 10px;
+	    position: absolute;
+		left: 50%;
+		top: 50%;
+	    margin: 0 auto;
+	    z-index: 9999;
+	    background-color: #fff;
+	    -webkit-transform: translateX(-50%) translateY(-50%);
+	    -moz-transform: translateX(-50%) translateY(-50%);
+	    -ms-transform: translateX(-50%) translateY(-50%);
+	    transform: translateX(-50%) translateY(-50%);
+	    overflow: hidden;
+	}
+	.mui-popover h4{
+		background-color: #ff7400;
+		color: #fff;
+		text-align: center;
+		padding:10px 0;
+		margin:0;
+		font-weight: normal;
+		text-indent: 5%;
+	}
+	.mui-popover h4 span{
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 25px;
+		line-height: 20px;
+		float: right;
+		margin-right: 10%;
+		position: relative;
+		/*border-radius: 50%;
+		border:1px solid #fff;
+		width: 18px;
+		height: 18px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 18px;
+		line-height: 18px;
+		text-align: center;
+		margin-left: 10px;
+		position: relative;
+		top:1px;*/
+	}
+	.mui-popover ul{
+		padding:0;
+		margin:0;
+	}
+	.mui-popover ul li{
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		border-bottom: 1px solid #e6e6e6;
+	}
+	.mui-popover ul li a{
+		color:#000;
+		display:block;
+	}
+	/*个人中心*/
+	.user_info{
+		padding: 20px 10px 10px;
+		height: 200px;
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+	}
+	.user_info::before {
+	    content: '';
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    /*-webkit-filter: blur(2px);
+	    filter: blur(2px);*/
+	    z-index: 1;
+	    /*background-image: url('{$res_user.user_head}');*/
+	    background-image: url('__PUBLIC__/Home/img/time.jpg');
+	    background-position: center top;
+	    background-size: cover;
+	    /*background-attachment: fixed;*/
+	}
+	.user_info .avatar{
+		width: 75px;
+		height: 75px;
+		border-radius: 50% 50%;
+		overflow: hidden;
+		display: block;
+		margin:10px auto;
+		margin-bottom: 15px;
+		position: relative;
+		z-index: 50;
+	}
+	.user_info .avatar img{
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	.user_info p,.user_info h5,.user_info h6{
+		position: relative;
+		z-index: 50;
+		color: #fff;
+		text-align: center;
+	}
+	.user_info .bg{
+		position: absolute;
+		z-index: 51;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+	}
+	.user_info .bg img{
+		display: block;
+	}
+	/*重写*/
+	.mui-table-view:before {
+	    position: absolute;
+	    right: 0;
+	    left: 0;
+	    height: 0px;
+	    content: '';
+	    -webkit-transform: scaleY(.5);
+	    transform: scaleY(.5);
+	    background-color: #c8c7cc;
+	    top: -1px;
+	}
+ 
+
+	/**/
+	#yj{
+		padding-left: 25px;
+		background: url(__PUBLIC__/Home/img/P4.png) no-repeat 15px center;
+		background-size: 16px 16px;
+	}
+	#lx{
+		padding-left: 25px;
+		background: url(__PUBLIC__/Home/img/P5.png) no-repeat 15px center;
+		background-size: 16px 16px;
+	}
+	/*消息通知*/
+	.list{
+		background: #fff;
+		font-size: 16px;
+	}
+	.list li{
+		border-bottom: 1px solid #e6e6e6;
+	}
+	.list li a{
+		display: -webkit-box;
+	    display: -webkit-flex;
+	    display: -ms-flexbox;
+	    display: flex;
+	    -webkit-box-align: center;
+	    -webkit-align-items: center;
+	    -ms-flex-align: center;
+	    align-items: center;
+	    padding: 10px;
+	    position: relative;
+	}
+	.list h3{
+	    overflow: hidden;
+	    padding: 0 10px;
+	    color: #111;
+	    font-size: 16px;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	    -webkit-box-flex: 1;
+	    -webkit-flex: 1;
+	    -ms-flex: 1;
+	    flex: 1;
+	    margin:0;
+	    font-weight: normal;
+	}
+	.list span{
+		position: absolute;
+		left: 35px;
+		top:3px;
+	}
+	/**/
+	.list1{
+	    background: #fff;
+	}
+	.item{
+		border-bottom: 1px solid #e6e6e6;
+	    height: 56px;
+	    position: relative;
+	    font-size: 14px;
+	    background: #fff;
+	}
+	.item img{
+		display: block;
+	}
+	.check_box {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    height: 100%;
+	    width: 36px;
+	    display: none;
+	}
+	.check{
+		height: 36px;
+	    padding: 10px 10px;
+	    display: block;
+	    background-image: url(__PUBLIC__/Home/img/fang.png);
+	    background-repeat: no-repeat;
+	    background-size: 16px 16px;
+	    background-clip: content-box;
+	    background-origin: content-box;
+	    margin-top: 12px;
+	}
+	.check[checked]{
+		background-image: url(__PUBLIC__/Home/img/fang1.png);
+	}
+	.item .content img{
+		float: left;
+		margin-right: 10px;
+	}
+	.item .content p{
+		margin:0;
+	}
+	.cancel{
+		display: none;
+	}
+	.allcheck{
+		padding: 6px;display: inline-block;margin:5px;padding-left: 25px;
+		background: url(__PUBLIC__/Home/img/fang.png) no-repeat left 6px;
+		background-size: 18px 18px;
+	}
+	.have{
+			background: url(__PUBLIC__/Home/img/fang1.png) no-repeat left 5px;
+	}
+	.nohave{
+			background: url(__PUBLIC__/Home/img/fang.png) no-repeat left 5px;
+	}
+	#pop4{
+		color: #000;
+		border-radius: 3px;
+		padding: 0 20px;
+		font-size: 14px;
+	}
+	#pop4 li{
+		line-height: 49px;
+		height: 50px;
+	}
+	#pop4 li span{
+		padding-left: 15px;
+		color: #666;
+	}
+	.nav ul .lispecial{
+		border-left: 1px solid #d9d9d9;
+		height: 45px;
+		margin-top: 8px;
+	}
+	.mui-ellipsis-5{
+		display: -webkit-box;
+		overflow: hidden;
+		white-space: normal!important;
+		text-overflow: ellipsis;
+		word-wrap: break-word;
+		-webkit-line-clamp:5;
+		-webkit-box-orient:vertical;
+	}
+	.listimg{
+		width: 100%;
+		/*height: 92px;*/
+		display: block;
+	}
+	.listimg li{
+		width: 33.3%;
+		float: left;
+	}
+	.listimg li img{
+		width: 98%;
+		height: auto;
+	}
+	.listopation{
+		margin-top: 8px;
+		margin-bottom: 8px;
+		position: relative;
+	}
+	.listopation li{
+		position: absolute;
+		width: 33.3%;
+		float: left;
+	}
+	/*.pinjia{
+		background: #fff url(__PUBLIC__/Home/img/pinjia.png) no-repeat center left;
+		background-size: 15px 15px;
+	}*/
+	.mui-card{
+		box-shadow: none;
+	}
+	.backTop {	
+		border-radius: 50%;    
+	    position: fixed;
+	    right: 10px;
+	    bottom: 55px;
+	    width: 45px;
+	    height: 45px;
+	    z-index: 9999;
+	    text-align: center;
+	    font-size: 18px;	   
+	    padding-top: 8px;	    
+	    background:#fff url(__PUBLIC__/Home/img/toTopyellow.png) center center no-repeat;
+	    background-size: 45px 45px;
+	    /* display: none; */
+	}
+	.pinjia img{
+		width: 18px;height: 18px;padding-right: 3px;padding-top: 3px;vertical-align: middle;margin-top: -4px;
+	}
+
+
+	
+	</style>
+</head>
+
+<body>
+   	 <include file="Public/share" title='包含文件'/>
+	 <nav class="mui-bar mui-bar-tab">
+		<a class="mui-tab-item a" href="__MODULE__/Index/index" id="ones">
+			<span class="mui-icon iconfont icon-shouye-shouye"></span>
+			<span class="mui-tab-label">主页</span>
+		</a>
+		<!-- <a class="mui-tab-item a " href="__MODULE__/Index/bird">
+			<span class="mui-icon iconfont icon-yqfzhinanzhenshi"></span>
+			<span class="mui-tab-label">鸟窝</span>
+		</a> -->
+		<a class="mui-tab-item a" href="__MODULE__/Index/announce" >
+			<span class="mui-icon iconfont icon-fabu"></span>
+			<span class="mui-tab-label">发布</span>
+		</a>
+		<a class="mui-tab-item a" href="__MODULE__/Index/msg">
+			<span class="mui-icon iconfont icon-xiaoxi">
+				<!-- <span class="mui-badge mui-badge-danger"  id="xtgg">9</span> -->
+				<span class="mui-badge mui-badge-danger" id="zongtop" style="display:none;"></span>
+			</span>
+			<span class="mui-tab-label">消息</span>
+		</a>
+		<a class="mui-tab-item a mui-active"  href="__MODULE__/Index/my" id="intro">
+			<span class="mui-icon iconfont icon-geren-copy" ></span>
+			<span class="mui-tab-label">我的</span>
+		</a>
+	</nav>
+
+
+	<div class="mui-content">
+		<!--5-->
+		<div id="tabbar-with-mwode" class="mui-control-content mui-active" >
+			<div class="user_info">
+				<a class="avatar a" href="__MODULE__/Index/profile" ><img src="{$res_user.user_head}" alt=""></a>
+				<h5 style="margin-bottom: 10px;">{$res_user.user_name}</h5>
+				<h6>资料完成度{$finish_percent}%</h6>
+				<div class="bg">
+					<img src="__PUBLIC__/Home/img/bg.png" alt="" style="width: 100%;">
+				</div>
+			</div>
+			<nav class="nav1" style="margin-bottom: 8px;position: relative;z-index: 888;">
+				<ul>
+					<li>
+						<a href="__MODULE__/My/myRelease" class="a">
+							<img src="__PUBLIC__/Home/img/p1.png">
+							<p>我的发布</p>
+						</a>
+					</li>
+					<li>
+						<a href="__MODULE__/My/yjShop" class="a">
+							<img src="__PUBLIC__/Home/img/p2.png">
+							<p>意见商城</p>
+						</a>
+					</li>
+					<li>
+						<a href="__MODULE__/My/myCollection" class="a">
+							<img src="__PUBLIC__/Home/img/p3.png">
+							<p>我的收藏</p>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<!--  -->
+			<ul class="mui-table-view" style="font-size: 15px;margin-bottom: 8px;">
+				<li class="mui-table-view-cell" id="yj">
+					<a href="__MODULE__/My/myAdviseForm2" class="mui-navigate-right a">
+						用户反馈
+					</a>
+				</li>
+				<li class="mui-table-view-cell" id="lx">
+					<a class="mui-navigate-right a" href="#">
+						联系我们
+					</a>
+				</li>
+			</ul>
+
+ 
+		  <div class="swiper-container" style="margin-top: 20px;margin-bottom: 20px;">
+				<div class="swiper-wrapper">
+				  <volist name="status_a" id="vo">
+					<div class="swiper-slide">
+						<a id="up" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}" onclick="look(this)">
+	 						<img src="__PUBLIC__/../{$vo['advertisement_img']}">
+						</a>
+					</div>
+				  </volist> 
+				</div>
+			<div class="swiper-pagination"></div>
+		</div>
+
+ 
+    <div id="pop4" class="mui-popover">
+		<ul>
+ 
+			<volist name="contact_array" id="vo">
+				<li><a href="tel:{$vo.contact_phone}" class="a"><img src="__PUBLIC__/Home/img/telphone{$key}.png" alt="" style="width: 28px;vertical-align: middle;float: left;margin:10px 0;">{$vo.contact_name}<span>{$vo.contact_phone}</span></a></li>
+			</volist>
+			<!--
+			<li><a href="tel:13854531230" class="a"><img src="__PUBLIC__/Home/img/telphone2.png" alt="" style="width: 28px;vertical-align: middle;float: left;margin:10px 0;">联系客服<span>13854531230</span></a></li>
+			<li><a href="tel:13854531230" class="a"><img src="__PUBLIC__/Home/img/telphone.png" alt="" style="width: 28px;vertical-align: middle;float: left;margin:10px 0;">商务合作<span>13854531230</span></a></li>
+			-->
+		</ul>
+    </div>
+    </div>
+
+ 
+	<!-- /*****************************************/ -->
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+    <script src="__PUBLIC__/Home/js/time.js"></script>
+
+	<script> 	
+ 
+ 
+    
+    function look(obj){
+ 
+
+  	// $("[id=up]").each(function(){ 
+		// $(this).click(function(){
+     		var id = $(obj).attr('str');
+     		var type = $(obj).attr('stb');
+     		var url = $(obj).attr('url');
+				// alert(id)
+		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+ 	     		if (type == 0) {
+	     			 location.href="http://"+url;
+	     		}else if(type == 1){
+	     			 location.href= 'tel:' + url;
+	      		}else{
+	      			location.href=url;
+	      		}
+			});
+    	// })
+    // })
+ 
+	}
+ 
+ function time(){
+
+    //统计没有访问
+    $.post('{:U("Home/Index/time")}', {}, function(data) {
+      var strs= new Array(); //定义一数组 
+		strs=data.split("&"); //字符分割 
+		var zongtop = 0;
+		for (i=0;i<strs.length ;i++ ) { 
+           var name = strs[i].split("=");
+            $("#"+name).show();
+            $('#'+name[0]).text(name[1])
+		    zongtop += parseInt(name[1]);
+		} 
+		 
+		$.post('{:U("Home/Index/lookall")}',{}, function(data) {
+			strall=data.split(",,"); //字符分割 
+ 			$(".list1").append(strall[1])
+  			if (zongtop) {
+			 zongtops = zongtop+parseInt(strall[0]);
+  			}else{
+			 zongtops = parseInt(strall[0]);
+   			}
+			if (zongtops != 0) {
+ 	 		 $('#zongtop').show();
+			 $('#zongtop').text(zongtops);
+			} 
+
+			// look();
+		});
+   });
+ }
+
+ 
+ setTimeout(time(),1000);
+
+ 
+		mui('body').on('tap','.a',function(){document.location.href=this.href;});
+		
+		var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+		
+
+		function li(){
+		var liH=$('.imgbox li').width();
+		//alert(liH);
+		$('.imgbox li').height(0.8*liH);
+		}
+
+		li();
+ 
+		// 轮播图
+		//获得slider插件对象
+		var gallery = mui('#slider');
+			gallery.slider({
+			interval:4000//自动轮播周期，若为0则不自动播放，默认为0；
+		});
+
+
+		//联系方式
+		var pop4 = document.getElementById("pop4");
+	    var mask4 = mui.createMask(function(){
+	        pop4.classList.remove('mui-active');
+	    });
+	    //显示
+	    mui('#lx')[0].addEventListener('tap',function(){
+	        mask4.show();//显示遮罩
+	        pop4.classList.add('mui-active');
+	    })
+
+	       
+   
+
+		 function jsall(){
+			  var icount = 3;
+			  var timeall = setInterval(shijiang, 1000);
+			  function shijiang(){
+			      	icount-- 
+			     	if (icount == 0) {
+			     	  $("#shijiang").val(0);
+			     	   clearTimeout(timeall);
+			        }else{
+			     	  $("#shijiang").val(1);
+				        }
+			  }
+		}
+ 		
+		var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+		$("#scrollToTop").on("touchend", function(e) {
+			e.preventDefault();	
+		    mui.scrollTo(0,100);
+		});
+ 	</script>
+
+    
+</body>
+</html>

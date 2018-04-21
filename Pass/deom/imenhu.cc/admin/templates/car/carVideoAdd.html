@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var videoSize = {#$videoSize#}, videoType = "{#$videoType#}",
+  adminPath = "{#$adminPath#}", modelType = 'car',
+  typeListArr = {#$typeListArr#}, typeid = {#$typeid#};
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="cid" id="cid" value="{#$cid#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label>车型：</label></dt>
+    <dd style="position:static;">
+      <div id="carBtn">
+        <a href="javascript:;" class="btn" id="cBrand" data-type="Brand" data-id="{#$brandid#}">{#$brandName#}<span class="caret"></span></a>
+        <a href="javascript:;" class="btn" id="cCar" data-type="Car" data-id="{#$cid#}">{#$cname#}<span class="caret"></span></a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="typeid">视频分类：</label></dt>
+    <dd>
+      <span id="typeList">
+        <select name="typeid" id="typeid" class="input-large"></select>
+      </span>
+      <span class="input-tips"><s></s>请选择视频分类</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="title">视频标题：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="title" id="title" data-regex=".{2,60}" maxlength="60" value="{#$title#}" />
+      <span class="input-tips"><s></s>请输入视频标题，2-60个汉字</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>缩略图：</dt>
+    <dd>
+      <input name="litpic_" type="hidden" id="litpic_" value="{#$litpic#}" />
+      <div class="spic hide">
+        <div class="sholder"></div>
+        <a href="javascript:;" class="reupload">重新上传</a>
+      </div>
+      <iframe src ="/include/upfile.inc.php?mod=car&type=thumb&obj=litpic_&filetype=image" style="width:100%; height:25px;" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" ></iframe>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>视频类型：</label></dt>
+    <dd class="radio">
+      <input name="litpic" type="hidden" id="litpic" value="{#$video#}" />
+      {#html_radios name="category" values=$categoryList checked=$category output=$categoryName separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  {#if $category == 0#}
+  <dl class="clearfix" id="type0">
+  {#else#}
+  <dl class="clearfix hide" id="type0">
+  {#/if#}
+    <dt>上传视频：</dt>
+    <dd>
+      {#if $category == 0 && $video != ""#}
+      <div id="license" class="uploadinp uploading" style="margin:0;"><span id="uploadBt"></span></div>
+      <div id="licenseFiles" style="display:inline-block;"><a href="/include/videoPreview.php?f=" data-id="{#$video#}">预览视频</a></div>
+      <a id="reupload" class="reupload" href="javascript:;" style="display:inline-block;">重新上传</a>
+      {#else#}
+      <div id="license" class="uploadinp" style="margin:0;"><span id="uploadBt"></span></div>
+      <div id="licenseFiles"><a href="/include/videoPreview.php?f=" data-id="">预览视频</a></div>
+      <a id="reupload" class="reupload" href="javascript:;">重新上传</a>
+      {#/if#}
+      <div id="licenseProgress" class="progressBar">
+        <i id="licenseProgressBar" class="progress"></i>
+        <span id="licensePercent">0%</span>
+        <a id="cancelUploadBt" href="javascript:;">取消</a>
+      </div>
+      <span class="help-inline">为了兼容手机端也能播放，请上传mp4格式视频！</span>
+    </dd>
+  </dl>
+  {#if $category == 1#}
+  <dl class="clearfix" id="type1">
+  {#else#}
+  <dl class="clearfix hide" id="type1">
+  {#/if#}
+    <dt><label for="videoUrl">视频地址：</label></dt>
+    <dd><input class="input-xxlarge" type="text" name="videoUrl" id="videoUrl" value="{#if $category == 1#}{#$video#}{#/if#}" placeholder="为了兼容手机端也能播放，暂时只支持优酷、腾讯的视频" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="click">播放次数：</label></dt>
+    <dd>
+      <input class="input-mini" type="number" name="click" min="0" id="click" value="{#$click#}" data-regex="[1-9]\d*" />
+      <span class="input-tips"><s></s>请填写播放次数，以后在此数值上累加，数字类型！</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="note">视频说明：</label></dt>
+    <dd>
+      <textarea name="note" id="note" class="input-xxlarge" rows="5">{#$note#}</textarea>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="state">显示状态：</label></dt>
+    <dd class="radio">
+      {#html_radios name="state" values=$stateList checked=$state output=$stateName separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><button class="btn btn-large btn-success" type="submit" name="button" id="btnSubmit">确认提交</button></dd>
+  </dl>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

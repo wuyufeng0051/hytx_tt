@@ -1,0 +1,68 @@
+<!--#include file="_head.shtml"-->
+
+
+<div class="rBox">
+  <div class="local">
+    <a href="#">首页</a>&gt;
+    <span>托管服务</span>&gt;
+    <a href="#">商标托管</a></div>
+  <div class="box1">
+    <div class="title">
+      <h3>检索</h3></div>
+    <div class="search">
+      <form action="" data-ajax="" data-ajax-method="" data-ajax-mode="" data-ajax-update="" id="" method="post">
+        <label for="#">搜索商标：</label>
+        <input class="text" id="TrademarkName" name="TrademarkName" placeholder="商标名称" type="text" value="" />
+        <input type="submit" class="submit" value="" /></form>
+    </div>
+  </div>
+  <div class="box1">
+    <div class="title_t">
+      <h2>商标列表</h2>
+      <a class="pull-right" href="Trademark_Create.shtml">添加</a></div>
+    <div class="listBox">
+      <div id="List">
+        <style>.imgBox { width: 80px; text-align: center; margin: 10px; display: inline-block; } .imgBox img { max-width: 80px; max-height: 80px; }</style>
+        <form action="" data-ajax="" data-ajax-mode="" data-ajax-update="" id="" method="post">
+          <table class="listTable">
+            <tr>
+              <th width="120px">注册号</th>
+              <th>名称</th>
+              <th>类别</th>
+              <th>商标图片</th>
+              <th>商标地域</th>
+              <th>专用期权期限</th>
+              <th>操作</th></tr>
+            <tr class="">
+              <td>
+                <a href="#">zxczxc</a></td>
+              <td>
+                <a href="#">zcxzc</a></td>
+              <td>zczxc</td>
+              <td>
+                <a class="imgBox" href="#">
+                  <img src="upfile/ht_ico2_05.png" /></a>
+              </td>
+              <td width="80px">asdads</td>
+              <td width="150px">开始 2017-06-13
+                <br />结束 2017-06-30</td>
+              <td class="operation">
+                <a title="编辑" href="#">编辑</a>
+                <a data-ajax="true" data-ajax-method="post" data-ajax-mode="replace" data-ajax-update="#List" href="#" title="删除">删除</a></td>
+            </tr>
+          </table>
+          <div class="page_b">
+            <div class="pull-left">当前为第 1 页,共 1 页 1 条记录</div>
+            <div class="pull-right">
+              <!--MvcPager v2.0 for ASP.NET MVC 4.0+ © 2009-2013 Webdiyer (http://www.webdiyer.com)--></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--#include file="_foot.shtml"-->

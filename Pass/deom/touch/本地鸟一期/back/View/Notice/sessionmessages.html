@@ -1,0 +1,16 @@
+<volist name="n_res" id="vo">
+	<section>
+		<div class="inner">
+		     <?php if($vo['new'] == 0){ ?>
+			   <span class="new">NEW</span>
+		     <?php } ?>
+			<a href="__MODULE__/Notice/messageDetails?notice_id={$vo.notice_id}" style="color: #333;">
+				<h4 class="mui-ellipsis-2">{$vo.notice_title}</h4>
+				<p>{$vo.notice_date}</p>
+				<img src="{$vo.img}" alt="" width="100%">
+				<div class="mui-ellipsis" style="margin-top: 10px;padding-right: 16px;background:url(__PUBLIC__/Home/img/right.png) right center no-repeat;
+				background-size: 20px 20px;">查看全文</div>
+			</a>
+		</div>
+	</section>
+</volist>

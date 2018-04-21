@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$title#}</title>
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v=8">
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+</head>
+<body>
+  <!-- 头部 -->
+  <div class="header">
+  	<div class="header-l"><a href="javascript:history.go(-1)"></a></div>
+  	<div class="header-address">
+  		<span><a href="{#getUrlPath service='waimai' template='local'#}" class="fn-clear"><em>定位中..</em></a></span>
+  	</div>
+  	<div class="header-search">
+  		<a href="{#getUrlPath service='waimai' template='search'#}" class="dropnav"></a>
+  	</div>
+  </div>
+	<!-- 头部 end -->
+  {#if $banner#}
+  <div class="wrapper">
+    <div class="swiper-container swiper-container1">
+        <div class="swiper-wrapper">
+          {#foreach from=$banner item=b#}
+          <div class="slideshow-item">
+            <a href="{#$b.link#}"><img src="{#$b.pic#}" alt="{#$b.title#}"></a>
+          </div>
+          {#/foreach#}
+      </div>
+      <div class="pagination"></div>
+    </div>
+  </div>
+  {#/if#}
+
+  {#if $tubiao#}
+  <div class="swiper-container swiper-container2">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide swiper-slide-active" style="width: 414px;">
+				<ul class="nav fn-clear">
+          {#foreach from=$tubiao item=t#}
+					<li>
+						<a href="{#$t.link#}">
+							<span class="icon-circle"><img src="{#$t.pic#}"></span><span class="icon-txt">{#$t.title#}</span>
+						</a>
+					</li>
+          {#/foreach#}
+				</ul>
+			</div>
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+  {#/if#}
+
+  <!-- 为你优选 s -->
+  <div class="youxuan">
+    <div class="yx-tit"><p><span>为你优选</span></p></div>
+    <ul class="fn-clear">
+      <li>
+        <a href="#">
+          <img src="{#$templets_skin#}upfile/14828215634976.png" alt="">
+          <p class="store-tit">甜丫丫西点</p>
+          <span class="store-status">点评高分店铺</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="{#$templets_skin#}upfile/14828195088436.jpeg" alt="">
+          <p class="store-tit">坦克美式创意寿司屋</p>
+          <span class="store-status">口味相仿喜欢</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="{#$templets_skin#}upfile/14828188949912.jpeg" alt="">
+          <p class="store-tit">品俏俏西餐厅</p>
+          <span class="store-status">口味相仿爱吃</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="{#$templets_skin#}upfile/14828164172768.jpeg" alt="">
+          <p class="store-tit">乐速面疙瘩</p>
+          <span class="store-status">口味相仿喜欢</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="{#$templets_skin#}upfile/1482814723668.jpeg" alt="">
+          <p class="store-tit">爵士沙拉吧</p>
+          <span class="store-status">口味相仿爱吃</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="{#$templets_skin#}upfile/14828036017378.jpg" alt="">
+          <p class="store-tit">N多寿司</p>
+          <span class="store-status">口味相仿喜欢</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- 为你优选 e -->
+
+  <div class="choose-box">
+    <div class="choose-tab">
+      <ul>
+        <li class="tab-typeid"><a href="javascript:;"><i><span>全部分类</span></i></a></li>
+        <li class="tab-orderby"><a href="javascript:;"><i><span>综合排序</span></i></a></li>
+        <li class="tab-yingye"><a href="javascript:;"><i><span>筛选</span></i></a></li>
+      </ul>
+    </div>
+    <div class="choose-local">
+      <div class="choose-slide choose-li" id="choose-classify">
+        <ul data-type="typeid">
+          <li class="active" data-id=""><a href="javascript:;">全部商家</a></li>
+  				{#foreach from=$typeArr item=type#}
+          <li data-id="{#$type.id#}"><a href="javascript:;"><b></b>{#$type.title#}<i></i></a></li>
+  				{#/foreach#}
+        </ul>
+      </div>
+      <div class="choose-slide choose-li" id="choose-sort">
+        <ul data-type='orderby'>
+  				<li data-id="" class="active"><a href="javascript:;">默认排序</a></li>
+  				<li data-id="1"><a href="javascript:;">距离最近</a></li>
+  				<li data-id="2"><a href="javascript:;">销量最高</a></li>
+  				<li data-id="3"><a href="javascript:;">起送价最低</a></li>
+  				<li data-id="4"><a href="javascript:;">评论最多</a></li>
+  			</ul>
+      </div>
+      <div class="choose-slide choose-li" id="choose-screen">
+        <ul data-type='yingye'>
+  				<li data-id="" class="active"><a href="javascript:;">不限状态</a></li>
+  				<li data-id="1"><a href="javascript:;">营业中</a></li>
+  			</ul>
+      </div>
+    </div>
+  </div>
+
+
+	<!-- 商家列表 -->
+  <div class="near-box"></div>
+	<!-- 商家列表 -->
+
+	<!-- 底部 -->
+	<div class="fixFooter">
+	  <ul>
+	    <li class="ficon1 active"><a href=""><i></i>首页</a></li>
+	    <li class="ficon3"><a href=""><i></i>订单</a></li>
+	    <li class="ficon5"><a href=""><i></i>我的</a></li>
+	  </ul>
+	</div>
+	<!-- 底部 end  -->
+
+  <div class="mask"></div>
+
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$description#}',
+        "title": '{#$title#}',
+        "imgUrl": '{#$share_pic#}',
+        "link": '{#$cfg_basehost#}',
+    };
+    var typeid = '', orderby = '', yingye = '', lng = '', lat = '', page = 1, pageSize = 10;
+</script>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak={#$site_map_key#}&services=&t={#$smarty.now#}"></script>
+<script src="{#$templets_skin#}js/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/iscroll.js"></script>
+<script src="{#$templets_skin#}js/index.js?v=10"></script>
+</body>
+</html>

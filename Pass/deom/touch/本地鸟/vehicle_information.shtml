@@ -1,0 +1,68 @@
+<!--#include file="_head.shtml"-->
+
+	<link rel="stylesheet" href="css/vehicle_information.css">
+
+	<!-- 顶部固定搜索框 s-->
+		<div class="search_box">
+			<div class="seach_pic"><img src="images/banner_1.png" alt=""></div>
+			<div class="sea_input fn-clear"><input type="text" placeholder="请输入您要查找的信息"><a href="search_succeed.shtml"><button><i></i>查找</button></a></div>
+		</div>
+	<!-- 顶部固定搜索框 e-->
+
+	<div class="merchant">
+		<div class="merchant_list" style="margin-top: 0.6rem;">
+			<div class="mer_detail fn-clear"><a href="vehicle_detail.shtml">
+				<div class="mer_pic"><img src="upfile/asdfasdad.png" alt=""><i class="top"></i></div>
+				<h1>解放牌大货车常年找货</h1>
+				<p>浏览：<em>8888</em> 次</p>
+				<span>大货车</span>
+				</a>
+				<div class="tel"></div>
+			</div>
+			<div class="mer_detail fn-clear"><a href="vehicle_detail.shtml">
+				<div class="mer_pic"><img src="upfile/asdfasdad.png" alt=""></div>
+				<h1>解放牌大货车常年找货</h1>
+				<p>浏览：<em>8888</em> 次</p>
+				<span>大货车</span>
+				</a>
+				<div class="tel"></div>
+			</div>
+		</div>
+		<div class="page fn-clear">
+			<a href="#" class="before">上一页</a>
+			<div class="page_box">
+				<span><em>1</em>/9<i></i></span>
+				<select name="" id="" onchange="selectChange()">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+				</select>
+			</div>
+			<a href="#" class="after">下一页</a>
+		</div>
+		<div class="page_numb">共9页</div>
+	</div>
+	<div class="phone">
+		<h1>提示</h1>
+		<h2>联系我时，请说是在<em>泸西本地鸟</em>上看到的，谢谢！</h2>
+		<ul>
+			<li><a href="tel:13888888888">13888888888<i></i></a></li>
+			<li><a href="tel:0873-6666666">0873-6666666<i></i></a></li>
+		</ul>
+		<div class="close"><i></i></div>
+	</div>
+	<div class="disk"></div>
+	<script>
+	// 分页选择
+	function selectChange(){
+		var x = $('.page_box span em'),
+			num = $('.page_box option:selected').val();
+		x.text(num);
+	}
+	</script>
+	<script type="text/javascript" src="js/vehicle_information.js"></script>
+</body>
+</html>

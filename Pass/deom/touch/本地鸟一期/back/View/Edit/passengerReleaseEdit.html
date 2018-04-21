@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>编辑信息</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.picker.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/DateSelector.css">
+	<style>
+	.title{
+		color: #000;
+	    padding-left: 15px;
+	    line-height: 32px;
+	    font-weight: normal;
+	    margin: 0;
+	    font-size: 16px;
+	    background: #f2f2f2;
+	}
+
+	.list .item{
+		border-bottom: 1px solid #ddd;
+	    padding: 10px;
+	    background: #fff;
+	    position: relative;
+	    padding-left: 95px;
+	}
+	.list .item label span{
+		color: #ff7400;
+		margin-right: 5px;
+		position: relative;
+		top: 4px;
+	}
+	.list .item label{
+		font-size: 16px;
+		position: absolute;
+		left: 10px;
+	}
+	.list .item input{
+		border:none;
+		padding: 0;
+		width: auto;
+		margin:0;
+		line-height: 21px;
+		height: 21px;
+		width: 100%;
+		text-align: left;
+	}
+	.list .item select{
+	    width: 100%;
+	    padding: 0;
+	    margin: 0;
+	    font-size: 16px;
+	    background: url(__PUBLIC__/Home/img/arrow.png) no-repeat right center;
+	    background-size: 16px 16px;
+	    height: 21px;
+	}
+	.yes,.no{
+		display: inline-block;
+		padding-left: 20px;
+		line-height: 21px;
+		vertical-align:middle;
+		background:url(__PUBLIC__/Home/img/icon1.png) no-repeat left 2px;
+		background-size: 16px 16px;
+	}
+	.yes.selected,.no.selected{
+		background:url(__PUBLIC__/Home/img/icon.png) no-repeat left 2px;
+		background-size: 16px 16px;
+	}
+	.weui_uploader_input_wrp {
+	    float: left;
+	    position: relative;
+	    margin-right: 9px;
+	    margin-bottom: 9px;
+	    width: 77px;
+	    height: 77px;
+	    border: 1px solid #d9d9d9;
+	}
+	.weui_uploader_input_wrp:before {
+	    width: 2px;
+	    height: 39.5px;
+	}
+	.weui_uploader_input_wrp:after {
+	    width: 39.5px;
+	    height: 2px;
+	}
+	.weui_uploader_input_wrp:before, .weui_uploader_input_wrp:after {
+	    content: " ";
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    -webkit-transform: translate(-50%, -50%);
+	    transform: translate(-50%, -50%);
+	    background-color: #D9D9D9;
+	}
+	.weui-uploader__file {
+	    float: left;
+	    margin-right: 9px;
+	    margin-bottom: 9px;
+	    width: 79px;
+	    height: 79px;
+	    background: no-repeat center center;
+	    background-size: cover;
+	}
+	.weui-uploader__files {
+	    list-style: none;
+	    padding: 0;
+	    margin:0;
+	}
+	.ty{
+		padding-left: 20px;
+		background: url(__PUBLIC__/Home/img/tongyi1.png) no-repeat left center;
+		background-size: 16px 16px;
+	}
+	.ty.select{
+		background: url(__PUBLIC__/Home/img/tongyi.png) no-repeat left center;
+		background-size: 16px 16px;
+	}
+	/*#upload{overflow: hidden;}
+	#upload img{width: 100%;} 
+	#upload>div{float: left;margin-right: 10px;margin-bottom: 10px;}
+	.pro_img{width:79px;height: 79px;overflow:hidden;float:left;position: relative;}
+	.pro_img img{ position: absolute;left: 50%;top:50%;   transform: translate(-50%,-50%);width: 100%}
+	.pro_img input{position: absolute;width: 100%;height: 100%;margin:0;opacity:0;z-index: 100;}*/
+	.addpro_img{ width:100%; overflow:hidden;}
+	.addpro_img .pic_newbox{width: 100px;height: 100px;position: relative;float: left;margin-right: 10px;margin-bottom: 10px;}
+	.addpro_img .pic_newbox div{width: 100px;height: 20px;background-color: #303030;position: absolute;bottom: 0;left: 0;z-index: 100;opacity: 0.6}
+	.addpro_img .pic_newbox .delete_icon{position: absolute;left: 38px;bottom: 0px;z-index: 110;width: 20px;}
+	.addpro_img .addproimg input{position: absolute;width: 100px;height: 100px;margin:0;opacity:0;}
+	.addpro_img .addproimg img{width: 100px;height: 100px;}
+	.addpro_img .addproimg{width: 100px;height: 100px;position: relative;float: left;}
+
+
+
+	.itema label{
+		font-size: 16px;
+		position: absolute;
+		left: 10px;
+		top:17px;
+	}
+
+	.divimg {
+		position:relative;
+	}
+	.delimg {
+		display:none;
+		position:absolute;
+		bottom:0;
+		right:0;
+		background-color:red;
+		border-radius:50%;
+		height:17px;
+		width:17px;
+		color:white;
+		text-align:center;
+		cursor:pointer;
+	}
+	.divimg:hover .delimg {
+		z-index:8889999;
+		display:inline;
+	}
+	</style>
+</head>
+<body>
+
+<include file="Public/share" title='包含文件'/>
+
+<form action="{:U('Home/Edit/saveRelease')}" enctype="multipart/form-data" method="post" id="form">
+	<div class="mui-content">
+		<h3 class="title">行程信息</h3>
+		<div class="list">
+			<div class="item" style="padding-left: 40px;background:#fff url(__PUBLIC__/Home/img/qidian.png) no-repeat 15px 12px;background-size: 16px 16px;">
+				<input type="text" placeholder="输入起点" name="freeride_start" id="freeride_start" value="{$freeride_res.freeride_start}">
+			</div>
+			<div class="item" style="padding-left: 40px;background:#fff url(__PUBLIC__/Home/img/zhongdian.png) no-repeat 15px 12px;background-size: 16px 16px;">
+				<input type="text" placeholder="输入终点" name="freeride_end" id="freeride_end" value="{$freeride_res.freeride_end}">
+			</div>
+			<div class="item">
+				<label for=""><span>*</span>出发时间</label>
+				<input id="btn" data-options="{}" class="btn mui-btn mui-btn-block" readonly="" placeholder="选择出发时间" name="freeride_setout" value="{$freeride_res.freeride_setout}" onfocus=this.blur()>
+				<!-- <div id="result" class="ui-alert">选择预约时间: 2016-10-14 16:23</div> -->
+			</div>
+			<!-- <div class="item">
+				<label for=""><span>*</span>车型</label>
+				<input type="text" placeholder="请填写车型" name="freeride_models" id="freeride_models">
+			</div> -->
+			<div class="item">
+				<label for=""><span>*</span>乘车人数</label>
+				<input type="text" placeholder="请填写数字" name="freeride_seat" id="freeride_seat" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" value="{$freeride_res.freeride_seat}">
+			</div>
+		<!-- 	<div class="item options" id="ff">
+				<label for=""><span>*</span>是否付费</label>
+				<?php if($freeride_res['freeride_is_free'] == 1){ ?>
+				 <span class="yes selected">是</span>
+				<span class="no">否</span>
+				<?php }else{ ?>
+			    <span class="yes">是</span>
+				<span class="no selected">否</span>
+				<?php } ?>
+				<input type="hidden" name="freeride_is_free" id="freeride_is_free">
+			</div> -->
+			<div class="item">
+				<label for="">&nbsp;&nbsp;备注</label>
+				<textarea type="text" rows="3" style="margin-bottom: 0;padding: 3px;border:none;" name="freeride_remarks" id="freeride_remarks" placeholder="请填写备注信息">{$freeride_res.freeride_remarks}</textarea>
+				<!-- <input type="text" placeholder="可填写个人要求、付费情况等" name="freeride_remarks" id="freeride_remarks"> -->
+			</div>
+		</div>
+		<h3 class="title">乘客信息</h3>
+		<div style="overflow: hidden;background: #fff;border-bottom: 1px solid #ddd;padding: 10px 15px;">
+			<div style="overflow: hidden;">
+				<div id='upload'>
+				<div class="addpro_img">
+						<?php foreach ($freeride_res['imgs'] as $k => $v) {?>
+						<!-- <div class="divimg divimgalready">
+							<a class='pro_img' id='a<?php echo (intval($k) + 1);?>' >
+							<input type='file' disabled id='file<?php echo (intval($k) + 1);?>'  accept='image/*' runat='server' capture='camera' multiple='multiple' name='pic[]' onchange='t1(<?php echo (intval($k) + 1);?>)' value='<?php echo $v["imgs_path"];?>' />
+							<img src='<?php echo substr($v["imgs_path"], 1)?>' id='img<?php echo (intval($k) + 1);?>'>
+							</a>
+							<img  id='hidden<?php echo (intval($k) + 1);?>' style='display:none;' src='<?php echo substr($v["imgs_path"], 1)?>'>
+							<p class="delimg" id="<?php echo $v['imgs_id']?>">X</p>
+						</div> -->
+						<div><div class="pic_newbox">
+						 	  <img  style="width:100px;height:100px;" src='<?php echo substr($v["imgs_path"], 1)?>'>
+						 	  <div class="delpic" sty="<?php echo $v["imgs_id"]; ?>"></div>
+						  	  <img class="delete_icon delpic" style="width:20px;" src="/Public/Home/img/delete_pic.png" sty="<?php echo $v["imgs_id"]; ?>">
+					  	  </div></div>
+						<?php } ?>
+
+						  <?php if($iosorandroid == "IOS"){ ?>
+			 				<div class="addproimg">
+								 <input id="file1"  type="file" accept="image/*" runat="server" multiple="" style="opacity: 0" >
+								 <img src="__PUBLIC__/Home/img/upload.jpg" id="img1" >
+							 </div>
+			 			<?php }else{ ?>
+			 				<div class="addproimg">
+								 <input id="file1"  type="file" accept="image/*" runat="server" multiple="" style="opacity: 0" capture="camera">
+								 <img src="__PUBLIC__/Home/img/upload.jpg" id="img1" >
+							 </div>
+			 			<?php } ?>
+
+ 			
+						<!-- <div class="divimg divimgup">
+						  	<a class='pro_img' id='a<?php echo count($freeride_res['imgs']) + 1;?>' >
+							<input type='file' id='file<?php echo count($freeride_res['imgs']) + 1;?>'  accept='image/*' runat="server" capture="camera" multiple='multiple' name='pic[]' onchange='t1(<?php echo count($freeride_res['imgs']) + 1;?>)'/>
+							<img src='__PUBLIC__/Home/img/upload.jpg' id='img<?php echo count($freeride_res['imgs']) + 1;?>'></a>
+							<img  id='hidden<?php echo count($freeride_res['imgs']) + 1;?>' style='display:none;'>
+						</div> -->
+					<!-- <div class="addproimg">
+					 <input id="file1" type="file" accept="image/*" runat="server" capture="camera" name="post_img" multiple="" style="opacity: 0">
+					 <img src="/Public/Home/img/upload.jpg" id="img1">
+				   </div> -->
+ 				<div>
+ 			 </div>
+		</div>
+		 <p style="margin-bottom: 0;">添加你的靓照,让更多车主主动联系你,最多添加5张</p>
+		</div>
+           </div>
+		</div>
+		<div class="list">
+			<div class="item">
+				<label for=""><span>*</span>姓名</label>
+				<input type="text" placeholder="如何称呼您" name="freeride_name" id="freeride_name" value="{$freeride_res.freeride_name}">
+			</div>
+			<div class="item options" id="sex">
+				<label for=""><span>*</span>性别</label>
+				<?php if($freeride_res['freeride_sex'] == 0){ ?>
+				<span class="yes">男</span>
+				<span class="no selected">女</span>
+				<?php }else{ ?>
+				<span class="yes selected">男</span>
+				<span class="no">女</span>
+				<?php } ?>
+				<input type="hidden" name="freeride_sex" id="freeride_sex">
+			</div>
+			<div class="item">
+				<label for=""><span>*</span>出生年份</label>
+				<input type="text" placeholder="请选择出生年份" name="freeride_birthday" id="date-selector-inputs" readonly="" value="{$freeride_res.freeride_birthday}" onfocus=this.blur()>
+			</div>
+			<div class="item">
+				<label for=""><span>*</span>手机号码</label>
+				<input type="tel" placeholder="请输入手机号码"  id="freeride_phone"   value="{$freeride_res.freeride_phone}" disabled="disabled">
+				<input type="hidden"  name="freeride_phone"  id="freeride_phones">
+				<span style="position: absolute;right: 10px;top:9px;font-size: 12px;border:1px solid #ff7400;padding:0 4px;border-radius: 3px;" class="phonechange">更换手机号码</span>
+				<span style="position: absolute;right: 10px;top:9px;font-size: 12px;border:1px solid #ff7400;padding:0 4px;border-radius: 3px;display:none" class="emailsell">发送验证码</span>
+				<span style="position: absolute;right: 10px;top:9px;font-size: 12px;border:1px solid #919191;padding:0 4px;border-radius: 3px;display:none;color:#919191" class="hidden_button"></span>
+			</div>
+			<div class="item" style="display:none" id="yzm">
+				<label for=""><span>*</span>验证码</label>
+				<input type="text" placeholder="请填写验证码" id="code">
+			</div>
+			
+		</div>
+		<div style="padding: 30px 15px;text-align: center;background: #f2f2f2;">
+			<span style="color: #666;font-size: 13px;">
+				<span class="ty">我已阅读并同意</span>
+				<a style="color: #ff7300;" href="__MODULE__/Index/userAgreement">《本地鸟用户协议》</a>
+			</span>
+			<a class="mui-btn mui-btn-danger" style="background-color: #ff7400;line-height: 28px;border:none;width: 100%;margin-top: 10px;" id="button">确定修改</a>
+		</div>
+	</div>
+	<input type="hidden" name="freeride_type" value="1">
+	<input type="hidden" id="isimgs" name="isimgs">
+	 <input type="hidden" id="delstr" name="delstr">
+ 	 <input type="hidden" id="imgsum" name="imgsum">
+	 <input type="hidden" id="imgadd" name="imgadd">
+	 <input type="hidden" id="picnew" name="picall">
+	  <input type="hidden" id="existencedel">
+	 <input type="hidden" name="freeride_id" value="{$freeride_res.freeride_id}">
+</form>
+
+<div id="targetContainers"></div>
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/mui.picker.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script src="__PUBLIC__/Home/js/DateSelector.js"></script>
+	<script src="__PUBLIC__/Home/js/LocalResizeIMG.js"></script>
+	<script src="__PUBLIC__/Home/js/mobileBUGFix.mini.js"></script>
+	<script src="__PUBLIC__/Home/js/countdown.js"></script>
+	<script>
+
+		//判斷圖片刪除和增加
+		var delstr = '';//被刪的imgs表id，以','連接
+		var imgsum =<?php echo count($freeride_res['imgs']);?>;//圖片總數
+		var imgadd = 0;//新增上傳圖片數
+
+		$('.delimg').click(function() {
+		if (confirm("刪除后无法恢复，请确认！")) {
+			delstr += (delstr == '' ? '' : ',') + $(this).attr('id');
+			imgsum--;
+			$(this).parent().remove();
+		}
+		var aid = $('.divimgalready a').last().attr('id');
+     	if(aid != 'a5')
+     		$('.divimgup').css('display','block');
+		});
+		var aid = $('.divimgalready a').last().attr('id');
+     	if(aid == 'a5')
+     		$('.divimgup').css('display','none');
+
+		// (function($) {
+		// 	$.init();
+		// 	var result = $('#result')[0];
+		// 	var btns = $('#btn');
+			
+		// 		btn.addEventListener('tap', function() {
+		// 			var optionsJson = this.getAttribute('data-options') || '{}';
+		// 			var options = JSON.parse(optionsJson);
+					
+		// 			/*
+		// 			 * 首次显示时实例化组件
+		// 			 * 示例为了简洁，将 options 放在了按钮的 dom 上
+		// 			 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+		// 			 */
+		// 			var oDate=new Date();
+		// 			options.beginYear=oDate.getFullYear();
+		// 			options.beginMonth=oDate.getMonth()+1;
+		// 			options.beginDay=oDate.getDate();
+		// 			options.beginHours=oDate.getHours();
+		// 			options.beginMinutes=oDate.getMinutes();
+		// 			var picker = new $.DtPicker(options);
+		// 			picker.show(function(rs) {
+		// 				/*
+		// 				 * rs.value 拼合后的 value
+		// 				 * rs.text 拼合后的 text
+		// 				 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+		// 				 * rs.m 月，用法同年
+		// 				 * rs.d 日，用法同年
+		// 				 * rs.h 时，用法同年
+		// 				 * rs.i 分（minutes 的第二个字母），用法同年
+		// 				 */
+		// 				btn.value = rs.text;
+		// 				/* 
+		// 				 * 返回 false 可以阻止选择框的关闭
+		// 				 * return false;
+		// 				 */
+		// 				/*
+		// 				 * 释放组件资源，释放后将将不能再操作组件
+		// 				 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+		// 				 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+		// 				 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+		// 				 */
+		// 			});
+		// 	});
+		// })(mui);
+		(function($) {
+			$.init();
+			var result = $('#result')[0];
+			var btns = $('#btn');
+			var u = navigator.userAgent;
+			var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+			var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+			if(isiOS == true){
+				btn.addEventListener('tap', function() {
+					var optionsJson = this.getAttribute('data-options') || '{}';
+					var options = JSON.parse(optionsJson);
+					var oDate=new Date();
+					options.beginYear=oDate.getFullYear();
+					options.beginMonth=oDate.getMonth()+1;
+					options.beginDay=oDate.getDate();
+					options.beginHours=oDate.getHours();
+					options.beginMinutes=oDate.getMinutes();
+					var picker = new mui.DtPicker(options);
+					picker.show(function(rs) {
+					
+						btn.value = rs.text;
+					});			
+					
+			});
+		}
+
+		if(isAndroid == true){
+			btn.addEventListener('click', function() {
+					var optionsJson = this.getAttribute('data-options') || '{}';
+					var options = JSON.parse(optionsJson);
+ 					/*
+					 * 首次显示时实例化组件
+					 * 示例为了简洁，将 options 放在了按钮的 dom 上
+					 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+					 */
+					var oDate=new Date();
+					options.beginYear=oDate.getFullYear();
+					options.beginMonth=oDate.getMonth()+1;
+					options.beginDay=oDate.getDate();
+					options.beginHours=oDate.getHours();
+					options.beginMinutes=oDate.getMinutes();
+					var picker = new mui.DtPicker(options);
+					picker.show(function(rs) {
+						/*
+						 * rs.value 拼合后的 value
+						 * rs.text 拼合后的 text
+						 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+						 * rs.m 月，用法同年
+						 * rs.d 日，用法同年
+						 * rs.h 时，用法同年
+						 * rs.i 分（minutes 的第二个字母），用法同年
+						 */
+						btn.value = rs.text;
+						/* 
+						 * 返回 false 可以阻止选择框的关闭
+						 * return false;
+						 */
+						/*
+						 * 释放组件资源，释放后将将不能再操作组件
+						 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+						 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+						 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+						 */
+						});			
+					
+			});
+		}
+				
+		})(mui);
+
+
+	 $(".phonechange").click(function(){
+		$(".emailsell").show();
+		$("#yzm").show();
+		$(".phonechange").hide();
+		$("#freeride_phone").removeAttr("disabled");
+	})
+
+
+	 	$(function(){
+		$('.emailsell').click(function(event) {
+			var  myreg = /^1[34578]\d{9}$/;
+			var freeride_phone=$('#freeride_phone').val();
+			if(myreg.test(freeride_phone)){
+				$.post("{:U('Home/Index/code')}",{phone:freeride_phone},function(msg){
+					//alert(msg)
+				})
+
+				var counricount = 179;
+				var countdowntime = setInterval(countdownauto, 1000);
+
+				  function countdownauto() {
+						counricount--;
+						// alert(counricount)
+	 				      if(counricount == 0) {
+					         $.post("http://www.bdniao.com/index.php/Home/Demo/countdown",{},function(dats){
+						     })
+	 				      	clearTimeout(time);
+	 				   }
+					}
+
+				 //时间倒叙
+					$(".hidden_button").text(60+'s后发送');
+					$(this).hide();
+					$(".hidden_button").show();
+					var icount = 59;
+					var time = setInterval(auto, 1000);
+
+					function auto() {
+						var s = icount+'s后再发送';
+						$(".hidden_button").text(s);
+						icount--;
+						if(icount == 0) {
+							clearTimeout(time);
+							$(".emailsell").show();
+							$(".hidden_button").hide();
+						}
+					}
+			}else{
+				layer.msg('请先输入正确的手机号码')
+			}
+		});
+	})
+
+
+
+	$('#button').click(function(){
+		 var bianhu = 0;
+        var css =  $("#yzm").css('display');
+       var freeride_start = $('#freeride_start').val(); //开始地址
+       var freeride_end = $('#freeride_end').val(); //结束地址
+       var btn = $('#btn').val(); //出发时间
+       var freeride_models = $('#freeride_models').val();//车型
+       var freeride_name =$('#freeride_name').val(); //剩余姓名
+       var freeride_seat =$('#freeride_seat').val(); //剩余座位
+       var free = $('#ff').find('.selected').text(); //是否付费
+       var freeride_phone = $('#freeride_phone').val();
+       var  myreg = /^1[34578]\d{9}$/;
+       var file1 = $('#file1').val();
+       var select = $('.select').text(); //判断是否
+       var freeride_birthday = $('#date-selector-inputs').val();
+ 
+       
+        var freeride_setout =  $("input[name='freeride_setout']").val();
+        var myDate = new Date();
+		var Sec = myDate.getSeconds(); //获取当前秒数(0-59) 
+        if (freeride_setout.length > 17) {
+         	var freeride_date = freeride_setout;
+         }else{
+            var freeride_date = freeride_setout+":"+Sec;
+         }
+           var end = new Date(freeride_date.replace("-", "/").replace("-", "/"));
+ 
+ 
+       var code = $('#code').val();
+       if (!file1) {
+       	 $('#isimgs').val(0);
+       }else{
+      	 $('#isimgs').val(1);
+       }
+
+        // if (parseInt(now) > parseInt(time)) {
+	    // 	alert(111)
+	    // }else{
+	    // 	alert(222)
+	    // }
+        
+
+     $.post('{:U("Home/Index/lookcode")}', {}, function(data) {
+	   	 var newcode = data;
+        // if(free == "是"){
+        // 	$('#freeride_is_free').val(1)  
+        // }else{
+        // 	$('#freeride_is_free').val(0)
+        // }
+        var sex = $('#sex').find('.selected').text(); //判读是男是女
+         if (sex == "男") {
+         	 $('#freeride_sex').val(1);
+         }else{
+         	 $('#freeride_sex').val(0);
+         }
+        var freeride_sex = $('#freeride_sex').val(); //判断是否免费
+        
+        if (!freeride_start) {
+           layer.msg('请先填写起点')
+        }else if(!freeride_end){
+           layer.msg('请先填写终点')
+        }else if (!btn) {
+           layer.msg('请先选择出发时间')
+        }else if(myDate > end){
+           layer.msg('小于现在时刻，请重新选择');
+        // }else if(!freeride_models){
+        //    layer.msg('请先填写车型')
+        }else if(!freeride_seat){
+           layer.msg('请先填写乘车人数')
+        // }else if(!file1){
+        //    layer.msg('请先添加图片')
+        }else if(!freeride_name){
+           layer.msg('请先填写姓名')
+        }else if(!freeride_birthday){
+        	layer.msg('请选择出生年份')
+        }else if(!freeride_phone){
+           layer.msg('请先填写手机号码')
+        }else if(!myreg.test(freeride_phone)){
+           layer.msg('请填写正确的手机号码')
+	     }else if(css == 'block'){       
+		      if(!code){
+	          layer.msg('请先填写验证码')
+		        }else if(code != newcode){
+	      	  layer.msg('验证码不正确')
+	        }else{
+		       bianhu = 1;
+		        }
+	    }else{
+	       bianhu = 1;
+	    }
+         
+       if (bianhu == 1) {
+   
+        if(!select){
+           layer.msg('请先阅读并同意《本地鸟用户协议》')
+       
+        }else{
+        	 $('#delstr').val(delstr);
+			 $('#imgsum').val(imgsum);
+			 $('#imgadd').val(imgadd)
+			 $("#freeride_phones").val(freeride_phone)
+			 // existdel()
+			 submit()
+			  var existencedel = $('#existencedel').val();
+				      $.post('http://www.bdniao.com/index.php/Home/Demo/deletepic', {existencedel:existencedel}, function(data) {
+ 					 	 $('#form').submit();
+				       });    
+ 
+ 
+             // $('#form').submit();
+        }
+      }
+	  })
+   })
+
+	 function submit(){
+	    var have = $('.pic_new')
+	    var all ="";
+    	$.each(have,function(index,item){
+    	var srcnew = $(this).attr('src')
+             all += srcnew+"&"; 
+    	})
+         // alert(all)
+    	$('#picnew').val(all); 
+    }
+
+ 
+		$('.options span').on('tap',function(){
+			$(this).addClass('selected').siblings().removeClass('selected');
+		})
+		var flag=true;
+		$('.ty').on('tap',function(){
+			if(flag){
+				$(this).addClass('select');
+			}else{
+				$(this).removeClass('select');
+			}
+			flag=!flag;
+		})
+
+         /**
+		 * 图片上传
+		 */
+		 		 /****************图片**********************/
+	$(document).ready(function(e) {
+   $('#file1').localResizeIMG({
+      width: 440,
+      quality: 0.8,
+      success: function (result) {  
+          var submitData={
+                base64_string:result.clearBase64, 
+            }; 
+        $.ajax({
+           type: "POST",
+           url: "{:U('Home/Demo/addimg')}",
+           data: submitData,
+           binary:"json",
+           success: function(data){
+           	   // alert(data)
+           	    $(".addproimg").before('<div><div class="pic_newbox"><img class="pic_new" style="width:100px;height:100px;" src="__PUBLIC__/../'+data+'">'
+                  +'<div class="delpic" sty="0"></div>'
+                  +'<img class="delete_icon delpic" src="__PUBLIC__/Home/img/delete_pic.png" style="width:20px;" sty="0">'
+                  +'</div></div>')
+           	    delpiconly()
+           	    numberall()
+             }
+        }); 
+      }
+  });
+  });
+
+//限制图片
+function  numberall(){
+	 var all = 0;
+	 var have = $('.pic_newbox')
+	 $.each(have,function(index,item){
+          all +=1;
+	 })
+	 // alert(all)
+	 if (all > 4) {
+	 	// alert(2)
+	 	 $(".addproimg").hide();
+	 }else{
+	 	 $(".addproimg").show();
+
+	 }
+}
+
+
+//删除图片
+function delpiconly(){
+$(".delpic").click(function(){
+   var imgs_id = $(this).attr('sty');
+   var _this = $(this);
+    // 判断是否已经存在
+	  if (imgs_id == 0) {
+ 	   var ss = $(this).parent().parent().find('.pic_newbox').remove();
+	   numberall()
+     }else{
+          var existencedel = $('#existencedel').val();
+          // alert(existencedel)
+          var existencedelnew = existencedel+"&"+imgs_id;
+          $('#existencedel').val(existencedelnew);
+           var ss = $(this).parent().parent().find('.pic_newbox').remove();
+           numberall()
+     }
+ 	 })
+}
+
+
+// function existdel(){
+//   var existencedel = $('#existencedel').val();
+//   $.post('http://www.bdniao.com/index.php/Home/Demo/deletepic', {existencedel:existencedel}, function(data) {
+//           // alert(data)
+//            if (data == 1) {
+//              _this.parent().parent().find('.pic_newbox').remove();
+//              numberall()
+//            }
+//        });    
+// }
+
+
+numberall()
+delpiconly()
+		
+			/****************图片**********************/
+	// 	name_pic=<?php echo count($freeride_res['imgs']) + 1;?>;
+
+	// 	function t1(o){
+	// 		if(o==1 || name_pic!=1){
+	// 		var file="file"+o;
+	// 		var img="img"+o;
+	// 		var hid="hidden"+o;
+	// 		var aa="a"+o;
+	// 		}else{
+
+	// 		var file="file"+name_pic;
+	// 		var img="img"+name_pic;
+	// 		var hid="hidden"+name_pic;
+	// 		var aa="a"+name_pic;
+	// 		}
+
+
+	// 		var docObj = document.getElementById(file);
+	// 		var imgObjPreview = document.getElementById(img);
+	// 		var hidden=document.getElementById(hid);
+	// 		// alert(hidden);
+	// 		if (docObj.files && docObj.files[0]) {
+	// 			hidden.src=window.URL.createObjectURL(docObj.files[0]); //获取file文件的路径
+	// 			hidden.onload=function(){
+	// 				var width=hidden.width;
+	// 				var height=hidden.height;
+	// 				var a=document.getElementById(aa);
+	// 					if(width>height){
+	// 					imgObjPreview.style.cssText='width:100%';	//重写css样式
+	// 					}else{
+	// 					imgObjPreview.style.cssText='height:100%;width:auto;';					
+	// 					}
+	// 			imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+	// 			imgObjPreview.style.display = 'block';
+	// 			}
+	// 		}else{
+	// 			return false;
+	// 		}
+	// 		if(o==name_pic){
+	// 			var count=$('.pro_img').length;
+	// 			if(count<5){
+	// 			name_pic++;
+	// 			imgsum++;
+	// 			imgadd++;
+	// 		var pic_div="<div><a class='pro_img' id='a"+name_pic+"' ><input type='file' id='file"+name_pic+"'  accept='image/*' runat='server' capture='camera' multiple='multiple' name='pic[]' onchange='t1("+name_pic+")'/><img src='__PUBLIC__/Home/img/upload.jpg' id='img"+name_pic+"'></a><img  id='hidden"+name_pic+"' style='display:none;'></div>";
+	// 		$('#upload').append(pic_div); 
+	// 		var pcWidth=$('#upload').width()
+	// 	    var picImg=pcWidth/3-10;
+	// 	    $(".pro_img").width(picImg);
+	// 		}		
+	// 	}
+	// }
+
+
+
+
+
+
+		new DateSelector({
+	        input : 'date-selector-inputs',//点击触发插件的input框的id
+	        container : 'targetContainers',//插件插入的容器id
+	        type : 0,
+	        //0：不需要tab切换，自定义滑动内容，建议小于三个；
+	        //1：需要tab切换，【年月日】【时分】完全展示，固定死，可设置开始年份和结束年份
+	        param : [1,0,0,0,0],
+	        //设置['year','month','day','hour','minute'],1为需要，0为不需要,需要连续的1
+	        beginTime : [],//如空数组默认设置成1970年1月1日0时0分开始，如需要设置开始时间点，数组的值对应param参数的对应值。
+	        endTime : [],//如空数组默认设置成次年12月31日23时59分结束，如需要设置结束时间点，数组的值对应param参数的对应值。
+	        recentTime : [],//如不需要设置当前时间，被为空数组，如需要设置的开始的时间点，数组的值对应param参数的对应值。
+	        success : function(arr){
+	            console.log(arr);
+	            var res=arr[0];
+	            console.log(res);
+	            $('#date-selector-inputs').val(res)
+	        }//回调
+	    });
+
+
+
+	</script>
+</body>
+</html>

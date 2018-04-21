@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+
+<!--[if !IE]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+    <meta charset="utf-8"/>
+
+    <title>本地鸟后台 | 广告设置</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <meta content="" name="description"/>
+
+    <meta content="" name="author"/>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/base.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL STYLES -->
+
+    <link href="media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/daterangepicker.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/error.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END PAGE LEVEL STYLES -->
+
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+
+    <style type="text/css">
+        .dataTable {
+            border-collapse: collapse;
+            table-layout: fixed
+        }
+
+        .dataTable td {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    </style>
+    <style>
+        html{background: #3d3d3d !important}
+        .choice_box{margin-bottom: 10px;float: left;}
+        .choice_box ul li{float: left;margin-right: 20px;cursor: pointer;position: relative;}
+        .choice_box ul li img{width: 15px;height: 15px;display: inline-block;margin-left: 10px;-webkit-transition: all .3s;
+        transition: all .3s;}
+        .choice_box ul li em{display: block;width: 121px;height: 40px;line-height: 40px;text-align: center;font-size: 14px;background: #3d3d3d;color: #fff;}
+        .choice_box ul li em i{font-style: normal;}
+        .choice_box ul li:hover em{background: #848484;}
+        .choice_box ul li:hover em img{-webkit-transform:rotate(180deg);transform:rotate(180deg);}
+        /*.choice_box ul li:hover .CB_child{display: block;}*/
+        .choice_box ul li .CB_child{position: absolute;left: 0;right: 0;display: none;-webkit-animation: topFadeIn .3s ease-out;-moz-animation: topFadeIn .3s ease-out;animation: topFadeIn .3s ease-out;}
+        .choice_box ul li .CB_child p{width: 121px;text-indent: 20px;font-size: 14px;height: 40px;line-height: 40px;border-top: 1px solid #dedede;background: #3d3d3d;color: #fff;}
+        .choice_box ul li .CB_child p:hover{color: #ff0000;}
+        .red{color: red}
+    </style>
+
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+<!-- BEGIN HEADER -->
+
+{include file="public/header" /}
+
+<!-- END HEADER -->
+<a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a>
+
+<!-- BEGIN CONTAINER -->
+
+<div class="page-container">
+
+    <!-- BEGIN SIDEBAR -->
+
+    {include file="public/sidebar" /}
+
+    <!-- END SIDEBAR -->
+
+    <!-- BEGIN PAGE -->
+
+    <div class="page-content">
+
+        <!-- BEGIN PAGE CONTAINER-->
+
+        <div class="container-fluid">
+
+            <!-- BEGIN PAGE HEADER-->
+
+            <div class="row-fluid">
+
+                <div class="span12">
+
+                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+                    <h3 class="page-title">
+                        广告设置
+                    </h3>
+                    <ul class="breadcrumb">
+                        <li><a href="index">广告设置</a></li>
+                    </ul>
+
+                    <!-- END PAGE TITLE & BREADCRUMB-->
+
+                </div>
+
+            </div>
+
+            <!-- END PAGE HEADER-->
+
+            <!-- BEGIN PAGE CONTENT-->
+
+            <div class="portlet box light-grey">
+
+                <div class="portlet-body">
+                    <div class="clearfix">
+                        <select class="Meduam m-wrap range" >
+                            {volist name='sel' id='qo'}
+                            <option value="{$qo.source}">{$qo.desc}</option>
+                             {/volist}
+                        </select>
+                        <div class="choice_box fn-clear">
+                        <ul>
+                            <li class="index">
+                                <em><i>首页+其他</i><img src="media/image/arrow-down.png" alt=""></em>
+                                <div class="CB_child">
+                                    <p data-id = "1">总首页</p>
+                                    <p data-id = "2">头条详情</p>
+                                    <p data-id = "3">个人中心</p>
+                                    <p data-id = "4">意见商城</p>
+                                </div>
+                            </li>
+                            <li class="job">
+                                <em><i>招聘求职</i><img src="media/image/arrow-down.png" alt=""></em>
+                                <div class="CB_child">
+                                    <p data-id = "5">招聘求职首页</p>
+                                    <p data-id = "6">全职招聘列表</p>
+                                    <p data-id = "7">兼职招聘列表</p>
+                                    <p data-id = "8">求职简历列表</p>
+                                    <p data-id = "9">全职招聘详情</p>
+                                    <p data-id = "10">兼职招聘详情</p>
+                                    <p data-id = "11">求职简历详情</p>
+                                </div>
+                            </li>
+                            <li class="house">
+                                <em><i>房产信息</i><img src="media/image/arrow-down.png" alt=""></em>
+                                <div class="CB_child">
+                                    <p data-id = "12">房产信息首页</p>
+                                    <p data-id = "13">出租列表</p>
+                                    <p data-id = "14">出租住房列表</p>
+                                    <p data-id = "15">出租商铺列表</p>
+                                    <p data-id = "16">出租其它列表</p>
+                                    <p data-id = "17">出租住房详情</p>
+                                    <p data-id = "18">出租商铺详情</p>
+                                    <p data-id = "19">出租其它详情</p>
+                                    <p data-id = "20">出售列表</p>
+                                    <p data-id = "21">出售住房列表</p>
+                                    <p data-id = "22">出售商铺列表</p>
+                                    <p data-id = "23">出售其它列表</p>
+                                    <p data-id = "24">出售住房详情</p>
+                                    <p data-id = "25">出售商铺详情</p>
+                                    <p data-id = "26">出售其它详情</p>
+                                    <p data-id = "27">求购求租列表</p>
+                                    <p data-id = "28">求购求租详情</p>
+                                </div>
+                            </li>
+                            <li class="second">
+                                <em><i>二手市场</i><img src="media/image/arrow-down.png" alt=""></em>
+                                <div class="CB_child">
+                                    <p data-id = "29">二手市场首页</p>
+                                    <p data-id = "30">二手物品列表</p>
+                                    <p data-id = "31">二手车列表</p>
+                                    <p data-id = "32">求购专区列表</p>
+                                    <p data-id = "33">二手物品详情</p>
+                                    <p data-id = "34">二手车详情</p>
+                                    <p data-id = "35">求购专区详情</p>
+                                </div>
+                            </li>
+                            <li class="city">
+                                <em><i>同城货运</i><img src="media/image/arrow-down.png" alt=""></em>
+                                <div class="CB_child">
+                                    <p data-id = "36">同城货运首页</p>
+                                    <p data-id = "37">顺路带货首页</p>
+                                    <p data-id = "38">顺路带货详情</p>
+                                    <p data-id = "39">车辆信息详情</p>
+                                </div>
+                            </li>
+                            <li class="business">
+                                <em><i>商家信息</i><img src="media/image/arrow-down.png" alt=""></em>
+                                <div class="CB_child">
+                                    <p data-id = "40">商家信息首页 </p>
+                                </div>
+                            </li>
+                            <li class="dating">
+                                <em><i>相亲交友</i><img src="media/image/arrow-down.png" alt=""></em>
+                                <div class="CB_child">
+                                    <p data-id = "41">相亲交友首页 </p>
+                                    <p data-id = "42">看帅哥列表 </p>
+                                    <p data-id = "43">看美女列表 </p>
+                                    <p data-id = "44">帅哥详情 </p>
+                                    <p data-id = "45">美女详情 </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                        <div class="btn-group">
+                            <a href="create">
+                                <button class="btn green">
+                                    添加 <i class="icon-plus"></i>
+                                </button>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    {include file="advertise/form" /}
+
+                </div>
+
+            </div>
+
+            <!-- END PAGE CONTENT -->
+
+        </div>
+
+        <!-- END PAGE CONTAINER-->
+
+    </div>
+
+    <!-- END PAGE -->
+
+</div>
+
+<!-- END CONTAINER -->
+
+<!-- BEGIN FOOTER -->
+
+{include file="public/footer" /}
+
+<!-- END FOOTER -->
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+<!-- BEGIN CORE PLUGINS -->
+
+<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+
+<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--[if lt IE 9]>
+
+<script src="media/js/excanvas.min.js"></script>
+
+<script src="media/js/respond.min.js"></script>
+
+<![endif]-->
+
+<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<script src="media/js/app.js" type="text/javascript"></script>
+
+<script src="media/js/index.js" type="text/javascript"></script>
+
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<script>
+
+   jQuery(document).ready(function () {
+
+        App.init(); // initlayout and core plugins
+
+    });
+
+    $(document).ready(function () {
+
+        $(".switch").click(function () {
+            var _this = $(this);
+            var url = _this.attr('href');
+            $.ajax({
+                type: 'GET',
+                url: url,
+                success: function (data) {
+                    if (data.code == 0) {
+                        _this.removeClass('green').addClass('red').html( data.message);
+                    } else {
+                        _this.removeClass('red').addClass('green').html( data.message);
+                    }
+                }
+            });
+            return false;
+        })
+
+        $(".btn-del").click(function () {
+            if (confirm('确定要删除吗?')) {
+                var _this = $(this);
+                var url = _this.attr('href');
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    success: function (data) {
+                        if (data.code == 0) {
+                            _this.parent().parent().remove();
+                        }else {
+                            alert(data.message);
+                        }
+                    }
+                });
+                return false;
+            } else {
+                return false;
+            }
+        })
+
+        // $('.range').change(function(){
+        //     var val=$(this).val();
+        //     $.ajax({
+        //         type:'GET',
+        //         url:'form',
+        //         data:{range:val},
+        //         success:function(){
+        //             if($('#'+val).length<=0){
+        //                 $('.dataTables_wrapper').hide();
+        //             }
+        //             $('#'+val).show();
+        //             $('#'+val).siblings('.dataTables_wrapper').hide();
+        //         }
+        //     })
+        // })
+        $(".choice_box ul li p").click(function(){
+            var x = $(this),data = x.attr('data-id');
+            $('#'+data).show();
+            $('#'+data).siblings('.dataTables_wrapper').hide();
+        })
+        // var val=$('.range').val();
+        // if($('#'+val).length<=0){
+        //     $('.dataTables_wrapper').hide();
+        // }
+        // $('#'+val).show();
+        // $('#'+val).siblings('.dataTables_wrapper').hide();
+
+        $('.choice_box ul li').hover(function(){
+            var x = $(this);
+                x.closest('li').find('.CB_child').show();
+        },function(){
+            var x = $(this);
+                x.closest('li').find('.CB_child').hide();
+        })
+        $('.CB_child p').click(function(){
+            var x = $(this),
+                txt = x.text();
+            $('.index').find('em i').text("首页+其他");
+            $('.job').find('em i').text("招聘求职");
+            $('.house').find('em i').text("房产信息");
+            $('.second').find('em i').text("二手市场");
+            $('.city').find('em i').text("同城货运");
+            $('.business').find('em i').text("商家信息");
+            $('.dating').find('em i').text("相亲交友");
+            x.closest('li').find('em i').text(txt).addClass('red');
+            x.closest('li').siblings().find('em i').removeClass('red');
+            $('.CB_child').hide();
+        })
+    })
+
+</script>
+
+<!-- END JAVASCRIPTS -->
+
+</body>
+
+<!-- END BODY -->
+
+</html>

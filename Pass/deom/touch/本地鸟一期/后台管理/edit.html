@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+
+<!--[if !IE]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+    <meta charset="utf-8"/>
+
+    <title>本地鸟后台 | 管理员列表</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <meta content="" name="description"/>
+
+    <meta content="" name="author"/>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL STYLES -->
+
+    <link href="media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/daterangepicker.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <!-- END PAGE LEVEL STYLES -->
+
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+<!-- BEGIN HEADER -->
+
+{include file="public/header" /}
+
+<!-- END HEADER -->
+
+<a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a>
+
+<!-- BEGIN CONTAINER -->
+
+<div class="page-container">
+
+    <!-- BEGIN SIDEBAR -->
+
+    {include file="public/sidebar" /}
+
+    <!-- END SIDEBAR -->
+
+    <!-- BEGIN PAGE -->
+
+    <div class="page-content">
+
+        <!-- BEGIN PAGE CONTAINER-->
+
+        <div class="container-fluid">
+
+            <!-- BEGIN PAGE HEADER-->
+
+            <div class="row-fluid">
+
+                <div class="span12">
+
+                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+                    <h3 class="page-title">
+                        管理员列表
+                    </h3>
+
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="index">管理员列表</a>
+                            <i class="icon-angle-right"></i>
+                        </li>
+                        <li>{$rend.manager_acc}</li>
+                    </ul>
+
+                    <!-- END PAGE TITLE & BREADCRUMB-->
+
+                </div>
+
+            </div>
+
+            <!-- END PAGE HEADER-->
+
+            <!-- BEGIN PAGE CONTENT-->
+
+            <form class="form-horizontal" action="change" id="form">
+                <div class="control-group">
+                    <label class="control-label">#:</label>
+                    <div class="controls" >
+                        <input type="text" name="manager_id" value="{$rend.manager_id}" class="m-wrap medium" readonly="" id="id">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">用户名:</label>
+                    <div class="controls" >
+                        <input type="text" name="manager_acc" value="{$rend.manager_acc}" class="m-wrap medium" id="acc">
+                        <span class="help-inline" style="color: red;display:none;">*用户名已存在</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">密码:</label>
+                    <div class="controls" >
+                        <input type="text" name="manager_pwd" value="{$rend.manager_pwd}" class="m-wrap medium">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">名称:</label>
+                    <div class="controls" >
+                        <input type="text" name="manager_name" value="{$rend.manager_name}" class="m-wrap medium">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">职位:</label>
+                    <div class="controls" >
+                        <input type="text" name="manager_age" value="{$rend.manager_age}" class="m-wrap medium">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">联系方式:</label>
+                    <div class="controls" >
+                        <input type="text" name="manager_phone" value="{$rend.manager_phone}" class="m-wrap medium">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">联系地址:</label>
+                    <div class="controls">
+                        <textarea class="large m-wrap" name="manager_address" rows="5">{$rend.manager_address}</textarea>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">等级:</label>
+                    <div class="controls">
+                        <select class="small m-wrap" tabindex="1" name="manager_level" id="level">
+                            <option value="0" {if condition="$rend.manager_level=='区域总管理'" }selected{/if}>区域总管理</option>
+                            <option value="1" {if condition="$rend.manager_level=='区域管理'" }selected{/if}>区域管理</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group" id="power">
+                    <label class="control-label">权限:</label>
+                    <div class="controls">
+                        {volist name="menu" id="render" offset="0" length='9'}
+                        <label class="checkbox">
+                            <input name="manager_codes[]" type="checkbox" value='{$render.menu_id}' {if condition="false!==strpos($rend.manager_codes,','.$render.menu_id.',')" }checked="" {/if}>{$render.menu_name}
+                        </label>
+                        {/volist}
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">状态:</label>
+                    <div class="controls">
+                        <select class="small m-wrap" tabindex="1" name="manager_status">
+                            <option value="0" {if condition="$rend.manager_status=='可用'" }selected{/if}>可用</option>
+                            <option value="1" {if condition="$rend.manager_status=='不可用'" }selected{/if}>不可用</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn blue btn-save"><i class="icon-ok"></i> 保存</button>
+                    <button type="button" class="btn btn-qx">取消</button>
+                </div>
+
+            </form>
+
+            <!-- END PAGE CONTENT -->
+
+        </div>
+
+        <!-- END PAGE CONTAINER-->
+
+    </div>
+
+    <!-- END PAGE -->
+
+</div>
+
+<!-- END CONTAINER -->
+
+<!-- BEGIN FOOTER -->
+
+{include file="public/footer" /}
+
+<!-- END FOOTER -->
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+<!-- BEGIN CORE PLUGINS -->
+
+<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+
+<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--[if lt IE 9]>
+
+<script src="media/js/excanvas.min.js"></script>
+
+<script src="media/js/respond.min.js"></script>
+
+<![endif]-->
+
+<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<script src="media/js/app.js" type="text/javascript"></script>
+
+<script src="media/js/index.js" type="text/javascript"></script>
+
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<script>
+
+    jQuery(document).ready(function () {
+
+        App.init(); // initlayout and core plugins
+
+    });
+
+    $(document).ready(function () {
+        $(".btn-save").click(function () {
+            if (confirm('确定保存吗?')) {
+                var url = $('#form').attr('action');
+                var datas = $('#form').serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: datas,
+                    success: function (data) {
+                        if (data.code == 0) {
+                            location.href = history.back(-1);
+                        }else {
+                            alert(data.message);
+                        }
+                    }
+                });
+                return false;
+            }else {
+                return false;
+            }
+        })
+
+        $(".btn-qx").click(function () {
+            location.href = history.back(-1);
+        })
+
+        $('#level').change(function(){
+            var val=$(this).val();
+            if(val==0){
+                $("#power").hide();
+            }else {
+                $("#power").show();
+            }
+        })
+        var val=$('#level').val();
+        if(val==0){
+            $("#power").hide();
+        }else {
+            $("#power").show();
+        }
+
+        $('#acc').blur(function(){
+            var acc=$(this).val();
+            var id=$('#id').val();
+            $.ajax({
+                url:'name',
+                data:{
+                    manager_acc:acc,
+                    manager_id:id
+                },
+                success:function(data){
+                    if(data.code==1){
+                        $('.help-inline').show();
+                    }else {
+                        $('.help-inline').hide();
+                    }
+                }
+            })
+        })
+
+
+    })
+
+</script>
+
+<!-- END JAVASCRIPTS -->
+
+</body>
+
+<!-- END BODY -->
+
+</html>

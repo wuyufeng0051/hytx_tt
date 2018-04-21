@@ -1,0 +1,591 @@
+.root_body .w {
+    width: 1190px;
+    margin: 0 auto;
+}
+ .filter {
+    border: solid 1px #e6e6e6;
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+ .filter dl {
+    border-top: dotted 1px #e6e6e6;
+    background: #f5f5f5;
+    _border-top: solid 1px #e6e6e6;
+}
+ .filter dl.cat {
+    border-top: none;
+}
+
+ .filter dl.cat dt a {
+    color: #666;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+ .filter dl.cat dt a:hover, .filter dl.cat dt a.current {
+    color: #fd9a01!important;
+    text-decoration: none;
+}
+
+ .filter dl.cat dd a {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+    color: #fd9a01;
+    padding: 2px 0px;
+}
+
+ .filter dl.cat dd a strong {
+    color: #555;
+}
+
+ .filter dl.cat dd a:hover {
+    text-decoration: none;
+    color: #fd9a01!important;
+}
+
+ .filter dl.cat dd a:hover strong {
+    color: #fd9a01;
+}
+
+ .filter dl.cat dd a.current {
+    padding-right: 5px;
+    background: #fd9a01;
+    color: #fff!important;
+}
+
+ .filter dl.cat dd a.current strong {
+    color: #fff;
+    padding-left: 5px;
+}
+
+.cart-item a {
+    margin-right: 0!important;
+    padding: 0!important;
+}
+
+ .filter dl.brand dd .shell {
+    position: relative;
+}
+
+ .filter dl.brand dd .shell ul {
+    border-left: solid 1px #e7e7e7;
+}
+
+ .filter dl.brand dd .shell ul li {
+    width: 102px;
+    height: 51px;
+    text-align: center;
+    position: relative;
+    text-overflow: ellipsis;
+    border-bottom: solid 1px #e7e7e7;
+    border-right: solid 1px #e7e7e7;
+    float: left;
+}
+
+ .filter dl.brand dd .shell ul li.li7 {
+    border-top: solid 1px #e7e7e7;
+}
+
+ .filter dl.brand dd .shell ul li.li9 {
+    border-top: solid 1px #e7e7e7;
+}
+
+ .filter dl.brand dd .shell ul li .relative {
+    position: relative;
+    height: 0;
+}
+
+ .filter dl.brand dd .shell ul li .abs {
+    display: none;
+    width: 100px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    padding-top: 14px;
+    padding-bottom: 15px;
+    border: solid 2px #fd9a01;
+    text-decoration: none;
+    color: #fd9a01;
+    background: #fff;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+}
+
+ .filter dl.brand dd .shell ul li .txt {
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+}
+
+ .filter dl.brand dd .shell ul li .a {
+    display: block;
+    height: 51px;
+    text-align: center;
+}
+
+ .filter dl.brand dd .shell ul li .a .txt {
+    margin-top: 15px;
+}
+
+ .filter dl.brand dd .shell ul li.hover .abs {
+    display: block;
+}
+
+ .filter dl.brand dd .shell ul li.hover .abs:hover {
+    color: #fd9a01!important
+}
+
+ .filter dl.brand dd .shell ul li.selected i {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 104px;
+    height: 53px;
+    z-index: 10;
+    background: url(../images/pp-selected.png) no-repeat;
+}
+
+ .filter dl.normal dd .shell {
+    height: 22px;
+    overflow: hidden;
+}
+
+ .filter dl.normal dd .shell.auto {
+    height: auto;
+}
+.none{
+    display: none;
+}
+ .filter dl.normal dd .list a {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 4px 0 3px;
+    margin-right: 18px;
+    margin-bottom: 2px;
+    border: 1px solid #fff;
+    color: #555;
+    height: 18px;
+    line-height: 18px;
+}
+
+ .filter dl.normal dd .list a:hover {
+    color: #fd9a01!important;
+    text-decoration: none;
+}
+
+ .filter dl.normal dd .list i {
+    position: relative;
+    top: -1px;
+    *top: -5px;
+    *left: 4px;
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-left: 6px;
+}
+
+ .filter dl.normal dd .list .selected {
+    border-color: #cf000e;
+    color: #cf000e;
+}
+
+ .filter dl.normal dd .list .selected i {
+    background: url(../images/list-icon.png) -1px -362px no-repeat;
+}
+
+ .filter dl.normal dd .list input, .filter dl.normal dd .list button {
+    vertical-align: top;
+    font-family: Microsoft YaHei;
+}
+
+ .filter dl.normal dd .list input {
+    width: 56px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    *height: 19px;
+    padding: 0;
+    outline: none;
+    border: 1px solid #dbdbdb;
+    color: #666;
+    margin: 0;
+}
+
+ .filter dl.normal dd .list button {
+    border: 1px solid #dbdbdb;
+    height: 22px;
+    *height: 21px;
+    margin-left: 5px;
+    background: #f4f4f4;
+    cursor: pointer;
+    color: #67544E;
+    padding: 1px 6px;
+}
+
+ .fixed-cat {
+    border-bottom: 1px solid #bbb;
+    box-shadow: 0 1px 10px #bbb;
+    width: 100%;
+    background: #fff;
+    position: fixed;
+    z-index: 500;
+    left: 0px;
+    top: 0px;
+    _position: absolute;
+    _bottom: auto;
+    _top: expression(eval(document.documentElement.scrollTop+0));
+    display: none;
+}
+
+ .fixed-cat .filter {
+    height: 36px;
+}
+
+ .fixed-cat .filter .shell {
+    height: 20px;
+    overflow: hidden;
+}
+
+ .handle {
+    border-top: solid 3px #eee;
+    text-align: center;
+}
+
+ .handle a {
+    display: inline-block;
+    height: 14px;
+    line-height: 14px;
+    padding: 7px 27px;
+    border: solid 1px #e8e8e8;
+    border-top: none;
+    background: #eee;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ .handle span, .handle i {
+    display: inline-block;
+    vertical-align: top;
+}
+
+ .handle span {
+    color: #555;
+}
+
+ .handle i {
+    width: 9px;
+    height: 5px;
+    overflow: hidden;
+    margin: 4px 0 0 8px;
+    background: url(../images/icon.gif) 0px -128px no-repeat;
+}
+
+ .handle a.open i {
+    background-position: -10px -128px;
+}
+ .filter dl dt {
+    width: 126px;
+    line-height: 36px;
+    padding-left: 18px;
+    color: #888;
+    float: left;
+}
+
+ .filter dl dd {
+    padding: 8px 13px 8px 26px;
+    background: #fff;
+    float: left;
+    width: 1017px
+}
+
+.root_body  .filter dl dd {
+    width: 1024px
+}
+
+ .filter dl dd table {
+    width: 100%;
+    vertical-align: top;
+}
+
+ .filter dl dd table tr td {
+    vertical-align: top;
+}
+
+ .filter dl dd .more {
+    width: 65px;
+    text-align: right;
+}
+
+ .filter dl dd .more a {
+    display: none;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+ .filter dl dd .more a span, .filter dl dd .more a i {
+    display: inline-block;
+    vertical-align: top;
+}
+
+ .filter dl dd .more a span {
+    color: #555;
+    margin-right: 4px;
+}
+
+ .filter dl dd .more a i {
+    width: 11px;
+    height: 7px;
+    overflow: hidden;
+    background: url(../images/list-icon.png?1) 0 -93px no-repeat;
+    _background: url(../images/list-icon.gif?1) 0 -93px no-repeat;
+    margin-top: 7px;
+}
+
+ .filter dl dd .more a:hover {
+    text-decoration: none;
+}
+
+ .filter dl dd .more a:hover span {
+    color: #fd9a01;
+}
+
+ .filter dl dd .more a:hover i {
+    background-position: 0 -41px;
+}
+
+ .filter dl dd .more a.open i {
+    background-position: 0 -87px;
+}
+
+ .filter dl dd .more a.open:hover i {
+    background-position: 0 -34px;
+}
+
+ .filter dl dd .multiple {
+    width: 80px;
+    text-align: right;
+}
+
+ .filter dl dd .multiple a {
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    border: solid 1px #dbdbdb;
+    padding: 0 10px;
+    text-decoration: none;
+}
+
+ .filter dl dd .multiple a span {
+    font-size: 16px;
+    vertical-align: top;
+}
+
+ .filter .isSure {
+    text-align: center;
+    padding: 10px 0 0;
+}
+
+ .filter .isSure input {
+    border: 1px solid #d8d8d8;
+    margin: 0 7px;
+    padding: 2px 9px;
+    cursor: pointer;
+    background: #fff;
+    color: #333333;
+    border-radius: 3px;
+}
+
+ .filter .isSure .JS_sure {
+    background: #cf000e;
+    color: #fff;
+    border: 1px solid #cf000e;
+}
+
+ .filter .isSure input.disabled {
+    color: #cccccc;
+    border-color: #eeeeee;
+    background: #f7f7f7;
+}
+
+ .filter dl dd .Multiselect {
+    width: 65px;
+    text-align: right;
+}
+
+ .filter dl dd .Multiselect a {
+    border: 1px solid #dbdbdb;
+    padding: 1px 8px;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+ .filter dl.multi {
+    width: 1197px;
+    margin-left: -1px;
+    border: 2px solid #f5d06e;
+    background: #fff9ea;
+}
+
+ .filter dl.multi dd {
+    width: 1014px;
+    background: #fff;
+}
+.ju-box{
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.ju_ll{
+    width: 1220px;
+    margin: 0 auto;
+}
+.ju_nope{
+    width: 268px;
+    height: 300px;
+    border: 1px solid #f5f5f5;
+    padding: 8px;
+    float: left;
+    margin-right: 19px;
+    margin-bottom: 19px;
+}
+.ju_nope a img{
+    width: 266px;
+    height: 177px;
+}
+.ju_nope .price{
+    width: 266px;
+    color: #cc0000;
+    position: relative;
+    margin-top: 10px;
+    display: block;
+}
+.ju_nope .price em{
+    font-size: 12px;
+}
+.ju_nope .price b{
+    font-size: 18px;
+}
+.ju_nope .price s{
+    color: #999999;
+    margin-left: 5px;
+}
+.ju_nope .price .biaoqian{
+    position: absolute;
+    top: 4px;
+    right: 47px;
+}
+.ju_nope .price p{
+    width: 32px;
+    height: 17px;
+    line-height: 17px;
+    text-align: center;
+    color: #fff;
+    float: left;
+    margin-right: 5px;
+}
+.ju_nope .price p.pink{
+    background-color: #fc6670;
+}
+.ju_nope .price p.orange{
+    background-color: orange;
+}
+.ju_nope .nope_txt{
+     height: 38px;
+    line-height: 20px;
+    color: #333;
+    display: block;
+    overflow: hidden;
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
+.ju_nope .nope_txt p{
+    color: #ff7700;
+}
+.ju_nope .nope_shou{
+    height: 31px;
+    border-bottom: 0;
+    margin-top: 2px;
+    color: #999;
+}
+.ju_nope .nope_shou s{
+    text-decoration: none;
+    margin: 0 10px;
+}
+.ju_nope .nope_shou em{
+        color: #3388bb;
+        margin-left: 5px;
+}
+.ju_nope .nope_shou  i{
+    font-style: normal;
+    margin-left: 5px;
+    font-weight: bold;
+}
+.page{
+    width: 542px;
+    margin: 20px auto;
+}
+.page ul{
+    float: left;
+}
+.page ul li{
+    float: left;
+}
+.page ul li a{
+    display: block;
+    width: 28px;
+    height: 33px;
+    border:1px solid #eeeeee;
+    text-align: center;
+    line-height: 33px;
+    margin-right: 5px;
+}
+.page ul li.none{
+    border: none;
+    float: left;
+    width: 28px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+    margin-right: 5px;
+}
+.next{
+        float: left;
+    width: 66px;
+    height: 33px;
+    border:1px solid #eeeeee;
+    text-align: center;
+    line-height: 33px;
+    margin:0 10px;
+}
+.to_page{
+    float: left;
+    width: 150px;
+    height: 33px;
+    line-height: 33px;
+}
+.to_page input{
+    width: 28px;
+    height: 33px;
+    border:1px solid #eeeeee;
+    text-align: center;
+    line-height: 33px;
+    margin: 0 10px;
+}
+.to_page button{
+    width: 50px;
+    height: 33px;
+    border:1px solid #eeeeee;
+    line-height: 33px;
+    background: #fff;
+}
+.page_bc a{
+    background: #ff9900;
+}
+.page_bc a{
+    color: #fff!important;
+}

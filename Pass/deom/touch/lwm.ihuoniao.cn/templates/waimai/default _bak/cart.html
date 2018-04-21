@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_shopname#}</title>
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/car.css">
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+	var shopid = {#$detail_id#};  //店铺ID
+	var first_discount = {#if $detail_is_first_discount#}{#$detail_first_discount#}{#else#}0{#/if#};  //首单减免
+	var discount_value = {#if $detail_is_discount#}{#$detail_discount_value#}{#else#}10{#/if#};  //打折优惠
+	var basicprice = {#$detail_basicprice#};  //起送价
+	var delivery_fee = {#$detail_delivery_fee#};  //配送费
+	var delivery_fee_type = {#$detail_delivery_fee_type#};  //配送费类型  0：达到起送价免配送费  1：始终收取外送费  2：满额免
+	var delivery_fee_value = {#$detail_delivery_fee_value#};  //满多少免配送费
+	var open_range_delivery_fee = {#$detail_open_range_delivery_fee#};  //开启不同距离收取不同的配送费
+	var range_delivery_fee_value = {#$detail_range_delivery_fee_value_json#};  //不同距离本着费规则
+	var juli = {#$juli#};  //用户距商家距离，单位：千米
+	var shop_delivery_radius = {#$detail_delivery_radius#}; //商家最大配送距离
+	var delivery_fee_mode = {#$detail_delivery_fee_mode#}; //起送价、配送费模式 1固定 2区域 3距离
+	var promotions = {#if $detail_open_promotion#}{#$detail_promotions_json#}{#else#}[]{#/if#};  //满减规则
+	var addservice = {#if $detail_open_addservice#}{#$detail_addservice_json#}{#else#}[]{#/if#};  //增值服务
+	var foodTotalPrice = 0, dabaoTotalPrice = 0 , manjianPrice = 0, addservicePrice = 0, first_discount = {#if $firstOrder && $detail_is_first_discount#}{#$detail_first_discount#}{#else#}0{#/if#};   //商品总价，打包总价，满减金额，增值服务，首单减免
+	var offline_limit = {#$detail_offline_limit#};	//是否开启货到付款金额限制
+	var pay_offline_limit = {#$detail_pay_offline_limit#};	//货到付款金额限制
+	var myMoney = {#$userinfo['money']#};			//用户余额
+	var depositUrl = '{#getUrlPath service='member' template='deposit'#}';	//充值页面
+	var buyUrl = '{#getUrlPath service='waimai' template='buy' id=$detail_id#}';	// 商品页面
+
+	var cart_address_id = {#$cart_address_id#};
+	var order_content;
+
+	var nowDate = {#$smarty.now#}, nowTime = "{#$smarty.now|date_format:'%H:%M'#}";
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$detail_description#}',
+        "title": '{#if $detail_share_title#}{#$detail_share_title#}{#else#}{#$detail_shopname#}{#/if#}',
+        "imgUrl": '{#$detail_share_pic#}',
+        "link": '{#$detail_url#}',
+    };
+
+	{#if !$detail_status#}alert('{#if $detail_closeinfo#}{#$detail_closeinfo#}{#else#}{#$deatil_status#}该店铺关闭了，您暂时无法在该店铺下单。{#/if#}');location.history.go(-1);{#/if#}
+	{#if $detail_status && !$detail_ordervalid#}alert('{#if $detail_closeorder#}{#$detail_closeorder#}{#else#}该店铺关闭了微信下单，您暂时无法在该店铺下单。{#/if#}');location.history.go(-1);{#/if#}
+	{#if !$detail_yingye#}
+		{#if !$detail_yingyeWeek#}
+		alert('该店铺今天暂停营业！营业时间：星期{#$detail_weeks|replace:"1":"一"|replace:"2":"二"|replace:"3":"三"|replace:"4":"四"|replace:"5":"五"|replace:"6":"六"|replace:"7":"七"|replace:",":"，星期"#}');
+		location.history.go(-1);
+		{#else#}
+		alert('该店铺不在营业时间，您暂时无法在该店铺下单！营业时间：{#if $detail_start_time1 && $detail_start_time1 != "00:00" && $detail_end_time1 && $detail_end_time1 != "00:00"#}{#$detail_start_time1#}-{#$detail_end_time1#}{#/if#}{#if $detail_start_time2 && $detail_start_time2 != "00:00" && $detail_end_time2 && $detail_end_time2 != "00:00"#}; {#$detail_start_time2#}-{#$detail_end_time2#}{#/if#}{#if $detail_start_time3 && $detail_start_time3 != "00:00" && $detail_end_time3 && $detail_end_time3 != "00:00"#}; {#$detail_start_time3#}-{#$detail_end_time3#}{#/if#}');
+		location.history.go(-1);
+		{#/if#}
+	{#/if#}
+	{#if $detail_delivery_radius != 0 && $detail_delivery_radius < $juli#}
+		alert("您离店铺太远，超出了商家的最大服务范围！");
+	{#/if#}
+
+	var payUrl = '/include/ajax.php?service=waimai&action=pay&ordernum=#ordernum';
+
+</script>
+</head>
+
+<body>
+<!-- 无内容 -->
+<div class="empty fn-hide">
+	<i></i>
+	<p>购物车为空哦，快去选购吧</p>
+</div>
+
+<!-- 有内容 -->
+<div class="cart fn-hide">
+	<div class="line"></div>
+	<div class="place">
+		<a href="{#getUrlPath service='waimai' template='address' id=$detail_id param="address=$cart_address_id"#}">
+			<ul>
+				<li><em>联系人</em><span>{#$cart_address_person#}</span></li>
+				<li><em>联系电话</em><span>{#$cart_address_tel#}</span></li>
+				<li><em>联系地址</em><span>{#$cart_address_street#} {#$cart_address_address#}</span></li>
+			</ul>
+			<p><i></i></p>
+		</a>
+	</div>
+	<div class="pay_style fn-clear">
+		<span>支付方式</span>
+		<ul class="fn-clear">
+			{#if strstr($detail_paytype, "3")#}
+			<li id="wxpay">微信</li>
+			<li id="alipay">支付宝</li>
+			{#/if#}
+			{#if strstr($detail_paytype, "1")#}<li id="delivery">货到付款</li>{#/if#}
+			{#if strstr($detail_paytype, "2")#}<li id="money">余额付款</li>{#/if#}
+		</ul>
+		<div class="fn-clear"></div>
+		<p class="info"></p>
+	</div>
+	<div class="car_list">
+		<div id="cartList"></div>
+		<div class="car_t2">
+			<ul>
+				<li>商品总价：&yen;<span id="totalFoodPrice">0.00</span></li>
+				{#if $detail_is_discount && $detail_discount_value < 10#}<li>本店开启了 {#$detail_discount_value|string_format:"%.1f"#} 折优惠活动</li>{#/if#}
+				<li id="manjian" class="fn-hide"></li>
+				<li id="dabao" class="fn-hide">打包费：<span id="dabaoPrice">0.00</span>元</li>
+				<li id="peisong" class="fn-hide">配送费：<span id="peisongPrice">0.00</span>元</li>
+				<li id="addservice" class="fn-hide"></li>
+				{#if $firstOrder && $detail_is_first_discount && $detail_first_discount > 0#}<li>首单减免：{#$detail_first_discount#}元</li>{#/if#}
+			</ul>
+		</div>
+	</div>
+
+	<div>
+		{#if $detail_preset#}
+		{#foreach from=$detail_preset item=preset#}
+		<div class="preset_item beizhu fn-clear">
+			<em>{#$preset[2]#}</em>
+			{#if $preset[0] == 1#}
+			<select class="preset">
+				{#foreach from=$preset[3] item=pre#}
+				<option value="{#$pre#}">{#$pre#}</option>
+				{#/foreach#}
+			</select>
+			{#else#}
+			<input type="text" class="preset" placeholder="{#$preset[3]#}">
+			{#/if#}
+		</div>
+		{#/foreach#}
+		{#/if#}
+		<div class="beizhu fn-clear">
+			<em>订单备注</em><input id="note" type="text" placeholder="{#$detail_memo_hint#}">
+		</div>
+	</div>
+
+	<div class="price"><em>应付金额：</em><b>&yen;0.00</b></div>
+	<div class="car_button"><button id="tj">提交订单</button></div>
+
+</div>
+
+<div class="navtion fn-clear">
+	<ul>
+		<li class="shop"><a href="{#getUrlPath service='waimai' template='shop' id={#$detail_id#}#}"><i></i><span>首页</span></a></li>
+		<li class="xuangou"><a href="{#getUrlPath service='waimai' template='buy' id={#$detail_id#}#}"><i></i><span>选购</span></a></li>
+		<li class="car nav_bc"><a href="{#getUrlPath service='waimai' template='cart' id={#$detail_id#}#}"><i></i><span>购物车</span></a></li>
+		<li class="center"><a href="{#getUrlPath service='member' type='user'#}"><i></i><span>个人中心</span></a></li>
+	</ul>
+</div>
+<script src="{#$templets_skin#}js/car.js?v=2"></script>
+</body>
+</html>

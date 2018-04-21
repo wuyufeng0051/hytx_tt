@@ -1,0 +1,204 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>移动会员中心 - 励鹰核天下系统</title>
+    <link rel="stylesheet" type="text/css" href="css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/style_wus.css">
+    <link rel="stylesheet" type="text/css" href="css/Member_Center.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="daohang_nav" style="padding-bottom:18px;">
+      <a href="#" class="daohang_nav_bianse" style="width:49.5%;">个人资料</a>
+      <a href="password.html" class="daohang_nav_yuanjiao" style="width:49.5%;">修改密码</a>
+      </div>
+      <form method="post"  id="form">
+      <div class="xinziliao">
+        <div class="xinziliao_buke">
+          <li>
+            <i>用户名</i>
+            <b>
+              <font id="user_name">w275350</font></b>
+          </li>
+          <li style="border:none;">
+            <i>会员级别</i>
+            <b>准会员</b>
+          </li>
+        </div>
+        <div class="xinziliao_buke xinziliao_txwx">
+          <div class="xinziliao_txwx_l">
+            <p class="xinziliao_txwx_p">我的头像</p>
+            <img class="xinziliao_txwx_img1" src="images/img_0.jpg" alt="我的头像">
+            <br>
+            <input class="tjbtn1" style="margin-left:0px;" type="button" value="上传头像" href="" id="upmyimg"></div>
+          <div class="xinziliao_txwx_r">
+            <p class="xinziliao_txwx_p">我的微信二维码</p>
+            <img class="xinziliao_txwx_img2" src="images/wx_0.jpg" alt="我的微信二维码">
+            <br>
+            <input class="tjbtn1" style="margin-left:0px;" type="button" value="现在上传" href="#" id="upwxthumb"></div>
+        </div>
+        <div class="xinziliao_buke">
+          <li>
+            <i>我的姓名</i>
+            <b>
+              <input class="xinshuru" type="text" placeholder="输入姓名" name="info[user_tname]" value="郭子" id="user_tname"></b>
+          </li>
+          <li>
+            <i>联系 QQ</i>
+            <b>
+              <input class="xinshuru" type="text" placeholder="填写常用QQ号" name="info[user_qq]" value="414644502" id="user_qq"></b>
+          </li>
+          <li>
+            <i>手机号码</i>
+            <b>
+              <input class="xinshuru" type="text" placeholder="输入11位手机号" name="info[user_phone]" value="15006212131" id="user_phone"></b>
+          </li>
+          <li style="border:none;">
+            <i>微信账号</i>
+            <b>
+              <input class="xinshuru" type="text" placeholder="输入微信账号" name="info[aliwangwang]" value="12436898" id="aliwangwang"></b>
+          </li>
+        </div>
+        <div class="xinziliao_buke">
+          <li class="suoshu">
+            <i>所属地区</i>
+            <span id="showarea">
+              <select name="area_a" id="area_a" onchange="showa();">
+                <option value="0">请选择</option>
+                <option value="2">北京市</option>
+                <option value="3">上海市</option>
+                <option value="4">天津市</option>
+                <option value="5">重庆市</option>
+                <option value="6">河北省</option>
+                <option value="7">山西省</option>
+                <option value="8">内蒙古</option>
+                <option value="9">辽宁省</option>
+                <option value="10">吉林省</option>
+                <option value="11">黑龙江省</option>
+                <option value="12">江苏省</option>
+                <option value="13">浙江省</option>
+                <option value="14">安徽省</option>
+                <option value="15">福建省</option>
+                <option value="16">江西省</option>
+                <option value="17">山东省</option>
+                <option value="18">河南省</option>
+                <option value="19">湖北省</option>
+                <option value="20">湖南省</option>
+                <option value="21">广东省</option>
+                <option value="22">广西</option>
+                <option value="23">海南省</option>
+                <option value="24">四川省</option>
+                <option value="25">贵州省</option>
+                <option value="26">云南省</option>
+                <option value="27">西藏</option>
+                <option value="28">陕西省</option>
+                <option value="29">甘肃省</option>
+                <option value="30">青海省</option>
+                <option value="31">宁夏</option>
+                <option value="32">新疆</option>
+                <option value="33">台湾省</option>
+                <option value="34">香港</option>
+                <option value="35">澳门</option></select>
+              <span id="area_as"></span>
+            </span>
+          </li>
+          <li>
+            <i>收货地址</i>
+            <b>
+              <input class="xinshuru" type="text" placeholder="填写您收货的地址" name="info_d[address]" value=""></b>
+          </li>
+          <li>
+            <i>注册时间</i>
+            <b>2017-02-09 14:13</b>
+          </li>
+          <li style="border:none;">
+            <i>上次登录</i>
+            <b>2017-03-10 13:04</b>
+          </li>
+        </div>
+        <input type="submit" value="保存修改" id="submit" class="viphuiyuan_kaitong" style="margin:0px 3% 40px;"></div>
+    </form>
+      <!-- 底部导航 -->
+      <div class="footer">
+        <ul>
+          <li>
+            <a class="bianse" href="#">
+              <i class="icon iconfont"></i>
+              <span>个人中心</span></a>
+          </li>
+          <li>
+            <a class="libao" href="#">
+              <i class="icon iconfont"></i>
+              <span>超级礼包</span></a>
+          </li>
+          <li></li>
+          <li>
+            <a class="tuiguangbs" href="#">
+              <i class="icon iconfont"></i>
+              <span>推广赚钱</span></a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="icon iconfont" style="color:#f00;"></i>
+              <span style="color:#f00;">指导老师</span></a>
+          </li>
+        </ul>
+      </div>
+      <!-- 弹出菜单 -->
+      <div id="plug_btn" class="plug_menu"></div>
+      <div class="top_bar">
+        <ul id="top_menu" class="top_menu">
+          <li>
+            <a href="#">
+              <i class="icon iconfont" style="background:#FF7601;"></i>
+              <span>推广海报</span></a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="icon iconfont" style="background:#FEB200;"></i>
+              <span>我的团队</span></a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="icon iconfont" style="background:#04CEF9;"></i>
+              <span>下属团队</span></a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="icon iconfont" style="background:#428AFE;"></i>
+              <span>指导老师</span></a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="icon iconfont" style="background:#9DC905;"></i>
+              <span>如何赚钱</span></a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="icon iconfont" style="background:#FE7700;"></i>
+              <span>加盟赚钱</span></a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="icon iconfont" style="background:#FFB401;"></i>
+              <span>推广赚钱</span></a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="icon iconfont" style="background:#24C91D;"></i>
+              <span>励鹰干货</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 刷新按钮 -->
+    <div id="shuaxin"></div>
+    <div class="fanhuidiannao">
+      <p>您现在访问的是手机版网站，为了更好的体验，请点击下面的按钮访问电脑站。</p>
+      <a href="#">电脑站</a></div>
+    <script type="text/javascript" src="js/Member_Center.js"></script>
+  </body>
+
+</html>

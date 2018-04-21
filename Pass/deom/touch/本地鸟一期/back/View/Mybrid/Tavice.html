@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>粉丝</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style type="text/css">
+	body{
+		background-color: #fff;
+		font-family: "微软雅黑";
+	}
+	.mui-card{
+		box-shadow: none;
+	}
+	.banner{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 999;
+		height: 45px;
+		background-color: #fd5c30;
+
+	}
+	.banner a{
+		width: 25%;
+		float: left;
+		color: #fff;
+	}
+	.banner span{
+		width: 50%;
+		float: left;
+		text-align: center;
+		line-height: 45px;
+		color: #fff;
+	}
+	.mui-card{
+		border-bottom: 1px solid #ddd;height: 70px;margin: 0;
+	}
+	</style>
+</head>
+<body>
+	<div class="mui-content">
+		<div class="banner">
+				<a href="#" onClick="javascript :history.back(-1);"><span><</span></a>
+	    		<span>粉丝</span>
+		</div>
+		<div style="margin-top: 45px;">
+
+		   <volist name="friends_res" id="vo">
+			<div class="mui-card">
+		      <div class="mui-card-content">
+		        <div class="mui-card-content-inner" style="padding: 7px 15px;">
+		          <a style="position: relative;padding-left: 70px;display: block;color:#000;" href="__MODULE__/Mybrid/taBrid?user_id={$vo.user_id}">
+		            <img src="{$vo.user_head}" alt="" style="position: absolute;left: 0;right: 0;width: 56px;height: 56px;">
+ 		            <p style="margin-bottom: 0;color: #5a87a8;padding-top: 4px;font-size: 15px;">{$vo.user_name}<img style="height: 15px;margin-left: 10px;" src="__PUBLIC__/Home/img/nan.png"><span style="float: right;">
+
+                    <?php if($vo['friends_is'] == 0){ ?>
+		            <img style="width: 20px;margin-right: 10px;" src="__PUBLIC__/Home/img/xhgz.png"></span></p>
+		            <p style="margin-bottom: 0;color: #606161;padding-top: 5px;font-size: 12px;">{$vo.user_region}<span style="color: #000;font-size: 12px;position: absolute;right: 0;">互相关注</span></p>
+                    <?php }else{ ?>
+                    <img style="width: 20px;margin-right: 10px;" src="__PUBLIC__/Home/img/guanzhu.png"></span></p>
+		            <p style="margin-bottom: 0;color: #606161;padding-top: 5px;font-size: 12px;">{$vo.user_region}<span style="color: #000;font-size: 12px;position: absolute;right: 0;">关注&nbsp;&nbsp;</span></p>
+                    <?php } ?>
+		          </a>
+		        </div>
+		       </div>
+		      </div>
+            </volist>
+ 
+	      </div>
+    </div>
+
+	</div>
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script type="text/javascript">
+
+	</script>
+</body>

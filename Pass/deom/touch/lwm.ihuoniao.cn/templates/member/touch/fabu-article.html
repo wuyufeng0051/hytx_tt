@@ -1,0 +1,92 @@
+
+
+
+  <form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=article&action={#if $do == "edit"#}edit&id={#$id#}{#else#}put{#/if#}" data-url="{#getUrlPath service='member' type='user' template='manage' action='article'#}">
+    <div class="img-box">
+      <ul class="uploader-list fn-clear" id="fileList">
+        <li class="uploadbtn">
+          <div id="filePicker" class="webuploader-container">
+            <div class="webuploader-pick">+</div>
+            <div id="rt_rt_1b5mb0qo71j791ejf1ilj2mt1ie81" style="position: absolute; top: 0px; left: 0px; overflow: hidden; bottom: 0px; right: 0px;">
+              <input type="file" name="file" class="webuploader-element-invisible" multiple="multiple" accept="image/jpeg,image/png,image/gif">
+              <label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);"></label>
+            </div>
+          </div>
+        </li>
+        {#if $detail_litpic != ''#}
+				<li class="item litpic thumbnail" id="item_0"><img src="{#$detail_litpic#}" data-val="{#$detail_litpicSource#}" data-url="{#changeFileSize url="{#$detail_litpic#}" type="small"#}" alt=""><i class="cancel"></i><div class="file-panel"><span class="cancel"></span></div></li>
+				{#/if#}
+				{#foreach from=$detail_imglist key=k item=i#}
+				<li class="thumbnail" id="item_{#$k+1#}"><img src="{#changeFileSize url="{#$i.path#}" type="small"#}" data-val="{#$i.pathSource#}" data-url="{#changeFileSize url="{#$i.path#}" type="small"#}" alt=""><div class="file-panel"><span class="cancel"></span></div></li>
+				{#/foreach#}
+      </ul>
+			{#if $do == '' || ($detail_litpic == '' && $detail_imglist == '')#}
+	    <p class="imgtip">上传分类图集，一次可上传多张</p>
+			{#/if#}
+    </div>
+    <div class="flist">
+      <div class="inptitbox">
+        <p>标题</p>
+        <div class="inptitle">
+          <input type="text" placeholder="请输入信息标题，2-50个字" id="title" autocomplete="off" maxlength="50" name="title" value="{#$detail_title#}">
+        </div>
+      </div>
+      <div class="mulinpbox mb4r">
+        <p class="multit">内容</p>
+        <div class="mulcon">
+          <textarea placeholder="请输入内容" name="body" class="textarea" id="textarea">{#$detail_body#}</textarea>
+        </div>
+      </div>
+
+      <div class="ml4r btop">
+        <dl class="inpbox fn-clear gz-addr-seladdr">
+          <dt><span><label for="typeid">分类</label></span></dt>
+          <dd class="selgroup"><p>{#if $do == "edit"#}{#$detail_typeName#}{#else#}<font style="color: #aaa;">请选择</font>{#/if#}</p></dd>
+          <input type="hidden" name="typeid" id="typeid" value="{#$detail_typeid#}">
+        </dl>
+      </div>
+      <div class="ml4r">
+        <dl class="inpbox fn-clear">
+          <dt><span><label for="keywords">关键词</label></span></dt>
+          <dd><input type="text" placeholder="请输入关键词" id="keywords" name="keywords" value="{#$detail_keywords#}"></dd>
+        </dl>
+      </div>
+      <div class="ml4r mb4r bbottom">
+        <dl class="inpbox fn-clear">
+          <dt><span><label for="description">描述</label></span></dt>
+          <dd><input type="text" placeholder="请输入关键词" name="description" value="{#$detail_description#}" id="description"></dd>
+        </dl>
+      </div>
+      <div class="ml4r btop">
+        <dl class="inpbox fn-clear">
+          <dt><span><label for="writer">作者</label></span></dt>
+          <dd><input type="text" placeholder="请输入作者" id="writer" name="writer" value="{#if $do == "edit"#}{#$detail_writer#}{#else#}{#$userinfo.nickname#}{#/if#}"></dd>
+        </dl>
+      </div>
+      <div class="ml4r">
+        <dl class="inpbox fn-clear">
+          <dt><span><label for="source">来源</label></span></dt>
+          <dd><input type="text" placeholder="请输入来源" id="source" name="source" value="{#if $do == "edit"#}{#$detail_source#}{#else#}原创{#/if#}"></dd>
+        </dl>
+      </div>
+      <div class="ml4r">
+        <dl class="inpbox fn-clear">
+          <dt><span><label for="sourceurl">来源网址</label></span></dt>
+          <dd><input type="text" placeholder="请输入来源网址" id="sourceurl" name="sourceurl" value="{#if $do == "edit"#}{#$detail_sourceurl#}{#/if#}"></dd>
+        </dl>
+      </div>
+
+      <dl class="inpbox fn-clear">
+        <dt><span><label for="vdimgck">验证码</label></span></dt>
+        <dd><input type="text" placeholder="请输入验证码" id="vdimgck" maxlength="4" name="vdimgck"><img src="/include/vdimgck.php" alt="" class="code" id="verifycode"></dd>
+      </dl>
+    </div>
+  </form>
+
+  <div class="submit">
+    <a href="javascript:;" id="submit">立即投稿</a>
+  </div>
+
+
+
+<script>var typeidLevel = '{#if $do == "edit"#}{#$detail_typeName#}{#/if#}', typeid = '{#$detail_typeid#}'</script>

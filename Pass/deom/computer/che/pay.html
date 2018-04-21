@@ -1,0 +1,110 @@
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+    <link type="text/css" rel="stylesheet" href="css/pay.css">
+    <link rel="stylesheet" href="css/pc_160316b.css">
+  </head>
+  <body>
+    <!-- 订单web提交页 -->
+    <div id="header" class="border_b">
+      <div class="headerContainer">
+        <a href="#" class="logo"></a>
+        <span id="city">收银台</span>
+        <a href="javascript:void(0);" class="help right logout">退出</a>
+        <!-- <a href="javascript:void(0);" class="logout">退出</a> -->
+        <a href="#" class="person right">腾讯汽车</a></div>
+    </div>
+    <div class="order-submit">
+      <div class="order-header ">
+        <div class="icon-order-number icon"></div>
+      </div>
+      <div class="order-content">
+        <form action="#" method="post" id="order-from">
+          <!--如果不需要显示发票信息，添加no-invoice类-->
+          <div class="order-border order-msg-submit ">
+            <div class="order-title mgb-20">填写并核对信息</div>
+            <ul class="order-lists order-list">
+              <li class="mgb-20 buy-user-msg">
+                <label>购&nbsp;&nbsp;车&nbsp;人</label>
+                <em class="input-border">
+                  <input id="username" name="user_name" type="text"  class="input" placeholder="请填写购车人的姓名！">
+                  <em class="icon "></em>
+                </em>
+                <span class="error hide"></span>
+              </li>
+              <li class="mg-20 order-last buy-user-msg">
+                <label>手机号码</label>
+                <em class="input-border">
+                  <input id="phone" name="phone" type="text"  class="input phone-num" placeholder="请输入收货人的手机号码！">
+                  <em class="icon "></em>
+                </em>
+                <span class="error hide"></span>
+              </li>
+              <li class="formControl clearfix mg-20 order-last">
+                <label class="fl">收货地址</label>
+                <em class="input-border" style="margin-left: 4px;">
+                  <input id="place" name="text" type="text" class="input phone-num" placeholder="请输入收货地址！">
+                  <em class="icon "></em>
+                </em>
+              </li>
+            </ul>
+          </div>
+          <div class="order-border">
+            <div class="fs-18 c-6 order-title mgb-20">提车信息</div>
+            <ul class="order-list">
+              <li class="mgb-20">
+                <label>提车城市</label>
+                <span>北京</span></li>
+            </ul>
+          </div>
+          <div class="order-border">
+            <div class="fs-18 c-6 order-title mgb-20">商品信息</div>
+            <div class="order-list">
+              <table class="order-shop">
+                <tbody>
+                  <tr>
+                    <td class="order-shop-msg">
+                      <div class="shop-meg">
+                        <img src="upfile/320.jpg" class="fl">
+                        <p class="title">【订金】雪佛兰全新科鲁兹两厢版 购车赠送1500元原厂套装</p>
+                        <p class="tip mg-20">全新科鲁兹两厢版</p></div>
+                    </td>
+                    <td class="order-shop-list">
+                      <div class="">商品类型:
+                        <em>优惠券</em></div>
+                    </td>
+                    <td class="order-shop-lists">
+                      <p class="pay">在线支付：
+                        <em>￥</em>
+                        <em class="pay-num">9.90</em>
+                        <em>元</em></p>
+                      <p class="order-prompt">
+                        <em class="icon icon-order-clock fl"></em>
+                        <span>24小时内支付，订单有效
+                          <span></span></span>
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="order-border mg-20 order-pay">您需为本订单支付：
+            <em>
+              <b>9.90</b>
+            </em>元
+            <input type="button" class="btn-3 sub-order" value="提交订单"></div>
+        </form>
+      </div>
+    </div>
+    <div id="cli_dialog_div"></div>
+  </body>
+
+</html>

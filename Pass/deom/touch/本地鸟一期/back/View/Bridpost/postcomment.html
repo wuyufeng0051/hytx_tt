@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>帖子详情</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style type="text/css">
+		/*轮播*/
+		.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container2 img{
+		display: block;
+		width: 100%;
+		height: 180px;
+	}
+	.swiper-container2{
+		width: 100%;
+		height: 180px;
+	}
+	.swiper-container2 ul{
+		width: 100%;
+		height: 150px;
+		list-style: none;
+		padding: 10px;
+		overflow: hidden;
+		padding-left: 7%;
+	}
+	.swiper-container2 ul li{
+		float: left;
+		width: 14.2%;
+		height: 35px;
+		line-height: 35px;
+		
+	}
+	.swiper-container2 ul li img{
+		width: 20px;
+		height: 20px;
+		padding-left: 3%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	body{
+		background-color: #fff;
+		font-family: "微软雅黑";
+	}
+	ul{
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	.mui-ellipsis-5{
+		display: -webkit-box;
+		overflow: hidden;
+		white-space: normal!important;
+		text-overflow: ellipsis;
+		word-wrap: break-word;
+		-webkit-line-clamp:5;
+		-webkit-box-orient:vertical;
+	}
+	.imgbox{
+		overflow: hidden;
+		position: relative;
+		right: -1.5px;
+	}
+	.imgbox li{
+		overflow: hidden;
+		float: left;
+		width: 33%;
+		list-style: none;
+		/*border:2px solid #fff;*/
+	}
+	.imgbox li img{
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	.listimg{
+		width: 100%;
+		display: block;		
+	}
+	.listimg li{
+		width: 33.3%;
+		float: left;		
+	}
+	.listimg li img{
+		width: 98%;
+		height: auto;
+	}
+	.listopation{
+		margin-top: 8px;
+		margin-bottom: 8px;
+		padding-bottom: 10px;
+		position: relative;
+	}
+	.listopation li{
+		width: 33.3%;
+		float: left;
+		position: absolute;
+
+	}
+	/*.pinjia{
+		background: #fff url(img/pinjia.png) no-repeat center left;
+		background-size: 15px 15px;
+	}*/
+	.mui-card{
+		box-shadow: none;
+		margin: 0;
+		padding-bottom: 10px;
+		border-bottom: 1px solid #e6e6e6;
+	}
+	.mui-content>.mui-card:first-child{
+		margin-top: 0;
+	}
+	.title {
+	    color: #333333;
+	    padding-left: 40px;
+	    line-height: 40px;
+	    border-bottom: 1px solid #e6e6e6;
+	    margin: 0;
+	    font-size: 17px;
+	    font-weight: 600;
+	    margin-top: 8px;
+	   	height: 40px;
+	    background-color: #fff;
+	}
+	.title span{
+		color: #939393;
+	}
+	.huifu{
+		width: 97%;
+		margin: 15px auto 0 auto;
+		background-color: #efeff4;
+		margin-right: 3%;
+		padding: 8px;
+	}
+	.huifu li{
+		width: 100%;
+	}
+	.huifu li p{
+		font-size: 16px;
+	}
+	.huifu .p1{
+		color: #3c689b
+	}
+	.huifu .p2{
+		color: #333333
+	}
+	.pinjia img{
+		width: 18px;height: 18px;padding-right: 3px;padding-top: 3px;vertical-align: middle;margin-top: -4px;
+	}
+	.pjoperate{
+		position: absolute;
+		z-index: 9999;
+		left: 32%;
+		top:30px;
+		display: none;
+	}
+	.pjoperate ul{
+		height: 50px;
+		background-color:#333333; 
+		border-radius: 6px;
+	}
+	.pjoperate ul li{
+		width: 65px;
+		color: #fff;
+		height: 30px;
+		margin-top: 11px;
+		border-right:1px solid #b2b4b3;
+		float: left;
+		line-height: 30px;
+		text-align: center;
+	}
+	.pjoperate ul li:last-child{
+		border-right: none;
+	}
+	.backinput{
+		width: 100%;
+		padding-bottom: 10px;
+		height: 45px;
+		background-color: #fff;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: 8888;
+	}
+	.backinput img{
+		width: 25px;
+		height: 25px;
+		line-height: 45px;
+		float: left;
+		/*margin-left: 4%;*/
+		margin-top: 5px;
+		margin-right: 5px;
+	}
+	.backinput div{
+		width: 25px;
+		height: 25px;
+		float: left;
+		margin-left: 2%;
+		margin-top: 5px;
+		margin-right: 5px;
+	}
+	/*.backinput input{
+		height: 35px;
+		line-height: 35px;
+		border: none;
+		border-bottom: 1px solid #ddd;
+		margin-left: 5px;
+		width: 60%;
+		margin-left: 10%;
+	}*/
+	.backinput p{
+		height: 35px;
+		line-height: 45px;
+		border: none;
+		border-bottom: 1px solid #ddd;
+		margin-left: 5px;
+		width: 60%;
+		float: left;
+		margin-left: 4%;
+		overflow: hidden;
+	}
+	.backinput button{
+		color: #fff;
+		background-color: #ff7400;
+		border-radius: 10px;
+		border: none;
+		float: right;
+		margin-right: 4%;
+		margin-top: 5px;
+	}
+	.biaoqinbox{
+		width: 100%;
+		height: 180px;
+		/*display: none;*/
+		color: #000;
+		/*padding: 10px;
+		padding-left: 13px;
+		padding-right: 13px;*/
+		padding: 10px;
+		overflow: hidden;
+		padding: 10px;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: 8888;
+		padding-top: 0;
+		background-color: #fff;
+	}
+	</style>
+</head>
+<body>
+	<div class="mui-content">
+		<div class="mui-card">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 8px;">
+					<div style="position:relative;padding-left: 60px;display: block;color: #000;">
+						<div style="position: absolute;left: 0;width: 50px;height: 50px;">
+							<div class="mui-media-object mui-pull-left img" style="width: 100%;height: 100%;background-image: url({$res_post.user_head});background-repeat: no-repeat;background-position: 50% 50%;background-size: cover;"></div>
+						</div>
+						<h4 style="color: #5a87a8;margin-bottom: 8px;font-weight: normal;">{$res_post.user_name}</h4>
+						<p>{$res_post.post_date}</p>
+						<div style="line-height: 21px; font-size: 16px;color: #333;margin-bottom: 5px;">{$res_post.post_content}</div>
+						<ul class="listimg imgbox">
+						  <volist name="res_post.imgs" id="vo">
+							<li>
+								<img src="__PUBLIC__/../{$vo.imgs_path}">
+							</li>
+						  </volist>	 
+						</ul>
+						<ul class="listopation" style="color: #808080;">
+						    <?php if($res_post['post_uid'] == $_SESSION['user_id']){ ?>
+								<li style="text-align: left;left: 0;">
+									<span style="color: #5a87a8" class="delpost" str="{$res_post.post_id}">删除</span>
+								</li>
+                           <?php } ?>
+							<li style="text-align: center;left: 33.3%;" class="pinjia">
+								<img src="__PUBLIC__/Home/img/pinjia.png"><span>评论23</span>
+							</li>
+							<li style="text-align: right;padding-right: 5px;left: 66.6%;" class="zan" str="{$res_post.post_id}">
+								<img src="__PUBLIC__/Home/img/zan.png" style="width: 18px;height: 18px;padding-right: 3px;padding-top: 3px;"><span class="post_like" >{$res_post.post_like}</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--广告-->
+		<div class="swiper-container" style="margin-top: 8px;">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<a href="#">
+						<img src="__PUBLIC__/Home/img/ad.png">
+					</a>
+				</div>
+				<div class="swiper-slide">
+					<a href="#">
+						<img src="__PUBLIC__/Home/img/ad.png">
+					</a>
+				</div>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+		
+	<!-- 	<div class="ad">
+			<a href="#">
+				<img src="img/ad.png" style="width: 100%;display: block;padding-top: 8px;">
+			</a>
+		</div> -->
+
+		<h5 class="title">热门评论<span class="newcomms">（
+		<?php if($c_res_count < 9){ ?>
+		{$c_res_count}
+		<?php }else{ ?>
+		 9
+		<?php } ?>
+		）</span></h5>
+		<!--热门评论-->
+		<div id="commentalls">
+		<volist name="top_post" id="vo">
+		<div class="mui-card">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 8px;">
+					<a style="position:relative;padding-left: 68px;display: block;color: #000;">
+						<div style="position: absolute;left: 0;width: 60px;height: 60px;">
+							<div class="mui-media-object mui-pull-left img" style="width: 100%;height: 100%;border-radius: 50%; background-image: url({$vo.user_head});background-repeat: no-repeat;background-position: 50% 50%;background-size: cover;"></div>
+						</div>
+						<h4 style="color: #5a87a8;margin-bottom: 8px;font-weight: normal;">{$vo.user_name}
+							<div style="color: #808080;font-weight: normal;font-size: 15px;float: right;" class="comment_like" str="{$vo.comment_id}">
+							  <span class="comment_num">{$vo.comment_like}</span>
+							<img style="width: 16px;height: 16px;margin-left: 5px;" src="__PUBLIC__/Home/img/zan.png">
+							</div>
+						</h4>
+						<p>{$vo.comment_date}</p>
+						<div class="mui-ellipsis-2 operate" style="line-height: 21px; font-size: 16px;color: #1a1a1a;">{$vo.comment_content}</div>
+						<!--评论操作-->
+						<div class="pjoperate">
+							<ul>
+								<li class="back" str="{$vo.comment_id}">回复</li>
+								<li class="comment_like" str="{$vo.comment_id}">赞</li>
+								<li>删除</li>
+							</ul>
+						</div>
+						<ul class="huifu">
+						   <volist name="vo.msg" id="v">
+							<li>
+								<p class="p1">{$v.user_name}：</p>
+								<p class="p2">{$v.postreply_content}</p>
+								<volist name="v.hf_back" id="vs">
+								<p class="p1">{$vs.replyback_name} <span style="color: #747272">回复</span> {$vs.replyback_mname}</p>
+								<p class="p2">{$vs.replyback_desc}</p>
+								</volist>
+							</li>
+							</volist>
+							<li style="height: 30px;line-height: 30px;border-top: 1px solid #ddd;color: #a1a1a1;" class="back" str="{$vo.comment_id}">查看全部{$v.msgcount}条回复&nbsp;></li>
+						</ul>
+					</a>
+				</div>
+			</div>
+		</div>
+       </volist>
+       </div>
+ 
+		<h5 class="title">最新评论<span class="">（
+		<?php if($c_res_count > 9){ ?>
+		<?php echo $c_res_count-9 ; ?>
+		<?php }else{ ?>
+		 0
+		<?php } ?>
+		）</span></h5>
+
+		<!--最新评论-->
+		<div id="commentall">
+		<!-- <div class="mui-card">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 8px;">
+					<a href="#" style="position:relative;padding-left: 68px;display: block;color: #000;">
+						<div style="position: absolute;left: 0;width: 60px;height: 60px;">
+							<div class="mui-media-object mui-pull-left img" style="width: 100%;height: 100%;border-radius: 50%; background-image: url(__PUBLIC__/Home/img/1.png);background-repeat: no-repeat;background-position: 50% 50%;background-size: cover;"></div>
+						</div>
+						<h4 style="color: #5a87a8;margin-bottom: 8px;font-weight: normal;">大隐归闹市<span style="color: #808080;font-weight: normal;font-size: 15px;float: right;">234<img style="width: 16px;height: 16px;margin-left: 5px;" src="__PUBLIC__/Home/img/zan.png"></span></h4>
+						<p>11-26</p>
+						<div class="mui-ellipsis-2 operate" style="line-height: 21px; font-size: 16px;color: #1a1a1a;">今年下半年以来最强冷空气来袭，天气转冷，大家要记得加衣服，今年下半年以来最强冷空气来袭，天气转冷，大家要记得加衣服今年下半年以来最强冷空气来袭，天气转冷，大家要记得加衣服</div>
+						<ul class="huifu">
+							<li>
+								<p class="p1">红泥：</p>
+								<p class="p2">此次的寒潮确实不容小觑</p>
+							</li>
+							<li>
+								<p class="p1">绿意&nbsp;<span style="color: #747272">回复</span>&nbsp;红泥</p>
+								<p class="p2">此次的寒潮确实不容小觑</p>
+							</li>
+							<li>
+								<p class="p1">红泥：</p>
+								<p class="p2">此次的寒潮确实不容小觑</p>
+							</li>
+							<li style="height: 30px;line-height: 30px;border-top: 1px solid #ddd;color: #a1a1a1;">查看全部8条回复&nbsp;></li>
+						</ul>
+					</a>
+				</div>
+			</div>
+		</div> -->
+        </div>
+		<!--评论操作-->
+		<!-- <div class="pjoperate" style="display: none;">
+			<ul>
+				<li class="back">回复</li>
+				<li>赞</li>
+				<li>删除</li>
+			</ul>
+		</div> -->
+
+		<!--回复输入框-->
+		<div class="backinput">
+			<div><img class="expression" src="__PUBLIC__/Home/img/baioqin.png"></div>
+			<p contenteditable="true" id="conter">评论
+			</p>
+			<!-- <input type="text" placeholder="评论"></input> -->
+			<button id="send" str="{$res_post.post_id}">发送</button>
+		</div>
+		<!--表情选择框-->
+		<div class="biaoqinbox">
+			<!--图片轮播区-->
+			<div class="swiper-container2" style="position: relative;">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+							<!-- <img src="__PUBLIC__/Home/img/yuantiao.jpg"> -->
+						 <ul>
+						   <volist name="res_e" id="v">
+	  					 	<li class="expressionoonly" str="{$v.expression_id}">
+	  					 	<img src="__PUBLIC__/../{$v.expression_path}"></li>
+	  				       </volist>
+	 				 	</ul>
+					</div>
+	 			</div>
+				<div class="swiper-pagination" style="position: absolute;bottom: 15px;"></div>
+			</div>
+		</div>
+	</div>
+	
+
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script type="text/javascript">
+	   $('#send').click(function(){
+	   	var post_id = $(this).attr('str');
+	    var comm = $(this).parent().find('#conter').html();
+	    $.post('{:U("Home/Bridpost/addbridComment")}', {post_id:post_id,comm:comm}, function(data) {
+  	    	  if (data == 3) {
+	    	  	layer.msg('系统繁忙中，请稍后再试')
+	    	  }else{
+	    	  	var newcomms = $("#newcomms").text();
+    		 	 //判断是加载热评上面还是加在最新那边
+    		 	 if (newcomms < 9 ) {
+    		 	   var number = parseInt(newcomms)+1;
+    		 	   $("#newcomms").text(number)
+    		 	   var comments = $('#commentalls');
+     		 	 }else{
+    		 	   var number = parseInt($("#newcomm").text())+1;
+    		 	   $("#newcomm").text(number)
+    		 	  var comments = $('#commentall')
+				 }
+	    	  	strs=data.split(","); //字符分割 
+				comments.append('<div class="mui-card">'
+								+		'<div class="mui-card-content">'
+								+			'<div class="mui-card-content-inner" style="padding: 8px;">'
+								+				'<a style="position:relative;padding-left: 68px;display: block;color: #000;">'
+								+					'<div style="position: absolute;left: 0;width: 60px;height: 60px;">'
+								+						'<div class="mui-media-object mui-pull-left img" style="width: 100%;height: 100%;border-radius: 50%; background-image: url('+strs[1]+');background-repeat: no-repeat;background-position: 50% 50%;background-size: cover;"></div>'
+								+					'</div>'
+								+					'<h4 style="color: #5a87a8;margin-bottom: 8px;font-weight: normal;">'+strs[0]
+								+						'<div style="color: #808080;font-weight: normal;font-size: 15px;float: right;" class="comment_like" str="'+strs[3]+'">'
+								+						  '<span class="comment_num">0</span>'
+								+						'<img style="width: 16px;height: 16px;margin-left: 5px;" src="__PUBLIC__/Home/img/zan.png">'
+								+						'</div>'
+								+					'</h4>'
+								+				'<p>'+strs[2]+'</p>'
+								+					'<div class="mui-ellipsis-2 operate" style="line-height: 21px; font-size: 16px;color: #1a1a1a;">'+comm+'</div>'
+ 								+					'<div class="pjoperate">'
+								+						'<ul>'
+								+							'<li class="back" str="'+strs[3]+'">回复</li>'
+								+							'<li class="comment_like" str="'+strs[3]+'">赞</li>'
+								+							'<li>删除</li>'
+								+						'</ul>'
+								+					'</div>'
+								+					'<ul class="huifu">'
+ 								+					'</ul>'
+								+				'</a>'
+								+		'</div>'
+								+		'</div>'
+								+	'</div>'
+								)
+
+	    	  }
+					commentlike()
+					delpost()
+				     zan()
+				     $("#conter").text('')
+	    });
+
+	   })
+
+    $('.expressionoonly').on('tap',function(){
+    	var expression_id = $(this).attr('str');
+    	var imgs = $(this).find('img').attr('src');
+    	 $('#conter').append('<img style="height:20px;width:20px;" src="'+imgs+'">')
+    })
+
+    function commentlike(){
+    //评论点赞
+ 	 $('.comment_like').on('tap',function(){
+		 	var thiss =$(this).parent().parent().parent().find('.zan')
+		 	 
+ 		 	var comment_id = $(this).attr('str');
+ 		 	var thiss=$(this)
+ 		 	var like = $(this).parent().parent().parent().find('.comment_num').text();
+		 	//获取评论的id
+		 	 $.post('{:U("Home/TopLine/addTopLineLike")}',{comment_id:comment_id}, function(data) {
+		    	if (data == 1) {
+		 	       //加评论的条数
+		 	     var likenum = parseInt(like)+1; 
+		 	     thiss.parent().parent().parent().find('.comment_num').text(likenum)
+ 		 	    }else if(data == 2){
+		 	      layer.msg('系统繁忙中，请稍后再试')
+		 	    }else{
+		 	      layer.msg('您已点赞过')
+		 	    }
+		 	 });
+	 	 });
+		 
+     }
+commentlike()
+
+	  function zan(){
+      $('.zan').on('tap',function(){
+        var post_id = $(this).attr('str');
+         thiss = $(this)
+        $.post('{:U("Home/Bridpost/postzan")}', {post_id:post_id}, function(data) {
+            if (data == 1) {
+               var post_like = thiss.find('.post_like').text();
+               var post_likeall = parseInt(post_like)+1;
+               thiss.find('.post_like').text(post_likeall);
+            }else if(data == 2){
+              layer.msg('您已经点赞过')
+            }else{
+              layer.msg('系统繁忙,请稍后再试')
+             }
+        });
+      }) 
+    }
+    
+      function delpost(){
+          $('.delpost').on('tap',function(){
+        	 if(confirm("确定删除？")){
+              var post_id = $(this).attr('str');
+               thiss = $(this)
+               $.post('{:U("Home/Bridpost/delpost")}', {post_id:post_id}, function(data) {
+                  if (data == 1) {
+                    thiss.parent().parent().parent().parent().parent().parent().find('.mui-card-content').remove();
+                  }else{
+                  	 layer.msg('系统繁忙请稍后再试')
+                  }
+               })
+           }
+          })
+    }
+
+delpost()
+   zan()
+
+    $('.back').on('tap',function(){
+   	 var comment_id = $(this).attr('str');
+   	  location.href="__MODULE__/Bridpost/commentDetail?comment_id="+comment_id
+   });
+
+	var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+		function li(){
+		var liH=$('.imgbox li').width();
+		//alert(liH);
+		$('.imgbox li').height(liH);
+		}
+
+		li();
+
+		$('.operate').on('click',function(e){
+			var current_num = $(".operate").index(this);
+			$(".pjoperate").not($(".pjoperate").eq(current_num)).hide();
+			$(".pjoperate").eq(current_num).toggle();
+	}) 
+		$(function(){
+		$(".biaoqinbox").hide();
+		});
+		//选择表情
+		$('.expression').on('tap',function(){
+			$('.biaoqinbox').toggle();
+			$('.backinput').css('bottom','180px');
+			// $('body').animate({
+			// 	'scrollTop':"+=180px"
+			// },10);
+			if($('.biaoqinbox').css('display') == 'none')
+				$('.backinput').css('bottom','0');
+			if($('.biaoqinbox').css('display') == 'block')
+				$('.backinput').css('bottom','180px');
+		});
+
+
+		var mySwiper = new Swiper('.swiper-container2',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: false
+		});
+			
+	</script>
+</body>

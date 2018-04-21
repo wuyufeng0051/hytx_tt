@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.ba-bbq.js"></script>
+    <title>乐外卖 - 余额管理</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <link rel="stylesheet" href="css/font-awesome.min.css" />
+      <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/chosen.min.css" />
+      <link rel="stylesheet" href="css/ace-fonts.min.css" />
+      <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+      <link rel="stylesheet" href="css/order.css">
+      <link rel="stylesheet" href="/css/global.css" />
+      <script src="js/ace-extra.min.js"></script>
+      <script src="js/bootbox.min.js"></script>
+      <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-desktop desktop-icon"></i>
+        <a href="#">店铺</a></li>
+      <li class="active">正新鸡排（金城店）</li>
+      <li>
+        <a href="#">商品</a></li>
+      <li class="active">新建商品</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="page-header">
+        <h1>新建商品
+          <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>正新鸡排（金城店）</small></h1>
+      </div>
+      <style>label{vertical-align:middle;font-weight:normal;font-size:14px;display:inline-block;margin-bottom:5px;} label input{border-radius:0!important;color:#858585;background-color:#fff;border:1px solid #d5d5d5;padding:5px 4px;line-height:1.2; font-size:14px;font-family:inherit;-webkit-box-shadow:none!important;box-shadow:none!important;-webkit-transition-duration:.1s; transition-duration:.1s;background-image:none;margin:0;-webkit-appearance:textfield; } .form-submit-btn{padding-left:100px;height:60px;margin-top:30px;} .aa{display:none;}</style>
+      <div style="display:none;">
+        <div id="pricetagtemp">
+          <div class="priceblock fieldblock fatherblock">
+            <label>类型:
+              <select name="pricetag[type][]">
+                <option value="0">不开启库存</option>
+                <option value="1">开启库存</option></select>
+            </label>
+            <label>标签名:
+              <input type="text" name="pricetag[name][]" value=""></label>
+            <label>价格:
+              <input type="text" name="pricetag[price][]" value="0"></label>
+            <label>库存：
+              <input type="text" name="pricetag[stock][]" value="0"></label>
+            <div class="deletefield" style="" title="删除价格标签">删除</div></div>
+        </div>
+      </div>
+      <style>.priceblock{width:100%;height:50px;background:#f5f5f5;line-height:50px;border:1px solid #eeeeee;margin:10px auto;} .deletefield,.addsonfield,.sondeletefield{width:50px;height:50px;float:right;background:#eeeeee;color:#FF0000;font-weight:bold;line-height:50px;text-align:center;cursor:pointer;} .addsonfield{width:100px;border-right:1px solid #ffffff;color:blue;}</style>
+      <div class="row">
+        <div class="col-sm-12">
+          <form enctype="multipart/form-data" class="form-horizontal" id="food-form" action="/food/create?shop_id=238848&amp;type_id=0" method="post">
+            <div class="alert alert-danger" id="food-form_es_" style="display:none">
+              <p>请更正下列输入错误:</p>
+              <ul>
+                <li>dummy</li></ul>
+            </div>
+            <div class="alert alert-danger" id="food-form_es_">
+              <p>请更正下列输入错误:</p>
+              <ul>
+                <li>商品名称不能为空！</li></ul>
+            </div>
+            <div class="tabbable">
+              <ul class="nav nav-tabs tt" id="myTab">
+                <li class="active">
+                  <a data-toggle="tab" href="#">基本信息</a></li>
+                <li>
+                  <a data-toggle="tab" href="#">商品属性</a></li>
+                <li>
+                  <a data-toggle="tab" href="#">商品限购设置</a></li>
+                <li>
+                  <a data-toggle="tab" href="#">商品图片</a></li>
+              </ul>
+              <div class="tab-content">
+                <!-- 基本信息start -->
+                <div id="infocontent" class="tab-pane active tt_1">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label class="col-sm-1">
+                          <label for="Food_tag">编号</label></label>
+                        <input class="col-sm-1" size="10" maxlength="10" name="Food[tag]" id="Food_tag" type="text" value="0">（决定展示顺序，编号越小越靠前）</div>
+                      <div class="form-group">
+                        <label class="col-sm-1">
+                          <label for="Food_name">商品名称</label></label>
+                        <input class="col-sm-3" size="30" maxlength="30" name="Food[name]" id="Food_name" type="text"></div>
+                      <div class="form-group">
+                        <label class="col-sm-1">
+                          <label for="Food_price">价格</label></label>
+                        <input class="col-sm-1" name="Food[price]" id="Food_price" type="text"></div>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="Food_type_id">商品分类</label>
+                        <select name="Food[type_id]" id="Food_type_id">
+                          <!-- <option value='0'>123</option> -->
+                          <option value="1097577">鸡排</option>
+                          <option value="1097752">小吃</option>
+                          <option value="1097755">饮料</option></select>
+                        <span id="secondtypehtml"></span>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-1">
+                          <label for="Food_unit">商品单位</label></label>
+                        <input class="col-sm-1" size="20" maxlength="4" placeholder="如个、斤、份" name="Food[unit]" id="Food_unit" type="text"></div>
+                      <div class="form-group">
+                        <label class="col-sm-1">
+                          <label for="Food_label">标签</label></label>
+                        <input class="col-sm-1" size="20" maxlength="4" placeholder="如特价、促销、招牌" name="Food[label]" id="Food_label" type="text"></div>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="Food_is_dabao">是否开启打包费（店内下单无效）</label>
+                        <select name="Food[is_dabao]" id="Food_is_dabao">
+                          <option value="0" selected="selected">关闭</option>
+                          <option value="1">开启</option></select>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-1">
+                          <label for="Food_dabao_money">打包费金额</label></label>
+                        <input class="col-sm-1" name="Food[dabao_money]" id="Food_dabao_money" type="text" value="0.00"></div>
+                      <script>function preview(input) {
+                          if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function(e) {
+                              $('#img').attr('src', e.target.result);
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                          }
+                        }
+                        function check(obj) {
+                          var length = $('.paycheck:checked').length;
+                          if (length == 0) {
+                            $(obj).attr('checked', 'checked');
+                            bootbox.alert('最少要选择一种支付方式');
+                          }
+                        }
+                        function openpicwindow() {
+                          $('#picwindow').toggle();
+                        }
+                        $(function() {
+                          $('.shoppicone').live('mouseover',
+                          function() {
+                            $(this).children('div').show();
+                          });
+                          $('.shoppicone').live('mouseout',
+                          function() {
+                            $(this).children('div').hide();
+                          });
+                        })</script>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="Food_status">商品状态</label>
+                        <select name="Food[status]" id="Food_status">
+                          <option value="NORMAL" selected="selected">正常</option>
+                          <option value="CLOSED">停售</option></select>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="Food_stockvalid">启用库存</label>
+                        <select name="Food[stockvalid]" id="Food_stockvalid">
+                          <option value="1">启用</option>
+                          <option value="0" selected="selected">关闭</option></select>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-1">
+                          <label for="Food_stock">库存量</label></label>
+                        <input class="col-sm-1" size="10" maxlength="10" name="Food[stock]" id="Food_stock" type="text" value="0"></div>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="Food_open_autostock">是否开启每天自动库存功能</label>
+                        <select name="Food[open_autostock]" id="Food_open_autostock">
+                          <option value="1">开启</option>
+                          <option value="0" selected="selected">关闭</option></select>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-1">
+                          <label for="Food_autostocknum">自动库存数量</label></label>
+                        <input class="col-sm-1" size="10" maxlength="10" name="Food[autostocknum]" id="Food_autostocknum" type="text" value="20"></div>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="Food_member_price_used">是否开启会员价</label>
+                        <select name="Food[member_price_used]" id="Food_member_price_used">
+                          <option value="0" selected="selected">关闭</option>
+                          <option value="1">开启</option></select>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-1">
+                          <label for="Food_member_price">会员价</label></label>
+                        <input class="col-sm-1" name="Food[member_price]" id="Food_member_price" type="text" value="0.00"></div>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="Food_memberlimit">是否开启会员专享</label>
+                        <select name="Food[memberlimit]" id="Food_memberlimit">
+                          <option value="1">开启</option>
+                          <option value="0" selected="selected">关闭</option></select>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-1">
+                          <label for="Food_buying_price">进货价</label></label>
+                        <input class="col-sm-1" name="Food[buying_price]" id="Food_buying_price" type="text" maxlength="10" value="0.00"></div>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="Food_has_formerprice">是否开启原价</label>
+                        <select name="Food[has_formerprice]" id="Food_has_formerprice">
+                          <option value="0" selected="selected">关闭</option>
+                          <option value="1">开启</option></select>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-1">
+                          <label for="Food_formerprice">原价</label>（仅用于微信页面展示）</label>
+                        <input class="col-sm-1" name="Food[formerprice]" id="Food_formerprice" type="text" value="0.00"></div>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="Food_supporttype">商品支持类型</label>
+                        <select name="Food[supporttype]" id="Food_supporttype">
+                          <option value="0" selected="selected">都支持</option>
+                          <option value="1">只支持外卖</option>
+                          <option value="2">只支持店内下单</option></select>
+                      </div>
+                      <!-- <div class="form-group"></div>  -->
+                      <div class="form-group">
+                        <label class="col-sm-1" for="Food_descript">商品简介</label>
+                        <textarea class="col-sm-3" size="200" maxlength="200" name="Food[descript]" id="Food_descript"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="Food_description">描述</label>
+                                    <!-- fck -start -->
+                        <script type="text/javascript" charset="utf-8" src="js/kindeditor.js"></script>
+                        <script type="text/javascript" charset="utf-8" src="js/lang/zh_CN.js"></script>
+                        <script type="text/javascript">var editor;
+                          KindEditor.ready(function(K) {
+                            var width = $('textarea[name=content]').css('width');
+                            var height = $('textarea[name=content]').css('height');
+                            editor = K.create('textarea[name="content"]', {
+                              cssPath: 'js/plugins/code/prettify.css',
+                              uploadJson: 'js/php/upload_json.php?dir=file',
+                              fileManagerJson: 'js/php/file_manager_json.php',
+                              allowFileManager: false,
+                              width: width,
+                              height: height,
+                              items: ['undo', 'redo', '|', 'preview', 'cut', 'copy', 'paste', 'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript', 'superscript', '/', 'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'table', 'hr', 'emoticons', 'baidumap', 'link', 'unlink', ],
+                              afterBlur: function() {
+                                this.sync();
+                              }
+                            });
+                            K('input[name=setHtml]').click(function(e) {
+                              editor.html($('#con').html());
+                            });
+                            if ($('body').attr('module_name') == 'share') {
+                              $('.ke-toolbar').hide();
+                            }
+                            //prettyPrint();
+                          });</script>
+                        <!-- fck end -->
+                        <textarea style="width: 300px; height: 300px; display: none;" id="content" name="content"></textarea>
+                      </div>
+                      <div id="inputimglist" style="display:none"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 基本信息end -->
+                <!-- 自定义属性start -->
+                <div id="nature" class="tab-pane tt_1">
+                  <style>.natureblock{border:1px solid #eeeeee;padding:0px;margin:10px;} .natureblock .fieldblock{width:100%;margin:0 auto;height:50px;background:#f5f5f5;line-height:50px;} .sonfieldblock{width:90%;margin:5px auto;height:40px;background:#cccccc;line-height:40px;} .sonfieldblock .sondeletefield{height:40px;line-height:40px;}</style>
+                  <div class="alert alert-block alert-success">
+                    <span style="color:red;">商品属性名不能相同且不能为空，还必须有一个以上的有效属性值，否则该属性将过滤掉；每个属性的属性值不能相同且不能为空，否则该属性值将被过滤掉。</span>
+                    <br>使用商品属性功能需要先在商品基本信息中开启商品属性，开启商品属性后顾客下单将按照你设置的商品属性进行选择，商品的最终价格是基本信息中商品的基础价格与选择的各属性价格总和，如果不希望某个属性值带上价格，可以将它的属性价格设为0，
+                    <br>
+                    <span style="color:red;">商品属性可灵活运用于各场景，比如套餐、大杯小杯、冷饮热饮、辣或不辣等等，顾客选择的属性信息将在打印机、短信、邮件、管理后台等各种订单提醒方式中展示。</span>
+                    <button type="button" class="close" data-dismiss="alert">
+                      <i class="ace-icon fa fa-times"></i>
+                    </button>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2" for="Food_is_nature">是否开启商品属性</label>
+                    <select name="Food[is_nature]" id="Food_is_nature">
+                      <option value="1">开启</option>
+                      <option value="0" selected="selected">关闭</option></select>
+                  </div>
+                  <div class="widget-box" style="width:100%;margin-left:0px;padding:0px;">
+                    <div class="widget-header">
+                      <h5>商品属性</h5></div>
+                    <div class="widget-body" style="padding:20px;" id="natureblocklist">
+                      <button class="btn btn-success" type="button" id="addpricenature">添加商品属性</button>
+                      <button class="btn btn-success btn-danger" type="button" onclick="window.open('http://bbs.lewaimai.com/forum.php?mod=viewthread&amp;tid=71&amp;page=1&amp;extra=#pid204')">属性教程</button></div>
+                    <div style="clear:both;"></div>
+                  </div>
+                </div>
+                <!-- 自定义属性 end-->
+                <!-- 限购设置 start -->
+                <div id="limitfood" class="tab-pane tt_1">
+                  <div class="alert alert-block alert-success">
+                    <button type="button" class="close" data-dismiss="alert">
+                      <i class="ace-icon fa fa-times"></i>
+                    </button>
+                    <p>点击查看教程
+                      <a href="#" target="_blank">《商品限购设置教程》</a></p>
+                  </div>
+                  <div class="widget-box" style="width:100%;margin-left:0px;padding:0px;">
+                    <div class="widget-header">
+                      <h5>每天限购</h5></div>
+                    <br>
+                    <div class="form-group" style="margin-left:5px;">
+                      <label class="col-sm-1" for="Food_is_day_limitfood">是否开启商品每天限购</label>
+                      <select name="Food[is_day_limitfood]" id="Food_is_day_limitfood">
+                        <option value="0" selected="selected">不开启</option>
+                        <option value="1">开启</option></select>
+                    </div>
+                    <div class="form-group" style="margin-left:5px;">
+                      <label class="col-sm-1">
+                        <label for="Food_day_foodnum">每天限购数量</label></label>
+                      <input class="col-sm-1" size="5" maxlength="5" placeholder="每天限购的商品数量" style="width:50px;" name="Food[day_foodnum]" id="Food_day_foodnum" type="text" value="1"></div>
+                  </div>
+                  <div class="widget-box" style="width:100%;margin-left:0px;padding:0px;">
+                    <div class="widget-header">
+                      <h5>限购活动</h5></div>
+                    <div class="row">
+                      <br>
+                      <div class="form-group" style="margin-left:5px;">
+                        <label class="col-sm-1" for="Food_is_limitfood">是否开启限购活动</label>
+                        <select name="Food[is_limitfood]" id="Food_is_limitfood">
+                          <option value="0" selected="selected">不开启</option>
+                          <option value="1">开启</option></select>
+                      </div>
+                      <div class="form-group" style="margin-left:5px;">
+                        <label class="col-sm-1">
+                          <label for="Food_foodnum">每人限购数量</label></label>
+                        <input class="col-sm-1" size="5" maxlength="5" placeholder="每人限购的商品数量" style="width:50px;" name="Food[foodnum]" id="Food_foodnum" type="text" value="1"></div>
+                      <div class="widget-box" style="width:90%;margin-left:20px;padding:0px;">
+                        <div class="widget-header">
+                          <h5>限制日期范围</h5></div>
+                        <div class="widget-body" style="padding:20px;">开始日期:
+                          <input id="Food_start_time" type="text" name="Food[start_time]" class="hasDatepicker">
+                          <br>
+                          <br>结束日期:
+                          <input id="Food_stop_time" type="text" name="Food[stop_time]" class="hasDatepicker">
+                          <br>
+                          <br></div></div>
+                      <div class="widget-box" style="width:90%;margin-left:20px;padding:0px;">
+                        <div class="widget-header">
+                          <h5>限制时间段</h5></div>
+                        <div class="widget-body" style="padding:20px;">
+                          <div style="margin:10px;width:400px;float:left;">(1)
+                            <input id="limit_time_0_start" type="text" value="00:00" name="limit_time[0][start]" class="hasDatepicker">至
+                            <input id="limit_time_0_stop" type="text" value="00:00" name="limit_time[0][stop]" class="hasDatepicker"></div>
+                          <div style="margin:10px;width:400px;float:left;">(2)
+                            <input id="limit_time_1_start" type="text" value="00:00" name="limit_time[1][start]" class="hasDatepicker">至
+                            <input id="limit_time_1_stop" type="text" value="00:00" name="limit_time[1][stop]" class="hasDatepicker"></div>
+                          <div style="margin:10px;width:400px;float:left;">(3)
+                            <input id="limit_time_2_start" type="text" value="00:00" name="limit_time[2][start]" class="hasDatepicker">至
+                            <input id="limit_time_2_stop" type="text" value="00:00" name="limit_time[2][stop]" class="hasDatepicker"></div>
+                          <div style="margin:10px;width:400px;float:left;">(4)
+                            <input id="limit_time_3_start" type="text" value="00:00" name="limit_time[3][start]" class="hasDatepicker">至
+                            <input id="limit_time_3_stop" type="text" value="00:00" name="limit_time[3][stop]" class="hasDatepicker"></div>
+                          <div style="margin:10px;width:400px;float:left;">(5)
+                            <input id="limit_time_4_start" type="text" value="00:00" name="limit_time[4][start]" class="hasDatepicker">至
+                            <input id="limit_time_4_stop" type="text" value="00:00" name="limit_time[4][stop]" class="hasDatepicker"></div>
+                          <div style="margin:10px;width:400px;float:left;">(6)
+                            <input id="limit_time_5_start" type="text" value="00:00" name="limit_time[5][start]" class="hasDatepicker">至
+                            <input id="limit_time_5_stop" type="text" value="00:00" name="limit_time[5][stop]" class="hasDatepicker"></div>
+                          <div style="clear:both;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="clearfix form-actions" style="position:absolute;left:0px;right:0px;bottom:-120px;">
+                  <button class="btn btn-info" type="submit" style="margin-left:200px;">
+                    <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+                </div>
+                <!-- 商品图片start -->
+                <div id="imgcontent" class="tab-pane tt_1">
+                  <div class="alert alert-block alert-success">商品图片最多5张，每张最大允许上传500K，支持jpg、png、jpeg格式，图片空间的图片不需要剪切，请上传图片空间前剪切好，本地图片选定剪切范围后请点击下方绿色的“保存图片”按钮确认剪切，设置好全部图片后需要点击下方蓝色的“保存”按钮使设置生效。
+                    <button type="button" class="close" data-dismiss="alert">
+                      <i class="ace-icon fa fa-times"></i></button>
+                  </div>
+                  <div style="width:300px;height:500px;border-right:2px solid #ffffff;padding:0px;float:left;margin:0px;overflow:hidden;">
+                    <div style="width:300px;">
+                      <div id="selectImg" class="btn btn-success">选择图片</div>
+                      <div class="btn btn-success" onclick="$('#picselect').trigger('click');">上传本地图片</div>
+                      <form action="/autoreply/uploadtemp" enctype="multipart/form-data" method="post">
+                        <input type="file" name="surface" id="picselect" style="display:none">
+                        <input type="hidden" name="imgmaxsize" value="512000"></form>
+                    </div>
+                    <div style="width:300px;height:20px;margin-top:20px;">上传图（可拖动图片区域进行剪切）：</div>
+                    <div style="width:300px;height:300px;background:#dddddd;">
+                      <img style="width: 300px; height: 300px; display: none;" src="" id="temppic"></div>
+                  </div>
+                  <div style="width:450px;height:500px;float:left;margin:20px;margin-top:100px;">
+                    <div style="height:20px;width:450px;">剪切后最终效果大图</div>
+                    <div style="margin-top:0px;width:400px;height:400px;overflow:hidden;background:#dddddd;">
+                      <img src="" style="width:400px;height:400px;display:none;" id="imgselect"></div>
+                    <div style="margin-top:20px;height:20px;width:450px;">剪切后最终效果小图</div>
+                    <div style="width:56px;height:56px;overflow:hidden;background:#dddddd;">
+                      <img src="" style="width:56px;height:56px;display:none;" id="smallimgselect"></div>
+                  </div>
+                  <div style="width:200px;height:300px;float:left;margin:20px;margin-top:80px;">
+                    <div style="margin-top:20px;height:20px;width:200px;" id="imglist">
+                      <div style="width:200px;">当前商品图片(最多5张)</div>
+                      <img id="dis" style="position:relative;width:80px;height:80px;background:#cccccc;margin-top:10px;" src="images/food.png"></div>
+                  </div>
+                  <div style="clear:both;"></div>
+                  <div style="width:160px;height:30px;margin-top:20px;margin-left:280px;">
+                    <div style="float:right;margin-right:20px;cursor:pointer;width:100px;height:30px;line-height:30px;text-align:center;background:green;color:#ffffff;" onclick="addimgselect();">保存图片</div></div>
+                  <input type="hidden" name="isimgchange" id="isimgchange" value="no">
+                  <div class="resizeSave">
+                    <form action="/food/imgareaselect" enctype="multipart/form-data" method="post" id="imgselectofm">
+                      <input type="hidden" name="food_id" value="">
+                      <input type="hidden" name="imgurl" value="" id="imgurl">
+                      <input type="hidden" name="x" value="" id="x">
+                      <input type="hidden" name="y" value="" id="y">
+                      <input type="hidden" name="x2" value="" id="x2">
+                      <input type="hidden" name="y2" value="" id="y2">
+                      <input type="hidden" name="width" value="300" id="cwidth">
+                      <input type="hidden" name="height2" value="400">
+                      <input type="hidden" name="width2" value="400">
+                      <input type="hidden" name="smallheight2" value="56">
+                      <input type="hidden" name="smallwidth2" value="56">
+                      <input type="hidden" name="submit" value="yes" id="submit"></form>
+                  </div>
+                </div>
+                <!-- 商品图片end --></div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div style="height:100px;"></div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+   <div class="disk"></div>
+  <script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+
+</html>

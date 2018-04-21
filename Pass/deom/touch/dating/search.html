@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>交友首页</title>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<link rel="stylesheet" type="text/css" href="css/touch_common.css?v=23">
+<link rel="stylesheet" type="text/css" href="css/index.css?v=23">
+<script src="http://ihuoniao.cn/static/js/core/touchScale.js"></script>
+<link rel="stylesheet" type="text/css" href="css/search.css?v=23">
+</head>
+<body>
+	<!-- 头部 s-->
+	<div class="header">
+	<div class="header-l">
+		<script src="http://ihuoniao.cn/include/json.php?action=adjs&id=168" language="javascript"></script>
+	</div>
+	<div class="header-address">
+		<span>搜索</span>
+	</div>
+	<div class="header-search">
+		<!-- <a href="javascript:;" class="dropnav"><img src="images/screen.png" alt=""></a> -->
+		<p><img src="images/tr.png" alt=""></p>
+	</div>
+</div>
+<div class="se-list fn-clear">
+	<h1>交友条件</h1>
+	<ul>
+		<li class="fn-clear age">
+			<p>年龄</p>
+			<div class="age-t">
+				<span>不限</span><i>-</i><em>不限</em>
+			</div>
+			<div class="age-list">
+				<select id="agebegin" name="agebegin" value="不限">
+					<option value="不限">不限</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+					<option value="24">24</option>
+					<option value="25">25</option>
+					<option value="26">26</option>
+					<option value="27">27</option>
+					<option value="28">28</option>
+					<option value="29">29</option>
+					<option value="30">30</option>
+					<option value="31">31</option>
+					<option value="32">32</option>
+					<option value="33">33</option>
+					<option value="34">34</option>
+					<option value="35">35</option>
+					<option value="36">36</option>
+					<option value="37">37</option>
+					<option value="38">38</option>
+					<option value="39">39</option>
+					<option value="40">40</option>
+					<option value="41">41</option>
+					<option value="42">42</option>
+					<option value="43">43</option>
+					<option value="44">44</option>
+					<option value="45">45</option>
+					<option value="46">46</option>
+					<option value="47">47</option>
+					<option value="48">48</option>
+					<option value="49">49</option>
+					<option value="50">50</option>
+					<option value="51">51</option>
+					<option value="52">52</option>
+					<option value="53">53</option>
+					<option value="54">54</option>
+					<option value="55">55</option>
+					<option value="56">56</option>
+					<option value="57">57</option>
+					<option value="58">58</option>
+					<option value="59">59</option>
+					<option value="60">60</option>
+					<option value="61">61</option>
+					<option value="62">62</option>
+					<option value="63">63</option>
+					<option value="64">64</option>
+					<option value="65">65</option>
+					<option value="66">66</option>
+					<option value="67">67</option>
+					<option value="68">68</option>
+					<option value="69">69</option>
+					<option value="70">70</option>
+					<option value="71">71</option>
+					<option value="72">72</option>
+					<option value="73">73</option>
+					<option value="74">74</option>
+					<option value="75">75</option>
+					<option value="76">76</option>
+					<option value="77">77</option>
+					<option value="78">78</option>
+					<option value="79">79</option>
+					<option value="80">80</option>
+					<option value="81">81</option>
+					<option value="82">82</option>
+					<option value="83">83</option>
+					<option value="84">84</option>
+					<option value="85">85</option>
+					<option value="86">86</option>
+					<option value="87">87</option>
+					<option value="88">88</option>
+					<option value="89">89</option>
+					<option value="90">90</option>
+					<option value="91">91</option>
+					<option value="92">92</option>
+					<option value="93">93</option>
+					<option value="94">94</option>
+					<option value="95">95</option>
+					<option value="96">96</option>
+					<option value="97">97</option>
+					<option value="98">98</option>
+				</select>
+				<select id="ageend" name="ageend">
+					<option value="不限">不限</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+					<option value="24">24</option>
+					<option value="25">25</option>
+					<option value="26">26</option>
+					<option value="27">27</option>
+					<option value="28">28</option>
+					<option value="29">29</option>
+					<option value="30">30</option>
+					<option value="31">31</option>
+					<option value="32">32</option>
+					<option value="33">33</option>
+					<option value="34">34</option>
+					<option value="35">35</option>
+					<option value="36">36</option>
+					<option value="37">37</option>
+					<option value="38">38</option>
+					<option value="39">39</option>
+					<option value="40">40</option>
+					<option value="41">41</option>
+					<option value="42">42</option>
+					<option value="43">43</option>
+					<option value="44">44</option>
+					<option value="45">45</option>
+					<option value="46">46</option>
+					<option value="47">47</option>
+					<option value="48">48</option>
+					<option value="49">49</option>
+					<option value="50">50</option>
+					<option value="51">51</option>
+					<option value="52">52</option>
+					<option value="53">53</option>
+					<option value="54">54</option>
+					<option value="55">55</option>
+					<option value="56">56</option>
+					<option value="57">57</option>
+					<option value="58">58</option>
+					<option value="59">59</option>
+					<option value="60">60</option>
+					<option value="61">61</option>
+					<option value="62">62</option>
+					<option value="63">63</option>
+					<option value="64">64</option>
+					<option value="65">65</option>
+					<option value="66">66</option>
+					<option value="67">67</option>
+					<option value="68">68</option>
+					<option value="69">69</option>
+					<option value="70">70</option>
+					<option value="71">71</option>
+					<option value="72">72</option>
+					<option value="73">73</option>
+					<option value="74">74</option>
+					<option value="75">75</option>
+					<option value="76">76</option>
+					<option value="77">77</option>
+					<option value="78">78</option>
+					<option value="79">79</option>
+					<option value="80">80</option>
+					<option value="81">81</option>
+					<option value="82">82</option>
+					<option value="83">83</option>
+					<option value="84">84</option>
+					<option value="85">85</option>
+					<option value="86">86</option>
+					<option value="87">87</option>
+					<option value="88">88</option>
+					<option value="89">89</option>
+					<option value="90">90</option>
+					<option value="91">91</option>
+					<option value="92">92</option>
+					<option value="93">93</option>
+					<option value="94">94</option>
+					<option value="95">95</option>
+					<option value="96">96</option>
+					<option value="97">97</option>
+					<option value="98">98</option>
+					<option value="99">99</option>
+				</select>
+			</div>
+		</li>
+		<li class="fn-clear">
+			<p>身高</p>
+			<div class="hei-t">
+				<span>不限</span><i>-</i><em>不限</em>
+			</div>
+			<div class="hei">
+				<select id="h1" name="h1">
+					<option value="139">不限</option>	
+					<option value="140">140</option>
+					<option value="141">141</option>
+					<option value="142">142</option>
+					<option value="143">143</option>
+					<option value="144">144</option>
+					<option value="145">145</option>
+					<option value="146">146</option>
+					<option value="147">147</option>
+					<option value="148">148</option>
+					<option value="149">149</option>
+					<option value="150">150</option>
+					<option value="151">151</option>
+					<option value="152">152</option>
+					<option value="153">153</option>
+					<option value="154">154</option>
+					<option value="155">155</option>
+					<option value="156">156</option>
+					<option value="157">157</option>
+					<option value="158">158</option>
+					<option value="159">159</option>
+					<option value="160">160</option>
+					<option value="161">161</option>
+					<option value="162">162</option>
+					<option value="163">163</option>
+					<option value="164">164</option>
+					<option value="165">165</option>
+					<option value="166">166</option>
+					<option value="167">167</option>
+					<option value="168">168</option>
+					<option value="169">169</option>
+					<option value="170">170</option>
+					<option value="171">171</option>
+					<option value="172">172</option>
+					<option value="173">173</option>
+					<option value="174">174</option>
+					<option value="175">175</option>
+					<option value="176">176</option>
+					<option value="177">177</option>
+					<option value="178">178</option>
+					<option value="179">179</option>
+					<option value="180">180</option>
+					<option value="181">181</option>
+					<option value="182">182</option>
+					<option value="183">183</option>
+					<option value="184">184</option>
+					<option value="185">185</option>
+					<option value="186">186</option>
+					<option value="187">187</option>
+					<option value="188">188</option>
+					<option value="189">189</option>
+					<option value="190">190</option>
+					<option value="191">191</option>
+					<option value="192">192</option>
+					<option value="193">193</option>
+					<option value="194">194</option>
+					<option value="195">195</option>
+					<option value="196">196</option>
+					<option value="197">197</option>
+					<option value="198">198</option>
+					<option value="199">199</option>
+					<option value="200">200</option>
+					<option value="201">201</option>
+					<option value="202">202</option>
+					<option value="203">203</option>
+					<option value="204">204</option>
+					<option value="205">205</option>
+					<option value="206">206</option>
+					<option value="207">207</option>
+					<option value="208">208</option>
+					<option value="209">209</option>
+					<option value="210">210</option>
+					<option value="211">211</option>
+					<option value="212">212</option>
+					<option value="213">213</option>
+					<option value="214">214</option>
+					<option value="215">215</option>
+					<option value="216">216</option>
+					<option value="217">217</option>
+					<option value="218">218</option>
+					<option value="219">219</option>
+					<option value="220">220</option>
+					<option value="221">221</option>
+					<option value="222">222</option>
+					<option value="223">223</option>
+					<option value="224">224</option>
+					<option value="225">225</option>
+					<option value="226">226</option>
+					<option value="227">227</option>
+					<option value="228">228</option>
+					<option value="229">229</option>
+					<option value="230">230</option>
+					<option value="231">231</option>
+					<option value="232">232</option>
+					<option value="233">233</option>
+					<option value="234">234</option>
+					<option value="235">235</option>
+					<option value="236">236</option>
+					<option value="237">237</option>
+					<option value="238">238</option>
+					<option value="239">239</option>
+					<option value="240">240</option>
+					<option value="241">241</option>
+					<option value="242">242</option>
+					<option value="243">243</option>
+					<option value="244">244</option>
+					<option value="245">245</option>
+					<option value="246">246</option>
+					<option value="247">247</option>
+					<option value="248">248</option>
+					<option value="249">249</option>
+					<option value="250">250</option>
+					<option value="251">251</option>
+					<option value="252">252</option>
+					<option value="253">253</option>
+					<option value="254">254</option>
+					<option value="255">255</option>
+					<option value="256">256</option>
+					<option value="257">257</option>
+					<option value="258">258</option>
+					<option value="259">259</option>
+					<option value="260">260</option>
+				</select>
+				<select id="h2" name="h2">
+					<option value="140" selected="">不限</option>
+					<option value="140">140</option>
+					<option value="141">141</option>
+					<option value="142">142</option>
+					<option value="143">143</option>
+					<option value="144">144</option>
+					<option value="145">145</option>
+					<option value="146">146</option>
+					<option value="147">147</option>
+					<option value="148">148</option>
+					<option value="149">149</option>
+					<option value="150">150</option>
+					<option value="151">151</option>
+					<option value="152">152</option>
+					<option value="153">153</option>
+					<option value="154">154</option>
+					<option value="155">155</option>
+					<option value="156">156</option>
+					<option value="157">157</option>
+					<option value="158">158</option>
+					<option value="159">159</option>
+					<option value="160">160</option>
+					<option value="161">161</option>
+					<option value="162">162</option>
+					<option value="163">163</option>
+					<option value="164">164</option>
+					<option value="165">165</option>
+					<option value="166">166</option>
+					<option value="167">167</option>
+					<option value="168">168</option>
+					<option value="169">169</option>
+					<option value="170">170</option>
+					<option value="171">171</option>
+					<option value="172">172</option>
+					<option value="173">173</option>
+					<option value="174">174</option>
+					<option value="175">175</option>
+					<option value="176">176</option>
+					<option value="177">177</option>
+					<option value="178">178</option>
+					<option value="179">179</option>
+					<option value="180">180</option>
+					<option value="181">181</option>
+					<option value="182">182</option>
+					<option value="183">183</option>
+					<option value="184">184</option>
+					<option value="185">185</option>
+					<option value="186">186</option>
+					<option value="187">187</option>
+					<option value="188">188</option>
+					<option value="189">189</option>
+					<option value="190">190</option>
+					<option value="191">191</option>
+					<option value="192">192</option>
+					<option value="193">193</option>
+					<option value="194">194</option>
+					<option value="195">195</option>
+					<option value="196">196</option>
+					<option value="197">197</option>
+					<option value="198">198</option>
+					<option value="199">199</option>
+					<option value="200">200</option>
+					<option value="201">201</option>
+					<option value="202">202</option>
+					<option value="203">203</option>
+					<option value="204">204</option>
+					<option value="205">205</option>
+					<option value="206">206</option>
+					<option value="207">207</option>
+					<option value="208">208</option>
+					<option value="209">209</option>
+					<option value="210">210</option>
+					<option value="211">211</option>
+					<option value="212">212</option>
+					<option value="213">213</option>
+					<option value="214">214</option>
+					<option value="215">215</option>
+					<option value="216">216</option>
+					<option value="217">217</option>
+					<option value="218">218</option>
+					<option value="219">219</option>
+					<option value="220">220</option>
+					<option value="221">221</option>
+					<option value="222">222</option>
+					<option value="223">223</option>
+					<option value="224">224</option>
+					<option value="225">225</option>
+					<option value="226">226</option>
+					<option value="227">227</option>
+					<option value="228">228</option>
+					<option value="229">229</option>
+					<option value="230">230</option>
+					<option value="231">231</option>
+					<option value="232">232</option>
+					<option value="233">233</option>
+					<option value="234">234</option>
+					<option value="235">235</option>
+					<option value="236">236</option>
+					<option value="237">237</option>
+					<option value="238">238</option>
+					<option value="239">239</option>
+					<option value="240">240</option>
+					<option value="241">241</option>
+					<option value="242">242</option>
+					<option value="243">243</option>
+					<option value="244">244</option>
+					<option value="245">245</option>
+					<option value="246">246</option>
+					<option value="247">247</option>
+					<option value="248">248</option>
+					<option value="249">249</option>
+					<option value="250">250</option>
+					<option value="251">251</option>
+					<option value="252">252</option>
+					<option value="253">253</option>
+					<option value="254">254</option>
+					<option value="255">255</option>
+					<option value="256">256</option>
+					<option value="257">257</option>
+					<option value="258">258</option>
+					<option value="259">259</option>
+					<option value="260">260</option>
+				</select>
+			</div>
+		</li>
+		<li class="fn-clear">
+			<p>地区</p>
+			<div class="pla-t">
+				<span>不限</span><i>-</i><em>不限</em>
+			</div>
+			<div class="place">
+			<select id="addrid" name="addrid">
+			  <option value="沧浪">沧浪</option>
+			  <option value="相城">相城</option>
+			  <option value="平江">平江</option>
+			  <option value="金阊">金阊</option>
+			  <option value="工业园">工业园</option>
+			  <option value="高新区">高新区</option>
+			  <option value="吴中">吴中</option>
+			  <option value="昆山">昆山</option>
+			  <option value="常熟">常熟</option>
+			  <option value="张家港">张家港</option>
+			  <option value="太仓">太仓</option>
+			  <option value="吴江">吴江</option>
+			</select>
+				<select class="area2" id="child_1">
+				  <option value="南门">南门</option>
+				  <option value="友新">友新</option>
+				  <option value="双塔">双塔</option>
+				  <option value="吴门桥">吴门桥</option>
+				  <option value="胥江">胥江</option>
+				  <option value="葑门">葑门</option>
+				</select>
+				<select class="area2" id="child_2">
+				  <option value="元和">元和</option>
+				  <option value="北桥">北桥</option>
+				  <option value="太平">太平</option>
+				  <option value="望亭">望亭</option>
+				  <option value="渭塘">渭塘</option>
+				  <option value="阳澄湖">阳澄湖</option>
+				</select>
+				<select class="area2" id="child_3">
+				  <option value="城北">城北</option>
+				  <option value="娄门">娄门</option>
+				  <option value="平江路">平江路</option>
+				  <option value="桃花坞">桃花坞</option>
+				  <option value="苏锦">苏锦</option>
+				  <option value="观前">观前</option>
+				</select>
+				<select class="area2" id="child_4">
+				  <option value="彩香">彩香</option>
+				  <option value="留园">留园</option>
+				  <option value="白洋湾">白洋湾</option>
+				  <option value="石路">石路</option>
+				  <option value="虎丘">虎丘</option>
+				</select>
+				<select class="area2" id="child_5">
+				  <option value="唯亭">唯亭</option>
+				  <option value="娄葑">娄葑</option>
+				  <option value="胜浦">胜浦</option>
+				  <option value="东环路">东环路</option>
+				  <option value="独墅湖">独墅湖</option>
+				  <option value="湖东">湖东</option>
+				  <option value="湖西">湖西</option>
+				  <option value="青剑湖">青剑湖</option>
+				</select>
+				<select class="area2" id="child_6">
+				    <option value="东渚">东渚</option>
+				    <option value="枫桥">枫桥</option>
+				    <option value="横塘">横塘</option>
+				    <option value="浒墅关">浒墅关</option>
+				    <option value="狮山">狮山</option>
+				</select>
+				<select class="area2" id="child_7">
+				  <option value="东山">东山</option>
+				  <option value="临湖">临湖</option>
+				  <option value="光福">光福</option>
+				  <option value="城南">城南</option>
+				  <option value="木渎">木渎</option>
+				  <option value="横泾">横泾</option>
+				</select>
+				<select class="area2" id="child_8">
+				  <option value="千灯">千灯</option>
+				  <option value="周市">周市</option>
+				  <option value="周庄">周庄</option>
+				  <option value="巴城">巴城</option>
+				  <option value="张浦">张浦</option>
+				</select>
+				<select class="area2" id="child_9">
+				  <option value="古里">古里</option>
+				  <option value="尚湖">尚湖</option>
+				  <option value="支塘">支塘</option>
+				  <option value="新港">新港</option>
+				  <option value="梅李">梅李</option>
+				  <option value="沙家浜">沙家浜</option>
+				</select>
+				<select class="area2" id="child_10">
+				  <option value="乐余">乐余</option>
+				  <option value="凤凰">凤凰</option>
+				  <option value="南丰">南丰</option>
+				  <option value="塘桥">塘桥</option>
+				  <option value="大新">大新</option>
+				</select>
+				<select class="area2" id="child_11">
+				  <option value="双凤">双凤</option>
+				  <option value="城厢">城厢</option>
+				  <option value="太仓港港口开发区">太仓港港口开发区</option>
+				  <option value="太仓经济开发区">太仓经济开发区</option>
+				  <option value="沙溪">沙溪</option>
+				  <option value="浏河">浏河</option>
+				</select>
+				<select class="area2" id="child_12">
+				  <option value="七都">七都</option>
+				  <option value="同里">同里</option>
+				  <option value="平望">平望</option>
+				  <option value="松陵">松陵</option>
+				  <option value="桃源">桃源</option>
+				  <option value="横扇">横扇</option>
+				</select>
+			</div>
+		</li>
+		<li class="fn-clear">
+			<p>学历</p>
+			<div class="lear-t">
+				<span>不限</span>
+			</div>
+			<div class="learn">
+				<select name="" id="lear">
+					<option value="不限">不限</option>
+					<option value="高中">高中</option>
+					<option value="中专">中专</option>
+					<option value="大专">大专</option>
+					<option value="本科">本科</option>
+					<option value="双学士">双学士</option>
+					<option value="硕士">硕士</option>
+					<option value="博士">博士</option>
+					<option value="博士后">博士后</option>
+				</select>
+			</div>
+		</li>
+		<li class="fn-clear">
+			<p>月收入</p>
+			<div class="mone-t">
+				<span>不限</span>
+			</div>
+			<div class="money">
+				<select name="" id="money-1">
+					<option value="不限">不限</option>
+					<option value="2000-5000">2000-5000</option>
+					<option value="10,000元以上/月">10,000元以上/月</option>
+					<option value="20,000元以上/月">20,000元以上/月</option>
+					<option value="50万以上/年收入">50万以上/年收入</option>
+				</select>
+			</div>
+		</li>
+	</ul>
+	<div class="search-s">
+		<a href="#">搜索</a>
+	</div>
+</div>
+<div class="navBox" id="navBox">
+	<div class="navlist" id="navlist">
+		<ul class="clearfix fn-clear">
+			<li><a href="#"><span class="nav_1"></span>新闻</a></li>
+			<li><a href="#"><span class="nav_2"></span>二手</a></li>
+			<li><a href="#"><span class="nav_3"></span>团购</a></li>
+			<li><a href="#"><span class="nav_4"></span>房产</a></li>
+			<li><a href="#"><span class="nav_5"></span>商城</a></li>
+			<li><a href="#"><span class="nav_6"></span>建材</a></li>
+			<li><a href="#"><span class="nav_7"></span>家具</a></li>
+			<li><a href="#"><span class="nav_8"></span>家居</a></li>
+			<li><a href="#"><span class="nav_9"></span>装修</a></li>
+			<li><a href="#"><span class="nav_10"></span>招聘</a></li>
+			<li><a href="#"><span class="nav_11"></span>交友</a></li>
+			<li><a href="#"><span class="nav_12"></span>婚嫁</a></li>
+			<li><a href="#}"><span class="nav_13"></span>汽车</a></li>
+			<li><a href="#"><span class="nav_14"></span>外卖</a></li>
+			<li><a href="#"><span class="nav_15"></span>商家</a></li>
+			<li><a href="#"><span class="nav_16"></span>旅游</a></li>
+			<li><a href="#"><span class="nav_17"></span>贴吧</a></li>
+			<li><a href="#"><span class="nav_18"></span>五折卡</a></li>
+			<li><a href="#"><span class="nav_19"></span>黄页</a></li>
+			<li><a href="#"><span class="nav_20"></span>视频</a></li>
+			<li><a href="#"><span class="nav_21"></span>图片</a></li>
+			<li><a href="#"><span class="nav_22"></span>直播</a></li>
+			<li><a href="#"><span class="nav_23"></span>打车</a></li>
+			<li><a href="#"><span class="nav_24"></span>投票</a></li>
+		</ul>
+	</div>
+	<div class="bg" id="shearBg"></div>
+</div>
+<script src="http://ihuoniao.cn/static/js/ui/iscroll.js" type="text/javascript"></script>
+	<!-- 头部 e -->
+	<!-- 内容 s -->
+	<div class="main">
+		<div class="main-m fn-clear">
+			<a href="search-de.html">
+				<div class="sear-img">
+					<div class="sear-pic">
+						<img src="upfile/s01.jpg">
+						<div class="infor">
+							<ul>
+								<li class="name">
+									<em>ice</em>期望两年内结婚
+								</li>
+								<li>
+									<em>已认证身份</em><p>|</p>
+									<em>工作生活在：上海</em>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="infor-list">
+						<ul class="fn-clear">
+							<li><em>28岁</em></li>
+							<li><em>163cm</em></li>
+							<li><em>天秤座</em></li>
+							<li><em>年收入：10w~20w</em></li>
+						</ul>
+						<div class="infor-txt">
+							大家好，我来自河北省唐山市，在百合网真心寻找一个靠谱的他，希望在以后的生活中相互扶持，过上幸福安逸的美好生活，我的愿望并不大，只希望有你相伴。
+						</div>
+					</div>
+					
+				</div>
+			</a>
+			<div class="nic fn-clear">
+				<ul >
+					<li class="first-nic">
+						<a href="javascript:;"><em></em>发私信</a>
+					</li>
+					<li class="second-nic">
+						<a href="javascript:;" class="op"><em></em>打招呼</a>
+						<a href="javascript:;" class="do"><i></i>已打招呼</a>
+					</li>
+					<li class="last-nic">
+						<a href="javascript:;"><em></em>加关注</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="main-m fn-clear">
+			<a href="search-de.html">
+				<div class="sear-img">
+					<div class="sear-pic">
+						<img src="upfile/s02.jpg">
+						<div class="infor">
+							<ul>
+								<li class="name">
+									<em>ice</em>期望两年内结婚
+								</li>
+								<li>
+									<em>已认证身份</em><p>|</p>
+									<em>工作生活在：上海</em>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="infor-list">
+						<ul class="fn-clear">
+							<li><em>28岁</em></li>
+							<li><em>163cm</em></li>
+							<li><em>天秤座</em></li>
+							<li><em>年收入：10w~20w</em></li>
+						</ul>
+						<div class="infor-txt">
+							大家好，我来自河北省唐山市，在百合网真心寻找一个靠谱的他，希望在以后的生活中相互扶持，过上幸福安逸的美好生活，我的愿望并不大，只希望有你相伴。
+						</div>
+					</div>
+					
+				</div>
+			</a>
+			<div class="nic fn-clear">
+				<ul >
+					<li class="first-nic">
+						<a href="javascript:;"><em></em>发私信</a>
+					</li>
+					<li class="second-nic">
+						<a href="javascript:;" class="op"><em></em>打招呼</a>
+						<a href="javascript:;" class="do"><i></i>已打招呼</a>
+					</li>
+					<li class="last-nic">
+						<a href="javascript:;"><em></em>加关注</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="main-m fn-clear">
+			<a href="search-de.html">
+				<div class="sear-img">
+					<div class="sear-pic">
+						<img src="upfile/s03.jpg">
+						<div class="infor">
+							<ul>
+								<li class="name">
+									<em>ice</em>期望两年内结婚
+								</li>
+								<li>
+									<em>已认证身份</em><p>|</p>
+									<em>工作生活在：上海</em>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="infor-list">
+						<ul class="fn-clear">
+							<li><em>28岁</em></li>
+							<li><em>163cm</em></li>
+							<li><em>天秤座</em></li>
+							<li><em>年收入：10w~20w</em></li>
+						</ul>
+						<div class="infor-txt">
+							大家好，我来自河北省唐山市，在百合网真心寻找一个靠谱的他，希望在以后的生活中相互扶持，过上幸福安逸的美好生活，我的愿望并不大，只希望有你相伴。
+						</div>
+					</div>
+					
+				</div>
+			</a>
+			<div class="nic fn-clear">
+				<ul >
+					<li class="first-nic">
+						<a href="javascript:;"><em></em>发私信</a>
+					</li>
+					<li class="second-nic">
+						<a href="javascript:;" class="op"><em></em>打招呼</a>
+						<a href="javascript:;" class="do"><i></i>已打招呼</a>
+					</li>
+					<li class="last-nic">
+						<a href="javascript:;"><em></em>加关注</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="main-m fn-clear">
+			<a href="search-de.html">
+				<div class="sear-img">
+					<div class="sear-pic">
+						<img src="upfile/s04.jpg">
+						<div class="infor">
+							<ul>
+								<li class="name">
+									<em>ice</em>期望两年内结婚
+								</li>
+								<li>
+									<em>已认证身份</em><p>|</p>
+									<em>工作生活在：上海</em>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="infor-list">
+						<ul class="fn-clear">
+							<li><em>28岁</em></li>
+							<li><em>163cm</em></li>
+							<li><em>天秤座</em></li>
+							<li><em>年收入：10w~20w</em></li>
+						</ul>
+						<div class="infor-txt">
+							大家好，我来自河北省唐山市，在百合网真心寻找一个靠谱的他，希望在以后的生活中相互扶持，过上幸福安逸的美好生活，我的愿望并不大，只希望有你相伴。
+						</div>
+					</div>
+					
+				</div>
+			</a>
+			<div class="nic fn-clear">
+				<ul >
+					<li class="first-nic">
+						<a href="javascript:;"><em></em>发私信</a>
+					</li>
+					<li class="second-nic">
+						<a href="javascript:;" class="op"><em></em>打招呼</a>
+						<a href="javascript:;" class="do"><i></i>已打招呼</a>
+					</li>
+					<li class="last-nic">
+						<a href="javascript:;"><em></em>加关注</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 内容 e -->
+	<!-- 底部 s -->
+	<div class="foot fn-clear">
+		<ul>
+			<li class="jh">
+				<a href="index.html"><i></i>邂逅</a>
+			</li>
+			<li class="ss">
+				<a href="search.html"><i></i>搜索</a>
+			</li>
+			<li class="vip">
+				<a href="vip.html"><i></i>VIP</a>
+			</li>
+			<li class="wd">
+				<a href="mine.html"><i></i>我的</a>
+			</li>
+		</ul>
+	</div>
+	<!-- 底部 e -->
+	<div class="disk"></div>
+	<div class="txt">
+		<h1>发私信</h1>
+		<div class="shuru" contenteditable="true"></div>
+		<a href="#">发送</a>
+		<p></p>
+	</div>
+	<div class="zhaohu">
+		已打招呼
+	</div>
+<script src="js/zepto.min.js"></script>
+<script src="js/search.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/touch_common.js"></script>
+</body>
+</html>

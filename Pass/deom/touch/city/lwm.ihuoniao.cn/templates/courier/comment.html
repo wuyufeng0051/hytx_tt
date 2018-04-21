@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>我的评价</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v=33"></script>
+<link rel="stylesheet" type="text/css" href="/templates/courier/css/leMai.css?v=8">
+</head>
+
+<body>
+<!-- 外卖订单 -->
+<div class="waiMai">
+	<a href="javascript:;" class="kaiGuan xiaoXue{#if $courier_state == 1#} kaiGuan01{#/if#}"><i></i></a>
+	<p>我的评价</p>
+	<a href="/?service=waimai&do=courier&template=logout" class="logout"></a>
+</div>
+
+<div class="lewaimai">
+	<div class="peisongyuan">
+		<!-- 我的评分 -->
+		<div class="myTongji">
+			<a href="#" class="fn-clear">
+				<i class="reMark"></i>
+				<span>我的评分</span>
+				<span class="fiveStar">{#$courier_star#}</span>
+				<s style="background: none; margin-top: 0;">
+					<b></b>
+					<b class="star01" style="width:{#$courier_star/5*100#}%"></b>
+				</s>
+			</a>
+		</div>
+	</div>
+</div>
+
+<!-- 评论详细 -->
+<div id="list">
+	{#waimai action='common' peisongid=1 return='common' pageSize=100#}
+	<div class="remarkDetail">
+		<p class="waimBlue fn-clear">
+			<span>【外卖】</span>
+			<s><b></b><i style="width:{#$common.starps/5*100#}%;"></i></s>
+		</p>
+		<span class="goodRemark">{#$common.content#}</span>
+		<p class="goodRemark01 fn-clear">
+			<span>{#$common.user#}</span>
+			<i>{#$common.pubdatef#}</i>
+		</p>
+	</div>
+	{#/waimai#}
+	{#if $pageInfo.totalCount == 0#}
+	<div class="empty">暂无评论</div>
+	{#/if#}
+</div>
+
+<div class="bottomFix">
+	<ul class="fn-clear bottomFix01">
+		<li class="maiWai"><a href="/?service=waimai&do=courier&state=3"><i></i><p>订单</p></a></li>
+		<li class="paoTui paoTui01"><a href="/?service=waimai&do=courier&template=comment"><i></i><p>评价</p></a></li>
+		<li class="woDe"><a href="/?service=waimai&do=courier&template=statistics"><i></i><p>统计</p></a></li>
+	</ul>
+</div>
+
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="/templates/courier/js/drag-loading.js"></script>
+<script type="text/javascript">
+$(function(){
+	//开工
+	$(".kaiGuan").bind("click", function(){
+		var t = $(this), state = 1, title = "开工啦";
+		if(t.hasClass("kaiGuan01")){
+			state = 0;
+			title = "收工啦";
+			t.removeClass("kaiGuan01");
+		}else{
+			t.addClass("kaiGuan01");
+		}
+
+		$('.youqingTixing').html('<i>'+title+'</i>').show();
+		setTimeout(function(){
+			$(".youqingTixing").hide();
+		}, 1000);
+
+		$.ajax({
+            url: '/include/ajax.php?service=waimai&action=updateCourierState',
+            data: {
+				state: state
+            },
+            type: 'get',
+            dataType: 'json',
+            success: function(data){
+				location.reload();
+			}
+		});
+
+	});
+});
+</script>
+</body>
+</html>

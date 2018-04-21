@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>店铺分类</title>
+{#$cssFile#}
+<script>
+var action = "{#$action#}", adminPath = "{#$adminPath#}";
+</script>
+</head>
+
+<body>
+<div class="main-content">
+
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+
+      <div class="">
+        <div class="col-sm-12">
+          <form enctype="multipart/form-data" class="form-horizontal" id="shoptype-form" action="waimaiTypeAdd.php" method="post">
+            <div class="alert alert-danger" id="shoptype-form_es_" style="display:none">
+              <p>请更正下列输入错误:</p>
+              <ul><li>dummy</li></ul>
+            </div>
+            <!---->
+            <input name="id" value="{#$id#}" type="hidden">
+            <div class="form-group">
+              <label class="col-sm-1"><label for="ShopType_tag">店铺分类编号</label></label>
+              <input class="col-sm-1" size="10" maxlength="10" name="sort" id="ShopType_tag" type="text" value="{#$sort|string_format:"%d"#}">
+              <span class="help-button">
+                <span class="ace-icon fa fa-info bigger-120" data-rel="popover" data-trigger="hover" data-placement="right" data-content="决定展示顺序，编号越小越靠前" title="" data-original-title="店铺分类编号说明"></span>
+                <div class="popover fade right in" style="top:-24px;left:300.39px;display:none;">
+                  <div class="arrow" style="top:50%;"></div>
+                  <h3 class="popover-title">店铺分类编号说明</h3>
+                  <div class="popover-content">决定展示顺序，编号越大越靠前</div>
+                </div>
+              </span>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1"><label for="ShopType_name">店铺分类名称</label></label>
+              <input class="col-sm-1" size="10" maxlength="10" name="title" id="ShopType_name" type="text" value="{#$title#}"></div>
+            <div class="clearfix form-actions">
+              <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="submit" id="submitBtn" onclick="return checkFrom(this.form)"><i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+{#$jsFile#}
+<script type="text/javascript">
+$(function(){
+    $('[data-rel="popover"]').popover();
+});
+
+//表单提交
+function checkFrom(form){
+    var form = $("#shoptype-form"), action = form.attr("action"), data = form.serialize();
+    var btn = $("#submitBtn");
+
+    btn.attr("disabled", true);
+
+    $.ajax({
+        url: action,
+        type: "post",
+        data: data,
+        dataType: "json",
+        success: function(res){
+            if(res.state == 100){
+                location.href = "waimaiType.php";
+            }else{
+                $.dialog.alert(res.info);
+                btn.attr("disabled", false);
+            }
+        },
+        error: function(){
+            $.dialog.alert("网络错误，保存失败！");
+            btn.attr("disabled", false);
+        }
+    })
+
+}
+</script>

@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二手市场</title>
+	<meta http-equiv="cache-control" content="public">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+	<style>
+	ul{padding: 0;margin:0;}
+	li{list-style: none;}
+	nav{width: 100%;padding: 25px 15px;background: #fff;padding-top: 30px;}
+	nav ul{overflow: hidden;}
+	nav li{float: left;width: 33.33%;text-align:center;font-size: 15px;}
+	nav a{display: block;width: 100%;color: #333;-webkit-tap-highlight-color: transparent!important; -webkit-appearance: none!important;}
+	nav a.nobor{border-right: none;}
+	nav li img{display: block; width: 55px; height: 55px; margin: 0px auto;}
+	nav li span{display: block;line-height: 1.2;margin-top:8px;color: #666;}
+	nav li.cur span{color:#22a6f2;}
+	/*公用头部*/
+	.header{
+	    height: .9rem;
+	    background: #fd5530 !important;
+	    color: #fff;
+	    font-size: .32rem;
+	    line-height: .9rem;
+	    max-width: 1080px;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    z-index: 10;
+	    overflow: hidden;
+	}
+	.header a{
+		display: inline-block;
+		color: #fff;
+	}
+	.header .back{
+	    height: .9rem;
+	    line-height: .9rem;
+	    width: 17%;
+	    float: left;
+	}
+	.header .back i{
+	    width: 0.4rem;
+	    height: .9rem;
+	    display: inline-block;
+	    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+	    vertical-align: middle;
+	    background-size: .3rem;
+	}
+	.header .header_right{
+		float: right;
+		height: .9rem;
+		margin-right: .2rem;
+	}
+	.header .header_right i{
+	    width: 0.04rem;
+	    height: 0.5rem;
+	    display: inline-block;
+	    vertical-align: middle;
+	    background: #fff;
+	    margin: 0 .15rem;
+	}
+	.header .title{
+	    float: left;
+	    width: 70%;
+	    text-align: center;
+	    font-size: 0.38rem;
+	}
+	.header .share{
+	    height: .9rem;
+	    float: right;
+	    width: 12%;
+	    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+	    background-size: .5rem;
+	}
+	/*轮播*/
+	.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	.title{
+		color: #000;
+	    padding-left: 40px;
+	    line-height: 32px;
+	    border-bottom: 1px solid #eee;
+	    margin: 0;
+	    font-size: 16px;
+	    font-weight: 600;
+	    background: #fff url(__PUBLIC__/Home/img/tuijian.png) no-repeat 15px 4px;
+	    background-size: 20px 18px;
+	}
+	
+	#list .mui-media-object {
+	    line-height: 75px;
+	    width: 75px;
+	    max-width: 75px;
+	    height: 75px;
+	}
+	#list .p1{
+		line-height: 25px;
+		color: #ff7300;
+	}
+	#list h4{
+		font-weight: normal;
+		font-size: 16px;
+		margin:5px 0;
+	}
+	#list .mui-table-view-cell:after {
+	    position: absolute;
+	    right: 0;
+	    bottom: 0;
+	    left: 0px;
+	    height: 1px;
+	    content: '';
+	    -webkit-transform: scaleY(.5);
+	    transform: scaleY(.5);
+	    background-color: #c8c7cc;
+	}
+	.mui-card{
+		border-bottom:1px solid #c8c7cc;
+	}
+	.mui-card h4{
+		font-weight: normal;
+		font-size: 16px;
+		margin:5px 0;
+		color: #333;
+	}
+	.mui-card p{
+		margin-bottom: 0;
+	}
+	.backTop {
+	    border-radius: 50%;
+	    position: fixed;
+	    right: 10px;
+	    bottom: 15px;
+	    width: 40px;
+	    height: 40px;
+	    z-index: 9999;
+	    text-align: center;
+	    font-size: 18px;
+	    color: #666666;
+	    padding-top: 8px;
+	    opacity: 0.8;
+	    border: 2px solid #707070;
+	    background: #fff url(__PUBLIC__/Home/img/toTop.png) center center no-repeat;
+	    background-size: 20px 20px;
+	    /* display: none; */
+	}
+	.panel-body{
+		overflow: hidden;
+	}
+	.panel-body h4{
+		font-weight: normal;
+	}
+	.panel-body p{
+		margin:0;
+		line-height: 25px;
+	}
+	.panel-body p:nth-child(2){
+		color: #ff7300;
+	}
+	.mui-card{
+		box-shadow: none;
+		margin: 0;
+		border-bottom: 1px solid #ddd;
+	}
+	.heading{
+		display: -webkit-box;
+	    display: -webkit-flex;
+	    display: -ms-flexbox;
+	    display: flex;
+	    -webkit-box-align: center;
+	    -webkit-align-items: center;
+	    -ms-flex-align: center;
+	    align-items: center;
+	}
+	.heading .wantedTitle{
+		overflow: hidden;
+	    color: #111;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	    -webkit-box-flex: 1;
+	    -webkit-flex: 1;
+	    -ms-flex: 1;
+	    flex: 1;
+	    padding-right: 10px;
+	}
+    .heading em{
+  		font-style: normal;
+  		float: right;
+  		color: #ff7300;
+	}
+	.loading{
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		background: rgba(0,0,0,0.6);
+		z-index: 10000;
+		padding-top: 65%;
+	}
+	.loading img{
+		margin-left:43%;
+	}
+	/*顶部固定搜索框*/
+	.search_box{
+	    background: #fff;
+	    padding-top: 0.5rem;
+	    /*padding-bottom: 0.2rem;*/
+	}
+	.search_box img{
+		width: 80%;
+		margin: 0 auto;
+		display: block;
+	}
+	.sea_input{
+		width: 87%;
+		display: block;
+		margin: 0 auto;
+		height: .8rem;
+		line-height: .8rem;
+		font-size: .24rem;
+		border: 1px solid #000;
+		border-radius: 5px;
+		overflow: hidden;
+	}
+	.sea_input input{
+		width: 78%;
+		height: 100%;
+		border: none;
+		float: left;
+		font-size: .28rem;
+		text-align: left;
+		background: #fff;
+	}
+	.sea_input button{
+		border: none;
+		background: #fd5530;
+		width: 22%;
+		height: 100%;
+		color: #fff;
+		font-size: .28rem;
+		float: left;
+	}
+	.sea_input button i{
+		width: .5rem;
+		height: .455rem;
+		display: inline-block;
+		background: url(__PUBLIC__/Home/img/pb_1.png) no-repeat center;
+		background-size: .4rem;
+		vertical-align: middle;
+	}
+	.disk {
+	    background: #000;
+	    opacity: .5!important;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    z-index: 11;
+	    display: none;
+	}
+	.fa_box{
+        position: fixed;
+	    left: 50%;
+	    margin-left: -2.9rem;
+	    top: 30%;
+	    z-index: 12;
+	    width: 5.96rem;
+	    background-size: 6rem;
+	    text-align: center;
+	    background: #fff;
+	    border-radius: 0.15rem;
+	    overflow: hidden;
+	    display: none;
+	}
+	.fa_box .fb_title{
+		width: 100%;
+		font-size: .32rem;
+		background: #fd5530 !important;
+		color: #fff;
+		height: .8rem;
+		line-height: .8rem;
+	}
+	.fa_box .fb_title i{
+		position: absolute;
+		top: 0.15rem;
+		right: 0.2rem;
+		width: .4rem;
+		height: .4rem;
+		background: url(__PUBLIC__/Home/img/fa_cha.png) no-repeat center;
+		background-size: .4rem;
+	}
+	.fa_box ul li{
+		border-bottom: 0.02rem solid #dedede;
+	}
+	.fa_box ul li:last-child{
+		border-bottom: none;
+	}
+	.fa_box ul li a{
+		height: .8rem;
+		line-height: .8rem;
+		color: #000;
+		font-size: .28rem;
+		display: block;
+		-webkit-tap-highlight-color: inherit!important;
+	}
+	.fa_box ul li a:hover{
+		color: #fd5530 ;
+	}
+
+	/*分页*/
+	.page_box{
+		width: 100%;
+		background: #fff;
+	}
+	.page{
+		width: 56%;
+		margin: 0 auto;
+		display: block;
+		padding-top: .4rem;
+	}
+	.page a{
+		color: #000;
+	}
+	.page .before{
+		width: 1.2rem;
+		border: 1px solid #000;
+		height: .5rem;
+		float: left;
+		text-align: center;
+		line-height: .5rem;
+		font-size: .28rem;
+	}
+	.page .after{
+		width: 1.2rem;
+		border: 1px solid #000;
+		height: .5rem;
+		float: left;
+		text-align: center;
+		line-height: .5rem;
+		font-size: .28rem;
+		color: #fd5530;
+	}
+	.page .page_box {
+		float: left;
+		width: 1.2rem;
+		height: .5rem;
+		line-height: .5rem;
+		border: 1px solid #000;
+		margin: 0 .3rem;
+		position: relative;
+	}
+	.page .page_box span{
+		display: block;
+		text-align: center;
+		color: #fd5530;
+		font-size: .24rem;
+	}
+	.page .page_box span i{
+	    width: 0;
+	    height: 0;
+	    border-left: .09rem solid transparent;
+	    border-right: .09rem solid transparent;
+	    border-top: .15rem solid #000;
+	    position: relative;
+	    top: 13px;
+	    left: 7px;
+	}
+	.page .page_box select{
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+	}
+	.tips{
+		text-align: center;
+		margin: 0.1rem 0;
+	}
+	.page_view{
+	    float: right;
+	    margin-right: .2rem;
+	    font-size: .28rem;
+	    color: #898989;
+	}
+	.page_view span{
+	    margin-left: .2rem;
+	}
+	.page_view span em{
+	    color: #fd5530;
+	}
+	#zong{
+		padding: 13px 5px;
+	}
+	#zong .mui-card{
+	    box-shadow: 1px 1px 10px rgba(191, 185, 185, 0.62);
+	    padding: 5px 0px;
+		margin-bottom: 13px!important;
+	}
+	</style>
+</head>
+<body style="overflow: hidden;height: 100%;">
+<include file="Public/share" title='包含文件'/>
+	<!-- <div class="loading" ><img src="__PUBLIC__/Home/img/loading.gif" style="width: 30px;height: 30px;"><p style="text-align: center;color: #fff;">加载中，请稍等...</p></div> -->
+	<!-- 共同顶部 s-->
+		<div class="header fn-clear">
+			<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+			<div class="header_right"><a class="fa_btn" href="javascript:;">发布</a><i></i><a href="__MODULE__/Index/my">我的</a></div>
+		</div>
+	<!-- 共同顶部 e-->
+	<!-- 广告 -->
+	<!-- 图片轮播区 -->
+	<div class="swiper-container" style="margin-top:.9rem;">
+		<div class="swiper-wrapper">
+		 <volist name="status" id="vo">
+			<div class="swiper-slide">
+				<a id="up" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}" onclick="look(this)">
+				      <img src="__PUBLIC__/../{$vo['advertisement_img']}" style="width: 100%;display: block;">
+		        </a>
+			</div>
+         </volist>
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+	<!-- 顶部固定搜索框 s-->
+		<form action="javascript:return true;">
+			<div class="search_box">
+				<div class="sea_input fn-clear">
+					<input type="search" id="search_1" placeholder="请输入您要查找的二手信息"><button id="search"><i></i>查找</button>
+				</div>
+			</div>
+		</form>
+	<!-- 顶部固定搜索框 e-->
+	<!-- 发布弹出层 -->
+		<div class="fa_box fa_1">
+			<div class="fb_title">请选择您要发布的类型<i></i></div>
+			<ul>
+				<li><a href="__MODULE__/SecondHand/secondHandCarRelease">出售二手车</a></li>
+				<li><a href="__MODULE__/SecondHand/secondHandGoodsRelease">出售二手物品</a></li>
+				<li><a href="__MODULE__/SecondHand/buyRelease">我要求购</a></li>
+			</ul>
+		</div>
+	<!-- 发布弹出层 -->
+	<div class="disk"></div>
+	<div class="mui-content">
+		<nav>
+			<ul>
+				<li>
+					<a href="__MODULE__/SecondHand/secondHandGoods">
+						<img src="__PUBLIC__/Home/img/goods.png">
+						<span>二手物品</span>
+					</a>
+				</li>
+				<li>
+					<a href="__MODULE__/SecondHand/secondHandCar">
+						<img src="__PUBLIC__/Home/img/car.png">
+						<span>二手车</span>
+					</a>
+				</li>
+				<li>
+					<a href="__MODULE__/SecondHand/buy" class="nobor">
+						<img src="__PUBLIC__/Home/img/buy.png">
+						<span>求购专区</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		
+		
+		<h5 class="title">最新推荐</h5>
+
+		<div id="zong">
+		<foreach item="vo" name="all" key="k">
+		<?php if(!empty($vo['usedcar_id'])){ ?>
+		<div class="mui-card" style="margin:0;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 11px 10px;">
+				 <?php if($vo['usedcar_type'] == 1){ ?>
+					 <!-- href="__MODULE__/SecondHand/secondHandGoodsDetails?usedcar_id={$vo.usedcar_id}" -->
+					<a style="position: relative;padding-left: 85px;display: block;color:#000;height: 75px;" class="topheight" str="HandGoods" stv="{$vo.usedcar_id}">
+ 				 <?php }else{ ?>
+	 				 <!-- href="__MODULE__/SecondHand/secondHandCarDetails?usedcar_id={$vo.usedcar_id}"  -->
+					<a style="position: relative;padding-left: 85px;display: block;color:#000;height: 75px;" class="topheight" str="HandCar" stv="{$vo.usedcar_id}">
+				 <?php } ?>
+						<img src="__PUBLIC__/../{$vo.img}" alt="" style="position: absolute;left: 0;right: 0;width: 75px;height: 75px;">
+						<div class="panel-body">
+							<h4 class="mui-ellipsis">{$vo.usedcar_title}</h4>
+							<p class="mui-ellipsis">
+							 <?php if($vo['usedcar_price'] == 0){ ?>
+							    面议
+							 <?php }else{  ?>
+								{$vo.usedcar_price}{$vo.usedcar_company}
+							 <?php } ?>
+			                  <span style="float: right;">
+							  {$vo.usedcar_source}</span></p>
+							<p class="mui-ellipsis">
+							<?php if($vo['usedcar_type'] == 1){ ?>
+							{$vo.usedcar_news}
+					        <?php }else{ ?>
+							车龄:{$vo.usedcar_age}
+ 					        <?php } ?>
+ 					          <span style="float: right;">置顶</span></p>
+ 						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+       <?php }else{ ?>
+		<div class="mui-card" >
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner">
+				<!-- href="__MODULE__/SecondHand/buyDetails?wantbuy_id={$vo.wantbuy_id}" -->
+					<a  style="color: #333;" class="topheight" str="buy" stv="{$vo.wantbuy_id}">
+						<h4 class="heading"><span class="wantedTitle">{$vo.wantbuy_title}</span><em>
+							<?php if($vo['wantbuy_nature'] == 0){ ?>
+							 个人
+							<?php }else{ ?>
+							商家
+							<?php } ?>
+ 						</em></h4>
+						<p>
+						<span style="color: #ff7300;">
+						<?php if($vo['wantbuy_price'] == 0){ ?>
+							面议
+							<?php }else{ ?>
+							{$vo.wantbuy_price}{$vo.wantbuy_priceunit}
+							<?php } ?>
+						</span>
+ 					   <span style="float: right;">置顶</span></p>
+ 					</a>
+				</div>
+			</div>
+		 </div>
+		<?php } ?>
+        </foreach>
+
+       <volist id="vo" name="allther">
+		<?php if(!empty($vo['usedcar_id'])){ ?>
+		<div class="mui-card" style="margin:0;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 11px 10px;">
+				 <?php if($vo['usedcar_type'] == 1){ ?>
+				 <!-- href="__MODULE__/SecondHand/secondHandGoodsDetails?usedcar_id={$vo.usedcar_id}" -->
+					<a style="position: relative;padding-left: 85px;display: block;color:#000;height: 75px;" class="topheight" str="HandGoods" stv="{$vo.usedcar_id}">
+ 				 <?php }else{ ?>
+ 				 <!-- href="__MODULE__/SecondHand/secondHandCarDetails?usedcar_id={$vo.usedcar_id}" -->
+					<a style="position: relative;padding-left: 85px;display: block;color:#000;height: 75px;" class="topheight" str="HandCar" stv="{$vo.usedcar_id}">
+				 <?php } ?>
+						<img src="__PUBLIC__/../{$vo.img}" alt="" style="position: absolute;left: 0;right: 0;width: 75px;height: 75px;">
+						<div class="panel-body">
+							<h4 class="mui-ellipsis">{$vo.usedcar_title}</h4>
+							<p class="mui-ellipsis">
+							 <?php if($vo['usedcar_price'] == 0){ ?>
+							    面议
+							 <?php }else{  ?>
+								{$vo.usedcar_price}{$vo.usedcar_company}
+							 <?php } ?>
+			                  <span style="float: right;">
+							  {$vo.usedcar_source}</span></p>
+							<p class="mui-ellipsis">
+							<?php if($vo['usedcar_type'] == 1){ ?>
+							{$vo.usedcar_news}
+					        <?php }else{ ?>
+							车龄:{$vo.usedcar_age}
+ 					        <?php } ?>
+							<?php if($vo['usedcar_is_top'] == 1){ ?>
+							<span style="float: right;" class="time">
+							 置顶
+							</span>
+							<?php }else{ ?>
+							<span style="float: right;" class="time">
+							{$vo.usedcar_date}
+							</span>
+							<input type="hidden" value="{$vo.usedcar_date}" class="times">
+							<?php } ?>
+							</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+       <?php }else{ ?>
+		 <div class="mui-card" >
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner">
+					<a style="color: #333;" class="topheight" str="buy" stv="{$vo.wantbuy_id}">
+						<h4 class="heading"><span class="wantedTitle">{$vo.wantbuy_title}</span><em>
+							<?php if($vo['wantbuy_nature'] == 0){ ?>
+							 个人
+							<?php }else{ ?>
+							商家
+							<?php } ?>
+						</em></h4>
+						<p>
+						<span style="color: #ff7300;"><?php if($vo['wantbuy_price'] == 0){ ?>
+							面议
+							<?php }else{ ?>
+							{$vo.wantbuy_price}{$vo.wantbuy_priceunit}
+							<?php } ?>
+						</span>
+					   <span style="float: right;" class="time">{$vo.wantbuy_date}</span></p>
+					   <input type="hidden" value="{$vo.wantbuy_date}" class="times">
+					</a>
+				</div>
+			</div>
+		 </div>
+		<?php } ?>
+        </volist>
+	</div>
+   </div>
+	<div class="page_box">
+	  	<div class="page fn-clear">
+			<a href="#" class="before">上一页</a>
+			<div class="page_box">
+				<span><em>1</em>/9<i></i></span>
+				<select name="" id="" onchange="selectChange()">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+				</select>
+			</div>
+			<a href="#" class="after">下一页</a>
+		</div>
+		<div class="tips">共9页</div>
+    </div>
+  <!--   <?php if(count($all) + count($allther) > 5){ ?>
+     <div style="width:30%;margin:0 auto;color:#000;padding:5px;font-size:12px;color:#888;" id="load" srv="0">
+        往上滑加载更多
+    </div>
+   <?php } ?> -->
+    <input type="hidden" id="limit" value="0">
+    <input type="hidden" id="scrollTop" value="0">
+
+	<a id="scrollToTop" class="backTop"></a>
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script src="__PUBLIC__/Home/js/time.js"></script>
+	<script src="__PUBLIC__/Home/js/iosAndroid.js"></script>
+	<script>
+	// 分页选择
+	function selectChange(){
+		var x = $('.page_box span em'),
+			num = $('.page_box option:selected').val();
+		x.text(num);
+	}
+		if(isiOS == false){
+		 	var html2 = localStorage.getItem('eslocalhtml');
+		 	// alert(localStorage.getItem('filter1'));
+			if(html2 == '' || html2 == undefined){
+			    localStorage.setItem('estoplineTop',0);
+			    localStorage.setItem('espageNum',0);
+			}else{
+				$('#zong').html(html2);//将html填充进去
+				$('#limit').val(localStorage.getItem('espageNum'));    //将加载的页面数赋值给页面计数器
+				 $(window).on('load',function(){
+		            $(window).scrollTop(localStorage.getItem('estoplineTop'));    //滚动条滚动到进入详情页时的位置
+		            // console.log($(window).scrollTop())
+		        });
+				localStorage.setItem('eslocalhtml','');   //清除缓存
+			    localStorage.setItem('estoplineTop',0);
+			    localStorage.setItem('espageNum',0); 
+			}
+		}
+		
+	 function muicard(){
+    	var all = 0;
+    	var have = $('.mui-card')
+    	$.each(have,function(index,item){
+               all += 1; 
+    	})
+ 
+    	if (all < 10) {
+    		$('#load').hide(); 
+    	}else{
+    		$('#load').show(); 
+    	}
+    }
+
+   muicard()
+
+
+    function toploa(){
+	   $('.topheight').on('click', function() {
+	      var stv = $(this).attr('stv');
+	      var str = $(this).attr('str');
+	      // var scrollTop =getScrollTop();
+		     //  $("#scrollTop").val(scrollTop);
+		      // var zong =$("#zong").html();
+ 
+   // $.post('{:U("Home/Demo/look")}', {str:str,stv:stv}, function(daty){
+   //   	   if (daty == 1) {
+		      // $.post('{:U("Home/SecondHand/sessionsecondHand")}', {zong:zong}, function(data) {
+                    if(str == "HandGoods"){
+                    	localmsg();
+			            location.href="__MODULE__/SecondHand/secondHandGoodsDetails?usedcar_id="+stv;
+				    }else if(str == "HandCar"){
+				    	localmsg();
+			        	location.href="__MODULE__/SecondHand/secondHandCarDetails?usedcar_id="+stv;
+				    }else{
+				    	localmsg();
+			        	location.href="__MODULE__/SecondHand/buyDetails?wantbuy_id="+stv;
+ 				    }
+		       // });
+      
+      // }else{
+	     //     layer.msg('对不起,信息已删除')
+	 	   //   }
+		  })
+ 
+
+	   // });
+	 }
+	 toploa(); 
+	 //点击进入详情页时存储列表的html，滚动条的高度，页码数
+	 function localmsg(){
+	 	localStorage.setItem('estoplineTop',$(window).scrollTop());  //页面滚动条距离顶部的高度存到缓存中
+		localStorage.setItem('eslocalhtml',document.getElementById('zong').innerHTML);   //将html存到本地缓存中
+		localStorage.setItem('espageNum',$('#limit').val());  //将页面加载数量存到缓存中
+	 }
+
+   //求滚动条的高度
+   function getScrollTop(){    
+	    var scrollTop=0;    
+	    if(document.documentElement&&document.documentElement.scrollTop){    
+	        scrollTop=document.documentElement.scrollTop;    
+	    }else if(document.body){    
+	        scrollTop=document.body.scrollTop;    
+	    }    
+	    return scrollTop;    
+	} 
+
+   //如果之前滚动条的位置
+   //  function time(){
+   //    var limit = $("#limit").val();
+ 	 //  if (limit != 0) {
+ 	 //  	$.post('{:U("Home/SecondHand/looksessionsecondHand")}', {limit:limit},function(data){
+ 	 //  		if (data != 2) {
+   // 	  		   $("#zong").html("");
+  	//   		   $("#zong").append(data)
+  	//   		    var tab = $("#zong").text();
+			// 	if (tab) {
+			// 	var scrollTop = $("#scrollTop").val();
+			// 	 window.scrollTo(0,scrollTop);
+			// 	 toploa();
+			// 	}
+			// }else{
+			//  	$('#limit').val(0)
+			//  	$("#scrollTop").val(0);
+			//  }
+ 	 //  	});
+ 	 //  }
+   //  }
+   //  setTimeout(time(),1000);
+
+
+
+	//加载
+	//   function loadclick(){
+	// 	$(window).scroll(function(){
+	// 	　　var scrollTop = $(this).scrollTop();
+	// 	　　var scrollHeight = $(document).height();
+	// 	　　var windowHeight = $(this).height();
+	// 	　　if(scrollTop + windowHeight == scrollHeight){
+ // 		    	var limit = parseInt($('#limit').val())+1;
+ // 		    	$('#limit').val(limit);
+ 		    	  
+ // 		    	 setTimeout(function(){
+ 		    	   
+	// 				$.post('{:U("Home/SecondHand/secondHandload")}',{limit:limit}, function(data) {
+ //  					   if(data != 0){
+	// 				     $("#zong").append(data)
+	// 					}else{
+	// 					 $("#load").text('已经到底了！')	
+	// 					}
+ //  					  toploa(); 
+ //  					  timeStamp()
+ //   				   }) 
+	// 		     },500);
+ //  		　　 }
+	// 	});
+	// }	
+   
+
+    // loadclick()
+
+
+ function look(obj){
+	  // $("[id=up]").each(function(){ 
+		// $(this).click(function(){
+     		var id = $(obj).attr('str');
+     		var type = $(obj).attr('stb');
+     		var url = $(obj).attr('url');
+				// alert(id)
+		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+ 	     		if (type == 0) {
+	     			 location.href="http://"+url;
+	     		}else if(type == 1){
+	     			 location.href= 'tel:' + url;
+	      		}else{
+	      			location.href=url;
+	      		}
+			});
+    // 	})
+    // })
+}
+
+	  function timeStamp(){
+		var time=$('.times')
+		$.each(time,function(index,item){
+		 if ($(this).val().length > 13) {
+		   var timeText=$(this).val();
+	 	    getDateDiff(stringToTime(timeText))
+		    $(this).parent().find('.time').text(getDateDiff(stringToTime(timeText)))
+		  }
+		 })
+		}
+
+		timeStamp()
+
+		var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+		$("#scrollToTop").on("touchend", function(e) {
+			e.preventDefault();	
+		    mui.scrollTo(0,100);
+		});
+
+		 window.onload = function() { 
+			 $('body').css('overflow','auto');
+		 	 $('.loading').bind("touchmove",function(e){
+		            e.preventDefault();
+		    });
+		     $(".loading").fadeOut();
+				
+		}; 
+		 //移动端搜索
+        $('#search').on('click', function(e){
+         	//搜索关键字
+         	val =  $('#search_1').val();
+         	if (!val) {
+         		layer.msg('请先输入关键字')
+         	}else{
+            window.location.href="__MODULE__/SecondHand/secondHand?worder="+val
+	        }
+ 		});
+ 		$('.fa_btn').on('click',function(){
+ 			if ($('.fa_1').css("display") == "none") {
+ 				$('.fa_1').show();
+ 				$('.disk').show();
+ 			}else{
+ 				$('.fa_1').hide();
+ 				$('.disk').hide();
+ 			}
+ 		})
+ 		$('.fa_box .fb_title i').click(function(){
+ 			$('.fa_1').hide();
+ 			$('.fa_2').hide();
+			$('.disk').hide();
+ 		})
+ 		$('.disk').click(function(){
+ 			$('.fa_1').hide();
+ 			$('.fa_2').hide();
+			$('.disk').hide();
+ 		})
+	</script>
+</body>
+</html>

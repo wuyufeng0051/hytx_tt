@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-bicycle"></i>
+        <a href="#">跑腿</a></li>
+      <li>
+        <a href="#">跑腿订单</a></li>
+      <li class="active">新建订单</li>
+    </ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.errands-coupon-layout { background-color: white; margin:0; padding: 0 0 10px 0; } .errands-coupon-info { height: 36px; width: 100%; position: relative; } .errands-coupon-info p { position: absolute; left: 15px; width: 75px; } .errands-coupon-info .item-value { height: 100%; position: absolute; left: 95px; right: 15px; } .errands-coupon-info .item-select { height: 32px; } .errand-item { width: 100%; position: relative; margin-bottom: 10px; min-height: 36px; } .errand-item-name { position: absolute; left: 15px; width: 70px; top: 0; height: 36px; text-align:left; vertical-align:center; font-size:14px; } .errand-item-value { position: relative; margin: 0 15px 0 95px; } .errand-item-value.errand-item-value-fee { margin: 0 45px 0 95px; } .order-bottom{ width:85%; height:50px; position:fixed; bottom:0px; z-index:2; background-color:#F9F9F9; } .order-bottom-address{ width:80%; height:50px; float:left; } .order-bottom-detail1{ width:100%; height:47px; float:left; margin-left:1%; margin-top:5px; } .order-bottom-detail2{ width:100%; height:47px; float:left; margin-top:5px; } .order-bottom-submit1{ width:15%; height:50px; float:left; } .order-bottom-submit1 .submit-button{ width:70%; height:40px; background-color:#C85946; color:#FFFFFF; margin-left:15%; margin-top:5px; text-align:center; font-size:14px; line-height:40px; cursor:pointer; } .errands-layout p{ font-size:14px; }</style>
+      <div class="row">
+        <div class="col-xs-12">
+          <label>选择跑腿分类
+            <div class="chosen-container chosen-container-single" style="width: 242px;" title="" id="select_shop_id_chosen">
+              <a class="chosen-single" tabindex="-1">
+                <span>代购代送</span>
+                <div>
+                  <b>
+                  </b>
+                </div>
+              </a>
+              <div class="chosen-drop">
+                <div class="chosen-search">
+                  <input type="text" autocomplete="off"></div>
+                <ul class="chosen-results">
+                  <li class="active-result" data-option-array-index="0">请选择</li>
+                  <li class="active-result" data-option-array-index="1">代购代送</li>
+                  <li class="active-result" data-option-array-index="2">在线叫车（即将上线，敬请期待）</li>
+                  <li class="active-result" data-option-array-index="3">上门维修</li>
+                  <li class="active-result" data-option-array-index="4">洗衣服务</li>
+                  <li class="active-result" data-option-array-index="5">火鸟测试</li>
+                </ul>
+              </div>
+            </div>
+            <br>
+            <br></label>
+          <br>
+          <div class="errand-item">
+            <div class="errand-item-name" id="contentname1">姓名</div>
+            <div class="errand-item-value">
+              <input type="text" class="input_text" id="content1" placeholder="输入您的姓名!" types="input"></div>
+          </div>
+          <div class="errand-item">
+            <div class="errand-item-name" id="contentname2">联系电话</div>
+            <div class="errand-item-value">
+              <input type="text" class="input_text" id="content2" placeholder="输入您的联系方式!" types="input"></div>
+          </div>
+          <div class="errand-item">
+            <div class="errand-item-name" id="contentname3">货物类型</div>
+            <div class="errand-item-value">
+              <input type="text" class="input_text" id="content3" placeholder="请输入货物名称(5kg以下)!" types="input"></div>
+          </div>
+          <div class="errand-item">
+            <div class="errand-item-name" id="contentname4">提货位置</div>
+            <div class="errand-item-value">
+              <input type="text" class="input_text" id="content4" placeholder="请填写您取货的位置及店铺!" types="input"></div>
+          </div>
+          <div class="errand-item">
+            <div class="errand-item-name" id="contentname5">送货位置</div>
+            <div class="errand-item-value">
+              <input type="text" class="input_text" id="content5" placeholder="请填写您送达的位置及店铺!" types="input"></div>
+          </div>
+          <div class="errand-item errand-item-last">
+            <div class="errand-item-name" id="contentname6">备注信息</div>
+            <div class="errand-item-value">
+              <textarea class="input_text" id="content6" placeholder="填写您的备注信息!" types="textarea"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="order-bottom">
+        <div class="order-bottom-address">
+          <div class="order-bottom-detail1">
+            <div style="width:25%;float:left;">
+              <label>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：
+                <input id="contact_name" type="text" value=""></label></div>
+            <div style="width:25%;float:left;">
+              <label>手机号：
+                <input id="contact_phone" type="text" value=""></label>&nbsp;&nbsp;</div>
+            <div style="width:25%;float:left;">
+              <label>服务费：
+                <input type="number" id="order_deliveryfee" value="" placeholder="服务费NaN元起"></label></div>
+            <div style="width:25%;float:left;">
+              <label>配送地址：
+                <input id="contact_address" type="text" value=""></label></div>
+          </div>
+        </div>
+        <input type="hidden" value="" id="minprice">
+        <div class="order-bottom-submit1">
+          <div class="submit-button">提交订单</div></div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <title>买单</title>
+    <script src="js/touchScale.js" type="text/javascript"></script>
+    <script src="js/zepto.min.js" type="text/javascript" ></script>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/maidan.css">
+</head>
+<body>
+	<div class="header">
+		<div class="header-l"><a href="javascript:history.go(-1)"></a></div>
+		<div class="header-address">
+			<span>买单</span>
+		</div>
+		<div class="header-search">
+			<a href="explain.html" class="dropnav">优惠说明</a>
+		</div>
+	</div>
+	<div class="all_pay fn-clear">
+		<em>消费总额：</em><input id="all_money" type="text" onkeyup="value=value.replace(/[^\d]/g,'') " ng-pattern="/[^a-zA-Z]/" placeholder="询问服务员后输入">
+	</div>
+	<div class="Drop_out">
+		<i></i>输入不参与优惠金额(如酒水套餐)
+	</div>
+	<div class="all_pay fn-clear Drop_out_pay fn-hide">
+		<em>不参与优惠金额：</em><input id="out_money" type="text" onkeyup="value=value.replace(/[^\d]/g,'') " ng-pattern="/[^a-zA-Z]/" placeholder="询问服务员后输入">
+	</div>
+	<div class="discounts">
+		<ul>
+			<li class="fn-clear"><a href="#"><em>现金/抵用券/优惠码</em><i></i></a></li>
+			<li class="fn-clear fanial"><em>实付金额</em><span>￥<i>0</i></span></li>
+		</ul>
+	</div>
+	<div class="pay_btn">
+		确认买单
+	</div>
+	<div class="disk"></div>
+	<div class="warning">
+		<h1>优惠限制条件</h1>
+		<p>酒水不可用、特价菜不可用</p>
+		<div class="warning_btn">知道了</div>
+	</div>
+    <script type="text/javascript" src="js/maidan.js"></script>
+</body>
+</html>

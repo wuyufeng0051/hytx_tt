@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-flag-o flag-o-icon"></i>
+      <li class="active">营销活动</li>
+      <li>
+        <a href="#">积分</a></li>
+      <li class="active">积分兑换设置</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="span10">
+          <div class="col-sm-6" style="width:100%;margin:0 auto;">
+            <div class="tabbable">
+              <ul class="nav nav-tabs" id="myTab">
+                <li >
+                  <a href="integral.html">积分奖品管理</a></li>
+                <li>
+                  <a href="integral_list.html">积分兑换列表</a></li>
+                <li class="active">
+                  <a href="integral_set.html">积分兑换设置</a></li>
+                <li>
+                  <a href="integral_prize.html">积分兑换优惠券奖品</a></li>
+                <li>
+                  <a href="integral_rule.html">积分规则设置</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <form enctype="multipart/form-data" class="form-horizontal" id="ponintset-form" action="/point/set" method="post">
+                      <div class="alert alert-danger" id="ponintset-form_es_" style="display:none">
+                        <p>请更正下列输入错误:</p>
+                        <ul>
+                          <li>dummy</li></ul>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="PointSet_is_printer">是否打印机通知</label>
+                        <select name="PointSet[is_printer]" id="PointSet_is_printer">
+                          <option value="0" selected="selected">关闭</option>
+                          <option value="1">开启</option></select>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="PointSet_printer_id">打印机</label>
+                        <select name="PointSet[printer_id]" id="PointSet_printer_id">
+                          <option value="41125">九三食府</option>
+                          <option value="41531">味美家</option></select>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="PointSet_is_weixin">是否微信通知</label>
+                        <select name="PointSet[is_weixin]" id="PointSet_is_weixin">
+                          <option value="0">关闭</option>
+                          <option value="1" selected="selected">开启</option></select>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="#" target="_blank" title="微信订单接收设置教程" rel="tooltip" class="btn btn-sm btn-danger">设置教程</a></div>
+                      <div class="form-group">
+                        <label class="col-sm-1">
+                          <label for="PointSet_lewaimai_customerid">乐外卖顾客ID</label></label>
+                        <input class="col-sm-2" name="PointSet[lewaimai_customerid]" id="PointSet_lewaimai_customerid" type="text" maxlength="100" value="11043226"></div>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="PointSet_is_duanxin">是否短信通知</label>
+                        <select name="PointSet[is_duanxin]" id="PointSet_is_duanxin">
+                          <option value="0" selected="selected">关闭</option>
+                          <option value="1">开启</option></select>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                      <div class="form-group">
+                        <label class="col-sm-1">
+                          <label for="PointSet_iphone">手机号码</label></label>
+                        <input class="col-sm-2" name="PointSet[iphone]" id="PointSet_iphone" type="text" maxlength="100" value=""></div>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="PointSet_is_emaill">是否邮箱通知</label>
+                        <select name="PointSet[is_emaill]" id="PointSet_is_emaill">
+                          <option value="0" selected="selected">关闭</option>
+                          <option value="1">开启</option></select>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-1">
+                          <label for="PointSet_email">邮箱</label></label>
+                        <input class="col-sm-2" name="PointSet[email]" id="PointSet_email" type="text" maxlength="100" value=""></div>
+                      <div class="form-group">
+                        <label class="col-sm-1" for="PointSet_is_member">是否开启只能会员兑换</label>
+                        <select name="PointSet[is_member]" id="PointSet_is_member">
+                          <option value="0" selected="selected">关闭</option>
+                          <option value="1">开启</option></select>
+                      </div>
+                      <div class="clearfix form-actions">
+                        <div class="col-md-offset-3 col-md-9">
+                          <button class="btn btn-info" type="submit">
+                            <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

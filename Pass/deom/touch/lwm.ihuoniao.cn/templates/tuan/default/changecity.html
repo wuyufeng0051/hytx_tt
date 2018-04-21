@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$tuan_title#}</title>
+<meta name="keywords" content="{#$tuan_keywords#}" />
+<meta name="description" content="{#$tuan_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+{#$city = 0#}
+{#tuan action="city"#}
+{#$city = 1#}
+<h3>&nbsp;&nbsp;&nbsp;<a href="{#$row.url#}">{#$row.name#}</a></h3>
+{#/tuan#}
+{#if $city == 0#}
+请在后台添加要运营的城市！
+{#/if#}
+</body>
+</html>

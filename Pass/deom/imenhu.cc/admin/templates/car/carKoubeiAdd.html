@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var atlasSize = {#$atlasSize#}, atlasType = "{#$atlasType#}",  //缩略图配置
+	imglist = {#$imglist#}, modelType = "car", adminPath = "{#$adminPath#}";
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="pid" id="pid" value="{#$pid#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label for="user">发布会员：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="user" id="user" value="{#$username#}" autocomplete="off" />
+      <input type="hidden" name="uid" id="uid" value="{#$uid#}" />
+      <span class="input-tips"><s></s>请输入网站对应会员名</span>
+      <div id="userList" class="popup_key"></div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>车型：</label></dt>
+    <dd style="position:static;">
+      <div id="carBtn">
+        <a href="javascript:;" class="btn" id="cBrand" data-type="Brand" data-id="{#$brandid#}">{#$brandName#}<span class="caret"></span></a>
+        <a href="javascript:;" class="btn" id="cCar" data-type="Car" data-id="{#$cid#}">{#$cname#}<span class="caret"></span></a>
+        <a href="javascript:;" class="btn" id="cParam" data-type="Param" data-id="{#$pid#}">{#$pname#}<span class="caret"></span></a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="title">标题：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="title" id="title" data-regex=".{2,60}" maxlength="60" value="{#$title#}" />
+      <span class="input-tips"><s></s>请输入标题，2-60个汉字</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>评分：<input type="hidden" name="rating" id="rating" value="{#$rating#}" /></dt>
+    <dd>
+      <div class="pingfen" data-sync="rating">
+        <div class="pingfen_selected" style="width:{#$rating*20#}%;"></div>
+      </div>
+      <span class="pingfen_tip">请选择评分</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>综合点评：</dt>
+    <dd>
+      <script id="review" name="review" type="text/plain" style="width:85%;height:200px">{#$review#}</script>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>实拍照片：</dt>
+    <dd>
+      <div class="list-holder">
+        <ul id="listSection" class="piece clearfix"></ul>
+      </div>
+      <div class="btn-section">
+        <div class="uploadinp"><div id="flasHolder"></div></div>
+        <div class="upload-tip">
+          <p><a href="javascript:;" id="deleteAllAtlas">删除所有</a>&nbsp;&nbsp;jpg、jpeg、gif、png，单张最大2M</p>
+        </div>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="waiguan">外观点评：</label></dt>
+    <dd>
+      <textarea name="waiguan" id="waiguan" class="input-xxlarge" cols="2" placeholder="最少5个最多200个字以内" data-regex=".{5,200}">{#$waiguan#}</textarea>
+      <span class="input-tips"><s></s>外观点评，5-200个字以内</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>外观评分：<input type="hidden" name="waiguanrating" id="waiguanrating" value="{#$waiguanrating#}" /></dt>
+    <dd>
+      <div class="pingfen" data-sync="waiguanrating">
+        <div class="pingfen_selected" style="width:{#$waiguanrating*20#}%;"></div>
+      </div>
+      <span class="pingfen_tip">请给外观打分</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="neishi">内饰点评：</label></dt>
+    <dd>
+      <textarea name="neishi" id="neishi" class="input-xxlarge" cols="2" placeholder="最少5个最多200个字以内" data-regex=".{5,200}">{#$neishi#}</textarea>
+      <span class="input-tips"><s></s>内饰点评，5-200个字以内</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>内饰评分：<input type="hidden" name="neishirating" id="neishirating" value="{#$neishirating#}" /></dt>
+    <dd>
+      <div class="pingfen" data-sync="neishirating">
+        <div class="pingfen_selected" style="width:{#$neishirating*20#}%;"></div>
+      </div>
+      <span class="pingfen_tip">请给内饰打分</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="kongjian">空间点评：</label></dt>
+    <dd>
+      <textarea name="kongjian" id="kongjian" class="input-xxlarge" cols="2" placeholder="最少5个最多200个字以内" data-regex=".{5,200}">{#$kongjian#}</textarea>
+      <span class="input-tips"><s></s>空间点评，5-200个字以内</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>空间评分：<input type="hidden" name="kongjianrating" id="kongjianrating" value="{#$kongjianrating#}" /></dt>
+    <dd>
+      <div class="pingfen" data-sync="kongjianrating">
+        <div class="pingfen_selected" style="width:{#$kongjianrating*20#}%;"></div>
+      </div>
+      <span class="pingfen_tip">请给空间打分</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="dongli">动力点评：</label></dt>
+    <dd>
+      <textarea name="dongli" id="dongli" class="input-xxlarge" cols="2" placeholder="最少5个最多200个字以内" data-regex=".{5,200}">{#$dongli#}</textarea>
+      <span class="input-tips"><s></s>动力点评，5-200个字以内</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>动力评分：<input type="hidden" name="donglirating" id="donglirating" value="{#$donglirating#}" /></dt>
+    <dd>
+      <div class="pingfen" data-sync="donglirating">
+        <div class="pingfen_selected" style="width:{#$donglirating*20#}%;"></div>
+      </div>
+      <span class="pingfen_tip">请给动力打分</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="caokong">操控点评：</label></dt>
+    <dd>
+      <textarea name="caokong" id="caokong" class="input-xxlarge" cols="2" placeholder="最少5个最多200个字以内" data-regex=".{5,200}">{#$caokong#}</textarea>
+      <span class="input-tips"><s></s>操控点评，5-200个字以内</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>操控评分：<input type="hidden" name="caokongrating" id="caokongrating" value="{#$caokongrating#}" /></dt>
+    <dd>
+      <div class="pingfen" data-sync="caokongrating">
+        <div class="pingfen_selected" style="width:{#$caokongrating*20#}%;"></div>
+      </div>
+      <span class="pingfen_tip">请给操控打分</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="peizhi">配置点评：</label></dt>
+    <dd>
+      <textarea name="peizhi" id="peizhi" class="input-xxlarge" cols="2" placeholder="最少5个最多200个字以内" data-regex=".{5,200}">{#$peizhi#}</textarea>
+      <span class="input-tips"><s></s>配置点评，5-200个字以内</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>配置评分：<input type="hidden" name="peizhirating" id="peizhirating" value="{#$peizhirating#}" /></dt>
+    <dd>
+      <div class="pingfen" data-sync="peizhirating">
+        <div class="pingfen_selected" style="width:{#$peizhirating*20#}%;"></div>
+      </div>
+      <span class="pingfen_tip">请给配置打分</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="shushi">舒适度点评：</label></dt>
+    <dd>
+      <textarea name="shushi" id="shushi" class="input-xxlarge" cols="2" placeholder="最少5个最多200个字以内" data-regex=".{5,200}">{#$shushi#}</textarea>
+      <span class="input-tips"><s></s>舒适度点评，5-200个字以内</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>舒适度评分：<input type="hidden" name="shushirating" id="shushirating" value="{#$shushirating#}" /></dt>
+    <dd>
+      <div class="pingfen" data-sync="shushirating">
+        <div class="pingfen_selected" style="width:{#$shushirating*20#}%;"></div>
+      </div>
+      <span class="pingfen_tip">请给舒适度打分</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="xingjiabi">性价比点评：</label></dt>
+    <dd>
+      <textarea name="xingjiabi" id="xingjiabi" class="input-xxlarge" cols="2" placeholder="最少5个最多200个字以内" data-regex=".{5,200}">{#$xingjiabi#}</textarea>
+      <span class="input-tips"><s></s>性价比点评，5-200个字以内</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>性价比评分：<input type="hidden" name="xingjiabirating" id="xingjiabirating" value="{#$xingjiabirating#}" /></dt>
+    <dd>
+      <div class="pingfen" data-sync="xingjiabirating">
+        <div class="pingfen_selected" style="width:{#$xingjiabirating*20#}%;"></div>
+      </div>
+      <span class="pingfen_tip">请给性价比打分</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>购车时间：</dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <select name="year" id="year" class="input-small" data-val="{#$year#}" style="margin:0;"></select>
+        <span class="add-on">年</span>
+        <select name="month" id="month" class="input-small" data-val="{#$month#}" style="margin:0;"></select>
+        <span class="add-on" style="margin-right:10px;">月</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>裸车价格：</dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input type="number" class="input-mini" name="price" id="price" value="{#$price#}" />
+        <span class="add-on">万元</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>当前里程：</dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input type="number" class="input-mini" name="mileage" id="mileage" value="{#$mileage#}" />
+        <span class="add-on">万公里</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>油耗：</dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input type="text" class="input-mini" name="fuel" id="fuel" value="{#$fuel#}" data-regex="(3|100|\d{1}\.?\d+|\d{2}(\.?\d+)?|[3-9])" />
+        <span class="add-on" style="margin-right:10px;">L/100km</span>
+        <span class="input-tips"><s></s>请输入正确的油耗</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>养车费用：</dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input type="number" class="input-mini" name="costs" id="costs" value="{#$costs#}" />
+        <span class="add-on">元/月</span>
+      </div>
+    </dd>
+  </dl>  
+  <dl class="clearfix">
+    <dt><label for="click">浏览次数：</label></dt>
+    <dd>
+      <input class="input-mini" type="number" name="click" min="0" id="click" value="{#$click#}" data-regex="[1-9]\d*" />
+      <span class="input-tips"><s></s>请填写浏览次数，以后在此数值上累加，数字类型！</span>
+    </dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$editorFile#}
+{#$jsFile#}
+</body>
+</html>

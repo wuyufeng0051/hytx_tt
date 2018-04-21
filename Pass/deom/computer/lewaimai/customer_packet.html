@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+      <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+          <ul class="breadcrumb">
+            <li><i class="ace-icon fa fa-group group-icon"></i><a href="#">客户管理</a></li>
+            <li><a href="#">顾客</a></li><li class="active">发红包</li>          
+          </ul><!-- .breadcrumb -->
+        </div>
+        <!-- /section:basics/content.breadcrumbs -->
+        <div class="page-content">
+          <!-- /section:settings.box -->
+          <div class="page-content-area">
+            <script>
+              var submittage = 'no';
+              $(function(){
+                $('#submit').on('click',function(){
+                  if(submittage == 'yes'){
+                    return false;
+                  }else{
+                    submittage = 'yes';
+                  }
+                  var hid = $('#hongbao').val();
+                  $('.myhb').each(function(){
+                    if($(this).attr('value') == hid){
+                      hongbao_content = $(this).attr('data');
+                    }
+                  });
+                  
+                  if(confirm('确定要给顾客:zzx发放"'+ hongbao_content +'"红包？')){
+                    var openid = 'o-vnZwO0TqjaD0gSWvRSXKmoRGSw';
+                    var aid    = '56695';
+                    var lewaimai_customer_id = '15817386';
+
+                    if(openid == '-1'){
+                      bootbox.alert("该顾客ID未绑定微信信息，无法发放现金红包，请在系统设置中打开自动获取顾客信息的功能，或者让顾客在个人中心手动绑定微信信息");
+                      submittage = 'no';
+                      return false;
+                    }
+
+                    $.post('/customer/ajaxhongbao',{openid:openid,aid:aid,hid:hid, lewaimai_customer_id:lewaimai_customer_id}, function(data){
+                      // console.log(data);
+                      if(data.status == 1){
+                        bootbox.alert('红包发放成功');
+                        submittage = 'no';
+                      }else if(data.status == 0){
+                        bootbox.alert(data.message);
+                        submittage = 'no';
+                      }else if(data.status == -1){
+                        bootbox.alert('您尚未开启此功能');
+                        submittage = 'no';
+                      }else if(data.status == -2){
+                        bootbox.alert('"红包名称" 或 "发送者名称" 不能超过8个中文字符！！！');
+                        submittage = 'no';
+                      }else{
+                        bootbox.alert('系统错误');
+                        submittage = 'no';
+                      }
+                    }, "json");
+                    
+                  }else{
+                    submittage = 'no';
+                  }
+                });
+              })
+              </script>
+            <div class="row">
+              <div class="span10">
+                <div class="col-sm-6" style="width:100%;margin:0 auto;">
+                  <div class="form" style="margin-top:10px;font-size:16px;line-height:30px;">
+                    <br>
+                    <div class="col-sm-2">顾客：</div>
+                    <div class="col-sm-3">zzx</div><br>
+                    <div class="col-sm-2">顾客ID：</div>
+                    <div class="col-sm-3">15817386</div><br>
+                    <div class="col-sm-2">选择红包名称:</div>
+                    <select name="weixin_coupon" class="col-sm-3" id="hongbao">
+                      <option value="601" class="myhb" data="送红包啦！">送红包啦！</option>       
+                    </select> 
+                    <br>
+                    <br>
+                    <button class="btn btn-success" id="submit">发放</button>
+                  </div>
+                </div>  
+              </div>
+            </div>
+          </div><!-- /.page-content-area -->
+        </div><!-- /.page-content -->
+      </div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

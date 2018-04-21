@@ -1,0 +1,27 @@
+{#$pageTitle = "商铺配置 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/config-{#$module#}.css" media="all" />
+<script type="text/javascript">
+	var modelType = '{#$module#}';
+</script>
+</head>
+
+{#$pageCurr = "config_{#$module#}"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+	<div class="container fn-clear">
+		{#include file="config-$module.html"#}
+	</div>
+</div>
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/ueditor/ueditor.config.js?v=2'></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/ueditor/ueditor.all.js?v=1'></script>
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/fabu.js?v=2"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/config-{#$module#}.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <title>{#$member['nickname']#} - {#$info_title#}</title>
+  <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+  <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/user.css">
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <a href="javascript:history.go(-1)" class="header-logo"><img src="{#$templets_skin#}images/left.png"></a>
+    <span class="header-tit">个人信息</span>
+    <a href="{#$member_userDomain#}" class="header-user"><img src="{#$templets_skin#}images/wo1.png"></a>
+  </div>
+
+  <div class="info-box">
+    <div class="bg"></div>
+    <div class="info">
+      <div class="info-img">
+        <img src="{#if $detail_member['photo'] == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$detail_member['photo']#}" type="small"#}{#/if#}" onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_40.jpg';" />
+      </div>
+      <div class="info-msg">
+        <h3>{#$member['nickname']#}</h3>
+        <p>{#$member['regtime']|date_format:"%Y-%m-%d"#}注册</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="list">
+    <h3>发布记录</h3>
+    <ul>
+      {#info action="ilist" return="ilist" userid={#$id#} pageSize=1000#}
+      <li>
+        <a href="{#$ilist.url#}">
+          <div class="list-img">
+            <img src="{#changeFileSize url="{#$ilist.litpic#}" type="small"#}" alt="">
+          </div>
+          <div class="list-txt">
+            <h4>{#$ilist.title#}</h4>
+            <p><span>{#$ilist.address#}</span><span class="price">{#$ilist.typename#}</span></p>
+            <p>{#$ilist.pubdate|date_format:"%Y-%m-%d"#}</p>
+          </div>
+        </a>
+      </li>
+      {#/info#}
+    </ul>
+    <h2 class="empty">暂无相关信息！</h2>
+  </div>
+
+
+
+</div>
+
+
+
+  <script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+  <script src="{#$templets_skin#}js/public.js"></script>
+</body>
+</html>

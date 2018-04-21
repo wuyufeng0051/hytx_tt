@@ -1,0 +1,112 @@
+<div id="itemList">
+
+	<div class="ml4r">
+		<dl class="fn-clear inpbox">
+      <dt><span>类别</span></dt>
+      <dd>
+				<div class="radio radioBox rentype fn-clear" data-title="请选择出租方式">
+					<label>
+						<div class="check-left">
+							<input type="radio" name="rentype" value="1"{#if $detail_type == "1"#} checked="checked"{#/if#}>
+							<span class="checkbox-icon-round"></span>
+						</div>
+						<a href="javascript:;" data-id="1">转让</a>
+					</label>
+					<label>
+						<div class="check-left">
+							<input type="radio" name="rentype" value="2"{#if $detail_type == "2"#} checked="checked"{#/if#}>
+							<span class="checkbox-icon-round"></span>
+						</div>
+						<a href="javascript:;" data-id="2">出售</a>
+					</label>
+					<label>
+						<div class="check-left">
+							<input type="radio" name="rentype" value="0"{#if $detail_type == "0" || $detail_type == ""#} checked="checked"{#/if#}>
+							<span class="checkbox-icon-round"></span>
+						</div>
+						<a href="javascript:;" data-id="0">出租</a>
+					</label>
+      	</div>
+      	<input type="hidden" name="lei" id="lei" value="{#if $detail_type != ""#}{#$detail_type#}{#else#}0{#/if#}">
+      </dd>
+    </dl>
+	</div>
+	<div class="community-addr">
+		<div class="ml4r">
+			<dl class="inpbox fn-clear gz-addr-seladdr">
+				<dt><span><label for="typeid">区域</label></span></dt>
+				<dd class="selgroup"><p>{#if $do == "edit"#}{#$detail_addr[0]#}  {#$detail_addr[1]#}{#else#}<font style="color: #aaa;">请选择</font>{#/if#}</p></dd>
+				<input type="hidden" name="addrid" id="addrid" value="{#$detail_addrid#}">
+			</dl>
+		</div>
+		<div class="ml4r">
+      <dl class="inpbox">
+      	<dt><span><label for="address">地址</label></span></dt>
+      	<dd><input type="text" placeholder="请输入地址" id="address" name="address" value="{#$detail_address#}"></dd>
+      </dl>
+		</div>
+  </div>
+	<div class="ml4r">
+		<dl class="inpbox pdr">
+			<dt><span><label for="area">建筑面积</label></span></dt>
+			<dd><input type="text" name="area" placeholder="请输入" id="area" maxlength="7" value="{#$detail_area#}" style="right: .7rem; padding-right: 1.1rem;"><i class="unit_br">平米</i></dd>
+		</dl>
+	</div>
+	<div class="ml4r">
+    <dl class="inpbox">
+      <dt><span><label for="price">价格</label></span></dt>
+      <dd><input type="text" placeholder="请输入" id="price" name="price" maxlength="8" value="{#$detail_price#}" style="right: .8rem; padding-right: 1.2rem;"><i class="unit_br" id="priceType">{#if $detail_type == "0" || $detail_type == ""#}元/月{#else#}万元{#/if#}</i></dd>
+    </dl>
+	</div>
+	<div class="ml4r transfer fn-hide">
+    <div class="transfer1">
+      <dl class="inpbox">
+      	<dt><span><label for="transfer">转让费</label></span></dt>
+      	<dd><input type="text" placeholder="请输入" name="transfer" id="transfer" maxlength="8" value="{#$detail_transfer#}" style="right: .7rem; padding-right: 1.1rem;"><i class="unit_br">万元</i></dd>
+      </dl>
+    </div>
+	</div>
+	<div class="ml4r">
+		<div data-role="fieldcontain" class="dom_select">
+			<label for="protype">厂房类型</label>
+   		<select id="protype" class="demo-test-select" data-role="none" name="protype">
+   			<option value="">请选择</option>
+   			{#house action="item" return="item" type="10"#}
+   			<option value="{#$item.id#}"{#if $detail_protype == $item.typename#} selected="selected"{#/if#}>{#$item.typename#}</option>
+				{#/house#}
+  		</select>
+			<span class="right_icon"></span>
+    </div>
+  </div>
+</div>
+
+	<div class="inptitbox">
+		<p>标题</p>
+		<div class="inptitle">
+			<input type="text" placeholder="请输入信息标题，5-50个字" id="title" autocomplete="off" maxlength="50" name="title" value="{#$detail_title#}">
+		</div>
+	</div>
+	<div class="mulinpbox mb4r">
+		<p class="multit">描述</p>
+		<div class="mulcon">
+			<textarea placeholder="详细的房源介绍" name="note" class="textarea">{#strip_tags($detail_note)#}</textarea>
+		</div>
+	</div>
+	<div class="ml4r btop">
+		<dl class="inpbox">
+			<dt><span>联系人</span></dt>
+			<dd>
+				<input type="text" placeholder="请输入姓名" id="person" name="person" value="{#if $detail_username != ""#}{#$detail_username#}{#else#}{#$userinfo.nickname#}{#/if#}">
+			</dd>
+		</dl>
+	</div>
+	<div class="ml4r">
+		<dl class="inpbox">
+			<dt><span>手机号码</span></dt>
+			<dd><input type="tel" id="tel" onkeyup="value=value.replace(/\D+/ig,'')" maxlength="11" name="tel" value="{#if $detail_telNum != ""#}{#$detail_telNum#}{#else#}{#$userinfo.phone#}{#/if#}"></dd>
+		</dl>
+	</div>
+	<dl class="inpbox fn-clear">
+		<dt><span><label for="vdimgck">验证码</label></span></dt>
+		<dd><input type="text" placeholder="请输入验证码" name="vdimgck" id="vdimgck" maxlength="4"><img src="/include/vdimgck.php" alt="" class="code" id="verifycode"></dd>
+	</dl>

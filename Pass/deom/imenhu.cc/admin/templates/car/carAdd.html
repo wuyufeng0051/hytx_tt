@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var thumbSize = {#$thumbSize#}, thumbType = "{#$thumbType#}",  //缩略图配置
+	modelType = "car", adminPath = "{#$adminPath#}", colorlist = {#$colorList#};
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="brand" id="brand" value="{#$brand#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label for="brand">所属品牌：</label></dt>
+    <dd style="position:static;">
+      <div id="carBtn">
+        <a href="javascript:;" class="btn" id="cBrand" data-type="Brand" data-id="{#$brandid#}">{#$brandName#}<span class="caret"></span></a>
+        <a href="javascript:;" class="btn" id="cSub" data-type="Sub" data-id="{#$subid#}">{#$subname#}<span class="caret"></span></a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="title">车辆名称：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="title" id="title" value="{#$title#}" maxlength="30" data-regex=".{2,30}" />
+      <span class="input-tips"><s></s>请输入车辆名称，2-30位</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="subtitle">简称：</label></dt>
+    <dd>
+      <input class="input-large" type="text" name="subtitle" id="subtitle" value="{#$subtitle#}" maxlength="10" data-regex=".{2,10}" />
+      <span class="input-tips"><s></s>请输入简称，2-10位</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="typeid">所属级别：</label></dt>
+    <dd>
+      <span id="typeidList">
+        <select name="typeid" id="typeid" class="input-large">
+          {#html_options options=$typeList selected=$typeid#}
+        </select>
+      </span>
+      <span class="input-tips"><s></s>请选择所属级别</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>缩略图：</dt>
+    <dd>
+      <input name="litpic" type="hidden" id="litpic" value="{#$litpic#}" />
+      {#if $litpic != ""#}
+      <div id="license" class="uploadinp uploading"><span id="uploadBt"></span></div>
+      <div id="licenseFiles" style="display:inline-block;"><a href='{#$cfg_attachment#}{#$litpic#}' target="_blank"><img alt="" src="{#$cfg_attachment#}{#$litpic#}&type=small" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;" style="display:inline-block;">删除图片</a>
+      {#else#}
+      <div id="license" class="uploadinp"><span id="uploadBt"></span></div>
+      <div id="licenseFiles"><a href="#" target="_blank" title=""><img alt="" src="" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;">删除图片</a>
+      {#/if#}
+      <div id="licenseProgress" class="progressBar">
+        <i id="licenseProgressBar" class="progress"></i>
+        <span id="licensePercent">0%</span>
+        <a id="cancelUploadBt" href="javascript:;">取消</a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="guide">官方指导价：</label></dt>
+    <dd><input class="input-large" type="text" name="guide" id="guide" value="{#$guide#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="carbody">车身类别：</label></dt>
+    <dd>
+      <span id="carbodyList">
+        <select name="carbody" id="carbody" class="input-large">
+          {#html_options options=$carbodyList selected=$carbody#}
+        </select>
+      </span>
+      <span class="input-tips"><s></s>请选择车身类别</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="country">所属国别：</label></dt>
+    <dd>
+      <span id="countryList">
+        <select name="country" id="country" class="input-large">
+          {#html_options options=$countryList selected=$country#}
+        </select>
+      </span>
+      <span class="input-tips"><s></s>请选择所属国别</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="displacement">排量：</label></dt>
+    <dd>
+      {#html_checkboxes name='displacement' values=$displacementValue output=$displacementList selected=$displacement separator="&nbsp;&nbsp;"#}
+      <br /><span class="label label-info checkAll">全选</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="gearbox">变速箱：</label></dt>
+    <dd>
+      {#html_checkboxes name='gearbox' values=$gearboxValue output=$gearboxList selected=$gearbox separator="&nbsp;&nbsp;"#}
+      <br /><span class="label label-info checkAll">全选</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="warranty">保修政策：</label></dt>
+    <dd><input class="input-large" type="text" name="warranty" id="warranty" value="{#$warranty#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="driver">驱动：</label></dt>
+    <dd>
+      <span id="driverList">
+        <select name="driver" id="driver" class="input-large">
+          {#html_options options=$driverList selected=$driver#}
+        </select>
+      </span>
+      <span class="input-tips"><s></s>请选择驱动</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="driver">燃料：</label></dt>
+    <dd>
+      <span id="fuelList">
+        <select name="fuel" id="fuel" class="input-large">
+          {#html_options options=$fuelList selected=$fuel#}
+        </select>
+      </span>
+      <span class="input-tips"><s></s>请选择燃料</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="else">亮点：</label></dt>
+    <dd>
+      {#html_checkboxes name='else' values=$elseValue output=$elseList selected=$else separator="&nbsp;&nbsp;"#}
+      <br /><span class="label label-info checkAll">全选</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>车身颜色：</dt>
+    <dd>
+      <div class="list-holder">
+        <ul id="listSection" class="picColor clearfix"></ul>
+      </div>
+      <div class="btn-section">
+        <div class="uploadinp"><div id="flasHolder"></div></div>
+        <div class="upload-tip">
+          <p><a href="javascript:;" id="deleteAllAtlas">删除所有</a>&nbsp;&nbsp;{#$atlasType|replace:"*.":""|replace:";":"、"#}，单张最大{#$atlasSize/1024#}M</p>
+        </div>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="weight">排序：</label></dt>
+    <dd>
+      <input class="input-mini" type="number" name="weight" id="weight" min="0" data-regex="[1-9]\d*" value="{#$weight#}" />
+      <span class="input-tips"><s></s>必填，排序越大，越排在前面</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="state">显示状态：</label></dt>
+    <dd class="radio">
+      {#html_radios name="state" values=$stateopt checked=$state output=$statenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>属性：</dt>
+    <dd class="radio">{#html_checkboxes name='property' values=$propertyVal output=$propertyList selected=$property separator="&nbsp;&nbsp;"#}</dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

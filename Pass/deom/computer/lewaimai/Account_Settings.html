@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content"> 
+   <div class="breadcrumbs" id="breadcrumbs"> 
+    <ul class="breadcrumb"> 
+     <li><i class="ace-icon fa fa-gear gear-icon"></i><a href="#">系统设置</a></li>
+     <li class="active">帐号设置</li> 
+    </ul>
+    <!-- .breadcrumb --> 
+   </div> 
+   <!-- /section:basics/content.breadcrumbs --> 
+   <div class="page-content"> 
+    <!-- /section:settings.box --> 
+    <div class="page-content-area"> 
+     <style>.ace-file-input a {display:none;}.aa{display:none;}</style> 
+     <form enctype="multipart/form-data" class="form-horizontal" id="account-form" action="/config/account" method="post"> 
+      <div class="alert alert-danger" id="account-form_es_" style="display:none">
+       <p>请更正下列输入错误:</p> 
+       <ul>
+        <li>dummy</li>
+       </ul>
+      </div> 
+      <div class="row"> 
+       <div class="span10"> 
+        <div class="col-sm-6" style="width:100%;margin:0 auto;"> 
+         <div class="tabbable"> 
+          <ul class="nav nav-tabs tt" id="myTab"> 
+           <li class="active"> <a data-toggle="tab" href="#"> 基本信息 </a> </li> 
+           <li> <a data-toggle="tab" href="#">功能设置 </a> </li> 
+           <li> <a data-toggle="tab" href="#">显示设置 </a> </li> 
+           <li> <a data-toggle="tab" href="#">营销设置 </a> </li> 
+           <li> <a data-toggle="tab" href="#">订单提醒设置 </a> </li> 
+          </ul> 
+          <div class="tab-content"> 
+           <div id="infocontent" class="tab-pane active  tt_1"> 
+              <div style="margin-left:10px;">
+                用户名：
+               <span class="badge badge-success">秭归金点子外卖平台</span> 
+               <a class="btn btn-danger btn-sm" href="#">修改密码</a> 
+               <div class="form-group"> 
+                <div style="height: 10px;"></div> 
+               </div> 手机号：
+               <span class="badge badge-success">18071329016</span> 
+               <span class="badge badge-success">已绑定</span> 
+               <a class="btn btn-danger btn-sm" href="#">修改绑定</a> 
+               <a class="btn btn-danger btn-sm" onclick="edit_phone()">邮箱修改绑定手机</a> 
+               <div class="form-group"> 
+                <div style="height: 10px;"></div> 
+               </div> 邮箱：
+               <span class="badge badge-success"></span> 
+               <a class="btn btn-danger btn-sm" href="#">新增邮箱</a> 
+               <div class="form-group"> 
+                <div style="height: 10px;"></div> 
+               </div> 
+               <div class="form-group" style="width:592px;padding-left:12px;margin-top:20px;"> 
+                <div> 
+                 <input id="ytid-input-file-2" type="hidden" value="" name="Admin[image]" />
+                 <label class="ace-file-input"><input class="col-sm-4" id="id-input-file-2" size="50" onchange="preview(this)" name="Admin[image]" type="file" /><span class="ace-file-container" data-title="选择"><span class="ace-file-name" data-title="账号logo图片(建议尺寸：720像素 * 400像素)"><i class=" ace-icon fa fa-upload"></i></span></span></label> 
+                </div> 
+               </div> 
+               <div> 
+                <img id="dis" style="width:360px;height:200px" title="帐号logo图片" src="images/logo_1.png" /> 
+               </div> 
+               <div style="height:50px;width:100%;"></div> 
+               <div class="form-group" style="width:592px;padding-left:12px;"> 
+                <!-- <label class="col-sm-1"></label> --> 
+                <input id="ytid-input-file-3" type="hidden" value="" name="Admin[icon]" />
+                <label class="ace-file-input"><input class="col-sm-4" id="id-input-file-3" size="50" onchange="preview1(this)" name="Admin[icon]" type="file" /><span class="ace-file-container" data-title="选择"><span class="ace-file-name" data-title="账号头像(建议尺寸：36像素 * 36像素)"><i class=" ace-icon fa fa-upload"></i></span></span></label> 
+               </div> 
+               <div> 
+                <img id="icondis" style="width:36px;height:36px" title="帐号头像" src="images/icon.png" /> 
+               </div> 
+              </div> 
+           </div> 
+           <div id="funcset" class="tab-pane tt_1"> 
+              <div style="margin-left:5px;"> 
+               <label style="margin-right:20px">开启顾客位置验证</label> 
+               <select class="span2" name="Admin[areacheck]" id="Admin_areacheck"> <option value="0">不启用</option> <option value="1" selected="selected">启用</option> </select>&nbsp;&nbsp;&nbsp;&nbsp;
+               <a class="btn btn-sm" style="background-color:#528215!important;border-color:#528215;" href="#" target="_blank">设置教程</a>
+               <br />
+               <br /> 
+               <label style="margin-right:20px">是否允许顾客通过地图自由定位</label> 
+               <select class="span2" name="Admin[is_areacheck]" id="Admin_is_areacheck"> <option value="0">不允许</option> <option value="1" selected="selected">允许</option> </select>
+               <br />&nbsp;
+               <br /> 
+               <!-- <label style="margin-right:20px">是否开启打印机自动打印新订单</label> --> 
+               <label style="margin-right:20px">是否开启自动征求顾客的微信信息</label> 
+               <select class="span2" name="Admin[autoweixininfo]" id="Admin_autoweixininfo"> <option value="0">关闭</option> <option value="1" selected="selected">开启</option> </select>
+               <a style="margin-left:10px;vertical-align:top;" href="#" target="_blank" title="查看获取顾客微信信息设置教程" rel="tooltip" class="btn btn-sm btn-danger">设置教程</a>
+               <br />&nbsp;
+               <br /> 
+               <label style="margin-right:20px">是否允许顾客手动绑定微信信息</label> 
+               <select class="span2" name="Admin[handweixininfo]" id="Admin_handweixininfo"> <option value="0">关闭</option> <option value="1" selected="selected">开启</option> </select>&nbsp; &nbsp;&nbsp;&nbsp;
+               <a class="btn btn-sm" style="background-color:#528215!important;border-color:#528215;" href="#" target="_blank">设置教程</a>
+               <br /> 
+               <br /> 
+              </div> 
+           </div> 
+           <div id="xianshiset" class="tab-pane tt_1"> 
+              <div style="margin-left:5px;"> 
+               <label style="margin-right:20px">是否开启连锁店模式</label> 
+               <select class="span2" name="Admin[is_multipleshop]" id="Admin_is_multipleshop"> <option value="0">不开启</option> <option value="1" selected="selected">开启</option> </select>
+               <a style="margin-left:10px;vertical-align:top;color:#000;text-decoration: none;" href="#" target="_blank" title="查看连锁店模式设置教程" rel="tooltip" class="" "=">设置教程</a>
+               <br />&nbsp;
+               <br /> 
+               <label style="margin-right:20px">订单编号显示类型</label> 
+               <select class="span2" name="Admin[order_num_type]" id="Admin_order_num_type"> <option value="0">平台统一编号</option> <option value="1" selected="selected">按店铺编号</option> <option value="2">随机编号</option> </select>
+               <br />&nbsp;
+               <br /> 
+               <label style="margin-right:20px">店铺列表显示类型</label> 
+               <select class="span2" name="Admin[allshop_type]" id="Admin_allshop_type"> <option value="0">竖排</option> <option value="1" selected="selected">横排</option> </select>&nbsp;&nbsp;&nbsp;
+               <a class="btn btn-sm" style="background-color:#528215!important;border-color:#528215;" href="#" target="_blank">设置教程</a> 
+               <br />&nbsp;
+               <br /> 
+              </div> 
+           </div> 
+           <div id="yingxiaoset" class="tab-pane tt_1"> 
+              <div style="margin-left:5px;"> 
+               <label style="margin-right:20px">首单减免支持类型</label> 
+               <select class="span2" name="Admin[first_order_discount]" id="Admin_first_order_discount"> <option value="0" selected="selected">平台</option> <option value="1">店铺</option> </select>&nbsp;&nbsp;&nbsp;&nbsp;
+               <a class="btn btn-sm btn-danger" href="#" target="_blank">设置教程</a>
+               <br />&nbsp;
+               <br /> 
+               <label style="margin-right:20px">是否开启首单送优惠券功能</label> 
+               <select class="span2" name="Admin[is_first_coupon]" id="Admin_is_first_coupon"> <option value="0" selected="selected">关闭</option> <option value="1">开启</option> </select>
+               <br />&nbsp;
+               <br /> 
+               <label style="margin-right:20px;">首单送优惠券：</label> 
+               <select name="Admin[first_coupon_id]" id="coupon"> <option value="">请选择优惠券</option> <option value="32000">金点生鲜3元抵用券</option> <option value="32001">金点生鲜5元体验券</option> <option value="32002">金点生鲜10元优惠券</option> </select>
+               <br /> 
+               <br />&nbsp;
+               <br /> 
+              </div> 
+           </div> 
+           <div id="orderset" class="tab-pane tt_1"> 
+              <div style="margin-left:5px;"> 
+               <label style="margin-right:20px">开启确认订单短信通知顾客</label> 
+               <select class="span2" name="Admin[is_confirm_msg]" id="Admin_is_confirm_msg"> <option value="0" selected="selected">不启用</option> <option value="1">启用</option> </select>
+               <br />&nbsp;
+               <br /> 
+               <label style="margin-right:20px">是否开启电脑后台新订单自动提醒</label> 
+               <select class="span2" name="Admin[is_web_remind]" id="Admin_is_web_remind"> <option value="0">关闭</option> <option value="1" selected="selected">开启</option> </select>
+               <br />&nbsp;
+               <br /> 
+               <label style="margin-right:20px">是否开启后台设置外卖订单失败打印小票</label> 
+               <select class="span2" name="Admin[is_failed_printer]" id="Admin_is_failed_printer"> <option value="0" selected="selected">开启</option> <option value="1">关闭</option> </select>
+               <br />&nbsp;
+               <br /> 
+               <label style="margin-right:20px">设置配送员时是否给顾客发短信</label> 
+               <select class="span2" name="Admin[is_setcourier_msg]" id="Admin_is_setcourier_msg"> <option value="0" selected="selected">关闭</option> <option value="1">开启</option> </select>
+               <br />&nbsp;
+               <br /> 
+              </div> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="span12" style="margin-top:10px;"> 
+          <div class="form-actions"> 
+           <button class="btn btn-info" type="submit"> <i class="ace-icon fa fa-check bigger-110"></i> 保存 </button> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </form> 
+    </div>
+    <!-- /.page-content-area --> 
+   </div>
+   <!-- /.page-content --> 
+  </div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

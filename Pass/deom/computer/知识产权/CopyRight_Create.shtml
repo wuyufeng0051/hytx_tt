@@ -1,0 +1,122 @@
+<!--#include file="_head.shtml"-->
+
+<link href="/Js/Validform/css/style.css" rel="stylesheet" />
+<script src="/Js/Validform/js/Validform_v5.3.2.js"></script>
+<script src="js/WdatePicker.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        $("form").Validform({
+            tiptype: 3,
+            postonce: true,
+            usePlugin: {
+                passwordstrength: {
+                    minLen: 6,
+                    maxLen: 18
+                }
+            }
+        });
+    })
+</script>
+<form action="/CopyRight/Create" id="form1" method="post">
+  <!--右边内容区-->
+  <div class="rBox">
+    <div class="local">
+      <a href="#">首页</a>&gt;
+      <a href="#">版权托管</a>&gt;
+      <span>添加版权</span></div>
+    <div class="box1 formEdit">
+      <div class="title">
+        <h3>版权托管信息</h3></div>
+      <div class="adminEdit rBgDiv">
+        <div class="box">
+          <input id="CopyRightID" name="CopyRightID" type="hidden" value="e09ff4cd-a029-4613-90d3-53f9cb763f0a" />
+          <dl>
+            <dt>
+              <em>*</em>注册号：</dt>
+            <dd>
+              <input autocomplete="off" class="text" datatype="*" id="RegistrationNum" name="RegistrationNum" nullmsg="不能为空" type="text" value="" />
+              <a id="autoBtn" name="autoBtn" href="#">补全</a>
+              <span class="Validform_checktip">输入正确申请号和专利类型点击按钮自动补全信息</span></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>版权名称：</dt>
+            <dd>
+              <input autocomplete="off" class="text" datatype="*" id="CopyRightName" name="CopyRightName" nullmsg="不能为空" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>版权类别：</dt>
+            <dd>
+              <select autocomplete="off" class="text" datatype="*" id="CopyRightType" name="CopyRightType" nullmsg="不能为空">
+                <option value="">请选择</option>
+                <option value="Words">文字</option>
+                <option value="FineArts">美术</option>
+                <option value="Other">其他</option>
+                <option value="Graphical">图形</option>
+                <option value="Books">图书</option>
+                <option value="Periodical">期刊</option>
+                <option value="AudiovisualProducts">音像制品</option>
+                <option value="ElectronicPublications">电子出版物</option>
+                <option value="Software">软件</option>
+                <option value="Movie">电影</option>
+                <option value="TV">电视</option>
+                <option value="Performance">表演</option></select>
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>权利人：</dt>
+            <dd>
+              <input autocomplete="off" class="text" datatype="*" id="Obligee" name="Obligee" nullmsg="不能为空" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>简称：</dt>
+            <dd>
+              <input id="Abbreviation" name="Abbreviation" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>版本：</dt>
+            <dd>
+              <input id="WorkEdition" name="WorkEdition" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>分类号：</dt>
+            <dd>
+              <input id="ClassificationNum" name="ClassificationNum" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>登记日期：</dt>
+            <dd>
+              <input autocomplete="off" class="Wdate" data-val="true" data-val-date="字段 RegistrationDate 必须是日期。" id="RegistrationDate" name="RegistrationDate" onclick="WdatePicker()" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>首次发表日期：</dt>
+            <dd>
+              <input autocomplete="off" class="Wdate" data-val="true" data-val-date="字段 FirPublishTime 必须是日期。" id="FirPublishTime" name="FirPublishTime" onclick="WdatePicker()" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>创作完成日期：</dt>
+            <dd>
+              <input autocomplete="off" class="Wdate" data-val="true" data-val-date="字段 FinishTime 必须是日期。" id="FinishTime" name="FinishTime" onclick="WdatePicker()" type="text" value="" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>内容介绍：</dt>
+            <dd>
+              <textarea autocomplete="off" class="text" cols="20" datatype="*" id="Contents" name="Contents" nullmsg="不能为空" rows="2"></textarea>
+            </dd>
+          </dl>
+          <div class="btnBox">
+            <input value="提交" class="btn" type="submit" />
+            <input type="button" value="返回" class="return btn" onclick="history.go(-1)" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<!--#include file="_foot.shtml"-->

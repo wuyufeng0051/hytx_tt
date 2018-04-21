@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-gear gear-icon"></i>
+      <li class="active">系统设置</li>
+      <li>
+        <a href="#">配送员管理</a></li>
+    </ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">
+              <i class="ace-icon fa fa-times"></i>
+            </button>
+            <p>APP配送员必须与群组进行绑定，才能收到推送信息及抢单！</p>
+            <p>
+              <a class="btn btn-success" href="#" target="_blank">配送员教程</a></p>
+          </div>
+          <div class="space-10"></div>
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li class="active">
+                <a href="Distribution_member.html">配送员列表</a></li>
+              <li>
+                <a href="Distribution_member_list.html">群组列表</a></li>
+              <li>
+                <a href="#">配送员位置分布</a></li>
+              <li>
+                <a href="Distribution_member_qiang.html">配送员抢单管理</a></li>
+              <li>
+                <a href="Distribution_member_comment.html">配送员评论</a></li>
+            </ul>
+            <div class="tab-content">
+              <button class="btn btn-success" ><a href="Distribution_member_new.html" style="color:#fff;">新建配送员</a></button>
+              <div id="yw0" class="grid-view">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th id="yw0_c0">
+                        <a class="sort-link" href="#">姓名</a></th>
+                      <th id="yw0_c1">app用户名</th>
+                      <th id="yw0_c2">年龄</th>
+                      <th id="yw0_c3">性别</th>
+                      <th id="yw0_c4">手机号</th>
+                      <th id="yw0_c5">配送总量（份）</th>
+                      <th id="yw0_c6">配送成功</th>
+                      <th id="yw0_c7">配送失败</th>
+                      <th id="yw0_c8">管理</th>
+                      <th id="yw0_c9">操作</th></tr>
+                    <tr class="filters">
+                      <td>
+                        <input name="Courier[name]" type="text" maxlength="10"></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td></tr>
+                  </thead>
+                  <tbody>
+                    <tr class="odd">
+                      <td>韦志强</td>
+                      <td>韦志强</td>
+                      <td>30</td>
+                      <td>男</td>
+                      <td>13693009335</td>
+                      <td>208</td>
+                      <td>1580</td>
+                      <td>17</td>
+                      <td width="60">
+                        <a href="#" role="button" class="label label-sm label-success ck-position" data-toggle="modal" data-id="36886">查看位置</a>
+                        <a class="label label-sm label-danger" href="#">设置跑腿类型</a>
+                        <a class="label label-sm label-info" href="#">权限设置</a></td>
+                      <td nowrap="nowrap">
+                        <a href="#" title="修改" class="green" style="padding-right:8px;">
+                          <i class="ace-icon fa fa-pencil bigger-130"></i>
+                        </a>
+                        <a title="删除" class="red" style="padding-right:8px;cursor:pointer;" onclick="delete_courier(36886)">
+                          <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                        </a>&nbsp;</td>
+                    </tr>
+                    <tr class="even">
+                      <td>望开虎</td>
+                      <td>望开虎</td>
+                      <td>27</td>
+                      <td>男</td>
+                      <td>18972565718</td>
+                      <td>113</td>
+                      <td>2437</td>
+                      <td>43</td>
+                      <td width="60">
+                        <a href="#" role="button" class="label label-sm label-success ck-position" data-toggle="modal" data-id="37136">查看位置</a>
+                        <a class="label label-sm label-danger" href="#">设置跑腿类型</a>
+                        <a class="label label-sm label-info" href="#">权限设置</a></td>
+                      <td nowrap="nowrap">
+                        <a href="#" title="修改" class="green" style="padding-right:8px;">
+                          <i class="ace-icon fa fa-pencil bigger-130"></i>
+                        </a>
+                        <a title="删除" class="red" style="padding-right:8px;cursor:pointer;" onclick="delete_courier(37136)">
+                          <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                        </a>&nbsp;</td>
+                    </tr>
+                    <tr class="odd">
+                      <td>向俊</td>
+                      <td>zgxj</td>
+                      <td>28</td>
+                      <td>男</td>
+                      <td>18071329016</td>
+                      <td>17</td>
+                      <td>172</td>
+                      <td>4</td>
+                      <td width="60">
+                        <a href="#" role="button" class="label label-sm label-success ck-position" data-toggle="modal" data-id="39564">查看位置</a>
+                        <a class="label label-sm label-danger" href="#">设置跑腿类型</a>
+                        <a class="label label-sm label-info" href="#">权限设置</a></td>
+                      <td nowrap="nowrap">
+                        <a href="#" title="修改" class="green" style="padding-right:8px;">
+                          <i class="ace-icon fa fa-pencil bigger-130"></i>
+                        </a>
+                        <a title="删除" class="red" style="padding-right:8px;cursor:pointer;" onclick="delete_courier(39564)">
+                          <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                        </a>&nbsp;</td>
+                    </tr>
+                    <tr class="even">
+                      <td>汰渍洗衣</td>
+                      <td>18986797066</td>
+                      <td>35</td>
+                      <td>男</td>
+                      <td>18986797066</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td width="60">
+                        <a href="#" role="button" class="label label-sm label-success ck-position" data-toggle="modal" data-id="41246">查看位置</a>
+                        <a class="label label-sm label-danger" href="#">设置跑腿类型</a>
+                        <a class="label label-sm label-info" href="#">权限设置</a></td>
+                      <td nowrap="nowrap">
+                        <a href="#" title="修改" class="green" style="padding-right:8px;">
+                          <i class="ace-icon fa fa-pencil bigger-130"></i>
+                        </a>
+                        <a title="删除" class="red" style="padding-right:8px;cursor:pointer;" onclick="delete_courier(41246)">
+                          <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                        </a>&nbsp;</td>
+                    </tr>
+                    <tr class="odd">
+                      <td>梅虎</td>
+                      <td>zgmh</td>
+                      <td>30</td>
+                      <td>男</td>
+                      <td>18307178128</td>
+                      <td>90</td>
+                      <td>1602</td>
+                      <td>20</td>
+                      <td width="60">
+                        <a href="#" role="button" class="label label-sm label-success ck-position" data-toggle="modal" data-id="41841">查看位置</a>
+                        <a class="label label-sm label-danger" href="#">设置跑腿类型</a>
+                        <a class="label label-sm label-info" href="#">权限设置</a></td>
+                      <td nowrap="nowrap">
+                        <a href="#" title="修改" class="green" style="padding-right:8px;">
+                          <i class="ace-icon fa fa-pencil bigger-130"></i>
+                        </a>
+                        <a title="删除" class="red" style="padding-right:8px;cursor:pointer;" onclick="delete_courier(41841)">
+                          <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                        </a>&nbsp;</td>
+                    </tr>
+                    <tr class="even">
+                      <td>郑鹏</td>
+                      <td>zgzp</td>
+                      <td>24</td>
+                      <td>男</td>
+                      <td>18771807757</td>
+                      <td>10</td>
+                      <td>96</td>
+                      <td>3</td>
+                      <td width="60">
+                        <a href="#" role="button" class="label label-sm label-success ck-position" data-toggle="modal" data-id="47888">查看位置</a>
+                        <a class="label label-sm label-danger" href="#">设置跑腿类型</a>
+                        <a class="label label-sm label-info" href="#">权限设置</a></td>
+                      <td nowrap="nowrap">
+                        <a href="#" title="修改" class="green" style="padding-right:8px;">
+                          <i class="ace-icon fa fa-pencil bigger-130"></i>
+                        </a>
+                        <a title="删除" class="red" style="padding-right:8px;cursor:pointer;" onclick="delete_courier(47888)">
+                          <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                        </a>&nbsp;</td>
+                    </tr>
+                    <tr class="odd">
+                      <td>杜威</td>
+                      <td>杜威</td>
+                      <td>24</td>
+                      <td>男</td>
+                      <td>13986828531</td>
+                      <td>15</td>
+                      <td>861</td>
+                      <td>14</td>
+                      <td width="60">
+                        <a href="#" role="button" class="label label-sm label-success ck-position" data-toggle="modal" data-id="49132">查看位置</a>
+                        <a class="label label-sm label-danger" href="#">设置跑腿类型</a>
+                        <a class="label label-sm label-info" href="#">权限设置</a></td>
+                      <td nowrap="nowrap">
+                        <a href="#" title="修改" class="green" style="padding-right:8px;">
+                          <i class="ace-icon fa fa-pencil bigger-130"></i>
+                        </a>
+                        <a title="删除" class="red" style="padding-right:8px;cursor:pointer;" onclick="delete_courier(49132)">
+                          <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                        </a>&nbsp;</td>
+                    </tr>
+                    <tr class="even">
+                      <td>张青松</td>
+                      <td>张青松</td>
+                      <td>35</td>
+                      <td>男</td>
+                      <td>15334041394</td>
+                      <td>40</td>
+                      <td>569</td>
+                      <td>9</td>
+                      <td width="60">
+                        <a href="#" role="button" class="label label-sm label-success ck-position" data-toggle="modal" data-id="49878">查看位置</a>
+                        <a class="label label-sm label-danger" href="#">设置跑腿类型</a>
+                        <a class="label label-sm label-info" href="#">权限设置</a></td>
+                      <td nowrap="nowrap">
+                        <a href="#" title="修改" class="green" style="padding-right:8px;">
+                          <i class="ace-icon fa fa-pencil bigger-130"></i>
+                        </a>
+                        <a title="删除" class="red" style="padding-right:8px;cursor:pointer;" onclick="delete_courier(49878)">
+                          <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                        </a>&nbsp;</td>
+                    </tr>
+                    <tr class="odd">
+                      <td>徐林</td>
+                      <td>zgxl</td>
+                      <td>23</td>
+                      <td>男</td>
+                      <td>18062382839</td>
+                      <td>44</td>
+                      <td>439</td>
+                      <td>10</td>
+                      <td width="60">
+                        <a href="#" role="button" class="label label-sm label-success ck-position" data-toggle="modal" data-id="50237">查看位置</a>
+                        <a class="label label-sm label-danger" href="#">设置跑腿类型</a>
+                        <a class="label label-sm label-info" href="#">权限设置</a></td>
+                      <td nowrap="nowrap">
+                        <a href="#" title="修改" class="green" style="padding-right:8px;">
+                          <i class="ace-icon fa fa-pencil bigger-130"></i>
+                        </a>
+                        <a title="删除" class="red" style="padding-right:8px;cursor:pointer;" onclick="delete_courier(50237)">
+                          <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                        </a>&nbsp;</td>
+                    </tr>
+                    <tr class="even">
+                      <td>向俊杰1</td>
+                      <td>向俊杰</td>
+                      <td>29</td>
+                      <td>男</td>
+                      <td>18674206729</td>
+                      <td>12</td>
+                      <td>202</td>
+                      <td>7</td>
+                      <td width="60">
+                        <a href="#" role="button" class="label label-sm label-success ck-position" data-toggle="modal" data-id="50837">查看位置</a>
+                        <a class="label label-sm label-danger" href="#">设置跑腿类型</a>
+                        <a class="label label-sm label-info" href="#">权限设置</a></td>
+                      <td nowrap="nowrap">
+                        <a href="#" title="修改" class="green" style="padding-right:8px;">
+                          <i class="ace-icon fa fa-pencil bigger-130"></i>
+                        </a>
+                        <a title="删除" class="red" style="padding-right:8px;cursor:pointer;" onclick="delete_courier(50837)">
+                          <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                        </a>&nbsp;</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="summary">第 1-10 条, 共 17 条.</div>
+                <div class="pager">
+                  <ul class="pagination" id="yw1">
+                    <li class="hidden hidden">
+                      <a href="#">&lt;&lt; 首页</a></li>
+                    <li class="prev hidden">
+                      <a href="#">
+                        <i class="ace-icon fa fa-angle-double-left"></i>
+                      </a>
+                    </li>
+                    <li class="page active">
+                      <a href="#">1</a></li>
+                    <li class="page">
+                      <a href="#">2</a></li>
+                    <li class="next">
+                      <a href="#">
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                      </a>
+                    </li>
+                    <li class="hidden">
+                      <a href="#">末页 &gt;&gt;</a></li>
+                  </ul>
+                </div>
+                <div class="keys" style="display:none" title="/courier/index">
+                  <span>36886</span>
+                  <span>37136</span>
+                  <span>39564</span>
+                  <span>41246</span>
+                  <span>41841</span>
+                  <span>47888</span>
+                  <span>49132</span>
+                  <span>49878</span>
+                  <span>50237</span>
+                  <span>50837</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="modal-table" class="modal fade" tabindex="-1">
+        <div class="modal-dialog" style="width:80%;">
+          <div class="modal-content" style="width:100%;">
+            <div class="modal-header no-padding" style="width:100%;">
+              <div class="table-header">
+                <button id="close_button" type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <span class="white">×</span></button>配送员（
+                <span id="courier-name-span"></span>）的位置</div></div>
+            <div class="modal-body no-padding" style="width:100%;">
+              <div style="width: 100%; height: 600px; min-height: 600px; position: relative; background: rgb(252, 249, 242);" id="mapContainer" class="amap-container">
+                <object style="display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;" type="text/html" data="about:blank"></object>
+                <div class="amap-maps">
+                  <div class="amap-drags">
+                    <div class="amap-layers" style="transform: translateZ(0px);">
+                      <div class="amap-markers" style="position: absolute; z-index: 120; top: 0px; left: 0px;"></div>
+                      <canvas class="amap-labels" style="position: absolute; z-index: 99; height: 0px; width: 0px; top: 0px; left: 0px;" width="0" height="0"></canvas>
+                    </div>
+                    <div class="amap-overlays"></div>
+                  </div>
+                </div>
+                <div style="display: none;"></div>
+                <div class="amap-controls">
+                  <div class="amap-toolbar" style="left: 10px; top: 10px; visibility: visible;">
+                    <div class="amap-pancontrol" style="position: relative; display: block;">
+                      <div class="amap-pan-left"></div>
+                      <div class="amap-pan-top"></div>
+                      <div class="amap-pan-right"></div>
+                      <div class="amap-pan-bottom"></div>
+                    </div>
+                    <div class="amap-locate" style="position: relative; left: 17px; display: block;"></div>
+                    <div class="amap-zoomcontrol" style="position: relative; left: 14px;">
+                      <div class="amap-zoom-plus"></div>
+                      <div class="amap-zoom-ruler" style="display: block;">
+                        <div class="amap-zoom-mask" style="height: 137px;"></div>
+                        <div class="amap-zoom-cursor" style="top: 137px;"></div>
+                        <div class="amap-zoom-labels">
+                          <div class="amap-zoom-label-street"></div>
+                          <div class="amap-zoom-label-city"></div>
+                          <div class="amap-zoom-label-province"></div>
+                          <div class="amap-zoom-label-country"></div>
+                        </div>
+                      </div>
+                      <div class="amap-zoom-minus amap-zoom-minus2"></div>
+                    </div>
+                  </div>
+                </div>
+                <a class="amap-logo" href="#" target="_blank">
+                  <img src="https://webapi.amap.com/theme/v1.3/autonavi.png"></a>
+                <div class="amap-copyright" style="display: none;">
+                  <!--v1.3.24-->© 2017 AutoNavi
+                  <span class="amap-mcode">- GS(2016)710号</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

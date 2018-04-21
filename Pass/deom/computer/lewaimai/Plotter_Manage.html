@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-gear gear-icon"></i>
+        <a href="#">系统设置</a></li>
+      <li>
+        <a href="#">打印机管理</a></li>
+      <li class="active">乐外卖打印机</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <script type="text/javascript" src="/js/jquery.form.js"></script>
+      <style>.isCutSwitch, .autoConfirmSwitch{ display: none; }</style>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="alert alert-block alert-success">
+            <button type="button" class="close" data-dismiss="alert">
+              <i class="ace-icon fa fa-times"></i>
+            </button>
+            <p>已有58mm热敏打印机的用户请直接购买SN和KEY，没有打印机的用户购买打印机请前往乐外卖官方商城
+              <a href="#" target="_blank">http://mall.lewaimai.com/</a></p>
+          </div>
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li class="active">
+                <a id="lewaimai" href="#">乐外卖打印机</a></li>
+              <li class="">
+                <a id="feiyin" href="#">飞印打印机</a></li>
+              <li class="">
+                <a id="kelaile" href="#">客来乐打印机</a></li>
+            </ul>
+            <div class="tab-content">
+              <div id="lewaimai" class="tab-pane active">
+                <a class="btn btn-success" href="Plotter_Manage_new.html">新建乐外卖打印机</a>
+                <a class="btn btn-primary" href="Plotter_Manage_buy.html">购买SN和KEY</a>
+                <a class="btn btn-primary" href="Plotter_Manage_record.html">查看购买记录</a>
+                <div id="shopList" class="grid-view">
+                  <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th id="shopList_c0">
+                          <a class="sort-link" href="#">打印机备注名称</a></th>
+                        <th id="shopList_c1">
+                          <a class="sort-link" href="#">打印机机身号(SN)</a></th>
+                        <th id="shopList_c2">
+                          <a class="sort-link" href="#">打印联数</a></th>
+                        <th id="shopList_c3">
+                          <a class="sort-link" href="#">打印机底部自定义信息</a></th>
+                        <th id="shopList_c4">自动切纸</th>
+                        <th id="shopList_c5">是否打印后自动确认订单</th>
+                        <th id="shopList_c6">
+                          <a class="sort-link" href="#">打印机状态</a></th>
+                        <th id="shopList_c7">上线时间</th>
+                        <th id="shopList_c8">信号强度</th>
+                        <th id="shopList_c9">是否缺纸</th>
+                        <th class="button-column" id="shopList_c10">操作</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd">
+                        <td width="100">九三食府</td>
+                        <td width="120">60802874</td>
+                        <td width="80">1</td>
+                        <td width="200">金点外卖 联系电话18071329016</td>
+                        <td width="80">
+                          <label class="isCutSwitch" style="display: inline-block;">
+                            <input name="switch-field-1" class="ace ace-switch ace-switch-6" type="checkbox" data-status="0" data-id="41125">
+                            <span class="lbl"></span>
+                          </label>
+                        </td>
+                        <td width="130">
+                          <label class="autoConfirmSwitch" style="display: inline-block;">
+                            <input name="switch-field-1" class="ace ace-switch ace-switch-6" type="checkbox" data-status="1" data-id="41125" checked="checked">
+                            <span class="lbl"></span>
+                          </label>
+                        </td>
+                        <td width="100">
+                          <b style="color:red">离线</b></td>
+                        <td width="100">
+                          <b style="color:red">2017-03-20 03:46:10</b></td>
+                        <td width="100">
+                          <b style="color:red">0</b></td>
+                        <td width="100">
+                          <b style="color:red">有纸</b></td>
+                        <td nowrap="nowrap" width="100" class="center">
+                          <a title="修改" class="green" style="padding-right:8px;" href="#">
+                            <i class="ace-icon fa fa-pencil bigger-130"></i>
+                          </a>
+                          <a title="删除" class="red" style="padding-right:8px;" href="#">
+                            <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr class="even">
+                        <td width="100">味美家</td>
+                        <td width="120">60802885</td>
+                        <td width="80">2</td>
+                        <td width="200">金点外卖</td>
+                        <td width="80">
+                          <label class="isCutSwitch" style="display: inline-block;">
+                            <input name="switch-field-1" class="ace ace-switch ace-switch-6" type="checkbox" data-status="0" data-id="41531">
+                            <span class="lbl"></span>
+                          </label>
+                        </td>
+                        <td width="130">
+                          <label class="autoConfirmSwitch" style="display: inline-block;">
+                            <input name="switch-field-1" class="ace ace-switch ace-switch-6" type="checkbox" data-status="1" data-id="41531" checked="checked">
+                            <span class="lbl"></span>
+                          </label>
+                        </td>
+                        <td width="100">
+                          <b style="color:green">在线</b></td>
+                        <td width="100">
+                          <b style="color:red">2017-03-20 11:41:28</b></td>
+                        <td width="100">
+                          <b style="color:red">0</b></td>
+                        <td width="100">
+                          <b style="color:red">有纸</b></td>
+                        <td nowrap="nowrap" width="100" class="center">
+                          <a title="修改" class="green" style="padding-right:8px;" href="#">
+                            <i class="ace-icon fa fa-pencil bigger-130"></i>
+                          </a>
+                          <a title="删除" class="red" style="padding-right:8px;" href="#">
+                            <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="summary">第 1-2 条, 共 2 条.</div>
+                  <div class="keys" style="display:none" title="/printer/lewaimaiprinterindex">
+                    <span>41125</span>
+                    <span>41531</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

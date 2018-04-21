@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$panord_title#}-商家全景-{#$detail_title#}-{#$business_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/videod.css?v=3">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+</head>
+
+<body>
+
+  <!-- 头部 -->
+  <div class="header">
+    <div class="header-l">
+      <a href="javascript:history.go(-1)"><img src="{#$templets_skin#}images/left1.png"></a>
+    </div>
+    <div class="header-c">
+      <a href="javascript:;"><span>{#$detail_title#}</span></a>
+    </div>
+    <div class="header-r">
+      <a href="javascript:;"></a>
+    </div>
+  </div>
+  <!-- 头部 end-->
+
+  <div class="main">
+    <div class="video-box">
+      <h3>{#$panord_title#}</h3>
+      <iframe src="{#$panord_panor#}" allowtransparency="true" allowfullscreen="true" allowfullscreenInteractive="true" scrolling="no" border="0" frameborder="0"></iframe>
+    </div>
+  </div>
+
+
+
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/panord.js"></script>
+</body>
+</html>

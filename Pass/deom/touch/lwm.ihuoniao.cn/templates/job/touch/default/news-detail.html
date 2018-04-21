@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="{#$cfg_soft_lang#}">
+	<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>{#$detail_title#}-{#$detail_typename#}-职场资讯-互联网招聘求职网-{#$job_title#}</title>
+	<meta name="keywords" content="{#$detail_typename#},职场资讯,招聘网,招聘信息,互联网招聘" />
+	<meta name="description" content="{#$detail_typename#},职场资讯,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/news-detail.css">
+	<script type="text/javascript">
+		var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+		var hideFileUrl = {#$cfg_hideUrl#};
+	</script>
+</head>
+<body>
+	<div class="container">
+
+		{#$tit = {#$detail_typename#}#}
+		{#include file="top.html"#}
+
+		<div class="news-tit">
+			<h1>{#$detail_title#}</h1>
+			<p><span class="degree">浏览{#$detail_click#}</span><span class="time">{#if $detail_sourceUrl#}{#$detail_source#}{#else#}{#$detail_source#}{#/if#}</span></p>
+		</div>
+		<div class="news-con">
+			{#$detail_body#}
+		</div>
+
+		<!-- 底部 -->
+		  <div class="footer">
+		    <ul>
+		      <li class="index">
+		        <a href="{#$job_channelDomain#}"><i></i>首页</a>
+		      </li>
+		      <li class="zixun active">
+		        <a href="{#getUrlPath service='job' template='news'#}"><i></i>资讯</a>
+		      </li>
+		      <li class="wo">
+		        <a href="{#$member_userDomain#}"><i></i>我的</a>
+		      </li>
+		    </ul>
+		  </div>
+	  <!-- 底部 end-->
+
+	</div>
+	<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+	<script src="{#$templets_skin#}js/public.js"></script>
+</body>
+</html>

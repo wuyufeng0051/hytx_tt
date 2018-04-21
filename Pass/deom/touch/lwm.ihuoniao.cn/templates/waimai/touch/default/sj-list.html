@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商家列表</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0;">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/sj-list.css?v=1">
+</head>
+<body>
+	<div class="container">
+	<!-- 头部 -->
+		<div class="header">
+			<div class="header-l">
+				<a href="javascript:window.history.go(-1)"><img src="{#$templets_skin#}images/left.png" alt=""></a>
+			</div>
+			<div class="header-address">
+				<span>美食</span>
+			</div>
+			<div class="header-search">
+				<a href="search.html"><img src="{#$templets_skin#}images/search1.png" alt=""></a>
+			</div>
+		</div>
+	<!-- 头部 end -->
+
+	<!-- 筛选框 -->
+		<div class="choose-box">
+			<div class="choose-tab">
+				<ul>
+					<li class="tab-area"><a href="javascript:;"><i><span>全部分类</span></i></a></li>
+					<li class="tab-price"><a href="javascript:;"><i><span>综合排序</span></i></a></li>
+					<li class="tab-type"><a href="javascript:;"><i><span>筛选</span></i></a></li>
+				</ul>
+			</div>
+			<div class="choose-local">
+				<div class="choose-slide choose-li" id="choose-classify">
+					<ul>
+						<li class="active"><a href="javascript:;">全部商家</a></li>
+						<li><a href="javascript:;">快餐类</a></li>
+						<li><a href="javascript:;">正餐类</a></li>
+						<li><a href="javascript:;">小吃零食</a></li>
+						<li><a href="javascript:;">甜品饮品</a></li>
+						<li><a href="javascript:;">果蔬生鲜</a></li>
+						<li><a href="javascript:;">鲜花蛋糕</a></li>
+						<li><a href="javascript:;">商超类</a></li>
+					</ul>
+				</div>
+				<div class="choose-slide choose-li" id="choose-sort">
+					<ul>
+						<li class="active"><a href="javascript:;">默认排序</a></li>
+						<li><a href="javascript:;">销量</a></li>
+						<li><a href="javascript:;">评价</a></li>
+					</ul>
+				</div>
+				<div class="choose-slide choose-a" id="choose-screen">
+					<ul>
+						<li><a href="javascript:;">新用户优惠</a></li>
+						<li><a href="javascript:;">下单立减</a></li>
+						<li><a href="javascript:;">专享红包</a></li>
+						<li><a href="javascript:;">免配送费</a></li>
+						<li><a href="javascript:;">超时赔付</a></li>
+						<li><a href="javascript:;">可开发票</a></li>
+						<li><a href="javascript:;">在线支付</a></li>
+					</ul>
+					<div class="bottom-box">
+						<a class="clear-a l">重置</a>
+						<a class="confirm r">确定</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="white"></div>
+	<!-- 筛选框 end -->
+
+	<!-- 附近商家列表 -->
+		<div class="near">
+			<div class="near-box">
+				<div class="near-list">
+					<a href="sj-detail.html">
+						<div class="near-list-img">
+							<img src="{#$templets_skin#}upfile/near1.jpg" alt="">
+						</div>
+						<div class="near-list-txt">
+							<h1><span>红布坊脆皮鸡饭（金鸡湖商业广场店）</span><em>2.1km</em></h1>
+							<div class="judge-box">
+								<div class="judge-star l">
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+								</div>
+								<span class="sale-num l">月售997单</span>
+								<span class="sale-time r">30分钟</span>
+								<div class="clear"></div>
+							</div>
+							<div class="starting-price">
+								<span>起送价￥14</span><em>|</em>
+								<span>配送费￥5</span>
+							</div>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>满50减5;满100减10</p>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>新用户立减14元</p>
+						</div>
+					</a>
+				</div>
+				<div class="near-list">
+					<a href="sj-detail.html">
+						<div class="near-list-img">
+							<img src="{#$templets_skin#}upfile/near2.jpg" alt="">
+						</div>
+						<div class="near-list-txt">
+							<h1><span>五四烤肉拌饭</span><em>908m</em></h1>
+							<div class="judge-box">
+								<div class="judge-star l">
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+								</div>
+								<span class="sale-num l">月售997单</span>
+								<span class="sale-time r">30分钟</span>
+								<div class="clear"></div>
+							</div>
+							<div class="starting-price">
+								<span>起送价￥15</span><em>|</em>
+								<span>配送费￥3</span>
+							</div>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>满50减5;满100减10</p>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>新用户立减14元</p>
+						</div>
+					</a>
+				</div>
+				<div class="near-list">
+					<a href="sj-detail.html">
+						<div class="near-list-img">
+							<img src="{#$templets_skin#}upfile/near3.png" alt="">
+						</div>
+						<div class="near-list-txt">
+							<h1><span>东池便当（雅戈尔店）</span><em>2.6km</em></h1>
+							<div class="judge-box">
+								<div class="judge-star l">
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star2.png" alt=""></em>
+								</div>
+								<span class="sale-num l">月售2117单</span>
+								<span class="sale-time r">36分钟</span>
+								<div class="clear"></div>
+							</div>
+							<div class="starting-price">
+								<span>起送价￥15</span><em>|</em>
+								<span>配送费￥2</span>
+							</div>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>满50减8;满100减15</p>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>新用户立减14元</p>
+						</div>
+					</a>
+				</div>
+				<div class="near-list">
+					<a href="sj-detail.html">
+						<div class="near-list-img">
+							<img src="{#$templets_skin#}upfile/near4.jpg" alt="">
+						</div>
+						<div class="near-list-txt">
+							<h1><span>重庆麻辣烫</span><em>1.6km</em></h1>
+							<div class="judge-box">
+								<div class="judge-star l">
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star3.png" alt=""></em>
+								</div>
+								<span class="sale-num l">月售2117单</span>
+								<span class="sale-time r">36分钟</span>
+								<div class="clear"></div>
+							</div>
+							<div class="starting-price">
+								<span>起送价￥15</span><em>|</em>
+								<span>配送费￥2</span>
+							</div>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>满50减8;满100减15</p>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>新用户立减14元</p>
+						</div>
+					</a>
+				</div>
+				<div class="near-list">
+					<a href="sj-detail.html">
+						<div class="near-list-img">
+							<img src="{#$templets_skin#}upfile/near6.jpg" alt="">
+						</div>
+						<div class="near-list-txt">
+							<h1><span>百丽石锅拌饭（石路店）</span><em>1.2km</em></h1>
+							<div class="judge-box">
+								<div class="judge-star l">
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star3.png" alt=""></em>
+								</div>
+								<span class="sale-num l">月售2117单</span>
+								<span class="sale-time r">36分钟</span>
+								<div class="clear"></div>
+							</div>
+							<div class="starting-price">
+								<span>起送价￥20</span><em>|</em>
+								<span>配送费￥0</span>
+							</div>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>满50减25;满100减30</p>
+						</div>
+					</a>
+				</div>
+				<div class="near-list">
+					<a href="sj-detail.html">
+						<div class="near-list-img">
+							<img src="{#$templets_skin#}upfile/near7.jpg" alt="">
+						</div>
+						<div class="near-list-txt">
+							<h1><span>东北农家菜（南门店）</span><em>2.6km</em></h1>
+							<div class="judge-box">
+								<div class="judge-star l">
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star2.png" alt=""></em>
+								</div>
+								<span class="sale-num l">月售2587单</span>
+								<span class="sale-time r">55分钟</span>
+								<div class="clear"></div>
+							</div>
+							<div class="starting-price">
+								<span>起送价￥40</span><em>|</em>
+								<span>配送费￥0</span>
+							</div>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>满40减25;满100减30</p>
+						</div>
+					</a>
+				</div>
+				<div class="near-list">
+					<a href="sj-detail.html">
+						<div class="near-list-img">
+							<img src="{#$templets_skin#}upfile/near8.jpg" alt="">
+						</div>
+						<div class="near-list-txt">
+							<h1><span>王阿姨快餐</span><em>2.0km</em></h1>
+							<div class="judge-box">
+								<div class="judge-star l">
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star2.png" alt=""></em>
+								</div>
+								<span class="sale-num l">月售144单</span>
+								<span class="sale-time r">40分钟</span>
+								<div class="clear"></div>
+							</div>
+							<div class="starting-price">
+								<span>起送价￥20</span><em>|</em>
+								<span>配送费￥5</span>
+							</div>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>满60减20;满100减30</p>
+						</div>
+					</a>
+				</div>
+				<div class="near-list">
+					<a href="sj-detail.html">
+						<div class="near-list-img">
+							<img src="{#$templets_skin#}upfile/near9.jpg" alt="">
+						</div>
+						<div class="near-list-txt">
+							<h1><span>（1元餐）村里乡人</span><em>2.4km</em></h1>
+							<div class="judge-box">
+								<div class="judge-star l">
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+								</div>
+								<span class="sale-num l">月售27898单</span>
+								<span class="sale-time r">40分钟</span>
+								<div class="clear"></div>
+							</div>
+							<div class="starting-price">
+								<span>起送价￥50</span><em>|</em>
+								<span>配送费￥5</span>
+							</div>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>满60减20;满100减30</p>
+						</div>
+					</a>
+				</div>
+				<div class="near-list">
+					<a href="sj-detail.html">
+						<div class="near-list-img">
+							<img src="{#$templets_skin#}upfile/near10.jpg" alt="">
+						</div>
+						<div class="near-list-txt">
+							<h1><span>赵庆荣农家菜店（皮市街店）</span><em>1.8km</em></h1>
+							<div class="judge-box">
+								<div class="judge-star l">
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star3.png" alt=""></em>
+								</div>
+								<span class="sale-num l">月售9144单</span>
+								<span class="sale-time r">55分钟</span>
+								<div class="clear"></div>
+							</div>
+							<div class="starting-price">
+								<span>起送价￥10</span><em>|</em>
+								<span>配送费￥5</span>
+							</div>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>满30减10</p>
+						</div>
+					</a>
+				</div>
+				<div class="near-list">
+					<a href="sj-detail.html">
+						<div class="near-list-img">
+							<img src="{#$templets_skin#}upfile/near1.jpg" alt="">
+						</div>
+						<div class="near-list-txt">
+							<h1><span>红布坊脆皮鸡饭（金鸡湖商业广场店）</span><em>2.1km</em></h1>
+							<div class="judge-box">
+								<div class="judge-star l">
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+								</div>
+								<span class="sale-num l">月售997单</span>
+								<span class="sale-time r">30分钟</span>
+								<div class="clear"></div>
+							</div>
+							<div class="starting-price">
+								<span>起送价￥14</span><em>|</em>
+								<span>配送费￥5</span>
+							</div>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>满50减5;满100减10</p>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>新用户立减14元</p>
+						</div>
+					</a>
+				</div>
+				<div class="near-list">
+					<a href="sj-detail.html">
+						<div class="near-list-img">
+							<img src="{#$templets_skin#}upfile/near2.jpg" alt="">
+						</div>
+						<div class="near-list-txt">
+							<h1><span>五四烤肉拌饭</span><em>908m</em></h1>
+							<div class="judge-box">
+								<div class="judge-star l">
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+								</div>
+								<span class="sale-num l">月售997单</span>
+								<span class="sale-time r">30分钟</span>
+								<div class="clear"></div>
+							</div>
+							<div class="starting-price">
+								<span>起送价￥15</span><em>|</em>
+								<span>配送费￥3</span>
+							</div>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>满50减5;满100减10</p>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>新用户立减14元</p>
+						</div>
+					</a>
+				</div>
+				<div class="near-list">
+					<a href="sj-detail.html">
+						<div class="near-list-img">
+							<img src="{#$templets_skin#}upfile/near3.png" alt="">
+						</div>
+						<div class="near-list-txt">
+							<h1><span>东池便当（雅戈尔店）</span><em>2.6km</em></h1>
+							<div class="judge-box">
+								<div class="judge-star l">
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star2.png" alt=""></em>
+								</div>
+								<span class="sale-num l">月售2117单</span>
+								<span class="sale-time r">36分钟</span>
+								<div class="clear"></div>
+							</div>
+							<div class="starting-price">
+								<span>起送价￥15</span><em>|</em>
+								<span>配送费￥2</span>
+							</div>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>满50减8;满100减15</p>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>新用户立减14元</p>
+						</div>
+					</a>
+				</div>
+				<div class="near-list">
+					<a href="sj-detail.html">
+						<div class="near-list-img">
+							<img src="{#$templets_skin#}upfile/near4.jpg" alt="">
+						</div>
+						<div class="near-list-txt">
+							<h1><span>重庆麻辣烫</span><em>1.6km</em></h1>
+							<div class="judge-box">
+								<div class="judge-star l">
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star1.png" alt=""></em>
+									<em><img src="{#$templets_skin#}images/star3.png" alt=""></em>
+								</div>
+								<span class="sale-num l">月售2117单</span>
+								<span class="sale-time r">36分钟</span>
+								<div class="clear"></div>
+							</div>
+							<div class="starting-price">
+								<span>起送价￥15</span><em>|</em>
+								<span>配送费￥2</span>
+							</div>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>满50减8;满100减15</p>
+							<p class="gray"><i><img src="{#$templets_skin#}images/fan.png" alt=""></i>新用户立减14元</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	<!-- 附近商家列表 end -->
+		
+	</div>
+	<div class="mask"></div>
+	<script src="{#$templets_skin#}js/jquery-1.10.1.min.js"></script>
+	<script src="{#$templets_skin#}js/iscroll.js"></script>
+	<script src="{#$templets_skin#}js/public.js"></script>
+	<script src="{#$templets_skin#}js/sj-list.js?v=1"></script>
+</body>
+</html>

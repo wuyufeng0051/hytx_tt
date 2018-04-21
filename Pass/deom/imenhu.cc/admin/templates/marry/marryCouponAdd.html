@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var thumbSize = {#$thumbSize#}, thumbType = "{#$thumbType#}",  //缩略图配置
+	adminPath = "{#$adminPath#}", modelType = 'marry';
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="action" id="action" value="{#$action#}" />
+  <input type="hidden" name="cid" id="cid" value="{#$cid#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label for="title">优惠券名称：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="title" id="title" value="{#$title#}" maxlength="30" data-regex=".{2,30}" />
+      <span class="input-tips"><s></s>请输入优惠券名称，2-30位</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>优惠券缩略图：</dt>
+    <dd>
+      <input name="litpic" type="hidden" id="litpic" value="{#$litpic#}" />
+      {#if $litpic != ""#}
+      <div id="license" class="uploadinp uploading"><span id="uploadBt"></span></div>
+      <div id="licenseFiles" style="display:inline-block;"><a href='{#$cfg_attachment#}{#$litpic#}' title="" onClick="return false;" style="cursor:default;"><img alt="" src="{#$cfg_attachment#}{#$litpic#}&type=small" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;" style="display:inline-block;">删除图片</a>
+      {#else#}
+      <div id="license" class="uploadinp"><span id="uploadBt"></span></div>
+      <div id="licenseFiles"><a href="#" target="_blank" title=""><img alt="" src="" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;">删除图片</a>
+      {#/if#}
+      <div id="licenseProgress" class="progressBar">
+        <i id="licenseProgressBar" class="progress"></i>
+        <span id="licensePercent">0%</span>
+        <a id="cancelUploadBt" href="javascript:;">取消</a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="from">开始时间：</label></dt>
+    <dd><input class="input-small" type="text" name="from" id="from" value="{#$from#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="end">结束时间：</label></dt>
+    <dd><input class="input-small" type="text" name="end" id="end" value="{#$end#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="count">优惠券数量：</label></dt>
+    <dd><input class="input-mini" type="number" name="count" id="count" min="0" data-regex="[1-9]\d*" value="{#$count#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="note">优惠券介绍：</label></dt>
+    <dd>
+      <textarea name="note" id="note" class="input-xxlarge" rows="5" placeholder="活动简介，200个字以内！" data-regex=".{0,200}">{#$note#}</textarea>
+      <span class="input-tips"><s></s>请输入优惠券介绍，200个字以内！</span>
+    </dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

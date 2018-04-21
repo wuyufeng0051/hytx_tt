@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>举报/意见</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIIC__/Home/css/mui.min.css">
+	<style>
+	.content{
+		text-align: center;
+		margin-top: 40px;
+	}
+	.content img{
+		width: 200px;
+	}
+	.content h2{
+		font-size: 18px;
+		margin-top: 20px;
+	}
+	</style>
+</head>
+<body>
+
+ <include file="Public/share" title='包含文件'/>
+
+	<div class="mui-content">
+		<div class="content">
+			<img src="__PUBLIC__/Home/img/succ.png" alt="" >
+			<h2>你的举报或意见已提交</h2>
+			<p style="padding: 20px 50px;text-align: left;color: #333;">感谢您的反馈，我们会在24小时内完成审核，并通过系统消息告诉您结果。 您可以在个人中心“意见商城”页面中的<span style="color:#ff7300;margin:0 4px;">[我提的意见]</span>查看。</p>
+		</div>
+		<div class="submit" style="padding: 15px;">
+			<button class="mui-btn btn-block" style="background: #ff7400;width: 100%;color:#fff;line-height: 30px;border:none;font-size: 16px;" id="btn">确定</button>
+		</div>
+	</div>
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script>
+	  $('#btn').click(function(){
+	  	history.go(-2)
+	  })
+	</script>
+</body>
+</html>

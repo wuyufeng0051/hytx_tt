@@ -1,0 +1,15 @@
+<table>
+  <thead class="thead">
+    <tr><th class="fir"></th><th>名称</th><th>详细</th><th>操作</th></tr>
+  </thead>
+  <tbody>
+    {#shop action="logistic"#}
+    <tr data-id="{#$row.id#}">
+      <td class="fir"></td>
+      <td>{#$row.title#}</td>
+      <td>{#$row.detail#}</td>
+      <td><a href="{#getUrlPath service='member' template='logistic' action='shop' id={#$row.id#}#}">修改</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;" class="del">删除</a></td>
+    </tr>
+    {#/shop#}
+  </tbody>
+</table>

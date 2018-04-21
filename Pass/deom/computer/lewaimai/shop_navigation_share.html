@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+  <div class="main-content">
+    <div class="breadcrumbs" id="breadcrumbs">
+      <ul class="breadcrumb">
+        <i class="ace-icon fa fa-desktop desktop-icon"></i>
+        <li class="active">店铺</li>
+        <li>
+          <a href="#">店铺导航设置</a></li>
+      </ul>
+    </div>
+    <div class="page-content">
+      <!-- /section:settings.box -->
+      <div class="page-content-area">
+        <style>.aa{display:none;}</style>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="alert alert-block alert-success">
+              <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+              </button>
+              <p>店铺导航功能主要适用于有多个店铺的情况，为用户提供一个信息展示、店铺分类导航、店铺推荐的入口，引导用户更方便的下单。
+                <br></p>
+              <p>
+                <a class="btn btn-success" href="#" target="_blank">店铺导航设置教程</a></p>
+            </div>
+            <div class="tabbable">
+              <ul class="nav nav-tabs" id="myTab">
+                <li >
+                  <a href="shop_navigation.html">基本信息设置</a></li>
+                <li>
+                  <a href="shop_navigation_banner.html">首页轮播图设置</a></li>
+                <li >
+                  <a href="shop_navigation_kindset.html">店铺分类导航设置</a></li>
+                <li>
+                  <a href="shop_navigation_activity.html">店铺导航活动区域设置</a></li>
+                <li>
+                  <a href="shop_navigation_recoset.html">推荐店铺设置</a></li>
+                <li class="active">
+                  <a href="shop_navigation_share.html">店铺导航分享朋友圈设置</a></li>
+              </ul>
+              <div class="tab-content">
+                <form enctype="multipart/form-data" class="form-horizontal" id="autoreplysystem-form" action="/autoreplysystem/navigationset" method="post">
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Shopindex_shareaward_title">分享店铺导航标题</label>
+                    <input class="col-sm-1" name="Shopindex[shareaward_title]" id="Shopindex_shareaward_title" type="text" maxlength="200" value="秭归人自己的外卖平台"></div>
+                  <div class="form-group">
+                    <label class="col-sm-1" for="Shopindex_shareaward_image">分享店铺导航图片</label>
+                    <span class="col-sm-3" style="padding-left:0px;">
+                      <input id="ytshare-image-file" type="hidden" value="" name="Shopindex[shareaward_image]">
+                      <label class="ace-file-input">
+                        <input class="col-sm-1" id="share-image-file" size="200" onchange="previewshareimage(this)" name="Shopindex[shareaward_image]" type="file">
+                        <span class="ace-file-container" data-title="选择">
+                          <span class="ace-file-name" data-title="分享图片(120像素 * 120像素)">
+                            <i class=" ace-icon fa fa-upload"></i>
+                          </span>
+                        </span>
+                      </label>
+                    </span>
+                    <span style="color:red;line-height:34px;margin-left:20px;">（图片文件大小不能超过100KB,不设置默认为店铺图片的第一张）</span></div>
+                  <div>
+                    <img id="dis" title="分享图片" style="width:120px;height:120px" src="images/fenxiangjiangli.png">
+                    <img style="width:120px;height:120px" id="share_image_preview" class="aa play"  alt="分享图片"></div>
+                  <div style="height:30px;"></div>
+                </form>
+                <div class="span12">
+                  <div class="form-actions">
+                    <button class="btn btn-info" type="type" id="submitautoreplysystem-form">
+                      <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>
+  <div class="disk"></div>
+  <script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

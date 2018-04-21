@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>头像修改</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.picker.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/iosSelect.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+
+	<style type="text/css">
+	/*公用头部*/
+	.header{
+	    height: .9rem;
+	    background: #fd5530 !important;
+	    color: #fff;
+	    font-size: .32rem;
+	    line-height: .9rem;
+	    max-width: 1080px;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    z-index: 10;
+	    overflow: hidden;
+	}
+	.header a{
+		display: inline-block;
+		color: #fff;
+	}
+	.header .back{
+	    height: .9rem;
+	    line-height: .9rem;
+	    width: 17%;
+	    float: left;
+	}
+	.header .back i{
+	    width: 0.4rem;
+	    height: .9rem;
+	    display: inline-block;
+	    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+	    vertical-align: middle;
+	    background-size: .3rem;
+	}
+	.header .header_right{
+		float: right;
+		height: .9rem;
+		margin-right: .2rem;
+	}
+	.header .header_right i{
+	    width: 0.04rem;
+	    height: 0.5rem;
+	    display: inline-block;
+	    vertical-align: middle;
+	    background: #fff;
+	    margin: 0 .15rem;
+	}
+	.header .title_1{
+	    float: left;
+	    width: 70%;
+	    text-align: center;
+	    font-size: 0.38rem;
+	}
+	.header .share{
+	    height: .9rem;
+	    float: right;
+	    width: 12%;
+	    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+	    background-size: .5rem;
+	}
+	body{
+		font-family: 微软雅黑;
+		background-color: #fff;
+	}
+	.mui-content{
+		width:100%;
+		height: 100%;
+		background-color: #fff;
+	}
+/*	#upload{overflow: hidden;width: 100%;}
+	#upload a{width: 100%;height: 100%;display:block;overflow: hidden;}*/
+	#upload{width: 100%;height: 250px; margin: 0;position: relative;}
+	#upload input{width: 90%;height: 250px;opacity:0;filter:alpha(opacity=0);z-index: 100;padding-left: 0;position: absolute;top: 0;left:5%;cursor: pointer;}
+	#upload img{position: absolute;width: 90%;height: 80%;top: 0;left: 5%;}
+	/*.pro_img{width: 100%;overflow: hidden;}
+	.pro_img img{ width: 100%;height: 100%;vertical-align: middle;margin-top: 5px;text-align: center;}
+	.pro_img input{position: absolute;width: 100%;height: 100%;margin:0;opacity:0;z-index: 100;}*/
+	.mui-content-inner{
+		width: 100%;
+		margin-top: 10%;
+
+	}
+    
+    #file1{
+    	max-width: 100%;
+    	overflow: hidden;
+    }
+    .btn {
+    margin-top: 40px;
+    line-height: 44px;
+    padding: 10px;
+   }
+   
+   .btn .baocun {
+    width: 100%;
+    background: #fd5530;
+    color: #fff;
+    line-height: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+        border-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+        transition-duration: .2s;
+    text-align: center;
+    vertical-align: top;
+    white-space: nowrap;
+        font-size: 14px;
+    font-weight: 400;
+        position: relative;
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+	</style>
+</head>
+<body>
+	<!-- 共同顶部 s-->
+		<div class="header fn-clear">
+			<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+			<div class="title_1">头像修改</div>
+		</div>
+	<!-- 共同顶部 e-->
+  <form action="{:U('Home/Index/imghead')}" enctype="multipart/form-data" method="post" id="form">
+ 	<div class="mui-content">
+		<div class="mui-content-inner">
+				<?php if($iosorandroid == "IOS"){ ?>
+				<div id='upload'>
+					<!-- <a class='pro_img' id='a1'>
+					<input type='file' id='file1'  accept='image/*' runat="server" capture="camera"  multiple='multiple' name='pic[]' onchange='t1(1)'/>
+					 <img src='{$u_res.user_head}' id='img1'>
+					</a>
+					<img  id='hidden1' style='display:none;'> -->
+					<input type='file' id='file1'  accept='image/*' runat="server"  multiple='multiple' name='pic[]' onchange='ImagePreview(this)'/>
+					<img src='{$u_res.user_head}' id='img1'>
+				</div>
+				<?php }else{ ?>
+				<div id='upload'>
+					<!-- <a class='pro_img' id='a1'>
+					<input type='file' id='file1'  accept='image/*' runat="server" capture="camera"  multiple='multiple' name='pic[]' onchange='t1(1)'/>
+					 <img src='{$u_res.user_head}' id='img1'>
+					</a>
+					<img  id='hidden1' style='display:none;'> -->
+					<input type='file' id='file1'  accept='image/*' runat="server" capture="camera"  multiple='multiple' name='pic[]' onchange='ImagePreview(this)'/>
+					<img src='{$u_res.user_head}' id='img1'>
+				</div>
+				<?php } ?>
+		</div>
+		 <p style="text-align: center;width: 100%;margin-top: 15px;">点击图片更换头像<br>
+		  <span style="font-size:12px">(只支持 jpg, gif, png, jpeg格式)</span></p>
+	    <div class="btn">
+			<div class="baocun">保存</div>
+		</div>
+ 	</div>
+  </form>
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script type="text/javascript">
+       $(".btn").click(function() {
+         var file1 = $("#file1").val();
+         if (!file1) {
+           layer.msg('请先选择图片')
+         }else{
+         	$('form').submit();
+         }
+       });
+
+
+       //上传图片
+		function ImagePreview(obj){
+		var docObj = $(obj).attr('id');
+		var imgObjPreview = $(obj).parent().find('img').attr('id');
+		var docObj = document.getElementById(docObj);
+		var imgObjPreview = document.getElementById(imgObjPreview);
+		if(docObj.files && docObj.files[0])
+		{
+			imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+			imgObjPreview.style.display = 'block';
+		}
+		else{
+			return false;
+		}
+	}
+
+		/**
+		 * 图片上传
+		 */
+		
+	// 	name_pic=1;
+	// 	function t1(o){
+	// 		$("#img1").on('load',function(){
+	// 			var w = $(this).width();
+	// 			var h = $(this).height();
+	// 			//alert(w);
+	// 			$('#file1').css('width',w);
+	// 			$('#file1').css('height',h);
+	// 		})
+	// 		if(o==1 || name_pic!=1){
+	// 		var file="file"+o;
+	// 		var img="img"+o;
+	// 		var hid="hidden"+o;
+	// 		var aa="a"+o;
+	// 		}else{
+
+	// 		var file="file"+name_pic;
+	// 		var img="img"+name_pic;
+	// 		var hid="hidden"+name_pic;
+	// 		var aa="a"+name_pic;
+	// 		}
+	// 		var docObj = document.getElementById(file);
+	// 		var imgObjPreview = document.getElementById(img);
+	// 		var hidden=document.getElementById(hid);
+	// 		// alert(hidden);
+	// 		if (docObj.files && docObj.files[0]) {
+	// 			hidden.src=window.URL.createObjectURL(docObj.files[0]); //获取file文件的路径
+	// 			hidden.onload=function(){
+	// 				var width=hidden.width;
+	// 				var height=hidden.height;
+	// 				var a=document.getElementById(aa);
+	// 					if(width>height){
+	// 					imgObjPreview.style.cssText='width:100%';	//重写css样式
+	// 					}else{
+	// 					imgObjPreview.style.cssText='height:100%;width:auto;';					
+	// 					}
+	// 			imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+	// 			imgObjPreview.style.display = 'block';
+	// 			}
+	// 		}else{
+	// 			return false;
+	// 		}
+	// 		if(o==name_pic){
+	// 			var count=$('.pro_img').length;				
+	// 			if(count<1){
+	// 			name_pic++;
+	// 		var pic_div="<div><a class='pro_img' id='a"+name_pic+"' ><input type='file' id='file"+name_pic+"'  accept='image/*' multiple='multiple' runat='server' capture='camera' name='pic[]' onchange='t1("+name_pic+")'/><img src='img/uploadimg.png' id='img"+name_pic+"'></a><img  id='hidden"+name_pic+"' style='display:none;'></div>";
+	// 		$('#upload').append(pic_div); 
+	// 		}		
+	// 	}
+
+	// }
+	// $(function(){
+	// 	$("#img1").on('load',function(){
+	// 		var imgW = $('#img1').width();
+	// 		var imgH = $('#img1').height();
+	// 		$('#upload img').css('height':'auto');
+	// 		$('#upload input').css('height':'imgH');
+	// 		$('#upload').css('height':'imgH');		
+	// })
+	</script>
+</body>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var adminPath = "{#$adminPath#}", peisong = {#$peisong#}, id = {#$id#};
+</script>
+<style>
+<!--
+.o-wrap {padding:15px 15px 50px;}
+.o-item {margin:-10px 0 20px 0; padding:5px 20px 10px; background:#f9f9f9;}
+.o-item p {margin:0;}
+.o-item table {width:100%; margin:0;}
+.o-item table td {vertical-align:middle;}
+.o-item table td img {width:50px; height:50px;}
+.o-item table td.p-total {color:#f00; font-size:16px;}
+#btnSubmit {margin-left:160px;}
+-->
+</style>
+
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="edit" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <div style="padding:15px 15px 50px;">
+    <blockquote>
+      <p>订单信息：</p>
+    </blockquote>
+    <dl class="clearfix">
+      <dt>订单编号：</dt>
+      <dd class="singel-line">{#$ordernum#}</dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>订单时间：</dt>
+      <dd class="singel-line">{#$orderdate#}</dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>订单状态：</dt>
+      <dd class="singel-line">
+          {#if $state == 0#}
+          未付款
+          {#elseif $state == 1#}
+          已付款
+          {#elseif $state == 2#}
+          已发货
+          {#elseif $state == 3#}
+          订单完成
+          {#/if#}
+      </dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>所属餐厅：</dt>
+      <dd class="singel-line"><a href="{#$url#}" target="_blank">{#$storename#}</a></dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>订餐会员：</dt>
+      <dd class="singel-line"><a href="javascript:;" data-id="{#$userid#}" class="userinfo">{#$username#}</a></dd>
+    </dl>
+
+    <blockquote style="margin-top:20px;">
+      <p>订单内容：</p>
+    </blockquote>
+    <div class="o-item">
+      <table class="table">
+        <thead><tr><th>菜单</th><th>单价</th><th>数量</th><th>总价</th></tr></thead>
+        <tbody>
+          {#$menuList#}
+          <tr><td class="p-total" colspan="4">总额：&yen;<span id="tPrice">{#$price#}</span> + &yen;{#$peisong#}（配送费） - &yen;{#$offer#}（满减优惠） = &yen; <span id="aPrice">{#$priceTotal#}</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <blockquote>
+      <p>配送信息：</p>
+    </blockquote>
+    <dl class="clearfix">
+      <dt>联系人：</dt>
+      <dd class="singel-line">{#$people#}</dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>联系电话：</dt>
+      <dd class="singel-line">{#$contact#}</dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>送餐地址：</dt>
+      <dd class="singel-line">{#$address#}</dd>
+    </dl>
+    {#if $state > 0#}
+    <dl class="clearfix">
+      <dt>付款方式：</dt>
+      <dd class="singel-line text-info"><strong>{#$paytype#}</strong></dd>
+    </dl>
+    {#/if#}
+    <dl class="clearfix">
+      <dt>备注：</dt>
+      <dd class="singel-line">{#$note#}</dd>
+    </dl>
+    {#if $state > 1#}
+    <dl class="clearfix">
+      <dt>付款时间：</dt>
+      <dd class="singel-line">{#$paydate#}</dd>
+    </dl>
+    {#/if#}
+    {#if $state == 3#}
+    <dl class="clearfix">
+      <dt>确认时间：</dt>
+      <dd class="singel-line">{#$confirm#}</dd>
+    </dl>
+    {#/if#}
+
+    {#if $state > 1#}
+    <blockquote style="margin-top:20px;">
+      <p>商家操作：</p>
+    </blockquote>
+    <dl class="clearfix">
+      <dt>送餐时间：</dt>
+      <dd class="singel-line">{#$songdate#}</dd>
+    </dl>
+    <dl class="clearfix">
+      <dt>送餐备注：</dt>
+      <dd class="singel-line">{#$peisong_note#}</dd>
+    </dl>
+    {#/if#}
+
+  </div>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

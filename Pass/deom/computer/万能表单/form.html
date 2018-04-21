@@ -1,0 +1,1259 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>万能表单</title>
+    <script>var SITEURL = '';</script>
+    <script src="js/common.js" type="text/javascript"></script>
+    <script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/form.js"></script>
+    <link href="css/style-2.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/style_2_common_2.css" />
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/form.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/jquery-ui-1.9.1.custom.min.css">
+    <link rel="stylesheet" href="css/jquery-ui-timepicker-addon.css">
+    <link rel="stylesheet" type="text/css" href="css/colpick.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css" />
+    <link href="css/green.css" rel="stylesheet">
+    <link href="css/green1.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/formConfig.css">
+    </head>
+   <script>
+    var custom_elements = 'null';
+    var custom_base = 'null';
+    var token = '';
+    var siteurl = '';
+    </script>
+  <body style="background-color:#f8f8f8;" class="pace-done">
+    <div id="wrapper">
+      <div id="page-wrapper" class="gray-bg dashbard-1" style="background-color:#f3f3f3;">
+        <div class="row border-bottom">
+          <!-- 功能title -->
+          <div class="row wrapper border-bottom white-bg page-heading" style="margin-left: 0px;height:30px;">
+            <div class="col-lg-10" style="margin-top:8px;">
+              <h2 style="font-size: 24px;">万能表单,报名</h2></div>
+          </div>
+          <!-- END功能title -->
+          <div>
+            <div class="animated fadeInRight" id="content-outer">
+              <div class="content-outer">
+                <div class="tableContent">
+                  <div class="content newSetPage" style="border:0px;">
+                    <form action="" method="post" id="custom_form">
+                      <div class="cLineB">
+                        <h4>万能表单
+                          <span class="FAQ">自定义表单呈现，用于预约，报名</span></h4>
+                        <a href="javascript:history.back();" class="right btnGrayS vm" style="margin-top:-27px">返回</a></div>
+                      <div class="DL-Main">
+                        <div class="mainPanel clearfix">
+                          <div class="leftPhonewrap">
+                            <div class="holderPhone">
+                              <div class="wxHd">
+                                <div id="actName" class="phoneTitle">
+                                  <h2>表单</h2></div>
+                              </div>
+                              <div id="anythingContent">
+                                <div class="mianMod mCustomScrollbar" data-mcs-theme="minimal-dark">
+                                  <div class="regularMod">
+                                    <ul class="clearfix regular-ul">
+                                      <li class="swiperImg pr">
+                                        <div class="imgList">
+                                          <img src="images/banner.png" alt="" id="banner1_src_src" />
+                                          <img src="images/banner.png" alt="" id="banner2_src_src" />
+                                          <img src="images/banner.png" alt="" id="banner3_src_src" /></div>
+                                        <div class="buttle">
+                                          <i class="on"></i>
+                                          <i>
+                                          </i>
+                                          <i>
+                                          </i>
+                                        </div>
+                                      </li>
+                                      <li class="BigTit BigTit1">
+                                        <div>
+                                          <h2>基础信息</h2></div>
+                                      </li>
+                                      <li class="baseInfo">
+                                        <div class="rowList">
+                                          <div class="row noArrow" id="fromTelAndPhone">
+                                            <i class="fr arrow"></i>
+                                            <img src="images/i1.png" />
+                                            <div class="ofh descText">
+                                              <span>
+                                                <em class="f_phone"></em>
+                                                <em class="f_tel"></em>
+                                              </span>
+                                            </div>
+                                          </div>
+                                          <div class="row" id="formAddress">
+                                            <i class="fr arrow"></i>
+                                            <img src="images/i2.png" />
+                                            <div class="ofh descText">
+                                              <span></span>
+                                            </div>
+                                          </div>
+                                          <div class="row" id="formBriefing">
+                                            <i class="fr arrow"></i>
+                                            <img src="images/i3.png" />
+                                            <div class="ofh descText">
+                                              <span></span>
+                                            </div>
+                                          </div>
+                                          <div class="row" id="formMoney">
+                                            <i class="fr arrow"></i>
+                                            <img src="images/i4.png" />
+                                            <div class="ofh descText">
+                                              <span>
+                                                <em>0</em>元</span></div>
+                                          </div>
+                                        </div>
+                                      </li>
+                                      <li class="BigTit BigTit2">
+                                        <div>
+                                          <h2>表单信息</h2></div>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div class="activeMod">
+                                    <div class="addModBtn">
+                                      <a href="javascript:;" class="dib JSaddModBtn">
+                                        <i class="dib"></i>添加组件</a>
+                                    </div>
+                                    <ul class="form_component clearfix"></ul>
+                                  </div>
+                                  <div class="formMod footBtn">
+                                    <div class="pad">
+                                      <button type="submit" disabled="true">提交表单</button></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="rightEditwrap">
+                            <div class="formEditHd">
+                              <ul class="clearfix">
+                                <li class="on">
+                                  <a href="javascript:;">表单设置</a></li>
+                                <li>
+                                  <a href="javascript:;">添加组件</a></li>
+                                <li>
+                                  <a href="javascript:;">编辑组件</a></li>
+                                <li>
+                                  <a href="javascript:;">基础设置</a></li>
+                              </ul>
+                            </div>
+                            <div class="formEditBd">
+                              <div class="row subTab">
+                                <div class="subTab-hd">
+                                  <ul class="clearfix">
+                                    <li class="on">
+                                      <a href="##">基础设置</a></li>
+                                    <li class="">
+                                      <a href="##">高级设置</a></li>
+                                  </ul>
+                                </div>
+                                <div class="subTab-bd">
+                                  <div class="subTab-row">
+                                    <div class="formRow">
+                                      <span class="rowTitle">
+                                        <span class="red">*</span>标题：</span>
+                                      <div class="putWrap">
+                                        <input placeholder="" type="text" class="formName_input" name="title" value="" /></div>
+                                    </div>
+                                    <div class="formRow">
+                                      <span class="rowTitle">
+                                        <span class="red">*</span>关键词：</span>
+                                      <div class="putWrap">
+                                        <input placeholder="" type="text" class="" name="keyword" value="" /></div>
+                                    </div>
+                                    <div class="formRow">
+                                      <span class="rowTitle">手机：</span>
+                                      <div class="putWrap">
+                                        <input placeholder="" type="text" class="formPhone_input" name="tel" value="" /></div>
+                                    </div>
+                                    <div class="formRow">
+                                      <span class="rowTitle">固话：</span>
+                                      <div class="putWrap">
+                                        <input placeholder="" type="text" class="formTel_input" name="fixphone" value="" /></div>
+                                    </div>
+                                    <div class="formRow">
+                                      <span class="rowTitle">
+                                        <span class="red">*</span>位置信息：</span>
+                                      <div class="putWrap">
+                                        <input placeholder="" type="text" class="formAddress_input" name="address" value="" /></div>
+                                    </div>
+                                    <div class="formRow">
+                                      <span class="rowTitle">
+                                        <span class="red">*</span>地图定位：</span>
+                                      <div class="putWrap minPut">经度&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input placeholder="" type="text" class="" id="longitude" name="longitude" value="" />
+                                        <em>纬度</em>
+                                        <input placeholder="" value="" type="text" class="" name="latitude" id="latitude">
+                                        <span class="t0 ml5">
+                                          <a onclick="setlatlng($('#longitude').val(),$('#latitude').val())" href="###">在地图中查看/设置</a></span>
+                                      </div>
+                                    </div>
+                                    <div class="formRow">
+                                      <span class="rowTitle">简介：</span>
+                                      <div class="putWrap">
+                                        <textarea rows="5" cols="20" class="formBriefing_input" style="margin-top: 0; margin-bottom: 0; height: 100px; resize: none;" name="intro"></textarea>
+                                      </div>
+                                    </div>
+                                    <div class="formRow">
+                                      <span class="rowTitle">回复图片：</span>
+                                      <div class="putWrap">
+                                        <input style="width:375px;float: left;" placeholder="" type="text" class="formLogo_input" name="top_pic" value="" id="pic"/>
+                                        <a href="###" class="a_upload repeat_upload"  >上传<input type="file" id="repeat_upload" onchange="showPicture()"></a>&nbsp;&nbsp;&nbsp;<em class='repeat_tips'>图片最佳尺寸：宽700px 高420px</em>
+                                      </div>
+                                    </div>
+                                    <script>
+                                      function showPicture()
+                                      {
+                                        document.getElementById("pic").value = document.getElementById("repeat_upload").value;;
+                                      }</script>
+                                    <div class="formRow">
+                                      <span class="rowTitle longTitle">未关注是&nbsp;&nbsp;&nbsp;
+                                        <br>否可以参与：</span>
+                                      <div class="putWrap">
+                                        <label>
+                                          <input type="radio" name="follow" class="byIcheck" checked="checked" value="0" />
+                                          <span>是</span></label>
+                                        <label>
+                                          <input type="radio" name="follow" checked="checked" class="byIcheck" value="1" />
+                                          <span>否</span></label>
+                                      </div>
+                                    </div>
+                                    <div class="formRow">
+                                      <span class="rowTitle longTitle">短信通知：</span>
+                                      <div class="putWrap">
+                                        <label>
+                                          <input type="radio" name="sms" checked="checked" class="byIcheck" value="1" />
+                                          <span>开启</span></label>
+                                        <label>
+                                          <input type="radio" name="sms" checked="checked" class="byIcheck" value="0" />
+                                          <span>关闭</span></label>
+                                      </div>
+                                    </div>
+                                    <div class="formRow">
+                                      <span class="rowTitle">提交成功提示：</span>
+                                      <div class="putWrap">
+                                        <input placeholder="提交成功" type="text" class="formsyccinfo_input" name="succ_info" value="" /></div>
+                                    </div>
+                                    <div class="formRow">
+                                      <span class="rowTitle">提交失败提示：</span>
+                                      <div class="putWrap">
+                                        <input placeholder="提交失败" type="text" class="formerrinfo_input" name="err_info" value="" /></div>
+                                    </div>
+                                    <div class="formRow clearfix">
+                                      <span class="rowTitle longTitle">图文&nbsp;&nbsp;&nbsp;
+                                        <br>详细页内容：</span>
+                                      <div class="putWrap" style="padding: 0; float:left">
+                                        <textarea id="editorText" rows="5" cols="10" class="" style="margin-top: 0; margin-bottom: 0; height: 200px; resize: none" name="detail" id="content"></textarea>
+                                      </div>
+                                    </div>
+                                    <div class="formRow">
+                                      <span class="rowTitle longTitle">是否&nbsp;&nbsp;&nbsp;
+                                        <br>需要支付：</span>
+                                      <div class="putWrap">
+                                        <label>
+                                          <input type="radio" id="isPay-hide" class="byIcheck" name="is_pay" value="0" checked/>
+                                          <span>否</span></label>
+                                        <label>
+                                          <input type="radio" id="isPay-show" name="is_pay" class="byIcheck" value="1" />
+                                          <span>是</span></label>
+                                      </div>
+                                    </div>
+                                    <div class="isPay hide">
+                                      <div class="formRow">
+                                        <span class="rowTitle">支付名称：</span>
+                                        <div class="putWrap shortPut">
+                                          <input placeholder="" type="text" class="" name="pay_name" id="pay_name" value="">
+                                          <span class="t0 ml5">（例如价格，费用等）</span></div>
+                                      </div>
+                                      <div class="formRow">
+                                        <span class="rowTitle">支付价格：</span>
+                                        <div class="putWrap shortPut">
+                                          <input placeholder="" type="text" class="formMoney_input" name="price" id="price" value="0">
+                                          <span class="t0 ml5">（单位：元）</span></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="subTab-row">
+                                    <div class="advancedSetup">
+                                      <div class="advMod advMod1">
+                                        <h2>该表单的有效限制：</h2>
+                                        <div class="expiryDate">
+                                          <div class="expiryDate-radio">
+                                            <label>
+                                              <input type="radio" id="term-permanent" class="byIcheck" name="limit_time" value="0" />
+                                              <span>永久有效</span></label>
+                                            <label>
+                                              <input type="radio" id="term-short" name="limit_time" value="1" class="byIcheck" />
+                                              <span>有效期</span></label>
+                                          </div>
+                                          <div class="set-expiryDate hide">
+                                            <input type="text" readonly id="term-start" name="startdate" value="2017-06-28 09:31" class="midPut" />
+                                            <em>-</em>
+                                            <input readonly id="term-end" name="enddate" value="2017-06-29 09:31" type="text" class="midPut" /></div>
+                                          <div class="expiryDate-checkBox">
+                                            <div>
+                                              <label>
+                                                <input type="checkbox" class="byIcheck" name="limit_nums_total" value="1" />
+                                                <span>限定活动提交总量达</span></label>
+                                              <input type="text" class="minPut" name="putnums_total" value="" />
+                                              <em>条后不能提交了</em></div>
+                                            <div>
+                                              <label>
+                                                <input type="checkbox" class="byIcheck" name="limit_once_total" value="1" />
+                                                <span>限定活动每日提交量达</span></label>
+                                              <input type="text" class="minPut" name="day_nums_total" value="" />
+                                              <em>条后不能提交了</em></div>
+                                            <div>
+                                              <label>
+                                                <input type="checkbox" class="byIcheck" name="limit_nums" value="1" />
+                                                <span>限定粉丝提交总量达</span></label>
+                                              <input type="text" class="minPut" name="putnums" value="" />
+                                              <em>条后不能提交了</em></div>
+                                            <div>
+                                              <label>
+                                                <input type="checkbox" class="byIcheck" name="limit_once" value="1" />
+                                                <span>限定粉丝每日提交量达</span></label>
+                                              <input type="text" class="minPut" name="day_nums" value="" />
+                                              <em>条后不能提交了</em></div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="advMod advMod2">
+                                        <h2>用户提交表单后给商家的通知：</h2>
+                                        <div class="notification">
+                                          <div class="checkBox">
+                                            <label>
+                                              <input type="checkbox" id="allNotiSet" class="byIcheck" name="open_notice" value="1" />
+                                              <span>开启新提交到达提醒</span></label>
+                                          </div>
+                                          <div class="allNotice hide">
+                                            <div class="noticeSet">
+                                              <div class="checkBox">
+                                                <label>
+                                                  <input type="checkbox" id="emailNotiSet" class="byIcheck" name="email_notice" value="1" />
+                                                  <span>发送通知提醒［邮件］</span></label>
+                                              </div>
+                                              <div class="noticeSet-details noticeSet-email hide">
+                                                <p>接收邮件者的邮箱（多个用英文逗号隔开，最多3个，首尾请勿填写逗号）</p>
+                                                <input type="text" name="email_adds" value="" />
+                                                <p>接收邮件者的称呼（接收邮件者的邮箱一一对应）</p>
+                                                <input type="text" name="email_name" value="" />
+                                                <p>公用邮箱账号用作邮件服务器（仅支持126,163邮箱）</p>
+                                                <input type="text" name="public_email" value="" />
+                                                <p>公用邮箱密码</p>
+                                                <input type="password" name="public_password" value="" /></div>
+                                            </div>
+                                            <div class="noticeSet">
+                                              <div class="checkBox">
+                                                <label>
+                                                  <input type="checkbox" id="textNotiSet" class="byIcheck" name="open_notice_sms" value="1" />
+                                                  <span>发送通知提醒［短信］</span></label>
+                                              </div>
+                                              <div class="noticeSet-details noticeSet-text hide">
+                                                <p>接收提交短信的手机号码（多个用英文逗号隔开，最多3个）</p>
+                                                <input type="text" name="notice_phone" value="" />
+                                                <p>可用短信配额：
+                                                  <em>0</em></p>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row subTab">
+                                <div class="subTab-bd">
+                                  <div class="subTab-row">
+                                    <div class="formBuilder_edit">
+                                      <ul class="utilityCol utilityColFirst">
+                                        <li class="utility" id="id_singleline" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">单行文本</span>
+                                          <span class="formOption formOption_text"></span>
+                                        </li>
+                                        <li class="utility" id="id_multiple" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">多行文本</span>
+                                          <span class="formOption formOption_multiple"></span>
+                                        </li>
+                                        <li class="utility" id="id_section" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">分割线</span>
+                                          <span class="formOption formOption_section"></span>
+                                        </li>
+                                        <li class="utility" id="id_dropdown" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">下拉菜单</span>
+                                          <span class="formOption formOption_dropDown"></span>
+                                        </li>
+                                        <li class="utility" id="id_number" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">数字</span>
+                                          <span class="formOption formOption_number"></span>
+                                        </li>
+                                        <li class="utility" id="id_code" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">验证码</span>
+                                          <span class="formOption formOption_code"></span>
+                                        </li>
+                                        <li class="utility" id="id_radio" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">单选</span>
+                                          <span class="formOption formOption_radio"></span>
+                                        </li>
+                                        <li class="utility" id="id_checkbox" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">多选</span>
+                                          <span class="formOption formOption_checkbox"></span>
+                                        </li>
+                                        <li class="utility" id="id_fileupload" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">附件</span>
+                                          <span class="formOption formOption_fileUpload"></span>
+                                        </li>
+                                        <li class="utility" id="id_pictureradio" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">图片单选</span>
+                                          <span class="formOption formOption_pictureRadio"></span>
+                                        </li>
+                                        <li class="utility" id="id_picturecheckbox" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">图片多选</span>
+                                          <span class="formOption formOption_pictureCheckbox"></span>
+                                        </li>
+                                        <li class="utility" id="id_city" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">省市区</span>
+                                          <span class="formOption formOption_city"></span>
+                                        </li>
+                                        <li class="utility" id="id_picture" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">图片</span>
+                                          <span class="formOption formOption_picture"></span>
+                                        </li>
+                                        <li class="utility" id="id_date" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">日期</span>
+                                          <span class="formOption formOption_data"></span>
+                                        </li>
+                                        <li class="utility" id="id_email" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">邮箱</span>
+                                          <span class="formOption formOption_email"></span>
+                                        </li>
+                                        <li class="utility" id="id_id" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">身份证</span>
+                                          <span class="formOption formOption_ID"></span>
+                                        </li>
+                                        <li class="utility" id="id_phone" data-title="点击选择或拖动到左侧">
+                                          <span class="title dib">手机号</span>
+                                          <span class="formOption formOption_phone"></span>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row subTab" id="form_componentEdit">
+                                <p class="form_componentEdit_tips">请先选择组件</p>
+                                <!-- 标题文字 -->
+                                <div class="form_edit" id="form_edit_title">
+                                  <p class="form_eit_describe">
+                                    <label>标题</label></p>
+                                  <div class="editTitle">
+                                    <textarea class="textarea title_textarea"></textarea>
+                                  </div>
+                                </div>
+                                <!-- 描述文字 -->
+                                <div class="form_edit" id="form_edit_instruct">
+                                  <p class="form_eit_describe fl">
+                                    <label>描述文字</label></p>
+                                  <div class="editInstruct">
+                                    <textarea class="textarea instruct_textarea"></textarea>
+                                  </div>
+                                </div>
+                                <!-- 必填项 -->
+                                <div class="form_edit" id="form_edit_required">
+                                  <p class="form_eit_describe">
+                                    <label>必填设置</label></p>
+                                  <div class="required">
+                                    <label for="editrequired">
+                                      <input type="checkbox" name="required" id="editrequired" class="">这是个必填项</label></div>
+                                </div>
+                                <!-- 文本组件切换 -->
+                                <div class="form_edit" id="form_edit_texttype">
+                                  <p class="form_eit_describe">
+                                    <label>组件类型</label></p>
+                                  <div class="editTextfieldStyle">
+                                    <p class="edit_texttype">
+                                      <label for="textfieldstyle_single">
+                                        <input id="textfieldstyle_single" type="radio" name="textfieldstyle" value="input" class="">单行文本</label></p>
+                                    <p class="edit_texttype">
+                                      <label for="textfieldstyle_multi">
+                                        <input id="textfieldstyle_multi" type="radio" name="textfieldstyle" value="textarea" class="">多行文本</label></p>
+                                  </div>
+                                </div>
+                                <!-- 标题文字对齐方式 -->
+                                <div class="form_edit" id="form_edit_titlealign">
+                                  <p class="form_eit_describe">
+                                    <label>标题对齐方式</label></p>
+                                  <div class="editTitlealignStyle">
+                                    <label class="setField_radio" for="titlealignstyle_left">
+                                      <input id="titlealignstyle_left" type="radio" name="titlealignstyle" value="left" checked>左对齐</label>
+                                    <label class="setField_radio" for="titlealignstyle_center">
+                                      <input id="titlealignstyle_center" type="radio" name="titlealignstyle" value="center">居中对齐</label>
+                                    <label class="setField_radio" for="titlealignstyle_right">
+                                      <input id="titlealignstyle_right" type="radio" name="titlealignstyle" value="right">右对齐</label></div>
+                                </div>
+                                <!-- 图片 、 说明文字的 文字居中居左居右设置 -->
+                                <div class="form_edit" id="form_edit_textalign">
+                                  <p class="form_eit_describe">
+                                    <label>描述文字对齐方式</label></p>
+                                  <div class="editTextalignStyle">
+                                    <label class="setField_radio" for="textalignstyle_left">
+                                      <input id="textalignstyle_left" type="radio" name="textalignstyle" value="left" checked="checked">左对齐</label>
+                                    <label class="setField_radio" for="textalignstyle_center">
+                                      <input id="textalignstyle_center" type="radio" name="textalignstyle" value="center">居中对齐</label>
+                                    <label class="setField_radio" for="textalignstyle_right">
+                                      <input id="textalignstyle_right" type="radio" name="textalignstyle" value="right">右对齐</label></div>
+                                </div>
+                                <!-- 图片大图一张 -->
+                                <div class="form_edit" id="form_edit_picture">
+                                  <p class="form_eit_describe">
+                                    <label>选择图片</label></p>
+                                  <div class="editPictureFileShowStyle">
+                                    <label class="setField_radio" for="picturefileshow_local">
+                                      <input id="picturefileshow_local" type="radio" name="picturefileshow" value="local" checked="checked">本地上传</label>
+                                    <label class="setField_radio" for="picturefileshow_link">
+                                      <input id="picturefileshow_link" type="radio" name="picturefileshow" value="link">外链图片</label></div>
+                                  <div class="picupload uploadImageFromLocal" style="display: block;">
+                                    <div class="upload_file logo_file">
+                                      <p>请选择小于2M的jpg、png、jpeg、gif文件进行上传</p>
+                                      <input type="file" class="input_file" name="_FILE_">
+                                      <img src="http://s.404.cn/tpl/static/custom/formImg/importFileAdd.png" /></div>
+                                  </div>
+                                  <div class="picupload input_val uploadImageFromUrl" style="display: none;">
+                                    <input type="text" placeholder="输入外链图片链接地址" class="input edit_input"></div>
+                                </div>
+                                <!-- 图片对齐位置 -->
+                                <div class="form_edit" id="form_edit_pictureShow">
+                                  <p class="form_eit_describe">
+                                    <label>图片显示方式</label></p>
+                                  <div class="editPictureShowStyle">
+                                    <label class="setField_radio" for="pictureshow_tensile">
+                                      <input id="pictureshow_tensile" type="radio" name="pictureshow" value="normal" clicked="clicked" checked="checked">拉伸</label>
+                                    <label class="setField_radio" for="pictureshow_middle">
+                                      <input id="pictureshow_middle" type="radio" name="pictureshow" value="middle">居中</label></div>
+                                </div>
+                                <!-- 图片链接 -->
+                                <div class="form_edit" id="form_edit_picture_link">
+                                  <p class="form_eit_describe">
+                                    <label>图片点击链接</label></p>
+                                  <div class="picupload input_val">
+                                    <input type="text" placeholder="设置填表人点击图片后的跳转链接" class="input edit_input"></div>
+                                </div>
+                                <!-- 文件上传类型 -->
+                                <div class="form_edit" id="form_edit_filetype">
+                                  <p class="form_eit_describe">
+                                    <label>文件上传类型</label></p>
+                                  <div class="size">
+                                    <p>图片（目前手机用户上传类型只支持为图片，格式为JPG、PNG）</p>
+                                    <div class="picNum clearfix">
+                                      <span class="fl picNumTit">手机用户最多可上传</span>
+                                      <div class="fl picNumBox clearfix">
+                                        <input class="fl" id="picNum" value="4" type="text" maxlength="1" readonly="readonly" />
+                                        <em class="fl">张</em>
+                                        <span class="fl numCtrl">
+                                          <i class="add">-</i>
+                                          <i class="reduce">+</i></span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- 下拉组件选项设置 -->
+                                <div class="form_edit" id="form_edit_selectset">
+                                  <p class="form_eit_describe">
+                                    <label>下拉菜单选项设置</label>
+                                    <span class="form_edit_batch">批量编辑</span></p>
+                                  <div class="editChoiceSelect J-editWrap">
+                                    <ul class="editselect_list">
+                                      <li class="editselect_item" linenum="-1">
+                                        <input class="editstatus" type="radio" name="select_com2" checked="checked">
+                                        <textarea class="edittext textarea input_textarea" readonly="readonly">请选择</textarea>
+                                        <p class="removeButton"></p>
+                                      </li>
+                                      <li class="editselect_item" linenum="0">
+                                        <input class="editstatus" type="radio" name="select_com2">
+                                        <textarea class="edittext textarea input_textarea">选项1</textarea>
+                                        <p class="removeButton"></p>
+                                      </li>
+                                      <li class="editselect_item" linenum="1">
+                                        <input class="editstatus" type="radio" name="select_com2">
+                                        <textarea class="edittext textarea input_textarea">选项2</textarea>
+                                        <p class="removeButton"></p>
+                                      </li>
+                                      <li class="editselect_item" linenum="2">
+                                        <input class="editstatus" type="radio" name="select_com2">
+                                        <textarea class="edittext textarea input_textarea">选项3</textarea>
+                                        <p class="removeButton"></p>
+                                        <p class="addButton"></p>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div class="editBatch">
+                                    <p class="title">批量编辑选项</p>
+                                    <textarea class="textarea batch_items"></textarea>
+                                    <p class="tip">
+                                      <span class="tip_text">每一行对应一个选项</span></p>
+                                    <div class="footer">
+                                      <a class="btn btn-primary btn_save">保存</a>
+                                      <a class="btn btn-primary btn_cancel">取消</a></div>
+                                  </div>
+                                </div>
+                                <!-- 多选组件选项设置 -->
+                                <div class="form_edit" id="form_edit_checkboxset">
+                                  <p class="form_eit_describe">
+                                    <label>多选选项设置</label>
+                                    <span class="form_edit_batch">批量编辑</span></p>
+                                  <div class="editChoiceCheckbox J-editWrap">
+                                    <ul class="editcheckbox_list">
+                                      <li class="editcheckbox_item" linenum="0">
+                                        <input class="editstatus" type="checkbox" name="checkbox_com2">
+                                        <textarea class="edittext textarea input_textarea">选项1</textarea>
+                                        <p class="removeButton"></p>
+                                      </li>
+                                      <li class="editcheckbox_item" linenum="1">
+                                        <input class="editstatus" type="checkbox" name="checkbox_com2">
+                                        <textarea class="edittext textarea input_textarea">选项2</textarea>
+                                        <p class="removeButton"></p>
+                                      </li>
+                                      <li class="editcheckbox_item" linenum="2">
+                                        <input class="editstatus" type="checkbox" name="checkbox_com2">
+                                        <textarea class="edittext textarea input_textarea">选项3</textarea>
+                                        <p class="removeButton"></p>
+                                        <p class="addButton"></p>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div class="editBatch">
+                                    <p class="title">批量编辑选项</p>
+                                    <textarea class="textarea batch_items"></textarea>
+                                    <p class="tip">
+                                      <span class="tip_text">每一行对应一个选项</span></p>
+                                    <div class="footer">
+                                      <a class="btn btn-primary btn_save">保存</a>
+                                      <a class="btn btn-primary btn_cancel">取消</a></div>
+                                  </div>
+                                </div>
+                                <!-- 单选组件选项设置 -->
+                                <div class="form_edit" id="form_edit_radioset">
+                                  <p class="form_eit_describe">
+                                    <label>单选选项设置</label>
+                                    <span class="form_edit_batch">批量编辑</span></p>
+                                  <div class="editChoiceRadio J-editWrap">
+                                    <ul class="editradio_list">
+                                      <li class="editradio_item" linenum="0">
+                                        <input class="editstatus" type="radio" name="radio_com1">
+                                        <textarea class="edittext textarea input_textarea">选项1</textarea>
+                                        <p class="removeButton"></p>
+                                      </li>
+                                      <li class="editradio_item" linenum="1">
+                                        <input class="editstatus" type="radio" name="radio_com1">
+                                        <textarea class="edittext textarea input_textarea">选项2</textarea>
+                                        <p class="removeButton"></p>
+                                      </li>
+                                      <li class="editradio_item" linenum="2">
+                                        <input class="editstatus" type="radio" name="radio_com1">
+                                        <textarea class="edittext textarea input_textarea">选项3</textarea>
+                                        <p class="removeButton"></p>
+                                        <p class="addButton"></p>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div class="editBatch">
+                                    <p class="title">批量编辑选项</p>
+                                    <textarea class="textarea batch_items"></textarea>
+                                    <p class="tip">
+                                      <span class="tip_text">每一行对应一个选项</span></p>
+                                    <div class="footer">
+                                      <a class="btn btn-primary btn_save">保存</a>
+                                      <a class="btn btn-primary btn_cancel">取消</a></div>
+                                  </div>
+                                </div>
+                                <!-- 选择组件类型 -->
+                                <div class="form_edit" id="form_edit_selecttype">
+                                  <p class="form_eit_describe">
+                                    <label>组件类型</label></p>
+                                  <div class="selecttype">
+                                    <label class="radio setField_radio" for="editsize_radio">
+                                      <input id="editsize_radio" type="radio" name="componentTypeRadio" value="radio" checked="checked">单选</label>
+                                    <label class="radio setField_radio" for="editsize_checkbox">
+                                      <input id="editsize_checkbox" type="radio" name="componentTypeRadio" value="checkbox" checked="checked">多选</label>
+                                    <label class="radio setField_radio" for="editsize_select">
+                                      <input id="editsize_select" type="radio" name="componentTypeRadio" value="select" checked="checked">下拉菜单</label></div>
+                                </div>
+                                <!-- 选择选项分栏 -->
+                                <div class="form_edit" id="form_edit_selectlayout">
+                                  <p class="form_eit_describe">
+                                    <label>分列排版</label></p>
+                                  <div class="selectlayout">
+                                    <label class="radio setField_radio" for="editlayout_1">
+                                      <input id="editlayout_1" type="radio" name="componentLayoutRadio" value="1" checked="checked">单列</label>
+                                    <label class="radio setField_radio" for="editlayout_2">
+                                      <input id="editlayout_2" type="radio" name="componentLayoutRadio" value="2">两列</label>
+                                    <label class="radio setField_radio" for="editlayout_3">
+                                      <input id="editlayout_3" type="radio" name="componentLayoutRadio" value="3">三列</label>
+                                    <label class="radio setField_radio" for="editlayout_4">
+                                      <input id="editlayout_4" type="radio" name="componentLayoutRadio" value="4">四列</label></div>
+                                </div>
+                                <!-- 图片单选选项设置 -->
+                                <div class="form_edit" id="form_edit_pic_radioset">
+                                  <p class="form_eit_describe">
+                                    <label>图片单选设置(推荐图片宽高比4:3,考虑到服务器压力，请勿上传大于1M图片)</label></p>
+                                  <div class="editChoicePicradio J-editWrap">
+                                    <ul class="editpicradio_list">
+                                      <li class="editpictureradio_item" linenum="0">
+                                        <input class="editstatus" type="radio" name="picradio_com4">
+                                        <div class="pictextcontect">
+                                          <div class="imgcontect">
+                                            <img src="" alt="" class="choicePicture" id="aaa_src" />
+                                            <input type="hidden" name="" id="aaa" value="" />
+                                            <div class="upload_choiceimg">
+                                              <span class="upload_btn" onclick="
+                                              upyunPicUpload('aaa',700,420,'umkrvk1493714716')">上传图片
+                                                <br>(限2MB)</span></div>
+                                          </div>
+                                          <input type="text" class="imgedittext" value="选项1">
+                                          <p class="removeButton"></p>
+                                        </div>
+                                      </li>
+                                      <li class="editpictureradio_item" linenum="1">
+                                        <input class="editstatus" type="radio" name="picradio_com4">
+                                        <div class="pictextcontect">
+                                          <div class="imgcontect">
+                                            <img src="" alt="" class="choicePicture">
+                                            <div class="upload_choiceimg">
+                                              <span class="upload_btn">上传图片
+                                                <br>(限2MB)</span></div>
+                                          </div>
+                                          <input type="text" class="imgedittext" value="选项2">
+                                          <p class="removeButton"></p>
+                                        </div>
+                                      </li>
+                                      <li class="editpictureradio_item" linenum="2">
+                                        <input class="editstatus" type="radio" name="picradio_com4">
+                                        <div class="pictextcontect">
+                                          <div class="imgcontect">
+                                            <img src="" alt="" class="choicePicture">
+                                            <div class="upload_choiceimg">
+                                              <span class="upload_btn">上传图片
+                                                <br>(限2MB)</span></div>
+                                          </div>
+                                          <input type="text" class="imgedittext" value="选项3">
+                                          <p class="removeButton"></p>
+                                          <p class="addButton"></p>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                                <!-- 图片多选选项设置 -->
+                                <div class="form_edit" id="form_edit_pic_checkboxset">
+                                  <p class="form_eit_describe">
+                                    <label>图片多选设置(推荐图片宽高比4:3,考虑到服务器压力，请勿上传大于1M图片)</label></p>
+                                  <div class="editChoicePicCheckbox J-editWrap">
+                                    <ul class="editpiccheckbox_list">
+                                      <li class="editpicturecheckbox_item" linenum="0">
+                                        <input class="editstatus" type="checkbox" name="piccheckbox_com1">
+                                        <div class="pictextcontect">
+                                          <div class="imgcontect">
+                                            <img src="" alt="" class="choicePicture">
+                                            <div class="upload_choiceimg">
+                                              <span class="upload_btn">上传图片
+                                                <br>(限2MB)</span></div>
+                                          </div>
+                                          <input type="text" class="imgedittext" value="选项1">
+                                          <p class="removeButton"></p>
+                                        </div>
+                                      </li>
+                                      <li class="editpicturecheckbox_item" linenum="1">
+                                        <input class="editstatus" type="checkbox" name="piccheckbox_com1">
+                                        <div class="pictextcontect">
+                                          <div class="imgcontect">
+                                            <img src="" alt="" class="choicePicture">
+                                            <div class="upload_choiceimg">
+                                              <span class="upload_btn">上传图片
+                                                <br>(限2MB)</span></div>
+                                          </div>
+                                          <input type="text" class="imgedittext" value="选项2">
+                                          <p class="removeButton"></p>
+                                        </div>
+                                      </li>
+                                      <li class="editpicturecheckbox_item" linenum="2">
+                                        <input class="editstatus" type="checkbox" name="piccheckbox_com1">
+                                        <div class="pictextcontect">
+                                          <div class="imgcontect">
+                                            <img src="" alt="" class="choicePicture">
+                                            <div class="upload_choiceimg">
+                                              <span class="upload_btn">上传图片
+                                                <br>(限2MB)</span></div>
+                                          </div>
+                                          <input type="text" class="imgedittext" value="选项3">
+                                          <p class="removeButton"></p>
+                                          <p class="addButton"></p>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                                <!-- 图片选择组件类型 -->
+                                <div class="form_edit" id="form_edit_picselecttype">
+                                  <p class="form_eit_describe">
+                                    <label>组件类型</label></p>
+                                  <div class="selecttype">
+                                    <label class="radio setField_radio" for="piceditsize_radio">
+                                      <input id="piceditsize_radio" type="radio" name="componentTypeRadio" value="radio" checked="checked">图片单选</label>
+                                    <label class="radio setField_radio" for="piceditsize_checkbox">
+                                      <input id="piceditsize_checkbox" type="radio" name="componentTypeRadio" value="checkbox">图片多选</label></div>
+                                </div>
+                                <!-- 多选选择选项控制 -->
+                                <div class="form_edit" id="form_edit_checkboxlogicset">
+                                  <p class="form_eit_describe">
+                                    <label>选项控制</label>
+                                    <span class="errorinfo" style="display: none;">test...</span></p>
+                                  <div class="logicset">
+                                    <input class="select-number-enable" type="checkbox">
+                                    <select class="select-number-type" autocomplete="off">
+                                      <option value="1" selected="selected">至少</option>
+                                      <option value="2">最多</option>
+                                      <option value="3">恰好</option></select>
+                                    <label>选择</label>
+                                    <input class="edit-select-number input" type="text" value="">
+                                    <label>项</label></div>
+                                </div>
+                                <!-- 日期格式设置 -->
+                                <div class="form_edit" id="form_edit_datetype">
+                                  <p class="form_eit_describe">
+                                    <label>日期格式</label></p>
+                                  <div class="size">
+                                    <label class="radio setField_radio" for="edit_today">
+                                      <input id="edit_today" type="radio" name="componentdateRadio" value="d" checked="checked">年-月-日</label>
+                                    <label class="radio setField_radio" for="edit_tomonth">
+                                      <input id="edit_tomonth" type="radio" name="componentdateRadio" value="m">年-月</label></div>
+                                </div>
+                              </div>
+                              <div class="row subTab" id="form_baseEdit">
+                                <div class="subTab-hd">
+                                  <ul class="clearfix">
+                                    <li class="on">
+                                      <a href="javascript:;">背景与横幅</a></li>
+                                    <li class="">
+                                      <a href="javascript:;">图标</a></li>
+                                    <li class="">
+                                      <a href="javascript:;">标题栏</a></li>
+                                    <li class="">
+                                      <a href="javascript:;">内容与组件</a></li>
+                                    <li class="">
+                                      <a href="javascript:;">提交按钮</a></li>
+                                  </ul>
+                                </div>
+                                <div class="subTab-bd">
+                                  <div class="subTab-row">
+                                    <!-- <div class="formRow">
+                                    <span class="rowTitle">背景颜色：</span>
+                                    <div class="putWrap cssRadio">
+                                    <label>
+                                    <input type="radio" name="bodybgcolor" checked="checked" id="bodyBgColor_d"  class="byBaseIcheck defaultInput"/>
+                                    <span>默认</span></label>
+                                    <label>
+                                    <input type="radio" name="bodybgcolor" id="bodyBgColor_c"  class="byBaseIcheck customInput"/>
+                                    <span>自定义</span></label><em class="vm dib colorRect " data="bodyBgColor"></em></div>
+                                    </div> -->
+                                    <div class="formRow">
+                                      <span class="rowTitle">横幅图片：</span>
+                                      <em style="line-height: 28px;color: #999">（最多可上传三张，切换banner请点击小圈）</em>
+                                      <div class="clearfix"></div>
+                                      <div class="putWrap ml100 mt10 pb15 br-b-da-e4 clearfix">
+                                        <div class="placeHolder fl">
+                                          <img src="../images/s.png" alt="" id="banner1_src" /></div>
+                                        <div class="uploadImg">
+                                          <div class="filePut">
+                                            <a href="javascript:void(0);" class="uploadCoverBtn dib" >选择图片<input type="file" class="upload_IMG1" name="first_banner" id="banner1" value="" /></a>&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                          <p>图片像素建议为640*360px大小在50k以内，格式为jpg/png/gif</p>
+                                        </div>
+                                        <p class="clearfix imgJumpLinkP">图片点击跳转链接:</p>
+                                        <div class="putWrap wsDtail">
+                                          <input placeholder="点击图片后的跳转链接" type="text" class="" name="first_banner_url" id="first_banner_url" value="" />&nbsp;&nbsp;
+                                          <a href="###" onclick="addLink('first_banner_url',0)" class="a_choose" style='display:none!important;'></a></div>
+                                      </div>
+                                      <div class="putWrap ml100 pb15 mt10 br-b-da-e4 clearfix">
+                                        <div class="placeHolder fl">
+                                          <img src="../images/s.png" alt="" id="banner2_src" /></div>
+                                        <div class="uploadImg">
+                                          <div class="filePut">
+                                            <a href="javascript:void(0);"  class="uploadCoverBtn dib">选择图片<input type="file" class="upload_IMG2" name="second_banner" id="banner2" value="" /></a>&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                          <p>图片像素建议为640*360px大小在50k以内，格式为jpg/png/gif</p>
+                                        </div>
+                                        <p class="clearfix imgJumpLinkP">图片点击跳转链接:</p>
+                                        <div class="putWrap wsDtail">
+                                          <input placeholder="点击图片后的跳转链接" type="text" class="" name="second_banner_url" id="second_banner_url" value="" />&nbsp;&nbsp;
+                                          <a href="###" onclick="addLink('second_banner_url',0)" class="a_choose" style='display:none!important;'></a></div>
+                                      </div>
+                                      <div class="putWrap ml100 pb15 mt10 clearfix">
+                                        <div class="placeHolder fl">
+                                          <img src="../images/s.png" alt="" id="banner3_src"></div>
+                                        <div class="uploadImg">
+                                          <div class="filePut">
+                                            <a href="javascript:void(0);" class="uploadCoverBtn dib">选择图片<input type="file" class="upload_IMG3" name="third_banner" id="banner3" value="" /></a>&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                          <p>图片像素建议为640*360px大小在50k以内，格式为jpg/png/gif</p>
+                                        </div>
+                                        <p class="clearfix imgJumpLinkP">图片点击跳转链接:</p>
+                                        <div class="putWrap wsDtail">
+                                          <input placeholder="点击图片后的跳转链接" type="text" class="" name="third_banner_url" id="third_banner_url" value="" />&nbsp;&nbsp;
+                                          <a href="###" onclick="addLink('third_banner_url',0)" class="a_choose" style='display:none!important;'></a></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="subTab-row">
+                                    <div class="formRow br-b-da-e4 pt20 pb20">
+                                      <span class="rowTitle mt32">电话图标：</span>
+                                      <div class="putWrap ml100 mt10 pb15 clearfix">
+                                        <div class="placeHolder fl">
+                                          <input type="hidden" class="real_img" name="first_icon" value="images/i1.png" id="icon1" />
+                                          <img src="images/i1.png" alt="" id="icon1_src"></div>
+                                        <div class="uploadImg">
+                                          <div class="filePut">
+                                            <a href="javascript:;" class="uploadCoverBtn dib">选择图片 <input type="file" class="choice_IMG"></a>
+                                            <a href="javascript:;" class="recovery dib" >恢复图片</a>&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                          <p>图片像素建议为50*50px大小在50k以内，格式为jpg/png/gif</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="formRow br-b-da-e4 pt20 pb20">
+                                      <span class="rowTitle mt32">位置图标：</span>
+                                      <div class="putWrap ml100 mt10 pb15 clearfix">
+                                        <div class="placeHolder fl">
+                                          <input type="hidden" class="real_img" name="second_icon" value="images/i2.png" id="icon2" />
+                                          <img src="images/i2.png" alt="" id="icon2_src"></div>
+                                        <div class="uploadImg">
+                                          <div class="filePut">
+                                            <a href="javascript:;" class="uploadCoverBtn dib" >选择图片 <input type="file" class="choice_IMG"></a>
+                                            <a href="javascript:;" class="recovery dib" >恢复图片</a>&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                          <p>图片像素建议为50*50px大小在50k以内，格式为jpg/png/gif</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="formRow br-b-da-e4 pt20 pb20">
+                                      <span class="rowTitle mt32">简介图标：</span>
+                                      <div class="putWrap ml100 mt10 pb15 clearfix">
+                                        <div class="placeHolder fl">
+                                          <input type="hidden" class="real_img" name="third_icon" value="images/i3.png" id="icon3" />
+                                          <img src="images/i3.png" alt="" id="icon3_src"></div>
+                                        <div class="uploadImg">
+                                          <div class="filePut">
+                                            <a href="javascript:;" class="uploadCoverBtn dib" onclick="upyunPicUpload('icon3',50,50,'umkrvk1493714716');">选择图片 <input type="file" class="choice_IMG"></a>
+                                            <a href="javascript:;" class="recovery dib" >恢复图片</a>&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                          <p>图片像素建议为50*50px大小在50k以内，格式为jpg/png/gif</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="formRow br-b-da-e4 pt20 pb20">
+                                      <span class="rowTitle mt32">支付图标：</span>
+                                      <div class="putWrap ml100 mt10 pb15 clearfix">
+                                        <div class="placeHolder fl">
+                                          <input type="hidden" class="real_img" name="fourth_icon" value="images/i4.png" id="icon4" />
+                                          <img src="images/i4.png" alt="" id="icon4_src"></div>
+                                        <div class="uploadImg">
+                                          <div class="filePut">
+                                            <a href="javascript:;" class="uploadCoverBtn dib" onclick="upyunPicUpload('icon4',50,50,'umkrvk1493714716')">选择图片 <input type="file" class="choice_IMG"></a>
+                                            <a href="javascript:;" class="recovery dib" >恢复图片</a>&nbsp;&nbsp;&nbsp;
+                                            </div>
+                                          <p>图片像素建议为50*50px大小在50k以内，格式为jpg/png/gif</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="subTab-row spaceMarginSetRow">
+                                    <div class="br-b-da-e4 pb20">
+                                      <div class="formRow">
+                                        <span class="rowTitle">标题栏：</span>
+                                        <div class="putWrap cssRadio">
+                                          <label>
+                                            <input type="radio" name="title1" id="title1_show" checked="checked" class="byBaseIcheck title_show" />
+                                            <span>显示</span></label>
+                                          <label>
+                                            <input type="radio" name="title1" id="title1_hide" class="byBaseIcheck title_hide" />
+                                            <span>隐藏</span></label>
+                                        </div>
+                                      </div>
+                                      <div class="formRow">
+                                        <span class="rowTitle">标题栏背景：</span>
+                                        <div class="putWrap cssRadio">
+                                          <label>
+                                            <input type="radio" name="title1BgColor" id="title1BgColor_d" checked="checked" class="byBaseIcheck defaultInput" />
+                                            <span>默认</span></label>
+                                          <label>
+                                            <input type="radio" name="title1BgColor" id="title1BgColor_c" class="byBaseIcheck customInput" />
+                                            <span>自定义</span></label>
+                                          <em class="vm dib colorRect" data="title1BgColor"></em>
+                                        </div>
+                                      </div>
+                                      <div class="formRow">
+                                        <span class="rowTitle">标题栏文字：</span>
+                                        <div class="putWrap">
+                                          <input type="text" class="title1Input" name="title1" value="">
+                                          <div class="minCell cssRadio rangeCell-title1">文字大小：
+                                            <span class="slider-range slider-range-title1"></span>
+                                            <em class="amount">14px</em></div>
+                                          <div class="minCell cssRadio">文字颜色：
+                                            <label>
+                                              <input type="radio" name="title1FontColor" id="title1FontColor_d" checked="checked" class="byBaseIcheck defaultInput" />
+                                              <span>默认</span></label>
+                                            <label>
+                                              <input type="radio" name="title1FontColor" id="title1FontColor_c" class="byBaseIcheck customInput" />
+                                              <span>自定义</span></label>
+                                            <em class="vm dib colorRect" data="title1FontColor"></em>
+                                          </div>
+                                          <div class="minCell cssRadio">标题位置：
+                                            <label>
+                                              <input type="radio" name="title1TextAlign" id="title1TextAlign_left" checked="checked" value="left" class="byBaseIcheck titTextAlign" />
+                                              <span>居左</span></label>
+                                            <label>
+                                              <input type="radio" name="title1TextAlign" id="title1TextAlign_center" value="center" class="byBaseIcheck titTextAlign" />
+                                              <span>居中</span></label>
+                                            <label>
+                                              <input type="radio" name="title1TextAlign" id="title1TextAlign_right" value="right" class="byBaseIcheck titTextAlign" />
+                                              <span>居右</span></label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="">
+                                      <div class="formRow">
+                                        <span class="rowTitle">标题栏：</span>
+                                        <div class="putWrap cssRadio">
+                                          <label>
+                                            <input type="radio" name="title2" id="title2_show" checked="checked" class="byBaseIcheck title_show" />
+                                            <span>显示</span></label>
+                                          <label>
+                                            <input type="radio" name="title2" id="title2_hide" class="byBaseIcheck title_hide" />
+                                            <span>隐藏</span></label>
+                                        </div>
+                                      </div>
+                                      <div class="formRow">
+                                        <span class="rowTitle">标题栏背景：</span>
+                                        <div class="putWrap cssRadio">
+                                          <label>
+                                            <input type="radio" name="title2BgColor" id="title2BgColor_d" checked="checke" class="byBaseIcheck defaultInput" />
+                                            <span>默认</span></label>
+                                          <label>
+                                            <input type="radio" name="title2BgColor" id="title2BgColor_c" class="byBaseIcheck customInput" />
+                                            <span>自定义</span></label>
+                                          <em class="vm dib colorRect" data="title2BgColor"></em>
+                                        </div>
+                                      </div>
+                                      <div class="formRow">
+                                        <span class="rowTitle">标题栏文字：</span>
+                                        <div class="putWrap">
+                                          <input type="text" class="title2Input" name="title2" value="" />
+                                          <div class="minCell cssRadio rangeCell-title1">文字大小：
+                                            <span class="slider-range slider-range-title2"></span>
+                                            <em class="amount">14px</em></div>
+                                          <div class="minCell cssRadio">文字颜色：
+                                            <label>
+                                              <input type="radio" name="title2FontColor" id="title2FontColor_d" checked="checked" class="byBaseIcheck defaultInput" />
+                                              <span>默认</span></label>
+                                            <label>
+                                              <input type="radio" name="title2FontColor" id="title2FontColor_c" class="byBaseIcheck customInput" />
+                                              <span>自定义</span></label>
+                                            <em class="vm dib colorRect" data="title2FontColor"></em>
+                                          </div>
+                                          <div class="minCell cssRadio">标题位置：
+                                            <label>
+                                              <input type="radio" name="title2TextAlign" id="title2TextAlign_left" value="left" checked="checked" class="byBaseIcheck titTextAlign" />
+                                              <span>居左</span></label>
+                                            <label>
+                                              <input type="radio" name="title2TextAlign" id="title2TextAlign_center" value="center" class="byBaseIcheck titTextAlign" />
+                                              <span>居中</span></label>
+                                            <label>
+                                              <input type="radio" name="title2TextAlign" id="title2TextAlign_right" value="right" class="byBaseIcheck titTextAlign" />
+                                              <span>居右</span></label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="subTab-row componentStyle spaceMarginSetRow">
+                                    <div class="formRow">
+                                      <span class="rowTitle">内容区：</span>
+                                      <div class="clearfix"></div>
+                                      <div class="putWrap ml100">
+                                        <div class="minCell cssRadio">文本颜色：
+                                          <label>
+                                            <input type="radio" name="baseInfoFontColor" id="baseInfoFontColor_d" checked="checked" class="byBaseIcheck defaultInput" />
+                                            <span>默认</span></label>
+                                          <label>
+                                            <input type="radio" name="baseInfoFontColor" id="baseInfoFontColor_c" class="byBaseIcheck customInput" />
+                                            <span>自定义</span></label>
+                                          <em class="vm dib colorRect" data="baseInfoFontColor"></em>
+                                        </div>
+                                        <div class="minCell cssRadio rangeCell-baseInfoFont">文字大小：
+                                          <span class="slider-range slider-range-baseInfoFont"></span>
+                                          <em class="amount">14px</em></div>
+                                        <div class="minCell cssRadio">内容底色：
+                                          <label>
+                                            <input type="radio" name="baseInfoBgColor" id="baseInfoBgColor_d" checked="checked" class="byBaseIcheck defaultInput" />
+                                            <span>默认</span></label>
+                                          <label>
+                                            <input type="radio" name="baseInfoBgColor" id="baseInfoBgColor_c" class="byBaseIcheck customInput" />
+                                            <span>自定义</span></label>
+                                          <em class="vm dib colorRect" data="baseInfoBgColor"></em>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="formRow">
+                                      <span class="rowTitle">组件区：</span>
+                                      <div class="clearfix"></div>
+                                      <div class="putWrap ml100">
+                                        <div class="minCell cssRadio">标题文字：
+                                          <label>
+                                            <input type="radio" name="componentTitColor" id="componentTitColor_d" checked="checked" class="byBaseIcheck defaultInput" />
+                                            <span>默认</span></label>
+                                          <label>
+                                            <input type="radio" name="componentTitColor" id="componentTitColor_c" class="byBaseIcheck customInput" />
+                                            <span>自定义</span></label>
+                                          <em class="vm dib colorRect bgColor" data="componentTitColor"></em>
+                                        </div>
+                                        <div class="minCell cssRadio rangeCell-componentTitSize">文字大小：
+                                          <span class="slider-range slider-range-componentTitSize"></span>
+                                          <em class="amount">14px</em></div>
+                                        <div class="minCell cssRadio">描述文字：
+                                          <label>
+                                            <input type="radio" name="componentDescColor" id="componentDescColor_d" checked="checked" class="byBaseIcheck defaultInput" />
+                                            <span>默认</span></label>
+                                          <label>
+                                            <input type="radio" name="componentDescColor" id="componentDescColor_c" class="byBaseIcheck customInput" />
+                                            <span>自定义</span></label>
+                                          <em class="vm dib colorRect" data="componentDescColor"></em>
+                                        </div>
+                                        <div class="minCell cssRadio rangeCell-componentDescSize">文字大小：
+                                          <span class="slider-range slider-range-componentDescSize"></span>
+                                          <em class="amount">14px</em></div>
+                                        <div class="minCell cssRadio">选项文本：
+                                          <label>
+                                            <input type="radio" name="optionsFontColor" id="optionsFontColor_d" checked="checked" class="byBaseIcheck defaultInput" />
+                                            <span>默认</span></label>
+                                          <label>
+                                            <input type="radio" name="optionsFontColor" id="optionsFontColor_c" class="byBaseIcheck customInput" />
+                                            <span>自定义</span></label>
+                                          <em class="vm dib colorRect" data="optionsFontColor"></em>
+                                        </div>
+                                        <div class="minCell cssRadio rangeCell-optionsSize">文字大小：
+                                          <span class="slider-range slider-range-optionsSize"></span>
+                                          <em class="amount">14px</em></div>
+                                        <div class="minCell cssRadio">内容底色：
+                                          <label>
+                                            <input type="radio" name="componentBgColor" id="componentBgColor_d" checked="checked" class="byBaseIcheck defaultInput" />
+                                            <span>默认</span></label>
+                                          <label>
+                                            <input type="radio" name="componentBgColor" id="componentBgColor_c" class="byBaseIcheck customInput" />
+                                            <span>自定义</span></label>
+                                          <em class="vm dib colorRect" data="componentBgColor"></em>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="subTab-row spaceMarginSetRow">
+                                    <div class="formRow">
+                                      <span class="rowTitle">按钮文本：</span>
+                                      <div class="putWrap">
+                                        <input placeholder="" type="text" class="footBtnInput" name="footbtn_title" value="" />
+                                        <div class="minCell cssRadio rangeCell-btnSize">文字大小：
+                                          <span class="slider-range slider-range-btnSize"></span>
+                                          <em class="amount">14px</em></div>
+                                        <div class="minCell cssRadio">文本颜色：
+                                          <label>
+                                            <input type="radio" name="btnFontColor" id="btnFontColor_d" checked="checked" class="byBaseIcheck defaultInput" />
+                                            <span>默认</span></label>
+                                          <label>
+                                            <input type="radio" name="btnFontColor" id="btnFontColor_c" class="byBaseIcheck customInput" />
+                                            <span>自定义</span></label>
+                                          <em class="vm dib colorRect" data="btnFontColor"></em>
+                                        </div>
+                                        <div class="minCell cssRadio">按钮颜色：
+                                          <label>
+                                            <input type="radio" name="btnBgColor" id="btnBgColor_d" checked="checked" class="byBaseIcheck defaultInput" />
+                                            <span>默认</span></label>
+                                          <label>
+                                            <input type="radio" name="btnBgColor" id="btnBgColor_c" class="byBaseIcheck customInput" />
+                                            <span>自定义</span></label>
+                                          <em class="vm dib colorRect" data="btnBgColor"></em>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <input type="hidden" id="componentJsonStr" name="componentJsonStr" value="" />
+                        <input type="hidden" id="componentStyleJsonStr" name="componentStyleJsonStr" value="" />
+                        <div class="saveBottomBar">
+                          <div class="buttonBox">
+                            <input type="hidden" name="set_id" value="" />
+                            <input type="hidden" name="token" value="umkrvk1493714716" />
+                            <div id="saveButon" class="bottomButon saveButon">保存</div>
+                            <div id="previewButton" class="bottomButon previewButton">预览</div></div>
+                        </div>
+                      </div>
+                      <input type="hidden" name="__hash__" value="d0f9515d05cfac56582ad7490cc7464a_27299c0005999be0eb9d7287d78e6bed" /></form>
+                  </div>
+                </div>
+              </div>
+              <div id="formBuilder_edit_tooltip" class="formBuilder_edit_tooltip"></div>
+              <div class="fullBg"></div>
+              <div class="window windowPreview">
+                <div class="leftWrap fl">
+                  <div class="leftPhonewrap">
+                    <div class="holderPhone">
+                      <div class="wxHd">
+                        <div id="actNames" class="phoneTitle">
+                          <h2>表单预览</h2></div>
+                      </div>
+                      <div class="anythingContent">
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="rightWrap ofh">
+                  <img src="" alt="" class="qrcode" />
+                  <p class="f-tip">手机扫码访问网站</p>
+                  <button type="button" class="backToEdit dib">返回编辑</button></div>
+                <a href="javascript:;" class="xClosed"></a>
+                <script type="text/javascript" src="js/jquery-ui-1.9.1.custom.min.js"></script>
+                <script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>
+                <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+                <script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
+                <script type="text/javascript" src="js/jquery-ui-timepicker-addon-i18n.min.js"></script>
+                <script type="text/javascript" src="js/jquery-ui-timepicker-zh-CN.js"></script>
+                <script type="text/javascript" src="js/jquery.ui.datepicker-zh-CN.js.js"></script>
+                <script type="text/javascript" src="js/icheck.min.js"></script>
+                <script type="text/javascript" src="js/colpick.js"></script>
+                <script type="text/javascript" src="js/dlMain.js"></script>
+                <script type="text/javascript" src="js/formCreator.js"></script>
+                <script src="js/WdatePicker.js"></script>
+                <script type="text/javascript" src="js/formcheck.js"></script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </body>
+
+</html>

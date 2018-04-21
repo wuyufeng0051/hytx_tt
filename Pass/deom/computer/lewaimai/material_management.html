@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-gear gear-icon"></i>
+      <li class="active">系统设置</li>
+      <li class="active">素材管理</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <script src="/js/jquery.zclip.js"></script>
+      <style>.box { float:left; margin:15px 10px; width:170px; height:220px; border: 1px solid #e7e7eb; } .boximg { width: 170px; height: 170px; display: table-cell; text-align: center; vertical-align: middle; } .boximg .imagesclass { max-width:170px; max-height:170px; margin:auto auto; vertical-align: middle; } .boxcontroller{ height:30px; line-height:30px; text-align:center; background-color: #f4f5f9; border-top: 1px solid #e7e7eb; } .boxcontroller a{color:#c9bfbf} .boxcontroller a:hover{color:#222} .boxcontroller a.copy_img_url{ float:left; margin-left:5px; font-size: 10px; } .imagename{ width: 170px; height:20px; text-align:center; line-height:20px; overflow:hidden; display: block; cursor: pointer; } .imagename input[type=checkbox].ace+.lbl{ word-break: break-all; padding-left: 5px; } /* .img_pick{height:auto;position:relative;}*/ .img_pick{ height: 0; clear: both; } .inner_container_box { background-color: #fff; border: 1px solid #ccc; line-height: 1.6; font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif; color: #222; font-size: 14px; } .media-list { width:87%; border-right: 1px solid #ccc; min-height: 530px; float:left; } .group_list{ width:13%; min-height: 530px; float:left; } .group_list .num { display: inline-block; padding-left: 3px; font-style: normal; color: #8d8d8d; } dl{display: block;} dd { display: block; } .inner_menu_link strong { display: inline-block; margin-top: -2px; width: auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-wrap: normal; max-width: 80px; font-weight: 400; font-style: normal; vertical-align: middle; cursor: pointer; } .inner_menu_item { position: relative; line-height: 32px; } dd { display: block; } .inner_menu_item a:hover{ background-color: #f4f5f9; color: #222; text-decoration: none; } .inner_menu_item.selected { background-color: #f4f5f9; } .inner_menu_link { display: block; color: #222; padding-left: 1em; text-decoration: none; } .media-list p{display:block} .global_mod.float_layout { } .global_mod { padding: 10px 20px; } .global_mod.float_layout .global_info { float: left; } .global_mod .global_info { margin-top: 4px; } .global_mod .global_info a{ margin:0 15px; } a { color: #459ae9; text-decoration: none; } .global_mod .global_extra { text-align: right; } .upload_box { position: relative; z-index: 1; } .upload_box { display: inline-block; line-height: 1.6; vertical-align: middle; } .r { float: right; } .upload_area { position: relative; display: inline-block; vertical-align: middle; } .upload_area a:hover{ color:#fff; text-decoration: none; } .mini_tips.weak_text { color: #8d8d8d; } .img_water_tips { margin-right: 1em; line-height: 32px; } element.style { position: absolute; top: 0px; left: 0px; width: 106px; height: 32px; overflow: hidden; bottom: auto; right: auto; } .upload-btn { min-width: 60px; } .upload-btn_primary { background-color: #44b549; background-image: -moz-linear-gradient(top,#44b549 0,#44b549 100%); background-image: -webkit-gradient(linear,0 0,0 100%,from(#44b549),to(#44b549)); background-image: -webkit-linear-gradient(top,#44b549 0,#44b549 100%); background-image: -o-linear-gradient(top,#44b549 0,#44b549 100%); background-image: linear-gradient(to bottom,#44b549 0,#44b549 100%); border-color: #44b549; color: #fff; } .upload-btn_primary_disabled { background-color: #e7e7eb ; background-image: -moz-linear-gradient(top,#e7e7eb 0,#e7e7eb 100%); background-image: -webkit-gradient(linear,0 0,0 100%,from(#e7e7eb),to(#e7e7eb)); background-image: -webkit-linear-gradient(top,#e7e7eb 0,#e7e7eb 100%); background-image: -o-linear-gradient(top,#e7e7eb 0,#e7e7eb 100%); background-image: linear-gradient(to bottom,#e7e7eb 0,#e7e7eb 100%); border-color: #e7e7eb; color: #a5a6aa; } .upload-btn { display: inline-block; overflow: visible; padding: 0 22px; height: 30px; line-height: 30px; vertical-align: middle; text-align: center; text-decoration: none; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; font-size: 14px; border-width: 1px; border-style: solid; cursor: pointer; } .oper_group { padding: 10px 20px; background-color: #f4f5f9; border-bottom: 1px solid #e7e7eb; } .group { } .oper_group .frm_controls { width: 68px; height: 30px; line-height: 30px; } .oper_group .oper_ele { margin-right: 1em; } .frm_controls { display: table-cell; vertical-align: top; float: none; width: auto; } .l { float: left; } .frm_radio_label, .frm_checkbox_label { display: inline-block; text-align: left; cursor: pointer; margin-right: 1em; } label { cursor: default; } Inherited from div.frm_controls.oper_ele.l.oper_group .frm_controls { width: 68px; height: 30px; line-height: 30px; } input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; } .frm_radio, .frm_checkbox { position: absolute; left: -999em; } .btn_disabled{ background-image: linear-gradient(to bottom,#e7e7eb 0,#e7e7eb 100%); border-color: #dadbe0; color: #a5a6aa; text-decoration: none; cursor: default; } .btn_disabled_over{color: #a5a6aa;} .btn_abled{ background-color:#fff; border-color: #e7e7eb; color: #222; cursor:pointer; } .btn_abled_over{ background-image: linear-gradient(to bottom,#e7e7eb 0,#e7e7eb 100%); border-color: #e7e7eb; color: #222; } .form-control { width:150px; height: 34px; padding: 6px 12px; background-color: #fff; color:#222; /* border: 1px solid #ccc;*/ border-radius: 4px; -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075); /* box-shadow: inset 0 1px 1px rgba(0,0,0,.075); */ /* -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; */ -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; /* transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; */ display:inline; } .popover-box { width: 300px; height:220px; z-index: 200; position: fixed; top: 0; bottom: 0; left: 0; right: 0; margin: auto; background-color: #fff; color:#222; border: 1px solid #ccc; padding:30px; line-height: 1.6; font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif; font-size: 14px; } .frm_input_box input{width:210px;} .popover-box .popover_bar{ padding:30px 0; } .img-search { float: right; right: 22px; line-height: 24px; } .img-search .nav-search-input { border: 1px solid #6fb3e0; width: 202px; height: 28px !important; padding-top: 2px; padding-bottom: 2px; border-radius: 4px !important; font-size: 13px; line-height: 1.3; color: #666 !important; z-index: 11; -webkit-transition: width ease .15s; -o-transition: width ease .15s; transition: width ease .15s; } .img-search .nav-search-icon { color: #6fb3e0 !important; font-size: 14px !important; line-height: 24px !important; background-color: transparent; } .pagination{ float:right; margin-right:75px; } /* 查看链接弹框 */ .pop-one{ background: #fff; border-radius:3px; position: fixed; top: 21%; left: 50%; margin-left: -135px; } .pop-two{ width:500px; background: #fff; border-radius:3px; position: fixed; top: 21%; left: 50%; margin-left: -135px; word-break:
+        break-all; } .meng{ background:rgba(0,0,0,.5); position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index:9999; } .feng{ background:rgba(0,0,0,.5); position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index:9999; } .pop-one .pop-cont{ line-height: 25px; padding: 12px 10px; border-bottom: 1px solid #d2d6da; } .pop-bottom a{ text-align: center; height: 40px; line-height: 40px; color: #007aff; } .pop-bottom a:first-child{ border-right:1px solid #d2d6da; } .align-center, .div-align-center { text-align: center; } .webkit-box1 { display: -webkit-box; width: 100%; } .webkit-box1 >* { -webkit-box-flex: 1; width: 100%; display: block; } .order_true{cursor:pointer;} .aa{display:none;} /* 复制文本成功提示 */ .copy-tips{position:fixed;z-index:999;bottom:50%;left:50%;margin:0 0 -20px -80px;background-color:rgba(0, 0, 0, 0.2);filter:progid:DXImageTransform.Microsoft.Gradient(startColorstr=#30000000, endColorstr=#30000000);padding:6px;} .copy-tips-wrap{padding:10px 20px;text-align:center;border:1px solid #F4D9A6;background-color:#FFFDEE;font-size:14px;}</style>
+      <script>$(function() {
+
+          $('.imagesclass').on('click',
+          function() {
+            var url = $(this).attr('src');
+            $('#nowselectimage').attr('src', url);
+            $('#nowselectimagebox').show();
+          });
+          $("body").on("click",
+          function(evt) {
+            if ($(evt.target).parents(".boximg").length == 0) {
+              $('#nowselectimagebox').hide();
+            }
+          });
+        })</script>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li class="active">
+                <a href="#">图片</a></li>
+            </ul>
+            <div class="tab-content ">
+              <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert">
+                  <i class="ace-img fa fa-times"></i>
+                </button>
+                <p>素材管理详细使用方法请点击下面的按钮查看教程。</p>
+                <p>
+                  <a class="btn btn-danger" href="#" target="_blank">素材管理使用教程</a></p>
+              </div>
+              <div class="alert alert-block alert-success">
+                <ul>
+                  <li>素材管理的图片可以用于excel批量导入商品，在导入商品时的商品图片一栏填入素材管理中图片的完整链接即可，例如
+                    <font style="color:red;">/uploads/publicprice/admin_1/max/aaa.jpg</font>，
+                    <a href="#" target="_blank">点击查看&lt;&lt;素材管理使用教程&gt;&gt;</a></li>
+                  <li>上传的图片名字不能带有中文或特殊符号，只能是英文、数字、_（下划线），为了最好的展示效果商品图片上传前请裁剪到400*400大小，并根据不同店铺不同商品进行命名
+                    <br>一次最多上传20张图片，每张图片最大512K，只支持jpg、jpeg、png格式，重名的图片上传后会覆盖原先的图片</li>
+                  <li>免责声明：对于违法和违反知识产权的图片，责任由商家承担，乐外卖有权删除图片，甚至把乐外卖帐号加入黑名单</li></ul>
+              </div>
+              <div class="inner_container_box clearfix">
+                <!-- main start -->
+                <div class="media-list ">
+                  <div class="global_mod float_layout clearfix">
+                    <p class="global_info">所有分组</p>
+                    <div class="global_extra">
+                      <form action="" method="post" id="upload_form" enctype="multipart/form-data">
+                        <input type="hidden" name="upload_group" value="0">
+                        <div class="upload_box align_right r">
+                          <input type="file" multiple="multiple" name="file[]" style="display: none;">
+                          <span class="upload_area ">
+                            <a id="js_upload" class="upload-btn upload-btn_primary" style="">本地上传</a></span>
+                        </div>
+                        <div class="mini_tips weak_text icon_after img_water_tips r">当前空间已使用
+                          <span id="used_space_size">17.276M</span>，空间容量为5120M
+                          <i id="js_water_tips" class="icon_msg_mini ask"></i></div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="oper_group group clearfix">
+                    <div class="frm_controls oper_ele l">
+                      <label class="frm_checkbox_label" for="js_all" id="all_checked">
+                        <input id="js_all" type="checkbox" class="ace">
+                        <span class="lbl">全选</span></label>
+                    </div>
+                    <!-- 暂时不做 <span id="js_batchmove" class="upload-btn upload-btn_default oper_ele l js_popover btn_disabled">移动分组</span>
+                    -->
+                    <span id="delselimg" class="upload-btn upload-btn_default oper_ele l js_popover btn_disabled">删除</span>
+                    <div class="img-search" id="nav-search">
+                      <div class="form-search">
+                        <span class="input-icon">
+                          <input name="keyword" value="" placeholder="请输入图片名，无后缀..." class="nav-search-input" type="text">
+                          <i class="ace-icon fa fa-search nav-search-icon js-search-img"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix">
+                    <form id="deleteform" action="/picture/delete" method="post">
+                      <div class="img_pick">
+                        <div id="nowselectimagebox" style="display:none;position:fixed;top:50px;z-index:99999;">
+                          <img src="" id="nowselectimage"></div>
+                        <div class="box">
+                          <div class="boximg">
+                            <img class="imagesclass" src="upfile/Xc31L8kkvDQRAjGonfKS3xwvgbdrXAQe.png"></div>
+                          <label class="imagename">
+                            <!-- <i class="icon_checkbox"></i> -->
+                            <input type="checkbox" name="deleteimages[]" value="250478" imgname="小碗菜.png" class="ace">
+                            <span class="lbl iname">小碗菜.png</span></label>
+                          <div class="boxcontroller">
+                            <!-- <label><input type="checkbox" name="deleteimages[]" value=""/>删除</label> -->
+                            <a class="copy_img_url js-clipboard" img_url="upfile/Xc31L8kkvDQRAjGonfKS3xwvgbdrXAQe.png" href="#">复制链接</a>
+                            <a title="编辑名称" class="editimg" href="#">
+                              <i class="ace-icon fa fa-pencil bigger-130"></i>
+                            </a>
+                            <!-- 暂时不做 <a title="移动分组" class="yid" href="#"><i class="ace-icon fa fa-exchange bigger-130"></i></a>
+                            -->
+                            <a title="查看图片链接" class="yid js-show-img-url" img_url="/upload_files/image/20170309/Xc31L8kkvDQRAjGonfKS3xwvgbdrXAQe.png" href="#">
+                              <i class="ace-icon fa fa-eye bigger-130"></i>
+                            </a>
+                            <a title="删除" class="delete" href="#">
+                              <i class="ace-icon fa fa-trash bigger-130"></i>
+                            </a>
+                            <div class="zclip" id="zclip-ZeroClipboardMovie_1" style="position: absolute; left: 29px; top: 592px; width: 48px; height: 30px; z-index: 99;">
+                              <embed id="ZeroClipboardMovie_1" src="images/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="48" height="30" name="ZeroClipboardMovie_1" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=48&amp;height=30" wmode="transparent"></div>
+                          </div>
+                        </div>
+                        <div class="box">
+                          <div class="boximg">
+                            <img class="imagesclass" src="upfile/hHe2IHreIuXPxiaNId3N8YYWpwHDir81.png"></div>
+                          <label class="imagename">
+                            <!-- <i class="icon_checkbox"></i> -->
+                            <input type="checkbox" name="deleteimages[]" value="248854" imgname="5654.png" class="ace">
+                            <span class="lbl iname">5654.png</span></label>
+                          <div class="boxcontroller">
+                            <!-- <label><input type="checkbox" name="deleteimages[]" value=""/>删除</label> -->
+                            <a class="copy_img_url js-clipboard" img_url="upfile/hHe2IHreIuXPxiaNId3N8YYWpwHDir81.png" href="#">复制链接</a>
+                            <a title="编辑名称" class="editimg" href="#">
+                              <i class="ace-icon fa fa-pencil bigger-130"></i>
+                            </a>
+                            <!-- 暂时不做 <a title="移动分组" class="yid" href="#"><i class="ace-icon fa fa-exchange bigger-130"></i></a>
+                            -->
+                            <a title="查看图片链接" class="yid js-show-img-url" img_url="upfile/hHe2IHreIuXPxiaNId3N8YYWpwHDir81.png" href="#">
+                              <i class="ace-icon fa fa-eye bigger-130"></i>
+                            </a>
+                            <a title="删除" class="delete" href="#">
+                              <i class="ace-icon fa fa-trash bigger-130"></i>
+                            </a>
+                            <div class="zclip" id="zclip-ZeroClipboardMovie_2" style="position: absolute; left: 219px; top: 592px; width: 48px; height: 30px; z-index: 99;">
+                              <embed id="ZeroClipboardMovie_2" src="images/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="48" height="30" name="ZeroClipboardMovie_2" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=2&amp;width=48&amp;height=30" wmode="transparent"></div>
+                          </div>
+                        </div>
+                        <div class="box">
+                          <div class="boximg">
+                            <img class="imagesclass" src="upfile/BnvhzzY9N1Rp03iA3rqaYZLTto9m8ElD.jpg"></div>
+                          <label class="imagename">
+                            <!-- <i class="icon_checkbox"></i> -->
+                            <input type="checkbox" name="deleteimages[]" value="248696" imgname="未标题-1.jpg" class="ace">
+                            <span class="lbl iname">未标题-1.jpg</span></label>
+                          <div class="boxcontroller">
+                            <!-- <label><input type="checkbox" name="deleteimages[]" value=""/>删除</label> -->
+                            <a class="copy_img_url js-clipboard" img_url="upfile/BnvhzzY9N1Rp03iA3rqaYZLTto9m8ElD.jpg" href="#">复制链接</a>
+                            <a title="编辑名称" class="editimg" href="#">
+                              <i class="ace-icon fa fa-pencil bigger-130"></i>
+                            </a>
+                            <!-- 暂时不做 <a title="移动分组" class="yid" href="#"><i class="ace-icon fa fa-exchange bigger-130"></i></a>
+                            -->
+                            <a title="查看图片链接" class="yid js-show-img-url" img_url="upfile/BnvhzzY9N1Rp03iA3rqaYZLTto9m8ElD.jpg" href="#">
+                              <i class="ace-icon fa fa-eye bigger-130"></i>
+                            </a>
+                            <a title="删除" class="delete" href="#">
+                              <i class="ace-icon fa fa-trash bigger-130"></i>
+                            </a>
+                            <div class="zclip" id="zclip-ZeroClipboardMovie_3" style="position: absolute; left: 409px; top: 592px; width: 48px; height: 30px; z-index: 99;">
+                              <embed id="ZeroClipboardMovie_3" src="images/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="48" height="30" name="ZeroClipboardMovie_3" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=3&amp;width=48&amp;height=30" wmode="transparent"></div>
+                          </div>
+                        </div>
+                        <div class="box">
+                          <div class="boximg">
+                            <img class="imagesclass" src="upfile/ZRH9GG2UM42biDev3VjorW0GPdTkPotn.jpg"></div>
+                          <label class="imagename">
+                            <!-- <i class="icon_checkbox"></i> -->
+                            <input type="checkbox" name="deleteimages[]" value="247910" imgname="未标题-1.jpg" class="ace">
+                            <span class="lbl iname">未标题-1.jpg</span></label>
+                          <div class="boxcontroller">
+                            <!-- <label><input type="checkbox" name="deleteimages[]" value=""/>删除</label> -->
+                            <a class="copy_img_url js-clipboard" img_url="upfile/ZRH9GG2UM42biDev3VjorW0GPdTkPotn.jpg" href="#">复制链接</a>
+                            <a title="编辑名称" class="editimg" href="#">
+                              <i class="ace-icon fa fa-pencil bigger-130"></i>
+                            </a>
+                            <!-- 暂时不做 <a title="移动分组" class="yid" href="#"><i class="ace-icon fa fa-exchange bigger-130"></i></a>
+                            -->
+                            <a title="查看图片链接" class="yid js-show-img-url" img_url="upfile/ZRH9GG2UM42biDev3VjorW0GPdTkPotn.jpg" href="#">
+                              <i class="ace-icon fa fa-eye bigger-130"></i>
+                            </a>
+                            <a title="删除" class="delete" href="#">
+                              <i class="ace-icon fa fa-trash bigger-130"></i>
+                            </a>
+                            <div class="zclip" id="zclip-ZeroClipboardMovie_4" style="position: absolute; left: 599px; top: 592px; width: 48px; height: 30px; z-index: 99;">
+                              <embed id="ZeroClipboardMovie_4" src="images/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="48" height="30" name="ZeroClipboardMovie_4" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=4&amp;width=48&amp;height=30" wmode="transparent"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <ul class="pagination" id="yw0">
+                    <li class="hidden hidden">
+                      <a href="#">&lt;&lt; 首页</a></li>
+                    <li class="previous hidden">
+                      <a href="#">
+                        <i class="ace-icon fa fa-angle-double-left"></i>
+                      </a>
+                    </li>
+                    <li class="page active">
+                      <a href="#">1</a></li>
+                    <li class="page">
+                      <a href="#">2</a></li>
+                    <li class="page">
+                      <a href="#">3</a></li>
+                    <li class="page">
+                      <a href="#">4</a></li>
+                    <li class="page">
+                      <a href="#">5</a></li>
+                    <li class="page">
+                      <a href="#">6</a></li>
+                    <li class="page">
+                      <a href="#">7</a></li>
+                    <li class="page">
+                      <a href="#">8</a></li>
+                    <li class="next">
+                      <a href="#">
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                      </a>
+                    </li>
+                    <li class="hidden">
+                      <a href="#">末页 &gt;&gt;</a></li>
+                  </ul>
+                </div>
+                <!-- main end -->
+                <!-- group box start -->
+                <div class="group_list clearfix">
+                  <div class="inner_menu_box clearfix" id="js_group">
+                    <dl class="inner_menu">
+                      <dd class="inner_menu_item selected js_groupitem">
+                        <a class="inner_menu_link" href="#">
+                          <strong>所有分组</strong></a>
+                      </dd>
+                      <dd class="inner_menu_item  js_groupitem">
+                        <a class="inner_menu_link" href="#">
+                          <strong>未分组</strong></a>
+                      </dd>
+                      <dd class="inner_menu_item  js_groupitem">
+                        <a class="inner_menu_link" href="#">
+                          <strong>未分组</strong></a>
+                      </dd>
+                      <dd class="inner_menu_item js_groupitem" data-id="103">
+                        <a class="inner_menu_link" href="javascript:addgp()">
+                          <i class="ace-icon glyphicon glyphicon-plus" style="color: #c9bfbf"></i>&nbsp;
+                          <strong>新建分组</strong></a>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+                <!-- group box end --></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popover-box  pos_center" id="addgp" style="display:none;">
+        <div class="popover_inner">
+          <div class="popover_content jsPopOverContent">
+            <div class="popover_edit">
+              <label for="" class="frm_label">新建分组</label>
+              <div class="frm_controls">
+                <span class="frm_input_box">
+                  <input type="text" id="add_group_name" name="add_group_name" class="frm_input js_name" data-id="102"></span>
+                <p class="frm_msg fail" style="display:none">
+                  <span class="frm_msg_content">填错了！！！！</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="popover_bar">
+            <a href="javascript:jsclose('#addgp');" class="btn btn_default" id="jsClose">取消</a>&nbsp;&nbsp;&nbsp;
+            <a href="#" class="btn btn-success" id="actionCreate">确定</a></div>
+        </div>
+      </div>
+      <div class="popover-box  pos_center" id="addGroup" style="display:none">
+        <div class="popover_inner">
+          <div class="popover_content jsPopOverContent">
+            <div class="popover_edit">
+              <label for="" class="frm_label">创建分组</label>
+              <div class="frm_controls">
+                <span class="frm_input_box">
+                  <input type="text" name="group_name" class="frm_input js_name" data-id="102"></span>
+                <p class="frm_msg fail" style="display:none">
+                  <span class="frm_msg_content">填错了！！！！</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="popover_bar">
+            <a href="javascript:jsclose('#rename');" class="btn btn_default" id="jsClose">取消</a>&nbsp;&nbsp;&nbsp;
+            <a href="#" class="btn btn-success" id="actionCreate">确定</a></div>
+        </div>
+      </div>
+      <div class="popover-box  pos_center" id="rename" style="display:none">
+        <div class="popover_inner">
+          <div class="popover_content jsPopOverContent">
+            <div class="popover_edit">
+              <label for="" class="frm_label">编辑名称</label>
+              <div class="frm_controls">
+                <span class="frm_input_box">
+                  <input type="text" name="rename" class="frm_input js_name" data-id="102"></span>
+                <p class="frm_msg fail" style="display:none">
+                  <span class="frm_msg_content">填错了</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="popover_bar">
+            <a href="javascript:jsclose('#rename');" class="btn btn_default" id="jsClose">取消</a>&nbsp;&nbsp;&nbsp;
+            <a href="#" class="btn btn-success" id="actionCreate">确定</a></div>
+        </div>
+      </div>
+      <div class="popover-box  pos_center" style="width:500px;padding:15px;display:none;height: 110px;" id="uploadimg"></div>
+      <div class="modal-backdrop  in" id="zhezhao" style="z-index:100;display:none"></div>
+      <div class="meng aa">
+        <div class="pop-two">
+          <div class="pop-cont align-center">
+            <p>
+              <span style="position:relative;">图片链接</span></p>
+            <p class="seeurl"></p>
+          </div>
+          <div class="pop-bottom webkit-box1">
+            <a class="order_true">确定</a></div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        var old_name;
+        var id;
+        var img_ext;
+        var edit_cls;
+        var space_size = 5120
+          function changeMouseStyle(){
+
+            var checked = $('input[name="deleteimages[]"]:checked');
+
+            if(checked.length > 0){
+              $('#delselimg').addClass('btn_abled');
+              $('#delselimg').removeClass('btn_disabled');
+              $('#delselimg').bind('mouseover',function(){$(this).addClass('btn_abled_over')});
+              $('#delselimg').bind('mouseout',function(){
+                $(this).removeClass('btn_abled_over')}
+              );
+              //$('#js_batchmove').addClass('btn_abled');
+              //$('#js_batchmove').removeClass('btn_disabled');
+              //$('#js_batchmove').bind('mouseover',function(){$(this).addClass('btn_abled_over')});
+              /* $('#js_batchmove').bind('mouseout',function(){
+               $(this).removeClass('btn_abled_over')}
+               ); */
+
+
+            }else{
+              $('#delselimg').addClass('btn_disabled');
+              $('#delselimg').unbind('mouseover');
+              $('#delselimg').removeClass('btn_abled_over')
+              $('#delselimg').removeClass('btn_abled');
+              //$('#js_batchmove').removeClass('btn_abled');
+              //$('#js_batchmove').addClass('btn_disabled');
+              //$('#js_batchmove').removeClass('btn_abled_over')
+              //$('#js_batchmove').unbind('mouseover');
+
+
+            }
+          }
+
+        function addgp(){
+          $('input[name="add_group_name"]').val('');
+          $('#add_group_name').focus();
+          $('#addgp').show();
+        }
+
+        function actionAddgp(){
+
+          var flag = true;
+          var input_name = $('input[name="add_group_name"]').val();
+
+          if(input_name){
+
+            if(!/^[a-z_A-Z0-9\u2E80-\u9FFF]+$/.test(input_name)){
+              bootbox.alert('含有非法字符的分组名称！')
+              flag = false;
+              return ;
+            }
+            var s = $('.inner_menu').find('dd strong').each(function(){
+              if($(this).text() == input_name){
+                bootbox.alert('创建分组的名称已存在！');
+                flag = false;
+                return ;
+              }
+            })
+            if(flag){
+              $.post('/picture/addgroup', {name:input_name},function(result){
+
+                if(result && result['success'] == 1){
+                  window.location.href = '/picture/index?Picture%5Btype_id%5D=0';
+                }else{
+                  showNotice(result);
+                }
+              },'JSON')
+            }
+          }else{
+            $('#addgp').hide();
+          }
+
+        }
+
+        function delgroup(id){
+
+          bootbox.confirm({
+            message: "确认删除该分组，以及该分组下的所有图片？",
+            buttons: {
+              confirm: {
+                label: "确认",
+                className: "btn-primary btn-sm",
+              },
+              cancel: {
+                label: "取消",
+                className: "btn-sm",
+              }
+            },
+            callback: function(result) {
+              if(result) {
+
+                $.post('/picture/delgroup', {'type_id':id}, function(result){
+
+                  if(result && result['success'] == 1){
+
+                    window.location.href = '/picture/index';
+                  }else{
+
+                    bootbox.alert('删除失败');
+                    return ;
+                  }
+
+                },'JSON')
+
+              }
+            }
+          });
+        }
+
+        $('#delselimg').click(function(){
+          var checked = $('input[name="deleteimages[]"]:checked');
+          var ids = '';
+          if(checked.length > 0){
+            bootbox.confirm({
+              message: "确认删除选中的图片吗？",
+              buttons: {
+                confirm: {
+                  label: "确认",
+                  className: "btn-primary btn-sm",
+                },
+                cancel: {
+                  label: "取消",
+                  className: "btn-sm",
+                }
+              },
+              callback: function(result) {
+                if(result) {
+                  for(var i=0; i<checked.length;i++)
+                  {
+                    ids += checked[i].value+'|';
+                  }
+                  $.post('/picture/delete', {'ids':ids}, function(result){
+
+
+                    if(result && result['success'] == 1){
+
+                      for(var i=0; i<checked.length;i++){
+                        $(checked[i]).closest(".box").remove();
+                      }
+                    }else{
+
+                      bootbox.alert('删除失败');
+                    }
+
+                  },'JSON')
+                }
+              }
+            });
+          }
+        })
+
+        $('.delete').click(function(){
+
+          var obj = this;
+          var ids = $(obj).closest('.box').find('input[name="deleteimages[]"]').val();
+          bootbox.confirm({
+            message: "确认删除此图片吗？",
+            buttons: {
+              confirm: {
+                label: "确认",
+                className: "btn-primary btn-sm",
+              },
+              cancel: {
+                label: "取消",
+                className: "btn-sm",
+              }
+            },
+            callback: function(result) {
+              if(result && ids)
+              {
+                $.post('/picture/delete', {'ids':ids}, function(result){
+
+                  if(result && result['success'] == 1){
+                    $(obj).closest('.box').remove();
+                  }else{
+                    bootbox.alert('删除失败');
+                  }
+
+                },'JSON')
+              }
+            }
+          });
+
+        })
+
+        $('.editimg').click(function(){
+
+          edit_cls = this;
+          var edit_obj = $(edit_cls).closest('.box').find('input[name="deleteimages[]"]');
+          old_name = $(edit_obj).attr('imgname');
+          id = $(edit_obj).val();
+          img_ext = old_name.split('.').pop().toLowerCase();
+
+          var index = old_name.lastIndexOf('.');
+          name = old_name.substring(0,index);
+
+          $('input[name="rename"]').val(name);
+          $('#rename').show();
+
+        })
+
+        function actionRename(){
+          var rename = $('input[name="rename"]').val();
+          var flag = true;
+          if(rename && old_name ){
+            var new_name = rename+'.'+img_ext;
+            if(new_name == old_name){
+              flag = false;
+              bootbox.alert('已存在此名称的图片名！');
+              return ;
+            }
+            if (/[\\/\s]+/.test(rename)){
+              flag = false;
+              bootbox.alert('图片名存在特殊字符！');
+              return ;
+            }
+
+            if(flag){
+              $.post('/picture/renamepicture', {'id':id,'rename':rename}, function(result){
+
+                if(result && result['success'] == 1){
+
+                  /* var checked = $('input[name="deleteimages[]"]');
+                   for(var i=0; i<checked.length;i++){
+                   if(checked[i].value == old_name){
+
+                   $(checked[i]).val(new_name);
+                   $(checked[i]).next().text(new_name);
+                   }
+                   } */
+                  $(edit_cls).closest('.box').find('input[name="deleteimages[]"]').attr('imgname',new_name);
+                  $(edit_cls).closest('.box').find('.iname').text(new_name);
+
+                  $("#rename").hide();
+                }else{
+                  var msg = result['notice_msg'] ? result['notice_msg'] : '操作失败';
+                  bootbox.alert(msg);
+                }
+
+              },'JSON')
+            }
+          }
+
+        }
+
+        function jsclose(tag){
+
+          $(tag).hide();
+        }
+
+        /* 执行搜索 */
+        function doSearchImg()
+        {
+          var keyword = $('input[name="keyword"]').val();
+
+          var url = '/picture/index?Picture%5Btype_id%5D=0&Picture%5Bname%5D='+keyword;
+
+          window.location.href = url;
+        }
+
+        $(function(){
+
+          $(document).bind("click",function(e){
+            var target  = $(e.target);
+            if(target.closest("#addGroup").length == 0){
+              $("#addGroup").hide();
+            }
+            if(target.closest("#addgp").length == 0){
+              $("#addgp").hide();
+            }
+          })
+
+          $('#js_upload').on('click',function(){
+
+            if(!$(this).hasClass('upload-btn_primary_disabled'))
+            {
+              if(used_size > space_size){
+                bootbox.alert("图片空间已满！您可以升级会员扩大图片空间！去<a href='/level/pay'>充值</a>");
+              }else{
+
+                $('input[name="file[]"]').val('');
+                $('input[name="file[]"]').click();
+              }
+            }
+
+          })
+
+          function progressHandlingFunction(e){
+            if(e.lengthComputable){
+              var loaded = e.loaded;     //已经上传大小情况
+              var tot = e.total;      //附件总大小
+              var per = Math.floor(100*loaded/tot);  //已经上传的百分比
+              $(".progress-bar").css("width" , per +"%");
+              $('.progress').attr("data-percent",per +"%");
+            }
+          }
+          // 全选/反选
+          /* $("#all_checked").click(function(){
+           var is_checked = $('#js_all').is(':checked');
+           if(is_checked){
+           $('.img_pick').find('input[type="checkbox"]').attr('checked',true);
+           $('#js_all').attr('checked',true);
+           }else{
+           $('.img_pick').find('input[type="checkbox"]').attr('checked',false);
+           $('#js_all').attr('checked',false);
+           }
+
+           }) */
+
+          $('#all_checked').toggle(
+
+            function(){
+              $('#js_all').attr('checked',true);
+              $('.img_pick').find('input[type="checkbox"]').attr('checked',true);
+              changeMouseStyle();
+            },
+            function(){
+              $('#js_all').attr('checked',false);
+              $('.img_pick').find('input[type="checkbox"]').attr('checked',false);
+              changeMouseStyle();
+            }
+
+          )
+
+
+          // 单选
+          $('.imagename').click(function(){
+            var cur_img = $(this).next('input[name="deleteimages[]"]');
+            var is_checked = $(cur_img).is(':checked');
+
+            if(!is_checked){
+
+              $(cur_img).attr('checked',true);
+            }else{
+
+              $(cur_img).attr('checked',false);
+            }
+            changeMouseStyle();
+
+          });
+
+          /* 查看图片链接 */
+          $('.js-show-img-url').click(function(){
+
+            var img_url = $(this).attr('img_url');
+
+            $(".meng").removeClass('aa');
+            $(".seeurl").html(img_url);
+          });
+          $(".order_true").click(function(){
+            $(".meng").addClass("aa");
+            $(".feng").addClass("aa");
+          })
+
+          /* 复制文本到剪贴板 */
+          $(".js-clipboard").zclip({
+            path: "images/ZeroClipboard.swf",
+            copy: function(){
+              return $(this).attr('img_url');
+            },
+            afterCopy:function(){/* 复制成功后的操作 */
+              var $copysuc = $("<div class='copy-tips'><div class='copy-tips-wrap'>☺ 复制成功</div></div>");
+              $("body").find(".copy-tips").remove().end().append($copysuc);
+              $(".copy-tips").fadeOut(3000);
+            }
+          });
+
+          /* 点击图片搜索 */
+          $('.js-search-img').click(function(){
+            doSearchImg();
+          })
+          var $inp = $('input'); //所有的input元素
+          $inp.keypress(function (e) { //这里给function一个事件参数命名为e，叫event也行，随意的，e就是IE窗口发生的事件。
+            var key = e.which; //e.which是按键的值
+            if($('input[name="keyword"]').is(":focus"))
+            {
+              if (key == 13) {
+                doSearchImg();
+              }
+            }
+
+          });
+        })
+      </script>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

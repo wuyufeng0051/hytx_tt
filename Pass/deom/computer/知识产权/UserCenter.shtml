@@ -1,0 +1,378 @@
+<!-- #include file="_head.shtml"--> 
+
+<link href="/Js/Validform/css/style.css" rel="stylesheet" />
+<script src="/Js/Validform/js/Validform_v5.3.2.js"></script>
+<script src="js/WdatePicker.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#form1").Validform({tiptype: 3,postonce: true,})
+    })
+</script>
+<form action="" id="form1">
+  <div class="rBox">
+    <div class="local">
+      <a href="#">首页</a>
+      <span>用户信息</span></div>
+    <div class="box1 formEdit">
+      <div class="title">
+        <h3>用户信息</h3></div>
+      <div class="adminEdit rBgDiv">
+        <div class="box">
+          <dl>
+            <dt>用户名：</dt>
+            <dd>
+              <p>苏州和策信息技术有限公司</p>
+            </dd>
+          </dl>
+          <dl>
+            <dt>邮箱 :</dt>
+            <dd>280555794@qq.com</dd></dl>
+          <dl>
+            <dt>
+              <em>*</em>公司名 :</dt>
+            <dd>
+              <input autocomplete="off" class="text company"  maxlength="50"  nullmsg="公司名不能为空" type="text" value="苏州和策信息技术有限公司">
+              </dd>
+          </dl>
+          <dl>
+            <dt>公司网址 :</dt>
+            <dd>
+              <input autocomplete="off" class="text"   type="text" ></dd>
+          </dl>
+          <dl>
+            <dt>组织机构代码 :</dt>
+            <dd>
+              <input autocomplete="off" class="text"   type="text" ></dd>
+          </dl>
+          <dl>
+            <dt>公司简介 :</dt>
+            <dd>
+              <textarea autocomplete="off" class="text" cols="20"   rows="2" type="text"></textarea>
+            </dd>
+          </dl>
+          <dl>
+            <dt>成立时间 :</dt>
+            <dd>
+              <input autocomplete="off" class="text"   onclick="WdatePicker()" type="text" ></dd>
+          </dl>
+          <dl>
+            <dt>注册资本 :</dt>
+            <dd>
+              <input autocomplete="off" class="text"   type="text" ></dd>
+          </dl>
+          <dl>
+            <dt>办公地址 :</dt>
+            <dd>
+              <input autocomplete="off" class="text"   type="text" ></dd>
+          </dl>
+          <dl>
+            <dt>联系人 :</dt>
+            <dd>
+              <input autocomplete="off" class="text"   type="text" ></dd>
+          </dl>
+          <dl>
+            <dt>手机号 :</dt>
+            <dd>
+              <input autocomplete="off" class="text"  maxlength="11"  type="text" ></dd>
+          </dl>
+          <dl>
+            <dt>电话 :</dt>
+            <dd>
+              <input autocomplete="off" class="text"   type="text" ></dd>
+          </dl>
+          <dl>
+            <dt>传真 :</dt>
+            <dd>
+              <input autocomplete="off" class="text"   type="text" ></dd>
+          </dl>
+          <dl>
+            <dt>
+              <em>*</em>联系人邮箱 :</dt>
+            <dd>
+              <input autocomplete="off" class="text" datatype="e" errormsg="邮箱格式不正确！" id="CompanyObj_Email" maxlength="50" name="CompanyObj.Email" nullmsg="邮箱不能为空" type="text" value="" />
+              <span class="Validform_checktip">邮箱格式：admin@126.com</span>
+            </dd>
+          </dl>
+          <div class="title">
+            <h3>政策匹配信息</h3></div>
+          <dl>
+            <dt>企业所有制</dt>
+            <dd class="label_box">
+              <input type="radio" name="suoyou">
+              <label >合伙企业</label>
+              <br>
+              <input type="radio" name="suoyou">
+              <label >外商独资企业</label>
+              <br>
+              <input type="radio" name="suoyou">
+              <label >个人企业</label>
+              <br>
+              <input type="radio" name="suoyou">
+              <label >有限责任公司</label>
+              <br>
+              <input type="radio" name="suoyou">
+              <label >合作企业</label>
+              <br>
+              <input type="radio" name="suoyou">
+              <label >有限股份公司</label>
+              <br>
+              <input type="radio" name="suoyou">
+              <label >中外合资</label>
+              <br>
+              <input type="radio" name="suoyou">
+              <label >国有企业</label>
+              <br></dd>
+          </dl>
+          <dl>
+            <dt>高新产品收入</dt>
+            <dd>
+              <input class="text "  type="text" >
+              <span class="Validform_checktip">%</span></dd>
+          </dl>
+          <dl>
+            <dt>企业成立年限</dt>
+            <dd>
+              <input class="text "  type="text" >
+              <span class="Validform_checktip">年</span></dd>
+          </dl>
+          <dl>
+            <dt>主营收入或净利润增长</dt>
+            <dd>
+              <input class="text "  type="text" >
+              <span class="Validform_checktip">%</span></dd>
+          </dl>
+          <dl>
+            <dt>技术开发设备原价</dt>
+            <dd>
+              <input class="text "  type="text" >
+              <span class="Validform_checktip">万元</span></dd>
+          </dl>
+          <dl>
+            <dt>大专以上科技人员</dt>
+            <dd>
+              <input class="text "  type="text" >
+              <span class="Validform_checktip">人</span></dd>
+          </dl>
+          <dl>
+            <dt>研发投入比例</dt>
+            <dd>
+              <input class="text "  type="text" >
+              <span class="Validform_checktip">%</span></dd>
+          </dl>
+          <dl>
+            <dt>技术先进型服务收入</dt>
+            <dd>
+              <input class="text "   type="text" >
+              <span class="Validform_checktip">%</span></dd>
+          </dl>
+          <dl>
+            <dt>研发人员数量</dt>
+            <dd>
+              <input class="text "   type="text" >
+              <span class="Validform_checktip">%</span></dd>
+          </dl>
+          <dl>
+            <dt>营业收入</dt>
+            <dd>
+              <input class="text "   type="text" >
+              <span class="Validform_checktip">万元</span></dd>
+          </dl>
+          <dl>
+            <dt>离岸服务外包</dt>
+            <dd>
+              <input class="text "   type="text" >
+              <span class="Validform_checktip">%</span></dd>
+          </dl>
+          <dl>
+            <dt>已申请政策</dt>
+            <dd class="label_box">
+              <input type="checkbox"   >
+              <label >《上海市工业互联网创新发展专项支持实施细则》 政策解读</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于开展2017“创业在上海”国际创新创业大赛专题赛活动的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市2017年度“科技创新行动计划”政府间国际科技合作项目指南</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市2017年度“科技创新行动计划”企业国际科技合作项目指南</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市2017年度“科技创新行动计划”基础研究领域项目指南</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市经济信息化委关于申报2016年度本市软件和 集成电路企业设计人员专项奖励的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于开展2017年度技术先进型服务企业认定工作的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市知识产权局发布申报2017年专利工作试点和示范单位的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市经济信息化委关于开展2017年度上海市软件和集成电路产业发展专项资金项目申报工作的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于开展上海市2017年度“科技企业创新能力提升计划”项目申报工作的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市经信委发布开展2017年度上海市信息化发展专项资金（大数据发展）项目申报工作的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于组织申报2017年度浦东新区中小企业发展专项政策项目的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于组织申报2017年度上海市新能源汽车专项资金项目的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于开展2017年度第二批上海市信息化发展专项资金（大数据发展）项目申报工作的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >奉贤区关于加快建设中小企业科技创新活力区的若干产业政策</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于组织实施2016年度上海市高端智能装备首台突破和示范应用专项的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于组织开展上海市2016年度“科技创新行动计划”科技型中小企业技术创新资金项目申报的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >2016年上海市产业转型升级发展专项资金 （品牌经济发展）项目申报指南</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于组织开展上海市2016年度“科技创新行动计划”科技小巨人工程项目申报工作的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于组织申报2016年度（第22批）上海市市级企业技术中心的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于组织申报2016年上海市产业转型升级发展专项资金项目（生产性服务业发展）的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于开展2016年度上海市社会信用体系建设专项资金项目申报工作的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于组织申报2016年上海市产业转型升级发展专项资金项目（重点技术改造）的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于开展2016年度上海市软件和集成电路产业发展专项资金项目（集成电路和电子信息制造领域）申报工作的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于开展2016年度第一批上海市信息化发展专项资金（智慧城市建设）项目申报工作的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于开展2016年度上海市软件和集成电路产业发展专项（软件和信息服务业领域）项目申报工作的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于组织申报2016年第一批上海市中小企业发展专项资金项目的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >【国家】关于完善研究开发费用税前加计扣除政策的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于科技企业孵化器税收政策的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >《高新技术企业认定管理办法》</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市加快自主品牌建设专项资金管理办法</label>
+              <br>
+              <input type="checkbox"   >
+              <label >关于促进金融服务创新支持上海科技创新中心建设的实施意见</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市科技小巨人工程</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市产业转型升级发展专项资金项目（重点技术改造）</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市科技创新券</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市科技型中小企业技术创新资金项目</label>
+              <br>
+              <input type="checkbox"   >
+              <label >市财政局等关于转发《财政部等关于软件和集成电路产业企业所得税优惠政策有关问题的通知》的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >奉贤区知识产权（专利）经费使用管理办法</label>
+              <br>
+              <input type="checkbox"   >
+              <label >浦东新区科技发展基金孵化器资助资金操作细则</label>
+              <br>
+              <input type="checkbox"   >
+              <label >进一步鼓励集成电路产业发展的企业所得税政策（2免3减半）</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市信息化发展专项资金管理办法</label>
+              <br>
+              <input type="checkbox"   >
+              <label >浦东新区文化创意企业认定申报指南</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市知识产权试点和示范园区评定与管理办法</label>
+              <br>
+              <input type="checkbox"   >
+              <label >2013年度科技型中小企业技术创新基金项目</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市知识产权优势企业专项资金管理办法</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市知识产权优势企业认定办法</label>
+              <br>
+              <input type="checkbox"   >
+              <label >资助向国外申请专利专项资金管理办法</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市企事业专利工作试点示范单位认定和管理办法</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市知识产权示范企业专项资金管理办法</label>
+              <br>
+              <input type="checkbox"   >
+              <label >浦东新区科技发展基金研发投入补贴资金操作细则</label>
+              <br>
+              <input type="checkbox"   >
+              <label >中小型科技企业高新技术成果产业化资助项目申报</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市高新技术成果转化项目认定</label>
+              <br>
+              <input type="checkbox"   >
+              <label >张江园区企业科技创新成果转化资助操作办法</label>
+              <br>
+              <input type="checkbox"   >
+              <label >张江园区企业市场推广资助操作办法</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市高新技术企业认定管理实施办法</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市企业技术中心认定</label>
+              <br>
+              <input type="checkbox"   >
+              <label >【国家】高新技术企业认定管理办法</label>
+              <br>
+              <input type="checkbox"   >
+              <label >（国家）关于技术转让所得减免企业所得税有关问题的通知</label>
+              <br>
+              <input type="checkbox"   >
+              <label >上海市创业投资风险救助专项资金管理办法</label>
+              <br></dd>
+          </dl>
+          <div class="btnBox">
+            <input  class="btn save" value="保存" type="submit">
+            <input class="btn return" type="button" value="返回"  onclick="javascript: history.go(-1)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<!--#include file="_foot.shtml"-->

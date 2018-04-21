@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-desktop desktop-icon"></i>
+        <a href="/shop/index">店铺</a></li>
+      <li>
+        <a href="/shop/moduleindex">店铺首页模块</a></li>
+      <li class="active">新建模块</li>
+      <li class="active">正新鸡排（金城店）</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.profile-users .memberdiv{ width:80px; } .ace-file-container { width: 300px; }</style>
+      <div class="row">
+        <div class="col-sm-12">
+          <form action="" method="post" id="form" enctype="multipart/form-data">
+            <label>模块名:
+              <br>
+              <input type="text" value="" name="name" id="name"></label>
+            <br>
+            <br>
+            <label>编号:
+              <br>
+              <input type="text" value="0" name="tag" style="width:40px;"></label>
+            <br>
+            <br>
+            <label>模块的类型:
+              <br>
+              <select name="type" id="type">
+                <option value="0" selected="">外部链接</option>
+                <option value="1">店铺留言</option>
+                <option value="2">店铺评论</option>
+                <option value="3">店铺动态</option>
+                <option value="4">销量排行</option>
+                <option value="7">我的邮箱</option>
+                <option value="8">我的订单</option>
+                <option value="9">我的签到</option>
+                <option value="10">我的积分</option>
+                <option value="11">优惠券</option>
+                <option value="12">个人资料</option>
+                <option value="13">大转盘</option>
+                <option value="14">会员中心</option>
+                <option value="15">选购界面</option>
+                <option value="16">团购导航</option></select>
+            </label>
+            <br>
+            <br>
+            <div style="display:;" id="outurl">
+              <label>外部链接:
+                <br>
+                <input value="" type="text" style="width:300px;" name="outurl"></label>
+              <br>
+              <br></div>
+            <div id="article" style="display:none;">
+              <label>文章:
+                <br>
+                <select name="article_id" id="article_id"></select></label>
+              <br>
+              <br></div>
+            <label>使用默认图标:
+              <br>
+              <select name="default" id="default">
+                <option value="1">是</option>
+                <option value="0">否</option></select>
+            </label>
+            <br>
+            <br>
+            <div class="form-group">
+              <label style="display: block;">小图标(尺寸：32像素 * 32像素):
+                <br>
+                <span class="ace-file-input">
+                  <input style="width: 300px;" id="ace-file-input" size="50" onchange="preview(this)" name="icon" type="file">
+                  <span class="ace-file-container" data-title="选择">
+                    <span class="ace-file-name" data-title="上传图片...">
+                      <i class=" ace-icon fa fa-upload"></i></span>
+                  </span>
+                </span>
+              </label>
+              <br>
+              <br></div>
+            <img style="width:300px;height:300px;margin-bottom:300" id="icon" src="https://img.lewaimai.com" alt="">
+            <input type="hidden" value="238848" name="shop_id">
+            <input type="hidden" value="submit" name="submit"></form>
+          <button class="btn btn-success" style="margin-top:20px;" >提交</button></div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

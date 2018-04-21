@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商铺出租转让</title>
+	<meta http-equiv="cache-control" content="public">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style>
+	body{
+		padding-top: 95px;
+	}
+	.searchBar{
+		width: 100%;
+		height: 50px;
+		position: fixed;
+		top:0;
+		background: #fd5530;
+		z-index: 100;
+	}
+	.search{
+		position: relative;
+		padding: 7px 10px;
+		padding-right: 95px;
+	}
+	.searchBar input{
+		margin: 0;
+		height: 36px;
+		line-height: 36px;
+		border:none;
+		font-size: 14px;
+		color: #fff;
+		padding-left: 30px;
+		background: #ff7558 url(__PUBLIC__/Home/img/search.png) no-repeat 10px center;
+		background-size: 16px 16px;
+		text-align: left;
+	}
+	::-webkit-input-placeholder { 
+	    color:#fff;
+	}
+	.searchBar .search-r{
+		position: absolute;
+		right: 5px;
+		top:15px;
+		font-size: 14px;
+		color: #fff;
+	}
+	.searchBar .search-r a{
+		padding: 0 8px;
+		border-right: 1px solid #fff;
+		color:#fff;
+	}
+	.searchBar .search-r a:last-child{
+		border:none;
+	}
+
+	.mui-popover-arrow{
+	    display: none;
+	}
+	.mui-popover{
+	    position: fixed;
+	    width: 80%;
+	    border-radius: 10px;
+	    left: 50%;
+	    top: 50%;
+	    margin: 0 auto;
+	    z-index: 9999;
+	    background-color: #fff;
+	    -webkit-transform: translateX(-50%) translateY(-50%);
+	    -moz-transform: translateX(-50%) translateY(-50%);
+	    -ms-transform: translateX(-50%) translateY(-50%);
+	    transform: translateX(-50%) translateY(-50%);
+	    overflow: hidden;
+	}
+	.mui-popover h4{
+		background-color: #ff7400;
+		color: #fff;
+		text-align: center;
+		padding:10px 0;
+		margin:0;
+		font-weight: normal;
+		text-indent: 5%;
+	}
+	.mui-popover h4 span{
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 25px;
+		line-height: 20px;
+		float: right;
+		margin-right: 10%;
+		position: relative;
+		/*border-radius: 50%;
+		border:1px solid #fff;
+		width: 18px;
+		height: 18px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 18px;
+		line-height: 18px;
+		text-align: center;
+		margin-left: 10px;
+		position: relative;
+		top:1px;*/
+	}
+	.mui-popover ul{
+		padding:0;
+		margin:0;
+	}
+	.mui-popover ul li{
+		line-height: 40px;
+		text-align: center;
+		border-bottom: 1px solid #e6e6e6;
+	}
+	.mui-popover ul li a{
+		color:#000;
+	}
+
+	/*筛选*/
+	.bg{
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		background: #000000;
+		opacity: 0.5;
+		z-index: 1;
+		display: none;
+	}
+	.nav{
+		width: 100%;
+		position:fixed;
+		top: 50px;
+		z-index: 99999;
+	    background: #fff;
+	    border-bottom: 1px solid #EAEAEA;
+	    z-index: 10;
+	}
+	.nav .nav_ul{
+		list-style: none;
+		padding: 0px;
+		margin: 0px;
+		position: relative;
+		width: 100%;
+		float: left;
+	}
+	.nav .nav_ul li.nav_ul_li{
+		float: left;
+		width: 25%;
+	}
+	.nav .nav_ul li.nav_ul_li h1{
+		float: left;
+		width: 100%;
+		padding:10px 0px;
+		text-align: center;
+		color: #333;;
+		font-size: 14px;
+		font-weight: normal;
+		cursor: pointer;
+		padding-top: 2px;
+	}
+	.nav .mui-icon{
+		font-size: 14px;
+	}
+	.nav_child{
+		list-style: none;
+		padding: 0px;
+		margin: 0px;
+		display: none;
+		float: left;
+		width: 100%;
+		position:absolute;
+		left: 0px;
+		top: 46px;
+		z-index:99999;
+		background: #fff;
+	}
+	.nav_child li{
+		float: left;
+		width: 100%;
+		border-bottom: 1px solid #EAEAEA;
+	}
+	.nav_child li a{
+		float: left;
+		width: 100%;
+		padding:10px 0px;
+		text-align:left;
+		text-indent: 15px;
+		font-family: "微软雅黑";
+		color: #000;
+		font-size: 12px;
+		font-weight: normal;
+		cursor: pointer;
+	}
+
+	.nav_child li a .mui-icon{
+		font-size: 18px;
+		display: none;
+		color: #ccc;
+		float: right;
+	}
+	.mui-card{
+		box-shadow: none;
+	}
+	/*轮播*/
+	.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	.backTop {
+	    border-radius: 50%;
+	    position: fixed;
+	    right: 10px;
+	    bottom: 15px;
+	    width: 40px;
+	    height: 40px;
+	    text-align: center;
+	    font-size: 18px;
+	    color: #666666;
+	    padding-top: 8px;
+	    border:2px solid #707070;
+	    background: #fff url(__PUBLIC__/Home/img/toTop.png) center center no-repeat;
+	    background-size: 20px 20px;
+	}
+	.mui-table-view-cell{
+		padding-left: 3%;
+		padding-right: 3%;	
+		position: static;
+	}
+	.mui-table-view-cell.mui-active{
+		background-color: #0062cc;
+	}
+	.mui-ellipsis-1{
+		display: -webkit-box;
+	    overflow: hidden;
+	    white-space: normal!important;
+	    text-overflow: ellipsis;
+	    word-wrap: break-word;
+	    -webkit-line-clamp: 1;
+	    -webkit-box-orient: vertical;
+	    height: 35px;
+	    line-height: 35px;
+	}
+	.nav_ul_li ul{
+		max-height: 265px;
+		overflow-y:scroll;
+		border-bottom: 0;
+	}
+	.mui-ellipsis-address{
+		display: -webkit-box;
+	    overflow: hidden;
+	    white-space: normal!important;
+	    text-overflow: ellipsis;
+	    word-wrap: break-word;
+	    -webkit-line-clamp: 1;
+	    -webkit-box-orient: vertical;
+	    line-height: 21px;
+	    width: 55%;
+	    /*display: block;*/
+	    height: 21px;
+	    float: left;
+	}
+	.mui-table-view:after{
+		height: 0;
+	}
+	.mui-table-view-cell:after{
+		height: 0;
+	}
+	body{position: relative;}
+	</style>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+	<div class="mui-content">
+	<form action="javascript:return true;">
+		<div class="searchBar">
+			<div class="search">
+			    <?php if(!empty($_GET)){ ?>
+			    <div style="overflow: hidden;height: 36px;color:#fff;line-height: 40px;">
+ 					  <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color:#fff;line-height: 35px;">
+ 					  </a>
+ 					  &nbsp;搜索结果
+ 				</div>
+			   <?php }else{ ?>
+				<div class="search-l">
+					<input type="search" placeholder="搜索地址或关键词" id="search" style="padding-left: 30px;">
+				</div>
+			   <?php } ?>
+				<div class="search-r">
+					<a id="fabu">发布</a><a href="__MODULE__/My/myRelease" style="color:#fff;">我的</a>
+				</div>
+			</div>
+		</div>
+	</form>
+	<!-- 图片轮播区 -->
+	  <?php if(!empty($status)){ ?>
+	    <div class="swiper-container">
+			<div class="swiper-wrapper">
+			  <volist name="status" id="vo">
+				<div class="swiper-slide">
+			         <a id="up" onclick="look(this)" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}">
+			             <img src="__PUBLIC__/../{$vo['advertisement_img']}" style="width: 100%;display: block;">
+	                  </a>
+ 				</div>
+             </volist>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+	  <?php } ?>
+	<div class="bg"></div>
+	<div class="nav">
+			<ul class="nav_ul">
+				<li class="nav_ul_li filter1">
+					<h1 class="mui-ellipsis-1"><span id="num">类型</span><span class="mui-icon mui-icon-arrowdown"></span></h1>
+					<ul class="mui-table-view nav_child" id="lease_class">
+						<li strong="1" id="chance" class="mui-table-view-cell"><a>不限</a></li>
+					  <volist name="query_class" id="vo">
+						<li strong="{$vo.classify2_id}" id="chance" class="mui-table-view-cell"><a>{$vo.classify2_name}</a></li>
+					  </volist>
+					</ul>
+				</li>
+				<li class="nav_ul_li filter2">
+					<h1 class="mui-ellipsis-1"><span id="num">租金</span><span class="mui-icon mui-icon-arrowdown"></span></h1>
+					<ul class="mui-table-view nav_child" id="lease_price">
+					  <volist name="query_price" id="vo">
+						<li strong="{$vo.query_val}" id="chance" class="mui-table-view-cell"><a>{$vo.query_name}</a></li>
+					  </volist>
+					</ul>
+				</li>
+				<li class="nav_ul_li filter3">
+					<h1 class="mui-ellipsis-1"><span id="num">面积</span><span class="mui-icon mui-icon-arrowdown"></span></h1>
+					<ul class="mui-table-view nav_child" id="lease_acreage">
+					  <volist name="quert_acreage" id="vo">
+						<li strong="{$vo.query_val}" id="chance" class="mui-table-view-cell"><a>{$vo.query_name}</a></li>
+					   </volist>
+					</ul>
+				</li>
+				<li class="nav_ul_li filter4" id="lease_transfer">
+					<h1 class="mui-ellipsis-1"><span id="num">供需</span><span class="mui-icon mui-icon-arrowdown"></span></h1>
+					<ul class="mui-table-view nav_child" id="lease_transfer">
+						 <volist name="quert_transfer" id="vo">
+						<li strong="{$vo.query_val}" id="chance" class="mui-table-view-cell"><a>{$vo.query_name}</a></li>
+					   </volist>
+ 					</ul>
+				</li>
+			</ul>
+		</div>	
+         <div id="zong">
+           <foreach name="lease" item="vo" key="k">
+			<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" style="padding: 10px 10px;">
+					    <!-- href="__MODULE__/Rent/rentShopDetails?lease_id={$vo.lease_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;" str="rentShop" stv="{$vo.lease_id}" class="topheight">
+ 							<div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+							 <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_smallpath}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;"></div>
+                            </div>
+							<div class="mui-ellipsis-2" style="height: 42px;">
+								{$vo.lease_title}
+							</div>
+							<p style="margin-bottom: 0;font-size: 12px;"><span style="color: #ff7300;font-size: 16px;">
+							       <?php if($vo['lease_price'] == 0){ ?>
+									 面议<?php }else{ ?>
+				                   {$vo.lease_price}
+				                   <?php } ?></span>&nbsp;&nbsp;{$vo.lease_class}&nbsp;&nbsp;<span style="color: #ff7300;font-size: 16px;float: right;"><?php if(empty($vo['lease_transfer'])){echo '出租';}else{echo '转让';} ?></span></p>
+							<p style="margin-bottom: 0;color: #666;font-size: 12px;width: 100%;height: 21px;"><strong class="mui-ellipsis-address" style="font-weight: normal;margin-right: 5px;">{$vo.lease_address}</strong>
+							<?php if($vo['lease_is_top'] == 1){ ?>
+							 <span style="float: right;">置顶</span>
+						   <?php }else{ ?>
+							<span style="float: right;" class="time">{$vo.lease_time}</span>
+							<input type="hidden" class="times" value="{$vo.lease_time}">
+						   <?php } ?>
+  						 </p>
+						</a>
+					</div>
+				</div>
+			</div>
+		   </foreach>
+		  </div>
+    	</div>
+	<a id="scrollToTop" class="backTop"></a>
+
+	<div id="pop" class="mui-popover">
+
+		<h4>请选择您要发布的类别<span class="mui-icon mui-icon-close"></span></h4>
+		<ul class="mui-table-view">
+			<li class="mui-table-view-cell" style="padding:5px 0;"><a href="__MODULE__/Rent/rentHouseRelease">住房出租</a></li>
+			<li class="mui-table-view-cell" style="padding:5px 0;"><a href="__MODULE__/Rent/rentShopRelease">商铺出租</a></li>
+			<li class="mui-table-view-cell" style="padding:5px 0;"><a href="__MODULE__/Rent/assignmentShopRelease">商铺转让</a></li>
+			<li class="mui-table-view-cell" style="padding:5px 0;"><a href="__MODULE__/Rent/rentLandRelease">仓库/土地/其它出租</a></li>
+		</ul>
+    </div>
+
+   <div style="width:30%;margin:0 auto;color:#000;padding:5px;font-size:12px;color:#888;" id="load" srv="0">
+        往上滑加载更多
+    </div>
+    <input type="hidden" id="limit" value="0">
+    <input type="hidden" id="scrollTop" value="0">
+    <input type="hidden" id="is_look" value="">
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script src="__PUBLIC__/Home/js/time.js"></script>
+	<script>
+
+	var html2 = localStorage.getItem('localhtml');
+	// alert(localStorage.getItem('filter1'));
+	if(html2 == '' || html2 == undefined){
+	    localStorage.setItem('toplineTop',0);
+	    localStorage.setItem('pageNum',0);
+	}else{
+		$('#zong').html(html2);//将html填充进去
+		$('#limit').val(localStorage.getItem('pageNum'));    //将加载的页面数赋值给页面计数器
+		$('.filter1').find('#num').text(localStorage.getItem('filter1'));
+		$('.filter2').find('#num').text(localStorage.getItem('filter2'));
+		$('.filter3').find('#num').text(localStorage.getItem('filter3'));
+		$('.filter4').find('#num').text(localStorage.getItem('filter4'));
+		$('#search').val(localStorage.getItem('searchtxt'));
+		if(localStorage.getItem('selectClass1') != 'undefined'){
+			$('.filter1').find('#num').attr('class',localStorage.getItem('selectClass1'));
+		}
+		if(localStorage.getItem('selectClass2') != 'undefined'){
+			$('.filter2').find('#num').attr('class',localStorage.getItem('selectClass2'));
+		}
+		if(localStorage.getItem('selectClass3') != 'undefined'){
+			$('.filter3').find('#num').attr('class',localStorage.getItem('selectClass3'));
+		}
+		if(localStorage.getItem('selectClass4') != 'undefined'){
+			$('.filter4').find('#num').attr('class',localStorage.getItem('selectClass4'));
+		}
+		$(window).on('load',function(){
+            $(window).scrollTop(localStorage.getItem('toplineTop'));    //滚动条滚动到进入详情页时的位置
+            // console.log($(window).scrollTop())
+        });
+        selectLimit();
+		localStorage.setItem('localhtml','');   //清除缓存
+	    localStorage.setItem('toplineTop',0);
+	    localStorage.setItem('pageNum',0); 
+	    localStorage.setItem('filter1','类型'); 
+	    localStorage.setItem('filter2','租金'); 
+	    localStorage.setItem('filter3','面积'); 
+	    localStorage.setItem('filter4','供需'); 
+	    localStorage.setItem('searchtxt','');  
+  		localStorage.setItem('selectClass1','undefined');  
+  		localStorage.setItem('selectClass2','undefined');  
+  		localStorage.setItem('selectClass3','undefined');  
+  		localStorage.setItem('selectClass4','undefined');  
+	}
+
+
+
+        function muicard(){
+    	var all = 0;
+    	var have = $('.mui-card')
+    	$.each(have,function(index,item){
+               all += 1; 
+    	})
+   
+    	if (all < 10) {
+    		$('#load').hide(); 
+    	}else{
+    		$('#load').show(); 
+    	}
+    }
+
+   muicard();
+
+	 function toploa(){
+	   $('.topheight').on('click', function() {
+		var str = $(this).attr('str');
+		var stv = $(this).attr('stv');
+		var is_look = $('#is_look').val();
+		var scrollTop =getScrollTop();
+		$("#scrollTop").val(scrollTop);
+		var scrollTop = $("#scrollTop").val();
+		// var zong =$("#zong").html();
+   
+
+      $.post('{:U("Home/Demo/look")}', {str:'rentShop',stv:stv}, function(daty){
+     	   if (daty == 1) {
+ 			  // $.post('{:U("Home/Rent/sessionlease")}', {is_look:is_look,zong:zong}, function(data){
+	      	   if(str == "rentShop"){
+	      	   	 localMsg();
+		       	 location.href="__MODULE__/Rent/rentShopDetails?lease_id="+stv;
+	      	   }else if(str == "rentLand"){
+	      	   	 localMsg();
+		       	 location.href="__MODULE__/Rent/rentLandDetails?lease_id="+stv;
+	      	   }else {
+	      	   	 localMsg();
+		       	 location.href="__MODULE__/Rent/rentHouseDetails?lease_id="+stv;
+		       }
+		       // });
+ 					}else{
+	         layer.msg('对不起,信息已删除')
+	 	     }
+		  })
+
+
+	    });
+	 }
+	 toploa(); 
+
+	  function localMsg(){
+	 		localStorage.setItem('toplineTop',$(window).scrollTop());  //页面滚动条距离顶部的高度存到缓存中
+      		localStorage.setItem('localhtml',document.getElementById('zong').innerHTML);   //将html存到本地缓存中
+      		localStorage.setItem('pageNum',$('#limit').val());  //将页面加载数量存到缓存中
+      		localStorage.setItem('filter1',$('.filter1').find('#num').text());  //将筛选条件存入本地缓存
+      		localStorage.setItem('filter2',$('.filter2').find('#num').text());  
+      		localStorage.setItem('filter3',$('.filter3').find('#num').text());  
+      		localStorage.setItem('filter4',$('.filter4').find('#num').text());  
+      		localStorage.setItem('searchtxt',$('#search').val());  
+      		localStorage.setItem('selectClass1',$('.filter1').find('#num').attr('class'));  
+      		localStorage.setItem('selectClass2',$('.filter2').find('#num').attr('class'));  
+      		localStorage.setItem('selectClass3',$('.filter3').find('#num').attr('class'));  
+      		localStorage.setItem('selectClass4',$('.filter4').find('#num').attr('class'));  
+	 }
+
+	   //求滚动条的高度
+	   function getScrollTop(){    
+		    var scrollTop=0;    
+		    if(document.documentElement&&document.documentElement.scrollTop){    
+		        scrollTop=document.documentElement.scrollTop;    
+		    }else if(document.body){    
+		        scrollTop=document.body.scrollTop;    
+		    }    
+		    return scrollTop;    
+		} 
+
+	   //如果之前滚动条的位置
+	  //   function time(){
+ 	 //    	var is_look = $("#is_look").val();
+		 //      if (is_look) {
+		 //      	$("#load").hide();
+		 //      }
+	  //     var limit = $("#limit").val();
+	 	//   // if (limit != 0) {
+	 	//   	$.post('{:U("Home/Rent/looksessionlease")}', {limit:limit},function(data){
+	 	//   		if (data != 2) {
+	 	//   			 strall=data.split(",,"); //字符分割 
+		 //    	    $("#is_look").val(strall[1]);
+		 //            var is_look =strall[1]
+	  //  	            if (is_look) {
+			//       	  $("#load").hide();
+			//         }
+	  //  	  		   $("#zong").html("");
+	  // 	  		   $("#zong").append(strall[0])
+	  // 	  		    var tab = $("#zong").text();
+			// 		if (tab) {
+					
+			// 		 window.scrollTo(0,scrollTop);
+			// 		 toploa();
+			// 		}
+			// 	}else{
+			// 	 	$('#limit').val(0)
+			// 	 	$("#scrollTop").val(0);
+			// 	 }
+	 	//   	});
+	 	//   	muicard();
+	 	//   }
+	  //   // }
+	  // setTimeout(time(),1000);
+
+       	//加载
+	  function loadclick(){
+		$(window).scroll(function(){
+			var if_get ='<?php echo $_GET["worder"] ; ?>'
+ 			if (if_get) {
+  			  //判断是否是get
+             var sa = 1;
+ 		    }else{
+             var sa = 0;
+ 		    }
+			var is_look =  $("#is_look").val();
+		　　var scrollTop = $(this).scrollTop();
+		　　var scrollHeight = $(document).height();
+		　　var windowHeight = $(this).height();
+		　　if(scrollTop + windowHeight == scrollHeight){
+ 		    	var limit = parseInt($('#limit').val())+1;
+ 		    	  $('#limit').val(limit);
+ 		    	  $("#load").show();
+ 		    	  setTimeout(function(){
+			            if (is_look) {
+			           	    //判断是否是查询
+			            	$.post('{:U("Home/Rent/lookrentshop")}',{arryall:is_look,limit:limit},function(data){
+                                if(data != 0){
+							     $("#zong").append(data)
+				  					  toploa(); 
+								}else{
+								 $("#load").text('已经到底了！')	
+								}
+			            	})
+			            }else{
+								$.post('{:U("Home/Rent/loadrentShop")}',{limit:limit,sa:sa},function(data){
+			  					   if(data != 0){
+								     $("#zong").append(data)
+				  					  toploa(); 
+									}else{
+									 $("#load").text('已经到底了！')	
+									}
+			   				   }) 
+			  		　　 }
+			  	       	  muicard();
+	  					  timeStamp()
+ 			     },500);
+   		  }
+	  	
+		});
+	}	
+   
+    loadclick()
+
+function look(obj){
+		// $("[id=up]").each(function(){ 
+		// $(this).click(function(){
+     		var id = $(obj).attr('str');
+     		var type = $(obj).attr('stb');
+     		var url = $(obj).attr('url');
+				// alert(id)
+		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+ 	     		if (type == 0) {
+	     			 location.href="http://"+url;
+	     		}else if(type == 1){
+	     			 location.href= 'tel:' + url;
+	      		}else{
+	      			location.href=url;
+	      		}
+			});
+    // 	})
+    // })
+			}
+		
+  	  $('#search').on('search', function(e){
+         	//搜索关键字
+         	val =  $('#search').val();
+         	if (!val) {
+         		layer.msg('请先输入关键字')
+         	}else{
+            window.location.href="__MODULE__/Rent/rentShop?worder="+val
+	        }
+ 		});
+         
+
+	  function timeStamp(){
+		var time=$('.time')
+		$.each(time,function(index,item){
+		 if ($(this).text().length > 13) {
+		   var timeText=$(this).text();
+	 	    getDateDiff(stringToTime(timeText))
+		    $(this).text(getDateDiff(stringToTime(timeText)))
+		  }
+		})
+		}
+	   timeStamp()
+
+		mui.init();
+        var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+
+        // 弹出层
+      	var pop = document.getElementById("pop");
+        var mask = mui.createMask(function(){
+            pop.classList.remove('mui-active');
+        });
+        // 显示
+        mui('#fabu')[0].addEventListener('click',function(){
+            mask.show();//显示遮罩
+            pop.classList.add('mui-active');
+        })
+          //按钮关闭弹出框
+        $(".mui-icon-close").click(function(){
+         	pop.classList.remove('mui-active');
+         	mask.close();
+         	
+         })
+        //
+ 
+        $(document).ready(function(){
+      		
+     		$(".nav_ul_li h1").click(function(){
+      			if($(this).parent().find(".nav_child").is(":hidden")){
+      				$(".nav_ul_li h1").css("color","#333");
+      				$(this).css("color","#ff7300");
+      				
+      				$(".nav_ul_li h1 .mui-icon").removeClass("mui-icon-arrowup");
+      				$(".nav_ul_li h1 .mui-icon").addClass("mui-icon-arrowdown");
+      				$(this).find(".mui-icon").removeClass("mui-icon-arrowdown");
+      				$(this).find(".mui-icon").addClass("mui-icon-arrowup");
+      				
+      				
+					$(".nav_child").hide();				
+      				$(this).parent().find(".nav_child").show();
+      				
+      				$(".bg").show();
+				}
+				else{
+					$(this).css("color","#333");
+					
+					$(this).find(".mui-icon").removeClass("mui-icon-arrowup");
+      				$(this).find(".mui-icon").addClass("mui-icon-arrowdown");
+					
+					$(".nav_child").hide();
+      				$(this).parent().find(".nav_child").hide();
+      				
+      				$(".bg").hide();
+				}				
+    		})
+    		//点击蒙版下拉列表隐藏
+     		$(".bg").click(function(){
+     			$(".nav_child").hide();
+     			$(".nav_ul_li h1").css("color","#333");
+     			$(".nav_ul_li h1 .mui-icon").removeClass("mui-icon-arrowup");
+     			$(".nav_ul_li h1 .mui-icon").addClass("mui-icon-arrowdown");
+     			$(".bg").hide();
+     		})
+
+     		
+     		/*tap事件会造成穿透*/
+     		$(".nav_child a").on('click',function(){
+	     			$(this).parent().parent().find(".mui-icon").hide();
+	     			$(this).find(".mui-icon").show()
+	     			/*隐藏遮罩层*/
+	     			$('.bg').hide()
+	     			$(".nav_child").hide();	
+	     			$(".nav_ul_li h1").css("color","#333");
+	     			$(".nav_ul_li h1 .mui-icon").removeClass("mui-icon-arrowup");
+	  				$(".nav_ul_li h1 .mui-icon").addClass("mui-icon-arrowdown");
+	     		});
+
+	      	})
+
+	      	$("#scrollToTop").on("touchend", function(e) {
+				e.preventDefault();	
+			    mui.scrollTo(0,100);
+			});
+
+
+	function selectLimit(){
+		var arryall = new Array(); 
+		var have = $("[id=num]");
+		 $.each(have,function(index,item){
+         	var classall = $(this).attr('class');
+         	// console.log(stong);
+         	if (classall) {
+         	  	var id = $(this).parents('.nav_ul_li').find('.nav_child').attr('id');
+         	 	arryall[index]=id+"="+classall;
+         	}
+         })
+	     $("#is_look").val(arryall);
+	}
+
+
+			//查询
+ 	  $('[id=chance]').each(function() {
+     	$(this).click(function(){
+     		//点击选择的值（id）
+     		var chanceclass =  $(this).attr('str');
+     		//选择的内容
+     		var chancename =  $(this).text()
+     		var strong =  $(this).attr('strong');
+     		//修改默认的值（圈子的内容）
+     		$(this).parent().parent().find('#num').text(chancename);
+     		//添加class（圈子的id）
+     		$(this).parent().parent().find('#num').attr('class',strong);
+     		//有hava表示选中的
+   //   	  $(this).addClass('have').siblings().removeClass('have');
+   //         var have=$('.have')
+   //         var arryall = new Array();  
+			// $.each(have,function(index,item){
+			// 	var haveed = $(this).attr('strong');
+
+			// 	 var id = $(this).parent().parent().find('.nav_child').attr('id');
+			// 	//判读有无值
+ 		// 		 arryall[index]=id+"="+haveed;
+ 		// 	})
+ 		// 	
+ 			var arryall = new Array(); 
+     		var have = $("[id=num]");
+			 $.each(have,function(index,item){
+	         	var classall = $(this).attr('class');
+	         	// console.log(stong);
+	         	if (classall) {
+	         	  	var id = $(this).parents('.nav_ul_li').find('.nav_child').attr('id');
+	         	 	arryall[index]=id+"="+classall;
+	         	}
+	         }) 	
+ 			    $("#load").hide();
+                $('#limit').val(0)
+                $("#load").text('往上滑加载更多')
+  			    $("#is_look").val(arryall)
+   	 			//查
+	  			$.post('{:U("Home/Rent/lookrentshop")}',{arryall:arryall},function(data){
+	               $('#zong').empty();
+	               $('#zong').append(data)
+					timeStamp()
+					toploa()
+					 
+ 
+ 	 			})
+
+		 
+ 		})
+ 	  })
+ 	  		var u = navigator.userAgent;
+			var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+			var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+			if(isiOS == true)
+			{
+				$('.searchBar input').focus(function(){
+		         	$('.searchBar').css({'position':'absolute','top':'0','left':'0'});
+		         	$('.nav').css({'position':'absolute','top':'50px','left':'0'});
+	         	})
+	           $('.searchBar input').blur(function(){
+		         	$('.searchBar').css({'position':'fixed','top':'0','left':'0'});
+		         	$('.nav').css({'position':'fixed','top':'50px','left':'0'});
+	          })
+           }
+	</script>
+</body>
+</html>

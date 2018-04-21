@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var addrid = {#$addr#}, addrListArr = {#$addrListArr#}, modelType = "car", adminPath = "{#$adminPath#}";
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="aid" id="aid" value="{#$aid#}" />
+  <input type="hidden" name="cid" id="cid" value="{#$pid#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt>经销商：</dt>
+    <dd><a href="javascript:;" class="btn" id="cOffer" data-id="{#$aid#}">{#$aname#}<span class="caret"></span></a></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>车型：</label></dt>
+    <dd style="position:static;">
+      <div id="carBtn">
+        <a href="javascript:;" class="btn" id="cBrand" data-type="Brand" data-id="{#$bid#}">{#$bname#}<span class="caret"></span></a>
+        <a href="javascript:;" class="btn" id="cCar" data-type="Car" data-id="{#$cid#}">{#$cname#}<span class="caret"></span></a>
+        <a href="javascript:;" class="btn" id="cParam" data-type="Param" data-id="{#$pid#}">{#$pname#}<span class="caret"></span></a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="people">联系人：</label></dt>
+    <dd>
+      <input class="input-large" type="text" name="people" id="people" value="{#$people#}" maxlength="10" data-regex=".{1,10}" />
+      <span class="input-tips"><s></s>请输入联系人名称</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="sex">性别：</label></dt>
+    <dd class="radio">
+      {#html_radios name="sex" values=$sexopt checked=$sex output=$sexnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="contact">联系方式：</label></dt>
+    <dd>
+      <input class="input-large" type="text" name="contact" id="contact" value="{#$contact#}" maxlength="11" data-regex=".{5,11}" />
+      <span class="input-tips"><s></s>请输入联系方式</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="addr">所在城市：</label></dt>
+    <dd>
+      <span id="addrList">
+        <select name="addr" id="addr" class="input-large"></select>
+      </span>
+      <span class="input-tips"><s></s>请选择所在城市</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="note">补充内容：</label></dt>
+    <dd><textarea name="note" id="note" class="input-xxlarge" rows="5">{#$note#}</textarea></dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

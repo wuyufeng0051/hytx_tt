@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+
+<!--[if !IE]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+    <meta charset="utf-8"/>
+
+    <title>本地鸟后台 | 头条评论</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <meta content="" name="description"/>
+
+    <meta content="" name="author"/>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL STYLES -->
+
+    <link href="media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/daterangepicker.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <!-- END PAGE LEVEL STYLES -->
+
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+<!-- BEGIN HEADER -->
+
+{include file="public/header" /}
+<!-- END HEADER -->
+<a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a>
+
+<!-- BEGIN CONTAINER -->
+
+<div class="page-container">
+
+    <!-- BEGIN SIDEBAR -->
+
+    {include file="public/sidebar" /}
+
+    <!-- END SIDEBAR -->
+
+    <!-- BEGIN PAGE -->
+
+    <div class="page-content">
+
+        <!-- BEGIN PAGE CONTAINER-->
+
+        <div class="container-fluid">
+
+            <!-- BEGIN PAGE HEADER-->
+
+            <div class="row-fluid">
+
+                <div class="span12">
+
+                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+                    <h3 class="page-title">
+                        头条评论
+                    </h3>
+
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="index">头条评论</a>
+                            <i class="icon-angle-right"></i>
+                        </li>
+                        <li>头条id:</li>
+                    </ul>
+
+                    <!-- END PAGE TITLE & BREADCRUMB-->
+
+                </div>
+
+            </div>
+
+            <!-- END PAGE HEADER-->
+
+            <!-- BEGIN PAGE CONTENT-->
+
+            <form class="form-horizontal" action="change" id="form">
+
+                <input type="hidden" name="comment_id" value="" class="m-wrap medium" readonly="">
+
+                <div class="control-group">
+                    <label class="control-label">头条标题:</label>
+                    <div class="controls">
+                        <input type="text" name="comment_toplineid" value="" class="m-wrap large" readonly="">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">评论人:</label>
+                    <div class="controls">
+                        <input type="text" name="user_name" value="" class="m-wrap medium" readonly="">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">评论内容:</label>
+                    <div class="controls">
+                        <textarea class="large m-wrap" name="comment_content" rows="5" readonly=""></textarea>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">评论时间:</label>
+                    <div class="controls">
+                        <input type="text" name="comment_date" value="" class="m-wrap medium" readonly="">
+                    </div>
+                </div>
+
+
+                <div class="control-group">
+                    <label class="control-label">点赞次数:</label>
+                    <div class="controls">
+                        <input type="text" name="comment_like" value="" class="m-wrap medium" readonly="">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn red" href="#form_modal" data-toggle="modal" >删除</button>
+                    <button type="button" class="btn btn-qx blue" >返回</button>
+                </div>
+            </form>
+
+            <!-- END PAGE CONTENT -->
+
+        </div>
+
+        <!-- END PAGE CONTAINER-->
+
+    </div>
+
+    <!-- END PAGE -->
+
+</div>
+
+<!-- END CONTAINER -->
+
+<!-- BEGIN FOOTER -->
+
+{include file="public/footer" /}
+
+<!-- END FOOTER -->
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+<!-- BEGIN CORE PLUGINS -->
+
+<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+
+<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--[if lt IE 9]>
+
+<script src="media/js/excanvas.min.js"></script>
+
+<script src="media/js/respond.min.js"></script>
+
+<![endif]-->
+
+<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<script src="media/js/app.js" type="text/javascript"></script>
+
+<script src="media/js/index.js" type="text/javascript"></script>
+
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<script>
+
+    jQuery(document).ready(function () {
+
+        App.init(); // initlayout and core plugins
+
+    });
+
+    $(document).ready(function () {
+        $(".btn-qx").click(function () {
+            location.href = history.back(-1);
+        })
+
+        $(".btn-del").click(function () {
+            if (confirm('确定要删除吗?')) {
+                //删除
+                var _this=$(this);
+                var id=_this.parent().prev().children('.controls').children().val();
+                $.ajax({
+                    type: 'GET',
+                    url: 'del',
+                    data:{id:id},
+                    success: function (data) {
+                        if (data.code == 0) {
+                            location.href= history.back(-1);
+                        }
+                    }
+                });
+                //回复原因
+                var del_uid=_this.parent().prev().prev().prev().prev().children('.controls').children().val();
+                var del_title=_this.parent().prev().prev().prev().children().children().val();
+                var del_reason=_this.parent().prev().prev().children().children().val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'reason',
+                    data:{
+                        del_uid:del_uid,
+                        del_title:del_title,
+                        del_reason:del_reason,
+                    },
+                    success: function (data) {
+                    }
+                });
+            } else {
+                return false;
+            }
+        })
+
+
+    })
+
+
+</script>
+
+<!-- END JAVASCRIPTS -->
+
+</body>
+
+<!-- END BODY -->
+
+</html>

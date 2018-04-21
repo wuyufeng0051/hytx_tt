@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>微信支付</title>
+</head>
+
+<body onload="callpay()">
+<script type="text/javascript">
+//调用微信JS api 支付
+function jsApiCall(){
+	WeixinJSBridge.invoke(
+		'getBrandWCPayRequest',
+		{#$jsApiParameters#},
+		function(res){
+			//成功
+			if(res.err_msg == "get_brand_wcpay_request：ok" ) {
+
+			}else{
+
+			}
+			//统一再跳转到支付页面，由支付页面验证是否支付成功！
+			location.href = '{#$returnUrl#}';
+		}
+	);
+}
+
+function callpay(){
+	if (typeof WeixinJSBridge == "undefined"){
+			if( document.addEventListener ){
+					document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+			}else if (document.attachEvent){
+					document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+					document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+			}
+	}else{
+			jsApiCall();
+	}
+}
+</script>
+</body>
+</html>

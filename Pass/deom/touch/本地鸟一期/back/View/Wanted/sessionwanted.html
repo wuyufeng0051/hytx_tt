@@ -1,0 +1,57 @@
+    <foreach item="vo" name="wanted_res" key="k">
+		<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 10px 10px;">
+				   <?php if($vo['wanted_type'] == 1){ ?>
+					<a style="position: relative;padding-left: 90px;display: block;color:#000;height: 65px;"  stv="{$vo.wanted_id}" class="topheight" str="wantedRent">
+						<img src="__PUBLIC__/Home/img/qz.png" alt="" style="position: absolute;left: 0;right: 0;width: 85px;height: 65px;">
+						<div class="mui-ellipsis-2" style="height: 42px;">
+							{$vo.wanted_title}
+						</div>
+						<p style="margin-bottom: 0;margin-top:5px;font-size: 12px;">
+						<span style="color: #ff7300;font-size: 16px;">
+                        	<?php if($vo['wanted_price'] == 0){ ?>
+							面议
+							<?php }else{ ?>
+							{$vo.wanted_price}
+							{$vo.wanted_pricetype}
+							<?php } ?>
+						</span>
+						&nbsp;&nbsp;{$vo.wanted_class}&nbsp;&nbsp;
+						<?php if($vo['wanted_is_top'] == 1 ){ ?>
+						<span style="float: right;">置顶</span></p>
+						<?php }else{ ?>
+						<span style="float: right;" class="time">{$vo.wanted_date}</span></p>
+						<input type="hidden" value="{$vo.wanted_date}" class="times">
+						<?php } ?>
+					</a>
+				   <?php }else{ ?>
+				   <!-- href="__MODULE__/Wanted/wantedBuyDetails?wanted_id={$vo.wanted_id}"  -->
+				   <a style="position: relative;padding-left: 90px;display: block;color:#000;height: 65px;"  stv="{$vo.wanted_id}" class="topheight" str="wantedBuy">
+						<img src="__PUBLIC__/Home/img/qg.png" alt="" style="position: absolute;left: 0;right: 0;width: 85px;height: 65px;">
+						<div class="mui-ellipsis-2" style="height: 42px;">
+							{$vo.wanted_title}
+						</div>
+						<p style="margin-bottom: 0;margin-top:5px;font-size: 12px;">
+						<span style="color: #ff7300;font-size: 16px;">
+						    <?php if($vo['wanted_price'] == 0){ ?>
+							面议
+							<?php }else{ ?>
+							{$vo.wanted_price}
+							{$vo.wanted_pricetype}
+							<?php } ?>
+					    </span>
+						&nbsp;&nbsp;{$vo.wanted_class}&nbsp;&nbsp;
+						<?php if($vo['wanted_is_top'] == 1 ){ ?>
+						<span style="float: right;">置顶</span></p>
+						<?php }else{ ?>
+						<span style="float: right;" class="time">{$vo.wanted_date}</span></p>
+						<input type="hidden" class="times" value="{$vo.wanted_date}">
+						<!-- {$vo.wanted_date} -->
+						<?php } ?> 
+					</a>
+				   <?php } ?>
+				</div>
+			</div>
+		</div>
+    </foreach>

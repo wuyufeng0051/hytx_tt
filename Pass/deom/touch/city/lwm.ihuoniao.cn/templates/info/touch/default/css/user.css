@@ -1,0 +1,38 @@
+*{margin: 0;padding: 0;-webkit-tap-highlight-color: rgba(255,0,0,0);}
+body{max-width: 1080px;margin: 0 auto;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;font-size: .24rem;opacity: 0;}
+body.show {opacity:1;}
+html{background: #ebebeb;}
+
+
+
+/*头部*/
+.header{height: 0.8rem;background: #fff;position: fixed;top: 0;left: 0;right: 0;z-index: 9999;display: -webkit-box;}
+.header-logo{display: block;vertical-align: middle;display: table-cell;height: 0.8rem;width: .8rem;}
+.header-logo img{width: auto;height: .4rem;display: block;margin: 0 auto;}
+.header-tit{display: block;-webkit-box-flex: 1;text-align: center;font-size: .3rem;line-height: .8rem;}
+.header-user{width: .8rem;height: .8rem;display: table-cell;font-size: .28rem;line-height: .8rem;text-align: center;vertical-align: middle;}
+.header-user img{display: block;width: .55rem;height: .55rem;margin: 0 auto;}
+
+/*内容*/
+.bg{position: relative; height: 2.8rem;margin-top: .8rem;z-index: 1;background-color: #ff5700;}
+.bg:after {content: ""; position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: linear-gradient(-135deg, #fe6200 50%, transparent 0%) 0 0/.7rem .7rem repeat;}
+
+.info-box{position: relative;}
+.info-box .info-img{position: absolute;top: 0.6rem;z-index: 999;width: 1.5rem;height: 1.5rem;left: .4rem;padding: .06rem;border: .06rem solid #ff7834;border-radius: 1.5rem;}
+.info-box .info-img img{display: block;width: 1.5rem;height: 1.5rem;border-radius: 1.5rem;margin: 0 auto;}
+.info-box .info-msg{position: absolute;top: 1rem;z-index: 999;left: 2.4rem;}
+.info-box .info-msg h3{font-size: .3rem;color: #fff;}
+.info-box .info-msg p{color: #ebebeb;line-height: .5rem;}
+
+/*列表*/
+.list{margin: .2rem 0;background: #fff;}
+.list h3{font-size: .32rem;line-height: .8rem;padding-left: .3rem;border-bottom: 1px solid #eee;}
+.list li a{display: block;padding: .3rem;}
+.list li .list-img{width: 2rem;height: 1.5rem;float: left;}
+.list li .list-img img{display: block;width: 100%;height: 100%;}
+.list li .list-txt{margin-left: 2.3rem;}
+.list li .list-txt h4{font-size: .28rem;line-height: .35rem;height: .7rem;overflow: hidden;display: block;}
+.list li .list-txt p{color: #aaa;line-height: .4rem;}
+.list li .list-txt p .price{color: #ff552e;float: right;}
+.list li .list-txt p .price em{font-size: .36rem;}
+.list .empty{text-align: center;background: #eaeaea;padding-top: .2rem;display: none;}

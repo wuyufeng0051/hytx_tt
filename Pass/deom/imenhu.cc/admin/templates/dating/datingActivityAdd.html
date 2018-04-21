@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var thumbSize = {#$thumbSize#}, thumbType = "{#$thumbType#}",  //缩略图配置
+	modelType = "dating", adminPath = "{#$adminPath#}", mapCity = "{#$mapCity#}";
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label for="title">活动标题：</label></dt>
+    <dd>
+      <input class="input-xxlarge" type="text" name="title" id="title" value="{#$title#}" data-regex=".{2,50}" />
+      <span class="input-tips"><s></s>请输入故事主题，2-100个字符</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>缩略图：</dt>
+    <dd>
+      <input name="litpic" type="hidden" id="litpic" value="{#$litpic#}" />
+      {#if $litpic != ""#}
+      <div id="license" class="uploadinp uploading"><span id="uploadBt"></span></div>
+      <div id="licenseFiles" style="display:inline-block;"><a href='{#$cfg_attachment#}{#$litpic#}' target="_blank"><img alt="" src="{#$cfg_attachment#}{#$litpic#}&type=small" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;" style="display:inline-block;">删除图片</a>
+      {#else#}
+      <div id="license" class="uploadinp"><span id="uploadBt"></span></div>
+      <div id="licenseFiles"><a href="#" target="_blank" title=""><img alt="" src="" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;">删除图片</a>
+      {#/if#}
+      <div id="licenseProgress" class="progressBar">
+        <i id="licenseProgressBar" class="progress"></i>
+        <span id="licensePercent">0%</span>
+        <a id="cancelUploadBt" href="javascript:;">取消</a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="btime">活动时间：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="btime" id="btime" value="{#$btime#}" data-regex=".*" />
+      <span class="input-tips"><s></s>请输入活动时间</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="deadline">报名截止时间：</label></dt>
+    <dd>
+      <input class="input-medium" type="text" name="deadline" id="deadline" value="{#$deadline#}" />
+      <span class="input-tips"><s></s>请选择报名截止时间</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="address">活动地址：</label></dt>
+    <dd>
+      <input type="text" class="input-xlarge" name="address" id="address" value="{#$address#}" data-regex=".*" />
+      <input type="hidden" name="lnglat" id="lnglat" value="{#$lnglat#}" />
+      <img src="{#$adminPath#}../static/images/admin/markditu.jpg" id="mark" style="cursor:pointer;" title="标注地图位置" />
+      <span class="input-tips"><s></s>请输入活动地址</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="pcount">人数限制：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="pcount" id="pcount" value="{#$pcount#}" data-regex=".*" />
+      <span class="input-tips"><s></s>请输入活动人数限制</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="money">活动费用：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="money" id="money" value="{#$money#}" data-regex=".*" />
+      <span class="input-tips"><s></s>请输入活动费用</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="else">特别要求：</label></dt>
+    <dd>
+      <textarea class="input-xxlarge" rows="5" name="else" id="else" data-regex=".*">{#$else#}</textarea>
+      <span class="input-tips"><s></s>请输入特别要求</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>活动详情：</dt>
+    <dd>
+      <script id="content" name="content" type="text/plain" style="width:85%;height:500px">{#$content#}</script>
+    </dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$editorFile#}
+{#$jsFile#}
+</body>
+</html>

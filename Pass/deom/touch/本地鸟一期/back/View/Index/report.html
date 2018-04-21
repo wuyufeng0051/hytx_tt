@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>举报</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="css/mui.min.css">
+	<style>
+	.title{
+		padding: 10px;
+		background:#fff;
+	}
+	ul{
+		list-style: none;
+		margin:0;
+		padding: 0;
+	}
+	#uploaderFiles li{
+		float: left;
+	    margin-right: 9px;
+	    margin-bottom: 9px;
+	    width: 79px;
+	    height: 79px;
+	}
+	#uploaderFiles li img{
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+	.uploader-inputbox{
+		float: left;
+	    position: relative;
+	    margin-right: 9px;
+	    margin-bottom: 9px;
+	    width: 79px;
+	    height: 79px;
+	    background: url(img/add.png) no-repeat center center;
+	    background-size: 40px 40px;
+	    border:1px solid #ddd;
+
+	}
+	.uploader-input{
+		display: none;
+	}
+	.item{
+		border-bottom: 1px solid #ddd;
+	    padding: 10px;
+	    background: #fff;
+	    position: relative;
+	    padding-left: 85px;
+	}
+    .item label{
+		font-size: 16px;
+		position: absolute;
+		left: 10px;
+	}
+	  .item label span{
+		width: 10px;
+		display: inline-block;
+	}
+    .item input{
+		border:none;
+		padding: 0;
+		width: auto;
+		margin:0;
+		line-height: 21px;
+		height: 21px;
+		width: 100%;
+		text-indent: 10px;
+	}
+	.option{
+		background: #fff;
+		padding: 0 10px;
+		font-size: 0;
+	}
+	.option span{
+		border:none;
+		width: 30%;
+		background: #ff7300;
+		background: #f2f2f2;
+		font-size: 14px;
+		margin:5px;
+		border-radius: 0;
+	}
+	.option span.active{
+		background: #ff7300;
+		color: #fff;
+	}
+	.imgbox{
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+	.info{
+		padding: 15px;
+		background: #fff;
+	}
+	.info .content{
+		background: #f2f2f2;
+		padding: 10px;
+	}
+	.info .content h4{
+		font-size: 16px;
+		text-align: center;
+		margin-bottom: 10px;
+	}
+	.info .content p{
+		color: #666;
+	}
+	.info .content .bot{
+		color: #ff7300;
+		font-size: 14px;
+		padding-left: 40px;
+		background:url(img/gift.png) left center no-repeat;
+		background-size: 42px 32px;
+		height: 42px;
+	}
+	</style>
+</head>
+<body>
+
+ <include file="Public/share" title='包含文件'/>
+
+	<div class="mui-content">
+		<div class="title">
+			<span style="color: #ff7400;">*</span>选择举报的原因<span style="font-size: 12px;color: #666;letter-spacing: 0.05em;margin-left: 10px;">(可多选)</span>
+		</div>
+		<div class="option">
+			<span class="mui-btn active">信息虚假</span>
+			<span class="mui-btn">恶意骚扰</span>
+			<span class="mui-btn">涉黄违法</span>
+			<span class="mui-btn">欺诈骗钱</span>
+			<span class="mui-btn">冒牌侵权</span>
+			<span class="mui-btn">其他原因</span>
+		</div>
+		<div style="padding: 5px 10px;background: #fff;margin-bottom: 10px;">
+			<div style="line-height: 30px;">情况说明</div>
+			<textarea name="" id="" rows="3"  style="margin:0;padding: 5px;font-size: 14px;" placeholder="请简明扼要的阐述你的理由;以便工作人员更好的判断(0-200字)" maxlength="200"></textarea>
+		</div>
+		<div class="title" style="border:none;">
+			<span style="color: #ff7400;">*</span>上传图片凭证<span style="font-size: 12px;color: #ccc;">(支持jpg、jpeg、png格式，最多5张，每张不超过3M)</span style="font-size: 12px;color: #ddd;">
+		</div>
+		<div style="padding:10px 10px;background: #fff;overflow:hidden;margin-bottom: 10px;">
+			<ul id="uploaderFiles">
+				<li><img src="__PUBLIC__/Home/img/pic_160.png" alt=""></li>
+				<li><img src="__PUBLIC__/Home/img/pic_160.png" alt=""></li>
+				<li><img src="__PUBLIC__/Home/img/pic_160.png" alt=""></li>
+				<li><img src="__PUBLIC__/Home/img/pic_160.png" alt=""></li>
+				<li><img src="__PUBLIC__/Home/img/pic_160.png" alt=""></li>
+			</ul>
+			<div class="uploader-inputbox" onclick="">
+				<input id="uploaderInput" class="uploader-input" type="file" accept="image/*" multiple="">
+			</div>
+		</div>
+		<div class="item" style="padding-right: 80px;">
+			<label for=""><span style="color: #ff7400;">*</span>联系方式</label>
+			<input type="num" maxlength="11">
+			<span style="position: absolute;right: 10px;top:9px;font-size: 12px;border:1px solid #ff7400;padding:0 4px;border-radius: 3px;color: #ff7400;">发送验证码</span>
+		</div>
+		<div class="item" style="margin-bottom: 10px;">
+			<label for=""><span style="color: #ff7400;">*</span>验证码</label>
+			<input type="text">
+		</div>
+		<div class="info">
+			<div class="content">
+				<h4>举报须知</h4>
+				<p>您应该保证你的投诉行为基于善意,并代表您本人真实意思。禁止恶意举报,除法律法规规定的情形外,未经用户许可,本地鸟不会向第三方公开、透露你的个人信息。</p>
+				<div class="bot">
+					举报信息一经查实，必有好礼相送。欢迎广大用户监督举报。
+				</div>
+			</div>
+		</div>
+		<div class="submit" style="padding: 15px;">
+			<button class="mui-btn btn-block" style="background: #ff7400;width: 100%;color:#fff;line-height: 30px;border:none;">提交</button>
+		</div>
+	</div>
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script> 
+		$('.option span').on('tap',function(){
+			$(this).toggleClass("active");
+		})
+	</script>
+</body>
+</html>

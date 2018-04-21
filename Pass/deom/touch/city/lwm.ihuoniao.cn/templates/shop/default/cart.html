@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>购物车-{#$shop_title#}</title>
+<meta name="keywords" content="{#$shop_keywords#}"/>
+<meta name="description" content="{#$shop_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/cart.css" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<div class="bread">
+	<p><a href="{#$shop_channelDomain#}" target="_blank">首页</a>><a href="{#getUrlPath service='shop' template='cart'#}">购物车</a></p>
+</div>
+
+<!--购物车为空时-->
+<div class="null" style="display:none">
+	<img src="{#$templets_skin#}images/none.png">
+</div>
+
+<!-- 购物车有商品时-->
+<div class="have">
+	<div class="state">
+		<span class="left"><a href="{#getUrlPath service='shop' template='cart'#}">我的购物车(<i>0</i>)</a></span>
+		<div class="right">
+			<ul>
+				<li class="one on"><s></s><div><i>1</i><em>购物车</em></div></li>
+				<li class="two"><s></s><div><i>2</i><em>填写核对订单信息</em></div></li>
+				<li class="three"><s></s><div><i>3</i><em>成功提交订单</em></div></li>
+			</ul>
+		</div>
+	</div>
+	<div class="goods">
+		<form action="{#getUrlPath service='shop' template='confirm-order'#}" data-action="{#$cfg_basehost#}/include/ajax.php?service=shop&action=confirm_order" method="post">
+			<ul class="title clearfix">
+				<li class="t0"><i class="on"></i></li>
+				<li class="t1">全选</li>
+				<li class="t2">商品</li>
+				<li class="t3"></li>
+				<li class="t4">单价（元）</li>
+				<li class="t5">数量</li>
+				<li class="t6">小计（元）</li>
+				<li class="t7">操作</li>
+			</ul>
+
+			{#$totalPrice = 0#}
+			{#$totalCount = 0#}
+
+			{#foreach from=$cartList item="cart"#}
+			<div class="sj">
+				<div class="name">
+					<span class="left"><i class="on"></i><font>商家: </font>{#if $cart.domain#}<a href="{#$cart.domain#}" target="_blank" title="{#$cart.store#}">{#$cart.store#}</a>
+					{#if $cart.qq#}<s><a href="http://wpa.qq.com/msgrd?v=3&uin={#$cart.qq#}&Site={#$shop_title#}&Menu=yes" target="_blank" title="点击在线交谈"></a></s>{#/if#}{#else#}{#$cart.store#}{#/if#}
+					</span>
+				</div>
+
+				{#foreach from=$cart.list item="list"#}
+
+				{#$totalPrice = $totalPrice + $list.price * $list.count + $list.logistic#}
+				{#if $totalPrice != 0#}
+				{#$totalCount = $totalCount + $list.count#}
+				{#/if#}
+				<ul data-id="{#$list.id#}" data-price="{#$list.price#}" data-specation="{#$list.specation#}" data-limit="{#$list.limit#}" data-inventor="{#$list.inventor#}" data-bearfreight="{#$list.logisticTemp.bearFreight#}" data-valuation="{#$list.logisticTemp.valuation#}" data-express_start="{#$list.logisticTemp.express_start#}" data-express_postage="{#$list.logisticTemp.express_postage#}" data-express_plus="{#$list.logisticTemp.express_plus#}" data-express_postageplus="{#$list.logisticTemp.express_postageplus#}" data-preferentialstandard="{#$list.logisticTemp.preferentialStandard#}" data-preferentialmoney="{#$list.logisticTemp.preferentialMoney#}" data-weight="{#$list.weight#}" data-volume="{#$list.volume#}" class="sp clearfix">
+					<li class="t0"><i class="on"></i></li>
+					<li class="t1"><a href="{#$list.url#}" target="_blank"><img src="{#$list.thumb#}"></a></li>
+					<li class="t2"><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></li>
+					<li class="t3"><label>{#$list.speInfo|replace:"；":"<br />"#}&nbsp;</label></li>
+					<li class="t4"><span>{#$list.price#}</span></li>
+					<li class="t5"><div><a class="minus" href="javascript:;"></a><input type="text" value="{#$list.count#}" onkeyup="value=value.replace(/\D+/ig,'')" /><a class="plus" href="javascript:;"></a></div></li>
+					<li class="t6"><span>{#($list.count * $list.price + $list.logistic)|string_format:"%.2f"#}</span><br /><small title="{#$list.logisticNote#}">{#if $list.logistic == 0#}免运费{#else#}含运费：{#$list.logistic#}元{#/if#}</small></li>
+					<li class="t7"><a href="javaScript:;">删除</a></li>
+				</ul>
+				{#/foreach#}
+
+			</div>
+			{#/foreach#}
+
+			<div class="sum">
+				<div class="left"><i class="on"></i>全选<span><a href="javascript:;" id="deleteAll">删除</a></span></div>
+				<div class="right"><span>已选<em>{#$totalCount#}</em>件商品，总计：<font>&yen;{#$totalPrice|string_format:"%.2f"#}</font></span><a href="javascript:;" id="js">去结算</a></div>
+			</div>
+		</form>
+	</div>
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/cart.js?v=1"></script>
+</body>
+</html>

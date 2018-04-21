@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var modelType = "car", adminPath = "{#$adminPath#}", colorlist = "";
+</script>
+<style>body {height: auto;}</style>
+</head>
+
+<body>
+<div class="left-nav" id="left-nav">
+  <ul>
+    <li class="current"><a href="javascript:;">基本信息</a></li>
+    <li><a href="javascript:;">车体</a></li>
+    <li><a href="javascript:;">发动机</a></li>
+    <li><a href="javascript:;">变速箱</a></li>
+    <li><a href="javascript:;">底盘制动</a></li>
+    <li><a href="javascript:;">安全配置</a></li>
+    <li><a href="javascript:;">车轮</a></li>
+    <li><a href="javascript:;">行车辅助</a></li>
+    <li><a href="javascript:;">门窗/后视镜</a></li>
+    <li><a href="javascript:;">灯光</a></li>
+    <li><a href="javascript:;">内部配置</a></li>
+    <li><a href="javascript:;">座椅</a></li>
+    <li><a href="javascript:;">娱乐通讯</a></li>
+    <li><a href="javascript:;">空调/冰箱</a></li>
+    </li>
+  </ul>
+</div>
+<form action="" method="post" name="editform" id="editform" class="editform" style="padding:15px 0 100px 100px;">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="cid" id="cid" value="{#$cid#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <div class="thead">&nbsp;&nbsp;基本信息</div>
+  <dl class="clearfix">
+    <dt><label>车型：</label></dt>
+    <dd style="position:static;">
+      <div id="carBtn">
+        <a href="javascript:;" class="btn" id="cBrand" data-type="Brand" data-id="{#$brandid#}">{#$brandName#}<span class="caret"></span></a>
+        <a href="javascript:;" class="btn" id="cCar" data-type="Car" data-id="{#$cid#}">{#$cname#}<span class="caret"></span></a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="year">年款：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="text" name="year" id="year" min="0" data-regex="[1-9]\d{0,3}" value="{#$year#}">
+        <span class="add-on" style="margin-right:10px;">年</span>
+        <span class="input-tips input-error"><s></s>请输入所属年款，数字类型</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="title">配置名称：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="title" id="title" value="{#$title#}" maxlength="30" data-regex=".{2,30}" />
+      <span class="input-tips"><s></s>请输入配置名称，2-30位</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="displacement">排量：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="text" name="displacement" id="displacement" value="{#$displacement#}">
+        <span class="add-on" style="margin-right:10px;">L</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="listedDate">上市时间：</label></dt>
+    <dd><input class="input-small" type="text" name="listedDate" id="listedDate" value="{#$listedDate#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="saletype">销售状态：</label></dt>
+    <dd class="radio">
+      {#html_radios name="saletype" values=$saletypeopt checked=$saletype output=$saletypenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="guide">官方指导价：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="text" name="guide" id="guide" value="{#$guide#}">
+        <span class="add-on" style="margin-right:10px;">万</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="warranty">保修政策：</label></dt>
+    <dd><input class="input-large" type="text" name="warranty" id="warranty" value="{#$warranty#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="speed">最高车速：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="speed" min="0" id="speed" value="{#$speed#}">
+        <span class="add-on" style="margin-right:10px;">km/h</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="occupant">乘员数（含司机）：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="occupant" min="0" id="occupant" value="{#$occupant#}">
+        <span class="add-on" style="margin-right:10px;">个</span>
+      </div>
+    </dd>
+  </dl>
+  <div class="thead">&nbsp;&nbsp;车体</div>
+  <dl class="clearfix">
+    <dt><label>车身颜色：</label><a href="javascript:;" id="selectAllColor">全选</a>&nbsp;&nbsp;&nbsp;<input type="hidden" name="color" id="color" value="{#$color#}" /></dt>
+    <dd>
+      <ul class="csyansbox" id="divColor"><span style="line-height:60px;">请先选择车型！</span></ul>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="long">车长：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="long" min="0" id="long" value="{#$long#}">
+        <span class="add-on" style="margin-right:10px;">mm</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="width">车宽：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="width" min="0" id="width" value="{#$width#}">
+        <span class="add-on" style="margin-right:10px;">mm</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="height">车高：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="height" min="0" id="height" value="{#$height#}">
+        <span class="add-on" style="margin-right:10px;">mm</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="wheelbase">轴距：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="wheelbase" min="0" id="wheelbase" value="{#$wheelbase#}">
+        <span class="add-on" style="margin-right:10px;">mm</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="ftrack">前轮距：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="ftrack" min="0" id="ftrack" value="{#$ftrack#}">
+        <span class="add-on" style="margin-right:10px;">mm</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="btrack">后轮距：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="btrack" min="0" id="btrack" value="{#$btrack#}">
+        <span class="add-on" style="margin-right:10px;">mm</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="curbweight">整备质量：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="curbweight" min="0" id="curbweight" value="{#$curbweight#}">
+        <span class="add-on" style="margin-right:10px;">kg</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="fullweight">满载质量：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="fullweight" min="0" id="fullweight" value="{#$fullweight#}">
+        <span class="add-on" style="margin-right:10px;">kg</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="clearance">最小离地间隙：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="clearance" min="0" id="clearance" value="{#$clearance#}">
+        <span class="add-on" style="margin-right:10px;">mm</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="approach">接近角：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="approach" min="0" id="approach" value="{#$approach#}">
+        <span class="add-on" style="margin-right:10px;">°</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="departure">离去角：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="departure" min="0" id="departure" value="{#$departure#}">
+        <span class="add-on" style="margin-right:10px;">°</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="luggage">行李厢容积：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="luggage" min="0" id="luggage" value="{#$luggage#}">
+        <span class="add-on" style="margin-right:10px;">L</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="gopentype">行李厢盖开合方式：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="gopentype" min="0" id="gopentype" value="{#$gopentype#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="电动">电动</li>
+          <li title="手动">手动</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="opentype">行李厢打开方式：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="opentype" min="0" id="opentype" value="{#$opentype#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="上掀">上掀</li>
+          <li title="侧开">侧开</li>
+          <li title="上下掀开">上下掀开</li>
+          <li title="对开">对开</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="doors">车门数：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="doors" min="0" id="doors" value="{#$doors#}">
+        <span class="add-on" style="margin-right:10px;">个</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="roofrack">车顶行李厢架：</label></dt>
+    <dd class="radio">
+      {#html_radios name="roofrack" values=$roofrackopt checked=$roofrack output=$roofracknames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="spoaro">运动包围：</label></dt>
+    <dd class="radio">
+      {#html_radios name="spoaro" values=$spoaroopt checked=$spoaro output=$spoaronames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <div class="thead">&nbsp;&nbsp;发动机</div>
+  <dl class="clearfix">
+    <dt><label for="enginepos">发动机位置：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="enginepos" id="enginepos" value="{#$enginepos#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="前置发动机">前置发动机</li>
+          <li title="中置发动机">中置发动机</li>
+          <li title="后置发动机">后置发动机</li>
+          <li title="横置发动机">横置发动机</li>
+          <li title="纵置发动机">纵置发动机</li>
+          <li title="反置发动机">反置发动机</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="enginemod">发动机型号：</label></dt>
+    <dd><input class="input-medium" type="text" name="enginemod" id="enginemod" value="{#$enginemod#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="displacementMl">排量：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="displacementMl" min="0" id="displacementMl" value="{#$displacementMl#}">
+        <span class="add-on" style="margin-right:10px;">ml</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="intake">进气形式：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="intake" id="intake" value="{#$intake#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="机械增压">机械增压</li>
+          <li title="涡轮增压">涡轮增压</li>
+          <li title="自然吸气">自然吸气</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="cylindertype">气缸排列型式：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="text" name="cylindertype" id="cylindertype" maxlength="2" value="{#$cylindertype#}">
+        <span class="add-on" style="margin-right:10px;">型</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="cylinder">汽缸数：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="cylinder" min="0" id="cylinder" max="9" min="1" value="{#$cylinder#}">
+        <span class="add-on" style="margin-right:10px;">个</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="valvecount">每缸气门数：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="valvecount" min="0" id="valvecount" max="9" min="1" value="{#$valvecount#}">
+        <span class="add-on" style="margin-right:10px;">个</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="valvestructure">进气形式：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="valvestructure" id="valvestructure" value="{#$valvestructure#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="单顶置凸轮轴(SOHC)">单顶置凸轮轴(SOHC)</li>
+          <li title="双顶置凸轮轴(DOHC)">双顶置凸轮轴(DOHC)</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="compression">压缩比：</label></dt>
+    <dd>
+      <input class="input-mini" type="text" name="compression" id="compression" value="{#$compression#}">
+      <span class="input-tips input-error"><s></s>请输入压缩比</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="bore">缸径：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="text" name="bore" id="bore" value="{#$bore#}">
+        <span class="add-on" style="margin-right:10px;">mm</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="stroke">行程：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="text" name="stroke" id="stroke" value="{#$stroke#}">
+        <span class="add-on" style="margin-right:10px;">mm</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="horsepower">最大马力：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="horsepower" min="0" id="horsepower" value="{#$horsepower#}">
+        <span class="add-on" style="margin-right:10px;">Ps</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="power">最大功率：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="power" min="0" id="power" value="{#$power#}">
+        <span class="add-on" style="margin-right:10px;">kW</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="powerspeed">最大功率转速：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-small" type="text" name="powerspeed" id="powerspeed" value="{#$powerspeed#}">
+        <span class="add-on" style="margin-right:10px;">rpm</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="torque">最大扭矩：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="torque" min="0" id="torque" value="{#$torque#}">
+        <span class="add-on" style="margin-right:10px;">Nm</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="torquespeed">最大扭矩转速：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-small" type="text" name="torquespeed" id="torquespeed" value="{#$torquespeed#}">
+        <span class="add-on" style="margin-right:10px;">rpm</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="specific">特有技术：</label></dt>
+    <dd><input class="input-large" type="text" name="specific" id="specific" value="{#$specific#}"></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="fuel">燃料类型：</label></dt>
+    <dd>
+      <span id="fuelList">
+        <select name="fuel" id="fuel" class="input-medium">
+          {#html_options options=$fuelList selected=$fuel#}
+        </select>
+      </span>
+      <span class="input-tips"><s></s>请选择燃料类型</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="fuelgrade">燃油标号：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="fuelgrade" id="fuelgrade" value="{#$fuelgrade#}">
+        <span class="add-on" style="margin-right:10px;">号</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="oilway">供油方式：</label></dt>
+    <dd style="position:static;">
+      <input class="input-small" type="text" name="oilway" id="oilway" value="{#$oilway#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="分化油器">分化油器</li>
+          <li title="单点电喷">单点电喷</li>
+          <li title="多点电喷">多点电喷</li>
+          <li title="直喷">直喷</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="fueltank">燃油箱容积：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="number" name="fueltank" id="fueltank" value="{#$fueltank#}">
+        <span class="add-on" style="margin-right:10px;">L</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="headmaterial">缸盖材料：</label></dt>
+    <dd style="position:static;">
+      <input class="input-small" type="text" name="headmaterial" id="headmaterial" value="{#$headmaterial#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="铝合金">铝合金</li>
+          <li title="灰铸铁">灰铸铁</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="cylindermaterial">缸体材料：</label></dt>
+    <dd style="position:static;">
+      <input class="input-small" type="text" name="cylindermaterial" id="cylindermaterial" value="{#$cylindermaterial#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="铸铁">铸铁</li>
+          <li title="合金铸铁">合金铸铁</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="environmental">环保标准：</label></dt>
+    <dd style="position:static;">
+      <input class="input-small" type="text" name="environmental" id="environmental" value="{#$environmental#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="国1">国1</li>
+          <li title="国2">国2</li>
+          <li title="国3">国3</li>
+          <li title="国4">国4</li>
+          <li title="国5">国5</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="ossystem">启停系统：</label></dt>
+    <dd class="radio">
+      {#html_radios name="ossystem" values=$ossystemopt checked=$ossystem output=$ossystemnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <div class="thead">&nbsp;&nbsp;变速箱</div>
+  <dl class="clearfix">
+    <dt><label for="gearbox">变速箱：</label></dt>
+    <dd>
+      <span id="gearboxList">
+        <select name="gearbox" id="gearbox" class="input-large">
+          {#html_options options=$gearboxList selected=$gearbox#}
+        </select>
+      </span>
+      <span class="input-tips"><s></s>请选择变速箱</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="blockcount">挡位数：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;" style="margin:0;">
+        <input class="input-mini" type="number" name="blockcount" min="0" id="blockcount" value="{#$blockcount#}">
+        <span class="add-on" style="margin-right:10px;">挡</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="shiftpaddles">换挡拨片：</label></dt>
+    <dd class="radio">
+      {#html_radios name="shiftpaddles" values=$shiftpaddlesopt checked=$shiftpaddles output=$shiftpaddlesnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <div class="thead">&nbsp;&nbsp;底盘制动</div>
+  <dl class="clearfix">
+    <dt><label for="structure">车体结构：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="structure" id="structure" value="{#$structure#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="承载式车身">承载式车身</li>
+          <li title="非承载式车身">非承载式车身</li>
+          <li title="半承载式车身">半承载式车身</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="turnradius">最小转弯半径：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;" style="margin:0;">
+        <input class="input-mini" type="text" name="turnradius" min="0" id="turnradius" value="{#$turnradius#}">
+        <span class="add-on" style="margin-right:10px;">m</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="steering">转向助力：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="steering" id="steering" value="{#$steering#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="机械液压">机械液压</li>
+          <li title="电子液压">电子液压</li>
+          <li title="电动转向助力">电动转向助力</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="fbraketype">前制动类型：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="fbraketype" id="fbraketype" value="{#$fbraketype#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="盘式">盘式</li>
+          <li title="鼓式">鼓式</li>
+          <li title="通风盘">通风盘</li>
+          <li title="陶瓷通风盘">陶瓷通风盘</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="rbraketype">后制动类型：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="rbraketype" id="rbraketype" value="{#$rbraketype#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="盘式">盘式</li>
+          <li title="鼓式">鼓式</li>
+          <li title="通风盘">通风盘</li>
+          <li title="陶瓷通风盘">陶瓷通风盘</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="pbraketype">驻车制动类型：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="pbraketype" id="pbraketype" value="{#$pbraketype#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="手刹">手刹</li>
+          <li title="电子驻车">电子驻车</li>
+          <li title="脚刹">脚刹</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="driver">驱动方式：</label></dt>
+    <dd>
+      <span id="gearboxList">
+        <select name="driver" id="driver" class="input-medium">
+          {#html_options options=$driverList selected=$driver#}
+        </select>
+      </span>
+      <span class="input-tips"><s></s>请选择驱动方式</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="airsuspension">空气悬挂：</label></dt>
+    <dd class="radio">
+      {#html_radios name="airsuspension" values=$airsuspensionopt checked=$airsuspension output=$airsuspensionnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="adjustable">可调悬挂：</label></dt>
+    <dd class="radio">
+      {#html_radios name="adjustable" values=$adjustableopt checked=$adjustable output=$adjustablenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="fsuspensiontype">前悬挂类型：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="fsuspensiontype" id="fsuspensiontype" value="{#$fsuspensiontype#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="麦弗逊式">麦弗逊式</li>
+          <li title="多连杆">多连杆</li>
+          <li title="双横臂">双横臂</li>
+          <li title="双叉臂">双叉臂</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="bsuspensiontype">后悬挂类型：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="bsuspensiontype" id="bsuspensiontype" value="{#$bsuspensiontype#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="独立悬挂">独立悬挂</li>
+          <li title="非独立悬挂">非独立悬挂</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <div class="thead">&nbsp;&nbsp;安全配置</div>
+  <dl class="clearfix">
+    <dt><label for="driverairbags">驾驶位安全气囊：</label></dt>
+    <dd class="radio">
+      {#html_radios name="driverairbags" values=$driverairbagsopt checked=$driverairbags output=$driverairbagsnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="copilotairbag">副驾驶位安全气囊：</label></dt>
+    <dd class="radio">
+      {#html_radios name="copilotairbag" values=$copilotairbagopt checked=$copilotairbag output=$copilotairbagnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="fairbags">前排侧安全气囊：</label></dt>
+    <dd class="radio">
+      {#html_radios name="fairbags" values=$fairbagsopt checked=$fairbags output=$fairbagsnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="fhairbags">前排头部气囊(气帘)：</label></dt>
+    <dd class="radio">
+      {#html_radios name="fhairbags" values=$fhairbagsopt checked=$fhairbags output=$fhairbagsnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="kneeairbag">膝部气囊：</label></dt>
+    <dd class="radio">
+      {#html_radios name="kneeairbag" values=$kneeairbagopt checked=$kneeairbag output=$kneeairbagnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="rairbags">后排侧安全气囊：</label></dt>
+    <dd class="radio">
+      {#html_radios name="rairbags" values=$rairbagsopt checked=$rairbags output=$rairbagsnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="rhairbags">后排头部气囊(气帘)：</label></dt>
+    <dd class="radio">
+      {#html_radios name="rhairbags" values=$rhairbagsopt checked=$rhairbags output=$rhairbagsnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="seatips">安全带未系提示：</label></dt>
+    <dd class="radio">
+      {#html_radios name="seatips" values=$seatipsopt checked=$seatips output=$seatipsnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="seatforce">安全带限力功能：</label></dt>
+    <dd class="radio">
+      {#html_radios name="seatforce" values=$seatforceopt checked=$seatforce output=$seatforcenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="seatprete">安全带预收紧功能：</label></dt>
+    <dd class="radio">
+      {#html_radios name="seatprete" values=$seatpreteopt checked=$seatprete output=$seatpretenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="seatadjus">前安全带调节：</label></dt>
+    <dd><input class="input-medium" type="text" name="seatadjus" id="seatadjus" value="{#$seatadjus#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="rseat">后排安全带：</label></dt>
+    <dd class="radio">
+      {#html_radios name="rseat" values=$rseatopt checked=$rseat output=$rseatnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="tirepressure">胎压监测装置：</label></dt>
+    <dd class="radio">
+      {#html_radios name="tirepressure" values=$tirepressureopt checked=$tirepressure output=$tirepressurenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="locking">车内中控锁：</label></dt>
+    <dd class="radio">
+      {#html_radios name="locking" values=$lockingopt checked=$locking output=$lockingnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="centrallocking">中控门锁：</label></dt>
+    <dd class="radio">
+      {#html_radios name="centrallocking" values=$centrallockingopt checked=$centrallocking output=$centrallockingnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="remotekey">遥控钥匙：</label></dt>
+    <dd class="radio">
+      {#html_radios name="remotekey" values=$remotekeyopt checked=$remotekey output=$remotekeynames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="keylessstart">无钥匙启动系统：</label></dt>
+    <dd class="radio">
+      {#html_radios name="keylessstart" values=$keylessstartopt checked=$keylessstart output=$keylessstartnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="eantiengine">发动机电子防盗：</label></dt>
+    <dd class="radio">
+      {#html_radios name="eantiengine" values=$eantiengineopt checked=$eantiengine output=$eantienginenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <div class="thead">&nbsp;&nbsp;车轮</div>
+  <dl class="clearfix">
+    <dt><label for="frontire">前轮胎规格：</label></dt>
+    <dd><input class="input-medium" type="text" name="frontire" id="frontire" value="{#$frontire#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="reartire">后轮胎规格：</label></dt>
+    <dd><input class="input-medium" type="text" name="reartire" id="reartire" value="{#$reartire#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="reartire">前轮毂规格：</label></dt>
+    <dd><input class="input-medium" type="text" name="reartire" id="reartire" value="{#$reartire#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="bwheelhub">后轮毂规格：</label></dt>
+    <dd><input class="input-medium" type="text" name="bwheelhub" id="bwheelhub" value="{#$bwheelhub#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="sparetire">备胎类型：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="sparetire" id="sparetire" value="{#$sparetire#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="全尺寸备胎">全尺寸备胎</li>
+          <li title="非全尺寸备胎">非全尺寸备胎</li>
+          <li title="无备胎">无备胎</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="hubmaterial">轮毂材料：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="hubmaterial" id="hubmaterial" value="{#$hubmaterial#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="钢轮毂">钢轮毂</li>
+          <li title="合金轮毂">合金轮毂</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <div class="thead">&nbsp;&nbsp;行车辅助</div>
+  <dl class="clearfix">
+    <dt><label for="abs">刹车防抱死(ABS)：</label></dt>
+    <dd class="radio">
+      {#html_radios name="abs" values=$absopt checked=$abs output=$absnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="ebd">电子制动力分配系统(EBD)：</label></dt>
+    <dd class="radio">
+      {#html_radios name="ebd" values=$ebdopt checked=$ebd output=$ebdnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="brakeassist">刹车辅助(EBA/BAS/BA/EVA等)：</label></dt>
+    <dd class="radio">
+      {#html_radios name="brakeassist" values=$brakeassistopt checked=$brakeassist output=$brakeassistnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="traction">牵引力控制(ASR/TCS/TRC/ATC等)：</label></dt>
+    <dd class="radio">
+      {#html_radios name="traction" values=$tractionopt checked=$traction output=$tractionnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="esp">动态稳定控制系统（ESP）：</label></dt>
+    <dd class="radio">
+      {#html_radios name="esp" values=$espopt checked=$esp output=$espnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="eps">随速助力转向调节(EPS)：</label></dt>
+    <dd class="radio">
+      {#html_radios name="eps" values=$epsopt checked=$eps output=$epsnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="apark">自动驻车：</label></dt>
+    <dd class="radio">
+      {#html_radios name="apark" values=$aparkopt checked=$apark output=$aparknames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="hillassist">上坡辅助：</label></dt>
+    <dd class="radio">
+      {#html_radios name="hillassist" values=$hillassistopt checked=$hillassist output=$hillassistnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="descent">陡坡缓降：</label></dt>
+    <dd class="radio">
+      {#html_radios name="descent" values=$descentopt checked=$descent output=$descentnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="parkradar">泊车雷达(车前)：</label></dt>
+    <dd class="radio">
+      {#html_radios name="parkradar" values=$parkradaropt checked=$parkradar output=$parkradarnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="reversradar">倒车雷达(车后)：</label></dt>
+    <dd class="radio">
+      {#html_radios name="reversradar" values=$reversradaropt checked=$reversradar output=$reversradarnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="reverseimage">倒车影像：</label></dt>
+    <dd class="radio">
+      {#html_radios name="reverseimage" values=$reverseimageopt checked=$reverseimage output=$reverseimagenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="panoramicamera">全景摄像头：</label></dt>
+    <dd class="radio">
+      {#html_radios name="panoramicamera" values=$panoramicameraopt checked=$panoramicamera output=$panoramicameranames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="cruise">定速巡航：</label></dt>
+    <dd class="radio">
+      {#html_radios name="cruise" values=$cruiseopt checked=$cruise output=$cruisenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="adaptivecruise">自适应巡航：</label></dt>
+    <dd class="radio">
+      {#html_radios name="adaptivecruise" values=$adaptivecruiseopt checked=$adaptivecruise output=$adaptivecruisenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="gps">GPS导航系统：</label></dt>
+    <dd class="radio">
+      {#html_radios name="gps" values=$gpsopt checked=$gps output=$gpsnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="interactive">人机交互系统：</label></dt>
+    <dd class="radio">
+      {#html_radios name="interactive" values=$interactiveopt checked=$interactive output=$interactivenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="autopark">自动泊车入位：</label></dt>
+    <dd class="radio">
+      {#html_radios name="autopark" values=$autoparkopt checked=$autopark output=$autoparknames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="activebrake">主动刹车/主动安全系统：</label></dt>
+    <dd class="radio">
+      {#html_radios name="activebrake" values=$activebrakeopt checked=$activebrake output=$activebrakenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="nightvision">夜视系统：</label></dt>
+    <dd class="radio">
+      {#html_radios name="nightvision" values=$nightvisionopt checked=$nightvision output=$nightvisionnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="blindspot">盲点检测：</label></dt>
+    <dd class="radio">
+      {#html_radios name="blindspot" values=$blindspotopt checked=$blindspot output=$blindspotnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <div class="thead">&nbsp;&nbsp;门窗/后视镜</div>
+  <dl class="clearfix">
+    <dt><label for="electricw">电动车窗：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="electricw" id="electricw" value="{#$electricw#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="前后电动窗">前后电动窗</li>
+          <li title="前门电动">前门电动</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="uv">防紫外线/隔热玻璃：</label></dt>
+    <dd><input class="input-medium" type="text" name="uv" id="uv" value="{#$uv#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="wpinch">电动窗防夹功能：</label></dt>
+    <dd><input class="input-medium" type="text" name="wpinch" id="wpinch" value="{#$wpinch#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="skylightmode">天窗开合方式：</label></dt>
+    <dd style="position:static;">
+      <input class="input-small" type="text" name="skylightmode" id="skylightmode" value="{#$skylightmode#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="电动">电动</li>
+          <li title="手动">手动</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="skylighttype">天窗型式：</label></dt>
+    <dd style="position:static;">
+      <input class="input-small" type="text" name="skylighttype" id="skylighttype" value="{#$skylighttype#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="全景">全景</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="rsunshade">后窗遮阳帘：</label></dt>
+    <dd class="radio">
+      {#html_radios name="rsunshade" values=$rsunshadeopt checked=$rsunshade output=$rsunshadenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="rssunshade">后排侧遮阳帘：</label></dt>
+    <dd class="radio">
+      {#html_radios name="rssunshade" values=$rssunshadeopt checked=$rssunshade output=$rssunshadenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="awipers">后雨刷器：</label></dt>
+    <dd class="radio">
+      {#html_radios name="awipers" values=$awipersopt checked=$awipers output=$awipersnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="swipers">感应雨刷：</label></dt>
+    <dd class="radio">
+      {#html_radios name="swipers" values=$swipersopt checked=$swipers output=$swipersnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="mirrorsturnsignals">后视镜带侧转向灯：</label></dt>
+    <dd class="radio">
+      {#html_radios name="mirrorsturnsignals" values=$mirrorsturnsignalsopt checked=$mirrorsturnsignals output=$mirrorsturnsignalsnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="omirrormemory">外后视镜记忆功能：</label></dt>
+    <dd class="radio">
+      {#html_radios name="omirrormemory" values=$omirrormemoryopt checked=$omirrormemory output=$omirrormemorynames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="emirrorheat">外后视镜加热功能：</label></dt>
+    <dd class="radio">
+      {#html_radios name="emirrorheat" values=$emirrorheatopt checked=$emirrorheat output=$emirrorheatnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="emirrorfold">外后视镜电动折叠功能：</label></dt>
+    <dd class="radio">
+      {#html_radios name="emirrorfold" values=$emirrorfoldopt checked=$emirrorfold output=$emirrorfoldnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="emirroradju">外后视镜电动调节：</label></dt>
+    <dd class="radio">
+      {#html_radios name="emirroradju" values=$emirroradjuopt checked=$emirroradju output=$emirroradjunames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="irmirrordimm">内后视镜防眩目功能：</label></dt>
+    <dd class="radio">
+      {#html_radios name="irmirrordimm" values=$irmirrordimmopt checked=$irmirrordimm output=$irmirrordimmnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="visormirror">遮阳板化妆镜：</label></dt>
+    <dd class="radio">
+      {#html_radios name="visormirror" values=$visormirroropt checked=$visormirror output=$visormirrornames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <div class="thead">&nbsp;&nbsp;灯光</div>
+  <dl class="clearfix">
+    <dt><label for="headlamp">前照灯类型：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="headlamp" id="headlamp" value="{#$headlamp#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="卤素灯">卤素灯</li>
+          <li title="氙气灯">氙气灯</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="headlightsautosc">前大灯自动开闭：</label></dt>
+    <dd class="radio">
+      {#html_radios name="headlightsautosc" values=$headlightsautoscopt checked=$headlightsautosc output=$headlightsautoscnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="headlampautocf">前照灯自动清洗功能：</label></dt>
+    <dd class="radio">
+      {#html_radios name="headlampautocf" values=$headlampautocfopt checked=$headlampautocf output=$headlampautocfnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="headlightswds">前大灯随动转向：</label></dt>
+    <dd class="radio">
+      {#html_radios name="headlightswds" values=$headlightswdsopt checked=$headlightswds output=$headlightswdsnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="headlamprange">前照灯照射范围调整：</label></dt>
+    <dd class="radio">
+      {#html_radios name="headlamprange" values=$headlamprangeopt checked=$headlamprange output=$headlamprangenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="frontfoglights">前雾灯：</label></dt>
+    <dd class="radio">
+      {#html_radios name="frontfoglights" values=$frontfoglightsopt checked=$frontfoglights output=$frontfoglightsnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="breadlamp">车厢前阅读灯：</label></dt>
+    <dd class="radio">
+      {#html_radios name="breadlamp" values=$breadlampopt checked=$breadlamp output=$breadlampnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="areadlamp">车厢后阅读灯：</label></dt>
+    <dd class="radio">
+      {#html_radios name="areadlamp" values=$areadlampopt checked=$areadlamp output=$areadlampnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="ambientlight">车内氛围灯：</label></dt>
+    <dd class="radio">
+      {#html_radios name="ambientlight" values=$ambientlightopt checked=$ambientlight output=$ambientlightnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="daytimerunlights">日间行车灯：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="daytimerunlights" id="daytimerunlights" value="{#$daytimerunlights#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="LED">LED</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="ledtail">LED尾灯：</label></dt>
+    <dd class="radio">
+      {#html_radios name="ledtail" values=$ledtailopt checked=$ledtail output=$ledtailnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="highbrekelight">高位（第三）制动灯：</label></dt>
+    <dd class="radio">
+      {#html_radios name="highbrekelight" values=$highbrekelightopt checked=$highbrekelight output=$highbrekelightnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="assistlamp">转向头灯（辅助灯）：</label></dt>
+    <dd class="radio">
+      {#html_radios name="assistlamp" values=$assistlampopt checked=$assistlamp output=$assistlampnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="luggagelamp">行李厢灯：</label></dt>
+    <dd class="radio">
+      {#html_radios name="luggagelamp" values=$luggagelampopt checked=$luggagelamp output=$luggagelampnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <div class="thead">&nbsp;&nbsp;内部配置</div>
+  <dl class="clearfix">
+    <dt><label for="swheelbfadjust">方向盘前后调节：</label></dt>
+    <dd class="radio">
+      {#html_radios name="swheelbfadjust" values=$swheelbfadjustopt checked=$swheelbfadjust output=$swheelbfadjustnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="swheeludadjust">方向盘上下调节：</label></dt>
+    <dd class="radio">
+      {#html_radios name="swheeludadjust" values=$swheeludadjustopt checked=$swheeludadjust output=$swheeludadjustnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="swheeladjustmethod">方向盘调节方式：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="swheeladjustmethod" id="swheeladjustmethod" value="{#$swheeladjustmethod#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="手动">手动</li>
+          <li title="电动">电动</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="swheelsurface">方向盘表面材料：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="swheelsurface" id="swheelsurface" value="{#$swheelsurface#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="皮革">皮革</li>
+          <li title="真皮">真皮</li>
+          <li title="木制材料">木制材料</li>
+          <li title="铝合金">铝合金</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="multiswheel">多功能方向盘：</label></dt>
+    <dd class="radio">
+      {#html_radios name="multiswheel" values=$multiswheelopt checked=$multiswheel output=$multiswheelnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="computerdisplay">行车电脑显示屏：</label></dt>
+    <dd class="radio">
+      {#html_radios name="computerdisplay" values=$computerdisplayopt checked=$computerdisplay output=$computerdisplaynames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="interiorcolors">内饰颜色：</label></dt>
+    <dd><input class="input-xlarge" type="text" name="interiorcolors" id="interiorcolors" value="{#$interiorcolors#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="rearcupholder">后排杯架：</label></dt>
+    <dd class="radio">
+      {#html_radios name="rearcupholder" values=$rearcupholderopt checked=$rearcupholder output=$rearcupholdernames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="vehiclepowervoltage">车内电源电压：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;" style="margin:0;">
+        <input class="input-mini" type="number" name="vehiclepowervoltage" min="0" id="vehiclepowervoltage" value="{#$vehiclepowervoltage#}">
+        <span class="add-on" style="margin-right:10px;">V</span>
+      </div>
+    </dd>
+  </dl>
+  <div class="thead">&nbsp;&nbsp;座椅</div>
+  <dl class="clearfix">
+    <dt><label for="sportseats">运动座椅：</label></dt>
+    <dd class="radio">
+      {#html_radios name="sportseats" values=$sportseatsopt checked=$sportseats output=$sportseatsnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="seatmaterial">座椅材料：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="seatmaterial" id="seatmaterial" value="{#$seatmaterial#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="织物">织物</li>
+          <li title="真皮">真皮</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="seatadjust">驾驶座座椅调节方式：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="seatadjust" id="seatadjust" value="{#$seatadjust#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="手动">手动</li>
+          <li title="电动">电动</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="pseatadjust">副驾驶座椅调节方式：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="pseatadjust" id="pseatadjust" value="{#$pseatadjust#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="手动">手动</li>
+          <li title="电动">电动</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="lumbarsupportadjust">驾驶座腰部支撑调节：</label></dt>
+    <dd class="radio">
+      {#html_radios name="lumbarsupportadjust" values=$lumbarsupportadjustopt checked=$lumbarsupportadjust output=$lumbarsupportadjustnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="shouldsupportadjust">驾驶座肩部支撑调节：</label></dt>
+    <dd class="radio">
+      {#html_radios name="shouldsupportadjust" values=$shouldsupportadjustopt checked=$shouldsupportadjust output=$shouldsupportadjustnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="fcenterarmrest">前座中央扶手：</label></dt>
+    <dd class="radio">
+      {#html_radios name="fcenterarmrest" values=$fcenterarmrestopt checked=$fcenterarmrest output=$fcenterarmrestnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="acenterarmrest">后座中央扶手：</label></dt>
+    <dd class="radio">
+      {#html_radios name="acenterarmrest" values=$acenterarmrestopt checked=$acenterarmrest output=$acenterarmrestnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="seatventilation">座椅通风：</label></dt>
+    <dd class="radio">
+      {#html_radios name="seatventilation" values=$seatventilationopt checked=$seatventilation output=$seatventilationnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="seatheating">座椅加热：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="seatheating" id="seatheating" value="{#$seatheating#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="前排座椅加热">前排座椅加热</li>
+          <li title="后排座椅加热">后排座椅加热</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="seatmassage">座椅按摩功能：</label></dt>
+    <dd class="radio">
+      {#html_radios name="seatmassage" values=$seatmassageopt checked=$seatmassage output=$seatmassagenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="seatmemory">电动座椅记忆：</label></dt>
+    <dd class="radio">
+      {#html_radios name="seatmemory" values=$seatmemoryopt checked=$seatmemory output=$seatmemorynames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="childsafety">儿童安全座椅固定装置：</label></dt>
+    <dd class="radio">
+      {#html_radios name="childsafety" values=$childsafetyopt checked=$childsafety output=$childsafetynames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="thirdseats">第三排座椅：</label></dt>
+    <dd class="radio">
+      {#html_radios name="thirdseats" values=$thirdseatsopt checked=$thirdseats output=$thirdseatsnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <div class="thead">&nbsp;&nbsp;娱乐通讯</div>
+  <dl class="clearfix">
+    <dt><label for="carphone">车载电话：</label></dt>
+    <dd class="radio">
+      {#html_radios name="carphone" values=$carphoneopt checked=$carphone output=$carphonenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="bluetooth">蓝牙系统：</label></dt>
+    <dd class="radio">
+      {#html_radios name="bluetooth" values=$bluetoothopt checked=$bluetooth output=$bluetoothnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="externalinterface">外接音源接口：</label></dt>
+    <dd><input class="input-xlarge" type="text" name="externalinterface" id="externalinterface" value="{#$externalinterface#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="builtdrive">内置硬盘：</label></dt>
+    <dd class="radio">
+      {#html_radios name="builtdrive" values=$builtdriveopt checked=$builtdrive output=$builtdrivenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="cartv">车载电视：</label></dt>
+    <dd class="radio">
+      {#html_radios name="cartv" values=$cartvopt checked=$cartv output=$cartvnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="speakers">扬声器数量：</label></dt>
+    <dd class="radio">
+      {#html_radios name="speakers" values=$speakersopt checked=$speakers output=$speakersnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="audiobrand">音响品牌：</label></dt>
+    <dd><input class="input-large" type="text" name="audiobrand" id="audiobrand" value="{#$audiobrand#}" /></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="dvd">DVD：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;" style="margin:0;">
+        <input class="input-mini" type="number" name="dvd" min="0" id="dvd" value="{#$dvd#}">
+        <span class="add-on" style="margin-right:10px;">碟</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="cd">CD：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;" style="margin:0;">
+        <input class="input-mini" type="number" name="cd" min="0" id="cd" value="{#$cd#}">
+        <span class="add-on" style="margin-right:10px;">碟</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="cclcd">中控台液晶屏：</label></dt>
+    <dd class="radio">
+      {#html_radios name="cclcd" values=$cclcdopt checked=$cclcd output=$cclcdnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="rlcd">后排液晶屏：</label></dt>
+    <dd class="radio">
+      {#html_radios name="rlcd" values=$rlcdopt checked=$rlcd output=$rlcdnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <div class="thead">&nbsp;&nbsp;空调/冰箱</div>
+  <dl class="clearfix">
+    <dt><label for="aircontrol">空调控制方式：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="aircontrol" id="aircontrol" value="{#$aircontrol#}" />
+      <div class="popup_key">
+        <ul>
+          <li title="自动">自动</li>
+          <li title="手动">手动</li>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="tempercontrol">温度分区控制：</label></dt>
+    <dd class="radio">
+      {#html_radios name="tempercontrol" values=$tempercontrolopt checked=$tempercontrol output=$tempercontrolnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="rearindeaircond">后排独立空调：</label></dt>
+    <dd class="radio">
+      {#html_radios name="rearindeaircond" values=$rearindeaircondopt checked=$rearindeaircond output=$rearindeaircondnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="adischargeoutlet">后排出风口：</label></dt>
+    <dd class="radio">
+      {#html_radios name="adischargeoutlet" values=$adischargeoutletopt checked=$adischargeoutlet output=$adischargeoutletnames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="pollenfilter">空气调节/花粉过滤：</label></dt>
+    <dd class="radio">
+      {#html_radios name="pollenfilter" values=$pollenfilteropt checked=$pollenfilter output=$pollenfilternames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="refrigerator">车载冰箱：</label></dt>
+    <dd class="radio">
+      {#html_radios name="refrigerator" values=$refrigeratoropt checked=$refrigerator output=$refrigeratornames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>  
+  <div class="fix-btn" style="height:auto;"><button type="submit" name="submit" class="btn btn-large btn-success" id="btnSubmit" style="margin:10px 0 10px 250px;">&nbsp;&nbsp;保&nbsp;&nbsp;存&nbsp;&nbsp;</button></div>
+</form>
+
+{#$jsFile#}
+</body>
+</html>

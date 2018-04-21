@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>手机号码信息发布记录</title>
+	<link rel="shortcut icon" href="http://ihuoniao.cn/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="http://ihuoniao.cn/static/css/core/base.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="http://ihuoniao.cn/static/css/common.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="http://ihuoniao.cn/templates/info/default/css/list.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="http://ihuoniao.cn/templates/info/default/css/public.css" media="all" />
+	<link rel="stylesheet" href="css/phone_record.css">
+	<script type="text/javascript" src="http://ihuoniao.cn/static/js/core/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript">
+	var masterDomain = 'http://ihuoniao.cn', channelDomain = 'http://ihuoniao.cn/info', cfg_staticPath = 'http://ihuoniao.cn/static/';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+</script>
+
+</head>
+<body>
+<!-- 顶部菜单 s -->
+<div class="top">
+  <div class="wrap topbar fn-clear">
+    <ul class="logreg" id="navLoginBefore">
+      <li>
+        <a href="javascript:;" id="login">登录</a></li>
+      <li>
+        <a href="http://ihuoniao.cn/register.html">注册</a></li>
+    </ul>
+    <ul class="topbarlink">
+      <li class="mark">
+        <a href="javascript:;">设为书签</a>
+        <div class="pop">
+          <s>
+          </s>
+          <p class="t">
+            <strong>Ctrl+D</strong>将本页面保存为书签，全面了解最新资讯，方便快捷。</p>
+          <p class="b">您也可下载桌面快捷方式。
+            <a href="http://ihuoniao.cn/include/json.php?action=internetShortcut">点击下载</a></p>
+        </div>
+      </li>
+      <li class="pubno">
+        <a href="javascript:;">公众号</a>
+        <div class="pop">
+          <s>
+          </s>
+          <p>微信扫码关注
+            <img src="http://ihuoniao.cn/uploads/siteConfig/card/large/2017/02/24/1487923648814.png" width="150" height="150"></p></div>
+      </li>
+      <li class="mobile">
+        <a href="http://ihuoniao.cn/mobile.html" target="_blank">手机版</a>
+        <div class="pop" style="display: none;">
+          <s>
+          </s>
+          <p>扫码访问
+            <a href="http://ihuoniao.cn/mobile.html" target="_blank">
+              <img src="http://ihuoniao.cn/include/qrcode.php?data=http://ihuoniao.cn" width="150" height="150"></a></p>
+        </div>
+      </li>
+      <li class="index">
+        <a href="http://ihuoniao.cn" title="返回首页" target="_blank">返回首页&gt;&gt;</a></li>
+    </ul>
+  </div>
+</div>
+<!-- 顶部菜单 e -->
+<!-- 顶部幻灯 s -->
+<div class="wrap slideshow_1200_80">
+  <div id="slideshow120080">
+    <div class="slideshow-item ad0" style="position: absolute; top: 0px; left: 0px; display: none; z-index: 3; opacity: 1; height: 0px; width: 1200px;">
+      <a href="http://www.baidu.com" target="_blank">
+        <img src="http://ihuoniao.cn/uploads/info/adv/large/2015/01/09/14207763384953.png" width="1200" height="80" alt="赶集群组即将上线！"></a>
+      <div class="slideinfo">
+        <h3>
+          <a href="http://www.baidu.com" target="_blank">赶集群组即将上线！</a></h3>
+        <p>
+        </p>
+        <div class="bg"></div>
+      </div>
+    </div>
+    <div class="slideshow-item ad1" style="position: absolute; top: 0px; left: 0px; display: block; z-index: 3; height: 31.2743px; opacity: 1; width: 1200px; overflow: hidden;">
+      <a href="http://www.baidu.com" target="_blank">
+        <img src="http://ihuoniao.cn/uploads/info/adv/large/2015/01/09/14207763396981.png" width="1200" height="80" alt="赶集招标，开启服务定制新时代！"></a>
+      <div class="slideinfo">
+        <h3>
+          <a href="http://www.baidu.com" target="_blank">赶集招标，开启服务定制新时代！</a></h3>
+        <p>
+        </p>
+        <div class="bg"></div>
+      </div>
+    </div>
+    <div class="slideshow-item ad2" style="position: absolute; top: 31.2743px; left: 0px; display: block; z-index: 4; height: 48.7257px; opacity: 1; width: 1200px; overflow: hidden;">
+      <a href="http://www.baidu.com" target="_blank">
+        <img src="http://ihuoniao.cn/uploads/info/adv/large/2015/01/09/14207763396043.png" width="1200" height="80" alt="赶集房产嘉年华"></a>
+      <div class="slideinfo">
+        <h3>
+          <a href="http://www.baidu.com" target="_blank">赶集房产嘉年华</a></h3>
+        <p>
+        </p>
+        <div class="bg"></div>
+      </div>
+    </div>
+  </div>
+  <div id="slidebtn120080" class="slidebtn">
+    <a href="#" class="">1</a>
+    <a href="#" class="">2</a>
+    <a href="#" class="activeSlide">3</a></div>
+  <a href="javascript:;" class="close" title="关闭">关闭</a></div>
+<!-- 顶部幻灯 e -->
+<div class="wrap header fn-clear">
+  <h1 class="logo">
+    <a href="http://ihuoniao.cn/info" title="信息频道">
+      <img src="http://ihuoniao.cn/uploads/info/config/large/2016/08/18/14714845186647.png" alt="信息频道"></a>
+  </h1>
+  <div class="search">
+    <form name="search" method="post" action="" onsubmit="return false;">
+      <input name="search_keyword" type="text" class="txt_search" id="search_keyword" value="" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" placeholder="想找什么？输入类别或关键字试试" data-role="input">
+      <input data-role="btn" name="search" id="search_button" type="submit" value="搜 索" class="btn-s"></form>
+    <p class="hot-s">
+      <span>热门搜索：</span>
+      <a href="http://ihuoniao.cn/info/search.html?keyword=最美农家乐" target="_blank">
+        <font color="#92d050">最美农家乐</font></a>
+      <a href="http://ihuoniao.cn/info/search.html?keyword=0元抽特斯拉" target="_blank">
+        <font color="#7030a0">0元抽特斯拉</font></a>
+      <a href="http://www.baidu.com" target="_blank">
+        <font color="#548dd4">快速贷款</font></a>
+      <a href="http://ihuoniao.cn/info/search.html?keyword=最佳雇主" target="_blank">
+        <font color="#4bacc6">最佳雇主</font></a>
+      <a href="http://ihuoniao.cn/info/search.html?keyword=免费领彩票" target="_blank">
+        <font color="#ff0000">免费领彩票</font></a>
+      <a href="http://ihuoniao.cn/info/search.html?keyword=月嫂&amp;保姆" target="_blank">
+        <font color="#00b0f0">月嫂&amp;保姆</font></a>
+      <a href="http://ihuoniao.cn/info/search.html?keyword=房东直租" target="_blank">
+        <strong>房东直租</strong></a>
+      <a href="http://ihuoniao.cn/info/search.html?keyword=准新车" target="_blank">准新车</a></p>
+  </div>
+  <div class="edit fn-clear">
+    <a href="http://ihuoniao.cn/u/fabu-info.html" target="_blank" class="btn-post">发布信息</a>
+    <a href="http://ihuoniao.cn/u/manage-info.html" target="_blank" class="btn-edit">修改信息</a></div>
+</div>
+<div class="wrap nav fn-clear">
+  <div class="lnav shnav">
+    <div class="t-category">热门信息分类</div>
+    <div class="category-popup fn-hide" style="display: none;">
+      <ul>
+        <li class="">
+          <a href="http://ihuoniao.cn/info/list-197.html" class="name">二手</a>
+          <i class="arrow"></i>
+          <a href="http://ihuoniao.cn/info/list-198.html" class="item">二手手机</a>
+          <a href="http://ihuoniao.cn/info/list-199.html" class="item">精仿手机</a>
+          <div class="sub-category" style="width: 360px;">
+            <dl>
+              <dt>
+                <h2 class="title">
+                  <a href="http://ihuoniao.cn/info/list-197.html">二手</a></h2>
+              </dt>
+              <dd class="fn-clear" style="height: 377px;">
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-198.html">二手手机</a>
+                  <a href="http://ihuoniao.cn/info/list-199.html">精仿手机</a>
+                  <a href="http://ihuoniao.cn/info/list-200.html">手机配件</a>
+                  <a href="http://ihuoniao.cn/info/list-201.html">手机号码</a>
+                  <a href="http://ihuoniao.cn/info/list-202.html">笔记本</a>
+                  <a href="http://ihuoniao.cn/info/list-203.html">台式电脑</a>
+                  <a href="http://ihuoniao.cn/info/list-204.html">平板电脑</a>
+                  <a href="http://ihuoniao.cn/info/list-205.html">照相机</a>
+                  <a href="http://ihuoniao.cn/info/list-206.html">数码产品</a>
+                  <a href="http://ihuoniao.cn/info/list-207.html">二手家具</a>
+                  <a href="http://ihuoniao.cn/info/list-208.html">办公家具</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-209.html">家用电器</a>
+                  <a href="http://ihuoniao.cn/info/list-210.html">日常用品</a>
+                  <a href="http://ihuoniao.cn/info/list-211.html">食品农产</a>
+                  <a href="http://ihuoniao.cn/info/list-212.html">办公用品</a>
+                  <a href="http://ihuoniao.cn/info/list-213.html">工艺收藏</a>
+                  <a href="http://ihuoniao.cn/info/list-214.html">服饰箱包</a>
+                  <a href="http://ihuoniao.cn/info/list-215.html">母婴用品</a>
+                  <a href="http://ihuoniao.cn/info/list-216.html">文体户外</a>
+                  <a href="http://ihuoniao.cn/info/list-217.html">图书音像</a>
+                  <a href="http://ihuoniao.cn/info/list-218.html">门票卡券</a>
+                  <a href="http://ihuoniao.cn/info/list-219.html">工业设备</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-220.html">奇石盆景</a>
+                  <a href="http://ihuoniao.cn/info/list-221.html">其他物品</a>
+                  <a href="http://ihuoniao.cn/info/list-222.html">闲置真心送</a>
+                  <a href="http://ihuoniao.cn/info/list-223.html">设备租赁</a></div>
+              </dd>
+            </dl>
+          </div>
+        </li>
+        <li class="">
+          <a href="http://ihuoniao.cn/info/list-224.html" class="name">车辆</a>
+          <i class="arrow"></i>
+          <a href="http://ihuoniao.cn/info/list-225.html" class="item">二手车轿车</a>
+          <a href="http://ihuoniao.cn/info/list-226.html" class="item">二手货车</a>
+          <div class="sub-category" style="width: 240px;">
+            <dl>
+              <dt>
+                <h2 class="title">
+                  <a href="http://ihuoniao.cn/info/list-224.html">车辆</a></h2>
+              </dt>
+              <dd class="fn-clear" style="height: 377px;">
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-225.html">二手车轿车</a>
+                  <a href="http://ihuoniao.cn/info/list-226.html">二手货车</a>
+                  <a href="http://ihuoniao.cn/info/list-227.html">二手工程车</a>
+                  <a href="http://ihuoniao.cn/info/list-228.html">二手摩托车</a>
+                  <a href="http://ihuoniao.cn/info/list-229.html">面包车/客车</a>
+                  <a href="http://ihuoniao.cn/info/list-230.html">拖拉机/收割机</a>
+                  <a href="http://ihuoniao.cn/info/list-231.html">二手电动车</a>
+                  <a href="http://ihuoniao.cn/info/list-232.html">二手自行车</a>
+                  <a href="http://ihuoniao.cn/info/list-233.html">贷款购车</a>
+                  <a href="http://ihuoniao.cn/info/list-234.html">新车优惠</a>
+                  <a href="http://ihuoniao.cn/info/list-235.html">本地下线车</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-236.html">拼车/顺风车</a>
+                  <a href="http://ihuoniao.cn/info/list-237.html">汽车用品</a>
+                  <a href="http://ihuoniao.cn/info/list-238.html">维修保养</a>
+                  <a href="http://ihuoniao.cn/info/list-239.html">汽车配件</a>
+                  <a href="http://ihuoniao.cn/info/list-240.html">过户/验车</a>
+                  <a href="http://ihuoniao.cn/info/list-241.html">高价收车</a>
+                  <a href="http://ihuoniao.cn/info/list-242.html">抵押车/不过户车辆</a></div>
+              </dd>
+            </dl>
+          </div>
+        </li>
+        <li class="">
+          <a href="http://ihuoniao.cn/info/list-243.html" class="name">房屋</a>
+          <i class="arrow"></i>
+          <a href="http://ihuoniao.cn/info/list-244.html" class="item">租房/出租</a>
+          <a href="http://ihuoniao.cn/info/list-245.html" class="item">日租/短租</a>
+          <div class="sub-category" style="width: 120px;">
+            <dl>
+              <dt>
+                <h2 class="title">
+                  <a href="http://ihuoniao.cn/info/list-243.html">房屋</a></h2>
+              </dt>
+              <dd class="fn-clear" style="height: 377px;">
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-244.html">租房/出租</a>
+                  <a href="http://ihuoniao.cn/info/list-245.html">日租/短租</a>
+                  <a href="http://ihuoniao.cn/info/list-246.html">二手房出售</a>
+                  <a href="http://ihuoniao.cn/info/list-247.html">新房出售</a>
+                  <a href="http://ihuoniao.cn/info/list-248.html">店铺转让/出租</a>
+                  <a href="http://ihuoniao.cn/info/list-249.html">商铺出售</a>
+                  <a href="http://ihuoniao.cn/info/list-250.html">写字楼出租</a>
+                  <a href="http://ihuoniao.cn/info/list-251.html">写字楼出售</a>
+                  <a href="http://ihuoniao.cn/info/list-252.html">厂房/仓库/土地</a>
+                  <a href="http://ihuoniao.cn/info/list-253.html">求租/求购</a>
+                  <a href="http://ihuoniao.cn/info/list-254.html">找室友</a></div>
+              </dd>
+            </dl>
+          </div>
+        </li>
+        <li class="">
+          <a href="http://ihuoniao.cn/info/list-255.html" class="name">招聘</a>
+          <i class="arrow"></i>
+          <a href="http://ihuoniao.cn/info/list-256.html" class="item">工人/技工</a>
+          <a href="http://ihuoniao.cn/info/list-257.html" class="item">司机</a>
+          <div class="sub-category" style="width: 480px;">
+            <dl>
+              <dt>
+                <h2 class="title">
+                  <a href="http://ihuoniao.cn/info/list-255.html">招聘</a></h2>
+              </dt>
+              <dd class="fn-clear" style="height: 377px;">
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-256.html">工人/技工</a>
+                  <a href="http://ihuoniao.cn/info/list-257.html">司机</a>
+                  <a href="http://ihuoniao.cn/info/list-258.html">餐饮</a>
+                  <a href="http://ihuoniao.cn/info/list-259.html">保安</a>
+                  <a href="http://ihuoniao.cn/info/list-260.html">销售</a>
+                  <a href="http://ihuoniao.cn/info/list-261.html">房产中介</a>
+                  <a href="http://ihuoniao.cn/info/list-262.html">人事</a>
+                  <a href="http://ihuoniao.cn/info/list-263.html">行政/后勤</a>
+                  <a href="http://ihuoniao.cn/info/list-264.html">酒店</a>
+                  <a href="http://ihuoniao.cn/info/list-265.html">送货/快递/仓管</a>
+                  <a href="http://ihuoniao.cn/info/list-266.html">超市/百货/零售</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-267.html">客服</a>
+                  <a href="http://ihuoniao.cn/info/list-268.html">医生/护士</a>
+                  <a href="http://ihuoniao.cn/info/list-269.html">美工/设计</a>
+                  <a href="http://ihuoniao.cn/info/list-270.html">翻译</a>
+                  <a href="http://ihuoniao.cn/info/list-271.html">财务/会计</a>
+                  <a href="http://ihuoniao.cn/info/list-272.html">汽车美容/维修</a>
+                  <a href="http://ihuoniao.cn/info/list-273.html">贸易/采购</a>
+                  <a href="http://ihuoniao.cn/info/list-274.html">金融/保险</a>
+                  <a href="http://ihuoniao.cn/info/list-275.html">计算机/网络/通信</a>
+                  <a href="http://ihuoniao.cn/info/list-276.html">美容美发</a>
+                  <a href="http://ihuoniao.cn/info/list-277.html">教育培训</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-278.html">市场/公关/媒介</a>
+                  <a href="http://ihuoniao.cn/info/list-279.html">家政/保洁</a>
+                  <a href="http://ihuoniao.cn/info/list-280.html">淘宝招聘</a>
+                  <a href="http://ihuoniao.cn/info/list-281.html">旅游</a>
+                  <a href="http://ihuoniao.cn/info/list-282.html">运动健身</a>
+                  <a href="http://ihuoniao.cn/info/list-283.html">法律</a>
+                  <a href="http://ihuoniao.cn/info/list-284.html">保健按摩</a>
+                  <a href="http://ihuoniao.cn/info/list-285.html">影视娱乐</a>
+                  <a href="http://ihuoniao.cn/info/list-286.html">人才招聘会</a>
+                  <a href="http://ihuoniao.cn/info/list-287.html">出国劳务</a>
+                  <a href="http://ihuoniao.cn/info/list-288.html">KTV/酒</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-289.html">其他招聘</a></div>
+              </dd>
+            </dl>
+          </div>
+        </li>
+        <li class="">
+          <a href="http://ihuoniao.cn/info/list-290.html" class="name">兼职</a>
+          <i class="arrow"></i>
+          <a href="http://ihuoniao.cn/info/list-291.html" class="item">促销/导购</a>
+          <a href="http://ihuoniao.cn/info/list-292.html" class="item">传单派发</a>
+          <div class="sub-category" style="width: 2400px;">
+            <dl>
+              <dt>
+                <h2 class="title">
+                  <a href="http://ihuoniao.cn/info/list-290.html">兼职</a></h2>
+              </dt>
+              <dd class="fn-clear" style="height: 45px;">
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-291.html">促销/导购</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-292.html">传单派发</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-293.html">学生兼职</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-294.html">网络兼职</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-295.html">家教</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-296.html">才艺老师</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-297.html">充场/座谈会</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-298.html">展会活动</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-299.html">服务员</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-300.html">客服</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-301.html">模特</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-302.html">演员</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-303.html">平面设计</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-304.html">网站建设</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-305.html">市场调查</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-306.html">财务会计</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-307.html">摄影兼职</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-308.html">翻译兼职</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-309.html">兼职群</a></div>
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-310.html">其他兼职</a></div>
+              </dd>
+            </dl>
+          </div>
+        </li>
+        <li class="">
+          <a href="http://ihuoniao.cn/info/list-320.html" class="name">宠物</a>
+          <i class="arrow"></i>
+          <a href="http://ihuoniao.cn/info/list-321.html" class="item">狗狗</a>
+          <a href="http://ihuoniao.cn/info/list-322.html" class="item">猫猫</a>
+          <div class="sub-category" style="width: 120px;">
+            <dl>
+              <dt>
+                <h2 class="title">
+                  <a href="http://ihuoniao.cn/info/list-320.html">宠物</a></h2>
+              </dt>
+              <dd class="fn-clear" style="height: 377px;">
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-321.html">狗狗</a>
+                  <a href="http://ihuoniao.cn/info/list-322.html">猫猫</a>
+                  <a href="http://ihuoniao.cn/info/list-323.html">其他宠物</a>
+                  <a href="http://ihuoniao.cn/info/list-324.html">宠物免费赠送</a>
+                  <a href="http://ihuoniao.cn/info/list-325.html">宠物用品/食品</a>
+                  <a href="http://ihuoniao.cn/info/list-326.html">宠物服务/配种</a>
+                  <a href="http://ihuoniao.cn/info/list-327.html">寻宠启事</a></div>
+              </dd>
+            </dl>
+          </div>
+        </li>
+        <li class="">
+          <a href="http://ihuoniao.cn/info/list-328.html" class="name">服务</a>
+          <i class="arrow"></i>
+          <a href="http://ihuoniao.cn/info/list-329.html" class="item">本地生活</a>
+          <a href="http://ihuoniao.cn/info/list-353.html" class="item">商务服务</a>
+          <div class="sub-category" style="width: 120px;">
+            <dl>
+              <dt>
+                <h2 class="title">
+                  <a href="http://ihuoniao.cn/info/list-328.html">服务</a></h2>
+              </dt>
+              <dd class="fn-clear" style="height: 377px;">
+                <div class="subitem">
+                  <a href="http://ihuoniao.cn/info/list-329.html">本地生活</a>
+                  <a href="http://ihuoniao.cn/info/list-353.html">商务服务</a>
+                  <a href="http://ihuoniao.cn/info/list-375.html">汽车服务</a>
+                  <a href="http://ihuoniao.cn/info/list-380.html">休闲&amp;旅游</a>
+                  <a href="http://ihuoniao.cn/info/list-391.html">婚庆摄影</a>
+                  <a href="http://ihuoniao.cn/info/list-395.html">其他</a></div>
+              </dd>
+            </dl>
+          </div>
+        </li>
+        <li>
+          <a href="http://ihuoniao.cn/info/list-398.html" class="name">培训</a>
+          <i class="arrow"></i>
+          <a href="http://ihuoniao.cn/info/list-399.html" class="item">职业技能</a>
+          <a href="http://ihuoniao.cn/info/list-400.html" class="item">婴幼儿教育</a>
+          <div class="sub-category">
+            <dl>
+              <dt>
+                <h2 class="title">
+                  <a href="http://ihuoniao.cn/info/list-398.html">培训</a></h2>
+              </dt>
+              <dd class="fn-clear">
+                <a href="http://ihuoniao.cn/info/list-399.html">职业技能</a>
+                <a href="http://ihuoniao.cn/info/list-400.html">婴幼儿教育</a>
+                <a href="http://ihuoniao.cn/info/list-401.html">家教</a>
+                <a href="http://ihuoniao.cn/info/list-402.html">小学教育</a>
+                <a href="http://ihuoniao.cn/info/list-403.html">初中教育</a>
+                <a href="http://ihuoniao.cn/info/list-404.html">高中教育</a>
+                <a href="http://ihuoniao.cn/info/list-405.html">学历教育</a>
+                <a href="http://ihuoniao.cn/info/list-406.html">外语培训</a>
+                <a href="http://ihuoniao.cn/info/list-407.html">艺术培训</a>
+                <a href="http://ihuoniao.cn/info/list-408.html">电脑培训</a>
+                <a href="http://ihuoniao.cn/info/list-409.html">设计培训</a>
+                <a href="http://ihuoniao.cn/info/list-410.html">体育培训</a></dd>
+            </dl>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="tnav">
+    <ul class="fn-clear">
+      <li class="">
+        <a href="http://ihuoniao.cn/info" target="_blank">首页</a></li>
+      <li class="">
+        <a href="#">二手房</a></li>
+      <li class="">
+        <a href="#">
+          <i class="new"></i>租房</a>
+      </li>
+      <li class="">
+        <a href="#">汽车</a></li>
+      <li class="">
+        <a href="#">跳蚤市场</a></li>
+      <li class="">
+        <a href="#">
+          <i class="hot"></i>店铺</a>
+      </li>
+      <li class="">
+        <a href="#">同城活动</a></li>
+      <li class="">
+        <a href="#">便民常用</a></li>
+    </ul>
+  </div>
+</div>
+<div class="phone_record_infor">
+	<i>15050469970</i>
+	<div class="information fn-clear"><p>此号码归属：</p><strong>苏州</strong><p>共发布了</p><em>90</em><p>条信息</p></div>
+</div>
+<div class="phone_record_lead fn-clear">
+	<span>此号码发帖记录</span>
+</div>
+<div class="phone_record_list">
+	<div class="pr_lead fn-clear">
+		<p class="title">信息标题</p>
+		<p class="kind">信息类别</p>
+		<p class="people">发布人</p>
+		<p class="time">发布时间</p>
+	</div>
+	<div class="pr_list">
+		<ul>
+			<li><a href="#">
+				<p class="title">中国发布2016美国人权纪录 美国1/3成年人受过监禁</p>
+				<p class="kind">二手家电</p>
+				<p class="people">pa*q_f1</p>
+				<p class="time">2017-03-09 16:07:37</p>
+			</a></li>
+			<li><a href="#">
+				<p class="title">中国发布2016美国人权纪录 美国1/3成年人受过监禁</p>
+				<p class="kind">二手家电</p>
+				<p class="people">pa*q_f1</p>
+				<p class="time">2017-03-09 16:07:37</p>
+			</a></li>
+			<li><a href="#">
+				<p class="title">中国发布2016美国人权纪录 美国1/3成年人受过监禁</p>
+				<p class="kind">二手家电</p>
+				<p class="people">pa*q_f1</p>
+				<p class="time">2017-03-09 16:07:37</p>
+			</a></li>
+			<li><a href="#">
+				<p class="title">中国发布2016美国人权纪录 美国1/3成年人受过监禁</p>
+				<p class="kind">二手家电</p>
+				<p class="people">pa*q_f1</p>
+				<p class="time">2017-03-09 16:07:37</p>
+			</a></li>
+			<li><a href="#">
+				<p class="title">中国发布2016美国人权纪录 美国1/3成年人受过监禁</p>
+				<p class="kind">二手家电</p>
+				<p class="people">pa*q_f1</p>
+				<p class="time">2017-03-09 16:07:37</p>
+			</a></li>
+			<li><a href="#">
+				<p class="title">中国发布2016美国人权纪录 美国1/3成年人受过监禁</p>
+				<p class="kind">二手家电</p>
+				<p class="people">pa*q_f1</p>
+				<p class="time">2017-03-09 16:07:37</p>
+			</a></li>
+			<li><a href="#">
+				<p class="title">中国发布2016美国人权纪录 美国1/3成年人受过监禁</p>
+				<p class="kind">二手家电</p>
+				<p class="people">pa*q_f1</p>
+				<p class="time">2017-03-09 16:07:37</p>
+			</a></li>
+			<li><a href="#">
+				<p class="title">中国发布2016美国人权纪录 美国1/3成年人受过监禁</p>
+				<p class="kind">二手家电</p>
+				<p class="people">pa*q_f1</p>
+				<p class="time">2017-03-09 16:07:37</p>
+			</a></li>
+			<li><a href="#">
+				<p class="title">中国发布2016美国人权纪录 美国1/3成年人受过监禁</p>
+				<p class="kind">二手家电</p>
+				<p class="people">pa*q_f1</p>
+				<p class="time">2017-03-09 16:07:37</p>
+			</a></li>
+		</ul>
+	</div>
+</div>
+<div class="wrap pagination fn-clear" style="display: block;">
+  <div class="pagination-gotopage">
+    <label for="">跳转</label>
+    <input type="text" class="inp" maxlength="4">
+    <input type="button" class="btn" value="GO"></div>
+  <div class="pagination-pages">
+    <span class="prev disabled">
+      <i>
+      </i>
+    </span>
+    <span class="curr">1</span>
+    <a>2</a>
+    <span class="interim">...</span>
+    <a>5</a>
+    <a>6</a>
+    <a class="next">下一页
+      <i></i>
+    </a>
+  </div>
+</div>
+<div class="copyright">
+  <div class="wrap">
+    <p>
+      <a href="http://ihuoniao.cn/about-1.html" target="_blank">网站介绍</a>|
+      <a href="http://ihuoniao.cn/about-2.html" target="_blank">关于我们</a>|
+      <a href="http://ihuoniao.cn/about-3.html" target="_blank">服务条款</a>|
+      <a href="http://ihuoniao.cn/about-4.html" target="_blank">广告服务</a>|
+      <a href="http://ihuoniao.cn/about-5.html" target="_blank">招聘信息</a>|
+      <a href="http://ihuoniao.cn/about-6.html" target="_blank">免责声明</a>|
+      <a href="http://ihuoniao.cn/about-7.html" target="_blank">联系我们</a>|
+      <a href="http://ihuoniao.cn/help.html" target="_blank">帮助中心</a></p>
+    <p>Copyright © 2016 火鸟网站管理系统V1_SP1. All rights reserved.</p>
+    <p>
+      <a href="http://www.miibeian.gov.cn/" target="_blank">苏ICP备12345678号</a></p>
+  </div>
+</div>
+<script type="text/javascript" src="http://ihuoniao.cn/static/js/common.js"></script>
+<script type="text/javascript" src="http://ihuoniao.cn/static/js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="http://ihuoniao.cn/templates/info/default/js/public.js"></script>
+
+</body>
+</html>

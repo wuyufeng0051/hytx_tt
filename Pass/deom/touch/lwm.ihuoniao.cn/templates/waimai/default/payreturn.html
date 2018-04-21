@@ -1,0 +1,13 @@
+{#$channelName = $waimai_channelName#}
+{#$channelDomain = $waimai_channelDomain#}
+{#$backUrl = "javascript:history.go(-1);"#}
+{#$title = "支付结果"#}
+{#$service = "waimai"#}
+
+{#include file="../../member/touch/public-payreturn.html"#}
+
+<script type="text/javascript">
+$(function(){
+    utils.removeStorage("wm_cart_{#$sid#}");
+});
+</script>

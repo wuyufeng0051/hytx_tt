@@ -1,0 +1,71 @@
+{#$pageTitle = "现金与"|cat:$cfg_pointName|cat:"兑换 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/convert.css?v=1" media="all" />
+<script>var totalMoney = {#$userinfo.money#}, pointRatio = {#$cfg_pointRatio#}, pointName = '{#$cfg_pointName#}';</script>
+</head>
+
+{#$pageCurr = "convert"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+
+
+
+	<div class="nav-tabs fn-clear">
+		<ul class="fn-clear">
+			<li class="active"><a href="javascript:;">现金与{#$cfg_pointName#}兑换</a></li>
+			<li><a href="{#getUrlPath service='member' template='transfer'#}">{#$cfg_pointName#}转赠</a></li>
+		</ul>
+	</div>
+	<div class="container">
+
+		<form action="/include/ajax.php?service=member&action=convert" method="post" target="_blank" id="payform" class="convert">
+
+			<dl class="fn-clear txt-inline">
+				<dt>可兑换现金：</dt>
+				<dd class="fn-clear">
+					<strong>&yen;{#$totalMoney#}</strong>
+					<em>【现金 >> {#$cfg_pointName#} （1: {#$cfg_pointRatio#}）】</em>
+				</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt><label for="amount">兑换金额：</label></dt>
+				<dd class="fn-clear">
+					<input type="text" class="inp" name="amount" id="amount" />
+					<span class="tip-inline"><s></s>金额必须为整数或小数，小数点后不超过2位。</span>
+				</dd>
+			</dl>
+			<dl class="fn-clear txt-inline">
+				<dt>兑换数量：</dt>
+				<dd class="fn-clear"><strong id="count">0</strong>{#$cfg_pointName#}</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt><label for="paypwd">支付密码：</label></dt>
+				<dd class="fn-clear">
+					<input type="password" class="inp" name="paypwd" id="paypwd" />
+					<span class="tip-inline"><s></s>请输入支付密码，{#if $userinfo.paypwdCheck == 0#}您还未设置支付密码，请先<a href="{#getUrlPath service='member' type='user' template='security' doget='paypwdAdd'#}">设置支付密码</a>{#else#}如您忘记支付密码，请<a href="{#getUrlPath service='member' type='user' template='security' doget='paypwdEdit'#}">重置支付密码</a>{#/if#}！</span>
+				</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>&nbsp;</dt>
+				<dd class="agree">
+					<label><input type="checkbox" name="agree" id="agree" checked />同意并接受</label> <a href="{#getUrlPath service='siteConfig' template='protocol' id='11'#}" target="_blank">《现金与{#$cfg_pointName#}兑换服务协议》</a><br />
+				</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>&nbsp;</dt>
+				<dd><button type="button" id="tj">确认兑换</button></dd>
+			</dl>
+
+		</form>
+
+	</div>
+
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/convert.js?v=2"></script>
+</body>
+</html>

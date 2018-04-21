@@ -1,0 +1,42 @@
+ 
+<div class="dataTables_wrapper form-inline" role="grid">
+    <table class="table table-striped table-bordered table-hover dataTable"
+           aria-describedby="sample_1_info">
+        <tr>
+            <th style="width: 50px">排序</th>
+            <th style="width: 250px">套餐名字</th>
+            <th>金额</th>
+            
+            <th >份数</th>
+            <th >单价元/每份</th>
+            <th style="width: 170px">生效时间</th>
+            <th >状态</th>
+            <th style="width: 170px">编辑</th>
+        </tr>
+        {volist name='list' id='vo'}
+        <tr>
+            <td>{$vo.zppackage_sort}</td>
+            <td><a href="edit?id={$vo.zppackage_id}">{$vo.zppackage_name}</a></td>
+            <td>{$vo.zppackage_money}</td>
+            <td>{$vo.zppackage_res}</td>
+            <td>10元</td>
+            <td>{$vo.zppackage_datetime}</td>
+            <td>{$vo.zppackage_status}</td>
+            <td>
+                <a href="edit?id={$vo.zppackage_id}" class="btn mini blue "><i
+                        class="icon-tags"></i>修改</a>
+                <a href="del?id={$vo.zppackage_id}" class="btn mini red btn-del"><i
+                        class="icon-trash"></i> 删除</a>
+            </td>
+        </tr>
+        {/volist}
+    </table>
+    <div class="row-fluid">
+        <div class="span6">
+            <div class="dataTables_paginate paging_bootstrap pagination">
+                {$list->render()}
+            </div>
+        </div>
+    </div>
+</div>
+ 

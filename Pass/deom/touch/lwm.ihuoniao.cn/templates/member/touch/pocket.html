@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>我的口袋</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/money.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/pocket.css?v=2" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var pointRatio = {#$cfg_pointRatio#}, pointName = '{#$cfg_pointName#}';
+</script>
+</head>
+<body>
+
+  <!-- 头部 s -->
+  <div class="header">
+    <div class="header-l">
+      <a href="javascript:;" onclick="history.go(-1)"><img src="{#$templets_skin#}images/back-r.png"></a>
+    </div>
+    <div class="header-c">我的口袋</div>
+    <div class="header-r">
+      <a href="javascript:;" class="screen"><img src="{#$templets_skin#}images/screen.png"></a>
+    </div>
+
+    <div class="nav">
+      <ul class="fn-clear">
+        {#siteConfig action="siteModule" return="<module></module>1"#}
+        <li><a href="{#$module1.url#}" target="_blank"><span>{#$module1.name#}</span></a></li>
+        {#/siteConfig#}
+      </ul>
+    </div>
+  </div>
+  <!-- 头部 s -->
+
+  <!-- 余额总览 s -->
+  <div class="bgbox">
+    <div class="bgtop">
+      <p class="tit">帐户资产总额(元)</p>
+      <p class="count">{#$userinfo.money + $userinfo.freeze#}</p>
+    </div>
+    <div class="bgbottom fn-clear">
+      <div class="item">
+        <p class="tit">冻结金额</p>
+        <p class="count">{#$userinfo.freeze#}</p>
+      </div>
+      <div class="item">
+        <p class="tit">可用余额</p>
+        <p class="count">{#$userinfo.money#}</p>
+      </div>
+      <div class="item">
+        <p class="tit">帐户{#$cfg_pointName#}</p>
+        <p class="count">{#$userinfo.point#}</p>
+      </div>
+    </div>
+  </div>
+  <!-- 余额总览 d -->
+
+  <!-- 列表 s -->
+  <div class="operate">
+    <ul>
+      <li><a href="{#getUrlPath service='member' type='user' template='deposit'#}"><i class="icon1"></i>充值</a></li>
+      <li><a href="{#getUrlPath service='member' type='user' template='withdraw'#}"><i class="icon2"></i>提现</a></li>
+      <li><a href="{#getUrlPath service='member' type='user' template='convert'#}"><i class="icon3"></i>现金积分兑换</a></li>
+      <li><a href="{#getUrlPath service='member' type='user' template='transfer'#}"><i class="icon4"></i>积分转赠</a></li>
+    </ul>
+  </div>
+  <!-- 列表 e -->
+
+
+
+
+
+
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v=5"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/order.js?v=5"></script>
+</body>
+</html>

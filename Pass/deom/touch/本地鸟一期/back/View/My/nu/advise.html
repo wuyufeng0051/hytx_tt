@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>泸西微城</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no" >
+		<link rel="stylesheet" href="css/mui.min.css">
+		<style>
+		.mui-input-row label {
+		    line-height: 1.1;
+		    float: left;
+		    width: 35%;
+		    padding: 11px 15px;
+		    font-size: 16px;
+		}
+		textarea{
+			border:none;
+		}
+
+		ul{
+			list-style: none;
+			margin:0;
+			padding: 0;
+		}
+		.list{
+			margin-bottom: 10px;
+		}
+		.list .item{
+			border-bottom: 1px solid #ddd;
+			padding: 10px;
+			background: #fff;
+			position: relative;
+			padding-left: 95px;
+		}
+		.list .item label{
+			font-size: 16px;
+			position: absolute;
+			left: 10px;
+		}
+		.list .item1{
+			border-bottom: 1px solid #ddd;
+			padding: 10px;
+			background: #fff;
+
+		}
+		.list .item1 label{
+			font-size: 16px;
+		}
+		.list .item input{
+			border:none;
+			padding: 0;
+			width: auto;
+			margin:0;
+			height: 21px;
+			width: 100%;
+			border-radius: 0;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="mui-content">
+			<div class="list">
+				<div class="item">
+					<label for="">问题/建议：&nbsp;</label>
+					<textarea type="text" rows="3" style="padding: 0;margin:0;" placeholder="请留下宝贵的意见和建议，我们将尽最大的努力进行改进，谢谢你的支持" ></textarea> 
+				</div>
+				<div class="item">
+					<label for="">手机号码：&nbsp;</label>
+					<input type="text" placeholder="请输入你的手机号码">
+				</div>
+				<div style="padding: 15px;">
+					<a href="" class="mui-btn mui-btn-danger" style="background-color: #ff7400;line-height: 25px;width: 100%;border:none;">提交</a>
+				</div>
+			</div>
+			
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/zepto.min.js"></script>
+		<script>
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+		</script>
+	</body>
+</html>

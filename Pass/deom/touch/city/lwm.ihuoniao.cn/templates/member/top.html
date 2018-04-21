@@ -1,0 +1,113 @@
+<script type="text/javascript">var memberPage = true;</script>
+<div class="header">
+	<div class="wrap fn-clear">
+		<a class="logo" title="会员中心首页" href="{#$member_userDomain#}"><s></s><h1>个人会员中心</h1><span>{#$member_userDomain|replace:"http://":""#}</span></a>
+		<ul class="nav">
+			<li><a href="{#$member_userDomain#}">首页</a></li>
+			<li>
+				<a href="{#getUrlPath service='member' type='user' template='profile'#}">帐户设置<span class="arrow"><em></em></span></a>
+				<dl class="subnav">
+					<dt></dt>
+					<dd><a href="{#getUrlPath service='member' type='user' template='profile'#}">个人基本资料</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='security' doget='chpassword'#}">修改登录密码</a></dd>
+					<dd>{#if $userinfo.paypwdCheck == 0#}<a href="{#getUrlPath service='member' type='user' template='security' doget='paypwdAdd'#}">设置支付密码</a>{#else#}<a href="{#getUrlPath service='member' type='user' template='security' doget='paypwdEdit'#}">修改支付密码</a>{#/if#}</dd>
+					<dd><a href="{#if $userinfo.certifyState != 1#}{#getUrlPath service='member' type='user' template='security' doget='chCertify'#}{#else#}{#getUrlPath service='member' type='user' template='security' doget='shCertify'#}{#/if#}">个人实名认证</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='security' doget='chphone'#}">{#if $userinfo.phoneCheck == 0#}绑定手机{#else#}手机认证{#/if#}</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='security' doget='chemail'#}">{#if $userinfo.emailCheck == 0#}绑定邮箱{#else#}邮箱认证{#/if#}</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='security' doget='question'#}">安全保护问题</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='address'#}">收货地址管理</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='connect'#}">社交帐号关联绑定</a></dd>
+				</dl>
+			</li>
+			<li>
+				<a href="javascript:;">便捷发布<span class="arrow"><em></em></span></a>
+				<dl class="subnav">
+					<dt></dt>
+					{#if in_array("article", $installModuleArr)#}<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='article'#}">[新闻] 发布新闻投稿</a></dd>{#/if#}
+					{#if in_array("info", $installModuleArr)#}<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}">[信息] 发布分类信息</a></dd>{#/if#}
+					{#if in_array("house", $installModuleArr)#}
+					<dd>
+						<a href="javascript:;">[房产] 发布出租/出售房源</a>
+						<dl>
+							<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-demand'#}">求租、求购</a></dd>
+							<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-sale'#}">二手房</a></dd>
+							<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-zu'#}">租房</a></dd>
+							<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-xzl'#}">写字楼</a></dd>
+							<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-sp'#}">商铺</a></dd>
+							<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-cf'#}">厂房、仓库</a></dd>
+						</dl>
+					</dd>
+					{#/if#}
+					{#if in_array("tieba", $installModuleArr)#}<dd><a href="{#getUrlPath service='tieba' template='index'#}#publish" target="_blank">[贴吧] 发布新贴</a></dd>{#/if#}
+					{#if in_array("huodong", $installModuleArr)#}<dd><a href="{#getUrlPath service='huodong' template='fabu'#}" target="_blank">[活动] 发布活动</a></dd>{#/if#}
+				</dl>
+			</li>
+			<li>
+				<a href="javascript:;">我的财务<span class="arrow"><em></em></span></a>
+				<dl class="subnav">
+					<dt></dt>
+					<dd><a href="{#getUrlPath service='member' type='user' template='deposit'#}">帐户充值、提现</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='order'#}">管理我的订单</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='record'#}">交易记录明细</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='point'#}">{#$cfg_pointName#}记录明细</a></dd>
+					<dd><a>可用金额：<strong>{#$userinfo.money#}</strong> 元</a></dd>
+					<dd><a>冻结金额：<strong>{#$userinfo.freeze#}</strong> 元</a></dd>
+				</dl>
+			</li>
+			<li><a href="{#$member_busiDomain#}" target="_blank">商家服务</a></li>
+			<li class="mobile">
+				<a href="#" target="_blank"><s class="mob"></s>手机版<i class="new">new</i></a>
+				<dl class="subnav">
+					<dt></dt>
+					<dd class="qrcode"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" /></dd>
+				</dl>
+			</li>
+			<li><a href="{#$cfg_basehost#}/logout.html"><s class="quit"></s>退出帐户</a></li>
+		</ul>
+	</div>
+</div>
+
+{#if $template == 'index'#}
+<div class="wrap crumbs fn-clear">
+	<div class="cont">
+		<a href="{#$cfg_basehost#}" target="_blank">网站首页</a>
+		<s><i></i></s>
+		<a href="{#$member_userDomain#}">会员中心</a>
+	</div>
+	<div class="notice" id="notice">
+		<ul>
+			{#*
+			<li><a href="#" target="_blank" title="服务费按天收，交易越多越划算。服务费3%/年"><s></s>服务费按天收，交易越多越划算。服务费3%/年</a></li>
+			<li><a href="#" target="_blank" title="快速使用云产品部署业务环境，降低上云门槛"><s></s>快速使用云产品部署业务环境，降低上云门槛</a></li>
+			<li><a href="#" target="_blank" title="海量模板与定制需求响应，优质网站即刻上线"><s></s>海量模板与定制需求响应，优质网站即刻上线</a></li>
+			<li><a href="#" target="_blank" title="专业工程师提供云服务器相关运维服务，为您解忧"><s></s>专业工程师提供云服务器相关运维服务，为您解忧</a></li>
+			<li><a href="#" target="_blank" title="提交PostgreSQL体验报告，赢1000元大奖！"><s></s>提交PostgreSQL体验报告，赢1000元大奖！</a></li>
+			<li><a href="#" target="_blank" title="SSD云盘+IO优化型ECS 每天限量200免费公测！"><s></s>SSD云盘+IO优化型ECS 每天限量200免费公测！</a></li>
+			*#}
+		</ul>
+	</div>
+	<!-- <div class="qiandao"><a href="javascript:;"><img src="{#$templets_skin#}images/qiandao.png" title="签到送{#$cfg_pointName#}" /></a></div> -->
+</div>
+{#else#}
+<div class="wrap crumbs fn-clear">
+	<div class="cont">
+		<a href="{#$cfg_basehost#}" target="_blank">网站首页</a>
+		<s><i></i></s>
+		<a href="{#$member_userDomain#}">会员中心</a>
+		<s><i></i></s>
+		{#$pageTitle#}
+	</div>
+	<div class="notice" id="notice">
+		<ul>
+			{#*
+			<li><a href="#" target="_blank" title="服务费按天收，交易越多越划算。服务费3%/年"><s></s>服务费按天收，交易越多越划算。服务费3%/年</a></li>
+			<li><a href="#" target="_blank" title="快速使用云产品部署业务环境，降低上云门槛"><s></s>快速使用云产品部署业务环境，降低上云门槛</a></li>
+			<li><a href="#" target="_blank" title="海量模板与定制需求响应，优质网站即刻上线"><s></s>海量模板与定制需求响应，优质网站即刻上线</a></li>
+			<li><a href="#" target="_blank" title="专业工程师提供云服务器相关运维服务，为您解忧"><s></s>专业工程师提供云服务器相关运维服务，为您解忧</a></li>
+			<li><a href="#" target="_blank" title="提交PostgreSQL体验报告，赢1000元大奖！"><s></s>提交PostgreSQL体验报告，赢1000元大奖！</a></li>
+			<li><a href="#" target="_blank" title="SSD云盘+IO优化型ECS 每天限量200免费公测！"><s></s>SSD云盘+IO优化型ECS 每天限量200免费公测！</a></li>
+			*#}
+		</ul>
+	</div>
+</div>
+{#/if#}

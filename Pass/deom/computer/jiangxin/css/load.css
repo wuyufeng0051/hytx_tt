@@ -1,0 +1,106 @@
+/*login右侧登录框*/
+.load{position: relative;}
+.form-box{     width: 380px;
+    min-height: 410px;
+    _height: 410px;
+    margin-top: 35px;
+    background: #fff;
+    position: absolute;
+    right: 450px;
+    top: 2%;}
+.form-box .form-tab{ width:380px; height:52px; border-bottom:1px solid #ddd; font-family:"Microsoft YaHei";}
+.form-tab .tab-li{ float:left; width:50%; height:50px; border-bottom:2px solid #fff;}
+.form-tab .tab-li a{ position:relative; display:block; text-align:center; height:50px; line-height:52px; font-size:18px; color:#999; text-decoration:none;}
+.form-tab .tab-li.cur{ border-bottom-color:#d00;}
+.form-tab .tab-li.cur a{ color:#d00;}
+.form-tab .tab-li .icon{ position:absolute; top:10px; width:18px; height:14px; margin-left:6px; background:url(../images/new.png) 0 0 no-repeat;}
+
+.form-box .form-con{ width:434px; height:376px; padding:38px 0 0;}
+.form-box .weixin-login{ width:380px; padding-top:50px;}
+.login-add .form-con{ height:342px; padding-top:41px;}
+.form-box .login-normal,.form-box .login-partner{ display:none;position:relative; width:354px; padding:0 40px;}
+.form-box .form-error{ display:none; position:absolute; top:-32px;max-height: 32px; padding:4px 6px 4px 12px; border:1px solid #ffddbc; background:#fffceb;}
+.form-box .form-error i{ position:absolute; top:4px; left:12px; width:16px; height:16px;background: url(../images/member.png) -124px 0 no-repeat;}
+.form-box .form-error .text{display:block;max-width: 258px; padding-left:22px; line-height:16px; font-family:"Microsoft YaHei"; color:#666;/*  white-space:nowrap;background:url(../images/member.png) -124px 0 no-repeat; */ }
+.form-box .top2{margin-bottom: 25px;}
+.form-box dl{ position:relative; width:304px; height:20px; line-height:20px; padding:16px 0; border:1px solid #ddd; font-family:"Microsoft YaHei"; font-size:14px;}
+.login-add dl{padding:14px 0;}
+.form-box .error{ z-index:5; border-color:#f66;}
+.form-box .top1{ top:-1px;}
+.form-box .top2{ top:-2px;}
+.form-box .top3{ top:-3px;}
+.form-box dt{ float:left; width:60px; height:20px; line-height:20px; padding-left:20px;}
+.form-box dt em{ padding:0 7px;}
+.form-box dd{ position: relative;
+    float: left;
+    width: 172px;
+    height: 20px;
+    line-height: 20px;}
+.form-box .placeholder{ position:absolute; height:20px; line-height:20px; left:10px; z-index:1; color:#ccc;}
+.form-box .input-text,.form-box .input-yzm,.form-box .input-jym{ position:absolute; height:20px; line-height:20px; padding:0 10px; left:0; z-index:2; background:transparent; outline:0 none; color:#333;border:none;}
+.form-box .input-text{width:250px;}
+.form-box .input-yzm{width:83px;}
+.form-box .input-jym{width:80px;}
+.form-box .span-yzm{ position:absolute; top:-16px; right:0; width:162px; height:36px; line-height:36px; padding:8px 0; border-left:1px solid #ddd;}
+.login-add .span-yzm{ top:-14px; padding:6px 0;}
+.form-box .error .span-yzm{ border-left-color:#d00;}
+.form-box .span-yzm img{ height:36px; width:88px; margin:0 13px; vertical-align:top;}
+.form-box .span-jym{ position:absolute; top:-8px; right:6px; width:98px; height:34px; line-height:34px; text-align:center; color:#f33; font-size:12px; border:1px solid #d66; border-radius:5px; text-decoration:none;}
+.form-box .disabled{ border-color:#ccc; color:#999;}
+.form-box .tips{ display:none; position:absolute;left:100%; top:50%; width:auto; height:22px; line-height:22px; padding:10px 12px; margin-top:-22px; border:1px solid #ffddbc; background:#fffceb; white-space:nowrap;}
+.form-box .tips em{ position:absolute; top:-1px; left:-10px; width:11px; height:10px; background:url(../images/member.png) 0 0 no-repeat;}
+.form-box .tips i{ display:inline-block; width:24px; height:24px; background:url(../images/member.png) -11px 0 no-repeat; vertical-align:top;}
+.form-box .error .tips{display:block;}
+.form-box .tips span{ display:inline-block; margin-left:8px;}
+.form-box .form-remember{ padding:18px 0 24px;}
+.login-add .form-remember{ padding:12px 0 18px;}
+.form-box .login-partner .form-remember{ padding:12px 0 18px;}
+.form-remember .rem-box{ display:inline-block; height:13px; line-height:13px; padding-left:20px; background:url(../images/rem-check.png) 0 0 no-repeat; cursor:default; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none;}
+.form-remember .memCheck{ background-position:0 -13px;}
+.form-remember .rem-check{ display:none; height:13px; width:13px;}
+.form-remember .rem-box-r{ margin-left:0px;}
+.form-box .btn-box{ height:46px;}
+.link-box{width: 309px;margin:10px 0 20px;}
+.login-add .btn-box{ height:40px;}
+.form-box .login-partner .btn-box{ height:40px;}
+.btn-settlement{ float:left; display:inline-block; height:40px; line-height:40px; width:100%; text-align:center; font-size:16px; color:#fff; -webkit-border-radius:5px; -o-border-radius:5px; -ms-border-radius:5px; border-radius:5px;background-color:#d00; outline:0 none; font-family:"Microsoft YaHei"; cursor:pointer;}
+.btn-settlement:hover{ background-color:#e00;}
+.form-box .btn-box .btn-settlement{ width:306px;border:none;}
+.form-box .forget-pass{ color:#007fd7;}
+.form-box .forget-pass:hover{ color:#d00;}
+.form-box .btn-box .forget-pass{ float:right; width:72px; margin-left:10px; line-height:40px; font-family:"Microsoft YaHei";}
+.form-box .login-short{ margin-top:18px; }
+.login-short h3{ font-size:12px; line-height:1; padding:17px 0 13px; color:#666;}
+.login-short li{ float:left; height:33px; width:33px; margin-right:18px; background:url(../images/member.png) -13px -24px no-repeat;}
+.login-short li a{ display:block; height:33px;}
+.login-short .qq{ background-position:-13px -24px;}
+.login-short .sina{ background-position:-49px -24px;}
+.login-short .weixin{ position:relative; background-position:-85px -24px;}
+.login-short .renren{ background-position:-121px -24px;}
+.login-short .baidu{ background-position:-79px -57px;}
+.login-short .qr-code{ display:none; position:absolute; left:50%; top:100%; width:104px; height:104px; padding:8px; margin:8px 0 0 -60px; border:1px solid #ccc; background:#fff;}
+.login-short .qr-code em,.login-short .qr-code i{ position:absolute; left:50%; top:-14px; width:0; height:0; margin-left:-6px; border-width:7px 6px; border-style:dashed dashed solid dashed; border-color:transparent transparent #ccc transparent;}
+.login-short .qr-code i{top:-13px; border-color:transparent transparent #fff transparent;}
+.login-short .qr-code img{ width:104px; height:104px;}
+.login-short .hover .qr-code{ display:block;}
+
+.form-box .form-foot{ width:482px; height:52px; padding:4px;}
+.form-box .form-foot_p{ height:52px; line-height:52px;text-align:center; background:url(../images/form-footbg.png); font-family:"Microsoft YaHei";}
+.form-foot_p .spanb{ font-size:16px;}
+.form-foot_p label{ margin-left:5px; color:#d00;}
+.form-foot_p .spans{ font-size:12px;padding: 0 0 12px 0;font-size: 12px;
+    line-height: 1;
+    padding: 17px 0 13px;
+    color: #666;    font-weight: 400;}
+.form-dl-jym{ display:none;}
+.loginV2 .short-right{ float:left; width:124px; padding-left:25px; border-left:1px dotted #ddd;}
+.loginV2 .login-short h3{ padding: 0 0 12px 0;}
+.loginV2 .login-short .phone-short{ height:33px;}
+.loginV2 .login-short .phone-short .txt{ float:left; line-height:33px; font-size:14px; color:#666;}
+.loginV2 .login-short .phone-short .txt:hover{ color:#d00;}
+.loginV2 .login-short .phone-short .phone{ float:left; height:33px; width:33px; margin-right:7px; background:url(../images/member.png) -115px -57px no-repeat;}
+.loginV2 .login-short li{ margin-right:16px;}
+.shortLogin{display:none;}
+.shortLogin .title{ height:40px; line-height:40px; padding-top:18px; font-size:18px; color:#d00; text-align:center;}
+.loginV2 .short-left{ float:left; width:150px;}
+.forght{float: right;}

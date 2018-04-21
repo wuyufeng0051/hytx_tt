@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$business_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css">
+</head>
+
+<body>
+
+<div class="header">
+  <div class="header-l"><a href="{#$cfg_basehost#}"><img src="{#$templets_skin#}images/logo1.png"></a></div>
+  <form action="{#getUrlPath service='business' template='list'#}" method="get">
+    <input type="text" class="header-search" placeholder="输入商家、品类" name="keywords">
+  </form>
+  <div class="header-r">
+    <a href="javascript:;"><img src="{#$templets_skin#}images/more.png"></a>
+  </div>
+  <div class="nav">
+    <ul class="fn-clear">
+	  {#siteConfig action="siteModule" return="module"#}
+      <li><a href="{#$module.url#}"><span>{#$module.name#}</span></a></li>
+	  {#/siteConfig#}
+    </ul>
+  </div>
+</div>
+
+  <!-- 滑动导航 -->
+  <div class="mainNav">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <ul class="fn-clear">
+          {#business action="type" return="btype"#}
+          <li>
+            <a href="{#getUrlPath service='business' template='list' param="typeid={#$btype.id#}"#}">
+              <span class="icon-circle"><img src="{#$templets_skin#}images/img{#$_bindex.btype#}.jpg"></span>
+              <span class="icon-txt">{#$btype.typename#}</span>
+            </a>
+          </li>
+          {#if !($_bindex.btype % 10)#}
+            </ul>
+          </div>
+          <div class="swiper-slide">
+            <ul class="fn-clear">
+          {#/if#}
+          {#/business#}
+        </ul>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+  <!-- 滑动导航 end-->
+
+  <!-- 热门商圈 -->
+  <div class="hot">
+    <div class="city-tit">
+      <span>热门商家</span>
+    </div>
+    <div class="hot-list">
+      <div class="swiper-wrapper">
+        {#business action='blist' return='list' pageSize="10"#}
+        <div class="swiper-slide">
+          <a href="{#$list.url#}">
+            <span><img src="{#$list.logo#}"></span>
+            <h3>{#$list.title#}</h3>
+          </a>
+        </div>
+        {#/business#}
+      </div>
+    </div>
+  </div>
+  <!-- 热门商圈 end-->
+
+  <!-- 城市活动 -->
+  <div class="city">
+    <div class="city-tit"><span>城市活动</span></div>
+    <div class="img-box mb2">{#myad id="216"#}</div>
+    <div class="img-box">{#myad id="217"#}</div>
+  </div>
+  <!-- 城市活动 end-->
+
+  {#if in_array("waimai", $installModuleArr)#}
+  <!-- 猜你喜欢 -->
+  <div class="like">
+    <div class="like-tit">
+      <span>猜你喜欢</span>
+    </div>
+    <div class="like-list">
+      <ul>
+        {#waimai action='store' return='wstore' pageSize='10'#}
+        <li>
+          <a href="{#$wstore.url#}">
+            <div class="like-img"><img src="{#$wstore.logo#}"></div>
+            <div class="like-txt">
+              <h3><span class="shop-name">{#$wstore.title#}</span><div class="icon-tag">{#if $wstore.online#}<i class="ding">订</i>{#/if#}{#if $wstore.sale#}<i class="cu">减</i>{#/if#}{#if $wstore.fapiao#}<i class="wai">票</i>{#/if#}</div></h3>
+              <span class="per">营业时间：{#$wstore.start1#} - {#$wstore.end2#}</span>
+              <p class="grey address"><span>{#$wstore.address#}</span><span>其他西餐</span></p>
+              <div class="like-msg grey">
+                <p><i class="tuan">送</i><span class="like-msg-info">{#$wstore.price#}元起送（{#if $wstore.peisong#}配送费{#$wstore.peisong#}元{#else#}免配送费{#/if#}）</span></p>
+              </div>
+            </div>
+          </a>
+        </li>
+        {#/waimai#}
+      </ul>
+    </div>
+    <div class="like-more">
+      <a href="{#$waimai_channelDomain#}">查看全部</a>
+    </div>
+  </div>
+  <!-- 猜你喜欢 end-->
+  {#/if#}
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script src="{#$templets_skin#}js/index.js"></script>
+</body>
+</html>

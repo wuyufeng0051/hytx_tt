@@ -1,0 +1,64 @@
+<div class="w-form">
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=waimai&action={#if $id != ""#}editMenu&id={#$id#}{#else#}addMenu{#/if#}" data-url="{#getUrlPath service='member' template='waimai-menus'#}">
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>菜单名称：</dt>
+			<dd>
+				<input type="text" name="title" class="inp" id="title" size="20" maxlength="20" data-title="请输入名称" value="{#$detail_title#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>菜单分类：</dt>
+			<dd id="selType">
+				<div class="sel-group" data-title="请选择菜单分类">
+					<button type="button" class="sel">{#if $detail_typename#}{#$detail_typename#}{#else#}请选择{#/if#}<span class="caret"></span></button>
+					<ul class="sel-menu">
+						{#waimai action="menuType" store={#$storeid#}#}
+						<li><a href="javascript:;" data-id="{#$row.id#}">{#$row.typename#}</a></li>
+						{#/waimai#}
+					</ul>
+				</div>
+				<input type="hidden" name="typeid" id="typeid" value="{#$detail_typeid#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+	    <dl class="fn-clear" data-required="1">
+			<dt><span>*</span>价格：</dt>
+			<dd>
+		        <div class="input-append">
+		          <input id="price" name="price" type="text" size="8" maxlength="6" value="{#$detail_price#}" data-title="请输入菜单价格">
+		          <span class="add-aft">元</span>
+		        </div>
+				<span class="tip-inline"><s></s>请输入菜单价格</span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>上传图片：</dt>
+			<dd class="thumb fn-clear listImgBox">
+				<div class="uploadinp filePicker thumbtn{#if $detail_pics != ""#} fn-hide{#/if#}" id="filePicker1" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+				{#if $detail_pics != ""#}
+				<ul id="listSection1" class="listSection thumblist fn-clear" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$detail_pics[0][1]#}' target="_blank" title=""><img alt="" src="{#$detail_pics[0][1]#}" data-val="{#$detail_pics[0][0]#}"/></a><a class="reupload li-rm" href="javascript:;">删除图片</a></li></ul>
+				{#else#}
+				<ul id="listSection1" class="listSection thumblist fn-clear"></ul>
+				{#/if#}
+				<input type="hidden" name="pics" value="{#$detail_pics[0][0]#}" class="imglist-hidden" id="litpic">
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt>菜单介绍：</dt>
+			<dd><textarea class="inp text" name="note" id="note" rows="7" cols="60" >{#$detail_note#}</textarea></dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>验证码：</dt>
+			<dd>
+				<input type="text" class="inp" maxlength="4" size="6" name="vdimgck" id="vdimgck" autocomplete="off" data-title="请输入验证码" />
+				<img src="/include/vdimgck.php" title="看不清？点击换一张" id="verifycode" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>&nbsp;</dt>
+			<dd><button class="submit" id="submit">{#if $id == 0#}确认提交{#else#}提交修改{#/if#}</button></dd>
+		</dl>
+	</form>
+</div>

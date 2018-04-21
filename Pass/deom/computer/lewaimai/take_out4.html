@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.yiiactiveform.js"></script>
+    <script type="text/javascript" src="js/jquery.ba-bbq.js"></script>
+    <title>乐外卖 - 财务统计</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <link rel="stylesheet" href="css/font-awesome.min.css" />
+      <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/chosen.min.css" />
+      <link rel="stylesheet" href="css/ace-fonts.min.css" />
+      <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+      <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+        <div class="main-content">
+          <div class="breadcrumbs" id="breadcrumbs">
+            <ul class="breadcrumb">
+              <i class="ace-icon fa fa-bar-chart-o bar-chart-o-icon"></i>
+              <li class="active">统计</li>
+              <li class="active">财务统计</li>
+              <li class="active">营业额统计</li></ul>
+            </div>
+          <div class="page-content">
+            <div class="page-content-area">
+              <script type="text/javascript" src="js/highcharts.js"></script>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="tabbable">
+                    <ul class="nav nav-tabs" id="myTab">
+                      <li >
+                        <a href="take_out.html">外卖营业额统计</a></li>
+                      <li>
+                        <a href="#">订单按天统计</a></li>
+                      <li>
+                        <a href="#">订单按时间段统计</a></li>
+                      <li class="active">
+                        <a href="take_out4.html" >店铺订单量排行统计</a></li>
+                      <li>
+                        <a href="#">店铺营业额排行统计</a></li>
+                      <li>
+                        <a href="#">外卖商品销量统计</a></li>
+                      <li>
+                        <a href="#">配送员统计</a></li>
+                      <li>
+                        <a href="take_out8.html">财务结算</a></li>
+                      <li>
+                        <a href="take_out9.html">新财务结算</a></li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-pane active">
+                        <div class="widget-box">
+                          <div class="widget-header">
+                            <h5>营业额统计-条件选择</h5></div>
+                          <div class="widget-body" style="padding:20px;">
+                              <form id="exportorder-form" action="/statistics/chartrevenue" method="post">
+                                <label>统计时间段</label>
+                                <br />
+                              <input id="StatisticsForm_beginDate" type="text" value="2017-02-12" name="StatisticsForm[beginDate]" />至
+                              <input id="StatisticsForm_endDate" type="text" value="2017-03-14" name="StatisticsForm[endDate]" />
+                              <br />
+                              <br />
+                                <div class="span12">
+                                  <button type="submit" class="btn btn-success">查看统计</button></div>
+                              </form>
+                            </div>
+                        </div>
+                        <div class="widget-box">
+                        <div class="widget-header">
+                          <h5>统计图</h5></div>
+                        <div class="widget-body" style="padding:20px;">
+                          <script>$(function() {
+                              $('#chartscontainer').highcharts({
+                                chart: {
+                                  type: 'column'
+                                },
+                                title: {
+                                  text: '店铺订单量排行',
+                                  x: -20 //center
+                                },
+                                subtitle: {
+                                  text: 'https://www.lewaimai.com',
+                                  x: -20
+                                },
+                                xAxis: {
+                                  categories: ["肯德基", "味美家煲仔饭", "太陽·卤味坊", "功夫煲仔饭", "精武人家（小区店）", "老字号鸡蛋饭", "沐小卤卤肉饭", "坝头刚子烧烤", "庙嘴万州面", "新派煲仔饭"],
+                                  //                    labels: {
+                                  //                          step: ,
+                                  //                    }
+                                },
+                                yAxis: {
+                                  gridLineWidth: 1,
+                                  title: {
+                                    text: '订单量（个）'
+                                  },
+                                  plotLines: [{
+                                    value: 0,
+                                    width: 1,
+                                    color: '#808080'
+                                  }]
+                                },
+                                tooltip: {
+                                  valueSuffix: '个'
+                                },
+                                series: [{
+                                  name: '店铺订单排行',
+                                  data: [223, 172, 162, 156, 136, 97, 95, 82, 81, 79]
+                                }]
+                              });
+                            });</script>
+                          <div id="chartscontainer"></div>
+                        </div>
+                      </div>
+                        <div class="row">
+                          <div class="col-xs-10">
+                            <div id="yw0" class="grid-view">
+                              <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                  <tr>
+                                    <th id="yw0_c0">店铺名称</th>
+                                    <th id="yw0_c1">店铺订单量</th></tr>
+                                </thead>
+                                <tbody>
+                                  <tr class="odd">
+                                    <td style="width: 120px">肯德基</td>
+                                    <td>223</td></tr>
+                                  <tr class="even">
+                                    <td style="width: 120px">味美家煲仔饭</td>
+                                    <td>172</td></tr>
+                                  <tr class="odd">
+                                    <td style="width: 120px">太陽·卤味坊</td>
+                                    <td>162</td></tr>
+                                  <tr class="even">
+                                    <td style="width: 120px">功夫煲仔饭</td>
+                                    <td>156</td></tr>
+                                  <tr class="odd">
+                                    <td style="width: 120px">精武人家（小区店）</td>
+                                    <td>136</td></tr>
+                                  <tr class="even">
+                                    <td style="width: 120px">老字号鸡蛋饭</td>
+                                    <td>97</td></tr>
+                                  <tr class="odd">
+                                    <td style="width: 120px">沐小卤卤肉饭</td>
+                                    <td>95</td></tr>
+                                  <tr class="even">
+                                    <td style="width: 120px">坝头刚子烧烤</td>
+                                    <td>82</td></tr>
+                                  <tr class="odd">
+                                    <td style="width: 120px">庙嘴万州面</td>
+                                    <td>81</td></tr>
+                                  <tr class="even">
+                                    <td style="width: 120px">新派煲仔饭</td>
+                                    <td>79</td></tr>
+                                  <tr class="odd">
+                                    <td style="width: 120px">总计</td>
+                                    <td>1283</td></tr>
+                                </tbody>
+                              </table>
+                              <div class="keys" style="display:none" title="/statistics/orderlist">
+                                <span>1</span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5</span>
+                                <span>6</span>
+                                <span>7</span>
+                                <span>8</span>
+                                <span>9</span>
+                                <span>10</span>
+                                <span>11</span></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+        </div>
+        <!-- /.main-content -->
+      <!-- page specific plugin scripts -->
+      <script src="js/jquery-ui.min.js"></script>
+      <script src="js/jquery.ui.touch-punch.min.js"></script>
+      <script src="js/jquery.easypiechart.min.js"></script>
+      <script src="js/jquery.sparkline.min.js"></script>
+
+      <!-- 这里是与新订单提醒相关的内容 -->
+      <script type="text/javascript" src="js/jquery-ui-i18n.min.js"></script>
+      <script type="text/javascript">
+        jQuery(function($) {
+          jQuery('#StatisticsForm_beginDate').datepicker(jQuery.extend({
+            showMonthAfterYear: false
+          },
+          jQuery.datepicker.regional['zh_cn'], {
+            'showSecond': true,
+            'changeMonth': true,
+            'changeYear': true,
+            'tabularLevel': null,
+            'yearRange': '2013:2020',
+            'minDate': new Date(2013, 1, 1, 00, 00, 00),
+            'timeFormat': 'hh:mm:ss',
+            'dateFormat': 'yy-mm-dd',
+            'timeText': '时间',
+            'hourText': '时',
+            'minuteText': '分',
+            'secondText': '秒',
+            'currentText': '当前时间',
+            'closeText': '关闭',
+            'showOn': 'focus'
+          }));
+          jQuery('#StatisticsForm_endDate').datepicker(jQuery.extend({
+            showMonthAfterYear: false
+          },
+          jQuery.datepicker.regional['zh_cn'], {
+            'showSecond': true,
+            'changeMonth': true,
+            'changeYear': true,
+            'tabularLevel': null,
+            'yearRange': '2013:2020',
+            'minDate': new Date(2013, 1, 1, 00, 00, 00),
+            'timeFormat': 'hh:mm:ss',
+            'dateFormat': 'yy-mm-dd',
+            'timeText': '时间',
+            'hourText': '时',
+            'minuteText': '分',
+            'secondText': '秒',
+            'currentText': '当前时间',
+            'closeText': '关闭',
+            'showOn': 'focus'
+          }));
+          jQuery('#exportorder-form').yiiactiveform({
+            'validateOnSubmit': true,
+            'attributes': [{
+              'id': 'StatisticsForm_shop_id',
+              'inputID': 'StatisticsForm_shop_id',
+              'errorID': 'StatisticsForm_shop_id_em_',
+              'model': 'StatisticsForm',
+              'name': 'shop_id',
+              'enableAjaxValidation': false,
+              'clientValidation': function(value, messages, attribute) {
+
+                if (jQuery.trim(value) == '') {
+                  messages.push("\u5e97\u94fa\u540d\u79f0 \u4e0d\u53ef\u4e3a\u7a7a\u767d.");
+                }
+
+              }
+            }],
+            'errorCss': 'error'
+          });
+        });
+        </script>
+        <script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+
+</html>

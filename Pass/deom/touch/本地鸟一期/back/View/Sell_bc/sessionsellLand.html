@@ -1,0 +1,37 @@
+    <foreach item="vo" name="sellothers" key="k">
+			<div class="mui-card" style="margin:0;border-bottom: 1px solid #ddd;">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" style="padding: 10px 10px;">
+					<!-- href="__MODULE__/Sell/sellLandDetails?sell_other_id={$vo.sell_other_id}" -->
+						<a style="position: relative;padding-left: 90px;display: block;color:#000;height: 85px;" str="sellLand" stv="{$vo.sell_other_id}" class="topheight">
+ 						    <div style="position: absolute;left: 0;right: 0;width: 85px;height: 85px;">
+							     <div class="mui-media-object mui-pull-left img" style="width:100%;height: 100%; background-image: url(__PUBLIC__/../{$vo.imgs.0.imgs_path}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; " ></div>
+                            </div>
+							<div class="mui-ellipsis-2" style="height: 42px;">
+								{$vo.sell_other_title}
+							</div>
+							<p style="margin-bottom: 0;font-size: 14px;color: #ff7300;">
+							<?php if($vo['sell_other_price'] == 0){  ?>
+								面议
+							<?php }else{ ?>
+							  {$vo['sell_other_price']}万
+							<?php  } ?>
+							<span style="margin:0 5px;font-size: 12px;color: #666;">
+							 <?php if(!empty($vo['sell_other_class'])){ ?>
+							   {$vo.sell_other_class}
+							  <?php }else{ ?>
+							   不限
+							  <?php } ?>
+							</span></p>
+							<p style="margin-bottom: 0;color: #666;font-size: 12px;height: 21px;width: 100%;"><strong class="mui-ellipsis-address" style="font-weight: normal;margin-right: 5px;">{$vo.sell_other_address}</strong>
+							<?php if($vo['sell_other_is_top'] == 1){ ?>
+							<span style="float: right;">置顶</span>
+							<?php }else{ ?>
+							<span style="float: right;" class="time">{$vo.sell_other_time}</span>
+							<?php } ?>
+							</p>
+						</a>
+					</div>
+				</div>
+			</div>
+		</foreach>

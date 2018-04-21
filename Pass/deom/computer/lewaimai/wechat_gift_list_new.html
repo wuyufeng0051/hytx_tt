@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<style type="text/css">.form-horizontal .form-group {height: 40px;margin: 15px 0;}.mycss{margin-left: 220px;}</style>
+  <div class="main-content">
+      <div class="breadcrumbs" id="breadcrumbs">
+          <ul class="breadcrumb">
+              <li class="active">营销活动
+              </li>
+              <li class="active">微信现金红包
+              </li>
+              <li class="active">新建微信现金红包
+              </li>
+          </ul><!-- .breadcrumb -->
+      </div><!-- /section:basics/content.breadcrumbs -->
+      <div class="page-content">
+          <!-- /section:settings.box -->
+          <div class="page-content-area">
+              <form enctype="multipart/form-data" class="form-horizontal" id="weixin-coupon-form" action="/wxcoupon/create" method="post" name="weixin-coupon-form">
+                  <div class="alert alert-danger" id="weixin-coupon-form_es_" style="display:none">
+                      <p>
+                          请更正下列输入错误:
+                      </p>
+                      <ul>
+                          <li>dummy
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label"><label for="WeixinCoupon_act_name">活动名称</label></label>
+                      <div class="col-sm-2">
+                          <input class="form-control" name="WeixinCoupon[act_name]" id="WeixinCoupon_act_name" type="text" maxlength="32">
+                      </div><span style="color:red;font-size:14px;height:34px;display:none" id="my_act">（提示：活动名称不能超过8个中文）</span>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label">状态</label>
+                      <div class="col-sm-2">
+                          <select name="WeixinCoupon[enable]" id="WeixinCoupon_enable">
+                              <option value="0" selected="selected">
+                                  关闭
+                              </option>
+                              <option value="1">
+                                  开启
+                              </option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label"><label for="WeixinCoupon_total_amount">红包金额(元)1-200之间</label></label>
+                      <div class="col-sm-2">
+                          <input class="form-control" name="WeixinCoupon[total_amount]" id="WeixinCoupon_total_amount" type="text">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label"><label for="WeixinCoupon_send_name">商户名称</label></label>
+                      <div class="col-sm-2">
+                          <input class="form-control" name="WeixinCoupon[send_name]" id="WeixinCoupon_send_name" type="text" maxlength="32">
+                      </div><span style="color:red;font-size:14px;height:34px;display:none" id="my_send">（提示：商户名称不能超过8个中文）</span>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label"><label for="WeixinCoupon_wishing">红包祝福语</label></label>
+                      <div class="col-sm-2">
+                          <input class="form-control" name="WeixinCoupon[wishing]" id="WeixinCoupon_wishing" type="text" maxlength="128">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label"><label for="WeixinCoupon_remark">备注信息</label></label>
+                      <div class="col-sm-2">
+                          <input class="form-control" name="WeixinCoupon[remark]" id="WeixinCoupon_remark" type="text" maxlength="255">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label"><label for="WeixinCoupon_logo">商户logo</label>(尺寸：48像素 * 48像素)</label>
+                      <div class="col-sm-2">
+                          <input id="ytace-file-input" type="hidden" value="" name="WeixinCoupon[logo]"><label class="ace-file-input"><input class="col-sm-2" id="ace-file-input" size="50" onchange="preview(this)" name="WeixinCoupon[logo]" type="file"></label>
+                      </div>
+                  </div>
+                  <img style="width:300px;height:300px;margin-bottom:300" id="logo" src="upfile/0.jpg" alt="" name="logo">
+                  <div class="form-actions">
+                      <button class="btn btn-info mycss" type="submit">保存</button>
+                  </div>
+              </form>
+          </div><!-- /.page-content-area -->
+      </div><!-- /.page-content -->
+  </div>
+  <div class="disk"></div>
+  <script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

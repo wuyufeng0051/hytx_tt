@@ -1,0 +1,126 @@
+.screen_lead{
+    height: .9rem;
+    background: #312e41;
+    color: #fff;
+    font-size: 0.36rem;
+    max-width: 1080px;
+    position: relative;
+    text-align: center;
+    line-height: .9rem;
+}
+.screen_lead p a{
+	    background: url(../images/toleft.png) no-repeat center;
+    background-size: 0.6rem;
+    height: 0.6rem;
+    width: 0.6rem;
+    display: inline-block;
+    position: absolute;
+    left: 0.2rem;
+    top: 0.15rem;
+}
+.screen_list p{
+	height: 2rem;
+	line-height: 2rem;
+	border-bottom: 1px solid #eeeeee;
+	font-size: 0.36rem;
+	text-indent: 1.2rem;
+	color: #277de2;
+}
+.screen_list .do{
+	background: url(../images/pay_de1.png) no-repeat .4rem;
+	background-size: 0.5rem;
+}
+.screen_list .time{
+	background: url(../images/pay_de2.png) no-repeat .4rem;
+	background-size: 0.5rem;
+}
+.screen_list .ask{
+	background: url(../images/pay_de3.png) no-repeat .4rem;
+	background-size: 0.5rem;
+}
+.treat{
+	height: 2rem;
+	line-height: 2rem;
+	font-size: 0.36rem;
+	text-align: center;
+}
+.treat input{
+	width: 2rem;
+	border: none;
+	border-bottom: 1px solid #bfbec3;
+	background: none;
+	text-indent: 0.2rem;
+    border-radius: 0;
+}
+.anonymity{
+	height: .9rem;
+	line-height: .9rem;
+	color: #79787d;
+	text-align: center;
+	font-size: 0.36rem;
+	margin-top: 2rem;
+}
+.al-toggle-button{
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    width: 52px;
+    height: 32px;
+    background: #dfdfdf;
+    border-radius: 16px;
+    border: 1px solid #dfdfdf;
+    outline: 0;
+    box-sizing: border-box;
+    vertical-align: middle;
+    margin-left: 0.2rem;
+}
+.al-toggle-button:checked{
+    border-color: #04be02;
+    background-color: #04be02;
+}
+.al-toggle-button:before, .al-toggle-button:after{
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    border-radius: 15px;
+    transition: transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
+    -webkit-transition: -webkit-transform 0.3s;
+}
+.al-toggle-button:before{
+    width: 50px;
+    background-color: #fdfdfd;
+}
+.al-toggle-button:after{
+    width: 30px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.al-toggle-button:checked:before{
+    transform: scale(0);
+    -webkit-transform: scale(0);
+}
+.al-toggle-button:checked:after{
+    transform: translateX(20px);
+    -webkit-transform: translateX(20px);
+}
+.submit {
+    margin-bottom: 0.2rem;
+}
+.submit input{
+	width: 7rem;
+	font-size: 0.36rem;
+	height: .9rem;
+	line-height: .9rem;
+	background: #f1f4fd;
+	border: none;;
+	border-radius: 0.5rem;
+	color: #94979e;
+	margin: 0 auto;
+	display: block;
+	margin-top: 0.2rem;
+   -webkit-appearance: none;
+}

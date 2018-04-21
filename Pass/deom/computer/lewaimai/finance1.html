@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.yiiactiveform.js"></script>
+    <script type="text/javascript" src="js/jquery.ba-bbq.js"></script>
+    <title>乐外卖 - 财务统计</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <link rel="stylesheet" href="css/font-awesome.min.css" />
+      <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/chosen.min.css" />
+      <link rel="stylesheet" href="css/ace-fonts.min.css" />
+      <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+      <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+      <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+          <ul class="breadcrumb">
+            <i class="ace-icon fa fa-bar-chart-o bar-chart-o-icon"></i>
+            <li class="active">统计</li>
+            <li class="active">财务统计</li>
+            <li class="active">分店对账</li>
+          </ul>
+        </div>
+        <!-- /section:basics/content.breadcrumbs -->
+        <div class="page-content">
+          <!-- /section:settings.box -->
+          <div class="page-content-area">
+            <script type="text/javascript" src="js/highcharts.js"></script>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="tabbable">
+                  <ul class="nav nav-tabs" id="myTab">
+                      <li >
+                        <a href="finance.html">实体店营业额统计</a></li>
+                      <li class="active">
+                        <a href="finance1.html">分店对账</a></li>
+                      <li>
+                        <a href="finance2.html">成本核算</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div class="tab-pane active">
+                      <div class="widget-box">
+                        <div class="widget-header">
+                          <h5>分店对账-条件选择</h5></div>
+                        <div class="widget-body" style="padding:20px;">
+                          <form id="exportorder-form" action="/statistics/chartbusiness" method="post">
+                            <label>统计时间段</label>
+                            <br />
+                            <input id="StatisticsForm_beginDate" type="text" value="2017-02-12" name="StatisticsForm[beginDate]" />至
+                            <input id="StatisticsForm_endDate" type="text" value="2017-03-14" name="StatisticsForm[endDate]" />
+                            <br />
+                            <br />
+                            <label>选择店铺
+                              <br />
+                                <div class="chosen-container chosen-container-single tag-input-style " style="width: 256px;" title="" id="form_field_select_3_chosen">
+                                  <a class="chosen-single" tabindex="-1">
+                                    <span>全部店铺</span>
+                                    <div>
+                                      <b>
+                                      </b>
+                                    </div>
+                                  </a>
+                                  <div class="chosen-drop">
+                                    <div class="chosen-search">
+                                      <input type="text" autocomplete="off"></div>
+                                    <ul class="chosen-results">
+                                      <li class="active-result" >全部店铺</li>
+                                      <li class="active-result" >味美家煲仔饭</li>
+                                      <li class="active-result" >沐小卤卤肉饭</li>
+                                      <li class="active-result result-selected" >遍地香</li>
+                                      <li class="active-result" >蔡记兔头</li>
+                                      <li class="active-result" >大圣烧烤</li>
+                                      <li class="active-result" >五谷渔粉</li>
+                                      <li class="active-result" >茶粥坊</li>
+                                      <li class="active-result" >湖南米粉秭归旗舰店</li>
+                                      <li class="active-result" >桃园包子</li>
+                                      <li class="active-result" >龙虾甲鱼馆</li>
+                                      <li class="active-result" >羊子沟羊肉串</li>
+                                      <li class="active-result" >一号渔港</li>
+                                      <li class="active-result" >庙嘴泄滩包子</li>
+                                      <li class="active-result" >罗蒂爸爸</li>
+                                      <li class="active-result" >陕西红富士（金点自营）</li>
+                                      <li class="active-result" >五谷渔粉（茶粥坊店）</li>
+                                      <li class="active-result" >撮一顿川菜馆</li>
+                                      <li class="active-result" >老字号米酒汤圆（下酒菜 甜品）</li>
+                                      <li class="active-result" >易购24小时便利店</li>
+                                      <li class="active-result" >比得灌汤包</li>
+                                      <li class="active-result" >本素咖啡</li>
+                                      <li class="active-result" >龙潮美式瓦缸炭火烤鱼</li>
+                                      <li class="active-result" >金巷子</li>
+                                      <li class="active-result" >有意思</li>
+                                      <li class="active-result" >花之恋</li>
+                                      <li class="active-result" >老归州酒家</li>
+                                      <li class="active-result" >米桂坊过桥米线</li>
+                                      <li class="active-result" >郑记卤味</li>
+                                      <li class="active-result" >吾饮良品</li>
+                                      <li class="active-result" >馋嘴鱼莊</li>
+                                      <li class="active-result" >木炭原味儿烧烤</li>
+                                      <li class="active-result" >红油面馆</li>
+                                      <li class="active-result" >冰淋橙夏</li>
+                                      <li class="active-result" >怡满堂大药房</li>
+                                      <li class="active-result" >王胖子早点</li>
+                                      <li class="active-result" >阁楼咖啡</li>
+                                      <li class="active-result" >千里香馄饨王</li>
+                                      <li class="active-result" >周姐卤菜水饺</li>
+                                      <li class="active-result" >七里香万州面馆</li>
+                                      <li class="active-result" >小树鲜果（水果、零食）</li>
+                                      <li class="active-result" >粥公卤婆（烧烤）</li>
+                                      <li class="active-result" >邓记烤鱼</li>
+                                      <li class="active-result" >九三食府</li>
+                                      <li class="active-result" >原酒印象</li>
+                                      <li class="active-result" >乡风缘野鸡养殖农场</li>
+                                      <li class="active-result" >小牧场羊肉砂锅</li>
+                                      <li class="active-result" >惠姑家庭农场</li>
+                                      <li class="active-result" >杜康专卖店</li>
+                                      <li class="active-result" >炎锅家常菜（瓦罐汤）</li>
+                                      <li class="active-result" >秘制牛肉粉面馆</li>
+                                      <li class="active-result" >屈乡风味馆</li>
+                                      <li class="active-result" >吴妈面馆</li>
+                                      <li class="active-result" >可礼客中式快餐</li>
+                                      <li class="active-result" >蟹谢啦（香辣蟹钳）</li>
+                                      <li class="active-result" >天喔零食秭归店</li>
+                                      <li class="active-result" >正新鸡排（金城店）</li>
+                                      <li class="active-result" >嘛嘛香中式营养快餐</li>
+                                      <li class="active-result" >正宗片皮鸭</li>
+                                      <li class="active-result" >梁记粥铺</li>
+                                      <li class="active-result" >跑腿业务</li>
+                                      <li class="active-result" >五香嘴量贩休闲食品</li>
+                                      <li class="active-result" >麦点超市</li>
+                                      <li class="active-result" >家常菜馆</li>
+                                      <li class="active-result" >世纪华联</li>
+                                      <li class="active-result" >夷蒙概念牛肉</li>
+                                      <li class="active-result" >祥和飞锅万州面</li>
+                                      <li class="active-result" >品味烧烤</li>
+                                      <li class="active-result" >秋谷山纯粮酒</li>
+                                      <li class="active-result" >金烈火奶酪蛋糕</li>
+                                      <li class="active-result" >面相聚</li>
+                                      <li class="active-result" >山东口福饼</li>
+                                      <li class="active-result" >茶粥坊土钵菜</li>
+                                      <li class="active-result" >茶物语</li>
+                                      <li class="active-result" >木语果蛋糕</li>
+                                      <li class="active-result" >肯德基</li>
+                                      <li class="active-result" >舒心批发超市</li>
+                                      <li class="active-result" >五色谷大酒库旗舰店</li>
+                                      <li class="active-result" >坝头养生卤品</li>
+                                      <li class="active-result" >纯果乐</li>
+                                      <li class="active-result" >净果成人用品</li>
+                                      <li class="active-result" >麦佳乐蛋糕店</li>
+                                      <li class="active-result" >周黑鸭</li>
+                                      <li class="active-result" >欢乐家旗舰店</li>
+                                      <li class="active-result" >新派煲仔饭</li>
+                                      <li class="active-result" >矮子馅饼（秭归店）</li>
+                                      <li class="active-result" >巴黎天使</li>
+                                      <li class="active-result" >绿源清江尙品桶装系列纯净水天然水</li>
+                                      <li class="active-result" >子归醇</li>
+                                      <li class="active-result" >王梁记麻辣烫</li>
+                                      <li class="active-result" >四季花时尚饮品</li>
+                                      <li class="active-result" >香满园拉面馆</li>
+                                      <li class="active-result" >福和祥煲仔饭</li>
+                                      <li class="active-result" >坝头刚子烧烤</li>
+                                      <li class="active-result" >韦一粮油</li>
+                                      <li class="active-result" >糖炒栗子</li>
+                                      <li class="active-result" >王老板烩面</li>
+                                      <li class="active-result" >花漫舞</li>
+                                      <li class="active-result" >鲜烫麻辣烫</li>
+                                      <li class="active-result" >安吉尔纯净水</li>
+                                      <li class="active-result" >沙县小吃信合店</li>
+                                      <li class="active-result" >坝头夜猫子小黄鱼</li>
+                                      <li class="active-result" >均瑶旗舰店</li>
+                                      <li class="active-result" >庙嘴万州面</li>
+                                      <li class="active-result" >张氏茶油鸭</li>
+                                      <li class="active-result" >艳子农家小炒</li>
+                                      <li class="active-result" >坝头米酒汤圆 萝卜饺子</li>
+                                      <li class="active-result" >功夫煲仔饭</li>
+                                      <li class="active-result" >巴东傅记羊肉面</li>
+                                      <li class="active-result" >坝头东北小吃</li>
+                                      <li class="active-result" >砂锅米线</li>
+                                      <li class="active-result" >正新鸡排</li>
+                                      <li class="active-result" >庙嘴炸酱面馆</li>
+                                      <li class="active-result" >维纳斯美容会所</li>
+                                      <li class="active-result" >一家人餐馆</li>
+                                      <li class="active-result" >网上营业厅</li>
+                                      <li class="active-result" >坝头铁板炒饭</li>
+                                      <li class="active-result" >韩国凉面</li>
+                                      <li class="active-result" >李功夫中华鸡排</li>
+                                      <li class="active-result" >妙味馄饨</li>
+                                      <li class="active-result" >一扫光零食量贩店</li>
+                                      <li class="active-result" >宏发煤气</li>
+                                      <li class="active-result" >坝头那家粉</li>
+                                      <li class="active-result" >楚城小厨</li>
+                                      <li class="active-result" >坝头火爆鱿鱼</li>
+                                      <li class="active-result" >红牛能量补给站</li>
+                                      <li class="active-result" >妙嘴小吃</li>
+                                      <li class="active-result" >零食加油站</li>
+                                      <li class="active-result" >辛勤小吃店</li>
+                                      <li class="active-result" >测试店铺（勿点）</li>
+                                      <li class="active-result" >一品香</li>
+                                      <li class="active-result" >襄阳牛杂面</li>
+                                      <li class="active-result" >华莱士</li>
+                                      <li class="active-result" >真味酒楼</li>
+                                      <li class="active-result" >谭家村酒业</li>
+                                      <li class="active-result" >坝头开心花甲</li>
+                                      <li class="active-result" >老家大锅台</li>
+                                      <li class="active-result" >坝头灌汤包</li>
+                                      <li class="active-result" >成都抄手</li>
+                                      <li class="active-result" >胖胖熊美食城</li>
+                                      <li class="active-result" >老字号鸡蛋饭</li>
+                                      <li class="active-result" >重庆小面</li>
+                                      <li class="active-result" >太陽·卤味坊</li>
+                                      <li class="active-result" >马大姐旗舰店</li>
+                                      <li class="active-result" >松滋杜婆鸡</li>
+                                      <li class="active-result" >坝头砂锅麻辣烫</li>
+                                      <li class="active-result" >坝头功夫鱿鱼</li>
+                                      <li class="active-result" >精武人家（小区店）</li>
+                                      <li class="active-result" >纸上烤鱼(国华盛景店)</li>
+                                      <li class="active-result" >凤凰楼</li>
+                                      <li class="active-result" >坝头公园27号肉夹馍</li>
+                                      <li class="active-result" >泄滩包子金城店</li>
+                                      <li class="active-result" >坝头饮品庄园</li>
+                                      <li class="active-result" >坝头台湾手抓饼</li>
+                                      <li class="active-result" >三少食府</li>
+                                      <li class="active-result" >坝头碳烤小黄鱼</li>
+                                      <li class="active-result" >姨妹子菜馆</li>
+                                      <li class="active-result" >坝头米酒汤圆</li>
+                                      <li class="active-result" >坝头澳洲大肉串</li>
+                                      <li class="active-result" >坝头江湖翅客24号</li>
+                                      <li class="active-result" >蒙古烤羊腿</li>
+                                      <li class="active-result" >坝头鸡翅包饭 烧烤</li>
+                                      <li class="active-result" >万州烤鱼</li>
+                                      <li class="active-result" >坝头盐都小吃</li>
+                                      <li class="active-result" >川府石锅鱼</li>
+                                      <li class="active-result" >时尚酒家</li>
+                                      <li class="active-result" >泽尚生活馆</li>
+                                      <li class="active-result" >万美菜馆</li>
+                                      <li class="active-result" >韩大大冒菜</li>
+                                      <li class="active-result" >程家菜馆</li>
+                                      <li class="active-result" >剑峰菜馆</li>
+                                      <li class="active-result" >朋友圈土菜馆</li>
+                                      <li class="active-result" >小南园</li>
+                                      <li class="active-result" >平价菜馆</li>
+                                      <li class="active-result" >馋神醉仙鸭</li>
+                                      <li class="active-result" >欣怡川菜馆</li>
+                                      <li class="active-result" >贵州花江狗肉（小区店）</li>
+                                      <li class="active-result" >郑记干锅</li>
+                                      <li class="active-result" >老字号虾皇</li>
+                                      <li class="active-result" >丰锅农家菜</li>
+                                      <li class="active-result" >大三峡</li>
+                                      <li class="active-result" >河鲜馆</li></ul>
+                                  </div>
+                                </div>
+                              <br />
+                              <br /></label>
+                            <div class="errorMessage" id="StatisticsForm_shop_id_em_" style="display:none"></div>
+                            <div class="span12" style="margin-top:10px;">
+                              <button type="submit" class="btn btn-success">查看统计</button></div>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-10">
+                          <div id="yw0" class="grid-view">
+                            <table class="table table-striped table-bordered table-hover">
+                              <thead>
+                                <tr>
+                                  <th id="yw0_c0">项目\支付方式</th>
+                                  <th id="yw0_c1">现金/货到付款</th>
+                                  <th id="yw0_c2">余额支付</th>
+                                  <th id="yw0_c3">微信支付</th>
+                                  <th id="yw0_c4">支付宝支付</th>
+                                  <th id="yw0_c5">刷卡支付</th>
+                                  <th id="yw0_c6">总计</th></tr>
+                              </thead>
+                              <tbody>
+                                <tr class="odd">
+                                  <td style="width: 180px">外卖</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 180px">店内下单</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td></tr>
+                                <tr class="odd">
+                                  <td style="width: 180px">收银机</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td></tr>
+                                <tr class="even">
+                                  <td style="width: 180px">营业额总计</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td></tr>
+                              </tbody>
+                            </table>
+                            <div class="keys" style="display:none" title="/statistics/fendiancompare">
+                              <span>1</span>
+                              <span>2</span>
+                              <span>3</span>
+                              <span>4</span></div>
+                          </div>
+                          <div id="yw1" class="grid-view">
+                            <table class="table table-striped table-bordered table-hover">
+                              <thead>
+                                <tr>
+                                  <th id="yw1_c0">项目\支付方式</th>
+                                  <th id="yw1_c1">现金/货到付款</th>
+                                  <th id="yw1_c2">微信支付</th>
+                                  <th id="yw1_c3">支付宝支付</th>
+                                  <th id="yw1_c4">刷卡支付</th>
+                                  <th id="yw1_c5">总计</th></tr>
+                              </thead>
+                              <tbody>
+                                <tr class="odd">
+                                  <td style="width: 180px">会员充值</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td></tr>
+                              </tbody>
+                            </table>
+                            <div class="keys" style="display:none" title="/statistics/fendiancompare">
+                              <span>1</span></div>
+                          </div>
+                          <div id="yw2" class="grid-view">
+                            <table class="table table-striped table-bordered table-hover">
+                              <thead>
+                                <tr>
+                                  <th id="yw2_c0">项目\支付方式</th>
+                                  <th id="yw2_c1">现金/货到付款</th>
+                                  <th id="yw2_c2">余额支付</th>
+                                  <th id="yw2_c3">微信支付</th>
+                                  <th id="yw2_c4">支付宝支付</th>
+                                  <th id="yw2_c5">刷卡支付</th>
+                                  <th id="yw2_c6">总计</th></tr>
+                              </thead>
+                              <tbody>
+                                <tr class="odd">
+                                  <td style="width: 180px">汇总金额</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td>
+                                  <td style="width: 80px">0</td></tr>
+                              </tbody>
+                            </table>
+                            <div class="keys" style="display:none" title="/statistics/fendiancompare">
+                              <span>1</span></div>
+                          </div>
+                        </div>
+                        <div class="col-xs-2" style="margin-top: 15px;">
+                          <a class="btn btn-success" href="#">导出成excel</a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <!-- page specific plugin scripts -->
+      <script src="js/jquery-ui.min.js"></script>
+      <script src="js/jquery.ui.touch-punch.min.js"></script>
+      <script src="js/jquery.easypiechart.min.js"></script>
+      <script src="js/jquery.sparkline.min.js"></script>
+
+      <!-- 这里是与新订单提醒相关的内容 -->
+      <script type="text/javascript" src="js/jquery-ui-i18n.min.js"></script>
+<script type="text/javascript">/*<![CDATA[*/
+  jQuery(function($) {
+    jQuery('#StatisticsForm_beginDate').datepicker(jQuery.extend({
+      showMonthAfterYear: false
+    },
+    jQuery.datepicker.regional['zh_cn'], {
+      'showSecond': true,
+      'changeMonth': true,
+      'changeYear': true,
+      'tabularLevel': null,
+      'yearRange': '2013:2020',
+      'minDate': new Date(2013, 1, 1, 00, 00, 00),
+      'timeFormat': 'hh:mm:ss',
+      'dateFormat': 'yy-mm-dd',
+      'timeText': '时间',
+      'hourText': '时',
+      'minuteText': '分',
+      'secondText': '秒',
+      'currentText': '当前时间',
+      'closeText': '关闭',
+      'showOn': 'focus'
+    }));
+    jQuery('#StatisticsForm_endDate').datepicker(jQuery.extend({
+      showMonthAfterYear: false
+    },
+    jQuery.datepicker.regional['zh_cn'], {
+      'showSecond': true,
+      'changeMonth': true,
+      'changeYear': true,
+      'tabularLevel': null,
+      'yearRange': '2013:2020',
+      'minDate': new Date(2013, 1, 1, 00, 00, 00),
+      'timeFormat': 'hh:mm:ss',
+      'dateFormat': 'yy-mm-dd',
+      'timeText': '时间',
+      'hourText': '时',
+      'minuteText': '分',
+      'secondText': '秒',
+      'currentText': '当前时间',
+      'closeText': '关闭',
+      'showOn': 'focus'
+    }));
+    jQuery('#exportorder-form').yiiactiveform({
+      'validateOnSubmit': true,
+      'attributes': [{
+        'id': 'StatisticsForm_shop_id',
+        'inputID': 'StatisticsForm_shop_id',
+        'errorID': 'StatisticsForm_shop_id_em_',
+        'model': 'StatisticsForm',
+        'name': 'shop_id',
+        'enableAjaxValidation': false,
+        'clientValidation': function(value, messages, attribute) {
+
+          if (jQuery.trim(value) == '') {
+            messages.push("\u5e97\u94fa\u540d\u79f0 \u4e0d\u53ef\u4e3a\u7a7a\u767d.");
+          }
+
+        }
+      }],
+      'errorCss': 'error'
+    });
+  });
+  /*]]>*/
+  </script>
+        <script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+
+</html>

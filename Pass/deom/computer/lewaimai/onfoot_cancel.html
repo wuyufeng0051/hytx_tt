@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-bicycle"></i>
+        <a href="#">跑腿</a></li>
+      <li class="active">跑腿订单</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li >
+                <a href="onfoot.html">待抢订单</a></li>
+              <li >
+                <a href="onfoot_down.html">已抢订单</a></li>
+              <li>
+                <a href="onfoot_succeed.html">成功订单</a></li>
+              <li>
+                <a href="onfoot_fail.html">失败订单</a></li>
+              <li class="active">
+                <a href="onfoot_cancel.html">取消订单</a></li>
+            </ul>
+            <div class="tab-content">
+              <div id="customerList" class="grid-view">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th id="customerList_c0">
+                        <a class="sort-link" href="#">订单编号</a></th>
+                      <th id="customerList_c1">服务类型</th>
+                      <th id="customerList_c2">服务内容</th>
+                      <th id="customerList_c3">
+                        <a class="sort-link" href="#">姓名</a></th>
+                      <th id="customerList_c4">
+                        <a class="sort-link" href="#">电话</a></th>
+                      <th id="customerList_c5">
+                        <a class="sort-link" href="#">地址</a></th>
+                      <th id="customerList_c6">
+                        <a class="sort-link" href="#">跑腿费</a></th>
+                      <th id="customerList_c7">
+                        <a class="sort-link" href="#">总金额</a></th>
+                      <th id="customerList_c8">支付方式</th>
+                      <th id="customerList_c9">配送员</th>
+                      <th id="customerList_c10">
+                        <a class="sort-link desc" href="#">下单时间</a></th>
+                      <th id="customerList_c11">
+                        <a class="sort-link" href="#">取消时间</a></th>
+                      <th id="customerList_c12">
+                        <a class="sort-link" href="#">失败原因</a></th>
+                    </tr>
+                    <tr class="filters">
+                      <td>
+                        <input name="ErrandOrder[trade_no]" type="text"></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <input name="ErrandOrder[name]" type="text" maxlength="10"></td>
+                      <td>
+                        <input name="ErrandOrder[phone]" type="text" maxlength="20"></td>
+                      <td>
+                        <input name="ErrandOrder[address]" type="text" maxlength="200"></td>
+                      <td>
+                        <input name="ErrandOrder[delivery_fee]" type="text" maxlength="10"></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <input name="ErrandOrder[init_time]" type="text"></td>
+                      <td>
+                        <input name="ErrandOrder[complete_time]" type="text"></td>
+                      <td>
+                        <input name="ErrandOrder[failed_reason]" type="text"></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="13" class="empty">
+                        <span class="empty">没有找到数据.</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="keys" style="display:none" title="/errands/orderquxiao"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

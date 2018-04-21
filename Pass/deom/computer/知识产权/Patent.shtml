@@ -1,0 +1,62 @@
+<!--#include file="_head.shtml"-->
+
+<div class="rBox">
+  <div class="local">
+    <a href="#">首页</a>&gt;
+    <span>托管服务</span>&gt;
+    <a href="#">专利托管</a></div>
+  <div class="box1">
+    <div class="title">
+      <h3>检索</h3></div>
+    <div class="search">
+      <form action="/Patent" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#List" id="searchForm" method="post">
+        <label for="#">搜索专利：</label>
+        <input class="text" id="PatentName" name="PatentName" placeholder="专利名称" type="text" value="">
+        <input type="submit" class="submit" value=""></form>
+    </div>
+  </div>
+  <div class="box1">
+    <div class="title_t">
+      <h2>专利列表</h2>
+      <a class="pull-right" href="Patent_Create.shtml">添加</a></div>
+    <div id="List" class="listBox">
+      <form action="" data-ajax="" data-ajax-mode="" data-ajax-update="#" id="" method="post">
+        <table class="listTable">
+          <tbody>
+            <tr>
+              <th>专利号</th>
+              <th>名称</th>
+              <th>专利类别</th>
+              <th>法律状态</th>
+              <th>申请日期</th>
+              <th>缴费状态</th>
+              <th>操作</th></tr>
+            <tr class="">
+              <td>
+                <a href="Patent_detail.shtml">CN201510598961.1</a></td>
+              <td>
+                <a href="#">一种智能控制开关</a></td>
+              <td>发明</td>
+              <td>审查</td>
+              <td>2015-09-18</td>
+              <td>无数据</td>
+              <td class="operation">
+                <a title="编辑" href="#">编辑</a>
+                <a data-ajax="true" data-ajax-method="" data-ajax-mode="" data-ajax-update="" href="#" title="删除">删除</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="page_b">
+          <div class="pull-left">当前为第 1 页,共 1 页 1 条记录</div>
+          <div class="pull-right">
+            <!--MvcPager v2.0 for ASP.NET MVC 4.0+ © 2009-2013 Webdiyer (http://www.webdiyer.com)--></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--#include file="_foot.shtml"-->

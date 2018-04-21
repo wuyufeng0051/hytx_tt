@@ -1,0 +1,30 @@
+{#$pageTitle = "商家动态 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/manage.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/business-news.css" media="all" />
+<script type="text/javascript">
+	var atpage = 1, totalCount = 0, pageSize = 10, editUrl = '{#getUrlPath service='member' template='fabu' action='business' act='news'#}';
+</script>
+</head>
+
+{#$pageCurr = "business_news"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+    <div class="nav-tabs fn-clear" style="margin-bottom: -1px;">
+    	<a href="javascript:;" class="btn menuType">信息分类</a>
+    	<a href="{#getUrlPath service='member' template='fabu' action='business' act='news'#}" class="btn add">新增信息</a>
+    </div>
+	<div class="container fn-clear">
+		<div class="list article" id="list"><p class="loading"><img src="{#$cfg_staticPath#}images/ajax-loader.gif" />加载中，请稍候...</p></div>
+		<div class="pagination fn-clear"></div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dragsort-0.5.1.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/business-news.js?v=1"></script>
+</body>
+</html>

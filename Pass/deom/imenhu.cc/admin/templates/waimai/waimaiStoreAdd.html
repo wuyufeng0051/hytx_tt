@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var thumbSize = {#$thumbSize#}, thumbType = "{#$thumbType#}",  //缩略图配置
+  mapCity = '{#$mapCity#}',
+	modelType = "waimai", adminPath = "{#$adminPath#}", addrid = {#$addr#}, addrListArr = {#$addrListArr#};
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label for="user">管理会员：</label></dt>
+    <dd style="position:static;">
+      <input class="input-medium" type="text" name="user" id="user" autocomplete="off" value="{#$username#}" />
+      <input type="hidden" name="userid" id="userid" value="{#$userid#}" />
+      <span class="input-tips" style="display:inline-block;"><s></s>此会员可以管理餐厅信息</span>
+      <div id="userList" class="popup_key"></div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="title">餐厅名称：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="title" id="title" value="{#$title#}" maxlength="60" data-regex=".{2,60}" />
+      <span class="input-tips"><s></s>请输入餐厅名称，2-60位</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>所属菜系：</label></dt>
+    <dd>
+      {#html_checkboxes name='typeid' values=$typeValue output=$typeList selected=$type separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>餐厅LOGO：</dt>
+    <dd>
+      <input name="litpic" type="hidden" id="litpic" value="{#$logo#}" />
+      {#if $logo != ""#}
+      <div id="license" class="uploadinp uploading"><span id="uploadBt"></span></div>
+      <div id="licenseFiles" style="display:inline-block;"><a href='{#$cfg_attachment#}{#$logo#}' target="_blank"><img alt="" src="{#$cfg_attachment#}{#$logo#}" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;" style="display:inline-block;">删除图片</a>
+      {#else#}
+      <div id="license" class="uploadinp"><span id="uploadBt"></span></div>
+      <div id="licenseFiles"><a href="#" target="_blank" title=""><img alt="" src="" /></a></div>
+      <a id="reupload" class="reupload" href="javascript:;">删除图片</a>
+      {#/if#}
+      <div id="licenseProgress" class="progressBar">
+        <i id="licenseProgressBar" class="progress"></i>
+        <span id="licensePercent">0%</span>
+        <a id="cancelUploadBt" href="javascript:;">取消</a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>营业时间：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <span class="add-on">上午</span>
+        <input class="input-mini" type="text" name="start1" id="start1" value="{#$start1#}">
+        <span class="add-on" style="margin-right:-1px;">到</span>
+        <input class="input-mini" type="text" name="end1" id="end1" value="{#$end1#}">
+      </div><br />
+      <div class="input-prepend input-append" style="margin:10px 0 0;">
+        <span class="add-on">下午</span>
+        <input class="input-mini" type="text" name="start2" id="start2" value="{#$start2#}">
+        <span class="add-on" style="margin-right:-1px;">到</span>
+        <input class="input-mini" type="text" name="end2" id="end2" value="{#$end2#}">
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="times">平均送达时间：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input class="input-mini" type="text" name="times" id="times" value="{#$times#}">
+        <span class="add-on">分钟</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="addr">所在区域：</label></dt>
+    <dd>
+      <span id="addrList">
+        <select name="addr" id="addr" class="input-large"></select>
+      </span>
+      <span class="input-tips"><s></s>请选择餐厅所在区域</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="address">详细地址：</label></dt>
+    <dd>
+      <input class="input-xlarge" type="text" name="address" id="address" value="{#$address#}" maxlength="60" data-regex=".{2,60}" />
+      <img src="{#$adminPath#}../static/images/admin/markditu.jpg" id="mark" style="cursor:pointer;" title="标注地图位置" />
+      <span class="input-tips"><s></s>请输入餐厅详细地址，2-60位</span>
+      <input type="hidden" name="lnglat" id="lnglat" value="{#$lnglat#}" />
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="tel">餐厅电话：</label></dt>
+    <dd>
+      <input class="input-large" type="text" name="tel" id="tel" value="{#$tel#}" maxlength="13" data-regex=".{7,13}" />
+      <span class="input-tips"><s></s>请输入餐厅电话</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>配送区域：</label></dt>
+    <dd>
+      <input class="input-large" type="hidden" name="range" id="range" value="{#$range#}" />
+      <iframe id="shapeMap" frameborder="0" style="width:400px; height:300px; border:none;{#if $dopost != "edit"#} display:none;{#/if#}" src="../../api/map/shape.php?type=1&mod=waimai&lnglat={#$lnglat#}&range={#$range#}"></iframe>
+      <button class="btn chooseRange" type="button" style="display:block;">选择配送区域</button>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>费用：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <span class="add-on">起送价</span>
+        <input class="input-mini" type="text" name="price" id="price" value="{#$price#}">
+        <span class="add-on">配送费</span>
+        <input class="input-mini" type="text" name="peisong" id="peisong" value="{#$peisong#}">
+      </div>
+      <span class="input-tips" style="display:inline-block;"><s></s>输入0表示免费</span>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>属性：</label></dt>
+    <dd>
+      <label><input type="checkbox" name="online" id="online" value="1"{#if $online == 1#} checked="checked"{#/if#} />支持在线支付</label>&nbsp;&nbsp;
+      <label><input type="checkbox" name="supfapiao" id="supfapiao" value="1"{#if $supfapiao == 1#} checked="checked"{#/if#} />可以开发票</label>
+    </dd>
+  </dl>
+  <div style="background:#f5f5f5; padding:5px 0; display:none;" id="onlineObj">
+    <dl class="clearfix">
+      <dt><label>立减优惠：</label></dt>
+      <dd>
+        {#if $sale != ""#}
+        {#$sale#}
+        {#else#}
+        <div class="input-prepend input-append" style="display: block;">
+          <span class="add-on">满</span>
+          <input class="input-mini j1" type="text">
+          <span class="add-on">减</span>
+          <input class="input-mini j2" type="text">
+          <span class="add-on"><a href="javascript:;" class="del"><i class="icon-trash"></i></a></span>
+        </div>
+        {#/if#}
+        <a href="javascript:;" class="btn btn-mini addJian"><i class="icon-plus"></i> 新增一条</a>
+      </dd>
+    </dl>
+  </div>
+  <div style="background:#f5f5f5; padding:5px 0; display:none;" id="fapiaoObj">
+    <dl class="clearfix">
+      <dt><label for="fapiao">开票金额：</label></dt>
+      <dd>
+        <div class="input-prepend input-append" style="margin:0;">
+          <input class="input-mini" type="text" name="fapiao" id="fapiao" value="{#$fapiao#}">
+          <span class="add-on">元起</span>
+        </div>
+      </dd>
+    </dl>
+    <dl class="clearfix">
+      <dt><label for="fapiaonote">开票备注：</label></dt>
+      <dd>
+        <input class="input-xlarge" type="text" name="fapiaonote" id="fapiaonote" value="{#$fapiaonote#}" maxlength="20" />
+        <br />
+        <div id="fapiaoNoteItem" style="padding-top:5px;">
+          <span class="label" style="cursor:pointer;">手撕定额发票</span>
+          <span class="label" style="cursor:pointer;">不支持抬头</span>
+          <span class="label" style="cursor:pointer;">可以开抬头</span>
+        </div>
+      </dd>
+    </dl>
+  </div>
+  <dl class="clearfix">
+    <dt>餐厅介绍：</dt>
+    <dd>
+      <script id="note" name="note" type="text/plain" style="width:85%;height:500px">{#$note#}</script>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="notice">餐厅公告：</label></dt>
+    <dd>
+      <textarea name="notice" id="notice" class="input-xxlarge" rows="5">{#$notice#}</textarea>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="yingye">营业执照认证：</label></dt>
+    <dd class="radio">
+      {#html_radios name="yingye" values=$rzopt checked=$yingye output=$rznames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>上传营业执照：</dt>
+    <dd>
+      <input name="yingyezhizhao" type="hidden" id="yingyezhizhao" value="{#$yingyezhizhao#}" />
+      <div class="spic hide">
+        <div class="sholder"></div>
+        <a href="javascript:;" class="reupload">重新上传</a>
+      </div>
+      <iframe src ="/include/upfile.inc.php?mod=waimai&type=card&obj=yingyezhizhao" style="width:100%; height:25px;" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" ></iframe>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="weisheng">卫生许可认证：</label></dt>
+    <dd class="radio">
+      {#html_radios name="weisheng" values=$rzopt checked=$weisheng output=$rznames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>上传卫生许可证：</dt>
+    <dd>
+      <input name="weishengxuke" type="hidden" id="weishengxuke" value="{#$weishengxuke#}" />
+      <div class="spic hide">
+        <div class="sholder"></div>
+        <a href="javascript:;" class="reupload">重新上传</a>
+      </div>
+      <iframe src ="/include/upfile.inc.php?mod=waimai&type=card&obj=weishengxuke" style="width:100%; height:25px;" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" ></iframe>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="state">显示状态：</label></dt>
+    <dd class="radio">
+      {#html_radios name="state" values=$stateopt checked=$state output=$statenames separator="&nbsp;&nbsp;"#}
+    </dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$editorFile#}
+{#$jsFile#}
+</body>
+</html>

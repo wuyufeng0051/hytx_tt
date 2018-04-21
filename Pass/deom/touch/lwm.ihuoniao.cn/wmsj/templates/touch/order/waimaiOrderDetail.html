@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>待处理订单详情</title>
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/common.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/pending-detail.css">
+<script type="text/javascript" src="{#$templets_skin#}js/touchScale.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/zepto.min.js"></script>
+<script>
+var id = {#$id#};
+</script>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-l"><a href="javascript:history.go(-1)" class="back"></a></div>
+    <div class="header-middle">订单详情</div>
+    {#*<div class="header-r"><a href="javascript:;" class="print">打印</a></div>*#}
+  </div>
+
+  <div class="container">
+
+    <div class="bgfff">
+      <p class="title"><span class="icon-1">商品信息</span></p>
+      <ul class="goods">
+        <li>
+          <span class="span-1">店铺</span>
+          <span class="span-2">{#$shopname#}</span>
+        </li>
+        <li class="food">
+          <span class="span-1">详情</span>
+          <span class="span-2">
+          {#foreach from=$food item=f#}
+          {#$f.title#} 【{#$f.count#}】 &yen;{#$f.price * $f.count#}<br />
+          {#/foreach#}
+          </span>
+        </li>
+        <li>
+          <span class="span-1">备注</span>
+          <span class="span-2">{#$note#}</span>
+        </li>
+        <li>
+          <span class="span-1">预设字段</span>
+          <span class="span-2">
+            {#foreach from=$preset item=p#}
+            {#$p.title#}：{#$p.value#}<br />
+            {#/foreach#}
+          </span>
+        </li>
+        <li>
+          <span class="span-1">费用详细</span>
+          <span class="span-2">
+            {#foreach from=$priceinfo item=p#}
+            {#$p#}<br />
+            {#/foreach#}
+          </span>
+        </li>
+        <li>
+          <span class="span-1">总价</span>
+          <span class="span-2">{#$amount#}</span>
+        </li>
+        <li>
+          <span class="span-1">付款方式</span>
+          <span class="span-2">{#$paytype#}</span>
+        </li>
+        <li class="note"><span class="span-4">备注：</span><span class="span-5">不加辣</span></li>
+      </ul>
+    </div>
+
+    <div class="bgfff">
+      <p class="title"><span class="icon-2">顾客信息</span></p>
+      <ul class="buyer">
+        <li><span class="span-1">姓名：</span><span class="span-2">{#$username#}<i class="vip" style="display:none;"></i></span></li>
+        <li><span class="span-1">联系电话：</span><span class="span-2"><a href="tel:{#$tel#}" class="tel">{#$tel#}</a></span></li>
+        <li><span class="span-1">配送地址：</span><span class="span-2">{#$address#}</span></li>
+      </ul>
+    </div>
+
+    <div class="bgfff">
+      <p class="title"><span class="icon-3">订单信息</span></p>
+      <ul class="buyer">
+        <li><span class="span-1">订单号：</span><span class="span-2">{#$shopname|cat:$ordernumstore#}</span></li>
+        <li><span class="span-1">下单时间：</span><span class="span-2">{#if $pubdate#}{#$pubdate|date_format:"%Y-%m-%d %H:%M:%S"#}{#/if#}</span></li>
+        
+        <li><span class="span-1">付款时间：</span><span class="span-2">{#if $paydate#}{#$paydate|date_format:"%Y-%m-%d %H:%M:%S"#}{#/if#}</span></li>
+
+        <li><span class="span-1">付款方式：</span><span class="span-2{#if $paytype == '货到付款'#} red{#/if#}">{#$paytype#}</span></li>
+
+        <li><span class="span-1">确认时间：</span><span class="span-2">{#if $confirmdate#}{#$confirmdate|date_format:"%Y-%m-%d %H:%M:%S"#}{#/if#}</span></li>
+
+        <li><span class="span-1">接单时间：</span><span class="span-2">{#if $peidate#}{#$peidate|date_format:"%Y-%m-%d %H:%M:%S"#}{#/if#}</span></li>
+
+        <li><span class="span-1">配送时间：</span><span class="span-2">{#if $songdate#}{#$songdate|date_format:"%Y-%m-%d %H:%M:%S"#}{#/if#}</span></li>
+        <li><span class="span-1">完成时间：</span><span class="span-2">{#if $okdate#}{#$okdate|date_format:"%Y-%m-%d %H:%M:%S"#}{#/if#}</span></li>
+
+        <li><span class="span-1">完成速度（分钟）：</span><span class="span-2">{#if $okdate#}{#ceil(($okdate-$pubdate)/60)#}{#/if#}</span></li>
+
+        <li>
+          <span class="span-1">订单状态：</span>
+          <span class="span-2">
+            {#if $state == 0#}
+            未付款
+            {#elseif $state == 1#}
+            完成
+            {#elseif $state == 2#}
+            待确认
+            {#elseif $state == 3#}
+            待配送
+            {#elseif $state == 4#}
+            已接单
+            {#elseif $state == 5#}
+            配送中
+            {#elseif $state == 6#}
+            取消支付
+            {#elseif $state == 7#}
+            交易失败
+            {#/if#}
+          </span>
+        </li>
+        
+        {#if $state == 6 || $state == 7#}
+        <li>
+          <span class="span-1">失败原因：</span>
+          <span class="span-2">{#$failed#}</span>
+        </li>
+        {#/if#}
+
+      </ul>
+    </div>
+
+  </div>
+
+  
+  {#if $state == 2#}
+  <!-- 底部 s -->
+  <div class="footer">
+    <ul class="fn-clear">
+      <li><a href="javascript:;" class="fail">确认无效</a></li>
+      <li><a href="javascript:;" class="success">确认有效</a></li>
+    </ul>
+  </div>
+  <!-- 底部 e -->
+  {#/if#}
+
+  <div class="failbox">
+    <div class="mask"></div>
+    <form class="whyform" method="post">
+      <p>请填写订单失败原因</p>
+      <textarea name="fail" class="textarea"></textarea>
+      <p class="btn"><a href="javascript:;" class="sure" id="failedObj">确定</a><a href="javascript:;" class="cancel">取消</a></p>
+    </form>
+  </div>
+
+<script type="text/javascript" src="{#$templets_skin#}js/waimaiOrderDetail.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>搜索</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/search.css?v=1">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+</head>
+<body>
+
+<form class="formbox" action="{#getUrlPath service="info" template="list"#}" method="post">
+  <div class="topbox">
+    <div class="topl">
+      <span class="top-tit">二手</span><i class="arrow"></i>
+      <div class="dropdown" id="dropdown">
+        <ul>
+          <!-- <li class="icon1" data-name="" data-url="">新闻</li> -->
+          <li class="icon2" data-name="keywords" data-url="{#getUrlPath service="info" template="list"#}">二手</li>
+          <li class="icon3" data-name="search_keyword" data-url="{#getUrlPath service="tuan" template="list"#}">团购</li>
+          <!-- <li class="icon4" data-name="" data-url="">房产</li> -->
+          <li class="icon5" data-name="keywords" data-url="{#getUrlPath service="shop" template="list"#}">商城</li>
+          <li class="icon6" data-name="keywords" data-url="{#getUrlPath service="build" template="list"#}">建材</li>
+          <li class="icon7" data-name="keywords" data-url="{#getUrlPath service="furniture" template="list"#}">家具</li>
+          <li class="icon8" data-name="keywords" data-url="{#getUrlPath service="home" template="list"#}">家居</li>
+        </ul>
+      </div>
+    </div>
+    <div class="topm"><i></i><input type="text" name="keywords" value="" placeholder="请输入" class="searchbtn"></div>
+    <div class="topr"><a href="{#getUrlPath service='app' template='ios/index'#}">取消</a></div>
+  </div>
+</form>
+
+<!-- 历史搜索 s -->
+<div class="history">
+  <div class="htop fn-clear"><span class="fn-left">历史搜索</span><em class="fn-right del"></em></div>
+  <ul id="list"></ul>
+</div>
+<!-- 历史搜索 e -->
+
+
+
+<script src="{#$templets_skin#}js/search.js?v=6"></script>
+</body>
+</html>

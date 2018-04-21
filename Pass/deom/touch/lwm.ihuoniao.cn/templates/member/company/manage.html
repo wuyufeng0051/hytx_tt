@@ -1,0 +1,26 @@
+{#$pageTitle = "管理我发布的信息 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/manage.css" media="all" />
+<script type="text/javascript">
+	var module = '{#$module#}', atpage = 1, totalCount = 0, pageSize = 10, state = '{#$state#}', type = '{#$type#}';
+	var editUrl = '{#getUrlPath service="member" template="fabu" action="$module"#}';
+</script>
+</head>
+
+{#$pageCurr = "manage_{#$module#}"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+	{#include file="manage-$module.html"#}
+	<div class="container fn-clear">
+		<div class="list {#$module#}" id="list"><p class="loading"><img src="{#$cfg_staticPath#}images/ajax-loader.gif" />加载中，请稍候...</p></div>
+		<div class="pagination fn-clear"></div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/manage-{#$module#}.js?v=1"></script>
+</body>
+</html>

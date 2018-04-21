@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-gear gear-icon"></i>
+        <a href="#">系统设置</a></li>
+      <li>
+        <a href="#">打印机管理</a></li>
+      <li class="active">新建乐外卖打印机</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="col-sm-12">
+          <form enctype="multipart/form-data" class="form-horizontal" id="shop-form" action="/printer/createlewaimaiprinter" method="post">
+            <div class="alert alert-danger" id="shop-form_es_" style="display:none">
+              <p>请更正下列输入错误:</p>
+              <ul>
+                <li>dummy</li></ul>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1">
+                <label for="Printer_printer_name">打印机备注名称</label></label>
+              <input class="col-sm-2" name="Printer[printer_name]" id="Printer_printer_name" type="text" maxlength="50">&nbsp;&nbsp;
+              <a href="#" target="_blank" title="设置教程" rel="tooltip" class="btn btn-sm btn-danger" "=" ">无线打印机设置教程</a></div>
+              <div class="form-group ">
+              <label class="col-sm-1 "><label for="Printer_lewaimai_sn ">打印机机身号(SN)</label></label>
+              <input class="col-sm-2 " name="Printer[lewaimai_sn] " id="Printer_lewaimai_sn " type="text " maxlength="20 "></div>
+              <div class="form-group ">
+              <label class="col-sm-1 " for="Printer_printer_num ">打印联数</label>      <input class="col-sm-2 " name="Printer[printer_num] " id="Printer_printer_num " type="text " value="1 "></div>
+              <div class="form-group ">
+              <label class="col-sm-1 " for="Printer_printer_info ">打印机底部自定义信息</label>     <input class="col-sm-2 " name="Printer[printer_info] " id="Printer_printer_info " type="text" maxlength="100 "></div>
+              <div class="form-group ">
+              <label class="col-sm-1 " for="Printer_is_qrcode ">是否开启二维码打印</label>     <select name="Printer[is_qrcode] " id="Printer_is_qrcode ">
+              <option value="0 " selected="selected ">不开启</option>
+              <option value="1 ">开启</option></select>         
+              </div>
+              <div class="form-group ">
+              <label class="col-sm-1 " for="Printer_qrcode_url ">二维码对应的url</label>      <input class="col-sm-6 " name="Printer[qrcode_url] " id="Printer_qrcode_url " type="text " maxlength="500 " value=" ">      &nbsp;&nbsp;<a href="#" target="_blank " title="设置教程 " rel="tooltip " class="btn btn-sm btn-danger " "="">设置教程</a></div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Printer_autoconfirmed">是否打印后自动确认订单</label>
+              <select name="Printer[autoconfirmed]" id="Printer_autoconfirmed">
+                <option value="0">不确认</option>
+                <option value="1" selected="selected">确认</option></select>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Printer_big_ordernum">订单编号是否大号字</label>
+              <select name="Printer[big_ordernum]" id="Printer_big_ordernum">
+                <option value="0" selected="selected">否</option>
+                <option value="1">是</option></select>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Printer_big_name">姓名是否大号字</label>
+              <select name="Printer[big_name]" id="Printer_big_name">
+                <option value="0" selected="selected">否</option>
+                <option value="1">是</option></select>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Printer_big_phone">电话是否大号字</label>
+              <select name="Printer[big_phone]" id="Printer_big_phone">
+                <option value="0" selected="selected">否</option>
+                <option value="1">是</option></select>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Printer_big_address">地址是否大号字</label>
+              <select name="Printer[big_address]" id="Printer_big_address">
+                <option value="0" selected="selected">否</option>
+                <option value="1">是</option></select>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Printer_big_content">商品详情是否大号字</label>
+              <select name="Printer[big_content]" id="Printer_big_content">
+                <option value="0" selected="selected">否</option>
+                <option value="1">是</option></select>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Printer_big_price">总价是否大号字</label>
+              <select name="Printer[big_price]" id="Printer_big_price">
+                <option value="0" selected="selected">否</option>
+                <option value="1">是</option></select>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Printer_big_memo">备注是否大号字</label>
+              <select name="Printer[big_memo]" id="Printer_big_memo">
+                <option value="0" selected="selected">否</option>
+                <option value="1">是</option></select>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1" for="Printer_big_pay">付款方式是否大号字</label>
+              <select name="Printer[big_pay]" id="Printer_big_pay">
+                <option value="0" selected="selected">否</option>
+                <option value="1">是</option></select>
+            </div>
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input id="ytPrinter_is_cut" type="hidden" value="0" name="Printer[is_cut]">
+                  <input class="ace" name="Printer[is_cut]" id="Printer_is_cut" value="1" type="checkbox">
+                  <span class="lbl">
+                    <label for="Printer_is_cut">自动切纸（需要打印机型号支持）</label></span>
+                </label>
+              </div>
+            </div>
+            <div class="clearfix form-actions">
+              <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="submit">
+                  <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

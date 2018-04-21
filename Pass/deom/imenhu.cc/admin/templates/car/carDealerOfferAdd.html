@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var addrListArr = {#$addrListArr#}, modelType = "car", adminPath = "{#$adminPath#}";
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="aid" id="aid" value="{#$aid#}" />
+  <input type="hidden" name="bid" id="bid" value="{#$bid#}" />
+  <input type="hidden" name="cid" id="cid" value="{#$cid#}" />
+  <input type="hidden" name="pid" id="pid" value="{#$pid#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt>经销商：</dt>
+    <dd><a href="javascript:;" class="btn" id="cOffer" data-id="{#$aid#}">{#$aname#}<span class="caret"></span></a></dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>车型：</label></dt>
+    <dd style="position:static;">
+      <div id="carBtn">
+        <a href="javascript:;" class="btn" id="cBrand" data-type="Brand" data-id="{#$bid#}">{#$bname#}<span class="caret"></span></a>
+        <a href="javascript:;" class="btn" id="cCar" data-type="Car" data-id="{#$cid#}">{#$cname#}<span class="caret"></span></a>
+        <a href="javascript:;" class="btn" id="cParam" data-type="Param" data-id="{#$pid#}">{#$pname#}<span class="caret"></span></a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>官方价：</dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input type="number" class="input-mini" id="guanfang" readonly value="" />
+        <span class="add-on">万元</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="price">本店价：</label></dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input type="text" class="input-mini" name="price" id="price" value="{#$price#}" />
+        <span class="add-on">万元</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label>车身颜色：</label><a href="javascript:;" id="selectAllColor">全选</a>&nbsp;&nbsp;&nbsp;<input type="hidden" name="color" id="color" value="{#$color#}" /></dt>
+    <dd>
+      <ul class="csyansbox" id="divColor"><span style="line-height:60px;">请先选择车型！</span></ul>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt><label for="inventory">库存情况：</label></dt>
+    <dd>
+      <select name="inventory" id="inventory" class="input-medium">
+        {#html_options options=$inventoryList selected=$inventory#}
+      </select>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>保养周期表：</dt>
+    <dd>
+      <script id="maincycle" name="maincycle" type="text/plain" style="width:85%;height:300px">{#$maincycle#}</script>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>保养价格：</dt>
+    <dd>
+      <script id="mainprice" name="mainprice" type="text/plain" style="width:85%;height:300px">{#$mainprice#}</script>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>属性：</dt>
+    <dd class="radio">{#html_checkboxes name='property' values=$propertyVal output=$propertyList selected=$property separator="&nbsp;&nbsp;"#}</dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$editorFile#}
+{#$jsFile#}
+</body>
+</html>

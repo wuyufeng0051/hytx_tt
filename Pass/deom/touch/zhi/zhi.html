@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>智秒钱包</title>
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/zhi.css">
+	<script type="text/javascript" src="js/touchScale.js"></script>
+</head>
+<body>
+	<div class="pake">
+		<div class="pake_img"><img src="images/wei4.png" alt=""></div>
+		<div class="pake_box">
+			<ul>
+				<li class="phone"><i></i><input type="text" placeholder="请输入手机号码"></li>
+				<li class="mi"><i></i><input type="text" placeholder="设置6-12位数字和字母组合的密码"></li>
+				<li class="yan"><i></i><input type="text" placeholder="请输入短信验证码"><input class="yanzheng" type="button" onclick="settime(this)" value="获取验证码"></li>
+			</ul>
+			<button>立即申请</button>
+		</div>
+		<div class="company">上海信而富企业管理有限公司 沪ICP备9180273号</div>
+	</div>
+	<script>
+		var countdown=60; 
+		function settime(val) { 
+			if (countdown == 0) { 
+			val.removeAttribute("disabled");    
+			val.value="获取验证码"; 
+			countdown = 60; 
+			} else { 
+			val.setAttribute("disabled", true); 
+			val.value="重新发送(" + countdown + ")"; 
+			countdown--; 
+			} 
+			setTimeout(function() { 
+			settime(val) 
+			},1000) 
+		} 
+	</script>
+</body>
+</html>

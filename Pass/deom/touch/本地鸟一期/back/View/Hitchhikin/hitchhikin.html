@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>顺风车</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<style>
+	.swiper-container img{
+		display: block;
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    bottom: 0px;
+	}
+	.swiper-pagination-bullet-active{
+		background: #ff7300;
+	}
+	.owner{
+		background: #fff;
+		padding: 15px;
+		border-radius: 5px;
+		border-bottom: 5px solid #ff9702;
+		position: relative;
+	}
+	.passenger{
+		background: #fff;
+		padding: 15px;
+		border-radius: 5px;
+		border-bottom: 5px solid #39c89d;
+		position: relative;
+	}
+	.owner p,.passenger p{
+		margin-bottom: 0;
+		line-height: 25px;
+		color: #666666;
+	}
+	.owner .title{
+		color: #ff9702;
+		padding-left: 25px;
+		background: url(__PUBLIC__/Home/img/passenger.png) no-repeat left center;
+		background-size: 18px 18px;
+	}
+	.passenger .title{
+		color: #39c89d; 
+		padding-left: 25px;
+		background: url(__PUBLIC__/Home/img/owner.png) no-repeat left center;
+		background-size: 18px 18px;
+	}
+	.arrow1{
+		display: block;
+		width: 50px;
+		height: 50px;
+		background: url(__PUBLIC__/Home/img/arrow-2.png) no-repeat center center;
+		background-size: 36px 36px;
+		position: absolute;
+		right: 0;
+		bottom: 50px;
+	}
+	.arrow2{
+		display: block;
+		width: 50px;
+		height: 50px;
+		background: url(__PUBLIC__/Home/img/arrow-1.png) no-repeat center center;
+		background-size: 36px 36px;
+		position: absolute;
+		right: 0;
+		bottom: 50px;
+	}
+	/*背景*/
+	.choice{
+		background: url(__PUBLIC__/Home/img/carbg.png) no-repeat;
+		background-size: cover;
+		overflow: hidden;
+	}
+	</style>
+</head>
+<body>
+
+<include file="Public/share" title='包含文件'/>
+
+	<div class="mui-content">
+		<!-- 图片轮播区 -->
+		<?php if(!empty($status)){ ?>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+			   <volist name="status" id="vo">
+				<div class="swiper-slide">
+				  <a class="up" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}" onclick="uplook(this)">
+ 				     <img src="__PUBLIC__/../{$vo['advertisement_img']}">
+			      </a>
+ 				</div>
+				</volist>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+        <?php } ?>
+
+		<div class="choice">
+			<!-- 乘客 -->
+			<div class="passenger" style="margin:8%;">
+				<h4 class="title">车主信息</h4>
+				<a href="__MODULE__/Hitchhikin/owner" >
+						<div style="padding-left: 25px;">
+							<p>再远的路途也不再孤单</p>
+							<p>寻找和你顺路的乘客结伴而行</p>
+							<p>提前发布</p>
+							<p>让更多乘客联系你</p>
+						</div>
+						<i  class="arrow2"></i>
+					</a>
+			</div>
+			<!-- 车主-->
+			<div class="owner" style="margin:8%;">
+				<h4 class="title">乘客信息</h4>
+					<a href="__MODULE__/Hitchhikin/passenger">
+					<div style="padding-left: 25px;">
+						<p>一样的旅程</p>
+						<p>不同的感受</p>
+						<p>提前发布</p>
+						<p>让更多车主联系你</p>
+					</div>
+					<i class="arrow1"></i>
+				</a>
+			</div>
+		</div>
+		
+	</div>
+
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script>
+
+	function uplook(obj){
+        // $('.up').on('click',  function(event) {
+         	    var id = $(obj).attr('str');
+	     		var type = $(obj).attr('stb');
+	     		var url = $(obj).attr('url');
+					// alert(id)
+			$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+	 	     		if (type == 0) {
+		     			 location.href="http://"+url;
+		     		}else if(type == 1){
+		     			 location.href= 'tel:' + url;
+		      		}else{
+		      			location.href=url;
+		      		}
+				});
+        // });
+  }
+	// $(".up").click(function(){
+	// 	var id = $(this).attr('str');
+	//      		var type = $(this).attr('stb');
+	//      		var url = $(this).attr('url');
+	// 				alert(id)
+	// 		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+	//  	     		if (type == 0) {
+	// 	     			 location.href="http://"+url;
+	// 	     		}else if(type == 1){
+	// 	     			 location.href= 'tel:' + url;
+	// 	      		}else{
+	// 	      			location.href=url;
+	// 	      		}
+	// 			});
+	//     	// })
+	// })
+	  //    $("[id=up]").each(function(){ 
+			// $(this).click(function(){
+	  //    		var id = $(this).attr('str');
+	  //    		var type = $(this).attr('stb');
+	  //    		var url = $(this).attr('url');
+			// 		alert(id)
+			// $.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+	 	//      		if (type == 0) {
+		 //     			 location.href="http://"+url;
+		 //     		}else if(type == 1){
+		 //     			 location.href= 'tel:' + url;
+		 //      		}else{
+		 //      			location.href=url;
+		 //      		}
+			// 	});
+	  //   	})
+	  //   })
+
+		var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+	</script>
+</body>
+</html>

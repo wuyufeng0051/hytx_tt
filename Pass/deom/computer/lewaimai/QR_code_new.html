@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">try {
+        ace.settings.check('breadcrumbs', 'fixed')
+      } catch(e) {}</script>
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-flag-o flag-o-icon"></i>
+      <li class="active">营销活动</li>
+      <li>
+        <a href="/ticket/index">二维码推广</a></li>
+      <li class="active">新建二维码</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="span10">
+          <div class="col-sm-6" style="width:100%;margin:0 auto;">
+            <link rel="stylesheet" href="/css/imgbox.css">
+            <style>.width50{width:50px;} .sel_img_view .imagename { height: 42px; line-height: 17px; width: 117px; text-align: left; overflow: hidden; display: block; padding: 0 9px; border: 0px solid #e7e7eb; }</style>
+            <div class="form">
+              <form class="form-horizontal" id="food-form" action="/ticket/create" method="post">
+                <div class="alert alert-danger" id="food-form_es_" style="display:none">
+                  <p>请更正下列输入错误:</p>
+                  <ul>
+                    <li>dummy</li></ul>
+                </div>
+                <p class="note">标有
+                  <span class="required" style="color:red;">*</span>的为必填选项</p>
+                <div class="alert alert-danger" id="food-form_es_" style="display:none">
+                  <p>请更正下列输入错误:</p>
+                  <ul>
+                    <li>dummy</li></ul>
+                </div>
+                <label>二维码名字
+                  <span style="color:red;">*</span>
+                  <br>
+                  <input class="span2" name="Ticket[name]" id="Ticket_name" type="text" maxlength="30"></label>
+                <div class="errorMessage" id="Ticket_name_em_" style="display:none"></div>
+                <br>
+                <br>
+                <label>二维码描述
+                  <br>
+                  <textarea class="col-xs-12" rows="3" name="Ticket[note]" id="Ticket_note"></textarea></label>
+                <br>
+                <br>
+                <div class="widget-box">
+                  <div class="widget-header">
+                    <h5>关注时自动回复</h5></div>
+                  <div class="widget-body" style="padding:20px;">
+                    <div class="form-group">
+                      <div class="checkbox">
+                        <label>
+                          <input id="ytTicket_reply_valid" type="hidden" value="0" name="Ticket[reply_valid]">
+                          <input class="ace" name="Ticket[reply_valid]" id="Ticket_reply_valid" value="1" type="checkbox">
+                          <span class="lbl">
+                            <label for="Ticket_reply_valid">开启关注时自动回复设置（此处的优先级高于系统默认的关注时自动回复设置）</label></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-header">
+                    <h5>关注时回复类型</h5></div>
+                  <div class="widget-body" style="padding:20px;">
+                    <input id="ytTicket_reply_type" type="hidden" value="" name="Ticket[reply_type]">
+                    <span id="Ticket_reply_type">
+                      <input id="Ticket_reply_type_0" value="0" checked="checked" type="radio" name="Ticket[reply_type]">
+                      <label for="Ticket_reply_type_0">文字回复</label>
+                      <br>
+                      <input id="Ticket_reply_type_1" value="1" type="radio" name="Ticket[reply_type]">
+                      <label for="Ticket_reply_type_1">图文回复</label>
+                      <br>
+                      <input id="Ticket_reply_type_2" value="2" type="radio" name="Ticket[reply_type]">
+                      <label for="Ticket_reply_type_2">系统功能回复</label>
+                      <br>
+                      <input id="Ticket_reply_type_3" value="3" type="radio" name="Ticket[reply_type]">
+                      <label for="Ticket_reply_type_3">第三方接口回复</label>
+                      <br>
+                      <input id="Ticket_reply_type_4" value="5" type="radio" name="Ticket[reply_type]">
+                      <label for="Ticket_reply_type_4">图片回复</label></span>
+                  </div>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-header">
+                    <h5>回复的文字内容</h5></div>
+                  <div class="widget-body" style="padding:20px;">
+                    <textarea class="span6 autosize-transition form-control" rows="10" maxlength="1000" id="replytext" name="Ticket[reply_text]"></textarea>
+                    <span class="emotion"></span>
+                  </div>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-header">
+                    <h5>回复的图文消息</h5></div>
+                  <div class="widget-body" style="padding:20px;">
+                    <select name="Ticket[reply_news_id]" id="Ticket_reply_news_id"></select>
+                  </div>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-header">
+                    <h5>回复的系统功能</h5></div>
+                  <div class="widget-body" style="padding:20px;">
+                    <select name="Ticket[reply_system_type]" id="Ticket_reply_system_type">
+                      <option value="1">开始点单</option>
+                      <option value="2">订单查询</option>
+                      <option value="3">个人信息</option>
+                      <option value="4">大转盘抽奖</option>
+                      <option value="5">会员中心</option>
+                      <option value="6">优惠券</option>
+                      <option value="7">我的邮箱</option>
+                      <option value="8">积分</option>
+                      <option value="9">签到</option>
+                      <option value="10">多客服</option>
+                      <option value="11">我的收藏</option>
+                      <option value="12">店铺导航</option></select>
+                  </div>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-header">
+                    <h5>回复的第三方接口</h5></div>
+                  <div class="widget-body" style="padding:20px;">
+                    <select name="Ticket[reply_otherinterface_id]" id="Ticket_reply_otherinterface_id"></select>
+                  </div>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-header">
+                    <h5>回复的图片内容</h5></div>
+                  <div class="widget-body" style="padding:20px;">
+                    <div class="btn btn-success" id="selectImg">选择图片</div></div>
+                  <div style="width:100%;height:auto;float:left;margin:0px;margin-left:15px;">
+                    <div style="margin-top:20px;height:20px;width:100%;">
+                      <div style="width:100%;height:auto;" id="imglist"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="inputimglist" style="display:none;"></div>
+                <div class="form-actions">
+                  <button class="btn btn-success" type="submit">保存</button></div>
+              </form>
+            </div>
+            <!-- form -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

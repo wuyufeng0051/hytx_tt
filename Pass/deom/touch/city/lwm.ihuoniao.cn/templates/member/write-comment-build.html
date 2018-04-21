@@ -1,0 +1,77 @@
+<h2 class="subtitle">订单评价<a href="{#getUrlPath service='member' type='user' template='orderdetail' module='build' id={#$id#}#}">返回订单详细</a></h2>
+
+{#foreach from=$product item=pro#}
+<dl class="comment fn-clear" data-id="{#$pro.id#}">
+	<dt><a href="{#getUrlPath service='build' template='detail' id={#$pro.id#}#}" title="{#$pro.title#}" target="_blank"><img src="{#changeFileSize url={#$pro.litpic#} type='o_large'#}" /><i></i></a></dt>
+	<dd>
+
+		<div class="fn-clear">
+			<label>评价：</label>
+			<div class="widgt">
+				<label><input type="radio" name="rating{#$pro.id#}" value="1"{#if $pro.common['rating'] == 1 || !$pro.common#} checked="checked"{#/if#} /> 好评</label>
+				<label><input type="radio" name="rating{#$pro.id#}" value="2"{#if $pro.common['rating'] == 2#} checked="checked"{#/if#} /> 中评</label>
+				<label><input type="radio" name="rating{#$pro.id#}" value="3"{#if $pro.common['rating'] == 3#} checked="checked"{#/if#} /> 差评</label>
+			</div>
+		</div>
+		<div class="fn-clear">
+			<label>描述：<input type="hidden" name="score{#$pro.id#}1" id="score{#$pro.id#}1" value="{#$pro.common.score1#}" /></label>
+			<div class="widgt">
+				<div class="pingfen" data-sync="score{#$pro.id#}1" data-id="score1">
+					<div class="pingfen_selected" style="width: {#math equation="x * y" x=$pro.common.score1 y=20#}%;"></div>
+				</div>
+				<span class="pingfen_tip">请选择评分</span>
+			</div>
+		</div>
+		<div class="fn-clear">
+			<label>服务：<input type="hidden" name="score{#$pro.id#}2" id="score{#$pro.id#}2" value="{#$pro.common.score2#}" /></label>
+			<div class="widgt">
+				<div class="pingfen" data-sync="score{#$pro.id#}2" data-id="score2">
+					<div class="pingfen_selected" style="width: {#math equation="x * y" x=$pro.common.score2 y=20#}%;"></div>
+				</div>
+				<span class="pingfen_tip">请选择评分</span>
+			</div>
+		</div>
+		<div class="fn-clear">
+			<label>质量：<input type="hidden" name="score{#$pro.id#}3" id="score{#$pro.id#}3" value="{#$pro.common.score3#}" /></label>
+			<div class="widgt">
+				<div class="pingfen" data-sync="score{#$pro.id#}3" data-id="score3">
+					<div class="pingfen_selected" style="width: {#math equation="x * y" x=$pro.common.score3 y=20#}%;"></div>
+				</div>
+				<span class="pingfen_tip">请选择评分</span>
+			</div>
+		</div>
+		<div class="fn-clear">
+			<label>晒图：</label>
+			<div class="widgt">
+				<ul class="uploader-list">
+					{#if $pro.common.pics#}
+					{#foreach from=$pro.common.pics item=pics key=k#}
+					<li id="WU_FILE_{#$k#}"><img src="{#changeFileSize url="{#$pics.url#}" type="small"#}" data-val="{#$pics.source#}"><div class="file-panel"><span class="cancel">×</span></div></li>
+					{#/foreach#}
+					{#/if#}
+				</ul>
+				<div class="uploader-btn fn-clear">
+					<div class="ubtn"><div class="holder">上传图片</div><input type="file" name="Filedata" class="Filedata" id="image{#$pro.id#}" /></div>
+					<span class="utip">最多上传5张</span>
+				</div>
+			</div>
+		</div>
+		<div class="fn-clear">
+			<label for="commentText{#$pro.id#}">评价内容：</label>
+			<div class="widgt">
+				<div class="textarea">
+					<textarea rows="5" name="commentText{#$pro.id#}" id="commentText{#$pro.id#}">{#$pro.common.content#}</textarea>
+					<span class="lim-count">还可输入 <strong>500</strong> 个字。</span>
+				</div>
+			</div>
+		</div>
+
+	</dd>
+</dl>
+{#/foreach#}
+
+
+<div class="fn-clear" style="text-align: center;">
+	<button type="button" class="cbtn" id="commonBtn">{#if $pro.common#}修改评价{#else#}发表评价{#/if#}</button>
+	<span class="err-tip">{#if $pro.common#}{#if $pro.common.ischeck == 0#}您的评价信息还在审核中。{#elseif $pro.common.ischeck == 2#}您的评价信息审核失败，请检查您的评价内容！{#/if#}{#/if#}</span>
+</div>

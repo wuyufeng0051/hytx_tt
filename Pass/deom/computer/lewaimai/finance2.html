@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.yiiactiveform.js"></script>
+    <script type="text/javascript" src="js/jquery.ba-bbq.js"></script>
+    <title>乐外卖 - 财务统计</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <link rel="stylesheet" href="css/font-awesome.min.css" />
+      <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/chosen.min.css" />
+      <link rel="stylesheet" href="css/ace-fonts.min.css" />
+      <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+      <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+  <div class="main-content">
+    <div class="breadcrumbs" id="breadcrumbs">
+      <ul class="breadcrumb">
+        <i class="ace-icon fa fa-bar-chart-o bar-chart-o-icon"></i>
+        <li class="active">统计</li>
+        <li class="active">财务统计</li>
+        <li class="active">成本核算</li></ul>
+    </div>
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content">
+      <!-- /section:settings.box -->
+      <div class="page-content-area">
+        <script type="text/javascript" src="/js/highcharts.js"></script>
+        <style type="text/css">#yw1_c0,#yw1_c1,#yw1_c2,#yw1_c3,#yw1_c4,#yw1_c5,#yw1_c6,#yw1_c7{ display: none; }</style>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="tabbable">
+              <ul class="nav nav-tabs" id="myTab">
+                <li >
+                    <a href="finance.html">实体店营业额统计</a></li>
+                  <li >
+                    <a href="finance1.html">分店对账</a></li>
+                  <li class="active">
+                    <a href="finance2.html">成本核算</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active">
+                  <div class="widget-box">
+                    <div class="widget-header">
+                      <h5>成本核算-条件选择</h5></div>
+                    <div class="widget-body" style="padding:20px;">
+                            <form id="exportorder-form" action="/statistics/chartbusiness" method="post">
+                              <label>统计时间段</label>
+                              <br />
+                              <input id="StatisticsForm_beginDate" type="text" value="2017-02-12" name="StatisticsForm[beginDate]" />至
+                              <input id="StatisticsForm_endDate" type="text" value="2017-03-14" name="StatisticsForm[endDate]" />
+                              <br />
+                              <br />
+                              <label>选择店铺
+                                <br />
+                                  <div class="chosen-container chosen-container-single tag-input-style " style="width: 256px;" title="" id="form_field_select_3_chosen">
+                                    <a class="chosen-single" tabindex="-1">
+                                      <span>全部店铺</span>
+                                      <div>
+                                        <b>
+                                        </b>
+                                      </div>
+                                    </a>
+                                    <div class="chosen-drop">
+                                      <div class="chosen-search">
+                                        <input type="text" autocomplete="off"></div>
+                                      <ul class="chosen-results">
+                                        <li class="active-result" >全部店铺</li>
+                                        <li class="active-result" >味美家煲仔饭</li>
+                                        <li class="active-result" >沐小卤卤肉饭</li>
+                                        <li class="active-result result-selected" >遍地香</li>
+                                        <li class="active-result" >蔡记兔头</li>
+                                        <li class="active-result" >大圣烧烤</li>
+                                        <li class="active-result" >五谷渔粉</li>
+                                        <li class="active-result" >茶粥坊</li>
+                                        <li class="active-result" >湖南米粉秭归旗舰店</li>
+                                        <li class="active-result" >桃园包子</li>
+                                        <li class="active-result" >龙虾甲鱼馆</li>
+                                        <li class="active-result" >羊子沟羊肉串</li>
+                                        <li class="active-result" >一号渔港</li>
+                                        <li class="active-result" >庙嘴泄滩包子</li>
+                                        <li class="active-result" >罗蒂爸爸</li>
+                                        <li class="active-result" >陕西红富士（金点自营）</li>
+                                        <li class="active-result" >五谷渔粉（茶粥坊店）</li>
+                                        <li class="active-result" >撮一顿川菜馆</li>
+                                        <li class="active-result" >老字号米酒汤圆（下酒菜 甜品）</li>
+                                        <li class="active-result" >易购24小时便利店</li>
+                                        <li class="active-result" >比得灌汤包</li>
+                                        <li class="active-result" >本素咖啡</li>
+                                        <li class="active-result" >龙潮美式瓦缸炭火烤鱼</li>
+                                        <li class="active-result" >金巷子</li>
+                                        <li class="active-result" >有意思</li>
+                                        <li class="active-result" >花之恋</li>
+                                        <li class="active-result" >老归州酒家</li>
+                                        <li class="active-result" >米桂坊过桥米线</li>
+                                        <li class="active-result" >郑记卤味</li>
+                                        <li class="active-result" >吾饮良品</li>
+                                        <li class="active-result" >馋嘴鱼莊</li>
+                                        <li class="active-result" >木炭原味儿烧烤</li>
+                                        <li class="active-result" >红油面馆</li>
+                                        <li class="active-result" >冰淋橙夏</li>
+                                        <li class="active-result" >怡满堂大药房</li>
+                                        <li class="active-result" >王胖子早点</li>
+                                        <li class="active-result" >阁楼咖啡</li>
+                                        <li class="active-result" >千里香馄饨王</li>
+                                        <li class="active-result" >周姐卤菜水饺</li>
+                                        <li class="active-result" >七里香万州面馆</li>
+                                        <li class="active-result" >小树鲜果（水果、零食）</li>
+                                        <li class="active-result" >粥公卤婆（烧烤）</li>
+                                        <li class="active-result" >邓记烤鱼</li>
+                                        <li class="active-result" >九三食府</li>
+                                        <li class="active-result" >原酒印象</li>
+                                        <li class="active-result" >乡风缘野鸡养殖农场</li>
+                                        <li class="active-result" >小牧场羊肉砂锅</li>
+                                        <li class="active-result" >惠姑家庭农场</li>
+                                        <li class="active-result" >杜康专卖店</li>
+                                        <li class="active-result" >炎锅家常菜（瓦罐汤）</li>
+                                        <li class="active-result" >秘制牛肉粉面馆</li>
+                                        <li class="active-result" >屈乡风味馆</li>
+                                        <li class="active-result" >吴妈面馆</li>
+                                        <li class="active-result" >可礼客中式快餐</li>
+                                        <li class="active-result" >蟹谢啦（香辣蟹钳）</li>
+                                        <li class="active-result" >天喔零食秭归店</li>
+                                        <li class="active-result" >正新鸡排（金城店）</li>
+                                        <li class="active-result" >嘛嘛香中式营养快餐</li>
+                                        <li class="active-result" >正宗片皮鸭</li>
+                                        <li class="active-result" >梁记粥铺</li>
+                                        <li class="active-result" >跑腿业务</li>
+                                        <li class="active-result" >五香嘴量贩休闲食品</li>
+                                        <li class="active-result" >麦点超市</li>
+                                        <li class="active-result" >家常菜馆</li>
+                                        <li class="active-result" >世纪华联</li>
+                                        <li class="active-result" >夷蒙概念牛肉</li>
+                                        <li class="active-result" >祥和飞锅万州面</li>
+                                        <li class="active-result" >品味烧烤</li>
+                                        <li class="active-result" >秋谷山纯粮酒</li>
+                                        <li class="active-result" >金烈火奶酪蛋糕</li>
+                                        <li class="active-result" >面相聚</li>
+                                        <li class="active-result" >山东口福饼</li>
+                                        <li class="active-result" >茶粥坊土钵菜</li>
+                                        <li class="active-result" >茶物语</li>
+                                        <li class="active-result" >木语果蛋糕</li>
+                                        <li class="active-result" >肯德基</li>
+                                        <li class="active-result" >舒心批发超市</li>
+                                        <li class="active-result" >五色谷大酒库旗舰店</li>
+                                        <li class="active-result" >坝头养生卤品</li>
+                                        <li class="active-result" >纯果乐</li>
+                                        <li class="active-result" >净果成人用品</li>
+                                        <li class="active-result" >麦佳乐蛋糕店</li>
+                                        <li class="active-result" >周黑鸭</li>
+                                        <li class="active-result" >欢乐家旗舰店</li>
+                                        <li class="active-result" >新派煲仔饭</li>
+                                        <li class="active-result" >矮子馅饼（秭归店）</li>
+                                        <li class="active-result" >巴黎天使</li>
+                                        <li class="active-result" >绿源清江尙品桶装系列纯净水天然水</li>
+                                        <li class="active-result" >子归醇</li>
+                                        <li class="active-result" >王梁记麻辣烫</li>
+                                        <li class="active-result" >四季花时尚饮品</li>
+                                        <li class="active-result" >香满园拉面馆</li>
+                                        <li class="active-result" >福和祥煲仔饭</li>
+                                        <li class="active-result" >坝头刚子烧烤</li>
+                                        <li class="active-result" >韦一粮油</li>
+                                        <li class="active-result" >糖炒栗子</li>
+                                        <li class="active-result" >王老板烩面</li>
+                                        <li class="active-result" >花漫舞</li>
+                                        <li class="active-result" >鲜烫麻辣烫</li>
+                                        <li class="active-result" >安吉尔纯净水</li>
+                                        <li class="active-result" >沙县小吃信合店</li>
+                                        <li class="active-result" >坝头夜猫子小黄鱼</li>
+                                        <li class="active-result" >均瑶旗舰店</li>
+                                        <li class="active-result" >庙嘴万州面</li>
+                                        <li class="active-result" >张氏茶油鸭</li>
+                                        <li class="active-result" >艳子农家小炒</li>
+                                        <li class="active-result" >坝头米酒汤圆 萝卜饺子</li>
+                                        <li class="active-result" >功夫煲仔饭</li>
+                                        <li class="active-result" >巴东傅记羊肉面</li>
+                                        <li class="active-result" >坝头东北小吃</li>
+                                        <li class="active-result" >砂锅米线</li>
+                                        <li class="active-result" >正新鸡排</li>
+                                        <li class="active-result" >庙嘴炸酱面馆</li>
+                                        <li class="active-result" >维纳斯美容会所</li>
+                                        <li class="active-result" >一家人餐馆</li>
+                                        <li class="active-result" >网上营业厅</li>
+                                        <li class="active-result" >坝头铁板炒饭</li>
+                                        <li class="active-result" >韩国凉面</li>
+                                        <li class="active-result" >李功夫中华鸡排</li>
+                                        <li class="active-result" >妙味馄饨</li>
+                                        <li class="active-result" >一扫光零食量贩店</li>
+                                        <li class="active-result" >宏发煤气</li>
+                                        <li class="active-result" >坝头那家粉</li>
+                                        <li class="active-result" >楚城小厨</li>
+                                        <li class="active-result" >坝头火爆鱿鱼</li>
+                                        <li class="active-result" >红牛能量补给站</li>
+                                        <li class="active-result" >妙嘴小吃</li>
+                                        <li class="active-result" >零食加油站</li>
+                                        <li class="active-result" >辛勤小吃店</li>
+                                        <li class="active-result" >测试店铺（勿点）</li>
+                                        <li class="active-result" >一品香</li>
+                                        <li class="active-result" >襄阳牛杂面</li>
+                                        <li class="active-result" >华莱士</li>
+                                        <li class="active-result" >真味酒楼</li>
+                                        <li class="active-result" >谭家村酒业</li>
+                                        <li class="active-result" >坝头开心花甲</li>
+                                        <li class="active-result" >老家大锅台</li>
+                                        <li class="active-result" >坝头灌汤包</li>
+                                        <li class="active-result" >成都抄手</li>
+                                        <li class="active-result" >胖胖熊美食城</li>
+                                        <li class="active-result" >老字号鸡蛋饭</li>
+                                        <li class="active-result" >重庆小面</li>
+                                        <li class="active-result" >太陽·卤味坊</li>
+                                        <li class="active-result" >马大姐旗舰店</li>
+                                        <li class="active-result" >松滋杜婆鸡</li>
+                                        <li class="active-result" >坝头砂锅麻辣烫</li>
+                                        <li class="active-result" >坝头功夫鱿鱼</li>
+                                        <li class="active-result" >精武人家（小区店）</li>
+                                        <li class="active-result" >纸上烤鱼(国华盛景店)</li>
+                                        <li class="active-result" >凤凰楼</li>
+                                        <li class="active-result" >坝头公园27号肉夹馍</li>
+                                        <li class="active-result" >泄滩包子金城店</li>
+                                        <li class="active-result" >坝头饮品庄园</li>
+                                        <li class="active-result" >坝头台湾手抓饼</li>
+                                        <li class="active-result" >三少食府</li>
+                                        <li class="active-result" >坝头碳烤小黄鱼</li>
+                                        <li class="active-result" >姨妹子菜馆</li>
+                                        <li class="active-result" >坝头米酒汤圆</li>
+                                        <li class="active-result" >坝头澳洲大肉串</li>
+                                        <li class="active-result" >坝头江湖翅客24号</li>
+                                        <li class="active-result" >蒙古烤羊腿</li>
+                                        <li class="active-result" >坝头鸡翅包饭 烧烤</li>
+                                        <li class="active-result" >万州烤鱼</li>
+                                        <li class="active-result" >坝头盐都小吃</li>
+                                        <li class="active-result" >川府石锅鱼</li>
+                                        <li class="active-result" >时尚酒家</li>
+                                        <li class="active-result" >泽尚生活馆</li>
+                                        <li class="active-result" >万美菜馆</li>
+                                        <li class="active-result" >韩大大冒菜</li>
+                                        <li class="active-result" >程家菜馆</li>
+                                        <li class="active-result" >剑峰菜馆</li>
+                                        <li class="active-result" >朋友圈土菜馆</li>
+                                        <li class="active-result" >小南园</li>
+                                        <li class="active-result" >平价菜馆</li>
+                                        <li class="active-result" >馋神醉仙鸭</li>
+                                        <li class="active-result" >欣怡川菜馆</li>
+                                        <li class="active-result" >贵州花江狗肉（小区店）</li>
+                                        <li class="active-result" >郑记干锅</li>
+                                        <li class="active-result" >老字号虾皇</li>
+                                        <li class="active-result" >丰锅农家菜</li>
+                                        <li class="active-result" >大三峡</li>
+                                        <li class="active-result" >河鲜馆</li></ul>
+                                    </div>
+                                  </div>
+                                <br />
+                                <br /></label>
+                              <div class="errorMessage" id="StatisticsForm_shop_id_em_" style="display:none"></div>
+                              <div class="span12" style="margin-top:10px;">
+                                <button type="submit" class="btn btn-success">查看统计</button></div>
+                            </form>
+                          </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-10">
+                      <div id="yw0" class="grid-view">
+                        <table class="table table-striped table-bordered table-hover">
+                          <thead>
+                            <tr>
+                              <th id="yw0_c0">店铺名称</th>
+                              <th id="yw0_c1">营业额</th>
+                              <th id="yw0_c2">商品进货价</th>
+                              <th id="yw0_c3">利润</th></tr>
+                          </thead>
+                          <tbody>
+                            <tr class="odd">
+                              <td style="width: 180px">味美家煲仔饭</td>
+                              <td style="width: 80px">3801.47</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">3801.47</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">沐小卤卤肉饭</td>
+                              <td style="width: 80px">1990</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">1990</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">遍地香</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">蔡记兔头</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">大圣烧烤</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">五谷渔粉</td>
+                              <td style="width: 80px">1452</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">1452</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">茶粥坊</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">湖南米粉秭归旗舰店</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">桃园包子</td>
+                              <td style="width: 80px">240.3</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">240.3</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">龙虾甲鱼馆</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">羊子沟羊肉串</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">一号渔港</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">庙嘴泄滩包子</td>
+                              <td style="width: 80px">362.5</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">362.5</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">罗蒂爸爸</td>
+                              <td style="width: 80px">212</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">212</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">陕西红富士（金点自营）</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">五谷渔粉（茶粥坊店）</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">撮一顿川菜馆</td>
+                              <td style="width: 80px">518</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">518</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">老字号米酒汤圆（下酒菜 甜品）</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">易购24小时便利店</td>
+                              <td style="width: 80px">473</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">473</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">比得灌汤包</td>
+                              <td style="width: 80px">193.5</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">193.5</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">本素咖啡</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">龙潮美式瓦缸炭火烤鱼</td>
+                              <td style="width: 80px">18</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">18</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">金巷子</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">有意思</td>
+                              <td style="width: 80px">150</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">150</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">花之恋</td>
+                              <td style="width: 80px">111</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">111</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">老归州酒家</td>
+                              <td style="width: 80px">721</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">721</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">米桂坊过桥米线</td>
+                              <td style="width: 80px">873</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">873</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">郑记卤味</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">吾饮良品</td>
+                              <td style="width: 80px">1748.39</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">1748.39</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">馋嘴鱼莊</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">木炭原味儿烧烤</td>
+                              <td style="width: 80px">759</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">759</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">红油面馆</td>
+                              <td style="width: 80px">91</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">91</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">冰淋橙夏</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">面相聚</td>
+                              <td style="width: 80px">639.5</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">639.5</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">怡满堂大药房</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">王胖子早点</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">阁楼咖啡</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">千里香馄饨王</td>
+                              <td style="width: 80px">441</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">441</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">周姐卤菜水饺</td>
+                              <td style="width: 80px">1527</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">1527</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">七里香万州面馆</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">小树鲜果（水果、零食）</td>
+                              <td style="width: 80px">124.5</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">124.5</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">粥公卤婆（烧烤）</td>
+                              <td style="width: 80px">904</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">904</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">邓记烤鱼</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">九三食府</td>
+                              <td style="width: 80px">1800</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">1800</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">原酒印象</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">乡风缘野鸡养殖农场</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">小牧场羊肉砂锅</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">惠姑家庭农场</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">杜康专卖店</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">炎锅家常菜（瓦罐汤）</td>
+                              <td style="width: 80px">371</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">371</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">秘制牛肉粉面馆</td>
+                              <td style="width: 80px">125</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">125</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">屈乡风味馆</td>
+                              <td style="width: 80px">177</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">177</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">吴妈面馆</td>
+                              <td style="width: 80px">156.5</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">156.5</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">可礼客中式快餐</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">蟹谢啦（香辣蟹钳）</td>
+                              <td style="width: 80px">870</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">870</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">天喔零食秭归店</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">正新鸡排（金城店）</td>
+                              <td style="width: 80px">15</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">15</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">嘛嘛香中式营养快餐</td>
+                              <td style="width: 80px">651</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">651</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">正宗片皮鸭</td>
+                              <td style="width: 80px">23</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">23</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">梁记粥铺</td>
+                              <td style="width: 80px">990</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">990</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">跑腿业务</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">五香嘴量贩休闲食品</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">麦点超市</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">家常菜馆</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">世纪华联</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">夷蒙概念牛肉</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">祥和飞锅万州面</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">品味烧烤</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">秋谷山纯粮酒</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">金烈火奶酪蛋糕</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">山东口福饼</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">茶粥坊土钵菜</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">茶物语</td>
+                              <td style="width: 80px">142</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">142</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">木语果蛋糕</td>
+                              <td style="width: 80px">171</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">171</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">肯德基</td>
+                              <td style="width: 80px">8917.51</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">8917.51</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">舒心批发超市</td>
+                              <td style="width: 80px">166</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">166</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">五色谷大酒库旗舰店</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">坝头养生卤品</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">纯果乐</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">净果成人用品</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">麦佳乐蛋糕店</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">周黑鸭</td>
+                              <td style="width: 80px">327.2</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">327.2</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">欢乐家旗舰店</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">新派煲仔饭</td>
+                              <td style="width: 80px">2311.2</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">2311.2</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">矮子馅饼（秭归店）</td>
+                              <td style="width: 80px">172</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">172</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">巴黎天使</td>
+                              <td style="width: 80px">73</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">73</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">绿源清江尙品桶装系列纯净水天然水</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">子归醇</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">王梁记麻辣烫</td>
+                              <td style="width: 80px">1553</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">1553</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">四季花时尚饮品</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">香满园拉面馆</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">福和祥煲仔饭</td>
+                              <td style="width: 80px">1137</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">1137</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">坝头刚子烧烤</td>
+                              <td style="width: 80px">3044</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">3044</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">韦一粮油</td>
+                              <td style="width: 80px">178</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">178</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">糖炒栗子</td>
+                              <td style="width: 80px">72</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">72</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">王老板烩面</td>
+                              <td style="width: 80px">200</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">200</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">花漫舞</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">鲜烫麻辣烫</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">安吉尔纯净水</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">沙县小吃信合店</td>
+                              <td style="width: 80px">1061.2</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">1061.2</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">坝头夜猫子小黄鱼</td>
+                              <td style="width: 80px">374</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">374</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">均瑶旗舰店</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">坝头米酒汤圆 萝卜饺子</td>
+                              <td style="width: 80px">320</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">320</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">庙嘴万州面</td>
+                              <td style="width: 80px">1637</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">1637</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">张氏茶油鸭</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">艳子农家小炒</td>
+                              <td style="width: 80px">685</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">685</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">功夫煲仔饭</td>
+                              <td style="width: 80px">3999.4</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">3999.4</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">巴东傅记羊肉面</td>
+                              <td style="width: 80px">224.5</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">224.5</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">坝头东北小吃</td>
+                              <td style="width: 80px">195.5</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">195.5</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">砂锅米线</td>
+                              <td style="width: 80px">654</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">654</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">正新鸡排</td>
+                              <td style="width: 80px">798</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">798</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">庙嘴炸酱面馆</td>
+                              <td style="width: 80px">178</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">178</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">维纳斯美容会所</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">一家人餐馆</td>
+                              <td style="width: 80px">572</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">572</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">网上营业厅</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">坝头铁板炒饭</td>
+                              <td style="width: 80px">16</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">16</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">韩国凉面</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">李功夫中华鸡排</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">妙味馄饨</td>
+                              <td style="width: 80px">300</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">300</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">一扫光零食量贩店</td>
+                              <td style="width: 80px">100.96</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">100.96</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">宏发煤气</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">坝头那家粉</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">楚城小厨</td>
+                              <td style="width: 80px">153</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">153</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">坝头火爆鱿鱼</td>
+                              <td style="width: 80px">349</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">349</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">红牛能量补给站</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">妙嘴小吃</td>
+                              <td style="width: 80px">23</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">23</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">零食加油站</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">辛勤小吃店</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">测试店铺（勿点）</td>
+                              <td style="width: 80px">0.1</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0.1</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">一品香</td>
+                              <td style="width: 80px">1348.5</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">1348.5</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">襄阳牛杂面</td>
+                              <td style="width: 80px">517</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">517</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">华莱士</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">真味酒楼</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">谭家村酒业</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">坝头开心花甲</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">老家大锅台</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">坝头灌汤包</td>
+                              <td style="width: 80px">282</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">282</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">成都抄手</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">胖胖熊美食城</td>
+                              <td style="width: 80px">87</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">87</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">老字号鸡蛋饭</td>
+                              <td style="width: 80px">1742</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">1742</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">重庆小面</td>
+                              <td style="width: 80px">528</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">528</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">太陽·卤味坊</td>
+                              <td style="width: 80px">5538</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">5538</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">马大姐旗舰店</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">松滋杜婆鸡</td>
+                              <td style="width: 80px">141</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">141</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">坝头砂锅麻辣烫</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">坝头功夫鱿鱼</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">精武人家（小区店）</td>
+                              <td style="width: 80px">4414</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">4414</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">纸上烤鱼(国华盛景店)</td>
+                              <td style="width: 80px">74</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">74</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">凤凰楼</td>
+                              <td style="width: 80px">1058</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">1058</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">坝头公园27号肉夹馍</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">泄滩包子金城店</td>
+                              <td style="width: 80px">450.5</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">450.5</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">坝头饮品庄园</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">坝头台湾手抓饼</td>
+                              <td style="width: 80px">168</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">168</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">三少食府</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">坝头碳烤小黄鱼</td>
+                              <td style="width: 80px">63</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">63</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">姨妹子菜馆</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">坝头米酒汤圆</td>
+                              <td style="width: 80px">114</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">114</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">坝头澳洲大肉串</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">坝头江湖翅客24号</td>
+                              <td style="width: 80px">118.5</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">118.5</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">蒙古烤羊腿</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">坝头鸡翅包饭 烧烤</td>
+                              <td style="width: 80px">1038.5</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">1038.5</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">万州烤鱼</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">坝头盐都小吃</td>
+                              <td style="width: 80px">104</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">104</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">川府石锅鱼</td>
+                              <td style="width: 80px">26</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">26</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">时尚酒家</td>
+                              <td style="width: 80px">720</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">720</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">泽尚生活馆</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">万美菜馆</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">韩大大冒菜</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">程家菜馆</td>
+                              <td style="width: 80px">707</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">707</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">剑峰菜馆</td>
+                              <td style="width: 80px">43</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">43</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">朋友圈土菜馆</td>
+                              <td style="width: 80px">463</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">463</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">小南园</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">平价菜馆</td>
+                              <td style="width: 80px">162</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">162</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">馋神醉仙鸭</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">欣怡川菜馆</td>
+                              <td style="width: 80px">14.5</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">14.5</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">贵州花江狗肉（小区店）</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">郑记干锅</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">老字号虾皇</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">丰锅农家菜</td>
+                              <td style="width: 80px">510</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">510</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">大三峡</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">0</td></tr>
+                            <tr class="odd">
+                              <td style="width: 180px">河鲜馆</td>
+                              <td style="width: 80px">304</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">304</td></tr>
+                            <tr class="even">
+                              <td style="width: 180px">总计</td>
+                              <td style="width: 80px">73368.73</td>
+                              <td style="width: 80px">0</td>
+                              <td style="width: 80px">73368.73</td></tr>
+                          </tbody>
+                        </table>
+                        <div class="keys" style="display:none" title="/statistics/chengben">
+                          <span>179493</span>
+                          <span>188840</span>
+                          <span>191043</span>
+                          <span>198384</span>
+                          <span>198470</span>
+                          <span>198789</span>
+                          <span>199278</span>
+                          <span>201814</span>
+                          <span>203781</span>
+                          <span>203806</span>
+                          <span>203914</span>
+                          <span>204828</span>
+                          <span>205689</span>
+                          <span>205770</span>
+                          <span>206291</span>
+                          <span>206593</span>
+                          <span>206740</span>
+                          <span>206902</span>
+                          <span>207170</span>
+                          <span>207670</span>
+                          <span>207703</span>
+                          <span>208291</span>
+                          <span>208570</span>
+                          <span>209507</span>
+                          <span>210977</span>
+                          <span>211219</span>
+                          <span>212668</span>
+                          <span>214250</span>
+                          <span>214683</span>
+                          <span>215141</span>
+                          <span>216567</span>
+                          <span>216826</span>
+                          <span>216935</span>
+                          <span>217682</span>
+                          <span>218162</span>
+                          <span>221492</span>
+                          <span>224050</span>
+                          <span>224147</span>
+                          <span>224187</span>
+                          <span>224339</span>
+                          <span>224370</span>
+                          <span>224467</span>
+                          <span>224543</span>
+                          <span>225881</span>
+                          <span>226578</span>
+                          <span>226584</span>
+                          <span>226756</span>
+                          <span>227334</span>
+                          <span>227431</span>
+                          <span>227490</span>
+                          <span>234626</span>
+                          <span>234732</span>
+                          <span>234765</span>
+                          <span>234772</span>
+                          <span>236441</span>
+                          <span>238113</span>
+                          <span>238848</span>
+                          <span>239273</span>
+                          <span>240581</span>
+                          <span>171604</span>
+                          <span>187285</span>
+                          <span>194234</span>
+                          <span>197223</span>
+                          <span>201368</span>
+                          <span>202819</span>
+                          <span>203134</span>
+                          <span>205327</span>
+                          <span>207984</span>
+                          <span>210794</span>
+                          <span>212643</span>
+                          <span>219509</span>
+                          <span>224337</span>
+                          <span>224542</span>
+                          <span>186168</span>
+                          <span>189027</span>
+                          <span>190600</span>
+                          <span>193454</span>
+                          <span>186611</span>
+                          <span>189066</span>
+                          <span>191434</span>
+                          <span>193156</span>
+                          <span>195654</span>
+                          <span>200063</span>
+                          <span>189287</span>
+                          <span>189881</span>
+                          <span>192626</span>
+                          <span>194392</span>
+                          <span>195171</span>
+                          <span>196068</span>
+                          <span>180884</span>
+                          <span>186549</span>
+                          <span>187702</span>
+                          <span>188229</span>
+                          <span>189341</span>
+                          <span>190198</span>
+                          <span>194765</span>
+                          <span>195667</span>
+                          <span>199721</span>
+                          <span>180758</span>
+                          <span>182990</span>
+                          <span>183295</span>
+                          <span>186498</span>
+                          <span>188487</span>
+                          <span>190211</span>
+                          <span>193935</span>
+                          <span>197991</span>
+                          <span>183123</span>
+                          <span>186255</span>
+                          <span>188260</span>
+                          <span>191671</span>
+                          <span>193993</span>
+                          <span>195600</span>
+                          <span>182550</span>
+                          <span>182341</span>
+                          <span>182875</span>
+                          <span>186185</span>
+                          <span>188558</span>
+                          <span>192225</span>
+                          <span>186189</span>
+                          <span>190154</span>
+                          <span>185223</span>
+                          <span>188574</span>
+                          <span>189049</span>
+                          <span>186180</span>
+                          <span>187913</span>
+                          <span>189378</span>
+                          <span>190159</span>
+                          <span>189030</span>
+                          <span>179446</span>
+                          <span>187713</span>
+                          <span>190315</span>
+                          <span>192603</span>
+                          <span>198327</span>
+                          <span>210668</span>
+                          <span>188197</span>
+                          <span>186396</span>
+                          <span>188519</span>
+                          <span>189699</span>
+                          <span>189267</span>
+                          <span>180907</span>
+                          <span>182664</span>
+                          <span>183195</span>
+                          <span>191202</span>
+                          <span>193184</span>
+                          <span>188456</span>
+                          <span>182536</span>
+                          <span>186177</span>
+                          <span>194467</span>
+                          <span>165797</span>
+                          <span>188186</span>
+                          <span>190137</span>
+                          <span>188194</span>
+                          <span>186200</span>
+                          <span>196345</span>
+                          <span>188293</span>
+                          <span>195057</span>
+                          <span>202250</span>
+                          <span>186597</span>
+                          <span>186588</span>
+                          <span>181130</span>
+                          <span>186570</span>
+                          <span>190390</span>
+                          <span>183237</span>
+                          <span>188363</span>
+                          <span>192207</span>
+                          <span>183307</span>
+                          <span>191240</span>
+                          <span>209064</span>
+                          <span>187677</span>
+                          <span>189461</span>
+                          <span>183336</span>
+                          <span>188710</span>
+                          <span>187689</span>
+                          <span>189248</span>
+                          <span>189252</span>
+                          <span>187718</span>
+                          <span>193139</span>
+                          <span>183168</span>
+                          <span>195717</span>
+                          <span>189072</span>
+                          <span>187896</span>
+                          <span>187897</span></div>
+                      </div>
+                    </div>
+                    <div class="col-xs-2" style="margin-top: 15px;">
+                      <a class="btn btn-success" href="#">导出成excel</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      <!-- page specific plugin scripts -->
+      <script src="js/jquery-ui.min.js"></script>
+      <script src="js/jquery.ui.touch-punch.min.js"></script>
+      <script src="js/jquery.easypiechart.min.js"></script>
+      <script src="js/jquery.sparkline.min.js"></script>
+
+      <!-- 这里是与新订单提醒相关的内容 -->
+      <script type="text/javascript" src="js/jquery-ui-i18n.min.js"></script>
+<script type="text/javascript">/*<![CDATA[*/
+  jQuery(function($) {
+    jQuery('#StatisticsForm_beginDate').datepicker(jQuery.extend({
+      showMonthAfterYear: false
+    },
+    jQuery.datepicker.regional['zh_cn'], {
+      'showSecond': true,
+      'changeMonth': true,
+      'changeYear': true,
+      'tabularLevel': null,
+      'yearRange': '2013:2020',
+      'minDate': new Date(2013, 1, 1, 00, 00, 00),
+      'timeFormat': 'hh:mm:ss',
+      'dateFormat': 'yy-mm-dd',
+      'timeText': '时间',
+      'hourText': '时',
+      'minuteText': '分',
+      'secondText': '秒',
+      'currentText': '当前时间',
+      'closeText': '关闭',
+      'showOn': 'focus'
+    }));
+    jQuery('#StatisticsForm_endDate').datepicker(jQuery.extend({
+      showMonthAfterYear: false
+    },
+    jQuery.datepicker.regional['zh_cn'], {
+      'showSecond': true,
+      'changeMonth': true,
+      'changeYear': true,
+      'tabularLevel': null,
+      'yearRange': '2013:2020',
+      'minDate': new Date(2013, 1, 1, 00, 00, 00),
+      'timeFormat': 'hh:mm:ss',
+      'dateFormat': 'yy-mm-dd',
+      'timeText': '时间',
+      'hourText': '时',
+      'minuteText': '分',
+      'secondText': '秒',
+      'currentText': '当前时间',
+      'closeText': '关闭',
+      'showOn': 'focus'
+    }));
+    jQuery('#exportorder-form').yiiactiveform({
+      'validateOnSubmit': true,
+      'attributes': [{
+        'id': 'StatisticsForm_shop_id',
+        'inputID': 'StatisticsForm_shop_id',
+        'errorID': 'StatisticsForm_shop_id_em_',
+        'model': 'StatisticsForm',
+        'name': 'shop_id',
+        'enableAjaxValidation': false,
+        'clientValidation': function(value, messages, attribute) {
+
+          if (jQuery.trim(value) == '') {
+            messages.push("\u5e97\u94fa\u540d\u79f0 \u4e0d\u53ef\u4e3a\u7a7a\u767d.");
+          }
+
+        }
+      }],
+      'errorCss': 'error'
+    });
+  });
+  /*]]>*/
+  </script>
+        <script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+
+</html>

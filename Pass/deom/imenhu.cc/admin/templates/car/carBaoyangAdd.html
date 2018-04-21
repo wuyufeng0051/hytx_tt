@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$pagetitle#}</title>
+{#$cssFile#}
+<script>
+var modelType = "car", adminPath = "{#$adminPath#}";
+</script>
+</head>
+
+<body>
+<form action="" method="post" name="editform" id="editform" class="editform">
+  <input type="hidden" name="dopost" id="dopost" value="{#$dopost#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <input type="hidden" name="cid" id="cid" value="{#$cid#}" />
+  <input type="hidden" name="pid" id="pid" value="{#$pid#}" />
+  <input type="hidden" name="token" id="token" value="{#$token#}" />
+  <dl class="clearfix">
+    <dt><label>车型：</label></dt>
+    <dd style="position:static;">
+      <div id="carBtn">
+        <a href="javascript:;" class="btn" id="cBrand" data-type="Brand" data-id="{#$brandid#}">{#$brandName#}<span class="caret"></span></a>
+        <a href="javascript:;" class="btn" id="cCar" data-type="Car" data-id="{#$cid#}">{#$cname#}<span class="caret"></span></a>
+        <a href="javascript:;" class="btn" id="cParam" data-type="Param" data-id="{#$pid#}">{#$pname#}<span class="caret"></span></a>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>首保里程：</dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input type="number" class="input-mini" name="shoubao" id="shoubao" value="{#$shoubao#}" />
+        <span class="add-on">公里</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>保养周期：</dt>
+    <dd>
+      <div class="input-prepend input-append" style="margin:0;">
+        <input type="number" class="input-mini" name="baoyang" id="baoyang" value="{#$baoyang#}" />
+        <span class="add-on">公里</span>
+      </div>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>保养周期表：</dt>
+    <dd>
+      <script id="cycle" name="cycle" type="text/plain" style="width:85%;height:300px">{#$cycle#}</script>
+    </dd>
+  </dl>
+  <dl class="clearfix">
+    <dt>保养价格表：</dt>
+    <dd>
+      <script id="price" name="price" type="text/plain" style="width:85%;height:300px">{#$price#}</script>
+    </dd>
+  </dl>
+  <dl class="clearfix formbtn">
+    <dt>&nbsp;</dt>
+    <dd><input class="btn btn-large btn-success" type="submit" name="submit" id="btnSubmit" value="确认提交" /></dd>
+  </dl>
+</form>
+
+{#$editorFile#}
+{#$jsFile#}
+</body>
+</html>

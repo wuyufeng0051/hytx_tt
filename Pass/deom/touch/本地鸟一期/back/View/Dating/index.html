@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>相亲交友</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/_head.css">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+<!-- <div class="loading" ><img src="__PUBLIC__/Home/img/loading.gif" style="width: 30px;height: 30px;"><p style="text-align: center;color: #fff;">加载中，请稍等...</p></div> -->
+<!-- 共同顶部 s-->
+<div class="header fn-clear">
+    <div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+    <div class="share"></div>
+    <div class="header_right"><a href="javascript:;" id="fabu">发布</a><i></i><a href="__MODULE__/Index/my">我的</a></div>
+</div>
+<!-- 共同顶部 e-->
+
+<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/dating.css?v=16" />
+<script type="text/javascript" src="__PUBLIC__/Home/js/swiper.min.js"></script>
+<script src="__PUBLIC__/Home/js/layer.js"></script>
+
+<!-- 广告幻灯片 s -->
+<div class="swiper-container1 picscroll">
+    <div class="swiper-container2">
+        <div class="swiper-wrapper">
+            <volist name="status" id="vo">
+                <div class="swiper-slide">
+                    <a><img src="__PUBLIC__/../{$vo['advertisement_img']}"></a>
+                </div>
+            </volist>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!-- 广告幻灯片 e -->
+
+<div class="choice_box fn-clear">
+    <ul>
+        <li class="man"><a href="__MODULE__/Dating/dating?type=1"><i></i>看帅哥</a></li>
+        <li class="women"><a href="__MODULE__/Dating/dating?type=0"><i></i>看美女</a></li>
+    </ul>
+</div>
+<div class="dating_title fn-clear"><i></i>最新交友 
+    <!-- <div class="num"><span>交友信息：<em>{$total}</em></span><span>浏览量：<em>{$totalbrowse}</em></span></div> -->
+</div>
+<div class="dating_list">
+    <foreach name="res_all" item="val">
+    <div class="dating_detail fn-clear"><a href="__MODULE__/Dating/datingdetail/dating_id/{$val['dating_id']}">
+        <div class="dat_pic"><img src="{$val['imgs']}" alt=""></div>
+        <div class="dat_name">{$val['dating_nickname']}<em>{$val['dating_age']}岁</em><if condition="$val['dating_sex'] eq 0"><i class="women"></i><else/><i class="man"></i></if><if condition="$val['dating_is_top'] eq 1"><span>置顶</span><else/><span>{$val['dating_date']|substr=2,8|str_replace='-','.',###}</span></if></div>
+        <div class="dat_kind">交友类型：{$val['dating_type']}</div>
+        <div class="dat_info">婚姻状况：{$val['dating_marrystate']}</div>
+        <div class="dat_info">居住地：{$val['dating_address']}</div>
+    </a></div>
+    </foreach>
+    <if condition="$totalpage gt 1">
+        {$pageButton}
+    </if>
+    <div class="tips">共{$totalpage}页</div>
+</div>
+
+<script>
+    if($('#page_type')[0]){
+        $('#page_type')[0].selectedIndex = -1;}
+    // 分页选择
+    function changepage(v){
+        window.location.href='__ROOT__'+v;
+    }
+    $('#fabu').click(function () {
+        $.post('{:U("Home/Dating/judge")}', {}, function(data) {
+            if (data == 1) {
+                layer.msg('您已经发布过交友信息')
+            }else{
+                location.href="__MODULE__/Dating/issuedating"
+            }
+        });
+    })
+</script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/car.js"></script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+.lead{
+    background-color: #222;    
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    height: 40px;
+}
+.lead .lead_list{
+	width: 1200px;
+	margin: 0 auto;
+}
+.lead .lead_list .lead_left{
+	float: left;
+}
+.lead .lead_list .lead_left ul li{
+	float: left;
+    color: #fff;
+    font-size: 16px;
+    line-height: 40px;
+    height: 40px;
+    width: 74px;
+    margin-right: 5px;
+    text-align: center;
+}
+.lead .lead_list .lead_left ul li:hover{
+	background: #444;
+}
+.lead .lead_list .lead_left ul li a{
+    color: #fff;
+    display: block;
+}
+.lead .lead_list .lead_left ul li.home{
+	margin-right: 15px;
+}
+.lead .lead_list .lead_left ul li.home img{
+	width: 83px;
+	height: 33px;
+	margin-top: 3px;
+}
+.lead .lead_list .lead_left ul li.home:hover{
+	background: none
+}
+.lead .lead_list .lead_left ul li.more{
+	position: relative;
+}
+.lead .lead_list .lead_left ul li.more em{
+	display: inline-block;
+    background: url(../images/arrow3.png) no-repeat 0 0;
+    font-size: 0;
+    height: 6px;
+    margin: 17px 0 0 5px;
+    overflow: hidden;
+    width: 10px;
+    vertical-align: top;
+    transition: all .2s ease-in-out 0s;
+}
+.lead .lead_list .lead_left ul li.more:hover em{
+    transform: rotate(180deg);
+}
+.lead .lead_list .lead_left ul li.more .more_box{
+    top: 40px;
+    left: -110px;
+    background: #fff;
+    border: 1px solid #ddd;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 14px;
+    line-height: 40px;
+    position: absolute;
+    text-align: center;
+    width: 268px;
+    padding: 7px 10px;
+    transition: all .2s ease-in;
+}
+.lead .lead_list .lead_left ul li.more .more_box a{
+    color: #191919;
+    display: inline-block;
+    float: left;
+    width: 67px;
+}
+.lead .lead_list .lead_left ul li.more:hover .more_box{
+	visibility: visible;
+    opacity: 1;
+}
+.lead .lead_list .lead_right{
+    font-size: 14px;
+    line-height: 40px;
+    padding: 0 10px;
+    height: 40px;
+    float: right;
+}
+.lead .lead_list .lead_right a{
+	color: #fff;
+    padding: 0 10px;
+	display: block;
+}
+.lead .lead_list .lead_right a:hover{
+	background: #444;
+}
+.lead .lead_list .lead_right a i{
+	width: 16px;
+	height: 20px;
+	display: inline-block;
+	background: url(../images/person.png) no-repeat center;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+.lead .lead_list .lead_right .load{
+    max-width: 122px;
+    overflow: hidden;
+}
+.lead .lead_list .lead_right .load img{
+	    border-radius: 50%;
+    float: left;
+    height: 26px;
+    margin-right: 10px;
+	vertical-align: text-bottom;
+    width: 26px;
+    margin-top: 8px;
+}
+.area{
+    width: 1200px;
+    margin: 0 auto;
+    height: 31px;
+    padding-top: 13px;
+    border-bottom: 1px #f0f0f0 solid;
+    line-height: 18px;
+    font-size: 14px;
+    color: #191919;
+    margin-top: 40px;
+}
+.area a{
+    margin:0 8px;
+}
+.main{
+    width: 1200px;
+    margin: 0 auto;
+    padding: 35px 0 0;
+}
+.main .main_left{
+    width: 140px;
+    float: left;
+    display: inline;
+}
+.main .main_left .made_infor{
+    background: #fff;
+    position: relative;
+    padding-top: 58px;
+    width: 138px;
+    border: 1px #ddd solid;
+}
+.main .main_left .made_infor .made_pic{
+    height: 70px;
+    width: 70px;
+    position: absolute;
+    top: -22px;
+    left: 35px;
+}
+.main .main_left .made_infor .made_pic a img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+}
+.main .main_left .made_infor h1{
+    text-align: center;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 3px 15px 0;
+    font-weight: 400;
+}
+.main .main_left .made_infor ul{
+    padding: 18px 2px 20px;
+    height: 42px;
+}
+.main .main_left .made_infor ul li{
+        height: 42px;
+    width: 66px;
+    float: left;
+    text-align: center;
+    color: #666;
+    line-height: 1;
+}
+.main .main_left .made_infor ul li:first-child{
+    border-right: 1px #eee solid;
+}
+.main .main_left .made_infor ul li span{
+        color: #191919;
+    font-size: 14px;
+    display: block;
+    height: 26px;
+    line-height: 26px;
+    vertical-align: middle;
+}
+.main .main_left .made_infor .more{
+    height: 31px;
+    background: #f9f9f9;
+    text-align: center;
+    line-height: 31px;
+}
+.main .main_left .made_infor .more a{
+    color: #666;
+}
+.main .main_left .share{
+    margin: 60px auto 0;
+    text-align: right;
+}
+.main .main_left .share .comment_num{
+    height: 38px;
+    font-size: 24px;
+    line-height: 38px;
+    position: relative;
+}
+.main .main_left .share .comment_num span{
+    font-family: Georgia,Arial;
+    color: #da2128;
+}
+.main .main_left .share .comment_num em{
+        width: 25px;
+    height: 21px;
+    margin: 11px 0 0 12px;
+    background: url(../images/comment.png) no-repeat 0 0;
+    display: inline-block;
+    vertical-align: top;
+}
+.main .main_left .share .bdsharebuttonbox{
+    border-top: 1px #eaeaea solid;
+    padding-top: 12px;
+    margin-top: 10px;
+}
+.main .main_left .share .bdsharebuttonbox p{
+    color: #999;
+    width: 100%;
+    float: none;
+    font-size: 14px;
+    height: 35px;
+    line-height: 28px;
+    margin: 0;
+}
+.main .main_left .share .bdsharebuttonbox .bds_tsina{
+    float: left;
+    width: 27px;
+    margin-left: 64px;
+    padding-left: 0;
+    width: 27px;
+    height: 27px;
+    background: url(../images/share.png) no-repeat 0 0;
+    opacity: .8;
+}
+.main .main_left .share .bdsharebuttonbox .bds_qzone{
+    float: left;
+    width: 27px;
+    margin-left: 10px;
+    padding-left: 0;
+    width: 27px;
+    height: 27px;
+    background: url(../images/share.png) no-repeat 0 0;
+    background-position: 0 -80px;
+    opacity: .8;
+}
+.main .main_middle{
+    width: 640px;
+    float: left;
+    margin-left: 43px;
+}
+.main .main_middle h1{
+        font-size: 28px;
+    font-weight: 700;
+    line-height: 38px;
+    color: #191919;
+}
+.main .main_middle .time{
+    font-size: 14px;
+    line-height: 20px;
+    color: #999;
+    padding-top: 15px;
+}
+.main .main_middle .news_foot{
+    height: 39px;
+    margin: 45px auto 0;
+    border-bottom: 1px solid #dedede;
+}
+.main .main_middle .news_foot span{
+    font-size: 14px;
+    float: left;
+    line-height: 22px;
+}
+.main .main_middle .news_foot i{
+    float: right;
+    font-style: normal;
+}
+.main .main_right{
+    width: 340px;
+    float: right;
+}
+.main .main_right .search{
+    height: 36px;
+    margin: 0 auto 10px;
+}
+.main .main_right .search input{
+    width: 276px;
+    height: 34px;
+    color: #999;
+    font-size: 14px;
+    border: 1px silver solid;
+    border-right: 0;
+    line-height: 34px;
+    padding-left: 10px;
+    float: left;
+    border-radius: 2px 0 0 2px;
+    box-sizing: content-box;
+}
+.main .main_right .search a{
+    float: left;
+    cursor: pointer;
+    width: 53px;
+    height: 36px;
+    display: inline-block;
+    background: #fdd000;
+    text-align: center;
+}
+.main .main_right .search a i{
+        width: 20px;
+    height: 20px;
+    overflow: hidden;
+    margin-top: 8px;
+    background: url(../images/search.png) no-repeat 0 0;
+    display: inline-block;
+}
+.main .main_right .hot{
+    padding-bottom: 10px;
+    height: auto;
+    border-top: 2px #fdd000 solid;
+    margin: 0 auto 10px;
+    background: #f9f9f9;
+    margin-top: 30px;
+}
+.main .main_right .hot h1{
+    height: 25px;
+    padding: 6px 20px 0;
+    color: #191919;
+    line-height: 25px;
+    text-align: right;
+    position: relative;
+}
+.main .main_right .hot h1 em{
+    font-size: 16px;
+    float: left;
+    font-weight: 700;
+}
+.main .main_right .hot .hot_txt{
+    padding: 10px 0;
+    margin: 0 auto;
+    width: 300px;
+}
+.main .main_right .hot .hot_txt .hot_pic{
+    width: 90px;
+    height: 60px;
+    margin-right: 10px;
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+.main .main_right .hot .hot_txt .hot_pic a img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: transform .5s ease .1s;
+    -webkit-transition: -webkit-transform .5s ease .1s;
+}
+.main .main_right .hot .hot_txt .hot_pic a img:hover{
+    transform: matrix(1.04,0,0,1.04,0,0);
+    backface-visibility: hidden;
+}
+.main .main_right .hot .hot_txt .hot_pic a span{
+    width: 100%;
+    height: 40px;
+    padding-top: 29px;
+    background-color: rgba(0,0,0,.3);
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    text-indent: 10px;
+}
+.main .main_right .hot .hot_txt h2{
+        font-size: 14px;
+    line-height: 22px;
+    padding-top: 6px;
+    font-weight: 400;
+}
+.fixed{
+    position: fixed;
+    left: auto;
+    right: auto;
+    top: -20px;
+}
+.fixed_2{
+    position: fixed;
+    left: auto;
+    right: auto;
+    top: 11px;
+}

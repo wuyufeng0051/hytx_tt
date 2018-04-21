@@ -1,0 +1,76 @@
+<script type="text/javascript">
+	var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}';
+	var uploadType = "logo", atlasMax= "1";
+</script>
+<style>.state0 {padding: 0 0 20px 115px; color: #f00;}</style>
+<div class="w-form">
+	{#if $storeState == 1#}
+		{#if $detail_state == 0#}
+		<p class="state0">您的公司信息正在审核中，请耐心等待！</p>
+		{#elseif $detail_state == 2#}
+		<p class="state0">您的公司信息审核失败，请检查您填写的资料！</p>
+		{#/if#}
+	{#/if#}
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=house&action=storeConfig">
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>公司名称：</dt>
+			<dd>
+				<input type="text" name="title" class="inp" id="title" size="35" maxlength="60" data-title="请输入公司名称" value="{#$detail_title#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt><span>*</span>公司LOGO：</dt>
+			<dd class="thumb fn-clear listImgBox">
+				<div class="uploadinp filePicker thumbtn{#if $detail_litpic != ""#} fn-hide{#/if#}" id="filePicker1" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+				{#if $detail_litpic != ""#}
+				<ul id="listSection1" class="listSection thumblist fn-clear" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$detail_litpic#}' target="_blank" title=""><img alt="" src="{#changeFileSize url="$detail_litpic" type="small"#}" data-val="{#$detail_litpicSource#}"/></a><a class="reupload li-rm" href="javascript:;">删除图片</a></li></ul>
+				{#else#}
+				<ul id="listSection1" class="listSection thumblist fn-clear"></ul>
+				{#/if#}
+				<input type="hidden" name="litpic" value="{#$detail_litpicSource#}" class="imglist-hidden" id="litpic">
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>联系电话：</dt>
+			<dd>
+				<input type="text" name="tel" class="inp" id="tel" size="25" maxlength="20" data-title="请输入联系电话" value="{#$detail_tel#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>联系地址：</dt>
+			<dd>
+				<input type="text" name="address" class="inp" id="address" size="25" maxlength="60" data-title="请输入公司地址" value="{#$detail_address#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt>联系邮箱：</dt>
+			<dd>
+				<input type="text" name="email" class="inp" id="email" size="25" maxlength="50" data-title="请输入联系邮箱" value="{#$detail_email#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>公司介绍：</dt>
+			<dd>
+				<script id="note" name="note" type="text/plain" style="width:90%;height:500px">{#$detail_note#}</script>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>验证码：</dt>
+			<dd>
+				<input type="text" class="inp" maxlength="4" size="6" name="vdimgck" id="vdimgck" autocomplete="off" data-title="请输入验证码" />
+				<img src="/include/vdimgck.php" title="看不清？点击换一张" id="verifycode" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>&nbsp;</dt>
+			<dd><button class="submit" id="submit">保存设置</button></dd>
+		</dl>
+	</form>
+</div>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dragsort-0.5.1.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicUpload.js?v=4"></script>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>店铺</title>
+<!--#include virtual="public.shtml"-->
+<link rel="stylesheet" type="text/css" href="css/ju-list.css">
+
+</head>
+<body>
+<!--#include virtual="top.shtml"-->
+<div id="JS_category_filter" class="filter">
+	<dl class="cat fn-clear">
+		<dt>
+		  <a href='#'>墙地面材料</a></dt>
+		<dd>
+		  <table>
+		    <tbody>
+		      <tr>
+		        <td id="JS_filter_cats">
+		          <a href='#'>
+		            <strong>墙纸</strong>(1000)</a>
+		          <a href='#' class="current">
+		            <strong>地板</strong>(147)</a>
+		          <a href='#'>
+		            <strong>墙布</strong>(5)</a>
+		          <a href='#'>
+		            <strong>瓷砖</strong>(51)</a>
+		          <a href='#'>
+		            <strong>门</strong>(472)</a>
+		          <a href='#'>
+		            <strong>油漆</strong>(377)</a>
+		          <a href='#'>
+		            <strong>楼梯</strong>(7)</a>
+		          <a href='#'>
+		            <strong>辅助材料</strong>(168)</a>
+		        </td>
+		      </tr>
+		    </tbody>
+		  </table>
+		</dd>
+	</dl>
+	<dl class="normal fn-clear">
+		<dt>材质</dt>
+		<dd>
+		  <div class="shell">
+		    <table>
+		      <tbody>
+		        <tr>
+		          <td class="list">
+		            <a data-type="19566" href='#'>实木
+		              <i></i>
+		            </a>
+		            <a data-type="19564" href='#'>陶瓷
+		              <i></i>
+		            </a>
+		            <a data-type="19565" href='#'>板式
+		              <i></i>
+		            </a>
+		            <a data-type="21707" href='#'>大理石
+		              <i></i>
+		            </a>
+		            <a data-type="19581" href='#'>纯纸
+		              <i></i>
+		            </a>
+		            <a data-type="19563" href='#'>pvc
+		              <i></i>
+		            </a>
+		            <a data-type="19572" href='#'>无纺布
+		              <i></i>
+		            </a>
+		            <a data-type="19574" href='#'>玻璃
+		              <i></i>
+		            </a>
+		            <a data-type="21708" href='#'>其他材质
+		              <i></i>
+		            </a>
+		            <a data-type="19562" href='#'>实木复合
+		              <i></i>
+		            </a>
+		            <a data-type="19580" href='#'>实木贴木皮
+		              <i></i>
+		            </a>
+		            <a data-type="19580" href='#'>钢铁
+		              <i></i>
+		            </a>
+		          </td>
+		          <td class="more">
+		            <a href='#' class="jMore JS_more" style="display: inline-block;">
+		              <span>更多</span>
+		              <i>
+		              </i>
+		            </a>
+		          </td>
+		          <td class="Multiselect">
+		            <a  href='#' class="JS_Multiselect">
+		              <span>+多选</span></a>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <div class="isSure none">
+		      <input class="JS_sure disabled"  type="button" value="确定" disabled="true">
+		      <input class="JS_cancle" type="button" value="取消"></div>
+		  </div>
+	</dd>
+	</dl>
+	<dl class="normal fn-clear">
+		<dt>价格</dt>
+		<dd>
+		  <div class="shell">
+		    <table>
+		      <tbody>
+		        <tr>
+		          <td class="list">
+		            <a data-type="" href='#'>0-49元
+		              <i></i>
+		            </a>
+		            <a data-type="" href='#'>50-99元
+		              <i></i>
+		            </a>
+		            <a data-type="" href='#'>100-499元
+		              <i></i>
+		            </a>
+		            <a data-type="" href='#'>500-999元
+		              <i></i>
+		            </a>
+		            <a data-type="" href='#'>1000元以上
+		              <i></i>
+		            </a>
+		            <input id="JS_filter_price_min" value="" class="min-price" type="text">-
+		            <input id="JS_filter_price_max" value="" class="max-price" type="text">
+		            <button id="JS_filter_price_btn" class="price-btn">确定</button></td>
+		          <td class="more">
+		            <a href='#' class="jMore">
+		              <span>更多</span>
+		              <i>
+		              </i>
+		            </a>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <div class="isSure none">
+		      <input onclick="window._gaq.push(['_trackEvent','2016美乐乐搜索 ','多选确定','click']);" class="JS_sure disabled" data-url="" type="button" value="确定" disabled="true">
+		      <input class="JS_cancle" type="button" value="取消"></div>
+		  </div>
+		</dd>
+	</dl>
+	<dl class="normal fn-clear">
+		<dt>材料类型</dt>
+		<dd>
+		  <div class="shell">
+		    <table>
+		      <tbody>
+		        <tr>
+		          <td class="list">
+		            <a data-type="20149" href='#'>色浆
+		              <i></i>
+		            </a>
+		            <a data-type="20163" href='#'>胶粘剂
+		              <i></i>
+		            </a>
+		            <a data-type="20150" href='#'>瓷砖粘合剂
+		              <i></i>
+		            </a>
+		            <a data-type="20167" href='#'>玻璃胶
+		              <i></i>
+		            </a>
+		            <a data-type="20153" href='#'>防水材料
+		              <i></i>
+		            </a>
+		            <a data-type="20151" href='#'>糯米胶
+		              <i></i>
+		            </a>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <div class="isSure none">
+		      <input onclick="window._gaq.push(['_trackEvent','2016美乐乐搜索 ','多选确定','click']);" class="JS_sure disabled" data-url="/category-chuangdian/list-79_{9999}/?from=ar_74" type="button" value="确定" disabled="true">
+		      <input class="JS_cancle" type="button" value="取消"></div>
+		  </div>
+		</dd>
+	</dl>
+</div>
+<div class="ju-box">
+	<div class="ju_ll fn-clear">
+		<div class="ju_nope">
+			<a href="ju-detail.shtml">
+				<img src="upfile/1470380675567873608.jpg" alt="">
+				<span class='price'>
+					<em>￥</em><b>26.00</b><s>￥897</s>
+					<div class="biaoqian">
+						<p class="pink">特价</p><p class="orange">包邮</p><p class="pink">直降</p>
+					</div>
+				</span>
+				<div class="nope_txt">
+					[喜临门·睡美人] Amy艾美 亲民来袭 1.8/1.5/1.9/1.2米3D环保椰棕健康护脊床垫 亲肤针织面料床垫 <p>【春节床垫大促】</p>
+				</div>
+				<div class="nope_shou">
+					已售<em>987</em><s>|</s>评论<i>23</i>
+				</div>
+			</a>
+		</div>
+		<div class="ju_nope">
+			<a href="ju-detail.shtml">
+				<img src="upfile/1470380675567873608.jpg" alt="">
+				<span class='price'>
+					<em>￥</em><b>26.00</b><s>￥897</s>
+					<div class="biaoqian">
+						<p class="pink">特价</p><p class="orange">包邮</p><p class="pink">直降</p>
+					</div>
+				</span>
+				<div class="nope_txt">
+					[喜临门·睡美人] Amy艾美 亲民来袭  <p>【春节床垫大促】</p>
+				</div>
+				<div class="nope_shou">
+					已售<em>987</em><s>|</s>评论<i>23</i>
+				</div>
+			</a>
+		</div>
+		<div class="ju_nope">
+			<a href="ju-detail.shtml">
+				<img src="upfile/1470380675567873608.jpg" alt="">
+				<span class='price'>
+					<em>￥</em><b>26.00</b><s>￥897</s>
+					<div class="biaoqian">
+						<p class="pink">特价</p><p class="orange">包邮</p><p class="pink">直降</p>
+					</div>
+				</span>
+				<div class="nope_txt">
+					[喜临门·睡美人] Amy艾美 亲民来袭 1.8/1.5/1.9/1.2米3D环保椰棕健康护脊床垫 亲肤针织面料床垫 <p>【春节床垫大促】</p>
+				</div>
+				<div class="nope_shou">
+					已售<em>987</em><s>|</s>评论<i>23</i>
+				</div>
+			</a>
+		</div>
+		<div class="ju_nope">
+			<a href="ju-detail.shtml">
+				<img src="upfile/1470380675567873608.jpg" alt="">
+				<span class='price'>
+					<em>￥</em><b>26.00</b><s>￥897</s>
+					<div class="biaoqian">
+						<p class="pink">特价</p><p class="orange">包邮</p><p class="pink">直降</p>
+					</div>
+				</span>
+				<div class="nope_txt">
+					[喜临门·睡美人] Amy艾美 亲民来袭 1.8/1.5/1.9/1.2米3D环保椰棕健康护脊床垫 亲肤针织面料床垫 <p>【春节床垫大促】</p>
+				</div>
+				<div class="nope_shou">
+					已售<em>987</em><s>|</s>评论<i>23</i>
+				</div>
+			</a>
+		</div>
+		<div class="ju_nope">
+			<a href="ju-detail.shtml">
+				<img src="upfile/1470380675567873608.jpg" alt="">
+				<span class='price'>
+					<em>￥</em><b>26.00</b><s>￥897</s>
+					<div class="biaoqian">
+						<p class="pink">特价</p><p class="orange">包邮</p><p class="pink">直降</p>
+					</div>
+				</span>
+				<div class="nope_txt">
+					[喜临门·睡美人] Amy艾美 亲民来袭 1.8/1.5/1.9/1.2米3D环保椰棕健康护脊床垫 亲肤针织面料床垫 <p>【春节床垫大促】</p>
+				</div>
+				<div class="nope_shou">
+					已售<em>987</em><s>|</s>评论<i>23</i>
+				</div>
+			</a>
+		</div>
+		<div class="ju_nope">
+			<a href="ju-detail.shtml">
+				<img src="upfile/1470380675567873608.jpg" alt="">
+				<span class='price'>
+					<em>￥</em><b>26.00</b><s>￥897</s>
+					<div class="biaoqian">
+						<p class="pink">特价</p><p class="orange">包邮</p><p class="pink">直降</p>
+					</div>
+				</span>
+				<div class="nope_txt">
+					[喜临门·睡美人] Amy艾美 亲民来袭 1.8/1.5/1.9/1.2米3D环保椰棕健康护脊床垫 亲肤针织面料床垫 <p>【春节床垫大促】</p>
+				</div>
+				<div class="nope_shou">
+					已售<em>987</em><s>|</s>评论<i>23</i>
+				</div>
+			</a>
+		</div>
+		<div class="ju_nope">
+			<a href="ju-detail.shtml">
+				<img src="upfile/1470380675567873608.jpg" alt="">
+				<span class='price'>
+					<em>￥</em><b>26.00</b><s>￥897</s>
+					<div class="biaoqian">
+						<p class="pink">特价</p><p class="orange">包邮</p><p class="pink">直降</p>
+					</div>
+				</span>
+				<div class="nope_txt">
+					[喜临门·睡美人] Amy艾美 亲民来袭 1.8/1.5/1.9/1.2米3D环保椰棕健康护脊床垫 亲肤针织面料床垫 <p>【春节床垫大促】</p>
+				</div>
+				<div class="nope_shou">
+					已售<em>987</em><s>|</s>评论<i>23</i>
+				</div>
+			</a>
+		</div>
+		<div class="ju_nope">
+			<a href="ju-detail.shtml">
+				<img src="upfile/1470380675567873608.jpg" alt="">
+				<span class='price'>
+					<em>￥</em><b>26.00</b><s>￥897</s>
+					<div class="biaoqian">
+						<p class="pink">特价</p><p class="orange">包邮</p><p class="pink">直降</p>
+					</div>
+				</span>
+				<div class="nope_txt">
+					[喜临门·睡美人] Amy艾美 亲民来袭 1.8/1.5/1.9/1.2米3D环保椰棕健康护脊床垫 亲肤针织面料床垫 <p>【春节床垫大促】</p>
+				</div>
+				<div class="nope_shou">
+					已售<em>987</em><s>|</s>评论<i>23</i>
+				</div>
+			</a>
+		</div>
+		<div class="ju_nope">
+			<a href="ju-detail.shtml">
+				<img src="upfile/1470380675567873608.jpg" alt="">
+				<span class='price'>
+					<em>￥</em><b>26.00</b><s>￥897</s>
+					<div class="biaoqian">
+						<p class="pink">特价</p><p class="orange">包邮</p><p class="pink">直降</p>
+					</div>
+				</span>
+				<div class="nope_txt">
+					[喜临门·睡美人] Amy艾美 亲民来袭 1.8/1.5/1.9/1.2米3D环保椰棕健康护脊床垫 亲肤针织面料床垫 <p>【春节床垫大促】</p>
+				</div>
+				<div class="nope_shou">
+					已售<em>987</em><s>|</s>评论<i>23</i>
+				</div>
+			</a>
+		</div>
+		<div class="ju_nope">
+			<a href="ju-detail.shtml">
+				<img src="upfile/1470380675567873608.jpg" alt="">
+				<span class='price'>
+					<em>￥</em><b>26.00</b><s>￥897</s>
+					<div class="biaoqian">
+						<p class="pink">特价</p><p class="orange">包邮</p><p class="pink">直降</p>
+					</div>
+				</span>
+				<div class="nope_txt">
+					[喜临门·睡美人] Amy艾美 亲民来袭 1.8/1.5/1.9/1.2米3D环保椰棕健康护脊床垫 亲肤针织面料床垫 <p>【春节床垫大促】</p>
+				</div>
+				<div class="nope_shou">
+					已售<em>987</em><s>|</s>评论<i>23</i>
+				</div>
+			</a>
+		</div>
+		<div class="ju_nope">
+			<a href="ju-detail.shtml">
+				<img src="upfile/1470380675567873608.jpg" alt="">
+				<span class='price'>
+					<em>￥</em><b>26.00</b><s>￥897</s>
+					<div class="biaoqian">
+						<p class="pink">特价</p><p class="orange">包邮</p><p class="pink">直降</p>
+					</div>
+				</span>
+				<div class="nope_txt">
+					[喜临门·睡美人] Amy艾美 亲民来袭 1.8/1.5/1.9/1.2米3D环保椰棕健康护脊床垫 亲肤针织面料床垫 <p>【春节床垫大促】</p>
+				</div>
+				<div class="nope_shou">
+					已售<em>987</em><s>|</s>评论<i>23</i>
+				</div>
+			</a>
+		</div>
+		<div class="ju_nope">
+			<a href="ju-detail.shtml">
+				<img src="upfile/1470380675567873608.jpg" alt="">
+				<span class='price'>
+					<em>￥</em><b>26.00</b><s>￥897</s>
+					<div class="biaoqian">
+						<p class="pink">特价</p><p class="orange">包邮</p><p class="pink">直降</p>
+					</div>
+				</span>
+				<div class="nope_txt">
+					[喜临门·睡美人] Amy艾美 亲民来袭 1.8/1.5/1.9/1.2米3D环保椰棕健康护脊床垫 亲肤针织面料床垫 <p>【春节床垫大促】</p>
+				</div>
+				<div class="nope_shou">
+					已售<em>987</em><s>|</s>评论<i>23</i>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="page fn-clear">
+	<ul class="fn-clear">
+		<li class="page_bc"><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+		<li><a href="#">5</a></li>
+		<li class="none">...</li>
+		<li><a href="#">10</a></li>
+	</ul>
+	<div class="next">下一页></div>
+	<div class="to_page">
+		到第<input type="num">页
+		<button>确定</button>
+	</div>
+</div>
+<!--#include virtual="footer.shtml"-->
+<script type="text/javascript" src="js/ju-list.js"></script>
+</body>
+</html>

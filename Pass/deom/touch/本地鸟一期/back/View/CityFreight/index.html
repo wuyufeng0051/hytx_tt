@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>同城货运</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css?v=5">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/_head.css?v=5">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+<!-- <div class="loading" ><img src="__PUBLIC__/Home/img/loading.gif" style="width: 30px;height: 30px;"><p style="text-align: center;color: #fff;">加载中，请稍等...</p></div> -->
+<!-- 共同顶部 s-->
+<div class="header fn-clear">
+    <div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+    <div class="title">商家详情</div>
+    <div class="share"></div>
+    <div class="header_right"><a class="fa_btn" href="javascript:;">发布</a><i></i><a href="__MODULE__/Index/my">我的</a></div>
+</div>
+<!-- 共同顶部 e-->
+<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/allcar.css?v=2">
+<script type="text/javascript" src="__PUBLIC__/Home/js/swiper.min.js"></script>
+<!-- 顶部固定搜索框 s-->
+<div class="search_box">
+    <div class="seach_pic"><img src="__PUBLIC__/Home/images/banner_1.png" alt=""></div>
+    <div class="sea_input fn-clear"><input type="text" placeholder="请输入您要查找的车辆信息" id="search"><a href="javascript:;" id="searchbtn"><button><i></i>查找</button></a></div>
+</div>
+<!-- 顶部固定搜索框 e-->
+<!-- 便携工具列表 s-->
+<div class="tools_box">
+    <div class="swiper-container" id="swiper-container2">
+        <div class="swiper-wrapper quan_list">
+            <div class="swiper-slide fn-clear">
+                <ul>
+                    <li class="sj_1"><a href="__MODULE__/CityFreight/shunlu"><i></i>顺路带货</a></li>
+                    <li class="sj_2"><a href="__MODULE__/CityFreight/carinfo?search=出租车"><i></i>出租车</a></li>
+                    <li class="sj_3"><a href="__MODULE__/CityFreight/carinfo?search=三轮车"><i></i>三轮车</a></li>
+                    <li class="sj_4"><a href="__MODULE__/CityFreight/carinfo?search=大货车"><i></i>大货车</a></li>
+                    <li class="sj_5"><a href="__MODULE__/CityFreight/carinfo?search=小货车"><i></i>小货车</a></li>
+                    <!--<li class="sj_6"><a href="__MODULE__/CityFreight/carinfo?search=拖拉机"><i></i>拖拉机</a></li>-->
+                    <li class="sj_7"><a href="__MODULE__/CityFreight/carinfo?search=工程车"><i></i>工程车</a></li>
+                    <li class="sj_8"><a href="__MODULE__/CityFreight/carinfo?search=道路救援"><i></i>道路救援</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="swiper-pagination swiper-pagination-bullets"></div> -->
+</div>
+<!-- 便携工具列表 e-->
+<!-- 广告幻灯片 s -->
+<div class="swiper-container1 picscroll">
+    <div class="swiper-container2">
+        <div class="swiper-wrapper">
+            <volist name="status" id="vo">
+                <div class="swiper-slide">
+                    <a><img src="__PUBLIC__/../{$vo['advertisement_img']}"></a>
+                </div>
+            </volist>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!-- 广告幻灯片 e -->
+<div class="merchant">
+    <div class="merchant_lead fn-clear">
+        <div class="mer_l"><i></i>为您推荐</div>
+     <!--    <div class="mer_r">
+            <span>车辆信息：<em>{$total}</em></span>
+            <span>浏览量：<em>{$totalbrowse}</em></span>
+        </div> -->
+    </div>
+    <div class="merchant_list" >
+        <foreach name="res_all" item="val">
+        <div class="mer_detail fn-clear" data-phone="{$val['carinfo_phone']}"><a href="__MODULE__/CityFreight/carinfodetail/carinfo_id/{$val['carinfo_id']}">
+            <div class="mer_pic"><img src="{$val['imgs']}" alt=""><if condition="$val['carinfo_is_top'] eq 1"><i class="top"></i></if></div>
+            <h1>{$val['carinfo_title']}</h1>
+            <p>浏览：<em>{$val['carinfo_browse']}</em> 次</p>
+            <span>{$val['carinfo_cartype']}</span>
+        </a>
+            <div class="tel"></div>
+        </div>
+        </foreach>
+    </div>
+    <if condition="$totalpage gt 1">
+        {$pageButton}
+    </if>
+    <div class="tips">共{$totalpage}页</div>
+</div>
+<div class="disk"></div>
+<div class="phone">
+    <h1>提示</h1>
+    <h2>联系我时，请说是在<em>泸西本地鸟</em>上看到的，谢谢！</h2>
+    <ul>
+        <li><a><em></em><i></i></a></li>
+    </ul>
+    <div class="close"><i></i></div>
+</div>
+<!-- 发布弹出层 -->
+<div class="fa_box fa_1">
+    <div class="fb_title">请选择您要发布的类型<i></i></div>
+    <ul>
+        <li><a href="__MODULE__/CityFreight/issuecar">顺路车</a></li>
+        <li><a href="__MODULE__/CityFreight/issuegoods">顺路货</a></li>
+        <li><a href="__MODULE__/CityFreight/issuecarinfo">车辆信息</a></li>
+    </ul>
+</div>
+<!-- 发布弹出层 -->
+<script>
+    // 分页选择
+    if($('#page_type')[0]){
+        $('#page_type')[0].selectedIndex = -1;}
+    // 分页选择
+    function changepage(v){
+        window.location.href='__ROOT__'+v;
+    }
+    $('.fa_btn').on('click',function(){
+        if ($('.fa_1').css("display") == "none") {
+            $('.fa_1').show();
+            $('.disk').show();
+            $('body').addClass('by');
+        }else{
+            $('.fa_1').hide();
+            $('.disk').hide();
+            $('body').removeClass('by');
+        }
+    })
+    $('.fa_box .fb_title i').click(function(){
+        $('.fa_1').hide();
+        $('.fa_2').hide();
+        $('body').removeClass('by');
+        $('.disk').hide();
+    })
+    $('.disk').click(function(){
+        $('.fa_1').hide();
+        $('.fa_2').hide();
+        $('body').removeClass('by');
+        $('.disk').hide();
+    })
+    $('#searchbtn').click(function(){
+        var searchval=$('#search').val();
+        window.location.href="__MODULE__/CityFreight/carinfo?search="+searchval;
+    })
+</script>
+
+
+<script type="text/javascript" src="__PUBLIC__/Home/js/index.js"></script>
+</body>
+</html>

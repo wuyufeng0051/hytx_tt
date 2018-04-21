@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-bicycle"></i>
+        <a href="#">跑腿</a></li>
+      <li>
+        <a href="#">跑腿分类设置</a></li>
+      <li class="active">新建跑腿分类</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style>.ace-file-input a {display:none;} .aa{display:none;} label{vertical-align:middle;font-weight:normal;font-size:14px;display:inline-block;margin-bottom:5px;} label input{border-radius:0!important;color:#858585;background-color:#fff;border:1px solid #d5d5d5;padding:5px 4px;line-height:1.2; font-size:14px;font-family:inherit;-webkit-box-shadow:none!important;box-shadow:none!important;-webkit-transition-duration:.1s; transition-duration:.1s;background-image:none;margin:0;-webkit-appearance:textfield; } .form-submit-btn{padding-left:100px;height:60px;margin-top:30px;} .aa{display:none;}</style>
+      <style>.clear{ clear:both; } .addfield{margin-top:-10px;width:120px;height:30px;background:#27B3EF;line-height:30px;color:#ffffff;font-weight:bold;text-align:center;font-size:16px;cursor:pointer;float:left;margin-right:10px;} #filecontent{width:1000px;height:auto;margin-top:10px;} .xxfield,.txfield,.tafield,.selfdefine,.rangedeliveryfee{width:1000px;heigth:40px;background:#f5f5f5;line-height:40px;border:1px solid #eeeeee;margin-top:10px;} .deletefield,.deleteselfdefine,.deleterangedeliveryfee{width:40px;height:40px;float:right;background:#eeeeee;color:#FF0000;font-weight:bold;line-height:40px;text-align:center;cursor:pointer;} .save_field{margin-top:10px;width:60px;height:30px;background:#61b509;line-height:30px;color:#ffffff;font-weight:bold;text-align:center;font-size:16px;cursor:pointer;} .fieldblock input{height:30px;line-height:30px;} .selfdefineblock input{height:30px;line-height:30px;} .rangedeliveryfeeblock input{height:30px;line-height:30px;}</style>
+      <style>.natureblock{border:1px solid #eeeeee;padding:0px;margin:10px;} .natureblock .fieldblock{width:100%;margin:0 auto;height:50px;background:#f5f5f5;line-height:50px;} .sonfieldblock{width:90%;margin:5px auto;height:40px;background:#cccccc;line-height:40px;} .sonfieldblock .sondeletefield{height:40px;line-height:40px;} .priceblock{width:100%;height:50px;background:#f5f5f5;line-height:50px;border:1px solid #eeeeee;margin:10px auto;} .deletefield,.addsonfield,.sondeletefield{width:50px;height:50px;float:right;background:#eeeeee;color:#FF0000;font-weight:bold;line-height:50px;text-align:center;cursor:pointer;} .addsonfield{width:100px;border-right:1px solid #ffffff;color:blue;}</style>
+      <div id="hidecontent" style="display:none;">
+        <div id="hidexxfield">
+          <div class="xxfield fieldblock">(
+            <span style="font-weight:bold;">选项字段</span>)&nbsp;&nbsp;字段名:
+            <input type="text" style="width:80px;" class="name" name="field[name][]">&nbsp;&nbsp;&nbsp;&nbsp;选项值:
+            <input type="text" style="width:300px;" class="content" name="field[content][]">&nbsp;&nbsp;&nbsp;&nbsp;显示顺序:
+            <input type="text" style="width:50px;" value="0" class="content" name="field[sort][]">
+            <input type="hidden" class="type" name="field[type][]" value="1">
+            <div class="deletefield" title="删除选项字段">删除</div>
+          </div>
+        </div>
+        <div id="hidetxfield">
+          <div class="txfield fieldblock">(
+            <span style="font-weight:bold;">填写字段(小)</span>)&nbsp;&nbsp;字段名:
+            <input type="text" style="width:80px;" class="name" name="field[name][]">&nbsp;&nbsp;&nbsp;&nbsp;提示语:
+            <input type="text" style="width:300px;" class="content" name="field[content][]">&nbsp;&nbsp;&nbsp;&nbsp;显示顺序:
+            <input type="text" style="width:50px;" value="0" class="content" name="field[sort][]">
+            <input type="hidden" class="type" name="field[type][]" value="2">
+            <div class="deletefield" title="删除选项字段">删除</div></div>
+        </div>
+        <div id="hidetafield">
+          <div class="tafield fieldblock">(
+            <span style="font-weight:bold;">填写字段(大)</span>)&nbsp;&nbsp;字段名:
+            <input type="text" style="width:80px;" class="name" name="field[name][]">&nbsp;&nbsp;&nbsp;&nbsp;提示语:
+            <input type="text" style="width:300px;" class="content" name="field[content][]">&nbsp;&nbsp;&nbsp;&nbsp;显示顺序:
+            <input type="text" style="width:50px;" value="0" class="content" name="field[sort][]">
+            <input type="hidden" class="type" name="field[type][]" value="3">
+            <div class="deletefield" title="删除选项字段">删除</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6" style="width:100%;margin:0 auto;">
+        <form enctype="multipart/form-data" class="form-horizontal" id="shop-form" action="/errands/createcategory" method="post">
+          <div class="alert alert-danger" id="shop-form_es_" style="display:none">
+            <p>请更正下列输入错误:</p>
+            <ul>
+              <li>dummy</li></ul>
+          </div>
+          <div class="tabbable">
+            <ul class="nav nav-tabs tt" id="myTab">
+              <li class="active">
+                <a data-toggle="tab" href="#">基本设置</a></li>
+              <li>
+                <a data-toggle="tab" href="#">服务内容设置</a></li>
+              <li>
+                <a data-toggle="tab" href="#">个性收费服务</a></li>
+              <li>
+                <a data-toggle="tab" href="#">增值服务</a></li>
+              <li>
+                <a data-toggle="tab" href="#">支付方式</a></li>
+              <li>
+                <a data-toggle="tab" href="#">营业时间</a></li>
+            </ul>
+            <div class="tab-content ">
+              <div id="infocontent" class="tab-pane active tt_1">
+                <div class="form-group">
+                  <label class="col-sm-1">
+                    <label for="ErrandCategory_title">标题</label></label>
+                  <input name="ErrandCategory[title]" id="ErrandCategory_title" type="text" maxlength="20"></div>
+                <div class="form-group">
+                  <label class="col-sm-1">
+                    <label for="ErrandCategory_describe">短描述</label></label>
+                  <input name="ErrandCategory[describe]" id="ErrandCategory_describe" type="text" maxlength="50" value=""></div>
+                <div class="form-group">
+                  <label class="col-sm-1">
+                    <label for="ErrandCategory_min_price">最低跑腿费</label></label>
+                  <input name="ErrandCategory[min_price]" id="ErrandCategory_min_price" type="text"></div>
+                <div class="form-group">
+                  <label class="col-sm-1">
+                    <label for="ErrandCategory_color">类型颜色</label></label>
+                  <input type="hidden" name="ErrandCategory[color]" id="ErrandCategory_color" value="">
+                  <div>
+                    <div class="dropdown dropdown-colorpicker">
+                      <a data-toggle="dropdown" class="dropdown-toggle" data-position="auto" href="#" aria-expanded="false">
+                        <span class="btn-colorpicker" style="background-color: " data-color=""></span>
+                      </a>
+                      <ul class="dropdown-menu dropdown-caret">
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#ac725e;" data-color="#ac725e"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#d06b64;" data-color="#d06b64"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#f83a22;" data-color="#f83a22"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#fa573c;" data-color="#fa573c"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#ff7537;" data-color="#ff7537"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#ffad46;" data-color="#ffad46"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#42d692;" data-color="#42d692"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#16a765;" data-color="#16a765"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#7bd148;" data-color="#7bd148"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#b3dc6c;" data-color="#b3dc6c"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#fbe983;" data-color="#fbe983"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#fad165;" data-color="#fad165"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#92e1c0;" data-color="#92e1c0"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#9fe1e7;" data-color="#9fe1e7"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#9fc6e7;" data-color="#9fc6e7"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#4986e7;" data-color="#4986e7"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#9a9cff;" data-color="#9a9cff"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#b99aff;" data-color="#b99aff"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#c2c2c2;" data-color="#c2c2c2"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#cabdbf;" data-color="#cabdbf"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#cca6ac;" data-color="#cca6ac"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#f691b2;" data-color="#f691b2"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#cd74e6;" data-color="#cd74e6"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#a47ae2;" data-color="#a47ae2"></a>
+                        </li>
+                        <li>
+                          <a class="colorpick-btn" href="#" style="background-color:#555;" data-color="#555"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-1">
+                    <label for="ErrandCategory_rank">排序</label></label>
+                  <input name="ErrandCategory[rank]" id="ErrandCategory_rank" type="text" value="0"></div>
+                <div class="form-group">
+                  <label class="col-sm-1" for="ErrandCategory_is_notice_used">是否开启跑腿页面公告</label>
+                  <select name="ErrandCategory[is_notice_used]" id="ErrandCategory_is_notice_used">
+                    <option value="0" selected="selected">关闭</option>
+                    <option value="1">开启</option></select>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-1">
+                    <label for="ErrandCategory_notice_content">公告内容</label></label>
+                  <textarea name="ErrandCategory[notice_content]" id="ErrandCategory_notice_content"></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-1">
+                    <label for="ErrandCategory_errand_remark">跑腿说明</label></label>
+                  <textarea name="ErrandCategory[errand_remark]" id="ErrandCategory_errand_remark"></textarea>
+                </div>
+                <div style="width:300px;">分类小图标</div>
+                <div class="form-group" style="width:592px;padding-left:12px;">
+                  <input id="ytid-input-file-3" type="hidden" value="" name="ErrandCategory[icon]">
+                  <label class="ace-file-input">
+                    <input class="col-sm-4 icon" id="id-input-file-3" size="50" onchange="preview1(this)" name="ErrandCategory[icon]" type="file">
+                    <span class="ace-file-container" data-title="选择">
+                      <span class="ace-file-name" data-title="分类小图标(建议尺寸：36像素 * 36像素)">
+                        <i class=" ace-icon fa fa-upload"></i>
+                      </span>
+                    </span>
+                  </label>
+                </div>
+                <div>
+                  <img id="icondis" style="width:36px;height:36px" title="帐号头像" src="images/icon.png">
+                </div>
+              </div>
+              <div id="fuwuneirong" class="tab-pane tt_1">
+                <div class="alert alert-info">
+                  <button type="button" class="close" data-dismiss="alert">
+                    <i class="ace-icon fa fa-times"></i>
+                  </button>
+                  <p>字段名长度为1-10个字，不能为空，选项字段的选项值之间用英文逗号“,”分开，如1号桌,2号桌,3号桌..，每个选项值长度为1-20个字，不能为空；填写字段的提示语长度为0-100个字，可以为空。
+                    <br>
+                    <br>
+                    <a class="btn btn-danger" href="#" target="_blank">设置教程</a></p>
+                </div>
+                <div>
+                  <div class="btn btn-sm btn-success addxxfield">添加选项字段</div>
+                  <div class="btn btn-sm btn-info addtxfield">添加填写字段(小)</div>
+                  <div class="btn btn-sm btn-danger addtafield">添加填写字段(大)</div>
+                  <div class="clear"></div>
+                </div>
+                <div id="fieldcontent">
+                  <div class="xxfield fieldblock">(
+                    <span style="font-weight:bold;">选项字段</span>)&nbsp;&nbsp;字段名:
+                    <input type="text" style="width:80px;" class="name" name="field[name][]">&nbsp;&nbsp;&nbsp;&nbsp;选项值:
+                    <input type="text" style="width:300px;" class="content" name="field[content][]">&nbsp;&nbsp;&nbsp;&nbsp;显示顺序:
+                    <input type="text" style="width:50px;" value="0" class="content" name="field[sort][]">
+                    <input type="hidden" class="type" name="field[type][]" value="1">
+                    <div class="deletefield" title="删除选项字段">删除</div></div>
+                  <div class="txfield fieldblock">(
+                    <span style="font-weight:bold;">填写字段(小)</span>)&nbsp;&nbsp;字段名:
+                    <input type="text" style="width:80px;" class="name" name="field[name][]">&nbsp;&nbsp;&nbsp;&nbsp;提示语:
+                    <input type="text" style="width:300px;" class="content" name="field[content][]">&nbsp;&nbsp;&nbsp;&nbsp;显示顺序:
+                    <input type="text" style="width:50px;" value="0" class="content" name="field[sort][]">
+                    <input type="hidden" class="type" name="field[type][]" value="2">
+                    <div class="deletefield" title="删除选项字段">删除</div></div>
+                  <div class="tafield fieldblock">(
+                    <span style="font-weight:bold;">填写字段(大)</span>)&nbsp;&nbsp;字段名:
+                    <input type="text" style="width:80px;" class="name" name="field[name][]">&nbsp;&nbsp;&nbsp;&nbsp;提示语:
+                    <input type="text" style="width:300px;" class="content" name="field[content][]">&nbsp;&nbsp;&nbsp;&nbsp;显示顺序:
+                    <input type="text" style="width:50px;" value="0" class="content" name="field[sort][]">
+                    <input type="hidden" class="type" name="field[type][]" value="3">
+                    <div class="deletefield" title="删除选项字段">删除</div></div>
+                </div>
+              </div>
+              <div id="gexingservice" class="tab-pane tt_1">
+                <div class="alert alert-success">
+                  <button type="button" class="close" data-dismiss="alert">
+                    <i class="ace-icon fa fa-times"></i>
+                  </button>
+                  <p>*请您注意：您在此处设置好之后，用户选择了个性收费服务的任意一个选项时，最低服务费就会以这边的设置为准，基本设置中的最低跑腿费将会失效；用户未选任何个性收费服务时，将以基本设置中的最低跑腿费为准； 如果用户还选择了增值服务，就会在您设置的最低跑腿费基础上加上增值服务费； 跑腿属性名不能为空，且必须有一个以上的有效选项值，否则跑腿属性将不会显示； 选项值不能为空且不能有任意两项相同，重复的选项值将被过滤掉，不会在下拉框中显示； 每个选项值对应一个价格，不可设置多个价格，不可设置负数，不可超过1000元； 跑腿个性收费服务可灵活运用于各场景，比如上楼费、上门费、加急费等等，顾客选择的属性信息将在打印机、商家APP、配送管APP、管理后台等各种订单提醒方式中展示。
+                    <br>
+                    <br>
+                    <a class="btn btn-danger" href="#" target="_blank">设置教程</a></p>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3" style="width:150px;">
+                    <label for="ErrandCategory_is_nature">是否开启个性服务：</label></label>
+                  <select name="ErrandCategory[is_nature]" id="ErrandCategory_is_nature">
+                    <option value="0" selected="selected">不开启</option>
+                    <option value="1">开启</option></select>
+                </div>
+                <div class="natureblock fatherblock">
+                  <div class="fieldblock">
+                    <label>跑腿属性名:
+                      <input type="text" name="nature[name]" value="" style="width:80px;"></label>
+                    <div class="addsonfield" title="增加属性值" >增加属性值</div></div>
+                </div>
+              </div>
+              <div id="addservice" class="tab-pane tt_1">
+                <div class="alert alert-info">
+                  <button type="button" class="close" data-dismiss="alert">
+                    <i class="ace-icon fa fa-times"></i>
+                  </button>
+                  <p>增值服务可设置名称、对应的增值服务费用、服务对应的时间，如果顾客是在那个时间内下的单，就会增加对应的费用。</p>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-1" for="ErrandCategory_open_addservice">是否开启增值服务</label>
+                  <select name="ErrandCategory[open_addservice]" id="ErrandCategory_open_addservice">
+                    <option value="0" selected="selected">关闭</option>
+                    <option value="1">开启</option></select>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-header">
+                    <h5>增值服务</h5></div>
+                  <div class="widget-body">
+                    <div class="widget-main">
+                      <div style="margin:10px;width:1000px;float:left;">(1) &nbsp;&nbsp;名称:
+                        <input type="text" name="addservice[0][name]" value="">时间段:
+                        <input id="addservice_0_start" type="text" value="00:00" name="addservice[0][start]" class="hasDatepicker">至
+                        <input id="addservice_0_stop" type="text" value="00:00" name="addservice[0][stop]" class="hasDatepicker">&nbsp;&nbsp;价格:
+                        <input type="text" name="addservice[0][price]" value="0"></div>
+                      <div style="margin:10px;width:1000px;float:left;">(2) &nbsp;&nbsp;名称:
+                        <input type="text" name="addservice[1][name]" value="">时间段:
+                        <input id="addservice_1_start" type="text" value="00:00" name="addservice[1][start]" class="hasDatepicker">至
+                        <input id="addservice_1_stop" type="text" value="00:00" name="addservice[1][stop]" class="hasDatepicker">&nbsp;&nbsp;价格:
+                        <input type="text" name="addservice[1][price]" value="0"></div>
+                      <div style="margin:10px;width:1000px;float:left;">(3) &nbsp;&nbsp;名称:
+                        <input type="text" name="addservice[2][name]" value="">时间段:
+                        <input id="addservice_2_start" type="text" value="00:00" name="addservice[2][start]" class="hasDatepicker">至
+                        <input id="addservice_2_stop" type="text" value="00:00" name="addservice[2][stop]" class="hasDatepicker">&nbsp;&nbsp;价格:
+                        <input type="text" name="addservice[2][price]" value="0"></div>
+                      <div style="margin:10px;width:1000px;float:left;">(4) &nbsp;&nbsp;名称:
+                        <input type="text" name="addservice[3][name]" value="">时间段:
+                        <input id="addservice_3_start" type="text" value="00:00" name="addservice[3][start]" class="hasDatepicker">至
+                        <input id="addservice_3_stop" type="text" value="00:00" name="addservice[3][stop]" class="hasDatepicker">&nbsp;&nbsp;价格:
+                        <input type="text" name="addservice[3][price]" value="0"></div>
+                      <div style="margin:10px;width:1000px;float:left;">(5) &nbsp;&nbsp;名称:
+                        <input type="text" name="addservice[4][name]" value="">时间段:
+                        <input id="addservice_4_start" type="text" value="00:00" name="addservice[4][start]" class="hasDatepicker">至
+                        <input id="addservice_4_stop" type="text" value="00:00" name="addservice[4][stop]" class="hasDatepicker">&nbsp;&nbsp;价格:
+                        <input type="text" name="addservice[4][price]" value="0"></div>
+                      <div style="clear:both;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="pay" class="tab-pane tt_1">
+                <div style="margin-left:5px;">
+                  <label style="margin-right:20px">开启在线支付</label>
+                  <select class="span2" name="ErrandCategory[open_online]" id="ErrandCategory_open_online">
+                    <option value="0" selected="selected">启用</option>
+                    <option value="1">不启用</option></select>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <br>
+                  <br>
+                  <label style="margin-right:20px">开启会员支付</label>
+                  <select class="span2" name="ErrandCategory[open_balance]" id="ErrandCategory_open_balance">
+                    <option value="0" selected="selected">启用</option>
+                    <option value="1">不启用</option></select>
+                  <br>&nbsp;
+                  <br>
+                  <label style="margin-right:20px">开启货到付款</label>
+                  <select class="span2" name="ErrandCategory[open_offline]" id="ErrandCategory_open_offline">
+                    <option value="0" selected="selected">启用</option>
+                    <option value="1">不启用</option></select>
+                  <br>&nbsp;
+                  <br>
+                  <label style="margin-right:20px">在线支付方式</label>
+                  <select class="span2" name="ErrandCategory[pay_type]" id="ErrandCategory_pay_type">
+                    <option value="0" selected="selected">乐外卖微信支付</option>
+                    <option value="1">商户自己的微信支付</option></select>
+                  <br>&nbsp;
+                  <br>
+                  <br></div></div>
+              <div id="shoptime" class="tab-pane tt_1">
+                  <input id="shoptime_start_time" type="text" value="00:00" name="shoptime[start_time]" class="hasDatepicker">至
+                  <input id="shoptime_stop_time" type="text" value="23:59" name="shoptime[stop_time]" class="hasDatepicker">
+              </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-info" type="submit">
+              <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /.page-content-area --></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+<script type="text/javascript" src="js/onfoot_kindset_new.js"></script>
+</html>

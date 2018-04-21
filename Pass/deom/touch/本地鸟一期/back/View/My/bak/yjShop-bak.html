@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>泸西本地鸟</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+		<style>
+		.title{
+			font-size: 15px;
+		    color: #000;
+		    padding-left: 15px;
+		    font-weight: inherit;
+		    line-height: 28px;
+		    background: #fff;
+		    border-bottom: 1px solid #e6e6e6;
+		    margin:0;
+		    padding: 5px 10px;
+		}
+		.title a{
+			display: inline-block;
+			width: 28px;
+			height: 28px;
+			background: url(img/right.png) right center no-repeat;
+			background-size: 20px 20px;
+			float: right;
+		}
+		.title span{
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			background: #fd2e1c;
+			line-height: 16px;
+			color: #fff;
+			text-align: center;
+			border-radius: 50%;
+			float: right;
+			margin-top: 5px;
+		}
+		.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{
+			height: 35px;
+			text-align: left;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="mui-content">
+			<!-- 图片轮播区 -->
+			<div id="slider" class="mui-slider" >
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="__PUBLIC__/Home/img/banner.png">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="__PUBLIC__/Home/img/banner.png">
+						</a>
+					</div>
+					<!-- 第二张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="__PUBLIC__/Home/img/banner.png">
+						</a>
+					</div>
+					<!-- 第三张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="__PUBLIC__/Home/img/banner.png">
+						</a>
+					</div>
+					<!-- 第四张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="__PUBLIC__/Home/img/banner.png">
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="__PUBLIC__/Home/img/banner.png">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<h5 class="title">我提的意见<a href="__MODULE__/My/myAdvise"></a><span>1</span> </h5>
+			<ul class="mui-table-view mui-grid-view">
+<?php foreach ($res as $v ) {?>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="goods.html" class="a">
+		                <img class="mui-media-object" src="__PUBLIC__/Home/img/shuijiao.jpg">
+		                <div class="mui-media-body">
+		                	<?php echo $v['yjshop_title'];?> <span style="float: right;"><?php echo $v['yjshop_price']?></span>
+							<p style="margin-top: 5px;">库存：<?php echo $v['yjshop_number']?> <span style="float: right;">已领<?php echo $v['receive_sum']?></span></p>
+		                </div>
+	                </a>
+		        </li>
+<?php }?>
+<!--
+		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="#">
+		                <img class="mui-media-object" src="__PUBLIC__/Home/img/shuijiao.jpg">
+		                <div class="mui-media-body">
+		                	双人伞 <span style="float: right;">免费</span>
+							<p style="margin-top: 5px;">库存：1000 <span style="float: right;">已领795</span></p>
+		                </div>
+	                </a>
+		        </li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="#">
+		                <img class="mui-media-object" src="__PUBLIC__/Home/img/shuijiao.jpg">
+		                <div class="mui-media-body">
+		                	双人伞 <span style="float: right;">免费</span>
+							<p style="margin-top: 5px;">库存：1000 <span style="float: right;">已领795</span></p>
+		                </div>
+	                </a>
+		        </li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="#">
+		                <img class="mui-media-object" src="__PUBLIC__/Home/img/shuijiao.jpg">
+		                <div class="mui-media-body">
+		                	双人伞 <span style="float: right;">免费</span>
+							<p style="margin-top: 5px;">库存：1000 <span style="float: right;">已领795</span></p>
+		                </div>
+	                </a>
+		        </li>
+-->
+		    </ul>
+
+
+
+		</div>
+		<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+		<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+		<script>
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+			//获得slider插件对象
+			var gallery = mui('#slider');
+				gallery.slider({
+				interval:4000//自动轮播周期，若为0则不自动播放，默认为0；
+			});
+		</script>
+	</body>
+</html>

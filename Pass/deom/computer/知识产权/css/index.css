@@ -1,0 +1,817 @@
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select,button{margin:0;padding:0; outline:none}
+body{font-size:12px;font-family:"微软雅黑";line-height:20px; color: #666; position:relative;}
+html{height:100%;}
+/*通用*/
+h1,h2,h3,h4,h5,h6{ font-weight: normal;}
+
+h3,h4{ font-size: 14px; color: #000;font-weight: bold;}
+em,i{font-style:normal}
+img{border:0;vertical-align:middle}
+table{border-collapse:collapse;border-spacing:0;}
+ul,ol,li{ list-style: none;}
+select,input,img,select{ vertical-align:middle;}
+a{text-decoration:none; color: #666;}
+a:hover,a:active,a:focus{color:#DB8519;} 
+input[type="submit"],input[type="button"]{cursor: pointer;}
+.clear:after{clear:both;display:block;visibility:visible;height:0;line-height:0;content:"";} 
+.clear{_zoom:1;}
+.clearfix:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+.pull-left{float: left;}
+.pull-right{float: right;}
+.wrap{ width: 1200px; margin:0 auto; position: relative;}
+.m{ width: 1200px; margin:0 auto;}
+.module-title{padding: 5px;margin: 20px 0;font-size: 14px;font-weight: bold;color: #000;background-color: #f8f8f8;}
+.module-title .pull-right a{font-size: 12px;color: #0088C8;font-weight: normal;}
+
+.local{font-size: 18px;}
+.local{line-height: 18px; height: 18px;margin: 16px 0; font-size: 14px; color: #333; margin-left:0px; margin-left:-190px}
+.local a{ margin: 0 10px; color: #333;}
+.local b{font-weight: normal;color: #5489c9; margin: 0 10px;font-size: 18px;}
+.local a:hover{text-decoration: underline;}
+.local span{margin: 0 10px}
+label span{margin:0 10px;}
+/*背景颜色*/
+.bg_green{ background: #4cc709;}
+.bg_red{ background: #ee6767;}
+.bg_blue{ background: #1a96f6;}
+.bg_gray{ background: #eeeeee;}
+.bg_orange{background: #f6b646;}
+
+.headerTop{ background: #5489c9; width: 100%;}
+.headerFixed{top:0px;z-index: 88; position: fixed;}
+/*头部*/
+/*header*/
+.header{height:76px; min-width: 1200px;background:url(../Images/ht_banner.jpg) center no-repeat;box-shadow: 0 0 8px rgba(0,0,0,0.11); color:#fff}
+.header .logo{ height:80px; float: left; width: 600px; background:url(../images/logo.png) no-repeat left;}
+.header .loginUser{float: right; margin-top:28px; margin-right: 20px;font-size: 14px; line-height: 20px;}
+.header .loginUser span{ float: left;}
+.header .loginUser a{font-size: 14px; margin: 0 10px; float: left; color:#fff}
+.header .loginUser a.exit:hover{text-decoration:underline}
+.header .loginUser .mail{ width:20px; height:20px; background: url(../Images/mail.png) center no-repeat; display: inline-block; position: relative; float: right;}
+.header .loginUser .mail em{ background:#fa4d4d; color: #FFFFFF; font-size: 10px; display: inline-block; position: absolute; left:10px; top: -6px; padding: 0 3px; height: 14px; line-height: 14px;border-radius:10px;}
+.header .loginUser .center{ height: 20px; line-height: 20px; background: #2972d5; color: #FFFFFF;padding: 0 10px; font-size: 12px; display: inline-block; border-radius:3px ;}
+
+/*尾部*/
+.footer{ text-align: center; padding: 30px 0;  margin-top:20px}
+.footer_bg{ position:absolute; height:608px; width:100%; min-width:1200px;background:url(../Images/ht_bg2.png) center; bottom:0px; left:0px;z-index:-1}
+
+.page_b{ height: 60px;line-height:60px}
+.page_b .btnBox{ float: left; margin-top:13px;}
+.page_b .btnBox .btn{ margin-left: 20px; font-size:12px}
+.page_b label{margin-left:19px;}
+
+
+
+/*菜单*/
+.nav{ height: 50px; line-height: 50px;float:right; display:block;background: #5489c9;width:100%;min-width: 1000px;}
+.nav ul li{ float: left;position: relative; height:50px;}
+.nav ul li a{ padding: 0 20px; display: block; font-size: 16px; font-weight: bold; color: #fff;}
+.nav ul li a:hover,.nav ul li a.active{background: #db8519;}
+.nav .login{ padding: 15px; background: #c48536; color: #fff;height:20px; line-height: 20px;}
+.nav .login .line{ width: 1px; background: #fff; margin: 0 15px; height:14px;float: left; margin-top: 3px;}
+.nav .login a{ font-size: 14px; font-weight: bold; color: #fff; float: left;}
+.nav .login a:hover{ color: #86510f;}
+
+.box-b{margin-top: 20px; border: solid 1px #DDDDDD; background: #FFFFFF; overflow: hidden;}
+.box-b .title{ height: 50px; line-height: 50px; border-bottom: solid 1px #DDDDDD; background: #f8f9fb; padding: 0 20px;}
+.box-b .title h3{ font-size: 14px; color: #333; float: left;}
+.box-b .title a{ float: right; margin-left: 20px; font-size: 14px;}
+.box-b .edit{padding: 20px;}
+.box-b .edit .process{ height: 38px; background: url(../images/process.gif);}
+.box-b .edit .process2{ height: 38px; background: url(../images/process.gif)0 -38px;}
+.box-b .edit .process3{ height: 38px; background: url(../images/process.gif)0 -76px;}
+.box-b .edit .process li{ float: left; line-height: 38px; width: 319px; text-align: center;font-weight: bold; color: #999;}
+.box-b .edit .process li.active{ color: #fff;}
+
+.box-b .edit .processB{ height: 38px; background: url(../images/process2.gif);}
+.box-b .edit .processB2{ height: 38px; background: url(../images/process2.gif)0 -38px;}
+.box-b .edit .processB li{ float: left; line-height: 38px; width:50%; text-align: center;font-weight: bold; color: #999;}
+.box-b .edit .processB li.active{ color: #fff;}
+
+
+.box-b .edit .tabBox{ height: 40px; margin-top: 40px;}
+.box-b .edit .tabBox a{ float: left; line-height: 40px; background: #FFFFFF; padding: 0 20px; font-size: 14px; margin-right: 2px; background: #f8f8f8;}
+.box-b .edit .tabBox a.active{background: #5489c9; color: #FFFFFF;font-weight: bold;}
+
+.box-b .edit .tabDiv{ border: solid 1px #EEEEEE; overflow: hidden; padding: 0 20px 20px 20px;}
+.box-b .edit h1{ padding:20px;text-align: center; background: #F8F8F8; font-size:20px;font-weight: bold; color: #333; font-family: "微软雅黑";}
+.box-b .edit h4{ height: 40px; line-height: 40px;color: #333; margin-top: 10px;}
+.box-b .edit h4 span{ font-weight: normal; font-size: 12px; color:red;}
+.box-b .edit .editTable{ border: solid 1px #EEEEEE; width:100%; margin: 0 auto;}
+.box-b .edit .editTable th{ border: solid 1px #EEEEEE; background: #f8f8f8; padding: 10px; text-align: right; width: 150px;font-weight: normal;}
+.box-b .edit .editTable th em{ color:red; margin-right: 5px;}
+.box-b .edit .editTable td{ border: solid 1px #EEEEEE; padding: 10px; font-size: 14px; color: #666;}
+.box-b .edit .editTable td .text{ border: solid 1px #EEEEEE;padding: 5px;width: 200px; margin-right: 5px;}
+.box-b .edit .editTable td .textLarge {width:400px}
+.box-b .edit .editTable td .textMid {width:200px}
+.box-b .edit .editTable td .textSmall {width:100px}
+.box-b .edit .editTable td .textMin {width:50px}
+
+.box-b .edit .editTable td select{border: solid 1px #EEEEEE;padding: 5px;margin-right: 5px; margin-right: 10px;}
+.box-b .edit .middleTable td{text-align: center} 
+.box-b .edit .middleTable th{text-align: center} 
+.box-b .edit .editTable td .textarea{ width: 600px; border: solid 1px #EEEEEE; padding: 10px; line-height: 20px;}
+.box-b .edit .editTable td label{ margin-right: 20px; height:28px; display: inline-block; width:200px}
+.box-b .edit .editTable td input{ margin-right: 5px;}
+.box-b .edit .editTable td .fileBox{ width: 500px; margin-top: 10px; clear: both; float:left}
+
+
+.box-b .edit .btnBox{ height:32px; border-top:solid 1px #EEEEEE; background: #F8F8F8; margin-top: 30px; text-align: center; padding: 20px; margin: 0 0 -20px -20px; width: 100%; margin-top: 20px;}
+.box-b .edit .btnBox .btn{ height: 32px; line-height: 32px; background: #5489c9; padding: 0 20px; border:none; font-size: 14px; cursor: pointer; color: #FFFFFF; margin: 0 10px; display:inline-block; border-radius:3px}
+.box-b .edit .btnBox .post{ background: #4baf0e; border:solid 1px #2d6a07;border-radius:3px}
+.box-b .edit .btnBox .return{height: 32px; line-height: 32px; background: #fff;  border:solid 1px #dddddd; color:#666;border-radius:3px}
+
+
+.formEdit .formTable{padding:20px; overflow: hidden;}
+.formEdit .formTable table{ width: 100%;border: solid 1px #EEEEEE;}
+.formEdit .formTable table th{ border: solid 1px #EEEEEE; background: #f8f8f8; padding: 10px; text-align: right; width: 150px;font-weight: normal;}
+.formEdit .formTable table th em{ color:red; margin-right: 5px;}
+.formEdit .formTable table td{ border: solid 1px #EEEEEE; padding: 10px; font-size: 14px; color: #666;}
+.formEdit .formTable table td .text{ border: solid 1px #EEEEEE;padding: 5px;width: 150px; margin-right: 5px;}
+.formEdit .formTable table td select{border: solid 1px #EEEEEE;padding: 5px;margin-right: 5px; margin-right: 10px;}
+.formEdit .formTable table td .fileBox{ clear: both}
+
+
+.formEdit .btnBox{ height:32px;background: #F8F8F8;text-align: center; padding: 30px 0;}
+.formEdit .btnBox .btn{ height: 32px; line-height: 32px; background: #5489c9; padding: 0 20px; border:none; font-size: 14px; cursor: pointer; color: #FFFFFF; margin: 0 10px; display:inline-block; border-radius:3px}
+.formEdit .btnBox .return{ background: #fff; border:solid 1px #DDDDDD; color:#666;}
+
+
+.box1 .l{ width:280px; border-right: solid 1px #EEEEEE; height: 100%; float: left; height: 250px;}
+.box1 .l .pic{ overflow: hidden;padding: 3px; border: solid 1px #DDDDDD; width: 70px; margin: 30px auto 0px auto;}
+.box1 .l .name{ border-bottom: solid 1px #EEEEEE; height: 50px; line-height: 50px; text-align: center;font-size: 14px; margin:0 30px;}
+.box1 .l .pic img{ width:70px; height: 70px; background: #000; float:left;}
+.box1 .l p{ text-align: center; line-height: 35px; color:#999;}
+.box1 .l dl{ margin: 0 30px; padding: 10px 0; overflow: hidden;}
+.box1 .l dl dd{width: 50%; float: left; text-align: center; font-size: 14px; color: #333;}
+.box1 .l dl dd a{ color: #1A96F6;}
+.box1 .l dl dd b a{ color: #f60; margin-right: 5px;}
+
+.box1 .r{ padding:20px; float: left;}
+.box1 .r ul{ margin-top:30px}
+.box1 .r ul li{ margin: 0 20px; float: left;}
+.box1 .r ul li a{ width: 90px; height: 120px; border:dashed 1px #DDDDDD; padding: 0 15px; display: table-cell; text-align: center;vertical-align:middle;font-size: 14px; line-height: 25px; color: #999;}
+.box1 .r ul li a:hover{background: #e5f4fe;}
+.box1 .r ul li a.active{ background:#82ceff; color: #FFFFFF; font-weight: bold; border: solid 1px #61b2e8;}
+
+
+
+.box2 .not{ padding: 40px; text-align: center; font-size: 14px; color: #999;}
+.box2 .not a{ color: #0088C8; margin: 0 10px;}
+
+
+/*左边菜单*/
+.leftBox{width: 172px; overflow: hidden; float:left;background:#2f59a1; margin-top:50px}
+.leftBox .menuBox{ border-top:0;overflow: hidden;}
+.leftBox .menuBox .item{ height: 45px; line-height: 45px;}
+.leftBox .menuBox .item a{font-size: 14px; color: #000; display: block;padding: 0 15px; color:#fff; cursor:pointer}
+.leftBox .menuBox .item a.active,.leftBox .menuBox .item a:hover{background:#357ac7; color: #fff;}
+.leftBox .menuBox .item a i{width: 8px; height: 8px; display: block;float: right; margin-top: 19px; margin-right:10px}
+.leftBox .menuBox .item a i.b{background: url(../Images/centerMenu_j.png) 0px 0px }
+.leftBox .menuBox .item a i.t{background: url(../Images/centerMenu_j.png) 0px -8px }
+.leftBox .menuBox .item a i.no{}
+.leftBox .menuBox .item a em{ width:17px; height:17px; display:inline-block; float:left; margin-right:5px; margin-top:15px}
+
+.leftBox .menuBox .item a em.menu_zhanghu{background:url(../Images/menu_zhanghu.png)}
+.leftBox .menuBox .item a em.menu_info{background:url(../Images/menu_info.png)}
+.leftBox .menuBox .item a em.menu_train{background:url(../Images/menu_train.png)}
+.leftBox .menuBox .item a em.menu_news{background:url(../Images/menu_news.png)}
+.leftBox .menuBox .item a em.menu_service{background:url(../Images/menu_service.png)}
+.leftBox .menuBox .item a em.menu_trust{background:url(../Images/menu_trust.png)}
+.leftBox .menuBox .item a em.menu_rights{background:url(../Images/menu_rights.png)}
+.leftBox .menuBox .item a em.menu_message{background:url(../Images/menu_message.png)}
+.leftBox .menuBox .item a em.menu_system{background:url(../Images/menu_system.png)}
+.leftBox .menuBox .item a em.menu_market{background:url(../Images/menu_market.png)}
+.leftBox .menuBox .item a em.menu_buy{background:url(../Images/menu_buy.png)}
+.leftBox .menuBox .item a em.menu_sell{background:url(../Images/menu_sell.png)}
+.leftBox .menuBox .item a em.menu_order{background:url(../Images/menu_order.png)}
+.leftBox .menuBox .item a em.menu_talent{background:url(../Images/menu_talent.png)}
+.leftBox .menuBox .item a em.menu_policy{background:url(../Images/menu_policy.png)}
+.leftBox .menuBox .item a em.menu_company{background:url(../Images/menu_company.png)}
+.leftBox .menuBox .item a em.menu_dls{background:url(../Images/menu_dls.png)}
+.leftBox .menuBox .item a em.menu_lygl{background:url(../Images/menu_lygl.png)}
+.leftBox .menuBox .item a em.menu_zcjd{background:url(../Images/menu_zcjd.png)}
+.leftBox .menuBox .item a em.menu_weiquan{background:url(../Images/menu_weiquan.png)}
+.leftBox .menuBox .item a em.menu_zcjd{background:url(../Images/menu_zcjd.png)}
+.leftBox .menuBox .item a em.menu_dingdan{background:url(../Images/dingdan_ico.png)}
+.leftBox .menuBox .item a em.menu_buy {background:url(../Images/mai1_ico.png)}
+.leftBox .menuBox .item a em.menu_sell{background:url(../Images/mai2_ico.png)}
+.leftBox .menuBox .item a em.menu_dlrgl{background:url(../Images/menu_dlrgl.png)}
+
+
+.leftBox .menuBox .subMenu{background: #26467f; display:none}
+.leftBox .menuBox .subMenu li{line-height:36px;}
+.leftBox .menuBox .subMenu li a{color: #666; font-size: 12px; padding-left:54px; color:#fff}
+.leftBox .menuBox .subMenu li a:hover{color: #5489c9;}
+.leftBox .menuBox .subMenu li a.active{color: #fff; background:#233656; display:block;}
+
+/*右边内容*/
+.rBox{width:1008px; float:right }
+.rBox .box1{border: solid 1px #DDDDDD;background: #FFFFFF;margin-bottom: 20px;}
+.rBox .box1 .p_h3{ font-size: 16px; color: #333; height: 44px;  line-height: 44px;padding: 0 20px; font-weight: bold;}
+.rBox .box1 h3{ font-size: 16px; color: #fff; font-weight:normal}
+.rBox .box1 .title{ height: 40px; line-height: 40px;border-bottom: solid 1px #DDDDDD; background: #2f59a1; padding: 0 20px;}
+.rBox .box1 .search{ overflow: hidden; font-size: 14px; padding:20px}
+.rBox .box1 .search label{ float: left; line-height: 32px;}
+.rBox .box1 .search .text{ height:12px; line-height:12px; border: solid 1px #DDDDDD; width: 200px; padding: 10px 5px;float: left;border-radius:3px 0 0 3px}
+.rBox .box1 .search .submit{ height: 34px; line-height: 34px;border:none; float: left;  width:34px; background:url(../images/centerSearch.png) center no-repeat #527acc; color: #FFFFFF; border-radius:0 3px 3px 0}
+.rBox .box1 .search select{ height: 34px; border: solid 1px #DDDDDD;float: left; border-right:0; padding: 0 10px;}
+
+.rBox .box1 .search .tab{ overflow:hidden; margin-left:40px; float:left}
+.rBox .box1 .search .tab a{ height:34px; line-height:34px; margin-left:10px; padding:0 20px ; background:#f4f4f4; display:inline-block; border-radius:3px}
+.rBox .box1 .search .tab a:hover,.rBox .box1 .search .tab a.active{ background:#f9995a; color:#ffffff}
+
+.rBox .box1 .search .tab_1{ overflow:hidden; margin-left:40px; float:right}
+.rBox .box1 .search .tab_1 a{ height:34px; line-height:34px; margin-left:10px; padding:0 20px ; background:#57b347; display:inline-block; border-radius:3px; color:#FFF}
+/*帐户总览*/
+.rBox .t_user{ padding: 20px; overflow: hidden; background:url(../images/ht_yh.png) 800px bottom no-repeat}
+.rBox .t_user .pic{float: left; position:relative; padding:3px; border:solid 1px #eeeeee}
+.rBox .t_user .pic a{ position:absolute; bottom:0px;left:0px; line-height:26px; text-align:center; color:#dddddd;background: rgba(0,0,0,.5);
+_background: 0;filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66000000', EndColorStr='#66000000'); display:none; width:70px; margin:3px}
+.rBox .t_user .pic:hover a{ display:block}
+.rBox .t_user .userImg{}
+.rBox .t_user .info{ float: left;margin-left: 20px; border-right:solid 1px #eeeeee; padding-right:30px; height:78px}
+.rBox .t_user .info h4{font-size: 18px; color: #000000;line-height: 40px;font-weight:normal}
+.rBox .t_user .info p{ line-height: 25px; color: #999;}
+.rBox .t_user .info p a{ color:#4a6cac; font-size:14px}
+.rBox .t_user .info p a:hover{ text-decoration:underline}
+.rBox .t_user  .changeUser{ line-height:78px; font-size:12px; float: left; padding:0 30px;}
+.rBox .t_user  .changeUser a{ margin-right:20px; height:40px; line-height:40px; display:inline-block; padding:0 10px; border-radius:3px; color:#888888}
+.rBox .t_user  .changeUser a i{ width:40px; height:40px; display:inline-block;margin-right:10px; background:url(../Images/ht_ico.png); float:left}
+.rBox .t_user  .changeUser a:hover{ color:#2b4f8d}
+.rBox .t_user  .changeUser a.user-info i{background-position:0px -40px}
+.rBox .t_user  .changeUser a.user-info:hover i{background-position:40px -40px}
+.rBox .t_user  .changeUser a.pw-change i{background-position:0px 0px}
+.rBox .t_user  .changeUser a.pw-change:hover i{background-position:40px 0px}
+.rBox .t_user  .changeUser a.report i{background-position:0px -80px}
+.rBox .t_user  .changeUser a.report:hover i{background-position:40px 40px}
+.rBox .t_user span.prv_time{ float:right; color:#999; line-height:30px; font-size:14px}
+.rBox .t_b_user{ height: 50px; line-height: 50px;border-top:solid 1px #EEEEEE; padding: 0 20px;background: #F8F8F8; font-size: 14px; color: #666;}
+.rBox .t_b_user .div{float:left; width: 33%;}
+.rBox .t_b_user .div b{ font-size: 24px; font-family: arial; color: #f60; margin: 0 5px;}
+.rBox .t_b_user .div .explain{ color: #2f8bd8; margin-left: 20px;font-size: 12px;}
+.rBox .t_b_user .div a:hover{ text-decoration: underline;}
+
+.rBox .title_t{ height: 45px; line-height: 45px; border-bottom: solid 1px #EEEEEE; font-size: 14px;background:#2f59a1; color:#fff}
+.rBox .title_t h2{ font-size: 16px; float: left; margin-left:20px}
+.rBox .title_t a{ padding:0 20px; display:inline-block; background:#00a69c; color:#fff;font-size:14px}
+.rBox .title_t a.return{ float:right; background:#82acdf}
+
+.rBox .title_t2{height: 40px; line-height: 40px; border-bottom: solid 2px #EEEEEE; margin: 10px 20px 0 20px;}
+.rBox .title_t2 h3{ float:left;font-size:18px;color: #333; display:inline-block; border-bottom: solid 2px #2F8BD8;}
+.rBox .title_t2 .tab{height:40px}
+.rBox .title_t2 .tab a{display: inline-block;float:left;font-size:16px;color: #333; height:40px;}
+.rBox .title_t2 .tab a.active{border-bottom: solid 2px #2F8BD8;}
+.rBox .title_t2 .tab a b{color: #FF6600;}
+.rBox .title_t2 .tab em{ float:left; color: #ccc; margin: 0 20px;}
+.rBox .process_zl{ height:120px; text-align:center; background:url(../images/ht_process.png) center no-repeat #ffffff; border:solid 1px #eeeeee; margin-bottom:20px}
+
+/*搜索框*/
+.rBox .title_t .search{ float: right; font-size: 14px; position: relative;}
+.rBox .title_t .search .text{ border: solid 1px #a1bae9; padding: 8px 30px 8px 5px; line-height: 16px; font-size: 14px; color: #333333; margin: 0 10px; width:250px;background: #f0f4fc; border-radius:10px ;}
+.rBox .title_t .search .post{ width:20px; height: 20px;position:absolute;right:20px; top:20px; background:url(../Images/userCenter.png) -32px -186px no-repeat;display: block; border: 0; outline: none; cursor: pointer;}
+
+.rBox .page_b{ height: 60px;line-height:60px;padding:0 20px }
+.rBox .page_b .btnBox{ float: left; margin-top:13px;}
+.rBox .page_b .btnBox .btn{ margin-left: 20px; font-size:12px}
+.rBox .page_b label{margin-left:19px;}
+
+.rBox .page_b .pull-right{ }
+.rBox .page_b .pull-right a{height: 24px;line-height: 24px;display: inline-block;border: solid 1px #4a6cac;padding: 0 10px;color: #fff; background:#4a6cac}
+.rBox .page_b .pull-right a[disabled="disabled"]{height: 24px;line-height: 24px;display: inline-block;border: solid 1px #dddddd;padding: 0 10px;color: #dddddd; background:#fff}
+.rBox .page_b .pull-right a:hover{border: solid 1px #1C8BE9;}
+.rBox .page_b .pull-right select{height: 26px}
+
+/*列表样式*/
+.listTable{ width: 100%;}
+.listTable th{padding:0 10px; height: 40px; background: #d9e1eb; text-align: left; font-size: 12px; color:#333; font-weight:normal; text-align:center}
+.listTable tr.td{}
+.listTable tr.even{ background:#ebf1fe;} 
+.listTable tr.hover{background: #f3f7fd;}
+.listTable td{padding:0 10px;  height:40px;border-bottom: solid 1px #EEEEEE; border-right: solid 1px #EEEEEE;font-size: 12px; text-align:center}
+.listTable .t_f{text-align:left}
+.listTable td a{color: #6689d1; }
+.listTable td a.o{  color:#f60}
+.listTable td a:hover{text-decoration: underline;}
+.listTable td.submenu{ padding-left: 30px}
+.listTable td.operation a{ margin:0 5px; color:#266EBE;display:inline-block}
+.listTable td i.mz{ color:#d93939}
+.listTable td i.bmz{ color:#999}
+.listTable td i.sq{ color:#31b233}
+.listTable td i.js{ color:#999}
+.listTable td i.xzfws{ color:#1a96f6}
+.listTable td i.qyz{ color:#d93939}
+.listTable td i.wcsq{ color:#70a359}
+/*列表按钮*/
+.rBox .listTable td .BtnBox{ display: block;}
+.rBox .listTable td .BtnBox a{ text-decoration: none;width: 16px;height: 16px; background: url(../Images/userCenter.png);display: inline-block; margin:3px 7px; float: left;}
+.rBox .listTable td .BtnBox a.edit{background-position: -104px -171px;}
+.rBox .listTable td .BtnBox a.del{background-position: -120px -171px;}
+.rBox .listTable td .BtnBox a.monitoring{background-position: -88px -171px;}
+.rBox .listTable td .BtnBox a.audit{ width:40px; height:20px;background-position: -120px -187px;}
+.rBox .listTable td .BtnBox a.payment{ width:40px; height:20px;background-position: -213px -187px;}
+.rBox .listTable td .BtnBox a.changePw{background-position: -63px -171px;}
+/*消息列表样式*/
+.rBox .listTable td i.open_message {width: 16px;height: 16px;display: inline-block;background: url(../Images/icon.png) 0px -98px;margin:7px 0 0 5px;}
+.rBox .listTable td i.message {width: 16px;height: 16px;display: inline-block;background: url(../Images/icon.png) 0px -114px;margin:7px 0 0 5px;}
+
+/*列表样式2*/
+.rBox .listDiv2{ padding:20px;}
+.rBox .listDiv2 .title{ border: solid 1px #EEEEEE;background: #f8f8f8;padding-left: 15px; height: 44px; line-height: 44px; text-align: left; font-size: 12px; font-weight: bold;font-size: 14px;}
+.rBox .listDiv2 .userInfo{ border: solid 1px #f68014; background: #fffceb; padding: 10px 20px; margin: 20px 0; font-size: 14px; overflow: hidden;}
+.rBox .listDiv2 .userInfo span{ margin: 0 15px; float: left;}
+.rBox .listDiv2 .userInfo a{ float: right; color: #1A96F6;}
+.rBox .listDiv2 .userInfo a:hover{text-decoration: underline;}
+.rBox .listDiv2 .search{ margin-bottom: 20px; overflow: hidden;}
+.rBox .listDiv2 .search .text{ border: solid 1px #EEEEEE; height: 20px; line-height: 20px;padding: 5px; width: 220px; float: left;}
+.rBox .listDiv2 .search .post{ border: solid 1px #EEEEEE; height: 32px; line-height: 32px;padding:0 10px; float: left;background: #F8F8F8; border-left:0;cursor: pointer;}
+.rBox .listDiv2 .search .post:active{ background: #DDDDDD;}
+.rBox .listTable2{ width: 100%; font-family: arial}
+.rBox .listTable2 tr.th{ border: solid 1px #EEEEEE;background: #f8f8f8;}
+.rBox .listTable2 th{ padding-left: 15px; height: 44px;  text-align: left; font-size: 12px;}
+.space{ height: 20px;}
+.rBox .listTable2 tr.td_t{ border: solid 1px #EEEEEE; background: #f2f4fd; }
+.rBox .listTable2 tr.td_t td{height: 36px;padding-left: 15px; line-height: 20px;}
+.rBox .listTable2 tr.td_b td{ height:60px;border-bottom: solid 1px #EEEEEE; font-size: 12px; padding-left: 15px;}
+.rBox .listTable2 tr.td_b { border:solid 1px #EEEEEE}
+.rBox .listTable2 tr.td_b a{color:#1A96F6;font-size:12px;}
+.rBox .listTable2 tr.td_b a:hover{text-decoration: underline;}
+.rBox .listTable2 tr.td_b img{ width:60px; height: 60px; margin:5px; }
+.rBox .listTable2 tr.td_b .btnBox{}
+.rBox .listTable2 tr.td_b .btnBox a{ padding: 0 10px; height: 26px;; line-height: 26px; background: #FF6600; color: #FFFFFF; display: block; float: left;border-radius:2px; margin-right:10px}
+.rBox .listTable2 tr.td_b .btnBox a.disabled{background: #9bbb57; cursor:default;}
+.rBox .listTable2 tr.td_b .btnBox a.disabled:hover{text-decoration: none;}
+.rBox .listDiv2 .payment{ font-size: 16px; font-weight: bold; color: #000000; text-align: right;padding: 0 10px;} 
+.rBox .listDiv2 .payment b{font-size:24px; color: #f60;}
+.rBox .listDiv2 .paymentBtnBox{ overflow: hidden; padding: 20px 0;}
+.rBox .listDiv2 .paymentBtn{ line-height: 38px; height: 38px; border-radius:3px; background: #ff9f0a; font-size: 14px; color: #FFFFFF; float: right; padding: 0 20px; font-weight:bold; border:0}
+
+.rBox .listDiv2 .table{ width:100%}
+.rBox .listDiv2 .table .text{ width:200px; height:30px; line-height:30px; border:solid 1px #dddddd}
+.rBox .listDiv2 .table th{ text-align:right}
+.rBox .listDiv2 .table th em{ color:red}
+.rBox .listDiv2 .table td{ width:320px}
+.rBox .listDiv2 .table tr{ height:50px}
+
+
+.rBox table .TChecked{ width:20px; text-align: center; padding-right:10px}
+.rBox .TChecked input{ cursor: pointer;}
+.rBox .listTable .xh{ width: 50px; padding: 0;}
+/*支付流程*/
+.payProcess{ overflow: hidden; margin-bottom: 20px;}
+.payProcess li { height: 34px; line-height: 34px; text-align: center; background: #f8f8f8; width: 20%; float: left;font-weight: bold;}
+.payProcess li.active{ background: #fa9d63; color: #FFFFFF;}
+
+.rBox .listDiv2 .ddInfo{ border:solid 1px #EEEEEE; margin-bottom: 20px; overflow: hidden;}
+.rBox .listDiv2 .ddInfo .l_box{ width: 600px; border-right:solid 1px #EEEEEE; background: #fbfbfb;float: left;}
+.rBox .listDiv2 .ddInfo .l_box .tit{ height: 36px; line-height: 36px; padding: 0 10px; color: #333333; font-size: 14px; background: #F3F3F3; border-bottom: solid 1px #EEEEEE;}
+.rBox .listDiv2 .ddInfo .l_box h3{ font-size: 14px; color: #333333; padding: 0 10px ; line-height: 30px; font-weight: bold; }
+.rBox .listDiv2 .ddInfo .l_box p{ line-height: 20px; padding: 0 10px; font-family: arial;}
+.rBox .listDiv2 .ddInfo .ddinfo_t{ border-top:solid 1px #EEEEEE; margin-top: 5px; padding-bottom: 5px;}
+.rBox .listDiv2 .ddInfo .r_box{ width: 400px; float: right;padding: 40px;}
+.rBox .listDiv2 .ddInfo .r_box h2{ font-weight: bold;font-family:arial; color: #000; line-height: 32px;}
+.rBox .listDiv2 .ddInfo .r_box h2 img{ margin-right: 20px;}
+.rBox .listDiv2 .ddInfo .btn{line-height: 34px; height: 34px; border-radius:3px; background: #ff9f0a; font-size: 16px; color: #FFFFFF;  padding: 0 20px; font-weight:bold; margin: 30px 90px;}
+
+
+.rBox .Divide_w{ padding: 20px 0; overflow: hidden; margin-left: 10px;}
+.rBox .Divide_w .item4{ border-left:solid 1px #EEEEEE; height: 45px; line-height: 40px; margin-left: -4px;padding:0 3%; width: 19%; float: left; font-size: 14px; color: #666;}
+.rBox .Divide_w .item4 b{ font-size: 28px;font-family: arial}
+.rBox .Divide_w .item4 a{margin:0 5px ;}
+
+.rBox .Divide_t{padding: 20px 0; overflow: hidden; }
+.rBox .Divide_t strong{display: block; font-size: 18px ; color: #333;  font-weight: normal;}
+.rBox .Divide_t .item4{line-height: 40px; margin-left: -4px;padding:0 3%; width: 19%; display: inline-block; font-size: 14px; color: #666; text-align: center;}
+.rBox .Divide_t .item4 b{ font-size: 28px;font-family: arial; }
+.rBox .Divide_t .item4 a{margin: 0 10px; font-size: 24px; color: #333;}
+.rBox .Divide_t .item100 .btn{display: block;  width: 85px; color: #fff; font-size: 14px; float:left; text-align: center; margin-left: 45px;}
+.rBox .Divide_t .item100{ height: 40px; border-top:solid 1px #EEEEEE;margin:20px 20px 0 20px; padding-top: 20px; }
+
+.rBox .admin_index_box{ overflow:hidden; width:1028px; margin-left:-20px}
+.rBox .admin_index_box .itemBox{ border:solid 1px #dddddd; background:#ffffff; margin:0 0 20px 20px; overflow:hidden;}
+.rBox .admin_index_box .title{ height:100px;  line-height:100px; width:180px;  color:#000; font-size:22px; float:left}
+.rBox .admin_index_box .title i{ width:28px; height:28px; display:inline-block; margin:37px 10px 0 20px; float:left}
+.rBox .admin_index_box .title i.c1{ background:url(../Images/ht_ico2_01.png)}
+.rBox .admin_index_box .title i.c2{ background:url(../Images/ht_ico2_02.png)}
+.rBox .admin_index_box .title i.c3{ background:url(../Images/ht_ico2_03.png)}
+.rBox .admin_index_box .title i.c4{ background:url(../Images/ht_ico2_04.png)}
+.rBox .admin_index_box .title i.c5{ background:url(../Images/ht_ico2_05.png)}
+.rBox .admin_index_box ul{ margin: 0 20px; overflow:hidden}
+.rBox .admin_index_box li{ padding:0px 30px; margin:20px 0; font-size:14px; text-align:center; float:left;height:60px;  line-height:60px; border-left:solid 1px #eeeeee; color:#2b4f8d; width:200px}
+.rBox .admin_index_box li a{ display:inline-block; margin:0 10px; font-size:24px; color:#ec6941}
+
+
+
+/*搜索框*/
+.rBox .Divide_t .search{ float: right; font-size: 14px; position: relative;}
+.rBox .Divide_t .search .text{ border: solid 1px #a1bae9; padding: 8px 30px 8px 5px; line-height: 16px; font-size: 14px; color: #333333; margin: 0 10px; width:250px;background: #f0f4fc; border-radius:10px ;}
+.rBox .Divide_t .search .post{ width:20px; height: 20px;position:absolute;right:20px; top:10px; background:url(../Images/userCenter.png) -32px -186px no-repeat;display: block; border: 0; outline: none; cursor: pointer;}
+/*编辑*/
+.formEdit{ overflow: hidden;}
+.formEdit .title_edit{ height: 40px; line-height: 40px; border-bottom: solid 2px #EEEEEE; margin: 10px 20px 0 20px;}
+.formEdit .title_edit h3{float:left;font-size:18px; color: #333; display: inline-block; border-bottom: solid 2px #2F8BD8;}
+
+.label_box{ line-height:20px; font-size:14px; padding:5px 0}
+.label_box label{}
+
+/*编辑页面*/
+.adminEdit{ overflow:hidden}
+.adminEdit dl{padding:20px 0; width: 100%; overflow: hidden; border-bottom:solid 1px #eeeeee}
+.adminEdit dt{float: left; width: 200px;text-align: right;padding-right: 10px;height: 28px;line-height: 28px; font-size: 14px;}
+.adminEdit dt em{color: red; margin: 0 5px;}
+.adminEdit dd{float: left; width: 750px}
+.adminEdit dd p{padding:4px 0;line-height: 16px;font-size: 14px; line-height:20px}
+.adminEdit dd input[type="text"],.adminEdit dd input.text{ height:16px; line-height: 16px;border: solid 1px #DDDDDD;padding: 8px 5px; width: 200px;float: left;}
+.adminEdit dd select{ height:30px;border: solid 1px #DDDDDD;padding: 4px;float: left}
+.adminEdit dd span{font-size: 14px; display: inline-block}
+.adminEdit dd span.Validform_checktip{ float:left;}
+.adminEdit dd input.Wdate{ width: 100px;}
+.adminEdit dd input.w500{ width: 500px}
+.adminEdit dd textarea{border: solid 1px #DDDDDD; padding: 5px; width: 500px; height:100px; float:left}
+.adminEdit dd .file{ height: 30px; font-size: 12px;background:#527bcd;border: 0;color: #fff; display: inline-block;float: left;margin-right: 10px;text-shadow:none;font-weight: normal}
+.adminEdit dd .file:hover{background: #315bae}
+.adminEdit dd .fileBox{ width: 770px; margin-top: 10px; clear: both; overflow:hidden}
+.adminEdit .return{ background: #fff; color: #666; border: solid 1px #DDDDDD;background: #f8f8f8;}
+.adminEdit .submit{}
+
+.adminEdit dd .passwordStrength{ color:#999; height:28px; line-height:28px; color:#999;margin-top:50px;}
+.adminEdit dd .passwordStrength span{ background:#dddddd; color:#fff; display:inline-block; width:70px; text-align:center; height:26px; line-height:26px; border-right:solid 1px #fff;}
+.adminEdit dd .passwordStrength span.bgStrength{ background:#f99f01}
+
+.adminEdit .priceList{ border:solid 1px #dddddd; width:550px; margin:20px auto 0px auto;}
+.adminEdit .priceList th{ height:30px; background:#eeeeee; color:#333; font-size:14px; padding:0px 10px;border: solid 1px #DDDDDD}
+.adminEdit .priceList td{ height:30px; color:#333; font-size:14px; padding:0px 10px; text-align: center;border: solid 1px #DDDDDD;background: #FFFFFF;}
+.adminEdit .priceList .name{ width:200px}
+.adminEdit dd input[type="radio"],.adminEdit dd input[type="checkbox"]{margin:3px 5px 0 0;vertical-align:middle; float: left;}
+.adminEdit dd label{ height:20px; margin-right:20px;vertical-align:middle; float:left; position:relative}
+.adminEdit dd label.dls:hover{ border:solid 1px #1b7e5a}
+.adminEdit dd label.list{ height:30px; margin-right:20px;vertical-align:middle; float:none; font-size:14px; display:inline-block}
+.adminEdit dd.list{ padding:5px 0px 5px 10px; width:770px}
+.adminEdit dd .dls{ height:auto; border:solid 1px #dddddd; background:#f8f8f8; margin-bottom:20px; width:700px}
+.adminEdit dd .dls .t_1{ border-bottom:solid 1px #dddddd; background:#f4f4f4; overflow:hidden; line-height:40px; padding:0 20px}
+.adminEdit dd .dls .t_1 input{ margin-top:13px}
+.adminEdit dd .dls .t_1 .pull-left{ color:#333; font-weight:bold}
+.adminEdit dd .dls .t_1 .pull-right a{ background:#5489c9; color:#ffffff; padding:0 10px; line-height:26px; display:inline-block; border-radius:3px}
+.adminEdit dd .dls .input-r{ position:absolute;top:-20px; right:-10px}
+.adminEdit dd .dls .b_box{padding:10px; overflow:hidden}
+.adminEdit dd .dls .b_box .pic{ float:left; margin-right:10px;}
+.adminEdit dd .dls .b_box .pic img{ width:100px}
+.adminEdit dd .dls .b_box .info{ float:right; width:565px; overflow:hidden}
+.adminEdit dd .dls .b_box a{ display:inline-block; margin:0 10px}
+.adminEdit dd .page{ display:block; height:60px;text-align:center; float:left; width:700px}
+.adminEdit dd .page a{ background:#5489c9; color:#ffffff; display:inline-block; height:30px; line-height:30px; border-radius:3px; padding:0 10px; margin:0 5px}
+
+.adminEdit #PatentDiv .Validform_checktip{ display: inline-block;padding: 0;margin: 0;  height:auto;
+  padding-left:25px}
+.adminEdit .evelTable{ width: 700px;}
+.adminEdit .evelTable td{padding: 5px 10px; line-height: 25px}
+.adminEdit .evelTable label{ height: 20px;float: left;}
+.adminEdit .evelTable input{ height: 20px;float: left;}
+.adminEdit .evelTable .Validform_checktip{ display: inline-block}
+
+
+.adminEdit #TypeDiv input{clear: left;} 
+.adminEdit #TypeDiv span{clear:both; float: left;}
+
+
+ .adminEdit dd #autoBtn{ float: left; height: 34px; line-height: 34px; padding:0 10px; background:#3c88dd; color: #FFFFFF;font-size: 12px; display: block;text-decoration: none;}
+ .adminEdit dd #autoBtn:active{background: #266ebe;}
+
+
+ .adminEdit .layerBtnStyle{ height: 30px;line-height: 28px;padding: 0 20px}
+.adminEdit .layerStyle{ width:600px; overflow:hidden; display:none;}
+.adminEdit .layerStyle .btn{ width: 100px; height: 34px;line-height: 34px;background: #fea140; color: #FFFFFF;font-weight: bold; text-align: center;top:60px;right:0px; display:block;font-size: 14px;border: 0;.rounded-corners(3px); margin:20px auto;margin-left:250px}
+.adminEdit .layerStyle .tool{ height:35px;background:#f8f8f8; border-bottom:solid 1px #dddddd; padding:0 30px;}
+.adminEdit .layerStyle .tool label{ float:left;  height:36px; line-height:36px; font-size:12px; margin-right:30px}
+.adminEdit .layerStyle .tool input{ margin-top:12px;}
+.adminEdit .layerStyle table{ margin:30px}
+.adminEdit .layerStyle table tr {
+  height: 30px;
+}
+.adminEdit .layerStyle table inpit {
+  float: none;
+}
+.adminEdit .layerStyle table label {
+  float: none;
+}
+.sellTable h4 {
+background: #f8f8f8;
+margin-bottom: 10px;
+height: 30px;
+font-size: 12px;
+line-height: 30px;
+}
+
+.tabTitle{ height:40px; line-height:40px;background: url(../Images/rBg.png);margin:10px 10px 0 10px;box-shadow: 0px 0px 8px #2F9699;font-weight: bold;}
+.tabTitle a{ padding:0 20px; font-size:14px; float: left;text-decoration: none;}
+.tabTitle a b{padding: 0 5px; background:#e7271d; height: 20px; line-height: 20px;margin-left: 5px; display: inline-block;font-size: 12px; color: #FFFFFF;}
+.tabTitle a.hover{ color: #FFFFFF;background: #51a897;}
+
+.adminEdit .priceList,.adminEdit .ClassList {
+  border: solid 1px #dddddd;
+  width: 800px;
+  margin: 10px auto
+}
+.adminEdit .ClassList p{ line-height:30px; text-align:left; padding:0 20px}
+.adminEdit .priceList th,.adminEdit .ClassList th {
+  height: 30px;
+  background: #eeeeee;
+  color: #333;
+  font-size: 14px;
+  padding: 0px 10px;
+  border: solid 1px #DDDDDD;
+}
+.adminEdit .priceList td,.adminEdit .ClassList td{
+  height: 30px;
+  color: #333;
+  font-size: 14px;
+  padding: 0px 10px;
+  text-align: center;
+  border: solid 1px #DDDDDD;
+  background: #FFFFFF;
+}
+.tabTitle{ height:40px; line-height:40px;background: url(../Images/rBg.png);margin:10px 10px 0 10px;box-shadow: 0px 0px 8px #2F9699;font-weight: bold;}
+.tabTitle a{ padding:0 20px; font-size:14px;.fontColor; float: left;text-decoration: none;}
+.tabTitle a b{padding: 0 5px; background:#e7271d; height: 20px; line-height: 20px;.rounded-corners;margin-left: 5px; display: inline-block;font-size: 12px; color: #FFFFFF;}
+.tabTitle a.hover{ color: #FFFFFF;background: #51a897;}
+
+.adminEdit .ClassList ul{}
+.adminEdit .ClassList ul li{ line-height:30px; padding:0 20px}
+.adminEdit .ClassList ul li span{  text-align:left}
+.adminEdit .ClassList ul li .w1{ width:300px; float:left}
+.adminEdit .ClassList ul li .w2{ width:120px; float:left}
+.adminEdit .ClassList ul li .w3{float:right; color:#666}
+
+.box_2{ overflow:hidden}
+.box_2 dt{ width:160px; border-left:solid 1px #eeeeee; margin-left:-1px}
+.box_2 dd{ width:300px; display:block; overflow:hidden; min-height:18px; line-height:18px;font-size:14px; line-height:28px}
+.box_2 dd .Validform_checktip{ line-height:28px; color:#999; font-size:12px}
+.box_2 .box_title{ line-height:60px; background:#f4f4f4; height:60px}
+.box_2 .box_title span{ display:inline-block; text-align:center; font-size:18px; width:50%; color:#333; float:left}
+.box_2 .notice{ color:red}
+/*忘记密码*/
+.forgetPw {height: 250px;margin-top:100px}
+.forgetPw h1 {height: 40px;line-height: 40px;background: #f8f8f8;padding: 0 20px;font-size: 14px;font-weight: normal;color: #999;border-bottom: solid 1px #EEEEEE;}
+.forgetPw .flow { width: 508px; height: 52px;background: url(../Images/forgetPw.png);margin: 110px auto 80px auto;position: relative;}
+.forgetPw .flow2 {background: url(../Images/forgetPw.png) 0px -52px;}
+.forgetPw .flow3 {background: url(../Images/forgetPw.png) 0px -104px;}
+.forgetPw .flow .one {position: absolute; top: -30px;left: -10px;color: #333;font-size: 14px;}
+.forgetPw .flow .two {position: absolute;top: -30px;left: 198px;color: #333;font-size: 14px;}
+.forgetPw .flow .three { position: absolute;top: -30px;right: -5px;color: #333;font-size: 14px;}
+.forgetPw table {width: 600px;margin: 0 auto;}
+.forgetPw table th {width: 150px; text-align: right; font-size: 14px; color: #333; font-weight: normal;}
+.forgetPw table th em { color: red; margin: 0 5px;}
+.forgetPw table td { margin: 0 5px;color: #4f88cf;}
+.forgetPw table td .text {height: 16px; line-height: 16px; padding: 9px 5px; border: solid 1px #96acd5; width: 200px; float:left}
+.forgetPw .btn { height: 38px; line-height: 38px; text-align: center; padding: 0px 20px; background: #f58002; border: 0; color: #FFFFFF; margin-top: 30px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; font-size: 14px;  font-weight: bold; display: block;}
+.forgetPw .code img{ height:30px; float:left; margin:0 5px}
+.forgetPw .btn:active { background: #d97407;}
+.forgetPw table td.hint { text-align: center; padding-top: 40px; color: #999;}
+.forgetPw .succee { width: 600px; line-height: 30px; margin: 30px auto 30px auto; font-size: 16px; color: #999; color: red;}
+.forgetPw .btnBox {margin: 0 auto; overflow: hidden;width: 200px;text-align: center;}
+.forgetPw .hint { width: 600px; margin: 70px auto;overflow: hidden;line-height: 30px;text-align: center; font-size: 14px;color: #333;}
+.forgetPw table td .Validform_checktip { display: inline-block; line-height:36px; height:36px; float:left}
+
+.column{width:400px; display: none;}
+.column table{ width: 100%;}
+.column table td{ border: solid 1px #DDDDDD; padding: 5px 10px; height: 28px;}
+.column table th{border: solid 1px #DDDDDD;font-weight: normal; text-align: right; padding: 5px;}
+.column table th em{ color: red; margin-right: 5px;}
+.column table td .text{ height: 28px;  line-height: 28px;border: solid 1px #DDDDDD; width: 200px; background: #f8f8f8; padding: 0 5px;}
+
+/*弹出层*/
+.layer{display: none;}
+.layer .btnBox{ height: 26px; padding:5px 10px; background: #F8F8F8;}
+.layer .btnBox .btn{ float: right; height: 24px; line-height: 24px; border: solid 1px #DDDDDD; padding: 0 10px; margin-left: 10px;}
+.layer .btnBox .y{background: #1C8BE9; color: #FFFFFF; border: solid 1px #266EBE;}
+.layer .btnBox .n{background: #fff; color: #000; border: solid 1px #DDDDDD;}
+
+/*新建项目*/
+.xmAdd{position: relative; display: none; border-bottom:solid 1px #EEEEEE;font-size: 14px; padding:30px 20px; text-align: center; background:#f9f9f9; overflow: hidden;}
+.xmAdd .Validform_checktip{ float:left}
+.xmAdd .close{ position: absolute; width: 30px;height: 30px; line-height: 30px;background: #DDDDDD; top:0px; right:0; text-align: center; color: #333;}
+.xmAdd label{ float: left;line-height: 32px; margin-left: 200px; font-weight: bold;}
+.xmAdd .text{ width: 350px; height: 30px; line-height: 30px; padding: 0 5px; border: solid 1px #DDDDDD; float: left;}
+.xmAdd .submit{ text-align: center; height: 32px; line-height: 32px; background:#1A96F6; color: #FFFFFF; font-size: 14px; text-align: center; width: 60px; border: 0; margin:0px auto; cursor: pointer; display:inline-block;float: left;}
+
+
+
+.infoTable{ width:700px; background:#f8f8f8; margin-bottom:30px; border-top:solid 1px #dddddd; border-left:solid 1px #dddddd;margin-left:50px}
+.infoTable th{ width:120px; text-align:center; border-bottom:solid 1px #dddddd; border-right:solid 1px #dddddd;padding:0 10px; }
+.infoTable th em{ color:red; margin-right:5px}
+.infoTable tr{ height:40px;}
+.infoTable td{border:solid 1px #dddddd;padding:0 10px; background:#fff; border-bottom:solid 1px #dddddd; border-right:solid 1px #dddddd;}
+
+
+/*TABpage*/
+.tabPage{}
+.tabPage .tab{ padding: 0 20px; height: 40px; line-height: 40px; border-bottom: solid 1px #EEEEEE;background: #f8f8f8;}
+.tabPage .tab a{ display: inline-block; font-size: 14px; color: #333333;padding: 0 20px; float:left}
+.tabPage .tab a:hover,.tabPage .tab a.active{border-bottom: solid 3px #2F8BD8;line-height:37px; background: #FFFFFF; border-left: solid 1px #EEEEEE;border-right: solid 1px #EEEEEE;padding: 0 19px;}
+.tabPage .content{ padding: 20px; line-height: 25px; font-size: 14px;}
+
+
+/*审核流程*/
+ .Timeline {
+  width: 700px;
+  overflow: hidden;
+  height: 1%;
+  background: url(../../Images/Timeline.gif) 130px repeat-y;
+  margin: 30px auto;
+  position: relative;
+  padding-top: 50px;
+}
+ .Timeline .clock {
+  height: 32px;
+  line-height: 32px;
+  background: url(../../Images/clock.gif) left no-repeat;
+  position: absolute;
+  top:0px;
+  left:114px;
+  padding-left: 42px;
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+}
+ .Timeline li {
+  overflow: hidden;
+  margin-top: 20px;
+}
+ .Timeline li .time {
+  float: left;
+  width: 136px;
+  height: 40px;
+  line-height: 40px;
+  background: url(../../Images/timeDot.gif) right no-repeat;
+  font-size: 12px;
+}
+ .Timeline li .conBox {
+  width: 500px;
+  border: solid 1px #dddddd;
+  float: left;
+  height: 1%;
+  margin-left: 20px;
+  background: #f8f8f8;
+  position: relative;
+  display: inline;
+}
+ .Timeline li .conBox .j {
+  width: 9px;
+  height: 14px;
+  position: absolute;
+  left: -9px;
+  top: 13px;
+  background: url(../../Images/time_j.gif);
+  display: block;
+}
+ .Timeline li .conBox .t {
+  line-height: 40px;
+  height: 40px;
+  margin: 0 20px;
+}
+ .Timeline li .conBox .t span {
+  float: left;
+  width: 200px;
+  font-size: 12px;
+}
+ .Timeline li .conBox .t .red {
+  color: red;
+  font-size: 12px;
+}
+ .Timeline li .conBox .t .green {
+  color: #018901;
+  font-size: 12px;
+}
+ .Timeline li .conBox .t .orange
+ {
+  color: #f60;
+  font-size: 12px;
+  margin-right: 5px;
+}
+ .Timeline li .conBox .explain {
+  border-top: solid 1px #dddddd;
+  overflow: hidden;
+  font-size: 12px;
+  height: 1%;
+  padding-top: 10px;
+  margin: 0px 20px 10px 20px;
+}
+ .Timeline .TimelineBtn{width: 120px; height: 34px;line-height: 34px;background: #3c88dd; color: #FFFFFF;font-weight: bold; text-align: center;top:60px;right:0px; display:block;font-size: 14px;border: 0;.rounded-corners(3px); margin:60px 0px 0px 70px}
+.adminEdit .layerBtnStyle{ height: 30px;line-height: 28px;padding: 0 20px;}
+.adminEdit .layerStyle{ width:600px; overflow:hidden; display:none;}
+.adminEdit .layerStyle .btn{ width: 100px; height: 34px;line-height: 34px;background: #fea140; color: #FFFFFF;font-weight: bold; text-align: center;top:60px;right:0px; display:block;font-size: 14px;border: 0;.rounded-corners(3px); margin:20px auto;margin-left:250px}
+.adminEdit .layerStyle .tool{ height:35px;background:#f8f8f8; border-bottom:solid 1px #dddddd; padding:0 30px;}
+.adminEdit .layerStyle .tool label{ float:left;  height:36px; line-height:36px; font-size:12px; margin-right:30px}
+.adminEdit .layerStyle .tool input{ margin-top:12px;}
+.adminEdit .layerStyle table{ margin:30px}
+.adminEdit .layerStyle table tr {
+  height: 30px;
+}
+.adminEdit .layerStyle table inpit {
+  float: none;
+}
+.adminEdit .layerStyle table label {
+  float: none;
+}
+/*缴费记录添加页面*/
+#Payment_records{ overflow: hidden; width: 500px;}
+#Payment_records table{margin: 20px}
+#Payment_records table th{width:100px;text-align: right;font-size: 12px;font-weight: normal;}
+#Payment_records table th em{ margin: 0 5px; color: red;}
+#Payment_records table td{ padding: 10px 0; width: 300px;}
+#Payment_records table td .text{height: 30px;line-height: 30px;border: solid 1px #EEEEEE;width: 180px;padding: 0px 5px; float: left;}
+#Payment_records table td .Wdate{height: 30px;line-height: 30px;border: solid 1px #EEEEEE;width: 180px;padding: 0px 5px;float: left;}
+#Payment_records table td textarea{padding:5px;border: solid 1px #EEEEEE; height: 50px; width: 330px; line-height: 22px;}
+#Payment_records table td .btn{width: 100px; height: 34px;line-height: 34px;background: #fea140; color: #FFFFFF;font-weight: bold; text-align: center;top:60px;right:0px; display:inline-block;font-size: 14px;border: 0;.rounded-corners(3px); margin:20px 0 0 90px; float: left}
+#Payment_records .Validform_checktip{ display:inline-block;float: left; margin-top: 5px;}
+
+
+.event_year{width:60px;border-bottom:2px solid #DDD;text-align:center;float:left;margin-top:10px;}
+.event_year li{height:40px;line-height:40px;background:#FFF;margin-bottom:1px;font-size:18px;color:#828282;cursor:pointer;}
+.event_year li.current{width:61px;background:#0066ff url('../images/jian.png') 60px 0 no-repeat;color:#FFF;text-align:left;padding-left:9px;}
+.event_list{width:850px;float:right;background:url('../images/dian3.png') 139px 0 repeat-y;margin:10px 0 20px 0;}
+.event_list em{margin:0 0 0px 132px;font-size:18px;color:#357ac7;padding-left:25px;background:url('../images/jian.png') 0 -45px no-repeat;height:45px;line-height:30px; display:inline-block}
+.event_list li{background:url('../images/jian.png') 136px -80px no-repeat;}
+.event_list li span{width:127px;text-align:right;display:block;float:left;margin-top:10px;}
+.event_list li p{width:680px;margin-left:24px;display:inline-block;padding-left:10px;background:url('../images/jian.png') -21px 0 no-repeat;line-height:25px;_float:left;}
+.event_list li p span{width:650px;text-align:left;border-bottom:2px solid #DDD;padding:10px 15px;background:#f4f4f4;margin:0;}
+
+#PatentList td{ padding:10px 15px 10px 15px; line-height:25px; font-size:12px}
+#PatentList td i{ height:20px; line-height:20px; color:#fff; background:#f60; padding:0 5px; display:inline-block; font-size:12px; margin:0 10px}
+#PatentList td em{ margin:0 10px}
+#PatentList td span{ color:#000}
+#PatentList td p{ color:#999}
+#PatentList td .DaysOther{height:26px; line-height:26px; color:#666; background:#f4f4f4; padding:0 5px; display:inline-block; font-size:12px; margin:0 10px; width:50px; text-align:center;border-radius:3px;}
+#PatentList td .Days7{height:26px; line-height:26px; color:#fff; background:red; padding:0 5px; display:inline-block; font-size:12px; margin:0 10px; width:50px; text-align:center;border-radius:3px; }
+#PatentList td .Days15{height:26px; line-height:26px; color:#fff; background:#cb7a2c; padding:0 5px; display:inline-block; font-size:12px; margin:0 10px;width:50px; text-align:center;border-radius:3px;}
+#PatentList td .Days30{height:26px; line-height:26px; color:#fff; background:#d0a226; padding:0 5px; display:inline-block; font-size:12px; margin:0 10px;width:50px; text-align:center;border-radius:3px;}
+#PatentList td .Days60{height:26px; line-height:26px; color:#fff; background:#bac017; padding:0 5px; display:inline-block; font-size:12px; margin:0 10px;width:50px; text-align:center;border-radius:3px;}
+#PatentList td .BtnBox{ text-align:center; overflow:hidden}
+#PatentList td .BtnBox a{ display:inline-block; float:none}
+
+.layer_notice{ display:none; padding:20px; font-size:14px; line-height:25px}
+.countUser {font-size: 14px;background: #ffffff;border: solid 1px #eeeeee;margin-bottom: 20px; overflow:hidden; color:#5489c9}
+.countUser dd {margin-left:-1px; border-left:solid 1px #eeeeee; float:left; line-height:80px; text-align:center; width:335px;}
+.countUser dd span{ display:inline-block}
+.countUser dd b{ margin:0 5px; color:#f60; font-size:18px; font-weight:bold}
+.countUser dd i{ width:32px; height:32px; display:inline-block; background:url(../Images/ht_yhgl_ico.png); float:left; margin:20px 20px 0px 0px}
+.countUser dd i.b1{ background-position:0 0}
+.countUser dd i.b2{ background-position:0 -32px}
+.countUser dd i.b3{ background-position:0 -64px}
+
+.boxTimePage{ width:606px;position: relative; padding:100px 100px 100px 300px;}
+.boxTimePage .note{ width:350px; height:39px;left:40px;top:30px; position:absolute;background:url(../Images/note.png) no-repeat;}
+			.boxTimePage .timeBox{ width: 600px; position: relative; background:url(../Images/line.png) center repeat-y;min-height: 600px; padding-bottom:40px;}
+			.boxTimePage .cloud{ width: 181px; height: 107px; margin: 0 auto; background:url(../Images/cloud.png) no-repeat; margin-bottom: 50px;}
+			.boxTimePage .policy{ overflow: hidden;}
+			.boxTimePage .policy li{ width: 268px; margin-left:300px; position: relative; float: right;}
+			.boxTimePage .policy li .titleName{ width: 248px; background:#2f59a1; color:#FFFFFF; padding:5px 10px; line-height: 20px; height:40px; font-size: 14px; border-radius:3px; margin-bottom: 5px;display:inline-block}
+			.boxTimePage .policy li .titleName i.j{width: 0;height: 0;border-top: 10px solid transparent;border-right: 14px solid #2f59a1;border-bottom: 10px solid transparent; position: absolute;top:15px;left:-14px}
+			.boxTimePage .policy li .titleName i.dian{ width: 16px; height: 16px; background:url(../Images/dot.png) no-repeat; display: block;position: absolute;top:18px;left:-40px}
+			.boxTimePage .area{ height:26px; line-height: 26px; padding: 0 10px; color: #FFFFFF; font-size: 12px;background:#f49a00;display: inline-block; border-radius:3px; float: left; margin-right: 5px;}
+			.boxTimePage .money{ height:26px; line-height: 26px;max-width:130px; padding: 0 10px; color: #FFFFFF; font-size: 12px;background:#ff4f6d;display: inline-block; border-radius:3px; float: left; margin-right: 5px;}
+			.boxTimePage .department{ height:26px; line-height: 26px; padding: 0 10px; color: #FFFFFF; font-size: 12px;background:#9295f6;display: inline-block; border-radius:3px; float: left; margin-right: 5px;}
+            .boxTimePage .policy li .tip{width: 268px; padding:10px; color:#cc2c1b; line-height:20px; background:#f4f4f4; float:left; margin-top:5px; border-radius:3px}
+			
+			.boxTimePage .policy li.ll{ width: 268px; margin:0 300px 0 0; position: relative; float: left;}
+			.boxTimePage .policy li.ll .titleName i.j{width: 0;height: 0;border-top: 10px solid transparent;border-right: 0;border-left: 14px solid #2f59a1;border-bottom: 10px solid transparent; position: absolute;top:15px;right:-14px;left:inherit;}
+			.boxTimePage .policy li.ll .titleName i.dian{ width: 16px; height: 16px; background:url(../Images/dot.png) no-repeat; display: block;position: absolute;top:18px;right:-40px;left:inherit}
+			.boxTimePage .policy li.NotApplication .titleName{ background:#808291;}
+			.boxTimePage .policy li.NotApplication .titleName i.j{ border-right-color:#808291;border-left-color:#808291;}
+            .boxTimePage .policy li.HaveApplication .titleName{ background:#6ba032;}
+			.boxTimePage .policy li.HaveApplication .titleName i.j{ border-right-color:#6ba032;border-left-color:#6ba032;}
+			.boxTimePage .policy li a.titleName:hover{ background:#253c75}
+            .boxTimePage .policy li a.titleName:hover i.j{ border-right-color:#253c75;border-left-color:#253c75;}
+            .boxTimePage .policy li.NotApplication a.titleName:hover{ background:#686b7d;}
+			.boxTimePage .policy li.NotApplication a.titleName:hover i.j{ border-right-color:#686b7d;border-left-color:#686b7d;}
+            .boxTimePage .policy li.HaveApplication a.titleName:hover{ background:#5a8c24;}
+			.boxTimePage .policy li.HaveApplication a.titleName:hover i.j{ border-right-color:#5a8c24;border-left-color:#5a8c24;}
+
+			.boxTimePage .select{ height: 30px; line-height: 30px; width: 80px;  margin: 50px auto 0 40px; float: left; text-align: center; display: inline-block; color: #FFFFFF; font-size: 14px; z-index: 30;  }
+			.boxTimePage .select:hover{background: #2b4f8d;}
+			.boxTimePage .select span{ font-weight: bold;font-size:18px;background:url(../Images/arrow.png) 50px 8px no-repeat;padding-right: 30px; padding-left:5px; display: inline-block;height: 30px; line-height: 30px; }
+			.boxTimePage .select ul{ background: #2b4f8d;font-size: 14px; z-index: 30; position: relative; display: none; width:80px;}
+			.boxTimePage .select ul li{ line-height: 25px;}
+			.boxTimePage .select ul li:hover{ background: #42649d;}
+			.boxTimePage .select:hover ul{display: block;}
+			.boxTimePage .end{ width: 38px; height: 38px; display: block; position: absolute;left:280px; bottom:0px ;background: url(../Images/end.png);}
+			
+			.boxTimePage .month{ width: 120px;height: 32px; margin:20px auto; margin-left: 205px;}
+			.boxTimePage .month span{ font-size: 16px;  font-weight: bold;color: #315ba7;float: left;line-height: 32px; margin:0 10px; width:40px; display:inline-block}
+			.boxTimePage .month i{ width: 20px; height: 20px; background: url(../Images/date.png); display: inline-block; float: left; margin-top: 6px; }
+			.boxTimePage .month i.off{ width: 20px; height: 20px; background: url(../Images/date.png) 0 -32px; display: inline-block; float: left; margin-top: 6px;}
+			.boxTimePage .month em{ width: 32px; height: 32px; background: url(../Images/botton.png) no-repeat;display: inline-block;float: left;cursor: pointer;}
+			.boxTimePage .month em.off{width: 32px; height: 32px; background: url(../Images/botton.png) 0 -32px;display: inline-block;float: left;}
+			
+			.boxTimePage .timeSubnav{ position: absolute; left:50px;width: 113px;top:100px}
+			.boxTimePage .timeSubnav .head{ width: 113px; height: 74px; background:url(../Images/cloud2.png); margin-bottom:5px;}
+			.boxTimePage .timeSubnav .yue{ background: #e6f0f2; margin: 0 15px;border-top: solid 1px #d5e1e4; }
+			.boxTimePage .timeSubnav .yue li{ height: 30px; border: solid 1px #d5e1e4; border-top:0;}
+			.boxTimePage .timeSubnav .yue li a{ line-height: 30px; display: block; text-align: center; font-size: 12px; color: #3159a1; background:url(../Images/dot2_01.png) 15px 12px no-repeat}
+			.boxTimePage .timeSubnav .yue li a:hover{ color: #FFFFFF; text-decoration: underline;background:url(../Images/dot2_02.png) 15px 12px no-repeat #7ac67b}
+.Validform_wrong {
+    color: red;
+    padding-left: 20px;
+    white-space: nowrap;
+    background: url(../images/error.png) no-repeat left center;
+}

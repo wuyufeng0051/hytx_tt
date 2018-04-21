@@ -1,0 +1,88 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>无标题</title>
+<script type="text/javascript" src="{$Think.const.HOME_JS}jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+function f1(o){
+	var phone=$('#phone').val();
+	var phonekey= /^[0-9-]{11}$/;
+	if(!phonekey.test(phone)){
+		alert('请输入11位手机号');
+		return ;
+	}	
+	//alert(phone);
+
+		$.ajax({
+     		   type: "POST",
+     		   url: "__MODULE__/Login/code",
+     		   data: {user_phone:phone},
+     		   success: function(msg){
+     		   	//settime1();
+     		   	alert(msg);
+     		   	time(o);
+     		   	
+        }
+     });
+
+}
+
+function f2(){
+	var code=$('#code').val();
+	var phone=$('#phone').val();
+	var user_openid=$('#user_openid').val();
+	var phonekey= /^[0-9-]{11}$/;
+    var codekey= /^[0-9]{4}$/;
+	if(!phonekey.test(phone)){
+		alert('请输入11位手机号');
+		return ;
+	}
+	if(!codekey.test(code)){
+		alert('请输入4位验证码');
+		return ;
+	}
+	//alert(phone);
+
+			$.ajax({
+     		   type: "POST",
+     		   url: "__MODULE__/Login/doreg",
+     		   data: {code:code,user_openid:user_openid,user_phone:phone},
+     		   success: function(msg){
+     		   			if(msg=="ok"){
+     		   			location.href="__MODULE__/Index/index";
+     		   			}else{
+     		   			alert(msg);
+     		   			}
+        }
+     });
+
+}
+var wait=60;  
+function time(o) {  
+        if (wait == 0) {  
+            o.removeAttribute("disabled");            
+            o.value="免费获取验证码";  
+            wait = 60;  
+        } else {  
+            o.setAttribute("disabled", true);  
+            o.value="重新发送(" + wait + ")";  
+            wait--;  
+            setTimeout(function() {  
+                time(o)  
+            },  
+            1000)  
+        }  
+    }  
+</script>
+</head>
+<body>
+<form action="__MODULE__/Login/doreg" method="post">
+<input type="hidden" id="user_openid" name="user_openid" value="{$openid}">
+手机号码:<input type="text" id="phone" name="user_phone" value="">
+<input type="button" value="获取验证码" onclick="f1(this)" id="codetime"> <br/>
+
+验证码：<input type="text" id="code" name="code" value="">
+<input type="button" value="提交" onclick="f2()">
+</form>
+</body>
+</html>

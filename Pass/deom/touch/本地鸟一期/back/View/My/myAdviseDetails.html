@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>意见审核详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no" >
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+		<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+
+		<style>
+		/*公用头部*/
+		.header{
+		    height: .9rem;
+		    background: #fd5530 !important;
+		    color: #fff;
+		    font-size: .32rem;
+		    line-height: .9rem;
+		    max-width: 1080px;
+		    position: relative;
+		    overflow: hidden;
+		}
+		.header a{
+			display: inline-block;
+			color: #fff;
+		}
+		.header .back{
+		    height: .9rem;
+		    line-height: .9rem;
+		    width: 17%;
+		    float: left;
+		}
+		.header .back i{
+		    width: 0.4rem;
+		    height: .9rem;
+		    display: inline-block;
+		    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+		    vertical-align: middle;
+		    background-size: .3rem;
+		}
+		.header .header_right{
+			float: right;
+			height: .9rem;
+			margin-right: .2rem;
+		}
+		.header .header_right i{
+		    width: 0.04rem;
+		    height: 0.5rem;
+		    display: inline-block;
+		    vertical-align: middle;
+		    background: #fff;
+		    margin: 0 .15rem;
+		}
+		.header .title{
+		    float: left;
+		    width: 70%;
+		    text-align: center;
+		    font-size: 0.38rem;
+		}
+		.header .share_1{
+		    height: .9rem;
+		    float: right;
+		    width: 12%;
+		    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+		    background-size: .5rem;
+		}
+		ul{
+			margin:0;
+			padding: 0;
+			list-style: none;
+		}
+		i,em{
+			font-style: normal;
+		}
+		.im-chat-main {
+		    height: 100%;
+		    padding: 5px 5px 50px;
+		    overflow: auto;
+		    -webkit-overflow-scrolling: touch;
+		}
+
+		.im-chat-main ul{
+		    padding-left: 0px;
+		    height: 100%;
+		    overflow-x: hidden;
+		    -webkit-overflow-scrolling: touch;
+		}
+
+		.im-chat-main ul li {
+		    position: relative;
+		    font-size: 0;
+		    margin-bottom: 10px;
+		    padding-left: 50px;
+		    min-height: 68px;
+		}
+
+		.im-chat-user, .im-chat-text {
+		    display: inline-block;
+		    *display: inline;
+		    *zoom: 1;
+		    vertical-align: top;
+		    font-size: 14px;
+		}
+
+		.im-chat-user {
+		    position: absolute;
+		    left: 3px;
+		}
+
+		.im-chat-user img {
+		    width: 40px;
+		    height: 40px;
+		}
+
+		.im-chat-user cite {
+		    position: absolute;
+		    left: 48px;
+		    top: -2px;
+		    width: 500px;
+		    line-height: 24px;
+		    font-size: 12px;
+		    white-space: nowrap;
+		    color: #B2B2B2;
+		    text-align: left;
+		    font-style: normal;
+		}
+
+		.im-chat-user cite i {
+		    padding-left: 10px;
+		    font-style: normal;
+		}
+
+		.im-chat-text {
+		    position: relative;
+		    line-height: 22px;
+		    margin-top: 25px;
+		    padding: 10px 15px;
+		    background-color: #FFFFFF;
+		    border-radius: 3px;
+		    color: #353535;
+		    word-break: break-all;
+		}
+
+		.im-chat-text:after {
+		    content: '';
+		    position: absolute;
+		    left: -10px;
+		    top: 15px;
+		    width: 0;
+		    height: 0;
+		    border-style: dashed;
+		    border-color: transparent;
+		    overflow: hidden;
+		    border-width: 10px;
+		    border-top-style: solid;
+		    border-top-color: #FFFFFF;
+		}
+
+		.im-chat-text {
+		    max-width: 462px\0;
+		}
+
+		.im-chat-text a {
+		    color: #33DF83;
+		}
+
+		.im-chat-text img {
+		    max-width: 68px;
+		    vertical-align: middle;
+		}
+
+		.im-chat-main ul .im-chat-mine {
+		    text-align: right;
+		    padding-left: 0;
+		    padding-right: 50px;
+		}
+
+		.im-chat-mine .im-chat-user {
+		    left: auto;
+		    right: 3px;
+		}
+
+		.im-chat-mine .im-chat-user cite {
+		    left: auto;
+		    right: 48px;
+		    text-align: right;
+		}
+
+		.im-chat-mine .im-chat-user cite i {
+		    padding-left: 0;
+		    padding-right: 10px;
+		}
+
+		.im-chat-mine .im-chat-text {
+		    margin-left: 0;
+		    text-align: left;
+		    background-color: #A0E75A;
+		    color: #353535;
+		}
+
+		.im-chat-mine .im-chat-text:after {
+		    left: auto;
+		    right: -10px;
+		    border-top-color: #A0E75A;
+		}
+
+		.im-chat-mine .im-chat-text a {
+		    color: #fff;
+		}
+		body,html{
+			background: #f2f2f2;
+		}
+		</style>
+	</head>
+	<body>
+	<include file="Public/share" title='包含文件'/>
+		<!-- 共同顶部 s-->
+		<div class="header fn-clear">
+			<div class="back"><a class="a" href="javascript:history.go(-1)"><i></i>返回</a></div>
+		</div>
+		<!-- 共同顶部 e-->
+		<div class="mui-content">
+			<div class="im-chat-main">
+				<ul id="msg_list">
+		            <li>
+		                <div class="im-chat-user">
+		                    <img src="{$u_res['user_head']}">
+		                    <cite>我<i>{$res['opinion_date']}</i></cite>            
+		                </div>
+		                <div class="im-chat-text">{$res['opinion_content']}			
+		                	<span style="float: right;color: #f40;">
+		                	 &nbsp; <?php if($res['opinion_status'] == 0 ){ echo "未采纳"; }else if($res['opinion_status'] == 1){ echo "已采纳"; }else{ echo "审核中...." ; } ?>
+		                	 </span>
+		                </div>
+		            </li>
+					<?php foreach ($reply as $v) { ?>
+		            <li class="im-chat-mine">
+		                <div class="im-chat-user">
+		                    <img src="__PUBLIC__/Home/img/bendiniaologo.png">
+		                    <cite><i><?php echo $v['yjreply_date']; ?></i>管理员</cite>
+		                </div>
+		                <div class="im-chat-text"><?php echo $v['yjreply_content']; ?></div>
+		            </li>
+					<?php } ?>
+		        </ul>
+			</div>
+			
+		</div>
+		<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+		<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+		<script>
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+		</script>
+	</body>
+</html>

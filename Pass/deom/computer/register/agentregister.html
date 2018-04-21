@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>苏州阳澄湖知识产权公共服务平台_服务商注册</title>
+    <meta name="keywords" content="苏州阳澄湖知识产权公共服务平台">
+    <meta name="description" content="苏州阳澄湖知识产权公共服务平台">
+    <link rel="icon" type="image/ico" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script src="js/hy/jquery-1.11.0.min.js"></script>
+    <style>.module-screen .main{width:1200px;} .main ul .active a{background:#ff650b; color:#FFF; padding:3px 5px;} .w1200center{margin-top:20px;} .info h4{font-weight:normal;}</style></head>
+    <script>
+    var masterDomain = 'http://ihuoniao.cn', staticPath = cfg_staticPath = 'http://ihuoniao.cn/static/';
+
+  var hideFileUrl = 0;
+
+  var modelType = 'shop', state = '', type = '', typeid = 17;
+  var thumbSize = 5072, thumbType = '*.jpg;*.jpeg;*.gif;*.png;*.swf', atlasSize = 5318377472, atlasType = '*.jpg;*.jpeg;*.gif;*.png', atlasMax = 20;
+  var id = 0;
+    </script>
+  <body>
+    <!-- 头部开始 -->
+    <div id="header">
+      <div class="header">
+        <div class="main">
+          <div>
+            <a href="/"></a>
+          </div>
+          <ul class="main_nav">
+            <li menu_id='1'>
+              <a href="index.html">首页</a></li>
+            <li menu_id='2'>
+              <a href="login.html">查询检索</a></li>
+            <li menu_id='6'>
+              <a href="news.html">新闻资讯</a></li>
+            <li menu_id='4'>
+              <a href="policy.html">政策推送</a></li>
+            <li menu_id='3'>
+              <a href="regulations.html">法律法规</a></li>
+          </ul>
+          <a href="agentregister.html" class="s">服务商注册</a>
+          <div class="header_btn">
+            <a href="login.html">登录</a>
+            <a href="regist.html">注册</a></div>
+        </div>
+      </div>
+    </div>
+    <!-- 头部结束 -->
+    <!-- 正文开始 -->
+    <!-- <link href="js/uploadify/uploadify.css" rel="stylesheet"> -->
+    <!-- // <script src="Js/common.js"></script> -->
+    <script src="Js/webuploader.js"></script>
+    <script src="Js/publicUpload.js"></script>
+    <script src="js/hy/Validform_v5.3.2.js"></script>
+    <script src="js/hy/passwordStrength-min.js"></script>
+    <script>$(function() {
+        $("#form1").Validform({
+          tiptype: 3,
+          postonce: true,
+          usePlugin: {
+            passwordstrength: {
+              minLen: 6,
+              maxLen: 18
+            }
+          }
+
+        });
+       $("#checkbox1").change(function () {
+            if (this.checked == true) {
+                $(":submit").attr("class", "button");
+                $(":submit").attr("disabled", false);
+            } else {
+                $(":submit").attr("class", "button1");
+                $(":submit").attr("disabled", "disabled");
+            }
+        });
+
+
+
+
+      });
+      </script>
+    <div class="body" style="background: #e9ecf0 url(images/reg-bg.png) center bottom no-repeat; margin-bottom: -30px">
+      <div style="background: url(images/zcpage-bg.png); padding: 100px 0">
+        <div class="wrap">
+          <div class="regPage">
+            <div class="box">
+              <div class="tab clear">
+                <a href="regist.html">用户注册
+                  <i></i>
+                </a>
+                <a href="agentregister.html" class="active">服务商注册
+                  <i></i>
+                </a>
+              </div>
+              <form action="/Register/AgentRegister" id="form1" method="post">
+                <input id="UserID" name="UserID" type="hidden" value="005acb11-1ad6-429b-9f27-1e0632fab34d">
+                <input id="AgentObj_AgentID" name="AgentObj.AgentID" type="hidden" value="2adb8179-cb17-4b98-8f99-3874d3126ac8">
+                <table class="registerTable" border="0" cellspacing="0" cellpadding="0">
+                  <tbody>
+                    <tr>
+                      <th>公司名称：</th>
+                      <td>
+                        <input class="text" datatype="*" id="UserName" name="UserName" nullmsg="公司名称不能为空" type="text" value="">
+                        <span class="Validform_checktip"></span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>登录邮箱：</th>
+                      <td>
+                        <input ajaxurl="/User/CheckUserEmailExist" class="text" >
+                        <span class="Validform_checktip">登录帐号请使用邮箱地址</span></td>
+                    </tr>
+                    <tr>
+                      <th>密码：</th>
+                      <td>
+                        <input class="text" datatype="*6-16" errormsg="密码范围在6~16位之间！" id="UserPwd" name="UserPwd" nullmsg="请设置密码！" plugin="passwordStrength" type="password">
+                        <span class="Validform_checktip">密码由 6-16 字符组成</span>
+                        <div class="passwordStrength">
+                          <span>弱</span>
+                          <span>中</span>
+                          <span class="last">强</span></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>确认密码：</th>
+                      <td>
+                        <input class="text" datatype="*" errormsg="您两次输入的账号密码不一致！" id="password2" name="password2" nullmsg="请再输入一次密码！" recheck="UserPwd" type="password" value="">
+                        <span class="Validform_checktip">两次输入密码需一致</span></td>
+                    </tr>
+                    <tr>
+                      <th>官网：</th>
+                      <td>
+                        <input class="text" datatype="*" id="AgentObj_WebSite" name="AgentObj.WebSite" nullmsg="官网不能为空" type="text" value="">
+                        <span class="Validform_checktip"></span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>联系人：</th>
+                      <td>
+                        <input class="text" datatype="*" id="Contact" name="Contact" nullmsg="联系人不能为空" type="text" value="">
+                        <span class="Validform_checktip"></span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>联系电话：</th>
+                      <td>
+                        <input class="text" datatype="*" id="Tel" name="Tel" nullmsg="联系电话不能为空" type="text" value="">
+                        <span class="Validform_checktip"></span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>业务领域：</th>
+                      <td class="checkbox_class">
+                        <span class="checkboxLabel">
+                          <input id="PatentApplication" name="BusinessField" type="checkbox" value="PatentApplication">
+                          <label for="PatentApplication">专利申请</label></span>
+                        <span class="checkboxLabel">
+                          <input id="TrademarkApplication" name="BusinessField" type="checkbox" value="TrademarkApplication">
+                          <label for="TrademarkApplication">商标申请</label></span>
+                        <span class="checkboxLabel">
+                          <input id="CopyrightRegistration" name="BusinessField" type="checkbox" value="CopyrightRegistration">
+                          <label for="CopyrightRegistration">版权登记</label></span>
+                        <span class="checkboxLabel">
+                          <input id="PatentInvalid" name="BusinessField" type="checkbox" value="PatentInvalid">
+                          <label for="PatentInvalid">专利无效</label></span>
+                        <span class="checkboxLabel">
+                          <input id="PatentActivist" name="BusinessField" type="checkbox" value="PatentActivist">
+                          <label for="PatentActivist">专利维权</label></span>
+                        <span class="checkboxLabel">
+                          <input id="TrademarkActivist" name="BusinessField" type="checkbox" value="TrademarkActivist">
+                          <label for="TrademarkActivist">商标维权</label></span>
+                        <span class="checkboxLabel">
+                          <input id="CopyRightActivist" name="BusinessField" type="checkbox" value="CopyRightActivist">
+                          <label for="CopyRightActivist">版权维权</label></span>
+                        <span class="checkboxLabel">
+                          <input id="PatentLitigation" name="BusinessField" type="checkbox" value="PatentLitigation">
+                          <label for="PatentLitigation">专利诉讼</label></span>
+                        <span class="checkboxLabel">
+                          <input id="TrademarkLitigation" name="BusinessField" type="checkbox" value="TrademarkLitigation">
+                          <label for="TrademarkLitigation">商标诉讼</label></span>
+                        <span class="checkboxLabel">
+                          <input id="CopyrightLitigation" name="BusinessField" type="checkbox" value="CopyrightLitigation">
+                          <label for="CopyrightLitigation">版权诉讼</label></span>
+                        <span class="checkboxLabel">
+                          <input id="PatentDispute" name="BusinessField" type="checkbox" value="PatentDispute">
+                          <label for="PatentDispute">专利纠纷</label></span>
+                        <span class="checkboxLabel">
+                          <input id="TrademarkDispute" name="BusinessField" type="checkbox" value="TrademarkDispute">
+                          <label for="TrademarkDispute">商标纠纷</label></span>
+                        <span class="checkboxLabel">
+                          <input id="CopyrightDispute" name="BusinessField" type="checkbox" value="CopyrightDispute">
+                          <label for="CopyrightDispute">版权纠纷</label></span>
+                        <span class="checkboxLabel">
+                          <input id="PatentTrading" name="BusinessField" type="checkbox" value="PatentTrading">
+                          <label for="PatentTrading">专利交易</label></span>
+                        <span class="checkboxLabel">
+                          <input id="TrademarksTrading" name="BusinessField" type="checkbox" value="TrademarksTrading">
+                          <label for="TrademarksTrading">商标交易</label></span>
+                        <span class="checkboxLabel">
+                          <input id="CopyrightTrading" name="BusinessField" type="checkbox" value="CopyrightTrading">
+                          <label for="CopyrightTrading">版权交易</label></span>
+                        <span class="checkboxLabel">
+                          <input id="PatentLicense" name="BusinessField" type="checkbox" value="PatentLicense">
+                          <label for="PatentLicense">专利许可</label></span>
+                        <span class="checkboxLabel">
+                          <input id="TrademarkLicense" name="BusinessField" type="checkbox" value="TrademarkLicense">
+                          <label for="TrademarkLicense">商标许可</label></span>
+                        <span class="checkboxLabel">
+                          <input id="CopyrighLicense" name="BusinessField" type="checkbox" value="CopyrighLicense" datatype="*" nullmsg="最少选择一个">
+                          <label for="CopyrighLicense">版权许可</label>
+                          <span class="Validform_checktip"></span>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>业务地域：</th>
+                      <td class="checkbox_class">
+                        <span class="checkboxLabel">
+                          <input id="BeiJing" name="Area" type="checkbox" value="BeiJing">
+                          <label for="BeiJing">吴中区</label></span>
+                        <span class="checkboxLabel">
+                          <input id="ShangHai" name="Area" type="checkbox" value="ShangHai">
+                          <label for="ShangHai">相城区</label></span>
+                        <span class="checkboxLabel">
+                          <input id="GuangDong" name="Area" type="checkbox" value="GuangDong">
+                          <label for="GuangDong">姑苏区</label></span>
+                        <span class="checkboxLabel">
+                          <input id="TianJin" name="Area" type="checkbox" value="TianJin">
+                          <label for="TianJin">工业园区</label></span>
+                        <span class="checkboxLabel">
+                          <input id="ChongQin" name="Area" type="checkbox" value="ChongQin">
+                          <label for="ChongQin">高新区</label></span>
+                        <span class="checkboxLabel">
+                          <input id="ZheJiang" name="Area" type="checkbox" value="ZheJiang">
+                          <label for="ZheJiang">吴江区</label></span>
+                        <span class="checkboxLabel">
+                          <input id="JiangSu" name="Area" type="checkbox" value="JiangSu">
+                          <label for="JiangSu">张家港市</label></span>
+                        <span class="checkboxLabel">
+                          <input id="SiChuan" name="Area" type="checkbox" value="SiChuan">
+                          <label for="SiChuan">常熟市</label></span>
+                        <span class="checkboxLabel">
+                          <input id="HaiNan" name="Area" type="checkbox" value="HaiNan">
+                          <label for="HaiNan">太仓市</label></span>
+                        <span class="checkboxLabel">
+                          <input id="Korea" name="Area" type="checkbox" value="Korea" datatype="*" nullmsg="最少选择一个">
+                          <label for="Korea">昆山市</label>
+                          <span class="Validform_checktip"></span>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>技术领域：</th>
+                      <td class="checkbox_class">
+                        <span class="checkboxLabel">
+                          <input id="Machinery" name="TechnicalField" type="checkbox" value="Machinery">
+                          <label for="Machinery">机械</label></span>
+                        <span class="checkboxLabel">
+                          <input id="Electron" name="TechnicalField" type="checkbox" value="Electron">
+                          <label for="Electron">电子通信</label></span>
+                        <span class="checkboxLabel">
+                          <input id="Organism" name="TechnicalField" type="checkbox" value="Organism">
+                          <label for="Organism">生物医药</label></span>
+                        <span class="checkboxLabel">
+                          <input id="ChemicalIndustry" name="TechnicalField" type="checkbox" value="ChemicalIndustry">
+                          <label for="ChemicalIndustry">化工</label></span>
+                        <span class="checkboxLabel">
+                          <input id="Optics" name="TechnicalField" type="checkbox" value="Optics">
+                          <label for="Optics">物理光学</label></span>
+                        <span class="checkboxLabel">
+                          <input id="Material" name="TechnicalField" type="checkbox" value="Material" datatype="*" nullmsg="最少选择一个">
+                          <label for="Material">材料</label>
+                          <span class="Validform_checktip"></span>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>行业领域：</th>
+                      <td class="checkbox_class">
+                        <span class="checkboxLabel">
+                          <input id="BiologicalMedicine" name="IndustryField" type="checkbox" value="BiologicalMedicine">
+                          <label for="BiologicalMedicine">生物医药</label></span>
+                        <span class="checkboxLabel">
+                          <input id="Internet" name="IndustryField" type="checkbox" value="Internet">
+                          <label for="Internet">互联网及移动互联网</label></span>
+                        <span class="checkboxLabel">
+                          <input id="Energy" name="IndustryField" type="checkbox" value="Energy">
+                          <label for="Energy">新能源与节能环保</label></span>
+                        <span class="checkboxLabel">
+                          <input id="NewMaterial" name="IndustryField" type="checkbox" value="NewMaterial">
+                          <label for="NewMaterial">新材料</label></span>
+                        <span class="checkboxLabel">
+                          <input id="AdvancedManufacturing" name="IndustryField" type="checkbox" value="AdvancedManufacturing">
+                          <label for="AdvancedManufacturing">先进制造</label></span>
+                        <span class="checkboxLabel">
+                          <input id="ElectronicInformation" name="IndustryField" type="checkbox" value="ElectronicInformation" datatype="*" nullmsg="最少选择一个">
+                          <label for="ElectronicInformation">电子信息</label>
+                          <span class="Validform_checktip"></span>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>企业简介：</th>
+                      <td>
+                        <div class="ke-container ke-container-default" style="width: 500px;">
+                          <div style="display:block;" class="ke-toolbar" unselectable="on">
+                            <span class="ke-outline" data-name="fontname" title="字体" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontname" unselectable="on"></span>
+                            </span>
+                            <span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span>
+                            </span>
+                            <span class="ke-inline-block ke-separator"></span>
+                            <span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span>
+                            </span>
+                            <span class="ke-outline" data-name="hilitecolor" title="文字背景" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor" unselectable="on"></span>
+                            </span>
+                            <span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span>
+                            </span>
+                            <span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span>
+                            </span>
+                            <span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span>
+                            </span>
+                            <span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span>
+                            </span>
+                            <span class="ke-inline-block ke-separator"></span>
+                            <span class="ke-outline" data-name="justifyleft" title="左对齐" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyleft" unselectable="on"></span>
+                            </span>
+                            <span class="ke-outline" data-name="justifycenter" title="居中" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifycenter" unselectable="on"></span>
+                            </span>
+                            <span class="ke-outline" data-name="justifyright" title="右对齐" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyright" unselectable="on"></span>
+                            </span>
+                            <span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span>
+                            </span>
+                            <span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span>
+                            </span>
+                            <span class="ke-inline-block ke-separator"></span>
+                            <span class="ke-outline" data-name="emoticons" title="插入表情" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-emoticons" unselectable="on"></span>
+                            </span>
+                            <span class="ke-outline" data-name="image" title="图片" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span>
+                            </span>
+                            <span class="ke-outline" data-name="link" title="超级链接" unselectable="on">
+                              <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span>
+                            </span>
+                          </div>
+                          <div style="display: block; height: 311px;" class="ke-edit">
+                            <iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" tabindex="" style="width: 100%; height: 311px;">
+                              <html>
+                                
+                                <head>
+                                  <meta charset="utf-8">
+                                  <title></title>
+                                  <style>html {margin:0;padding:0;} body {margin:0;padding:5px;} body, td {font:12px/1.5 "sans serif",tahoma,verdana,helvetica;} body, p, div {word-wrap: break-word;} p {margin:5px 0;} table {border-collapse:collapse;} img {border:0;} noscript {display:none;} table.ke-zeroborder td {border:1px dotted #AAA;} img.ke-flash { border:1px solid #AAA; background-image:url(http://ljzip.com/Js/kindeditor-4.1.10/themes/common/flash.gif); background-position:center center; background-repeat:no-repeat; width:100px; height:100px; } img.ke-rm { border:1px solid #AAA; background-image:url(http://ljzip.com/Js/kindeditor-4.1.10/themes/common/rm.gif); background-position:center center; background-repeat:no-repeat; width:100px; height:100px; } img.ke-media { border:1px solid #AAA; background-image:url(http://ljzip.com/Js/kindeditor-4.1.10/themes/common/media.gif); background-position:center center; background-repeat:no-repeat; width:100px; height:100px; } img.ke-anchor { border:1px dashed #666; width:16px; height:16px; } .ke-script, .ke-noscript, .ke-display-none { display:none; font-size:0; width:0; height:0; } .ke-pagebreak { border:1px dotted #AAA; font-size:0; height:2px; }</style>
+                                  <link href="http://ljzip.com//Js/kindeditor-4.1.10/plugins/code/prettify.css" rel="stylesheet"></head>
+                                
+                                <body class="ke-content"></body>
+                              
+                              </html>
+                            </iframe>
+                            <textarea class="ke-edit-textarea" hidefocus="true" tabindex="" style="width: 100%; height: 311px; display: none;"></textarea>
+                          </div>
+                          <div class="ke-statusbar">
+                            <span class="ke-inline-block ke-statusbar-center-icon"></span>
+                            <span class="ke-inline-block ke-statusbar-right-icon" style="visibility: hidden;"></span>
+                          </div>
+                        </div>
+                        <textarea class="text" cols="20" id="AgentObj_Intro" name="AgentObj.Intro" rows="2" style="display: none;"></textarea>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>企业Logo：
+                    </th>
+                    <td>
+                      <div id="filePicker1" class="webuploader-container filePicker" data-id="1">
+                        <div class="webuploader-pick">上传</div>
+                      </div>
+                      <div id="pic_box">
+                        <p>(最大上传附件大小为10M，允许上传的文件格式有：*.png;*.jpg;*.gif;)</p>
+                      </div>
+                    
+                    </td>
+
+                    </tr>
+                    <tr>
+                       <th>营业执照：
+                        </th>
+                        <td>
+                            <div id="filePicker2" class="webuploader-container filePicker" data-id="2">
+                              <div class="webuploader-pick">上传</div>
+                            </div>
+                            <div id="pic_box_1">
+                              <p>(最大上传附件大小为10M，允许上传的文件格式有：*.png;*.jpg;*.gif;)</p>
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                      <th>&nbsp;</th>
+                      <td>
+                        <label class="checkbox" style="margin-left: 100px">
+                          <input type="checkbox" id="checkbox1" name="checkbox" value="1" datatype="*" nullmsg="您没有同意用户协议">
+                          <em>我已阅读并同意
+                            <a href="javascript:layer1()" target="_blank">《入驻协议》</a></em>
+                          <span class="Validform_checktip"></span>
+                        </label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>&nbsp;</th>
+                      <td>
+                        <input class="button1" type="submit" value="立即注册" disabled="disabled"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 正文结束 -->
+    <!-- 底部开始 -->
+    <div class="zz-minWidth footer">
+      <div class="zz-center footer_cont">
+        <div class="yb-footer-top">
+          <ul>
+            <li>
+              <a href="http://www.szip.gov.cn/index.aspx" target="_blank">行政投诉</a></li>
+            <li>
+              <a href="case.html">经典案例</a></li>
+            <li>
+              <a href="http://www.szip.gov.cn/list.aspx?id=100" target="_blank">知识产权统计</a></li>
+            <li>
+              <a href="zhuanjia.html">专家与人才</a></li>
+            <li>
+              <a href="questionlist.html">知识产权问答</a></li>
+            <li>
+              <a href="zscqywt.html">知识产一网通</a></li>
+            <li>
+              <a href="training.html">教育培训</a></li>
+            <li>
+              <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2487621200&amp;site=qq&amp;menu=yes" target="_blank">在线咨询</a></li>
+          </ul>
+        </div>
+        <dl class="about-platform">
+          <dt>
+            <a href="about.html">关于平台</a></dt>
+          <dd>
+            <a href="about.html">知识产权制度是开发和利用知识资源的基本制度。知识产权制度通过合理确定人们对于知识及其他信息的权利，调整人们在创造、运用知识和信息过程中产生的利益关系，激励创新，推动经济发展和社会进步。</a></dd>
+        </dl>
+        <dl class="ORG-insti">
+          <dt>联系我们</dt>
+          <dd>
+            <em>电　　话：</em>
+            <div>
+              <span>0512-88979880</span>
+              <span>0512-88979881</span></div>
+          </dd>
+          <dd>
+            <em>邮　　箱：</em>
+            <div>
+              <span>3476074937@qq.com</span></div>
+          </dd>
+          <dd>
+            <em>传　　真：</em>
+            <div>
+              <span>0512-88979880</span></div>
+          </dd>
+          <dd>
+            <em>地　　址：</em>
+            <div>
+              <span>苏州市相城区太平街道金澄路86号</span></div>
+          </dd>
+          <dd>
+            <em>运营单位：</em>
+            <div>
+              <span>苏州一品众创投资管理有限公司</span></div>
+          </dd>
+        </dl>
+        <div class="footer_qr">
+          <span>微信公众号</span>
+          <div class="qr-box">
+            <img src="images/erweima.gif" alt=""></div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="zz-center zz-text-center">
+          <span>苏州阳澄湖知识产权公共服务平台 版权所有</span>
+          <span>Copyright © 2017 YCHZSCQ.CN All Rights Reserved</span>
+          <span>服务热线：0512-88979880</span>
+          <span>苏ICP备170852109号</span></div>
+      </div>
+    </div>
+    <!-- 底部结束 --></body>
+
+</html>

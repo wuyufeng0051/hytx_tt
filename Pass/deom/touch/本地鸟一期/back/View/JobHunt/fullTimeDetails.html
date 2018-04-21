@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全职招聘详情</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta content="telephone=no" name="format-detection">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css?v=2">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+	
+	<style>
+body {
+	padding-bottom:60px;
+	margin-top: .9rem;
+}
+.info {
+	padding:10px;
+	background:#fff;
+	display:-webkit-flex;
+	margin-bottom:10px;
+}
+.left {
+	flex:1;
+	border-right:1px solid #ddd;
+}
+.left h4 {
+	font-size:16px;
+}
+.left div {
+	font-size:12px;
+	color:#bcbcbc;
+}
+.right {
+	width:60px;
+	text-align:center;
+}
+.right img {
+	display:block;
+	margin:auto;
+}
+.right span {
+	display:block;
+	color:#9a9a9a;
+	font-size:14px;
+}
+.content {
+	padding:10px;
+	padding-bottom:25px;
+	background:#fff;
+}
+.content h3 {
+	color:#fd7201;
+	font-size:18px;
+}
+.content p {
+	margin-bottom:0;
+}
+.content p span {
+	color:#000;
+}
+.content p .span {
+	border:1px solid #ff7200;
+	color:#ff7200;
+	border-radius:2px;
+	padding:0 2px;
+	margin-right:3px;
+	font-size:13px;
+}
+.description {
+	background:#fff;
+	padding:10px;
+	padding-top:20px;
+}
+.description p {
+	margin-bottom:0;
+	font-size:14px;
+}
+.company {
+	background:#fff;
+	padding-bottom:20px;
+}
+.company h5 {
+	color:#000;
+	padding:5px 10px;
+	margin:0;
+	line-height:24px;
+	border-bottom:1px solid #e6e6e6;
+}
+.company p {
+	margin-bottom:0;
+	padding:0 10px;
+}
+.report {
+	background:#fceecb;
+	height:50px;
+	position:relative;
+	padding:5px 10px;
+	padding-right:70px;
+	margin:5px 0;
+}
+.report .text {
+	border-right:1px solid #d9d9d9;
+	font-size:14px;
+}
+.report p {
+	margin:0;
+	color:#ff7300;
+	font-size:14px;
+}
+.report a {
+	width:50px;
+	position:absolute;
+	right:10px;
+	top:15px;
+	display:block;
+	background:#ff7300;
+	color:#fff;
+	border-radius:10px;
+	padding:2px 5px;
+	text-align:center;
+	line-height:21px;
+	height:24px;
+	border-left:1px solid #d9d9d9;
+	font-size:16px;
+}
+.swiper-container img {
+	display:block;
+	width:100%;
+}
+.swiper-container-horizontal>.swiper-pagination-bullets,.swiper-pagination-custom,.swiper-pagination-fraction {
+	bottom:0px;
+}
+.swiper-pagination-bullet-active {
+	background:#ff7300;
+}
+.header {
+	height:.9rem;
+	background:#fd5530 !important;
+	color:#fff;
+	font-size:.32rem;
+	line-height:.9rem;
+	max-width:1080px;
+	position:fixed;
+	overflow:hidden;
+	top: 0;
+	right: 0;
+	left: 0;
+}
+.header a {
+	display:inline-block;
+	color:#fff;
+}
+.header .back {
+	height:.9rem;
+	line-height:.9rem;
+	width:17%;
+	float:left;
+}
+.header .back i {
+	width:0.4rem;
+	height:.9rem;
+	display:inline-block;
+	background:url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+	vertical-align:middle;
+	background-size:.3rem;
+}
+.header .header_right {
+	float:right;
+	height:.9rem;
+	margin-right:.2rem;
+}
+.header .header_right i {
+	width:0.04rem;
+	height:0.5rem;
+	display:inline-block;
+	vertical-align:middle;
+	background:#fff;
+	margin:0 .15rem;
+}
+.header .title {
+	float:left;
+	width:70%;
+	text-align:center;
+	font-size:0.38rem;
+}
+.header .share_1 {
+	height:.9rem;
+	float:right;
+	width:12%;
+	background:url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+	background-size:.5rem;
+}
+.share_box {
+	display:block;
+	background:url(__PUBLIC__/Home/img/share.png) no-repeat 60px -20px;
+	background-size:6rem;
+	position:fixed;
+	top:2%;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:12;
+	display:none;
+}
+.disk {
+	background:#000;
+	opacity:.5!important;
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:11;
+	display:none;
+}
+.contact {
+	position:fixed;
+	bottom:0;
+	left:0;
+	right:0;
+	background:#fff;
+	height:1.2rem;
+	line-height:1.2rem;
+	box-shadow:1px 0px 9px #bfb9b9;
+	z-index:10;
+}
+.contact .con_left {
+	float:left;
+	width:38%;
+	height:.8rem;
+	line-height:.8rem;
+	margin-top:.2rem;
+	text-align:center;
+	font-size:.3rem;
+	font-weight:bold;
+}
+.contact .con_right {
+	width:30%;
+	color:#fc5430;
+	float:left;
+	text-align:center;
+	border-left:0.02rem solid #757575;
+	font-size:.3rem;
+	height:.8rem;
+	line-height:.8rem;
+	margin-top:.2rem;
+}
+.contact .con_right i {
+	width:.5rem;
+	height:.5rem;
+	display:block;
+	vertical-align:middle;
+	background:url(__PUBLIC__/Home/img/pb_13.png) no-repeat center;
+	background-size:.5rem;
+	margin:0 auto;
+	margin-top:-0.05rem;
+}
+.contact .con_right i.wei {
+	width:.5rem;
+	height:.5rem;
+	display:block;
+	vertical-align:middle;
+	background:url(__PUBLIC__/Home/img/jianli.png) no-repeat center;
+	background-size:.4rem;
+	margin:0 auto;
+	margin-top:-0.05rem;
+}
+.contact .con_right.over p {
+	color:#8f8f94!important;
+}
+.contact .con_right.over i.wei {
+	width:.5rem;
+	height:.5rem;
+	display:block;
+	vertical-align:middle;
+	background:url(__PUBLIC__/Home/img/jianli_2.png) no-repeat center;
+	background-size:.4rem;
+	margin:0 auto;
+	margin-top:-0.05rem;
+}
+.contact .con_right p {
+	line-height:0.38rem;
+	color:#fd5530 !important;
+}
+.phone {
+	position:fixed;
+	left:50%;
+	margin-left:-2.9rem;
+	top:20%;
+	z-index:12;
+	background:url(__PUBLIC__/Home/img/pb_7.png) no-repeat top;
+	width:5.96rem;
+	height:6rem;
+	background-size:6rem;
+	text-align:center;
+	display:none;
+}
+.phone h1 {
+	font-size:.3rem;
+	margin-top:1.8rem;
+	font-weight:bold;
+	background:#fff;
+	margin-bottom:0;
+}
+.phone h2 {
+	font-size:.24rem;
+	padding-top:.2rem;
+	background:#fff;
+	padding-bottom:.3rem;
+	font-weight:bold;
+	margin:0;
+}
+.phone h2 em {
+	color:#fe8267;
+	font-weight:bold;
+}
+.phone ul {
+	background:#fff;
+}
+.phone ul li:nth-child(2) {
+	border-top:none;
+}
+.phone ul li {
+	position:relative;
+	height:.9rem;
+	line-height:.9rem;
+	border-bottom:1px solid #e6e6e6;
+	border-top:1px solid #e6e6e6;
+}
+.phone ul li a {
+	display:block;
+	font-size:.32rem;
+	color:#2956c0;
+}
+.phone ul li a i {
+	position:absolute;
+	right:0.5rem;
+	top:.25rem;
+	width:.4rem;
+	height:.4rem;
+	background:url(__PUBLIC__/Home/img/pb_8.png) no-repeat center;
+	background-size:.4rem;
+}
+.phone .close {
+	background:#fff;
+	border-radius:0 0 0.2rem 0.2rem;
+}
+.phone .close i {
+	width:.7rem;
+	height:1.1rem;
+	display:block;
+	margin:0 auto;
+	background:url(__PUBLIC__/Home/img/pb_9.png) no-repeat center;
+	background-size:.7rem;
+	padding-top:.2rem;
+	padding-bottom:.2rem;
+}
+.fa_box {
+	position:fixed;
+	left:50%;
+	margin-left:-2.9rem;
+	top:30%;
+	z-index:12;
+	width:5.96rem;
+	background-size:6rem;
+	text-align:center;
+	background:#fff;
+	border-radius:0.15rem;
+	overflow:hidden;
+	display:none;
+}
+.fa_box .fb_title {
+	width:100%;
+	font-size:.32rem;
+	background:#fd5530 !important;
+	color:#fff;
+	height:.9rem;
+	line-height:.9rem;
+}
+.fa_box .fb_title i {
+	position:absolute;
+	top:0.15rem;
+	right:0.2rem;
+	width:.4rem;
+	height:.4rem;
+	background:url(__PUBLIC__/Home/img/fa_cha.png) no-repeat center;
+	background-size:.4rem;
+}
+.fa_box ul li {
+	border-bottom:0.02rem solid #dedede;
+}
+.fa_box ul li:last-child {
+	border-bottom:none;
+}
+.fa_box ul li a {
+	height:.9rem;
+	line-height:.9rem;
+	color:#000;
+	font-size:.3rem;
+	display:block;
+}
+
+	</style>
+
+
+</head>
+<body>
+	<input type="hidden" id="Share_title" value = {$res.recruit_title}>
+	<include file="Public/share" title='包含文件'/>
+	<!-- 共同顶部 s-->
+	<div class="header fn-clear">
+		<div class="back"><a class="a" href="javascript:history.go(-1)"><i></i>返回</a></div>
+		<div class="share_1"></div>
+	</div>
+	<!-- 共同顶部 e-->
+	<!-- 微信分享弹出层 s -->
+	<div class="share_box"></div>
+	<!-- 微信分享弹出层 e -->
+	<!-- 遮罩层 s -->
+	<div class="disk"></div>
+	<!-- 遮罩层 e -->
+	<div class="mui-content">
+		<div class="info">
+			<div class="left">
+				<h4>{$res.recruit_title}</h4>
+				<div>
+					<span>发布:{$res.recruit_datetime}</span>
+					<span style="margin-left: 30px;">浏览:{$res.recruit_browse}次</span>
+				</div>
+			</div>
+			<?php if(!empty($coll)){ ?>
+				<div class="right" id="collect">
+					<img src="__PUBLIC__/Home/img/zan1.png" alt="" width="28">
+					<span class='{$res.recruit_id}' id="{$coll.collection_id}">已收藏</span>
+				</div>
+			<?php }else{ ?>
+			    <div class="right" id="collect">
+					<img src="__PUBLIC__/Home/img/collect.png" alt="" width="28">
+					<span class='{$res.recruit_id}'>收藏</span>
+				</div>
+
+			<?php } ?>
+		</div>
+
+		<div class="content">
+			<h3>{$res.recruit_wages}</h3>
+			<p>职位:&nbsp;<span>{$res.recruit_position}</span></p>
+			<p>招聘人数:&nbsp;<span>{$res.recruit_people_num}人</span></p>
+			<p>学历要求:&nbsp;<span>{$res.recruit_education}</span></p>
+			<p>工作经验:&nbsp;<span>{$res.recruit_exp}</span></p>
+			<p>性别要求:&nbsp;<span>{$res.recruit_sex}</span></p>
+			<!-- <p>要求:&nbsp;<span>招:{$res.recruit_people_num}人/工作经验:{$res.recruit_exp}/男女:{$res.recruit_sex}</span></p> -->
+			<p>地址:&nbsp;<span>{$res.recruit_address}</span></p>
+			<p style="width: 100%;">
+			<a style="float: left;color: #8f8f94;">福利:&nbsp;</a>
+			<foreach name="res.recruit_welfare" item="vo">
+			  <span class="span" style="float: left;margin-bottom: 5px;">{$vo}</span>
+			</foreach>
+  			</p>
+		</div>
+
+		<div class="description">
+			<p style="color: #000;width: 100%;float: left;padding-bottom: 5px;"><span style="color:#8f8f94;">职位描述:</span></p>
+			<p style="width: 100%;float: left;margin-bottom: 20px;border-top: 1px solid #f2f2f2;padding-top: 5px;">{$res.recruit_desc}</p>
+		</div>
+		<div class="company">
+			<h5>{$res.recruit_corporate}</h5>
+			<p id="word">{$res.recruit_present}</p>  <!-- style="height: 42px;overflow: hidden;" -->
+			<!-- <div style="text-align: right;font-size: 14px;padding: 0 10px;color: #333;"><span id="zhankai">展开信息></span></div> -->
+		</div>
+		<!-- 举报 -->
+		<div class="report">
+			<div class="text">
+				<span>如果您认为此条信息为</span>
+				<p>无效、虚假、诈骗信息、请立即举报！</p>
+			</div>
+			<a href="__MODULE__/Report/report?report_cid={$res.recruit_id}&report_uid={$res.recruit_uid}&report_type=4&title={$res.recruit_title}">举报</a>
+		</div>
+
+		<?php if(!empty($status)) { ?>
+		<!-- 广告 -->
+		<div class="ad" style="overflow: hidden;">
+		  <?php if($status['advertisement_type'] == 0){ ?>
+ 			<!-- <a id="up" str="{$status['advertisement_id']}" stb="{$status['advertisement_type']}" url="{$status['advertisement_url']}">
+			    <img src="__PUBLIC__/../{$status['advertisement_img']}" style="width: 100%;display: block;">
+	        </a> -->
+	         <div class="swiper-container">
+	 			 	<div class="swiper-wrapper">
+	 			 	    <volist name="status" id="vo">
+            			<div class="swiper-slide">
+              				 <a id="up" onclick="look(this)" str="{$vo['advertisement_id']}" stb="{$vo['advertisement_type']}" url="{$vo['advertisement_url']}">
+ 				 			 <img src="__PUBLIC__/../{$vo['advertisement_img']}" style="width: 100%;display: block;">
+			  			 </a>
+		    			</div>
+		    			</volist>
+		    			<!-- <div class="swiper-slide">
+              				 <a id="up" str="{$status['advertisement_id']}" stb="{$status['advertisement_type']}" url="{$status['advertisement_url']}">
+ 				 			 <img src="__PUBLIC__/../{$status['advertisement_img']}" style="width: 100%;display: block;">
+			  			 </a>
+		    			</div> -->
+			        </div>
+			        <div class="swiper-pagination"></div>
+			     </div>
+			<?php } ?>
+		</div>
+		<?php } ?>
+			<div style="height:15px;background: #fff!important;" ></div>
+	</div>
+<!-- 	<footer class="mui-bar mui-bar-footer" style="height: 60px;">
+		<div style="padding: 0 30px;height: 40px;">
+		  <?php if(empty($res_castresume)){ ?>
+			<a id="tbtn" class="mui-btn mui-btn-danger" style="background-color: #37bc2f;width:48%;top:5px;border:none;border-radius: 15px;">
+			<span style="background: url(__PUBLIC__/Home/img/jl.png) no-repeat left center;display: inline-block;width: 16px;height: 16px;background-size: 16px 16px;position: relative;top:2px;"></span>
+			投简历</a>
+		 <?php }else{ ?>
+		    <a class="mui-btn mui-btn-danger" style="background-color: #a3a0a0;width:48%;top:5px;border:none;border-radius: 15px;">
+ 			已投简历</a>
+		 <?php } ?>
+			<a href="tel:{$res.recruit_phone}" class="mui-btn mui-btn-danger" style="background-color: #fe7201;width:48%;float:right;border:none;top:5px;border-radius: 15px;">
+			<span style="background: url(__PUBLIC__/Home/img/tel.png) no-repeat left center;display: inline-block;width: 16px;height: 16px;background-size: 16px 16px;position: relative;top:3px;"></span>
+			{$res.recruit_name}
+			</a>
+		</div>
+		<p style="text-align: center;color:#000;font-size: 14px;">联系我时,请说是在泸西本地鸟上看到的,谢谢</p>
+	</footer> -->
+	<!-- 发布弹出层 -->
+		<div class="fa_box fa_1">
+			<div class="fb_title">您还没有添加简历，是否添加？<i></i></div>
+			<ul>
+				<li><a href="__MODULE__/JobHunt/resumeRelease">是</a></li>
+				<li class="no"><a href="javascript:;">否</a></li>
+			</ul>
+		</div>
+	<!-- 发布弹出层 -->
+	<div class="contact fn-clear">
+		<div class="con_left">联系人：{$res.recruit_name}</div>
+		<?php if(empty($res_castresume)){ ?>
+		<div class="con_right jianli jianli_btn"><i class="wei"></i><p>投简历</p></div>
+		<?php }else{ ?>
+		<div class="con_right jianli over"><i class="wei"></i><p>投简历</p></div>
+		<?php } ?>
+		<div class="con_right tel"><i></i><p>电话联系</p></div>
+	</div>
+	<!-- 联系方式弹出层 s -->
+	<div class="phone">
+		<h1>提示</h1>
+		<h2>联系我时，请说是在<em>泸西本地鸟</em>上看到的，谢谢！</h2>
+		<ul>
+			<li><a href="tel:{$res.recruit_phone}">{$res.recruit_phone}<i></i></a></li>
+		</ul>
+		<div class="close"><i></i></div>
+	</div>
+	<!-- 联系方式弹出层 e -->
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+	<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+	<script>
+   function look(obj){
+ //$("[id=up]").each(function(){ 
+		//$(this).click(function(){
+     		var id = $(obj).attr('str');
+     		var type = $(obj).attr('stb');
+     		var url = $(obj).attr('url');
+				// alert(id)
+		$.post('{:U("Home/Index/addTraffic")}', {id:id}, function(data) {
+ 	     		if (type == 0) {
+	     			 location.href="http://"+url;
+	     		}else if(type == 1){
+	     			 location.href= 'tel:' + url;
+	      		}else{
+	      			location.href=url;
+	      		}
+			});
+    	//})
+    //})
+}
+
+	   $('#collect').on('tap',function(){	
+		//判断是否收藏
+        var src = "__PUBLIC__/Home/img/"+"collect.png";
+        //获取图片路径
+		var srcs = $(this).find('img').attr('src');  
+		var id = $(this).find('span').attr('class');
+		var thiss =$(this);
+	    //判断是否收藏
+         if (srcs == src) {
+         	//是
+         	$.post('{:U("Home/Index/enshrine")}',{id:id,classes:"collection_recruitid"}, function(data) {
+         		if (data != 2) {
+		           thiss.find('img').attr('src', '__PUBLIC__/Home/img/zan1.png');
+		           thiss.find('span').attr('id',data)
+	               thiss.find('span').html('已收藏')
+         		}
+         	 });
+         }else{
+         	//否
+             var cid =thiss.find('span').attr('id');
+              $.post('{:U("Home/Index/enshrinedel")}',{cid:cid}, function(data) {
+         		if (data != 2) {
+		           thiss.find('img').attr('src', '__PUBLIC__/Home/img/collect.png');
+		           thiss.attr('id',"")
+		           thiss.find('span').html('收藏')
+         		}
+         	 });
+         }
+ 	 })
+
+		var flag=true; 
+		$('#zhankai').on('tap',function(){
+			if(flag){
+				$('#word').height('auto');
+				$(this).html('收起')
+			}else{
+				$('#word').height('42px');
+				$(this).html('展开')
+			}
+			flag=!flag;
+		})
+		var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.swiper-pagination',
+		    loop:true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,
+		    autoHeight: true,
+		    autoplay: 3000
+		});
+	// 分享引导弹出层
+	$('.share_1').click(function(){
+		$('.share_box').show();
+		$('.disk').show();
+	})
+	$('.share_box').click(function(){
+		$('.share_box').hide();
+		$('.disk').hide();
+	})
+		// 联系方式弹出层
+	$('.tel').click(function(){
+		$('.phone').show();
+		$('.disk').show();
+	})
+	$('.close').click(function(){
+		$('.phone').hide();
+		$('.disk').hide();
+	})
+	$('.disk').click(function(){
+		$('.phone').hide();
+		$('.disk').hide();
+	})
+	$('.jianli_btn').on('click',function(){
+            //投简历
+            var recruit_id = "{$res.recruit_id}";
+            var thiss = $(this)
+            $.post('{:U("Home/JobHunt/castresume")}', {recruit_id:recruit_id}, function(data) {
+                if (data == 1) {
+                    thiss.addClass('over');
+                    layer.msg('投递成功', {
+                        time: 1000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function(){
+                        window.location.reload();
+                    });
+                }else if (data == 3) {
+                    $('.fa_1').show();
+                    $('.disk').show();
+                }else{
+                    layer.msg('系统繁忙，请稍后再试')
+                }
+            });
+	})
+	$('.fa_box .fb_title i').click(function(){
+		$('.fa_1').hide();
+		$('.fa_2').hide();
+	$('.disk').hide();
+	})
+	$('.no').click(function(){
+		$('.fa_1').hide();
+		$('.fa_2').hide();
+		$('.disk').hide();
+	})
+	$('.disk').click(function(){
+		$('.fa_1').hide();
+		$('.fa_2').hide();
+		$('.disk').hide();
+	})
+	</script>
+</body>
+</html>

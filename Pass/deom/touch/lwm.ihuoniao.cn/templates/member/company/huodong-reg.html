@@ -1,0 +1,63 @@
+{#$pageTitle = "活动报名 - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/loginrecord.css?v=1" media="all" />
+</head>
+
+<body>
+{#$pageCurr = "manage_huodong"#}
+{#include file="headSidebar.html"#}
+
+<div class="main">
+
+	<div class="notice">公告：管理控制台改版啦，为便于您的操作，用户中心功能整合到管理控制台并对样式进行优化，欢迎体验！<a href="#" target="_blank">操作指南</a> <a href="#" target="_blank">建议反馈</a><em class="close">&times;</em></div>
+
+	<div class="nav-tabs fn-clear">
+		<ul class="fn-clear">
+			<li class="active"><a href="javascript:;">活动报名(<small id="totalTip">0</small>)</a></li>
+			<li><a href="{#getUrlPath service='member' template='manage' action='huodong'#}">我的全部活动</a></li>
+		</ul>
+	</div>
+	<div class="container">
+
+		<div class="list" id="list">
+			<table>
+				<thead class="thead">
+					<tr>
+						<th class="fir"></th>
+						<th>报名人</th>
+						<th>联系方式</th>
+						<th>报名时间</th>
+						<th>费用项</th>
+						<th>价格</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#huodong action="regList" hid={#$id#}#}
+					<tr>
+						<td class="fir"></td>
+						<td>{#$row.nickname#}</td>
+						<td>{#if $row.phone#}{#$row.phone#}{#else#}无{#/if#}</td>
+						<td>{#$row.date|date_format:"%Y-%m-%d %H:%M:%S"#}</td>
+						<td>{#if $row.title#}{#$row.title#}{#else#}免费{#/if#}</td>
+						<td>{#$row.price|string_format:"%.2f"#}</td>
+					</tr>
+					{#/huodong#}
+					{#if $pageInfo['totalCount'] == 0#}
+					<tr>
+						<td colspan="6" class="empty"><p class="loading">暂无报名信息！</p></td>
+					</tr>
+					{#/if#}
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript">
+document.getElementById("totalTip").innerHTML = "{#$pageInfo['totalCount']#}";
+</script>
+</body>
+</html>

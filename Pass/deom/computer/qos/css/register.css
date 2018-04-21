@@ -1,0 +1,396 @@
+.head_box{
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 25px;
+}
+select{
+  display: block;
+}
+/* éšè—ç›’å­ */
+.hidden {
+  visibility: hidden;
+}
+
+.hide {
+  display: none;
+}
+a {
+  background-color: transparent;
+}
+a:active,
+a:hover {
+  outline: 0;
+}a {
+  color: #337ab7;
+  text-decoration: none;
+}
+/* æ¸…é™¤æµ®åŠ¨ */
+.clear::after {
+  display: inline-block;
+  content: "";
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+/*formè¡¨å•å±…ä¸­æ˜¾ç¤º*/
+#form_box {
+  width: 1138px;
+  text-align: center;
+  margin: 50px auto 100px;
+}
+
+#erui_user_register {
+  width: 820px;
+  margin: 0 auto;
+  padding: 30px 0;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  box-shadow: 0 0 10px #ccc;
+}
+
+#erui_user_register,
+#erui_user_register input {
+  font: 400 14px/16px "microsoft yahei", sans-serif;
+  vertical-align: baseline;
+  outline: none;
+  box-shadow: none;
+}
+
+/* å›ºå®šç”µè¯ a */
+#erui_user_register #erui_user_register_tel {
+  color: #A9A9A9;
+  list-style: none;
+  text-decoration: none;
+}
+
+/*å€’ä¸‰è§’ç›’å­*/
+#erui_user_register .erui_country_box .reg_country_box {
+  width: 10%;
+  height: 30px;
+  margin-left: 5px;
+  padding-left: 1px;
+  display: inline-block;
+  border-radius: 2px;
+  border: 1px solid #e5e5e5;
+  /*background-color: green;*/
+}
+
+/*å€’ä¸‰è§’*/
+#erui_user_register .reg_tel_font {
+  color: #999999;
+  /*padding-left: 3px;*/
+  font-family: å¹¼åœ†;
+  float: right;
+  margin-right: 5px;
+
+  /*åž‚ç›´å±…ä¸­å€’ä¸‰è§’*/
+  display: inline-block;
+  height: 100%;
+  line-height: 230%;
+  /*position: relative;
+  top: 50%;
+  transform: translateY(-50%);*/
+}
+
+#erui_user_register .reg_tel_fon_tel {
+  margin-top: -2px;
+}
+
+/*è®¾ç½®ç»Ÿä¸€çš„æ ·å¼*/
+#erui_user_register .user_box {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+#erui_user_register .user_info {
+  display: inline-block;
+  width: 30%;
+  text-align: right;
+  padding-right: 19px;
+}
+
+#erui_user_register .user_long,
+#erui_user_register .user_short {
+  width: 35%;
+  height: 30px;
+  box-sizing: border-box;
+  line-height: 20px;
+  border-radius: 2px;
+  outline-style: none;
+  padding-left: 22px;
+  border: 1px solid #e5e5e5;
+}
+
+#erui_user_register .user_short {
+  width: 23%;
+}
+
+/* *å· */
+#erui_user_register .user_register_required {
+  color: red;
+  font-size: 12px;
+}
+
+/* è”ç³»äººæ‰‹æœº */
+#erui_user_register .erui_contactsPhone_box .user_info {
+  margin-left: 0;
+}
+
+#erui_user_register .erui_contactsPhone_box .erui_contactsPhone {
+  width: 11%;
+  height: 30px;
+  box-sizing: border-box;
+  line-height: 27px;
+  border-radius: 2px;
+  display: inline-block;
+  border: 1px solid #e5e5e5;
+  margin-left: 1px;
+}
+
+#erui_user_register .erui_contactsPhone_box .erui_contactsPhone {
+  /*border-left-color: #9A9A9A;
+  border-top-color: #9A9A9A;*/
+}
+
+#erui_user_register .erui_contactsPhone_box .erui_contactsPhone_info {
+
+}
+
+#erui_user_register .erui_contactsPhone_box .erui_user_register_phoneNumber {
+  margin-left: -1px;
+}
+
+#erui_user_register .erui_country_box {
+  overflow: inherit;
+  height: 40px;
+}
+
+#erui_user_register .erui_country_box .country_user_short {
+  width: 73%;
+  height: 30px;
+  color: #999999;
+  box-sizing: border-box;
+  line-height: 20px;
+  text-indent: 10px;
+  margin-left: -3px;
+  display: inline-block;
+  outline-style: none;
+  border: none;
+}
+
+/* å›½å®¶ */
+#erui_user_register .erui_country_box #country {
+  margin-left: 25.5%;
+  margin-right: 11px;
+  margin-top: 8px;
+}
+
+#erui_user_register #countrys {
+  position: absolute;
+  z-index: 999;
+  /*width: 102%;*/
+  width: 82.27px;
+  box-sizing: border-box;
+  max-height: 200px;
+  overflow-x: hidden;
+  cursor: pointer;
+
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border: 1px solid #e5e5e5;
+  /*border: 1px solid red;*/
+
+  margin-bottom: 0px;
+  margin-top: -9px;
+  margin-left: -2px;
+
+  padding-left: 11px;
+  padding-right: 10px;
+
+  background-color: #FFFFFF;
+
+  /* jsæŽ§åˆ¶çš„æ ·å¼ - å¼€å§‹ */
+  display: none;
+  border-top: none;
+  /* jsæŽ§åˆ¶çš„æ ·å¼ - ç»“æŸ */
+}
+
+#erui_user_register #erui_register_country {
+  /*margin-left: 20px;*/
+  border: none;
+  padding-left:18px;
+  font:400 14px/16px "microsoft yahei", sans-serif;
+  color:#666;
+  /*fix */
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  -ms-appearance:none;
+}
+select::-ms-expand { display: none!important; }
+
+#erui_user_register .erui_protocol {
+  transform: translateX(0%);
+}
+
+#erui_user_register .erui_register_submit_box .register_submit {
+  width: 20%;
+  color: #9C7E71;
+  height: 38px;
+  margin-top: 20px;
+  text-align: center;
+  border-radius: 5px;
+  outline-style: none;
+  background-color: #F3F3F3;
+  border: 2px solid #ccc;
+  /*box-shadow: 0px 2px 0px #AAAAAA;*/
+  cursor: pointer;
+}
+
+#erui_user_register .erui_register_submit_box .hover_btn {
+  border-color: #2598EB;
+}
+
+#erui_user_register .erui_register_submit_box .register_submit[type=button]:hover {
+  color: #ffffff;
+  background-color: #325588;
+}
+
+/* æ³¨å†Œç•Œé¢çš„æç¤ºä¿¡æ¯ */
+#erui_user_register .reg_sign {
+  color: red;
+  width: 28%;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  text-align: left;
+  word-break: normal;
+  display: inline-block;
+  vertical-align: middle;
+  font-family: "microsoft yahei";
+  /*overflow: hidden;*/
+}
+
+#erui_user_register .reg_uname_sign {
+  line-height: 15px !important;
+}
+
+/* åœ†å‰ */
+#erui_user_register #reg_sign_symbol_box {
+  height: 100%;
+  float: left;
+  /*display: flex;
+  align-items: center;
+  justify-content: center;*/
+  margin-right: 2px;
+
+  /*å…¼å®¹IE*/
+  position: relative;
+  top: 50%;
+  margin-top: -6px;
+}
+
+#erui_user_register #reg_sign_symbol {
+  width: 12px;
+  height: 12px;
+  color: #ffffff;
+  line-height: 8px;
+  text-align: center;
+  font-size: 17px;
+  overflow: hidden;
+  font-family: "microsoft yahei";
+  border-radius: 50%;
+  display: inline-block;
+  background-color: red;
+}
+
+/* å¯†ç å¼ºåº¦ */
+.erui_pwd1_box .register_pwd1 {
+  color: #fff;
+  width: 50px;
+  height: 20px;
+  line-height: 20px;
+  margin-top: 4px;
+  text-align: center;
+  vertical-align: top;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "microsoft yahei";
+  background-color: #DCDCDC;
+}
+
+/*æç¤ºä¿¡æ¯*/
+.register_tip {
+  color: red;
+}
+
+#erui_user_register .erui_protocol label {
+  display: inline-block;
+  height: 18px;
+  line-height: 18px;
+}
+
+#erui_user_register .erui_protocol input {
+  vertical-align: baseline;
+}
+
+#erui_user_register .erui_protocol {
+  /*vertical-align: baseline;*/
+  height: 18px;
+  line-height: 18px;
+  /*width: 250px;*/
+  /*text-align: left;*/
+  margin: 0 auto;
+}
+
+/* å›½å®¶ä¸‹æ‹‰æ¡† */
+#input .erui_country_box .reg_country_box {
+  position: relative;
+  float: left;
+  width: 10%;
+  /*padding: 0;
+  min-height: 1px;*/
+}
+
+#input #country {
+  float: left;
+}
+
+/* å…¼å®¹ä½Žç‰ˆæœ¬IEçš„placeholder -å¼€å§‹ */
+#form_box #input .IE_placeholder {
+  width: 155px;
+  height: 30px;
+  line-height: 29px;
+  font-size: 14px;
+  font-family: "microsoft yahei";
+  /*padding-left: 20px;*/
+  box-shadow: none;
+  outline: none;
+  vertical-align: middle;
+  text-align: left;
+
+  color: #ccc;
+  position: relative;
+  left: -3%;
+  top: -40px;
+  font-style: normal;
+  display: inline-block;
+  z-index: -199;
+  border: none;
+}
+
+#form_box #input .erui_contactsPhone_box .IE_placeholder {
+  left: -21%;
+  top: -1px;
+  width: 80px;
+}
+
+#input .ph_input {
+  background-color: transparent;
+}
+
+/* å…¼å®¹ä½Žç‰ˆæœ¬IEçš„placeholder - ç»“æŸ */
+

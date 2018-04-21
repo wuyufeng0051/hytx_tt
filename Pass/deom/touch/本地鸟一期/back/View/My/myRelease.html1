@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>我的发布</title>
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/_head.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/slider.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+<div class="header fn-clear">
+		<div class="back"><a class="a" href="__MODULE__/Index/my"><i></i>返回</a></div>
+	<div class="share"></div>
+</div>
+<!-- 共同顶部 e-->
+<link rel="stylesheet" href="__PUBLIC__/Home/css/issue.css?v=1">
+<script src="__PUBLIC__/Home/js/jquery-1.8.3.min.js"></script>
+<!-- 提示标签 s-->
+<div class="tips">
+	<div class="tips_con">
+		<em>置顶</em>能让你的信息更靠前！
+	</div>
+</div>
+<!-- 提示标签 e-->
+<!-- 发布列表 s-->
+<div class="issue_list">
+	<foreach name="res" item="v">
+		<?php if($v['post_type'] == 12){ ?>
+		<div class="is_txt iss_txt dataval" data-ztype="{$v['post_ztype']}" data-table="{$v['post_table']}" data-id="{$v['post_id']}" data-edit="{$v['post_edit']}"><a href="__MODULE__/Dating/datingdetail/dating_id/{$v['post_id']}">
+			<div class="dating_detail fn-clear">
+				<div class="dat_pic"><img src="{$v['dating_imgs']}" alt=""></div>
+				<div class="dat_name">{$v['dating_nickname']}<em>{$v['dating_age']}岁</em><if condition="$v['dating_sex'] eq 0"><i class="women"></i><else/><i class="man"></i></if><span>{$v['post_date']|substr=2,8|str_replace='-','.',###}</span></div>
+				<div class="dat_kind">交友类型：{$v['dating_type']}</div>
+				<div class="dat_info">婚姻状况：{$v['dating_marrystate']}</div>
+				<div class="dat_info">居住地：{$v['dating_address']}</div>
+			</div>
+		</a>
+			<if condition="$v['post_is_top'] eq 1" >
+			<div class="is_footer fn-clear">
+				<div class="schedule">置顶时间：{$v['top_long']['top_ctime']|substr=2,8|str_replace='-','.',###}-{$v['top_long']['top_etime']|substr=2,8|str_replace='-','.',###}</div>
+				<div class="is_btn">
+					<ul>
+						<li class="is_bc edit_btn">编辑</li>
+						<li class="">已置顶</li>
+						<li class="is_bc delete_btn">删除</li>
+					</ul>
+				</div>
+			</div>
+				<else/>
+				<div class="is_footer fn-clear">
+					<div class="schedule"></div>
+					<div class="is_btn">
+						<ul>
+							<li class="is_bc edit_btn">编辑</li>
+							<li class="is_bc stick">置顶</li>
+							<li class="is_bc delete_btn">删除</li>
+						</ul>
+					</div>
+				</div>
+			</if>
+		</div>
+		<?php } ?>
+		<?php if($v['post_type'] == 11){ ?>
+		<if condition="$v['business_state'] eq 0" >
+		<div class="iss_txt dataval" data-ztype="{$v['post_ztype']}" data-table="{$v['post_table']}" data-id="{$v['post_id']}" data-edit="{$v['post_edit']}">
+			<div class="iss_detail fn-clear"><a href="__MODULE__/Business/shopdetail/business_id/{$v['post_id']}">
+				<div class="iss_pic lose_pic"><img src="{$v['business_shopimg']}" alt=""></div>
+				<h1>{$v['business_shopname']}</h1>
+				<p>营业时间：{$v['business_shopopen']}-{$v['business_shopclose']}</p>
+				<p><i></i>{$v['business_like']} 次</p>
+				<span>{$v['business_shopaddress']}</span>
+			</a></div>
+			<div class="is_footer fn-clear">
+				<div class="schedule"><i></i>待审核</div>
+				<div class="is_btn">
+					<ul>
+						<li>编辑</li>
+						<li>置顶</li>
+						<li>发起活动</li>
+						<li>删除</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		</if>
+		<if condition="$v['business_state'] eq 1" >
+			<div class="iss_txt dataval" data-ztype="{$v['post_ztype']}" data-table="{$v['post_table']}" data-id="{$v['post_id']}" data-edit="{$v['post_edit']}">
+				<div class="iss_detail fn-clear"><a href="__MODULE__/Business/shopdetail/business_id/{$v['post_id']}">
+					<div class="iss_pic"><img src="{$v['business_shopimg']}" alt=""></div>
+					<h1>{$v['business_shopname']}</h1>
+					<p>营业时间：{$v['business_shopopen']}-{$v['business_shopclose']}</p>
+					<p><i></i>{$v['business_like']} 次</p>
+					<span>{$v['business_shopaddress']}</span>
+				</a>
+					<div class="apply renew">提前续费</div>
+				</div>
+				<if condition="$v['post_is_top'] eq 0" >
+					<if condition="$v['business_is_activity'] eq 1" >
+						<div class="time"><em>活动时间：{$v['activity_long']['activity_start']|substr=2,8|str_replace='-','.',###}-{$v['activity_long']['activity_end']|substr=2,8|str_replace='-','.',###}</em></div>
+					</if>
+				<div class="is_footer fn-clear">
+					<div class="schedule"><i class="be_to"></i>即将失效</div>
+					<div class="is_btn">
+						<ul>
+							<li class="is_bc edit_btn">编辑</li>
+							<li class="is_bc stick">置顶</li>
+							<if condition="($v['activitystate'] eq 0) or ($v['activitystate'] eq 2)" >
+								<li class="is_bc"><a href="__MODULE__/Business/activity/business_id/{$v['post_id']}">发起活动</a></li>
+								<else/>
+								<li class="is_bc"><a href="__MODULE__/Business/editactivity/activity_id/{$v['activity_id']}">编辑活动</a></li>
+							</if>
+							<li class="is_bc delete_btn">删除</li>
+						</ul>
+					</div>
+				</div>
+					<else/>
+					<if condition="$v['business_is_activity'] eq 1" >
+						<div class="time"><em>置顶时间：{$v['top_long']['top_ctime']|substr=2,8|str_replace='-','.',###}-{$v['top_long']['top_etime']|substr=2,8|str_replace='-','.',###}</em><em>活动时间：{$v['activity_long']['activity_start']|substr=2,8|str_replace='-','.',###}-{$v['activity_long']['activity_end']|substr=2,8|str_replace='-','.',###}</em></div>
+					</if>
+					<if condition="$v['business_is_activity'] eq 0" >
+						<div class="time"><em>置顶时间：{$v['top_long']['top_ctime']|substr=2,8|str_replace='-','.',###}-{$v['top_long']['top_etime']|substr=2,8|str_replace='-','.',###}</em></div>
+					</if>
+					<div class="is_footer fn-clear">
+						<div class="schedule"><i class="be_to"></i>即将失效</div>
+						<div class="is_btn">
+							<ul>
+								<li class="is_bc edit_btn">编辑</li>
+								<li>已置顶</li>
+								<if condition="($v['activitystate'] eq 0) or ($v['activitystate'] eq 2)" >
+									<li class="is_bc"><a href="__MODULE__/Business/activity/business_id/{$v['post_id']}">发起活动</a></li>
+									<else/>
+									<li class="is_bc"><a href="__MODULE__/Business/editactivity/activity_id/{$v['activity_id']}">编辑活动</a></li>
+								</if>
+								<li class="is_bc delete_btn">删除</li>
+							</ul>
+						</div>
+					</div>
+				</if>
+			</div>
+		</if>
+		<if condition="$v['business_state'] eq 2" >
+			<div class="iss_txt dataval" data-ztype="{$v['post_ztype']}" data-table="{$v['post_table']}" data-id="{$v['post_id']}" data-edit="{$v['post_edit']}">
+				<div class="iss_detail fn-clear"><a href="__MODULE__/Business/shopdetail/business_id/{$v['post_id']}">
+				<div class="iss_pic lose_pic"><img src="{$v['business_shopimg']}" alt=""></div>
+				<h1>{$v['business_shopname']}</h1>
+				<p>营业时间：{$v['business_shopopen']}-{$v['business_shopclose']}</p>
+				<p><i></i>{$v['business_like']} 次</p>
+				<span>{$v['business_shopaddress']}</span>
+			</a>
+				<div class="apply dredge">申请开通</div>
+			</div>
+				<div class="is_footer fn-clear">
+					<div class="schedule"><i class="lose"></i>已失效</div>
+					<div class="is_btn">
+						<ul>
+							<li>编辑</li>
+							<li class="">置顶</li>
+							<li>发起活动</li>
+							<li class="is_bc delete_btn">删除</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</if>
+		<if condition="$v['business_state'] eq 3" >
+		<div class="iss_txt normal dataval" data-ztype="{$v['post_ztype']}" data-table="{$v['post_table']}" data-id="{$v['post_id']}" data-edit="{$v['post_edit']}">
+			<div class="iss_detail fn-clear"><a href="__MODULE__/Business/shopdetail/business_id/{$v['post_id']}">
+				<div class="iss_pic"><img src="{$v['business_shopimg']}" alt=""></div>
+				<h1>{$v['business_shopname']}</h1>
+				<p>营业时间：{$v['business_shopopen']}-{$v['business_shopclose']}</p>
+				<p><i></i>{$v['business_like']} 次</p>
+				<span>{$v['business_shopaddress']}</span>
+			</a>
+			</div>
+			<if condition="$v['post_is_top'] eq 0" >
+				<if condition="$v['business_is_activity'] eq 1" >
+				<div class="time"><em>活动时间：{$v['activity_long']['activity_start']|substr=2,8|str_replace='-','.',###}-{$v['activity_long']['activity_end']|substr=2,8|str_replace='-','.',###}</em></div>
+				</if>
+			<div class="is_footer fn-clear">
+				<div class="schedule"><i class="ing"></i>正常运营</div>
+				<div class="is_btn">
+					<ul>
+						<li class="is_bc edit_btn">编辑</li>
+						<li class="is_bc stick">置顶</li>
+						<if condition="($v['activitystate'] eq 0) or ($v['activitystate'] eq 2)" >
+							<li class="is_bc"><a href="__MODULE__/Business/activity/business_id/{$v['post_id']}">发起活动</a></li>
+							<else/>
+							<li class="is_bc"><a href="__MODULE__/Business/editactivity/activity_id/{$v['activity_id']}">编辑活动</a></li>
+						</if>
+						<li class="is_bc delete_btn">删除</li>
+					</ul>
+				</div>
+			</div>
+				<else/>
+				<if condition="$v['business_is_activity'] eq 1" >
+				<div class="time"><em>置顶时间：{$v['top_long']['top_ctime']|substr=2,8|str_replace='-','.',###}-{$v['top_long']['top_etime']|substr=2,8|str_replace='-','.',###}</em><em>活动时间：{$v['activity_long']['activity_start']|substr=2,8|str_replace='-','.',###}-{$v['activity_long']['activity_end']|substr=2,8|str_replace='-','.',###}</em></div>
+				</if>
+				<if condition="$v['business_is_activity'] eq 0" >
+					<div class="time"><em>置顶时间：{$v['top_long']['top_ctime']|substr=2,8|str_replace='-','.',###}-{$v['top_long']['top_etime']|substr=2,8|str_replace='-','.',###}</em></div>
+				</if>
+				<div class="is_footer fn-clear">
+					<div class="schedule"><i class="ing"></i>正常运营</div>
+					<div class="is_btn">
+						<ul>
+							<li class="is_bc edit_btn">编辑</li>
+							<li>已置顶</li>
+							<if condition="($v['activitystate'] eq 0) or ($v['activitystate'] eq 2)" >
+							<li class="is_bc"><a href="__MODULE__/Business/activity/business_id/{$v['post_id']}">发起活动</a></li>
+								<else/>
+								<li class="is_bc"><a href="__MODULE__/Business/editactivity/activity_id/{$v['activity_id']}">编辑活动</a></li>
+							</if>
+							<li class="is_bc delete_btn">删除</li>
+						</ul>
+					</div>
+				</div>
+			</if>
+		</div>
+		</if>
+		<?php } ?>
+		<?php if($v['post_type'] == 10){ ?>
+		<div class="iss_txt car_is dataval" data-ztype="{$v['post_ztype']}" data-table="{$v['post_table']}" data-id="{$v['post_id']}" data-edit="{$v['post_edit']}">
+			<if condition="$v['carinfo_state'] eq 0" >
+				<div class="mer_detail fn-clear lose_pic"><a href="__MODULE__/CityFreight/carinfodetail/carinfo_id/{$v['post_id']}">
+					<div class="mer_pic lose_pic"><img src="{$v['carinfo_img']}" alt=""></div>
+					<h1>{$v['carinfo_title']}</h1>
+					<p>浏览：<em>{$v['carinfo_browse']}</em> 次</p>
+					<span>{$v['carinfo_cartype']}</span>
+				</a>
+				</div>
+				<div class="is_footer fn-clear">
+					<div class="schedule"><i></i>待审核</div>
+					<div class="is_btn">
+						<ul>
+							<li>编辑</li>
+							<li class="">置顶</li>
+							<li>删除</li>
+						</ul>
+					</div>
+				</div>
+			</if>
+			<if condition="$v['carinfo_state'] eq 1" >
+				<div class="mer_detail fn-clear"><a href="__MODULE__/CityFreight/carinfodetail/carinfo_id/{$v['post_id']}">
+					<div class="mer_pic"><img src="{$v['carinfo_img']}" alt=""></div>
+					<h1>{$v['carinfo_title']}</h1>
+					<p>浏览：<em>{$v['carinfo_browse']}</em> 次</p>
+					<span>{$v['carinfo_cartype']}</span>
+				</a>
+					<div class="apply renew">提前续费</div>
+				</div>
+				<if condition="$v['post_is_top'] eq 0" >
+				<div class="is_footer fn-clear">
+					<div class="schedule"><i class="be_to"></i>即将失效</div>
+					<div class="is_btn">
+						<ul>
+							<li class="is_bc edit_btn">编辑</li>
+							<li class="is_bc stick">置顶</li>
+							<li class="is_bc delete_btn">删除</li>
+						</ul>
+					</div>
+				</div>
+					<else/>
+					<div class="time"><em>置顶时间：{$v['top_long']['top_ctime']|substr=2,8|str_replace='-','.',###}-{$v['top_long']['top_etime']|substr=2,8|str_replace='-','.',###}</em></div>
+					<div class="is_footer fn-clear">
+						<div class="schedule"><i class="be_to"></i>即将失效</div>
+						<div class="is_btn">
+							<ul>
+								<li class="is_bc edit_btn">编辑</li>
+								<li class="">已置顶</li>
+								<li class="is_bc delete_btn">删除</li>
+							</ul>
+						</div>
+					</div>
+				</if>
+			</if>
+			<if condition="$v['carinfo_state'] eq 2" >
+				<div class="mer_detail fn-clear lose_pic"><a href="__MODULE__/CityFreight/carinfodetail/carinfo_id/{$v['post_id']}">
+					<div class="mer_pic lose_pic"><img src="{$v['carinfo_img']}" alt=""></div>
+					<h1>{$v['carinfo_title']}</h1>
+					<p>浏览：<em>{$v['carinfo_browse']}</em> 次</p>
+					<span>{$v['carinfo_cartype']}</span>
+				</a>
+					<div class="apply dredge">申请开通</div>
+				</div>
+				<div class="is_footer fn-clear">
+					<div class="schedule"><i class="lose"></i>已失效</div>
+					<div class="is_btn">
+						<ul>
+							<li>编辑</li>
+							<li class="">置顶</li>
+							<li class="is_bc delete_btn">删除</li>
+						</ul>
+					</div>
+				</div>
+			</if>
+			<if condition="$v['carinfo_state'] eq 3" >
+				<div class="mer_detail fn-clear"><a href="__MODULE__/CityFreight/carinfodetail/carinfo_id/{$v['post_id']}">
+					<div class="mer_pic"><img src="{$v['carinfo_img']}" alt=""></div>
+					<h1>{$v['carinfo_title']}</h1>
+					<p>浏览：<em>{$v['carinfo_browse']}</em> 次</p>
+					<span>{$v['carinfo_cartype']}</span>
+				</a>
+				</div>
+				<if condition="$v['post_is_top'] eq 0" >
+				<div class="is_footer fn-clear">
+					<div class="schedule"><i class="ing"></i>正常运营</div>
+					<div class="is_btn">
+						<ul>
+							<li class="is_bc edit_btn">编辑</li>
+							<li class="is_bc stick">置顶</li>
+							<li class="is_bc delete_btn">删除</li>
+						</ul>
+					</div>
+				</div>
+					<else/>
+					<div class="time"><em>置顶时间：{$v['top_long']['top_ctime']|substr=2,8|str_replace='-','.',###}-{$v['top_long']['top_etime']|substr=2,8|str_replace='-','.',###}</em></div>
+					<div class="is_footer fn-clear">
+						<div class="schedule"><i class="ing"></i>正常运营</div>
+						<div class="is_btn">
+							<ul>
+								<li class="is_bc edit_btn">编辑</li>
+								<li class="">已置顶</li>
+								<li class="is_bc delete_btn">删除</li>
+							</ul>
+						</div>
+					</div>
+				</if>
+			</if>
+		</div>
+		<?php } ?>
+	<?php if($v['post_type'] == 9){ ?>
+	<?php if($v['shunlu_state'] == 0 && $v['shunlu_type']==1){ ?>
+	<div class="is_txt iss_txt car_is lose_pic dataval" data-ztype="{$v['post_ztype']}" data-table="{$v['post_table']}" data-id="{$v['post_id']}" data-edit="{$v['post_edit']}">
+		<div class="car_detail fn-clear"> <a href="__MODULE__/CityFreight/shunludetail/shunlu_id/{$v['post_id']}">
+			<div class="car_pic "><img src="{$v['shunlu_img']}" alt=""></div>
+			<div class="cd_title"><i class="time"></i>{$v['shunlu_starttime']} <?php if($v['shunlu_contactsex'] == '男'){ ?><i class="man"></i> <?php }else{ ?><i class="women"></i> <?php } ?><span>{$v['shunlu_cartype']}</span></div>
+			<ul>
+				<li><em class="start">起</em>{$v['shunlu_startplace']}</li>
+				<li><em class="end">终</em>{$v['shunlu_endplace']}</li>
+			</ul>
+		</a></div>
+		<div class="is_footer fn-clear">
+			<div class="schedule"><i class="lose"></i>已失效</div>
+			<div class="is_btn">
+				<ul>
+					<li>编辑</li>
+					<li class="is_bc delete_btn">删除</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<?php }else{ ?>
+	<div class="is_txt iss_txt car_is dataval" data-ztype="{$v['post_ztype']}" data-table="{$v['post_table']}" data-id="{$v['post_id']}" data-edit="{$v['post_edit']}">
+		<div class="car_detail fn-clear"> <a href="__MODULE__/CityFreight/shunludetail/shunlu_id/{$v['post_id']}">
+			<div class="car_pic"><img src="{$v['shunlu_img']}" alt=""></div>
+			<div class="cd_title"><i class="time"></i>{$v['shunlu_starttime']} <?php if($v['shunlu_contactsex'] == '男'){ ?><i class="man"></i> <?php }else{ ?><i class="women"></i> <?php } ?> <span>{$v['shunlu_cartype']}</span></div>
+			<ul>
+				<li><em class="start">起</em>{$v['shunlu_startplace']}</li>
+				<li><em class="end">终</em>{$v['shunlu_endplace']}</li>
+			</ul>
+		</a></div>
+		<div class="is_footer fn-clear">
+			<div class="schedule"><i class="ing"></i>正在等待</div>
+			<div class="is_btn">
+				<ul>
+					<li class="is_bc edit_btn">编辑</li>
+					<li class="is_bc delete_btn">删除</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<?php } ?>
+	<?php } ?>
+	<?php if($v['post_type'] == 2){ ?>
+		<div class="job_jl fn-clear dataval" data-ztype="{$v['post_ztype']}" data-table="{$v['post_table']}" data-id="{$v['post_id']}" data-edit="{$v['post_edit']}">
+			<div class="job_jldetail fn-clear">
+				<a href="{$v['post_link']}">
+				<div class="job_lpic"><img src="{$v['imgs_smallpath']}" alt=""></div>
+				<div class="job_title">{$v['post_title']} {$v['resume_birthday']}岁 <?php if($v['resume_sex'] == 1){ ?><i class="man"></i> <?php }else{ ?><i class="women"></i> <?php } ?></div>
+				<p>期望职位：{$v['resume_position']}</p>
+				<p>{$v['resume_education']}　{$v['resume_exp']}</p>
+				</a>
+			</div>
+			<div class="is_footer fn-clear">
+				<?php if($v['post_is_top'] == 1){ ?>
+				<div class="schedule">置顶时间：{$v['top_long']['top_ctime']|substr=2,8|str_replace='-','.',###}-{$v['top_long']['top_etime']|substr=2,8|str_replace='-','.',###}</div>
+				<?php } ?>
+				<div class="is_btn">
+					<ul>
+						<li class="is_bc edit_btn">编辑</li>
+						<?php if($v['post_is_top'] == 0){ ?>
+						<li class="is_bc stick">置顶</li>
+						<?php }else{ ?>
+						<li class="">已置顶</li>
+						<?php } ?>
+						<li class="is_bc delete_btn">删除</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	<?php } ?>
+		<?php if($v['post_type'] == 5){ ?>
+		<div class="house dataval" data-ztype="{$v['post_ztype']}" data-table="{$v['post_table']}" data-id="{$v['post_id']}" data-edit="{$v['post_edit']}">
+			<a href="{$v['post_link']}">
+			<div class="house_detail fn-clear">
+				<div class="house_lpic"><img src="{$v['imgs_smallpath']}" alt=""></div>
+				<div class="house_title">{$v['post_title']}</div>
+				<?php if($v['post_ztype'] == 6){ ?>
+				<div class="house_infor fn-clear"><span>{$v['lease_room']} {$v['lease_config']}</span><em>{$v['post_price']}</em></div>
+				<?php } ?>
+				<?php if($v['post_ztype'] == 7){ ?>
+				<div class="house_infor fn-clear"><i>{$v['post_price']}</i><span>{$v['lease_class']}</span><em>{$v['post_type_name']}</em></div>
+				<?php } ?>
+				<?php if($v['post_ztype'] == 8){ ?>
+				<div class="house_infor fn-clear"><i>{$v['post_price']}</i><span>{$v['lease_class']}</span></div>
+				<?php } ?>
+				<div class="house_local fn-clear"><span>{$v['lease_address']}</span></div>
+			</div>
+			</a>
+			<div class="is_footer fn-clear">
+				<?php if($v['post_is_top'] == 1){ ?>
+				<div class="schedule">置顶时间：{$v['top_long']['top_ctime']|substr=2,8|str_replace='-','.',###}-{$v['top_long']['top_etime']|substr=2,8|str_replace='-','.',###}</div>
+				<?php } ?>
+				<div class="is_btn">
+					<ul>
+						<li class="is_bc edit_btn">编辑</li>
+						<?php if($v['post_is_top'] == 0){ ?>
+						<li class="is_bc stick">置顶</li>
+						<?php }else{ ?>
+						<li class="">已置顶</li>
+						<?php } ?>
+						<li class="is_bc delete_btn">删除</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		<?php if($v['post_type'] == 3||$v['post_type'] == 4){ ?>
+		<div class="house dataval" data-ztype="{$v['post_ztype']}" data-table="{$v['post_table']}" data-id="{$v['post_id']}" data-edit="{$v['post_edit']}">
+			<a href="{$v['post_link']}">
+			<div class="house_detail fn-clear">
+				<div class="house_lpic"><img src="{$v['imgs_smallpath']}" alt=""></div>
+				<div class="house_title">{$v['post_title']}</div>
+				<?php if($v['post_ztype'] == 3){ ?>
+				<div class="house_infor fn-clear"><span>{$v['sellhouse_type']} {$v['sellhouse_acreage']}m<sup>2</sup></span><em>{$v['post_price']}</em></div>
+				<?php } ?>
+				<?php if($v['post_ztype'] == 4){ ?>
+				<div class="house_infor fn-clear"><i>{$v['post_price']}</i><span>{$v['sell_other_acreage']}m<sup>2</sup>　{$v['sell_other_class']}</span></div>
+				<?php } ?>
+				<?php if($v['post_ztype'] == 5){ ?>
+				<div class="house_infor fn-clear"><i>{$v['post_price']}</i><span>{$v['sell_other_class']}</span></div>
+				<?php } ?>
+				<div class="house_local fn-clear"><span>{$v['post_addr']}</span></div>
+			</div>
+			</a>
+			<div class="is_footer fn-clear">
+				<?php if($v['post_is_top'] == 1){ ?>
+				<div class="schedule">置顶时间：{$v['top_long']['top_ctime']|substr=2,8|str_replace='-','.',###}-{$v['top_long']['top_etime']|substr=2,8|str_replace='-','.',###}</div>
+				<?php } ?>
+				<div class="is_btn">
+					<ul>
+						<li class="is_bc edit_btn">编辑</li>
+						<?php if($v['post_is_top'] == 0){ ?>
+						<li class="is_bc stick">置顶</li>
+						<?php }else{ ?>
+						<li class="">已置顶</li>
+						<?php } ?>
+						<li class="is_bc delete_btn">删除</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		<?php if($v['post_type'] == 0||$v['post_type'] == 1){ ?>
+		<div class="job_detail dataval" style="padding-top: .2rem" data-ztype="{$v['post_ztype']}" data-table="{$v['post_table']}" data-id="{$v['post_id']}" data-edit="{$v['post_edit']}">
+			<a href="{$v['post_link']}">
+			<h1>{$v['post_title']}</h1>
+			</a>
+			<?php if($v['post_ztype'] == 0){ ?>
+			<a href="{$v['post_link']}">
+				<div class="jib_money">{$v['post_price']}<em>{$v['post_position']}</em></div></a>
+			<a href="{$v['post_link']}"><div class="job_type fn-clear">
+				<ul>
+					<volist id="o" name="v.recruit_welfares">
+					<li>{$o}</li>
+					</volist>
+				</ul>
+			</div></a>
+			<a href="{$v['post_link']}"><div class="company fn-clear">
+				<div class="place">{$v['post_address']}</div>
+				<div class="home">{$v['recruit_region']}</div>
+			</div></a>
+			<?php } ?>
+			<?php if($v['post_ztype'] == 1){ ?>
+			<a href="{$v['post_link']}"><div class="jib_money duan fn-clear"><i>{$v['post_price']}</i><ul><li class="green">{$v['part_time_job_term']}</li><li class="blue">{$v['part_time_job_settlement']}</li></ul><div class="job_position">{$v['post_position']}</div></div></a>
+			<a href="{$v['post_link']}"><div class="com_1">
+				<div class="home">{$v['post_address']}</div>
+			</div></a>
+			<?php } ?>
+			<div class="is_footer fn-clear">
+				<?php if($v['post_is_top'] == 1){ ?>
+				<div class="schedule">置顶时间：{$v['top_long']['top_ctime']|substr=2,8|str_replace='-','.',###}-{$v['top_long']['top_etime']|substr=2,8|str_replace='-','.',###}</div>
+				<?php } ?>
+				<div class="is_btn">
+					<ul>
+						<li class="is_bc edit_btn">编辑</li>
+						<?php if($v['post_is_top'] == 0){ ?>
+						<li class="is_bc stick">置顶</li>
+						<?php }else{ ?>
+						<li class="">已置顶</li>
+						<?php } ?>
+						<li class="is_bc delete_btn">删除</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		<?php if($v['post_type'] == 7){ ?>
+		<div class="second dataval" data-ztype="{$v['post_ztype']}" data-table="{$v['post_table']}" data-id="{$v['post_id']}" data-edit="{$v['post_edit']}">
+			<a href="{$v['post_link']}">
+			<div class="se_detail fn-clear">
+				<div class="se_lpic"><img src="{$v['imgs_smallpath']}" alt=""></div>
+				<div class="se_title">{$v['post_title']}</div>
+				<div class="se_price fn-clear"><span>{$v['post_price']}</span><em>{$v['usedcar_source']}</em></div>
+				<div class="se_new fn-clear"><span>{$v['usedcar_age']}</span></div>
+			</div>
+			</a>
+			<div class="is_footer fn-clear">
+				<?php if($v['post_is_top'] == 1){ ?>
+				<div class="schedule">置顶时间：{$v['top_long']['top_ctime']|substr=2,8|str_replace='-','.',###}-{$v['top_long']['top_etime']|substr=2,8|str_replace='-','.',###}</div>
+				<?php } ?>
+				<div class="is_btn">
+					<ul>
+						<li class="is_bc edit_btn">编辑</li>
+						<?php if($v['post_is_top'] == 0){ ?>
+						<li class="is_bc stick">置顶</li>
+						<?php }else{ ?>
+						<li class="">已置顶</li>
+						<?php } ?>
+						<li class="is_bc delete_btn">删除</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		<?php if($v['post_type'] == 6){ ?>
+		<div class="second dataval wanted" data-ztype="{$v['post_ztype']}" data-table="{$v['post_table']}" data-id="{$v['post_id']}" data-edit="{$v['post_edit']}">
+			<a href="{$v['post_link']}">
+			<div class="se_detail fn-clear">
+				<div class="se_lpic"><img src="{$v['imgs_smallpath']}" alt=""></div>
+				<div class="se_title">{$v['post_title']}</div>
+				<div class="wanted_tips"><em class={$v['post_type_name']=='求购'?"buy":"rent"}>{$v['post_type_name']}</em></div>
+				<div class="wanted_infor fn-clear"><span>{$v['post_price']}</span><em>{$v['wanted_class']}</em><i>{$v['post_date']|substr=2,8}</i></div>
+			</div>
+			</a>
+			<div class="is_footer fn-clear">
+				<?php if($v['post_is_top'] == 1){ ?>
+				<div class="schedule">置顶时间：{$v['top_long']['top_ctime']|substr=2,8|str_replace='-','.',###}-{$v['top_long']['top_etime']|substr=2,8|str_replace='-','.',###}</div>
+				<?php } ?>
+				<div class="is_btn">
+					<ul>
+						<li class="is_bc edit_btn">编辑</li>
+						<?php if($v['post_is_top'] == 0){ ?>
+						<li class="is_bc stick">置顶</li>
+						<?php }else{ ?>
+						<li class="">已置顶</li>
+						<?php } ?>
+						<li class="is_bc delete_btn">删除</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		<?php if($v['post_type'] == 8){ ?>
+		<div class="second dataval" style="padding-top: 0!important" data-ztype="{$v['post_ztype']}" data-table="{$v['post_table']}" data-id="{$v['post_id']}" data-edit="{$v['post_edit']}">
+			<a href="{$v['post_link']}">
+			<div class="se_detail fn-clear">
+				<div class="se_title second_want_title fn-clear"><span>{$v['post_title']}</span><em>个人</em></div>
+				<div class="se_price fn-clear"><span>{$v['post_price']}</span></div>
+			</div>
+			</a>
+			<div class="is_footer fn-clear">
+				<?php if($v['post_is_top'] == 1){ ?>
+				<div class="schedule">置顶时间：{$v['top_long']['top_ctime']|substr=2,8|str_replace='-','.',###}-{$v['top_long']['top_etime']|substr=2,8|str_replace='-','.',###}</div>
+				<?php } ?>
+				<div class="is_btn">
+					<ul>
+						<li class="is_bc edit_btn">编辑</li>
+						<?php if($v['post_is_top'] == 0){ ?>
+						<li class="is_bc stick">置顶</li>
+						<?php }else{ ?>
+						<li class="">已置顶</li>
+						<?php } ?>
+						<li class="is_bc delete_btn">删除</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+	</foreach>
+</div>
+<!-- 发布列表 e-->
+<!-- 遮罩层 s -->
+<div class="disk"></div>
+<!-- 遮罩层 e -->
+<!-- 提前续费弹出层 s -->
+<div class="renew_box">
+	<h1><i></i>选择续费套餐</h1>
+	<ul>
+		<foreach name="renew" item="val" key="key">
+			<li data-id="{$val['zppackage_id']}" class={$key==0?'re_check':''}><p><i></i>{$val['zppackage_name']}</p><span>(备注:{$val['zppackage_remark']}）</span></li>
+		</foreach>
+	</ul>
+	<div class="agreement"><i></i>我已阅读并接受<a href="__MODULE__/Index/userAgreement">《商家入驻条款》</a></div>
+	<div class="btn_box fn-clear">
+		<span id="renew">立即续费</span>
+		<span class="cancel">取消</span>
+	</div>
+</div>
+<!-- 提前续费弹出层 e -->
+<form id='buyorderform2' method="post" action="__MODULE__/Wxpay/addorder">
+	<input type="hidden" id="package_id" name="id" >
+	<input type="hidden" id="goods_id" name="goods_ids" >
+	<input type="hidden" id="table_name" name="table_name" >
+	<input type="hidden" id="ordercate" name="order_cate" value="4">
+</form>
+<!-- 置顶套餐弹出层 s -->
+<div class="stick_box">
+	<h1>选择购买置顶套餐</h1>
+	<ul  id="list1">
+		<li class="stick_bc">半年/300元</li>
+		<li>一年/360元</li>
+	</ul>
+	<div class="btn_box fn-clear">
+		<span id="buy">立即购买</span>
+		<span class="cancel">取消</span>
+	</div>
+</div>
+<!-- 置顶套餐弹出层 e -->
+<!-- 申请开通弹出层 s -->
+<div class="dredge_box">
+	<div class="b_box">
+		<div class="pay wei_pay">
+			<h1><i></i>选择入驻套餐（微信支付）</h1>
+			<ul id="list2">
+				<li data-id="317" class="re_check"><p><i></i>一年 费用60元</p><span>(备注:原价120元/年，活动期间原价打5.5折）</span></li>
+				<li data-id="318" class=""><p><i></i>两年 费用0.01元</p><span>(备注:原价240元/年，活动期间原价打4折）</span></li>
+			</ul>
+		</div>
+	</div>
+	<div class="pay cash_pay">
+		<h1><i></i>选择入驻套餐（现金支付）</h1>
+		<ul id="list3">
+			<li data-id="312" data-type="cash"><p><i></i>一年 费用198元</p><span>(备注:原价360元/年，活动期间原价打5.5折）</span></li>
+			<li data-id="313" data-type="cash"><p><i></i>两年 费用299元</p><span>(备注:原价720元/年，活动期间原价打4折）</span></li>
+		</ul>
+	</div>
+	<div class="btn_box fn-clear">
+		<span id="apply">立即购买</span>
+		<span class="cancel">取消</span>
+	</div>
+	<form id='buyorderform3' method="post" action="__MODULE__/Wxpay/addorder">
+		<input type="hidden" id="package_id" name="id" >
+		<input type="hidden" id="goods_id" name="goods_ids" >
+		<input type="hidden" id="table_name" name="table_name" >
+		<input type="hidden" id="ordercate" name="order_cate" value="5">
+	</form>
+	<form id='buyorderform' method="post" action="__MODULE__/Wxpay/addorder">
+		<input type="hidden" id="buyorderid" name="id" >
+		<input type="hidden" id="table_names" name="table_name" >
+		<input type="hidden" id="goods_ids" name="goods_ids" >
+		<input type="hidden" id="order_cate" name="order_cate" value="1">
+	</form>
+</div>
+<!-- 申请开通弹出层 e -->
+<!-- 续费成功弹出层 s -->
+<div class="succeed_box renew_success">
+	<h1>续费成功</h1>
+	<h2>您可以在<em>个人中心-我的发布</em>进行管理</h2>
+	<p><span>确定</span></p>
+</div>
+<!-- 续费成功弹出层 e -->
+<div class="cheng_success">
+	<h1>申请已提交成功</h1>
+	<h3>工作人员将在3个工作日内完成审核</h3>
+	<h2>您可以在<em>个人中心-我的发布</em>查看审核结果</h2>
+	<p><a href="javascript:;"><span>确定</span></a></p>
+</div>
+<div class="delete">
+	<h1>提示：</h1>
+	<h2>是否删除？</h2>
+	<div class="de_foot"><div class="de_btn"><span class="sure">确定</span><span class="cancel">取消</span></div></div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/Home/js/issue.js"></script>
+<script>
+	// 删除
+	$('.delete_btn').click(function(){
+	var x = $(this),
+	post_ztype = x.closest('.dataval').data('ztype'),
+	post_table = x.closest('.dataval').data('table'),
+	post_id = x.closest('.dataval').data('id');
+	$('.delete').show();
+	$('.disk').show();
+	$('.delete .sure').click(function(){
+	$.post("__MODULE__/My/myPostDelete",{post_ztype:post_ztype,post_table:post_table,post_id:post_id},function(data) {
+		if (data.status == "1") {
+		//提交成功弹出层
+		x.closest('.iss_txt').fadeOut(300);
+		x.closest('.job_detail').fadeOut(300);
+		x.closest('.job_jl').fadeOut(300);
+		x.closest('.house').fadeOut(300);
+		x.closest('.second').fadeOut(300);
+		$('.delete').hide();
+		$('.disk').hide();
+		}else{
+		//window.location.reload();
+		}
+	})
+	})
+	})
+    //编辑
+    $('.edit_btn').click(function(){
+        var x = $(this),
+            post_edit = x.closest('.dataval').data('edit');
+        window.location.href=""+post_edit+"";
+    })
+    // 选择置顶套餐
+    $('.stick').click(function(){
+        var x = $(this);
+        //var current_num = $(".stick").index(this);
+        var goods_id  = x.closest('.dataval').data('id');
+        $("#buyorderform #goods_ids").val(goods_id);
+        var table_name = x.closest('.dataval').data('table');
+        $("#buyorderform #table_names").val(table_name);
+        var ztype=x.closest('.dataval').data('ztype');
+        $.post('{:U("Home/My/myPostTop")}', {goods_id:goods_id,table_name:table_name,ztype:ztype}, function(data) {
+            if (data == 1) {
+                popbuy(x.closest('.dataval').data('ztype'))
+            }else if (data == 2) {
+                window.location.reload();
+            }else{
+                x.text('置顶失败')
+            }
+        });
+    })
+    // 选择续费套餐
+    $('.renew').click(function(){
+        var x = $(this);
+        var ztype=x.closest('.dataval').data('ztype');
+        $.post( "__MODULE__/My/mytaBuy", {param: ztype},function( data ) {
+            if (data.status == "1") {
+                $('#list2 li').remove();
+                var str_kk = '';
+                var str_kku = '';
+                for (var param_k in param_arr) {
+                    str_kk = param_arr[param_k]['zppackage_name'];
+                    str_kku = param_arr[param_k]['zppackage_remark'];
+                    str_kki = param_arr[param_k]['zppackage_id'];
+                    if (param_k == 0) {
+                        $('#list2').append("<li data-id='"+str_kki+"' class='re_check'><p><i></i>"+str_kk+"</p><span>(备注:"+str_kku+"）</span></li>");
+                    } else {
+                        $('#list2').append("<li data-id='"+str_kki+"'><p><i></i>"+str_kk+"</p><span>(备注:"+str_kku+"）</span></li>");
+                    }
+                }
+                if (($('#list2 li').length)) {
+                    $('.renew_box').slideDown(300);
+                    $('.disk,.renew_box').show();
+                }
+            }
+        });
+    })
+    // 申请开通弹出层
+    $('.dredge').click(function(){
+        var x = $(this);
+        var ztype=x.closest('.dataval').data('ztype');
+        $.post( "__MODULE__/My/mytaBuy", {param: ztype},function( data ) {
+            if (data.status == "1") {
+                  $('#list2 li').remove();
+                  var param_arr=data.data.weixin;
+                for (var param_k in param_arr) {
+                    str_kk = param_arr[param_k]['zppackage_name'];
+                    str_kku = param_arr[param_k]['zppackage_remark'];
+                    str_kki = param_arr[param_k]['zppackage_id'];
+                    if (param_k == 0) {
+                        $('#list2').append("<li data-id='"+str_kki+"' class='re_check'><p><i></i>"+str_kk+"</p><span>(备注:"+str_kku+"）</span></li>");
+                    } else {
+                        $('#list2').append("<li data-id='"+str_kki+"'><p><i></i>"+str_kk+"</p><span>(备注:"+str_kku+"）</span></li>");
+                    }
+                }
+                $('#list3 li').remove();
+                var cash_arr=data.data.cash;
+                for (var cash_k in cash_arr) {
+                    str_kk = cash_arr[cash_k]['zppackage_name'];
+                    str_kku = cash_arr[cash_k]['zppackage_remark'];
+                    str_kki = cash_arr[cash_k]['zppackage_id'];
+                    if (cash_k == 0) {
+                        $('#list3').append("<li data-id='"+str_kki+"' class='re_check'><p><i></i>"+str_kk+"</p><span>(备注:"+str_kku+"）</span></li>");
+                    } else {
+                        $('#list3').append("<li data-id='"+str_kki+"'><p><i></i>"+str_kk+"</p><span>(备注:"+str_kku+"）</span></li>");
+                    }
+                }
+                if (($('#list2 li').length)&&($('#list3 li').length)){
+                    $('.dredge_box').slideDown(300);
+                    $('.disk,.dredge_box').show();
+                }
+            }
+        });
+    })
+    function popbuy(param) {
+        //alert(param);
+        $.post( "__MODULE__/My/myTopBuy.html", {param: param}).done(function( data ) {
+            var param_arr = JSON.parse(data);
+            $('#list1 li').remove();
+            var str_kk = '';
+            var str_kku = '';
+            for (var param_k in param_arr) {
+                str_kk = param_arr[param_k]['zppackage_money'];
+                str_kku = param_arr[param_k]['zppackage_res'];
+                str_kki = param_arr[param_k]['zppackage_id'];
+                if(param_k==0){
+                    $('#list1').append("<li id='" + str_kki + "' class='stick_bc'>" + str_kku + "天/" + str_kk + "元</li>");
+				}else{
+                    $('#list1').append("<li id='" + str_kki + "'>" + str_kku + "天/" + str_kk + "元</li>");
+				}
+            }
+            $('#list1 li').on('click', function() {
+                $('#list1 li').not($(this)).removeClass('stick_bc');
+                $(this).addClass('stick_bc');
+            });
+            if($('#list1 li').length){
+                $('.stick_box').slideDown(300);
+                $('.disk,.stick_box').show();
+			}
+        }, "json");
+    }
+    $('#buy').on('click', function() {
+		var zid = $('#list1 .stick_bc').attr('id');
+		$('#buyorderid').val(zid);
+		$('#buyorderform').submit();
+    });
+    $('#renew').on('click', function() {
+        var zid = $('.renew_box .re_check').data('id');
+        $('#package_id').val(zid);
+        $('.renew_box').hide();
+        $('.disk').hide();
+        $.ajax({
+            type: 'POST',
+            data: $('#buyorderform2').serialize(),
+            url: '__MODULE__/Wxpay/addorder',
+            success: function (data) {
+                if (data.status == 1) {
+                    //调用微信JS api 支付
+                    function jsApiCall() {
+                        WeixinJSBridge.invoke(
+                            'getBrandWCPayRequest',
+                            $.parseJSON(data.data),
+                            function (res) {
+                                WeixinJSBridge.log(res.err_msg);
+                                if (res.err_msg == 'get_brand_wcpay_request:cancel') {
+                                    // alert("您已取消了此次支付");
+                                    return;
+                                } else if (res.err_msg == 'get_brand_wcpay_request:fail') {
+
+                                    return;
+                                } else if (res.err_msg == 'get_brand_wcpay_request:ok') {
+                                    // alert("支付成功！");
+                                    $.post('{:U("Home/Wxpay/checkStatus")}', {}, function (data) {
+                                        if (data.status == 1) {
+                                            //续费成功弹出层
+											//alert(data.msg)
+                                            $('.disk,.renew_success').show();
+                                        } else {
+                                            alert(data.msg);
+                                        }
+                                    })
+                                } else {
+                                    alert("未知错误" + res.error_msg);
+                                    return;
+                                }
+                            }
+                        );
+                    }
+                    function callpay() {
+                        if (typeof WeixinJSBridge == "undefined") {
+                            if (document.addEventListener) {
+                                document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                            } else if (document.attachEvent) {
+                                document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                                document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                            }
+                        } else {
+                            jsApiCall();
+                        }
+                    }
+                    callpay()
+                } else {
+                    alert(data.msg);
+                }
+            },
+            error: function (data) {
+            }
+        });
+    });
+    $('#apply').on('click', function() {
+        zid = $('.dredge_box .re_check').data('id');
+        $('#buyorderform3 #package_id').val(zid);
+        $('.dredge_box').hide();
+        $('.disk').hide();
+        $.ajax({
+            type: 'POST',
+            data: $('#buyorderform3').serialize(),
+            url: '__MODULE__/Wxpay/addorder',
+            success: function (data) {
+                if (data.status == 1) {
+                    //调用微信JS api 支付
+                    function jsApiCall() {
+                        WeixinJSBridge.invoke(
+                            'getBrandWCPayRequest',
+                            $.parseJSON(data.data),
+                            function (res) {
+                                WeixinJSBridge.log(res.err_msg);
+                                if (res.err_msg == 'get_brand_wcpay_request:cancel') {
+                                    // alert("您已取消了此次支付");
+                                    return;
+                                } else if (res.err_msg == 'get_brand_wcpay_request:fail') {
+
+                                    return;
+                                } else if (res.err_msg == 'get_brand_wcpay_request:ok') {
+                                    // alert("支付成功！");
+                                    // history.go(-3);
+                                    $.post('{:U("Home/Wxpay/checkStatus")}', {}, function (data) {
+                                        if (data.status == 1) {
+                                            //续费成功弹出层
+                                            //alert(data.msg)
+                                            $('.disk,.cheng_success').show();
+                                        } else {
+                                            alert(data.msg);
+                                        }
+                                    })
+                                } else {
+                                    alert("未知错误" + res.error_msg);
+                                    return;
+                                }
+                            }
+                        );
+                    }
+                    function callpay() {
+                        if (typeof WeixinJSBridge == "undefined") {
+                            if (document.addEventListener) {
+                                document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                            } else if (document.attachEvent) {
+                                document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                                document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                            }
+                        } else {
+                            jsApiCall();
+                        }
+                    }
+                    callpay()
+                } else {
+                    alert(data.msg);
+                }
+            },
+            error: function (data) {
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

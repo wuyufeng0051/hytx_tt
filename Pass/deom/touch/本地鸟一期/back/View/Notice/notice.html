@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>通知中心</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/mui.min.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+
+	<style>
+		img{
+			display: block;
+		}
+		li{
+			border-bottom: 1px solid #ddd;
+		}
+		.item{
+			height: 44px;
+			background: #fff;
+			padding: 0 15px;
+			padding-left: 30px;
+			padding-right: 80px;
+			line-height: 44px;
+			position: relative;
+			font-size: 16px;
+		}
+		.item .span{
+			position: absolute;
+			left: 15px;
+			top:17px;
+			border-radius: 4px;
+			width: 8px;
+			height: 8px;
+			background: #ff7300;
+		}
+        .item .span1{
+			position: absolute;
+			left: 15px;
+			top:17px;
+			border-radius: 4px;
+			width: 8px;
+			height: 8px;
+			background: #7f7f7f;
+		}
+		.item .span.no{
+			background: #7f7f7f;
+		}
+		.item .time{
+			right:10px;
+			top:0px;
+			position: absolute;
+			font-size: 14px;
+			padding-right: 12px;
+			color: #666;
+		}
+		.item .time:after{
+			content: "";
+		    position: absolute;
+		    width: 0;
+		    height: 0;
+		    border: 6px solid transparent;
+		    border-top-color: #808080;
+		    top:18px;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		#header i{
+		    width: 30px;
+		    height: 28px;
+		    display: inline-block;
+		    background: url(/Public/Home/img/back.png) no-repeat 9px 1px;
+		    vertical-align: middle;
+		    background-size: 15px;
+		}
+ 		.mui-bar{
+ 			background: #fd5530 !important;
+ 		}
+ 		.mui-bar h1{
+ 			color: #fff!important;
+ 		}
+ 		.mui-bar a{
+ 			color: #fff!important;
+ 			position: absolute;
+ 			top: 5px;
+ 			left: 5px;
+ 			height: 35px;
+ 			line-height: 35px;
+ 		}
+ 		.mui-title{
+			width: 55%!important;
+			margin: 0 auto!important;
+		}
+		/*公用头部*/
+	.header{
+	    height: .9rem;
+	    background: #fd5530 !important;
+	    color: #fff;
+	    font-size: .32rem;
+	    line-height: .9rem;
+	    max-width: 1080px;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    z-index: 10;
+	    overflow: hidden;
+	}
+	.header a{
+		display: inline-block;
+		color: #fff;
+	}
+	.header .back{
+	    height: .9rem;
+	    line-height: .9rem;
+	    width: 17%;
+	    float: left;
+	}
+	.header .back i{
+	    width: 0.4rem;
+	    height: .9rem;
+	    display: inline-block;
+	    background: url(__PUBLIC__/Home/img/back.png) no-repeat 4px 10px;
+	    vertical-align: middle;
+	    background-size: .3rem;
+	}
+	.header .header_right{
+		float: right;
+		height: .9rem;
+		margin-right: .2rem;
+	}
+	.header .header_right i{
+	    width: 0.04rem;
+	    height: 0.5rem;
+	    display: inline-block;
+	    vertical-align: middle;
+	    background: #fff;
+	    margin: 0 .15rem;
+	}
+	.header .title{
+	    float: left;
+	    width: 63%;
+	    text-align: center;
+	    font-size: 0.38rem;
+	}
+	.header .share{
+	    height: .9rem;
+	    float: right;
+	    width: 12%;
+	    background: url(__PUBLIC__/Home/img/pb_11.png) no-repeat center;
+	    background-size: .5rem;
+	}
+	</style>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+
+	<div class="header fn-clear">
+		<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+		<div class="title">通知中心</div>
+	</div>
+	<div style="height: 5px;"></div>
+	<div class="mui-content" style="margin-top: .9rem;">
+			<ul>
+			<volist name="res" id="vo">
+			<?php if(!empty($vo['report_id'])){ ?>
+				<li class="openreason" str="{$vo.report_id}" stv="report_id" sty="{$vo.report_look_status}">
+			<?php }else{ ?>
+				<li class="openreason" str="{$vo.del_id}" stv="del_id" sty="{$vo.report_look_status}">
+			<?php } ?>
+					<div class="item mui-ellipsis ">
+						 <?php if($vo['report_look_status'] == 0){ ?>
+						  <span class="span"></span>
+						<?php }else{ ?>
+						  <span class="span1"></span>
+						<?php } ?> 
+
+						 {$vo.report_title}
+						<div class="time">
+							{$vo.post_date}
+						</div>
+					</div>
+					<div style="background: #fff;padding-left:30px;padding-right: 20px;font-size: 14px;display: none;" class="subcate">
+					<div>{$vo.post_desc2}</div>
+					<?php if(!empty($vo['del_reason'])){ ?>
+					<div style="padding: 5px;color: #666;padding-left: 0;">
+							{$vo.del_reason}
+						</div>
+					<?php }else{ ?>
+					 <div style="padding: 5px;color: #666;padding-left: 0;">
+							由于,
+                             <volist name="vo.reporttype" id="v">
+                             {$v.classify2_name}、
+                             </volist>
+							被举报
+						</div>
+					<?php } ?>
+						
+					</div>
+				</li>
+			 </volist>
+			</ul>
+    	</div>
+
+	<script src="__PUBLIC__/Home/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script>
+	$('.openreason').on('click',function(){
+		 var name = $(this).attr('stv');
+		 var id = $(this).attr('str');
+		 var thiss = $(this).find('span');
+		 var sty = $(this).attr('sty');
+		 if (sty == 0) {
+			$.post('{:U("Home/Notice/noticesave")}',{name:name,id:id}, function(data) {
+			   if(data == 1){
+	               thiss.attr('class','span1')
+			   }
+			});
+ 		 }
+		$(this).find('.subcate').toggle();	
+	})
+
+    </script>
+</body>
+</html>

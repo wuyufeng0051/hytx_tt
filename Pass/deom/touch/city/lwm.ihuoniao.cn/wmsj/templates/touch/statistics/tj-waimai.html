@@ -1,0 +1,19 @@
+{#$cssFile = array("tongji-list.css")#}
+{#include file='../_header.html' pageTitle='外卖统计' cssFile=$cssFile#}
+
+  <div class="header">
+    <div class="header-l"><a href="javascript:history.go(-1)" class="back"></a></div>
+    <div class="header-middle">外卖统计</div>
+    <div class="header-r"></div>
+  </div>
+
+  <div class="container">
+    <div class="fn-clear item"><a href="tongji-filter.php?action=Chartrevenue"><span>外卖营业额统计</span><em class="arrow"></em></a></div>
+    <div class="fn-clear item"><a href="tongji-filter.php?action=Chartorder"><span>订单按天统计</span><em class="arrow"></em></a></div>
+    <div class="fn-clear item"><a href="tongji-filter.php?action=Chartordertime"><span>订单按时间段统计</span><em class="arrow"></em></a></div>
+  </div>
+
+
+{#include file='../_footer.html' curr='statistics'#}
+</body>
+</html>

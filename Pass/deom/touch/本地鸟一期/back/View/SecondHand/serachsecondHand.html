@@ -1,0 +1,132 @@
+<foreach item="vo" name="all" key="k">
+		<?php if(!empty($vo['usedcar_id'])){ ?>
+		<div class="mui-card" style="margin:0;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 11px 15px;">
+				 <?php if($vo['usedcar_type'] == 1){ ?>
+					 <!-- href="__MODULE__/SecondHand/secondHandGoodsDetails?usedcar_id={$vo.usedcar_id}" -->
+					<a style="position: relative;padding-left: 85px;display: block;color:#000;height: 75px;" class="topheight" str="HandGoods" stv="{$vo.usedcar_id}">
+ 				 <?php }else{ ?>
+	 				 <!-- href="__MODULE__/SecondHand/secondHandCarDetails?usedcar_id={$vo.usedcar_id}"  -->
+					<a style="position: relative;padding-left: 85px;display: block;color:#000;height: 75px;" class="topheight" str="HandCar" stv="{$vo.usedcar_id}">
+				 <?php } ?>
+						<img src="__PUBLIC__/../{$vo.img}" alt="" style="position: absolute;left: 0;right: 0;width: 75px;height: 75px;">
+						<div class="panel-body">
+							<h4 class="mui-ellipsis" style="font-size: 16px;">{$vo.usedcar_title}</h4>
+							<p class="mui-ellipsis">
+							 <?php if($vo['usedcar_price'] == 0){ ?>
+							    面议
+							 <?php }else{  ?>
+								{$vo.usedcar_price}{$vo.usedcar_company}
+							 <?php } ?>
+			                  <span style="float: right;">
+							  {$vo.usedcar_source}</span></p>
+							<p class="mui-ellipsis">
+							<?php if($vo['usedcar_type'] == 1){ ?>
+							{$vo.usedcar_news}
+					        <?php }else{ ?>
+							车龄：{$vo.usedcar_age}
+ 					        <?php } ?>
+ 					          <span style="float: right;">置顶</span></p>
+ 						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+       <?php }else{ ?>
+		<div class="mui-card" >
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner">
+				<!-- href="__MODULE__/SecondHand/buyDetails?wantbuy_id={$vo.wantbuy_id}" -->
+					<a  style="color: #333;" class="topheight" str="buy" stv="{$vo.wantbuy_id}">
+						<h4 class="heading"><span style="font-size: 16px;" class="wantedTitle">{$vo.wantbuy_title}</span><em>
+							<?php if($vo['wantbuy_nature'] == 0){ ?>
+							 个人
+							<?php }else{ ?>
+							商家
+							<?php } ?>
+ 						</em></h4>
+						<p>
+						<span style="color: #ff7300;"><?php if($vo['wantbuy_price'] == 0){ ?>
+							面议
+							<?php }else{ ?>
+							{$vo.wantbuy_price}{$vo.wantbuy_priceunit}
+							<?php } ?>
+						</span>
+ 					   <span style="float: right;">置顶</span></p>
+ 					</a>
+				</div>
+			</div>
+		 </div>
+		<?php } ?>
+        </foreach>
+
+       <volist id="vo" name="allther">
+		<?php if(!empty($vo['usedcar_id'])){ ?>
+		<div class="mui-card" style="margin:0;">
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner" style="padding: 11px 15px;">
+				 <?php if($vo['usedcar_type'] == 1){ ?>
+				 <!-- href="__MODULE__/SecondHand/secondHandGoodsDetails?usedcar_id={$vo.usedcar_id}" -->
+					<a style="position: relative;padding-left: 85px;display: block;color:#000;height: 75px;" class="topheight" str="HandGoods" stv="{$vo.usedcar_id}">
+ 				 <?php }else{ ?>
+ 				 <!-- href="__MODULE__/SecondHand/secondHandCarDetails?usedcar_id={$vo.usedcar_id}" -->
+					<a style="position: relative;padding-left: 85px;display: block;color:#000;height: 75px;" class="topheight" str="HandCar" stv="{$vo.usedcar_id}">
+				 <?php } ?>
+						<img src="__PUBLIC__/../{$vo.img}" alt="" style="position: absolute;left: 0;right: 0;width: 75px;height: 75px;">
+						<div class="panel-body">
+							<h4 class="mui-ellipsis" style="font-size: 16px;">{$vo.usedcar_title}</h4>
+							<p class="mui-ellipsis">
+							 <?php if($vo['usedcar_price'] == 0){ ?>
+							    面议
+							 <?php }else{  ?>
+								{$vo.usedcar_price}{$vo.usedcar_company}
+							 <?php } ?>
+			                  <span style="float: right;">
+							  {$vo.usedcar_source}</span></p>
+							<p class="mui-ellipsis">
+							<?php if($vo['usedcar_type'] == 1){ ?>
+							{$vo.usedcar_news}
+					        <?php }else{ ?>
+							车龄：{$vo.usedcar_age}
+ 					        <?php } ?>
+                            <?php if($vo['usedcar_is_top'] == 1){ ?>
+							 <span style="float: right;" class="time">置顶</span>
+							<?php }else{ ?>
+							<span style="float: right;" class="time">{$vo.usedcar_date}</span>
+  							<input type="hidden" value="{$vo.usedcar_date}" class="times">
+							<?php } ?>
+							</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+       <?php }else{ ?>
+		 <div class="mui-card" >
+			<div class="mui-card-content">
+				<div class="mui-card-content-inner">
+					<a style="color: #333;" class="topheight" str="buy" stv="{$vo.wantbuy_id}">
+						<h4 class="heading"><span style="font-size: 16px;" class="wantedTitle">{$vo.wantbuy_title}</span><em>
+							<?php if($vo['wantbuy_nature'] == 0){ ?>
+							 个人
+							<?php }else{ ?>
+							商家
+							<?php } ?>
+						 
+						</em></h4>
+						<p>
+						<span style="color: #ff7300;"><?php if($vo['wantbuy_price'] == 0){ ?>
+							面议
+							<?php }else{ ?>
+							{$vo.wantbuy_price}{$vo.wantbuy_priceunit}
+							<?php } ?>
+						</span>
+					   <span style="float: right;" class="time">{$vo.wantbuy_date}</span></p>
+					   <input type="hidden" value="{$vo.wantbuy_date}" class="times">
+					</a>
+				</div>
+			</div>
+		 </div>
+		<?php } ?>
+        </volist>

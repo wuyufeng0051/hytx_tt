@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+
+<!--[if !IE]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+    <meta charset="utf-8"/>
+
+    <title>本地鸟后台 | 历史举报</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <meta content="" name="description"/>
+
+    <meta content="" name="author"/>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/base.css" rel="stylesheet" type="text/css"/>
+    
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL STYLES -->
+
+    <link href="media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/daterangepicker.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link href="media/css/datepicker.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END PAGE LEVEL STYLES -->
+
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+
+    <style type="text/css">
+        .dataTable{
+            border-collapse: collapse;
+            table-layout:fixed
+        }
+        .dataTable td {
+            text-overflow:ellipsis;
+            overflow:hidden;
+            white-space: nowrap;}
+    </style>
+    <style>
+        html{background: #3d3d3d !important}
+        .top_box{height: 35px;line-height: 35px;font-size: 14px;margin-bottom: 15px;}
+        .top_box .add_business{background: #69c8ec;float: left;color: #fff;}
+        .top_box .add_business a{color: #fff;display:block;padding: 0 10px;}
+        .top_box .add_business a em{font-size: 20px;font-weight: bold;margin-right: 3px;}
+        .business_infor {margin-bottom: 15px;font-size: 14px;}
+        .business_infor em{color: red;font-weight: bold;}
+        .business_search_box{float: right;}
+        .business_search_box select{margin-bottom: 0;}
+        .business_search_box input{margin-bottom: 0;margin-top: 2px;}
+        .business_search_box .btn{height: 34px;}
+        .add_business:hover{background: #4facd0;}
+        .data_box {position: relative;float: right;border: 1px solid #e5e5e5;height: 32px;line-height: 32px;font-size: 14px;width: 100px;margin-top: 2px;text-indent: 10px;margin-right: 10px;}
+        .data_box span{display: block;cursor: pointer;}
+        .data_box span i{width: 0;height: 0;border-left: 2.5px solid transparent;border-right: 2.5px solid transparent;border-top: 6px solid #000;position: absolute;right: 6px;top: 13px;}
+        .data_box ul{position: absolute;left: -1px;right: 0;border: 1px solid #e5e5e5;border-top: none;width: 100px;background: #fff;display: none;}
+        .data_box ul li{height: 32px;line-height: 32px;cursor: pointer;}
+        .data_box ul li:hover{background: #f0f0f0;}
+        .data_choice{float: right;margin-right: 10px;display: none;}
+        .data_choice input {width: 100px;height: 24px;line-height: 24px;margin-bottom: 0;border: 1px solid #e5e5e5;}
+        .data_choice select {width: 72px;height: 34px;line-height: 34px;margin-bottom: 0;border: 1px solid #e5e5e5;}
+        .span12{position: relative;}
+        .warning {position: absolute;right: 0;top: 4px;background: #3d3d3d !important;color: #fff;font-size: 16px;padding: 8px 20px;border-radius: 5px!important;}
+        .warning em{color: red;}
+        .portlet-body td em{padding: 0 5px;height: 13px; font-size: 11px !important;line-height: 13px;padding: 4px 10px;color: #fff;cursor: pointer;margin-right: 5px;}
+        .portlet-body td em:last-child{margin-right: 0;}
+        .portlet-body td em i{margin-right: 3px;}
+        .portlet-body td em  .biao_icon{width: 12px;height: 12px;display: inline-block;background: url(media/image/edit.png) no-repeat center;background-size: 11px;}
+        .portlet-body td .biao_btn:hover .biao_icon{background: url(media/image/edit2.png) no-repeat center;background-size: 11px;}
+        .page_num{margin-left: 10px;font-size: 14px;}
+    </style>
+
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+<!-- BEGIN HEADER -->
+
+{include file="public/header" /}
+<!-- END HEADER -->
+<a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a>
+
+<!-- BEGIN CONTAINER -->
+
+<div class="page-container">
+
+    <!-- BEGIN SIDEBAR -->
+
+    {include file="public/sidebar" /}
+
+    <!-- END SIDEBAR -->
+
+    <!-- BEGIN PAGE -->
+
+    <div class="page-content">
+
+        <!-- BEGIN PAGE CONTAINER-->
+
+        <div class="container-fluid">
+
+            <!-- BEGIN PAGE HEADER-->
+
+            <div class="row-fluid">
+
+                <div class="span12">
+
+                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+                    <h3 class="page-title">
+                        历史举报
+                    </h3>
+
+                    <ul class="breadcrumb">
+                        <li><a href="index">历史举报</a></li>
+                    </ul>
+
+                    <!-- END PAGE TITLE & BREADCRUMB-->
+
+                    <div class="top_box fn-clear">
+                        <div class="business_search_box">
+                            <div class="clearfix">
+                                <select class=" m-wrap range1" style="width: 150px" tabindex="1" name="range1">
+                                    <option >全部</option>
+                                    <option >被举报用户ID</option>
+                                    <option >发起举报手机号码</option>
+                                </select>
+                                <input type="text" placeholder="{$sel.b|default='请输入关键词'}" class="m-wrap medium range2" name="range2">
+                                <div class="btn-group">
+                                    <button class="btn green btn-query">
+                                        查询
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="data_box">
+                            <span><em>全部</em><i></i></span>
+                            <ul>
+                                <li class="set_hide">全部</li>
+                                <li class="set_hide">今天</li>
+                                <li class="set_hide">最近一周</li>
+                                <li class="set_hide">最近一个月</li>
+                                <li class="set_hide">最近三个月</li>
+                                <li class="peronal_set">自定义时间</li>
+                            </ul>
+                        </div>
+                        <div class="data_choice">
+                            <input class=" date-picker"   type="text"> 
+                            <select name="" id="">
+                                <option value="">1:00</option>
+                                <option value="">2:00</option>
+                                <option value="">3:00</option>
+                                <option value="">4:00</option>
+                                <option value="">5:00</option>
+                                <option value="">6:00</option>
+                                <option value="">7:00</option>
+                                <option value="">8:00</option>
+                                <option value="">9:00</option>
+                                <option value="">10:00</option>
+                                <option value="">11:00</option>
+                                <option value="">12:00</option>
+                                <option value="">13:00</option>
+                                <option value="">14:00</option>
+                                <option value="">15:00</option>
+                                <option value="">16:00</option>
+                                <option value="">17:00</option>
+                                <option value="">18:00</option>
+                                <option value="">19:00</option>
+                                <option value="">20:00</option>
+                                <option value="">21:00</option>
+                                <option value="">22:00</option>
+                                <option value="">23:00</option>
+                                <option value="">24:00</option>
+                            </select>
+                            -
+                            <input class=" date-picker"   type="text"> 
+                            <select name="" id="">
+                                <option value="">1:00</option>
+                                <option value="">2:00</option>
+                                <option value="">3:00</option>
+                                <option value="">4:00</option>
+                                <option value="">5:00</option>
+                                <option value="">6:00</option>
+                                <option value="">7:00</option>
+                                <option value="">8:00</option>
+                                <option value="">9:00</option>
+                                <option value="">10:00</option>
+                                <option value="">11:00</option>
+                                <option value="">12:00</option>
+                                <option value="">13:00</option>
+                                <option value="">14:00</option>
+                                <option value="">15:00</option>
+                                <option value="">16:00</option>
+                                <option value="">17:00</option>
+                                <option value="">18:00</option>
+                                <option value="">19:00</option>
+                                <option value="">20:00</option>
+                                <option value="">21:00</option>
+                                <option value="">22:00</option>
+                                <option value="">23:00</option>
+                                <option value="">24:00</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="business_infor">共 <em>199</em> 条举报信息</div>
+                </div>
+
+            </div>
+
+            <!-- END PAGE HEADER-->
+
+            <!-- BEGIN PAGE CONTENT-->
+
+            <div class="portlet box light-grey">
+
+                <div class="portlet-body">
+
+                    <div class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable"
+                               aria-describedby="sample_1_info">
+                            <tr>
+                                <th>举报描述</th>
+                                <th>被举报者</th>
+                                <th>被举报者ID</th>
+                                <th>举报标识</th>
+                                <th style="width:100px;">举报类型</th>
+                                <th>发起用户</th>
+                                <th style="width:150px;">联系方式</th>
+                                <th style="width: 150px;">举报时间</th>
+                                <th style="width:200px;">编辑</th>
+                            </tr>
+                            {volist name='list' id='vo'}
+                            <tr>
+
+
+                                <td>
+                                    <div style="display: -webkit-box; overflow: hidden; white-space: normal!important; text-overflow: ellipsis;word-wrap: break-word; -webkit-line-clamp: 2;-webkit-box-orient: vertical;">
+                                       <a href="edit?id={$vo.report_id}">{$vo.report_content}</a>
+                                    </div>
+                                </td>
+
+                                <td><a href="../user/edit?id={$vo.report_uid}">{$vo.uid.user_name}</a></td>
+                                <td><a href="#">111</a></td>
+
+
+                                {if condition='$vo.report_type=="头条评论"'}
+                                <td><a class="dianji"  hrey="../comment_top/edit?id={$vo.report_cid}" str="comment_id" sty="comment" val="{$vo.report_cid}">{$vo.report_cid}</a> </td>
+                                {elseif condition='$vo.report_type=="全职"' /}
+                                <td><a class="dianji"  hrey="../job/edit?recruit_id={$vo.report_cid}" str="recruit_id" sty="recruit" val="{$vo.report_cid}">{$vo.report_cid}</a> </td>
+                                {elseif condition='$vo.report_type=="兼职"' /}
+                                <td><a class="dianji"  hrey="../job/edit?part_time_job_id={$vo.report_cid}" str="part_time_job_id" sty="jianzhi" val="{$vo.report_cid}">{$vo.report_cid}</a> </td>
+                                {elseif condition='$vo.report_type=="简历"' /}
+                                <td><a class="dianji"  hrey="../job/edit?resume_id={$vo.report_cid}" str="resume_id" sty="resume" val="{$vo.report_cid}">{$vo.report_cid}</a> </td>
+                                {elseif condition='($vo.report_type=="出售车位土地")OR($vo.report_type=="出售商铺")' /}
+                                <td><a class="dianji"  hrey="../estate/edit?sell_other_id={$vo.report_cid}" str="sell_other_id" sty="sell_other" val="{$vo.report_cid}">{$vo.report_cid}</a> </td>
+                                {elseif condition='$vo.report_type=="出售住房"' /}
+                                <td><a class="dianji"  hrey="../estate/edit?sellhouse_id={$vo.report_cid}" str="sellhouse_id" sty="sellhouse" val="{$vo.report_cid}">{$vo.report_cid}</a> </td>
+                                {elseif condition='($vo.report_type=="出租土地仓库")OR($vo.report_type=="出租商铺")OR($vo.report_type=="出租住房")' /}
+                                <td><a class="dianji"  hrey="../estate/edit?lease_id={$vo.report_cid}" str="lease_id" sty="lease" val="{$vo.report_cid}">{$vo.report_cid}</a> </td>
+                                {elseif condition='($vo.report_type=="求购详情")OR($vo.report_type=="求租详情")' /}
+                                <td><a class="dianji"  hrey="../estate/edit?wanted_id={$vo.report_cid}" str="wanted_id" sty="wanted" val="{$vo.report_cid}">{$vo.report_cid}</a> </td>
+                                {elseif condition='$vo.report_type=="二手车"' /}
+                                <td><a  class="dianji" hrey="../second_hand/edit?scars_id={$vo.report_cid}" str="usedcar_id" sty="usedcar" val="{$vo.report_cid}">{$vo.report_cid}</a> </td>
+                                {elseif condition='$vo.report_type=="二手物品"' /}
+                                <td><a class="dianji"  hrey="../second_hand/edit?sgoods_id={$vo.report_cid}" str="usedcar_id" sty="usedcar" val="{$vo.report_cid}">{$vo.report_cid}</a> </td>
+                                {elseif condition='$vo.report_type=="二手求购"' /}
+                                <td><a class="dianji"  hrey="../second_hand/edit?sbuy_id={$vo.report_cid}" str="wantbuy_id" sty="secondhandgoods" val="{$vo.report_cid}">{$vo.report_cid}</a> </td>
+                                {else/}
+                                <td><a class="dianji"  hrey="../freeride/edit?id={$vo.report_cid}" str="freeride_id" sty="freeride" val="{$vo.report_cid}">{$vo.report_cid}</a> </td>
+                                {/if}
+
+
+
+                                <td>{$vo.report_type}</td>
+                                <td><a href="../user/edit?id={$vo.report_user}">{$vo.user.user_name}</a></td>
+                                <td>{$vo.report_contact}</td>
+                                <td>{$vo.report_date}</td>
+                                <td>
+                                    <a href="edit?id={$vo.report_id}" class="btn mini blue "><i
+                                            class="icon-tags"></i>查看</a>
+                                    <a href="del?id={$vo.report_id}" class="btn mini red btn-del"><i
+                                            class="icon-trash"></i> 删除</a>
+                                </td>
+                            </tr>
+                            {/volist}
+                        </table>
+
+                    </div>
+                    <div class="page_num">共1300条</div>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <div class="dataTables_paginate paging_bootstrap pagination">
+                                {$page}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- END PAGE CONTENT -->
+
+        </div>
+
+        <!-- END PAGE CONTAINER-->
+
+    </div>
+
+    <!-- END PAGE -->
+
+</div>
+
+<!-- END CONTAINER -->
+
+<!-- BEGIN FOOTER -->
+
+{include file="public/footer" /}
+
+<!-- END FOOTER -->
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+<!-- BEGIN CORE PLUGINS -->
+
+<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+
+<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--[if lt IE 9]>
+
+<script src="media/js/excanvas.min.js"></script>
+
+<script src="media/js/respond.min.js"></script>
+
+<![endif]-->
+
+<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script type="text/javascript" src="media/js/bootstrap-datepicker.js"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<script src="media/js/app.js" type="text/javascript"></script>
+
+<script src="media/js/index.js" type="text/javascript"></script>
+
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<script>
+
+    jQuery(document).ready(function () {
+
+        App.init(); // initlayout and core plugins
+
+    });
+
+  $(".dianji").on('click', function(event) {
+     var url = $(this).attr('hrey')
+     var str = $(this).attr('str')  //id
+     var sty = $(this).attr('sty') 
+     var val = $(this).attr('val')
+ 
+    $.post('/admin/public/admin/report/iflook', {str:str,sty:sty,val:val}, function(data) {
+         if (data == 1) {
+          location.href= url;
+       }else{
+         alert('已删除')
+       }
+    });
+  });
+
+    $(document).ready(function () {
+        $(".btn-del").click(function () {
+            if(confirm('确定要删除吗?')){
+                var _this = $(this);
+                var url = _this.attr('href');
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    success: function (data) {
+                        if (data.code == 0) {
+                            _this.parent().parent().remove();
+                        }
+                    }
+                });
+                return false;
+            }else {
+                return false;
+            }
+        })
+        $('.date-picker').datepicker({
+            language: 'cn',
+            autoclose: true,
+            todayHighlight: true
+        });
+      $('body').click(function(){
+            $('.data_box ul').hide();
+        })
+        $('.data_box span').click(function(){
+            if ($('.data_box ul').css("display") == "none") {
+                $('.data_box ul').show();
+            }else{
+                $('.data_box ul').hide();
+            }
+            return false
+        })
+        $('.data_box ul li').click(function(){
+            var x = $(this),
+                txt = x.text();
+            $('.data_box span em').text(txt);
+            $('.data_box ul').hide();
+        })
+        $('.peronal_set').click(function(){
+            $('.data_choice').show();
+        })
+        $('.set_hide').click(function(){
+            $('.data_choice').hide();
+        })
+
+
+    })
+
+</script>
+
+<!-- END JAVASCRIPTS -->
+
+</body>
+
+<!-- END BODY -->
+
+</html>

@@ -1,0 +1,37 @@
+<!--#include file="_head.shtml"-->
+
+<div class="rBox">
+  <div class="local">我的订单</div>
+  <div class="box1">
+    <div class="listBox">
+      <div class="title_t2">
+        <div class="tab">
+          <a href="#">订单列表（0）</a></div>
+      </div>
+      <div class="listDiv2">
+        <div class="search">
+          <form action="/TradeOrder/SellerOrderIndex" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#List" id="searchForm" method="post">
+            <input type="text" class="text" name="TradeOrderName" placeholder="订单名称或订单号" />
+            <button class="post" type="submit">搜索</button></form>
+        </div>
+        <div id="List">
+          <table class="listTable2">
+            <tr class="th">
+              <th width="250px">订单名称</th>
+              <th width="250px">订单种类</th>
+              <th width="150px">交易状态</th>
+              <th width="200px">交易操作</th></tr>
+          </table>
+          <div class="page_b">
+            <div class="pull-left">当前为第 1 页,共 0 页 0 条记录</div>
+            <div class="pull-right">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--#include file="_foot.shtml"-->

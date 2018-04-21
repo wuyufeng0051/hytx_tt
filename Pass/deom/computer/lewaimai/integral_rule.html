@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <i class="ace-icon fa fa-flag-o flag-o-icon"></i>
+      <li class="active">营销活动</li>
+      <li>
+        <a href="#">积分</a></li>
+      <li class="active">积分兑换设置</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <div class="row">
+        <div class="span10">
+          <div class="col-sm-6" style="width:100%;margin:0 auto;">
+            <div class="tabbable">
+              <ul class="nav nav-tabs" id="myTab">
+                <li >
+                  <a href="integral.html">积分奖品管理</a></li>
+                <li>
+                  <a href="integral_list.html">积分兑换列表</a></li>
+                <li>
+                  <a href="integral_set.html">积分兑换设置</a></li>
+                <li>
+                  <a href="integral_prize.html">积分兑换优惠券奖品</a></li>
+                <li class="active">
+                  <a href="integral_rule.html">积分规则设置</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <form enctype="multipart/form-data" class="form-horizontal" id="ponintset-form" action="/point/setting" method="post">
+                      <div class="alert alert-danger" id="ponintset-form_es_" style="display:none">
+                        <p>请更正下列输入错误:</p>
+                        <ul>
+                          <li>dummy</li></ul>
+                      </div>
+                      <label style="margin-right:20px">1元等于积分数</label>
+                      <input style="width:80px" name="AdminPointset[pointnum]" id="AdminPointset_pointnum" type="text" value="1">
+                      <br>&nbsp;
+                      <br>
+                      <label style="margin-right:20px">是否开启商品积分功能</label>
+                      <select class="span2" name="AdminPointset[openpoint]" id="AdminPointset_openpoint">
+                        <option value="0">关闭</option>
+                        <option value="1" selected="selected">开启</option></select>
+                      <br>&nbsp;
+                      <br>
+                      <label style="margin-right:20px">是否开启收银台获取积分</label>
+                      <select class="span2" name="AdminPointset[is_shouyintai_point]" id="AdminPointset_is_shouyintai_point">
+                        <option value="0" selected="selected">关闭</option>
+                        <option value="1">开启</option></select>
+                      <br>&nbsp;
+                      <br>
+                      <label style="margin-right:20px">是否开启评论获取积分</label>
+                      <select class="span2" name="AdminPointset[isreplypoint]" id="AdminPointset_isreplypoint">
+                        <option value="0">关闭</option>
+                        <option value="1" selected="selected">开启</option></select>
+                      <br>&nbsp;
+                      <br>
+                      <label style="margin-right:20px">评论获取积分数</label>
+                      <input style="width:80px" name="AdminPointset[replypoint]" id="AdminPointset_replypoint" type="text" value="1">
+                      <br>&nbsp;
+                      <br>
+                      <div class="clearfix form-actions">
+                        <div class="col-md-offset-3 col-md-9">
+                          <button class="btn btn-info" type="submit">
+                            <i class="ace-icon fa fa-check bigger-110"></i>保存</button></div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

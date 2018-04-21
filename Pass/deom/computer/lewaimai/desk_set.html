@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+    <title>乐外卖 - 财务统计</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chosen.min.css" />
+    <link rel="stylesheet" href="css/ace-fonts.min.css" />
+    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="js/jquery-migrate-1.1.0.min.js"></script>
+  </head>
+  <body class="no-skin">
+<div class="main-content">
+  <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li>
+        <i class="ace-icon fa fa-hand-o-up"></i>
+        <a href="/tangshi/order">店内下单</a></li>
+      <li>
+        <a href="/tangshi/setting">店内下单设置</a></li>
+      <li class="active">桌子【苏州火鸟测试】</li></ul>
+    <!-- .breadcrumb --></div>
+  <!-- /section:basics/content.breadcrumbs -->
+  <div class="page-content">
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+      <style type="text/css">.pop-one{ background: #fff; border-radius:3px; position: fixed; top: 21%; left: 50%; margin-left: -135px; } .pop-two{ width:400px; background: #fff; border-radius:3px; position: fixed; top: 21%; left: 50%; margin-left: -135px; } .meng{ background:rgba(0,0,0,.5); position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index:9999; } .feng{ background:rgba(0,0,0,.5); position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index:9999; } .pop-one .pop-cont{ line-height: 25px; padding: 12px 10px; border-bottom: 1px solid #d2d6da; } .pop-bottom a{ text-align: center; height: 40px; line-height: 40px; color: #007aff; } .pop-bottom a:first-child{ border-right:1px solid #d2d6da; } .align-center, .div-align-center { text-align: center; } .webkit-box1 { display: -webkit-box; width: 100%; } .webkit-box1 >* { -webkit-box-flex: 1; width: 100%; display: block; } .order_true{cursor:pointer;} .aa{display:none;}</style>
+      <div class="meng aa">
+        <div class="pop-two">
+          <div class="pop-cont align-center">
+            <p>
+              <span style="position:relative;">店铺分类链接</span></p>
+            <p class="seeurl"></p>
+          </div>
+          <div class="pop-bottom webkit-box1">
+            <a class="order_true">确定</a></div>
+        </div>
+      </div>
+      <div class="feng aa">
+        <div class="pop-one">
+          <div class="pop-cont align-center">
+            <p>
+              <span style="position:relative;">该桌子店内下单二维码</span></p>
+            <p id="seeticket" title="https://wap.lewaimai.com/index.php?r=showtangshi/index&amp;adminId=56695&amp;shopId=242582&amp;tableId=17696">
+              <canvas width="256" height="256" style="display: none;"></canvas>
+              <img alt="Scan me!" src="data:image/png;base64,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"
+              style="display: block;">
+            </p>
+          </div>
+          <div class="pop-bottom webkit-box1">
+            <a class="order_true">确定</a></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">
+              <i class="ace-icon fa fa-times"></i>
+            </button>
+            <p>该店铺的店内下单链接为 https://wap.lewaimai.com/index.php?r=showtangshi/index&amp;adminId=56695&amp;shopId=242582，若使用该链接顾客需要手动选择桌号，可将该链接放置于微信公众号的自定义菜单中让顾客关注公众号后再下单。
+              <br>或者您可以使用下面每个桌子对应的二维码，让用户扫码后直接自动对应桌号下单，无需关注微信公众号和选择桌号。</p></div>
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">
+              <i class="ace-icon fa fa-times"></i>
+            </button>
+            <p>桌子管理功能已经升级，此处的桌子管理功能即将下线，新建/删除/修改等功能无法使用。</p>
+            <p>桌子管理功能将转移到“店铺——桌位/房间管理”中，如果您需要“新建/删除/修改”桌子，请移步到新的桌子/房间管理页面。</p>
+            <p>
+              <a class="btn btn-danger" href="/shoptable/list?shop_id=242582">去设置桌子/房间</a></p>
+          </div>
+          <div id="shopList" class="grid-view">
+            <table class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th id="shopList_c0">
+                    <a class="sort-link" href="/tangshi/zhuozi?shop_id=242582&amp;Shoptable_sort=name">桌子名称</a></th>
+                  <th id="shopList_c1">茶位费</th>
+                  <th id="shopList_c2">茶位费每人金额</th>
+                  <th id="shopList_c3">店内下单二维码</th></tr>
+              </thead>
+              <tbody>
+                <tr class="odd selected">
+                  <td width="100">大桌</td>
+                  <td width="100">未开启</td>
+                  <td width="100">0.00</td>
+                  <td width="100">
+                    <div class="shopticket" style="background:#82AF6F;text-align:center;color:white;cursor:pointer;width:60px;">查看
+                      <input class="table_id" type="hidden" value="17696">
+                      <input class="admin_id" type="hidden" value="56695">
+                      <input class="shop_id" type="hidden" value="242582"></div></td>
+                </tr>
+                <tr class="even">
+                  <td width="100">小桌</td>
+                  <td width="100">未开启</td>
+                  <td width="100">0.00</td>
+                  <td width="100">
+                    <div class="shopticket" style="background:#82AF6F;text-align:center;color:white;cursor:pointer;width:60px;">查看
+                      <input class="table_id" type="hidden" value="17697">
+                      <input class="admin_id" type="hidden" value="56695">
+                      <input class="shop_id" type="hidden" value="242582"></div></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="summary">第 1-2 条, 共 2 条.</div>
+            <div class="keys" style="display:none" title="/tangshi/zhuozi?shop_id=242582">
+              <span>17696</span>
+              <span>17697</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-content-area --></div>
+  <!-- /.page-content --></div>
+<div class="disk"></div>
+<script type="text/javascript" src="js/public_select.js"></script>
+  </body>
+</html>

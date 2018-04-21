@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>举报</title>
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/re_public.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/_head.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/zepto.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/touchScale.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/slider.js"></script>
+	<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Home/js/layer.js"></script>
+</head>
+<body>
+<include file="Public/share" title='包含文件'/>
+<!-- 共同顶部 s-->
+<div class="header fn-clear">
+	<div class="back"><a href="javascript:history.go(-1)"><i></i>返回</a></div>
+	<div class="title">发布顺路货</div>
+	<div class="share"></div>
+</div>
+<!-- 共同顶部 e-->
+<link rel="stylesheet" href="__PUBLIC__/Home/css/report.css">
+<script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.8.3.min.js"></script>
+
+<div class="report_box">
+	<div class="re_title"><em>*</em>选择举报原因<span>（可多选）</span></div>
+	<div class="choice_box fn-clear">
+		<ul>
+			<volist name="res" id="vo">
+				<if condition="($i eq 3)|| ($i eq 6)">
+					<li class="mar" id="{$vo.classify2_id}">{$vo.classify2_name}</li>
+					<else/>
+					<li id="{$vo.classify2_id}">{$vo.classify2_name}</li>
+				</if>
+			</volist>
+		</ul>
+	</div>
+</div>
+<div class="report_box">
+	<div class="re_title"><em>*</em>情况说明</div>
+	<textarea name="" id="report_content" cols="30" rows="10" placeholder="请简明扼要的阐述你的理由；以便工作人员更好的判断（0-200字）"></textarea>
+</div>
+<div class="certfy picture_1">
+	<div class="pic_list">
+		<div class="img-box">
+			<div class="pic_tips">上传图片凭证<em>(支持jpg，jpeg，png格式，最多5张，每张不超过3M)</em></div>
+			<ul class="uploader-list fn-clear" id="fileList1">
+				<li class="uploadbtn">
+					<div id="filePicker1" data-type="atlas" data-amount="6" class="webuploader-container picker">
+						<div class="webuploader-pick"><div class="webuploader-pick"><em></em><p>添加图片</p></div></div>
+					</div>
+				</li>
+			</ul>
+			<p class="imgtip"></p>
+		</div>
+	</div>
+</div>
+<?php if(!empty($user_phone)){ ?>
+<div class="edit-item">
+	<div class="input-control fn-clear">
+		<s></s>
+		<span>联系电话</span>
+		<div class="user-fav fn-clear">
+			<input type="text" class="" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" disabled="disabled" placeholder="请输入电话" style="background: #fff;" value="{$user_phone}" id="report_contact">
+			<div class="get change">更换手机号</div>
+			<div class="get send" style="display: none;" id="emailsell">发送验证码</div>
+			<div class="get" id="hiddenbutton" style="display: none;width: 1.7rem"></div>
+		</div>
+	</div>
+</div>
+<div class="edit-item change_box" style="display: none;" id="yzm">
+	<div class="input-control fn-clear">
+		<s></s>
+		<span>验证码</span>
+		<div class="user-fav fn-clear">
+			<input type="text" class="" placeholder="请输入验证码">
+		</div>
+	</div>
+</div>
+<?php }else{ ?>
+<div class="edit-item">
+	<div class="input-control fn-clear">
+		<s></s>
+		<span>联系电话</span>
+		<div class="user-fav fn-clear">
+			<input type="text" class="" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" placeholder="请输入您的手机号码" id="report_contact">
+			<div class="get" id="emailsell" style="display: block">发送验证码</div>
+			<div class="get" id="hiddenbutton" style="display: none; width: 1.7rem">60秒</div>
+		</div>
+	</div>
+</div>
+<div class="edit-item" id="yzm">
+	<div class="input-control fn-clear">
+		<s></s>
+		<span>验证码</span>
+		<div class="user-fav fn-clear">
+			<input type="text" class="" placeholder="请输入验证码" id="code">
+		</div>
+	</div>
+</div>
+<?php } ?>
+<div class="warning">
+	<div class="warning_txt">
+		<h1>举报须知</h1>
+		<h2>您应该保证你的投诉行为基于善意，并代表您本人真实意思，禁止恶意举报。除法律法规规定的情形外，未经本人许可，本地鸟不会向第三方公开、透露您的个人信息。</h2>
+		<p>举报信息一经查实，必有好礼相送。欢迎广大用户监督举报。</p>
+	</div>
+</div>
+<!-- 申请已提交成功 s -->
+<div class="succeed_box cheng">
+	<h1>提交成功</h1>
+	<p><a href="javascript:history.go(-1)"><span>确定</span></a></p>
+</div>
+<!-- 申请已提交成功 e -->
+<div class="delete">
+	<h1>提示：</h1>
+	<h2>是否删除？</h2>
+	<div class="de_foot"><div class="de_btn"><span class="sure">确定</span><span class="cancel">取消</span></div></div>
+</div>
+<div class="disk"></div>
+<div class="btn"><span>提交</span></div>
+<script type="text/javascript" src="__PUBLIC__/Home/js/report.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript">
+        wx.config({
+            debug: false,
+            appId: '<?php echo $signPackage["appId"];?>',
+            timestamp: '<?php echo $signPackage['timestamp'];?>',
+            nonceStr: '<?php echo $signPackage['nonceStr'];?>',
+            signature: '<?php echo $signPackage['signature'];?>',
+            jsApiList: [
+                // 所有要调用的 API 都要加到这个列表中
+                'chooseImage',
+                'uploadImage',
+                'downloadImage'
+            ]
+        });
+    var download_img=[];
+    var images = {
+        localId: [],
+        serverId: []
+    }
+    $("#filePicker1").click(function(){
+        var length = $('#fileList1 li').length;
+        var conunt = 6 - length;
+        if (conunt == 0) {
+
+        }else{
+            wx.ready(function(){
+                //拍照或从手机相册中选图接口
+                wx.chooseImage({
+                    count: conunt, // 最多能选择多少张图片，默认9
+                    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                    success: function (res) {
+                        var localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                        var localIdImg=localId.toString().split(",");
+                        //上传图片接口
+                        if (localIdImg.length == 0) {
+                            return;
+                        }
+                        var i = 0, length = images.localId.length;
+                        images.serverId = [];
+                        function upload() {
+                            wx.uploadImage({
+                                localId: localIdImg[i],
+                                success: function (res) {
+                                    $("#fileList1").prepend('<li><img src="'+localIdImg[i]+'" /><i></i></li>');
+                                    i++;
+                                    images.serverId.push(res.serverId);
+                                    download_img =images.serverId;
+                                    if (i < localIdImg.length) {
+                                        upload();
+                                    }
+                                    if ($('.picture_1 ul li').length > 5) {
+                                        var x = $('.picture_1 ul li');
+                                        x.closest('.uploader-list').find('.uploadbtn').hide();
+                                    }
+                                },
+                                fail: function (res) {
+                                    alert(JSON.stringify(res));
+                                }
+                            });
+                        }
+                        upload();
+                    }
+                });
+            });
+        }
+    });
+    $('.picture_1').delegate('#fileList1 li i','click',function(){
+        var x = $(this);
+        $('.delete').show();
+        $('.disk').show();
+        $('.delete .sure').click(function(){
+            find = x.closest('li');
+            find.remove();
+            if ($('.picture_1 ul li').length < 6) {
+                $('.picture_1').find('.uploadbtn').show();
+            }
+            $('.delete').hide();
+            $('.disk').hide();
+        })
+    })
+    $(function(){
+        $('.change').click(function(){
+            $(this).hide();
+            $(this).closest('.user-fav').find('input').removeAttr("disabled");
+            $('.change_box').show();
+            $('.send').show();
+        })
+    })
+        function report(){
+            //获取福利
+            var all = "";
+            var reportas = $('.cb_bc');
+            $.each(reportas,function(index,item){
+                var reportactive = $(this).attr('id');
+                //判断是否选中福利
+                all +=reportactive +",";
+            });
+            var reportall = all.substr(0,all.length-1)
+            return reportall;
+        }
+        $('.btn').click(function(){
+            var bianhu = 0;
+            var css =  $("#yzm").css('display');
+            var reportall = report();//举报原因
+            var report_content = $('#report_content').val(); //情况说明
+            var imgs = download_img;
+            var report_contact = $('#report_contact').val();
+            var myreg = /^1[34578]\d{9}$/;
+            var code = $('#code').val();
+            //var code1= '';
+            $.post('/Home/Index/lookcode',{},function(data){
+                var newcode = data;
+                if (!reportall){
+                    layer.msg('请先选择举报原因')
+                }else if(!report_content){
+                    layer.msg('请先填写举报说明')
+                }
+                // else if(!file1){
+                // 	layer.msg('请先选择图片')
+                // }
+                else if(!report_contact){
+                    layer.msg('请先填写联系方式')
+                }else if(css == 'block'){
+                    if(!code){
+                        layer.msg('请先填写验证码')
+                    }else if(code != newcode){
+                        layer.msg('验证码不正确')
+                    }else{
+                        bianhu = 1;
+                    }
+                }else{
+                    bianhu = 1;
+                }
+
+                if(bianhu == 1){
+                    $("#report_contacts").val(report_contact)
+                    $.post("__MODULE__/report/addreport",{report_contact:report_contact,report_content:report_content,report_reporttype:reportall,picall:imgs},function(data) {
+                        if (data.status == "1") {
+                            //提交成功弹出层
+                                $('.cheng').show();
+                                $('.disk').show();
+                        }else{
+                            alert(data.msg);
+                        }
+                    })
+                }
+            })
+
+        })
+
+        $('#emailsell').click(function(event) {
+        var  myreg = /^1[34578]\d{9}$/;
+        var resume_phone=$('#report_contact').val();
+        if(resume_phone){
+            $.post("{:U('Home/Index/code')}",{phone:resume_phone},function(msg){
+                //alert(msg)
+            })
+
+            var counricount = 179;
+            var countdowntime = setInterval(countdownauto, 1000);
+
+            function countdownauto() {
+                counricount--;
+                // alert(counricount)
+                if(counricount == 0) {
+                    $.post("http://www.bdniao.com/index.php/Home/Demo/countdown",{},function(dats){
+                    })
+                    clearTimeout(time);
+                }
+            }
+
+            //时间倒叙
+            $("#hiddenbutton").text(60+'s后发送');
+            $(this).hide();
+            $("#hiddenbutton").show();
+            var icount = 59;
+            var time = setInterval(auto, 1000);
+
+            function auto() {
+                var s = icount+'s后再发送';
+                $("#hiddenbutton").text(s);
+                icount--;
+                if(icount == 0) {
+                    clearTimeout(time);
+                    $("#emailsell").show();
+                    $("#hiddenbutton").hide();
+                }
+            }
+        }else{
+            layer.msg('请先输入正确的手机号码')
+        }
+    });
+
+    $('.cheng p span').click(function(){
+        $('.cheng').hide();
+        $('.disk').hide();
+    })
+    $('.disk').click(function(){
+        $('.cheng').hide();
+        $('.disk').hide();
+        $('.delete').hide();
+    })
+    $('.change').click(function(){
+        $(this).hide();
+        $(this).closest('.user-fav').find('input').removeAttr("disabled");
+        $('.change_box').show();
+        $('.send').show();
+    })
+</script>
+</body>
+</html>
