@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta name="description" content="{#$waimai_description#}" />
+<title>{#$langData['siteConfig'][16][49]#}—{#$langData['siteConfig'][17][3]#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" />
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$cfg_basehost#}/wmsj/templates/touch/css/mobiscroll.css" type="text/css">
+<link rel="stylesheet" href="{#$templets_skin#}css/paotui-song.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<script>
+var cookiePre = '{#$cfg_cookiePre#}';
+var mapUrl = '{#getUrlPath service='waimai' template='addressPaotui' param="shop=$shop&shopmap=1"#}';
+var payUrl = '{#getUrlPath service="waimai" template="pay" param="ordertype=paotui&ordernum=#ordernum"#}';
+var depositUrl = '{#getUrlPath service='member' type="user" template='deposit'#}';  //充值页面
+var myMoney = {#$userinfo['money']#};
+var shoptype = '{#$shop#}';
+var weight = '{#$weight#}';
+var price = '{#$price#}';
+</script>
+</head>
+<body>
+  <!-- 头部 -->
+  <div class="header">
+    <div class="header-l">
+      <a href="{#getUrlPath service='waimai' template='paotui'#}" class="back"></a>
+    </div>
+    <div class="header-address">
+      <span><em>{#$langData['waimai'][3][35]#}</em></span>
+    </div>
+    <div class="header-search"><a>&nbsp;</a></div>
+  </div>
+  <!-- 头部 end -->
+
+  <div class="more mgthead">
+    <div data-role="fieldcontain" class="dom_select">
+      <span class="name">{#$langData['waimai'][3][36]#}</span>
+      <div class="option txtr">{#$shop#}</div>
+    </div>
+    <div data-role="fieldcontain" class="dom_select">
+      <span class="name">{#$langData['waimai'][3][37]#}</span>
+      <div class="option txtr">{#$weight#}kg</div>
+    </div>
+    <div data-role="fieldcontain" class="dom_select">
+      <span class="name">{#$langData['waimai'][3][38]#}</span>
+      <div class="option txtr">{#$price#}</div>
+    </div>
+  </div>
+  <div class="more address">
+    <div data-role="fieldcontain" class="dom_select">
+      <span class="name">{#$langData['waimai'][3][39]#}</span>
+      <div class="option"><textarea name="" id="faaddress" rows="2" placeholder="{#$langData['waimai'][3][40]#}"></textarea></div>
+    </div>
+    <div data-role="fieldcontain" class="dom_select">
+      <span class="name">{#$langData['waimai'][3][41]#}</span>
+      <div class="option"><textarea name="" id="shouaddress" rows="2" placeholder="{#$langData['waimai'][3][42]#}"></textarea></div>
+    </div>
+  </div>
+  <div class="more">
+    <div data-role="fieldcontain" class="dom_select">
+      <span class="name">{#$langData['waimai'][3][43]#}</span>
+      <div class="option txtr" id="time">
+        <input name="time" id="gettime" class="demo-test-date beautinp" placeholder="" readonly="readonly" value="{#$langData['waimai'][3][44]#}"/>
+        <em class="arrow"></em>
+      </div>
+    </div>
+    <div data-role="fieldcontain" class="dom_select">
+      <span class="name">{#$langData['waimai'][3][45]#}</span>
+      <div class="option txtr money money1">{#echoCurrency type="symbol"#}5.00</div>
+    </div>
+    <div class="dom_select tip">
+      <span class="name">{#$langData['waimai'][3][46]#}</span>
+      <div class="option txtr">
+        <label for="tip"><input type="checkbox" id="tip"><span class="switch"></span><span class="txt">{#$langData['waimai'][3][47]#}</span></label>
+      </div>
+    </div>
+    <div class="dom_select tipc">
+      <div class="set">
+        <a href="javascript:;" data-tip="1" class="curr">1{#echoCurrency type="short"#}</a>
+        <a href="javascript:;" data-tip="2">2{#echoCurrency type="short"#}</a>
+        <a href="javascript:;" data-tip="5">5{#echoCurrency type="short"#}</a>
+        <a href="javascript:;" data-tip="10">10{#echoCurrency type="short"#}</a>
+        <a href="javascript:;" data-tip="0">其他</a>
+      </div>
+      <div class="inp"><span>{#echoCurrency type="symbol"#}</span><input type="text" id="tipcur" onkeyup="value=value.replace(/\D+/ig,'')"></div>
+    </div>
+  </div>
+  <div class="more">
+    <div class="dom_select">
+      <span class="name">{#$langData['waimai'][3][48]#}</span>
+      <div class="option txtr">
+        <textarea name="" class="note" id="note" placeholder="{#$langData['waimai'][3][49]#}">{#$order_note#}</textarea>
+      </div>
+    </div>
+  </div>
+  <div class="location fn-hide">
+    <input type="hidden" id="buylat" value="0">
+    <input type="hidden" id="buylng" value="0">
+    <input type="hidden" id="lat" value="0">
+    <input type="hidden" id="lng" value="0">
+  </div>
+  <div class="paybtn">
+    <a href="javascript:;" class="pay disabled">{#$langData['waimai'][3][51]#}</a>
+    <span class="total">{#$langData['waimai'][3][50]#}<font class="money money2">{#echoCurrency type="symbol"#}5.00</font></span>
+  </div>
+  <div id="container" class="fn-hide"></div>
+<script type="text/javascript">
+  var yingyeState = {#$yingyeState#}, begantime = '{#$begantime#}', endtime = '{#$endtime#}', city = '{#$city#}', district = '{#$district#}';
+  {#if $yingyeState == -1#}
+  alert("{#$langData['waimai'][3][60]#}{#$begantime#}-{#$endtime#}");
+  {#/if#}
+</script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$cfg_basehost#}/wmsj/templates/touch/js/mobiscroll.js" type="text/javascript"></script>
+<script src="{#$cfg_basehost#}/wmsj/templates/touch/js/mobiscroll.datetime.js" type="text/javascript"></script>
+<script src="{#$cfg_basehost#}/wmsj/templates/touch/js/mobiscroll.select.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/paotui-song.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

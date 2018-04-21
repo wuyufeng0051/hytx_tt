@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#}-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="{#$detail_title#},招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="{#$detail_title#},招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v=1">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/gs-detail.css?v=2">
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v=4"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script type="text/javascript">
+  var pageData = {
+    addrTitle: '{#$detail_title#}',
+    addrDetail: '{#$detail_address#}',
+    lat: '{#$detail_lnglat[1]#}',
+    lng: '{#$detail_lnglat[0]#}'
+  };
+  var masterDomain = '{#$cfg_basehost#}',staticPath = '{#$cfg_staticPath#}';
+  var	JubaoConfig = {
+    "module" : 'job',
+    "action" : 'company',
+    "id" : '{#$detail_id#}'
+  };
+</script>
+</head>
+<body>
+
+	{#$tit = '公司详情'#}
+	{#include file="top.html"#}
+
+  <div class="gs-tit fn-clear">
+    <div class="tit-img">
+      <img src="{#$detail_logo#}">
+    </div>
+    <div class="tit-txt">
+      <h3>{#$detail_title#}</h3>
+      <p>{#$detail_addr[0]#} {#$detail_addr[1]#}</p>
+      <p class="tit-info"><span>{#$detail_nature#}</span><em>|</em><span>{#$detail_scale#}</span><em>|</em><span>{#$detail_industry[1]#}</span></p>
+    </div>
+  </div>
+
+  <div class="choose-tab">
+    <div class="tab-box">
+      <span class="active">公司主页</span>
+      <span>招聘职位</span>
+    </div>
+  </div>
+
+<div class="choose-box">
+  <div class="wrapper">
+    <div class="info">
+      <div class="info-tit">
+        <h3>公司介绍</h3>
+      </div>
+      <div class="info-con">
+        {#$detail_body#}
+      </div>
+    </div>
+    <div class="pin-address">
+      <h3>公司地址</h3>
+			{#if $site_map == "baidu"#}
+      <a href="http://map.baidu.com/?newmap=1&s=con%26wd%3D{#$detail_addr[0]#} {#$detail_addr[1]#} {#$detail_address#}%26c%3D224&from=alamap" class="address-info appMapBtn" target="_blank">{#$detail_addr[0]#} {#$detail_addr[1]#} {#$detail_address#}</a>
+			{#elseif $site_map == "google"#}
+			<a href="https://www.google.com/maps/place/{#$detail_address#}" class="address-info appMapBtn" target="_blank">{#$detail_addr[0]#} {#$detail_addr[1]#} {#$detail_address#}</a>
+      {#elseif $site_map == "amap"#}
+      <a href="http://ditu.amap.com/search?query={#$detail_address#}" class="address-info appMapBtn" target="_blank">{#$detail_addr[0]#} {#$detail_addr[1]#} {#$detail_address#}</a>
+      {#elseif $site_map == "qq"#}
+      <a href="http://apis.map.qq.com/uri/v1/search?keyword={#$detail_address#}" class="address-info appMapBtn" target="_blank">{#$detail_addr[0]#} {#$detail_addr[1]#} {#$detail_address#}</a>
+			{#/if#}
+    </div>
+  </div>
+  <div class="wrapper dn">
+    <div class="job-list">
+      <ul>
+				{#job action="post" return="post" company={#$detail_id#}#}
+        <li>
+          <a href="{#$post.url#}">
+            <div class="job-tit">
+              <span class="name">{#$post.title#}</span><em class="fn-right">{#$post.timeUpdate#}</em>
+            </div>
+            <div class="job-info">
+              <span>{#$detail_addr[0]#}/{#$post.experience#}/{#$post.educational#}</span><em class="fn-right price">{#$post.salary#}</em>
+            </div>
+          </a>
+        </li>
+				{#/job#}
+      </ul>
+    </div>
+  </div>
+</div>
+
+  <!-- 底部 -->
+  {#include file="footer.html"#}
+  <!-- 底部 end-->
+
+
+<script src="{#$templets_skin#}js/gs-detail.js?v=1"></script>
+{#* 微信分享 *#}
+{#$Share_description = {#$job_description#}#}
+{#$Share_title = {#$detail_title#}#}
+{#$Share_img = {#$detail_logo#}#}
+{#$Share_url = {#getUrlPath service='job' template='company' id={#$detail_id#}#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</body>
+</html>

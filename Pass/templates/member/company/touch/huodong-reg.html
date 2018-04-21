@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>活动报名 - {#$cfg_webname#}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v=100">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v=1">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/huodong-reg.css?v=1">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v=100"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v=100"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+
+<body>
+{#$pageTitle = "活动报名管理"#}
+{#include file="top.html"#}
+
+
+<div class="count">
+	<ul>
+		<li>共有<span id="total">0</span>人报名</li>
+	</ul>
+</div>
+
+<div class="contain">
+  {#huodong action="regList" hid={#$id#}#}
+  <div class="item fn-clear">
+    <div class="lbox fn-left">
+      <p class="name">{#$row.nickname#}</p>
+      <p class="number">{#if $row.phone#}{#$row.phone#}{#else#}无{#/if#}</p>
+    </div>
+    <div class="rbox fn-right">
+      <p class="time">{#$row.date|date_format:"%Y-%m-%d %H:%M:%S"#}</p>
+      <p class="thing">{#if $row.title#}{#$row.title#}{#else#}免费{#/if#}( {#$row.price|string_format:"%.2f"#} )</p>
+    </div>
+  </div>
+  {#/huodong#}
+
+  {#if $pageInfo['totalCount'] == 0#}
+  <p class="loading">暂无报名信息！</p>
+  {#/if#}
+
+</div>
+
+<script type="text/javascript">
+document.getElementById("total").innerHTML = "{#$pageInfo['totalCount']#}";
+</script>
+</body>
+</html>

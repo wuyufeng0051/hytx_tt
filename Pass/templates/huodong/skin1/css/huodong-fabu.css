@@ -1,0 +1,85 @@
+.body {background-color: #e7e7eb; padding-bottom: 30px;}
+.body .wrap {width: 1200px; background: #fff; padding: 40px 0;}
+.footer-login {margin-top: 0;}
+
+.f-item {font-size: 14px;}
+.f-item .f-left {float: left; width: 200px; height: 38px; padding-top: 5px; text-align: right; line-height: 38px;}
+.f-item .f-right {float: left; width: 900px; position: relative; z-index: 1; padding: 5px 0 20px 20px;}
+.f-item .f-right.f-rela5 {z-index: 5;}
+.f-item .f-right.f-rela10 {z-index: 10;}
+.f-item .f-right .inp {height: 36px; border: 1px solid #d9d9d9; padding: 0 15px; line-height: 36px;}
+.f-item .f-right .inp:focus {box-shadow:0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 5px rgba(0, 153, 233, 0.4); border:1px solid #a5e0fe!important;}
+
+/* 海报 */
+.hb img {float: left; width: 210px; height: 123px;}
+.hb .hb-r {float: left; margin: 25px 0 0 30px;}
+.hb .hb-r .add-hb {float: left; position: relative; width: 138px; height: 34px; line-height: 32px; border-radius: 3px; font-size: 14px; background: #0099e9; color: #fff; border: 0; cursor: pointer; text-align: center; overflow: hidden;}
+.hb .hb-r .add-hb:hover {background-color: #0082c6;}
+.hb .hb-r .add-hb input {position: absolute; left: 0; top: 0; right: 0; bottom: 0; opacity: 0; filter: alpha(opacity=0); cursor: pointer;}
+.hb .hb-r .del-hb {float: left; display: none; margin: 5px 0 0 20px;}
+.hb .hb-r p {color: #999; font-size: 12px; margin-top: 15px;}
+
+/* 时间 */
+.f-date {float: left; width: 220px; height: 36px; border: 1px solid #d9d9d9; float: left; padding-left: 40px; background: url('../images/date_icon.png') no-repeat 12px center;}
+.f-date input {height: 36px; width: 220px; border: 0;}
+.f-date-split {float: left; width: 28px; height: 1px; background: #d9d9d9; margin: 17px 15px 0 15px; overflow: hidden;}
+#baomingLabel {float: left; margin-left: 30px; line-height: 36px;}
+
+/* 选择 */
+.f-sel {float: left; width: 200px; height: 36px; border: 1px solid #d9d9d9; margin-right: 14px; position: relative; cursor: pointer;}
+.f-sel input {width: 170px; height: 36px; border: 0; text-indent: 15px; cursor: pointer;}
+.f-sel s {position: absolute; height: 0; width: 0; line-height: 0; font-size: 0; border: 6px dashed transparent; top: 15px; right: 10px; border-top: 6px solid #ccc;}
+
+.f-sel .f-opt {display: none; position: absolute; left: -1px; top: 45px; width: 200px; background: #fff; border: 1px solid #d9d9d9; box-shadow: 0 2px 8px #ccc; z-index: 10; -webkit-animation: bottomFadeIn .3s ease-out; -moz-animation: bottomFadeIn .3s ease-out; animation: bottomFadeIn .3s ease-out;}
+.f-sel .f-opt a {display: block; height: 26px; text-align: left; line-height: 26px; color: #444; font-size: 14px; cursor: pointer; padding-left: 20px;}
+.f-sel .f-opt a:hover {background-color: #0099e9; color: #fff;}
+
+
+/* 选择区域 */
+.sel-addr {display: none; position: absolute; left: 20px; top: 53px; width: 360px; background: #fff; border: 1px solid #d9d9d9; box-shadow: 0 2px 8px #ccc; z-index: 10; -webkit-animation: bottomFadeIn .3s ease-out; -moz-animation: bottomFadeIn .3s ease-out; animation: bottomFadeIn .3s ease-out;}
+.sel-addr-nav {height: 40px; border-bottom: 1px solid #d9d9d9; line-height: 40px;}
+.sel-addr-nav li {float: left; padding: 0 10px;}
+.sel-addr-nav li span {display: block; padding: 0 5px; cursor: pointer;}
+.sel-addr-nav .curr span {border-bottom: 1px solid #f23131; color: #f23131;}
+.sel-addr-list {max-height: 400px; overflow-y: auto;}
+.sel-addr-list li.loading {height: 200px; line-height: 200px; text-align: center;}
+.sel-addr-list li.loading:after, .sel-addr-list li.n:after {display: none;}
+.sel-addr-list li {position: relative; height: 35px; padding: 0 10px; line-height: 35px; cursor: pointer;}
+.sel-addr-list li:hover {color: #f00;}
+.sel-addr-list li:after {content: ''; position: absolute; top: 50%; right: .32rem; width: .08rem; height: .15rem; margin: -.07rem 0 0 -.04rem; border: 0; background-position: -.42rem -.76rem;}
+.sel-addr-list li.curr {color: #f23131;}
+
+
+/* 报名费用 */
+.fee_type {height: 60px;}
+.fee_type a {float: left; width: 132px; height: 38px; text-align: center; line-height: 38px; font-size: 14px; color: #000; border: 1px solid #dfdfdf; margin-right: 30px; border-radius: 5px;}
+.fee_type .curr {color: #0099e9; border: 1px solid #0099e9;}
+.fee_body {width: 832px; border: 1px solid #d9d9d9; background-color: #fcfcfc;}
+.fee_top {height: 40px; background-color: #edeeef; border-bottom: 1px solid #d9d9d9; margin-bottom: 20px;}
+.fee_top span {float: left; line-height: 40px; color: #666; text-align: center;}
+.fee_top .t1 {width: 250px; margin-left: 10px;}
+.fee_top .t2 {width: 200px;}
+.fee_top .t3 {width: 250px;}
+
+.fee_con {padding-bottom: 20px;}
+.fee_con .fee_item {height: 30px; line-height: 30px; margin-bottom: 15px;}
+.fee_con span {float: left; color: #666; text-align: center;}
+.fee_con .t1 {width: 250px; margin-left: 20px;}
+.fee_con .t2 {width: 200px;}
+.fee_con .t3 {width: 250px;}
+.fee_con .t4 {width: 110px;}
+.fee_con span input {display: block; width: 90%; height: 28px; margin: 0 auto; border: 1px solid #d9d9d9; text-indent: 10px; font-size: 14px; color: #666; background-color: #fff;}
+.fee_con span input:focus {box-shadow:0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 5px rgba(0, 153, 233, 0.4); border:1px solid #a5e0fe!important;}
+.fee_con .t4 a {display: block; width: 19px; height: 22px; margin: 4px auto; background: url('../images/icon_join.png') -1px -501px; transition: none; -moz-transition: none; -webkit-transition: none; -o-transition: none;}
+.fee_con .t4 a:hover {background-position: -1px -551px;}
+.fee_con .fee_add {display: block; width: 120px; height: 30px; line-height: 30px; text-align: center; margin: 0 auto; background-color: #0099e9; color: #fff;}
+
+#tj {display: block; width: 213px; height: 45px; line-height: 45px; text-align: center; font-size: 18px; color: #fff; margin: 40px auto; background-color: #0099e9; border: 0; cursor: pointer;}
+#tj:hover {background-color: #0082c6;}
+
+
+
+#title {width: 800px;}
+#address {width: 585px;}
+#contact {width: 500px;}
+.f-body {height: 434px;}

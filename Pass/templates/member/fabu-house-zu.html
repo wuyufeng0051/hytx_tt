@@ -1,0 +1,269 @@
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][19][89]#}：</dt>
+	<dd>
+		<input type="text" name="community" class="inp" id="community" size="40" maxlength="50" data-title="{#$langData['siteConfig'][20][125]#}" value="{#$detail_community#}" />
+		<a href="javascript:;" class="choBtn" id="chooseCommunity" title="{#$langData['siteConfig'][20][124]#}"><s></s></a>
+		<input type="hidden" name="communityid" id="communityid" value="{#$detail_communityid#}">
+		<span class="tip-inline"></span>
+		<br /><span id="communityAddr"></span>
+	</dd>
+</dl>
+<dl class="fn-clear community-addr{#if $detail_communityid == "" || $detail_communityid != 0#} fn-hide{#/if#}" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][19][27]#}：</dt>
+	<dd id="selAddr">
+		<div class="sel-group" data-title="{#$langData['siteConfig'][20][482]#}">
+			<div class="addrBtn" data-field="addrid" data-ids="{#getPublicParentInfo tab='houseaddr' id=$detail_addrid split=' '#}" data-id="{#$detail_addrid#}">{#if $detail_addr != ""#}{#getPublicParentInfo tab='houseaddr' id=$detail_addrid type='typename' split='/'#}{#else#}{#$langData['siteConfig'][7][2]#}{#/if#}</div>
+		</div>
+		<input type="hidden" name="addrid" id="addrid" value="{#$detail_addrid#}" />
+		<input type="text" name="address" class="inp" id="address" size="30" maxlength="50" data-title="{#$langData['siteConfig'][20][351]#}" value="{#$detail_address#}" />
+		<a href="javascript:;" class="getlnglat" id="getlnglat"><s></s>{#$langData['siteConfig'][19][88]#}</a>
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][19][102]#}：</dt>
+	<dd>
+		<div class="radio rentype" data-title="{#$langData['siteConfig'][20][334]#}">
+			<span data-id="0"{#if $detail_rentype == $langData['siteConfig'][19][104] || $detail_rentype == ""#} class="curr"{#/if#}>{#$langData['siteConfig'][19][104]#}</span>
+			<span data-id="1"{#if $detail_rentype == $langData['siteConfig'][19][105]#} class="curr"{#/if#}>{#$langData['siteConfig'][19][105]#}</span>
+			<input type="hidden" name="rentype" id="rentype" value="{#if $detail_rentype == $langData['siteConfig'][19][105]#}1{#else#}0{#/if#}" />
+		</div>
+		<div class="sel-group sharetype" style="margin-left:16px;{#if $detail_rentype != $langData['siteConfig'][19][105]#} display:none;{#/if#}" data-title="{#$langData['siteConfig'][20][353]#}">
+			<button type="button" class="sel">{#if $detail_sharetype != ""#}{#$detail_sharetype#}{#else#}{#$langData['siteConfig'][23][47]#}{#/if#}<span class="caret"></span></button>
+			<ul class="sel-menu">
+				{#house action="item" return="item" type="7"#}
+				<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+		<input type="hidden" name="sharetype" id="sharetype" value="{#$detail_sharetypeid#}" />
+		<div class="sel-group sharesex" style="{#if $detail_rentype != $langData['siteConfig'][19][105]#} display:none;{#/if#}" data-title="{#$langData['siteConfig'][23][48]#}">
+			<button type="button" class="sel">{#if $detail_sharesex == 0#}{#$langData['siteConfig'][19][816]#}{#elseif $detail_sharesex == 1#}{#$langData['siteConfig'][19][817]#}{#elseif $detail_sharesex == 2#}{#$langData['siteConfig'][19][818]#}{#/if#}<span class="caret"></span></button>
+			<ul class="sel-menu">
+				<li><a href="javascript:;" data-id="0">{#$langData['siteConfig'][19][816]#}</a></li>
+				<li><a href="javascript:;" data-id="1">{#$langData['siteConfig'][19][817]#}</a></li>
+				<li><a href="javascript:;" data-id="2">{#$langData['siteConfig'][19][818]#}</a></li>
+			</ul>
+		</div>
+		<input type="hidden" name="sharesex" id="sharesex" value="{#$detail_sharesex#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][19][101]#}：</dt>
+	<dd id="totalPrice">
+		<div class="input-append mr10">
+			<input id="price" name="price" type="text" size="6" maxlength="7" data-title="{#$langData['siteConfig'][20][491]#}" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_price#}">
+			<span class="add-aft">{#echoCurrency type='short'#}/{#$langData['siteConfig'][13][18]#}</span>
+		</div>
+		<div class="sel-group paytype" style="margin-top:-1px;" data-title="{#$langData['siteConfig'][20][356]#}">
+			<button type="button" class="sel">{#if $detail_paytype != ""#}{#$detail_paytype#}{#else#}{#$langData['siteConfig'][19][106]#}{#/if#}<span class="caret"></span></button>
+			<ul class="sel-menu">
+				{#house action="item" return="item" type="5"#}
+				<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+		<input type="hidden" name="paytype" id="paytype" value="{#$detail_paytypeid#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear selectGroup" data-required="1">
+	<dt>{#$langData['siteConfig'][19][107]#}：</dt>
+	<dd>
+		<div class="input-append mr10">
+			<select class="input-mini" type="text" name="room" id="room" data-val="{#$detail_room#}">
+        <option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select>
+			<span class="add-aft">{#$langData['siteConfig'][13][8]#}</span>
+		</div>
+		<div class="input-append mr10">
+			<select class="input-mini" type="text" name="hall" id="hall" data-val="{#$detail_hall#}">
+        <option value="0">0</option>
+        <option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select>
+			<span class="add-aft">{#$langData['siteConfig'][13][9]#}</span>
+		</div>
+		<div class="input-append mr10">
+			<select class="input-mini" type="text" name="guard" id="guard" data-val="{#$detail_guard#}">
+        <option value="0">0</option>
+        <option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select>
+			<span class="add-aft">{#$langData['siteConfig'][13][10]#}</span>
+		</div>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][19][90]#}：</dt>
+	<dd>
+		<div class="input-prepend input-append mr10">
+			<span class="add-bef">{#$langData['siteConfig'][19][85]#}</span>
+			<input id="area" name="area" type="text" size="4" maxlength="7" data-title="{#$langData['siteConfig'][20][481]#}" value="{#$detail_area#}">
+			<span class="add-aft">㎡</span>
+		</div>
+		<div class="input-prepend input-append mr10">
+			<span class="add-bef">{#$langData['siteConfig'][13][11]#}</span>
+			<input id="bno" name="bno" type="text" size="3" maxlength="3" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_bno#}">
+			<span class="add-aft">{#$langData['siteConfig'][13][12]#}</span>
+		</div>
+		<div class="input-prepend input-append mr10">
+			<span class="add-bef">{#$langData['siteConfig'][13][13]#}</span>
+			<input id="floor" name="floor" type="text" size="3" maxlength="3" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_floor#}">
+			<span class="add-aft">{#$langData['siteConfig'][13][12]#}</span>
+		</div>
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt>{#$langData['siteConfig'][19][201]#}：</dt>
+	<dd>
+		<div class="sel-group" data-title="{#$langData['siteConfig'][20][484]#}">
+			<button type="button" class="sel">{#if $detail_protype != ""#}{#$detail_protype#}{#else#}{#$langData['siteConfig'][19][91]#}{#/if#}<span class="caret"></span></button>
+			<ul class="sel-menu">
+				{#house action="item" return="item" type="1"#}
+				<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+		<input type="hidden" name="protype" id="protype" value="{#$detail_protypeid#}" />
+		<div class="sel-group" data-title="{#$langData['siteConfig'][20][485]#}">
+			<button type="button" class="sel">{#if $detail_zhuangxiu != ""#}{#$detail_zhuangxiu#}{#else#}{#$langData['siteConfig'][19][92]#}{#/if#}<span class="caret"></span></button>
+			<ul class="sel-menu" id="selZhuangxiu">
+				{#house action="item" return="item" type="2"#}
+				<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+		<input type="hidden" name="zhuangxiu" id="zhuangxiu" value="{#$detail_zhuangxiuid#}" />
+		<div class="sel-group" data-title="{#$langData['siteConfig'][20][486]#}">
+			<button type="button" class="sel">{#if $detail_direction != ""#}{#$detail_direction#}{#else#}{#$langData['siteConfig'][19][93]#}{#/if#}<span class="caret"></span></button>
+			<ul class="sel-menu">
+				{#house action="item" return="item" type="4"#}
+				<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+		<input type="hidden" name="direction" id="direction" value="{#$detail_directionid#}" />
+		<div class="input-prepend input-append" style="margin-top:1px;">
+			<span class="add-bef">{#$langData['siteConfig'][19][94]#}</span>
+			<input id="buildage" name="buildage" type="text" size="4" maxlength="4" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_buildage#}">
+			<span class="add-aft">{#$langData['siteConfig'][13][14]#}</span>
+		</div>
+	</dd>
+</dl>
+<dl class="fn-clear">
+	<dt>{#$langData['siteConfig'][19][95]#}：</dt>
+	<dd>
+		<div class="checkbox">
+			{#house action="item" return="item" type="6"#}
+			<label><input type="checkbox" name="config[]" value="{#$item.id#}"{#if $detail_config && in_array($item.typename, $detail_config)#} checked{#/if#}>{#$item.typename#}</label>
+			{#/house#}
+		</div>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][19][0]#}：</dt>
+	<dd>
+		<input type="text" name="title" class="inp" id="title" size="50" maxlength="50" data-title="{#$langData['siteConfig'][20][26]#}" value="{#$detail_title#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][23][46]#}：</dt>
+	<dd class="thumb fn-clear listImgBox fn-hide">
+		<div class="uploadinp filePicker thumbtn{#if $detail_litpic != ""#} fn-hide{#/if#}" id="filePicker1" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+		{#if $detail_litpic != ""#}
+		<ul id="listSection1" class="listSection thumblist fn-clear" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$detail_litpic#}' target="_blank" title=""><img alt="" src="{#changeFileSize url="$detail_litpic" type="small"#}" data-val="{#$detail_litpicSource#}"/></a><a class="reupload li-rm" href="javascript:;">{#$langData['siteConfig'][19][176]#}</a></li></ul>
+		{#else#}
+		<ul id="listSection1" class="listSection thumblist fn-clear"></ul>
+		{#/if#}
+		<input type="hidden" name="litpic" value="{#$detail_litpicSource#}" class="imglist-hidden" id="litpic">
+	</dd>
+</dl>
+<dl class="fn-clear">
+	<dt>{#$langData['siteConfig'][19][335]#}：</dt>
+	<dd>
+		<script id="note" name="note" type="text/plain" style="width:750px;height:300px">{#$detail_note#}</script>
+	</dd>
+</dl>
+<dl class="fn-clear">
+	<dt>{#$langData['siteConfig'][19][2]#}：</dt>
+	<dd class="listImgBox fn-hide">
+		<div class="list-holder">
+			<ul id="listSection2" class="fn-clear listSection fn-hide"{#if $detail_imglist#} style="display: block;"{#/if#}>
+				{#foreach from=$detail_imglist key=k item=i#}
+				<li class="fn-clear" id="WU_FILE_1_{#$k#}">
+					<span class="li-move" title="{#$langData['siteConfig'][23][42]#}">↕</span>
+					<a class="li-rm" href="javascript:;">×</a>
+					<div class="li-thumb" style="display: block;">
+						<div class="r-progress"><s></s></div>
+						<span class="ibtn">
+							<a href="javascript:;" class="Lrotate" title="{#$langData['siteConfig'][23][43]#}"></a>
+							<a href="javascript:;" class="Rrotate" title="{#$langData['siteConfig'][23][44]#}"></a>
+							<a href="{#$i.path#}" target="_blank" class="enlarge" title="{#$langData['siteConfig'][23][45]#}"></a>
+						</span>
+						<span class="ibg"></span>
+						<img data-val="{#$i.pathSource#}" data-url="{#changeFileSize url="{#$i.path#}" type="small"#}" src="{#changeFileSize url="{#$i.path#}" type="small"#}" />
+					</div>
+					<textarea class="li-desc" placeholder="{#$langData['siteConfig'][20][477]#}" style="display: inline-block;">{#$i.info#}</textarea>
+				</li>
+				{#/foreach#}
+			</ul>
+			<input type="hidden" name="imglist" value="" class="imglist-hidden">
+		</div>
+		<div class="btn-section fn-clear">
+			<div class="uploadinp filePicker" id="filePicker2" data-type="desc" data-count="{#$atlasMax#}" data-size="{#$atlasSize#}" data-imglist=""><div id="flasHolder"></div><span>{#$langData['siteConfig'][6][168]#}</span></div>
+			<div class="upload-tip">
+				<p><a href="javascript:;" class="fn-hide deleteAllAtlas"{#if $detail_imglist#} style="display: inline-block;"{#/if#}>{#$langData['siteConfig'][6][79]#}</a>&nbsp;&nbsp;{#$langData['siteConfig'][20][10]|replace:'1':'2'|replace:'2':$atlasMax#} <span class="fileerror"></span></p>
+			</div>
+		</div>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][19][642]#}：</dt>
+	<dd>
+		<input type="text" name="person" class="inp" id="person" size="20" data-title="{#$langData['waimai'][3][52]#}" value="{#if $detail_username != ""#}{#$detail_username#}{#else#}{#$userinfo.nickname#}{#/if#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][3][6]#}：</dt>
+	<dd>
+		<input type="text" name="tel" class="inp" id="tel" size="20" data-title="{#$langData['siteConfig'][20][463]#}" onkeyup="value=value.replace(/\D+/ig,'')" value="{#if $detail_contact != ""#}{#$detail_contact#}{#else#}{#$userinfo.phone#}{#/if#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+
+<script>
+	var map_city = '{#$cfg_mapCity#}', site_map = "{#$site_map#}";
+</script>
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.coord.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.autocomplete.min.js"></script>

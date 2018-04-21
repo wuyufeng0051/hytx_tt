@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-{#$home_title#}</title>
+<meta name="keywords" content="{#$home_keywords#}"/>
+<meta name="description" content="{#$home_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/businessD.css" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$home_channelDomain#}';
+
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'store'#}
+{#include file="top.html"#}
+
+<div class="bread">
+	您当前位置：<a href="{#$home_channelDomain#}">首页</a> > <a href="{#getUrlPath service='home' template='store'#}">商家店铺</a> > <a href="{#getUrlPath service='home' template='store-detail' id={#$detail_id#}#}">{#$detail_title#}</a>
+</div>
+
+<!-- 内容部分 -->
+<div class="container">
+
+	<div class="infoDetail">
+		<dl class="left">
+			<dt><div class="img"><i></i><img src="{#$detail_logo#}" alt="{#$detail_title#}"></div><p>{#$detail_title#}</p></dt>
+			<dd>{#$detail_title#}</dd>
+			<dd><span><em>联&nbsp;&nbsp;系&nbsp;人：</em>{#$detail_people#}</span><span><em>电话：</em>{#$detail_tel#}</span></dd>
+			<dd><span><em>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</em>{#$detail_addr[0]#} {#$detail_addr[1]#} {#$detail_address#}</span></dd>
+			<dd><span><em>经营产品：</em>{#$detail_project#}</span></dd>
+		</dl>
+		<div class="hot">
+			<h3>热卖商品排行</h3>
+			<ul id="slider1">
+				{#home action="hlist" return="list" store={#$detail_id#} orderby="5" pageSize="5"#}
+				<li>
+					<dl  class="clearfix">
+						<dt><a href="{#$list.url#}" target="_blank"><img src="{#changeFileSize url={#$list.litpic#} type='middle'#}" alt="{#$list.title#}"></a></dt>
+						<dd><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></dd>
+						<dd><span>{#echoCurrency type='symbol'#}{#$list.price#}</span><s>{#echoCurrency type='symbol'#}{#$list.mprice#}</s></dd>
+						<dd class="look"><a href="{#$list.url#}" target="_blank">去看看>></a></dd>
+					</dl>
+				</li>
+				{#/home#}
+			</ul>
+			<div class="btn">
+		    <a href="javascript:;" class="prev">上一个</a>
+		    <a href="javascript:;" class="next">下一个</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="classify">
+		<div class="b">
+			<span>搜索</span>
+			<input class="sou" id="keywords" type="text" onblur="if(value==''){value='请输入搜索内容'}" onfocus="if(value=='请输入搜索内容'){value=''}" value="{#if $keywords != ""#}{#$keywords#}{#else#}请输入搜索内容{#/if#}" />
+			<div class="price"><input type="text" id="price1" value="{#$price[0]#}" /><em>{#echoCurrency type='symbol'#}</em></div>
+			<div class="line"></div>
+			<div class="price"><input type="text" id="price2" value="{#$price[1]#}" /><em>{#echoCurrency type='symbol'#}</em></div>
+			<input class="but" type="button" id="search" />
+		</div>
+	</div>
+
+	<ul class="list clearfix">
+		{#home action="hlist" return="list" store={#$detail_id#} title={#$keywords#} price="{#if $price#}{#$price[0]#},{#$price[1]#}{#/if#}" page={#$page#} pageSize="100"#}
+		<li>
+			<a href="{#$list.url#}" title="{#$list.title#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$list.litpic#} type='middle'#}" alt="{#$list.title#}"></a>
+			<div class="info">
+				<p class="title"><a href="{#$list.url#}" title="{#$list.title#}" target="_blank">{#$list.title#}</a></p>
+				<span><em class="left">{#echoCurrency type='symbol'#}{#$list.price#}</em></span>
+			</div>
+		</li>
+		{#/home#}
+	</ul>
+
+	<!--分页-->
+	{#getPageList service='home' template='store-detail' id={#$detail_id#} param="{#if $keywords != ""#}keywords={#$keywords#}{#/if#}{#if $price#}{#if $keywords != ""#}&{#/if#}price={#$price[0]#},{#$price[1]#}{#/if#}"#}
+
+</div>
+
+
+{#include file="bottom.html"#}
+<script>var pageUrl = '{#getUrlPath service="home" template="store-detail" id={#$detail_id#}#}';</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/businessD.js?v=1"></script>
+</body>
+</html>

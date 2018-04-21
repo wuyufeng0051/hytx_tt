@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{#if $id#}修改活动{#else#}发布活动{#/if#} - {#$huodong_title#}</title>
+<meta name="keywords" content="发布活动,{#$huodong_keywords#}" />
+<meta name="description" content="{#$huodong_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index_public.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/huodong.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/huodong-fabu.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}../../member/css/fabu-pay.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}', channelDomain = '{#$huodong_channelDomain#}', templatePath = '{#$templets_skin#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, modelType = 'huodong', id = {#$id#}, detailUrl = '{#getUrlPath service="huodong" template="detail" id="{#$id#}"#}', reg = {#$detail_reg|string_format:"%d"#};
+	var manageUrl = '{#getUrlPath service="member" type="user" templates="manage-huodong"#}';
+</script>
+</head>
+
+<body>
+{#include file="_top.html"#}
+
+<div class="body">
+	<form class="wrap" action="/include/ajax.php?service=huodong&action={#if $id#}edit{#else#}fabu{#/if#}" id="fabuForm">
+		<div class="f-item fn-clear">
+			<div class="f-left">活动类型：</div>
+			<div class="f-right f-rela10 fn-clear">
+				<div class="f-sel">
+					<input name="typename" id="typename" readonly placeholder="选择类型"{#if $id#} value="{#$detail_typename[0]#}"{#/if#} /><s></s>
+					<ul class="f-opt" id="selType">
+						{#huodong action='type' return='type'#}
+						<li><a href="javascript:;" data-id="{#$type.id#}">{#$type.typename#}</a></li>
+						{#/huodong#}
+					</ul>
+				</div>
+				<div class="f-sel" id="selTypeChild">
+					<input name="typename1" id="typename1" readonly placeholder="具体分类"{#if $id#} value="{#$detail_typename[1]#}"{#/if#} /><s></s>
+					<ul class="f-opt" id="selTypeChild">
+						{#if $id#}
+						{#huodong action='type' return='type' type={#$detail_pid#}#}
+						<li><a href="javascript:;" data-id="{#$type.id#}">{#$type.typename#}</a></li>
+						{#/huodong#}
+						{#/if#}
+					</ul>
+				</div>
+				<input type="hidden" name="typeid" id="typeid"{#if $id#} value="{#$detail_typeid#}"{#/if#} />
+			</div>
+		</div>
+		<div class="f-item fn-clear">
+			<div class="f-left">活动主题：</div>
+			<div class="f-right fn-clear">
+				<input class="inp" type="text" name="title" id="title" placeholder="请输入活动主题"{#if $id#} value="{#$detail_title#}"{#/if#} />
+			</div>
+		</div>
+		<div class="f-item fn-clear">
+			<div class="f-left">活动海报：</div>
+			<div class="f-right hb fn-clear">
+				<img src="{#if $id#}{#changeFileSize url="{#$detail_litpic#}" type="middle"#}{#else#}{#$templets_skin#}images/placeholder_img.png{#/if#}" id="hbImg" />
+				<div class="hb-r">
+					<div class="fn-clear">
+						<div class="add-hb">
+							<span>{#if $id#}修改海报{#else#}添加海报{#/if#}</span>
+							<input type="file" accept=".gif,.jpeg,.jpg,.png" id="Filedata" name="Filedata" />
+						</div>
+						<a href="javascript:;" class="del-hb" id="delHb"{#if $id && $detail_litpic#} style="display: block;"{#/if#}>删除海报</a>
+					</div>
+					<p>温馨提示：图片尺寸建议为：900*525，图片小于4M</p>
+					<input type="hidden" name="litpic" id="litpic"{#if $id#} value="{#$detail_litpicSource#}"{#/if#} />
+				</div>
+			</div>
+		</div>
+		<div class="f-item fn-clear">
+			<div class="f-left">活动时间：</div>
+			<div class="f-right fn-clear">
+				<div class="f-date"><s></s><input type="text" name="began" id="began" placeholder="开始时间"{#if $id#} value="{#$detail_began|date_format:"%Y-%m-%d %H:%M"#}"{#/if#} /></div>
+				<span class="f-date-split"></span>
+				<div class="f-date"><s></s><input type="text" name="end" id="end" placeholder="结束时间"{#if $id#} value="{#$detail_end|date_format:"%Y-%m-%d %H:%M"#}"{#/if#} /></div>
+				<label id="baomingLabel"><input type="checkbox" name="baoming" id="baoming" value="1"{#if $id && $detail_baoming#} checked{#/if#} /> 活动结束之前均可报名</label>
+			</div>
+		</div>
+		<div class="f-item fn-clear" id="baomingendObj"{#if $id && $detail_baoming#} style="display: none;"{#/if#}>
+			<div class="f-left">报名截止时间：</div>
+			<div class="f-right fn-clear">
+				<div class="f-date"><s></s><input type="text" name="baomingend" id="baomingend" placeholder="报名截止时间"{#if $id && $detail_baomingend#} value="{#$detail_baomingend|date_format:"%Y-%m-%d %H:%M"#}"{#/if#} /></div>
+			</div>
+		</div>
+		<div class="f-item fn-clear">
+			<div class="f-left">活动地点：</div>
+			<div class="f-right f-rela5 fn-clear">
+				<div class="f-sel" id="selAddrInp"><input name="city" id="city" readonly placeholder="选择区域"{#if $id#} value="{#$detail_addrname[1]#}"{#/if#} /><s></s></div>
+				<input type="text" class="inp" name="address" id="address" placeholder="活动详细地址"{#if $id#} value="{#$detail_address#}"{#/if#} />
+				<input type="hidden" name="addrid" id="addrid"{#if $id#} value="{#$detail_addrid#}"{#/if#} />
+				<div class="sel-addr" id="selAddr">
+					<ul class="sel-addr-nav"><li class="curr"><span>请选择</span></li></ul>
+					<div class="sel-addr-list"></div>
+				</div>
+			</div>
+		</div>
+		<div class="f-item fn-clear">
+			<div class="f-left">活动详情：</div>
+			<div class="f-right f-body fn-clear">
+				<script id="body" name="body" type="text/plain" style="width: 832px; height: 400px;">{#if $id#}{#$detail_body#}{#/if#}</script>
+			</div>
+		</div>
+
+		{#if $id == 0 || $detail_reg == 0#}
+		<div class="f-item fn-clear">
+			<div class="f-left">报名费用：</div>
+			<div class="f-right fn-clear">
+				<div class="fee_type">
+					<a href="javascript:;" data-val="0"{#if !$id || $detail_feetype == 0#} class="curr"{#/if#}>免费活动</a>
+					<a href="javascript:;" data-val="1"{#if $detail_feetype == 1#} class="curr"{#/if#}>收费活动</a>
+					<input type="hidden" name="fee" id="fee" value="{#if $id#}{#$detail_feetype#}{#else#}0{#/if#}" />
+				</div>
+				<div class="fee_max"{#if $id && $detail_feetype == 1#} style="display: none;"{#/if#}>
+					<input class="inp" type="text" maxlength="7" name="max" id="max" placeholder="人数上限" onkeyup="value=value.replace(/[^\d.]/g,'')"{#if $id#} value="{#$detail_max#}"{#/if#} />
+				</div>
+				<div class="fee_body fn-hide"{#if $id && $detail_feetype == 1#} style="display: block;"{#/if#}>
+					<div class="fee_top">
+						<span class="t1">电子票类型</span>
+						<span class="t2">金额</span>
+						<span class="t3">人数上限</span>
+					</div>
+					<div class="fee_con">
+						{#if $id#}
+						{#foreach from=$detail_feeList item=fee#}
+						<div class="fee_item">
+							<span class="t1"><input type="text" name="fee_title[]" placeholder="费用名称" value="{#$fee.title#}" /></span>
+							<span class="t2"><input type="text" name="fee_price[]" placeholder="金额，免费请填0" value="{#$fee.price#}" /></span>
+							<span class="t3"><input type="text" name="fee_max[]" onkeyup="value=value.replace(/[^\d.]/g,'')" placeholder="人数，不填则无限制" value="{#$fee.max#}" /></span>
+							<span class="t4"><a href="javascript:;"></a></span>
+						</div>
+						{#/foreach#}
+						{#else#}
+						<div class="fee_item">
+							<span class="t1"><input type="text" name="fee_title[]" placeholder="费用名称" /></span>
+							<span class="t2"><input type="text" name="fee_price[]" placeholder="金额，免费请填0" /></span>
+							<span class="t3"><input type="text" name="fee_max[]" onkeyup="value=value.replace(/[^\d.]/g,'')" placeholder="人数，不填则无限制" /></span>
+							<span class="t4"><a href="javascript:;"></a></span>
+						</div>
+						<div class="fee_item">
+							<span class="t1"><input type="text" name="fee_title[]" placeholder="费用名称" /></span>
+							<span class="t2"><input type="text" name="fee_price[]" placeholder="金额，免费请填0" /></span>
+							<span class="t3"><input type="text" name="fee_max[]" onkeyup="value=value.replace(/[^\d.]/g,'')" placeholder="人数，不填则无限制" /></span>
+							<span class="t4"><a href="javascript:;"></a></span>
+						</div>
+						{#/if#}
+						<a href="javascript:;" class="fee_add" id="feeAdd">+增加电子票</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		{#else#}
+		<div class="f-item fn-clear">
+			<div class="f-left">报名费用：</div>
+			<div class="f-right fn-clear"><input class="inp" type="text" readonly value="已经有报名的活动不能修改费用内容！" style="width: 500px; background: #f5f5f5; cursor: no-drop;" /></div>
+		</div>
+		{#/if#}
+
+		<div class="f-item fn-clear">
+			<div class="f-left">主办方联系方式：</div>
+			<div class="f-right fn-clear">
+				<input class="inp" type="text" name="contact" id="contact" placeholder="请输入11位手机号码，如座机，请输入“区号-电话号码-分机号”"{#if $id#} value="{#$detail_contact#}"{#/if#} />
+			</div>
+		</div>
+		<div class="fn-clear"><input type="submit" name="tj" id="tj" value="{#if $id#}修改{#else#}发布{#/if#}" /></div>
+	</form>
+</div>
+
+{#include file="../../member/fabu-pay.html" module="huodong"#}
+{#include file="_footer.html"#}
+<script type='text/javascript' src='/include/ueditor/ueditor.config.js?v=2'></script>
+<script type='text/javascript' src='/include/ueditor/ueditor.all.js?v=1'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.ajaxFileUpload.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/calendar/WdatePicker.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}../../member/js/fabu-pay.js?v=2"></script>
+<script src="{#$templets_skin#}js/huodong-fabu.js?v=3"></script>
+</body>
+</html>

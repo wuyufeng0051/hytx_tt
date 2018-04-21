@@ -1,0 +1,63 @@
+{#$pageTitle = $langData['siteConfig'][19][422]|cat:" - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/loginrecord.css?v={#$cfg_staticVersion#}" media="all" />
+</head>
+
+<body>
+{#$pageCurr = "manage_huodong"#}
+{#include file="headSidebar.html"#}
+
+<div class="main">
+
+	<div class="notice">{#$langData['siteConfig'][27][41]#}<a href="#" target="_blank">{#$langData['siteConfig'][26][56]#}</a> <a href="#" target="_blank">{#$langData['siteConfig'][26][57]#}</a><em class="close">&times;</em></div>
+
+	<div class="nav-tabs fn-clear">
+		<ul class="fn-clear">
+			<li class="active"><a href="javascript:;">{#$langData['siteConfig'][19][422]#}(<small id="totalTip">0</small>)</a></li>
+			<li><a href="{#getUrlPath service='member' template='manage' action='huodong'#}">{#$langData['siteConfig'][23][52]#}</a></li>
+		</ul>
+	</div>
+	<div class="container">
+
+		<div class="list" id="list">
+			<table>
+				<thead class="thead">
+					<tr>
+						<th class="fir"></th>
+							<th>{#$langData['siteConfig'][19][423]#}</th>
+							<th style="padding-left: 20px;">{#$langData['siteConfig'][19][424]#}</th>
+							<th style="padding-left: 20px;">{#$langData['siteConfig'][19][425]#}</th>
+							<th style="padding-left: 20px;">{#$langData['siteConfig'][19][426]#}</th>
+							<th style="padding-left: 20px;">{#$langData['siteConfig'][19][428]#}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#huodong action="regList" hid={#$id#}#}
+					<tr>
+						<td class="fir"></td>
+						<td>{#$row.nickname#}</td>
+						<td>{#if $row.phone#}{#$row.phone#}{#else#}{#$langData['siteConfig'][13][20]#}{#/if#}</td>
+						<td>{#$row.date|date_format:"%Y-%m-%d %H:%M:%S"#}</td>
+						<td>{#if $row.title#}{#$row.title#}{#else#}{#$langData['siteConfig'][19][427]#}{#/if#}</td>
+						<td>{#$row.price|string_format:"%.2f"#}</td>
+					</tr>
+					{#/huodong#}
+					{#if $pageInfo['totalCount'] == 0#}
+					<tr>
+							<td colspan="6" class="empty"><p class="loading">{#$langData['siteConfig'][20][494]#}</p></td>
+					</tr>
+					{#/if#}
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript">
+document.getElementById("totalTip").innerHTML = "{#$pageInfo['totalCount']#}";
+</script>
+</body>
+</html>

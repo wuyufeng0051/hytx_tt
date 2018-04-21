@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}</title>
+<meta name="keywords" content="{#$build_keywords#}"/>
+<meta name="description" content="{#$build_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/newsD.css" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$build_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<!-- 面包屑 -->
+<div class="container clearfix">
+	<div class="bread">
+		<a href="{#$build_channelDomain#}">首页</a><em>></em><a href="{#getUrlPath service='build' template='news'#}">资讯</a><em>></em><a href="{#getUrlPath service='build' template='news' typeid={#$detail_typeid#}#}">{#$detail_typename#}</a>
+	</div>
+	<!-- 左侧 -->
+	<div class="left detail">
+		<h3>{#$detail_title#}</h3>
+		<p class="info"><span>{#$detail_pubdate|date_format:"%Y-%m-%d %H:%m"#}</span></p>
+		<div class="con">
+			{#$detail_body#}
+		</div>
+		<div class="share">
+			<div class="bdsharebuttonbox right">
+				<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+				<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+				<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+				<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+				<a href="#" class="bds_more" data-cmd="more"></a>
+			</div>
+			<span class="right">分享</span>
+			<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+		</div>
+		<h2><span>相关资讯</span></h2>
+		<div class="list">
+			<ul class="left">
+				{#build action="news" typeid={#$detail_typeid#} page=1 pageSize=5#}
+				<li><p><i><em></em></i><a href="{#$row.url#}" title="{#$row.title#}">{#$row.title#}</a></p><span>{#$row.pubdate|date_format:"%Y-%m-%d"#}</span></li>
+				{#/build#}
+			</ul>
+		</div>
+	</div>
+
+	<!-- 右侧 -->
+	<div class="right hot">
+		<div class="article">
+			<h3>推荐商品<span></span><em></em></h3>
+			<ul>
+				{#build action="blist" return="l1" flag="r" pageSize="7"#}
+				<li><a href="{#$l1.url#}" title="{#$l1.title#}" target="_blank">{#$l1.title#}</a></li>
+				{#/build#}
+				{#if $pageInfo.totalCount == 0#}
+				<li class="empty">暂无相关商品！</li>
+				{#/if#}
+			</ul>
+		</div>
+		<div class="article">
+			<h3>促销商品<span></span><em></em></h3>
+			<ul>
+				{#build action="blist" return="l1" flag="c" pageSize="7"#}
+				<li><a href="{#$l1.url#}" title="{#$l1.title#}" target="_blank">{#$l1.title#}</a></li>
+				{#/build#}
+				{#if $pageInfo.totalCount == 0#}
+				<li class="empty">暂无相关商品！</li>
+				{#/if#}
+			</ul>
+		</div>
+		<div class="article">
+			<h3>热卖商品<span></span><em></em></h3>
+			<ul>
+				{#build action="blist" return="l1" flag="h" pageSize="7"#}
+				<li><a href="{#$l1.url#}" title="{#$l1.title#}" target="_blank">{#$l1.title#}</a></li>
+				{#/build#}
+				{#if $pageInfo.totalCount == 0#}
+				<li class="empty">暂无相关商品！</li>
+				{#/if#}
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+{#include file="bottom.html"#}
+</body>
+</html>

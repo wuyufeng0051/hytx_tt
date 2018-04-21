@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$seo_title#}品牌库-{#$furniture_title#}</title>
+<meta name="keywords" content="{#$furniture_keywords#}"/>
+<meta name="description" content="{#$furniture_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/brandlist.css" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$furniture_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'brand'#}
+{#include file="top.html"#}
+
+<div class="bread">
+	<a href="{#$furniture_channelDomain#}">首页</a> > <a href="{#getUrlPath service='furniture' template='brand'#}">品牌库</a>{#if $typeid != 0#} > <a href="{#getUrlPath service='furniture' template='brand' typeid={#$typeid#}#}">{#$seo_title#}</a>{#/if#}
+</div>
+
+<div class="container">
+
+	<!--品牌排行榜-->
+	<div class="ranking">
+		<div class="tag"></div>
+		<ul>
+			{#furniture action="brand" page="1" rec="1" pageSize="6"#}
+			<li class="s{#$_bindex.row#}"><div><a href="{#$row.url#}" title="{#$row.title#}"><i></i><img src="{#$row.logo#}" alt="{#$row.title#}" /></a></div><p>{#$row.title#}</p></li>
+			{#/furniture#}
+		</ul>
+	</div>
+
+	<div class="classify">
+		<div class="lb">
+			<p>
+				<span>类别</span>
+				<a{#if $typeid == 0#} class="active"{#/if#} href="{#getUrlPath service='furniture' template='brand'#}">不限</a>
+				{#furniture action="type" return="type"#}
+				<a{#if $typeid == $type.id#} class="active"{#/if#} href="{#getUrlPath service='furniture' template='brand' typeid={#$type.id#}#}">{#$type.typename#}</a>
+				{#/furniture#}
+			</p>
+		</div>
+	</div>
+
+	<!--品牌列表部分-->
+	<div class="brandList">
+		<ul class="clearfix">
+			{#furniture action="brand" typeid={#$typeid#} page={#$page#} pageSize=160#}
+			<li><i class="corner"></i><div><a href="{#$row.url#}" target="_blank"><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$row.logo#}" alt="{#$row.title#}"></a></div><p><a href="{#$row.url#}" target="_blank">{#$row.title#}</a></p></li>
+			{#/furniture#}
+			{#if $pageInfo.totalCount == 0#}
+			<li class="empty">抱歉！ 暂无品牌信息</li>
+			{#/if#}
+		</ul>
+	</div>
+
+	<!-- 分页 -->
+	{#getPageList service='furniture' template='brand' typeid={#$typeid#}#}
+
+</div>
+
+
+{#include file="bottom.html"#}
+</body>
+</html>

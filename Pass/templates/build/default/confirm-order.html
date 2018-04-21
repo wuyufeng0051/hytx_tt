@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>确认订单-{#$build_title#}</title>
+<meta name="keywords" content="{#$build_keywords#}"/>
+<meta name="description" content="{#$build_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/order.css?v=2" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$build_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<!-- 面包屑 -->
+<div class="container clearfix">
+	<form action="/include/ajax.php?service=build&action=pay" method="post" id="payform">
+		<input type="hidden" name="pros" id="pros" value="{#$pros#}" />
+		<input type="hidden" name="addressid" id="addressid" value="0" />
+		<input type="hidden" name="paytype" id="paytype" value="" />
+		<h3 class="addr"><i></i>确认收货地址</h3>
+		<div class="addrCon">
+			<p class="title">收货地址</p>
+			<div class="addrList clearfix">
+
+				{#member action="address"#}
+				<div class="addrD{#if $_bindex.row == 1#} current{#/if#}" data-id="{#$row.id#}" data-name="{#$row.person#}" data-mobile="{#$row.mobile#}" data-tel="{#$row.tel#}" data-addr="{#$row.addrname#}" data-address="{#$row.address#}">
+					<i></i>
+					<div>
+						<p><span class="name">{#$row.person#}</span><span>(收)</span><span class="phone">{#if $row.mobile != "" && $row.tel != ""#}{#$row.mobile#}{#elseif $row.mobile == "" && $row.tel != ""#}{#$row.tel#}{#else#}{#$row.mobile#}{#/if#}</span></p>
+						<p class="detail"><label><span>{#$row.addrname|replace:" ":"</span><span>"#}</span></label> <span class="xxdz">{#$row.address#}</span></p>
+					</div>
+					<p class="b"><a class="edit" href="javascript:;">编辑</a><a class="delete" href="javascript:;">删除</a><a class="default" href="javascript:;">{#if $_bindex.row == 1#}默认地址{#else#}设置默认{#/if#}</a></p>
+				</div>
+				{#/member#}
+
+				<div class="left add"><a href="javascript:;"><span></span><p>添加地址</p></a></div>
+			</div>
+			<div class="editAddr" style="display: none;">
+				<p class="title title1">编写新地址</p>
+				<ul>
+					<li class="name">
+						<dl>
+							<dt><font>*</font>收货人：</dt>
+							<dd><input id="person" type="text" value=""></dd>
+							<dd class="b"><span class="input-tips"><s></s>请正确填写姓名，2-15个字</span></dd>
+						</dl>
+					</li>
+					<li class="address">
+						<dl>
+							<dt><font>*</font>所在地区：</dt>
+							<dd><span id="addrlist">
+								<select id="addrid" name="addrid[]">
+									<option value="0">请选择区域</option>{#siteConfig action="addr" return="addr" son="0"#}
+									<option value="{#$addr.id#}">{#$addr.typename#}</option>
+									{#/siteConfig#}
+								</select>
+							</span>
+							 </dd><dd class="b"><span class="input-tips"><s></s>请选择区域</span></dd>
+						</dl>
+					</li>
+					<li class="detail">
+						<dl>
+							<dt><font>*</font>详细地址：</dt>
+							<dd><input id="address" type="text" value=""></dd>
+							<dd class="b"><span class="input-tips"><s></s>请填写街道地址，5-60个字，不能全部为数字</span></dd>
+						</dl>
+					</li>
+					<li class="phone">
+						<dl>
+							<dt><font>*</font>手机号码：</dt>
+							<dd><input id="mobile" type="text" value=""></dd>
+							<dd class="b"><span class="input-tips" style="display: inline-block;"><s></s>手机号码和固定电话最少填写一项</span></dd>
+						</dl>
+					</li>
+					<li class="phone">
+						<dl>
+							<dt>固定电话：</dt>
+							<dd><input id="tel" type="text" value=""><span class="input-tips"><s></s>手机号码和固定电话最少填写一项</span></dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt></dt>
+							<dd class="confirm" ><a  id="submit"  href="javascript:;">保存收货人信息</a><a id="cancel" href="javascript:;">取消</a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<h3 class="pay"><i></i>选择支付方式</h3>
+		<div class="payCon">
+			<div class="style"><a href="javascript:;" class="on">快捷支付</a><a href="javascript:;">其他支付</a></div>
+			<div class="ka">
+				<div class="blist terrace clearfix">
+					{#siteConfig action="payment" return="payment"#}
+					<a href="javascript:;" class="bank-icon{#if $_bindex.payment == 1#} active{#/if#}" title="{#$payment.pay_name#}" data-type="{#$payment.pay_code#}"><span class="{#$payment.pay_code#}"></span><b></b></a>
+					{#/siteConfig#}
+				</div>
+				<div class="blist terrace clearfix" style="display: none;">
+					<a href="javascript:;" class="bank-icon" title="中国工商银行" data-type="alipay$ICBC-DEBIT"><span class="icbc"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="中国建设银行" data-type="alipay$CCB"><span class="ccb"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="中国银行" data-type="alipay$BOCB2C"><span class="boc"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="交通银行" data-type="alipay$COMM"><span class="comm"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="中国农业银行" data-type="alipay$ABC"><span class="abc"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="招商银行" data-type="alipay$CMB"><span class="cmb"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="邮政储蓄银行" data-type="alipay$POSTGC"><span class="psbc"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="中国光大银行" data-type="alipay$CEB-DEBIT"><span class="ceb"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="中国民生银行" data-type="alipay$CMBC"><span class="cmbc"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="平安银行" data-type="alipay$SPABANK"><span class="pingan"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="浦发银行" data-type="alipay$SPDB"><span class="spdb"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="中信银行" data-type="alipay$CITIC-DEBIT"><span class="ecitic"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="兴业银行" data-type="alipay$CIB"><span class="cib"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="广发银行" data-type="alipay$GDB"><span class="cgb"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="北京银行" data-type="alipay$BJBANK"><span class="beijing"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="北京农商银行" data-type="alipay$BJRCB"><span class="bjrcb"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="富滇银行" data-type="alipay$FDB"><span class="fudian"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="宁波银行" data-type="alipay$NBBANK"><span class="nbcb"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="上海银行" data-type="alipay$SHBANK"><span class="shanghai"></span><b></b></a>
+					<a href="javascript:;" class="bank-icon" title="上海农商银行" data-type="alipay$SHRCB"><span class="srcb"></span><b></b></a>
+				</div>
+			</div>
+		</div>
+		<h3 class="info"><i></i>确认订单信息</h3>
+		<div class="infoCon">
+
+			{#$totalPrice = 0#}
+			{#$totalCount = 0#}
+
+			{#foreach from=$cartList item="cart"#}
+			<div class="store">
+				<ul class="title clearfix">
+					<li class="shop">店铺：{#if $cart.domain#}<a href="{#$cart.domain#}" target="_blank" title="{#$cart.store#}">{#$cart.store#}</a>{#else#}{#$cart.store#}{#/if#}</li>
+					<li class="goods">商品名称</li>
+					<li class="unitPrice">单价 </li>
+					<li class="unitCount">数量</li>
+					<li class="freight">运费</li>
+					<li class="unitTotal">小计</li>
+				</ul>
+
+				{#foreach from=$cart.list item="list"#}
+
+				{#$totalPrice = $totalPrice + $list.price * $list.count + $list.logistic#}
+				{#if $totalPrice != 0#}
+				{#$totalCount = $totalCount + $list.count#}
+				{#/if#}
+				<ul class="sp clearfix">
+					<li class="img"><div><a href="{#$list.url#}" target="_blank"><img src="{#$list.thumb#}"></a></div></li>
+					<li class="title"><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></li>
+					<li class="unitPrice"><em>{#echoCurrency type='symbol'#}{#$list.price#}</em></li>
+					<li class="unitCount">{#$list.count#}</li>
+					<li class="freight"><em>{#if $list.logistic == 0#}免运费{#else#}{#echoCurrency type='symbol'#}{#$list.logistic#}{#/if#}</em></li>
+					<li class="unitTotal"><em>{#echoCurrency type='symbol'#}{#($list.count * $list.price + $list.logistic)|string_format:"%.2f"#}</em></li>
+				</ul>
+				{#/foreach#}
+				<input class="message" name="note[{#$cart.sid#}]" type="text" placeholder="补充您对卖家的其他要求">
+
+			</div>
+			{#/foreach#}
+
+			<div class="account clearfix">
+				<div class="left left1">
+					<div class="left">
+						<p>购物有疑问？<br>24小时客服电话<br>{#$build_hotline#}</p>
+					</div>
+					<div class="right">
+					<a href="{#$build_channelDomain#}">继续逛一逛</a>
+					</div>
+				</div>
+				<div class="right right1">
+
+					{#if $userinfo.point > 0#}
+					<div class="use-account fn-clear">
+						<span class="discharge">-{#echoCurrency type='symbol'#}<em id="disMoney">0</em></span>
+						<div class="account-summary">
+							<label><input id="usePinput" name="usePinput" type="checkbox" value="1" />使用{#$cfg_pointName#}抵扣</label>
+							<span class="use-input">使用：<input type="text" id="usePcount" name="point" onkeyup="value=value.replace(/\D+/ig,'')" />个</span>
+							<div class="use-tip">（您有 {#$userinfo.point#} 个{#$cfg_pointName#}，此单最多可用 <em id="cusePoint">0</em> 个）</div>
+						</div>
+					</div>
+					{#/if#}
+
+					{#if $userinfo.money > 0#}
+					<div class="use-account fn-clear">
+						<span class="discharge">-{#echoCurrency type='symbol'#}<em id="balMoney">0</em></span>
+						<div class="account-summary">
+							<label><input id="useBalance" name="useBalance" type="checkbox" value="1" />使用余额支付</label>
+							<span class="use-input">使用：<input type="text" id="useBcount" name="balance" onkeyup="value=value.replace(/[^0-9.]/ig,'')" />{#echoCurrency type='short'#}</span>
+							<div class="use-tip">（账户余额 {#$userinfo.money#} {#echoCurrency type='short'#}，此单最多可用 <em id="cuseBalance">0</em> {#echoCurrency type='short'#}）</div>
+							<div class="use-tip"><label>支付密码：<input type="password" id="paypwd" name="paypwd" /></label></div>
+						</div>
+					</div>
+					{#/if#}
+
+					<p>共<em>{#$totalCount#}</em>件&nbsp;&nbsp;&nbsp;&nbsp;合计（含运费）：<span>{#echoCurrency type='symbol'#}<strong id="totalPayMoney">{#$totalPrice|string_format:"%.2f"#}</strong></span></p>
+					<a href="javascript:;" class="submitOrder">结算</a>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript">
+var totalAmount = {#$totalPrice#}, totalPoint = {#$userinfo.point#}, totalBalance = {#$userinfo.money#}, pointRatio = {#$cfg_pointRatio#};
+var pointName = '{#$cfg_pointName#}';
+var orderList = "{#getUrlPath service='member' type='user' template='order' module='build'#}";
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/order.js?v=1"></script>
+</body>
+</html>

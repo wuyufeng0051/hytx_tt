@@ -1,0 +1,125 @@
+
+
+/* 大图幻灯 */
+.banner {height: 350px; position: relative; z-index: 12;}
+.slide {width: 1920px; height: 350px; overflow: hidden; position: relative; z-index: 9; left: 50%; margin-left: -960px;}
+.slide .slideshow-item {position: absolute; display: none; left: 0; right: 0; top: 0; bottom: 0; z-index: 11;}
+.slide .slideshow-item a, .slide .slideshow-item a img {width: 1920px; height: 350px; display: block;}
+.slide .slideshow-item .slideinfo {display: none;}
+.banner .wrap {position: relative; height: 350px; z-index: 10;}
+.banner .slidebtn {position: absolute; width: 100%; bottom: 20px; left: 0; z-index: 10; text-align: center;}
+.banner .slidebtn a {background: #b7b7b7; width: 36px; height: 6px;  display: inline-block; _display: inline; text-align: center; margin: 0 0 0 5px; overflow: hidden; font-size:0; line-height:0; }
+.banner .slidebtn a.activeSlide {background: #77c111;}
+
+/* 商品保障部分 */
+.service{width: 100%; height: 100px; background: #f4f4f4; border-bottom:1px solid #ececec;}
+.service .conS{width: 1000px; margin:0 auto; }
+.w1200 .service .conS{width: 1200px;}
+.service .conS dl{float: left; width: 33%; margin-top:25px;}
+.service .conS dl.d3{float: right}
+.service .conS dt{float: left; margin-top:5px; width: 45px; height: 45px; background: url(../images/home.png) -97px -231px no-repeat;}
+.service .conS dd{ margin-left:65px; font-size: 14px; color: #666 }
+.service .conS dd.t{font-size: 20px; color: #000}
+.service .conS dl.d2 dt{background-position: -97px -185px;}
+.service .conS dl.d3 dt{background-position: -97px -140px;}
+
+.container{ background: #fff; width: 1001px; margin: 0 auto }
+.w1200 .container{width: 1201px}
+
+/* 家居分类部分*/
+.classify{overflow:hidden}
+.classify .classify-top{width: 100%; height:39px; overflow: hidden; padding:20px 0;}
+.classify .classify-top div{width: 40%; height: 20px; border-bottom: 1px solid #ececec}
+.classify .classify-top span{width: 20%; text-align: center; font-size: 26px; color: #000}
+.classify .classify-bot .all{float: left; width: 20%;}
+.classify .classify-bot .title{width: 78px; margin:0 auto; }
+.classify .classify-bot dl dt{width: 78px; height: 78px; background: url(../images/home.png) no-repeat;}
+.classify .classify-bot dl dt a{display: block; width: 78px; height: 78px;}
+.classify .classify-bot .s2 dt{background-position: 0 -79px;}
+.classify .classify-bot .s3 dt{background-position: 0 -160px;}
+.classify .classify-bot .s4 dt{background-position: 0 -239px;}
+.classify .classify-bot .s5 dt{background-position: 0 -319px;}
+.classify .classify-bot dl dd{width: 100%; text-align: center; line-height: 30px; font-size: 16px; color: #010101}
+.classify .con{height: 110px; margin-top:10px; border-right:1px solid #ececec; border-bottom: 1px solid #ececec}
+.classify .kind{width:99%; height: 75px; overflow: hidden;}
+.classify .kind a{display: inline-block; font-size: 14px; line-height: 25px; margin:0 10px;}
+.classify .kind a:hover{text-decoration: underline;}
+.classify p{padding-left: 10px;}
+
+/* 推荐优质商家 */
+.recommend{margin-top:30px; overflow: hidden;}
+.recommend .title{ width:100%; height: 38px; line-height: 38px; border-bottom: 1px solid #ececec; padding-bottom: 10px;}
+.recommend .title i{width: 38px; height: 38px; background: url(../images/home.png) -97px -58px no-repeat}
+.recommend .title span{font-size: 22px; color: #000; margin:0 10px;}
+.recommend .title em{width:140px; height: 20px; margin-top:15px; background: url(../images/home.png) -170px 0px no-repeat}
+.recommend .title a{color: #999}
+.tjsj .left{width: 232px; height: 404px;}
+.w1200 .tjsj .left{width: 246px; height: 436px;}
+.tjsj .left img{display:block; width: 100%; height: 100%}
+.tjsj ul{float: right; width:768px; overflow: hidden;}
+.w1200 .tjsj ul{width: 954px;}
+.tjsj ul li{float: left; width: 127px;height:100px; border:1px solid #ececec; border-width: 0 1px 1px 0 }
+.w1200 .tjsj ul li{width: 158px; height:108px;}
+.tjsj ul .img{position: relative; margin:9px; width: 110px; height: 82px; text-align: center;}
+.w1200 .tjsj ul .img{width: 140px; height: 90px }
+.tjsj ul .img i{display: inline-block; height: 100%; vertical-align: middle}
+.tjsj ul .img img{max-width:100%; max-height:100%; display: inline; z-index: 0; vertical-align: middle; -ms-interpolation-mode: bicubic;}
+.tjsj ul .img .grey{display: none; position: absolute; left:0; top:0; width: 100%; height: 100%; line-height: 90px; text-align: center; font-size: 14px; color: #fff;background: url(../images/p-bg.png); -webkit-animation:popup .2s linear; -moz-animation:popup .2s linear; -o-animation:popup .2s linear; animation:popup .2s linear;}
+.w1200 .tjsj ul .img .grey{line-height: 82px;}
+.tjsj ul a:hover .grey{display: block;}
+
+/*今日特卖*/
+.sale .title i{background-position: -97px -100px}
+.sale .title em{background-position: -170px -38px;}
+.saleList{position: relative;}
+#saleGoods ul{ width: 1000px; border-left:1px solid #ececec; overflow: hidden;}
+.w1200 #saleGoods ul{width: 1200px;}
+#saleGoods ul li{float: left; width: 181px; padding:9px; border:1px solid #ececec; border-width:0 1px 1px 0}
+.w1200 #saleGoods ul li{width: 221px;}
+#saleGoods ul li img{display:block; width: 100%; height: 150px;}
+#saleGoods ul li p{width: 100%; height: 34px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap; font-size: 14px; line-height: 34px;}
+#saleGoods ul li i{font-size: 14px;}
+#saleGoods ul li label{font-size: 22px;}
+#saleGoods ul li font{color:#fff; line-height: 20px; margin:0 5px; font-size: 12px; padding: 0 5px 0 10px; background: url(../images/home.png) -97px -350px no-repeat}
+#saleGoods ul li em{display: inline-block; color: #999}
+#saleGoods ul li div{overflow: hidden;}
+.saleList .next{position: absolute; right: 10px; top:-30px; width:70px; height: 15px; line-height: 15px; color: #999; font-size: 14px; }
+.saleList .next em{display: inline-block; width: 15px; height: 15px; vertical-align: middle; margin-right: 10px; background: url(../images/home.png) -146px -16px no-repeat}
+
+.goodsAll{overflow: hidden;}
+.goodsAll .pcs{width: 100%; height: 40px; line-height: 40px; font-size: 14px; border-bottom:1px solid #fb5d5c; margin-top:40px;}
+.goodsAll .pcs span{width: 36px; height: 36px; font-size: 18px; color: #fff; margin-right: 10px; text-align: center; background: #fb5d5c; border-top:4px solid #fe7f7f;}
+.goodsAll .pcs h3{font-size: 24px;}
+.goodsAll .pcs .more{color: #999; margin-left:10px;}
+.goodsAll .pcs div a{font-size: 12px; padding: 0px 15px; margin:0 5px; background: #f8f8f8; border:1px solid #ececec; border-radius:10px; }
+.goodsAll .pcs div a:hover{text-decoration: underline;}
+
+.pcsCon .left img{display: block; width: 300px; height:333px;}
+.w1200 .pcsCon .left img{width: 360px; height:400px}
+.pcsCon ul{float: left; width: 700px;}
+.w1200 .pcsCon ul{width: 840px;}
+.pcsCon ul li{float: left; width:156px; height: 148px; padding: 9px; border:1px solid #ececec; border-width: 0 1px 1px 0}
+.w1200 .pcsCon ul li{width: 191px; height: 181px; }
+.pcsCon ul li img{display: block;width: 100%; height:100px;}
+.w1200 .pcsCon ul li img{height:130px;}
+.pcsCon ul li p{width: 100%; height: 25px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; line-height: 25px;}
+.pcsCon ul li span{font-size: 18px; color: #ff0200}
+.g2 .pcs{border-color:#13a6c5;}
+.g2 .pcs span{background: #13a6c5; border-color:#38c4e2;}
+.g3 .pcs{border-color:#ff9a00;}
+.g3 .pcs span{background: #ff9a00; border-color:#ffb74a;}
+.g4 .pcs{border-color:#8c6496;}
+.g4 .pcs span{background: #8c6496; border-color:#b58bc0;}
+.g5 .pcs{border-color:#b1b70a;}
+.g5 .pcs span{background: #b1b70a; border-color:#d1d727;}
+
+.banner1{width: 1200px; height: 90px; margin-top:20px; padding-bottom: 40px;}
+.banner1 img{display: block; width: 100%; height: 100%; }
+
+#sideNav{position: fixed; left: 50%; top:20%; margin-left: -660px; display: none;}
+#sideNav a,#sideNav dt,#sideNav dd{width: 40px; height: 38px; overflow: hidden; font-size: 12px; text-align: center;}
+#sideNav a{border-bottom: 1px solid #ececec}
+#sideNav dt{width: 30px; height: 40px; background: #fb5d5c; color: #fff; padding:0 4px; display: none;}
+#sideNav dd{line-height: 38px; text-align: center; font-size: 14px}
+#sideNav a.current dt{display: block;}
+#sideNav a.current dd{display: none;}

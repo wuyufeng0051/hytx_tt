@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#if $seo_title != ""#}{#$seo_title#}{#else#}商品列表{#/if#}-{#$build_title#}</title>
+<meta name="keywords" content="{#$build_keywords#}"/>
+<meta name="description" content="{#$build_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/goods.css" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$build_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+{#$pageUrl = {#getUrlPath service='build' template='list'#}#}
+
+<body>
+{#include file="top.html"#}
+
+<!-- 面包屑 -->
+<div class="container clearfix" id="J_crumbs">
+	<div class="bread">
+		<p class="fn-left">
+			<a href="{#$build_channelDomain#}">首页</a><em>></em><a href="{#getUrlPath service='build' template='list'#}#J_crumbs">所有商品</a>
+			{#if $typeid#}
+			{#foreach from=$typeNameArr item=typename key=k#}
+			<em>></em><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid={#$typeIdArr[$k]#}#}#J_crumbs">{#$typename#}</a>
+			{#/foreach#}
+			{#/if#}
+		</p>
+
+		{#if $keywords != ""#}
+		<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} keywords=''#}#J_crumbs" class="filter-item search fn-left">关键词：{#$keywords#}<span class="close">×</span></a>
+		{#/if#}
+	</div>
+
+	<!-- 筛选 -->
+	<div class="select">
+		<div class="sel clearfix bot"><span class="left">类别：</span>
+			<div class="x left">
+				<a{#if $typeid == 0#} class="on"{#/if#} href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid=""#}#J_crumbs">不限</a>
+				{#build action="type" return="type"#}
+				<a{#if $typeid == $type.id#} class="on"{#/if#} href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid={#$type.id#}#}#J_crumbs">{#$type.typename#}</a>
+				{#/build#}
+			</div>
+		</div>
+		{#if $typeArr#}
+		<div class="sel clearfix bot"><span class="left">&nbsp;</span>
+			<div class="x left">
+				<a{#if $tid == 0#} class="on"{#/if#} href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid={#$typeid#}#}#J_crumbs">不限</a>
+				{#foreach from=$typeArr item=type#}
+				<a{#if $tid == $type.id#} class="on"{#/if#} href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid={#$type.id#}#}#J_crumbs">{#$type.typename#}</a>
+				{#/foreach#}
+			</div>
+		</div>
+		{#/if#}
+	</div>
+	<!-- 排序  -->
+	<div class="sort clearfix">
+		<div class="left">
+			<a class="left{#if $orderby == 0#} active{#/if#}" href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=''#}#J_crumbs">默认排序</a>
+			<a class="left{#if $orderby == 1#} active{#/if#}" href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='1'#}#J_crumbs">价格<i></i></a>
+			<a class="left{#if $orderby == 5#} active{#/if#}" href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='5'#}#J_crumbs">销量<i></i></a>
+			<div class="left jiage">
+				<div class="sub"><em><s></s></em>
+					<a class="x" href="javascript:;" id="search">确定</a><a class="y cancel" href="javascript:;">取消</a>
+				</div>
+				<div class="price"><input type="text" id="price1" value="{#$price[0]#}" />{#echoCurrency type='symbol'#}</div><div class="line"></div><div class="price"><input type="text" id="price2" value="{#$price[1]#}" />{#echoCurrency type='symbol'#}</div>
+			</div>
+
+			{#$flag0 = "r"#}
+			{#$flag1 = "c"#}
+			{#$flag2 = "n"#}
+			{#$flag3 = "h"#}
+			{#$flag4 = "q"#}
+
+			{#if in_array("r", $flagArr)#}
+			{#$flag0 = ""#}
+			{#/if#}
+
+			{#if in_array("c", $flagArr)#}
+			{#$flag1 = ""#}
+			{#/if#}
+
+			{#if in_array("n", $flagArr)#}
+			{#$flag2 = ""#}
+			{#/if#}
+
+			{#if in_array("h", $flagArr)#}
+			{#$flag3 = ""#}
+			{#/if#}
+
+			{#if in_array("q", $flagArr)#}
+			{#$flag4 = ""#}
+			{#/if#}
+
+			{#if $flag != ""#}
+			{#foreach from=$flagArr item=fg#}
+				{#if $fg != "r"#}
+					{#if $flag0 == ""#}
+						{#$flag0 = $flag0|cat:$fg#}
+					{#else#}
+						{#$flag0 = $flag0|cat:","|cat:$fg#}
+					{#/if#}
+				{#/if#}
+				{#if $fg != "c"#}
+					{#if $flag1 == ""#}
+						{#$flag1 = $flag1|cat:$fg#}
+					{#else#}
+						{#$flag1 = $flag1|cat:","|cat:$fg#}
+					{#/if#}
+				{#/if#}
+				{#if $fg != "n"#}
+					{#if $flag2 == ""#}
+						{#$flag2 = $flag2|cat:$fg#}
+					{#else#}
+						{#$flag2 = $flag2|cat:","|cat:$fg#}
+					{#/if#}
+				{#/if#}
+				{#if $fg != "h"#}
+					{#if $flag3 == ""#}
+						{#$flag3 = $flag3|cat:$fg#}
+					{#else#}
+						{#$flag3 = $flag3|cat:","|cat:$fg#}
+					{#/if#}
+				{#/if#}
+				{#if $fg != "q"#}
+					{#if $flag4 == ""#}
+						{#$flag4 = $flag4|cat:$fg#}
+					{#else#}
+						{#$flag4 = $flag4|cat:","|cat:$fg#}
+					{#/if#}
+				{#/if#}
+			{#/foreach#}
+			{#/if#}
+
+			<div class="filter">
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} flag={#$flag0#}#}#J_crumbs"{#if in_array('r', $flagArr)#} class="on"{#/if#}><s></s>推荐</a>
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} flag={#$flag1#}#}#J_crumbs"{#if in_array('c', $flagArr)#} class="on"{#/if#}><s></s>促销</a>
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} flag={#$flag2#}#}#J_crumbs"{#if in_array('n', $flagArr)#} class="on"{#/if#}><s></s>新品</a>
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} flag={#$flag3#}#}#J_crumbs"{#if in_array('h', $flagArr)#} class="on"{#/if#}><s></s>热卖</a>
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} flag={#$flag4#}#}#J_crumbs"{#if in_array('q', $flagArr)#} class="on"{#/if#}><s></s>限时抢</a>
+			</div>
+
+		</div>
+
+		<div class="right">
+			<a class="prev" href="javascript:;"></a><span><em>{#$page#}</em>/<label id="totalPage">1<label></span><a class="next" href="javascript:;"></a>
+		</div>
+	</div>
+
+	<!-- 商品列表 -->
+	<div class="list">
+		<ul class="clearfix">
+
+			{#$tyid = $typeid#}
+			{#if $tid#}
+			{#$tyid = $tid#}
+			{#/if#}
+			{#build action="blist" return="list" typeid={#$tyid#} title={#$keywords#} price="{#if $price#}{#$price[0]#},{#$price[1]#}{#/if#}" flag={#$flag#} orderby={#$orderby#} page={#$page#} pageSize=100#}
+			<li><div class="con">
+				<a href="{#$list.url#}" title="{#$list.title#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$list.litpic#} type='middle'#}" alt="{#$list.title#}"></a><span>{#echoCurrency type='symbol'#}{#$list.price#} <s>{#echoCurrency type='symbol'#}{#$list.mprice#}</s></span><p><a href="{#$list.url#}" title="{#$list.title#}" target="_blank">{#$list.title#}</a></p>
+			</div></li>
+			{#/build#}
+			{#if $pageInfo.totalCount == 0#}
+			<li class="empty">抱歉！ 暂无相关商品</li>
+			{#/if#}
+		</ul>
+	</div>
+
+	<!-- 分页 -->
+	{#getPageList service='build' template='list' pageType='dynamic' param="{#$pageParam#}&page=#page##J_crumbs"#}
+
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript">
+	var totalCount = {#$pageInfo.totalCount|string_format:"%d"#}, totalPage = {#$pageInfo.totalPage|string_format:"%d"#}, atPage = {#$page#};
+	var priceUrl = '{#getUrlParam url={#$pageUrl#} data={#$pageParam#} price="pricePlaceholder"#}#J_crumbs';
+	var pageUrl = '{#getUrlParam url={#$pageUrl#} data="{#$pageParam#}&page=pagePlaceholder"#}#J_crumbs';
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/list.js"></script>
+</body>
+</html>

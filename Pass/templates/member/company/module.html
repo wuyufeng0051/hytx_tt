@@ -1,0 +1,136 @@
+{#$pageTitle = $langData['siteConfig'][19][472]|cat:" - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/module.css?v={#$cfg_staticVersion#}" media="all" />
+</head>
+
+{#$pageCurr = "module"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+  <div class="nav-tabs fn-clear">
+  	<ul class="fn-clear">
+  		<li class="active"><a href="javascript:;">{#$langData['siteConfig'][19][657]#}</a></li>
+  		<li><a href="javascript:;">{#$langData['siteConfig'][19][658]#}</a></li>
+  		<li><a href="javascript:;">{#$langData['siteConfig'][19][659]#}</a></li>
+  	</ul>
+  </div>
+  <div class="container fn-clear">
+    <div class="tbody">
+      {#if $userOpenModules#}
+      <div class="thead fn-clear">
+        <span></span><span>{#$langData['siteConfig'][19][547]#}</span><span>{#$langData['siteConfig'][19][660]#}</span>
+      </div>
+      <div class="list">
+        {#foreach from=$userOpenModules item=module#}
+        <table class="open" data-name="{#$module.module#}" data-title="{#getModuleTitle name=$module.module#}" data-price="{#$module.price#}">
+          <tbody>
+            <tr>
+              <td><img src="{#$cfg_staticPath#}/images/admin/nav/{#$module.module#}.png" alt=""></td>
+              <td><span class="name">{#getModuleTitle name=$module.module#}</span></td>
+              <td{#if strstr($module.expired, $langData['siteConfig'][13][6])#} style="font-weight: 700; color: red;"{#/if#}>{#$module.expired#}</td>
+              <td><a href="javascript:;" class="paybtn">{#$langData['siteConfig'][19][661]#}</a></td>
+            </tr>
+          </tbody>
+        </table>
+        {#/foreach#}
+      </div>
+      {#else#}
+      <div class="empty" style="padding: 200px 0; text-align: center; font-size: 14px;">{#$langData['siteConfig'][20][421]#}</div>
+      {#/if#}
+    </div>
+    <div class="tbody fn-hide">
+      {#if $notOpenModules#}
+      <ul class="nopen fn-clear">
+        {#foreach from=$notOpenModules item=module#}
+        <li data-name="{#$module.module#}" data-title="{#getModuleTitle name=$module.module#}" data-price="{#$module.price#}"><img src="{#$cfg_staticPath#}/images/admin/nav/{#$module.module#}.png" alt=""><p>{#getModuleTitle name=$module.module#}</p><a href="javascript:;" class="openbtn">{#$langData['siteConfig'][19][656]#}</a></li>
+        {#/foreach#}
+      </ul>
+      {#else#}
+      <div class="empty" style="padding: 200px 0; text-align: center; font-size: 14px;">{#$langData['siteConfig'][20][422]#}</div>
+      {#/if#}
+    </div>
+    <div class="tbody fn-hide">
+      <div class="mtop">
+        {#member action="joinOrder" return="order" pageSize="100"#}
+        <ul class="order-item">
+          <li class="title fn-clear"><span class="span-1">{#$langData['siteConfig'][19][308]#}：{#$order.ordernum#}</span><span class="span-2">{#$langData['siteConfig'][26][123]#}：{#$order.date#}</span><span class="span-3"></span><span class="span-4"></span><span class="span-5"></span></li>
+          {#foreach from=$order.modules item=module#}
+          <li class="fn-clear"><span class="span-1">{#$module.name#}</span><span class="span-2"></span><span class="span-3">{#$module.count#}/{#$langData['siteConfig'][13][14]#}</span><span class="span-4" style="font-size: 14px;">{#$langData['siteConfig'][19][77]#}{#$module.expired#}</span><span class="span-5">{#echoCurrency type='symbol'#}{#($module.unitprice * $module.count)|string_format:"%.2f"#}</span></li>
+          {#/foreach#}
+          <li class="line">
+            {#if $order.offer > 0#}<p class="fn-clear"><span class="span-1">{#$langData['siteConfig'][19][886]#}</span><span class="span-2"></span><span class="span-3"></span><span class="span-4"></span><span class="span-5">{#echoCurrency type='symbol'#}{#$order.offer#}</span></p>{#/if#}
+            {#if $order.balance > 0#}<p class="fn-clear"><span class="span-1">{#$langData['siteConfig'][19][667]#}</span><span class="span-2"></span><span class="span-3"></span><span class="span-4"></span><span class="span-5">{#echoCurrency type='symbol'#}{#$order.balance#}</span></p>{#/if#}
+            {#if $order.amount > 0#}<p class="fn-clear"><span class="span-1">{#$langData['siteConfig'][19][668]#}({#$order.paytype#})</span><span class="span-2"></span><span class="span-3"></span><span class="span-4"></span><span class="span-5">{#echoCurrency type='symbol'#}{#$order.amount#}</span></p>{#/if#}
+          </li>
+          <li class="fn-clear sum"><span class="span-1"></span><span class="span-2"></span><span class="span-3"></span><span class="span-4"></span><span class="span-5">{#$langData['siteConfig'][19][664]#}  <em class="blue">{#echoCurrency type='symbol'#}<i>{#$order.totalprice#}</i></em></span></li>
+        </ul>
+        {#/member#}
+        {#if $pageInfo.totalCount == 0#}
+        <div class="empty" style="padding: 200px 0; text-align: center; font-size: 14px;">{#$langData['siteConfig'][27][59]#}</div>
+        {#/if#}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mask"></div>
+
+<div class="paybox">
+  <p class="fn-clear"><a href="javascript:;" class="close"></a></p>
+  <dl class="fn-clear">
+		<dt class="fn-left">{#$langData['siteConfig'][19][662]#}</dt>
+		<dd><span class="payName"></span></dd>
+	</dl>
+  <dl class="fn-clear">
+		<dt class="fn-left">{#$langData['siteConfig'][19][315]#}</dt>
+		<dd><span>{#echoCurrency type='symbol'#}<em class="perprice"></em></span></dd>
+	</dl>
+  <dl class="fn-clear">
+		<dt class="fn-left">{#$langData['siteConfig'][19][663]#}</dt>
+    <dd class="order-btn">
+      <a href="javascript:;" class="reduce"></a><a href="javascript:;" class="year">1</a><a href="javascript:;" class="add"></a>
+    </dd>
+	</dl>
+  <dl class="fn-clear">
+		<dt class="fn-left">{#$langData['siteConfig'][19][664]#}</dt>
+		<dd><span class="total-price">{#echoCurrency type='symbol'#}<em></em></span></dd>
+	</dl>
+  {#if $userinfo.money > 0#}
+  <dl class="fn-clear yue">
+		<dt class="fn-left">{#$langData['siteConfig'][19][386]#}</dt>
+		<dd><span class="yue-btn active"><i class="radio"><s></s></i>{#echoCurrency type='symbol'#}<em>{#$userinfo.money#}</em></span><span>-{#echoCurrency type='symbol'#}<em class="reduce-yue"></em></span></dd>
+	</dl>
+  {#/if#}
+  <dl class="fn-clear">
+		<dt class="fn-left">{#$langData['siteConfig'][19][316]#}</dt>
+		<dd><span>{#echoCurrency type='symbol'#}<em class="pay-total"></em></span></dd>
+	</dl>
+  <dl class="fn-clear" id="paytypeObj">
+		<dt class="wid">{#$langData['siteConfig'][26][124]#}</dt>
+		<dd>
+			<ul class="payway fn-clear">
+        {#siteConfig action="payment" return="payment"#}
+				<li{#if $_bindex.payment == 1#} class="active"{#/if#} data-id="{#$payment.pay_code#}"><a href="javascript:;" class="{#$payment.pay_code#}"><img src="{#$templets_skin#}images/{#$payment.pay_code#}.png" alt="{#$payment.pay_name#}">{#$payment.pay_name#}</a></li>
+        {#/siteConfig#}
+			</ul>
+		</dd>
+	</dl>
+  <div class="stepBtn"><a href="javascript:;" class="next-btn">{#$langData['siteConfig'][19][665]#}</a></div>
+</div>
+
+<form class="fn-hide" action="/include/ajax.php" method="post" id="pay">
+	<input type="hidden" name="service" value="member" />
+	<input type="hidden" name="action" value="joinPay" />
+	<input type="hidden" name="modules" id="modules" value="" />
+	<input type="hidden" name="balance" id="balance" value="" />
+	<input type="hidden" name="paytype" id="paytype" value="" />
+</form>
+
+{#include file="footer.html"#}
+<script type="text/javascript">
+  var totalBalance = {#$userinfo.money#};
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/module.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

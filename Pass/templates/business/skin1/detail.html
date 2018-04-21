@@ -1,0 +1,293 @@
+{#include file="d_top.html"#}
+
+    <div class="main">
+      <div id="bc">
+        <div class="wrapper" style=" width:100%;">
+          <div id="bf7" style="display:block; ">
+
+            {#$pageCurr = "index"#}
+            {#include file="d_head.html"#}
+
+            {#if $detail_banner#}
+            <div class="banner fullScreenFrame clearfix">
+              <div class="list">
+                <div class="bd">
+                  {#foreach from=$detail_banner item=banner#}
+                  <div class="slideshow-item"><img src="{#$banner.pic#}" height="360" style="margin: 0 auto; display: block;" alt=""></div>
+                  {#/foreach#}
+                </div>
+                <div class="hd s_nav_d"><ul class="JQ-slide-nav"></ul></div>
+              </div>
+            </div>
+            {#/if#}
+
+          </div>
+          <div id="cc">
+            <div class="w1000">
+              <div id="bf0" class="frame" style="display:block; width:1000px;">
+
+                {#if $detail_store['shop']#}
+                <div id="module_27096592" class="module">
+                  <div class="widget product_showcase scroll-proDiv ">
+                    <div class="con-box">
+                      <div class="zl_bg"></div>
+                      <div class="con-title show_block">
+                        <h2><span>产品滚动</span></h2>
+                      </div>
+                      <div class="zr_bg"></div>
+                      <div class="product-box_all clearfix moduleBoxbg" id="product_scroll_$27096592">
+                        <div class="proMarquee-left">
+                          <div class="hd">
+                            <a class="next"></a>
+                            <a class="prev"></a>
+                          </div>
+                          <div class="bd">
+                            <ul id="_product_scroll_27096592" class="pic-scrollList">
+
+                              {#shop action="slist" return="shop" store=$detail_store['shop'] orderby="6" pageSize="20"#}
+                              <li>
+                                <div class="product-box">
+                                  <div class="pro-border imgbox">
+                                    <p class="pic-box">
+                                      <span><a href="{#$shop.url#}" target="_blank"><img src="{#changeFileSize url={#$shop.litpic#} type='middle'#}" alt="{#$shop.title#}" title="{#$shop.title#}" /></a></span>
+                                    </p>
+                                  </div>
+                                  <!-- 产品价格 -->
+                                  <p class="pro-scroll-price"><span><em>{#$shop.price#}</em>{#echoCurrency type='short'#}</span></p>
+                                  <!-- 产品标题 -->
+                                  <p class="pro-scroll-title txtElps"><a href="{#$shop.url#}" title="{#$shop.title#}" target="_blank">{#$shop.title#}</a></p>
+                                </div>
+                              </li>
+                              {#/shop#}
+
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {#/if#}
+
+                <div id="module_27159533" class="module">
+                  <div class="widget company_profile  ">
+                    <div class="con-box">
+                      <div class="zl_bg"></div>
+                      <div class="con-title" style="display:block">
+                        <h2><span>公司简介</span></h2>
+                      </div>
+                      <div class="zr_bg"></div>
+                      <div class="bf-box_text clearfix moduleBoxbg">
+                        <div class="bf-box_left">
+                          <div class="bf-box_pic" style="height: 175px;">
+                            {#if $detail_pics#}
+                            <div class="picFloat" style="display:block">
+                              <span><i><img src="{#$detail_pics[0]['pic']#}" /></i></span>
+                            </div>
+                            {#/if#}
+                            <p>{#$detail_intro#}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="bfa" class="clearfix  bfa-column_3">
+                <div id="bf1" class="frame" style="display:block; width:232px;">
+                  <div id="module_25261109" class="module">
+                    <!-- 未登陆弹框导入内部样式和js -->
+                    <div class="widget company_files">
+                      <div class="con-box">
+                        <div class="com_dang sj-info moduleBoxbg">
+                          <div class="com_da_T">
+                            <span class="g_com_pdj fl">
+                              <a target='_blank' href="#">
+                                <img src="{#$templets_skin#}images/b_dpt.png"></a>
+                            </span>
+                            <span class="g_com_span">单品通会员</span></div>
+                          <div class="comBorder">
+                            <div class="sj-line sjDiv1">
+                              <p class="companyname">
+                                <span>{#$detail_title#}</span>
+                                <img src="{#$templets_skin#}images/s_tjh.png"></p>
+                            </div>
+                            <div class="sj-line sjDiv2" style="border-bottom:none; padding-bottom: 0px;">
+                              <p class="p_rz clearfix">
+                                <span class="p_rzL">满意度：</span>
+                                <span class="p_rzR">{#$detail_rating#}</span></p>
+                              <p class="p_rz clearfix">
+                                <span class="p_rzL">经营类目：</span>
+                                <span class="p_rzR">{#$detail_typename#}</span></p>
+                              <p class="p_rz clearfix">
+                                <span class="p_rzL">营业时间：</span>
+                                <span class="p_rzR">{#$detail_opentime#}</span></p>
+                              <p class="p_rz clearfix">
+                                <span class="p_rzL">人均消费：</span>
+                                <span class="p_rzR">{#$detail_amount#}</span></p>
+                              <p class="p_rz clearfix">
+                                <span class="p_rzL">停车场：</span>
+                                <span class="p_rzR">{#$detail_parking#}</span></p>
+                            </div><br />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="module_25261112" class="module">
+                    <div class="widget contactus  ">
+                      <div class="con-box">
+                        <div class="zl_bg"></div>
+                        <div class="con-title show_block">
+                          <h2><span>联系我们</span></h2>
+                        </div>
+                        <div class="zr_bg"></div>
+                        <div class="bf-box_text contact moduleBoxbg">
+                          <div class="contactUl">
+                            <ul>
+                              <li class="picContact clearfix">
+                                <!-- 初始是默认显示开始2014.12.26 -->
+                                <!-- 初始是默认显示结束2014.12.26 -->
+                                <div class="contxt">
+                                  <p>
+                                    <span class="contxtSpan">手&nbsp;机：</span>
+                                    <span class="phoneNumber">
+                                      {#$detail_tel#}
+                                      </span>
+                                  </p>
+                                  <p>
+                                    <span class="contxtSpan">联系我：</span>
+                                    {#if $detail_qq#}<a href="http://wpa.qq.com/msgrd?v=3&uin={#$detail_qq#}&Menu=yes" title="QQ在线交谈" target="_blank"><img src="http://wpa.qq.com/pa?p=2:{#$detail_qq#}:4" /></a>{#/if#}
+                                  </p>
+                                  <!-- 初始是默认显示开始2014.12.26 -->
+                                  <!-- 初始是默认显示结束2014.12.26 --></div>
+                              </li>
+                              <li class="comIntro clearfix">
+                                <div class="comIntroL">{#$detail_member['company']#}</div>
+                              </li>
+                              <li class="addIntroW">
+                                <div class="addIntro_div clearfix">
+                                  <div class="addIntroL">
+                                    <ul>
+                                      <li class="addIntro clearfix">
+                                        <span class="addL">区&nbsp;&nbsp;域：</span>
+                                        <span id="detialAddr" class="addR">{#$detail_addrname[0]#} {#$detail_addrname[1]#}</span></li>
+                                      <li class="addIntro clearfix">
+                                        <span class="addL">地&nbsp;&nbsp;址：</span>
+                                        <span id="detialAddr" class="addR">{#$detail_address#}</span></li>
+                                      <li class="addIntro clearfix">
+                                        <span class="addL">公众号：</span>
+                                        <span id="detialAddr" class="addR">{#$detail_wechatname#}({#$detail_wechatcode#})</span></li>
+                                      </ul>
+                                  </div>
+                                  <div class="addIntroR">
+                                    <img src="{#$detail_wechatqr#}" width="126" height="126" /></div>
+                                </div>
+                                </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="module_25261113" class="module">
+                    <div class="widget product_showcase  ">
+                      <div class="con-box" style="text-align:left;">
+                        <div class="zl_bg"></div>
+                        <div class="con-title show_block">
+                          <h2><span>热销排行</span></h2>
+                        </div>
+                        <div class="zr_bg"></div>
+                        <div class="product-box_all clearfix moduleBoxbg">
+
+                          {#shop action="slist" return="shop" store=$detail_store['shop'] orderby="1" pageSize="5"#}
+                          <div class="product-box">
+                            <div class="pro-border imgbox">
+                              <p class="pic-box">
+                                <span><a href="{#$shop.url#}" target="_blank"><img src="{#changeFileSize url={#$shop.litpic#} type='middle'#}" alt="{#$shop.title#}" title="{#$shop.title#}" /></a></span>
+                              </p>
+                              <div class="iconsale"></div>
+                            </div>
+                            <ul class="m-proul clearfix">
+                              <li class="lprice show_block">
+                                <i class="lfont">{#$shop.price#}</i>{#echoCurrency type='short'#}</li>
+                              <li class="ltitle show_block"><a href="{#$shop.url#}" title="{#$shop.title#}" target="_blank"><strong>{#$shop.title#}</strong></a></li>
+                              </ul>
+                          </div>
+                          {#/shop#}
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="bf2" class="frame" style="display:none; width:232px;"></div>
+                <div id="bfb" style="width:758px">
+                  <div id="bf3" class="frame" style="display:block; width:758px;">
+                    <div id="module_25261114" class="module">
+                      <div class="widget product_showcase  ">
+                        <div class="con-box" style="text-align:left;">
+                          <div class="zl_bg"></div>
+                          <div class="con-title show_block">
+                            <h2>
+                              <span>新品展示</span></h2>
+                          </div>
+                          <div class="zr_bg"></div>
+                          <div class="product-box_all clearfix moduleBoxbg">
+
+                            {#shop action="slist" return="shop" store=$detail_store['shop'] orderby="5" pageSize="21"#}
+                            <div class="product-box">
+                              <div class="pro-border imgbox">
+                                <p class="pic-box">
+                                  <span><a href="{#$shop.url#}" target="_blank"><img src="{#changeFileSize url={#$shop.litpic#} type='middle'#}" alt="{#$shop.title#}" title="{#$shop.title#}" /></a></span>
+                                </p>
+                                <div class="iconsale"></div>
+                              </div>
+                              <ul class="m-proul clearfix">
+                                <li class="lprice show_block">
+                                  <i class="lfont">{#$shop.price#}</i>{#echoCurrency type='short'#}</li>
+                                <li class="ltitle show_block"><a href="{#$shop.url#}" title="{#$shop.title#}" target="_blank"><strong>{#$shop.title#}</strong></a></li>
+                                </ul>
+                            </div>
+                            {#/shop#}
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="module_25261116" class="module">
+                      <div class="widget photo_album  ">
+                        <div class="con-box">
+                          <div class="zl_bg"></div>
+                          <div class="con-title show_block">
+                            <h2><span>公司相册</span></h2>
+                          </div>
+                          <div class="zr_bg"></div>
+                          <div class="moduleBoxbg">
+                            <ul class="clearfix picList">
+                              {#business action='albums_type' return='albums' uid={#$detail_member['userid']#}#}
+      						  {#if $_bindex.albums < 4#}
+                              <li class="big" style="text-align:left;">
+                                <div class="photobox"><p class="pic-box"><span class="album-img"><a href="{#$albums.url#}"><img src="{#changeFileSize url="{#$albums.litpic#}" type="small"#}" alt="{#$albums.typename#}" /></a></span></p></div>
+                                <a href="{#$albums.url#}" class="tuname" style="text-align:left;">{#$albums.typename#}</a>
+                              </li>
+                              {#/if#}
+                              {#/business#}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="bfc">
+                    <div id="bf4" class="frame" style="display:none; width:0px;"></div>
+                    <div id="bf5" class="frame" style="display:block; width:758px;"></div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div id="bf6" class="frame" style="display:none; width:1000px;"></div>
+            </div>
+          </div>
+
+{#include file="d_bottom.html"#}

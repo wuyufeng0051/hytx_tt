@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta name="description" content="{#$waimai_description#}" />
+<title>{#$detail_shopname#}</title>
+<link rel="stylesheet" href="{#$templets_skin#}css/photoswipe.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/default-skin.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/xuangou.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+var cookiePre = '{#$cfg_cookiePre#}', staticPath = '{#$cfg_staticPath#}';
+var site_map = "{#$site_map#}";
+</script>
+</head>
+<body>
+{#*
+{#if $detail_shop_notice_used && $detail_buy_notice#}
+<div class="notice">
+	<i></i>
+	<p><marquee behavior="scroll" scrollamount="2">{#$detail_buy_notice#}</marquee></p>
+	<a href="javascript:;">&times;</a>
+</div>
+{#/if#}
+*#}
+
+{#*{#$pageLeft = '<div class="header-l"><a href='|cat:{#$waimai_channelDomain#}|cat:'></a></div>'#}*#}
+{#$pageTitle = {#$detail_shopname#}#}
+{#include file="../../../siteConfig/touch_index_top.html"#}
+
+<div class="head">
+	<div class="shop-info">
+		<div class="shop-info-img l"><a href="javascript:;"><img src="{#if $detail_shop_banner[0]#}{#$detail_shop_banner[0]#}{#else#}/static/images/shop.png{#/if#}"></a></div>
+		<div class="shop-txt">
+			{#if $detail_shop_notice_used && $detail_buy_notice#}
+			<div class="notice">
+				<i></i>
+				<p><marquee behavior="scroll" scrollamount="2">{#$detail_buy_notice#}</marquee></p>
+			</div>
+			{#/if#}
+			<p class="pei">{#$detail_delivery_service#}{#if $detail_delivery_time#} · {#$langData['waimai'][2][84]|replace:'1':$detail_delivery_time#}{#/if#}</p>
+			<p class="collect"><span class="shop-txt-store r{#if $collect#} shou{#/if#}">{#$langData['siteConfig'][19][240]#}</span></p>
+		</div>
+	</div>
+	<div class="bg"></div>
+</div>
+
+{#if $detail_is_first_discount || $detail_is_discount || ($detail_open_promotion && $detail_promotions[0][0] && $detail_promotions[0][1])#}
+<div class="saleBox">
+{#if $detail_is_first_discount == '1'#}
+		<p class="gray"><i class="shou">{#$langData['waimai'][2][92]#}</i><span>{#$langData['waimai'][2][8]|replace:'1':$detail_first_discount#}{#echoCurrency type="short"#}</span></p>
+{#/if#}
+{#if $detail_is_discount == '1'#}
+	<p class="gray"><i class="zhe">{#$langData['waimai'][2][91]#}</i>{#$langData['waimai'][2][9]|replace:'1':$detail_discount_value#}</p>
+{#/if#}
+{#if $detail_open_promotion == '1'#}
+	<p class="gray"><i class="sale">{#$langData['waimai'][2][93]#}</i><span>
+	{#foreach from=$detail_promotions item=range key=o#}
+			{#if $range[0] && $range[1]#}
+					{#$langData['waimai'][2][10]|replace:'1':$range[0]|replace:'2':$range[1]#}
+			{#/if#}
+	{#/foreach#}
+	</span></p>
+{#/if#}
+	<span class="saleBtn">{#$langData['waimai'][2][13]|replace:'1':'<i></i>'#}<em></em></span>
+</div>
+{#/if#}
+
+<div class="menu-tab">
+	<ul>
+		<li class="active"><a href="javascript:;">{#$langData['waimai'][2][14]#}</a></li>
+		<li><a href="javascript:;">{#$langData['waimai'][2][15]#}</a></li>
+		<li class="seller"><a href="javascript:;">{#$langData['waimai'][2][21]#}</a></li>
+	</ul>
+</div>
+
+<div class="main fn-clear show_notice">
+	<div class="menu-con" style="display: block;">
+		<div class="main_left">
+			<ul>
+				{#waimai action='foodType' return='type' shop={#$detail_id#}#}
+				<li{#if $_bindex.type == 1#} class="ml_bac"{#/if#} data-id="{#$type.id#}"><em>{#$type.title#}</em></li>
+				{#/waimai#}
+			</ul>
+		</div>
+		<div class="main_right">
+			<div class="main_box">
+				{#waimai action='foodType' return='type1' shop={#$detail_id#}#}
+				<div class="main_item" id="item{#$type1.id#}">
+					<div class="menu-select-tit"><span>{#$type1.title#}</span></div>
+					{#waimai action='food' return='food' shop={#$detail_id#} typeid={#$type1.id#}#}
+					<div class="car_t1 fn-clear" id="food{#$food.id#}" data-id="{#$food.id#}" data-title="{#$food.title#}" data-src="{#$food.pics[0]#}" data-price="{#$food.price#}" data-unit="{#$food.unit#}" data-dabao="{#if $food.is_dabao#}{#$food.dabao_money#}{#/if#}" data-stock="{#if $food.stockvalid#}{#$food.stock#}{#/if#}" data-nature='{#if $food.is_nature && $food.nature_json != "[]"#}{#$food.nature_json#}{#/if#}' data-limitfood="{#$food.is_limitfood#}"{#if $food.is_limitfood#} data-foodnum="{#$food.foodnum#}" data-stime="{#$food.start_time#}" data-etime="{#$food.stop_time#}" data-times='{#$food.limit_time_json#}'{#/if#}>
+						{#if $food.label#}<span class="label">{#$food.label#}</span>{#/if#}
+						<div class="car_pic"><a href="{#getUrlPath service="waimai" template="detail" id="{#$detail_id#}" fid="{#$food.id#}"#}"><img src="{#$food.pics[0]#}" onerror="this.src='/static/images/food.png'"></a></div>
+						<h1>{#$food.title#}</h1>
+						{#if $food.is_nature && $food.nature_json != '[]'#}<em class="nature_">{#$langData['siteConfig'][19][887]#}</em>{#/if#}
+						<h3>{#$food.descript#}&nbsp;</h3>
+						{#if $detail_showsales#}<h4>{#$langData['siteConfig'][19][518]#}{#$food.sale#}{#$food.unit#}</h4>{#/if#}
+						<span class="fn-clear">
+							<em class='sale-price'>{#echoCurrency type="symbol"#}<b>{#$food.price#}</b></em>
+							{#if $detail_unitshow#}<i>/{#$food.unit#}</i>{#/if#}
+							{#if $food.stockvalid && $food.stock == 0#}
+							<s class="nostock">{#$langData['siteConfig'][16][142]#}</s>
+							<i class="reduce" style='display:none;'></i><strong class='num-account' style='display:none;'>0</strong><b class="plus" style='display:none;'></b>
+							{#else#}
+							<p>{#if !$food.is_nature || $food.nature_json == "[]"#}<i class="reduce"></i>{#/if#}<strong class='num-account'>0</strong><b class="plus"></b></p>
+							{#/if#}
+						</span>
+					</div>
+					{#/waimai#}
+				</div>
+				{#/waimai#}
+			</div>
+		</div>
+	</div>
+	<div class="menu-con menu-comment" id="menu-comment">
+		<div class="comment">
+			<div class="comment-tit fn-clear">
+				<div class="comment-tit-l l">
+					<h1>{#$detail_common.star#}</h1>
+					<h2>{#$langData['waimai'][2][16]#}</h2>
+					<p>{#$langData['waimai'][2][17]#}{#if $detail_common.totalCount == 0#}0{#else#}{#(($detail_common.totalCount4 + $detail_common.totalCount5) / $detail_common.totalCount)|string_format:"%.4f" * 100#}{#/if#}%</p>
+				</div>
+				<div class="comment-tit-r l">
+					<div class="l comment-star-top">
+						<span class="l">{#$langData['waimai'][2][18]#}</span>
+						<div class="judge-box">
+							<div class="judge-star l"><s style="width:{#$detail_common.starps / 5 * 100#}%"></s></div>
+							<span class="sale-time r">{#$detail_common.starps#}</span>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="l comment-star-bottom">
+						<span class="l">{#$langData['waimai'][2][19]#}</span>
+						<div class="judge-box">
+							<div class="judge-star l"><s style="width:{#$detail_common.star / 5 * 100#}%"></s></div>
+							<span class="sale-time r">{#$detail_common.star#}</span>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="comment-con">
+				<div class="comment-box">
+					<div class="loading">{#$langData['siteConfig'][20][184]#}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="menu-con menu-seller">
+		<div class="seller-box">
+			<ul>
+				<li><a href="tel:{#$detail_phone#}"><i><img src="{#$templets_skin#}images/phone_icon.png" alt=""></i><span>{#$detail_phone#}</span><em></em></a></li>
+				<li><a href="javascript:;" target="_blank" class="appMapBtn"><i><img src="{#$templets_skin#}images/map.png" alt=""></i><span>{#$detail_address#}</span></a></li>
+				<li><i><img src="{#$templets_skin#}images/time.png" alt=""></i><span>{#if $detail_start_time1 && $detail_start_time1 != "00:00" && $detail_end_time1 && $detail_end_time1 != "00:00"#}{#$detail_start_time1#}-{#$detail_end_time1#}{#/if#}{#if $detail_start_time2 && $detail_start_time2 != "00:00" && $detail_end_time2 && $detail_end_time2 != "00:00"#}; {#$detail_start_time2#}-{#$detail_end_time2#}{#/if#}{#if $detail_start_time3 && $detail_start_time3 != "00:00" && $detail_end_time3 && $detail_end_time3 != "00:00"#}; {#$detail_start_time3#}-{#$detail_end_time3#}{#/if#}</span></li>
+				<li><s>{#$langData['siteConfig'][3][1]#}：</s><span>{#$detail_phone#}{#if $detail_callshow#}<a href="tel:{#$detail_phone#}" class="calltel"></a>{#/if#}</span></li>
+		{#if !$detail_show_basicprice#}<li><s>{#$langData['waimai'][2][23]#}：</s><span>
+            {#if $detail_open_range_delivery_fee#}
+                {#foreach from=$detail_range_delivery_fee_value item=range#}
+                    <p>{#$range[0]#}-{#$range[1]#}km：{#$range[3]#}{#echoCurrency type="short"#}</p>
+                {#/foreach#}
+            {#else#}
+            {#echoCurrency type="symbol"#}{#$detail_basicprice#}
+            {#/if#}
+        </span></li>{#/if#}
+		{#if !$detail_show_delivery#}<li class="fee"><s>{#$langData['waimai'][2][24]#}：</s><span>
+			{#* 固定 *#}
+            {#if $detail_delivery_fee_mode == "1"#}
+			{#echoCurrency type="symbol"#}{#$detail_delivery_fee#}
+			{#if $detail_delivery_fee_type != 1#}（{#if $detail_delivery_fee_type == 0#}{#$langData['waimai'][2][25]#}{#elseif $detail_delivery_fee_type == 2#}{#$langData['waimai'][2][85]|replace:'1':$detail_delivery_fee_value#}{#/if#}）{#/if#}
+			{#* 按区域 *#}
+            {#elseif $detail_delivery_fee_mode == "2"#}
+            	{#$k = 1#}
+            	{#$langData['waimai'][1][105]#}
+				{#foreach from=$detail_service_area_data item=area#}
+                    <font>{#$area['peisong']#}{#echoCurrency type="short"#}</font>{#if $k < count($detail_service_area_data)#},{#/if#}
+                    {#$k = $k+1#}
+                {#/foreach#}
+                {#$langData['waimai'][2][86]#}
+			{#* 按距离 *#}
+            {#elseif $detail_delivery_fee_mode == "3"#}
+				{#foreach from=$detail_range_delivery_fee_value item=range#}
+                    <font class="fee-juli">{#$range[0]#}-{#$range[1]#}km：{#$range[2]#}{#echoCurrency type="short"#}</font>
+                {#/foreach#}
+			{#/if#}
+        </span></li>{#/if#}
+		{#if !$detail_show_range#}<li><s>{#$langData['waimai'][2][26]#}：</s><span>{#$detail_delivery_radius#}km</span></li>{#/if#}
+		{#if $detail_delivery_area#}<li><s>{#$langData['waimai'][1][97]#}：</s><span>{#$detail_delivery_area#}</span></li>{#/if#}
+
+        {#if $detail_selfdefine#}
+        {#foreach from=$detail_selfdefine item=self#}
+        <li><s>{#$self[1]#}：</s><span>{#if $self[0] == "link"#}<a href="{#$self[2]#}" target="_blank">{#$self[2]#}</a>{#else#}{#$self[2]#}{#/if#}</span></li>
+        {#/foreach#}
+        {#/if#}
+			</ul>
+		</div>
+		<div class="my-gallery certy" itemscope="" itemtype="" data-pswp-uid="1">
+			{#if $detail_shop_banner[0]#}
+			{#foreach from=$detail_shop_banner item=banner#}
+			<figure itemprop="associatedMedia" itemscope="" itemtype="">
+				<a href="{#$banner#}" itemprop="contentUrl" data-size="400x300">
+					<img src="{#$banner#}" itemprop="thumbnail" alt="">
+				</a>
+			</figure>
+			{#/foreach#}
+			{#/if#}
+		</div>
+	</div>
+</div>
+
+<div class="cart-box">
+	<div class="title"><h3>{#$langData['siteConfig'][16][143]#}</h3><a href="javascript:;" class="right">[{#$langData['siteConfig'][6][162]#}]</a></div>
+	<div class="con"></div>
+</div>
+<div class="mask_cart"></div>
+
+<div class="nature">
+	<h2><strong></strong><s>&times;</s></h2>
+	<div class="con"></div>
+	<div class="fot">
+		<span><i>{#echoCurrency type="symbol"#}</i><strong>0</strong></span>
+		<button class="confirm" disabled>{#$langData['siteConfig'][6][38]#}</button>
+	</div>
+</div>
+<div class="mask_nature"></div>
+<div class="cart-tips">{#$langData['siteConfig'][22][18]#}</div>
+<div class="price fn-clear">
+	<div class="gou"><em><i></i></em><b>0</b></div>
+	<div class="zong_p">{#$langData['siteConfig'][19][312]#}：<em>{#echoCurrency type="symbol"#}<strong>0.00</strong></em></div>
+	<div class="ok"><a href="{#getUrlPath service='waimai' template='cart' id={#$detail_id#}#}">{#$langData['siteConfig'][6][38]#}</a></div>
+</div>
+
+{#*
+<div class="navtion fn-clear">
+	<ul>
+		<li class="shop"><a href="{#getUrlPath service='waimai' template='shop' id={#$detail_id#}#}"><i></i><span>首页</span></a></li>
+		<li class="car"><a href="{#getUrlPath service='waimai' template='cart' id={#$detail_id#}#}"><i></i><span>购物车</span></a></li>
+		<li class="center"><a href="{#getUrlPath service='member' type='user'#}"><i></i><span>个人中心</span></a></li>
+	</ul>
+</div>
+*#}
+
+<div class="pswp"tabindex="-1"role="dialog"aria-hidden="true"><div class="pswp__bg"></div><div class="pswp__scroll-wrap"><div class="pswp__container"><div class="pswp__item"></div><div class="pswp__item"></div><div class="pswp__item"></div></div><div class="pswp__ui pswp__ui--hidden"><div class="pswp__top-bar"><div class="pswp__counter"></div><button class="pswp__button pswp__button--close"title="Close (Esc)"></button><button class="pswp__button pswp__button--zoom"title="Zoom in/out"></button><div class="pswp__preloader"><div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class="pswp__share-tooltip"></div></div><button class="pswp__button pswp__button--arrow--left"title="Previous (arrow left)"></button><button class="pswp__button pswp__button--arrow--right"title="Next (arrow right)"></button><div class="pswp__caption"><div class="pswp__caption__center"></div></div></div></div></div>
+
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', tplUrl = '{#$templets_skin#}';
+	var shopid = {#$detail_id#}, id = {#$detail_id#}, nowDate = {#$smarty.now#}, nowTime = "{#$smarty.now|date_format:'%H:%M'#}";
+
+	{#if !$detail_status#}alert('{#if $detail_closeinfo#}{#$detail_closeinfo#}{#else#}{#$deatil_status#}{#$langData['waimai'][3][57]#}{#/if#}');{#/if#}
+	{#if $detail_status && !$detail_ordervalid#}alert('{#if $detail_closeorder#}{#$detail_closeorder#}{#else#}{#$langData['waimai'][3][58]#}{#/if#}');{#/if#}
+	{#if !$detail_yingye#}
+		{#if !$detail_yingyeWeek#}
+		alert('{#$langData['waimai'][3][71]#}{#$langData['siteConfig'][18][15]#}：{#$detail_weeks|replace:"1":$langData['siteConfig'][14][4]|replace:"2":$langData['siteConfig'][14][5]|replace:"3":$langData['siteConfig'][14][6]|replace:"4":$langData['siteConfig'][14][7]|replace:"5":$langData['siteConfig'][14][8]|replace:"6":$langData['siteConfig'][14][9]|replace:"7":$langData['siteConfig'][14][10]|replace:",":"，"#}');
+		{#else#}
+		alert('{#$langData['waimai'][3][57]#}{#$langData['siteConfig'][18][15]#}：{#if $detail_start_time1 && $detail_start_time1 != "00:00" && $detail_end_time1 && $detail_end_time1 != "00:00"#}{#$detail_start_time1#}-{#$detail_end_time1#}{#/if#}{#if $detail_start_time2 && $detail_start_time2 != "00:00" && $detail_end_time2 && $detail_end_time2 != "00:00"#}; {#$detail_start_time2#}-{#$detail_end_time2#}{#/if#}{#if $detail_start_time3 && $detail_start_time3 != "00:00" && $detail_end_time3 && $detail_end_time3 != "00:00"#}; {#$detail_start_time3#}-{#$detail_end_time3#}{#/if#}');
+		{#/if#}
+	{#/if#}
+</script>
+
+{#* 微信分享 *#}
+  {#$Share_description = {#$detail_address#}#}
+  {#$Share_title = {#$detail_shopname#}#}
+  {#$Share_img = {#$detail_shop_banner[0]#}#}
+  {#$Share_url = {#getUrlPath service="waimai" template="shop" id=$detail_id#}#}
+  {#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+
+<!-- <script type="text/javascript" src="{#$site_map_apiFile#}"></script> -->
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.fly.min.js"></script>
+<script src="{#$templets_skin#}js/photoswipe.min.js"></script>
+<script src="{#$templets_skin#}js/photoswipe-ui-default.min.js"></script>
+<script src="{#$templets_skin#}js/pic-swiper.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/xuangou.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

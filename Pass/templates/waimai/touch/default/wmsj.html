@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>{#$cfg_app_business_appname#}</title>
+<meta name="keywords" content="{#$cfg_keywords#}">
+<meta name="description" content="{#$cfg_description#}">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/mobile_touch.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+</head>
+<body>
+
+<div class="logo"><a href="javascript:history.go(-1)" class="close"></a><img src="{#$cfg_app_business_logo#}" alt=""></div>
+<h3 class="shortname">{#$cfg_app_business_appname#}</h3>
+
+<div class="app_box">
+  <ul>
+    {#if $cfg_app_business_android_download#}<li class="app_android"><a href="javascript:;" data-href="{#$cfg_app_business_android_download#}"><span>{#$langData['waimai'][0][13]#}</span></a></li>{#/if#}
+    {#if $cfg_app_business_ios_download#}<li class="app_ios"><a href="javascript:;" data-href="{#$cfg_app_business_ios_download#}"><span>{#$langData['waimai'][0][12]#}</span></a></li>{#/if#}
+  </ul>
+</div>
+
+<div class="tipWarp"><i class="arrow"></i>{#$langData['waimai'][3][69]#}<br/>{#$langData['waimai'][3][70]#}</div>
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/mobile_touch.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

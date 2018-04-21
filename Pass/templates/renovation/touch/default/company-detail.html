@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_company#}-{#$renovation_title#}</title>
+<meta name="keywords" content="{#$detail_company#},装修公司,装修公司排名,装修公司大全" />
+<meta name="description" content="{#$detail_company#}作为专业的装修设计公司，提供专业的装修设计报价、室内装修效果图、免费装修咨询预约。{#$detail_company#}有着一批工作严谨、深受业主好评的装修施工队，为业主提供最优质的服务。" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/company.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/getCity.css?v=3">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/com-detail.css">
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v=4"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var company = {#$detail_id#}, designer = 0;
+	var pageData = {
+		addrTitle: '{#$detail_company#}',
+		addrDetail: '{#$detail_address#}',
+		lnglat: '{#$detail_lnglat#}',
+	    lat: '{#$detail_latitude#}',
+	    lng: '{#$detail_longitude#}'
+	};
+</script>
+
+{#* 微信分享 *#}
+{#$Share_description = {#$renovation_title#}#}
+{#$Share_title = {#$detail_company#}#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#getUrlPath service='renovation'  template='company-detail' id={#$detail_id#}#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+<style>
+	body{opacity: 0;}
+</style>
+</head>
+<body>
+
+	{#$pageTitle = "装修公司详情"#}
+	{#include file="../../../siteConfig/touch_top.html"#}
+		<div class="com_infor fn-clear">
+			<a href="javascript:;" class="fn-clear">
+				<img src="{#$templets_skin#}upfile/17684491.jpg" alt="">
+				<div class="information">
+					<h1>{#$detail_company#}</h1>
+					<span>
+						认证：
+						{#if $detail_license == 1#}
+						<i class='ying'>营</i>
+						{#else#}
+						<i class='ying no'>营</i>
+						{#/if#}
+
+						{#if $detail_certi == 1#}
+						<i class='ren'>认</i>
+						{#else#}
+						<i class='ren no'>认</i>
+						{#/if#}
+
+						{#if $detail_saleCount > 0#}
+						<i class='hui'>惠</i>
+						{#else#}
+						<i class='hui no'>惠</i>
+						{#/if#}
+
+						{#if $detail_safeguard > 0#}
+						<i class='jin'>金</i>{#$detail_safeguard#}{#echoCurrency type='short'#}
+						{#else#}
+						<i class='jin no'>金</i>
+						{#/if#}
+
+						{#if $detail_guestCount > 0#}
+						<i class='ping'>评</i>{#$detail_guestCount#}次
+						{#else#}
+						<i class='ping no'>评</i>
+						{#/if#}
+
+					</span>
+					<div class="have">
+						<b>案例：<em>{#$detail_diaryCount#}</em>套</b>
+						<b>效果图：<em>{#$detail_caseCount#}</em>套</b>
+						<s>拥有设计师：<em>{#$detail_teamCount#}</em>位</s>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="comde_head fn-clear">
+			<ul>
+				<li class="com_bc"><a href="{#getUrlPath service='renovation' template='company-detail' id={#$detail_id#}#}">首页</a></li>
+				<li><a href="{#getUrlPath service='renovation' template='company-case' id={#$detail_id#}#}">案例</a></li>
+				<li><a href="{#getUrlPath service='renovation' template='company-albums' id={#$detail_id#}#}">效果图</a></li>
+				<li><a href="{#getUrlPath service='renovation' template='company-team' id={#$detail_id#}#}">设计师</a></li>
+			</ul>
+		</div>
+		<div class="comde_list">
+			<div class="comde_flash">
+				<div class="swiper-container bd" id="fitment-pic">
+				    <ul class="swiper-wrapper">
+							{#renovation action="rcase" return='rcase' company={#$detail_id#} type={#$typeid#} pageSize='10'#}
+				      <li class="swiper-slide">
+				      	<a href="javascript:;">
+				      	<img src="{#$rcase.litpic#}">
+				      	<p>{#$rcase.title#}</p>
+				      	</a>
+				      </li>
+							{#/renovation#}
+				    </ul>
+				</div>
+			</div>
+		</div>
+		<div class="introduce fn-clear">
+			<a href="tel:{#$detail_contact#}">
+				<div class="com_tel">
+					<span>{#$detail_contact#}</span>
+					<i>></i>
+					<em>装修前先预约</em>
+				</div>
+			</a>
+			<div class="com_pl appMapBtn">
+				<span>{#$detail_addr[0]#} {#$detail_addr[1]#} {#$detail_address#}</span>
+			</div>
+			<div class="com_intr">
+				<h1>公司简介</h1>
+				<div>{#$detail_body#}</div>
+			</div>
+			<div class="certificate">
+				<a href="{#getUrlPath service='renovation' template='company-case' id={#$detail_id#}#}">
+					<h1>案例<span>></span></h1>
+					<div>
+						{#renovation action="diary" return='diary' company={#$detail_id#} pageSize='3'#}
+						<img src="{#$diary.litpic#}" alt="">
+						{#/renovation#}
+					</div>
+				</a>
+			</div>
+			<div class="com_cer fn-clear">
+				<a href="{#getUrlPath service='renovation' template='company-team' id={#$detail_id#}#}"><h1>设计师<span>></span></h1></a>
+				<ul>
+					{#renovation action="team" return="team" company={#$detail_id#} page={#$page#} pageSize="20"#}
+					<li>
+						<a href="{#$team.url#}">
+						<img src="{#$team.photo#}" alt="">
+						<p>{#$team.name#}</p>
+						</a>
+					</li>
+					{#/renovation#}
+				</ul>
+			</div>
+		</div>
+
+		<div class="disk"></div>
+
+		<div class="yuyue_list sj_list">
+		<p></p><h1>免费帮我做设计</h1>
+		<div class="yu_name">
+			<input type="text" placeholder="姓名" class="name">
+		</div>
+		<div class="yu_tel">
+			<input type="tel" placeholder="请输入手机号码" class="phone">
+		</div>
+		<div class="yu_place gz-addr-seladdr">
+			<input placeholder="请填写小区" class="city">
+		</div>
+		<input type="submit" class="submit" value="立即申请">
+		<div class="name-1">请填写您的名称</div>
+		<div class="phone-1">请填写您的手机号</div>
+		<div class="city-1">请填写小区</div>
+	</div>
+
+
+<div class="free"><ul><li class="sj">免费帮我出报价</li></ul></div>
+
+<script src="{#$templets_skin#}js/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/com-detail.js"></script>
+<script src="{#$templets_skin#}js/getCity.js?v=8"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#}-{#$renovation_title#}</title>
+<meta name="keywords" content="{#$renovation_keywords#}" />
+<meta name="description" content="{#$renovation_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/company.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/com-detail.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/case-detail.css">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<script type="text/javascript">
+var staticPath = '{#$cfg_staticPath#}';
+</script>
+{#* 微信分享 *#}
+{#$Share_description = {#$renovation_description#}#}
+{#$Share_title = {#$renovation_title#}#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</head>
+<body>
+
+{#$pageTitle = "方案详情"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+<div class="case_lead">{#$detail_title#}</div>
+<div class="case_list">
+	<ul>
+		<li><em>类型：</em>{#if $detail_type == 0#}家装{#else#}公装{#/if#}</li>
+		<li><em>方式：</em>{#$detail_btype#}</li>
+		<li><em>装修方式：</em>{#$detail_style#}</li>
+		<li><em>户型：</em>{#$detail_units#}</li>
+		<li><em>面积：</em>{#$detail_area#}平</li>
+		<li><em>费用：</em>{#$detail_price#}万{#echoCurrency type='short'#}</li>
+		<li class="ca_1"><em>开工：</em>{#$detail_began|date_format:"%Y-%m-%d"#}</li>
+		<li class="ca_1"><em>竣工：</em>{#$detail_end#}</li>
+	</ul>
+	<span>
+		<i>设计思路：</i>
+		<p>业主是都市白领，追求简单时尚的生活，自然中凸显个性与品位。本案电视背景墙运用有纵深感的壁纸延伸空间的同时给人以视觉冲击力，呈现调高气势 , 简单的空间线条给原有墙体增加活力。</p>
+	</span>
+</div>
+<div class="case_pic">
+	{#if $detail_unitspic != ""#}
+	<h1>户型图：</h1>
+	<img src="{#$detail_unitspic#}" alt="">
+	{#/if#}
+	<h1>施工现场：</h1>
+	{#foreach from=$detail_pics item="pics"#}
+	<img src="{#$pics['path']#}" alt="">
+	{#/foreach#}
+</div>
+
+
+
+</body>
+</html>

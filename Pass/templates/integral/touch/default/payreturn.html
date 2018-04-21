@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 55.2px;" class="hb-loaded"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>{#$integral_title#}-兑换结果</title>
+<meta name="keywords" content="{#$integral_keywords#}" />
+<meta name="description" content="{#$integral_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css">
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/siteConfig/touch/default/css/touch_common.css?v=9">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/payreturn.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v=4"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<body>
+
+<div class="header">
+	<div class="header-l"><a href="javascript:history.go(-1)"></a></div>
+	<div class="header-address"><span>{#if $state == 1#}兑换成功{#else#}礼品兑换失败！{#/if#}</span></div>
+	<div class="header-search"><a href="javascript:;" class="dropnav"></a></div>
+</div>
+
+<div class="imgbox">
+  <img src="{#$templets_skin#}images/suc_icon.png" alt="">
+  <p>{#if $state == 1#}礼品兑换成功！{#else#}礼品兑换失败！{#/if#}</p>
+</div>
+
+<p class="btns">
+  <a href="{#$orderurl#}" class="order">查看订单</a>
+  <a href="{#$integral_channelDomain#}">返回首页</a>
+</p>
+
+</body>
+</html>

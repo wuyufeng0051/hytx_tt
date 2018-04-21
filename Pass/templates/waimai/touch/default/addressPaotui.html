@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="description" content="{#$waimai_description#}" />
+<title>{#$langData['waimai'][2][66]#}</title>
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/addressPaotui.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<script type="text/javascript">
+	var redirectUrl = '{#getUrlPath service="waimai" template=$frompage param="shop=$shop&&address=#id"#}';
+	var masterDomain = '{#$cfg_basehost#}';
+	var id = 0, lng = "", lat = "", site_map = "{#$site_map#}";
+</script>
+</head>
+
+<body>
+<div class="pageitem" id="main">
+	<div class="lead">
+		<p onclick="location.href='{#getUrlPath service='waimai' template=$frompage param="shop=$shop&address=$cart_address_id"#}';"></p><span>{#$langData['waimai'][2][66]#}</span><b><a href="javascript:;">{#$langData['siteConfig'][6][6]#}</a></b>
+	</div>
+	<div class="new_address fn-clear">
+		<a href="javascript:;" id="addNew"><em>{#$langData['waimai'][2][69]#}</em><i></i></a>
+	</div>
+	<div class="Address_list">
+		{#waimai action="getMemberAddress" return="addr"#}
+		<div class="add_txt{#if ($_bindex.addr == 1 && !$address) || $address == $addr.id#} addbc{#/if#}" data-id="{#$addr.id#}" data-person="{#$addr.person#}" data-tel="{#$addr.tel#}" data-street="{#$addr.street#}" data-address="{#$addr.address#}" data-lng="{#$addr.lng#}" data-lat="{#$addr.lat#}">
+			<ul>
+				<li>{#$langData['siteConfig'][19][642]#}：{#$addr.person#}</li>
+				<li>{#$langData['siteConfig'][3][1]#}：{#$addr.tel#}</li>
+				<li>{#$langData['siteConfig'][19][9]#}：{#$addr.street#} {#$addr.address#}</li>
+			</ul>
+			<div class="dui"></div>
+			<div class="edit"><a href="javascript:;"><i></i></a><b></b></div>
+		</div>
+		{#/waimai#}
+	</div>
+</div>
+
+<div class="pageitem" id="add">
+	<div class="lead">
+		<p onclick="location.hash='main'"></p>
+		<span>{#$langData['waimai'][2][44]#}</span>
+	</div>
+	<div class="edit_form">
+		<div class="edi">
+			<em>{#$langData['siteConfig'][19][642]#}</em><input type="text" placeholder="{#$langData['waimai'][3][52]#}" id="person">
+		</div>
+		<div class="edi">
+			<em>{#$langData['siteConfig'][3][1]#}</em><input type="tel" placeholder="{#$langData['siteConfig'][20][433]#}" id="tel">
+		</div>
+	</div>
+	<div class="edit_form1">
+		<div class="place">
+			<em>{#$langData['waimai'][2][70]#}</em>
+			<span id="local">
+				<i><b></b></i>
+				<strong>{#$langData['siteConfig'][7][4]#}...</strong>
+				<a href="javascript:;">{#$langData['waimai'][2][71]#} ></a>
+			</span>
+		</div>
+		<div class="place">
+			<em>{#$langData['siteConfig'][19][35]#}</em><input type="text" placeholder="{#$langData['siteConfig'][20][252]#}" id="address">
+		</div>
+	</div>
+	<div class="edi_button">
+		<button id="saveAddress">{#$langData['siteConfig'][6][27]#}</button>
+	</div>
+	<div class="warning"></div>
+	<div class="wa">
+		<ul>
+			<li>{#$langData['waimai'][3][53]#}</li>
+			<li>1){#$langData['waimai'][3][54]#};</li>
+			<li>2){#$langData['waimai'][3][55]#};</li>
+			<li>{#$langData['waimai'][3][56]#}</li>
+		</ul>
+	</div>
+</div>
+
+<div class="pageitem" id="map">
+	<div class="lead">
+		<p onclick="location.hash='add'"></p>
+		<input type="text" id="searchAddr" placeholder="{#$langData['siteConfig'][20][411]#}">
+	</div>
+	<div class="map">
+		<div id="mapdiv"></div>
+		<span class="mapcenter"></span>
+	</div>
+
+	<div class="mapresults">
+		<ul></ul>
+		<!-- <a href="javascript:;" class="elseStreet">没有找到您的建筑物？请点击这里！</a> -->
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+	var mapCity = '{#$cfg_mapCity#}';
+</script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<script src="{#$templets_skin#}js/addressPaotui.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

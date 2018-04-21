@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>商家店铺-{#$build_title#}</title>
+<meta name="keywords" content="{#$build_keywords#}"/>
+<meta name="description" content="{#$build_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/business.css" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$build_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'store'#}
+{#include file="top.html"#}
+
+<!-- 面包屑 -->
+<div class="container clearfix">
+	<div class="bread">
+		<a href="{#$build_channelDomain#}">首页</a><em>></em><a href="{#getUrlPath service='build' template='store'#}">商家店铺</a>
+	</div>
+
+	<!-- 筛选 -->
+	<div class="select">
+		<div class="sel clearfix"><span class="left">类别：</span>
+			<div class="x left">
+				<a{#if $typeid == 0#} class="on"{#/if#} href="{#getUrlPath service='build' template='store' typeid=0 addrid={#$addrid#} business={#$business#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">不限</a>
+				{#build action="type" return="type"#}
+				<a{#if $typeid == {#$type.id#}#} class="on"{#/if#} href="{#getUrlPath service='build' template='store' typeid={#$type.id#} addrid={#$addrid#} business={#$business#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">{#$type.typename#}</a>
+				{#/build#}
+			</div>
+		</div>
+		<div class="sel clearfix"><span class="left">区域：</span>
+			<div class="x left">
+				<a{#if $addrid == 0#} class="on"{#/if#} href="{#getUrlPath service='build' template='store' typeid={#$typeid#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">不限</a>
+				{#build action="addr" return='addr'#}
+				<a{#if $addrid == {#$addr.id#}#} class="on"{#/if#} href="{#getUrlPath service='build' template='store' typeid={#$typeid#} addrid={#$addr.id#} business=0 param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">{#$addr.typename#}</a>
+				{#/build#}
+			</div>
+		</div>
+		{#if $addrid != 0#}
+		<div class="sel clearfix"><span class="left">&nbsp;</span>
+			<div class="x left">
+				<a{#if $business == 0#} class="on"{#/if#} href="{#getUrlPath service='build' template='store' typeid={#$typeid#} addrid={#$addrid#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">不限</a>
+				{#build action="addr" return='addr' type={#$addrid#}#}
+				<a{#if $business == {#$addr.id#}#} class="on"{#/if#} href="{#getUrlPath service='build' template='store' typeid={#$typeid#} addrid={#$addrid#} business={#$addr.id#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">{#$addr.typename#}</a>
+				{#/build#}
+			</div>
+		</div>
+		{#/if#}
+	</div>
+
+	<!-- 排序 -->
+	<div class="sort clearfix">
+		<div class="left">
+			<a class="left{#if $orderby == 0#} active{#/if#}" href="{#getUrlPath service='build' template='store' typeid={#$typeid#} addrid={#$addrid#} business={#$business#}#}">默认排序</a>
+			<a class="left{#if $orderby == 1#} active{#/if#}" href="{#getUrlPath service='build' template='store' typeid={#$typeid#} addrid={#$addrid#} business={#$business#} param="orderby=1"#}">人气<i></i></a>
+		</div>
+		<div class="right"><a class="prev" href="javascript:;"></a><span><em>{#$page#}</em>/<label id="totalPage">1<label></span><a class="next" href="javascript:;"></a></div>
+	</div>
+
+	<!-- 品牌列表 -->
+	<div class="list">
+		<ul>
+			{#$addr = $addrid#}
+			{#if $business != 0#}
+			{#$addr = $business#}
+			{#/if#}
+			{#build action="store" typeid={#$typeid#} addrid={#$addr#} orderby={#$orderby#} page={#$page#} pageSize="20"#}
+			<li>
+				<div class="listCon">
+					<dl class="left">
+						<dt><a href="{#$row.url#}" target="_blank"><i></i><img alt="{#$row.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$row.logo#}#}" alt="{#$row.title#}"></a></dt>
+						<dd class="title"><a href="{#$row.url#}" target="_blank">{#$row.title#}</a></dd>
+						<dd><span>主营品牌：</span>{#$row.typename#}</dd>
+						<dd><span>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</span>{#$row.tel#}</dd>
+						<dd title="{#$row.addr[0]#} {#$row.addr[1]#} {#$row.address#}"><span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</span>{#$row.addr[0]#} {#$row.addr[1]#} {#$row.address#}</dd>
+						<dd title="{#$row.project#}"><span>经营产品：</span>{#$row.project#}</dd>
+					</dl>
+					<div class="right">
+						<span><a class="next" href="javascript:;"><i></i>换一批</a></span>
+						<div class="con">
+							<ul>
+								{#$i = 1#}
+								{#build action="blist" return="list" store={#$row.id#} page=1 pageSize=12#}
+								<li><a href="{#$list.url#}" title="{#$list.title#}" target="_blank"><img alt="{#$list.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$list.litpic#} type='middle'#}" alt="{#$list.title#}"></a></li>
+								{#if $i%4 eq 0 && $i < 12#}
+							</ul>
+							<ul>
+								{#/if#}
+								{#$i = $i + 1#}
+								{#/build#}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</li>
+			{#/build#}
+
+			{#$pageData = ""#}
+			{#build action="store" return="slist" typeid={#$typeid#} addrid={#$addr#} page={#$page#} pageSize="20"#}
+			{#$pageData = $pageInfo#}
+			{#/build#}
+
+			{#if $pageData.totalCount == 0#}
+			<li class="empty">抱歉！ 暂无商家店铺</li>
+			{#/if#}
+
+		</ul>
+	</div>
+
+	<!-- 分页 -->
+	{#getPageList service='build' template='store' industry={#$typeid#} addrid={#$addrid#} business={#$business#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}
+
+</div>
+
+{#include file="bottom.html"#}
+<script>var totalCount = {#$pageData.totalCount|string_format:"%d"#}, totalPage = {#$pageData.totalPage|string_format:"%d"#}, atPage = {#$page#}, pageUrl = '{#getUrlPath service="build" template="store" industry={#$typeid#} addrid={#$addrid#} business={#$business#} page="%page%" param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}';</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/business.js?v=1"></script>
+</body>
+</html>

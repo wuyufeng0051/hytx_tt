@@ -1,0 +1,16 @@
+<div class="footer">
+  <ul class="footerlink fn-clear">
+    {#siteConfig action="singel" pageSize="7"#}
+    <li><a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a></li>
+    {#/siteConfig#}
+    <li class="nb"><a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a></li>
+  </ul>
+  <div class="copyright">
+      {#$cfg_powerby#}
+      {#$cfg_statisticscode#}
+  </div>
+</div>
+
+<!-- 返回顶部 s -->
+<div class="btntop"><a href="javascript:;" class="top"></a></div>
+<!-- 返回顶部 e -->

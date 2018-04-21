@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#} - {#$vote_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$vote_keywords#}" />
+<meta name="description" content="{#$vote_description#}" />
+<meta name="description" content="{#$video_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css?v=1">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v=1">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v=11"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$vote_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+var hideFileUrl = {#$cfg_hideUrl#};
+var cookiePre = '{#$cfg_cookiePre#}';
+var detail = {
+	'id' : {#$detail_id#},
+	'title' : '{#$detail_title#}',
+	'voteuser' : {#$detail_voteuser#},
+	'state' : {#$detail_state#}
+}
+</script>
+
+{#* 微信分享 *#}
+{#$Share_description = {#$vote_description#}#}
+{#$Share_title = {#$detail_title#}#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#getUrlPath service='vote' template='detail' id={#$detail_id#}#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</head>
+<body>
+	{#$pageTitle = $detail_title#}
+	{#include file="_header.html"#}
+	<div class="pic_one">
+		{#$detail_body#}
+	</div>
+	<div class="range_look fn-clear">
+		<ul class="fn-clear">
+			<li class="slient_range" data-id="0">默认排行</li>
+			<li data-id="1">最新报名</li>
+			<li data-id="2">得票排行</li>
+			<li data-id="3">浏览排行</li>
+		</ul>
+	</div>
+	<div class="listCon" id="listCon"></div>
+	<div class="fanye">
+		<div class="fan-l"><span>&lt;</span></div>
+		<div class="page">1/1</div>
+		<div class="fan-r"><span>&gt;</span></div>
+	</div>
+	<div class="fee_t">
+		<ul>
+			<li><a href="{#$cfg_basehost#}">首页</a></li>
+			<li><a href="{#getUrlPath service='member' type='user' template='order'#}">我的订单</a></li>
+			<li><a href="{#getUrlPath service='member' type='user' template='security'#}">安全中心</a></li>
+			<li><a href="{#$member_userDomain#}">会员中心</a></li>
+		</ul>
+		<p>Copyright © 2013-2016</p>
+	</div>
+	{#*
+	<div class="end_d">
+		<a href="javascript:;" class="baoming"><i></i><span>报名参加</span></a>
+	</div>
+	*#}
+
+	<div class="tymodal fn-hide">
+		<a href="javascript:;" class="close">×</a>
+		<div class="title"></div>
+		<div class="text"></div>
+	</div>
+	<div class="disk"></div>
+
+<script src="{#$templets_skin#}js/public.js?v=1"></script>
+<script src="{#$templets_skin#}js/detail.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{#include file="../../siteConfig/top.html"#}
+
+<div class="wrap header fn-clear">
+	<h1 class="logo"><a href="{#$marry_channelDomain#}" title="{#$marry_channelName#}"><img src="{#$marry_logoUrl#}" alt="{#$marry_channelName#}" /></a></h1>
+	<div class="hsearch">
+		<div class="stype">
+			<label data-id="1">酒店<s></s></label>
+			<ul>
+				<li data-id="1">酒店</li>
+				<li data-id="2">摄影</li>
+				<li data-id="3">婚庆</li>
+			</ul>
+		</div>
+		<div class="input">
+			<label for="q"><s></s>请输入酒店名或路名</label>
+			<input type="text" id="q" autocomplete="off">
+		</div>
+		<a href="javascript:;" id="sbtn">搜 索</a>
+	</div>
+	<div class="service">
+		<s></s>免费咨询热线<h3>{#$marry_hotline#}</h3>
+	</div>
+</div>
+
+<div class="nav">
+	<div class="wrap fn-clear">
+		<ul>
+			<li{#if $pageCurr == "index"#} class="curr"{#/if#}><a href="{#$marry_channelDomain#}">网站首页<i>home</i></a></li>
+			<li{#if $pageCurr == "hotel"#} class="curr"{#/if#}><a href="{#getUrlPath service='marry' template='hotel'#}">婚宴酒店<i>hotel</i></a></li>
+			<li{#if $pageCurr == "wedding"#} class="curr"{#/if#}><a href="{#getUrlPath service='marry' template='wedding'#}">婚纱摄影<i>photo</i></a></li>
+			<li{#if $pageCurr == "ritual"#} class="curr"{#/if#}><a href="{#getUrlPath service='marry' template='ritual'#}">婚庆礼仪<i>wedding</i></a></li>
+			<li{#if $pageCurr == "news"#} class="curr"{#/if#}><a href="{#getUrlPath service='marry' template='news'#}">婚尚资讯<i>news</i></a></li>
+		</ul>
+		<div class="tools">
+			<label><a href="{#getUrlPath service='marry' template='calendar'#}" target="_blank">黄道吉日查询</a></label>
+			<div class="bg"></div>
+		</div>
+	</div>
+</div>

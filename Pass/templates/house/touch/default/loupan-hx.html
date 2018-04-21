@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$detail_title#}户型图-{#$house_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/hx-list.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css">
+<script src="{#$templets_skin#}js/jquery-1.10.1.min.js"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v=4"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}',staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+<body>
+	<div class="container">
+		{#$tit = "户型列表"#}
+		{#include file="_header.html"#}
+		<div class="bread">
+			<a href="{#$house_channelDomain#}">房产首页</a><i></i>
+			<a href="{#getUrlPath service='house' template='loupan'#}">{#$houseCityName#}楼盘</a><i></i>
+			<a href="{#getUrlPath service='house' template='loupan-detail' id={#$detail_id#}#}">{#$detail_title#}</a><i></i>
+			<a href="javascript:;" class="active">户型列表</a>
+		</div>
+		{#house action="apartmentList" act="loupan" get="roomGroup" return="apartment" loupanid={#$detail_id#} pageSize="1"#}
+		<div class="hx-module">
+			<div class="hx-module-tit">
+				<p>
+					<span class="base-bgcolor public-title-icon"></span>二居(9)
+				</p>
+			</div>
+			<ul>
+				{#house action="apartmentList" act="loupan" return="apartmentList2" loupanid={#$detail_id#} room={#$apartment.room#} pageSize="99999"#}
+				<li>
+					<a href="{#$apartmentList2.url#}">
+						<div class="hx-left">
+							<div class="hx-img-box">
+								<img src="{#$apartmentList2.litpic#}" title="{#$apartmentList2.title#}-{#$apartmentList2.area#}㎡">
+							</div>
+							<dl>
+								<dt>{#$apartmentList2.room#}室{#$apartmentList2.hall#}厅{#$apartmentList2.guard#}卫 -{#$apartmentList2.title#}</dt>
+								<dd class="info-value">约{#($detail_price * $apartmentList2.area / 10000)|string_format:"%.2f"#}万{#echoCurrency type='short'#}/套</dd>
+								<dd class="info-area">{#$apartmentList2.area#}平米</dd>
+							</dl>
+						</div>
+						<div class="hx-right">
+							<span class="loupan-icons">
+								<em class="triangle-front"></em>
+								<em class="triangle-back"></em>
+							</span>
+						</div>
+					</a>
+				</li>
+				{#/house#}
+			</ul>
+		</div>
+		{#/house#}
+		<!-- 底部 -->
+		{#include file="_footer.html"#}
+
+		<div class="mask"></div>
+	</div>
+
+
+<script src="{#$templets_skin#}js/hx-list.js"></script>
+{#* 微信分享 *#}
+{#$Share_description = {#$house_description#}#}
+{#$Share_title = "户型列表"#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#getUrlPath service='house' template='loupan-hx' id={#$detail_id#}#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</body>
+</html>

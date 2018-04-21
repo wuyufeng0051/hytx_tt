@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>{#$detail_title#}-{#$renovation_title#}</title>
+<meta name="keywords" content="{#$renovation_keywords#}" />
+<meta name="description" content="{#$renovation_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/idangerous.swiper.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/picture.css?v=5">
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<script type="text/javascript">
+var staticPath = '{#$cfg_staticPath#}';
+</script>
+
+{#* 微信分享 *#}
+{#$Share_description = {#$renovation_description#}#}
+{#$Share_title = {#$detail_title#}#}
+{#$Share_img = {#$detail_pics[0]['path']#}#}
+{#$Share_url = {#getUrlPath service='renovation' template='albums-detail' id={#$detail_id#}#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</head>
+
+<body>
+	<div class="photoBox">
+		<div class="photo-head-h">
+			<div class="photo-head">
+				<a href="javascript:history.go(-1)" class="back"><i></i></a>
+				<p>{#$detail_title#}</p>
+			</div>
+		</div>
+		<div class="swiper-container">
+			<ul id="Gallery" class="swiper-wrapper">
+				{#foreach from=$detail_pics item="pics" key=k#}
+	    	<li class="swiper-slide">
+					<img src="{#$templets_skin#}images/blank.gif" data-src="{#$pics.path#}" alt="{#$k+1#}/{#$detail_pics|@count#}" class="swiper-lazy">
+					<span>{#$detail_title#}</span>
+				</li>
+				{#/foreach#}
+			</ul>
+		</div>
+		<div class="pic-int" style="z-index: 1001; display: block;">
+			<div class="flor f10"><span class="f14">1/6	</span></div>
+		</div>
+		<div class="space"></div>
+	</div>
+	<script src="{#$templets_skin#}js/idangerous.swiper.min.js"></script>
+	<script src="{#$templets_skin#}js/jquery.scroll.loading.js"></script>
+	<script src="{#$templets_skin#}js/public.js"></script>
+	<script src="{#$templets_skin#}js/picture.js?v=4"></script>
+</body>
+</html>

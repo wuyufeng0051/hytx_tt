@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{#$cfg_webname#}</title>
+<meta name="keywords" content="{#$cfg_keywords#}">
+<meta name="description" content="{#$cfg_description#}">
+<meta name="wap-font-scale" content="no">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/like.css?v=1">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v=15"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, redirectUrl = '{#$redirectUrl#}', site = '{#$site#}';
+  var geetest = {#$cfg_geetest#};
+	var templets = '{#$templets_skin#}';
+</script>
+</head>
+<body>
+
+{#$pageTitle = "共10个赞"#}
+{#include file="../touch_top.html"#}
+
+<ul class="list">
+  <li>
+    <a href="#">
+      <div class="imgbox"><img src="{#$templets_skin#}images/service1.jpg" alt=""></div>
+      <div class="txtbox"><p class="tit">如果不够悲伤</p><p class="info">这家伙很懒，什么都没留下</p></div>
+    </a>
+  </li>
+</ul>
+
+</body>
+</html>

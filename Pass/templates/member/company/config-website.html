@@ -1,0 +1,55 @@
+{#if {#verifyModuleAuth module='website'#}#}
+
+<style>.state0 {padding: 0 0 20px 115px; color: #f00;}</style>
+<div class="w-form">
+	{#if $storeState == 1#}
+		{#if $detail_state == 0#}
+		<p class="state0">{#$langData['siteConfig'][27][35]#}</p>
+		{#elseif $detail_state == 2#}
+		<p class="state0">{#$langData['siteConfig'][27][36]#}</p>
+		{#/if#}
+	{#/if#}
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=website&action=storeConfig">
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][19][638]#}：</dt>
+			<dd>
+				<input type="text" name="title" class="inp" id="title" size="35" maxlength="60" data-title="{#$langData['siteConfig'][27][37]#}" value="{#$detail_title#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>{#$langData['siteConfig'][19][639]#}：</dt>
+			<dd>
+				<textarea class="inp text" name="note" id="note" rows="3" cols="60" data-title="{#$langData['siteConfig'][27][38]#}">{#$detail_note#}</textarea>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>{#$langData['siteConfig'][19][640]#}：</dt>
+			<dd>
+				<textarea class="inp text" name="head" id="head" rows="3" cols="60" data-title="{#$langData['siteConfig'][27][39]#}">{#$detail_head#}</textarea>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>{#$langData['siteConfig'][19][641]#}：</dt>
+			<dd>
+				<textarea class="inp text" name="footer" id="footer" rows="3" cols="60" data-title="{#$langData['siteConfig'][27][40]#}">{#$detail_footer#}</textarea>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>&nbsp;</dt>
+			<dd>
+				<button class="submit" id="submit">{#$langData['siteConfig'][6][63]#}</button>
+				{#if $storeState == 1#}
+					{#if $detail_state == 1#}<a href="{#$detail_domain#}" target="_blank" style="float: left; color: blue; margin: 20px 0 0 30px;">{#$langData['siteConfig'][10][15]#}</a>{#/if#}
+				{#/if#}
+			</dd>
+		</dl>
+	</form>
+</div>
+
+{#else#}
+<div class="list" style="padding: 200px 0; text-align: center; font-size: 14px; color: red;">{#$langData['siteConfig'][20][403]#}</div>
+{#/if#}

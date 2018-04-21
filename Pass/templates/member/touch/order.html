@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$langData['siteConfig'][10][12]#} - {#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/order.css?v=7" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}', templateSkin = '{#$templets_skin#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, state = '{#$state#}';
+	var atpage = 1, totalCount = 0, pageSize = 15;
+	var module = '{#$module#}';
+	var type = '{#$type#}';
+</script>
+</head>
+<body>
+
+  <!-- 头部 s -->
+  <div class="header">
+    <div class="header-l">
+      <a href="javascript:;" onclick="history.go(-1)"><img src="{#$templets_skin#}images/header_back.png"></a>
+    </div>
+    <div class="header-c">
+    	{#if $module == 'business'#}
+    	{#if $type == 'diancan'#}
+    	{#$typename = $langData['siteConfig'][16][5]#}
+    	{#elseif $type == 'dingzuo'#}
+    	{#$typename = $langData['siteConfig'][16][6]#}
+    	{#elseif $type == 'paidui'#}
+    	{#$typename = $langData['siteConfig'][16][7]#}
+    	{#elseif $type == 'maidan'#}
+    	{#$typename = $langData['siteConfig'][16][8]#}
+    	{#/if#}
+    	<span class="orderbtn">{#$langData['siteConfig'][10][0]#}{#$typename#}{#$langData['siteConfig'][19][690]#}<em></em></span>
+    	{#else#}
+		<span class="orderbtn">{#$langData['siteConfig'][10][0]#}{#if $module == "tuan"#}{#$langData['siteConfig'][16][46]#}{#elseif $module == "shop"#}{#$langData['siteConfig'][16][47]#}{#elseif $module == "waimai"#}{#$langData['siteConfig'][16][48]#}{#elseif $module == "paotui"#}{#$langData['siteConfig'][16][49]#}{#elseif $module == "integral"#}积分商城{#/if#}{#$langData['siteConfig'][19][359]#}<em></em></span>
+    	{#/if#}
+    </div>
+		<div class="header-r"></div>
+  </div>
+  <!-- 头部 e -->
+
+	<div class="orderbox">
+		<ul class="fn-clear">
+			{#if $module == 'business'#}
+			<li{#if $type == "diancan"#} class="curr"{#/if#}><a href="{#getUrlPath service='member' type='user' template='order' module='business' param='type=diancan'#}">{#$langData['siteConfig'][16][5]#}</a></li>
+			<li{#if $type == "dingzuo"#} class="curr"{#/if#}><a href="{#getUrlPath service='member' type='user' template='order' module='business' param='type=dingzuo'#}">{#$langData['siteConfig'][16][6]#}</a></li>
+			<li{#if $type == "paidui"#} class="curr"{#/if#}><a href="{#getUrlPath service='member' type='user' template='order' module='business' param='type=paidui'#}">{#$langData['siteConfig'][16][7]#}</a></li>
+			<li{#if $type == "maidan"#} class="curr"{#/if#}><a href="{#getUrlPath service='member' type='user' template='order' module='business' param='type=maidan'#}">{#$langData['siteConfig'][16][8]#}</a></li>
+			{#else#}
+			{#if in_array("tuan", $installModuleArr)#}<li{#if $module == "tuan"#} class="curr"{#/if#}><a href="{#getUrlPath service='member' type='user' template='order' module='tuan'#}">{#$langData['siteConfig'][16][46]#}</a></li>{#/if#}
+			{#if in_array("shop", $installModuleArr)#}<li{#if $module == "shop"#} class="curr"{#/if#}><a href="{#getUrlPath service='member' type='user' template='order' module='shop'#}">{#$langData['siteConfig'][16][47]#}</a></li>{#/if#}
+			{#if in_array("waimai", $installModuleArr)#}<li{#if $module == "waimai"#} class="curr"{#/if#}><a href="{#getUrlPath service='member' type='user' template='order' module='waimai'#}">{#$langData['siteConfig'][16][48]#}</a></li><li{#if $module == "paotui"#} class="curr"{#/if#}><a href="{#getUrlPath service='member' type='user' template='order' module='paotui'#}">{#$langData['siteConfig'][16][49]#}</a></li>{#/if#}
+			{#/if#}
+			{#if in_array("integral", $installModuleArr)#}<li{#if $module == "integral"#} class="curr"{#/if#}><a href="{#getUrlPath service='member' type='user' template='order' module='integral'#}">积分商城</a></li>{#/if#}
+		</ul>
+	</div>
+
+	{#if $module == ""#}
+	<div class="tabBox">
+		<div class="tab tab-all">
+			<ul data-tuanurl="{#getUrlPath service='member' type='user' template='orderdetail' module='tuan' id="%id%"#}"  data-shopurl="{#getUrlPath service='member' type='user' template='orderdetail' module='shop' id="%id%"#}" data-shoprefund="{#getUrlPath service='member' type='user' template='orderdetail' module='shop' id="%id%" param='rates=1'#}" data-shopcomment="{#getUrlPath service='member' type='user' template='write-comment' module='shop' id="%id%"#}" data-waimaiurl="{#getUrlPath service='member' type='user' template='orderdetail' module='waimai' userid="%id%"#}" >
+				<li data-id=""{#if $state == ""#} class="curr"{#/if#}><a href="javascript:;">{#$langData['siteConfig'][9][0]#} (<span id="total">0</span>)</a></li>
+				<li data-id="0"{#if $state == "0"#} class="curr"{#/if#}><a href="javascript:;">{#$langData['siteConfig'][9][23]#} (<span><span id="unpaid">0</span></span>)</a></li>
+				<li data-id="1"{#if $state == "1"#} class="curr"{#/if#}><a href="javascript:;">{#$langData['siteConfig'][9][25]#} (<span><span id="unused">0</span></span>)</a></li>
+				<li data-id="6"{#if $state == "6"#} class="curr"{#/if#}><a href="javascript:;">{#$langData['siteConfig'][9][26]#} (<span><span id="recei">0</span></span>)</a></li>
+				<li data-id="3"{#if $state == "3"#} class="curr"{#/if#}><a href="javascript:;">{#$langData['siteConfig'][9][37]#} (<span><span id="used">0</span></span>)</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="list" id="list"></div>
+	{#else#}
+	{#include file="order-$module.html"#}
+	<div class="list {#$module#}" id="list"></div>
+	{#/if#}
+
+	<div class="mask"></div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+{#if $module != 'business' && $module != 'waimai'#}
+<script type="text/javascript" src="{#$templets_skin#}js/order.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+{#if $module != ""#}
+<script type="text/javascript" src="{#$templets_skin#}js/order-{#$module#}.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+</body>
+</html>

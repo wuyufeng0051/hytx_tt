@@ -1,0 +1,14 @@
+<!-- 底部 s -->
+<div class="footer-login">
+	<p>
+		{#siteConfig action="singel"#}
+		<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a><span class="pice">|</span>
+		{#/siteConfig#}
+		<a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a>
+	</p>
+		{#$cfg_powerby#}
+</div>
+
+{#$cfg_statisticscode#}
+<!-- 底部 e -->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v=1"></script>

@@ -1,0 +1,155 @@
+/*body,html{ background: #eeeeee; height: 100%; display: block;}
+
+.new_address{ margin-top: .2rem; background: #fff; height: .8rem; line-height: .8rem; margin-bottom: .2rem;}
+.new_address a{ display: block;}
+.new_address em{ font-size: .3rem; margin-left: 0.6rem;}
+.new_address i{ width: .4rem; height: .4rem; background: url(../images/arrow_right.png) no-repeat center; float: right; margin-top: 0.22rem; margin-right: 0.3rem;}
+.Address_list .add_txt{ background: #fff; padding: 0.2rem 0.3rem; position: relative; margin-bottom: .2rem;}
+.Address_list .add_txt ul li { height: .5rem; line-height: .5rem; font-size: .28rem;}
+.Address_list .add_txt .dui{ width: .55rem; height: .5rem; background: url(../images/dui_1.png) no-repeat center; position: absolute; right: .5rem; top: .7rem;}
+.Address_list .add_txt .edit{ position: absolute; right: .3rem; top: .7rem; display: none;}
+.Address_list .add_txt .edit a{}
+.Address_list .add_txt .edit i{ width: .55rem; height: .5rem; background: url(../images/xiugai.png) no-repeat center; background-size: .5rem; display: inline-block;}
+.Address_list .add_txt .edit b{ width: .55rem; height: .5rem; background: url(../images/cha.png) no-repeat center; background-size: .6rem; display: inline-block; margin-left: 0.2rem;}
+.addbc{ background: #e83829!important; color: #fff;}
+.Address_list .add_txt.addbc .dui{ width: .55rem; height: .5rem; background: url(../images/dui_2.png) no-repeat center; display: block; position: absolute; right: .5rem; top: .7rem;}
+.Address_list .add_txt.addbc .edit i{ width: .55rem; height: .5rem; background: url(../images/xiugai_1.png) no-repeat center; background-size: .5rem; display: inline-block;}
+.Address_list .add_txt.addbc .edit b{ width: .55rem; height: .5rem; background: url(../images/cha_1.png) no-repeat center; background-size: .6rem; display: inline-block; margin-left: 0.2rem;}
+
+.edit_form{ background: #fff; padding: 0.24rem 0.3rem; margin-bottom: 0.2rem;}
+.edit_form .edi{ height: .8rem; line-height: .8rem;}
+.edit_form .edi em{ font-size: 0.3rem; width: 30%; display: inline-block;}
+.edit_form .edi input{ width: 69%; height: .6rem; line-height: .6rem; text-indent: 0.2rem; border: 1px solid #c8c8c8; border-radius: 0.1rem; font-size: 0.28rem;}
+.edit_form1{ background: #fff; padding: 0.24rem 0.3rem; margin-bottom: 0.2rem;}
+.edit_form1 .place{ height: .8rem; line-height: .8rem;}
+.edit_form1 .place em{ float: left; font-size: 0.28rem; width: 30%;}
+.edit_form1 .place input{ width: 69%; height: .6rem; line-height: .6rem; text-indent: 0.2rem; border: 1px solid #c8c8c8; border-radius: 0.1rem; font-size: 0.28rem;}
+.edit_form1 .place i{  width: .35rem; height: .35rem; background: #e5382a; border-radius: 100%; display: inline-block; vertical-align: text-bottom; margin-right: 0.1rem;}
+.edit_form1 .place i b{ width: .35rem; height: .35rem; display:block; background: url(../images/dingwei.png) no-repeat center; background-size: .3rem; margin: 0 auto;}
+.edit_form1 .place span{ float: left; width: 45%; padding-right: 25%; font-size: 0.28rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+.edit_form1 .place span strong { font-weight: 500;}
+.edit_form1 .place span a { position: absolute; right: .3rem; color: #999;}
+.edi_button button{ width: 70%; height: .8rem; line-height: .8rem; text-align: center; color: #fff; background: #e83829; margin: 0 auto; display: block; border: none; border-radius: 0.24rem; font-size: 0.3rem;}
+.wa{ padding: .5rem 0.65rem;}
+.wa ul li{ height: .5rem; line-height: .5rem; font-size: 0.28rem; color: #acacac;}
+
+.map { position: relative; width: 100%; height: 5.5rem; background: #ccc; margin-top: -.2rem;}
+#mapdiv { position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 1;}
+.mapcenter { position: absolute; z-index: 2; left: 50%; top: 50%; width: .6rem; height: .6rem; margin: -.4rem 0 0 -.3rem; background: url('../images/local.png'); background-size: cover;}
+
+.mapresults { display: none; position: absolute; top: 6.5rem; left: 0; right: 0; bottom: 0; background: #fff; overflow-y: auto; -webkit-overflow-scrolling: touch;}
+.mapresults li { position: relative; padding: .1rem .2rem .1rem .6rem; border-bottom: 1px solid #efefef;}
+.mapresults li:before { position: absolute; content: ""; left: .1rem; top: .2rem; width: .4rem; height: .4rem; background: url('../images/local.png'); background-size: cover;}
+.mapresults li h5 { font-size: .3rem; line-height: .5rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+.mapresults li p { font-size: .24rem; color: #999; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+.elseStreet { display: block; width: 80%; margin: .3rem auto; border: 2px solid #f00; height: .6rem; line-height: .6rem; border-radius: .5rem; color: #f00; font-size: .3rem; text-align: center;}*/
+
+.fixed body {position: fixed; width: 100%; height: 100%; overflow: hidden; left: 0; top: 0;}
+
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:500}
+/*a.gz-addr-header-btn:hover{color: #fff;}*/
+
+/* sprite */
+.gz-addr-header-back:after{background: url('../images/header_back.png') no-repeat; background-size: .4rem auto;}
+.gz-rbtn:after,
+.gz-addr-active s:after,
+.gz-addr-seladdr dd:after,
+.gz-sel-addr-close:after,
+.gz-sel-addr-list li:after {background: url('/templates/member/touch/images/addressIcons.png?v=1') no-repeat; background-size: 1.57rem 1.08rem;}
+
+.gz-address {position: absolute; z-index: 50; width: 100%; height: 100%; left: 0; top: 0; overflow: hidden; background: #3d3d3d;}
+.gz-addr-wrap {position: absolute; z-index: 1; left: 0; top: 0; right: 0; bottom: 0; background: #eee;}
+
+/* 头部 */
+.gz-addr-header {position: relative; height: 1rem; line-height: 1rem; background: #fff; border-bottom: 1px solid #f2f2f2;}
+.gz-addr-header-back {position: absolute; left: 0; top: 0; bottom: 0; width: 1rem;}
+.gz-addr-header-back:after {content: ''; display: block; height: .5rem; margin: 0.33rem 0 0 .3rem;}
+.gz-addr-header h2 {padding: 0 1.5rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; text-align: center; font-size: .34rem;}
+.gz-addr-header-btn {position: absolute; right: 0; top: 0; bottom: 0; width: 1.2rem; text-align: center; font-size: .24rem;}
+a:hover.gz-addr-header-btn {text-decoration: none;}
+
+/* 地址列表 */
+.gz-addr-list {position: absolute; left: 0; top: 1rem; right: 0; bottom: .96rem; margin-top: 1px; overflow-y: auto;}
+.gz-addr-list .empty {position: relative; top: 4rem; height: .4rem; line-height: .4rem; font-size: .3rem; text-align: center;}
+.gz-addr-list article {position: relative; background: #fff; border-bottom: 1px solid #eee; padding: .4rem 1.17rem .4rem .3rem;}
+.gz-linfo {padding-right: .3rem;}
+.gz-linfo s {display: none;}
+.gz-linfo h5 {height: .6rem; line-height: .6rem; font-size: .3rem;}
+.gz-linfo h5 sup {font-size: .26rem; margin-left: .24rem; top: -.05em;}
+.gz-linfo p {font-size: .24rem; line-height: .32rem; color: #666;}
+.gz-rbtn {position: absolute; right: 0; top: .4rem; bottom: .4rem; width: 1.17rem; border-left: 1px solid #eee; text-align: center;}
+.gz-rbtn:after {content: ''; position: absolute; top: 50%; left: 50%; width: .36rem; height: .38rem; margin: -.19rem 0 0 -.19rem; border: 0;}
+.gz-rbtn-edit:after {background-position: -.53rem -.1rem;}
+.gz-rbtn-del:after {background-position: -1.11rem -.1rem;}
+
+/* 地址选中 */
+.gz-addr-list .gz-addr-active {padding-left: 1rem;}
+.gz-addr-active s {display: block; position: absolute; left: .3rem; top: .4rem; bottom: .4rem; width: .65rem;}
+.gz-addr-active s:after {position: absolute; left: 0; top: 50%; content: ''; width: .4rem; height: .28rem; margin-top: -.07rem; background-position: -1.11rem -.68rem;}
+.gz-addr-active .gz-linfo h5, .gz-addr-active .gz-linfo h5 sup {color: #ff472e;}
+
+/* 新增地址按钮 */
+.gz-addr-addnewbtn {position: absolute; bottom: 0; left: 0; right: 0; width: 100%; height: .96rem; background: #ff472e; text-align: center; line-height: .96rem; font-size: .35rem; color: #fff; border: 0;}
+
+/* 新增地址 */
+#gzAddNewObj {-webkit-transition: -webkit-transform 0.5s; transition: transform 0.5s;}
+.gz-addr-addnew {margin: .3rem 0; background: #fff;}
+.gz-addr-addnew dl {border-bottom: 1px solid #eee; line-height: .65rem; padding: .23rem 0; font-size: .26rem;}
+.gz-addr-addnew dt {float: left; width: 1.78rem; text-align: center; color: #333;}
+.gz-addr-addnew dd {position: relative; overflow: hidden; padding: 0 .28rem;}
+.gz-addr-addnew dd input {width: 100%; height: .65rem; border: 0; line-height: .65rem; font-size: .26rem; outline: 0;}
+.gz-no-sel dd {color: #a9a9a9;}
+.gz-addr-seladdr dd {padding-right: .5rem; white-space: nowrap; text-overflow: ellipsis;}
+.gz-addr-seladdr dd:after {content: ''; position: absolute; right: .28rem; top: 50%; width: .09rem; height: .18rem; margin-top: -.09rem; background-position: -.09rem -.74rem;}
+.gz-addr-safenewbtn {display: block; width: 100%; height: .96rem; background: #ff472e; text-align: center; line-height: .96rem; font-size: .35rem; color: #fff; border: 0;}
+
+/* 选择区域 */
+.gz-sel-addr {position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 8.3rem; background: #fff; font-size: .25rem; -webkit-transition: all 0.5s; transition: all 0.5s;}
+.gz-sel-addr-hide {bottom: -8.3rem;}
+.gz-sel-addr-header {position: relative; height: .9rem; line-height: .9rem;}
+.gz-sel-addr-header h3 {position: absolute; left: .77rem; top: 0; right: .77rem; bottom: 0; text-align: center; font-size: .3rem; color: #848689;}
+.gz-sel-addr-close {position: absolute; top: 0; right: 0; bottom: 0; width: .77rem; text-align: center; border: 0; background: none;}
+.gz-sel-addr-close:after {content: ''; position: absolute; top: 50%; left: 50%; width: .21rem; height: .21rem; margin: -.1rem 0 0 -.1rem; border: 0; background-position: -.76rem -.72rem;}
+.gz-sel-addr-nav {width: 1000%; height: .58rem; border-bottom: 1px solid #d9d9d9; line-height: .58rem;}
+.gz-sel-addr-nav li {float: left; padding: 0 .3rem;}
+.gz-sel-addr-nav li span {display: block; padding: 0 .07rem;}
+.gz-sel-addr-nav .gz-curr span {border-bottom: 1px solid #f23131; color: #f23131;}
+.gz-sel-addr-list {position: absolute; left: 0; top: 1.7rem; right: 0; bottom: .05rem; overflow-y: auto;}
+.gz-sel-addr-list li.loading {height: 5rem; line-height: 5rem; text-align: center;}
+.gz-sel-addr-list li.loading:after, .gz-sel-addr-list li.n:after {display: none;}
+.gz-sel-addr-list li {position: relative; height: .76rem; padding: 0 .32rem; line-height: .76rem;}
+.gz-sel-addr-list li:after {content: ''; position: absolute; top: 50%; right: .32rem; width: .08rem; height: .15rem; margin: -.07rem 0 0 -.04rem; border: 0; background-position: -.42rem -.76rem;}
+.gz-sel-addr-list li.gz-curr {color: #f23131;}
+
+
+/* 遮罩 */
+#gzAddNewObj.gz-sel-addr-active {-webkit-transform: scale(.85,.85); transform: scale(.85,.85) translateY(-.3rem);}
+.gz-sel-addr-mask {display: none; position: absolute; z-index: 2; left: 0; top: 0; right: 0; bottom: 0; background: rgba(0,0,0,.5);}
+
+/* 错误提示 */
+.gzAddrErr {position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index: 1000; visibility: hidden;}
+.gzAddrErr p {position: fixed; background-color: rgba(0,0,0,.7); border-radius: 5px; color: #fff; font-size: 16px; line-height: 1.4; text-align: center; padding: 12px 10px; z-index: 9999; left: 0; top: 50%; margin-top: -50px;}
+
+.huoniao_iOS .gz-addr-header{padding-top: 20px;}
+.huoniao_iOS .gz-addr-list{top: calc(1rem + 20px);}
+.huoniao_iOS .gz-addr-header-btn, .huoniao_iOS .gz-addr-header-back{top: 20px;}
+
+.lead{ position: relative; text-align: center; height: 1rem; line-height: 1rem; background: #fff; margin-bottom: 0.2rem;}
+.lead p{ width: .5rem; height: .5rem; position: absolute; left: .15rem; top: .25rem; background: url(../images/Arrow_left.png) no-repeat center; background-size: .4rem;}
+.lead span{ font-size: .36rem;}
+.lead b a{ position: absolute; right: 0.1rem; top: 0rem; color: #e83829; font-size: 0.28rem; width: 1rem;}
+
+.lead input { height: .7rem; border: 1px solid #e8e8e8; border-radius: 0.1rem; width: 75%; margin-left: 0.2rem; padding-left: 0.5rem; background: url(../images/search_1.png) no-repeat 0.1rem; background-size: .4rem; text-indent: 0.2rem; font-size: 0.28rem;}
+
+.pageitem {display: none; height: 100%;}
+
+.map { position: relative; width: 100%; height: 5.5rem; background: #ccc; margin-top: -.2rem;}
+#mapdiv { position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 1;}
+.mapcenter { position: absolute; z-index: 2; left: 50%; top: 50%; width: .6rem; height: .6rem; margin: -.4rem 0 0 -.3rem; background: url('../images/local.png'); background-size: cover;}
+
+.mapresults { display: none; position: absolute; top: 6.5rem; left: 0; right: 0; bottom: 0; background: #fff; overflow-y: auto; -webkit-overflow-scrolling: touch;}
+.mapresults li { position: relative; padding: .1rem .2rem .1rem .6rem; border-bottom: 1px solid #efefef;}
+.mapresults li:before { position: absolute; content: ""; left: .1rem; top: .2rem; width: .4rem; height: .4rem; background: url('../images/local.png'); background-size: cover;}
+.mapresults li h5 { font-size: .3rem; line-height: .5rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+.mapresults li p { font-size: .24rem; color: #999; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+.elseStreet { display: block; width: 80%; margin: .3rem auto; border: 2px solid #f00; height: .6rem; line-height: .6rem; border-radius: .5rem; color: #f00; font-size: .3rem; text-align: center;}*/

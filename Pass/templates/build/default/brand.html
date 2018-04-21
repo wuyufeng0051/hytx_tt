@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$seo_title#}品牌库-{#$build_title#}</title>
+<meta name="keywords" content="{#$build_keywords#}"/>
+<meta name="description" content="{#$build_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/brandlist.css" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$build_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'brand'#}
+{#include file="top.html"#}
+
+<!-- 面包屑 -->
+<div class="container fn-clear">
+
+	<div class="bread">
+		<a href="{#$build_channelDomain#}">首页</a><em>></em><a href="{#getUrlPath service='build' template='brand'#}">品牌库</a>{#if $typeid != 0#}<em>></em><a href="{#getUrlPath service='build' template='brand' typeid={#$typeid#}#}">{#$seo_title#}</a>{#/if#}
+	</div>
+
+	<!-- 热卖品牌 -->
+	<div class="hotBrand">
+		<div class="title"><div class="left"></div><p class="left">热卖品牌</p><div class="right"></div></div>
+		<div class="list">
+			<ul class="fn-clear">
+				{#build action="brand" page="1" rec="1" pageSize="42"#}
+				<li><a href="{#$row.url#}" title="{#$row.title#}"><div class="photo"><i></i><img src="{#$row.logo#}"></div><p>{#$row.title#}</p></a></li>
+				{#if $_bindex.row%14 eq 0#}
+			</ul>
+			<ul class="fn-clear">
+				{#/if#}
+				{#/build#}
+			</ul>
+		</div>
+		<div class="button">
+			<a href="javascript:;" class="prev"></a>
+			<a href="javascript:;" class="next"></a>
+		</div>
+	</div>
+
+	<!-- 筛选 -->
+	<div class="select">
+		<div class="sel fn-clear"><span class="left">类别：</span>
+			<div class="x left fn-clear">
+				<a{#if $typeid == 0#} class="on"{#/if#} href="{#getUrlPath service='build' template='brand'#}">不限</a>
+				{#build action="type" return="type"#}
+				<a{#if $typeid == $type.id#} class="on"{#/if#} href="{#getUrlPath service='build' template='brand' typeid={#$type.id#}#}">{#$type.typename#}</a>
+				{#/build#}
+			</div>
+		</div>
+	</div>
+
+	<!-- 品牌列表  -->
+	<div class="brandlist">
+		<ul class="fn-clear">
+			{#build action="brand" typeid={#$typeid#} page={#$page#} pageSize=72#}
+			<li><div class="con"><div class="img"><a href="{#$row.url#}" target="_blank"><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$row.logo#}" alt="{#$row.title#}"></a></div><p><a href="{#$row.url#}" target="_blank">{#$row.title#}</a></p></div></li>
+			{#/build#}
+			{#if $pageInfo.totalCount == 0#}
+			<li class="empty">抱歉！ 暂无品牌信息</li>
+			{#/if#}
+		</ul>
+	</div>
+
+	<!-- 分页 -->
+	{#getPageList service='build' template='brand' typeid={#$typeid#}#}
+
+</div>
+
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/brandlist.js?v=1"></script>
+</body>
+</html>

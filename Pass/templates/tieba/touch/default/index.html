@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#if $seoTitle != ""#}{#$seoTitle#} - {#/if#}{#$tieba_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/ui/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v=32">
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/public.js?v=30"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tieba_channelDomain#}', modelType = 'tieba', staticPath = '{#$cfg_staticPath#}';
+  var typeid = {#$typeid|string_format:"%d"#};
+</script>
+</head>
+
+{#* 微信分享 *#}
+{#$Share_description = {#$tieba_description#}#}
+{#$Share_title = {#$tieba_title#}#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#getUrlPath service='tieba'#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+<body>
+  <!-- 头部 s -->
+  {#$pageTitle = "$tieba_channelName"#}
+	{#include file="../../../siteConfig/touch_top.html"#}
+  <!-- 头部 e -->
+
+  <!-- 分类 s -->
+  <div class="topNav">
+    <ul class="swiper-wrapper">
+      {#tieba action="type"#}
+      <li class="swiper-slide{#if $typeid == $row.id || $parentid == $row.id#} active{#/if#}"><a href="{#getUrlPath service='tieba' template='list' typeid={#$row.id#}#}">{#$row.typename#}<i></i></a></li>
+      {#/tieba#}
+    </ul>
+  </div>
+  <!-- 分类 d -->
+
+  {#$tid = 0#}
+  {#if $typeid && !$parentid#}
+    {#$tid = $typeid#}
+  {#else#}
+    {#$tid = $parentid#}
+  {#/if#}
+  {#if $tid#}
+  <!-- 子分类 s -->
+  <div class="subNav">
+    <ul>
+      {#tieba action="type" type={#$tid#}#}
+      <li{#if $typeid == $row.id || $parentid == $row.id#} class="on"{#/if#}><a href="{#getUrlPath service='tieba' template='list' typeid={#$row.id#}#}">{#$row.typename#}</a></li>
+      {#/tieba#}
+    </ul>
+  </div>
+  <!-- 子分类 e -->
+  {#/if#}
+
+  <!-- 内容 s -->
+  <div class="main">
+    <div class="loading"><i></i>加载中...</div>
+  </div>
+  <!-- 内容 e -->
+
+  <div class="footer">
+    <p>Copyright © {#$smarty.now|date_format:"%Y"#} {#$cfg_shortname#}.</p>
+  </div>
+
+  <a href="{#getUrlPath service='tieba' template='fabu'#}" class="btn-fabu"></a>
+
+  <div class="fixFooter">
+    <ul>
+      <li class="ficon1 active"><a href="{#$cfg_basehost#}"><i></i>首页</a></li>
+      {#*<li class="ficon2"><a href=""><i></i>板块</a></li>*#}
+      <li class="ficon3"><a href="{#getUrlPath service='tieba' template='fabu'#}"><i></i>发帖</a></li>
+      <li class="ficon4"><a href=""><i></i>我的帖子</a></li>
+      <li class="ficon5"><a href=""><i></i>我的</a></li>
+    </ul>
+  </div>
+
+
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/index.js?v=31"></script>
+</body>
+</html>

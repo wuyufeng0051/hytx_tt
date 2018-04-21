@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>攻略详细</title>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/company.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/raiders-detail.css">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+
+{#* 微信分享 *#}
+{#$Share_description = {#$renovation_description#}#}
+{#$Share_title = {#$detail_title#}#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</head>
+<body>
+{#$pageTitle = "攻略详情"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<div class="std_list">
+	<h1>{#$detail_title#}</h1>
+	<span class='time'><time>{#$detail_pubdate|date_format:"%Y/%m/%d %H:%M"#}</time></span>
+	<div class="std_lc">
+		<a href="{#$renovation_channelDomain#}">首页</a>>
+		<a href="{#getUrlPath service='renovation' template='raiders'#}">装修攻略</a>>
+		<a href="{#getUrlPath service='renovation' template='raiders' id={#$detail_typeid#}#}">{#$detail_typename#}</a>
+	</div>
+	<div class="std_txt">
+	  {#$detail_body#}
+	</div>
+	<div class="share fn-clear art_shear">
+		<p>分享到</p>
+		<div class="jiathis_style_32x32">
+			<a class="jiathis_button_qzone" title="分享到QQ空间"><span class="jiathis_txt jtico jtico_qzone"></span></a>
+			<a class="jiathis_button_tsina" title="分享到微博"><span class="jiathis_txt jtico jtico_tsina"></span></a>
+			<a class="jiathis_button_weixin" title="分享到微信"><span class="jiathis_txt jtico jtico_weixin"></span></a>
+			<a class="jiathis_button_qq" title="分享到QQ书签"><span class="jiathis_txt jtico jtico_qq"></span></a>
+		</div>
+		<img src="{#$templets_skin#}images/mshare.png" alt="">
+	</div>
+</div>
+<div class="shearBox" id="shearBox">
+	<div class="sheark1">
+		<div class="sheark2">
+			<!-- JiaThis Button BEGIN -->
+			<div class="jiathis_style_32x32">
+				<ul class="fn-clear">
+					<li><a class="jiathis_button_qzone"></a>QQ空间</li>
+					<li><a class="jiathis_button_tsina"></a>新浪微博</li>
+					<li><a class="jiathis_button_tweixin"></a>微信</li>
+					<li><a class="jiathis_button_ttqq"></a>QQ好友</li>
+					<li><a class="jiathis_button_comment"><span class="jiathis_txt jtico jtico_comment"></span></a>朋友圈</li>
+					<li><a class="jiathis_button_code"><span class="jiathis_txt jtico jtico_code"></span></a>二维码</li>
+				</ul>
+			</div>
+			<!-- JiaThis Button END -->
+		</div>
+		<div class="cancel" id="cancelShear">取消</div>
+	</div>
+	<div class="bg" id="shearBg"></div>
+</div>
+
+<div class="shearBox codeBox" id="codeBox">
+	<div class="sheark1">
+		<img src="" alt="" width="130" height="130">
+		<p>让朋友扫一扫访问当前网页</p>
+		<div class="cancel" id="cancelcode">取消</div>
+	</div>
+	<div class="bg"></div>
+</div>
+
+<div class="zhiyin">
+	<div class="bg"></div>
+	<div class="zhibox">
+		<img src="{#$templets_skin#}images/sharezhi.png" alt="">
+		<p>点击右上角，分享给朋友</p>
+	</div>
+</div>
+<div class="like">
+	<h1>猜您喜欢</h1>
+	<ul>
+		{#renovation action='news' return='news' typeid={#$detail_typeid#} page='1' pageSize='4'#}
+		<li>
+			<a href="{#$news.url#}">
+				{#if $news.litpic#}
+				<div class="like_img"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$news.litpic#} type='middle'#}"></div>
+				{#/if#}
+				<div class="like_txt">
+					<h2>{#$news.title#}</h2>
+					<p>{#$news.pubdate|date_format:"%Y-%m-%d"#}</p>
+				</div>
+			</a>
+		</li>
+		{#/renovation#}
+	</ul>
+</div>
+
+
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<script src="{#$templets_skin#}js/raiders-detail.js"></script>
+
+</body>
+</html>

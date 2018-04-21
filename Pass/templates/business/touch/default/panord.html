@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$panord_title#}-{#$langData['siteConfig'][18][38]#}-{#$detail_title#}-{#$business_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/videod.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+</head>
+
+<body>
+
+  <!-- 头部 -->
+  {#$pageTitle = "{#$detail_title#}"#}
+  {#include file="../../../siteConfig/touch_top.html"#}
+  <!-- 头部 end-->
+
+  <div class="main">
+    <div class="video-box">
+      <h3>{#$panord_title#}</h3>
+      <iframe src="{#$panord_panor#}" allowtransparency="true" allowfullscreen="true" allowfullscreenInteractive="true" scrolling="no" border="0" frameborder="0"></iframe>
+    </div>
+  </div>
+
+
+
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/panord.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

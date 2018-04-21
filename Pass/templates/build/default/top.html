@@ -1,0 +1,40 @@
+{#include file="../../siteConfig/top.html"#}
+<div class="wrap header fn-clear">
+	<h1 class="logo"><a href="{#$build_channelDomain#}" title="{#$build_channelName#}"><img src="{#$build_logoUrl#}" alt="{#$build_channelName#}" /></a></h1>
+	<div class="search">
+		<form name="search" method="get" action="{#getUrlPath service='build' template='list'#}">
+			<input type="text" name="keywords" class="txt_search" id="search_keyword" value="{#$keywords#}" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" placeholder="请输入商品名称或相关词语" data-role="input" />
+			<button name="search" id="search_button" type="submit" class="btn-s"><s></s>搜索</button>
+		</form>
+		<p class="hot-s">
+			<span>热门搜索：</span>
+			{#siteConfig module="build" action="hotkeywords" return="hotkeywords"#}
+			<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a>
+			{#/siteConfig#}
+		</p>
+	</div>
+	<div class="topcart">
+		<a href="{#getUrlPath service='build' template='cart'#}" class="cart-btn"><span class="icon"></span><i>0</i>我的购物车<s><em></em></s></a>
+		<div class="cart-con">
+			<div class="spacer"></div>
+			<p class="empty">购物车中还没有商品，赶紧选购吧！</p>
+			<div class="cartlist"><ul></ul><div class="cartft fn-clear">共<em></em>件商品总计：<span class="pric">{#echoCurrency type='symbol'#}<strong>0.00</strong></span> <small>(不含运费)</small><a href="{#getUrlPath service='build' template='cart'#}" class="cartbtn">去购物车结算</a></div></div>
+		</div>
+	</div>
+</div>
+
+<div class="nav">
+	<div class="wrap">
+		<ul class="fn-clear">
+			<li{#if $pageCurr == 'index'#} class="curr"{#/if#}><a href="{#$build_channelDomain#}">首页</a></li>
+			<li><a href="{#getUrlPath service='build' template='list' param="flag=q"#}">抢运气</a></li>
+			<li><a href="{#getUrlPath service='build' template='list' param="flag=c"#}">找优惠</a></li>
+			<li{#if $pageCurr == 'brand'#} class="curr"{#/if#}><a href="{#getUrlPath service='build' template='brand'#}">品牌库</a></li>
+			<li{#if $pageCurr == 'store'#} class="curr"{#/if#}><a href="{#getUrlPath service='build' template='store'#}">商家店铺</a></li>
+			<li><a href="{#$tuan_channelDomain#}" target="_blank">推荐团购</a></li>
+			<li><a href="{#$build_channelDomain#}" target="_blank">建材市场</a></li>
+			<li><a href="{#$furniture_channelDomain#}" target="_blank">家具商城</a></li>
+			<li><a href="{#$home_channelDomain#}" target="_blank">生活家居</a></li>
+		</ul>
+	</div>
+</div>

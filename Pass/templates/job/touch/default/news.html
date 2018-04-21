@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>职场资讯-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="职场资讯,招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="职场资讯,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v=1">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/news.css?v=3">
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var detailListId = 'maincontent';
+</script>
+
+
+</head>
+<body>
+	<div class="container">
+
+		{#$tit = "资讯"#}
+		{#include file="top.html"#}
+
+		<div class="head-tab">
+			<div class="tab-info">
+				{#job action="newsType" return="type"#}
+				<a href="{#getUrlPath service='job' template='news' typeid={#$type.id#}#}" {#if $typeid == $type.id#} class="active"{#/if#} data-id="{#$type.id#}"><span>{#$type.typename#}</span></a>
+				{#/job#}
+			</div>
+		</div>
+		<div class="news-list">
+			<ul id="maincontent">
+				{#job action="news" return="news" typeid={#$typeid#} page={#$page#} pageSize="20"#}
+				<li>
+					<a href="{#$news.url#}" data-url="{#$news.url#}">
+						<dl class="fn-clear">
+							{#if $news.litpic#}
+							<dt><img src="{#$news.litpic#}" alt=""></dt>
+							{#/if#}
+							<dd class="ml">
+								<h3>{#$news.title#}</h3>
+								<p class="grey">{#$news.click#}人浏览 · {#$news.pubdate|date_format:"%Y-%m-%d"#}</p>
+							</dd>
+						</dl>
+					</a>
+				</li>
+				{#/job#}
+
+				{#if $pageInfo.totalCount == 0#}
+				<div class="empty">抱歉！ 没有相关资讯</div>
+				{#/if#}
+
+			</ul>
+		</div>
+
+		<!-- 底部 -->
+		{#include file="footer.html"#}
+	  <!-- 底部 end-->
+	</div>
+<script>
+var atpage = '{#$page#}',
+		totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+		totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+		pageSize = 10;
+</script>
+<script src="{#$templets_skin#}../../../siteConfig/touch/default/js/detail2list.js?v=1"></script>
+<script src="{#$templets_skin#}js/news.js?v=5"></script>
+{#* 微信分享 *#}
+{#$Share_description = {#$job_description#}#}
+{#$Share_title = "资讯"#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#getUrlPath service='job' template="news"#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</body>
+</html>

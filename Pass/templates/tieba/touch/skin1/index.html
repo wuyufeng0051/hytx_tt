@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#if $seoTitle != ""#}{#$seoTitle#} - {#/if#}{#$tieba_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/ui/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v=5">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v=15"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/public.js?v=30"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tieba_channelDomain#}', modelType = 'tieba', staticPath = '{#$cfg_staticPath#}';
+  var typeid = {#$typeid|string_format:"%d"#};
+	var templets = '{#$templets_skin#}';
+  var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+{#* 微信分享 *#}
+{#$Share_description = {#$tieba_description#}#}
+{#$Share_title = {#$tieba_title#}#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#getUrlPath service='tieba'#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+</head>
+<body>
+  <!-- 头部 s -->
+  {#$pageTitle = "火鸟贴吧"#}
+  {#$search = {#getUrlPath service='siteConfig' template='search'#}#}
+  {#$pageRight = '<a href="'|cat:$search|cat:'" class="header-search"></a>'#}
+	{#include file="../../../siteConfig/touch_index_top.html"#}
+  <!-- 头部 e -->
+
+  <!-- banner s -->
+  <div class="banner"><img src="{#$templets_skin#}images/banner.png" alt="">{#if $cfg_qiandao_state#}<a href="{#getUrlPath service='member' type='user' template='qiandao'#}" class="sign_btn">签到</a>{#/if#}</div>
+  <!-- banner e -->
+
+  <!-- 总数 s -->
+  <div class="account">
+    <ul class="fn-clear">
+      <li><a href="javascript:;"><div class="line"><p class="gray">今日发帖</p><p class="blue">{#$tiziTodayTotal|number_format#}</p></div></a></li>
+      <li><a href="javascript:;"><div class="line"><p class="gray">帖子总数</p><p class="blue">{#$tiziTotal|number_format#}</p></div></a></li>
+      <li><a href="javascript:;"><div class="line"><p class="gray">注册会员</p><p class="blue">15762</p></div></a></li>
+    </ul>
+  </div>
+  <!-- 总数 e -->
+
+  <div class="typebox">
+    <ul class="fn-clear">
+      <li class="icon_1 active"><i></i><p>首页</p></li>
+      <li class="icon_2"><i></i><p>精华</p></li>
+      <li class="icon_3"><i></i><p>图片</p></li>
+      <li class="icon_4"><i></i><p>视频</p></li>
+      <li class="icon_5"><i></i><p>语音</p></li>
+    </ul>
+  </div>
+
+  <div class="mode-type">
+    <ul class="fn-clear">
+      {#tieba action="type" return="type"#}
+      <li data-id="{#$type.id#}">{#$type.typename#}</li>
+      {#/tieba#}
+    </ul>
+  </div>
+
+  <div class="list"></div>
+
+  <a href="{#getUrlPath service='tieba' template='fabu'#}" class="fabu-btn"></a>
+
+<div class="mask"></div>
+
+<!-- 打赏 s -->
+<div class="reward">
+  <a href="javascript:;" class="close"></a>
+  <div class="reward-a">
+    <div class="reward-box fn-clear">
+      <a href="javascript:;" class="active">{#echoCurrency type='symbol'#}<em>0.50</em></a>
+      <a href="javascript:;">{#echoCurrency type='symbol'#}<em>1.00</em></a>
+      <a href="javascript:;">{#echoCurrency type='symbol'#}<em>5.00</em></a>
+      <a href="javascript:;">{#echoCurrency type='symbol'#}<em>0.50</em></a>
+      <a href="javascript:;">{#echoCurrency type='symbol'#}<em>0.50</em></a>
+      <a href="javascript:;">{#echoCurrency type='symbol'#}<em>0.50</em></a>
+    </div>
+    <a href="javascript:;" class="reword-other">其他金额</a>
+  </div>
+  <div class="reward-b">
+    <div class="reward-inp fn-hide">
+      <label class="inp-tag">金额</label>
+      <input type="number" name="" value="" min="0.50" maxlength="8" placeholder="输入打赏金额" id="reward">
+    </div>
+    <a href="javascript:;" class="reword-sure">确定</a>
+  </div>
+</div>
+<!-- 打赏 e -->
+
+<!-- 更多 s -->
+<div class="more-box">
+  <p class="tit">分享到<a href="javascript:;" class="close"></a></p>
+  <div class="share fn-clear bdsharebuttonbox">
+    <a href="javascript:;" class="weixin"></a>
+    <a href="javascript:;" class="quan"></a>
+    <a href="#" class="bds_tsina weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+  </div>
+</div>
+<!-- 更多 e -->
+
+<!-- 签到 s -->
+<div class="sign_box">
+  <p class="score">已签到&nbsp;&nbsp;积分+1</p>
+  <img src="{#$templets_skin#}images/sign_in.png" alt="">
+</div>
+<!-- 签到 e -->
+
+<!-- 选择支付方式 s -->
+<div class="paybox">
+  <div class="tit">选择支付方式</div>
+  <ul>
+    {#siteConfig action="payment"#}
+    {#if $row.pay_code == "wxpay"#}
+    <li id="shangWxpay" class="pay1" data-id="wxpay">微信支付 <i class="radio"></i></li>
+    {#elseif $row.pay_code == "globalalipay"#}
+    <li id="shangGlobalAlipay" class="pay2" data-id="globalalipay">支付宝支付 <i class="radio"></i></li>
+    {#elseif $row.pay_code == "alipay"#}
+    <li id="shangAlipay" class="pay2" data-id="alipay">支付宝支付 <i class="radio"></i></li>
+    {#elseif $row.pay_code == "paypal"#}
+    <li id="shangPaypal" class="pay4" data-id="paypal">paypal支付 <i class="radio"></i></li>
+    {#/if#}
+    {#/siteConfig#}
+  </ul>
+  <a href="javascript:;" id="dashang" class="paybtn">支付</a>
+</div>
+<!-- 选择支付方式 e -->
+
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/index.js?v=4"></script>
+</body>
+</html>

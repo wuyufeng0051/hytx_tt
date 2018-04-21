@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$langData['siteConfig'][0][7]#} - {#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+
+	var money = {#$userinfo.money#}, freeze = {#$userinfo.freeze#}, point = {#$userinfo.point#};
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="container fn-clear">
+
+		{#include file="sidebar.html"#}
+
+		<div class="main">
+
+			<!-- 会员基本信息 s -->
+			<div class="banner"{#if $bannerUrl#} style="background-image: url('{#$bannerUrl#}');"{#/if#}>
+				<a href="javascript:;" class="conbg" id="customBanner" title="{#$langData['siteConfig'][19][254]#}">{#$langData['siteConfig'][19][254]#}</a>
+				<dl class="uinfo">
+					<dt>
+						<a href="{#getUrlPath service='member' type='user' template='portrait'#}">
+							<img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}"#}{#/if#}" />
+							<span>{#$langData['siteConfig'][6][110]#}</span>
+						</a>
+					</dt>
+					<dd>
+						<div class="name">
+							<h2><span>{#$nowHour#}，{#$userinfo.nickname#}{#if $userinfo.level#}<font title="{#$langData['siteConfig'][19][733]#}：{#$userinfo.expired|date_format:"%Y-%m-%d %H:%M:%S"#}">【{#$userinfo.levelName#}】</font>{#/if#}</span><em></em></h2>
+							{#if $userinfo['userType'] == 1 || !$userinfo#}<a href="{#getUrlPath service='member' type='user' template='upgrade'#}" class="gradeBtn" target="_blank">{#$langData['siteConfig'][16][113]#}</a>{#/if#}
+						</div>
+						<ul class="fn-clear">
+							<li><a href="{#getUrlPath service='member' type='user' template='security' doget='chphone'#}" class="mobile{#if $userinfo.phoneCheck == 0#} disable{#/if#}"><s></s>{#$langData['siteConfig'][3][7]#}</a></li>
+							<li><a href="{#if $userinfo.certifyState != 1#}{#getUrlPath service='member' type='user' template='security' doget='chCertify'#}{#else#}{#getUrlPath service='member' type='user' template='security' doget='shCertify'#}{#/if#}" class="real{#if $userinfo.certifyState != 1#} disable{#/if#}"><s></s>{#$langData['siteConfig'][19][255]#}</a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='security' doget='chemail'#}" class="email{#if $userinfo.emailCheck == 0#} disable{#/if#}"><s></s>{#$langData['siteConfig'][3][10]#}</a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='security' doget='chpassword'#}" class="save"><s></s>{#$langData['siteConfig'][5][6]#}</a></li>
+							<li><a href="{#if $userinfo.paypwdCheck == 0#}{#getUrlPath service='member' type='user' template='security' doget='paypwdAdd'#}{#else#}{#getUrlPath service='member' type='user' template='security' doget='paypwdEdit'#}{#/if#}" class="pay{#if $userinfo.paypwdCheck == 0#} disable{#/if#}"><s></s>{#$langData['siteConfig'][5][7]#}</a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='security' doget='question'#}" class="question{#if $userinfo.question == 0#} disable{#/if#}"><s></s>{#$langData['siteConfig'][19][256]#}</a></li>
+						</ul>
+					</dd>
+				</dl>
+				<div class="bot">
+					{#if $userinfo.lastlogintime#}
+					<div class="l">{#$langData['siteConfig'][15][9]#}：{#$userinfo.lastlogintime#}&nbsp;&nbsp;&nbsp;&nbsp;{#$userinfo.lastloginipaddr#}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#getUrlPath service='member' type='user' template='loginrecord'#}">{#$langData['siteConfig'][6][52]#}</a></div>
+					{#else#}
+					<div class="l"><a href="{#getUrlPath service='member' type='user' template='loginrecord'#}">{#$langData['siteConfig'][19][682]#}</a></div>
+					{#/if#}
+					{#$level = "{#$langData['siteConfig'][13][1]#}"#}
+					{#$text = "{#$langData['siteConfig'][6][53]#}"#}
+					{#$cla = "l1"#}
+					{#if $userinfo.security < 100 && $userinfo.security > 40#}
+						{#$level = "{#$langData['siteConfig'][13][2]#}"#}
+						{#$text = "{#$langData['siteConfig'][6][54]#}"#}
+						{#$cla = "l2"#}
+					{#elseif $userinfo.security <= 40#}
+						{#$level = "{#$langData['siteConfig'][13][3]#}"#}
+						{#$text = "{#$langData['siteConfig'][6][54]#}"#}
+						{#$cla = "l2"#}
+					{#/if#}
+					<div class="r">{#$langData['siteConfig'][19][257]#}：{#$level#}<a href="{#getUrlPath service='member' type='user' template='security'#}" class="{#$cla#}">{#$text#}</a></div>
+					<div class="bg"></div>
+				</div>
+			</div>
+			<!-- 会员基本信息 e -->
+
+			<!-- 资产&天气 s -->
+			<div class="mon-dwea">
+				<div class="money">
+					<div id="chart"></div>
+					<div class="cinfo">
+						<p>{#$langData['siteConfig'][15][7]#}&nbsp;&nbsp;</p>
+						<strong>{#echoCurrency type='symbol'#}{#$userinfo.money + $userinfo.freeze#}</strong>
+					</div>
+					<div class="tmon pop"><s></s><dl class="popup"><dt><em></em></dt><dd>{#$langData['siteConfig'][20][115]#}<br />{#$langData['siteConfig'][20][21]#}{#$cfg_pointName#}。</dd></dl></div>
+					<ul id="chart-detail">
+						<li class="m1">
+							<div>
+								<label>{#$langData['siteConfig'][19][258]#}<div class="pop"><s></s><dl class="popup"><dt><em></em></dt><dd>{#$langData['siteConfig'][20][116]#}</dd></dl></div></label>
+								<br />{#echoCurrency type='symbol'#}{#$userinfo.money#}
+							</div>
+							<i></i>
+						</li>
+						<li class="m2">
+							<div>
+								<label>{#$langData['siteConfig'][19][229]#}<div class="pop"><s></s><dl class="popup"><dt><em></em></dt><dd>{#$langData['siteConfig'][20][117]#}</dd></dl></div></label>
+								<br />{#echoCurrency type='symbol'#}{#$userinfo.freeze#}
+							</div>
+							<i></i>
+						</li>
+						<li class="m3">
+							<div>
+								<label>{#$langData['siteConfig'][19][683]#}{#$cfg_pointName#}<div class="pop"><s></s><dl class="popup"><dt><em></em></dt><dd>{#$cfg_pointName#}{#$langData['siteConfig'][19][684]#}{#$langData['siteConfig'][19][685]#}{#$cfg_pointName#}{#$langData['siteConfig'][19][686]#}，{#$langData['siteConfig'][19][687]#}</dd></dl></div></label>
+								<br />{#$userinfo.point#}
+							</div>
+							<i></i>
+						</li>
+					</ul>
+				</div>
+				<div class="date-weather">
+					<h5>{#$langData['siteConfig'][19][683]#}</h5>
+					<ul class="fn-clear">
+						<li class="d"><strong>{#getMyTime format="%d"#}</strong><p>{#getMyWeek prefix=$langData['siteConfig'][13][48]#}<br />{#getMyTime format="%Y"#}.{#getMyTime format="%m"#}</p></li>
+					</ul>
+				</div>
+			</div>
+			<!-- 资产&天气 e -->
+
+			<!-- 系统消息 s -->
+			<div class="message">
+				<ul class="tab">
+					<li class="curr"><a href="javascript:;">{#$langData['siteConfig'][19][262]#}</a></li>
+
+					{#if in_array("shop", $installModuleArr)#}
+					{#$shopCount = 0#}
+					{#shop action="orderList" return="list" pageData="1" pageSize="1"#}
+					{#$shopCount = $list['success']#}
+					{#/shop#}
+					<li><a href="{#getUrlPath service='member' type='user' template='order' module='shop'#}">{#$langData['siteConfig'][19][263]#}{#if $shopCount > 0#}<em>{#$shopCount|string_format:"%d"#}</em>{#/if#}</a></li>
+					{#/if#}
+
+					{#if in_array("tuan", $installModuleArr)#}
+					{#$unpaid = 0#}
+					{#$ongoing = 0#}
+					{#tuan action="orderList" return="list" pageData="1" pageSize="1"#}
+					{#$unpaid = $list['unpaid']#}
+					{#$ongoing = $list['ongoing']#}
+					{#/tuan#}
+					<li><a href="{#getUrlPath service='member' type='user' template='order' module='tuan'#}">{#$langData['siteConfig'][19][264]#}{#if $ongoing > 0 && $unpaid > 0#}<em>{#if $ongoing > 0#}{#$langData['siteConfig'][9][19]#}：{#$ongoing|string_format:"%d"#}{#/if#} {#if $unpaid > 0#}{#$langData['siteConfig'][9][22]#}：{#$unpaid|string_format:"%d"#}{#/if#}</em>{#/if#}</a></li>
+					{#/if#}
+				</ul>
+				<div class="con">
+					<div class="item fn-clear">
+						{#if in_array("article", $installModuleArr)#}
+						<dl class="fn-clear">
+							<dt>{#$langData['siteConfig'][19][215]#}</dt>
+							<dd>
+								{#article action="alist" return="list" u="1" pageData="1" pageSize="1"#}
+								<ul>
+									<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='article'#}">{#$langData['siteConfig'][11][9]#}</a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=1'#}">{#$langData['siteConfig'][19][265]#}<em>{#$list['audit']|string_format:"%d"#}</em></a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=0'#}">{#$langData['siteConfig'][9][21]#}<em>{#$list['gray']|string_format:"%d"#}</em></a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=2'#}">{#$langData['siteConfig'][9][35]#}<em>{#$list['refuse']|string_format:"%d"#}</em></a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='article'#}">{#$langData['siteConfig'][23][0]#}<em>{#$list['totalCount']|string_format:"%d"#}</em></a></li>
+								</ul>
+								<h5>
+									<a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=0'#}">{#$list['gray']|string_format:"%d"#}</a>{#$langData['siteConfig'][9][1]#}
+									<a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=1'#}">{#$list['audit']|string_format:"%d"#}</a>{#$langData['siteConfig'][9][2]#}
+									<a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=2'#}">{#$list['refuse']|string_format:"%d"#}</a>{#$langData['siteConfig'][9][3]#}
+								</h5>
+								<p>{#$langData['siteConfig'][20][110]#}</p>
+								{#/article#}
+							</dd>
+						</dl>
+						{#/if#}
+
+						{#if in_array("info", $installModuleArr)#}
+						<dl class="fn-clear">
+							<dt>{#$langData['siteConfig'][23][1]#}</dt>
+							<dd>
+								{#info action="ilist" return="list" u="1" pageData="1" pageSize="1"#}
+								<ul>
+									<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}">{#$langData['siteConfig'][11][10]#}</a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='info' param='state=1'#}">{#$langData['siteConfig'][19][265]#}<em>{#$list['audit']|string_format:"%d"#}</em></a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='info' param='state=0'#}">{#$langData['siteConfig'][9][21]#}<em>{#$list['gray']|string_format:"%d"#}</em></a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='info' param='state=2'#}">{#$langData['siteConfig'][9][35]#}<em>{#$list['refuse']|string_format:"%d"#}</em></a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='info' param='state=4'#}">{#$langData['siteConfig'][9][36]#}<em>{#$list['expire']|string_format:"%d"#}</em></a></li>
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='info'#}">{#$langData['siteConfig'][10][11]#}<em>{#$list['totalCount']|string_format:"%d"#}</em></a></li>
+								</ul>
+								<h5>
+									<a href="{#getUrlPath service='member' type='user' template='manage' action='info' param='state=0'#}">{#$list['gray']|string_format:"%d"#}</a>{#$langData['siteConfig'][9][1]#}
+									<a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=1'#}">{#$list['audit']|string_format:"%d"#}</a>{#$langData['siteConfig'][9][2]#}
+									<a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=2'#}">{#$list['refuse']|string_format:"%d"#}</a>{#$langData['siteConfig'][9][3]#}
+									<a href="{#getUrlPath service='member' type='user' template='manage' action='article' param='state=4'#}">{#$list['expire']|string_format:"%d"#}</a>{#$langData['siteConfig'][9][4]#}
+								</h5>
+								<p>{#$langData['siteConfig'][20][111]#}</p>
+								{#/info#}
+							</dd>
+						</dl>
+						{#/if#}
+
+						{#if in_array("house", $installModuleArr)#}
+						<dl class="fn-clear">
+							<dt>{#$langData['siteConfig'][16][26]#}</dt>
+							<dd>
+								<ul>
+									{#$gray = 0#}
+									{#$audit = 0#}
+									{#$refuse = 0#}
+									{#house action="saleList" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost='sale'#}">{#$langData['siteConfig'][19][218]#}<em>{#$list['totalCount']|string_format:"%d"#}</em></a></li>
+									{#/house#}
+									{#house action="zuList" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost='zu'#}">{#$langData['siteConfig'][19][219]#}<em>{#$list['totalCount']|string_format:"%d"#}</em></a></li>
+									{#/house#}
+
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost='xzl'#}">{#$langData['siteConfig'][19][220]#}
+									{#house action="xzlList" type="1" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>售{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									{#house action="xzlList" type="0" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>租{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									</a></li>
+
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost='sp'#}">{#$langData['siteConfig'][19][221]#}
+									{#house action="spList" type="2" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>转{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									{#house action="spList" type="1" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>售{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									{#house action="spList" type="0" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>租{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									</a></li>
+
+									<li><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost='cf'#}">{#$langData['siteConfig'][19][222]#}
+									{#house action="cfList" type="1" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>转{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									{#house action="cfList" type="2" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>售{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									{#house action="cfList" type="0" return="list" u="1" pageData="1" pageSize="1"#}
+									{#$gray = $gray + $list['gray']#}
+									{#$audit = $audit + $list['audit']#}
+									{#$refuse = $refuse + $list['refuse']#}
+									<em>租{#$list['totalCount']|string_format:"%d"#}</em>
+									{#/house#}
+									</a></li>
+								</ul>
+								<h5>
+									<a href="javascript:;">{#$gray|string_format:"%d"#}</a>{#$langData['siteConfig'][9][1]#}
+									<a href="javascript:;">{#$audit|string_format:"%d"#}</a>{#$langData['siteConfig'][9][2]#}
+									<a href="javascript:;">{#$refuse|string_format:"%d"#}</a>{#$langData['siteConfig'][9][3]#}
+								</h5>
+								<p>{#$langData['siteConfig'][20][112]#} </p>
+							</dd>
+						</dl>
+						{#/if#}
+
+						{#if in_array("job", $installModuleArr)#}
+						<dl class="fn-clear">
+							<dt>{#$langData['siteConfig'][19][241]#}</dt>
+							<dd>
+								{#job action="invitationList" type="person" state="0" return="list" pageData="1" pageSize="1"#}
+								<h5><a href="{#getUrlPath service='member' type='user' template='job' action='invitation'#}">{#$langData['siteConfig'][19][241]|replace:'1':$list.state0|string_format:"%d"#}</a></h5>
+								<p>{#$langData['siteConfig'][20][113]#} </p>
+								{#/job#}
+							</dd>
+						</dl>
+						{#/if#}
+
+						{#if in_array("dating", $installModuleArr)#}
+						<dl class="fn-clear">
+							<dt>{#$langData['siteConfig'][19][246]#}</dt>
+							<dd>
+								{#dating action="review" return="list" pageData="1" pageSize="99999999"#}
+								<h5><a href="{#getUrlPath service='member' type='user' template='dating' action='review'#}">{#$langData['siteConfig'][19][241]|replace:'1':$list.noread|string_format:"%d"#}</a></h5>
+								<p>{#$langData['siteConfig'][20][114]#} </p>
+								{#/dating#}
+							</dd>
+						</dl>
+						{#/if#}
+
+						{#if in_array("waimai", $installModuleArr)#}
+						<dl class="fn-clear">
+							<dt>{#$langData['siteConfig'][16][48]#}</dt>
+							<dd>
+								<h5><a href="#">0</a>{#$langData['siteConfig'][23][4]#}<a href="#">0</a>{#$langData['siteConfig'][23][5]#}</h5>
+								<p>{#$langData['siteConfig'][23][6]#} </p>
+							</dd>
+						</dl>
+						{#/if#}
+					</div>
+				</div>
+			</div>
+			<!-- 系统消息 e -->
+
+			<!-- 模块集合 s -->
+			<div class="modules">
+				<ul class="fn-clear">
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/website.png" /><h5>{#$langData['siteConfig'][23][7]#}</h5><p>{#$langData['siteConfig'][23][8]#}</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/build.png" /><h5>{#$langData['siteConfig'][23][9]#}</h5><p>{#$langData['siteConfig'][23][10]#}</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/renovation.png" /><h5>{#$langData['siteConfig'][23][11]#}</h5><p>{#$langData['siteConfig'][23][12]#}</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/tuan.png" /><h5>{#$langData['siteConfig'][16][46]#}</h5><p>{#$langData['siteConfig'][23][13]#}</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/paper.png" /><h5>{#$langData['siteConfig'][23][14]#}</h5><p>{#$langData['siteConfig'][23][15]#}</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/job.png" /><h5>{#$langData['siteConfig'][23][16]#}</h5><p>{#$langData['siteConfig'][23][17]#}</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/marry.png" /><h5>{#$langData['siteConfig'][23][18]#}</h5><p>{#$langData['siteConfig'][23][19]#}</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/waimai.png" /><h5>{#$langData['siteConfig'][16][48]#}</h5><p>{#$langData['siteConfig'][23][20]#}</p></a></li>
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/icon/car.png" /><h5>{#$langData['siteConfig'][23][21]#}</h5><p>{#$langData['siteConfig'][23][22]#}</p></a></li>
+				</ul>
+			</div>
+			<!-- 模块集合 e -->
+
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/raphael.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

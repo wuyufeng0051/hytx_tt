@@ -1,0 +1,95 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>【婚嫁网_婚嫁资讯_婚庆资讯】专业结婚资讯门户网-{#$marry_title#}</title>
+<meta name="keywords" content="婚嫁,婚嫁网,婚嫁资讯,婚庆资讯,结婚资讯,结婚资讯门户">
+<meta name="description" content="{#$marry_title#}结婚网为您解答各种婚礼问题，为新人分享婚礼经验，包括婚嫁资讯、名人婚事、婚礼style、婚纱礼服、蜜月圣地、珠宝钻戒等方面的结婚资讯，旨在帮您打造浪漫的个性婚礼。">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/news.css" media="all">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$marry_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#$pageCurr = "news"#}
+{#include file="top.html"#}
+
+<!-- 面包屑 -->
+<div class="wrap fn-clear">
+	<p class="bread"><a href="{#$marry_channelDomain#}">首页</a> > <a href="{#getUrlPath service="marry" action="news"#}">婚尚资讯</a></p>
+	<div class="fn-left list">
+		<div class="title"><a href="javascript:;" class="on">婚礼筹备</a><a href="javascript:;">婚庆指南</a><a href="javascript:;">婚纱摄影</a><a href="javascript:;">婚纱礼服</a><a href="javascript:;">婚宴酒店</a><a href="javascript:;">婚礼现场</a><a href="javascript:;">结婚用品</a><a href="javascript:;">新娘妆容</a><a href="javascript:;">婚纱摄影</a><a href="javascript:;">婚纱礼服</a><a href="javascript:;">婚宴酒店</a><a href="javascript:;">婚礼现场</a><a href="javascript:;">结婚用品</a><a href="javascript:;">新娘妆容</a></div>
+		<div class="slider">
+			<ul id="slider">
+				<li><a href="javascript:;"><img src="{#$templets_skin#}upfile/slider1.jpg" alt=""></a><p><a href="javascript:;">户外婚宴场地布置亮点 有创意才有美好回忆</a></p></li>
+				<li><a href="javascript:;"><img src="{#$templets_skin#}upfile/p1.jpg" alt=""></a><p><a href="javascript:;">户外婚宴场地布置亮点 有创意才有美好回忆</a></p></li>
+				<li><a href="javascript:;"><img src="{#$templets_skin#}upfile/p2.jpg" alt=""></a><p><a href="javascript:;">户外婚宴场地布置亮点 有创意才有美好回忆</a></p></li>
+			</ul>
+			<a href="javascript:;" id="prev"></a>
+			<a href="javascript:;" id="next"></a>
+		</div>
+		<div class="listCon">
+			{#marry action="news" return="news" typeid={#$typeid#} page={#$page#} pageSize=10#}
+			<dl>
+				<dt><a href="{#$news.url#}" target="_blank"><img src="{#$templets_skin#}upfile/de{#$_bindex.news#}.jpg" alt="{#$news.title#}"></a></dt>
+				<dd class="name"><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a></dd>
+				<dd class="time">{#$news.pubdate#}</dd>
+				<dd class="brief">{#$news.description|truncate:110#}</dd>
+			</dl>
+			{#/marry#}
+		</div>
+
+		<!--分页-->
+		{#getPageList service='marry' template='news' pageType='dynamic' param="{#$pageParam#}&page=#page#"#}
+
+	</div>
+	<div class="fn-right tj">
+		<div class="zxtj">
+			<h3>
+				<span class="fn-left" >最新推荐</span>
+			</h3>
+			<ul class="tjCon">
+				<li><i></i><a href="javascript:;">按照传统 结婚吉日怎么选</a></li>
+				<li><i></i><a href="javascript:;">2014年5月不宜婚嫁的日子</a></li>
+				<li><i></i><a href="javascript:;">2014年上半年结婚吉日一览表</a></li>
+				<li><i></i><a href="javascript:;">旧式结婚仪式继承了中国传统的婚礼</a></li>
+				<li><i></i><a href="javascript:;">选择结婚吉日实用版 挑出喜气洋洋好</a></li>
+				<li><i></i><a href="javascript:;">男性婚前体检都包括哪些项目</a></li>
+				<li><i></i><a href="javascript:;">婚礼筹备期间采购清单 最详物品一应</a></li>
+				<li><i></i><a href="javascript:;">新人办理结婚证不可忽视的细节流程</a></li>
+				<li><i></i><a href="javascript:;">婚礼策划之异地结婚攻略</a></li>
+			</ul>
+		</div>
+		<div class="banner1">
+			<a href="javascript:;"><img src="{#$templets_skin#}upfile/n.jpg" alt=""></a>
+		</div>
+		<div class="zxtj hssy">
+			<h3>
+				<span class="fn-left">最新推荐</span>
+			</h3>
+			<ul>
+				<li><a href="javascript:;"><img src="{#$templets_skin#}upfile/n1.jpg" alt=""></a><p><a href="javascript:;">苏州80後视觉婚纱摄影</a></p><span>优惠：苏州80后婚纱摄影8周年感恩回馈，狂送200000豪礼！</span></li>
+				<li><a href="javascript:;"><img src="{#$templets_skin#}upfile/n2.jpg" alt=""></a><p><a href="javascript:;">苏州80後视觉婚纱摄影</a></p><span>优惠：苏州80后婚纱摄影8周年感恩回馈，狂送200000豪礼！</span></li>
+				<li><a href="javascript:;"><img src="{#$templets_skin#}upfile/n3.jpg" alt=""></a><p><a href="javascript:;">苏州80後视觉婚纱摄影</a></p><span>优惠：苏州80后婚纱摄影8周年感恩回馈，狂送200000豪礼！</span></li>
+				<li><a href="javascript:;"><img src="{#$templets_skin#}upfile/n1.jpg" alt=""></a><p><a href="javascript:;">苏州80後视觉婚纱摄影</a></p><span>优惠：苏州80后婚纱摄影8周年感恩回馈，狂送200000豪礼！</span></li>
+				<li><a href="javascript:;"><img src="{#$templets_skin#}upfile/n2.jpg" alt=""></a><p><a href="javascript:;">苏州80後视觉婚纱摄影</a></p><span>优惠：苏州80后婚纱摄影8周年感恩回馈，狂送200000豪礼！</span></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/news.js"></script>
+</body>
+</html>

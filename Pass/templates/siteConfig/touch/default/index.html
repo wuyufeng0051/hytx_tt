@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{#$cfg_webname#}</title>
+<meta name="keywords" content="{#$cfg_keywords#}">
+<meta name="description" content="{#$cfg_description#}">
+<meta name="wap-font-scale" content="no">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v=1">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v=15"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js" type="text/javascript"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, redirectUrl = '{#$redirectUrl#}', site = '{#$site#}';
+    var geetest = {#$cfg_geetest#};
+	var templets = '{#$templets_skin#}';
+</script>
+<style>
+  html #newBridge {display: none;}
+</style>
+
+{#* 微信分享 *#}
+{#$Share_description = {#$cfg_description#}#}
+{#$Share_title = {#$cfg_webname#}#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#$cfg_basehost#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</head>
+<body>
+
+{#if $cfg_app_ios_download || $cfg_app_android_download#}
+<div class="float-download">
+	<div class="float-box fn-clear">
+		<div class="download-box"><img src="{#$cfg_app_logo#}" alt=""></div>
+		<div class="download-txt"><p>{#$cfg_shortname#}</p><p class="gray">{#$langData['siteConfig'][20][150]#}</p></div>
+		<div class="download-btn"><a href="{#getUrlPath service='siteConfig' template='mobile'#}">{#$langData['siteConfig'][6][87]#}</a></div>
+		<a href="javascript:;" class="closesd"></a>
+	</div>
+</div>
+{#/if#}
+
+{#$pageTit = 'index'#}
+<div class="wrapper">
+	<div class="header clearfix"><a href="{#getUrlPath service='siteConfig' template='search'#}" class="search"><img src="{#$templets_skin#}images/search_icon.png" alt=""></a></div>
+	<div class="swiper-container" id="slider">
+    <div class="swiper-wrapper">{#myad id="204" type="slide"#}</div>
+    <div class="pagination"></div>
+	</div>
+</div>
+
+{#if $memberStatistics#}
+<div class="amount clearfix"><i class="icon"></i><ul class="clearfix">{#if $memberStatistics['total']#}<li>{#$langData['siteConfig'][20][3]|replace:"1":$memberStatistics['total']#}</li>{#/if#}{#if $memberStatistics['online']#}<li>{#$langData['siteConfig'][20][4]|replace:"1":$memberStatistics['online']#}</li>{#/if#}</ul></div>
+{#/if#}
+
+<!-- 滑动导航 -->
+<div class="mainNav">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <ul class="clearfix">
+        {#siteConfig action="siteModule" return="module"#}
+				{#if $module.code != "special" && $module.code != "paper" && $module.code != "website"#}
+        <li>
+          <a href="{#$module.url#}">
+            <span class="icon-circle"><img src="{#$cfg_staticPath#}images/admin/nav/{#$module.code#}.png?v={#$cfg_staticVersion#}"></span>
+            <span class="icon-txt">{#$module.name#}</span>
+          </a>
+        </li>
+				{#/if#}
+        {#/siteConfig#}
+      </ul>
+    </div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+<!-- 滑动导航 end-->
+
+<div class="navblank">
+  <div class="navbar">
+    <ul>
+      <li data-page="1" data-totalpage="1" class="active" data-action="article"><a href="javascript:;">{#$langData['siteConfig'][19][215]#}</a></li>
+      <li data-page="1" data-totalpage="1" data-action="huodong"><a href="javascript:;">{#$langData['siteConfig'][19][224]#}</a></li>
+      <li data-page="1" data-totalpage="1" data-action="tieba"><a href="javascript:;">{#$langData['siteConfig'][19][223]#}</a></li>
+      <li data-page="1" data-totalpage="1" data-action="video"><a href="javascript:;">{#$langData['siteConfig'][18][10]#}</a></li>
+      <li data-page="1" data-totalpage="1" data-action="info"><a href="javascript:;">{#$langData['siteConfig'][19][216]#}</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- 内容部分 -->
+<div class="container">
+  <div id="tabs-container" class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="content-slide article"></div>
+      </div>
+      <div class="swiper-slide">
+        <div class="content-slide huodong"></div>
+      </div>
+      <div class="swiper-slide">
+        <div class="content-slide tieba"></div>
+      </div>
+      <div class="swiper-slide">
+        <div class="content-slide video"></div>
+      </div>
+      <div class="swiper-slide">
+        <div class="content-slide info"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="gotop"><img src="{#$templets_skin#}images/go-top.png" alt=""></div>
+
+{#include file="_foot.html"#}
+
+<script src="{#$templets_skin#}js/common.js?v=12" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/jquery.scroll.loading.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/swiper.min.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/index.js?v=7" type="text/javascript"></script>
+</body>
+</html>

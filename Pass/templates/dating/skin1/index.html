@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" class='w1200'>
+<head>
+<meta charset="UTF-8">
+<title>{#$dating_title#}</title>
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/newtemplets_public.css">
+<link rel="stylesheet" type="text/css" href="templates/siteConfig/default/css/index_public.css?v=2" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/dating.css?v2">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script>
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', templatePath = '{#$templets_skin#}';
+var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body >
+	{#$channel = 'dating'#}
+	{#$hotline = $dating_hotline#}
+	{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_top_v2.html"#}
+
+			<!-- 中间约会信息部分 s -->
+		<div class="dating">
+			<!-- 幻灯片 s -->
+			<div class="flash">
+        <div class="bd">
+					{#myad id="206" type="slide"#}
+				</div>
+				<div class="hd"><ul></ul></div>
+	        </div>
+			<!-- 幻灯片 e -->
+			<!-- 导航栏 s-->
+			<div class="NewsNav fn-clear">
+				<ul>
+					<li class="NewsNav_bc"><a href="#">全部</a></li>
+					<li><a href="#">旅行</a></li>
+					<li><a href="#">吃饭</a></li>
+					<li><a href="#">电影</a></li>
+					<li><a href="#">唱歌</a></li>
+					<li><a href="#">活动</a></li>
+					<li><a href="#">逛街</a></li>
+					<li><a href="#">更多<i></i></a></li>
+				</ul>
+			</div>
+			<!-- 导航栏 e-->
+			<!-- 约会详尽信息列表 s -->
+			<div class="Dating_list">
+				<div class="Dating_datile">
+					<div class="infor fn-clear">
+						<div class="infor_left">
+							<div class="infor_img"><a href="#"><img src="{#$templets_skin#}upfile/fhfgh.png" alt=""></a></div>
+							<div class="name"><a href="#">会飞的鱼</a><i class="VIP fn-hide"></i><i class="diamond"></i></div>
+							<div class="form">射手座 摄影师 165cm</div>
+						</div>
+						<div class="infor_right">
+							<i></i>我买单
+						</div>
+					</div>
+					<div class="ELD_title"><a href="#">林文正姿护眼笔店林文正姿护眼笔</a></div>
+					<ul class="fn-clear">
+						<li><a href="#"><img src="{#$templets_skin#}upfile/b712d7772e844ba5958ccafe0ef7680f.jpg" alt=""></a></li>
+						<li><a href="#"><img src="{#$templets_skin#}upfile/35e4_0873e866_fa46_db9a_c0aa_de3ad7f02c76_1.jpg" alt=""></a></li>
+						<li><a href="#"><img src="{#$templets_skin#}upfile/Img9047733_s.jpg" alt=""></a></li>
+						<li><a href="#"><img src="{#$templets_skin#}upfile/Img499066633.jpg" alt="">
+							<div class="Pic_Number">10张</div>
+						</a></li>
+					</ul>
+					<div class="ELD_foot fn-clear">
+						<div class="da_left">来自 江苏无锡<em>3分钟前</em></div>
+						<div class="da_right">
+							<div class="bdsharebuttonbox">
+								<div class="Share_QQ Share">
+									<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><i></i>
+								</div>
+								<div class="Share_weixin Share">
+									<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><i></i>
+								</div>
+								<div class="Share_weibo Share">
+									<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><i></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="loading">继续加载</div>
+			</div>
+			<!-- 约会详尽信息列表 e -->
+		</div>
+	<!-- 中间约会信息部分 e -->
+	<!-- 右侧他人信息列表 s -->
+		<div class="Information">
+			<div class="issue"><a target="_blank" href="{#getUrlPath service='tieba' template='index'#}#publish">发布帖子</a></div>
+			<div class="Infor_list">
+				<div class="Infor_lead"><em>照片秀</em></div>
+				<div class="Pic_Show fn-clear">
+					<ul>
+					{#dating action="memberList" return="member" sex="0" property="r" pageSize="7"#}
+						<li><a target="_blank" href="{#$member.url#}">
+							<img src="{#$member.photo#}" alt="{#$member.nickname#}">
+							<div class="per_age fn-clear"><em>{#$member.nickname#}</em><span>{#$member.age#}岁</span></div>
+						</a></li>
+					{#/dating#}
+					{#dating action="memberList" return="member" sex="1" property="r" pageSize="3"#}
+						<li><a target="_blank" href="{#$member.url#}">
+							<img src="{#$member.photo#}" alt="{#$member.nickname#}">
+							<div class="per_age fn-clear"><em>{#$member.nickname#}</em><span>{#$member.age#}岁</span></div>
+						</a></li>
+					{#/dating#}
+					</ul>
+				</div>
+			</div>
+			<div class="Infor_list">
+				<div class="Infor_lead"><em>成功故事</em></div>
+				<div class="succes_list">
+					{#dating action='story' page={#$page#} pageSize=3#}
+					<div class="succes fn-clear">
+						<div class="succes_pic fn-clear"><img src="{#$row.litpic#}" alt="{#$row.title#}"></div>
+						<h1>{#$row.title#}</h1>
+						<div class="story">
+							{#$row.content#}...
+						</div>
+						<div class="minute"><a target="_blank" href="{#$row.url#}">详细 >></a></div>
+					</div>
+					{#/dating#}
+				</div>
+			</div>
+			<div class="ad">
+				{#myad id="213"#}
+			</div>
+			<div class="Infor_list">
+				<div class="Infor_lead"><em>情感资讯</em></div>
+				<div class="succes_list">
+					<div class="succes fn-clear">
+						<div class=" emotion_pic fn-clear"><img src="{#$templets_skin#}upfile/asdfvfg.png" alt=""></div>
+						<h1>非典型天蝎女不腹黑不可怕...</h1>
+						<div class="story">
+							选一个你喜欢的人，你的心意会通过留言向ta传达
+						</div>
+						<div class="minute"><a href="#">详细 >></a></div>
+					</div>
+					<div class="succes fn-clear">
+						<div class=" emotion_pic fn-clear"><img src="{#$templets_skin#}upfile/asdfvfg.png" alt=""></div>
+						<h1>非典型天蝎女不腹黑不可怕...</h1>
+						<div class="story">
+							选一个你喜欢的人，你的心意会通过留言向ta传达
+						</div>
+						<div class="minute"><a href="#">详细 >></a></div>
+					</div>
+					<div class="succes fn-clear bb_none">
+						<div class=" emotion_pic fn-clear"><img src="{#$templets_skin#}upfile/asdfvfg.png" alt=""></div>
+						<h1>非典型天蝎女不腹黑不可怕...</h1>
+						<div class="story">
+							选一个你喜欢的人，你的心意会通过留言向ta传达
+						</div>
+						<div class="minute"><a href="#">详细 >></a></div>
+					</div>
+				</div>
+			</div>
+			<div class="Qrcode fn-clear">
+				<ul>
+					<li><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" alt=""><p>手机APP下载</p></li>
+					<li><img src="{#$cfg_weixinQr#}" alt=""><p>微信公众号</p></li>
+				</ul>
+			</div>
+		</div>
+	<!-- 右侧他人信息列表 e -->
+	</div>
+<!-- 主干部分 e-->
+
+<!-- 底部 s-->
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_foot_v2.html"#}
+<!-- 底部 e-->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/newtemplets_public.js?v3"></script>
+<!-- <script type="text/javascript" src="{#$templets_skin#}js/index.js?v2"></script> -->
+<script type="text/javascript" src="{#$templets_skin#}js/public.js"></script>
+</body>
+</html>

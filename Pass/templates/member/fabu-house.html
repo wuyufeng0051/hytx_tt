@@ -1,0 +1,46 @@
+{#if $type == "demand"#}
+{#$type = "qzu"#}
+{#$ptitle = $langData['siteConfig'][23][49]#}
+{#elseif $type == "qzu" || $type == "qgou"#}
+{#$ptitle = $langData['siteConfig'][23][49]#}
+{#elseif $type == "sale"#}
+{#$ptitle = $langData['siteConfig'][19][218]#}
+{#elseif $type == "zu"#}
+{#$ptitle = $langData['siteConfig'][19][219]#}
+{#elseif $type == "xzl"#}
+{#$ptitle = $langData['siteConfig'][19][220]#}
+{#elseif $type == "sp"#}
+{#$ptitle = $langData['siteConfig'][19][221]#}
+{#elseif $type == "cf"#}
+{#$ptitle = $langData['siteConfig'][19][222]#}
+{#/if#}
+<script type="text/javascript">
+	var service = "house";
+</script>
+<ul class="main-tab">
+	<li class="curr"><a href="javascript:;">{#if $do == "edit"#}{#$langData['siteConfig'][6][4]#}【{#$ptitle#}】{#$langData['siteConfig'][16][26]#}{#else#}{#$langData['siteConfig'][11][0]#}【{#$ptitle#}】{#$langData['siteConfig'][16][26]#}{#/if#}</a></li>
+	<li><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost=$type#}">{#$langData['siteConfig'][23][50]#}</a></li>
+</ul>
+
+<div class="w-form">
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=house&type={#$type#}&action={#if $do == "edit"#}edit&id={#$id#}{#else#}put{#/if#}" data-url="{#getUrlPath service='member' type='user' template='manage' action='house' dopost=$type#}">
+		{#* 求租、求购 *#}
+		{#if $type == "demand" || $type == "qzu" || $type == "qgou"#}
+
+		{#include file="fabu-house-demand.html"#}
+
+		{#* 其它正常情况 *#}
+		{#else#}
+
+		{#include file="fabu-house-$type.html"#}
+
+		{#/if#}
+
+		<dl class="fn-clear">
+			<dt>&nbsp;</dt>
+			<dd><button class="submit" type="submit" id="submit">{#if $id == 0#}{#$langData['siteConfig'][11][19]#}{#else#}{#$langData['siteConfig'][6][122]#}{#/if#}</button></dd>
+		</dl>
+	</form>
+</div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicAddr.js?v={#$cfg_staticVersion#}"></script>

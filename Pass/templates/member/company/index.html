@@ -1,0 +1,261 @@
+{#$pageTitle = $langData['siteConfig'][26][75]|cat:" - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" media="all" />
+</head>
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+
+	<div class="notice">{#$langData['siteConfig'][27][41]#}<a href="#" target="_blank">{#$langData['siteConfig'][26][56]#}</a> <a href="#" target="_blank">{#$langData['siteConfig'][26][57]#}</a><em class="close">&times;</em></div>
+
+	<!-- 基本信息&帐户信息 -->
+	<div class="hline fn-clear">
+		<div class="r">
+			<div class="hitem account">
+				<p>{#$langData['siteConfig'][19][386]#}：<strong title="{#$userinfo.money#}">{#$userinfo.money#}</strong>{#$langData['siteConfig'][26][76]#}{#$cfg_pointName#}：<strong title="{#$userinfo.point#}">{#$userinfo.point#}</strong></p>
+				<div class="btns fn-clear">
+					<a href="{#getUrlPath service='member' template='deposit'#}" class="cz">{#$langData['siteConfig'][26][77]#}</a>
+					<a href="{#getUrlPath service='member' template='withdraw'#}" class="tx">{#$langData['siteConfig'][19][471]#}</a>
+					<a href="{#getUrlPath service='member' template='record'#}" class="link">{#$langData['siteConfig'][19][225]#}</a>
+				</div>
+			</div>
+		</div>
+		<div class="l">
+			<div class="hitem uinfo">
+				<dl class="fn-clear">
+					<dt><a href="{#getUrlPath service='member' template='portrait'#}"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#changeFileSize url="{#$userinfo.photo#}"#}" /><span>{#$langData['siteConfig'][6][110]#}</span></a></dt>
+					<dd>
+						<div class="name"><h2>{#$nowHour#}，{#$userinfo.nickname#}</h2>{#if $userinfo.lastlogintime#}<span class="date">{#$langData['siteConfig'][26][78]#} {#$userinfo.lastlogintime#}</span>{#/if#}</div>
+						<ul class="fn-clear">
+							<li><a href="{#getUrlPath service='member' template='security'#}" class="real{#if $userinfo.certifyState != 1#} disable{#/if#}"><s></s>{#$langData['siteConfig'][26][79]#}</a></li>
+							<li><a href="{#getUrlPath service='member' template='security'#}" class="mobile{#if $userinfo.phoneCheck == 0#} disable{#/if#}"><s></s>{#$langData['siteConfig'][3][7]#}</a></li>
+							<li><a href="{#getUrlPath service='member' template='security'#}" class="email{#if $userinfo.emailCheck == 0#} disable{#/if#}"><s></s>{#$langData['siteConfig'][3][10]#}</a></li>
+							<li><a href="{#getUrlPath service='member' template='security'#}" class="save"><s></s>{#$langData['siteConfig'][5][6]#}</a></li>
+							<li><a href="{#getUrlPath service='member' template='security'#}" class="pay{#if $userinfo.paypwdCheck == 0#} disable{#/if#}"><s></s>{#$langData['siteConfig'][5][7]#}</a></li>
+							<li><a href="{#getUrlPath service='member' template='security'#}" class="question{#if $userinfo.question == 0#} disable{#/if#}"><s></s>{#$langData['siteConfig'][19][256]#}</a></li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+
+	<!-- 待办事项&日期天气 -->
+	<div class="hline fn-clear">
+		<div class="r">
+			<h3>{#$langData['siteConfig'][19][261]#}</h3>
+			<div class="hitem date-weather">
+				<ul class="fn-clear">
+					<li class="d"><strong>{#getMyTime format="%d"#}</strong><p>{#getMyWeek prefix=$langData['siteConfig'][13][48]#}<br />{#getMyTime format="%Y"#}.{#getMyTime format="%m"#}</p></li>
+				</ul>
+			</div>
+		</div>
+		<div class="l">
+			<h3>{#$langData['siteConfig'][19][429]#}</h3>
+			<div class="hitem pending fn-clear">
+				{#if in_array("article", $installModuleArr)#}
+				{#$audit = 0#}
+				{#$gray = 0#}
+				{#$refuse = 0#}
+				{#article action="alist" return="list" u="1" pageData="1" pageSize="1"#}
+				{#$audit = $list['audit']|string_format:"%d"#}
+				{#$gray = $list['gray']|string_format:"%d"#}
+				{#$refuse = $list['refuse']|string_format:"%d"#}
+				{#/article#}
+				{#if $audit > 0 || $gray > 0 || $refuse > 0#}
+				<dl>
+					<dt><img src="{#$templets_skin#}images/sicon/marry.gif" /></dt>
+					<dd>
+						<a href="{#getUrlPath service='member' template='manage' action='article'#}">{#$langData['siteConfig'][19][215]#}</a>
+						{#if $audit > 0#}<a href="{#getUrlPath service='member' template='manage' action='article' param='state=1'#}">{#$langData['siteConfig'][16][132]#}(<strong>{#$audit#}</strong>)</a>{#/if#}
+						{#if $gray > 0#}<a href="{#getUrlPath service='member' template='manage' action='article' param='state=0'#}">{#$langData['siteConfig'][9][1]#}(<strong>{#$gray#}</strong>)</a>{#/if#}
+						{#if $refuse > 0#}<a href="{#getUrlPath service='member' template='manage' action='article' param='state=2'#}">{#$langData['siteConfig'][9][3]#}(<strong>{#$refuse#}</strong>)</a>{#/if#}
+					</dd>
+				</dl>
+				{#/if#}
+				{#/if#}
+
+				{#if {#verifyModuleAuth module='info'#} && in_array("info", $installModuleArr)#}
+				{#$gray = 0#}
+				{#$refuse = 0#}
+				{#$expire = 0#}
+				{#info action="ilist" return="list" u="1" pageData="1" pageSize="1"#}
+				{#$gray = $list['gray']|string_format:"%d"#}
+				{#$refuse = $list['refuse']|string_format:"%d"#}
+				{#$expire = $list['expire']|string_format:"%d"#}
+				{#/info#}
+				{#if $gray > 0 || $refuse > 0 || $expire > 0#}
+				<dl>
+					<dt><img src="{#$templets_skin#}images/sicon/tuan.gif" /></dt>
+					<dd>
+						<a href="{#getUrlPath service='member' template='manage' action='info'#}">{#$langData['siteConfig'][26][67]#}</a>
+						{#if $gray > 0#}<a href="{#getUrlPath service='member' template='manage' action='info' param='state=0'#}">{#$langData['siteConfig'][9][1]#}(<strong>{#$gray#}</strong>)</a>{#/if#}
+						{#if $refuse > 0#}<a href="{#getUrlPath service='member' template='manage' action='info' param='state=2'#}">{#$langData['siteConfig'][9][3]#}(<strong>{#$refuse#}</strong>)</a>{#/if#}
+						{#if $expire > 0#}<a href="{#getUrlPath service='member' template='manage' action='info' param='state=4'#}">{#$langData['siteConfig'][9][4]#}(<strong>{#$expire#}</strong>)</a>{#/if#}
+					</dd>
+				</dl>
+				{#/if#}
+				{#/if#}
+
+				{#if {#verifyModuleAuth module='tuan'#} && in_array("tuan", $installModuleArr)#}
+				{#$refuse = 0#}
+				{#$ongoing = 0#}
+				{#$refunded = 0#}
+				{#tuan action="tlist" return="list" u="1" pageData="1" pageSize="1"#}
+				{#$refuse = $list['refuse']|string_format:"%d"#}
+				{#/tuan#}
+				{#tuan action="orderList" return="list" store="1" pageData="1" pageSize="1"#}
+				{#$ongoing = $list['ongoing']|string_format:"%d"#}
+				{#$refunded = $list['refunded']|string_format:"%d"#}
+				{#/tuan#}
+				{#if $refuse > 0 || $ongoing > 0 || $refunded > 0#}
+				<dl>
+					<dt><img src="{#$templets_skin#}images/sicon/website.gif" /></dt>
+					<dd>
+						<a href="{#getUrlPath service='member' template='manage' action='tuan'#}">{#$langData['siteConfig'][16][46]#}</a>
+						{#if $refuse > 0#}<a href="{#getUrlPath service='member' template='manage' action='tuan' param='state=2'#}">{#$langData['siteConfig'][9][3]#}(<strong>{#$refuse#}</strong>)</a>{#/if#}
+						{#if $ongoing > 0#}<a href="{#getUrlPath service='member' template='order' action='tuan' param='state=1'#}">{#$langData['siteConfig'][9][25]#}(<strong>{#$ongoing#}</strong>)</a>{#/if#}
+						{#if $refunded > 0#}<a href="{#getUrlPath service='member' template='order' action='tuan' param='state=4'#}">{#$langData['siteConfig'][9][51]#}(<strong>{#$refunded#}</strong>)</a>{#/if#}
+					</dd>
+				</dl>
+				{#/if#}
+				{#/if#}
+
+				{#if {#verifyModuleAuth module='shop'#} && in_array("shop", $installModuleArr)#}
+				{#$ongoing = 0#}
+				{#$refunded = 0#}
+				{#shop action="orderList" return="list" store="1" pageData="1" pageSize="1"#}
+				{#$ongoing = $list['ongoing']|string_format:"%d"#}
+				{#$refunded = $list['refunded']|string_format:"%d"#}
+				{#/shop#}
+				{#if $ongoing > 0 || $refunded > 0#}
+				<dl>
+					<dt><img src="{#$templets_skin#}images/sicon/waimai.gif" /></dt>
+					<dd>
+						<a href="{#getUrlPath service='member' template='manage' action='shop'#}">{#$langData['siteConfig'][16][47]#}</a>
+						{#if $ongoing > 0#}<a href="{#getUrlPath service='member' template='order' action='shop' param='state=1'#}">{#$langData['siteConfig'][9][25]#}(<strong>{#$ongoing#}</strong>)</a>{#/if#}
+						{#if $refunded > 0#}<a href="{#getUrlPath service='member' template='order' action='shop' param='state=4'#}">{#$langData['siteConfig'][9][51]#}(<strong>{#$refunded#}</strong>)</a>{#/if#}
+					</dd>
+				</dl>
+				{#/if#}
+				{#/if#}
+
+				{#if {#verifyModuleAuth module='renovation'#} && in_array("renovation", $installModuleArr)#}
+				{#$state = 0#}
+				{#renovation action="rese" return="list" u="1" pageData="1" pageSize="1"#}
+				{#$state = $list['state0']|string_format:"%d"#}
+				{#/renovation#}
+				{#if $state > 0#}
+				<dl>
+					<dt><img src="{#$templets_skin#}images/sicon/house.gif" /></dt>
+					<dd>
+						<a href="{#getUrlPath service='member' template='config' action='renovation'#}">{#$langData['siteConfig'][16][126]#}</a>
+						<a href="{#getUrlPath service='member' template='booking' action='renovation'#}">{#$langData['siteConfig'][26][80]#}(<strong>{#$state#}</strong>)</a>
+					</dd>
+				</dl>
+				{#/if#}
+				{#/if#}
+
+				{#if {#verifyModuleAuth module='job'#} && in_array("job", $installModuleArr)#}
+				{#$state = 0#}
+				{#job action="deliveryList" return="list" type="company" state="0" pageData="1" pageSize="1"#}
+				{#$state = $list['state0']|string_format:"%d"#}
+				{#/job#}
+				{#if $state > 0#}
+				<dl>
+					<dt><img src="{#$templets_skin#}images/sicon/marry.gif" /></dt>
+					<dd>
+						<a href="{#getUrlPath service='member' template='config' action='job'#}">{#$langData['siteConfig'][19][241]#}</a>
+						<a href="{#getUrlPath service='member' template='resume-job'#}">{#$langData['siteConfig'][19][766]#}(<strong>{#$state#}</strong>)</a>
+					</dd>
+				</dl>
+				{#/if#}
+				{#/if#}
+			</div>
+		</div>
+	</div>
+
+	<!-- 系统功能模块 -->
+	<div class="module hitem fn-clear">
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/website.png" /></dt>
+				<dd><h5>{#$langData['siteConfig'][23][7]#}</h5><p>{#$langData['siteConfig'][23][8]#}</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/build.png" /></dt>
+				<dd><h5>{#$langData['siteConfig'][23][9]#}</h5><p>{#$langData['siteConfig'][23][10]#}</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/renovation.png" /></dt>
+				<dd><h5>{#$langData['siteConfig'][23][11]#}</h5><p>{#$langData['siteConfig'][23][12]#}</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/home.png" /></dt>
+				<dd><h5>{#$langData['siteConfig'][26][81]#}</h5><p>{#$langData['siteConfig'][26][82]#}</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/tuan.png" /></dt>
+				<dd><h5>{#$langData['siteConfig'][16][46]#}</h5><p>{#$langData['siteConfig'][23][13]#}</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/shop.png" /></dt>
+				<dd><h5>{#$langData['siteConfig'][26][83]#}</h5><p>{#$langData['siteConfig'][26][84]#}</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/job.png" /></dt>
+				<dd><h5>{#$langData['siteConfig'][23][16]#}</h5><p>{#$langData['siteConfig'][23][17]#}</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/house.png" /></dt>
+				<dd><h5>{#$langData['siteConfig'][26][85]#}</h5><p>{#$langData['siteConfig'][26][86]#}</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/marry.png" /></dt>
+				<dd><h5>{#$langData['siteConfig'][23][18]#}</h5><p>{#$langData['siteConfig'][23][19]#}</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/waimai.png" /></dt>
+				<dd><h5>{#$langData['siteConfig'][16][48]#}</h5><p>{#$langData['siteConfig'][26][87]#}</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/car.png" /></dt>
+				<dd><h5>{#$langData['siteConfig'][23][21]#}</h5><p>{#$langData['siteConfig'][23][22]#}</p></dd>
+			</dl>
+		</a>
+		<a href="javascript:;">
+			<dl>
+				<dt><img src="{#$templets_skin#}../images/icon/furniture.png" /></dt>
+				<dd><h5>{#$langData['siteConfig'][26][88]#}</h5><p>{#$langData['siteConfig'][26][89]#}</p></dd>
+			</dl>
+		</a>
+	</div>
+
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

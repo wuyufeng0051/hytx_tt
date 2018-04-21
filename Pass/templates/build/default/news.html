@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>资讯-{#$build_title#}</title>
+<meta name="keywords" content="{#$build_keywords#}"/>
+<meta name="description" content="{#$build_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/news.css" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$build_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<!-- 面包屑 -->
+<div class="container clearfix">
+	<div class="bread">
+		<a href="{#$build_channelDomain#}">首页</a><em>></em><a href="{#getUrlPath service='build' template='news'#}">资讯</a>{#if $pid != 0#}<em>></em><a href="{#getUrlPath service='build' template='news' typeid={#$pid#}#}">{#$pname#}</a>{#/if#}{#if $tid != 0#}<em>></em><a href="{#getUrlPath service='build' template='news' typeid={#$tid#}#}">{#$tname#}</a>{#/if#}
+	</div>
+	<!-- 左侧 -->
+	<div class="left newsList">
+
+		<div class="select">
+			<div class="sel clearfix"><span class="left">类别：</span>
+				<div class="x left">
+					<a{#if $pid == 0#} class="on"{#/if#} href="{#getUrlPath service='build' template='news'#}">不限</a>
+					{#build action="newsType" return="type" pageSize="10"#}
+					<a{#if $pid == {#$type.id#}#} class="on"{#/if#} href="{#getUrlPath service='build' template='news' typeid={#$type.id#}#}">{#$type.typename#}</a>
+					{#/build#}
+				</div>
+			</div>
+			{#if $pid != 0 && $child > 0#}
+			<div class="sel clearfix"><span class="left">&nbsp;</span>
+				<div class="x left">
+					<a{#if $tid == 0#} class="on"{#/if#} href="{#getUrlPath service='build' template='news' typeid={#$pid#}#}">不限</a>
+					{#build action="newsType" return='type' type={#$pid#}#}
+					<a{#if $tid == {#$type.id#}#} class="on"{#/if#} href="{#getUrlPath service='build' template='news' typeid={#$type.id#}#}">{#$type.typename#}</a>
+					{#/build#}
+				</div>
+			</div>
+			{#/if#}
+		</div>
+
+		<ul>
+			{#build action="news" typeid={#$typeid#} page={#$page#} pageSize="20"#}
+			<li>
+				<dl class="clearfix">
+					{#if $row.litpic#}<dt><a href="{#$row.url#}" target="_blank"><img src="{#changeFileSize url={#$row.litpic#} type='middle'#}" alt="{#$row.title#}"></a><p>发表于：{#$row.pubdate#}</p></dt>{#/if#}
+					<dd class="t"><a href="{#$row.url#}" title="{#$row.title#}" target="_blank">{#$row.title#}</a></dd>
+					<dd><p>{#$row.desc#}</p></dd>
+					<dd class="b"><a href="{#$row.url#}" target="_blank">【阅读全文】</a></dd>
+				</dl>
+			</li>
+			{#/build#}
+			{#if $pageInfo.totalCount == 0#}
+			<li class="empty">报歉！ 暂无相关资讯</li>
+			{#/if#}
+		</ul>
+		<!-- 分页 -->
+		{#getPageList service='build' template='news' typeid={#$typeid#}#}
+	</div>
+
+	<!-- 右侧 -->
+	<div class="right hot">
+		<div class="article">
+			<h3>推荐商品<span></span><em></em></h3>
+			<ul>
+				{#build action="blist" return="l1" flag="r" pageSize="7"#}
+				<li><a href="{#$l1.url#}" title="{#$l1.title#}" target="_blank">{#$l1.title#}</a></li>
+				{#/build#}
+				{#if $pageInfo.totalCount == 0#}
+				<li class="empty">暂无相关商品！</li>
+				{#/if#}
+			</ul>
+		</div>
+		<div class="article">
+			<h3>促销商品<span></span><em></em></h3>
+			<ul>
+				{#build action="blist" return="l1" flag="c" pageSize="7"#}
+				<li><a href="{#$l1.url#}" title="{#$l1.title#}" target="_blank">{#$l1.title#}</a></li>
+				{#/build#}
+				{#if $pageInfo.totalCount == 0#}
+				<li class="empty">暂无相关商品！</li>
+				{#/if#}
+			</ul>
+		</div>
+		<div class="article">
+			<h3>热卖商品<span></span><em></em></h3>
+			<ul>
+				{#build action="blist" return="l1" flag="h" pageSize="7"#}
+				<li><a href="{#$l1.url#}" title="{#$l1.title#}" target="_blank">{#$l1.title#}</a></li>
+				{#/build#}
+				{#if $pageInfo.totalCount == 0#}
+				<li class="empty">暂无相关商品！</li>
+				{#/if#}
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+
+{#include file="bottom.html"#}
+</body>
+</html>

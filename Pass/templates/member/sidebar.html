@@ -1,0 +1,84 @@
+<!-- 侧栏 s -->
+<div class="sidebar">
+	<dl>
+		<dt>{#$langData['siteConfig'][15][3]#}<s><i></i></s></dt>
+		<dd><a href="{#getUrlPath service='member' type='user' template='deposit'#}">{#$langData['siteConfig'][15][10]#}</a></dd>
+		<dd><a href="{#getUrlPath service='member' type='user' template='order'#}">{#$langData['siteConfig'][10][12]#}</a></dd>
+		<dd><a href="{#getUrlPath service='member' type='user' template='convert'#}">{#$langData['siteConfig'][19][726]|replace:'1':$cfg_pointName#}</a></dd>
+		<dd><a href="{#getUrlPath service='member' type='user' template='record'#}">{#$langData['siteConfig'][19][226]#}</a></dd>
+		<dd><a href="{#getUrlPath service='member' type='user' template='transfer'#}">{#$cfg_pointName#}{#$langData['siteConfig'][19][730]#}</a></dd>
+		<dd><a href="{#getUrlPath service='member' type='user' template='point'#}">{#$cfg_pointName#}{#$langData['siteConfig'][23][78]#}</a></dd>
+		<dd><a href="{#getUrlPath service='member' type='user' template='reward'#}">{#$langData['siteConfig'][19][233]#}</a></dd>
+		<!-- <dd>
+			<a href="javascript:;">我的购物车<s><i></i></s></a>
+			<ul>
+				<li><a href="#">团购</a></li>
+				<li><a href="#">商城</a></li>
+				<li><a href="#">建材</a></li>
+				<li><a href="#">家具</a></li>
+				<li><a href="#">家居</a></li>
+				<li><a href="#">外卖</a></li>
+			</ul>
+		</dd> -->
+	</dl>
+	<dl class="module fn-clear">
+		<dt>{#$langData['siteConfig'][19][234]#}<s><i></i></s></dt>
+		<dd class="fb">
+			<a href="javascript:;">{#$langData['siteConfig'][11][12]#}<s><i></i></s></a>
+			<ul>
+				{#if in_array("article", $installModuleArr)#}<li><a href="{#getUrlPath service='member' type='user' template='manage' action='article'#}">{#$langData['siteConfig'][19][269]#}</a></li>{#/if#}
+				{#if in_array("info", $installModuleArr)#}<li><a href="{#getUrlPath service='member' type='user' template='manage' action='info'#}">{#$langData['siteConfig'][19][270]#}</a></li>{#/if#}
+				{#if in_array("house", $installModuleArr)#}<li><a href="{#getUrlPath service='member' type='user' template='config-house'#}">{#$langData['siteConfig'][19][237]#}</a></li>{#/if#}
+				{#if in_array("tieba", $installModuleArr)#}<li><a href="{#getUrlPath service='member' type='user' template='manage' action='tieba'#}">{#$langData['siteConfig'][19][238]#}</a></li>{#/if#}
+			</ul>
+		</dd>
+		<dd><a href="{#if $userinfo.message > 0#}{#getUrlPath service='member' type='user' template='message' param="state=0"#}{#else#}{#getUrlPath service='member' type='user' template='message'#}{#/if#}">{#$langData['siteConfig'][19][239]#}{#if $userinfo.message > 0#}<em>{#$userinfo.message#}</em>{#/if#}</a></dd>
+		<dd><a href="{#getUrlPath service='member' type='user' template='collect'#}">{#$langData['siteConfig'][19][240]#}</a></dd>
+		{#if in_array("job", $installModuleArr)#}
+		<dd>
+			<a href="javascript:;">{#$langData['siteConfig'][19][241]#}<s><i></i></s></a>
+			<ul>
+				<li><a href="{#getUrlPath service='member' type='user' template='job' action='resume'#}">{#$langData['siteConfig'][19][242]#}</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='job' action='collections'#}">{#$langData['siteConfig'][19][243]#}</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='job' action='delivery'#}">{#$langData['siteConfig'][19][244]#}</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='job' action='invitation'#}">{#$langData['siteConfig'][19][245]#}</a></li>
+			</ul>
+		</dd>
+		{#/if#}
+		{#if in_array("dating", $installModuleArr)#}
+		<dd>
+			<a href="javascript:;">{#$langData['siteConfig'][19][246]#}<s><i></i></s></a>
+			<ul>
+				<li><a href="{#getUrlPath service='member' type='user' template='dating' action='profile'#}">{#$langData['siteConfig'][19][247]#}</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='dating' action='review'#}">{#$langData['siteConfig'][19][248]#}</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='dating' action='visit'#}">{#$langData['siteConfig'][19][249]#}</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='dating' action='album'#}">{#$langData['siteConfig'][19][250]#}</a></li>
+			</ul>
+		</dd>
+		{#/if#}
+		{#if in_array("huodong", $installModuleArr)#}
+		<dd>
+			<a href="javascript:;">{#$langData['siteConfig'][19][251]#}<s><i></i></s></a>
+			<ul>
+				<li><a href="{#getUrlPath service='member' type='user' template='huodong-join'#}">{#$langData['siteConfig'][19][252]#}</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='manage' action='huodong'#}">{#$langData['siteConfig'][10][3]#}</a></li>
+				<li><a href="{#getUrlPath service='huodong' template='fabu'#}" target="_blank">{#$langData['siteConfig'][11][7]#}</a></li>
+			</ul>
+		</dd>
+		{#/if#}
+	</dl>
+	<dl>
+		<dt>{#$langData['siteConfig'][19][253]#}<s><i></i></s></dt>
+		<dd><a href="{#getUrlPath service='member' type='user' template='profile'#}">{#$langData['siteConfig'][19][23]#}</a></dd>
+		<dd><a href="{#getUrlPath service='member' type='user' template='security' doget='chpassword'#}">{#$langData['siteConfig'][5][19]#}</a></dd>
+		<dd>{#if $userinfo.paypwdCheck == 0#}<a href="{#getUrlPath service='member' type='user' template='security' doget='paypwdAdd'#}">{#$langData['siteConfig'][6][120]#}</a>{#else#}<a href="{#getUrlPath service='member' type='user' template='security' doget='paypwdEdit'#}">{#$langData['siteConfig'][5][20]#}</a>{#/if#}</dd>
+		<dd><a href="{#if $userinfo.certifyState != 1#}{#getUrlPath service='member' type='user' template='security' doget='chCertify'#}{#else#}{#getUrlPath service='member' type='user' template='security' doget='shCertify'#}{#/if#}">{#$langData['siteConfig'][19][212]#}</a></dd>
+		<dd><a href="{#getUrlPath service='member' type='user' template='security' doget='chphone'#}">{#if $userinfo.phoneCheck == 0#}{#$langData['siteConfig'][19][774]#}{#else#}{#$langData['siteConfig'][3][7]#}{#/if#}</a></dd>
+		<dd><a href="{#getUrlPath service='member' type='user' template='security' doget='chemail'#}">{#if $userinfo.emailCheck == 0#}{#$langData['siteConfig'][3][16]#}{#else#}{#$langData['siteConfig'][3][10]#}{#/if#}</a></dd>
+		<dd><a href="{#getUrlPath service='member' type='user' template='security' doget='question'#}">{#$langData['siteConfig'][19][213]#}</a></dd>
+		<dd><a href="{#getUrlPath service='member' type='user' template='address'#}">{#$langData['siteConfig'][19][214]#}</a></dd>
+		<dd><a href="{#getUrlPath service='member' type='user' template='connect'#}">{#$langData['siteConfig'][15][11]#}</a></dd>
+		<dd><a href="{#getUrlPath service='member' type='user' template='loginrecord'#}">{#$langData['siteConfig'][15][8]#}</a></dd>
+	</dl>
+</div>
+<!-- 侧栏 e -->

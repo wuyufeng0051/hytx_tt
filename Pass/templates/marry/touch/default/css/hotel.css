@@ -1,0 +1,319 @@
+body{max-width: 1080px;margin: 0 auto;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;font-size: .24rem;opacity: 0;color: #000; overflow: hidden;}
+body.show {opacity:1;}
+i,em{font-style: normal;}
+
+
+/*头部*/
+.header{height: 1rem; border-bottom: 1px solid #e6e6e6; display: -webkit-box;position: fixed;top: 0;background: #fff; width: 100%;z-index: 1111;}
+.header-l a{display: block; padding: 0.2rem;}
+.header-l .logo{margin: .1rem 0 0; }
+.header-l .logo img{height: .4rem; }
+.header-m{-webkit-box-flex: 1; line-height: 1rem; font-size: .34rem; text-align: center;}
+.header-r{display: -webkit-box;}
+.header-r a{display: table-cell; padding: 0 .2rem; vertical-align: middle; height: 1rem;}
+.header-r a.more{padding-right: .2rem;}
+.header-r a img{height: .4rem;}
+/*导航*/
+.navigation{
+	width: 100%;
+	background: #fff;
+	line-height: 0.9rem;
+	font-size: 0.3rem;
+	border-bottom: 0.02rem solid #e6e6e6;
+	height: 0.9rem;
+	position: fixed;
+	top: 1.01rem;
+	z-index: 11111;
+}
+.navigation ul li{
+	float: left;
+	width: 25%;
+	text-align: center;
+	position: relative;
+}
+.navigation ul li a{
+	padding: 0 10px;
+	position: relative;
+	display: block;
+}
+.navigation ul li .lasta{
+	border-right: none;
+}
+.navigation ul li a em{
+	font-size: 0.25rem;
+}
+.navigation ul li a p{
+    display: inline-block;
+    width: .3rem;
+    height: .2rem;
+    vertical-align: middle;
+    background: url(../images/arrow-d.png) no-repeat 50%;
+    background-size: .24rem auto;
+    position: absolute;
+    top:0.34rem;
+    margin-left: 0.04rem;
+}
+.navigation ul li a i{
+	height: 0.4rem;
+	width: 0.02rem;
+	background: #e5e5e5;
+	position: absolute;
+	top: 13px;
+    left: 1.94rem;
+}
+/*列表*/
+.hotel-list {
+	margin-top: 2.0rem;
+}
+.hotel-list ul{
+	margin:0 0.4rem;
+}
+.hotel-list ul li{
+	padding:0.26rem 0;
+	border-bottom: 0.02rem solid #e6e6e6;
+}
+.hotel-list ul li:last-child{
+	border-bottom: none;
+}
+.hotel-list ul li a{
+	line-height: 0.4rem;
+}
+.hotel-list ul li a .list-pic{
+	width: 2.6rem;
+	height: 1.6rem;
+	float: left;
+	margin-right: 0.2rem;
+}
+.hotel-list ul li a h1{
+	font-size: 0.3rem;
+	height: 0.8rem;
+	overflow: hidden;
+}
+.hotel-list ul li a h1 i{
+	float: left;
+}
+.hotel-list ul li a h1 img{
+    width: 0.32rem;
+    height: 0.3rem;
+    margin-left: 0.06rem;
+}
+.hotel-list ul li a .pice{
+	font-size: 0.24rem;
+}
+.hotel-list ul li a .pice b{
+	font-weight: normal;
+}
+.hotel-list ul li a .pice i{
+	margin-left: 0.1rem;
+    color: #a0a0a0;
+    display: inline-block;
+}
+.hotel-list ul li a .place{
+	color: #a0a0a0;
+    display: inline-block;
+}
+.hotel-list ul li a .place p{
+	float: left;
+	margin-left: 0.1rem;
+}
+.next{
+	width: 100%;
+	text-align: center;
+    padding-top: 0.4rem;
+    margin-bottom: 0.45rem;
+    border-top: 0.02rem solid #e6e6e6;
+}
+.next a {
+	font-size: 0.3rem
+}
+.next a em{
+	margin-left: 1rem;	
+}
+/*底部*/
+.foot{
+	width: 100%;
+    background: #f0f0f0;
+    text-align: center;
+    line-height: 0.6rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+}
+.foot .about{
+	margin-bottom: 0.1rem
+}
+.foot .about a em{
+	margin-left: 0.6rem;
+}
+
+
+.nav-list{
+	width: 100%;
+	background:#fff;
+	position: absolute;
+	top: 1.94rem;
+	z-index: 11111;
+}
+.nav-list ul{
+	margin: 0 0.4rem;
+}
+.nav-ll{
+	display: none;
+	height: 9rem;
+	overflow: auto;	
+}
+.nav-list  ul li a{
+    width: 100%;
+    padding: 0.4rem 0;
+    text-align: left;
+    border-bottom: 0.02rem solid #e6e6e6;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    float: left;
+    font-size: 0.25rem;
+}
+.lisc{
+	color: #ff608e;
+}
+.lisc a{
+    color: #ff608e;
+}
+.xx{
+	display: none;
+}
+.lisc a p{
+    -webkit-transform: rotate(180deg);
+    background: url(../images/arrow-d-hover.png) no-repeat 50%!important;
+    background-size: .25rem auto!important;
+}
+.position ul{
+	width: 30%;
+	margin: 0;
+	float: left;
+	height: 9rem;	
+	overflow: auto;
+}
+.position ul li a{
+	text-align: left;
+	background: #f5f5f5;
+	text-indent: 0.4rem;
+}
+.nav-list .site{
+	padding: 0 3%;
+	float: left;
+	width: 64%
+}
+.nav-list .site-1{
+	height: 9rem;	
+	overflow: auto;
+}
+.nav-list .site-1 span{
+    line-height: 1.1rem;
+    text-indent: 4.5%;
+    text-align: left;
+    border-bottom: 1px solid #e6e6e6;
+    width: 100%;
+    float:left;
+    font-size: 0.25rem;
+}
+.disk{
+	    width: 100%;
+    background: rgba(0,0,0,.6);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    bottom: 0;
+    display: none;
+}
+.by{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	border: 0;
+}
+.ll a{
+	background: #fff!important;
+}
+.shai{
+    border: 1px solid #ff608e!important;
+    color: #ff608e;
+}
+.nav-ll{
+	position: relative;
+}
+.nav-ll .dis{
+    border-bottom: 1px solid #e6e6e6;
+    margin: 0 auto;
+    width: 90%;
+    text-align: center;
+    color: #666;
+    padding-bottom: .08rem;
+    margin-top: 0.2rem;
+}
+.nav-ll .dis h1{
+	font-size: 0.3rem;
+	text-align: left;
+	margin-bottom: 0.2rem;
+}
+.nav-ll .dis .dis-list span{
+	width: 29%;
+    float: left;
+    border: 1px solid #d4d4d4;
+    border-radius: .12rem;
+    -webkit-border-radius: .12rem;
+    height: .78rem;
+    line-height: .78rem;
+    margin: 0 .24rem .24rem 0;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+    font-size: 0.25rem;
+}
+.nav-ll .dis-z{
+    border-bottom: 1px solid #e6e6e6;
+    margin: 0 auto;
+    width: 90%;
+    text-align: center;
+    color: #666;
+    padding-bottom: .08rem;
+    margin-top: 0.2rem;
+}
+.nav-ll .dis-z h1{
+	font-size: 0.3rem;
+	text-align: left;
+	margin-bottom: 0.2rem;
+}
+.nav-ll .dis-z .disz-list span{
+	width: 29%;
+    float: left;
+    border: 1px solid #d4d4d4;
+    border-radius: .12rem;
+    -webkit-border-radius: .12rem;
+    height: .78rem;
+    line-height: .78rem;
+    margin: 0 .24rem .24rem 0;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+    font-size: 0.25rem;
+}
+.nav-ll .true{
+    left: 0;
+    bottom: 0;
+    line-height: .8rem;
+    width: 90%;
+    padding: 0 5%;
+    z-index: 905;
+    margin-top: 20px;
+}
+.nav-ll .true span{
+	    display: block;
+    width: 100%;
+    margin: 0 auto .24rem;
+    background: #ff608e;
+    color: #fff;
+    text-align: center;
+    border-radius: 0.12rem;
+    font-size: 0.3rem;
+}

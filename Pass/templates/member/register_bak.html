@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>用户注册</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/register.css?v=1" media="all" />
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}';
+</script>
+</head>
+
+<body>
+<div class="reg-pup">
+  <h2>用户注册</h2>
+  <a href="{#$cfg_basehost#}" title="返回首页" id="close">返回首页</a>
+  <form class="form-horizontal" action="registerCheck.html" method="post">
+    <ul>
+      <li class="mtype">
+        <label><input type="radio" name="mtype" value="1" checked="checked" />个人</label>
+        <label><input type="radio" name="mtype" value="2" />企业</label>
+      </li>
+      <li><input type="text" class="login-input" name="username" id="username" autocomplete="off" /><span>用户名</span></li>
+      <li><input type="password" class="login-input" name="password" id="password" autocomplete="off" /><span>密码</span></li>
+      <li><input type="text" class="login-input" name="nickname" id="nickname" autocomplete="off" /><span>真实姓名</span></li>
+      <li><input type="text" class="login-input" name="email" id="email" autocomplete="off" /><span>邮箱</span></li>
+      <li><input type="text" class="login-input" maxlength="11" name="phone" id="phone" autocomplete="off" /><span>手机</span></li>
+      <li class="fn-hide" id="companyObj"><input type="text" class="login-input" name="company" id="company" autocomplete="off" /><span>公司名称</span></li>
+      {#if $regQa == 1 && $regQuestion != ""#}
+      <li class="question">安全问题：【{#$regQuestion#}】<input type="hidden" name="question" value="{#$question#}" /></li>
+      <li><input type="text" class="login-input" name="answer" id="answer" autocomplete="off" /><span>请输入答案</span></li>
+      {#/if#}
+      {#if $regCode == 1#}
+      <li class="vdcode"><input type="text" class="login-input" maxlength="4" name="vericode" id="vericode" autocomplete="off" /><span>验证码</span><img src="/include/vdimgck.php" title="看不清？点击换一张" id="verifycode" /></li>
+      {#/if#}
+      <li class="xieyi"><label><input type="checkbox" name="xieyi" id="xieyi" checked="checked" value="true"> 同意 <a target="_blank" href="{#getUrlPath service='siteConfig' template='protocol' id='21'#}">网站服务使用协议</a></label></li>
+      <li class="submit fn-clear">
+        <a href="javascript:;" id="submitRegister" class="login-btn">注册</a>
+      </li>
+    </ul>
+  </form>
+  <div class="login-foot">
+    已有网站帐号， <a href="{#$cfg_basehost#}/login.html">直接登录</a>
+  </div>
+</div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/register.js?v=1"></script>
+</body>
+</html>

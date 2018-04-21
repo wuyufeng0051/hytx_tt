@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>设计与评估-{#$renovation_title#}</title>
+<meta name="keywords" content="设计与评估" />
+<meta name="description" content="设计与评估" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/company.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/getCity.css?v=3">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/free-deco.css">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}',staticPath = '{#$cfg_staticPath#}';;
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+{#* 微信分享 *#}
+{#$Share_description = {#$renovation_description#}#}
+{#$Share_title ="户型设计"#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#getUrlPath service='renovation' template='entrust'#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</head>
+<body>
+<div class="gz-address">
+
+  <div class="gz-addr-wrap" id="gzAddNewObj">
+		{#$pageTitle = "户型设计"#}
+		{#include file="../../../siteConfig/touch_top.html"#}
+
+		<div class="free_pic">
+			<img src="{#$templets_skin#}images/design_bg.jpg" alt="">
+		</div>
+		<div class="free_flow fn-clear">
+			<div class="line-1"></div>
+			<div class="line-2"></div>
+			<ul>
+				<li class="f-1">
+					<i></i>
+					<h3>上门量房</h3>
+				</li>
+				<li class="f-2">
+					<i></i>
+					<h3>策划方案</h3>
+				</li>
+				<li class="f-3">
+					<i></i>
+					<h3>选择方案</h3>
+				</li>
+			</ul>
+		</div>
+		<div class="free_lead">
+			<h1>免费户型设计</h1>
+			<h2>已有 <em>53525</em> 位用户报名</h2>
+		</div>
+		<div class="free_list">
+			<p class="free_in">
+				<input type="text" placeholder="请输入您的姓名" class="name">
+			</p>
+			<p class="free_in">
+				<input type="text" placeholder="请输入您的手机号码" class="phone">
+			</p>
+			<p class="free_in gz-addr-seladdr">
+				<span class="city">请选择您所在的城市</span>
+				<i class="arrow"></i>
+			</p>
+			<p class="free_in">
+				<a href="javascript:;" class="submit">免费预约设计方案</a>
+				<a href="tel:4006321084" class="tel_yu">人工预约 4006321084</a>
+			</p>
+				<div class="name-1">请填写您的名称</div>
+				<div class="phone-1">请填写您的手机号</div>
+				<div class="city-1">请填写您所在城市</div>
+		</div>
+		<div class="fw_lead">
+			<h1>为您提供免费设计服务</h1>
+		</div>
+		<div class="fw-list fn-clear">
+			<ul>
+				<li>
+					<img src="{#$templets_skin#}images/sj-1.png" alt="">
+					<h1>优质设计师 </h1>
+					<span>设计更合意，专业走心</span>
+				</li>
+				<li>
+					<img src="{#$templets_skin#}images/sj-2.png" alt="">
+					<h1>免费上门量房 </h1>
+					<span>发布申请后5分钟内响应</span>
+				</li>
+				<li>
+					<img src="{#$templets_skin#}images/sj-3.png" alt="">
+					<h1>3套设计方案 </h1>
+					<span>挑选更满意的设计</span>
+				</li>
+				<li>
+					<img src="{#$templets_skin#}images/sj-4.png" alt="">
+					<h1>设计修改到满意 </h1>
+					<span>设计不满意可重复修改</span>
+				</li>
+			</ul>
+		</div>
+		<div class="sp_lead">
+			<h1>让您的家 更大 更美 更舒适</h1>
+		</div>
+		<div class="space fn-clear">
+			<div class="space_l">
+				<h2>让家空间更大</h2>
+				<span>合理规划布局，为您节省空间</span>
+			</div>
+			<ul class="fn-clear">
+				<li><img src="{#$templets_skin#}images/dlist_1.jpg" alt=""><span>书房</span></li>
+				<li><img src="{#$templets_skin#}images/dlist_2.jpg" alt=""><span>过道</span></li>
+				<li><img src="{#$templets_skin#}images/dlist_3.jpg" alt=""><span>衣柜</span></li>
+				<li><img src="{#$templets_skin#}images/dlist_4.jpg" alt=""><span>阳台</span></li>
+			</ul>
+		</div>
+		<div class="sj_lead">
+			<h1>优质设计师 为您量身定制</h1>
+		</div>
+		<div class="arch_list">
+			 <ul class="fn-clear">
+				{#renovation action="team" return='team' pageSize="4"#}
+			 	<li><img src="{#$team.photo#}"><h1>{#$team.name#}</h1><span>{#$team.idea|truncate:20#}</span></li>
+				{#/renovation#}
+			 </ul>
+		</div>
+
+		<div class="disk"></div>
+
+	</div>
+
+	<div class="gz-sel-addr gz-sel-addr-hide" id="gzSelAddr">
+		<div class="gz-sel-addr-header">
+			<h3>选择</h3>
+			<button class="gz-sel-addr-close" id="gzSelAddrCloseBtn"></button>
+		</div>
+		<ul class="gz-sel-addr-nav"></ul>
+		<div class="gz-sel-addr-list"></div>
+	</div>
+
+	<div class="gz-sel-addr-mask"></div>
+
+</div>
+<script src="{#$templets_skin#}js/free-deco.js"></script>
+<script src="{#$templets_skin#}js/getCity.js?v=8"></script>
+</body>
+</html>

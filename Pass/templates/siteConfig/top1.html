@@ -1,0 +1,65 @@
+<script type="text/javascript">var cookiePre = '{#$cfg_cookiePre#}';</script>
+<!-- 顶部信息 s -->
+<div class="topInfo">
+	<div class="wrap fn-clear">
+		<div class="loginbox">
+			{#if $userinfo#}
+			{#$userDomain = $member_userDomain#}
+			{#if $userinfo.userType == 2#}
+			{#$userDomain = $member_busiDomain#}
+			{#/if#}
+			<div class="loginafter fn-clear" id="navLoginBefore">
+				<span class="fn-left">{#$langData['siteConfig'][0][12]#}，</span><a href="{#$userDomain#}" target="_blank">{#$userinfo.nickname#}</a><a href="{#$cfg_basehost#}/logout.html" class="logout">{#$langData['siteConfig'][2][6]#}</a>
+			</div>
+			{#else#}
+			<div class="loginbefore fn-clear" id="navLoginAfter">
+				<a href="{#$cfg_basehost#}/register.html" class="regist">{#$langData['siteConfig'][1][1]#}</a><span class="logint"><a href="{#$cfg_basehost#}/login.html">{#$langData['siteConfig'][2][0]#}</a></span>
+				{#siteConfig action="getLoginConnect" return="row1"#}
+				{#if $_bindex.row1 < 4#}
+				<a class="loginconnect" href="{#$cfg_basehost#}/api/login.php?type={#$row1.code#}" target="_blank"><i class="picon"><img src="{#$cfg_basehost#}/api/login/{#$row1.code#}/img/24.png" /></i>{#$row1.name#}</a>
+				{#/if#}
+				{#/siteConfig#}
+			</div>
+			{#/if#}
+		</div>
+		<ul class="menu topbarlink fn-clear">
+			<li class="dropdown user">
+				<a href="{#$member_userDomain#}">{#$langData['siteConfig'][0][7]#}<i class="picon picon-down"></i></a>
+				<div class="submenu">
+					<a href="{#getUrlPath service='member' type='user' template='order'#}" target="_blank">{#$langData['siteConfig'][10][4]#}</a>
+					<a href="{#getUrlPath service='member' type='user' template='record'#}" target="_blank">{#$langData['siteConfig'][19][266]#}</a>
+					<a href="{#getUrlPath service='member' type='user' template='security'#}" target="_blank">{#$langData['siteConfig'][0][8]#}</a>
+				</div>
+			</li>
+			<li><a href="{#getUrlPath service="siteConfig" template="mobile"#}" target="_blank"><i class="picon picon-phone"></i>{#$langData['siteConfig'][3][2]#}</a><span class="separ">|</span>
+				<div class="pop">
+					<s></s>
+					<p>{#$langData['siteConfig'][19][267]#}<a href="{#getUrlPath service="siteConfig" template="mobile"#}" target="_blank"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" width="150" height="150" /></a></p>
+				</div>
+			</li>
+			<li><a href="javascript:;"><i class="picon picon-weixin"></i>{#$langData['siteConfig'][19][286]#}</a><span class="separ">|</span>
+				<div class="pop" style="left: -26px;">
+					<s></s>
+					<p>{#$langData['siteConfig'][19][268]#}<img src="{#$cfg_weixinQr#}" width="150" height="150" /></p>
+				</div>
+			</li>
+			<li class="dropdown">
+				<a href="javascript:;">{#$langData['siteConfig'][11][2]#}<i class="picon picon-down"></i></a>
+				<div class="submenu">
+					<a href="{#getUrlPath service='member' type='user' template='fabu' action='article'#}" target="_blank">{#$langData['siteConfig'][19][235]#}</a>
+					<a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}" target="_blank">{#$langData['siteConfig'][19][236]#}</a>
+					<a href="{#getUrlPath service='member' type='user' template='config' action='house'#}" target="_blank">{#$langData['siteConfig'][11][6]#}</a>
+				</div>
+			</li>
+			<li class="dropdown webmap">
+				<a href="javascript:;">{#$langData['siteConfig'][19][271]#}<i class="picon picon-down"></i></a>
+				<div class="submenu">
+					{#siteConfig action="siteModule" return="module"#}
+					<a href="{#$module.url#}" target="_blank">{#$module.name#}</a>
+					{#/siteConfig#}
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- 顶部信息 e -->

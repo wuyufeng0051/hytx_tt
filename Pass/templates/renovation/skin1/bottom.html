@@ -1,0 +1,47 @@
+<div class="wrap friend">
+	<dl class="fn-clear">
+		<dt>友情链接：</dt>
+		<dd class="fn-clear">
+			{#siteConfig action="friendLink" return="flink" module="renovation"#}
+			<a href="{#$flink.sitelink#}" target="_blank">{#$flink.sitename#}</a>
+			{#/siteConfig#}
+		</dd>
+	</dl>
+</div>
+
+<div class="footer">
+	<div class="wrap">
+		<div class="about fn-clear">
+			<dl>
+				<dt>关于我们</dt>
+				<dd>
+					{#siteConfig action="singel" pageSize="5"#}
+					<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a>
+					{#/siteConfig#}
+				</dd>
+			</dl>
+			{#siteConfig action='helpsType' return='type' pageSize="4"#}
+			<dl>
+				<dt>{#$type.typename#}</dt>
+				<dd>
+					{#siteConfig action='helpsType' type={#$type.id#} return='type1' pageSize="5"#}
+					<a href="{#getUrlPath service='siteConfig' template='help' id={#$type1.id#}#}" target="_blank">{#$type1.typename#}</a>
+					{#/siteConfig#}
+				</dd>
+			</dl>
+			{#/siteConfig#}
+		</div>
+		<div class="link"></div>
+		{#$cfg_powerby#}
+	</div>
+</div>
+
+<div class="btntop">
+  <a href="javascript:;" class="top" title="返回顶部">返回顶部</a>
+  <a href="javascript:;" class="close" title="关闭">关闭</a>
+</div>
+
+{#$cfg_statisticscode#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js"></script>

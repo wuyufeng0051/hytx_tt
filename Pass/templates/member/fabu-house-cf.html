@@ -1,0 +1,138 @@
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][19][108]#}：</dt>
+	<dd>
+		<div class="radio type" data-title="{#$langData['siteConfig'][20][478]#}">
+			<span data-id="0"{#if $detail_type == "0" || $detail_type == ""#} class="curr"{#/if#}>{#$langData['siteConfig'][19][109]#}</span>
+			<span data-id="2"{#if $detail_type == "2"#} class="curr"{#/if#}>{#$langData['siteConfig'][19][110]#}</span>
+			<span data-id="1"{#if $detail_type == "1"#} class="curr"{#/if#}>{#$langData['siteConfig'][19][111]#}</span>
+			<input type="hidden" name="lei" id="lei" value="{#if $detail_type != ""#}{#$detail_type#}{#else#}0{#/if#}" />
+		</div>
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][19][27]#}：</dt>
+	<dd id="selAddr">
+		<div class="sel-group" data-title="{#$langData['siteConfig'][20][359]#}">
+			<div class="addrBtn" data-field="addrid" data-ids="{#getPublicParentInfo tab='houseaddr' id=$detail_addrid split=' '#}" data-id="{#$detail_addrid#}">{#if $detail_addr != ""#}{#getPublicParentInfo tab='houseaddr' id=$detail_addrid type='typename' split='/'#}{#else#}{#$langData['siteConfig'][7][2]#}{#/if#}</div>
+		</div>
+		<input type="hidden" name="addrid" id="addrid" value="{#$detail_addrid#}" />
+		<input type="text" name="address" class="inp" id="address" size="30" maxlength="50" data-title="{#$langData['siteConfig'][20][360]#}" value="{#$detail_address#}" />
+		<a href="javascript:;" class="getlnglat" id="getlnglat"><s></s>{#$langData['siteConfig'][19][88]#}</a>
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][19][428]#}：</dt>
+	<dd>
+		<div class="input-append mr10">
+			<input id="price" name="price" type="text" size="6" maxlength="7" data-title="{#$langData['siteConfig'][20][479]#}" value="{#$detail_price#}">
+			<span class="add-aft" id="priceType">{#if $detail_type == 0#}{#echoCurrency type='short'#}/{#$langData['siteConfig'][13][18]#}{#else#}{#$langData['siteConfig'][13][27]#}{#echoCurrency type='short'#}{#/if#}</span>
+		</div>
+		<div class="input-append input-prepend transfer{#if $detail_type != 1#} fn-hide{#/if#}">
+			<span class="add-bef">{#$langData['siteConfig'][19][120]#}</span>
+			<input id="transfer" name="transfer" type="text" size="6" maxlength="7" data-title="{#$langData['siteConfig'][20][479]#}" value="{#$detail_transfer#}">
+			<span class="add-aft" id="priceType">{#$langData['siteConfig'][13][27]#}{#echoCurrency type='short'#}</span>
+		</div>
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt>{#$langData['siteConfig'][19][123]#}：</dt>
+	<dd>
+		<div class="sel-group protype" data-title="{#$langData['siteConfig'][20][480]#}">
+			<button type="button" class="sel">{#if $detail_protype != ""#}{#$detail_protype#}{#else#}{#$langData['siteConfig'][19][123]#}{#/if#}<span class="caret"></span></button>
+			<ul class="sel-menu">
+				{#house action="item" return="item" type="10"#}
+				<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+		<input type="hidden" name="protype" id="protype" value="{#$detail_protypeid#}" />
+		<div class="input-prepend input-append mr10">
+			<span class="add-bef">{#$langData['siteConfig'][19][85]#}</span>
+			<input id="area" name="area" type="text" size="4" maxlength="7" data-title="{#$langData['siteConfig'][20][481]#}" value="{#$detail_area#}">
+			<span class="add-aft">㎡</span>
+		</div>
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][19][0]#}：</dt>
+	<dd>
+		<input type="text" name="title" class="inp" id="title" size="50" maxlength="50" data-title="{#$langData['siteConfig'][20][26]#}" value="{#$detail_title#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][23][46]#}：</dt>
+	<dd class="thumb fn-clear listImgBox fn-hide">
+		<div class="uploadinp filePicker thumbtn{#if $detail_litpic != ""#} fn-hide{#/if#}" id="filePicker1" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+		{#if $detail_litpic != ""#}
+		<ul id="listSection1" class="listSection thumblist fn-clear" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$detail_litpic#}' target="_blank" title=""><img alt="" src="{#changeFileSize url="$detail_litpic" type="small"#}" data-val="{#$detail_litpicSource#}"/></a><a class="reupload li-rm" href="javascript:;">{#$langData['siteConfig'][19][176]#}</a></li></ul>
+		{#else#}
+		<ul id="listSection1" class="listSection thumblist fn-clear"></ul>
+		{#/if#}
+		<input type="hidden" name="litpic" value="{#$detail_litpicSource#}" class="imglist-hidden" id="litpic">
+	</dd>
+</dl>
+<dl class="fn-clear">
+	<dt>{#$langData['siteConfig'][19][335]#}：</dt>
+	<dd>
+		<script id="note" name="note" type="text/plain" style="width:750px;height:300px">{#$detail_note#}</script>
+	</dd>
+</dl>
+<dl class="fn-clear">
+	<dt>{#$langData['siteConfig'][19][2]#}：</dt>
+	<dd class="listImgBox fn-hide">
+		<div class="list-holder">
+			<ul id="listSection2" class="fn-clear listSection fn-hide"{#if $detail_imglist#} style="display: block;"{#/if#}>
+				{#foreach from=$detail_imglist key=k item=i#}
+				<li class="fn-clear" id="WU_FILE_1_{#$k#}">
+					<span class="li-move" title="{#$langData['siteConfig'][23][42]#}">↕</span>
+					<a class="li-rm" href="javascript:;">×</a>
+					<div class="li-thumb" style="display: block;">
+						<div class="r-progress"><s></s></div>
+						<span class="ibtn">
+							<a href="javascript:;" class="Lrotate" title="{#$langData['siteConfig'][23][43]#}"></a>
+							<a href="javascript:;" class="Rrotate" title="{#$langData['siteConfig'][23][44]#}"></a>
+							<a href="{#$i.path#}" target="_blank" class="enlarge" title="{#$langData['siteConfig'][23][45]#}"></a>
+						</span>
+						<span class="ibg"></span>
+						<img data-val="{#$i.pathSource#}" data-url="{#changeFileSize url="{#$i.path#}" type="small"#}" src="{#changeFileSize url="{#$i.path#}" type="small"#}" />
+					</div>
+					<textarea class="li-desc" placeholder="{#$langData['siteConfig'][20][477]#}" style="display: inline-block;">{#$i.info#}</textarea>
+				</li>
+				{#/foreach#}
+			</ul>
+			<input type="hidden" name="imglist" value="" class="imglist-hidden">
+		</div>
+		<div class="btn-section fn-clear">
+			<div class="uploadinp filePicker" id="filePicker2" data-type="desc" data-count="{#$atlasMax#}" data-size="{#$atlasSize#}" data-imglist=""><div id="flasHolder"></div><span>{#$langData['siteConfig'][6][168]#}</span></div>
+			<div class="upload-tip">
+				<p><a href="javascript:;" class="fn-hide deleteAllAtlas"{#if $detail_imglist#} style="display: inline-block;"{#/if#}>{#$langData['siteConfig'][6][79]#}</a>&nbsp;&nbsp;{#$langData['siteConfig'][20][10]|replace:'1':'2'|replace:'2':$atlasMax#} <span class="fileerror"></span></p>
+			</div>
+		</div>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][19][642]#}：</dt>
+	<dd>
+		<input type="text" name="person" class="inp" id="person" size="20" data-title="{#$langData['waimai'][3][52]#}" value="{#if $detail_username != ""#}{#$detail_username#}{#else#}{#$userinfo.nickname#}{#/if#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+<dl class="fn-clear" data-required="1">
+	<dt><span>*</span>{#$langData['siteConfig'][3][6]#}：</dt>
+	<dd>
+		<input type="text" name="tel" class="inp" id="tel" size="20" data-title="{#$langData['siteConfig'][20][463]#}" onkeyup="value=value.replace(/\D+/ig,'')" value="{#if $detail_contact != ""#}{#$detail_contact#}{#else#}{#$userinfo.phone#}{#/if#}" />
+		<span class="tip-inline"></span>
+	</dd>
+</dl>
+
+<script>
+	var map_city = '{#$cfg_mapCity#}', site_map = "{#$site_map#}";
+</script>
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.coord.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.autocomplete.min.js"></script>

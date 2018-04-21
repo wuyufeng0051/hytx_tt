@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$detail_title#}-{#$home_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v=1">
+<link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css">
+<link rel='stylesheet' href='{#$templets_skin#}css/photoswipe.css'>
+<link rel='stylesheet' href='{#$templets_skin#}css/default-skin.css'>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$home_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+
+	var detailID = {#$detail_id#};     //当前信息ID
+	var detailTitle = '{#$detail_title#}';
+	var detailPrice = {#$detail_price#};
+	var maxCount = {#$detail_inventory#};  //最多购买数量
+	var detailThumb = '{#changeFileSize url={#$detail_litpic#} type='small'#}';   //当前商品缩略图
+	var detailUrl = '{#getUrlPath service="home" template="detail" id=$detail_id#}';
+	var date = [];
+	{#if $detail_property|strpos:'q' !== false#}
+	date = [{#$smarty.now#}, {#$detail_btime#}, {#$detail_etime#}];
+	{#/if#}
+</script>
+
+</head>
+<body>
+<div class="container esf">
+	<div class="wrapper">
+		<div class="swiper-container">
+	    <div class="swiper-wrapper">
+	    {#foreach from=$detail_pics item=pic#}
+				<div class="swiper-slide">
+	        <a href="#"><img src="{#changeFileSize url={#$pic.path#} type='large'#}"></a>
+	      </div>
+			{#/foreach#}
+	    </div>
+			<div class="swiper-pagination swiper-pagination-fraction"></div>
+		</div>
+	</div>
+	<div class="main">
+		<div class="main-tit">
+			<h3>{#$detail_title#}</h3>
+			<div class="main-tit-price">
+				<span>{#echoCurrency type='symbol'#}{#$detail_price#}</span>
+			</div>
+			<p>价格<em>{#echoCurrency type='symbol'#}{#$detail_mprice#}</em></p>
+			<div class="main-tit-sale">
+				<span>无积分</span>
+				<span class="tec">已售{#$detail_sales#}件</span>
+				<span class="ter">{#$detail_store['addr'][0]#} {#$detail_store['addr'][1]#}</span>
+			</div>
+		</div>
+		{#*
+		<div class="main-service">
+			<a href="#">
+				<span>24小时发货</span>
+				<span>人工质检</span>
+				<span>8天包退</span>
+				<span>运费补贴</span>
+			</a>
+		</div>
+		*#}
+		{#if $detail_store#}
+		<div class="shop">
+			<div class="shop-tit">
+				<div class="shop-img">
+					<img src="{#$detail_store['logo']#}" alt="{#$detail_store['title']#}">
+				</div>
+				<div class="shop-txt">
+					<h3><a href="{#$detail_store['domain']#}">{#$detail_store['title']#}</a></h3>
+				</div>
+			</div>
+			<div class="swiper-container-shop">
+				<div class="swiper-wrapper">
+					{#home action="hlist" return="sl" store={#$detail_store.id#} orderby=1 page=1 pageSize=10#}
+					<div class="swiper-slide">
+						<a href="{#$sl.url#}">
+							<div class="swiper-img">
+								<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$sl.litpic#} type='middle'#}">
+							</div>
+							<div class="swiper-txt">
+								<span>{#echoCurrency type='symbol'#}{#$sl.price#}</span>
+								<em>{#echoCurrency type='symbol'#}{#$sl.mprice#}</em>
+							</div>
+						</a>
+					</div>
+					{#/home#}
+				</div>
+			</div>
+			<div class="shop-more">
+				<a href="{#$detail_store['domain']#}">进店逛逛</a>
+			</div>
+		</div>
+		{#/if#}
+		<div class="shop-info">
+			<div class="shop-tab">
+				<ul>
+					<li class="active"><a href="javascript:;">图文详情</a></li>
+					<li><a href="javascript:;">用户评价</a></li>
+				</ul>
+			</div>
+			<div class="shop-con">
+				<div class="shop-box">
+					<div class="shop_detail">
+					{#if empty($detail_mbody)#}
+						{#$detail_body#}
+					{#else#}
+						{#$detail_mbody#}
+					{#/if#}
+					</div>
+				</div>
+				<div class="shop-box dn">
+					<div class="swiper-container-comment">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<span class="active">全部评价</span>
+							</div>
+							<div class="swiper-slide" data-type="h">
+								<span>好评(<font class="hp">0</font>)</span>
+							</div>
+							<div class="swiper-slide" data-type="z">
+								<span>中评(<font class="zp">0</font>)</span>
+							</div>
+							<div class="swiper-slide" data-type="c">
+								<span>差评(<font class="cp">0</font>)</span>
+							</div>
+						</div>
+					</div>
+					<div class="comment-box">
+						<ul>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="buy-box">
+		<div class="buy-box-l">
+			<span><a href="{#$detail_store['domain']#}"><i></i>店铺</a></span>
+			<span class="bn"><a href="{#$home_channelDomain#}/cart.html"><i></i><em class="buy-box-num cartNum">0</em>购物车</a></span>
+		</div>
+		<div class="buy-box-r">
+			<span class="buy-box-once"><a href="javascript:;">立即购买</a></span>
+			<span class="buy-box-cart">加入购物车</span>
+		</div>
+	</div>
+	<div class="color-box">
+		<div class="header">
+			<div class="header-l">
+				<a href="javascript:;"><img src="{#$templets_skin#}images/left.png" alt=""></a>
+			</div>
+			<div class="header-address">
+				<span>选择规格</span>
+			</div>
+			<div class="header-search">
+				<a href="javascript:;"><img src="{#$templets_skin#}images/newhome.png" alt=""></a>
+			</div>
+		</div>
+		<div class="color-main" id="color-main">
+			<div class="color-main-box">
+				<div class="color-info">
+					<div class="color-info-img">
+						<img src="{#$detail_litpic#}" alt="">
+					</div>
+					<div class="color-info-txt">
+						<h3>{#$detail_title#}</h3>
+						<span class="color-info-price aaaaa">{#echoCurrency type='symbol'#}<em id="price">{#$detail_price#}</em>{#echoCurrency type='short'#}</span>
+					</div>
+				</div>
+				<div id="skuObj">
+				</div>
+				<div class="color-info-ul">
+					<h3>数量</h3>
+					<div class="color-info-ul">
+						<div class="color-info-account">
+							<span class="fs reduce">－</span>
+							<span class="count">1</span>
+							<span class="bn fs add">＋</span>
+						</div>
+						<em>库存：<i id="stock">{#$detail_inventory#}</i></em>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="color-footer color-footer-select">
+				<a href="javascript:;" class="add-cart">加入购物车</a>
+				<a href="javascript:;" class="buy-cart">立即购买</a>
+			</div>
+			<div class="color-footer color-footer-cart dn">
+				<a href="javascript:;" class="add-cart">加入购物车</a>
+			</div>
+			<div class="color-footer color-footer-once dn">
+				<a href="javascript:;" class="buy-cart">立即购买</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+          </div>
+
+        </div>
+</div>
+<div class="topcart"><div class="cart-con"><div class="cartlist"><ul></ul></div></div></div>
+<form action="{#getUrlPath service='home' template='confirm-order'#}" data-action="{#$cfg_basehost#}/include/ajax.php?service=home&action=confirm_order" method="post" id="buyForm">
+	<input type="hidden" name="pros[]" id="pros" value="">
+</form>
+
+	<script src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js" type="text/javascript"></script>
+	<script src="{#$templets_skin#}js/swiper.min.js"></script>
+	<script src="{#$templets_skin#}js/public.js"></script>
+	<script src="{#$templets_skin#}js/common.js"></script>
+	<script src="{#$templets_skin#}js/iscroll.js"></script>
+	<script src='{#$templets_skin#}js/photoswipe.min.js'></script>
+	<script src='{#$templets_skin#}js/photoswipe-ui-default.min.js'></script>
+	<script src="{#$templets_skin#}js/pic-swiper.js"></script>
+	<script src="{#$templets_skin#}js/goodsD.js"></script>
+	<script src="{#$templets_skin#}js/detail.js"></script>
+</body>
+</html>

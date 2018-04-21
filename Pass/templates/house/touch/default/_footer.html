@@ -1,0 +1,33 @@
+<!-- 底部 -->
+<div class="footer">
+  <div class="login-bar">
+    <!-- 登录前 -->
+    {#if $userinfo#}
+    {#$userDomain = $member_userDomain#}
+    {#if $userinfo.userType == 2#}
+    {#$userDomain = $member_busiDomain#}
+    {#/if#}
+    <div class="unlogin">
+      <a href="{#$userDomain#}">{#$userinfo.nickname#}</a>
+      <em>|</em>
+      <a href="{#$cfg_basehost#}/logout.html" class="logout">退出</a>
+    </div>
+    {#else#}
+    <div class="unlogin">
+      <a href="{#$cfg_basehost#}/login.html">登录</a>
+      <em>|</em>
+      <a href="{#$cfg_basehost#}/register.html">注册</a>
+    </div>
+    {#/if#}
+  </div>
+  <div class="copyright">
+    <div class="foot-info">
+      <div class="foot-link">
+        <a href="{#$cfg_basehost#}">首页</a><em>|</em>
+        <a href="{#getUrlPath service='member' type='user' template='order'#}">我的订单</a><em>|</em>
+        <a href="{#getUrlPath service='member' type='user' template='security'#}">安全中心</a><em>|</em>
+        <a href="{#$member_userDomain#}">会员中心</a>
+      </div>
+    </div>
+    <p class="info-last">{#$cfg_shortname#}版权所有 2013-{#$smarty.now|date_format:"%Y"#} </p>
+  </div>

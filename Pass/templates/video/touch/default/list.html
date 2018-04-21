@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#if $list_seotitle != ""#}{#$list_seotitle#}{#else#}{#$list_typename#}{#/if#} - {#$video_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$video_keywords#}" />
+<meta name="description" content="{#$video_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v=1">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v=11"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$video_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var typeid = {#if $typeid#}{#$typeid#}{#else#}0{#/if#}, atpage = 1, pageSize = 10;
+</script>
+</head>
+<body>
+{#if $list_typename#}
+{#$pageTitle = "$list_typename"#}
+{#else#}
+{#$pageTitle = "视频列表"#}
+{#/if#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<div class="subnav">
+	<ul>
+		{#video action="type" return="typenav" type="0"#}
+		<li{#if $typeid == $typenav.id#} class="curr"{#/if#}><a href="{#$typenav.url#}">{#$typenav.typename#}</a></li>
+		{#/video#}
+	</ul>
+</div>
+<!-- 内容 s-->
+<div class="hot" id="content">
+	<ul></ul>
+</div>
+<div class="foot fixbtm">
+	<p>Copyright © 火鸟门户所有 2013-2016</p>
+</div>
+<!-- 内容 e-->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script src="{#$templets_skin#}js/list.js"></script>
+</body>
+</html>

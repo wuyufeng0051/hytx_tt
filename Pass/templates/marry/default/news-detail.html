@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-婚尚咨询-{#$marry_title#}</title>
+<meta name="keywords" content="{#$detail_keyword#}">
+<meta name="description" content="{#$detail_description#}">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/newsD.css" media="all">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$marry_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#$pageCurr = "news"#}
+{#include file="top.html"#}
+
+<!-- 面包屑 -->
+<div class="wrap fn-clear">
+	<p class="bread"><a href="{#$marry_channelDomain#}" target="_blank">首页</a> > <a href="{#getUrlPath service="marry" action="news"#}" target="_blank">婚尚资讯</a></p>
+	<div class="fn-left list">
+		<h3>{#$detail_title#}</h3>
+		<div class="info fn-clear">
+			<p class="fn-left"><span>时间 {#$detail_pubdate|date_format:"%Y-%m-%d"#} </span>{#if $detail_source#}<span>来源 <em>{#$detail_source#}</em></span>{#/if#}<span><i></i>{#$detail_click#}次</span></p>
+			<div class="fn-right">
+				<div class="bdsharebuttonbox">
+					<font class="fn-left">分享到：</font>
+					<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+					<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+					<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+					<a href="#" class="bds_more" data-cmd="more"></a>
+				</div>
+				<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+				</script>
+			</div>
+		</div>
+		<div class="con">
+			{#$detail_body#}
+		</div>
+	</div>
+	<div class="fn-right tj">
+		<div class="zxtj">
+			<h3>
+				<span class="fn-left" >最新推荐</span>
+			</h3>
+			<ul class="tjCon">
+				<li><i></i><a href="javascript:;">按照传统 结婚吉日怎么选</a></li>
+				<li><i></i><a href="javascript:;">2014年5月不宜婚嫁的日子</a></li>
+				<li><i></i><a href="javascript:;">2014年上半年结婚吉日一览表</a></li>
+				<li><i></i><a href="javascript:;">旧式结婚仪式继承了中国传统的婚礼</a></li>
+				<li><i></i><a href="javascript:;">选择结婚吉日实用版 挑出喜气洋洋好</a></li>
+				<li><i></i><a href="javascript:;">男性婚前体检都包括哪些项目</a></li>
+				<li><i></i><a href="javascript:;">婚礼筹备期间采购清单 最详物品一应</a></li>
+				<li><i></i><a href="javascript:;">新人办理结婚证不可忽视的细节流程</a></li>
+				<li><i></i><a href="javascript:;">婚礼策划之异地结婚攻略</a></li>
+			</ul>
+		</div>
+		<div class="banner1">
+			<a href="#"><img src="{#$templets_skin#}upfile/n.jpg" alt=""></a>
+		</div>
+		<div class="zxtj hssy">
+			<h3>
+				<span class="fn-left">最新推荐</span>
+			</h3>
+			<ul>
+				<li><a href="javascript:;"><img src="{#$templets_skin#}upfile/n1.jpg" alt=""></a><p><a href="javascript:;">苏州80後视觉婚纱摄影</a></p><span>优惠：苏州80后婚纱摄影8周年感恩回馈，狂送200000豪礼！</span></li>
+				<li><a href="javascript:;"><img src="{#$templets_skin#}upfile/n2.jpg" alt=""></a><p><a href="javascript:;">苏州80後视觉婚纱摄影</a></p><span>优惠：苏州80后婚纱摄影8周年感恩回馈，狂送200000豪礼！</span></li>
+				<li><a href="javascript:;"><img src="{#$templets_skin#}upfile/n3.jpg" alt=""></a><p><a href="javascript:;">苏州80後视觉婚纱摄影</a></p><span>优惠：苏州80后婚纱摄影8周年感恩回馈，狂送200000豪礼！</span></li>
+				<li><a href="javascript:;"><img src="{#$templets_skin#}upfile/n1.jpg" alt=""></a><p><a href="javascript:;">苏州80後视觉婚纱摄影</a></p><span>优惠：苏州80后婚纱摄影8周年感恩回馈，狂送200000豪礼！</span></li>
+				<li><a href="javascript:;"><img src="{#$templets_skin#}upfile/n2.jpg" alt=""></a><p><a href="javascript:;">苏州80後视觉婚纱摄影</a></p><span>优惠：苏州80后婚纱摄影8周年感恩回馈，狂送200000豪礼！</span></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+</body>
+</html>

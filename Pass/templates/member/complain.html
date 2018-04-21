@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$langData['siteConfig'][24][0]#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$cfg_keywords#}" />
+<meta name="description" content="{#$cfg_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/complain.css?v={#$cfg_staticVersion#}" media="all" />
+</head>
+<body>
+<form class="form" action="" method="post">
+  <dl class="fn-clear">
+    <dt>{#$langData['siteConfig'][24][1]#}：</dt>
+    <dd class="fn-clear">
+      <select name="type" id="type" data-title="{#$langData['siteConfig'][24][2]#}">
+        <option value="">{#$langData['siteConfig'][7][2]#}</option>
+        {#if $module == "article"#}
+        <option value="{#$langData['siteConfig'][24][3]#}">{#$langData['siteConfig'][24][3]#}</option>
+        <option value="{#$langData['siteConfig'][24][4]#}">{#$langData['siteConfig'][24][4]#}</option>
+        <option value="{#$langData['siteConfig'][24][5]#}">{#$langData['siteConfig'][24][5]#}</option>
+        <option value="{#$langData['siteConfig'][24][6]#}">{#$langData['siteConfig'][24][6]#}</option>
+        <option value="{#$langData['siteConfig'][24][7]#}">{#$langData['siteConfig'][24][7]#}</option>
+        <option value="{#$langData['siteConfig'][24][8]#}">{#$langData['siteConfig'][24][8]#}</option>
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>
+        {#elseif $module == "info"#}
+        <option value="{#$langData['siteConfig'][24][9]#}">{#$langData['siteConfig'][24][9]#}</option>
+        <option value="{#$langData['siteConfig'][24][10]#}">{#$langData['siteConfig'][24][10]#}</option>
+        <option value="{#$langData['siteConfig'][24][11]#}">{#$langData['siteConfig'][24][11]#}</option>
+        <option value="{#$langData['siteConfig'][24][12]#}">{#$langData['siteConfig'][24][12]#}</option>
+        <option value="{#$langData['siteConfig'][24][13]#}">{#$langData['siteConfig'][24][13]#}</option>
+        <option value="{#$langData['siteConfig'][24][14]#}">{#$langData['siteConfig'][24][14]#}</option>
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>
+        {#elseif $module == "house"#}
+        <option value="{#$langData['siteConfig'][24][15]#}">{#$langData['siteConfig'][24][15]#}</option>
+        <option value="{#$langData['siteConfig'][24][16]#}">{#$langData['siteConfig'][24][16]#}</option>
+        <option value="{#$langData['siteConfig'][24][17]#}">{#$langData['siteConfig'][24][17]#}</option>
+        <option value="{#$langData['siteConfig'][24][18]#}">{#$langData['siteConfig'][24][18]#}</option>
+        <option value="{#$langData['siteConfig'][24][19]#}">{#$langData['siteConfig'][24][19]#}</option>
+        <option value="{#$langData['siteConfig'][24][20]#}">{#$langData['siteConfig'][24][20]#}</option>
+        <option value="{#$langData['siteConfig'][24][21]#}">{#$langData['siteConfig'][24][21]#}</option>
+        <option value="{#$langData['siteConfig'][24][22]#}">{#$langData['siteConfig'][24][22]#}</option>
+        <option value="{#$langData['siteConfig'][24][23]#}">{#$langData['siteConfig'][24][23]#}</option>
+        <option value="{#$langData['siteConfig'][24][24]#}">{#$langData['siteConfig'][24][24]#}</option>
+        <option value="{#$langData['siteConfig'][24][25]#}">{#$langData['siteConfig'][24][25]#}</option>
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>
+        {#elseif $module == "job"#}
+        <option value="{#$langData['siteConfig'][24][21]#}">{#$langData['siteConfig'][24][21]#}</option>
+        <option value="{#$langData['siteConfig'][24][26]#}">{#$langData['siteConfig'][24][26]#}</option>
+        <option value="{#$langData['siteConfig'][24][27]#}">{#$langData['siteConfig'][24][27]#}</option>
+        <option value="{#$langData['siteConfig'][24][27]#}">{#$langData['siteConfig'][24][27]#}</option>
+        <option value="{#$langData['siteConfig'][24][28]#}">{#$langData['siteConfig'][24][28]#}</option>
+        <option value="{#$langData['siteConfig'][24][29]#}">{#$langData['siteConfig'][24][29]#}</option>
+        <option value="{#$langData['siteConfig'][24][30]#}">{#$langData['siteConfig'][24][30]#}</option>
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>
+        {#elseif $module == "dating"#}
+        <option value="{#$langData['siteConfig'][24][31]#}">{#$langData['siteConfig'][24][31]#}</option>
+        <option value="{#$langData['siteConfig'][24][32]#}">{#$langData['siteConfig'][24][32]#}</option>
+        <option value="{#$langData['siteConfig'][24][33]#}">{#$langData['siteConfig'][24][33]#}</option>
+        <option value="{#$langData['siteConfig'][24][34]#}">{#$langData['siteConfig'][24][34]#}</option>
+        <option value="{#$langData['siteConfig'][24][35]#}">{#$langData['siteConfig'][24][35]#}</option>
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>
+        {#elseif $module == "tieba"#}
+        <option value="{#$langData['siteConfig'][24][36]#}">{#$langData['siteConfig'][24][36]#}</option>
+        <option value="{#$langData['siteConfig'][24][37]#}">{#$langData['siteConfig'][24][37]#}</option>
+        <option value="{#$langData['siteConfig'][24][38]#}">{#$langData['siteConfig'][24][38]#}</option>
+        <option value="{#$langData['siteConfig'][24][39]#}">{#$langData['siteConfig'][24][39]#}</option>
+        <option value="{#$langData['siteConfig'][24][40]#}">{#$langData['siteConfig'][24][40]#}</option>
+        <option value="{#$langData['siteConfig'][24][41]#}">{#$langData['siteConfig'][24][41]#}</option>
+        <option value="{#$langData['siteConfig'][24][42]#}">{#$langData['siteConfig'][24][42]#}</option>
+        <option value="{#$langData['siteConfig'][24][43]#}">{#$langData['siteConfig'][24][43]#}</option>
+        <option value="{#$langData['siteConfig'][24][44]#}">{#$langData['siteConfig'][24][44]#}</option>
+        <option value="{#$langData['siteConfig'][24][45]#}">{#$langData['siteConfig'][24][45]#}</option>
+        <option value="{#$langData['siteConfig'][24][46]#}">{#$langData['siteConfig'][24][46]#}</option>
+        <option value="{#$langData['siteConfig'][24][47]#}">{#$langData['siteConfig'][24][47]#}</option>
+        {#elseif $module == "huodong"#}
+        <option value="{#$langData['siteConfig'][24][48]#}">{#$langData['siteConfig'][24][48]#}</option>
+        <option value="{#$langData['siteConfig'][24][49]#}">{#$langData['siteConfig'][24][49]#}</option>
+        <option value="{#$langData['siteConfig'][24][50]#}">{#$langData['siteConfig'][24][50]#}</option>
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>
+        {#elseif $module == "video"#}
+        <option value="{#$langData['siteConfig'][24][51]#}">{#$langData['siteConfig'][24][51]#}</option>
+        <option value="{#$langData['siteConfig'][24][52]#}">{#$langData['siteConfig'][24][52]#}</option>
+        <option value="{#$langData['siteConfig'][24][53]#}">{#$langData['siteConfig'][24][53]#}</option>
+        <option value="{#$langData['siteConfig'][24][54]#}">{#$langData['siteConfig'][24][54]#}</option>
+        <option value="{#$langData['siteConfig'][24][55]#}">{#$langData['siteConfig'][24][55]#}</option>
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>
+        {#elseif $module == "huangye"#}
+        <option value="{#$langData['siteConfig'][24][56]#}">{#$langData['siteConfig'][24][56]#}</option>
+        <option value="{#$langData['siteConfig'][24][57]#}">{#$langData['siteConfig'][24][57]#}</option>
+        <option value="{#$langData['siteConfig'][24][58]#}">{#$langData['siteConfig'][24][58]#}</option>
+        <option value="{#$langData['siteConfig'][24][59]#}">{#$langData['siteConfig'][24][59]#}</option>
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>
+        {#elseif $module == "image"#}
+        <option value="{#$langData['siteConfig'][24][60]#}">{#$langData['siteConfig'][24][60]#}</option>
+        <option value="{#$langData['siteConfig'][24][61]#}">{#$langData['siteConfig'][24][61]#}</option>
+        <option value="{#$langData['siteConfig'][24][62]#}">{#$langData['siteConfig'][24][62]#}</option>
+        <option value="{#$langData['siteConfig'][24][63]#}">{#$langData['siteConfig'][24][63]#}</option>
+        <option value="{#$langData['siteConfig'][24][64]#}">{#$langData['siteConfig'][24][64]#}</option>
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>
+        {#/if#}
+      </select>
+      <span class="tip-inline"></span>
+    </dd>
+  </dl>
+  <dl class="fn-clear">
+    <dt>{#$langData['siteConfig'][24][65]#}：</dt>
+    <dd class="fn-clear">
+      <textarea name="desc" id="desc" placeholder="{#$langData['siteConfig'][20][467]#}" maxlength="200"></textarea>
+      <span class="tip-inline"></span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>{#$langData['siteConfig'][19][424]#}：</dt>
+    <dd class="fn-clear">
+      <input type="text" class="inp" size="21" name="phone" id="phone" autocomplete="off" data-title="{#$langData['siteConfig'][20][412]#}" />
+      <span class="tip-inline"></span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>{#$langData['siteConfig'][4][0]#}：</dt>
+    <dd class="fn-clear">
+      <input type="text" class="inp" maxlength="4" size="6" name="vdimgck" id="vdimgck" autocomplete="off" data-title="{#$langData['siteConfig'][20][176]#}" />
+      <img src="/include/vdimgck.php" title="{#$langData['siteConfig'][24][66]#}" id="verifycode" />
+      <span class="tip-inline"></span>
+    </dd>
+  </dl>
+  <dl class="fn-clear">
+    <dt>&nbsp;</dt>
+    <dd><button id="submit">{#$langData['siteConfig'][6][151]#}</button></dd>
+  </dl>
+</form>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/complain.js?v={#$cfg_staticVerify#}"></script>
+</body>
+</html>

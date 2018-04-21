@@ -1,0 +1,73 @@
+{#if {#verifyModuleAuth module='house'#}#}
+<script type="text/javascript">
+	var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}';
+	var uploadType = "logo", atlasMax= "1";
+</script>
+<style>.state0 {padding: 0 0 20px 115px; color: #f00;}</style>
+<div class="w-form">
+	{#if $storeState == 1#}
+		{#if $detail_state == 0#}
+		<p class="state0">{#$langData['siteConfig'][27][16]#}</p>
+		{#elseif $detail_state == 2#}
+		<p class="state0">{#$langData['siteConfig'][27][17]#}</p>
+		{#/if#}
+	{#/if#}
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=house&action=storeConfig">
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][19][354]#}：</dt>
+			<dd>
+				<input type="text" name="title" class="inp" id="title" size="35" maxlength="60" data-title="{#$langData['shop'][4][42]#}" value="{#$detail_title#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt><span>*</span>{#$langData['siteConfig'][26][31]#}：</dt>
+			<dd class="thumb fn-clear listImgBox">
+				<div class="uploadinp filePicker thumbtn{#if $detail_litpic != ""#} fn-hide{#/if#}" id="filePicker1" data-type="logo"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+				{#if $detail_litpic != ""#}
+				<ul id="listSection1" class="listSection thumblist fn-clear" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$detail_litpic#}' target="_blank" title=""><img alt="" src="{#changeFileSize url="$detail_litpic" type="small"#}" data-val="{#$detail_litpicSource#}"/></a><a class="reupload li-rm" href="javascript:;">{#$langData['siteConfig'][19][176]#}</a></li></ul>
+				{#else#}
+				<ul id="listSection1" class="listSection thumblist fn-clear"></ul>
+				{#/if#}
+				<input type="hidden" name="litpic" value="{#$detail_litpicSource#}" class="imglist-hidden" id="litpic">
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][19][56]#}：</dt>
+			<dd>
+				<input type="text" name="tel" class="inp" id="tel" size="25" maxlength="20" data-title="{#$langData['siteConfig'][20][433]#}" value="{#$detail_tel#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][26][32]#}：</dt>
+			<dd>
+				<input type="text" name="address" class="inp" id="address" size="25" maxlength="60" data-title="{#$langData['shop'][4][44]#}" value="{#$detail_address#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt>{#$langData['siteConfig'][26][33]#}：</dt>
+			<dd>
+				<input type="text" name="email" class="inp" id="email" size="25" maxlength="50" data-title="{#$langData['siteConfig'][27][18]#}" value="{#$detail_email#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>{#$langData['siteConfig'][19][576]#}：</dt>
+			<dd>
+				<script id="note" name="note" type="text/plain" style="width:90%;height:500px">{#$detail_note#}</script>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>&nbsp;</dt>
+			<dd><button class="submit" id="submit">{#$langData['siteConfig'][6][63]#}</button></dd>
+		</dl>
+	</form>
+</div>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dragsort-0.5.1.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicUpload.js?v={#$cfg_staticVersion#}"></script>
+
+{#else#}
+<div class="list" style="padding: 200px 0; text-align: center; font-size: 14px; color: red;">{#$langData['siteConfig'][20][403]#}</div>
+{#/if#}

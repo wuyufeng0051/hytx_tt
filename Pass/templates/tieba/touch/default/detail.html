@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#}{#if $seoTitle != ""#} - {#$seoTitle#} - {#/if#}{#$tieba_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/video-js.css" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/vsg-skin.css" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v=25">
+<script type="text/javascript">
+    var masterDomain = '{#$cfg_basehost#}',staticPath = '{#$cfg_staticPath#}';;
+    var id = {#$detail_id#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+{#* 微信分享 *#}
+{#$Share_description = {#$tieba_description#}#}
+{#$Share_title = {#$detail_title#}#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#getUrlPath service='tieba'  template='detail' id={#$detail_id#}#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+<body>
+<!-- 头部 s -->
+<div class="header fn-clear">
+  <div class="header-l fn-left">
+    <a href="{#$tieba_channelDomain#}">
+      <div class="logo-tit">{#$tieba_channelName#}</div>
+    </a>
+  </div>
+  <div class="header-r fn-right">
+    {#if $see_lz#}
+    <a href="{#getUrlPath service='tieba' template='detail' id={#$detail_id#}#}" class="hoster"><span>取消只看楼主</span></a>
+    {#else#}
+    <a href="{#getUrlPath service='tieba' template='detail' id={#$detail_id#} param='see_lz=1'#}" class="hoster"><span>楼主</span></a>
+    {#/if#}
+  </div>
+</div>
+<!-- 头部 e -->
+
+  <!-- 帖子内容 s -->
+  <div class="main">
+    <div class="title">
+      <p>{#$detail_title#}</p>
+    </div>
+
+    {#if $atpage < 2#}
+    <div class="user fn-clear">
+      <div class="uimg fn-left"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $louzu.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$louzu.photo#}" type="middle"#}{#/if#}" /></div>
+      <div class="uinfo fn-left">
+        <p class="name">{#$louzu.nickname#}</p>
+        <p class="time"><span>楼主</span><span>{#$detail_pubdate|date_format:"%Y-%m-%d %H:%M:%S"#}</span></p>
+      </div>
+      <div class="ureply imgreply fn-right"><img src="{#$templets_skin#}images/reply.png" alt=""></div>
+    </div>
+    <div class="content">
+      {#$detail_content#}
+    </div>
+    {#/if#}
+  </div>
+  <!-- 帖子内容 e -->
+
+  {#if $detail_isreply#}
+  <!-- 回复列表 s -->
+  <div class="comment">
+
+    {#$pageSize = 10#}
+
+    {#$only_lz = 0#}
+    {#if $see_lz#}
+      {#$only_lz = $detail_uid#}
+    {#/if#}
+    {#tieba action='reply' tid={#$detail_id#} page={#$atpage#} uid={#$only_lz#} pageSize={#$pageSize#}#}
+    <div class="cbox" data-id="{#$row.id#}" data-reply="{#$row.reply#}">
+      {#if $row.member#}
+      <div class="user fn-clear">
+        <div class="uimg fn-left"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $row.member.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$row.member.photo#}" type="middle"#}{#/if#}" /></div>
+        <div class="uinfo fn-left">
+          <p class="name">{#$row.member.nickname#}</p>
+          <p class="time"><span>
+          {#$floor = ($atpage - 1) * $pageSize + $_bindex.row#}
+          {#if $floor == 1#}
+              沙发
+          {#elseif $floor == 2#}
+              板凳
+          {#elseif $floor == 3#}
+              地板
+          {#else#}
+              {#$floor+1#}楼
+          {#/if#}
+          </span><span>{#$row.pubdate|date_format:"%Y-%m-%d %H:%M:%S"#}</span></p>
+        </div>
+        <div class="ureply fn-right"><img src="{#$templets_skin#}images/reply.png" alt=""></div>
+      </div>
+      {#/if#}
+      <div class="content">
+        {#$row.content#}
+      </div>
+      {#if $row.reply#}
+      <div class="rlist">
+        <div class="loading">加载中...</div>
+        <ul>
+          <li><span class="rname">死不休z：</span><span class="rinfo">插</span><span class="rtime">2015-6-22</span></li>
+          <li><span class="rname">无语魂igh：</span><span class="rinfo">前排求合影</span><span class="rtime">2015-7-1</span></li>
+        </ul>
+        <div class="rmore">还有140条回复...</div>
+      </div>
+      {#/if#}
+    </div>
+    {#/tieba#}
+
+  </div>
+
+  {#if $pageInfo.totalPage > 1#}
+  <!-- 分页 s -->
+  <div class="page">
+    {#if $atpage == 1#}
+    <a href="javascript:;" class="prev disabled">上一页</a>
+    {#else#}
+    <a href="{#getUrlPath service='tieba' template='detail' id={#$detail_id#} param="page={#$atpage-1#}"#}" class="prev">上一页</a>
+    {#/if#}
+    <span class="apage">{#$atpage#}/{#$pageInfo.totalPage#}</span>
+    {#if $atpage >= $pageInfo.totalPage#}
+    <a href="javascript:;" class="next disabled">下一页</a>
+    {#else#}
+    <a href="{#getUrlPath service='tieba' template='detail' id={#$detail_id#} param="page={#$atpage+1#}"#}" class="next">下一页</a>
+    {#/if#}
+  </div>
+  <!-- 分页 e -->
+  {#/if#}
+
+  <!-- 回复列表 e -->
+  {#/if#}
+
+  <!-- 浮动底部 s -->
+  <div class="floatNav">
+    <div class="item shou{#if $collect == "has"#} shoued{#/if#}">
+      <span>{#if $collect == "has"#}已收藏{#else#}收藏{#/if#}</span>
+    </div>
+    <div class="item ureply ping imgreply">
+      <span>{#$detail_reply#}</span>
+    </div>
+    <div class="item share bdsharebuttonbox">
+      <span></span>
+      <div class="sharebox">
+        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+      </div>
+    </div>
+  </div>
+  <!-- 浮动底部 e -->
+
+  <div class="footer">
+    <p>Copyright © {#$smarty.now|date_format:"%Y"#} {#$cfg_shortname#}.</p>
+  </div>
+
+  <div class="layer">
+    <div class="top fn-clear">
+      <div class="top-l fn-left"><a href="javascript:;">发表回复</a></div>
+      <div class="top-r fn-right">发表</div>
+    </div>
+    <div class="txt">
+      <div class="textarea" contenteditable="true"></div>
+    </div>
+    <div class="editor">
+      <input class="item emotion" type="button" />
+      <!-- <div class="item img"><input type="file" accept="image/*" multiple="multiple"></div> -->
+    </div>
+    <div class="emotion-box">
+      <ul>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f01.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f02.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f03.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f04.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f05.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f06.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f07.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f08.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f09.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f10.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f11.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f12.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f13.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f14.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f15.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f16.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f17.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f18.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f19.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f20.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f21.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f22.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f23.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f24.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f25.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f26.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f27.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f28.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f29.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f30.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f31.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f32.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f33.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f34.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f35.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f36.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f37.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f38.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f39.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f40.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f41.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f42.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f43.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f44.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f45.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f46.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f47.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f48.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f49.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f50.png" alt=""></a></li>
+      </ul>
+    </div>
+  </div>
+
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/videojs-ie8.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/video.js"></script>>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/audio.min.js"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script src="{#$templets_skin#}js/detail.js"></script>
+</body>
+</html>

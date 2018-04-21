@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#} - {#$list_typename#} - {#$video_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$video_keywords#}" />
+<meta name="description" content="{#$video_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}../../siteConfig/default/css/index_public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/jquery.mCustomScrollbar.min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/video-js.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$video_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var criticalPoint = 1200, criticalClass = "w1450";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var aid = {#$detail_id#};
+</script>
+
+</head>
+<body>
+{#$pageUrl = {#getUrlPath service="video" template="detail" id=$detail_id#}#}
+{#include file="_header.html"#}
+
+<div class="bg_color">
+	<div class="middle-content">
+		<!-- 视频区 -->
+		<div class="video_area fn-clear">
+			<div class="pic_area">
+				<div class="tv_list fn-clear">
+					<div class="top_1 fn-clear">
+						<a href="{#$list_url#}" class="corlorful">[{#$list_typename#}]</a> <span>{#$detail_title#}</span>
+					</div>
+					<div class="num_dady">
+						<a href="#comment"><i></i><span>{#$detail_click#}</span></a>
+					</div>
+				</div>
+				<div class="content">
+					{#if $detail_videotype == 1#}
+					<iframe src="{#$detail_videourl#}" frameborder="0" width="970" height="522" allowfullscreen="true"></iframe>
+					{#else#}
+					<video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" width="640" height="264"
+					  poster="{#$detail_litpic#}" data-setup="{}">
+						<source src="{#$detail_videourl#}" >
+						<p class="vjs-no-js">
+						 	您的浏览器版本过低，请升级您的浏览器！
+						</p>
+				  </video>
+					{#/if#}
+				</div>
+				<div class="share_friends fn-clear">
+					<div class="left_share">
+						<span>分享给朋友 : </span>
+						<a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={#$pageUrl#}&title={#$detail_title#}&pics={#$detail_litpic#}" class="left_2" target="_blank"><i></i></a>
+						<a href="http://service.weibo.com/share/share.php?url={#$pageUrl#}&title={#$detail_title#}" class="left_3" target="_blank"><i></i></a>
+						<a href="http://connect.qq.com/widget/shareqq/index.html?title={#$detail_title#}&url={#$pageUrl#}&desc={#$detail_description#}&pics=&site={#$cfg_softname#}" class="left_4" target="_blank"><i></i></a>
+						<s>|</s>
+					</div>
+					<div class="middle_share">
+						{#*<a href="javascript:;" class="middle_1"><i></i><span>收藏</span></a>*#}
+						<a href="javascript:;" class="middle_3"><i></i><span>手机看</span>
+							<div class="phone_icon">
+								<p>扫码访问</p><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$pageUrl#}"><s></s>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="list_area">
+				<div class="ad_area"></div>
+				<div class="black_area">
+					<div class="kiss_with attitude">
+						{#video action="alist" return="about" typeid=$list.id pageSize="9999"#}
+						<ul class="drink_one"{#if $about.id == $detail_id#} id="nowplay"{#/if#}>
+							<li class="frist_one">{#$_bindex.about#}</li>
+							<li class="second_part">
+								<a href="{#$about.url#}"><img src="{#$about.litpic#}"></a>
+							</li>
+							<li class="thrid_part">
+								<a href="{#$about.url#}" class="io">{#$about.title#}</a>
+								<a href="{#$about.url#}" class="oi"><span>{#$about.click#}次播放 {#$about.common#}次评论</span></a>
+							</li>
+						</ul>
+						{#/video#}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 视频区 -->
+		<div class="fn-clear">
+			<div class="laugh_fans">
+				<!-- 评论区 -->
+				<div id="comment"></div>
+				<div class="comment">
+					<div class="c-title fn-clear">
+						<h4>精彩评论<small>文明上网理性发言，请遵守<a href="#">新闻评论服务协议</a></small></h4>
+						<a href="javascript:;" class="tnum">共0条评论</a>
+					</div>
+					<div class="c-area">
+						<div class="textarea" contenteditable="true" data-type="parent"></div>
+						<div class="c-sub fn-clear">
+							{#if $userinfo#}
+							<div class="np-login">
+								<a href="{#$member_userDomain#}" target="_blank" class="u"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_40.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="small"#}{#/if#}" /><span>{#$userinfo.nickname#}</span></a>
+								<a href="{#$cfg_basehost#}/logout.html" class="o logout">安全退出</a>
+							</div>
+							<a href="javascript:;" class="subtn">发表</a>
+							<div class="vip_sticker">
+								<a href="javascript:;" class="class_sticker"><i></i>表情</a>
+							</div>
+							{#else#}
+							<a href="javascript:;" class="subtn login">登录</a>
+							{#/if#}
+						</div>
+					</div>
+					<div class="c-content">
+						<ul class="c-nav fn-clear">
+							<li>全部评论</li>
+							<li class="c-orderby fn-clear"><a href="javascript:;" class="chot" data-id="hot">热度</a><a href="javascript:;" class="ctime active" data-id="time">时间</a></li>
+						</ul>
+						<ul class="c-list" id="commentList" data-page="1">
+							<div class="loading"></div>
+						</ul>
+						<div id="loadMore" class="loading">加载更多</div>
+					</div>
+				</div>
+				<div class="listen_me">
+					<a href="#comment">发表评论</a>
+				</div>
+				<!-- 评论区 -->
+			</div>
+			<!-- 相关推荐 -->
+			<div class="about_advise">
+				<div class="about_title">
+					<p>相关推荐</p>
+				</div>
+				<div class="back_screat">
+					{#video action="alist" return="about" typeid=$list_id flag="r" pageSize="8"#}
+					<ul class="part_1 fn-clear">
+						<li class="part_2">
+							<a href="{#$about.url#}"><img src="{#$about.litpic#}"><s></s><b></b></a>
+						</li>
+						<li class="part_3">
+							<a href="{#$about.url#}">{#$about.title#}</a>
+							<p>{#$about.click#}次播放 {#$about.common#}次评论</p>
+						</li>
+					</ul>
+					{#/video#}
+				</div>
+			</div>
+			<!-- 相关推荐 -->
+		</div>
+	</div>
+</div>
+{#include file="_footer.html"#}
+
+<script type="text/template" id="replaytemp">
+	<div class="c-area">
+		<div class="textarea" contenteditable="true"></div>
+		<div class="c-sub fn-clear">
+			{#if $userinfo#}
+			<a href="javascript:;" class="subtn">回复</a>
+			{#else#}
+			<a href="javascript:;" class="subtn login">登录</a>
+			{#/if#}
+		</div>
+	</div>
+</script>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/jquery.mCustomScrollbar.concat.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/videojs-ie8.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/video.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+{#if $detail_videotype == 0#}
+<script>
+// 视频插件
+	var myPlayer = videojs('my-video');
+	videojs("my-video").ready(function(){
+		var myPlayer = this;
+		myPlayer.play();
+	});
+</script>
+{#/if#}
+</body>
+</html>

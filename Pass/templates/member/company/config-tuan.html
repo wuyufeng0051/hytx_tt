@@ -1,0 +1,140 @@
+{#if {#verifyModuleAuth module='tuan'#}#}
+<style>
+#subway dd {max-height: 300px; overflow-x: hidden; overflow-y: auto;}
+</style>
+<div class="w-form">
+	{#if $storeState == 1#}
+		{#if $detail_state == 0#}
+		<p class="state0">{#$langData['siteConfig'][27][25]#}</p>
+		{#elseif $detail_state == 2#}
+		<p class="state0">{#$langData['siteConfig'][27][26]#}</p>
+		{#/if#}
+	{#/if#}
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=tuan&action=storeConfig">
+		{#if !$detail_typeid#}
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][26][37]#}：</dt>
+			<dd id="selType">
+				<div class="sel-group" data-title="{#$langData['siteConfig'][27][28]#}">
+					<button type="button" class="sel"{#if $detail_typeid#} disabled{#/if#}>{#if $detail_typename != ""#}{#$detail_typename#}{#else#}{#$langData['siteConfig'][7][2]#}{#/if#}<span class="caret"></span></button>
+					{#if !$detail_typeid#}
+					<ul class="sel-menu">
+						{#tuan action="type" return="type"#}
+						<li><a href="javascript:;" data-id="{#$type.id#}">{#$type.typename#}</a></li>
+						{#/tuan#}
+					</ul>
+					{#/if#}
+				</div>
+				<input type="hidden" name="stype" id="stype" value="{#$detail_typeid#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		{#else#}
+		<input type="hidden" name="stype" id="stype" value="{#$detail_typeid#}" />
+		{#/if#}
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][19][27]#}：</dt>
+			<dd id="selAddr">
+				<div class="sel-group" data-title="{#$langData['siteConfig'][20][68]#}">
+					<button type="button" class="sel">{#if $detail_addrname#}{#$detail_addrname[0]#}{#else#}{#$langData['siteConfig'][7][2]#}{#/if#}<span class="caret"></span></button>
+					<ul class="sel-menu">
+						{#tuan action="addr" return="addr" store="1"#}
+						<li><a href="javascript:;" data-id="{#$addr.id#}">{#$addr.typename#}</a></li>
+						{#/tuan#}
+					</ul>
+				</div>
+				<input type="hidden" name="addrid" id="addrid" value="{#$detail_addrid#}" />
+				<input type="hidden" id="addrname0" value="{#$detail_addrname[0]#}" />
+				<input type="hidden" id="addrname1" value="{#$detail_addrname[1]#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear{#if !$detail_addrid || !$detail_circleid#} fn-hide{#/if#}" id="circle" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][19][515]#}：</dt>
+			<dd>
+				<div class="checkbox" data-title="{#$langData['siteConfig'][27][29]#}">
+					{#if $detail_addrid#}
+					{#tuan action="circle" type="{#$detail_addrid#}"#}
+					<label><input type="checkbox" name="circle[]"{#if $detail_circleid && $row.id|in_array:$detail_circleid#} checked{#/if#} value="{#$row.id#}">{#$row.name#}</label>
+					{#/tuan#}
+					{#/if#}
+				</div>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear{#if !$detail_city#} fn-hide{#/if#}" id="subway">
+			<dt>{#$langData['siteConfig'][19][516]#}：</dt>
+			<dd>
+				{#siteConfig action="subway" city=$detail_city#}
+				<label>{#$row.title#}：</label><br />
+				<div class="checkbox">
+					{#siteConfig action="subwayStation" type="{#$row.id#}" return="subway"#}
+					<label><input type="checkbox" name="subway[]"{#if $detail_subwayid && $subway.id|in_array:$detail_subwayid#} checked{#/if#} value="{#$subway.id#}">{#$subway.title#}</label>
+					{#/siteConfig#}
+				</div><br />
+				{#/siteConfig#}
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][19][35]#}：</dt>
+			<dd>
+				<input type="text" name="address" class="inp" id="address" size="35" maxlength="60" data-title="{#$langData['siteConfig'][20][69]#}" value="{#$detail_address#}" />
+				<img src="/static/images/admin/markditu.jpg" id="mark" style="float: left; cursor: pointer; margin-left: 10px;" title="{#$langData['siteConfig'][6][92]#}">
+				<span class="tip-inline"></span>
+				<input type="hidden" name="lnglat" id="lnglat" value="{#$detail_lnglat#}">
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][19][56]#}：</dt>
+			<dd>
+				<input type="text" name="phone" class="inp" id="phone" size="25" maxlength="20" data-title="{#$langData['siteConfig'][20][433]#}" value="{#$detail_tel#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][18][15]#}：</dt>
+			<dd>
+				<div class="input-append input-prepend">
+					<input type="text" name="openStart" class="inp" id="openStart" size="5" maxlength="5" value="{#$detail_openStart#}" />
+					<span class="add-aft">{#$langData['siteConfig'][13][51]#}</span>
+					<input type="text" name="openEnd" class="inp" id="openEnd" size="5" maxlength="5" value="{#$detail_openEnd#}" />
+				</div>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>{#$langData['siteConfig'][19][494]#}：</dt>
+			<dd>
+				<textarea class="inp text" name="note" id="note" rows="3" cols="60" data-title="{#$langData['siteConfig'][27][30]#}">{#$detail_note#}</textarea>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>{#$langData['siteConfig'][26][36]#}：</dt>
+			<dd>
+				<script id="body" name="body" type="text/plain" style="width:90%;height:500px">{#$detail_body#}</script>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>&nbsp;</dt>
+			<dd><button class="submit" id="submit">{#$langData['siteConfig'][6][63]#}</button></dd>
+		</dl>
+	</form>
+</div>
+
+<div class="map-pop" id="markPopMap">
+	<a href="javascript:;" class="pop-close">&times;</a>
+	<div class="pop-border"></div>
+	<div class="pop-main">
+		<div class="pop-title">{#$langData['siteConfig'][6][92]#}</div>
+		<div class="pop-con">
+			<iframe name="markDitu" id="markDitu" frameborder="0"></iframe>
+			<div class="btns"><a href="javascript:;" id="okPop">{#$langData['siteConfig'][6][1]#}</a><a href="javascript:;" id="cloPop">{#$langData['siteConfig'][6][12]#}</a></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/calendar/WdatePicker.js?v={#$cfg_staticVersion#}"></script>
+{#else#}
+<div class="list" style="padding: 200px 0; text-align: center; font-size: 14px; color: red;">{#$langData['siteConfig'][20][403]#}</div>
+{#/if#}

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#} - {#$list_typename#} - {#$video_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$video_keywords#}" />
+<meta name="description" content="{#$video_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v=3">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v=11"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$video_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var aid = {#$detail_id#};
+</script>
+</head>
+<body>
+{#$pageTitle = "{#$detail_title#}"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<!-- 内容 s-->
+<div class="bo">
+	<iframe src="{#$detail_videourl#}" frameborder="0"></iframe>
+</div>
+<div class="zan fn-clear">
+	<h1>{#$detail_title#}</h1>
+	<p class="HN_PublicShare"><i></i>分享</p>
+	{#*<span><b></b><em>12,817赞</em></span>*#}
+</div>
+<div class="com fn-clear">
+	<div class="com-lead fn-clear">
+		<ul>
+			<li class="li-on">视频介绍</li>
+			<li>评论</li>
+		</ul>
+	</div>
+	<div class="com-txt">
+		<div class="com-1 descript">
+			{#$detail_description#}
+		</div>
+		<div class="com-1 pinglun comment">
+			<div class="com-in">
+				{#if $userinfo#}
+				<div class="shuru" contenteditable="true"></div>
+				<div class="infor-c fn-clear">
+					<img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_40.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="small"#}{#/if#}" alt="{#$userinfo.nickname#}">
+					<em>{#$userinfo.nickname#}</em>
+					<span class="subtn">发表</span>
+				</div>
+				{#else#}
+				<div class="shuru gologin"></div>
+				<div class="infor-c fn-clear">
+					<span><a href="{#$cfg_basehost#}/login.html">登陆</a></span>
+				</div>
+				{#/if#}
+			</div>
+			<ul id="commentObj"></ul>
+			<div class="loading">获取评论中，请稍后...</div>
+		</div>
+	</div>
+</div>
+<div class="recommend">
+	<div class="reco-lead">
+		<h1>精彩推荐</h1>
+		{#*<span><i></i>换一换</span>*#}
+	</div>
+	<ul>
+		{#video action="alist" return="about" typeid=$list_id flag="r" pageSize="4"#}
+		<li>
+			<a href="{#$about.url#}">
+				<div class="rec-pic">
+					<img src="{#$about.litpic#}" alt="">
+					{#*<p><i>{#$about.click#}</i></p>*#}
+				</div>
+				<div class="hot-txt">
+					<i>{#$about.title#}</i>
+					<b><s></s>{#$about.click#}</b>
+				</div>
+			</a>
+		</li>
+		{#/video#}
+	</ul>
+</div>
+<div class="like">
+	<div class="like-lead">
+		<h1>猜你喜欢</h1>
+	</div>
+	<div class="like-txt">
+		<ul>
+			{#video action="alist" return="about" typeid=$list.id pageSize="4"#}
+			<li>
+				<a href="{#$about.url#}">
+					<div class="like-pic">
+						<img src="{#$about.litpic#}" alt="{#$about.title#}">
+						{#*<p><i>{#$about.click#}</i></p>*#}
+					</div>
+					<div class="like-tt">
+						<i>{#$about.title#}</i>
+						<b><s></s>{#$about.click#}</b>
+					</div>
+				</a>
+			</li>
+			{#/video#}
+		</ul>
+	</div>
+</div>
+<!-- 内容 e-->
+<div class="foot">
+	<p>Copyright © 火鸟门户所有 2013-2016</p>
+</div>
+
+<!-- <div class="shearBox codeBox" id="codeBox">
+	<div class="sheark1">
+		<img src="images/qrcode.png" alt="" width="130" height="130">
+		<p>让朋友扫一扫访问当前网页</p>
+		<div class="cancel" id="cancelcode">取消</div>
+	</div>
+	<div class="bg"></div>
+</div>
+
+<div class="zhiyin">
+	<div class="bg"></div>
+	<div class="zhibox">
+		<img src="images/sharezhi.png" alt="">
+		<p>点击右上角，分享给朋友</p>
+	</div>
+</div> -->
+{#*
+<div class="discuss fn-clear">
+	<div class="zan-2">
+		<span></span>
+		<p>10</p>
+		<div class="zan-suss">
+			点赞成功
+		</div>
+		<div class="zan-fult">
+			取消点赞
+		</div>
+	</div>
+	<div class="pl-2">
+		<a href="more.html"><span></span></a>
+		<p>70</p>
+	</div>
+	<div class="sc">
+		<span></span>
+		<div class="sc-suss">
+			收藏成功
+		</div>
+		<div class="sc-fult">
+			取消收藏
+		</div>
+	</div>
+	<div class="zf-3"><span></span></div>
+	<div class="jb">举报</div>
+</div>
+*#}
+{#*
+<div class="jb-right">
+	<div class="jbr-lead">
+		举报
+		<p><img src="images/toleft.png" alt=""></p>
+	</div>
+	<div class="jb-txt">
+		<h1>请选择举报原因</h1>
+		<ul>
+			<li>
+				<span></span>
+				<p>广告</p>
+			</li>
+			<li>
+				<span></span>
+				<p>色情低俗</p>
+			</li>
+			<li>
+				<span></span>
+				<p>反动</p>
+			</li>
+			<li>
+				<span></span>
+				<p>谣言</p>
+			</li>
+			<li>
+				<span></span>
+				<p>欺诈或恶意营销</p>
+			</li>
+			<li>
+				<span></span>
+				<p>标题夸张/文不对题</p>
+			</li>
+			<li>
+				<span></span>
+				<p>内容过时</p>
+			</li>
+			<li>
+				<span></span>
+				<p>内容格式错误</p>
+			</li>
+			<li>
+				<span></span>
+				<p>错别字</p>
+			</li>
+			<li>
+				<span></span>
+				<p>抄袭</p>
+			</li>
+			<li>
+				<span></span>
+				<p>惊悚恐怖</p>
+			</li>
+		</ul>
+	</div>
+	<div class="sure">
+		确认举报
+	</div>
+</div>
+*#}
+<script type="text/javascript">
+	var wxconfig = {
+
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$detail_description#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service="video" template="detail" id=$detail_id#}',
+
+	};
+</script>
+<script type="text/javascript">
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$cfg_staticPath#}js/common-touch.js"></script>
+<script src="{#$templets_skin#}js/detail.js?v=2"></script>
+</body>
+</html>

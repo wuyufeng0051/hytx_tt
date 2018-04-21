@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>商户认领</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}../siteConfig/default/css/index_public.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/claim.css?v=7" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', redirectUrl = '{#$redirectUrl#}', site = '{#$site#}';
+</script>
+</head>
+<body>
+
+  {#include file="../siteConfig/top1.html"#}
+
+  <!-- banner s -->
+  <div class="banner"></div>
+  <!-- banner e -->
+
+  <div class="wrap">
+    <div class="step">
+      <div class="step1 fn-clear">
+        <dl class="fn-clear step1">
+          <dt>1</dt>
+          <dd class="dd-txt">
+            <p class="title">查找商户</p>
+            <p class="desc">输入商户名点击搜索，找到您要认领的商户点击“我要认领”</p>
+          </dd>
+          <dd class="arrow"></dd>
+        </dl>
+        <dl class="fn-clear step2 active">
+          <dt>2</dt>
+          <dd class="dd-txt">
+            <p class="title">提交资料</p>
+            <p class="desc">填写企业资质信息、认领人信息，上传加盖企业公章的认领授权书</p>
+          </dd>
+          <dd class="arrow"></dd>
+        </dl>
+        <dl class="fn-clear step3">
+          <dt>3</dt>
+          <dd class="dd-txt">
+            <p class="title">等待审核</p>
+            <p class="desc">我们将于3个工作日内审核完毕，并发送短信和站内消息通知您</p>
+          </dd>
+          <dd class="finish">完成</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="box">
+      <div class="module module-1">
+        <form class="search fn-clear" action="" method="post">
+          <input type="text" name="" value="" placeholder="请输入您要认领的商户名" class="search-inp">
+          <input type="submit" name="" value="" class="search-btn">
+        </form>
+        <div class="search-list">
+          <p class="search-tit"><em class="gray">共找到2个相关商户：</em>新浪微博</p>
+          <ul class="result">
+            <li>
+              <div class="txtbox">
+                <p class="name">中茵皇冠假日酒店圣汐西餐厅1</p>
+                <p><em class="gray">联系电话：</em>400-800-8820</p>
+                <p><em class="gray">营业地址：</em><span class="address">苏雅路135号天翔花园商业街</span></p>
+              </div>
+              <a href="javascript:;" class="btnbox">我要认领</a>
+            </li>
+            <li>
+              <div class="txtbox">
+                <p class="name">中茵皇冠假日酒店圣汐西餐厅2</p>
+                <p><em class="gray">联系电话：</em>400-800-8820</p>
+                <p><em class="gray">营业地址：</em><span class="address">苏雅路135号天翔花园商业街</span></p>
+              </div>
+              <a href="javascript:;" class="btnbox">我要认领</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="module module-2 fn-hide">
+        <p class="module-h1"><em class="blue">中茵皇冠假日酒店圣汐西餐厅3</em>营业地址：厦门市软件园二期观日30号405单元B区</p>
+        <form class="form-box" action="" method="post">
+          <div class="module-box">
+            <p class="module-tit"><em class="circle"><i></i></em>填写企业资质信息</p>
+            <dl class="inpbox fn-clear">
+              <dt><em class="blue">*</em>企业注册名称</dt>
+              <dd><input type="text" name="company" value="中茵皇冠假日酒店圣汐西餐厅" class="inp" placeholder="" id="company"><span class="error">请输入企业注册名称</span></dd>
+            </dl>
+            <dl class="inpbox fn-clear">
+              <dt><em class="blue">*</em>资质类型</dt>
+              <dd class="select">
+                <p class="select-tit"><span>营业执照</span><em></em></p>
+                <ul class="select-ul">
+                  <li>营业执照1</li>
+                  <li>营业执照2</li>
+                  <li>营业执照3</li>
+                  <li>营业执照4</li>
+                  <li>营业执照5</li>
+                  <li>营业执照6</li>
+                  <li>营业执照7</li>
+                </ul>
+              </dd>
+            </dl>
+            <dl class="inpbox fn-clear">
+              <dt><em class="blue">*</em>上传资质照片</dt>
+              <dd>
+                <div class="uploadBtn">
+                  <div class="inp-zizhi">
+                    <span class="add"></span>
+                    <div class="btn">
+                      <a href="javascript:;" class="upload-txt">上传</a>
+                      <input type="file" name="Filedata" value="" accept=".gif,.jpeg,.jpg,.png" class="upload-img" id="up_zizhi">
+                      <input type="hidden" name="" value="" id="zizhi">
+                    </div>
+      							<ul class="uploader-list"></ul>
+                    <div class="upload-bg">
+                      <i class="bg"></i>
+                      <div class="btn">
+                        <a href="javascript:;" class="upload-txt">重新上传</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="tips mb60">请尽量上传彩色版原件照片，复印件须加盖公司公章<em class="gray">（支持JPG、PNG、BMP格式的图片文件，文件小于5M）</em></p>
+              </dd>
+            </dl>
+          </div>
+          <div class="module-box disabled">
+            <p class="module-tit"><em class="circle"><i></i></em>填写认领人信息</p>
+            <dl class="inpbox fn-clear">
+              <dt><em class="blue">*</em>认领人姓名</dt>
+              <dd><input type="text" name="name" value="" class="inp" placeholder="请输入认领人姓名" id="name" disabled><span class="error">请输入认领人姓名</span></dd>
+            </dl>
+            <dl class="inpbox fn-clear">
+              <dt><em class="blue">*</em>认领人身份证号</dt>
+              <dd><input type="text" name="idcard" value="" class="inp" placeholder="请输入认领人身份证号" id="idcard" disabled><span class="error">请输入认领人身份证号</span></dd>
+            </dl>
+            <dl class="inpbox fn-clear">
+              <dt><em class="blue">*</em>认领人身份证</dt>
+              <dd>
+                <div class="fn-clear">
+                  <div class="uploadBtn certy">
+                    <div class="inp-certy">
+                      <p class="tit">身份证正面</p>
+                      <span class="add"></span>
+                      <div class="btn">
+                        <a href="javascript:;">上传</a>
+												<input type="file" name="Filedata" value="" accept=".gif,.jpeg,.jpg,.png" class="upload-img" id="up_front" disabled>
+	                      <input type="hidden" name="" value="" id="front">
+                      </div>
+                      <ul class="uploader-list"></ul>
+                      <div class="upload-bg">
+                        <i class="bg"></i>
+                        <div class="btn">
+                          <a href="javascript:;" class="upload-txt">重新上传</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="uploadBtn certy">
+                    <div class="inp-certy inp-certy-back">
+                      <p class="tit">身份证反面</p>
+                      <span class="add"></span>
+                      <div class="btn">
+                        <a href="javascript:;">上传</a>
+												<input type="file" name="Filedata" value="" accept=".gif,.jpeg,.jpg,.png" class="upload-img" id="up_back" disabled>
+	                      <input type="hidden" name="" value="" id="back">
+                      </div>
+                      <ul class="uploader-list"></ul>
+                      <div class="upload-bg">
+                        <i class="bg"></i>
+                        <div class="btn">
+                          <a href="javascript:;" class="upload-txt">重新上传</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <span class="error">请上传认领人身份证照片</span>
+                </div>
+                <p class="tips">请上传身份证原件正、反面照片<em class="gray">（支持JPG、PNG、BMP格式的图片文件，文件小于5M）</em></p>
+              </dd>
+            </dl>
+            <dl class="inpbox fn-clear">
+              <dt><em class="blue">*</em>认领人手机号</dt>
+              <dd><input type="text" name="phone" value="" class="inp" placeholder="请输入认领人手机号" id="phone" disabled><a href="javascript:;" class="verify">免费获取验证码</a><span class="error">请输入认领人手机号</span></dd>
+            </dl>
+            <dl class="inpbox fn-clear">
+              <dt></dt>
+              <dd>
+                <input type="text" name="verify" value="" class="inp" placeholder="请输入验证码" id="verify" disabled><span class="error">请填写验证码</span>
+                <p class="tips"><i class="agree active"></i>我已阅读并同意《百度口碑商户服务协议》</p>
+              </dd>
+            </dl>
+          </div>
+          <input type="submit" name="" value="提交" class="submit disabled" id="submit">
+        </form>
+      </div>
+      <div class="module module-3 fn-hide">
+        <div class="apply-box">
+    			<p class="apply-tit">您的申请已提交，请耐心等待！</p>
+    			<p class="apply-tip">我们将在48小时内处理您的申请... </p>
+    		</div>
+      </div>
+      <div class="module module-4 fn-hide">
+        <div class="apply-fail fn-hide">
+          <p class="fail-txt">认领失败！<a href="">重新提交</a></p>
+        </div>
+        <div class="apply-success">
+          <img src="{#$templets_skin#}images/apply_success.png" alt="">
+          <p>恭喜您认领成功！ 前去我的<a href="">管理页面</a></p>
+        </div>
+      </div>
+      <div class="module module-5 fn-hide">
+        <div class="apply-fail">
+          <p class="fail-txt">该商家已被认领！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 底部 s -->
+  <div class="footer-login">
+  	<p>
+  		{#siteConfig action="singel"#}
+  		<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a><span class="pice">|</span>
+  		{#/siteConfig#}
+  		<a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a>
+  	</p>
+  	{#$cfg_powerby#}
+  </div>
+  <!-- 底部 e -->
+
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.ajaxFileUpload.js"></script>
+<script src="{#$templets_skin#}js/claim.js?v=2" charset="utf-8"></script>
+</body>
+</html>

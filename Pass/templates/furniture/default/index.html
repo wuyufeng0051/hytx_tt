@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$furniture_title#}</title>
+<meta name="keywords" content="{#$furniture_keywords#}" />
+<meta name="description" content="{#$furniture_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$furniture_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'index'#}
+{#include file="top.html"#}
+
+<!-- 幻灯片大图部分 -->
+<div class="banner">
+  <div class="wrap">
+    <div class="slide" id="slide">{#myad id="126" type="slide"#}</div>
+    <div class="slidebtn" id="slidebtn"></div>
+    <div>
+	    <a href="javascript:;" class="prev">上一个</a>
+	    <a href="javascript:;" class="next">下一个</a>
+	</div>
+  </div>
+</div>
+
+
+<!-- 商品保障部分 -->
+<div class="service">
+	<div class="wrap">
+		<ul>
+			<li class="s1"><i></i><s></s><p>品质保障<p><p>正品保障  材质保障</p></li>
+			<li class="s2"><i></i><s></s><p>物流保障<p><p>免费送装  送货入户  破损包赔</p></li>
+			<li class="s3"><i></i><s></s><p>优质选品<p><p>质量保障  放心购 </p></li>
+			<li class="s4"><s></s><p>极致售后<p><p>15天无理由退货  免费上门退货</p></li>
+		</ul>
+	</div>
+</div>
+
+<!-- 内容部分 -->
+<div class="container clearfix">
+
+	<!-- 商品分类部分 -->
+	<div class="classify">
+		<div class="wrap">
+			<ul>
+				{#furniture action="type" return="type"#}
+				<li class="s{#$_bindex.type#}">
+					<p><a href="{#getUrlPath service='furniture' template='list' param="typeid={#$type.id#}"#}" target="_blank" title="{#$type.typename#}">{#$type.typename#}</a></p>
+					<div>
+						{#furniture action="type" return="type1" type=$type.id#}
+						<a href="{#getUrlPath service='furniture' template='list' param="typeid={#$type1.id#}"#}" target="_blank" title="{#$type1.typename#}">{#$type1.typename#}</a>
+						{#/furniture#}
+					</div>
+				</li>
+				{#/furniture#}
+			</ul>
+			<div class="more">
+				<a href="javascript:;">点击显示全部分类<i class="x1"><em></em></i><i class="x2"><em></em></i></a>
+			</div>
+		</div>
+	</div>
+
+	<!-- 热卖爆款-->
+	<div class="hot-models hm">
+		<div class="wrap">
+			<h3>热卖爆款</h3>
+			<div class="hotCon">
+				<div class="player">
+				  <ul>
+						{#furniture action="flist" return="list" flag="h" pageSize="20"#}
+				    <li>
+							<div class="vertical"><a href="{#$list.url#}" target="_blank"><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list['litpic']#}" type="o_large"#}" alt="{#$list.title#}" /></a></div>
+							<p><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></p>
+							<div class="price"><span>{#echoCurrency type='symbol'#}{#$list.price#}</span><s>{#echoCurrency type='symbol'#}{#$list.mprice#}</s></div>
+							<div class="look"><a href="{#$list.url#}" target="_blank">查看<i><em></em></i></a></div>
+						</li>
+						{#if $_bindex.list%5 eq 0 && $_bindex.list != 20#}
+					</ul>
+					<ul class="fn-clear">
+						{#/if#}
+						{#/furniture#}
+				  </ul>
+				</div>
+			 </div>
+			 <div class="number"></div>
+		</div>
+	</div>
+
+
+	<div class="hot-models brand">
+		<div class="wrap">
+			<h3>品牌汇</h3>
+			<div class="hotCon brandCon">
+				<div class="player1">
+				  <ul>
+						{#furniture action="brand" page="1" rec="1" pageSize="48"#}
+						<li><a href="{#$row.url#}" title="{#$row.title#}"><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$row.logo#}"></a></li>
+						{#if $_bindex.row%12 eq 0 && $_bindex.row != 48#}
+					</ul>
+					<ul class="fn-clear">
+						{#/if#}
+						{#/furniture#}
+				  </ul>
+				</div>
+			 </div>
+			 <div class="number1"></div>
+		</div>
+	</div>
+
+	<div class="module">
+		<div class="wrap moduleC">
+			<div class="keting">
+				<span class="left"></span><p class="left">床类</p><div class="right"><script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=127" language="javascript"></script></div>
+			</div>
+			<div class="moduleCon">
+				<div class="left m1">
+					<div class="m1Top"><script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=128" language="javascript"></script></div>
+					<div class="m1Bot">
+						<div class="classify1">
+							{#furniture action="type" type="1" return="type" pageSize="6"#}
+							<a href="{#getUrlPath service='furniture' template='list' param="typeid={#$type.id#}"#}" target="_blank" title="{#$type.typename#}">{#$type.typename#}</a>
+							{#/furniture#}
+						</div>
+						<p><a href="{#getUrlPath service='furniture' template='list' param="typeid=1"#}" target="_blank" title="查看更多床类商品">更多>></a></p>
+					</div>
+				</div>
+				<ul class="left m2">
+					{#furniture action="flist" return="list1" typeid="1" pageSize="6"#}
+					<li>
+						<div class="vertical"><a href="{#$list1.url#}" title="{#$list1.title#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list1['litpic']#}" type="o_large"#}" alt="{#$list1.title#}"></a></div>
+						<p><a href="{#$list1.url#}" title="{#$list1.title#}" target="_blank">{#$list1.title#}</a></p>
+						<div class="price"><span>{#echoCurrency type='symbol'#}{#$list1.price#}</span><s>{#echoCurrency type='symbol'#}{#$list1.mprice#}</s></div>
+					</li>
+					{#if $_bindex.list1 == 4#}
+				</ul>
+				<div class="left m3"><script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=129" language="javascript"></script></div>
+				<ul class="left m2 m4">
+					{#/if#}
+					{#/furniture#}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="module module2">
+		<div class="wrap moduleC">
+			<div class="keting">
+				<span class="left"></span><p class="left">柜类</p><div class="right"><script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=130" language="javascript"></script></div>
+			</div>
+			<div class="moduleCon">
+				<div class="left m1">
+					<div class="m1Top"><script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=128" language="javascript"></script></div>
+					<div class="m1Bot">
+						<div class="classify1">
+							{#furniture action="type" type="2" return="type" pageSize="6"#}
+							<a href="{#getUrlPath service='furniture' template='list' param="typeid={#$type.id#}"#}" target="_blank" title="{#$type.typename#}">{#$type.typename#}</a>
+							{#/furniture#}
+						</div>
+						<p><a href="{#getUrlPath service='furniture' template='list' param="typeid=2"#}" target="_blank" title="查看更多柜类商品">更多>></a></p>
+					</div>
+				</div>
+				<ul class="left m2">
+					{#furniture action="flist" return="list2" typeid="2" pageSize="6"#}
+					<li>
+						<div class="vertical"><a href="{#$list2.url#}" title="{#$list2.title#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list2['litpic']#}" type="o_large"#}" alt="{#$list2.title#}"></a></div>
+						<p><a href="{#$list2.url#}" title="{#$list2.title#}" target="_blank">{#$list2.title#}</a></p>
+						<div class="price"><span>{#echoCurrency type='symbol'#}{#$list2.price#}</span><s>{#echoCurrency type='symbol'#}{#$list2.mprice#}</s></div>
+					</li>
+					{#if $_bindex.list2 == 4#}
+				</ul>
+				<div class="left m3"><script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=129" language="javascript"></script></div>
+				<ul class="left m2 m4">
+					{#/if#}
+					{#/furniture#}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="module module3">
+		<div class="wrap moduleC">
+			<div class="keting">
+				<span class="left"></span><p class="left">几类</p><div class="right"><script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=130" language="javascript"></script></div>
+			</div>
+			<div class="moduleCon">
+				<div class="left m1">
+					<div class="m1Top"><script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=128" language="javascript"></script></div>
+					<div class="m1Bot">
+						<div class="classify1">
+							{#furniture action="type" type="3" return="type" pageSize="6"#}
+							<a href="{#getUrlPath service='furniture' template='list' param="typeid={#$type.id#}"#}" target="_blank" title="{#$type.typename#}">{#$type.typename#}</a>
+							{#/furniture#}
+						</div>
+						<p><a href="{#getUrlPath service='furniture' template='list' param="typeid=3"#}" target="_blank" title="查看更多几类商品">更多>></a></p>
+					</div>
+				</div>
+				<ul class="left m2">
+					{#furniture action="flist" return="list3" typeid="3" pageSize="6"#}
+					<li>
+						<div class="vertical"><a href="{#$list3.url#}" title="{#$list3.title#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list3['litpic']#}" type="o_large"#}" alt="{#$list3.title#}"></a></div>
+						<p><a href="{#$list3.url#}" title="{#$list3.title#}" target="_blank">{#$list3.title#}</a></p>
+						<div class="price"><span>{#echoCurrency type='symbol'#}{#$list3.price#}</span><s>{#echoCurrency type='symbol'#}{#$list3.mprice#}</s></div>
+					</li>
+					{#if $_bindex.list3 == 4#}
+				</ul>
+				<div class="left m3"><script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=131" language="javascript"></script></div>
+				<ul class="left m2 m4">
+					{#/if#}
+					{#/furniture#}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="module module4">
+		<div class="wrap moduleC">
+			<div class="keting">
+				<span class="left"></span><p class="left">椅/凳/榻</p><div class="right"><script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=130" language="javascript"></script></div>
+			</div>
+			<div class="moduleCon">
+				<div class="left m1">
+					<div class="m1Top"><script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=128" language="javascript"></script></div>
+					<div class="m1Bot">
+						<div class="classify1">
+							{#furniture action="type" type="4" return="type" pageSize="6"#}
+							<a href="{#getUrlPath service='furniture' template='list' param="typeid={#$type.id#}"#}" target="_blank" title="{#$type.typename#}">{#$type.typename#}</a>
+							{#/furniture#}
+						</div>
+						<p><a href="{#getUrlPath service='furniture' template='list' param="typeid=4"#}" target="_blank" title="查看更多椅/凳/榻商品">更多>></a></p>
+					</div>
+				</div>
+				<ul class="left m2">
+					{#furniture action="flist" return="list4" typeid="4" pageSize="6"#}
+					<li>
+						<div class="vertical"><a href="{#$list4.url#}" title="{#$list4.title#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list4['litpic']#}" type="o_large"#}" alt="{#$list4.title#}"></a></div>
+						<p><a href="{#$list4.url#}" title="{#$list4.title#}" target="_blank">{#$list4.title#}</a></p>
+						<div class="price"><span>{#echoCurrency type='symbol'#}{#$list4.price#}</span><s>{#echoCurrency type='symbol'#}{#$list4.mprice#}</s></div>
+					</li>
+					{#if $_bindex.list4 == 4#}
+				</ul>
+				<div class="left m3"><script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=131" language="javascript"></script></div>
+				<ul class="left m2 m4">
+					{#/if#}
+					{#/furniture#}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v=1"></script>
+</body>
+</html>

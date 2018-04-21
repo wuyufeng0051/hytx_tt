@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta name="description" content="{#$waimai_description#}" />
+<title>{#$waimai_title#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" />
+<link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+  var userdomain = '{#getUrlPath service="member" type="user"#}';
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var local = '{#$local#}', site_map = "{#$site_map#}";
+</script>
+</head>
+<body>
+
+  <svg xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink"style="position:absolute;width:0;height:0"><defs><symbol viewBox="0 0 70 12"id="star-actived.d4c54d1"><defs><linearGradient id="star-actived.d4c54d1_a"x1="0%"y1="50%"y2="50%"><stop offset="0%"stop-color="#FFDE00"></stop><stop offset="100%"stop-color="#FFB000"></stop></linearGradient></defs><path fill="url(#star-actived.d4c54d1_a)"fill-rule="evenodd"d="M54.017 8.072l-2.552 1.561c-.476.291-.758.096-.626-.455l.696-2.909-2.273-1.944c-.424-.362-.325-.691.239-.736l2.982-.237L53.63.589c.213-.515.557-.523.774 0l1.146 2.763 2.982.237c.556.044.67.368.24.736l-2.274 1.944.696 2.91c.13.542-.143.75-.626.454l-2.551-1.56zm-48 0L3.465 9.633c-.476.291-.758.096-.626-.455l.696-2.909-2.273-1.944c-.424-.362-.325-.691.239-.736l2.982-.237L5.63.589c.213-.515.557-.523.774 0L7.55 3.352l2.982.237c.556.044.67.368.24.736L8.497 6.269l.696 2.91c.13.542-.143.75-.626.454l-2.551-1.56zm12 0l-2.552 1.561c-.476.291-.758.096-.626-.455l.696-2.909-2.273-1.944c-.424-.362-.325-.691.239-.736l2.982-.237L17.63.589c.213-.515.557-.523.774 0l1.146 2.763 2.982.237c.556.044.67.368.24.736l-2.274 1.944.696 2.91c.13.542-.143.75-.626.454l-2.551-1.56zm12 0l-2.552 1.561c-.476.291-.758.096-.626-.455l.696-2.909-2.273-1.944c-.424-.362-.325-.691.239-.736l2.982-.237L29.63.589c.213-.515.557-.523.774 0l1.146 2.763 2.982.237c.556.044.67.368.24.736l-2.274 1.944.696 2.91c.13.542-.143.75-.626.454l-2.551-1.56zm12 0l-2.552 1.561c-.476.291-.758.096-.626-.455l.696-2.909-2.273-1.944c-.424-.362-.325-.691.239-.736l2.982-.237L41.63.589c.213-.515.557-.523.774 0l1.146 2.763 2.982.237c.556.044.67.368.24.736l-2.274 1.944.696 2.91c.13.542-.143.75-.626.454l-2.551-1.56z"></path></symbol><symbol viewBox="0 0 70 12"id="star-gray.cc081b9"><path fill="#EEE"fill-rule="evenodd"d="M54.017 8.072l-2.552 1.561c-.476.291-.758.096-.626-.455l.696-2.909-2.273-1.944c-.424-.362-.325-.691.239-.736l2.982-.237L53.63.589c.213-.515.557-.523.774 0l1.146 2.763 2.982.237c.556.044.67.368.24.736l-2.274 1.944.696 2.91c.13.542-.143.75-.626.454l-2.551-1.56zm-48 0L3.465 9.633c-.476.291-.758.096-.626-.455l.696-2.909-2.273-1.944c-.424-.362-.325-.691.239-.736l2.982-.237L5.63.589c.213-.515.557-.523.774 0L7.55 3.352l2.982.237c.556.044.67.368.24.736L8.497 6.269l.696 2.91c.13.542-.143.75-.626.454l-2.551-1.56zm12 0l-2.552 1.561c-.476.291-.758.096-.626-.455l.696-2.909-2.273-1.944c-.424-.362-.325-.691.239-.736l2.982-.237L17.63.589c.213-.515.557-.523.774 0l1.146 2.763 2.982.237c.556.044.67.368.24.736l-2.274 1.944.696 2.91c.13.542-.143.75-.626.454l-2.551-1.56zm12 0l-2.552 1.561c-.476.291-.758.096-.626-.455l.696-2.909-2.273-1.944c-.424-.362-.325-.691.239-.736l2.982-.237L29.63.589c.213-.515.557-.523.774 0l1.146 2.763 2.982.237c.556.044.67.368.24.736l-2.274 1.944.696 2.91c.13.542-.143.75-.626.454l-2.551-1.56zm12 0l-2.552 1.561c-.476.291-.758.096-.626-.455l.696-2.909-2.273-1.944c-.424-.362-.325-.691.239-.736l2.982-.237L41.63.589c.213-.515.557-.523.774 0l1.146 2.763 2.982.237c.556.044.67.368.24.736l-2.274 1.944.696 2.91c.13.542-.143.75-.626.454l-2.551-1.56z"></path></symbol></defs></svg>
+
+  <!-- 头部 -->
+  {#$search = {#getUrlPath service='waimai' template='search'#}#}
+  {#$local = {#getUrlPath service='waimai' template='local'#}#}
+  {#$pageRight = '<a href="'|cat:$search|cat:'" class="header-search"></a>'#}
+  {#$pageTitle = '<span><a href="'|cat:$local|cat:'" class="fn-clear"><em>'|cat:$langData['siteConfig'][7][4]|cat:'..</em></a></span>'#}
+  {#include file="../../../siteConfig/touch_index_top.html"#}
+  <!-- 头部 end -->
+  
+  <div class="wrapper">
+    <div class="swiper-container swiper-container1">
+      <div class="swiper-wrapper">
+        {#myad id="205" type="slide"#}
+      </div>
+      <div class="pagination"></div>
+    </div>
+  </div>
+
+
+  <!-- 滑动导航 -->
+  <div class="nav">
+    <div class="swiper-wrapper">
+			<div class="swiper-slide">
+        <ul>
+				{#waimai action="shopType" return='type'#}
+          <li>
+            <a href="{#$type.url#}">
+              <span class="icon-img"><img src="{#$templets_skin#}images/nav{#$_bindex.type#}.png" alt=""></span>
+              <span class="icon-txt">{#$type.title#}</span>
+            </a>
+          </li>
+				{#if !(($_bindex.type) % 8)#}
+				</ul>
+			</div>
+			<div class="swiper-slide">
+        <ul>
+				{#/if#}
+				{#/waimai#}
+				</ul>
+			</div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+  <!-- 滑动导航 end-->
+
+  <div class="advbox">
+    <div class="advCon">
+      {#myad id="206" type="slide"#}
+    </div>
+  </div>
+
+  <!-- 为你优选 s -->
+  <div class="youxuan">
+    <div class="yx-tit">{#$langData['waimai'][2][0]#}</div>
+    <div class="yxbox fn-clear">
+      {#myad id="207" type="slide"#}
+    </div>
+  </div>
+  <!-- 为你优选 e -->
+
+  <p class="nearTit">{#$langData['waimai'][2][1]#}</p>
+
+	<!-- 商家列表 -->
+  <div class="near-box"><div class="loading">{#$langData['siteConfig'][20][184]#}</div></div>
+	<!-- 商家列表 -->
+
+  {#include file="footer.html"#}
+
+  <div class="mask"></div>
+  <div id="map"></div>
+
+<!-- 外卖订单状态 -->
+<div class="waimaiOrderstate swiper-msg">
+  <em></em>
+  <ul class="list swiper-wrapper"></ul>
+</div>
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$description#}',
+        "title": '{#$title#}',
+        "imgUrl": '{#$share_pic#}',
+        "link": '{#$cfg_basehost#}',
+    };
+    var typeid = '', orderby = '', yingye = '', lng = '', lat = '', page = 1, pageSize = 10;
+</script>
+<p>aaaa</p>
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+{#if $site_map == "qq"#}
+<script src="https://3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js " charset="utf-8"></script>
+{#/if#}
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$templets_skin#}js/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/iscroll.js"></script>
+<script src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

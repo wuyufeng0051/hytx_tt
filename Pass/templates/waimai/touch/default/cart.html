@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta name="description" content="{#$waimai_description#}" />
+<title>{#$detail_shopname#}</title>
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/car.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+var shopid = {#$detail_id#};  //店铺ID
+var first_discount = {#if $detail_is_first_discount#}{#$detail_first_discount#}{#else#}0{#/if#};  //首单减免
+var discount_value = {#if $detail_is_discount#}{#$detail_discount_value#}{#else#}10{#/if#};  //打折优惠
+var basicprice = {#$detail_basicprice#};  //起送价
+var delivery_fee = {#$detail_delivery_fee#};  //配送费
+var delivery_fee_type = {#$detail_delivery_fee_type#};  //配送费类型  0：达到起送价免配送费  1：始终收取外送费  2：满额免
+var delivery_fee_value = {#$detail_delivery_fee_value#};  //满多少免配送费
+var open_range_delivery_fee = {#$detail_open_range_delivery_fee#};  //开启不同距离收取不同的配送费
+var range_delivery_fee_value = {#$detail_range_delivery_fee_value_json#};  //不同距离本着费规则
+var juli = {#$juli#};  //用户距商家距离，单位：千米
+var shop_delivery_radius = {#$detail_delivery_radius#}; //商家最大配送距离
+var delivery_fee_mode = {#$detail_delivery_fee_mode#}; //起送价、配送费模式 1固定 2区域 3距离
+var promotions = {#if $detail_open_promotion#}{#$detail_promotions_json#}{#else#}[]{#/if#};  //满减规则
+var addservice = {#if $detail_open_addservice#}{#$detail_addservice_json#}{#else#}[]{#/if#};  //增值服务
+var foodTotalPrice = 0, dabaoTotalPrice = 0 , manjianPrice = 0, addservicePrice = 0, first_discount = {#if $firstOrder && $detail_is_first_discount#}{#$detail_first_discount#}{#else#}0{#/if#};   //商品总价，打包总价，满减金额，增值服务，首单减免
+var offline_limit = {#$detail_offline_limit#};	//是否开启货到付款金额限制
+var pay_offline_limit = {#$detail_pay_offline_limit#};	//货到付款金额限制
+var myMoney = {#$userinfo['money']#};			//用户余额
+var depositUrl = '{#getUrlPath service='member' type="user" template='deposit'#}';	//充值页面
+var buyUrl = '{#getUrlPath service='waimai' template='shop' id=$detail_id#}';	// 商品页面
+
+var cart_address_id = {#$cart_address_id#};
+var order_content;
+
+var nowDate = {#$smarty.now#}, nowTime = "{#$smarty.now|date_format:'%H:%M'#}";
+var wxconfig = {
+	"appId": '{#$wxjssdk_appId#}',
+	"timestamp": '{#$wxjssdk_timestamp#}',
+	"nonceStr": '{#$wxjssdk_nonceStr#}',
+	"signature": '{#$wxjssdk_signature#}',
+	"description": '{#$detail_description|replace:"\r\n":""|replace:"\r":""|replace:"\n":""#}',
+	"title": '{#if $detail_share_title#}{#$detail_share_title#}{#else#}{#$detail_shopname#}{#/if#}',
+	"imgUrl": '{#$detail_share_pic#}',
+	"link": '{#$detail_url#}',
+};
+
+{#if !$detail_status#}alert('{#if $detail_closeinfo#}{#$detail_closeinfo#}{#else#}{#$deatil_status#}{#$langData['waimai'][3][57]#}{#/if#}');location.history.go(-1);{#/if#}
+{#if $detail_status && !$detail_ordervalid#}alert('{#if $detail_closeorder#}{#$detail_closeorder#}{#else#}{#$langData['waimai'][3][58]#}{#/if#}');location.history.go(-1);{#/if#}
+{#if !$detail_yingye#}
+	{#if !$detail_yingyeWeek#}
+	alert('{#$langData['waimai'][3][71]#}{#$langData['siteConfig'][18][15]#}：{#$detail_weeks|replace:"1":$langData['siteConfig'][14][4]|replace:"2":$langData['siteConfig'][14][5]|replace:"3":$langData['siteConfig'][14][6]|replace:"4":$langData['siteConfig'][14][7]|replace:"5":$langData['siteConfig'][14][8]|replace:"6":$langData['siteConfig'][14][9]|replace:"7":$langData['siteConfig'][14][10]|replace:",":"，"#}');
+	location.history.go(-1);
+	{#else#}
+	alert('{#$langData['waimai'][3][57]#}{#$langData['siteConfig'][18][15]#}：{#if $detail_start_time1 && $detail_start_time1 != "00:00" && $detail_end_time1 && $detail_end_time1 != "00:00"#}{#$detail_start_time1#}-{#$detail_end_time1#}{#/if#}{#if $detail_start_time2 && $detail_start_time2 != "00:00" && $detail_end_time2 && $detail_end_time2 != "00:00"#}; {#$detail_start_time2#}-{#$detail_end_time2#}{#/if#}{#if $detail_start_time3 && $detail_start_time3 != "00:00" && $detail_end_time3 && $detail_end_time3 != "00:00"#}; {#$detail_start_time3#}-{#$detail_end_time3#}{#/if#}');
+	location.history.go(-1);
+	{#/if#}
+{#/if#}
+{#if $detail_delivery_radius != 0 && $detail_delivery_radius < $juli#}
+	alert("{#$langData['waimai'][2][34]#}");
+{#/if#}
+
+var payUrl = '{#getUrlPath service="waimai" template="pay" param="ordernum=#ordernum"#}';
+var quanid = {#$quanid#};
+</script>
+</head>
+
+<body>
+<!-- 无内容 -->
+<div class="empty fn-hide">
+	<div class="cart-header">
+		<a href="{#getUrlPath service="waimai" template="shop" id="$detail_id"#}"></a>
+		<span>{#$langData['siteConfig'][6][164]#}</span>
+	</div>
+	<i></i>
+	<p>{#$langData['siteConfig'][22][11]#}</p>
+</div>
+
+<!-- 有内容 -->
+<div class="cart fn-hide">
+	<div class="cart-header">
+		<a href="{#getUrlPath service="waimai" template="shop" id="$detail_id"#}"></a>
+		<span>{#$langData['siteConfig'][6][164]#}</span>
+	</div>
+
+	<div class="address">
+		<a href="{#getUrlPath service='waimai' template='address' id=$detail_id param="address=$cart_address_id"#}" class="t">
+			<div class="address-box">
+				<i class="icon-map"></i>
+				<div class="address-info">
+					<p class="address-txt" id="selectAddress">{#$cart_address_street#} {#$cart_address_address#}</p>
+					<p class="gray fn-clear"><span class="name">{#$cart_address_person#}</span><span class="tel">{#$cart_address_tel#}</span></p>
+				</div>
+				<i class="icon-right"></i>
+			</div>
+		</a>
+	</div>
+
+	<div class="car_list">
+		<div id="cartList"></div>
+		<div class="car_t2">
+			<span class="circle circleTL"></span><span class="circle circleTR"></span>
+			<span class="circle circleBL"></span><span class="circle circleBR"></span>
+			<ul>
+				<li id="dabao" class="fn-hide"><span class="spantit">{#$langData['waimai'][1][18]#}</span><em class="fn-right">{#echoCurrency type="symbol"#}<span id="dabaoPrice">0.00</span></em></li>
+				<li id="peisong" class="fn-hide"><span class="spantit">{#$langData['siteConfig'][17][40]#}</span><em class="fn-right">{#echoCurrency type="symbol"#}<span id="peisongPrice">0.00</span></em></li>
+				<li id="addservice" class="fn-hide"></li>
+			</ul>
+		</div>
+		<div class="car_t3">
+			<ul>
+				{#if $detail_is_discount && $detail_discount_value < 10#}<li class="hui"><i class="zhe">{#$langData['waimai'][2][91]#}</i>{#$langData['waimai'][2][90]|replace:'1':$detail_discount_value|string_format:"%.1f"#}</li>{#/if#}
+				{#if $firstOrder && $detail_is_first_discount && $detail_first_discount > 0#}<li class="hui"><i class="shou">{#$langData['waimai'][2][92]#}</i>{#$langData['waimai'][1][216]#}<span class="fn-right">-{#echoCurrency type="symbol"#}{#$detail_first_discount#}</span></li>{#/if#}
+				<li id="manjian" class="fn-hide"></li>
+				<li class="quan fn-clear">
+					<a href="{#getUrlPath service='waimai' template='quan' id=$detail_id param="address={#$cart_address_id#}"#}"><em>{#$langData['waimai'][2][36]#}</em><i></i><span></span></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="beizhu fn-clear">
+		<p>{#$langData['siteConfig'][19][705]#}</p>
+		<input id="note" type="text" placeholder="{#$detail_memo_hint#}" value="{#$note#}">
+	</div>
+
+	<div class="extra">
+		{#if $detail_preset#}
+		{#foreach from=$detail_preset item=preset#}
+		<div class="preset_item fn-clear">
+			{#foreach from=$presetData item=p#}
+				{#if $preset[2] == $p['title']#}
+				{#$r = $p['value']#}
+				{#/if#}
+			{#/foreach#}
+			<em>{#$preset[2]#}</em>
+			{#if $preset[0] == 1#}
+			<select class="preset">
+				{#foreach from=$preset[3] item=pre#}
+				<option value="{#$pre#}"{#if $pre == $r#} selected="selected"{#/if#}>{#$pre#}</option>
+				{#/foreach#}
+			</select>
+			{#else#}
+			<input type="text" class="preset" placeholder="{#$preset[3]#}" value="{#$r#}">
+			{#/if#}
+		</div>
+		{#/foreach#}
+		{#/if#}
+	</div>
+
+
+
+	<!-- <div class="price"><em>应付金额：</em><b>{#echoCurrency type="symbol"#}0.00</b></div> -->
+	<!-- <div class="car_button"><button id="tj">提交订单</button></div> -->
+	<!-- <li>商品总价：{#echoCurrency type="symbol"#}<span id="totalFoodPrice">0.00</span></li> -->
+
+</div>
+
+<div class="footer fn-clear">
+	<span class="price"><b>{#echoCurrency type="symbol"#}0.00</b></span>
+	<span class="youhui"><em>|</em>{#$langData['siteConfig'][19][698]#}{#echoCurrency type="symbol"#}<i>18</i></span>
+	<span class="car_button"><button id="tj">{#$langData['siteConfig'][19][665]#}</button></span>
+</div>
+
+{#*
+<div class="navtion fn-clear">
+	<ul>
+		<li class="shop"><a href="{#getUrlPath service='waimai' template='shop' id={#$detail_id#}#}"><i></i><span>首页</span></a></li>
+		<li class="car nav_bc"><a href="{#getUrlPath service='waimai' template='cart' id={#$detail_id#}#}"><i></i><span>购物车</span></a></li>
+		<li class="center"><a href="{#getUrlPath service='member' type='user'#}"><i></i><span>个人中心</span></a></li>
+	</ul>
+</div>
+*#}
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$templets_skin#}js/cart.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

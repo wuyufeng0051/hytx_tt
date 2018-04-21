@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$langData['siteConfig'][19][422]#} - {#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+</script>
+</head>
+
+<body>
+{#$pageTitle = $langData['siteConfig'][23][51]#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="container fn-clear">
+		{#include file="sidebar.html"#}
+		<div class="main">
+
+			<ul class="main-tab">
+				<li class="curr"><a href="javascript:;">{#$langData['siteConfig'][19][422]#} (<span id="total">0</span>)</a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='manage' action='huodong'#}">{#$langData['siteConfig'][23][52]#}</a></li>
+			</ul>
+
+			<div class="list" id="list">
+				<table>
+					<thead class="thead">
+						<tr>
+							<th class="fir"></th>
+							<th>{#$langData['siteConfig'][19][423]#}</th>
+							<th style="padding-left: 20px;">{#$langData['siteConfig'][19][424]#}</th>
+							<th style="padding-left: 20px;">{#$langData['siteConfig'][19][425]#}</th>
+							<th style="padding-left: 20px;">{#$langData['siteConfig'][19][426]#}</th>
+							<th style="padding-left: 20px;">{#$langData['siteConfig'][19][428]#}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{#huodong action="regList" hid={#$id#}#}
+						<tr>
+							<td class="fir"></td>
+							<td>{#$row.nickname#}</td>
+							<td style="padding-left: 20px;">{#if $row.phone#}{#$row.phone#}{#else#}{#$langData['siteConfig'][13][20]#}{#/if#}</td>
+							<td style="padding-left: 20px;">{#$row.date|date_format:"%Y-%m-%d %H:%M:%S"#}</td>
+							<td style="padding-left: 20px;">{#if $row.title#}{#$row.title#}{#else#}{#$langData['siteConfig'][19][427]#}{#/if#}</td>
+							<td style="padding-left: 20px;">{#$row.price|string_format:"%.2f"#}</td>
+						</tr>
+						{#/huodong#}
+						{#if $pageInfo['totalCount'] == 0#}
+						<tr>
+							<td colspan="6" class="empty"><p class="loading">{#$langData['siteConfig'][20][494]#}</p></td>
+						</tr>
+						{#/if#}
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript">
+document.getElementById("total").innerHTML = "{#$pageInfo['totalCount']#}";
+</script>
+</body>
+</html>

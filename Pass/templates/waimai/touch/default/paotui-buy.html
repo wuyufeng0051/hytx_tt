@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta name="description" content="{#$waimai_description#}" />
+<title>{#$langData['waimai'][3][0]#}_{#$langData['waimai'][3][5]#}_{#$waimai_title#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" />
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/paotui-buy.css?v={#$cfg_staticVersion#}">
+<script>
+var cookiePre = '{#$cfg_cookiePre#}';
+var mapUrl = '{#getUrlPath service='waimai' template='addressPaotui' param="shop=$shop"#}';
+var myaddress = {#$cart_address_id#}, mylng = {#$cart_address_lng#}, mylat = {#$cart_address_lat#};
+var payUrl = '{#getUrlPath service="waimai" template="pay" param="ordertype=paotui&ordernum=#ordernum"#}';
+var depositUrl = '{#getUrlPath service='member' type="user" template='deposit'#}';  //充值页面
+var myMoney = {#$userinfo['money']#};
+var shoptype = '{#$shop#}';
+</script>
+</head>
+<body>
+  <!-- 头部 -->
+  <div class="header">
+    <div class="header-l">
+      <a href="{#getUrlPath service='waimai' template='paotui'#}" class="back"></a>
+    </div>
+    <div class="header-address">
+      <span><em>{#if $shop#}{#$langData['waimai'][2][78]#}{#$shop#}{#else#}{#$langData['waimai'][3][2]#}{#/if#}</em></span>
+    </div>
+    <div class="header-search"><a>&nbsp;</a></div>
+  </div>
+  <!-- 头部 end -->
+
+  <div class="wrapper">
+    <div class="con">
+      <textarea name="shop" id="shop" class="shop" placeholder="{#$langData['waimai'][3][4]#}"></textarea>
+      {#*
+      <div class="fastchose">
+        {#if $shop == '小吃'#}
+        <a href="javascript:;">+炕土豆</a>
+        <a href="javascript:;">+臭豆腐</a>
+        <a href="javascript:;">+面筋</a>
+        <a href="javascript:;">+锅盔</a>
+        <a href="javascript:;">+公婆饼</a>
+        <a href="javascript:;">+面包</a>
+        <a href="javascript:;">+脑花</a>
+        <a href="javascript:;">+酸奶</a>
+        <a href="javascript:;">+其他</a>
+        <a href="javascript:;">+1份</a>
+        <a href="javascript:;">+与我联系</a>
+        {#elseif $shop == '烟酒'#}
+        <a href="javascript:;">+红金龙</a>
+        <a href="javascript:;">+黄鹤楼软蓝</a>
+        <a href="javascript:;">+黄鹤楼软红</a>
+        <a href="javascript:;">+利群</a>
+        <a href="javascript:;">+玉溪</a>
+        <a href="javascript:;">+中华</a>
+        <a href="javascript:;">+黄鹤楼珍品</a>
+        <a href="javascript:;">+软</a>
+        <a href="javascript:;">+1包</a>
+        <a href="javascript:;">+打火机</a>
+        <a href="javascript:;">+金龙泉</a>
+        <a href="javascript:;">+勇闯天涯</a>
+        <a href="javascript:;">+雪花</a>
+        <a href="javascript:;">+1瓶</a>
+        {#elseif $shop == '水果'#}
+        <a href="javascript:;">+车厘子</a>
+        <a href="javascript:;">+榴莲</a>
+        <a href="javascript:;">+芒果</a>
+        <a href="javascript:;">+西瓜</a>
+        <a href="javascript:;">+苹果</a>
+        <a href="javascript:;">+1斤</a>
+        <a href="javascript:;">+1个</a>
+        <a href="javascript:;">+3个</a>
+        <a href="javascript:;">+需要小票</a>
+        {#elseif $shop == '咖啡'#}
+        <a href="javascript:;">+星巴克</a>
+        <a href="javascript:;">+蓄意草风味伯爵茶拿铁</a>
+        <a href="javascript:;">+清椰冰摇咖啡</a>
+        <a href="javascript:;">+海盐风味蜂蜜玛奇朵</a>
+        <a href="javascript:;">+拿铁</a>
+        <a href="javascript:;">+美式</a>
+        <a href="javascript:;">+摩卡</a>
+        <a href="javascript:;">+热的</a>
+        <a href="javascript:;">+冰的</a>
+        <a href="javascript:;">+超大杯</a>
+        <a href="javascript:;">+大杯</a>
+        <a href="javascript:;">+中杯</a>
+        <a href="javascript:;">+需要小票</a>
+        {#elseif $shop == '日用'#}
+        <a href="javascript:;">+隐形眼镜护理液</a>
+        <a href="javascript:;">+卫生巾</a>
+        <a href="javascript:;">+洗发水</a>
+        <a href="javascript:;">+电池</a>
+        <a href="javascript:;">+胶带</a>
+        <a href="javascript:;">+插座</a>
+        <a href="javascript:;">+扑克牌</a>
+        <a href="javascript:;">+纸巾</a>
+        <a href="javascript:;">+1盒</a>
+        <a href="javascript:;">+1个</a>
+        <a href="javascript:;">+需要小票</a>
+        {#elseif $shop == '药品'#}
+        <a href="javascript:;">+999感冒灵</a>
+        <a href="javascript:;">+消炎药</a>
+        <a href="javascript:;">+消炎药</a>
+        <a href="javascript:;">+阿莫西林</a>
+        <a href="javascript:;">+止痛药</a>
+        <a href="javascript:;">+滴眼液</a>
+        <a href="javascript:;">+万艾可</a>
+        <a href="javascript:;">+避孕药</a>
+        <a href="javascript:;">+避孕套</a>
+        <a href="javascript:;">+体温计</a>
+        <a href="javascript:;">+1盒</a>
+        <a href="javascript:;">+与我联系</a>
+        <a href="javascript:;">+需要小票</a>
+        {#/if#}
+     	 </div>
+      *#}
+    </div>
+  	</div>
+ <div class="more">
+    <div class="dom_select">
+      <span class="name">{#$langData['waimai'][3][18]#}</span>
+      <div class="option">
+        {#if $buyaddress == ""#}
+        <div class="buyfrom">
+          <label class="checked">{#$langData['waimai'][3][19]#}</label>
+          <label>{#$langData['waimai'][3][21]#}</label>
+        </div>
+        <div class="buyfrom1 show">
+          <textarea name="" id="buyaddress" rows="2" placeholder="{#$langData['waimai'][3][20]#}"></textarea>
+        </div>
+        {#else#}
+        <div class="buyfrom">
+          <label class="checked">{#$langData['waimai'][3][19]#}</label>
+          <label>{#$langData['waimai'][3][21]#}</label>
+        </div>
+        <a href="{#getUrlPath service='waimai' template='addressPaotui' param="shop=$shop&address=$cart_address_id"#}" class="buyfrom1 show" data-addr="{#$addr#}" data-lng="{#$lng#}" data-lat="{#$lat#}">{#$addr#}<em class="arrow"></em></a>
+        {#/if#}
+      </div>
+    </div>
+    <div class="dom_select">
+      <span class="name">{#$langData['waimai'][3][22]#}</span>
+      <div class="option"><a href="{#getUrlPath service='waimai' template='addressPaotui' param="shop=$shop&address=$cart_address_id"#}" class="chooseaddrss">{#$langData['siteConfig'][19][9]#}：{#$cart_address_street#} {#$cart_address_address#}<br>{#$langData['siteConfig'][19][4]#}：{#$cart_address_person#} {#$langData['siteConfig'][3][1]#}：{#$cart_address_tel#}<em class="arrow"></em></a></div>
+    </div>
+  </div>
+    <div class="more">
+    <div data-role="fieldcontain" class="dom_select">
+      <span class="name">{#$langData['siteConfig'][17][23]#}</span>
+      <div class="option txtr" id="time">{#$langData['waimai'][3][24]#}（{#$langData['waimai'][3][25]|replace:'1':'60'#}）</div>
+    </div>
+    <div class="dom_select price">
+      <span class="name">{#$langData['waimai'][3][26]#}</span>
+      <div class="option">
+        <input type="number" class="txtr" id="price" placeholder="{#$langData['waimai'][3][27]#}">
+      </div>
+    </div>
+  </div>
+  <div class="more">
+    <div data-role="fieldcontain" class="dom_select">
+      <span class="name">{#$langData['waimai'][3][28]#}</span>
+      <div class="option txtr money money1">{#echoCurrency type="symbol"#}5.00</div>
+    </div>
+    <div class="dom_select tip">
+      <span class="name">{#$langData['waimai'][3][46]#}</span>
+      <div class="option txtr">
+        <label for="tip"><input type="checkbox" id="tip"><span class="switch"></span><span class="txt">{#$langData['waimai'][3][59]#}</span></label>
+      </div>
+    </div>
+    <div class="dom_select tipc">
+      <div class="set">
+        <a href="javascript:;" data-tip="1" class="curr">1{#echoCurrency type="short"#}</a>
+        <a href="javascript:;" data-tip="2">2{#echoCurrency type="short"#}</a>
+        <a href="javascript:;" data-tip="5">5{#echoCurrency type="short"#}</a>
+        <a href="javascript:;" data-tip="10">10{#echoCurrency type="short"#}</a>
+        <a href="javascript:;" data-tip="0">{#$langData['siteConfig'][19][201]#}</a>
+      </div>
+      <div class="inp"><span>{#echoCurrency type="symbol"#}</span><input type="text" id="tipcur" onkeyup="value=value.replace(/\D+/ig,'')"></div>
+    </div>
+  </div>
+  <div class="paybtn">
+    <a href="javascript:;" class="pay">{#$langData['siteConfig'][19][665]#}</a>
+    <span class="total">{#$langData['waimai'][3][50]#}<font class="money money2">{#echoCurrency type="symbol"#}5.00</font></span>
+  </div>
+
+  <div class="location fn-hide">
+    <input type="hidden" id="buylat" value="0">
+    <input type="hidden" id="buylng" value="0">
+  </div>
+
+<script type="text/javascript">
+  var yingyeState = {#$yingyeState#}, begantime = '{#$begantime#}', endtime = '{#$endtime#}', city = '{#$city#}', district = '{#$district#}';
+  {#if $yingyeState == -1#}
+  alert("{#$langData['waimai'][3][60]#}{#$begantime#}-{#$endtime#}");
+  {#/if#}
+</script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$templets_skin#}js/paotui-buy.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$build_title#}</title>
+<meta name="keywords" content="{#$build_keywords#}" />
+<meta name="description" content="{#$build_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$build_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'index'#}
+{#include file="top.html"#}
+
+<div class="banner">
+	<div class="wrap">
+		<div class="slide" id="slide">{#myad id="106" type="slide"#}</div>
+		<div class="slidebtn" id="slidebtn"></div>
+	</div>
+</div>
+
+<div class="service">
+	<div class="wrap">
+		<ul class="fn-clear">
+			<li class="s1"><s></s><h3>品质保障</h3><p>正品保障 材质保障</p></li>
+			<li class="s2"><s></s><h3>物流保障</h3><p>免费送装 送货入户 破损包赔</p></li>
+			<li class="s3"><s></s><h3>极致售后</h3><p>15天无理由退货 免费上门退货 运费险 无忧质保</p></li>
+		</ul>
+	</div>
+</div>
+
+<div class="container">
+
+	<!-- 推荐优质商家 s -->
+	<div class="wrap">
+		<div class="mt">
+			<h3>推荐优质商家</h3>
+			<a href="{#getUrlPath service='build' template='store'#}" target="_blank" class="more">更多商家</a>
+		</div>
+		<div class="business">
+			<ul class="ad1 fn-clear">
+				<li class="b1">{#myad id="107" insert="<span class='enter'>立即进入店铺</span>"#}</li>
+				<li class="b2">{#myad id="108" insert="<span class='enter'>立即进入店铺</span>"#}</li>
+				<li class="b3">{#myad id="109" insert="<span class='enter'>立即进入店铺</span>"#}</li>
+			</ul>
+			<ul class="ad2 fn-clear">
+				{#myad id="110"#}
+			</ul>
+			<div class="recbus">
+				<ul class="fn-clear">
+					{#build action="store" return="store" rec="1" pageSize="16"#}
+					<li><a href="{#$store.url#}" target="_blank"><span><i></i><img src="{#$store.logo#}" alt="{#$store.company#}" /></span><p><em>{#$store.company#}</em><s></s></p></a></li>
+					{#/build#}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 推荐优质商家 e -->
+
+	<!-- 限时秒杀 s -->
+	<div class="wrap">
+		<div class="mt">
+			<h3>限时秒杀<span class="sub">Seckill</span></h3>
+		</div>
+		<div class="seckill">
+			<ul class="tab fn-clear">
+				<li class="first curr">
+					<div class="time"><s></s>06月18日 10:00</div>
+					<p class="title">周四 家居专场</p>
+					<span class="point"></span>
+				</li>
+				<li>
+					<div class="time"><s></s>06月23日 10:00</div>
+					<p class="title">周二 建材专场</p>
+					<span class="point"></span>
+				</li>
+				<li>
+					<div class="time"><s></s>06月25日 10:00</div>
+					<p class="title">周四 家居专场</p>
+					<span class="point"></span>
+				</li>
+				<li>
+					<div class="time"><s></s>06月30日 10:00</div>
+					<p class="title">周二 建材专场</p>
+					<span class="point"></span>
+				</li>
+				<li class="last">
+					<div class="time"><s></s>07月02日 10:00</div>
+					<p class="title">周四 家居专场</p>
+					<span class="point"></span>
+				</li>
+			</ul>
+			<div class="content">
+				<ul class="fn-clear" style="display:block;">
+					{#build action="blist" return="list" ids="17,18"#}
+					<li class="fn-clear">
+						<div class="pic"><a href="{#$list.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list['litpic']#}" type="o_large"#}" alt="{#$list.title#}" /></a></div>
+						<div class="info">
+							<h5><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></h5>
+							<div class="time" data-stime="{#$list.btime#}" data-etime="{#$list.etime#}" data-ntime="{#$smarty.now#}">&nbsp;</div>
+							<div class="price">秒杀价：{#echoCurrency type='symbol'#}{#$list.price#}</div>
+							<div class="market">市场价：<del>{#echoCurrency type='symbol'#}{#$list.mprice#}</del></div>
+							<div class="btn"><a href="{#$list.url#}" target="_blank"></a></div>
+						</div>
+					</li>
+					{#/build#}
+				</ul>
+				<ul class="fn-clear">
+					{#build action="blist" return="list" ids="15,16"#}
+					<li class="fn-clear">
+						<div class="pic"><a href="{#$list.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list['litpic']#}" type="o_large"#}" alt="{#$list.title#}" /></a></div>
+						<div class="info">
+							<h5><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></h5>
+							<div class="time" data-stime="{#$list.btime#}" data-etime="{#$list.etime#}" data-ntime="{#$smarty.now#}">&nbsp;</div>
+							<div class="price">秒杀价：{#echoCurrency type='symbol'#}{#$list.price#}</div>
+							<div class="market">市场价：<del>{#echoCurrency type='symbol'#}{#$list.mprice#}</del></div>
+							<div class="btn"><a href="{#$list.url#}" target="_blank"></a></div>
+						</div>
+					</li>
+					{#/build#}
+				</ul>
+				<ul class="fn-clear">
+					{#build action="blist" return="list" ids="13,14"#}
+					<li class="fn-clear">
+						<div class="pic"><a href="{#$list.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list['litpic']#}" type="o_large"#}" alt="{#$list.title#}" /></a></div>
+						<div class="info">
+							<h5><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></h5>
+							<div class="time" data-stime="{#$list.btime#}" data-etime="{#$list.etime#}" data-ntime="{#$smarty.now#}">&nbsp;</div>
+							<div class="price">秒杀价：{#echoCurrency type='symbol'#}{#$list.price#}</div>
+							<div class="market">市场价：<del>{#echoCurrency type='symbol'#}{#$list.mprice#}</del></div>
+							<div class="btn"><a href="{#$list.url#}" target="_blank"></a></div>
+						</div>
+					</li>
+					{#/build#}
+				</ul>
+				<ul class="fn-clear">
+					{#build action="blist" return="list" ids="11,12"#}
+					<li class="fn-clear">
+						<div class="pic"><a href="{#$list.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list['litpic']#}" type="o_large"#}" alt="{#$list.title#}" /></a></div>
+						<div class="info">
+							<h5><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></h5>
+							<div class="time" data-stime="{#$list.btime#}" data-etime="{#$list.etime#}" data-ntime="{#$smarty.now#}">&nbsp;</div>
+							<div class="price">秒杀价：{#echoCurrency type='symbol'#}{#$list.price#}</div>
+							<div class="market">市场价：<del>{#echoCurrency type='symbol'#}{#$list.mprice#}</del></div>
+							<div class="btn"><a href="{#$list.url#}" target="_blank"></a></div>
+						</div>
+					</li>
+					{#/build#}
+				</ul>
+				<ul class="fn-clear">
+					{#build action="blist" return="list" ids="9,10"#}
+					<li class="fn-clear">
+						<div class="pic"><a href="{#$list.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list['litpic']#}" type="o_large"#}" alt="{#$list.title#}" /></a></div>
+						<div class="info">
+							<h5><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></h5>
+							<div class="time" data-stime="{#$list.btime#}" data-etime="{#$list.etime#}" data-ntime="{#$smarty.now#}">&nbsp;</div>
+							<div class="price">秒杀价：{#echoCurrency type='symbol'#}{#$list.price#}</div>
+							<div class="market">市场价：<del>{#echoCurrency type='symbol'#}{#$list.mprice#}</del></div>
+							<div class="btn"><a href="{#$list.url#}" target="_blank"></a></div>
+						</div>
+					</li>
+					{#/build#}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 限时秒杀 e -->
+
+	<div class="wrap secad">
+		<ul class="fn-clear">{#myad id="111"#}</ul>
+	</div>
+
+	<!-- 特别推荐商品 s -->
+	<div class="wrap">
+		<div class="mt"><h3>热卖建材商品</h3><a href="#" target="_blank" class="more">更多热卖</a></div>
+		<div class="panic">
+			<ul class="fn-clear">
+				{#build action="blist" return="list" flag="h" pageSize="9"#}
+				<li>
+					<a href="{#$list.url#}" target="_blank">
+						<div class="p">
+							<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list['litpic']#}" type="o_large"#}" alt="{#$list.title#}" />
+							<div class="t"><h4>{#$list.title#}</h4><span></span></div>
+						</div>
+						<div class="i">
+							<strong>{#echoCurrency type='symbol'#}{#$list.price#}</strong>
+							<del>{#echoCurrency type='symbol'#}{#$list.mprice#}</del>
+							<s><i></i></s>
+							<span>销量：<em>{#$list.sales#}</em></span>
+						</div>
+					</a>
+				</li>
+				{#/build#}
+			</ul>
+		</div>
+		<div class="ad">{#myad id="112"#}</div>
+	</div>
+	<!-- 特别推荐商品 e -->
+
+	<!-- 建材选购知识大全 s -->
+	<div class="wrap">
+		<div class="mt1"><h3>建材选购知识大全</h3></div>
+		<div class="news">
+			<div class="type fn-clear">
+				{#build action="newsType" return="type" pageSize="2"#}
+				<dl class="fn-clear">
+					<dt><a href="{#getUrlPath service='build' template='news' typeid="{#$type.id#}"#}" target="_blank">{#$type.typename#}</a></dt>
+					<dd>
+						{#build action="newsType" return="type1" type="{#$type.id#}"#}
+						<a href="{#getUrlPath service='build' template='news' typeid="{#$type1.id#}"#}" target="_blank">{#$type1.typename#}</a>
+						{#/build#}
+					</dd>
+				</dl>
+				{#/build#}
+			</div>
+			<div class="content fn-clear">
+				<div class="l">
+					<h5>精选推荐</h5>
+					<div class="nslide">
+						<div class="nslide-list" id="nslide">{#myad id="113" type="slide"#}</div>
+						<div class="nslidebtn" id="nslidebtn"></div>
+						<a href="javascript:;" class="prev"><s></s></a>
+						<a href="javascript:;" class="next"><s></s></a>
+					</div>
+					{#build action="news" return="news" pageSize="1"#}
+					<h3 class="tit"><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a></h3>
+					<p class="desc">{#$news.desc#}...【<a href="{#$news.url#}" target="_blank">点击查看详细</a>】</p>
+					{#/build#}
+				</div>
+				<div class="r">
+					<h5>聊装修</h5>
+					{#build action="news" return="news" typeid="3" thumb="1" pageSize="1"#}
+					<dl class="fn-clear">
+						<dt><a href="{#$news.url#}" target="_blank" title="{#$news.title#}"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$news.litpic#}" alt="{#$news.title#}" /></a></dt>
+						<dd>
+							<h3><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a></h3>
+							<p>{#$news.desc#}</p>
+						</dd>
+					</dl>
+					{#/build#}
+					<ul class="fn-clear">
+						{#build action="news" return="news" typeid="3" pageSize="4"#}
+						<li><a href="{#$news.url#}" target="_blank" title="{#$news.title#}"><s></s>{#$news.title#}</a></li>
+						{#/build#}
+					</ul>
+					<h5 class="mt15">聊生活</h5>
+					{#build action="news" return="news" typeid="2" thumb="1" pageSize="1"#}
+					<dl class="fn-clear">
+						<dt><a href="{#$news.url#}" target="_blank" title="{#$news.title#}"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$news.litpic#}" alt="{#$news.title#}" /></a></dt>
+						<dd>
+							<h3><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a></h3>
+							<p>{#$news.desc#}</p>
+						</dd>
+					</dl>
+					{#/build#}
+					<ul class="fn-clear">
+						{#build action="news" return="news" typeid="2" pageSize="4"#}
+						<li><a href="{#$news.url#}" target="_blank" title="{#$news.title#}"><s></s>{#$news.title#}</a></li>
+						{#/build#}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 建材选购知识大全 e -->
+
+	<!-- 促销建材商品 s -->
+	<div class="wrap">
+		<div class="mt">
+			<h3>促销建材商品</h3>
+			<a href="#" target="_blank" class="more">更多商品</a>
+		</div>
+		<div class="sale-pro">
+			<ul class="fn-clear">
+				{#build action="blist" return="list" flag="c" pageSize="12"#}
+				<li>
+					<a href="{#$list.url#}" target="_blank" title="{#$list.title#}" class="pic">
+						<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list['litpic']#}" type="o_large"#}" alt="{#$list.title#}" />
+						<p>{#echoCurrency type='symbol'#}{#$list.price#}&nbsp;&nbsp;|&nbsp;&nbsp;{#$list.sales#}人已买</p>
+						<span></span>
+					</a>
+					<a href="#" target="_blank" title="{#$list.title#}" class="tit">{#$list.title#}</a>
+				</li>
+				{#/build#}
+			</ul>
+		</div>
+	</div>
+	<!-- 促销建材商品 e -->
+
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v=1"></script>
+</body>
+</html>

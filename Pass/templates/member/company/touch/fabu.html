@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{#if $do == "edit"#}{#$langData['siteConfig'][6][142]#} - {#$detail_title#}{#else#}{#$langData['siteConfig'][6][143]#}{#/if#} - {#$cfg_webname#}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/gz-fabu.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu-{#$module#}{#if $type != ''#}-{#$type#}{#/if#}.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.deferred.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+
+  var modelType = '{#$module#}', state = '{#$state#}', type = '{#$type#}', typeid = {#$typeid#};
+  var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize*1024*1024#}, atlasType = '{#$atlasType#}', atlasMax = {#$atlasMax#};
+  var id = {#$id#};
+</script>
+</head>
+<body>
+
+<div class="gz-address">
+
+  <div class="gz-addr-wrap" id="gzAddNewObj">
+
+  	{#if $do == "edit"#}
+  		{#$pageTitle = $langData['siteConfig'][6][142]#}
+        {#if $module == 'tuan'#}
+            {#$pageRight = "<a href='javascript:;'>"|cat:$langData['siteConfig'][6][151]|cat:"</a>"#}
+        {#/if#}
+  	{#else#}
+  		{#if $module == 'article'#}
+  			{#$pageTitle = $langData['siteConfig'][19][235]#}
+  		{#else if $module == 'tuan'#}
+            {#$pageTitle = $langData['siteConfig'][11][4]#}
+            {#$pageRight = "<a href='javascript:;'>"|cat:$langData['siteConfig'][6][151]|cat:"</a>"#}
+        {#else#}
+  			{#$pageTitle = $langData['siteConfig'][6][143]#}
+  		{#/if#}
+  	{#/if#}
+  	{#include file="top.html"#}
+
+  	{#include file="fabu-$module.html"#}
+
+  </div>
+  {#if $module != tuan#}
+  <div class="gz-sel-addr gz-sel-addr-hide" id="gzSelAddr">
+		<div class="gz-sel-addr-header">
+			<h3>{#$langData['siteConfig'][7][2]#}</h3>
+			<button class="gz-sel-addr-close" id="gzSelAddrCloseBtn"></button>
+		</div>
+		<ul class="gz-sel-addr-nav"></ul>
+		<div class="gz-sel-addr-list"></div>
+	</div>
+
+  <div class="gz-sel-addr-mask"></div>
+  {#/if#}
+
+</div>
+
+<div class="error"></div>
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.js" type="text/javascript"></script>
+{#if $module != tuan#}
+<script src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+{#/if#}
+<script src="{#$templets_skin#}js/fabu.js?v={#$cfg_staticVersion#}"></script>
+{#if $module != tuan#}
+<script src="{#$templets_skin#}js/gz-{#$module#}.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+<script src="{#$templets_skin#}js/fabu{#if $module != ''#}-{#$module#}{#/if#}{#if $type != ''#}-{#$type#}{#/if#}.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+body{max-width: 1080px;margin: 0 auto;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;font-size: .24rem;opacity: 0;color: #000; overflow-x: hidden;}
+body.show {opacity:1;}
+html{background-color: rgb(238, 238, 238);}
+i,em{font-style: normal;}
+
+
+/*头部*/
+.header{height: 1rem; background: #262b42; position: fixed !important; left: 0; right: 0; top: 0; z-index: 999}
+.header-search{visibility: hidden;}
+
+/*头部导航*/
+.nav{background: #fff;position: fixed;top: 1rem;left: 0;right: 0;z-index: 11;display: none;}
+.nav ul{padding: .2rem 0 .1rem 0;border-bottom: 1px solid #efefef;}
+.nav li{width: 20%;float: left;text-align: center;}
+.nav li:nth-child(5n) a span{border-right: none;}
+.nav li a{display: block;padding: .3rem 0;font-size: .26rem;}
+.nav li a span{display: block;border-right: 1px solid #efefef;line-height: .25rem;}
+
+/*分类*/
+.topNav{background: #fff; border-bottom: 1px solid #c3c3c3; margin-top: .9rem; width: 7.5rem; overflow: hidden;}
+.topNav ul li{ position: relative; display: block; width: auto;}
+.topNav ul li a{padding: 0 .3rem; height: 1rem; line-height: 1rem; font-size: .36rem; color: #000; display: block; }
+.topNav ul li.active a{border-bottom: 3px solid #3385ff; position: relative; color: #3385ff;}
+.topNav ul li.active i{position: absolute; display: block; width: 0; height: 0; border-left: .2rem solid transparent; border-right: .2rem solid transparent; border-top: .2rem solid #3385ff; bottom: -0.2rem; left: 50%; margin-left: -0.2rem;}
+.swiper-wrapper{height: 1rem;}
+
+/*子分类*/
+.subNav{background: #fff; border-bottom: 1px solid #c3c3c3;}
+.subNav ul{overflow-x: auto; display: none;}
+.subNav ul:first-child{ display: -webkit-box;}
+.subNav ul li{padding: 0 .3rem; height: 1rem; line-height: 1rem; font-size: .32rem;}
+.subNav ul li a{color: #555;}
+.subNav ul li.on a{color: #3385ff;}
+
+.main .loading {height: 2rem; text-align: center; line-height: 2rem;}
+.main .empty {height: 2rem; text-align: center; line-height: 2rem;}
+
+/*内容*/
+.listbox{padding: 0 .2rem; background: #fff; margin: .2rem 0 1px; box-shadow: 0 1px 3px rgba(0,0,0,.2);}
+.listbox a{display: block;}
+.listbox .title{height: .8rem; font-size: .34rem; overflow: hidden; line-height: .8rem;}
+.listbox .title .tag{padding: 0 .1rem; margin-right: .2rem; font-size: .28rem;}
+.listbox .title .tag1{border: 1px solid #2398eb; color: #2398eb;}
+.listbox .title .tag2{border: 1px solid #f25824; color: #f25824;}
+.listbox .txtbox{font-size: .28rem; line-height: .4rem; max-height: .8rem; overflow: hidden; margin-bottom: .1rem; color: #777;}
+.listbox .imgbox{position: relative;}
+.listbox .imgbox .total{position: absolute; bottom: 0; right: 0; color: #fff; background: rgba(0,0,0,.6); padding: .05rem .15rem;}
+.listbox .imgbox ul{max-height: 2.6rem; overflow: hidden;}
+.listbox .imgbox li{width: 32%; float: left; margin-right: 2%; box-sizing: border-box;}
+.listbox .imgbox li:last-child{margin-right: 0;}
+.listbox .imgbox li img{background-size: cover; background-repeat: no-repeat; background-position: center 20%; height: 2.6rem; width: 100%; display: block;}
+.listbox .user{height: .8rem; line-height: .8rem; font-size: .26rem;}
+.listbox .user-l .time{color: #999; font-size: .24rem; margin-left: .1rem;}
+.listbox .user-r{background: url(../images/msg.png) left center no-repeat; background-size: .4rem; padding-left: .5rem; color: #666;}
+
+/*底部*/
+.footer {text-align: center; height: 1.2rem; line-height: 1.2rem; font-size: .28rem; color: #777;}
+
+/*发布新帖*/
+.btn-fabu{width: 1rem; height: 1rem; z-index: 999; position: fixed; bottom: 1rem; left: .2rem; background: url(../images/fabu.png) no-repeat; background-size: contain;}
+
+
+
+/*底部*/
+.fixFooter{position: fixed; bottom: 0; left: 0; right: 0; height: .9rem; background: #fff; border-top: 1px solid #e4e4e3; font-size: .24rem; z-index: 100; -webkit-animation: FadeIn .15s ease-out; -moz-animation: FadeIn .15s ease-out; animation: FadeIn .15s ease-out;}
+.fixFooter ul{display: -webkit-box;}
+.fixFooter ul li{-webkit-box-flex: 1; text-align: center;}
+.fixFooter ul li a{display: block;}
+.fixFooter ul li i{display: block; width: .5rem; height: .5rem; margin: .05rem auto 0;}
+.fixFooter ul li.ficon1 i{background: url(../images/aficon1.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon2 i{background: url(../images/aficon2.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon3 i{background: url(../images/aficon3.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon4 i{background: url(../images/aficon4.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon5 i{background: url(../images/aficon5.png) center center no-repeat; background-size: .4rem auto;}

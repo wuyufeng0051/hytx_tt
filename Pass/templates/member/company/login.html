@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$langData['siteConfig'][26][90]#}-{#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}../../siteConfig/default/css/index_public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/login.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', busiDomain = '{#$member_busiDomain#}';
+</script>
+</head>
+<body>
+{#include file="../../siteConfig/top1.html"#}
+<!-- head s -->
+<div class="wrap header fn-clear">
+	<div class="logo">
+		<a href="{#$cfg_basehost#}" title="{#$cfg_webname#}">
+			<img src="{#$cfg_weblogo#}" alt="{#$cfg_webname#}">
+			<div class="shortname"><h2>{#$cfg_shortname#}</h2><p>{#$langData['siteConfig'][23][26]#}</p></div>
+		</a>
+	</div>
+	<dl class="kefu fn-clear">
+		<dt><img src="{#$templets_skin#}images/kf_tel.png" alt=""></dt>
+		<dd>
+			<p class="p1">{#$langData['siteConfig'][19][275]#}</p>
+			<p class="p2">{#$cfg_hotline#}</p>
+		</dd>
+	</dl>
+</div>
+<!-- head e -->
+
+<!-- 大图幻灯 s -->
+<div class="banner">
+
+	<div class="wrap">
+		<div class="slide" id="slide">
+			{#myad id="114" type="slide"#}
+		</div>
+		<div id="slidebtn" class="slidebtn"></div>
+
+		<div class="logFrame">
+			<div class="login">
+				<h3>{#$langData['siteConfig'][26][91]#}</h3>
+				<div class="err-tip fn-clear"><s></s><span>{#$langData['siteConfig'][27][53]#}</span></div>
+				<dl class="username">
+					<dt><label for="username"><s></s></label></dt>
+					<dd><input type="text" class="login-input" name="username" id="username" autocomplete="off" /><span>{#$langData['siteConfig'][26][92]#}</span></dd>
+				</dl>
+				<dl class="password">
+					<dt><label for="password"><s></s></label></dt>
+					<dd><input type="password" class="login-input" name="password" id="password" autocomplete="off" /><span>{#$langData['siteConfig'][5][11]#}</span></dd>
+				</dl>
+				{#if $loginCode == 1#}
+				<dl class="vdimgck">
+					<dt><label for="vdimgck"><s></s></label></dt>
+					<dd><input type="text" class="login-input" name="vdimgck" id="vdimgck" maxlength="4" autocomplete="off" /><span>{#$langData['siteConfig'][4][0]#}</span><img src="/include/vdimgck.php" title="{#$langData['siteConfig'][24][66]#}" id="verifycode"></dd>
+				</dl>
+				{#/if#}
+				<input type="button" class="sbtn" id="submit" value="{#$langData['siteConfig'][2][0]#}" />
+				<p><a href="{#$cfg_basehost#}/fpwd.html">{#$langData['siteConfig'][27][54]#}</a></p>
+				<div class="qlogin">
+					{#siteConfig action="getLoginConnect"#}
+					<a href="{#$cfg_basehost#}/api/login.php?type={#$row.code#}" title="{#$row.name#}"><img src="/api/login/{#$row.code#}/img/24.png" /></a>
+				  {#/siteConfig#}
+				</div>
+			</div>
+			<div class="mbg"></div>
+		</div>
+
+	</div>
+</div>
+<!-- 大图幻灯 e -->
+
+<div class="wrap">
+	<h2 class="ptitle">{#$langData['siteConfig'][26][93]|replace:'1':$cfg_shortname#}  {#$langData['siteConfig'][26][94]#}</h2>
+	<div class="mod-list fn-clear">
+		<dl><dt><img src="{#$templets_skin#}images/icon/website.gif" /></dt><dd><h4>{#$langData['siteConfig'][26][95]#}</h4><p>{#$langData['siteConfig'][26][96]#}</p></dd></dl>
+		<dl><dt><img src="{#$templets_skin#}images/icon/build.gif" /></dt><dd><h4>{#$langData['siteConfig'][26][97]#}</h4><p>{#$langData['siteConfig'][26][98]#}</p></dd></dl>
+		<dl><dt><img src="{#$templets_skin#}images/icon/dating.gif" /></dt><dd><h4>{#$langData['siteConfig'][26][99]#}</h4><p>{#$langData['siteConfig'][26][100]#}</p></dd></dl>
+		<dl><dt><img src="{#$templets_skin#}images/icon/waimai.gif" /></dt><dd><h4>{#$langData['siteConfig'][26][101]#}</h4><p>{#$langData['siteConfig'][26][102]#}</p></dd></dl>
+		<dl><dt><img src="{#$templets_skin#}images/icon/paper.gif" /></dt><dd><h4>{#$langData['siteConfig'][23][14]#}</h4><p>{#$langData['siteConfig'][26][103]#}</p></dd></dl>
+		<dl><dt><img src="{#$templets_skin#}images/icon/car.gif" /></dt><dd><h4>{#$langData['siteConfig'][26][104]#}</h4><p>{#$langData['siteConfig'][26][105]#}</p></dd></dl>
+	</div>
+</div>
+
+<!-- 底部 s -->
+<div class="footer-login">
+	<p>
+		{#siteConfig action="singel"#}
+		<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a><span class="pice">|</span>
+		{#/siteConfig#}
+		<a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">{#$langData['siteConfig'][19][273]#}</a>
+	</p>
+	{#$cfg_powerby#}
+</div>
+<!-- 底部 e -->
+
+<span class="fn-hide" id="isLogin">{#$isLogin#}</span>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/login.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

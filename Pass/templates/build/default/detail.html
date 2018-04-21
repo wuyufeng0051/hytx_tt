@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-{#$build_title#}</title>
+<meta name="keywords" content="{#$build_keywords#}"/>
+<meta name="description" content="{#$build_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/goodsD.css" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$build_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	var detailID = {#$detail_id#};     //当前信息ID
+	var detailTitle = '{#$detail_title#}';
+	var detailPrice = {#$detail_price#};
+	var maxCount = {#$detail_inventory#};  //最多购买数量
+	var detailThumb = '{#changeFileSize url={#$detail_litpic#} type='small'#}';   //当前商品缩略图
+	var detailUrl = '{#getUrlPath service="build" template="detail" id=$detail_id#}';
+	var date = [];
+	{#if $detail_property|strpos:'q' !== false#}
+	date = [{#$smarty.now#}, {#$detail_btime#}, {#$detail_etime#}];
+	{#/if#}
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<!-- 面包屑 -->
+<div class="container clearfix">
+	<div class="bread">
+		<a href="{#$build_channelDomain#}" target="_blank">首页</a><em>></em>
+			{#foreach from=$detail_typename item=typename key=k name=foo#}
+			<a href="{#getUrlPath service='build' template='list' param="typeid={#$detail_typeids[$k]#}"#}" target="_blank">{#$typename#}</a>
+			{#if !$smarty.foreach.foo.last#}<em>></em>{#/if#}
+			{#/foreach#}
+	</div>
+
+	<!-- 左侧 -->
+	<div class="left sjLeft">
+		<dl class="singleGoods clearfix">
+			<dt>
+				<div class="box">
+
+					<div class="tb-booth tb-pic tb-s310">
+						<i style="display: none;"></i>
+						<a href="{#$detail_pics[0].path#}" target="_blank"><img src="{#$detail_pics[0].path#}" rel="{#$detail_pics[0].path#}" class="jqzoom" /></a>
+					</div>
+
+					<ul class="tb-thumb" id="thumblist">
+						{#foreach from=$detail_pics item=pic key=k#}
+						{#if $k < 5#}
+						<li{#if $k == 0#} class="tb-selected"{#/if#}>
+							<div class="tb-pic tb-s40"><a href="javascript:;">
+								<img src="{#changeFileSize url={#$pic.path#} type='small'#}" mid="{#$pic.path#}" big="{#$pic.path#}"></a>
+							</div>
+						</li>
+						{#/if#}
+						{#/foreach#}
+					</ul>
+
+				</div>
+			</dt>
+			<dd class="title"><p>{#$detail_title#}</p><em>运费：{#$detail_logistic#}{#echoCurrency type='short'#}</em></dd>
+			<dd class="info">
+				<form action="{#getUrlPath service='build' template='confirm-order'#}" id="buyForm" method="post">
+					<input type="hidden" name="pros[]" id="pros" value="" />
+					<ul>
+						{#if $detail_store.qq#}
+						<div class="kefu">
+							<a href="http://wpa.qq.com/msgrd?v=3&uin={#$detail_store.qq#}&Site={#$shop_title#}&Menu=yes" target="_blank"></a>
+						</div>
+						{#/if#}
+						<em>请选择商品信息</em>
+						<li class="jiage x"><span class="t">原价：</span><s>{#echoCurrency type='symbol'#}{#$detail_mprice#}</s></li>
+						<li class="jiage y"><span class="t">现价：</span><font>{#echoCurrency type='symbol'#}{#$detail_price#}</font></li>
+						<li><span class="t">型号：</span><label>{#$detail_model#}&nbsp;</label></li>
+						<li><span class="t">规格：</span><label>{#$detail_specifi#}&nbsp;</label></li>
+						{#if $detail_property|strpos:'q' !== false#}
+						<li><span class="t">抢购：</span><label class="expiry">&nbsp;</label></li>
+						{#/if#}
+						{#if $detail_inventory > 0#}
+						<li class="count"><span class="t">数量：</span>
+							<div class="num"><i class="down"></i><input type="text" value="1" readonly ><i class="up"></i></div><dfn class="left">件</dfn><var class="left" style="margin-left:20px; font-size: 12px;">库存<b>{#$detail_inventory#}</b>件</var><cite style="display: none;">超过当前库存</cite>
+						</li>
+						{#/if#}
+					</ul>
+				</form>
+			</dd>
+
+			{#if $detail_inventory <= 0#}
+			<dd class="cartBuy"><a class="btn" href="javascript:;">已售完</a></dd>
+			{#else#}
+			<dd class="cartBuy"><a class="buyNow" href="javascript:;">立即购买<i></i></a><a class="cart" href="javascript:;">加入购物车<i></i></a></dd>
+			{#/if#}
+
+			<dd class="share">
+				<div class="bdsharebuttonbox">
+				<span class="iconShare"><i></i>分享到：</span>
+				<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+				<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+				<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+				<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+				<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+				<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+				<a href="#" class="bds_kaixin001" data-cmd="kaixin001" title="分享到开心网"></a>
+				</div>
+				<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+			</dd>
+		</dl>
+
+		<div class="detailComment"><div class="left"><a class="on" href="javascript:;">商品详情</a><a href="javascript:;">商品评价</a></div></div>
+		<div class="allCon">
+			<div class="con detailCon">
+				{#$detail_body#}
+			</div>
+
+			<div class="con comentCon"  style="display: none;">
+				<div class="rate">
+					<div class="left score"><span>{#$detail_rating * 100#}<em>%</em></span><i></i></div>
+					<div class="left percent">
+						<dl><dt>描述({#$detail_score1 * 20#}%)</dt><dd><span style=" width: {#$detail_score1 / 5 * 100#}%;"></span></dd></dl>
+						<dl><dt>服务({#$detail_score2 * 20#}%)</dt><dd><span style=" width: {#$detail_score2 / 5 * 100#}%;"></span></dd></dl>
+						<dl><dt>质量({#$detail_score3 * 20#}%)</dt><dd><span style=" width: {#$detail_score3 / 5 * 100#}%;"></span></dd></dl>
+					</div>
+				</div>
+				<div class="all-comment">
+					<div class="left commentSel">
+						<a class="on" href="javascript:;" data-filter="">全部评价</a>
+						<a href="javascript:;" data-filter="h">好评</a>
+						<a href="javascript:;" data-filter="z">中评</a>
+						<a href="javascript:;" data-filter="c">差评</a>
+					</div>
+				</div>
+				<div class="comment-list">
+					<p class="loading"><img src="{#$cfg_basehost#}/static/images/loading_h8.gif"></p>
+					<ul  id="comment-list"></ul>
+					<div class="pagination fn-clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="right businessInfo">
+		{#if $detail_store#}
+		<div class="busInfo">
+			<div class="title clearfix">
+				<div class="left"></div>
+				<p class="left"></p>
+				<div class="left"></div>
+			</div>
+			<div class="info">
+				<p class="t"><a href="{#$detail_store['domain']#}" target="_blank">{#$detail_store['title']#}</a></p>
+				<p><span><font class="left">联&nbsp;&nbsp;系&nbsp;人：</font><em>{#$detail_store['people']#}</em></span></p>
+				<p><span><font class="left">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</font><em>{#$detail_store['tel']#}</em></span></p>
+				<p><span><font class="left">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</font><em>{#$detail_store['addr'][0]#} {#$detail_store['addr'][1]#} {#$detail_store['address']#}</em></span></p>
+				<p><span><font class="left">经营产品：</font><em>{#$detail_store['project']#}</em></span></p>
+			</div>
+			<div class="make clearfix">
+				<a href="{#$detail_store['domain']#}" target="_blank" class="left">进入店铺</a>
+				<!-- <a href="#" class="right">收藏旺铺</a> -->
+			</div>
+		</div>
+		{#/if#}
+		<div class="hotGoods">
+			<h3><i><em></em></i>热卖商品排行</h3>
+			<ul>
+				{#build action="blist" return="sl" store={#$detail_store.id#} orderby=1 page=1 pageSize=10#}
+				{#if $_bindex.sl < 4#}
+				<li class="on fn-clear">
+					<div class="left"><span>{#$_bindex.sl#}<i></i></span></div>
+					<dl class="left fn-clear"><dt><a href="{#$sl.url#}" target="_blank"><img src="{#changeFileSize url={#$sl.litpic#} type='small'#}" alt="{#$sl.title#}"></a></dt><dd class="t"><a href="{#$sl.url#}" target="_blank">{#$sl.title#}</a></dd><dd>{#echoCurrency type='symbol'#}{#$sl.price#}</dd></dl>
+				</li>
+				{#else#}
+				<li class="h"><span>{#$_bindex.sl#}</span><p><a href="{#$sl.url#}" target="_blank">{#$sl.title#}</a></p></li>
+				{#/if#}
+				{#/build#}
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.imagezoom.min.js"></script>
+<!--[if lte IE 9]>
+<script src="{#$cfg_staticPath#}js/ui/requestAnimationFrame.js"></script>
+<![endif]-->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.fly.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/goodsD.js?v=1"></script>
+</body>
+</html>

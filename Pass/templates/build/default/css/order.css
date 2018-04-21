@@ -1,0 +1,130 @@
+.container{margin-bottom: 40px;}
+h3 i{display: inline-block; width: 20px; height: 22px; vertical-align: middle; background: url(../images/bulid.png) no-repeat; margin:0 5px;}
+h3{height: 50px; line-height: 50px; font-size: 18px; margin-top:10px;}
+h3.addr i{background-position: -155px -40px; }
+h3.pay i{background-position:-130px -40px }
+h3.info i{background-position: -177px -40px;}
+.addrCon,.payCon,.infoCon{border:1px solid #ececec; background: #fff; padding: 25px 20px;}
+p.title{height: 35px; padding-left:15px; font-size: 14px; line-height: 35px; background: #f7f7f7}
+.addrList{margin:20px 0;}
+.addrD{position: relative; float: left; margin:0 20px 20px 0; width: 208px; padding:10px; height: 123px; background: url(../images/add.png) -232px 0;  }
+
+.addrD i{display: inline-block; position: absolute; right: -5px; top:-5px; width: 24px; height: 24px; background: url(../images/bulid.png) -96px 0; display: none;}
+.addrD.current{background-position: 0 0}
+.addrD.current i{display: block;}
+.addrD.current a.default{cursor: not-allowed; color: #999}
+.addrD.current a.default:hover{text-decoration: none;}
+.addrD p { cursor: pointer;}
+.addrD p.detail{width: 100%; height: 60px; line-height: 20px; overflow: hidden;}
+.addrD p.detail span{margin-right: 10px;}
+.addrD p span.name,.addrD p span.phone{line-height: 30px; font-size: 14px; }
+.addrD p span.phone{margin-left:20px;}
+.addrD p.b{margin-top:10px; }
+.addrD p.b a{margin-right:20px;color: #666}
+.addrList .add{ width:130px; height: 130px; border:1px dashed #fff; background: #139bce; cursor: pointer;}
+.addrList .add span{display: block; width: 32px; height: 32px; margin:30px auto 15px; background: url(../images/bulid.png) -169px -91px no-repeat;}
+.addrList .add p{text-align: center; color: #fff}
+.addrD a:hover{text-decoration: underline;}
+
+.editAddr ul{margin-top:35px;}
+.editAddr ul li{width: 100%;height: 35px; line-height: 35px; font-size: 14px; margin-top: 20px;}
+.editAddr ul li dl{float: left; overflow: hidden;}
+.editAddr ul li dt{float: left; width: 100px; height: 35px; text-align: right}
+.editAddr ul li dd{float: left;}
+.editAddr ul li font{color: #e54e54; margin-right: 5px}
+.editAddr ul li input{width: 200px; height: 33px; line-height: 33px; border:1px solid #ececec; padding:0 5px;}
+.editAddr ul li.cue{font-size: 14px; height: 20px; line-height: 20px; height: 20px}
+.editAddr ul li.cue input{width: 15px; height: 15px; vertical-align: middle; padding:0; background:none; margin-right: 10px;}
+.editAddr ul li.cue dt{height: 20px;}
+.editAddr ul li dd.cue{font-size: 12px; color: #999}
+#submit{display: inline-block; width: 200px; height:40px; border-radius: 5px; text-align: center; line-height: 40px; color: #fff; font-size: 14px; background: #ff530c; font-size: 18px;}
+#cancel{margin-left:30px; color: #ff4a00}
+.editAddr ul li dd select{height: 33px; line-height: 33px; border:1px solid #ececec; padding:0 6px; margin-right:  2px; max-width: 140px;}
+
+.input-tips {display:none;  padding-left: 10px; color: #666;}
+.input-tips s {display: inline-block; width: 17px; height: 17px; margin: -3px 5px 0 0; vertical-align: middle; background: url('../images/icon-status.png') 0 -296px;}
+.editAddr ul li.error .input-tips{display: block;}
+.payCon .style{margin-bottom: 20px;}
+.payCon .style a{margin-right: 20px; font-size: 16px; padding:5px; border-bottom: 2px solid #fff}
+.payCon .style a.on{border-bottom: 2px solid #ff5c19}
+.blist .bank-icon {position: relative; display: inline-block; width: 178px; height: 42px; padding: 1px; border: 1px solid #dedede; margin:15px 15px 0 0px; background-color: #fff;}
+.blist .bank-icon span {display: block; height: 26px; margin: 7px auto 0 17px; background-image: url('../images/bank.png?v=1'); background-repeat: no-repeat;}
+.blist .active {padding: 0; border: 2px solid #f60;}
+.blist .active b {position: absolute; right: 0; bottom: 0; width: 20px; height: 21px; background: url('../images/bankActive.png');}
+.terrace .bank-icon span {margin: 7px auto 0;}
+/* 平台支付icon定位 */
+
+.alipay {width: 73px; background-position: -4px -938px;}  /* 支付宝 */
+.unionpay {width: 100px; background-position: -4px -1008px;}  /* 银联在线 */
+.bankpayment {width: 105px; background-position: -4px -1303px;}  /* 储蓄卡网银 */
+.tenpay {width: 73px; background-position: -4px -974px;}  /* 财付通 */
+.wxpay {width: 101px; background-position: -3px -1045px;}  /* 微信支付 */
+.baidu {width: 90px; background-position: -4px -1198px;}  /* 百度钱包 */
+.paypal {width: 87px; background-position: -4px -1121px;}  /* PayPal */
+.jdpay {width: 95px; background-position: -4px -1273px;}  /* 京东钱包 */
+.yeepay {width: 91px; background-position: -4px -1236px;}  /* 易宝支付 */
+
+/* 银行icon定位 */
+.icbc {width: 90px; background-position: -4px -580px;}  /* 中国工商银行 */
+.ccb {width: 90px; background-position: -4px -148px;}  /* 中国建设银行 */
+.boc {width: 89px; background-position: -4px -112px;}  /* 中国银行 */
+.comm {width: 90px; background-position: -4px -399px;}  /* 交通银行 */
+.abc {width: 90px; background-position: -4px -4px;}  /* 中国农业银行 */
+.cmb {width: 90px; background-position: -4px -328px;}  /* 招商银行 */
+.psbc {width: 91px; background-position: -4px -687px;}  /* 邮政储蓄银行 */
+.ceb {width: 93px; background-position: -4px -219px;}  /* 中国光大银行 */
+.cmbc {width: 90px; background-position: -4px -363px;}  /* 中国民生银行 */
+.pingan {width: 93px; background-position: -4px -795px;}  /* 平安银行 */
+.spdb {width: 91px; background-position: -4px -832px;}  /* 浦发银行 */
+.ecitic {width: 89px; background-position: -4px -292px;}  /* 中信银行 */
+.cib {width: 93px; background-position: -4px -255px;}  /* 兴业银行 */
+.hxb {width: 92px; background-position: -4px -435px;}  /* 华夏银行 */
+.cgb {width: 92px; background-position: -4px -507px;}  /* 广发银行 */
+.beijing {width: 90px; background-position: -4px -40px;}  /* 北京银行 */
+.bjrcb {width: 104px; background-position: -4px -76px;}  /* 北京农商银行 */
+.bocd {width: 90px; background-position: -4px -184px;}  /* 成都银行 */
+.fudian {width: 89px; background-position: -4px -471px;}  /* 富滇银行 */
+.hzcb {width: 94px; background-position: -4px -544px;}  /* 杭州银行 */
+.nbcb {width: 90px; background-position: -4px -616px;}  /* 宁波银行 */
+.njcb {width: 91px; background-position: -4px -652px;}  /* 南京银行 */
+.shanghai {width: 91px; background-position: -4px -723px;}  /* 上海银行 */
+.srcb {width: 104px; background-position: -4px -760px;}  /* 上海农商银行 */
+.wzcb {width: 91px; background-position: -4px -867px;}  /* 温州银行 */
+.zjnx {width: 91px; background-position: -4px -903px;}  /* 浙江农信 */
+
+.infoCon{padding: 0}
+ul.title{width: 100%; height: 35px; line-height: 35px; border-bottom: 1px solid #ececec }
+ul.title li{float: left; font-size: 14px; width: 16%; text-align: center; font-size: 14px; white-space: nowrap;}
+ul.title li.shop{text-align: left; width: 14%; margin-left: 2%}
+ul.title li.goods{width: 23%;}
+ul.title li.unitPrice,ul.title li.uniTotal{width: 13%}
+ul.sp{padding:15px 0; border-bottom: 1px dashed #ececec}
+ul.sp li{float: left ; width: 16%; text-align: center; font-size: 14px;}
+ul.sp li.img{width: 7%; margin-left: 2%}
+ul.sp li.title{width: 30%; text-align: left;font-size: 14px;}
+ul.sp li img{display: block; width: 60px; height: 60px;}
+ul.sp li.unitPrice,ul.sp li.uniTotal{width: 13%}
+ul.sp li span{display: block; font-size: 12px; color: #999; }
+ul.sp li s{color: #999; font-size: 12px;}
+ul.sp li i{padding:0px 10px; border-radius:10px; color: #ff4a00; font-size: 12px; border:1px solid #ff4a00;}
+input.message{width: 330px; height: 30px; line-height: 30px; border:1px solid #ececec; background: #f7f7f7; padding:0 10px; margin:20px 0 20px 2%}
+.account{margin:0 2%; padding-bottom: 30px; position: relative;}
+.account .left1{margin:20px 0; position: absolute; left: 0; bottom: 0;}
+.account .left .left{width: 150px; border-right: 1px solid #ececec}
+.account .left .left a{display: block; width: 81px; height: 25px; background: url(../images/bulid.png)-119px -124px no-repeat;}
+.account .left .left p{line-height: 25px; color: #666}
+.account .left .right a{display: inline-block; width: 110px; height: 35px; line-height: 35px; background: #333; color: #fff; font-size: 14px; text-align: center; margin-left: 20px;}
+.account .right1{text-align: right;}
+.account .right1 p{ font-size: 14px;line-height: 30px; padding: 15px 0;}
+.account .right1 p span{font-size: 20px; color: #ff530c}
+.account .right1 a{display: inline-block; width: 205px; height: 40px; margin-top: 10px; text-align: center; line-height: 40px; font-size: 24px; color: #fff; background: #ff530c; border-radius: 5px;}
+.account .right1 p em{color: #ff530c; margin: 0 5px;}
+
+
+.use-account {padding: 10px 10px 0 0; font-size: 12px;}
+.use-account .discharge, .account-summary {float: right;}
+.account-summary {margin-right: 30px; text-align: right;}
+.account-summary input {vertical-align: -2px; margin-right: 3px;}
+.use-input, .use-tip {display: none;}
+#usePcount, #useBcount {width: 50px; vertical-align: 0; padding: 0 3px;}
+.use-tip {padding: 5px 0; text-align: right; color: #999;}

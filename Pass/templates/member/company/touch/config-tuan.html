@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>{#$langData['siteConfig'][19][443]#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/config-tuan.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<!-- 时间选择 -->
+<link href="{#$templets_skin#}css/mobileSelect.css" rel="stylesheet" type="text/css" />
+<script src="{#$templets_skin#}js/mobileSelect.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+<body>
+<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=tuan&action=storeConfig">
+    <input type="hidden" name="stype" id="stype" value="{#$detail_typeid#}" />
+    <div class="personal_bac">
+        <div class="mask_box">
+            <!-- 头部 s -->
+            {#$pageTitle = $langData['siteConfig'][19][443]#}
+            {#$pageRight = "<a href='javascript:;'>"|cat:$langData['siteConfig'][6][27]|cat:"</a>"#}
+            {#include file="../../../siteConfig/touch_top.html"#}
+            <!-- 头部 e -->
+                <!-- 选择区域 s-->
+                <div class="selAddr ChoiceBox">
+                    <span>{#$langData['siteConfig'][19][27]#}</span><div class="addr ChoiceBox_input">{#if $detail_addrname#}{#$detail_addrname[0]#} {#$detail_addrname[1]#}{#else#}{#$langData['siteConfig'][7][2]#}{#/if#}</div>
+                    <input type="hidden" name="addrid" id="addrid" value="{#$detail_addrid#}">
+                    <input type="hidden" id="addrname0" value="{#$detail_addrname[0]#}">
+                    <input type="hidden" id="addrname1" value="{#$detail_addrname[1]#}">
+                </div>
+                <!-- 选择区域 e-->
+                <!-- 所在商圈 s-->
+                <div class="Business ChoiceBox {#if !$detail_addrid || !$detail_circleid#} fn-hide{#/if#}">
+                    <span>{#$langData['siteConfig'][19][515]#}</span><div class="BusinessInput ChoiceBox_input">{#if !$detail_addrid || !$detail_circleid#} {#$langData['siteConfig'][7][2]#}{#else#}{#$langData['siteConfig'][19][881]#}{#/if#}</div>
+                </div>
+                <!-- 所在商圈 e-->
+                <!-- {#$langData['siteConfig'][19][516]#} s-->
+                <div class="subwey ChoiceBox {#if !$detail_city#} fn-hide{#/if#}">
+                    <span>{#$langData['siteConfig'][19][516]#}</span><div class="SubweyIupt ChoiceBox_input">{#if !$detail_city#} {#$langData['siteConfig'][7][2]#} {#else#}{#$langData['siteConfig'][19][881]#}{#/if#}</div>
+                </div>
+                <!-- 附近地铁 e-->
+                <!-- 详细地址 s -->
+                <div class="location">
+                    <div class="LoTitle fn-clear"><em>{#$langData['siteConfig'][19][35]#}</em><span><i></i>{#$langData['siteConfig'][19][882]#}</span></div>
+                    <textarea name="address" rows="8"  cols="80" id="location_con">{#$detail_address#}</textarea>
+                    <input type="hidden" id="lnglat" name="lnglat" value="{#$detail_lnglat#}">
+                </div>
+                <!-- 详细地址 e -->
+                <!-- 联系电话 s -->
+                <div class="tel">
+                    <em>{#$langData['siteConfig'][19][56]#}</em><input type="tel" name="phone" id="phone" value="{#$detail_tel#}" max-length="20" placeholder="{#$langData['siteConfig'][20][412]#}...">
+                </div>
+                <!-- 联系电话 e -->
+                <!-- 营业时间 s -->
+                <div class="OpenData">
+                    <em>{#$langData['siteConfig'][18][15]#}</em><span><input name="openStart" type="text" value="{#$detail_openStart#}" id="StartTime" readonly><i>{#$langData['siteConfig'][13][7]#}</i><input name="openEnd" type="text" id="EndTime" value="{#$detail_openEnd#}" readonly></span>
+                </div>
+                <!-- 营业时间 e -->
+                <!-- 简介 s -->
+                <div class="introduce">
+                    <p>{#$langData['siteConfig'][19][494]#}</p>
+                    <textarea name="note" placeholder="{#$langData['siteConfig'][20][410]#}..." id="note" cols="30" rows="10">{#$detail_note#}</textarea>
+                </div>
+                <!-- 简介 e -->
+        </div>
+        <div class="gz-sel-addr gz-sel-addr-hide"id="gzSelAddr" >
+        	<div class="gz-sel-addr-header">
+        		<h3>{#$langData['siteConfig'][6][73]#}</h3>
+        		<p class="gz-sel-addr-close"id="gzSelAddrCloseBtn"></p>
+        	</div>
+        	<ul class="gz-sel-addr-nav"></ul>
+        	<div class="gz-sel-addr-list"></div>
+        </div>
+        <div class="gz-sel-addr-mask"></div>
+        <div class="QuanBox QuanBox_hide">
+            <div class="QuanTitle">
+                <h3>{#$langData['siteConfig'][6][156]#}</h3>
+                <p class="QuanTitle_close"></p>
+            </div>
+            <div class="QuanList" id="QuanList">
+                <ul>
+                    {#if $detail_addrid#}
+					{#tuan action="circle" type="{#$detail_addrid#}"#}
+                    <li><label><em>{#$row.name#}</em><div class="checkbox"><input type="checkbox" {#if $detail_circleid && $row.id|in_array:$detail_circleid#} checked{#/if#} name="circle[]" data-name="{#$row.name#}" value="{#$row.id#}"><i class="checkBtn"></i></div></label></li>
+					{#/tuan#}
+					{#/if#}
+                </ul>
+            </div>
+            <div class="Quan_SureBtn">{#$langData['siteConfig'][6][1]#}</div>
+        </div>
+        <div class="SubwayBox Subway_hide">
+            <div class="SubwayTitle">
+                <h3>{#$langData['siteConfig'][19][516]#}</h3>
+                <p class="Subway_close"></p>
+            </div>
+            <div class="SubwayList">
+                <div class="SubwayNav">
+                    {#siteConfig action="subway" city=$detail_city return='city'#}
+                        <em {#if $_bindex.city == 1#}class="subBC"{#/if#}>{#$city.title#}</em>
+    				{#/siteConfig#}
+                </div>
+                <div class="SubChoice_box fn-clear">
+                    {#siteConfig action="subway" return="subway1" city=$detail_city#}
+                    <div class="sub  {#if $_bindex.subway1 > 1#}fn-hide{#/if#} fn-clear">
+                        {#siteConfig action="subwayStation" type="{#$subway1.id#}" return="subway"#}
+                            <label><input type="checkbox" name="subway[]" {#if $detail_subwayid && $subway.id|in_array:$detail_subwayid#} checked{#/if#} data-name="{#$subway.title#}" value="{#$subway.id#}"><i class="SubCheckbtn"></i>{#$subway.title#}</label>
+                        {#/siteConfig#}
+                    </div>
+    				{#/siteConfig#}
+                </div>
+            </div>
+            <div class="Subway_SureBtn">{#$langData['siteConfig'][6][1]#}</div>
+        </div>
+    </div>
+</form>
+<div class="pageitem" id="map">
+    <div class="lead">
+        <p onclick="location.hash=''"></p>
+        <input type="text" id="searchAddr" placeholder="{#$langData['siteConfig'][20][411]#}">
+    </div>
+    <div class="map">
+        <div id="mapdiv"></div>
+        <span class="mapcenter"></span>
+    </div>
+    <div class="mapresults">
+        <ul></ul>
+    </div>
+</div>
+
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=RlrCSDRWdEdwBmGizieNRp4z&services=&t=1509073902"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/config-tuan.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

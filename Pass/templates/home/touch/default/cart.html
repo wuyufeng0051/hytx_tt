@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>购物车</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/cart.css?v=1">
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$home_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+</script>
+</head>
+<body>
+	<div class="container">
+		<!-- 头部 -->
+		<div class="header">
+			<div class="header-l">
+				<a href="javascript:history.go(-1)"><img src="{#$templets_skin#}images/left.png" alt=""></a>
+			</div>
+			<div class="header-address">
+				<span>购物车</span>
+			</div>
+			<div class="header-search">
+				<a href="javascript:;"><img src="{#$templets_skin#}images/newhome.png" alt=""></a>
+			</div>
+		</div>
+	<!-- 头部 end -->
+		<div class="cart-main">
+			<form action="{#getUrlPath service='home' template='confirm-order'#}" data-action="{#$cfg_basehost#}/include/ajax.php?service=home&action=confirm_order" method="post">
+				<ul>
+					{#foreach from=$cartList item="cart"#}
+					<li class="cart-list">
+						<div class="shop-name">
+							<div class="shop-name-circle">
+								<span></span>
+							</div>
+							<div class="shop-name-info">
+								<a href="{#if $cart.domain#}{#$cart.domain#}{#else#}javascript:;{#/if#}">
+									<span>{#$cart.store#}</span>
+									<i></i>
+								</a>
+							</div>
+						</div>
+						<div class="shop-list">
+							<ul>
+								{#foreach from=$cart.list item="list"#}
+								<li class="shop-list-li" data-id="{#$list.id#}" data-price="{#$list.price#}" data-inventory="{#$list.inventory#}" data-logistic="{#$list.logistic#}" >
+									<div class="shop-name-circle">
+										<span></span>
+									</div>
+									<div class="shop-info">
+										<a href="{#$list.url#}">
+											<div class="shop-info-img">
+												<img src="{#$list.thumb#}" alt="">
+											</div>
+										</a>
+										<div class="shop-info-txt">
+											<h3>{#$list.title#}</h3>
+											<div class="shop-info-color">
+												{#$list.specation#}
+											</div>
+											<div class="shop-info-price">
+												<span class="price">{#$list.price#}</span>
+												<span class="mprice">{#echoCurrency type='symbol'#}{#$list.price#}</span>
+											</div>
+											<div class="shop-info-num">
+												<span class="rec"><i>－</i></span><span class="num"><em>{#$list.count#}</em></span><span class="append"><i>＋</i></span>
+												<span class="icon-del"><i></i></span>
+											</div>
+										</div>
+									</div>
+								</li>
+								{#/foreach#}
+							</ul>
+						</div>
+					</li>
+				{#/foreach#}
+				</ul>
+			</form>
+		</div>
+		<div class="empty">
+			<span><img src="{#$templets_skin#}images/ico_cart.jpg" alt=""></span>
+			<div class="empty-txt">
+				<p>购物车里还没有宝贝哦</p>
+				<p>快去挑挑吧~</p>
+			</div>
+		</div>
+	<!-- 精选推荐 -->
+		<div class="command-list">
+			<div class="command-list-tit">
+				<h2></h2>
+				<span>为你推荐</span>
+			</div>
+			<div class="command-list-con">
+				<ul class="fn-clear">
+				{#home action="hlist" return="list" pageSize="10"#}
+					<li>
+						<a href="{#$list.url#}">
+							<div class="pro-img">
+								<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list['litpic']#}" type="middle"#}" alt="{#$list.title#}" />
+							</div>
+							<div class="pro-txt">
+								<h4 class="mt10">{#$list.title#}</h4>
+								<div class="pro-price mt10">
+									<span>{#echoCurrency type='symbol'#}{#$list.price#}</span><em>{#echoCurrency type='symbol'#}{#$list.mprice#}</em>{#if $list.panic#}<span class="yellow">限时抢</span>{#/if#}
+								</div>
+								<div class="pro-info">
+									<span>已售<em>{#$list.sales#}</em>件</span>{#if $list.tejia#}<span class="ter">商城特价</span>{#/if#}
+								</div>
+							</div>
+						</a>
+					</li>
+				{#/home#}
+				</ul>
+			</div>
+			<div class="command-list-tit">
+				<h2></h2>
+				<span>已看到最后</span>
+			</div>
+		</div>
+	<!-- 精选推荐 end-->
+
+	<!-- 底部 -->
+		<div class="footer">
+			<div class="footer-select">
+				<div class="shop-name-circle">
+					<span></span><em>全选</em>
+				</div>
+			</div>
+			<div class="account-btn r">
+				<a href="javascript:;" data-href="{#$home_channelDomain#}/confirm-order.html" id="js" class="disabled">结算(<em>0</em>)</a>
+			</div>
+			<div class="total-num r">
+				<span>合计：{#echoCurrency type='symbol'#}<em>0.00</em></span>
+				<span>不含运费</span>
+			</div>
+		</div>
+	<!-- 底部 end -->
+	</div>
+	<div class="topcart"><div class="cart-con"><div class="cartlist"><ul></ul></div></div></div>
+	<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+	<script src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js" type="text/javascript"></script>
+	<script src="{#$templets_skin#}js/public.js"></script>
+	<script src="{#$templets_skin#}js/common.js?v=1"></script>
+	<script src="{#$templets_skin#}js/iscroll.js"></script>
+	<script src="{#$templets_skin#}js/cart.js"></script>
+</body>
+</html>

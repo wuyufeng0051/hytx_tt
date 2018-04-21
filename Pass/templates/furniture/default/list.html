@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#if $seo_title != ""#}{#$seo_title#}{#else#}商品列表{#/if#}-{#$furniture_title#}</title>
+<meta name="keywords" content="{#$furniture_keywords#}"/>
+<meta name="description" content="{#$furniture_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/goodslist.css" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$furniture_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+{#$pageUrl = {#getUrlPath service='furniture' template='list'#}#}
+
+<body>
+{#include file="top.html"#}
+
+<div class="bread fn-clear" id="J_crumbs">
+	<p class="fn-left">
+		<a href="{#$furniture_channelDomain#}">首页</a> > <a href="{#getUrlPath service='furniture' template='list'#}#J_crumbs">所有商品</a>
+		{#if $typeid#}
+		{#foreach from=$typeNameArr item=typename key=k#}
+		 > <a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid={#$typeIdArr[$k]#}#}#J_crumbs">{#$typename#}</a>
+		{#/foreach#}
+		{#/if#}
+	</p>
+	{#if $keywords != ""#}
+	<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} keywords=''#}#J_crumbs" class="filter-item search fn-left">关键词：{#$keywords#}<span class="close">×</span></a>
+	{#/if#}
+
+</div>
+
+<div class="container">
+
+	<div class="classify">
+		<div>
+			<p>
+				<span>类别</span>
+				<a{#if $typeid == 0#} class="active"{#/if#} href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid=""#}#J_crumbs">不限</a>
+				{#furniture action="type" return="type"#}
+				<a{#if $typeid == $type.id#} class="active"{#/if#} href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid={#$type.id#}#}#J_crumbs">{#$type.typename#}</a>
+				{#/furniture#}
+			</p>
+		</div>
+		{#if $typeArr#}
+		<div>
+			<p>
+				<span>&nbsp;</span>
+				<a{#if $tid == 0#} class="active"{#/if#} href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid={#$typeid#}#}#J_crumbs">不限</a>
+				{#foreach from=$typeArr item=type#}
+				<a{#if $tid == $type.id#} class="active"{#/if#} href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid={#$type.id#}#}#J_crumbs">{#$type.typename#}</a>
+				{#/foreach#}
+			</p>
+		</div>
+		{#/if#}
+	</div>
+
+	<div class="filter">
+		<span class="left zh{#if $orderby == 0#} on{#/if#}"><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=''#}#J_crumbs">默认排序</a></span><font class="left">|</font>
+		<span class="left zh{#if $orderby == 5#} on{#/if#}"><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='5'#}#J_crumbs">销量</a></span><font class="left">|</font>
+		<span class="left{#if $orderby == 1 || $orderby == 2#} on{#/if#}"><em>{#if $orderby == 1 || $orderby == 2#}{#if $orderby == 1#}价格从低到高{#else#}价格从高到低{#/if#}{#else#}价格{#/if#}</em><i class="arrow-bottom"></i>
+			<ul style="display: none;">
+				{#if $orderby == 1#}
+				<li><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='1'#}#J_crumbs">价格从低到高</a></li>
+				<li><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='2'#}#J_crumbs">价格从高到低</a></li>
+				{#else#}
+				<li><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='2'#}#J_crumbs">价格从高到低</a></li>
+				<li><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='1'#}#J_crumbs">价格从低到高</a></li>
+				{#/if#}
+			</ul>
+		</span>
+		<div class="left block"><div class="price"><input type="text" id="price1" value="{#$price[0]#}" />{#echoCurrency type='symbol'#}</div><div class="line"></div><div class="price"><input type="text" id="price2" value="{#$price[1]#}" />{#echoCurrency type='symbol'#}</div> <input class="but" type="button" id="search" value="确定"></div>
+
+
+		{#$flag0 = "r"#}
+		{#$flag1 = "c"#}
+		{#$flag2 = "n"#}
+		{#$flag3 = "h"#}
+		{#$flag4 = "q"#}
+
+		{#if in_array("r", $flagArr)#}
+		{#$flag0 = ""#}
+		{#/if#}
+
+		{#if in_array("c", $flagArr)#}
+		{#$flag1 = ""#}
+		{#/if#}
+
+		{#if in_array("n", $flagArr)#}
+		{#$flag2 = ""#}
+		{#/if#}
+
+		{#if in_array("h", $flagArr)#}
+		{#$flag3 = ""#}
+		{#/if#}
+
+		{#if in_array("q", $flagArr)#}
+		{#$flag4 = ""#}
+		{#/if#}
+
+		{#if $flag != ""#}
+		{#foreach from=$flagArr item=fg#}
+			{#if $fg != "r"#}
+				{#if $flag0 == ""#}
+					{#$flag0 = $flag0|cat:$fg#}
+				{#else#}
+					{#$flag0 = $flag0|cat:","|cat:$fg#}
+				{#/if#}
+			{#/if#}
+			{#if $fg != "c"#}
+				{#if $flag1 == ""#}
+					{#$flag1 = $flag1|cat:$fg#}
+				{#else#}
+					{#$flag1 = $flag1|cat:","|cat:$fg#}
+				{#/if#}
+			{#/if#}
+			{#if $fg != "n"#}
+				{#if $flag2 == ""#}
+					{#$flag2 = $flag2|cat:$fg#}
+				{#else#}
+					{#$flag2 = $flag2|cat:","|cat:$fg#}
+				{#/if#}
+			{#/if#}
+			{#if $fg != "h"#}
+				{#if $flag3 == ""#}
+					{#$flag3 = $flag3|cat:$fg#}
+				{#else#}
+					{#$flag3 = $flag3|cat:","|cat:$fg#}
+				{#/if#}
+			{#/if#}
+			{#if $fg != "q"#}
+				{#if $flag4 == ""#}
+					{#$flag4 = $flag4|cat:$fg#}
+				{#else#}
+					{#$flag4 = $flag4|cat:","|cat:$fg#}
+				{#/if#}
+			{#/if#}
+		{#/foreach#}
+		{#/if#}
+
+		<div class="filter_">
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} flag={#$flag0#}#}#J_crumbs"{#if in_array('r', $flagArr)#} class="on"{#/if#}><s></s>推荐</a>
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} flag={#$flag1#}#}#J_crumbs"{#if in_array('c', $flagArr)#} class="on"{#/if#}><s></s>促销</a>
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} flag={#$flag2#}#}#J_crumbs"{#if in_array('n', $flagArr)#} class="on"{#/if#}><s></s>新品</a>
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} flag={#$flag3#}#}#J_crumbs"{#if in_array('h', $flagArr)#} class="on"{#/if#}><s></s>热卖</a>
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} flag={#$flag4#}#}#J_crumbs"{#if in_array('q', $flagArr)#} class="on"{#/if#}><s></s>限时抢</a>
+		</div>
+
+		<div class="right">
+			<a class="pre" href="javascript:;">&lt;</a><span><em>{#$page#}</em>/<label id="totalPage">1<label></span><a class="next" href="javascript:;">&gt;</a>
+		</div>
+	</div>
+
+	<!--详情页列表-->
+	<div class="brandD">
+		<ul class="clearfix">
+
+			{#$tyid = $typeid#}
+			{#if $tid#}
+			{#$tyid = $tid#}
+			{#/if#}
+			{#furniture action="flist" return="list" typeid={#$tyid#} title={#$keywords#} price="{#if $price#}{#$price[0]#},{#$price[1]#}{#/if#}" flag={#$flag#} orderby={#$orderby#} page={#$page#} pageSize=100#}
+			<li>
+				<div class="tip"><span>{#echoCurrency type='symbol'#}{#$list.price#}</span><a href="{#$list.url#}" target="_blank">查看详情</a></div>
+				<a href="{#$list.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$list.litpic#} type='middle'#}" alt="{#$list.title#}"></a>
+				<div class="bot"><p><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></p><span>已售 <em>{#$list.sales#}</em> 件</span></div>
+			</li>
+			{#/furniture#}
+			{#if $pageInfo.totalCount == 0#}
+			<li class="empty">抱歉！ 暂无相关商品</li>
+			{#/if#}
+		</ul>
+	</div>
+
+	<!-- 分页 -->
+	{#getPageList service='furniture' template='list' pageType='dynamic' param="{#$pageParam#}&page=#page##J_crumbs"#}
+
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript">
+	var totalCount = {#$pageInfo.totalCount|string_format:"%d"#}, totalPage = {#$pageInfo.totalPage|string_format:"%d"#}, atPage = {#$page#};
+	var priceUrl = '{#getUrlParam url={#$pageUrl#} data={#$pageParam#} price="pricePlaceholder"#}#J_crumbs';
+	var pageUrl = '{#getUrlParam url={#$pageUrl#} data="{#$pageParam#}&page=pagePlaceholder"#}#J_crumbs';
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/goodslist.js"></script>
+</body>
+</html>

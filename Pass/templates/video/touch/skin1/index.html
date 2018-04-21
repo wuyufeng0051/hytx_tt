@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$video_title#}</title>
+<meta name="keywords" content="{#$video_keywords#}" />
+<meta name="description" content="{#$video_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/siteConfig/touch/default/css/touch_common.css?v=3">
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v=7">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v=11"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script>
+var masterDomain = '{#$cfg_basehost#}', templatePath = '{#$templets_skin#}',nowStamp = '{#$smarty.now#}', staticPath = '{#$cfg_staticPath#}';
+var detailListId = 'video_list';
+</script>
+{#* 微信分享 *#}
+{#$Share_description = {#$video_description#}#}
+{#$Share_title = {#$video_title#}#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#getUrlPath service='video'#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+</head>
+<body>
+
+  <div class="refresh" id="refresh"><div class="refresh_box" id="refresh_box"><em></em></div></div>
+
+  <!-- 头部以及导航条 s -->
+  <div class="head">
+    <div class="header-l"><a href="javascript:history.go(-1)"></a></div>
+    <em>火鸟视频</em><i></i>
+    <div class="header-search">
+  		{#if $pageRight != ""#}
+  		{#$pageRight#}
+  		{#else#}
+  		<a href="javascript:;" class="dropnav"></a>
+  		{#/if#}
+  	</div>
+  </div>
+  <div class="navBox" id="navBox">
+  	<div class="navlist" id="navlist">
+  		<ul class="clearfix fn-clear">
+            <li><a href="{#$cfg_basehost#}"><span class=""><img src="{#$cfg_basehost#}/static/images/admin/nav/index.png" class=""></span>首页</a></li>
+            <li><a href=""><span class=""><img src="{#$cfg_basehost#}/static/images/admin/nav/shop_car.png" class=""></span>购物车</a></li>
+  			{#if in_array("article", $installModuleArr)#}<li><a href="{#$article_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/article.png" class="nav_1"></span>新闻</a></li>{#/if#}
+  			{#if in_array("info", $installModuleArr)#}<li><a href="{#$info_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/info.png" class="nav_2"></span>二手</a></li>{#/if#}
+  			{#if in_array("tuan", $installModuleArr)#}<li><a href="{#$tuan_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/tuan.png" class="nav_3"></span>团购</a></li>{#/if#}
+  			{#if in_array("house", $installModuleArr)#}<li><a href="{#$house_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/house.png" class="nav_4"></span>房产</a></li>{#/if#}
+  			{#if in_array("shop", $installModuleArr)#}<li><a href="{#$shop_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/shop.png" class="nav_5"></span>商城</a></li>{#/if#}
+  			{#if in_array("build", $installModuleArr)#}<li><a href="{#$build_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/build.png" class="nav_6"></span>建材</a></li>{#/if#}
+  			{#if in_array("furniture", $installModuleArr)#}<li><a href="{#$furniture_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/furniture.png" class="nav_7"></span>家具</a></li>{#/if#}
+  			{#if in_array("home", $installModuleArr)#}<li><a href="{#$home_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/home.png" class="nav_8"></span>家居</a></li>{#/if#}
+  			{#if in_array("renovation", $installModuleArr)#}<li><a href="{#$renovation_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/renovation.png" class="nav_9"></span>装修</a></li>{#/if#}
+  			{#if in_array("job", $installModuleArr)#}<li><a href="{#$job_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/job.png" class="nav_10"></span>招聘</a></li>{#/if#}
+  			{#if in_array("dating", $installModuleArr)#}<li><a href="{#$dating_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/dating.png" class="nav_11"></span>交友</a></li>{#/if#}
+  			{#*{#if in_array("marry", $installModuleArr)#}<li><a href="{#$marry_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/marry.png" class="nav_12"></span>婚嫁</a></li>{#/if#}*#}
+  			{#*{#if in_array("car", $installModuleArr)#}<li><a href="{#$car_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/car.png" class="nav_13"></span>汽车</a></li>{#/if#}*#}
+  			{#if in_array("waimai", $installModuleArr)#}<li><a href="{#$waimai_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/waimai.png" class="nav_14"></span>外卖</a></li>{#/if#}
+  			{#if in_array("business", $installModuleArr)#}<li><a href="{#$business_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/shop.png" class="nav_15"></span>商家</a></li>{#/if#}
+  			{#*<li><a href="{#$cfg_basehost#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/shop.png" class="nav_16"></span>旅游</a></li>*#}
+  			{#if in_array("tieba", $installModuleArr)#}<li><a href="{#$tieba_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/tieba.png" class="nav_17"></span>贴吧</a></li>{#/if#}
+  			{#*<li><a href="{#$cfg_basehost#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/shop.png" class="nav_18"></span>五折卡</a></li>*#}
+  			{#if in_array("huangye", $installModuleArr)#}<li><a href="{#$huangye_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/huangye.png" class="nav_19"></span>黄页</a></li>{#/if#}
+  			{#if in_array("video", $installModuleArr)#}<li><a href="{#$video_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/video.png" class="nav_20"></span>视频</a></li>{#/if#}
+  			{#if in_array("pic", $installModuleArr)#}<li><a href="{#$pic_basehost#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/image.png" class="nav_21"></span>图片</a></li>{#/if#}
+  			{#*<li><a href="{#$cfg_basehost#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/shop.png" class="nav_22"></span>直播</a></li>*#}
+  			{#*<li><a href="{#$cfg_basehost#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/shop.png" class="nav_23"></span>打车</a></li>*#}
+  			{#if in_array("vote", $installModuleArr)#}<li><a href="{#$vote_channelDomain#}"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/vote.png" class="nav_24"></span>投票</a></li>{#/if#}
+  			<li class="HN_PublicShare"><a href="javascript:;"><span><img src="{#$cfg_basehost#}/static/images/admin/nav/share.png" class="nav_23"></span>分享</a></li>
+  		</ul>
+  	</div>
+  	<div class="bg" id="shearBg"></div>
+  </div>
+
+  <div class="nav fn-clear">
+    <div class="nav_more">
+      <div class="shadow"></div>
+      <a href="javascript:;" class="more_btn"></a>
+    </div>
+    <div class="menu_list fn-clear">
+      {#video action="type" return="typenav" type="0"#}
+      <a data-id="{#$typenav.id#}" href="?id={#$typenav.id#}" >{#$typenav.typename#}</a>
+      {#/video#}
+      <a href="javascript:;"  data-id = "0" style="width:.8rem;"></a>
+    </div>
+  </div>
+  <!-- 头部以及导航条 e -->
+
+  <!-- 视频列表 s -->
+  <div class="video_list" id="video_list"></div>
+  <!-- 视频列表 e -->
+
+<script src="{#$cfg_staticPath#}js/ui/iscroll.js"></script>
+<script src="{#$cfg_basehost#}/templates/siteConfig/touch/default/js/touch_common.js?v=4" type="text/javascript"></script>
+<script src="{#$templets_skin#}../../../siteConfig/touch/default/js/detail2list.js?v=1"></script>
+<script src="{#$templets_skin#}js/index.js?v=43" type="text/javascript"></script>
+</body>
+</html>

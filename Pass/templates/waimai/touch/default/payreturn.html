@@ -1,0 +1,16 @@
+{#$channelName = $waimai_channelName#}
+{#$channelDomain = $waimai_channelDomain#}
+{#$backUrl = "javascript:history.go(-1);"#}
+{#$title = $langData['siteConfig'][22][89]#}
+{#$service = "waimai"#}
+
+{#if $paytype == "delivery"#}
+{#$payresult = $langData['waimai'][3][68]#}
+{#/if#}
+{#include file="../../../member/touch/public-payreturn.html" ispaotui={#$ispaotui#}#}
+
+<script type="text/javascript">
+$(function(){
+    utils.removeStorage("wm_cart_{#$sid#}");
+});
+</script>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#if $typeid != 0#}{#$typename#}-{#/if#}{#$seo_title#}-品牌库-{#$furniture_title#}</title>
+<meta name="keywords" content="{#$seo_title#},{#$furniture_keywords#}"/>
+<meta name="description" content="{#$furniture_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/brandlistD.css" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$furniture_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'brand'#}
+{#include file="top.html"#}
+
+<div class="bread">
+	<a href="{#$furniture_channelDomain#}">首页</a> > <a href="{#getUrlPath service='furniture' template='brand'#}">品牌库</a> > <a href="{#getUrlPath service='furniture' template='brand-detail' id={#$id#}#}">{#$seo_title#}</a>{#if $typeid != 0#} > <a href="{#getUrlPath service='furniture' template='brand-detail' id={#$id#} typeid={#$typeid#}#}">{#$typename#}</a>{#/if#}
+</div>
+
+<div class="container">
+	<div class="classify">
+		<div>
+			<p>
+				<span>类别</span>
+				{#$pcount = 0#}
+				{#furniture action="flist" return="flist" brand={#$id#} page=1 pageSize=9999999 pageData=1#}
+				{#$pcount = $flist.totalCount#}
+				{#/furniture#}
+				<a{#if $typeid == 0#} class="active"{#/if#} href="{#getUrlPath service='furniture' template='brand-detail' id={#$id#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">不限({#$pcount#})</a>
+				{#furniture action="type" return="type"#}
+				{#furniture action="flist" return="flist" typeid={#$type.id#} brand={#$id#} page=1 pageSize=9999999 pageData=1#}
+				{#$pcount = $flist.totalCount#}
+				{#/furniture#}
+				{#if $pcount > 0#}
+				<a{#if $typeid == $type.id#} class="active"{#/if#} href="{#getUrlPath service='furniture' template='brand-detail' id={#$id#} typeid={#$type.id#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">{#$type.typename#}({#$pcount#})</a>
+				{#/if#}
+				{#/furniture#}
+			</p>
+		</div>
+	</div>
+
+	<div class="filter">
+		<span class="left zh{#if $orderby == 0#} on{#/if#}"><a href="{#getUrlPath service='furniture' template='brand-detail' id={#$id#} typeid={#$typeid#}#}">默认排序</a></span><font class="left">|</font>
+		<span class="left zh{#if $orderby == 5#} on{#/if#}"><a href="{#getUrlPath service='furniture' template='brand-detail' id={#$id#} typeid={#$typeid#} param='orderby=5'#}">销量</a></span><font class="left">|</font>
+		<span class="left{#if $orderby == 1 || $orderby == 2#} on{#/if#}"><em>{#if $orderby == 1 || $orderby == 2#}{#if $orderby == 1#}价格从低到高{#else#}价格从高到低{#/if#}{#else#}价格{#/if#}</em><i class="arrow-bottom"></i>
+			<ul >
+				{#if $orderby == 1#}
+				<li><a href="{#getUrlPath service='furniture' template='brand-detail' id={#$id#} typeid={#$typeid#} param='orderby=1'#}">价格从低到高</a></li>
+				<li><a href="{#getUrlPath service='furniture' template='brand-detail' id={#$id#} typeid={#$typeid#} param='orderby=2'#}">价格从高到低</a></li>
+				{#else#}
+				<li><a href="{#getUrlPath service='furniture' template='brand-detail' id={#$id#} typeid={#$typeid#} param='orderby=2'#}">价格从高到低</a></li>
+				<li><a href="{#getUrlPath service='furniture' template='brand-detail' id={#$id#} typeid={#$typeid#} param='orderby=1'#}">价格从低到高</a></li>
+				{#/if#}
+			</ul>
+		</span>
+		<div class="right">
+			<a class="pre" href="javascript:;">&lt;</a><span><em>{#$page#}</em>/<label id="totalPage">1<label></span><a class="next" href="javascript:;">&gt;</a>
+		</div>
+	</div>
+
+	<!--详情页列表-->
+	<div class="brandD">
+		<ul class="clearfix">
+			{#furniture action="flist" return="list" typeid={#$typeid#} brand={#$id#} orderby={#$orderby#} page={#$page#} pageSize="50"#}
+			<li>
+				<div class="tip"><span>{#echoCurrency type='symbol'#}{#$list.price#}</span><a href="{#$list.url#}" target="_blank">查看详情</a></div>
+				<a href="{#$list.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$list.litpic#} type='middle'#}" alt="{#$list.title#}"></a>
+				<div class="bot">
+					<p><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></p>
+					<span>已售 <em>{#$list.sales#}</em> 件</span>
+				</div>
+			</li>
+			{#/furniture#}
+			{#if $pageInfo.totalCount == 0#}
+			<li class="empty">抱歉！ 暂无相关商品</li>
+			{#/if#}
+		</ul>
+	</div>
+
+
+	<!-- 分页 -->
+	{#getPageList service='furniture' template='brand-detail' id={#$id#} typeid={#$typeid#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}
+
+</div>
+
+{#include file="bottom.html"#}
+<script>var totalCount = {#$pageInfo.totalCount|string_format:"%d"#}, totalPage = {#$pageInfo.totalPage|string_format:"%d"#}, atPage = {#$page#}, pageUrl = '{#getUrlPath service="furniture" template="brand-detail" id={#$id#} typeid={#$typeid#} page="%page%" param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}';</script>
+<script src="{#$templets_skin#}js/brandlistD.js"></script>
+</body>
+</html>

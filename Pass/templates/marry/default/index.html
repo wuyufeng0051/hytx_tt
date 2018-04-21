@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$marry_title#}</title>
+<meta name="keywords" content="{#$marry_keywords#}" />
+<meta name="description" content="{#$marry_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$marry_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#$pageCurr = "index"#}
+{#include file="top.html"#}
+
+<div class="banner">
+	<div class="wrap">
+		<div class="slide" id="slide">{#myad id="97" type="slide"#}</div>
+		<div class="slidebtn" id="slidebtn"></div>
+		<div class="stab fn-clear">
+			<div class="l"><h4>限时促销</h4><p>千家婚庆酒店，<br />等你来抢！</p><s></s></div>
+			<div class="r">
+				<ul class="tab fn-clear">
+					<li class="hotel curr"><s></s>酒店</li>
+					<li class="photo"><s></s>摄影</li>
+					<li class="wedding"><s></s>婚庆</li>
+				</ul>
+				<div class="con fn-clear t1" style="display: block;">
+					<div class="sel addr">
+						<label>选择酒店地址<s></s></label>
+						<div class="popup-sel"></div>
+					</div>
+					<div class="sel">
+						<label>选择婚宴预算<s></s></label>
+						<div class="popup-sel">
+							<ul>
+								<li><a href="javascript:;" data-id="0">不限</a></li>
+								<li><a href="javascript:;" data-id=",2000">2000{#echoCurrency type="short"#}以下</a></li>
+								<li><a href="javascript:;" data-id="2000,3000">2000-3000</a></li>
+								<li><a href="javascript:;" data-id="3000,4000">3000-4000</a></li>
+								<li><a href="javascript:;" data-id="4000,">4000{#echoCurrency type="short"#}以上</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="sel">
+						<label>选择预计桌数<s></s></label>
+						<div class="popup-sel">
+							<ul>
+								<li><a href="javascript:;" data-id=",10">10桌以下</a></li>
+								<li><a href="javascript:;" data-id="10,20">10-20桌</a></li>
+								<li><a href="javascript:;" data-id="20,30">20-30桌</a></li>
+								<li><a href="javascript:;" data-id="30,">30桌以上</a></li>
+							</ul>
+						</div>
+					</div>
+					<a href="javascript:;" class="sbtn">立即查看</a>
+				</div>
+				<div class="con fn-clear t2">
+					<div class="sel addr">
+						<label>选择公司地址<s></s></label>
+						<div class="popup-sel"></div>
+					</div>
+					<div class="sel">
+						<label>选择摄影预算<s></s></label>
+						<div class="popup-sel">
+							<ul>
+								<li><a href="javascript:;" data-id="0">不限</a></li>
+								<li><a href="javascript:;" data-id=",5000">5000{#echoCurrency type="short"#}以下</a></li>
+								<li><a href="javascript:;" data-id="5000,8000">5000-8000</a></li>
+								<li><a href="javascript:;" data-id="8000,13000">8000-13000</a></li>
+								<li><a href="javascript:;" data-id="13000,">13000{#echoCurrency type="short"#}以上</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="sel">
+						<label>选择风格特色<s></s></label>
+						<div class="popup-sel">
+							<ul>
+								<li><a href="javascript:;" data-id="0">不限</a></li>
+								{#marry action="item" return='item' type='33'#}
+								<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+								{#/marry#}
+							</ul>
+						</div>
+					</div>
+					<a href="javascript:;" class="sbtn">立即查看</a>
+				</div>
+				<div class="con fn-clear t3">
+					<div class="sel addr">
+						<label>选择公司地址<s></s></label>
+						<div class="popup-sel"></div>
+					</div>
+					<div class="sel">
+						<label>选择婚庆预算<s></s></label>
+						<div class="popup-sel">
+							<ul>
+								<li><a href="javascript:;" data-id="0">不限</a></li>
+								<li><a href="javascript:;" data-id=",2000">2000{#echoCurrency type="short"#}以下</a></li>
+								<li><a href="javascript:;" data-id="2000,3000">2000-3000</a></li>
+								<li><a href="javascript:;" data-id="3000,4000">3000-4000</a></li>
+								<li><a href="javascript:;" data-id="4000,">4000{#echoCurrency type="short"#}以上</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="sel">
+						<label>选择服务类别<s></s></label>
+						<div class="popup-sel">
+							<ul>
+								<li><a href="javascript:;" data-id="0">不限</a></li>
+								{#marry action="item" return='item' type='4'#}
+								<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+								{#/marry#}
+							</ul>
+						</div>
+					</div>
+					<a href="javascript:;" class="sbtn">立即查看</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="wrap mt15">
+	<div class="mt">
+		<h3><s class="rec"></s>特别推荐</h3>
+		<a href="javascript:;" class="change" id="recQh"><s></s>换一换</a>
+	</div>
+	<div class="recon fn-clear">
+		<div class="l">
+			<ul>
+				<li class="r1"><s></s><h5>优惠</h5><p>商家低价承诺</p></li>
+				<li class="r2"><s></s><h5>省心</h5><p>结婚顾问一对一服务</p></li>
+				<li class="r3"><s></s><h5>有保障</h5><p>十大消费保障</p></li>
+			</ul>
+		</div>
+		<div class="r">
+			<ul class="fn-clear" id="recList">
+				<div class="loading">加载中...</div>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="wrap ad">{#myad id="98"#}</div>
+
+<div class="wrap">
+	<div class="mt">
+		<h3><s>1F</s>婚宴酒店</h3>
+		<a href="{#getUrlPath service='marry' template='hotel'#}" target="_blank" class="more"><s></s>更多</a>
+	</div>
+	<div class="mcon fn-clear">
+		<div class="slidebar">
+			<ul>
+				<li>
+					<h6><s class="type"></s>酒店类型</h6>
+					{#marry action="item" return='item' type='1'#}
+					<a href="#" target="_blank">{#$item.typename#}</a>
+					{#/marry#}
+				</li>
+				<li>
+					<h6><s class="price"></s>价格类型</h6>
+					<a href="#" target="_blank">2000以下</a>
+					<a href="#" target="_blank">2000-3000</a>
+					<a href="#" target="_blank">3000-4000</a>
+					<a href="#" target="_blank">4000以上</a>
+				</li>
+				<li>
+					<h6><s class="tables"></s>预计桌数</h6>
+					<a href="#" target="_blank">10桌以下</a>
+					<a href="#" target="_blank">10-20桌</a>
+					<a href="#" target="_blank">20-30桌</a>
+					<a href="#" target="_blank">30桌以上</a>
+				</li>
+				<li class="last">
+					<h6><s class="addr"></s>区域位置</h6>
+					{#marry action="addr" return='addr' pageSize="9"#}
+					<a href="#" target="_blank">{#$addr.typename#}</a>
+					{#/marry#}
+				</li>
+			</ul>
+		</div>
+		<div class="list">
+			<ul class="fn-clear">
+				{#marry action="hotel" return="hotel" pageSize="6"#}
+				<li>
+					<a href="{#$hotel.url#}" target="_blank">
+						<div class="pic"><img alt="{#$hotel.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$hotel.litpic#}" type="middle"#}" /></div>
+						<div class="info">
+							<p>类型：{#$hotel.levalName#}<br />价格：&yen;{#$hotel.minprice#}-{#$hotel.maxprice#}<br />桌数：{#$hotel.tables#}桌</p>
+							<div class="bg"></div>
+						</div>
+						<h3>{#$hotel.title#}</h3>
+					</a>
+				</li>
+				{#/marry#}
+			</ul>
+		</div>
+		<div class="hlist">
+			<h3><s></s>热门婚宴酒店</h3>
+			<ul>
+				{#marry action="hotel" return="hotel1" property="h" pageSize="8"#}
+				<li>
+					<div class="t"><i class="h{#$_bindex.hotel1#}">{#$_bindex.hotel1#}</i><a href="{#$hotel1.url#}" target="_blank">{#$hotel1.title#}</a></div>
+					<div class="i fn-clear"{#if $_bindex.hotel1 == 1#} style="display:block;"{#/if#}>
+						<a href="{#$hotel1.url#}" target="_blank" class="pic"><img alt="{#$hotel1.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$hotel1.litpic#}" type="small"#}" /></a>
+						<div class="p">{#$hotel1.levalName#}<br />&yen;{#$hotel1.minprice#}-{#$hotel1.maxprice#}<br />最大容纳：{#$hotel1.tables#}桌</div>
+					</div>
+				</li>
+				{#/marry#}
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="wrap ad">{#myad id="99"#}</div>
+
+<div class="wrap">
+	<div class="mt">
+		<h3><s>2F</s>婚纱摄影</h3>
+		<a href="{#getUrlPath service='marry' template='wedding'#}" target="_blank" class="more"><s></s>更多</a>
+	</div>
+	<div class="mcon wedding fn-clear">
+		<div class="slidebar">
+			<ul>
+				<li>
+					<h6><s class="type"></s>公司类型</h6>
+					{#marry action="item" return='item' type='3'#}
+					<a href="#" target="_blank">{#$item.typename#}</a>
+					{#/marry#}
+				</li>
+				<li>
+					<h6><s class="price"></s>价格类型</h6>
+					<a href="#" target="_blank">4900以下</a>
+					<a href="#" target="_blank">5000-7900</a>
+					<a href="#" target="_blank">8000-12900</a>
+					<a href="#" target="_blank">13000以上</a>
+				</li>
+				<li>
+					<h6><s class="special"></s>摄影特色</h6>
+					{#marry action="item" return='item' type='33'#}
+					<a href="#" target="_blank">{#$item.typename#}</a>
+					{#/marry#}
+				</li>
+				<li class="last">
+					<h6><s class="addr"></s>区域位置</h6>
+					{#marry action="addr" return='addr' pageSize="9"#}
+					<a href="#" target="_blank">{#$addr.typename#}</a>
+					{#/marry#}
+				</li>
+			</ul>
+		</div>
+		<div class="list">
+			<ul class="fn-clear">
+				{#marry action="wedding" return="wedding" pageSize="6"#}
+				<li>
+					<a href="{#$wedding.url#}" target="_blank">
+						<div class="pic"><img alt="{#$wedding.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$wedding['works'].litpic#}" type="o_large"#}" /></div>
+						<div class="info">
+							<p>类型：{#$wedding.levalName#}<br />区域：{#$wedding.addrName#}</p>
+							<div class="bg"></div>
+						</div>
+						<h3>{#$wedding.title#}</h3>
+					</a>
+				</li>
+				{#/marry#}
+			</ul>
+		</div>
+		<div class="hlist">
+			<h3><s></s>热门婚纱摄影</h3>
+			<ul>
+				{#marry action="wedding" return="wedding1" property="h" pageSize="8"#}
+				<li>
+					<div class="t"><i class="h{#$_bindex.wedding1#}">{#$_bindex.wedding1#}</i><a href="{#$wedding1.url#}" target="_blank">{#$wedding1.title#}</a></div>
+					<div class="i fn-clear"{#if $_bindex.wedding1 == 1#} style="display:block;"{#/if#}>
+						<a href="{#$wedding1.url#}" target="_blank" class="pic"><img alt="{#$wedding1.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$wedding1['works'].litpic#}" type="small"#}" /></a>
+						<div class="p">{#$wedding1.levalName#}<br />区域：{#$wedding1.addrName#}</div>
+					</div>
+				</li>
+				{#/marry#}
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="wrap ad">{#myad id="100"#}</div>
+
+<div class="wrap">
+	<div class="mt">
+		<h3><s>3F</s>婚庆礼仪</h3>
+		<a href="{#getUrlPath service='marry' template='ritual'#}" target="_blank" class="more"><s></s>更多</a>
+	</div>
+	<div class="mcon ritual fn-clear">
+		<div class="slidebar">
+			<ul>
+				<li>
+					<h6><s class="type"></s>服务类型</h6>
+					{#marry action="item" return='item' type='4'#}
+					<a href="#" target="_blank">{#$item.typename#}</a>
+					{#/marry#}
+				</li>
+				<li class="last">
+					<h6><s class="addr"></s>区域位置</h6>
+					{#marry action="addr" return='addr' pageSize="9"#}
+					<a href="#" target="_blank">{#$addr.typename#}</a>
+					{#/marry#}
+				</li>
+			</ul>
+		</div>
+		<div class="list">
+			<ul class="fn-clear">
+				{#marry action="ritual" return="ritual" pageSize="3"#}
+				<li>
+					<a href="{#$ritual.url#}" target="_blank">
+						<div class="pic"><img alt="{#$ritual.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$ritual['works'].litpic#}" type="o_large"#}" /></div>
+						<h3>{#$ritual.title#}</h3>
+					</a>
+					<p><a href="#" target="_blank" class="t">{#$ritual.levalName#} ></a><a href="#" target="_blank" class="a">{#$ritual.addrName#}</a></p>
+				</li>
+				{#/marry#}
+			</ul>
+		</div>
+		<div class="hlist">
+			<h3><s></s>热门婚庆礼仪</h3>
+			<ul>
+				{#marry action="ritual" return="ritual1" property="h" pageSize="5"#}
+				<li>
+					<div class="t"><i class="h{#$_bindex.ritual1#}">{#$_bindex.ritual1#}</i><a href="{#$ritual1.url#}" target="_blank">{#$ritual1.title#}</a></div>
+				</li>
+				{#/marry#}
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="wrap nlist fn-clear">
+	<div class="news">
+		<div class="mt">
+			<h3><s class="n"></s>婚尚资讯</h3>
+			<a href="{#getUrlPath service='marry' template='news'#}" target="_blank" class="more"><s></s>更多</a>
+		</div>
+		<ul class="tabs fn-clear">
+			{#marry action="newsType" return="newsType" pageSize="8"#}
+			<li{#if $_bindex.newsType == 1#} class="curr"{#/if#}><a href="{#getUrlPath service='marry' template='news' id="{#$newsType.id#}"#}" target="_blank">{#$newsType.typename#}<s></s></a></li>
+			{#/marry#}
+		</ul>
+		<div class="list">
+			{#marry action="newsType" return="newsType1" pageSize="8"#}
+			<ul class="fn-clear"{#if $_bindex.newsType1 == 1#} style="display:block;"{#/if#}>
+				{#marry action="news" return="news" typeid={#$newsType1.id#} pageSize="12"#}
+				<li><a href="{#getUrlPath service='marry' template='news' id="{#$news.typeid#}"#}" target="_blank">[{#$news.typeName#}]</a> <a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a></li>
+				{#/marry#}
+			</ul>
+			{#/marry#}
+		</div>
+	</div>
+	<div class="help">
+		<div class="mt">
+			<h3><s class="h"></s>婚嫁帮助</h3>
+			<a href="{#getUrlPath service='marry' template='help'#}" target="_blank" class="more"><s></s>更多</a>
+		</div>
+		<div class="list">
+			<ul>
+				{#marry action="help" return="help" pageSize="4"#}
+				<li><a href="{#getUrlPath service='marry' template='help' id="{#$help.typeid#}"#}" target="_blank">[{#$help.typeName#}]</a> <a href="{#$help.url#}" target="_blank" title="{#$help.title#}">{#$help.title#}</a></li>
+				{#/marry#}
+			</ul>
+			<div class="ad">{#myad id="101"#}</div>
+		</div>
+	</div>
+</div>
+
+<div class="wrap flink">
+	<div class="hd">
+		<h3><s></s>友情链接</h3>
+		<p>火鸟婚嫁-提供婚嫁资讯，分享婚嫁经验，做女性结婚时尚顾问专家，帮助女人做选择!</p>
+	</div>
+	<div class="list fn-clear">
+		{#siteConfig action="friendLink" return="flink" module="marry"#}
+		<a href="{#$flink.sitelink#}" target="_blank">{#$flink.sitename#}</a>
+		{#/siteConfig#}
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.easing.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v=1"></script>
+</body>
+</html>

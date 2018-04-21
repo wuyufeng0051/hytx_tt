@@ -1,0 +1,132 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>婚纱摄影预订_婚纱摄影商户预订-{#$marry_title#}</title>
+<meta name="keywords" content="婚纱摄影预定,婚纱摄影商户预定,婚纱摄影团购">
+<meta name="description" content="{#$marry_title#}，为您提供合适的婚纱摄影商家，免费咨询热线: {#$marry_hotline#}">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/photo.css" media="all">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$marry_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+{#$pageUrl = {#getUrlPath service='marry' template='wedding'#}#}
+
+<body>
+{#$pageCurr = "wedding"#}
+{#include file="top.html"#}
+
+<!-- 面包屑 -->
+<div class="wrap">
+	<p class="bread"><a href="{#$marry_channelDomain#}">首页</a> > <a href="{#getUrlPath service='marry' template='wedding'#}">婚纱摄影</a></p>
+</div>
+<!-- 筛选部分 -->
+<div class="wrap">
+	<div class="filter">
+		<div class="tab area fn-clear">
+			<span class="fn-left"><i></i>区域</span>
+			<div class="con">
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid='' business=''#}"{#if $addrid == 0 || $addrid == ""#} class="current"{#/if#}>不限</a>
+				{#marry action="addr" return="addr"#}
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addr.id#} business=''#}"{#if $addrid == $addr.id#} class="current"{#/if#}>{#$addr.typename#}</a>
+				{#/marry#}
+			</div>
+		</div>
+		{#if $addrid != 0#}
+		<div class="tab area fn-clear">
+			<span class="fn-left">&nbsp;</span>
+			<div class="con" style="margin-left: 127px;">
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addrid#} business=''#}"{#if $business == 0 || $business == ""#} class="current"{#/if#}>不限</a>
+				{#marry action="addr" return="addr" type={#$addrid#}#}
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addrid#} business={#$addr.id#}#}"{#if $business == $addr.id#} class="current"{#/if#}>{#$addr.typename#}</a>
+				{#/marry#}
+			</div>
+		</div>
+		{#/if#}
+		<div class="tab char fn-clear">
+			<span class="fn-left"><i></i>风格</span>
+			<div class="con">
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} special=''#}"{#if $special == ''#} class="current"{#/if#}>不限</a>
+				{#marry action="item" return="item" type=33#}
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} special={#$item.id#}#}"{#if $special == {#$item.id#}#} class="current"{#/if#}>{#$item.typename#}</a>
+				{#/marry#}
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="wrap sort">
+	<div class="fn-left com default{#if $orderby == ''#} curr{#/if#}"><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=''#}">综合排序</a></div>
+	<div class="fn-left com{#if $orderby == '1'#} curr{#/if#}"><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='1'#}">人气<i></i><em></em></a></div>
+	<div class="fn-right tips">共为您找到<em id="totalCount">0</em>条结果</div>
+</div>
+
+
+<!-- 婚纱摄影列表 -->
+<ul class="wrap list">
+	{#$addr = $addrid#}
+	{#if $business != 0#}
+	{#$addr = $business#}
+	{#/if#}
+	{#marry action="wedding" return="wedding" addrid={#$addr#} special={#$special#} orderby={#$orderby#} orderby={#$orderby#} page={#$page#} pageSize=10#}
+	<li class="fn-clear" data-id="{#$wedding.id#}" data-url="{#$wedding.url#}">
+		<dl class="fn-left">
+			<dt><a href="{#$wedding.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$wedding.logo#}" alt="{#$wedding.title#}"></a></dt>
+			<dd class="name"><a href="{#$wedding.url#}" target="_blank">{#$wedding.title#}</a></dd>
+			<dd><span>案例：<em>{#$wedding.totalCases#}套</em></span> <span>作品：<em>{#$wedding.totalWorks#}套</em></span></dd>
+			<dd>电话：{#$wedding.contact#}</dd>
+			<dd>区域：{#$wedding.addrName[0]#} {#$wedding.addrName[1]#}</dd>
+			{#if $wedding.deal#}
+			<dd>优惠：<font><a href="{#$wedding.url#}" target="_blank">{#$wedding.deal['title']#}</a></font></dd>
+			{#/if#}
+		</dl>
+		<div class="fn-right img">
+			<div class="loading">加载中...</div>
+			<!-- <a href="#">
+				<img src="upfile/p1.jpg" alt="">
+				<p>浪漫之旅-爱之约系</p>
+				<span>¥ 4280</span>
+			</a>
+			<a href="#">
+				<img src="upfile/p2.jpg" alt="">
+				<p>浪漫之旅-爱之约系</p>
+				<span>¥ 4280</span>
+			</a>
+			<a href="#">
+				<img src="upfile/p3.jpg" alt="">
+				<p>浪漫之旅-爱之约系</p>
+				<span>¥ 4280</span>
+			</a>
+			<a href="#">
+				<img src="upfile/p4.jpg" alt="">
+				<p>浪漫之旅-爱之约系</p>
+				<span>¥ 4280</span>
+			</a> -->
+		</div>
+	</li>
+	{#/marry#}
+	{#if $pageInfo.totalCount == 0#}
+	<li class="empty">抱歉！ 暂无相关信息</li>
+	{#/if#}
+</ul>
+
+<!--分页-->
+{#getPageList service='marry' template='wedding' pageType='dynamic' param="{#$pageParam#}&page=#page#"#}
+
+{#include file="footer.html"#}
+<script type="text/javascript">
+	var totalCount = {#$pageInfo.totalCount|string_format:"%d"#};
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/wedding.js"></script>
+</body>
+</html>

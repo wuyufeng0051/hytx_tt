@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" >
+<title>{#$detail_title#} - {#$vote_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#if $detail_keywords#}{#$detail_keywords#}{#else#}{#$toupiao_keywords#}{#/if#}" />
+<meta name="description" content="{#if $detail_description#}{#$detail_description#}{#else#}{#$toupiao_keywords#}{#/if#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v=1" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}../../siteConfig/default/css/index_public.css?v=2" />
+<link rel="stylesheet" href="{#$templets_skin#}css/public.css?v=1" />
+<link rel="stylesheet" href="{#$templets_skin#}css/detail.css?v=1" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$vote_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+var hideFileUrl = {#$cfg_hideUrl#};
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+var detail = {
+	'id' : {#$detail_id#},
+	'title' : '{#$detail_title#}',
+	'voteuser' : {#$detail_voteuser#},
+	'state' : {#$detail_state#}
+}
+</script>
+</head>
+<body>
+{#$channel = "vote"#}
+{#include file="../../siteConfig/public_top_v1.html"#}
+<!-- 广告位 -->
+<div class="wrap adv fn-hide"><script src="/include/json.php?action=adjs&id=155" language="javascript"></script></div>
+
+<div class="tpdetail">
+	<div class="box">{#$detail_body#}</div>
+</div>
+<!-- 排行标题 -->
+<div class="paihang">
+	 <span{#if $orderby == 0#} class="p-1"{#/if#}><a href="{#getUrlPath service="vote" template="detail" id="{#$detail_id#}" orderby="0"#}">默认排行</a><em></em></span>
+	 <span{#if $orderby == 1#} class="p-1"{#/if#}><a href="{#getUrlPath service="vote" template="detail" id="{#$detail_id#}" orderby="1"#}">最新报名</a><em></em></span>
+	 <span{#if $orderby == 2#} class="p-1"{#/if#}><a href="{#getUrlPath service="vote" template="detail" id="{#$detail_id#}" orderby="2"#}">得票排行</a><em></em></span>
+	 <span{#if $orderby == 3#} class="p-1"{#/if#}><a href="{#getUrlPath service="vote" template="detail" id="{#$detail_id#}" orderby="3"#}">浏览排行</a><em></em></span>
+	 <span{#if $orderby == 4#} class="p-1"{#/if#}><a href="{#getUrlPath service="vote" template="detail" id="{#$detail_id#}" orderby="4"#}">评论排行</a><em></em></span>
+	 {#*<a href="javascript:;" class="baoming"></a>*#}
+</div>
+<!-- 排行标题 -->
+<!-- 内容 -->
+<div class="list fn-clear" id="list">
+	{#vote return="list" action="ulist" tid=$detail_id orderby="{#$orderby#}" page="{#$page#}" pageSize="20"#}
+	<div class="content" data-uid="{#$list.id#}">
+		<div class="pic"><a href="{#$list.url#}" target="_blank"><img src="{#$list.litpic#}"></a></div>
+		<div class="txt fn-clear">
+			<ul>
+				<li class="t-1">
+					<font>选手：</font>
+					<a href="{#$list.url#}" target="_blank" class="user">{#$list.name#}</a>
+					<span>编号：{#$list.number#}</span>
+				</li>
+				<li class="t-2">
+					<p><img src="{#$templets_skin#}images/tp_18.gif" title="人气"><span class="n1">{#$list.click#}</span></p>
+					<p><img src="{#$templets_skin#}images/tp_15.gif" title="票数"><span class="n2">{#$list.votecount#}</span></p>
+					<p><img src="{#$templets_skin#}images/tp_18.gif" title="评论"><span class="n3">{#$list.common#}</span></p>
+				</li>
+				<li class="t-3">
+					<a href="{#$list.url#}" target="_blank">查看</a>
+					<a href="javascript:;" class="vote">投我一票</a>
+					<a href="{#$list.url#}#commont" target="_blank">评论</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	{#/vote#}
+	{#if $pageInfo.totalCount == 0#}
+		{#if $detail_state == 0#}
+			{#$state = "活动开始时间："|cat:$detail_beganf|cat:"，敬请期待"#}
+		{#elseif $detail_state == 1#}
+			{#$state = '暂无选手报名！'#}
+		{#elseif $detail_state == 2#}
+			{#$state = '活动报名已截止！'#}
+		{#elseif $detail_state == 3#}
+			{#$state = '活动已结束！'#}
+		{#/if#}
+	<div class="empty">{#$state#}</div>
+	{#/if#}
+</div>
+<!-- 内容 -->
+{#getPageList service='vote' template='detail' id={#$detail_id#} orderby="{#$orderby#}"#}
+
+<!-- 投票层 -->
+<div class="opdv">
+	<ul>
+		<li class="op-1">
+			<p>我要投票</p>
+			<a href="javascript:;" class="close">关闭</a>
+		</li>
+		<li class="op-2">参与投票，即可参与抽奖活动哦（需要填写姓名和手机号）</li>
+		<li class="op-3">
+			<span>姓名：</span>
+			<input type="text" name="mname" class="mname">
+			<span>手机：</span>
+			<input type="text" name="mtel" class="mtel">
+		</li>
+
+		<li class="op-4">
+			<p>激活：</p>
+			<input type="text" class="inp vdimgckinp" placeholder="请输入验证码">
+			<img src="{#$cfg_basehost#}/include/vdimgck.php" class="vdimgck">
+			<a href="javascript:;" class="change jk">看不清？换一张</a>
+			<span class="error error1"></span>
+		</li>
+		<li class="op-5">
+			<span><a href="javascript:;" class="votesubmit">我要投票</a></span>
+		</li>
+	</ul>
+</div>
+<div class="rewardS-mask"></div>
+
+{#include file="_footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js?v=1"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/detail.js?v=1"></script>
+</body>
+</html>

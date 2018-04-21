@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$cityname#}{#$tuan_title#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v=1">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min.css">
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script type="text/javascript">var countDownTime = '{#$smarty.now|date_format:"%Y/%m/%d 00:00:00"#}', cfg_staticPath = '{#$cfg_staticPath#}', hideFileUrl = {#$cfg_hideUrl#}, staticPath = '{#$cfg_staticPath#}';</script>
+</head>
+
+<body>
+<!-- 头部 -->
+{#$pageTitle = '<a href="'|cat:$tuan_channelDomain|cat:'?do=initiative" class="changeCity">'|cat:$cityname|cat:'<i class="downArea"></i></a>'#}
+{#$search = {#getUrlPath service='siteConfig' template='search'#}#}
+{#$pageRight = '<a href="'|cat:$search|cat:'" class="header-search"></a>'#}
+{#include file="../../../siteConfig/touch_index_top.html"#}
+<!-- 头部 end -->
+
+<!-- 幻灯片 s -->
+<div class="wrapper">
+	<div class="swiper-container" id="slider">
+		<div class="swiper-wrapper">
+			{#myad id="228" type="slide"#}
+		</div>
+		<div class="pagination"></div>
+	</div>
+</div>
+<!-- 幻灯片 e -->
+
+<!-- 滑动导航 -->
+<div class="swiper-container" id="slideNav">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">
+			<ul class="nav fn-clear">
+				{#tuan action="type" return='type'#}
+				<li><a href="{#$type.url#}"><span class="icon-circle"><img src="{#$templets_skin#}images/t{#$_bindex.type#}.png"></span><span class="icon-txt">{#$type.typename#}</span></a></li>
+				{#/tuan#}
+			</ul>
+    </div>
+	</div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<!-- 导购 -->
+<div class="daogou">
+	<div class="countDown">
+		<div class="time l">
+			<span class="end l"><i></i>距结束</span>
+			<span class="qiang l">名店抢购<div class="box"><div class="content"><input type="text" id="time_h" readonly>:<input type="text" id="time_m" readonly>:<input type="text" id="time_s" readonly></div></div></span>
+		</div>
+		{#myad model="tuan" title="名店抢购"#}
+	</div>
+	<ul class="sale-box r">
+		{#myad model="tuan" title="名店抢购右边"#}
+	</ul>
+</div>
+
+<!-- 猜你喜欢 -->
+<div class="u-like">
+	<div class="like-tit"><i></i><span>猜你喜欢</span></div>
+	<div class="like-con">
+		<div class="loading">加载中...</div>
+		<div class="all-tuan"><a href="list.html">查看全部团购</a></div>
+	</div>
+</div>
+
+
+<div class="fixFooter">
+  <ul>
+    <li class="ficon1 active"><a href="{#$cfg_basehost#}"><i></i>首页</a></li>
+    <li class="ficon2"><a href="{#getUrlPath service='member' type='user' template='order-tuan'#}"><i></i>订单</a></li>
+    <li class="ficon4"><a href="{#$member_userDomain#}"><i></i>我的</a></li>
+  </ul>
+</div>
+
+
+{#include file="footer.html"#}
+<script src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script src="{#$cfg_staticPath#}js/common-touch.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/index.js?v=2"></script>
+
+{#* 微信分享 *#}
+{#$Share_description = {#$tuan_description#}#}
+{#$Share_title = {#$tuan_title#}#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#getUrlPath service='tuan'#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</body>
+</html>

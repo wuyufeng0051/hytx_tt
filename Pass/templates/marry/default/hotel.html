@@ -1,0 +1,194 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>婚宴酒店预订_婚庆酒店大全_结婚酒席价格-{#$marry_title#}</title>
+<meta name="keywords" content="婚宴,婚宴酒店,婚宴预订,婚庆酒店,婚宴网,结婚酒席,婚宴酒席,婚宴预定,婚宴价格,结婚场地">
+<meta name="description" content="{#$marry_title#},为您预订婚宴酒店,享受酒席菜单价格优惠。订婚宴场地，免费咨询热线: {#$marry_hotline#}">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/hotel.css" media="all">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$marry_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+{#$pageUrl = {#getUrlPath service='marry' template='hotel'#}#}
+
+<body>
+{#$pageCurr = "hotel"#}
+{#include file="top.html"#}
+
+<!-- 筛选部分 -->
+<div class="wrap">
+	<div class="filter">
+		<div class="tab area fn-clear">
+			<span class="fn-left"><i></i>区域</span>
+			<div class="con">
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid='' business=''#}"{#if $addrid == 0 || $addrid == ""#} class="current"{#/if#}>不限</a>
+				{#marry action="addr" return="addr"#}
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addr.id#} business=''#}"{#if $addrid == $addr.id#} class="current"{#/if#}>{#$addr.typename#}</a>
+				{#/marry#}
+			</div>
+		</div>
+		{#if $addrid != 0#}
+		<div class="tab area fn-clear">
+			<span class="fn-left">&nbsp;</span>
+			<div class="con" style="margin-left: 127px;">
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addrid#} business=''#}"{#if $business == 0 || $business == ""#} class="current"{#/if#}>不限</a>
+				{#marry action="addr" return="addr" type={#$addrid#}#}
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addrid#} business={#$addr.id#}#}"{#if $business == $addr.id#} class="current"{#/if#}>{#$addr.typename#}</a>
+				{#/marry#}
+			</div>
+		</div>
+		{#/if#}
+		<div class="tab desk fn-clear">
+			<span class="fn-left"><i></i>桌数</span>
+			<div class="con">
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} table=''#}"{#if $table == ''#} class="current"{#/if#}>不限</a>
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} table=',10'#}"{#if $table == ',10'#} class="current"{#/if#}>10桌以下</a>
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} table='10,20'#}"{#if $table == '10,20'#} class="current"{#/if#}>10-20桌</a>
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} table='20,30'#}"{#if $table == '20,30'#} class="current"{#/if#}>20-30桌</a>
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} table='30,'#}"{#if $table == '30,'#} class="current"{#/if#}>30桌以上</a>
+			</div>
+		</div>
+		<div class="tab price fn-clear">
+			<span class="fn-left"><i></i>价格</span>
+			<div class="con">
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} price=''#}"{#if $price == ''#} class="current"{#/if#}>不限</a>
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} price=',2000'#}"{#if $price == ',2000'#} class="current"{#/if#}>2000{#echoCurrency type="short"#}以下</a>
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} price='2000,3000'#}"{#if $price == '2000,3000'#} class="current"{#/if#}>2000-3000</a>
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} price='3000,4000'#}"{#if $price == '3000,4000'#} class="current"{#/if#}>3000-4000</a>
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} price='4000,'#}"{#if $price == '4000,'#} class="current"{#/if#}>4000{#echoCurrency type="short"#}以上</a>
+			</div>
+		</div>
+		<div class="tab char fn-clear">
+			<span class="fn-left"><i></i>特色</span>
+			<div class="con">
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} special=''#}"{#if $special == ''#} class="current"{#/if#}>不限</a>
+				{#marry action="item" return="item" type="2"#}
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} special=$item.id#}"{#if $special == $item.id#} class="current"{#/if#}>{#$item.typename#}</a>
+				{#/marry#}
+			</div>
+		</div>
+		<div class="tab type fn-clear">
+			<span class="fn-left"><i></i>类型</span>
+			<div class="con">
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid=''#}"{#if $typeid == ''#} class="current"{#/if#}>不限</a>
+				{#marry action="item" return="item" type="1"#}
+				<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid=$item.id#}"{#if $typeid == $item.id#} class="current"{#/if#}>{#$item.typename#}</a>
+				{#/marry#}
+			</div>
+		</div>
+	</div>
+	<div class="wrap sort">
+		<div class="fn-left com default{#if $orderby == ''#} curr{#/if#}"><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=''#}">综合排序</a></div>
+		<div class="fn-left com{#if $orderby == '1' || $orderby == '2'#} curr{#/if#}{#if $orderby == '2'#} dw{#/if#}"><a href="{#if $orderby == '1'#}{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='2'#}{#else#}{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='1'#}{#/if#}">价格<i></i><em></em></a></div>
+		<div class="fn-left com{#if $orderby == '3' || $orderby == '4'#} curr{#/if#}{#if $orderby == '4'#} dw{#/if#}"><a href="{#if $orderby == '3'#}{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='4'#}{#else#}{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='3'#}{#/if#}">桌数<i></i><em></em></a></div>
+
+		{#$property0 = "r"#}
+		{#$property1 = "h"#}
+
+		{#if in_array("r", $propertyArr)#}
+		{#$property0 = ""#}
+		{#/if#}
+
+		{#if in_array("h", $propertyArr)#}
+		{#$property1 = ""#}
+		{#/if#}
+
+		{#if $property != ""#}
+		{#foreach from=$propertyArr item=fg#}
+			{#if $fg != "r"#}
+				{#if $property0 == ""#}
+					{#$property0 = $property0|cat:$fg#}
+				{#else#}
+					{#$property0 = $property0|cat:","|cat:$fg#}
+				{#/if#}
+			{#/if#}
+			{#if $fg != "h"#}
+				{#if $property1 == ""#}
+					{#$property1 = $property1|cat:$fg#}
+				{#else#}
+					{#$property1 = $property1|cat:","|cat:$fg#}
+				{#/if#}
+			{#/if#}
+		{#/foreach#}
+		{#/if#}
+
+		<div class="tips sel fn-left"><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} property={#$property0#}#}"{#if in_array('r', $propertyArr)#} class="active"{#/if#}><i></i>推荐</a><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} property={#$property1#}#}"{#if in_array('h', $propertyArr)#} class="active"{#/if#}><i></i>热门</a></div>
+		<div class="fn-right tips">共为您找到<em id="totalCount">0</em>条结果</div>
+	</div>
+
+	<div class="list">
+		{#$addr = $addrid#}
+		{#if $business != 0#}
+		{#$addr = $business#}
+		{#/if#}
+		{#marry action="hotel" return="hotel" addrid={#$addr#} typeid={#$typeid#} price={#$price#} table={#$table#} special={#$special#} property={#$property#} orderby={#$orderby#} page={#$page#} pageSize=10#}
+		<div class="block" data-id="{#$hotel.id#}" data-url="{#$hotel.url#}">
+			<div class="hotel fn-clear">
+				<dl class="fn-left">
+					<dt><a href="{#$hotel.url#}" target="_blank">{#if $hotel.property && in_array("h", $hotel.property)#}<i></i>{#/if#}<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$hotel.litpic#}" type="o_large"#}" alt="{#$hotel.title#}"></a></dt>
+					<dd class="name"><a href="{#$hotel.url#}" target="_blank">{#$hotel.title#}</a></dd>
+					{#*<dd class="star"><span>综合评分：</span><i><em></em></i><label><font>4.5</font>/5分</label><span>(来自<font>47</font>条用户点评)</span></dd>
+					<dd class="desk"><span>容纳桌数：<em>{#$hotel.tables#}桌</em></span><span> 起订桌数：<em>17桌</em></span><span>层高：<em>8米  </em></span><span> {#$hotel.levalName#}</span></dd>*#}
+					<dd class="desk"><span>容纳桌数：<em>{#$hotel.tables#}桌</em></span><span>酒店类型：<em>{#$hotel.levalName#}</em></span></dd>
+					<dd class="addr"><span>酒店地址：<em>{#$hotel.addrName[0]#} {#$hotel.addrName[1]#} {#$hotel.address#}</em><a href="{#$hotel.url#}#map" target="_blank"><i></i>地图</a></span></dd>
+					<dd class="look"><a href="{#$hotel.url#}#pic" target="_blank">场地图片</a><a href="{#$hotel.url#}#menu" target="_blank">婚宴菜单</a><a href="{#$hotel.url#}" target="_blank">查询档期 </a><a href="{#$hotel.url#}" target="_blank">预约看场地</a></dd>
+				</dl>
+				<div class="info fn-right">
+					<p>{#$hotel.minprice#}-{#$hotel.maxprice#} <span>{#echoCurrency type="short"#}/桌</span></p>
+					{#*<div class="fn-right xx"><i class="gift"></i><i class="hui"></i><i class="park"></i><i class="line"></i><i class="play"></i><i class="camera"></i></div>*#}
+					<div class="tel"><em></em>{#$hotel.contact#}</div>
+				</div>
+			</div>
+			<table cellpadding="0" cellspacing="0" width="100%">
+				<colgroup valign="middle" align="left">
+					<col width="30">
+	        <col width="">
+	        <col width="13%">
+	        <col width="13%">
+	        <col width="13%">
+	        <col width="14%">
+	        <col width="15%">
+ 				</colgroup>
+ 				<tbody>
+ 					<tr>
+ 						<th></th>
+ 						<th>宴会大厅</th>
+ 						<th>容纳桌数</th>
+ 						<th>宴厅高度</th>
+ 						<th>柱子形状</th>
+ 						<th>场地面积</th>
+ 						<th>婚宴低消价格</th>
+ 					</tr>
+					<tr><td class="loading" colspan="7">加载中...</td></tr>
+ 				</tbody>
+			</table>
+		</div>
+		{#/marry#}
+		{#if $pageInfo.totalCount == 0#}
+		<div class="empty">抱歉！ 暂无相关酒店</div>
+		{#/if#}
+	</div>
+
+	<!--分页-->
+	{#getPageList service='marry' template='hotel' pageType='dynamic' param="{#$pageParam#}&page=#page#"#}
+
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript">
+	var totalCount = {#$pageInfo.totalCount|string_format:"%d"#}, totalPage = {#$pageInfo.totalPage|string_format:"%d"#}, atPage = {#$page#};
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/hotel.js"></script>
+</body>
+</html>

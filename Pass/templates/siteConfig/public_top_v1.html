@@ -1,0 +1,292 @@
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/top1.html"#}
+<!-- 导航 s -->
+<div class="fixedwrap FestivalAD_header">
+	<div class="fixedpane">
+		<!-- head s -->
+		<div class="wrap header fn-clear">
+			<div class="logo">
+				<a href="{#$cfg_basehost#}" title="{#$cfg_webname#}"><img src="{#$cfg_weblogo#}" alt="{#$cfg_webname#}"><h2>{#$cfg_shortname#}</h2></a>
+			</div>
+			<div class="kefu"><script src="/include/json.php?action=adjs&id=156" language="javascript"></script></div>
+			<div class="searchwrap">
+				<div class="search">
+						<div class="type">
+							<dl>
+								<dt><a href="javascript:;" class="keytype">
+									{#if $channel == "index"#}
+										{#siteConfig action="siteModule" return="module" #}
+											{#if $_bindex.module == 1#}
+												{#$module.name#}
+											{#else#}
+											{#/if#}
+										{#/siteConfig#}
+									{#else if $channel == "tieba"#}
+										{#siteConfig action="siteModule" return="module" #}
+											{#if $module.code == "tieba"#}
+												{#$module.name#}
+											{#else#}
+											{#/if#}
+										{#/siteConfig#}
+									{#else if $channel == "huangye"#}
+										{#siteConfig action="siteModule" return="module" #}
+											{#if $module.code == "huangye"#}
+												{#$module.name#}
+											{#else#}
+											{#/if#}
+										{#/siteConfig#}
+									{#else if $channel == "vote"#}
+										{#siteConfig action="siteModule" return="module" #}
+											{#if $module.code == "vote"#}
+												{#$module.name#}
+											{#else#}
+											{#/if#}
+										{#/siteConfig#}
+									{#else if $channel == "business"#}
+										商家店铺
+									{#/if#}
+								</a><em></em></dt>
+								<dd>
+									<div class="ModuleBox">
+										<a href="javascript:;" data-id="0" data-module="business"><span>商家店铺</span></a>
+										{#siteConfig action="siteModule" return="module"#}
+											{#if $module.code == "house"#}
+												<a href="javascript:;" data-id="1" data-module="{#$module.code#}">
+													<span>{#$module.name#}</span>
+													<div class="MoudleNav fn-clear">
+														<i></i>
+														<ul class="fn-clear">
+															<li data-type="loupan">楼盘</li>
+															<li data-type="community">小区</li>
+															<li data-type="store">中介公司</li>
+															<li data-type="sale">二手房</li>
+															<li data-type="zu">租房</li>
+															<li data-type="xzl">写字楼</li>
+															<li data-type="sp">商铺</li>
+															<li data-type="cf">厂房/仓库</li>
+														</ul>
+													</div>
+												</a>
+											{#else if $module.code == "job"#}
+												<a href="javascript:;" data-id="1" data-module="{#$module.code#}">
+													<span>{#$module.name#}</span>
+													<div class="MoudleNav jobMoudle fn-clear">
+														<i></i>
+														<ul class="fn-clear">
+															<li data-type="zhaopin">职位</li>
+															<li data-type="company">公司</li>
+															<li data-type="resume">简历</li>
+															<li data-type="zhaopinhui">招聘会</li>
+														</ul>
+													</div>
+												</a>
+											{#else if $module.code == "dating"#}
+											{#else if $module.code == "marry"#}
+											{#else if $module.code == "waimai"#}
+											{#else if $module.code == "special"#}
+											{#else if $module.code == "paper"#}
+											{#else if $module.code == "website"#}
+											{#else if $module.code == "renovation"#}
+											{#else if $module.code == "integral"#}
+											{#else if $module.code == "car"#}
+											{#else#}
+												<a href="javascript:;" data-id="0" data-module="{#$module.code#}"><span>{#$module.name#}</span></a>
+											{#/if#}
+										{#/siteConfig#}
+									</div>
+								</dd>
+							</dl>
+						</div>
+					<div class="FormBox">
+						<form action="{#getUrlPath service='business' template='list'#}" class="form business {#if $channel == "business"#}{#else#}fn-hide{#/if#}">
+							<div class="inputbox">
+								<div class="inpbox"><input type="text" name="keywords" class="searchkey" value="{#$keywords#}" /></div>
+								<div class="hotkey">
+									{#siteConfig module="index" action="hotkeywords" return="hotkeywords"#}
+									{#if $_bindex.hotkeywords <= 3#}
+									<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a>
+									{#/if#}
+									{#/siteConfig#}
+								</div>
+							</div>
+							<input type="submit" class="submit" value="搜索">
+						</form>
+						{#if in_array("article", $installModuleArr)#}
+						<form action="{#getUrlPath service='article' template='search'#}" class="form article fn-hide">
+							<div class="inputbox">
+								<div class="inpbox"><input type="text" name="keywords" class="searchkey" placeholder="请输入关键字..." value="{#$keywords#}" /></div>
+							</div>
+							<input type="submit" class="submit" value="搜索">
+						</form>
+						{#/if#}
+						{#if in_array("image", $installModuleArr)#}
+						<form action="{#getUrlPath service='image' template='search'#}" class="form image fn-hide">
+							<div class="inputbox">
+								<div class="inpbox"><input type="text" name="keywords" class="searchkey" placeholder="请输入关键字..." value="{#$keywords#}" /></div>
+							</div>
+							<input type="submit" class="submit" value="搜索">
+						</form>
+						{#/if#}
+						{#if in_array("info", $installModuleArr)#}
+						<form action="{#getUrlPath service='info' template='list'#}" class="form info fn-hide">
+							<div class="inputbox">
+								<div class="inpbox"><input type="text" name="keywords" class="searchkey" placeholder="想找什么？输入类别或关键字试试..." value="{#$keywords#}" /></div>
+							</div>
+							<input type="submit" class="submit" value="搜索">
+						</form>
+						{#/if#}
+						{#if in_array("tuan", $installModuleArr)#}
+						<form action="{#getUrlPath service="tuan" template="list"#}" class="form tuan fn-hide">
+							<div class="inputbox">
+								<div class="inpbox"><input type="text" name="search_keyword" class="searchkey" placeholder="请输入商品名称、地址等..." value="{#$keywords#}" /></div>
+							</div>
+							<input type="submit" class="submit" value="搜索">
+						</form>
+						{#/if#}
+						{#if in_array("house", $installModuleArr)#}
+						<form action="" class="form house HouseForm fn-hide" onsubmit="return false;">
+							<div class="inputbox">
+								<div class="inpbox"><input type="text" name="search_keyword" id="HouseSearch" class="searchkey" placeholder="请输入关键字..." value="{#$keywords#}" /></div>
+							</div>
+							<input type="submit" class="submit HouseSeacher_btn" value="搜索">
+						</form>
+						{#/if#}
+						{#if in_array("shop", $installModuleArr)#}
+						<form action="{#getUrlPath service="shop" template="list"#}" class="form shop fn-hide">
+							<div class="inputbox">
+								<div class="inpbox"><input type="text" name="keywords" class="searchkey" placeholder="请输入宝贝名称或相关词语..." value="{#$keywords#}" /></div>
+							</div>
+							<input type="submit" class="submit" value="搜索">
+						</form>
+						{#/if#}
+						{#if in_array("job", $installModuleArr)#}
+						<form action="" class="form job HouseForm fn-hide" onsubmit="return false;">
+							<div class="inputbox">
+								<div class="inpbox"><input type="text" name="search_keyword" id="JobSearch" class="searchkey" placeholder="请输入关键字..." value="{#$keywords#}" /></div>
+							</div>
+							<input type="submit" class="submit JobSeacher_btn" value="搜索">
+						</form>
+						{#/if#}
+						{#if in_array("video", $installModuleArr)#}
+						<form action="{#getUrlPath service="video" template="list"#}" class="form video fn-hide">
+							<div class="inputbox">
+								<div class="inpbox"><input type="text" name="keywords" class="searchkey" placeholder="请输入关键字..." value="{#$keywords#}" /></div>
+							</div>
+							<input type="submit" class="submit" value="搜索">
+						</form>
+						{#/if#}
+						{#if in_array("huangye", $installModuleArr)#}
+						<form action="{#getUrlPath service="huangye" template="list"#}" class="form huangye {#if $channel == "huangye"#}{#else#}fn-hide{#/if#}">
+							<div class="inputbox">
+								<div class="inpbox"><input type="text" name="keywords" class="searchkey" placeholder="输入您要查找的服务机构关键字..." value="{#$keywords#}" /></div>
+							</div>
+							<input type="submit" class="submit" value="搜索">
+						</form>
+						{#/if#}
+						{#if in_array("vote", $installModuleArr)#}
+						<form action="{#getUrlPath service="vote" template="index"#}" class="form vote {#if $channel == "vote"#}{#else#}fn-hide{#/if#}">
+							<div class="inputbox">
+								<div class="inpbox"><input type="text" name="keywords" class="searchkey" placeholder="输入您要查找的活动关键字..." value="{#$keywords#}" /></div>
+							</div>
+							<input type="submit" class="submit" value="搜索">
+						</form>
+						{#/if#}
+						{#if in_array("tieba", $installModuleArr)#}
+						<form action="{#getUrlPath service="tieba" template="index"#}" class="form tieba {#if $channel == "tieba"#}{#else#}fn-hide{#/if#}">
+							<div class="inputbox">
+								<div class="inpbox"><input type="text" name="keywords" class="searchkey" placeholder="输入您要查找的帖子..." value="{#$keywords#}" /></div>
+							</div>
+							<input type="submit" class="submit" value="搜索">
+						</form>
+						{#/if#}
+						{#if in_array("huodong", $installModuleArr)#}
+						<form action="{#getUrlPath service="huodong" template="list"#}" class="form huodong fn-hide">
+							<div class="inputbox">
+								<div class="inpbox"><input type="text" name="keywords" class="searchkey" placeholder="搜索活动..." value="{#$keywords#}" /></div>
+							</div>
+							<input type="submit" class="submit" value="搜索">
+						</form>
+						{#/if#}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- head e -->
+
+		<!-- 导航 s -->
+		<div class="nav">
+			<div class="wrap">
+				<ul class="mainnav fn-clear">
+					<li><a href="{#$cfg_basehost#}" class="nav-m">首页</a></li>
+					{#if in_array("article", $installModuleArr)#}
+					<li class="dropdown">
+						<div class="dropbox">
+							<dl>
+								<dt><a href="{#$article_channelDomain#}" class="nav-m" target="_blank">新闻资讯</a><i class="picon picon-down2"></i></dt>
+								<dd>
+									{#article action="type" return="atype" pageSize="5"#}
+									<a href="{#$atype.url#}" target="_blank">{#$atype.typename#}</a>
+									{#/article#}
+								</dd>
+							</dl>
+						</div>
+					</li>
+					{#/if#}
+					{#if in_array("info", $installModuleArr)#}<li><a href="{#$info_channelDomain#}" class="nav-m" target="_blank">跳蚤市场<i class="picon picon-latest"></i></a></li>{#/if#}
+					{#if in_array("tuan", $installModuleArr)#}<li><a href="{#$tuan_channelDomain#}" class="nav-m" target="_blank">团购秒杀<i class="picon picon-hui"></i></a></li>{#/if#}
+					{#if in_array("house", $installModuleArr)#}
+					<li class="dropdown">
+						<div class="dropbox">
+							<dl>
+								<dt><a href="{#$house_channelDomain#}" class="nav-m" target="_blank">房屋租售</a><i class="picon picon-down2"></i></dt>
+								<dd>
+									<a href="{#getUrlPath service='house' template='zu'#}" target="_blank">找出租房</a>
+									<a href="{#getUrlPath service='house' template='sale'#}" target="_blank">找出售房</a>
+									<a href="{#getUrlPath service='house' template='map' action='loupan'#}" target="_blank">地图找房</a>
+									<a href="{#getUrlPath service='house' template='loupan' param='from=subway'#}" target="_blank">地铁找房</a>
+								</dd>
+							</dl>
+						</div>
+					</li>
+					{#/if#}
+					{#if in_array("job", $installModuleArr)#}
+					<li class="dropdown">
+						<div class="dropbox">
+							<dl>
+								<dt><a href="{#$job_channelDomain#}" class="nav-m" target="_blank">招聘求职</a><i class="picon picon-down2"></i></dt>
+								<dd>
+									<a href="{#getUrlPath service='job' template='zhaopin'#}" target="_blank">最新职位</a>
+									<a href="{#getUrlPath service='member' type='user' template='job' action='resume'#}" target="_blank">我要找工作</a>
+									<a href="{#getUrlPath service='job' template='company'#}" target="_blank">企业招聘</a>
+									<a href="{#getUrlPath service='job' template='resume'#}" target="_blank">最新简历</a>
+								</dd>
+							</dl>
+						</div>
+					</li>
+					{#/if#}
+					{#if in_array("renovation", $installModuleArr)#}
+					<li class="dropdown">
+						<div class="dropbox">
+							<dl>
+								<dt><a href="{#$renovation_channelDomain#}" class="nav-m" target="_blank">装修市场</a><i class="picon picon-down2"></i></dt>
+								<dd>
+									<a href="{#$build_channelDomain#}" target="_blank">建材商城</a>
+									<a href="{#$home_channelDomain#}" target="_blank">家居商城</a>
+									<a href="{#getUrlPath service='renovation' template='zb'#}" target="_blank">装修招标</a>
+									<a href="{#$furniture_channelDomain#}" target="_blank">家具商城</a>
+								</dd>
+							</dl>
+						</div>
+					</li>
+					{#/if#}
+					{#if in_array("dating", $installModuleArr)#}<li><a href="{#$dating_channelDomain#}" class="nav-m" target="_blank">同城交友</a></li>{#/if#}
+					{#if in_array("tieba", $installModuleArr)#}<li><a href="{#$tieba_channelDomain#}" class="nav-m" target="_blank">贴吧社区</a></li>{#/if#}
+					<li><a href="{#$business_channelDomain#}" class="nav-m" target="_blank">{#$business_channelName#}<i class="picon picon-join"></i></a></li>
+				</ul>
+				<!-- <div class="changeSkin" title="点击切换导航颜色"></div> -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 导航 e -->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.colorPicker.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/index_public.js?v={#$cfg_staticVersion#}"></script>

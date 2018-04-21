@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$langData['siteConfig'][0][7]#} - {#$cfg_webname#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+</head>
+<body>
+
+<div class="header_bg"><img src="{#$templets_skin#}images/header_bg.png" alt="" id="header_bg"></div>
+<div id="header-box"></div>
+
+<!-- 顶部 s -->
+<div class="header">
+  <div class="header-l"><a href="{#$member_userDomain#}"><span><i>{#$langData['siteConfig'][0][10]#}</i></span></a></div>
+  <div class="header-r">
+    <span class="setup"><a href="{#getUrlPath service='member' template='security'#}"><img src="{#$templets_skin#}images/setup_icon.png" alt=""></a></span>
+    <span class="cart"><a href="{#getUrlPath service='shop' template='cart'#}"><img src="{#$templets_skin#}images/cart_icon.png" alt=""></a></span>
+    <span class="msg"><a href="{#getUrlPath service='member' template='message'#}"><img src="{#$templets_skin#}images/msg_icon.png" alt=""></a></span>
+  </div>
+</div>
+<!-- 顶部 e -->
+
+<!-- 用户信息 s -->
+<div class="user-box fn-clear">
+  {#if $userinfo#}
+  <div class="userphoto-box fn-left">
+    <div class="userphoto"><a href="{#getUrlPath service='member' template='profile'#}"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}"#}{#/if#}" /></a></div>
+  </div>
+  <div class="username fn-left">
+    <p class="nicekname"><a href="{#getUrlPath service='member' template='profile'#}">{#$userinfo.nickname#}</a><span class="userlevel">{#$langData['siteConfig'][0][4]#}</span></p>
+    <ul class="yan fn-clear">
+      <li class="real{#if $userinfo.certifyState == 1#} active{#/if#}"></li>
+      <li class="phone{#if $userinfo.phoneCheck == 1#} active{#/if#}"></li>
+      <li class="email{#if $userinfo.emailCheck == 0#} active{#/if#}"></li>
+      <li class="save"></li>
+      <li class="pay{#if $userinfo.paypwdCheck == 0#} active{#/if#}"></li>
+      <li class="question{#if $userinfo.question == 0#} active{#/if#}"></li>
+    </ul>
+  </div>
+  {#else#}
+  <div class="userphoto-box fn-left">
+    <div class="userphoto"><img src="{#$cfg_staticPath#}images/noPhoto_100.jpg"></div>
+  </div>
+  <div class="username fn-left">
+    <p class="nicekname"><a href="{#$cfg_basehost#}/login.html">{#$langData['siteConfig'][2][0]#}/{#$langData['siteConfig'][1][0]#}</a></p>
+  </div>
+  {#/if#}
+</div>
+<!-- 用户信息 e -->
+
+<!-- 账户信息 s -->
+<div class="account">
+  <ul class="fn-clear">
+    <li><a href="{#getUrlPath service='member' type='user' template='balance'#}"><div class="line"><p class="gray">{#$langData['siteConfig'][19][258]#}</p><p class="blue">{#echoCurrency type='symbol'#}{#if $userinfo#}{#$userinfo.money#}{#else#}0{#/if#}</p></div></a></li>
+    <li><a href="{#getUrlPath service='member' type='user' template='pocket'#}"><div class="line"><p class="gray">{#$langData['siteConfig'][19][259]#}</p><p class="blue">{#echoCurrency type='symbol'#}{#if $userinfo#}{#$userinfo.freeze#}{#else#}0{#/if#}</p></div></a></li>
+    <li><a href="{#getUrlPath service='member' type='user' template='integral'#}"><div class="line"><p class="gray">{#$cfg_pointName#}</p><p class="blue">{#if $userinfo#}{#$userinfo.point#}{#else#}0{#/if#}</p></div></a></li>
+  </ul>
+</div>
+<!-- 账户信息 e -->
+
+<!-- 我的订单 s -->
+<div class="pocket">
+  <div class="pocket-tit">
+    <a href="{#getUrlPath service='member' type='user' template='order'#}">{#$langData['siteConfig'][10][4]#}<span>{#$langData['siteConfig'][16][4]#}</span></a>
+  </div>
+  <div class="pocket-box fn-clear">
+    <a href="{#getUrlPath service='member' template='order' param='state=1'#}"><i class="info-1"></i>{#$langData['siteConfig'][9][25]#}</a>
+    <a href="{#getUrlPath service='member' template='order' param='state=6'#}"><i class="info-2"></i>{#$langData['siteConfig'][9][26]#}</a>
+    <a href="{#getUrlPath service='member' template='order' param='state=4'#}"><i class="info-3"></i>{#$langData['siteConfig'][16][37]#}</a>
+    <a href="{#getUrlPath service='member' template='order' param='state=3'#}"><i class="info-4"></i>{#$langData['siteConfig'][9][38]#}</a>
+  </div>
+</div>
+<!-- 我的订单 e -->
+
+<!-- 商家服务 s -->
+<div class="pocket">
+  <div class="pocket-tit">
+    <a href="{#getUrlPath service='member' template='business-diancan-order'#}">{#$langData['siteConfig'][19][230]#}<span></span></a>
+  </div>
+  <div class="pocket-box fn-clear">
+    <a href="{#getUrlPath service='member' template='business-diancan-order'#}"><i class="feature-1"></i>{#$langData['siteConfig'][16][5]#}</a>
+    <a href="{#getUrlPath service='member' template='business-dingzuo-order'#}"><i class="feature-2"></i>{#$langData['siteConfig'][16][6]#}</a>
+    <a href="{#getUrlPath service='member' template='business-paidui-order'#}"><i class="feature-3"></i>{#$langData['siteConfig'][16][7]#}</a>
+    <a href="{#getUrlPath service='member' template='business-maidan-order'#}"><i class="feature-4"></i>{#$langData['siteConfig'][16][8]#}</a>
+  </div>
+</div>
+<!-- 商家服务 e -->
+
+<!-- 我的口袋 s -->
+<div class="pocket">
+  <div class="pocket-tit">
+    <a href="{#getUrlPath service='member' template='pocket'#}">{#$langData['siteConfig'][16][9]#}<span>{#$langData['siteConfig'][16][10]#}</span></a>
+  </div>
+  <div class="pocket-box fn-clear">
+    <a href="{#getUrlPath service='member' template='deposit'#}"><i class="pocket-1"></i>{#$langData['siteConfig'][15][0]#}</a>
+    <a href="{#getUrlPath service='member' template='convert'#}"><i class="pocket-2"></i>{#$langData['siteConfig'][16][11]#}</a>
+    <a href="{#getUrlPath service='member' template='transfer'#}"><i class="pocket-4"></i>{#$langData['siteConfig'][19][232]#}</a>
+    <a href="{#getUrlPath service='member' template='record'#}"><i class="pocket-5"></i>{#$langData['siteConfig'][19][225]#}</a>
+  </div>
+</div>
+<!-- 我的口袋 e -->
+
+<!-- 收银结算 s -->
+<div class="pocket">
+  <div class="pocket-tit">
+    <a href="{#getUrlPath service='member' template='checkout'#}">{#$langData['siteConfig'][16][38]#}<span></span></a>
+  </div>
+  <div class="pocket-box fn-clear">
+    <a href="{#getUrlPath service='member' template='checkout'#}"><i class="account-2"></i>{#$langData['siteConfig'][16][39]#}</a>
+    <a href="{#getUrlPath service='member' template='checkout-order'#}"><i class="account-1"></i>{#$langData['siteConfig'][16][40]#}</a>
+    <a href="{#getUrlPath service='member' template='checkout-account'#}"><i class="account-3"></i>{#$langData['siteConfig'][16][41]#}</a>
+    <a href="{#getUrlPath service='member' template='withdraw'#}"><i class="pocket-3"></i>{#$langData['siteConfig'][16][12]#}</a>
+    {#*<a href="{#getUrlPath service='member' template='evaluate'#}"><i class="account-4"></i>{#$langData['siteConfig'][19][868]#}</a>*#}
+
+  </div>
+</div>
+<!-- 收银结算 e -->
+
+<!-- 我的服务 s -->
+<div class="pocket">
+  <div class="pocket-tit">
+    <a href="javascript:;">{#$langData['siteConfig'][10][6]#}<span></span></a>
+  </div>
+  <div class="pocket-box fn-clear">
+    <a href="{#getUrlPath service='member' template='module'#}#type1"><i class="service-2"></i>{#$langData['siteConfig'][16][42]#}</a>
+    <a href="{#getUrlPath service='member' template='module'#}#type2"><i class="service-1"></i>{#$langData['siteConfig'][19][658]#}</a>
+    <a href="{#getUrlPath service='member' template='module'#}#type3"><i class="service-3"></i>{#$langData['siteConfig'][19][659]#}</a>
+    <a href="{#getUrlPath service='member' template='promotion'#}"><i class="service-4"></i>{#$langData['siteConfig'][19][473]#}</a>
+  </div>
+</div>
+<!-- 我的服务 e -->
+
+<!-- 发布列表 s -->
+<div class="list">
+  <ul>
+    {#if in_array("tieba", $installModuleArr)#}
+    <li><a href="{#getUrlPath service='member' action='manage' template='tieba'#}"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon1.png" alt=""></i><p>{#$langData['siteConfig'][16][13]#}</p><span>{#$langData['siteConfig'][16][14]#}/{#$langData['siteConfig'][16][15]#}</span></div></a></li>
+    {#/if#}
+    {#if in_array("article", $installModuleArr)#}
+    <li><a href="{#getUrlPath service='member' action='manage' template='article'#}"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon2.png" alt=""></i><p>{#$langData['siteConfig'][19][235]#}</p><span>{#$langData['siteConfig'][16][16]#}/{#$langData['siteConfig'][16][17]#}</span></div></a></li>
+    {#/if#}
+    {#if {#verifyModuleAuth module='info'#} && in_array("info", $installModuleArr)#}
+    <li><a href="{#getUrlPath service='member' action='manage' template='info'#}"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon3.png" alt=""></i><p>{#$langData['siteConfig'][16][18]#}</p><span>{#$langData['siteConfig'][16][19]#}/{#$langData['siteConfig'][16][20]#}</span></div></a></li>
+    {#/if#}
+    {#if {#verifyModuleAuth module='tuan'#} && in_array("tuan", $installModuleArr)#}
+    <li><a href="{#getUrlPath service='member' template='tuan'#}"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon20.png" alt=""></i><p>{#$langData['siteConfig'][16][43]#}</p><span>{#$langData['siteConfig'][11][4]#}/{#$langData['siteConfig'][19][444]#}</span></div></a></li>
+    {#/if#}
+    {#if {#verifyModuleAuth module='house'#} && in_array("house", $installModuleArr)#}
+    <li><a href="{#getUrlPath service='member' template='house'#}"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon4.png" alt=""></i><p>{#$langData['siteConfig'][19][217]#}</p><span>{#$langData['siteConfig'][11][6]#}/{#$langData['siteConfig'][16][21]#}</span></div></a></li>
+    {#/if#}
+    {#if {#verifyModuleAuth module='job'#} && in_array("job", $installModuleArr)#}
+    <li><a href="{#getUrlPath service='member' template='job' action='collections'#}"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon5.png" alt=""></i><p>{#$langData['siteConfig'][16][22]#}</p><span>{#$langData['siteConfig'][10][8]#}/{#$langData['siteConfig'][19][245]#}</span></div></a></li>
+    {#/if#}
+    {#if {#verifyModuleAuth module='huodong'#} && in_array("huodong", $installModuleArr)#}
+    <li><a href="{#getUrlPath service='member' template='manage' action='huodong'#}"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon6.png" alt=""></i><p>{#$langData['siteConfig'][19][224]#}</p><span>{#$langData['siteConfig'][11][7]#}/{#$langData['siteConfig'][16][23]#}</span></div></a></li>
+    {#/if#}
+    {#if in_array("vote", $installModuleArr)#}
+    <!-- <li><a href="#"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon7.png" alt=""></i><p>投票</p><span>发起投票/管理投票</span></div></a></li> -->
+    {#/if#}
+    <!-- {#if {#verifyModuleAuth module='tuan'#} && in_array("tuan", $installModuleArr)#}<li><a href="#"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon13.png" alt=""></i><p>团购</p><span></span></div></a></li>{#/if#} -->
+    <!-- {#if {#verifyModuleAuth module='renovation'#} && in_array("renovation", $installModuleArr)#}<li><a href="#"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon14.png" alt=""></i><p>装修</p><span></span></div></a></li>{#/if#} -->
+    {#*{#if {#verifyModuleAuth module='shop'#} && in_array("shop", $installModuleArr)#}<li><a href="{#getUrlPath service='member' template='manage' action='shop'#}"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon15.png" alt=""></i><p>商城</p><span></span></div></a></li>{#/if#}*#}
+    <!-- {#if {#verifyModuleAuth module='waimai'#} && in_array("waimai", $installModuleArr)#}<li><a href="#"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon16.png" alt=""></i><p>外卖</p><span></span></div></a></li>{#/if#} -->
+  </ul>
+</div>
+<!-- 发布列表 e -->
+
+<!-- 收藏、关注 s -->
+<div class="list fn-hide">
+  <ul>
+    <li><a href="{#getUrlPath service='member' template='attention'#}"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon9.png" alt=""></i><p>我的关注</p><span>主播/商品/店铺等</span></div></a></li>
+  </ul>
+</div>
+<!-- 收藏、关注 s -->
+
+<!-- 帮助中心 s -->
+<div class="list">
+  <ul>
+    <li><a href="{#getUrlPath service='member' template='collect'#}"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon8.png" alt=""></i><p>{#$langData['siteConfig'][10][9]#}</p><span>{#$langData['siteConfig'][16][24]#}/{#$langData['siteConfig'][16][25]#}/{#$langData['siteConfig'][16][26]#}/{#$langData['siteConfig'][16][27]#}</span></div></a></li>
+    <li><a href="{#getUrlPath service='member' template='service'#}"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon10.png" alt=""></i><p>{#$langData['siteConfig'][16][28]#}</p><span>{#$langData['siteConfig'][16][29]#}/{#$langData['siteConfig'][16][30]#}</span></div></a></li>
+    <li><a href="{#getUrlPath service='member' template='security-shCertify'#}"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon18.png" alt=""></i><p>{#$langData['siteConfig'][19][255]#}</p><span></span></div></a></li>
+    <li><a href="{#getUrlPath service='member' template='security'#}"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon11.png" alt=""></i><p>{#$langData['siteConfig'][0][8]#}</p><span>{#$langData['siteConfig'][5][0]#}/{#$langData['siteConfig'][16][32]#}</span></div></a></li>
+    <li class="help-box" id="appSetting"><a href="{#getUrlPath service='member' type='user' template='setting'#}"><div class="item"><i class="icon"><img src="{#$templets_skin#}images/item_icon15.png" alt=""></i><p>{#$langData['siteConfig'][16][35]#}</p><span>{#$langData['siteConfig'][16][36]#}</span></div></a></li>
+  </ul>
+</div>
+<!-- 帮助中心 e -->
+
+<div class="blank"></div>
+
+{#$pageTit = 'member'#}
+{#include file="../../../siteConfig/touch/default/_foot.html"#}
+
+<script src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

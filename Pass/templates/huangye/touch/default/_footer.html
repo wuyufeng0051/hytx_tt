@@ -1,0 +1,32 @@
+{#if $template == 'detail'#}
+<div class="de-bottom">
+	<ul>
+		<li class="deb-1">
+			<a href="tel:{#$detail_telNum#}"> <s></s> 打电话 </a>
+		</li>
+		<li class="deb-2">
+			{#if $site_map == "baidu"#}
+			<a href="http://map.baidu.com/mobile/webapp/search/search/qt=s&wd={#$detail_addressdet#}&c=340&searchFlag=bigBox&version=5&exptype=dep&src_from=webapp_all_bigbox&sug_forward=&src=0&nb_x={#$detail_longitude#}&nb_y={#$detail_latitude#}&center_rank=1/vt=" target="_blank" class="appMapBtn"> <s></s> 一键导航 </a>
+			{#elseif $site_map == "google"#}
+			<a href="https://www.google.com/maps/place/{#$detail_addrname[0]#}{#$detail_addressdet#}" target="_blank" class="appMapBtn"> <s></s> 一键导航 </a>
+      {#elseif $site_map == "amap"#}
+      <a href="http://ditu.amap.com/search?query={#$detail_addrname[0]#}{#$detail_addressdet#}" class="appMapBtn" target="_blank"> <s></s> 一键导航 </a>
+      {#elseif $site_map == "qq"#}
+      <a href="http://apis.map.qq.com/uri/v1/search?keyword={#$detail_addrname[0]#}{#$detail_addressdet#}" class="appMapBtn" target="_blank"> <s></s> 一键导航 </a>
+			{#/if#}
+		</li>
+		<li class="deb-3">
+			<a href="javascript:;"> <s></s> 加微信 </a>
+		</li>
+	</ul>
+</div>
+{#else#}
+<div class="fixFooter">
+  <ul>
+    <li class="ficon1 active"><a href="{#$huangye_channelDomain#}"><i></i>首页</a></li>
+    <li class="ficon2"><a href="{#getUrlPath service='member' type='user' template='enter'#}"><i></i>入驻</a></li>
+    <li class="ficon3"><a href="{#getUrlPath service="huangye" template="list"#}"><i></i>管理</a></li>
+    <li class="ficon4"><a href="{#$member_userDomain#}"><i></i>我的</a></li>
+  </ul>
+</div>
+{#/if#}

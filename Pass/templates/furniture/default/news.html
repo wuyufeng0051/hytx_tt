@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>资讯-{#$furniture_title#}</title>
+<meta name="keywords" content="{#$furniture_keywords#}"/>
+<meta name="description" content="{#$furniture_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/information.css" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$furniture_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<div class="bread">
+	<a href="{#$furniture_channelDomain#}">首页</a> > <a href="{#getUrlPath service='furniture' template='news'#}">资讯</a>{#if $pid != 0#} > <a href="{#getUrlPath service='furniture' template='news' typeid={#$pid#}#}">{#$pname#}</a>{#/if#}{#if $tid != 0#} > <a href="{#getUrlPath service='furniture' template='news' typeid={#$tid#}#}">{#$tname#}</a>{#/if#}
+</div>
+
+<div class="wrap select">
+	<div class="sel clearfix"><span class="left">类别：</span>
+		<div class="x left">
+			<a{#if $pid == 0#} class="on"{#/if#} href="{#getUrlPath service='furniture' template='news'#}">不限</a>
+			{#furniture action="newsType" return="type" pageSize="10"#}
+			<a{#if $pid == {#$type.id#}#} class="on"{#/if#} href="{#getUrlPath service='furniture' template='news' typeid={#$type.id#}#}">{#$type.typename#}</a>
+			{#/furniture#}
+		</div>
+	</div>
+	{#if $pid != 0 && $child > 0#}
+	<div class="sel clearfix"><span class="left">&nbsp;</span>
+		<div class="x left">
+			<a{#if $tid == 0#} class="on"{#/if#} href="{#getUrlPath service='furniture' template='news' typeid={#$pid#}#}">不限</a>
+			{#furniture action="newsType" return='type' type={#$pid#}#}
+			<a{#if $tid == {#$type.id#}#} class="on"{#/if#} href="{#getUrlPath service='furniture' template='news' typeid={#$type.id#}#}">{#$type.typename#}</a>
+			{#/furniture#}
+		</div>
+	</div>
+	{#/if#}
+</div>
+
+<ul class="informationCon clearfix">
+	{#furniture action="news" typeid={#$typeid#} page={#$page#} pageSize="20"#}
+	<li>
+		{#if $row.litpic#}<div class="img"><a href="{#$row.url#}" target="_blank"><img src="{#changeFileSize url={#$row.litpic#} type='middle'#}" alt="{#$row.title#}"></a></div>{#/if#}
+		<h3><a href="{#$row.url#}" title="{#$row.title#}" target="_blank">{#$row.title#}</a></h3>
+		<p>{#$row.desc#}</p>
+	</li>
+	{#/furniture#}
+	{#if $pageInfo.totalCount == 0#}
+	<li class="empty">报歉！ 暂无相关资讯</li>
+	{#/if#}
+</ul>
+
+<!-- 分页 -->
+{#getPageList service='furniture' template='news' typeid={#$typeid#}#}
+
+
+{#include file="bottom.html"#}
+</body>
+</html>

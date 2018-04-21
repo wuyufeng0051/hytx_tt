@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#if $list_seotitle != ""#}{#$list_seotitle#}{#elseif $list_typename != ''#}{#$list_typename#}{#else#}列表{#/if#} - {#$huangye_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$list_keywords#}" />
+<meta name="description" content="{#$list_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v=1">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css?v=9">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v=4"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huangye_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var typeid = {#$typeid#}, business = {#$business#}, addrid = {#$addrid#}, keywords = '{#$keywords#}';
+</script>
+
+{#* 微信分享 *#}
+{#$Share_description = {#$huangye_description#}#}
+{#$Share_title = $huangye_title|cat:"列表"#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#getUrlPath service='huangye' template='list'#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</head>
+<body>
+	{#$huangye_pgtitle = $huangye_title|cat:"列表"#}
+	{#include file="_header.html"#}
+	<div class="choice">
+		<ul>
+			<li>
+				<a href="javascript:;">
+					<span>{#if $typeid#}{#if $typeArr[1]#}{#$typeArr[1]#}{#else#}{#$typeArr[0]#}{#/if#}{#else#}全部类别{#/if#}<font id="count">(0)</font></span>
+					<em></em>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;" class="last">
+					<span>全部区域</span>
+					<em></em>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="choice-list">
+		<div class="list-left ol fn-clear">
+			<div class="cl-left box">
+				<ul>
+					<li data-id="0"{#if $typeid == 0#} class="bc"{#/if#}><a href="javascript:;">全部类别</a></li>
+					{#huangye return="type" action="type"#}
+					{#huangye return="count" action="ilist" typeid=$type.id pageSize="1"#}
+					{#/huangye#}
+					<li data-id="{#$type.id#}"{#if $type.id == $typeIds[0]#} class="bc"{#/if#}><a href="javascript:;">{#$type.typename#}</a></li>
+					{#/huangye#}
+				</ul>
+			</div>
+			<div class="cl-right box">
+				<ul class="cl-rr" id="typeCon"></ul>
+			</div>
+		</div>
+		<div class="list-right ol fn-clear">
+			<div class="cl-left box">
+				<ul>
+					<li class="bc" data-id="0">
+						<a href="javascript:;">全部区域</a>
+					</li>
+					{#huangye return="addr" action="addr"#}
+					<li data-id="{#$addr.id#}"><a href="javascript:;">{#$addr.typename#}</a></li>
+					{#/huangye#}
+				</ul>
+			</div>
+			<div class="cl-right box">
+				<ul class="cl-rr" id="addrCon"></ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="content">
+		<div class="content-list">
+			<ul id="listCon">
+				<li class="loading">正在加载，请稍后...</li>
+			</ul>
+		</div>
+	</div>
+	<div class="fanye">
+		<div class="fan-l"><span>&lt;</span></div>
+		<div class="page">1/1</div>
+		<div class="fan-r"><span>&gt;</span></div>
+	</div>
+	{#include file="_footer.html"#}
+	<div class="disk"></div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v=1"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/list.js?v=6"></script>
+</body>
+</html>

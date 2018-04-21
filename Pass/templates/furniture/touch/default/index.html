@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$furniture_title#}</title>
+<meta name="keywords" content="{#$furniture_keywords#}" />
+<meta name="description" content="{#$furniture_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/siteConfig/touch/default/css/touch_common.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v=28">
+<script src="{#$cfg_staticPath#}/js/core/zepto.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$furniture_channelDomain#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+<!-- 头部 s -->
+  {#$pageTitle = "家具首页"#}
+  {#include file="../../../siteConfig/touch_top.html"#}
+<!-- 头部 e -->
+
+<!-- 头部幻灯片 -->
+<div class="wrapper picscroll">
+  <div class="swiper-container bd" id="picscroll">
+      <ul class="swiper-wrapper">
+        <li><a href="javascript:;"><img src="{#$templets_skin#}upfile/wrap1.png"></a></li>
+        <li><a href="javascript:;"><img src="{#$templets_skin#}upfile/wrap2.jpg"></a></li>
+        <li><a href="javascript:;"><img src="{#$templets_skin#}upfile/wrap3.jpg"></a></li>
+        <li><a href="javascript:;"><img src="{#$templets_skin#}upfile/wrap4.jpg"></a></li>
+      </ul>
+    <span class="indicator"></span>
+  </div>
+</div>
+  <!-- 头部幻灯片 end -->
+
+  <!-- 导航条 s -->
+  <div class="nav-box">
+    <ul>
+      <li><a href="{#$furniture_channelDomain#}/category.html"><img src="{#$templets_skin#}images/icon1.png" alt="" /></a><span><a href="{#$furniture_channelDomain#}/category.html">分类查询</a></span></li>
+      <li><a href="#"><img src="{#$templets_skin#}images/icon2.png" alt="" /></a><span><a href="#">品牌特卖</a></span></li>
+      <li><a href="#"><img src="{#$templets_skin#}images/icon3.png" alt="" /></a><span><a href="{#getUrlPath service='furniture' template='cart'#}">购物车</a></span></li>
+    </ul>
+  </div>
+  <!-- 导航条 e -->
+
+  <!-- 本周推荐 s -->
+  <div class="wrap-box">
+    <div class="wrap-tit"><span>本周推荐</span></div>
+    <ul class="wrap-three fn-clear">
+      <li><a href="#"><img src="{#$templets_skin#}upfile/nav1.jpg" alt="" /></a><span><a href="#"></a></span></li>
+      <li><a href="#"><img src="{#$templets_skin#}upfile/nav2.jpg" alt="" /></a><span><a href="#"></a></span></li>
+      <li><a href="#"><img src="{#$templets_skin#}upfile/nav3.jpg" alt="" /></a><span><a href="#"></a></span></li>
+      <li><a href="#"><img src="{#$templets_skin#}upfile/nav4.jpg" alt="" /></a><span><a href="#"></a></span></li>
+      <li><a href="#"><img src="{#$templets_skin#}upfile/nav5.jpg" alt="" /></a><span><a href="#"></a></span></li>
+      <li><a href="#"><img src="{#$templets_skin#}upfile/nav6.jpg" alt="" /></a><span><a href="#"></a></span></li>
+    </ul>
+  </div>
+  <!-- 本周推荐 e -->
+
+  <!-- 精品市场 s -->
+  <div class="wrap-box">
+    <div class="wrap-tit"><span>精品市场</span></div>
+    <ul class="wrap-two fn-clear">
+      <li><a href="#"><img src="{#$templets_skin#}upfile/nav7.jpg" alt="" /></a><span><a href="#"></a></span></li>
+      <li><a href="#"><img src="{#$templets_skin#}upfile/nav8.jpg" alt="" /></a><span><a href="#"></a></span></li>
+      <li><a href="#"><img src="{#$templets_skin#}upfile/nav9.jpg" alt="" /></a><span><a href="#"></a></span></li>
+      <li><a href="#"><img src="{#$templets_skin#}upfile/nav10.jpg" alt="" /></a><span><a href="#"></a></span></li>
+    </ul>
+  </div>
+  <!-- 精品市场 e -->
+
+  <!-- 猜你喜欢 s -->
+  <div class="like">
+    <div class="wrap-tit"><span>向您推荐</span></div>
+    <ul class="fn-clear">
+      {#furniture action="flist" return="list" typeid={#$goods.id#} pageSize="30"#}
+      <li>
+        <a href="{#$list.url#}">
+          <div class="like-img"><img src="{#changeFileSize url="{#$list['litpic']#}" type="o_large"#}" alt="{#$list.title#}" /></div>
+          <p class="info">{#$list.title#}</p>
+          <p class="price">{#echoCurrency type='symbol'#}{#$list.price#}</p>
+          <p class="sale">{#echoCurrency type='symbol'#}{#$list.mprice#}</p>
+        </a>
+      </li>
+      {#/furniture#}
+    </ul>
+  </div>
+  <!-- 猜你喜欢 e -->
+
+
+  {#include file="../../../siteConfig/touch_bottom.html"#}
+
+<script src="{#$templets_skin#}js/slider.js"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script src="{#$cfg_basehost#}/templates/siteConfig/touch/default/js/touch_common.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/index.js"></script>
+</body>
+</html>

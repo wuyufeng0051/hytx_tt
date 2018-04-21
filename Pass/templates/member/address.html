@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$langData['siteConfig'][19][214]#} - {#$cfg_webname#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#$pageTitle = $langData['siteConfig'][19][214]#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="container fn-clear">
+
+		{#include file="sidebar.html"#}
+
+		<div class="main">
+
+			<ul class="main-tab">
+				<li class="curr"><a href="javascript:;">{#$langData['siteConfig'][19][214]#}</a></li>
+				<li><a href="javascript:;" class="addNew">{#$langData['siteConfig'][6][96]#}</a></li>
+			</ul>
+
+			<div class="w-form fn-hide" style="background-color:#f5f5f5;">
+				<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=member&action=addressAdd">
+					<dl class="fn-clear">
+						<dt>{#$langData['siteConfig'][19][27]#}：</dt>
+						<dd id="selAddr">
+							<div class="cityName">
+						    <div class="city-title addrBtn" data-field="addrid" data-ids="" data-id="">{#if $detail_address != ""#}{#getPublicParentInfo tab='site_area' id=$userinfo.addrid type='typename' split='/'#}{#else#}{#$langData['siteConfig'][7][2]#}{#/if#}</div>
+						  </div>
+							<input type="hidden" name="addrid" id="addrid" value="" />
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>{#$langData['siteConfig'][19][35]#}：</dt>
+						<dd><textarea class="inp text" name="address" id="address" rows="2" cols="64" placeholder="{#$langData['siteConfig'][20][65]#}"></textarea></dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>{#$langData['siteConfig'][19][350]#}：</dt>
+						<dd><input type="text" name="person" class="inp" id="person" size="20" maxlength="25" placeholder="{#$langData['siteConfig'][20][66]#}" /></dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>{#$langData['siteConfig'][19][424]#}：</dt>
+						<dd>
+							<div class="input-prepend input-append mr10">
+								<span class="add-bef">{#$langData['siteConfig'][6][6]#}</span>
+								<input type="text" name="mobile" id="mobile" size="20" placeholder="{#$langData['siteConfig'][20][463]#}" maxlength="11" onkeyup="value=value.replace(/\D+/ig,'')" />
+							</div>
+							<span class="tip-inline focus" style="margin-top: 20px;"><s></s>{#$langData['siteConfig'][20][67]#}</span>
+							<div class="input-prepend input-append" style="margin-top: -8px;">
+								<span class="add-bef">{#$langData['siteConfig'][19][351]#}</span>
+								<input type="text" name="tel" id="tel" size="20" placeholder="{#$langData['siteConfig'][20][464]#}" maxlength="22" />
+							</div>
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>&nbsp;</dt>
+						<dd><button class="submit" id="submit">{#$langData['siteConfig'][6][27]#}</button><a href="javascript:;" class="cancel">{#$langData['siteConfig'][6][12]#}</a></dd>
+					</dl>
+				</form>
+			</div>
+
+
+			<div class="list" id="list">
+				<table>
+					<thead class="thead">
+						<tr>
+							<th class="fir"></th>
+							<th>{#$langData['siteConfig'][19][33]#}</th>
+							<th style="padding-left: 20px;">{#$langData['siteConfig'][19][34]#}</th>
+							<th style="padding-left: 20px;">{#$langData['siteConfig'][19][35]#}</th>
+							<th style="padding-left: 20px;">{#$langData['siteConfig'][3][1]#}</th>
+							<th style="padding-left: 20px;" width="130">{#$langData['siteConfig'][6][11]#}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{#member action="address"#}
+						<tr data-id="{#$row.id#}" data-person="{#$row.person#}" data-addrid="{#$row.addrid#}" data-addrname="{#$row.addrname#}" data-address="{#$row.address#}" data-mobile="{#$row.mobile#}" data-tel="{#$row.tel#}">
+							<td class="fir"></td>
+							<td>{#$row.person#}</td>
+							<td style="padding-left: 20px;">{#$row.addrname#}</td>
+							<td style="padding-left: 20px;">{#$row.address#}</td>
+							<td style="padding-left: 20px;">
+								{#if $row.mobile != ""#}
+									{#$row.mobile#}
+								{#/if#}
+								{#if $row.mobile != "" && $row.tel != ""#}
+									<br />{#$row.tel#}
+								{#elseif $row.mobile == "" && $row.tel != ""#}
+									{#$row.tel#}
+								{#/if#}
+							</td>
+							<td style="padding-left: 20px;"><a href="javascript:;" class="edit"><s></s>{#$langData['siteConfig'][6][7]#}</a>&nbsp;&nbsp;<a href="javascript:;" class="del"><s></s>{#$langData['siteConfig'][6][8]#}</a></td>
+						</tr>
+						{#/member#}
+						{#if $pageInfo['totalCount'] == 0#}
+						<tr>
+							<td colspan="6" class="empty"><p class="loading"><a href="javascript:;" class="addNew"><font color="#f60">{#$langData['siteConfig'][23][24]#}</font></a></p></td>
+						</tr>
+						{#/if#}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/fabu.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicAddr.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/address.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

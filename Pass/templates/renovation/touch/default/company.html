@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>装修公司排名_装修公司大全-{#$renovation_title#}</title>
+<meta name="keywords" content="装修公司,装修公司排名,装修公司大全" />
+<meta name="description" content="{#$cfg_shortname#}装修网汇集了装修公司排名大全,免费提供装修公司设计与报价，以及装修知识。免费拨打电话将直接转接到装修公司，无额外收费！" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/company.css?v=2">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+
+{#* 微信分享 *#}
+{#$Share_description = {#$renovation_description#}#}
+{#$Share_title = "装修公司"#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#getUrlPath service='renovation' template='company'#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</head>
+<body>
+{#$pageTitle = "装修公司"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<div class="com_search">
+	<form>
+		<input type="text" placeholder="请输入装修公司关键字">
+		<span></span>
+	</form>
+</div>
+<div class="com_choic fn-clear">
+	<ul>
+		<li><a href="#"><p class="com-1"></p><span>新房</span></a></li>
+		<li><a href="#"><p class="com-2"></p><span>二手房</span></a></li>
+		<li><a href="#"><p class="com-3"></p><span>大宅·别墅</span></a></li>
+		<li><a href="#"><p class="com-4"></p><span>局部·软装</span></a></li>
+		<li><a href="#"><p class="com-5"></p><span>工装</span></a></li>
+	</ul>
+</div>
+<div class="blank_screen">
+	<div class="com_screen fn-clear">
+		<ul>
+			<li class="tab-jiastyle">家装类型<i></i><b></b></li>
+			<li class="tab-comstyle">公装类型<i></i><b></b></li>
+			<li class="tab-range">服务区域<i></i><b></b></li>
+			<li class="tab-style">专长风格<b></b></li>
+		</ul>
+	</div>
+</div>
+<div class="coms_l">
+	<ul>
+		<li data-id="" class="leib"><a href="javascript:;">不限</a></li>
+		{#renovation action="type" return='type' type='2'#}
+		<li data-id="{#$type.id#}"><a href="javascript:;">{#$type.typename#}</a></li>
+		{#/renovation#}
+	</ul>
+	<ul>
+		<li data-id="" class="leib"><a href="javascript:;">不限</a></li>
+		{#renovation action="type" return='type' type='3'#}
+		<li data-id="{#$type.id#}"><a href="javascript:;">{#$type.typename#}</a></li>
+		{#/renovation#}
+	</ul>
+	<ul>
+		<li data-id="" class="leib"><a href="javascript:;">不限</a></li>
+		{#renovation action="addr" return='addr'#}
+		<li data-id="{#$addr.id#}"><a href="javascript:;">{#$addr.typename#}</a></li>
+		{#/renovation#}
+	</ul>
+	<ul>
+		<li data-id="" class="leib"><a href="javascript:;">不限</a></li>
+		{#renovation action="type" return='type' type='4'#}
+		<li data-id="{#$type.id#}"><a href="javascript:;">{#$type.typename#}</a></li>
+		{#/renovation#}
+	</ul>
+</div>
+
+<div class="com_list" id="list"></div>
+
+<div class="disk"></div>
+
+<script>
+	var atpage = '{#$page#}',
+			totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+			totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+			pageSize = 15;
+</script>
+
+<script src="{#$templets_skin#}js/company.js?v=8"></script>
+</body>
+</html>

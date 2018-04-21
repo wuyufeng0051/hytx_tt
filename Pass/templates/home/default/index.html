@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$home_title#}</title>
+<meta name="keywords" content="{#$home_keywords#}" />
+<meta name="description" content="{#$home_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$home_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'index'#}
+{#include file="top.html"#}
+
+<!-- 幻灯片大图部分 -->
+<div class="banner">
+  <div class="wrap">
+    <div class="slide" id="slide">{#myad id="132" type="slide"#}</div>
+    <div class="slidebtn" id="slidebtn"></div>
+  </div>
+</div>
+
+<!-- 商品保障部分 -->
+<div class="service">
+	<div class="conS">
+		<dl class="d1">
+			<dt></dt>
+			<dd class="t">品质保障</dd>
+			<dd>正品保障  材质保障</dd>
+		</dl>
+		<dl class="d2">
+			<dt></dt>
+			<dd  class="t">物流保障</dd>
+			<dd>免费送装  送货入户  破损包赔</dd>
+		</dl>
+		<dl class="d3">
+			<dt></dt>
+			<dd  class="t">极致售后</dd>
+			<dd>15天无理由退货  免费上门退货  运费险  无忧质保</dd>
+		</dl>
+	</div>
+</div>
+
+<!-- 内容部分 -->
+<div class="container clearfix">
+	<!-- 家居分类 -->
+	<div class="classify">
+		<div class="classify-top clearfix">
+			<div class="left"></div>
+			<span class="left">家居分类</span>
+			<div class="right"></div>
+		</div>
+		<div class="classify-bot">
+			{#home action="type" return="type"#}
+			<div class="all">
+				<div class="title s{#$_bindex.type#}">
+					<dl>
+						<dt></dt>
+						<dd><a href="{#getUrlPath service='home' template='list' param="typeid={#$type.id#}"#}" target="_blank" title="{#$type.typename#}">{#$type.typename#}</a></dd>
+					</dl>
+				</div>
+				<div class="con">
+					<div class="kind">
+						{#home action="type" return="type1" type=$type.id#}
+						<a href="{#getUrlPath service='home' template='list' param="typeid={#$type1.id#}"#}" target="_blank" title="{#$type1.typename#}">{#$type1.typename#}</a>
+						{#/home#}
+					</div>
+				</div>
+			</div>
+			{#/home#}
+		</div>
+	</div>
+
+	<!-- 推荐优质商家 -->
+	<div class="recommend clearfix">
+		<div class="title clearfix"><i class="left"></i><span class="left">推荐优质商家</span><em class="left"></em> <a class="right" href="{#getUrlPath service='home' template='store'#}" target="_blank">+更多</a></div>
+		<div class="tjsj clearfix">
+			<div class="left"><script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=133" language="javascript"></script></div>
+			<ul class="right">
+				{#home action="store" return="store" rec="1" pageSize="24"#}
+				<li><a href="{#$store.url#}" target="_blank" title="{#$store.title#}"><div class="img"><div class="grey">{#$store.title#}</div><i></i><img src="{#$store.logo#}" alt="{#$store.title#}"></div></a></li>
+				{#/home#}
+			</ul>
+		</div>
+	</div>
+
+	<!-- 今日特卖 -->
+	<div class="sale recommend clearfix">
+		<div class="title clearfix"><i class="left"></i><span class="left">今日特卖</span><em class="left"></em></div>
+		<div class="saleList">
+			<div id="saleGoods">
+				<ul>
+					{#home action="hlist" return="list" flag="c" pageSize="20"#}
+					<li><a href="{#$list.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list['litpic']#}" type="o_large"#}" alt="{#$list.title#}"></a><p><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></p><div><span><i>{#echoCurrency type='symbol'#}</i><label>{#$list.price#}</label></span><font>立省{#$list.mprice-$list.price#}</font><em>已售{#$list.sales#}件</em></div></li>
+					{#if $_bindex.list%5 eq 0#}
+				</ul>
+				<ul class="fn-clear">
+					{#/if#}
+					{#/home#}
+				</ul>
+			</div>
+			<div class="button">
+			    <a href="javascript:void(0);" class="next"><em></em>换一批</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="goods">
+
+		{#home action="type" return="goods"#}
+		<div id="item{#$_bindex.goods#}" class="goodsAll g{#$_bindex.goods#}">
+			<div class="pcs clearfix">
+				<span class="left">{#$_bindex.goods#}F</span>
+				<h3 class="left">{#$goods.typename#}</h3>
+				<a class="more right" href="{#getUrlPath service='home' template='list' param="typeid={#$goods.id#}"#}" target="_blank">+更多</a>
+				<div class="right">
+					{#home action="type" return="g" type=$goods.id pageSize="5"#}
+					<a href="{#getUrlPath service='home' template='list' param="typeid={#$g.id#}"#}" target="_blank" title="{#$g.typename#}">{#$g.typename#}</a>
+					{#/home#}
+				</div>
+			</div>
+			<div class="pcsCon clearfix">
+				<div class="left">
+					{#if $_bindex.goods == 1#}
+					<script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=135" language="javascript"></script>
+					{#elseif $_bindex.goods == 2#}
+					<script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=136" language="javascript"></script>
+					{#elseif $_bindex.goods == 3#}
+					<script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=137" language="javascript"></script>
+					{#elseif $_bindex.goods == 4#}
+					<script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=138" language="javascript"></script>
+					{#elseif $_bindex.goods == 5#}
+					<script src="{#$cfg_basehost#}/include/json.php?action=adjs&id=139" language="javascript"></script>
+					{#/if#}
+				</div>
+				<ul>
+					{#home action="hlist" return="list" typeid={#$goods.id#} pageSize="8"#}
+					<li><a href="{#$list.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list['litpic']#}" type="o_large"#}" alt="{#$list.title#}"></a><p><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></p><span>{#echoCurrency type='symbol'#}{#$list.price#}</span></li>
+					{#/home#}
+				</ul>
+			</div>
+		</div>
+		{#/home#}
+
+	</div>
+
+	<div class="ad"><script src="/include/json.php?action=adjs&id=134" language="javascript"></script></div>
+
+</div>
+
+<div id="sideNav">
+	{#home action="type" return="g1"#}
+	<a{#if $_bindex.g1 == 1#} class="current"{#/if#} href="#item{#$_bindex.g1#}"><dl><dt>{#$g1.typename#}</dt><dd>{#$_bindex.g1#}F</dd></dl></a>
+	{#/home#}
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v=1"></script>
+</body>
+</html>

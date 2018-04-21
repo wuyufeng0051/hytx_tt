@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>完善简历-第二步</title>
+<meta name="keywords" content="招聘关键词" />
+<meta name="description" content="招聘描述" />
+<link rel="shortcut icon" href="http://menhu168.com/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="http://menhu168.com/static/css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="http://menhu168.com/static/css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="http://menhu168.com/templates/job/default/css/public.css" media="all" />
+<link rel="stylesheet" href="css/publicS.css" />
+<link rel="stylesheet" href="css/perfectResume.css" />
+<script type="text/javascript" src="http://menhu168.com/static/js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = 'http://menhu168.com', channelDomain = 'http://menhu168.com/job', staticPath = 'http://menhu168.com/static/';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = 0;
+</script>
+</head>
+
+
+<body>
+	<!--#include file="_header.html"-->
+
+	<!-- 导航 s -->
+	<div class="nav">
+		<ul class="wrap fn-clear">
+			<li><a href="http://menhu168.com/job">首页</a></li>
+			<li><a href="job.shtml">职位</a>
+				<dl>
+					<dt></dt>
+					<dd><a href="#">二级菜单</a></dd>
+					<dd><a href="#">二级菜单</a></dd>
+					<dd><a href="#">二级菜单</a></dd>
+					<dd><a href="#">二级菜单</a></dd>
+				</dl>
+			</li>
+			<li class="curr active"><a href="bole.shtml">伯乐</a></li>
+			<li><a href="company.shtml">公司</a></li>
+			<li><a href="resume.shtml">找简历<s></s></a></li>
+			<li><a href="recruit.shtml">招聘会</a></li>
+			<li><a href="wordType.shtml">文档下载</a></li>
+			<li><a href="wage.shtml">工资统计</a></li>
+			<li><a href="news.shtml">职场资讯</a></li>
+		</ul>
+	</div>
+	<!-- 导航 e -->
+
+	<div class="main">
+		<div class="userpic">
+			<img src="upfile/user/3.jpg" alt="">
+			<div class="bg"></div>
+		</div>
+		<div class="box box2">
+			<div class="form">
+				<p class="title">工作经历</p>
+				<form action="" class="formStep">
+					<div class="contentList">
+						<div class="form-row">
+							<span class="type">公司名称</span>
+							<input type="text" class="int companyname">
+						</div>
+						<div class="form-row">
+							<span class="type">你的职位</span>
+							<input type="text" class="int jobname">
+						</div>
+						<div class="form-row fn-clear">
+							<div class="half halfl">
+								<div class="date-sel halfo sel startTime">
+									<input type="text" readonly class="btn timeBtn startBtn" id="startBtn_1" placeholder="起始时间" />
+									<s></s>
+								</div>
+							</div>
+							<div class="half">
+								<div class="date-sel halfo sel endTime">
+									<input type="text" readonly class="btn timeBtn endBtn" id="endBtn_1" placeholder="结束时间" />
+									<s></s>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="addk">
+						<div class="t"><span class="jh">+</span><a href="javascript:;" id="addInfo">添加更多工作经历</a></div>
+					</div>
+					<div class="form-btn">
+						<p class="error"></p>
+						<div class="btnk fr">
+							<a href="perfectResume-1.shtml" class="back">上一步</a>
+							<input type="submit" class="submit" value="下一步 : 教育经历" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!--#include file="_footer.html"-->
+
+	<script type="text/javascript" src="http://menhu168.com/static/js/common.js"></script>
+	<script type="text/javascript" src="http://menhu168.com/templates/job/default/js/public.js?v=1"></script>
+	<script type="text/javascript" src="js/perfectResume_2.js"></script>
+</body>

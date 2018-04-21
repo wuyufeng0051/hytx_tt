@@ -1,0 +1,18 @@
+<!-- 页脚 -->
+<div class="footer">
+	<div class="wrap box fn-clear">
+		<ul>
+			<li class="about">
+				{#siteConfig action="singel"#}
+				<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a>
+				{#/siteConfig#}
+				<a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a>
+			</li>
+		</ul>
+		{#$cfg_powerby#}
+	</div>
+</div>
+
+{#$cfg_statisticscode#}
+<!-- 页脚 -->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>

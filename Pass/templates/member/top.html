@@ -1,0 +1,89 @@
+<script type="text/javascript">var memberPage = true, cookiePre = '{#$cfg_cookiePre#}', channelDomain = '{#$member_userDomain|replace:"http://":""#}';</script>
+<div class="header">
+	<div class="wrap fn-clear">
+		<a class="logo" title="{#$langData['siteConfig'][23][79]#}" href="{#$member_userDomain#}"><s></s><h1>{#$langData['siteConfig'][0][11]#}</h1><span>{#$member_userDomain|replace:"http://":""#}</span></a>
+		<ul class="nav">
+			<li><a href="{#$member_userDomain#}">{#$langData['siteConfig'][0][0]#}</a></li>
+			<li>
+				<a href="{#getUrlPath service='member' type='user' template='profile'#}">{#$langData['siteConfig'][15][2]#}<span class="arrow"><em></em></span></a>
+				<dl class="subnav">
+					<dt></dt>
+					<dd><a href="{#getUrlPath service='member' type='user' template='profile'#}">{#$langData['siteConfig'][19][23]#}</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='security' doget='chpassword'#}">{#$langData['siteConfig'][5][19]#}</a></dd>
+					<dd>{#if $userinfo.paypwdCheck == 0#}<a href="{#getUrlPath service='member' type='user' template='security' doget='paypwdAdd'#}">{#$langData['siteConfig'][6][120]#}</a>{#else#}<a href="{#getUrlPath service='member' type='user' template='security' doget='paypwdEdit'#}">{#$langData['siteConfig'][5][20]#}</a>{#/if#}</dd>
+					<dd><a href="{#if $userinfo.certifyState != 1#}{#getUrlPath service='member' type='user' template='security' doget='chCertify'#}{#else#}{#getUrlPath service='member' type='user' template='security' doget='shCertify'#}{#/if#}">{#$langData['siteConfig'][19][212]#}</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='security' doget='chphone'#}">{#if $userinfo.phoneCheck == 0#}{#$langData['siteConfig'][19][774]#}{#else#}{#$langData['siteConfig'][3][7]#}{#/if#}</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='security' doget='chemail'#}">{#if $userinfo.emailCheck == 0#}{#$langData['siteConfig'][3][16]#}{#else#}{#$langData['siteConfig'][3][10]#}{#/if#}</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='security' doget='question'#}">{#$langData['siteConfig'][19][213]#}</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='address'#}">{#$langData['siteConfig'][19][214]#}</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='connect'#}">{#$langData['siteConfig'][15][11]#}</a></dd>
+				</dl>
+			</li>
+			<li>
+				<a href="javascript:;">{#$langData['siteConfig'][11][1]#}<span class="arrow"><em></em></span></a>
+				<dl class="subnav">
+					<dt></dt>
+					{#if in_array("article", $installModuleArr)#}<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='article'#}">[新闻] {#$langData['siteConfig'][11][9]#}</a></dd>{#/if#}
+					{#if in_array("info", $installModuleArr)#}<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}">[信息] {#$langData['siteConfig'][11][10]#}</a></dd>{#/if#}
+					{#if in_array("house", $installModuleArr)#}
+					<dd>
+						<a href="javascript:;">[房产] {#$langData['siteConfig'][11][13]#}</a>
+						<dl>
+							<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-demand'#}">{#$langData['siteConfig'][23][49]#}</a></dd>
+							<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-sale'#}">{#$langData['siteConfig'][19][218]#}</a></dd>
+							<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-zu'#}">{#$langData['siteConfig'][19][219]#}</a></dd>
+							<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-xzl'#}">{#$langData['siteConfig'][19][220]#}</a></dd>
+							<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-sp'#}">{#$langData['siteConfig'][19][221]#}</a></dd>
+							<dd><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-cf'#}">{#$langData['siteConfig'][19][222]#}</a></dd>
+						</dl>
+					</dd>
+					{#/if#}
+					{#if in_array("tieba", $installModuleArr)#}<dd><a href="{#getUrlPath service='tieba' template='index'#}#publish" target="_blank">[{#$langData['siteConfig'][19][223]#}] {#$langData['siteConfig'][11][3]#}</a></dd>{#/if#}
+					{#if in_array("huodong", $installModuleArr)#}<dd><a href="{#getUrlPath service='huodong' template='fabu'#}" target="_blank">[{#$langData['siteConfig'][19][224]#}] {#$langData['siteConfig'][11][7]#}</a></dd>{#/if#}
+				</dl>
+			</li>
+			<li>
+				<a href="javascript:;">{#$langData['siteConfig'][10][2]#}<span class="arrow"><em></em></span></a>
+				<dl class="subnav">
+					<dt></dt>
+					<dd><a href="{#getUrlPath service='member' type='user' template='deposit'#}">{#$langData['siteConfig'][15][10]#}</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='order'#}">{#$langData['siteConfig'][10][12]#}</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='record'#}">{#$langData['siteConfig'][19][226]#}</a></dd>
+					<dd><a href="{#getUrlPath service='member' type='user' template='point'#}">{#$cfg_pointName#}{#$langData['siteConfig'][23][78]#}</a></dd>
+					<dd><a>{#$langData['siteConfig'][19][228]#}：<strong>{#$userinfo.money#}</strong></a></dd>
+					<dd><a>{#$langData['siteConfig'][19][229]#}：<strong>{#$userinfo.freeze#}</strong></a></dd>
+				</dl>
+			</li>
+			<li><a href="{#$member_busiDomain#}" target="_blank">{#$langData['siteConfig'][19][230]#}</a></li>
+			<li class="mobile">
+				<a href="{#getUrlPath service='siteConfig' template='mobile'#}" target="_blank"><s class="mob"></s>{#$langData['siteConfig'][23][80]#}<i class="new">new</i></a>
+				<dl class="subnav">
+					<dt></dt>
+					<dd class="qrcode"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" /></dd>
+				</dl>
+			</li>
+			<li><a href="{#$cfg_basehost#}/logout.html" class="logout"><s class="quit"></s>{#$langData['siteConfig'][15][4]#}</a></li>
+		</ul>
+	</div>
+</div>
+
+
+<div class="wrap crumbs fn-clear">
+	<div class="cont">
+		<a href="{#$cfg_basehost#}" target="_blank">{#$langData['siteConfig'][0][5]#}</a>
+		<s><i></i></s>
+		<a href="{#$member_userDomain#}">{#$langData['siteConfig'][0][7]#}</a>
+		{#if $template != 'index'#}
+		<s><i></i></s>
+		{#$pageTitle#}
+		{#/if#}
+	</div>
+	{#if $cfg_qiandao_state#}<div class="qiandao"><a href="{#getUrlPath service='member' type='user' template='qiandao'#}">{#$langData['siteConfig']['22'][109]#}</a></div>{#/if#}
+	<div class="notice" id="notice">
+		<ul>
+			{#siteConfig action="notice" return="notice"  pageSize="8"#}
+			<li><a href="{#$notice.url#}" target="_blank" title="{#$notice.title#}"><s></s>{#$notice.title#}</a></li>
+			{#/siteConfig#}
+		</ul>
+	</div>
+</div>

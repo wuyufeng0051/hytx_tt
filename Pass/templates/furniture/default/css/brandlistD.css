@@ -1,0 +1,61 @@
+.bread{width:980px; margin: 0 auto; height: 40px; line-height: 40px; padding-left: 20px; font-size: 14px; background: url(../images/furniture.png) 0 -270px no-repeat;}
+.w1200 .bread{width:1180px;}
+.container{width: 1000px; margin: 0 auto}
+.w1200 .container{width: 1200px;}
+
+
+/* 分类 */
+.classify{border:1px solid #ececec; border-bottom: none}
+.classify div{border-bottom:1px solid #ececce; height: 42px;line-height: 42px;}
+.classify div p{font-size: 14px; margin-bottom: -1px;}
+.classify div p span,.classify div p a{display: inline-block; padding: 0 5px; margin:0 6px; }
+.w1200 .classify div p span,.w1200 .classify div p a{margin:0 10px;}
+.classify div p span{color: #999}
+.classify div p a.active{color: #f2622b; border-bottom: 1px solid #f2622b}
+
+/* 筛选 */
+.filter{height: 45px; border:1px solid #ececec; margin-top:20px; z-index: 1;position: relative;}
+.filter span.left{position: relative; padding:0 25px; font-size: 14px; line-height: 44px; color: #333;}
+.filter ul{position: absolute; left:0px; top:-2px; width: 130px; padding: 5px 0; overflow: hidden; z-index:20; background: #fff; border:2px solid #e8e8e8;display: none;}
+.filter span.left:hover{z-index: 1}
+.filter span.left:hover ul{display: block;}
+.filter ul li{padding:0 21px; line-height: 34px; text-align: center;}
+.filter ul li a{font-size:14px;}
+.filter span.on ul li a {color: #333;}
+.filter span.on em,.filter span.on a{color: #ff2832}
+.filter a.on{color: #ff2832}
+.filter font{color: #e0e0e0; margin-top: 11px;}
+.filter .right{display: none; height: 28px; margin-right:10px; line-height:28px;border: 1px solid #ececec; margin-top:8px;  }
+.filter .right span{display: inline-block; width: 40px; text-align: center;}
+.filter .right a{display: inline-block; text-align: center; line-height: 28px; width:28px; height: 28px; border-left: 1px solid #ececec;  color: #9c9c9c}
+.filter .right a.pre{border-right: 1px solid #ececec; border-left:none;}
+.filter .block{height: 45px; border:1px solid #d0cece; padding:0 10px; margin:-1px 0;}
+.filter .block input.but{width: 52px; height: 27px; color: #fff; line-height: 27px; text-align: center; background: #d06115; border:none; border-radius: 5px; font-size:14px; margin:9px 5px 9px 10px; cursor: pointer;}
+.filter .price{float: left; width: 82px; height: 28px; line-height: 28px; border:1px solid #ececec; padding:0 5px; margin-top: 7px; color: #999}
+.filter .price input{width: 70px; height: 24px; border:0; line-height: 24px; vertical-align: middle;}
+.filter .line{float: left; width:15px; height: 14px; border:none; border-bottom:1px solid #ececec; margin:7px 10px;}
+i.arrow-bottom{ position: absolute; right: 10px; top:20px; width: 0px; height: 0px; border:4px solid transparent; border-top-color:#333;}
+i.arrow-bottom:after{content: ""; position: absolute;left:-4px; top:-5px; width: 0px; height: 0px; border:4px solid transparent;  border-top-color:#fff}
+
+/* 详情页列表 */
+
+.brandD ul{width:1015px; margin-left:-15px; padding-bottom: 30px;}
+.w1200 .brandD ul{width: 1220px;  margin-left:-20px; }
+.brandD ul li{position: relative; float: left; width:186px; margin: 15px 0 0 15px; border:1px solid #ececec; -webkit-transition:border .4s; -moz-transition:border .4s; transition: border:.4s;}
+.w1200 .brandD ul li{width: 222px; margin: 20px 0 0 20px;}
+.brandD ul li.empty {float: none; width: 100%; border: 0; margin: 0; text-align: center; height: 300px; line-height: 300px; font-size: 14px;}
+.brandD ul li img{display: block; width: 100%; height: 193px;}
+.w1200 .brandD ul li img{height: 230px;}
+.brandD ul li .tip{position: absolute; left:0; bottom:95px; width:166px; padding:0 10px; height: 0px; overflow: hidden; background: url(../images/tip-bg.png); -webkit-transition:all .4s; -moz-transition:all .4s; transition: all:.4s;}
+.w1200 .brandD ul li .tip{width:202px;}
+.brandD ul li .tip p{width: 100%; height: 25px; line-height: 25px; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.brandD ul li .tip span{font-size: 18px; color: #f2622b}
+.brandD ul li .tip a{display: block; width:90%; height: 30px; margin:5px auto; line-height: 30px; text-align: center; font-size: 14px; color:#fff; background: #f2622b}
+.brandD ul li .bot{padding:5px 10px; }
+.brandD ul li .bot p{width: 100%; height: 44px; line-height: 22px; overflow: hidden; font-size: 14px; margin-bottom: 10px;}
+.brandD ul li .bot span{display: block; color: #999; height: 30px; line-height: 30px;  border-top:1px dashed #ececec;}
+.brandD ul li .bot em{color: #333}
+.brandD ul li:hover{border-color: #f2622b}
+.brandD ul li:hover .tip{height: 65px; padding:5px 10px;}
+
+.page{padding-top:0;}

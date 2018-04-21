@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>订单继续支付</title>
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<link rel="stylesheet" href="{#$templets_skin#}css/base.css">
+<style media="screen">
+	html {background: #eee;}
+	.content {background: #fff; margin: .2rem 0; padding: .2rem .2rem 0; font-size: .3rem;}
+	.content dl {padding-bottom: .2rem; line-height: .6rem;}
+	.content dt {float: left; width: 1.6rem;}
+	.content dd {position: relative; overflow: hidden;}
+	.content select {width: 90%; height: .6rem;}
+	.btn {width: 90%; height: .8rem; line-height: .8rem; text-align: center; color: #fff; background: #e83829; margin: 0 auto; display: block; border: none; border-radius: 0.6rem; font-size: 0.3rem;}
+	.cancelp {padding:5%;text-align: right;}
+</style>
+</head>
+
+<body>
+<form action="/include/ajax.php?service=waimai&action={#if $ordertype == "paotui"#}paotuipay{#else#}pay{#/if#}&ordernum={#$ordernum#}" method="post" id="payForm">
+	<div class="content">
+		<dl class="fn-clear">
+			<dt>支付方式：</dt>
+			<dd>
+				<select name="paytype">
+					<option value="wxpay">微信支付</option>
+					<option value="alipay">支付宝</option>
+					<option value="unionpay">银联</option>
+				</select>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>支付金额：</dt>
+			<dd><strong style="color: #e83829;">{#echoCurrency type="symbol"#} {#$amount#}</strong></dd>
+		</dl>
+	</div>
+	<button type="submit" class="btn">确定支付</button>
+	<input	type="hidden" name="app" id="app" vlaue="0">
+</form>
+{#if $ordertype == "paotui"#}
+<p class="cancelp"><a href="{#getUrlPath service='member' type='user' template='order' module='paotui'#}">返回</a></p>
+{#else#}
+<p class="cancelp"><a href="{#getUrlPath service='member' type='user' template='order' module='waimai'#}">返回</a></p>
+{#/if#}
+<script>
+$(function(){
+	//验证是否在客户端访问
+	setTimeout(function(){
+		if(appInfo.device == ""){
+		}else{
+			$("#app").val("1");
+		}
+	}, 500);
+	$("#payForm").submit(function(){
+		$(this).find(".btn").attr("disabled", true);
+	})
+})
+</script>
+</body>
+</html>

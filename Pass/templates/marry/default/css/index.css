@@ -1,0 +1,195 @@
+body {font-family: microsoft yahei;}
+a:hover {color: #f44578;}
+
+.header .service s,
+.hsearch .input label s,
+.nav li.curr,
+.banner .stab .l s,
+.banner .stab .r .tab li s,
+.mt h3 s,
+.mt .change s,
+.mt .more s,
+.recon .l li s,
+.mcon .slidebar li s,
+.mcon .hlist h3 s,
+.mcon .hlist li .t i,
+.nlist .news .tabs li a s,
+.flink .hd h3 s,
+.blink dt s {background-image: url('../images/sprite.png'); background-repeat: no-repeat;}
+
+.ofh {overflow: hidden;}
+.mt15 {margin-top: 15px;}
+
+/* 大图幻灯 */
+.banner {height: 500px; position: relative; z-index: 2;}
+.slide {width: 1920px; height: 500px; overflow: hidden; position: relative; z-index: 9; left: 50%; margin-left: -960px;}
+.slide .slideshow-item {position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 11;}
+.slide .slideshow-item a, .slide .slideshow-item a img {width: 1920px; height: 500px; display: block;}
+.slide .slideshow-item .slideinfo {display: none;}
+.banner .wrap {position: relative; height: 500px; z-index: 10;}
+.banner .slidebtn {position: absolute; bottom: 113px; right: 5px; z-index: 10;}
+.w1200 .banner .slidebtn {right: 105px;}
+.banner .slidebtn a {float: left; background: #fff; width: 25px; height: 8px; border-radius: 5px; display: inline-block; _display: inline; _zoom: 1; margin: 0 0 0 5px; font-size: 0; filter: alpha(opacity=50); -moz-opacity: 0.5; -khtml-opacity: 0.5; opacity: 0.5;}
+.banner .slidebtn a.activeSlide {background: #fb5c7b; filter: alpha(opacity=75); -moz-opacity: 0.75; -khtml-opacity: 0.75; opacity: 0.75;}
+
+/* 限时促销搜索 */
+.banner .stab {position: absolute; bottom: 0; z-index: 10; width: 995px; height: 103px; left: 2px; background-color: #ff608e;}
+.w1200 .banner .stab {left: 102px;}
+.banner .l {float: left; position: relative; width: 148px; height: 95px; padding: 8px 0 0 22px;}
+.banner .l h4 {font-size: 26px; color: #fdfb84; font-style: italic;}
+.banner .s {padding: 3px 0 0 0; width: 170px; text-align: center;}
+.banner .s h4 {font-size: 20px;}
+.banner .l p {font-size: 16px; color: #fff; line-height: 22px;}
+.banner .l s {position: absolute; right: 0; top: 0; height: 103px; width: 40px; background-position: 0 -197px;}
+.banner .r {float: right; width: 825px;}
+.banner .r .tab {height: 35px;}
+.banner .r .tab li {float: left; width: 273px; line-height: 35px; background: #fc80a4; text-align: center; color: #fff; font-size: 16px; margin-right: 2px; cursor: pointer;}
+.banner .r .tab li.wedding {width: 275px; margin: 0;}
+.banner .r .tab li.curr {background-color: #f44578;}
+.banner .r .tab li s {display: inline-block; margin-right: 5px;}
+.banner .r .tab li.hotel s {width: 15px; height: 19px; background-position: -44px 0; margin-bottom: -3px;}
+.banner .r .tab li.photo s {width: 20px; height: 16px; background-position: -61px -2px; margin-bottom: -2px;}
+.banner .r .tab li.wedding s {width: 25px; height: 15px; background-position: -83px -3px; margin-bottom: -2px;}
+.banner .r .con {padding-left: 25px; display: none;}
+.banner .r .con .sel {float: left; position: relative; width: 190px; height: 40px; line-height: 40px; font-size: 14px; color: #666; background-color: #fff; margin: 14px 11px 0 0;}
+.banner .r .con .sel label {position: relative; display: block; padding: 0 22px 0 12px; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.banner .r .con .sel label s {position: absolute; width: 0; height: 0; right: 12px; top: 18px; border-width: 5px; border-style: solid; border-color: transparent; border-top-color: #777;}
+.banner .r .con .sbtn {float: left; width: 173px; height: 40px; margin-top: 14px; line-height: 40px; text-align: center; background-color: #d53463; font-size: 20px; color: #fff; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;}
+
+/* 浮动下拉层 */
+.banner .r .con .popup-sel {display: none; position: absolute; left: 0; right: 0; top: 40px; padding: 3px 0; border: 1px solid #ddd; background-color: #fff; line-height: 25px; max-height: 250px; -webkit-animation: topFadeIn .3s ease-out; -moz-animation: topFadeIn .3s ease-out; animation: topFadeIn .3s ease-out; -moz-box-shadow: 0 10px 25px rgba(0,0,0,.3); -webkit-box-shadow: 0 10px 25px rgba(0,0,0,.3); box-shadow: 0 10px 25px rgba(0,0,0,.3);}
+.banner .r .con .addr .popup-sel {left: -19px; width: 500px; height: auto; max-height: 5000px; background-color: transparent; border: 0; padding: 0; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;}
+
+.banner .popup-sel a {display: block; padding: 0 5px 0 10px; line-height: 30px;}
+.banner .popup-sel a:hover {background: #eee; color: #ff5384;}
+
+/* 选择区域 */
+.areaList {position: absolute; left: -87px; top: 33px; width: 450px; min-height: 80px; padding: 15px 0 7px; cursor: default; background-color: #fff; border: 1px solid #e9e8e8; border-top: none; -moz-box-shadow: 0 10px 25px rgba(0,0,0,.3); -webkit-box-shadow: 0 10px 25px rgba(0,0,0,.3); box-shadow: 0 10px 25px rgba(0,0,0,.3); -webkit-animation: topFadeIn .3s ease-out; -moz-animation: topFadeIn .3s ease-out; animation: topFadeIn .3s ease-out;}
+.popup-sel .areaList {position: static; margin-left: 19px; border-top: 1px solid #e9e8e8;}
+.areaList p {line-height: 80px;}
+.areaList .sub-data {float: left; position: relative; width: 16%; height: 25px; font-size: 14px; margin: 0 2% 8px;}
+.areaList .sub-data a {display: block; text-align: center; line-height: 25px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.banner .popup-sel .areaList .sub-data a:hover, .areaList .curr {background-color: #fc80a4; color: #fff;}
+.areaList .curr a {color: #fff;}
+.areaList .curr i {position: absolute; left: 50%; bottom: -6px; margin-left: -5px; width:0; height:0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 6px solid #e8e7e7;}
+.areaList ul {display: none; float: left; width: 100%; margin: -2px 0 5px; padding: 5px 0; background-color: #e8e7e7;}
+.areaList li {float: left; width: 16%; height: 25px; text-align: center; line-height: 25px; padding: 0 2%; font-size: 13px;}
+.areaList li a {display: block; line-height: 25px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.banner .popup-sel .areaList li a:hover {background: none;}
+
+.mt {height: 50px; border-bottom: 2px solid #575757; line-height: 50px;}
+.mt h3 {float: left; font-size: 24px; color: #575757;}
+.mt h3 s {float: left; width: 27px; height: 30px; overflow: hidden; margin: 10px 5px 0 3px; background-position: -52px -91px; line-height: 38px; text-align: center; font-size: 18px; color: #fff; text-decoration: none;}
+.mt h3 s.rec {width: 32px; height: 29px; background-position: 0 -90px; margin-top: 8px;}
+.mt h3 s.n {width: 30px; height: 30px; background-position: -113px -21px; margin-top: 11px;}
+.mt h3 s.h {width: 26px; height: 25px; background-position: -115px -52px; margin-top: 13px;}
+.mt .change, .mt .more {float: right; margin-right: 5px; color: #666;}
+.mt .change s {float: left; width: 13px; height: 14px; background-position: -35px -100px; margin: 18px 5px 0 0;}
+.mt .more s {float: left; width: 18px; height: 19px; background-position: -83px -96px; margin: 15px 5px 0 0;}
+
+/* 特别推荐 */
+#recQh {display: none;}
+.recon {margin-bottom: 15px;}
+.recon .l {float: left; width: 190px; height: 250px; padding: 0 20px; background: url('../images/slideBg.jpg') top left;}
+.recon .l li {border-bottom: 1px solid #eee; padding: 15px 0 13px;}
+.recon .l li s {float: left;}
+.recon .l .r1 s {width: 49px; height: 51px; background-position: -1px -122px; margin: 0 8px 0 2px;}
+.recon .l .r2 s {width: 52px; height: 46px; background-position: -52px -126px; margin: 5px 8px 0 0;}
+.recon .l .r3 s {width: 42px; height: 51px; background-position: -107px -122px; margin: 3px 13px 0 5px;}
+.recon .l .r3 {border: 0;}
+.recon .l h5 {font-size: 22px; color: #ff608e;}
+.recon .l p {font-size: 14px; color: #666;}
+.recon .r {float: right; width: 770px; height: 250px; overflow: hidden; position: relative;}
+.w1200 .recon .r {width: 970px;}
+.recon .r .loading {height: 250px; line-height: 250px; text-align: center;}
+.recon .r li {float: left; position: relative; width: 218px; height: 230px; margin: 20px 0 0 38px; overflow: hidden;}
+.w1200 .recon .r li {margin-left: 24px;}
+.recon .r .list {position: absolute; left: 0; right: 0; top: 0; bottom: 0; width: 500%;}
+.recon .r .item {float: left; width: 218px; height: 230px;}
+.recon .r .pic, .recon .r .pic img {width: 218px; height: 150px; display: block; overflow: hidden;}
+.recon .r .wedding img {margin-top: -30px; height: 218px;}
+.recon .r .ritual img {margin-top: -50px; height: 218px;}
+.recon .r h5 {font-size: 16px; line-height: 33px;}
+.recon .r h5 a {display: block; color: #2c2b2b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.recon .r h5 a:hover {color: #f44578; text-decoration: underline;}
+.recon .r p {font-size: 14px; color: #999;}
+
+/* 模块内容 */
+.mcon {margin-bottom: 20px;}
+.mcon .slidebar {float: left; width: 190px; height: 405px; overflow: hidden; padding: 0 20px; background: url('../images/slideBg.jpg') top left;}
+.mcon .slidebar li {border-bottom: 1px solid #eee; padding: 15px 0;}
+.mcon .slidebar li.last {border: 0;}
+.mcon .slidebar li h6 {font-size: 16px; color: #ff608e; margin-bottom: 5px;}
+.mcon .slidebar li s {float: left;}
+.mcon .slidebar li .type {width: 11px; height: 11px; background-position: -105px -91px; margin: 7px 5px 0 0;}
+.mcon .slidebar li .price {width: 13px; height: 14px; background-position: -105px -106px; margin: 5px 3px 0 0;}
+.mcon .slidebar li .tables {width: 14px; height: 11px; background-position: -121px -91px; margin: 7px 5px 0 0;}
+.mcon .slidebar li .addr {width: 12px; height: 16px; background-position: -123px -104px; margin: 4px 5px 0 0;}
+.mcon .slidebar li .special {width: 15px; height: 13px; background-position: -138px -107px; margin: 5px 5px 0 0;}
+.mcon .slidebar li a {line-height: 20px; margin-right: 13px; font-size: 14px; white-space: nowrap;}
+.ritual .slidebar {width: 200px; height: 232px; padding: 0 10px 0 20px;}
+.ritual .slidebar li a {margin-right: 8px;}
+.mcon .list {float: left; width: 520px; height: 405px; overflow: hidden; position: relative;}
+.ritual .list {width: 520px; height: 232px;}
+.w1200 .mcon .list, .w1200 .ritual .list {width: 720px;}
+.mcon .list li {float: left; width: 205px; margin: 27px 0 0 36px;}
+.w1200 .mcon .list li {margin-left: 26px;}
+.mcon .list li a {display: block; position: relative;}
+.mcon .list li .pic, .mcon .list li img {width: 205px; height: 140px; display: block; overflow: hidden;}
+.wedding .list li img, .ritual .list li img {height: 205px; margin-top: -25px;}
+.mcon .list li .info {display: none; position: absolute; left: 0; top: 0; right: 0; height: 140px; -webkit-animation: bottomFadeIn .3s ease-out; -moz-animation: bottomFadeIn .3s ease-out; animation: bottomFadeIn .3s ease-out;}
+.mcon .list li .info p {position: relative; z-index: 2; font-size: 16px; color: #fff; padding: 38px 0 0 28px;}
+.mcon .list li .info .bg {position: absolute; z-index: 1; left: 0; top: 0; right: 0; bottom: 0; background-color: #ff608e; filter:alpha(opacity=90); -moz-opacity:0.9; -khtml-opacity: 0.9; opacity: 0.9;}
+.mcon .list li h3 {font-size: 16px; color: #666; line-height: 35px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.mcon .list li a:hover h3 {color: #f44578; text-decoration: underline;}
+.mcon .list li a:hover .info {display: block;}
+.ritual .list li p {height: 23px; line-height: 23px; margin-top: 3px;}
+.ritual .list li p .t {float: left; background-color: #98b87b; -moz-border-radius: 0 25px 25px 0; -webkit-border-radius: 0 25px 25px 0; border-radius: 0 25px 25px 0; padding: 0 15px 0 10px; color: #fff;}
+.ritual .list li p .a {float: right; color: #666;}
+.mcon .hlist {float: right; width: 250px;}
+.mcon .hlist h3 {height: 50px; line-height: 50px; color: #fff; background-color: #ff608e; text-align: center; font-size: 18px; margin-bottom: 10px;}
+.mcon .hlist h3 s {display: inline-block; width: 15px; height: 17px; background-position: -139px -89px; margin: 0 5px -2px 0;}
+.mcon .hlist li .t {height: 34px;}
+.mcon .hlist li .t i {float: left; width: 19px; height: 19px; font-style: normal; background-position: -131px 0; line-height: 19px; text-align: center; font-size: 14px; color: #666; margin-right: 5px;}
+.mcon .hlist li .t .h1, .mcon .hlist li .t .h2, .mcon .hlist li .t .h3 {color: #fff; background-position: -110px 0;}
+.mcon .hlist li .t a {display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 14px; line-height: 19px; color: #666;}
+.mcon .hlist li .t a:hover {color: #f44578; text-decoration: underline;}
+.mcon .hlist li .i {display: none; margin-bottom: 18px;}
+.mcon .hlist li .pic, .mcon .hlist li .pic img {float: left; width: 85px; height: 55px; display: block;}
+.mcon .hlist li .p {float: left; margin-left: 10px; line-height: 18px; color: #666;}
+
+/* 资讯 */
+.nlist .news {float: left; width: 705px;}
+.w1200 .nlist .news {width: 805px;}
+.nlist .news .tabs {height: 49px; border-bottom: 1px solid #f0f0f0;}
+.nlist .news .tabs li {float: left;}
+.nlist .news .tabs li a {position: relative; display: block; height: 26px; margin-top: 12px; line-height: 26px; padding: 0 15px; font-size: 14px; color: #575757;}
+.nlist .news .tabs li.curr a {background-color: #ff608e; border-radius: 15px; color: #fff;}
+.nlist .news .tabs li a s {display: none; position: absolute; left: 50%; bottom: -16px; width: 9px; height: 9px; margin-left: -4px; background-position: -144px -22px;}
+.nlist .news .tabs li.curr a s {display: block;}
+.nlist .list {width: 705px; overflow: hidden; padding: 15px 0 0 0;}
+.w1200 .nlist .list {width: 805px;}
+.nlist .news .list ul {width: 720px; display: none;}
+.w1200 .nlist .news .list ul {width: 820px;}
+.nlist .list li {float: left; width: 335px; margin: 0 20px 0 5px; line-height: 32px; list-style-type: square; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; list-style-position: inside; color: #ccc; font-size: 12px;}
+.w1200 .nlist .list li {width: 385px;}
+.nlist .list li a {color: #666; font-size: 14px;}
+
+.nlist .list li a:hover {text-decoration: underline; color: #f44578;}
+.nlist .help, .nlist .help .list {float: right; width: 270px;}
+.w1200 .nlist .help, .w1200 .nlist .help .list {width: 370px;}
+.nlist .help .list {width: 270px;}
+.nlist .help li {float: none; width: auto; line-height: 32px; list-style-type: square; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; list-style-position: inside; color: #ccc; font-size: 12px;}
+.nlist .help li a {color: #666; font-size: 14px;}
+.nlist .help .ad img {margin-left: -50px;}
+.w1200 .nlist .help .ad img {margin-left: 0;}
+
+/* 友情链接 */
+.flink {margin-top: 20px;}
+.flink .hd {height: 40px; border-top: 2px solid #575757; border-bottom: 1px dashed #e4e4e4; line-height: 40px;}
+.flink .hd h3 {float: left; font-size: 16px; color: #2c2b2b;}
+.flink .hd h3 s {float: left; width: 18px; height: 18px; background-position: -1px -176px; margin: 11px 5px 0;}
+.flink .hd p {float: right; color: #ff608e;}
+.flink .list {padding-top: 10px;}
+.flink .list a {float: left; white-space: nowrap; color: #666; margin: 0 20px 5px 0;}
+.flink .list a:hover {text-decoration: underline; color: #f44578;}

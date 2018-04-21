@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>商家店铺-{#$furniture_title#}</title>
+<meta name="keywords" content="{#$furniture_keywords#}"/>
+<meta name="description" content="{#$furniture_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/business.css" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$furniture_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'store'#}
+{#include file="top.html"#}
+
+<div class="bread">
+	<a href="{#$furniture_channelDomain#}">首页</a> > <a href="{#getUrlPath service='furniture' template='store'#}">商家店铺</a>
+</div>
+
+<div class="container">
+	<div class="classify">
+		<div>
+			<p>
+				<span>类别</span>
+				<a{#if $typeid == 0#} class="active"{#/if#} href="{#getUrlPath service='furniture' template='store' typeid=0 addrid={#$addrid#} business={#$business#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">不限</a>
+				{#furniture action="type" return="type"#}
+				<a{#if $typeid == {#$type.id#}#} class="active"{#/if#} href="{#getUrlPath service='furniture' template='store' typeid={#$type.id#} addrid={#$addrid#} business={#$business#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">{#$type.typename#}</a>
+				{#/furniture#}
+			</p>
+		</div>
+		<div>
+			<p>
+				<span>区域</span>
+				<a{#if $addrid == 0#} class="active"{#/if#} href="{#getUrlPath service='furniture' template='store' typeid={#$typeid#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">不限</a>
+				{#furniture action="addr" return='addr'#}
+				<a{#if $addrid == {#$addr.id#}#} class="active"{#/if#} href="{#getUrlPath service='furniture' template='store' typeid={#$typeid#} addrid={#$addr.id#} business=0 param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">{#$addr.typename#}</a>
+				{#/furniture#}
+			</p>
+		</div>
+		{#if $addrid != 0#}
+		<div>
+			<p>
+				<span>&nbsp;</span>
+				<a{#if $business == 0#} class="active"{#/if#} href="{#getUrlPath service='furniture' template='store' typeid={#$typeid#} addrid={#$addrid#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">不限</a>
+				{#furniture action="addr" return='addr' type={#$addrid#}#}
+				<a{#if $business == {#$addr.id#}#} class="active"{#/if#} href="{#getUrlPath service='furniture' template='store' typeid={#$typeid#} addrid={#$addrid#} business={#$addr.id#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">{#$addr.typename#}</a>
+				{#/furniture#}
+			</p>
+		</div>
+		{#/if#}
+	</div>
+	<!-- 筛选 -->
+	<div class="selectX">
+		<span class="left zh{#if $orderby == 0#} on{#/if#}"><a href="{#getUrlPath service='furniture' template='store' typeid={#$typeid#} addrid={#$addrid#} business={#$business#}#}">综合排序</a></span><font class="left">|</font>
+		<span class="left zh{#if $orderby == 1#} on{#/if#}"><a href="{#getUrlPath service='furniture' template='store' typeid={#$typeid#} addrid={#$addrid#} business={#$business#} param="orderby=1"#}#}">人气</a></span>
+		<div class="right">
+		<a class="pre" href="javascript:;">&lt;</a><span><em>{#$page#}</em>/<label id="totalPage">1</label></span><a class="next" href="javascript:;">&gt;</a>
+		</div>
+	</div>
+
+	<!-- 商家列表 -->
+	{#$addr = $addrid#}
+	{#if $business != 0#}
+	{#$addr = $business#}
+	{#/if#}
+	{#furniture action="store" typeid={#$typeid#} addrid={#$addr#} orderby={#$orderby#} page={#$page#} pageSize="20"#}
+	<div class="businessList clearfix">
+		<div class="lookShop"><a href="{#$row.url#}" target="_blank">查看店铺</a></div>
+		<div class="left"><div class="img"><a href="{#$row.url#}" target="_blank"><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$row.logo#}#}" alt="{#$row.title#}" ></a></div><p>{#$row.tel#}</p><span>共有<em>{#$row.procount#}</em>个产品</span></div>
+		<div class="right">
+			<h3><a href="{#$row.url#}" target="_blank">{#$row.title#}</a>{#if $row.certi == 1#}<i></i>{#/if#}</h3>
+			<span>主营品牌：<em>{#$row.typename#}</em></span>
+			<p class="address">公司地址：{#$row.addr[0]#} {#$row.addr[1]#} {#$row.address#}</p>
+			<span>经营产品：{#$row.project#}</span>
+			<div class="intro"></div>
+			<ul class="clearfix">
+				{#furniture action="flist" return="list" store={#$row.id#} page=1 pageSize=12#}
+				<li><a href="{#$list.url#}" target="_blank" title="{#$list.title#}"><img alt="{#$list.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$list.litpic#} type='middle'#}" alt="{#$list.title#}"></a><p>{#$list.title#}</p></li>
+				{#/furniture#}
+			</ul>
+		</div>
+	</div>
+	{#/furniture#}
+
+	{#$pageData = ""#}
+	{#furniture action="store" return="slist" typeid={#$typeid#} addrid={#$addr#} page={#$page#} pageSize="20"#}
+	{#$pageData = $pageInfo#}
+	{#/furniture#}
+
+	{#if $pageData.totalCount == 0#}
+	<div class="empty">抱歉！ 暂无商家店铺</div>
+	{#/if#}
+
+	<!-- 分页 -->
+	{#getPageList service='furniture' template='store' industry={#$typeid#} addrid={#$addrid#} business={#$business#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}
+
+</div>
+
+
+{#include file="bottom.html"#}
+<script>var totalCount = {#$pageData.totalCount|string_format:"%d"#}, totalPage = {#$pageData.totalPage|string_format:"%d"#}, atPage = {#$page#}, pageUrl = '{#getUrlPath service="furniture" template="store" industry={#$typeid#} addrid={#$addrid#} business={#$business#} page="%page%" param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}';</script>
+<script type="text/javascript" src="{#$templets_skin#}js/business.js"></script>
+</body>
+</html>

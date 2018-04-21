@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{#$detail_title#}-{#$home_title#}</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/sj-detail.css?v=1">
+    <script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$home_channelDomain#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var storeid = {#$detail_id#}, atpage = 1, pageSize = 20;
+</script>
+</head>
+<body>
+	<div class="container">
+		<!-- 头部 -->
+		<div class="header">
+			<div class="header-top"><a href="{#$home_channelDomain#}/cart.html"><img src="{#$templets_skin#}images/cart.png" alt=""></a></div>
+		</div>
+		<div class="seller-info">
+			<div class="seller-info-img"></div>
+			<div class="seller-info-tit">
+				<span>{#$detail_title#}</span>
+			</div>
+		</div>
+		<!-- 头部 end -->
+
+		{#*
+		<div class="select-box">
+			<div class="select-nav">
+				<ul>
+					<li class="active op-li" data-type="0"><a href="javascript:;"><span>默认</span><em>|</em></a></li>
+					<li class="op-li" data-type="1"><a href="javascript:;"><span>销量</span><em>|</em></a></li>
+					<li class="toggle-li"><a href="javascript:;" class="option-price"><span>价格<i></i></span><em>|</em></a></li>
+					<li class="op-li" data-type="5"><a href="javascript:;"><span>最新</span></a></li>
+				</ul>
+			</div>
+		</div>
+		*#}
+
+		<!-- 精选推荐 -->
+		<div class="command-list">
+			<div class="command-list-con">
+				<ul class="fn-clear">
+				</ul>
+			</div>
+			<div class="more">
+				<span>～宝贝就这么多，有喜欢的抓紧下手啦～</span>
+			</div>
+		</div>
+		<!-- 精选推荐 end-->
+
+	</div>
+
+	<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+	<script src="{#$templets_skin#}js/public.js"></script>
+	<script src="{#$templets_skin#}js/sj-detail.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+*{margin: 0;padding: 0;-webkit-tap-highlight-color: rgba(255,0,0,0);}
+body{max-width: 1080px;margin: 0 auto;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;font-size: .24rem;opacity: 0;}
+body.show {opacity:1;}
+html{background: #ebebeb;}
+
+
+/*头部幻灯片部分*/
+.wrapper .swiper-container {height: 3.5rem;color: #fff;text-align: center;}
+.wrapper .swiper-container .slideshow-item {-webkit-flex-shrink: 0; -ms-flex: 0 0 auto; flex-shrink: 0; width: 100%; height: 100%; position: relative;}
+.wrapper .swiper-slide img {width: 100%; height: 100%;}
+.wrapper .pagination {position: absolute;z-index: 20;left: 0;bottom: 0;width: 100%;}
+.wrapper .swiper-pagination-switch {display: inline-block;width: 0.12rem;height: 0.12rem;border-radius: 0.16rem;background: #555;margin-right: 5px;opacity: 0.8;border: 1px solid #fff;cursor: pointer;}
+.wrapper .swiper-active-switch {background: #fff;}
+.wrapper .swiper-dynamic-links {text-align: center;}
+.wrapper .swiper-pagination-bullet-active{background: #fff!important;opacity: .8}
+.wrapper .swiper-pagination-bullet{width: 6px;height: 6px;}
+
+
+/*滑动导航*/
+.nav{margin-top: .24rem;overflow: hidden;background: #fff;padding: .2rem 0 0;}
+.nav .nav-container{position: relative;}
+.nav li{float: left;width: 25%;}
+.nav li a{display: block;}
+.nav li a .icon-img{display: block;width: .85rem;height: .85rem;margin: 0 auto;}
+.nav li a .icon-img img{display: block;width: 100%;height: 100%;}
+.nav li a .icon-txt{display: block;width: 1rem;height: .6rem;margin: 0 auto;text-align: center;margin-top: .08rem}
+.nav .swiper-pagination-bullet{width: 7px;height: 7px;}
+.nav .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom,.nav .swiper-pagination-fraction{bottom: -10px;position: absolute;}
+
+/*列表*/
+.choose-tab{height: .74rem;margin-top: .2rem;}
+.choose-tab ul{height: .8rem;background: #fff;display: -webkit-box;border-bottom: 1px solid #ddd;}
+.choose-tab ul.top{position: fixed;top: 0;left: 0;right: 0;z-index: 10;}
+.choose-tab ul li{display: block;-webkit-box-flex: 1;line-height: .8rem;text-align: center;font-size: .28rem;border-right: 1px solid #eee; border-top: 1px solid #ddd;}
+.choose-tab ul li.active{color: #333;font-weight: bold;}
+.choose-tab ul li.active span{background-image: url(../images/la1.png);}
+.choose-tab ul li span{background: url(../images/la.png) center right no-repeat;padding-right: .4rem;background-size: .25rem auto}
+.goods-list{padding: .3rem 0;}
+.goods-list li{background: #fff;box-shadow: 1px 1px 2px #ddd;margin-bottom: .2rem;}
+.goods-list li a{display: block; padding: .2rem .3rem;}
+.goods-list li .imgbox{width: .8rem; height: .8rem; border-radius: 100%; overflow: hidden; float: left; margin-right: .2rem;}
+.goods-list li .imgbox img{display: block; width: 100%;}
+.goods-list li .txtbox{float: left;}
+.goods-list li .txtbox .name{font-size: .3rem;}
+.goods-list li .txtbox .time{font-size: .24rem; color: #bbb; background: url(../images/time_icon.png) left center no-repeat; background-size: .3rem auto; padding-left: .35rem;}
+.goods-list li .price{float: right; color: #f60;}
+.goods-list li .price em{font-size: .4rem;}
+.goods-list li .litpic{margin-top: .2rem; height: 3.6rem; overflow: hidden;}
+.goods-list li .litpic img{display: block; width: 5rem; min-height: 3.6rem;}
+.goods-list li .imgList{white-space: nowrap; overflow: auto;}
+.goods-list li .imgList img{width: 2.5rem; height: 2.5rem; display: block; display: inline-block;}
+.goods-list li .content{line-height: .5rem; font-size: .32rem; border-bottom: 1px solid #f2f2f2; padding: .2rem 0;}
+.goods-list li .from{color: #66adef; padding: .2rem 0 0;}
+
+/*筛选框*/
+.choose{position: relative;z-index: 10}
+.choose-box{position: absolute;top: .84rem;left: 0;right: 0;z-index: 10}
+.choose-local{background: #fff;max-height: 6rem;overflow: hidden;}
+.choose-local li{height: .8rem;line-height: .8rem;font-size: .28rem;text-indent: .2rem;border-bottom: 1px solid #f7f7f7;}
+.dn{display: none;}
+#choose-area{background: #f7f7f7;}
+#choose-area,#choose-sort{max-height: 6rem;overflow: hidden;}
+#choose-second,#choose-info{height: 6rem;}
+#choose-second li{margin: 0 .2rem;text-indent: 0}
+#choose-second li.load {text-align: center; height: 6rem; line-height: 6rem;}
+.choose-stage-l-short{width: 49%;float: left;}
+.choose-stage-r{width: 50%;float: left;display: none;}
+#choose-info{background: #f7f7f7;}
+#choose-info li.active{background: #fff;border-color: #fff;}
+#choose-area li.on,#choose-sort li.on,#choose-second li.on{color: #f74342;border-bottom: 1px solid #f74342;}
+#choose-info li.current{color: #f74342;border-bottom: 1px solid #f74342;}
+#choose-area li.active{background: #fff; border-color: #fff;}
+#choose-area-second li.on { color: #f74342; border-bottom: 1px solid #f74342;}
+
+/*遮罩层*/
+.mask{width: 100%;background: rgba(0,0,0,.6);position: fixed;top: 0;right: 0;z-index: 9;display: none;bottom: 0}
+
+a.scrollTop{display: block;width: .6rem;height: .6rem;border-radius: 1rem;background: rgba(0,0,0,.6);bottom: 1rem;right: .3rem;position: fixed;}
+a.scrollTop i{display: block;width: .6rem;background: url(../images/top.png) center center no-repeat;height: .6rem;background-size: .4rem auto;}
+
+.empty{line-height: 1rem; text-align: center; font-size: .3rem; margin-bottom: .8rem;}
+/*底部*/
+.fixFooter{position: fixed; bottom: 0; left: 0; right: 0; height: .9rem; background: #fff; border-top: 1px solid #e4e4e3; font-size: .24rem; -webkit-animation: FadeIn .15s ease-out; -moz-animation: FadeIn .15s ease-out; animation: FadeIn .15s ease-out;}
+.fixFooter ul{display: -webkit-box;}
+.fixFooter ul li{-webkit-box-flex: 1; text-align: center;}
+.fixFooter ul li i{display: block; width: .5rem; height: .5rem; margin: .05rem auto 0;}
+.fixFooter ul li.ficon1 i{background: url(../images/aficon1.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon2 i{background: url(../images/aficon2.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon3 i{background: url(../images/aficon3.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon4 i{background: url(../images/aficon4.png) center center no-repeat; background-size: .4rem auto;}

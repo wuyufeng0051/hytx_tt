@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$car_title#}</title>
+<meta name="keywords" content="{#$car_keywords#}" />
+<meta name="description" content="{#$car_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$car_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top.html"#}
+
+<div class="wrap header fn-clear">
+	<h1 class="logo"><a href="{#$car_channelDomain#}" title="{#$car_channelName#}"><img src="{#$car_logoUrl#}" alt="{#$car_channelName#}" /></a></h1>
+	<div class="service">
+		<s></s>全国免费咨询热线<h3>{#$car_hotline#}</h3>
+	</div>
+</div>
+
+<!-- 导航 s -->
+<div class="nav">
+	<ul class="wrap fn-clear">
+		<li class="curr"><a href="#">车型<span>|</span></a><s></s></li>
+		<li><a href="#">图片<span>|</span></a><s></s></li>
+		<li><a href="#">视频<span>|</span></a><s></s></li>
+		<li><a href="#">报价<span>|</span></a><s></s></li>
+		<li><a href="#">询价<span>|</span></a><s></s></li>
+		<li><a href="#">促销<span>|</span></a><s></s></li>
+		<li><a href="#">口碑<span>|</span></a><s></s></li>
+		<li><a href="#">养护<span>|</span></a><s></s></li>
+		<li><a href="#">经销商<span>|</span></a><s></s></li>
+		<li><a href="#">预约试驾<span>|</span></a><s></s></li>
+		<li><a href="#">法规手册<span>|</span></a><s></s></li>
+		<li><a href="#">百科知识</a><s></s></li>
+	</ul>
+</div>
+<!-- 导航 e -->
+
+<!-- 汽车分类 s -->
+<div class="wrap car-icons">
+	<ul>
+		<li class="ci1"><a href="#" target="_blank"><s></s>微型车</a></li>
+		<li class="ci2"><a href="#" target="_blank"><s></s>小型车</a></li>
+		<li class="ci3"><a href="#" target="_blank"><s></s>紧凑型车</a></li>
+		<li class="ci4"><a href="#" target="_blank"><s></s>中型车</a></li>
+		<li class="ci5"><a href="#" target="_blank"><s></s>中大型车</a></li>
+		<li class="ci6"><a href="#" target="_blank"><s></s>豪华车</a></li>
+		<li class="ci7"><a href="#" target="_blank"><s></s>SUV</a></li>
+		<li class="ci8"><a href="#" target="_blank"><s></s>MPV</a></li>
+		<li class="ci9"><a href="#" target="_blank"><s></s>跑车</a></li>
+		<li class="ci10"><a href="#" target="_blank"><s></s>皮卡</a></li>
+		<li class="ci11"><a href="#" target="_blank"><s></s>微面</a></li>
+		<li class="ci12"><a href="#" target="_blank"><s></s>电动车</a></li>
+	</ul>
+</div>
+<!-- 汽车分类 e -->
+
+<!-- 价格TAB s -->
+<div class="wrap car-price">
+	<div class="tabs">
+		<ul>
+			<li class="curr"><a href="#" target="_blank">热门车</a></li>
+			<li><a href="#" target="_blank">新车</a></li>
+			<li><a href="#" target="_blank">5万以下</a></li>
+			<li><a href="#" target="_blank">5-8万</a></li>
+			<li><a href="#" target="_blank">8-12万</a></li>
+			<li><a href="#" target="_blank">12-18万</a></li>
+			<li><a href="#" target="_blank">18-25万</a></li>
+			<li><a href="#" target="_blank">25-40万</a></li>
+			<li><a href="#" target="_blank">40万以上</a></li>
+			<li><a href="#" target="_blank">推荐车<s></s></a></li>
+		</ul>
+	</div>
+	<div class="data">
+		<div class="item fir" style="display:block;">
+			<dl>
+				<dt><a href="#" target="_blank">轿车</a><s></s></dt>
+				<dd>
+					<ul style="display:block;">
+						{#car action="car" return="car" typeid="9" property="h" pageSize="24"#}
+						{#if $car.key != 1 && $car.key % 8 == 1#}
+					</ul>
+					<ul>
+						{#/if#}
+						<li>
+							<a href="{#$car.url#}" target="_blank" class="tit" title="{#$car.title#}">{#$car.title#}</a>
+							<p><a href="{#getUrlPath service='car' template='price' id="{#$car.id#}"#}" target="_blank">报价</a><a href="{#getUrlPath service='car' template='picture' id="{#$car.id#}"#}" target="_blank">图库</a><a href="{#getUrlPath service='car' template='koubei' id="{#$car.id#}"#}" target="_blank">口碑</a></p>
+						</li>
+						{#/car#}
+					</ul>
+					<div class="conl">
+						<a href="javascript:;" class="con-l"><s></s></a>
+						<a href="javascript:;" class="con-r"><s></s></a>
+					</div>
+				</dd>
+			</dl>
+			<dl>
+				<dt><a href="#" target="_blank">SUV</a><s></s></dt>
+				<dd>
+					<ul style="display:block;">
+						{#car action="car" return="car" typeid="17" property="h" pageSize="24"#}
+						{#if $car.key != 1 && $car.key % 8 == 1#}
+					</ul>
+					<ul>
+						{#/if#}
+						<li>
+							<a href="{#$car.url#}" target="_blank" class="tit" title="{#$car.title#}">{#$car.title#}</a>
+							<p><a href="{#getUrlPath service='car' template='price' id="{#$car.id#}"#}" target="_blank">报价</a><a href="{#getUrlPath service='car' template='picture' id="{#$car.id#}"#}" target="_blank">图库</a><a href="{#getUrlPath service='car' template='koubei' id="{#$car.id#}"#}" target="_blank">口碑</a></p>
+						</li>
+						{#/car#}
+					</ul>
+					<div class="conl">
+						<a href="javascript:;" class="con-l"><s></s></a>
+						<a href="javascript:;" class="con-r"><s></s></a>
+					</div>
+				</dd>
+			</dl>
+			<dl>
+				<dt><a href="#" target="_blank">跑车</a><s></s></dt>
+				<dd>
+					<ul style="display:block;">
+						{#car action="car" return="car" typeid="18" property="h" pageSize="24"#}
+						{#if $car.key != 1 && $car.key % 8 == 1#}
+					</ul>
+					<ul>
+						{#/if#}
+						<li>
+							<a href="{#$car.url#}" target="_blank" class="tit" title="{#$car.title#}">{#$car.title#}</a>
+							<p><a href="{#getUrlPath service='car' template='price' id="{#$car.id#}"#}" target="_blank">报价</a><a href="{#getUrlPath service='car' template='picture' id="{#$car.id#}"#}" target="_blank">图库</a><a href="{#getUrlPath service='car' template='koubei' id="{#$car.id#}"#}" target="_blank">口碑</a></p>
+						</li>
+						{#/car#}
+					</ul>
+					<div class="conl">
+						<a href="javascript:;" class="con-l"><s></s></a>
+						<a href="javascript:;" class="con-r"><s></s></a>
+					</div>
+				</dd>
+			</dl>
+			<dl>
+				<dt><a href="#" target="_blank">豪华车</a><s></s></dt>
+				<dd>
+					<ul style="display:block;">
+						{#car action="car" return="car" typeid="15" property="h" pageSize="24"#}
+						{#if $car.key != 1 && $car.key % 8 == 1#}
+					</ul>
+					<ul>
+						{#/if#}
+						<li>
+							<a href="{#$car.url#}" target="_blank" class="tit" title="{#$car.title#}">{#$car.title#}</a>
+							<p><a href="{#getUrlPath service='car' template='price' id="{#$car.id#}"#}" target="_blank">报价</a><a href="{#getUrlPath service='car' template='picture' id="{#$car.id#}"#}" target="_blank">图库</a><a href="{#getUrlPath service='car' template='koubei' id="{#$car.id#}"#}" target="_blank">口碑</a></p>
+						</li>
+						{#/car#}
+					</ul>
+					<div class="conl">
+						<a href="javascript:;" class="con-l"><s></s></a>
+						<a href="javascript:;" class="con-r"><s></s></a>
+					</div>
+				</dd>
+			</dl>
+		</div>
+		<div class="item">
+			<dl>
+				<dd>
+					<ul>
+						{#car action="car" return="car" property="n" pageSize="36"#}
+						{#if $car.key != 1 && $car.key % 8 == 1#}
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dd>
+					<ul>
+						{#/if#}
+						<li>
+							<a href="{#$car.url#}" target="_blank" class="tit" title="{#$car.title#}">{#$car.title#}</a>
+							<p><a href="{#getUrlPath service='car' template='price' id="{#$car.id#}"#}" target="_blank">报价</a><a href="{#getUrlPath service='car' template='picture' id="{#$car.id#}"#}" target="_blank">图库</a><a href="{#getUrlPath service='car' template='koubei' id="{#$car.id#}"#}" target="_blank">口碑</a></p>
+						</li>
+						{#/car#}
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<div class="item">
+			<dl>
+				<dd>
+					<ul>
+						{#car action="car" return="car" price=",5" pageSize="36"#}
+						{#if $car.key != 1 && $car.key % 8 == 1#}
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dd>
+					<ul>
+						{#/if#}
+						<li>
+							<a href="{#$car.url#}" target="_blank" class="tit" title="{#$car.title#}">{#$car.title#}</a>
+							<p><a href="{#getUrlPath service='car' template='price' id="{#$car.id#}"#}" target="_blank">报价</a><a href="{#getUrlPath service='car' template='picture' id="{#$car.id#}"#}" target="_blank">图库</a><a href="{#getUrlPath service='car' template='koubei' id="{#$car.id#}"#}" target="_blank">口碑</a></p>
+						</li>
+						{#/car#}
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<div class="item">
+			<dl>
+				<dd>
+					<ul>
+						{#car action="car" return="car" price="5,8" pageSize="36"#}
+						{#if $car.key != 1 && $car.key % 8 == 1#}
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dd>
+					<ul>
+						{#/if#}
+						<li>
+							<a href="{#$car.url#}" target="_blank" class="tit" title="{#$car.title#}">{#$car.title#}</a>
+							<p><a href="{#getUrlPath service='car' template='price' id="{#$car.id#}"#}" target="_blank">报价</a><a href="{#getUrlPath service='car' template='picture' id="{#$car.id#}"#}" target="_blank">图库</a><a href="{#getUrlPath service='car' template='koubei' id="{#$car.id#}"#}" target="_blank">口碑</a></p>
+						</li>
+						{#/car#}
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<div class="item">
+			<dl>
+				<dd>
+					<ul>
+						{#car action="car" return="car" price="8,12" pageSize="36"#}
+						{#if $car.key != 1 && $car.key % 8 == 1#}
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dd>
+					<ul>
+						{#/if#}
+						<li>
+							<a href="{#$car.url#}" target="_blank" class="tit" title="{#$car.title#}">{#$car.title#}</a>
+							<p><a href="{#getUrlPath service='car' template='price' id="{#$car.id#}"#}" target="_blank">报价</a><a href="{#getUrlPath service='car' template='picture' id="{#$car.id#}"#}" target="_blank">图库</a><a href="{#getUrlPath service='car' template='koubei' id="{#$car.id#}"#}" target="_blank">口碑</a></p>
+						</li>
+						{#/car#}
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<div class="item">
+			<dl>
+				<dd>
+					<ul>
+						{#car action="car" return="car" price="12,18" pageSize="36"#}
+						{#if $car.key != 1 && $car.key % 8 == 1#}
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dd>
+					<ul>
+						{#/if#}
+						<li>
+							<a href="{#$car.url#}" target="_blank" class="tit" title="{#$car.title#}">{#$car.title#}</a>
+							<p><a href="{#getUrlPath service='car' template='price' id="{#$car.id#}"#}" target="_blank">报价</a><a href="{#getUrlPath service='car' template='picture' id="{#$car.id#}"#}" target="_blank">图库</a><a href="{#getUrlPath service='car' template='koubei' id="{#$car.id#}"#}" target="_blank">口碑</a></p>
+						</li>
+						{#/car#}
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<div class="item">
+			<dl>
+				<dd>
+					<ul>
+						{#car action="car" return="car" price="18,25" pageSize="36"#}
+						{#if $car.key != 1 && $car.key % 8 == 1#}
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dd>
+					<ul>
+						{#/if#}
+						<li>
+							<a href="{#$car.url#}" target="_blank" class="tit" title="{#$car.title#}">{#$car.title#}</a>
+							<p><a href="{#getUrlPath service='car' template='price' id="{#$car.id#}"#}" target="_blank">报价</a><a href="{#getUrlPath service='car' template='picture' id="{#$car.id#}"#}" target="_blank">图库</a><a href="{#getUrlPath service='car' template='koubei' id="{#$car.id#}"#}" target="_blank">口碑</a></p>
+						</li>
+						{#/car#}
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<div class="item">
+			<dl>
+				<dd>
+					<ul>
+						{#car action="car" return="car" price="25,40" pageSize="36"#}
+						{#if $car.key != 1 && $car.key % 8 == 1#}
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dd>
+					<ul>
+						{#/if#}
+						<li>
+							<a href="{#$car.url#}" target="_blank" class="tit" title="{#$car.title#}">{#$car.title#}</a>
+							<p><a href="{#getUrlPath service='car' template='price' id="{#$car.id#}"#}" target="_blank">报价</a><a href="{#getUrlPath service='car' template='picture' id="{#$car.id#}"#}" target="_blank">图库</a><a href="{#getUrlPath service='car' template='koubei' id="{#$car.id#}"#}" target="_blank">口碑</a></p>
+						</li>
+						{#/car#}
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<div class="item">
+			<dl>
+				<dd>
+					<ul>
+						{#car action="car" return="car" price="40," pageSize="36"#}
+						{#if $car.key != 1 && $car.key % 8 == 1#}
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dd>
+					<ul>
+						{#/if#}
+						<li>
+							<a href="{#$car.url#}" target="_blank" class="tit" title="{#$car.title#}">{#$car.title#}</a>
+							<p><a href="{#getUrlPath service='car' template='price' id="{#$car.id#}"#}" target="_blank">报价</a><a href="{#getUrlPath service='car' template='picture' id="{#$car.id#}"#}" target="_blank">图库</a><a href="{#getUrlPath service='car' template='koubei' id="{#$car.id#}"#}" target="_blank">口碑</a></p>
+						</li>
+						{#/car#}
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<div class="item">
+			<dl>
+				<dd>
+					<ul>
+						{#car action="car" return="car" property="r" pageSize="36"#}
+						{#if $car.key != 1 && $car.key % 8 == 1#}
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dd>
+					<ul>
+						{#/if#}
+						<li>
+							<a href="{#$car.url#}" target="_blank" class="tit" title="{#$car.title#}">{#$car.title#}</a>
+							<p><a href="{#getUrlPath service='car' template='price' id="{#$car.id#}"#}" target="_blank">报价</a><a href="{#getUrlPath service='car' template='picture' id="{#$car.id#}"#}" target="_blank">图库</a><a href="{#getUrlPath service='car' template='koubei' id="{#$car.id#}"#}" target="_blank">口碑</a></p>
+						</li>
+						{#/car#}
+					</ul>
+				</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<!-- 价格TAB e -->
+
+<!-- 幻灯 & 每日关注 s -->
+<div class="wrap fn-clear">
+	<div class="slide">
+		<div id="slide">
+			{#myad id="90" type="slide"#}
+		</div>
+		<div class="slidebtn">
+			<div><span class="atpage" id="atpage">1</span>/<span class="tpage" id="tpage">5</span></div>
+			<a href="javascript:;" class="prev" id="slidebtn_prev"><s></s></a>
+			<a href="javascript:;" class="next" id="slidebtn_next"><s></s></a>
+		</div>
+	</div>
+
+	<div class="headline">
+		<div class="mt">
+			<h3>每日关注</h3>
+			<a href="{#getUrlPath service='car' template='news' id='16'#}" target="_blank" class="more">更多>></a>
+		</div>
+		<div class="list">
+			<ul>
+				{#car action="news" return="news" typeid="16" pageSize="8"#}
+				<li><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a></li>
+				{#/car#}
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- 幻灯 & 每日关注 e -->
+
+<!-- 新闻模块 s -->
+<div class="wrap news fn-clear">
+	<dl>
+		<dt><a href="{#getUrlPath service='car' template='news' id='1'#}" target="_blank">体验试驾</a><i></i><a href="{#getUrlPath service='car' template='news' id='2'#}" target="_blank">导购</a><s></s></dt>
+		<dd>
+			<ul>
+				{#car action="news" return="news" typeid="1,2" pageSize="6"#}
+				<li><a href="{#getUrlPath service='car' template='news' id={#$news.typeid#}#}" target="_blank" class="ty">【{#$news.typename#}】</a><a href="{#$news.url#}" target="_blank" title="{#$news.title#}" class="ti">{#$news.title#}</a></li>
+				{#/car#}
+			</ul>
+		</dd>
+	</dl>
+	<dl>
+		<dt><a href="{#getUrlPath service='car' template='news' id='3'#}" target="_blank">用车</a><i></i><a href="{#getUrlPath service='car' template='news' id='14'#}" target="_blank">改装</a><s></s></dt>
+		<dd>
+			<ul>
+				{#car action="news" return="news" typeid="3,14" pageSize="6"#}
+				<li><a href="{#getUrlPath service='car' template='news' id='{#$news.typeid#}'#}" target="_blank" class="ty">【{#$news.typename#}】</a><a href="{#$news.url#}" target="_blank" title="{#$news.title#}" class="ti">{#$news.title#}</a></li>
+				{#/car#}
+			</ul>
+		</dd>
+	</dl>
+	<dl class="l">
+		<dt><a href="{#getUrlPath service='car' template='news' id='4'#}" target="_blank">安全</a><i></i><a href="{#getUrlPath service='car' template='news' id='5'#}" target="_blank">新闻</a><s></s></dt>
+		<dd>
+			<ul>
+				{#car action="news" return="news" typeid="4,5" pageSize="6"#}
+				<li><a href="{#getUrlPath service='car' template='news' id='{#$news.typeid#}'#}" target="_blank" class="ty">【{#$news.typename#}】</a><a href="{#$news.url#}" target="_blank" title="{#$news.title#}" class="ti">{#$news.title#}</a></li>
+				{#/car#}
+			</ul>
+		</dd>
+	</dl>
+</div>
+<!-- 新闻模块 e -->
+
+<!-- 热门车型、最新上市 s -->
+<div class="wrap column" id="hn">
+	<div class="mt">
+		<ul class="fn-clear">
+			<li class="curr"><a href="#" target="_blank">热门车型<s></s></a></li>
+			<li><a href="#" target="_blank">最新上市<s></s></a></li>
+		</ul>
+		<div class="adv">{#myad id="91"#}</div>
+	</div>
+	<div class="data">
+		<div class="item" style="display:block;">
+			<ul class="fn-clear">
+				{#car action="car" return="car" property="h" pageSize="5"#}
+				<li>
+					<a href="{#$car.url#}" target="_blank" class="pic"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$car.litpic#}" type="middle"#}" /></a>
+					<a href="{#$car.url#}" target="_blank" class="price">{#$car.minprice#}-{#$car.maxprice#}万</a>
+					<a href="#{#$car.url#}" target="_blank" class="lower"><i></i><s></s>{#$car.minprice-$car.dminprice#}万</a>
+					<a href="{#$car.url#}" target="_blank" class="tit">{#$car.title#}</a>
+					<div class="btns">
+						<a href="{#$car.url#}" target="_blank" class="b1">询价</a>
+						<a href="{#$car.url#}" target="_blank" class="b2">关注</a>
+					</div>
+				</li>
+				{#/car#}
+			</ul>
+		</div>
+		<div class="item">
+			<ul class="fn-clear">
+				{#car action="car" return="car" property="n" pageSize="5"#}
+				<li>
+					<a href="{#$car.url#}" target="_blank" class="pic"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$car.litpic#}" type="middle"#}" /></a>
+					<a href="{#$car.url#}" target="_blank" class="price">{#$car.minprice#}-{#$car.maxprice#}万</a>
+					<a href="#{#$car.url#}" target="_blank" class="lower"><i></i><s></s>{#$car.minprice-$car.dminprice#}万</a>
+					<a href="{#$car.url#}" target="_blank" class="tit">{#$car.title#}</a>
+					<div class="btns">
+						<a href="{#$car.url#}" target="_blank" class="b1">询价</a>
+						<a href="{#$car.url#}" target="_blank" class="b2">关注</a>
+					</div>
+				</li>
+				{#/car#}
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- 热门车型、最新上市 e -->
+
+<!-- 精彩图库 s -->
+<div class="wrap column" id="tt">
+	<div class="mt">
+		<ul class="fn-clear">
+			<li class="curr"><a href="#" target="_blank">精彩图库<s></s></a></li>
+		</ul>
+		<div class="b-type">
+			<label>搜索图片</label>
+			<div class="sel">
+				<span data-val="0" id="cBrand">选品牌</span><s></s>
+				<div class="popup-sel" id="Mast_Brand"></div>
+			</div>
+			<div class="sel">
+				<span data-val="0" id="cCar">选车型</span><s></s>
+				<div class="popup-sel" id="Mast_Car"></div>
+			</div>
+			<a href="javascript:;" class="tbtn" id="ty-btn">查看</a>
+		</div>
+	</div>
+	<div class="list">
+		<div class="item">
+			{#myad id="94" type="slide"#}
+		</div>
+		<div class="item">
+			{#myad id="95" type="slide"#}
+		</div>
+	</div>
+	<div class="conl">
+		<a href="javascript:;" class="l" id="ttl"><s></s></a>
+		<a href="javascript:;" class="r" id="ttr"><s></s></a>
+		<a href="#" target="_blank" title="更多精彩图库" class="m"><s></s></a>
+	</div>
+</div>
+<!-- 精彩图库 e -->
+
+<!-- 汽车视频 s -->
+<div class="wrap column" id="video">
+	<div class="mt">
+		<ul class="fn-clear">
+			<li class="curr"><a href="#" target="_blank">汽车视频<s></s></a></li>
+		</ul>
+		<div class="link">
+			{#car action="videoType" return="vtype"#}
+			<a href="{#getUrlPath service='car' template='video' id={#$vtype.id#}#}" target="_blank">{#$vtype.typename#}</a>
+			{#/car#}
+			<a href="#" target="_blank">更多+</a>
+		</div>
+	</div>
+	<div class="plist">
+		<ul class="fn-clear">
+			{#car action="video" return="video" orderby="2" pageSize="5"#}
+			<li>
+				<a href="{#$video.url#}" title="{#$video.title#}" target="_blank">
+					<img alt="{#$video.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$video.litpic#}" type="middle"#}" />
+					<p>{#$video.title#}</p>
+					<span></span>
+				</a>
+			</li>
+			{#/car#}
+		</ul>
+	</div>
+	<div class="tlist">
+		<ul class="fn-clear">
+			{#car action="video" return="video" orderby="2" page="2" pageSize="10"#}
+			<li><a href="{#$video.url#}" title="{#$video.title#}" target="_blank"><s></s>{#$video.title#}</a></li>
+			{#/car#}
+		</ul>
+	</div>
+</div>
+<!-- 汽车视频 e -->
+
+<!-- 买车 s -->
+<div class="wrap column" id="buy">
+	<div class="mt">
+		<ul class="fn-clear">
+			<li class="curr"><a href="#" target="_blank">买车<s></s></a></li>
+		</ul>
+		<div class="link">
+			<a href="#" target="_blank">行情</a>
+			<a href="#" target="_blank">报价</a>
+			<a href="#" target="_blank">优惠促销</a>
+			<a href="#" target="_blank">更多+</a>
+		</div>
+	</div>
+	<div class="data fn-clear">
+		<div class="slidebar">
+			<a href="#" target="_blank" class="tit">车型报价</a>
+			<ul>
+				<li class="curr"><a href="#" target="_blank"><s></s>推荐车型</a></li>
+				<li><a href="#" target="_blank"><s></s>8万以下</a></li>
+				<li><a href="#" target="_blank"><s></s>8-12万</a></li>
+				<li><a href="#" target="_blank"><s></s>12-18万</a></li>
+				<li><a href="#" target="_blank"><s></s>18-25万</a></li>
+				<li><a href="#" target="_blank"><s></s>25-40万</a></li>
+			</ul>
+		</div>
+		<div class="list">
+			<div class="item" style="display: block;">
+				<ul class="fn-clear">
+					{#car action="offer" return="offer" property="r"#}
+					<li>
+						<a href="{#$offer.url#}" target="_blank" class="pic"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$offer['carDetail'].litpic#}" type="middle"#}" />
+							<div class="price">
+								<span class="n"><i>&yen;</i>{#$offer.price#}<i>万</i></span>
+								<span class="o">&yen;{#$offer['carDetail'].guide#}万</span>
+							</div>
+							<p>{#$offer['carDetail'].title#}</p>
+						</a>
+					</li>
+					{#/car#}
+				</ul>
+			</div>
+			<div class="item">
+				<ul class="fn-clear">
+					{#car action="offer" return="offer" price=",8"#}
+					<li>
+						<a href="{#$offer.url#}" target="_blank" class="pic"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$offer['carDetail'].litpic#}" type="middle"#}" />
+							<div class="price">
+								<span class="n"><i>&yen;</i>{#$offer.price#}<i>万</i></span>
+								<span class="o">&yen;{#$offer['carDetail'].guide#}万</span>
+							</div>
+							<p>{#$offer['carDetail'].title#}</p>
+						</a>
+					</li>
+					{#/car#}
+				</ul>
+			</div>
+			<div class="item">
+				<ul class="fn-clear">
+					{#car action="offer" return="offer" price="8,12"#}
+					<li>
+						<a href="{#$offer.url#}" target="_blank" class="pic"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$offer['carDetail'].litpic#}" type="middle"#}" />
+							<div class="price">
+								<span class="n"><i>&yen;</i>{#$offer.price#}<i>万</i></span>
+								<span class="o">&yen;{#$offer['carDetail'].guide#}万</span>
+							</div>
+							<p>{#$offer['carDetail'].title#}</p>
+						</a>
+					</li>
+					{#/car#}
+				</ul>
+			</div>
+			<div class="item">
+				<ul class="fn-clear">
+					{#car action="offer" return="offer" price="12,18"#}
+					<li>
+						<a href="{#$offer.url#}" target="_blank" class="pic"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$offer['carDetail'].litpic#}" type="middle"#}" />
+							<div class="price">
+								<span class="n"><i>&yen;</i>{#$offer.price#}<i>万</i></span>
+								<span class="o">&yen;{#$offer['carDetail'].guide#}万</span>
+							</div>
+							<p>{#$offer['carDetail'].title#}</p>
+						</a>
+					</li>
+					{#/car#}
+				</ul>
+			</div>
+			<div class="item">
+				<ul class="fn-clear">
+					{#car action="offer" return="offer" price="18,25"#}
+					<li>
+						<a href="{#$offer.url#}" target="_blank" class="pic"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$offer['carDetail'].litpic#}" type="middle"#}" />
+							<div class="price">
+								<span class="n"><i>&yen;</i>{#$offer.price#}<i>万</i></span>
+								<span class="o">&yen;{#$offer['carDetail'].guide#}万</span>
+							</div>
+							<p>{#$offer['carDetail'].title#}</p>
+						</a>
+					</li>
+					{#/car#}
+				</ul>
+			</div>
+			<div class="item">
+				<ul class="fn-clear">
+					{#car action="offer" return="offer" price="25,40"#}
+					<li>
+						<a href="{#$offer.url#}" target="_blank" class="pic"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$offer['carDetail'].litpic#}" type="middle"#}" />
+							<div class="price">
+								<span class="n"><i>&yen;</i>{#$offer.price#}<i>万</i></span>
+								<span class="o">&yen;{#$offer['carDetail'].guide#}万</span>
+							</div>
+							<p>{#$offer['carDetail'].title#}</p>
+						</a>
+					</li>
+					{#/car#}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 买车 e -->
+
+<!-- 商家 s -->
+<div class="wrap column" id="store">
+	<div class="mt">
+		<div class="l">
+			<ul class="fn-clear">
+				<li class="curr"><a href="#" target="_blank">新车到店<s></s></a></li>
+			</ul>
+			<div class="adv">{#myad id="93"#}</div>
+		</div>
+		<div class="r">
+			<ul class="fn-clear">
+				<li class="curr"><a href="#" target="_blank">商家促销<s></s></a></li>
+			</ul>
+			<div class="link"><a href="#" target="_blank">更多+</a></div>
+		</div>
+	</div>
+	<div class="data fn-clear">
+		<div class="l">
+			<div class="list fn-clear">
+				{#car action="offer" return="offer" property="n" pageSize="4"#}
+				<dl class="fn-clear">
+					<dt><a href="{#$offer.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$offer['carDetail'].litpic#}" type="middle"#}" /><p>{#$offer['carDetail'].subtitle#}</p></a></dt>
+					<dd>
+						<h5 class="fn-clear">
+							<a href="{#$offer['dealer'].url#}" target="_blank">{#$offer['dealer'].subtitle#}</a>
+							{#if $offer['dealer'].levaltype == "1"#}
+							<s class="4s" title="4S店"></s>
+							{#elseif $offer['dealer'].levaltype == "2"#}
+							<s class="te" title="特许店"></s>
+							{#elseif $offer['dealer'].levaltype == "3"#}
+							<s class="zh" title="综合店"></s>
+							{#/if#}
+						</h5>
+						<p class="tel" title="电话：{#$offer['dealer'].tel#}">电话：{#$offer['dealer'].tel#}</p>
+						<p class="addr">地址：{#$offer['dealer'].addr#}{#$offer['dealer'].address#}<a href="javascript:;" data-lnglat="{#$offer['dealer'].lnglat#}" target="_blank">[地图]</a></p>
+					</dd>
+				</dl>
+				{#/car#}
+			</div>
+		</div>
+		<div class="r">
+			<div class="list fn-clear">
+				<ul>
+					{#car action="event" return="event" property="r" pageSize="8"#}
+					<li><s></s><a href="{#$event.url#}" target="_blank" title="{#$event.title#}">{#$event.title#}</a></li>
+					{#/car#}
+				</ul>
+				<ul>
+					{#car action="event" return="event" property="r" page="2" pageSize="8"#}
+					<li><s></s><a href="{#$event.url#}" target="_blank" title="{#$event.title#}">{#$event.title#}</a></li>
+					{#/car#}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 商家 e -->
+
+<div class="wrap ad">{#myad id="92"#}</div>
+
+<!-- 法规手册 s -->
+<div class="wrap column" id="fgsc">
+	<div class="mt">
+		<ul class="fn-clear">
+			<li class="curr"><a href="#" target="_blank">法规手册<s></s></a></li>
+		</ul>
+		<div class="link">
+			{#car action="faguiType" return="ftype"#}
+			<a href="{#getUrlPath service='car' template='fagui' id={#$ftype.id#}#}" target="_blank">{#$ftype.typename#}</a>
+			{#/car#}
+		</div>
+	</div>
+	<div class="data fn-clear">
+		<div class="slide">
+			<div id="fgSlide">
+				{#myad id="96" type="slide"#}
+			</div>
+			<div class="slidebtn"></div>
+		</div>
+		<div class="list">
+			<ul>
+				{#car action="fagui" return="fagui" pageSize="8"#}
+				<li><a href="{#getUrlPath service='car' template='fagui' id={#$fagui.typeid#}#}" target="_blank" class="t">{#$fagui.typename#}</a> | <a href="{#$fagui.url#}" target="_blank">{#$fagui.title#}</a></li>
+				{#/car#}
+			</ul>
+			<ul>
+				{#car action="fagui" return="fagui" page="2" pageSize="8"#}
+				<li><a href="{#getUrlPath service='car' template='fagui' id={#$fagui.typeid#}#}" target="_blank" class="t">{#$fagui.typename#}</a> | <a href="{#$fagui.url#}" target="_blank">{#$fagui.title#}</a></li>
+				{#/car#}
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- 法规手册 e -->
+
+<!-- 百科知识 s -->
+<div class="wrap column" id="wiki">
+	<div class="mt">
+		<ul class="fn-clear">
+			<li class="curr"><a href="#" target="_blank">百科知识<s></s></a></li>
+		</ul>
+		<div class="link">
+			{#car action="wikiType" return="wtype"#}
+			<a href="{#getUrlPath service='car' template='wiki' id={#$wtype.id#}#}" target="_blank">{#$wtype.typename#}</a>
+			{#/car#}
+		</div>
+	</div>
+	<div class="list">
+		<ul class="fn-clear">
+			<li class="w0"><a href="#" target="_blank"><h5>走进<br />百科</h5></a></li>
+			{#car action="wikiType" return="wtype1" pageSize="8"#}
+			<li class="w{#$_bindex.wtype1#}"><a href="{#getUrlPath service='car' template='wiki' id={#$wtype1.id#}#}" target="_blank"><s></s>{#$wtype1.typename#}</a></li>
+			{#/car#}
+		</ul>
+	</div>
+</div>
+<!-- 百科知识 e -->
+
+<!-- 信息排行 s -->
+<div class="wrap rank fn-clear">
+	<dl>
+		<dt><a href="#" target="_blank">车型人气排行榜</a><s></s></dt>
+		<dd>
+			<ul>
+				{#car action="car" return="car" pageSize="8"#}
+				<li>
+					<img alt="{#$car['parentBrand'].typename#}" title="{#$car['parentBrand'].typename#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$car['parentBrand'].logo#}" />
+					<a href="{#$car.url#}" target="_blank" class="tit">{#$car.subtitle#}</a>
+					<a href="{#$car.url#}" target="_blank" class="r">{#$car.minprice#}-{#$car.maxprice#}万</a>
+				</li>
+				{#/car#}
+			</ul>
+		</dd>
+	</dl>
+	<dl>
+		<dt><a href="#" target="_blank">汽车口碑排行榜</a><s></s></dt>
+		<dd>
+			<ul>
+				{#car action="koubei" return="koubei" orderby="rating" pageSize="8"#}
+				<li>
+					<img alt="{#$koubei['carDetail'].parentBrandName#}" title="{#$koubei['carDetail'].parentBrandName#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$koubei['carDetail'].parentBrandLogo#}" />
+					<a href="{#$koubei.url#}" target="_blank" class="tit">{#$koubei['carDetail'].title#}</a>
+					<a href="{#$koubei.url#}" target="_blank" class="r">{#$koubei.rating#}分</a>
+				</li>
+				{#/car#}
+			</ul>
+		</dd>
+	</dl>
+	<dl class="sl">
+		<dt><a href="#" target="_blank">热门汽车油耗排行榜</a><s></s></dt>
+		<dd>
+			<ul>
+				{#car action="youhao" return="youhao" orderby="fuel" pageSize="8"#}
+				<li>
+					<img alt="{#$youhao['carDetail'].parentBrandName#}" title="{#$youhao['carDetail'].parentBrandName#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$youhao['carDetail'].parentBrandLogo#}" />
+					<a href="{#$youhao.url#}" target="_blank" class="tit">{#$youhao['carDetail'].title#}</a>
+					<a href="{#$youhao.url#}" target="_blank" class="r">{#$youhao.fuel#}L</a>
+				</li>
+				{#/car#}
+			</ul>
+		</dd>
+	</dl>
+	<dl class="l">
+		<dt><a href="#" target="_blank">经销商人气排行榜</a><s></s></dt>
+		<dd>
+			<ul>
+				{#car action="dealer" return="dealer"#}
+				<li class="r{#$_bindex.dealer#}"><i>{#$_bindex.dealer#}</i><a href="{#$dealer.url#}" target="_blank">{#$dealer.title#}</a></li>
+				{#/car#}
+			</ul>
+		</dd>
+	</dl>
+</div>
+<!-- 信息排行 e -->
+
+<!-- 友情链接 s -->
+<div class="wrap column" id="friendLink">
+	<div class="mt">
+		<ul class="fn-clear">
+			<li class="curr"><a href="#" target="_blank">友情链接<s></s></a></li>
+		</ul>
+		<div class="link">
+			<a href="#" target="_blank">申请链接</a>
+		</div>
+	</div>
+	<div class="list fn-clear">
+		{#siteConfig action="friendLink" return="flink" module="car"#}<a href="{#$flink.sitelink#}" target="_blank">{#$flink.sitename#}</a>{#/siteConfig#}
+	</div>
+</div>
+<!-- 友情链接 e -->
+
+<!-- copyright s -->
+<div class="footer">
+	<div class="wrap">
+		<a href="#" target="_blank">关于我们</a><span>|</span><a href="#" target="_blank">联系我们</a><span>|</span><a href="#" target="_blank">加入我们</a><span>|</span><a href="#" target="_blank">媒体报道</a><span>|</span><a href="#" target="_blank">网站地图</a><span>|</span><a href="#" target="_blank">法律声明</a>
+	</div>
+</div>
+<div class="wrap copyright">
+	<p>客户服务热线：400-777-7777   销售热线：0512-65155680</p>
+	<p>火鸟网 版权所有Copyright@2005-2015 沪ICp备05050523号</p>
+</div>
+<!-- copyright e -->
+
+<div class="btntop">
+  <a href="javascript:;" class="top" title="返回顶部">返回顶部</a>
+  <a href="javascript:;" class="close" title="关闭">关闭</a>
+</div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+.sort .left a i,.sort a.prev,.sort a.next,.sort a.prevStop,.sort a.nextStop{background: url(../images/bulid.png);}
+
+
+.select{  background: #fff; margin:0px auto 20px; }
+.select .sel{ width:96%;  margin:0 auto; line-height: 44px; font-size: 14px;}
+.select .sel a{float: left; height: 22px; line-height: 22px; margin:5px 10px; padding:0px 6px; border-radius: 2px;}
+.select .sel a.on{background: #ff4a00; color: #fff }
+.select .x{width: 94%; padding: 6px 0;}
+.select .bot{border:none;}
+
+.sort{height: 50px; padding:0 2%; background: #fff; }
+.sort .left a{ margin-top:12px; display: inline-block; padding:0 12px; height: 26px; line-height: 26px; background: #eeeeee; margin-right: 20px; font-size: 14px;}
+.sort .left a i{display: inline-block; width: 7px; height: 9px; margin-left:5px; background-position:-133px 0; vertical-align: middle;}
+.sort .left a.active{background: #ff4a00; color: #fff;}
+.sort .left a.active i{background-position: -125px 0}
+.sort .price{float: left; width: 72px; height: 26px; line-height: 26px; padding:0 5px; margin-top:12px; color: #999; background: #eee}
+.sort .price input{float: left; width: 60px; height: 26px; border:0; line-height: 26px; background: #eee}
+.sort .line{float: left; width:15px; height: 18px; border:none; border-bottom:1px solid #ececec; margin:7px 10px;}
+.sort .right {margin-top:16px; display: none;}
+.sort .right a{float: left; display: inline-block; width: 17px; height: 17px; }
+.sort a.prev{background-position:-31px -40px;}
+.sort a.prevStop{background-position:-48px -40px;}
+.sort a.next{background-position:-65px -40px;}
+.sort a.nextStop{background-position:-82px -40px;}
+.sort .right span{float: left; display: inline-block; height:17px; line-height: 17px; margin:0 10px; vertical-align: middle;}
+.sort .jiage{position: relative; padding-bottom: 10px; z-index: 200}
+.sort .jiage .sub{display: none; position: absolute; left: 0; top:45px; width: 197px; height:40px; text-align: center; line-height: 40px; background: #fff; border:1px solid #ececec; z-index: 200;-webkit-animation: topFadeIn .3s ease-out; -moz-animation: topFadeIn .3s ease-out; animation: topFadeIn .3s ease-out; }
+.sort .jiage .sub a{padding:0 15px; height: 22px; line-height: 22px; border:1px solid #ececec; margin:0 6px;  font-size: 12px;}
+.sort .jiage .sub a.x{color: #fff; background: #333;}
+.sort .jiage .sub em{position: absolute; left:10px; top:-8px; width: 0px; height: 0px; border:4px solid transparent; border-bottom-color:#ccc;}
+.sort .jiage .sub s{content: ""; position: absolute;left:-4px; top:-3px; width: 0px; height: 0px; border:4px solid transparent;  border-bottom-color:#fff}
+.sort .jiage:hover .sub{display: block;}
+
+.list{margin:20px 0 30px;}
+.list ul{width: 1000px;}
+.list ul{width: 1015px; margin:-15px 0 0 -15px;}
+.w1200 .list ul{width: 1215px;}
+.list li{position: relative; width: 188px; float: left; height: 263px;  margin:15px 0 0 15px; z-index: 1}
+.w1200 .list li{width:228px; height: 303px;}
+.list li.empty {width: 100%; height: 300px; line-height: 300px; text-align: center; font-size: 14px; margin: 0;}
+.list li .con{left:0; top:0; width:172px;padding: 7px; border:1px solid #ececec; height:249px; overflow: hidden;  -webkit-transition:all 0.4s; -moz-transition:all 0.4s; -o-transition:all 0.4s; transition:all 0.4s;  background: #fff }
+.w1200 .list li .con{width:212px; height:289px; }
+.list li img{display: block; width:100%; height:160px;}
+.w1200 .list li img{ height:200px;}
+.list li span{display: block; font-size: 18px; color: #ff4a00; line-height: 30px; margin-top:10px;}
+.list li span s{font-size: 12px; color: #999}
+.list li p{width: 100%; height: 44px; line-height: 22px; font-size: 14px; overflow: hidden;}
+.list li .info{margin-top: 10px; padding: 10px 0; border-top:1px dashed #ececec;}
+.list li .info p{width: 100%; height: 22px; line-height: 22px; color: #ff4a00; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.list li .info span{font-size: 12px; line-height: 20px; margin:0; color: #333}
+.list li .info span em{color: #ff4a00; line-height: 22px;}
+.list li:hover{z-index:2}
+.list li:hover .con{border-color: #ff4a00}

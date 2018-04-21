@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>支付结果-{#$furniture_title#}</title>
+<meta name="keywords" content="{#$furniture_keywords#}"/>
+<meta name="description" content="{#$furniture_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/payreturn.css" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$furniture_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<div class="bread">
+	<p><a href="{#$furniture_channelDomain#}" target="_blank">首页</a> > 支付结果</p>
+</div>
+
+<div class="have">
+	<div class="state">
+		<div class="right">
+			<ul>
+				<li class="one on"><s></s><div><i>1</i><em>购物车</em></div></li>
+				<li class="two on"><s></s><div><i>2</i><em>填写核对订单信息</em></div></li>
+				<li class="three on"><s></s><div><i>3</i><em>成功提交订单</em></div></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="swrap">
+
+		{#if $state != 1#}
+		<h2 class="s-title"><s></s>对不起，支付失败</h2>
+		{#else#}
+		<h2 class="s-title success">
+			<s></s>
+			恭喜你，支付成功
+			<small>收货时请检查，发现货品异常请不要签收</small>
+		</h2>
+
+		<div class="s-con">
+
+
+			<p class="s-addr">收货人：{#$orderListArr[0].people#}</p>
+			<p class="s-addr">收货地址：{#$orderListArr[0].address#}</p>
+			<p class="s-addr">联系方式：{#$orderListArr[0].contact#}</p>
+
+
+
+			{#foreach from=$orderListArr item="order"#}
+			<div class="sj">
+				<ul class="title clearfix">
+					<li class="t0"><i class="on"></i></li>
+					<li class="t11"><font>店铺: </font>{#if $order['store'].domain#}<a href="{#$order['store'].domain#}" target="_blank" title="{#$order['store'].title#}">{#$order['store'].title#}</a>
+					{#if $order['store'].qq#}<s><a href="http://wpa.qq.com/msgrd?v=3&uin={#$order['store'].qq#}&Site={#$furniture_title#}&Menu=yes" target="_blank" title="点击在线交谈"></a></s>{#/if#}{#else#}{#$order['store'].store#}{#/if#}</li>
+					<li class="om">订单号：<a href="{#getUrlPath service='member' type='user' template='orderdetail' module='furniture' id={#$order.orderid#}#}" target="_blank">{#$order.ordernum#}</a></li>
+				</ul>
+
+				{#foreach from=$order.product item="product"#}
+				<ul class="sp clearfix">
+					<li class="t0"></li>
+					<li class="t1"><a href="{#getUrlPath service='furniture' template='detail' id={#$product.id#}#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$product.litpic#} type='small'#}"></a></li>
+					<li class="t2"><a href="{#getUrlPath service='furniture' template='detail' id={#$product.id#}#}" target="_blank">{#$product.title#}</a></li>
+					<li class="t3">
+						<span><em>单价</em><strong>{#$product.price#}</strong></span>
+						<i>×</i>
+						<span><em>数量</em><strong>{#$product.count#}</strong></span>
+						<i>+</i>
+						<span><em>运费</em><strong>{#$product.logistic#}</strong></span>
+						{#if $product.discount != 0#}
+						<i>-</i>
+						<span><em>折扣</em><strong>{#$product.discount#}</strong></span>
+						{#/if#}
+						{#if $product.point > 0#}
+						<i>-</i>
+						<span><em title="{#$cfg_pointRatio#}{#$cfg_pointName#}等于1{#echoCurrency type='short'#}{#echoCurrency type='name'#}">{#$cfg_pointName#}支付</em><strong>{#$product.point/$cfg_pointRatio#}</strong></span>
+						{#/if#}
+						{#if $product.balance > 0#}
+						<i>-</i>
+						<span><em>余额支付</em><strong>{#$product.balance#}</strong></span>
+						{#/if#}
+						<i>=</i>
+						<span><em>实际支付</em><strong>{#$product.payprice#}</strong></span>
+					</li>
+
+				</ul>
+				{#/foreach#}
+
+				<div class="bz">留言：{#$order.note#}</div>
+			</div>
+			{#/foreach#}
+
+			<div class="sum">
+				<div class="right">实付款：<font>{#echoCurrency type='symbol'#}<strong>{#$totalPayPrice#}</strong></font></span></div>
+			</div>
+
+		</div>
+		{#/if#}
+	</div>
+
+
+</div>
+
+{#include file="bottom.html"#}
+</body>
+</html>

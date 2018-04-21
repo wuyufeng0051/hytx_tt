@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{#if $seo_title != ""#}{#$seo_title#}{#else#}商品分类{#/if#}-{#$furniture_title#}</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/category.css?v=5">
+    <script type="text/javascript">
+		var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$furniture_channelDomain#}';
+		var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	</script>
+</head>
+<body>
+	<div class="container">
+		<!-- 头部 -->
+		<div class="header">
+			<div class="header-l">
+				<a href="javascript:history.go(-1)"><img src="{#$templets_skin#}images/left.png"></a>
+			</div>
+			<div class="header-address">
+				<form method="get" action="{#$furniture_channelDomain#}/list.html">
+					<input type="text" placeholder="请输入商品名称" class="search-txt" id="s" name="keywords">
+					<input type="submit" value="搜索" class="search-btn">
+				</form>
+			</div>
+		</div>
+		<!-- 头部 end -->
+		<!-- 内容部分 -->
+		<div class="main dfv">
+			<div class="main-left l">
+				<div class="left-box" id="left-box">
+					<ul>
+						{#furniture action="type" return="type"#}
+						<li {#if $_bindex.type == 1#}class="active"{#/if#}><a href="javascript:;">{#$type.typename#}</a></li>
+						{#/furniture#}
+					</ul>
+				</div>
+			</div>
+			<div class="main-right" id="right-box">
+				<div class="right-box">
+					{#furniture action="type" return="type2"#}
+					<ul {#if $_bindex.type2 > 1#}class="dn"{#/if#}>
+						<li><a href="list.html?typeid={#$type2.id#}"><span>全部</span></a></li>
+						{#furniture action="type" return="type3" type=$type2.id#}
+						<li><a href="list.html?typeid={#$type3.id#}"><span>{#$type3.typename#}</span></a></li>
+						{#/furniture#}
+					</ul>
+					{#/furniture#}
+				</div>
+			</div>
+		</div>
+		<!-- 内容部分 end-->
+	</div>
+	<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+	<script src="{#$templets_skin#}js/iscroll-probe.js"></script>
+	<script src="{#$templets_skin#}js/public.js"></script>
+	<script src="{#$templets_skin#}js/category.js?v=4"></script>
+</body>
+</html>

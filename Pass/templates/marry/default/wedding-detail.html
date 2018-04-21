@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>【{#$detail_title#}】作品展示,婚纱照欣赏-{#$marry_title#}</title>
+<meta name="keywords" content="{#$detail_title#},{#$detail_title#}作品展示,{#$detail_title#}婚纱照">
+<meta name="description" content="【预订{#$detail_title#}即送超值大礼包】，{#$marry_title#}为您提供{#$detail_title#}作品展示欣赏，婚纱照欣赏。">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/static/css/core/base.css" media="all">
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/static/css/common.css" media="all">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/photoD.css" media="all">
+<script type="text/javascript" src="{#$cfg_basehost#}/static/js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$marry_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#$pageCurr = "wedding"#}
+{#include file="top.html"#}
+
+<div class="topInfo">
+	<div class="wrap">
+		<div class="shop fn-clear">
+			<dl class="fn-left">
+				<dt><img src="{#$detail_logo#}" alt="{#$detail_title#}"></dt>
+				<dd class="name">{#$detail_title#}</dd>
+				<dd>入驻时间：{#$detail_pubdate|date_format:"%Y-%m-%d"#}  营业时间：{#$detail_worktime#}</dd>
+				<dd>门店地址：{#$detail_addrName[0]#} {#$detail_addrName[1]#} {#$detail_address#}</dd>
+				<dd>联系电话：{#$detail_contact#}</dd>
+			</dl>
+			<div class="quan fn-right">
+				<div class="t">
+					<div class="fn-left ">套系<br>3888{#echoCurrency type="short"#}</div><div class="fn-left mon"><font><i>￥</i>500</font> <br> 现金券</div><div class="fn-left"><a href="#">下载券</a><br><em>已下载243人 </em></div>
+				</div>
+				<div class="t">
+					<div class="fn-left ">套系<br>3888{#echoCurrency type="short"#}</div><div class="fn-left mon"><font><i>￥</i>500</font> <br> 现金券</div><div class="fn-left"><a href="#">下载券</a><br><em>已下载243人 </em> </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="banner">
+  <div class="wrap">
+    <div class="slide" id="slide">
+      <div class="slideshow-item ad0">
+        <a href="javascript:;" target="_blank"><img src="{#$templets_skin#}upfile/slider.jpg" width="1920" height="665" alt="全新的聚美"/></a>
+        <div class="slideinfo">
+          <h3><a "href="http://www.baidu.com" target="_blank"">全新的聚美</a></h3>
+          <p></p><div class="bg"></div>
+        </div>
+      </div>
+      <div class="slideshow-item ad1">
+        <a href="javascript:;" target="_blank"><img src="{#$templets_skin#}upfile/slider0.jpg" width="1920" height="665" alt="极速免税店" /></a>
+        <div class="slideinfo">
+          <h3><a "href="http://www.baidu.com" target="_blank"">极速免税店</a></h3>
+          <p></p><div class="bg"></div>
+        </div>
+      </div>
+      <div class="slideshow-item ad2">
+        <a href="javascript:;" target="_blank"><img src="{#$templets_skin#}upfile/slider2.jpg" width="1920" height="665" alt="全球爆款，唾手可得" /></a>
+        <div class="slideinfo">
+          <h3><a "href="http://www.baidu.com" target="_blank"">全球爆款，唾手可得</a></h3>
+          <p></p><div class="bg"></div>
+        </div>
+      </div>
+    </div>
+    <div>
+	    <a id="prev" href="javascript:;"></a>
+	    <a id="next" href="javascript:;"></a>
+    </div>
+  </div>
+</div>
+
+<div class="service1">
+	<div class="wrap">
+		<div class="qq"></div>
+		<div class="sina"></div>
+		<div class="wx"></div>
+		<div class="addr"></div>
+		<div class="tel"><em>联系电话：</em><font>{#$detail_contact#}</font><br>联系地址：{#$detail_addrName[0]#} {#$detail_addrName[1]#} {#$detail_address#}</div>
+	</div>
+</div>
+
+<div class="wrap zxtj">
+	<div class="title">
+		<div class="fn-left"></div>
+		<p>最新优惠推荐</p>
+		<div class="fn-left"></div>
+	</div>
+	<div class="wrap tj fn-clear">
+		<div class="fn-left left"><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/tj1.jpg" alt=""></a></div>
+		<div class="fn-left right">
+			<a class="t" href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/tj2.jpg" alt=""></a>
+			<a class="t" href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/tj3.jpg" alt=""></a>
+			<a class="b" href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/tj4.jpg" alt=""></a>
+		</div>
+	</div>
+</div>
+<div class="wrap zxtj">
+	<div class="title">
+		<div class="fn-left"></div>
+		<p>全部套系</p>
+		<div class="fn-left"></div>
+	</div>
+	<div class="filter"><a href="javascript:;" class="current">全部套系</a><a href="javascript:;">2000-4999(7)</a><a href="javascript:;">5000-7999(1)</a><a href="javascript:;">8000-12999(2)</a><a href="javascript:;">13000以上(5)</a></div>
+	<ul class="all fn-clear">
+		<li>
+			<a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q1.jpg" alt=""></a><div class="info"><p><a href="javascript:;">全新主题《恋人》 系列</a></p><span><i>￥5980</i><em class="fn-left">原价￥13980</em><em class="fn-right">已售92</em></span></div>
+			<div class="brief">
+				<p>全程一对一服务，拍摄过程无任何隐形消费90张摄影， 90张精修， 36张入盘4套服装，4个造型 </p>
+			</div>
+		</li>
+		<li>
+			<a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q2.jpg" alt=""></a><div class="info"><p><a href="javascript:;">全新主题《恋人》 系列</a></p><span><i>￥5980</i><em class="fn-left">原价￥13980</em><em class="fn-right">已售92</em></span></div>
+			<div class="brief">
+				<p>全程一对一服务，拍摄过程无任何隐形消费90张摄影， 90张精修， 36张入盘4套服装，4个造型 </p>
+			</div>
+		</li>
+		<li>
+			<a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q3.jpg" alt=""></a><div class="info"><p><a href="javascript:;">全新主题《恋人》 系列</a></p><span><i>￥5980</i><em class="fn-left">原价￥13980</em><em class="fn-right">已售92</em></span></div>
+			<div class="brief">
+				<p>全程一对一服务，拍摄过程无任何隐形消费90张摄影， 90张精修， 36张入盘4套服装，4个造型 </p>
+			</div>
+		</li>
+		<li>
+			<a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q4.jpg" alt=""></a><div class="info"><p><a href="javascript:;">全新主题《恋人》 系列</a></p><span><i>￥5980</i><em class="fn-left">原价￥13980</em><em class="fn-right">已售92</em></span></div>
+			<div class="brief">
+				<p>全程一对一服务，拍摄过程无任何隐形消费90张摄影， 90张精修， 36张入盘4套服装，4个造型 </p>
+			</div>
+		</li>
+		<li>
+			<a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q4.jpg" alt=""></a><div class="info"><p><a href="javascript:;">全新主题《恋人》 系列</a></p><span><i>￥5980</i><em class="fn-left">原价￥13980</em><em class="fn-right">已售92</em></span></div>
+			<div class="brief">
+				<p>全程一对一服务，拍摄过程无任何隐形消费90张摄影， 90张精修， 36张入盘4套服装，4个造型 </p>
+			</div>
+		</li>
+		<li>
+			<a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q3.jpg" alt=""></a><div class="info"><p><a href="javascript:;">全新主题《恋人》 系列</a></p><span><i>￥5980</i><em class="fn-left">原价￥13980</em><em class="fn-right">已售92</em></span></div>
+			<div class="brief">
+				<p>全程一对一服务，拍摄过程无任何隐形消费90张摄影， 90张精修， 36张入盘4套服装，4个造型 </p>
+			</div>
+		</li>
+		<li>
+			<a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q2.jpg" alt=""></a><div class="info"><p><a href="javascript:;">全新主题《恋人》 系列</a></p><span><i>￥5980</i><em class="fn-left">原价￥13980</em><em class="fn-right">已售92</em></span></div>
+			<div class="brief">
+				<p>全程一对一服务，拍摄过程无任何隐形消费90张摄影， 90张精修， 36张入盘4套服装，4个造型 </p>
+			</div>
+		</li>
+		<li>
+			<a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q1.jpg" alt=""></a><div class="info"><p><a href="javascript:;">全新主题《恋人》 系列</a></p><span><i>￥5980</i><em class="fn-left">原价￥13980</em><em class="fn-right">已售92</em></span></div>
+			<div class="brief">
+				<p>全程一对一服务，拍摄过程无任何隐形消费90张摄影， 90张精修， 36张入盘4套服装，4个造型 </p>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<div class="wrap zxtj">
+	<div class="title">
+		<div class="fn-left"></div>
+		<p>作品欣赏</p>
+		<div class="fn-left"></div>
+	</div>
+	<div class="filter"><a href="javascript:;" class="current">全部套系</a><a href="javascript:;">2000-4999(7)</a><a href="javascript:;">5000-7999(1)</a><a href="javascript:;">8000-12999(2)</a><a href="javascript:;">13000以上(5)</a></div>
+	<div class="enjoy fn-clear">
+		<div class="block">
+			<div class="tips"><span>中国风</span><span>16张</span></div>
+			<ul class="big">
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q10.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q9.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q8.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+			</ul>
+			<ul class="small">
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q10.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q9.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q8.jpg" alt=""></a></li>
+			</ul>
+		</div>
+		<div class="block">
+			<div class="tips"><span>中国风</span><span>16张</span></div>
+			<ul class="big">
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q10.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q9.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q8.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+			</ul>
+			<ul class="small">
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q10.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q9.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q8.jpg" alt=""></a></li>
+			</ul>
+		</div>
+
+    <div class="block">
+			<div class="tips"><span>中国风</span><span>16张</span></div>
+			<ul class="big">
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q10.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q9.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q8.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+			</ul>
+			<ul class="small">
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q10.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q9.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q8.jpg" alt=""></a></li>
+			</ul>
+		</div>
+
+    <div class="block">
+			<div class="tips"><span>中国风</span><span>16张</span></div>
+			<ul class="big">
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q10.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q9.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q8.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+			</ul>
+			<ul class="small">
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q10.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q9.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q8.jpg" alt=""></a></li>
+			</ul>
+		</div>
+
+    <div class="block">
+			<div class="tips"><span>中国风</span><span>16张</span></div>
+			<ul class="big">
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q10.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q9.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q8.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+			</ul>
+			<ul class="small">
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q10.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q9.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q8.jpg" alt=""></a></li>
+			</ul>
+		</div>
+
+    <div class="block">
+			<div class="tips"><span>中国风</span><span>16张</span></div>
+			<ul class="big">
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q10.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q9.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q8.jpg" alt=""></a><p><span>主题: 喜上眉梢</span><span>拍摄地点：郊野公园</span></p></li>
+			</ul>
+			<ul class="small">
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q10.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q9.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/q8.jpg" alt=""></a></li>
+			</ul>
+		</div>
+
+
+	</div>
+</div>
+<div class="wrap zxtj">
+	<div class="title">
+		<div class="fn-left"></div>
+		<p>私人定制</p>
+		<div class="fn-left"></div>
+	</div>
+	<div class="filter"><a href="javascript:;" class="current">全部套系</a><a href="javascript:;">2000-4999(7)</a><a href="javascript:;">5000-7999(1)</a><a href="javascript:;">8000-12999(2)</a><a href="javascript:;">13000以上(5)</a></div>
+	<ul class="order fn-clear">
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d1.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>星月</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d2.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>蔷薇</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d3.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>如梦</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d4.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>夜幕</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d5.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>夜幕</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d6.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>夜幕</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d7.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>夜幕</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d8.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>夜幕</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d9.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>夜幕</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d10.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>夜幕</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d11.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>夜幕</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d12.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>夜幕</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d13.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>夜幕</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d14.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>夜幕</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d15.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>夜幕</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<div class="img">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/d16.jpg" alt="">
+					<i class="t"></i><i class="b"></i>
+					<div class="more">READ MORE</div>
+				</div>
+				<div class="name"><p>夜幕</p><span>POST TIME : 2015/07/21</span></div>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="wrap zxtj">
+	<div class="title">
+		<div class="fn-left"></div>
+		<p>网友评论</p>
+		<div class="fn-left"></div>
+	</div>
+	<div class="star">
+		<ul class="fn-left">
+			<li><font>综合评价</font><span><em style="width: 60px;"></em></span><i>4.7</i></li>
+			<li><font>综合评价</font><span><em style="width: 60px;"></em></span><i>4.7</i></li>
+			<li><font>综合评价</font><span><em style="width: 60px;"></em></span><i>4.7</i></li>
+			<li><font>综合评价</font><span><em style="width: 60px;"></em></span><i>4.7</i></li>
+		</ul>
+		<a class="write fn-right" href="javascript:;"><i></i>我要点评</a>
+	</div>
+	<div class="comFilter">
+		<a class="fn-left allC" href="javascript:;">用户评论  (1280)</a>
+		<span class="fn-left"><input type="checkbox">有图片<i>(472)</i></span>
+		<div class="fn-right sort"><a href="#">全部</a><a href="#">5星<em>(2209)</em></a><a href="#">4星<em>(485)</em></a><a href="#">3星<em>(70)</em></a><a href="#">2星<em>(70)</em></a><a href="#">1星<em>(70)</em></a></div>
+	</div>
+	<div class="comment1">
+		<div class="list">
+			<div class="headImg fn-left">
+				<a href="#"><img src="{#$templets_skin#}upfile/h1.jpg" data-url="{#$templets_skin#}upfile/h1.jpg" alt=""></a>
+			</div>
+			<div class="con">
+				<div class="call fn-clear">
+					<a href="#">小苏果果衍艺sunny</a>
+					<span>评论时间  2015-09-19 14:50</span>
+				</div>
+				<div class="infox">
+					<font>综合评分</font><span class="ss"><em></em></span><i>服务 <font>4分</font></i><i>摄影 <font>5分</font></i><i>造型 <font>5分</font></i>
+				</div>
+				<p>婚博会上定的6999套系升级成7999的，一共7套衣服。是看中拉斐特和九龙山而选择了这家，没让我失望。 对他家的景和摄影师、小助理以及化妆师感觉还不错的，除了偶尔摄影师的急脾气，转变下态度相信唯一会更好！拍了片，选好正在等修片中，希望他家的后期排版别像论坛上描述的那么恐怖，前期还是相对认可的，选对了摄影师技术还是可以的。 内景主白一般是可以拍摄4-5个景，礼服或辅白是3-4个景（PS：verawang大爱！）</p>
+			</div>
+
+			<div class="slideBox" style="display: none">
+				<span class="btn prevx2"></span>
+				<span class="btn nextx2"></span>
+				<div class="upBox">
+					<ul>
+						<li class="on"><img src="{#$templets_skin#}upfile/p1.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p2.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p3.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p4.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p5.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p6.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p7.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p8.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p9.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p10.jpg" alt=""></li>
+					</ul>
+				</div>
+				<div class="downBox">
+					<ul>
+						<li><img src="{#$templets_skin#}upfile/p1.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p2.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p3.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p4.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p5.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p6.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p7.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p8.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p9.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p10.jpg" alt=""></li>
+					</ul>
+				</div>
+			</div>
+
+			<p class="count" style="display: none;">上传共<span>17</span>张图片</p>
+			<div class="more">
+				<span class="mm"><label>更多</label><i><em></em></i></span>
+				<span class="ss" style="display: none;"><label>收起</label><i><em></em></i></span>
+			</div>
+		</div>
+		<div class="list">
+			<div class="headImg fn-left">
+				<a href="#"><img src="{#$templets_skin#}upfile/h1.jpg" data-url="{#$templets_skin#}upfile/h1.jpg" alt=""></a>
+			</div>
+			<div class="con">
+				<div class="call fn-clear">
+					<a href="#">小苏果果衍艺sunny</a>
+					<span>评论时间  2015-09-19 14:50</span>
+				</div>
+				<div class="infox">
+					<font>综合评分</font><span class="ss"><em></em></span><i>服务 <font>4分</font></i><i>摄影 <font>5分</font></i><i>造型 <font>5分</font></i>
+				</div>
+				<p>婚博会上定的6999套系升级成7999的，一共7套衣服。是看中拉斐特和九龙山而选择了这家，没让我失望。 对他家的景和摄影师、小助理以及化妆师感觉还不错的，除了偶尔摄影师的急脾气，转变下态度相信唯一会更好！拍了片，选好正在等修片中，希望他家的后期排版别像论坛上描述的那么恐怖，前期还是相对认可的，选对了摄影师技术还是可以的。 内景主白一般是可以拍摄4-5个景，礼服或辅白是3-4个景（PS：verawang大爱！）</p>
+			</div>
+
+			<div class="slideBox" style="display: none">
+				<span class="btn prevx2"></span>
+				<span class="btn nextx2"></span>
+				<div class="upBox">
+					<ul>
+						<li class="on"><img src="{#$templets_skin#}upfile/p1.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p2.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p3.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p4.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p5.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p6.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p7.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p8.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p9.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p10.jpg" alt=""></li>
+					</ul>
+				</div>
+				<div class="downBox">
+					<ul>
+						<li><img src="{#$templets_skin#}upfile/p1.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p2.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p3.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p4.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p5.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p6.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p7.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p8.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p9.jpg" alt=""></li>
+						<li><img src="{#$templets_skin#}upfile/p10.jpg" alt=""></li>
+					</ul>
+				</div>
+			</div>
+
+			<p class="count" style="display: none;">上传共<span>17</span>张图片</p>
+			<div class="more">
+				<span class="mm"><label>更多</label><i><em></em></i></span>
+				<span class="ss" style="display: none;"><label>收起</label><i><em></em></i></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 分页 -->
+<div class="pagination">
+  <div class="inner">
+    <ul>
+      <li class="page_disabled"><span>上一页</span></li>
+      <li class='page_current'><span>1</span></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li class='page_more'><span>...</span></li>
+      <li><a href="#">11</a></li>
+      <li><a href="#">下一页</a></li>
+    </ul>
+  </div>
+</div>
+<div id="bg" style="display: none;"></div>
+<div class="pop" id="pop"  style="display: none;">
+	<p class="close"><span></span></p>
+	<h3>我也要写评价：<span>唯一视觉摄影工作室</span></h3>
+	<div class="com fn-clear">
+		<ul class="comment fn-clear">
+          <li>
+          		<font>*</font>
+             	<label>整体评价</label>
+             	<span>
+	                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+	                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+	                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+	                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+	                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+            	</span>
+            </li>
+
+        </ul>
+	<!-- <font>*</font><i>综合评价</i><span><em style="width: 60px;"></em></span> --><i>请点击图标为酒店评分</i></div>
+	<ul class="comment fn-clear">
+        <li>
+        		<font>*</font>
+           	<label>整体评价</label>
+           	<span>
+                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+          	</span>
+          </li>
+          <li>
+          	<font>*</font>
+          	<label>配送服务</label>
+          	<span>
+                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+          	</span>
+          </li>
+          <li>
+          <font>*</font>
+            	<label>商品质量</label>
+            	<span>
+                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+                <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}images/star_b2.png">
+            	</span>
+          </li>
+      </ul>
+      <div class="comCon">
+      	<div class="fn-left"><font>*</font><span>评价内容</span></div>
+      	<div class="con">
+      		<textarea name="" id="" cols="30" rows="10" onblur="if(value==''){value='请输入您对店铺详细评价，帮助更多会员做出合适的选择,谢谢！'}" onfocus="if(value=='请输入您对店铺详细评价，帮助更多会员做出合适的选择,谢谢！'){value=''}" >请输入您对店铺详细评价，帮助更多会员做出合适的选择,谢谢！</textarea>
+      		<i>15~2000个字</i><em>最少15字，你还需要输入15个字</em>
+      	</div>
+      </div>
+      <div class="upload">
+      	<span class="fn-left">上传图片</span>
+      	<div class="loadImg">
+      		<p class="t"><input type="file" name="uploadFile"/><span></span><font>单张图片不超过3MB，支持jpg、png和bmp</font></p>
+        	<ul class="fn-clear">
+        		<li><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/co1.jpg" alt=""><p><em class="fn-left leftR"></em><em class="fn-left rightR"></em><em class="fn-right open"></em></p></li>
+        		<li><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/co2.jpg" alt=""><p><em class="fn-left leftR"></em><em class="fn-left rightR"></em><em class="fn-right open"></em></p></li>
+        		<li><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/co3.jpg" alt=""><p><em class="fn-left leftR"></em><em class="fn-left rightR"></em><em class="fn-right open"></em></p></li>
+        		<li><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/co4.jpg" alt=""><p><em class="fn-left leftR"></em><em class="fn-left rightR"></em><em class="fn-right open"></em></p></li>
+        		<li><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/co1.jpg" alt=""><p><em class="fn-left leftR"></em><em class="fn-left rightR"></em><em class="fn-right open"></em></p></li>
+        		<li><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/co2.jpg" alt=""><p><em class="fn-left leftR"></em><em class="fn-left rightR"></em><em class="fn-right open"></em></p></li>
+        		<li><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/co3.jpg" alt=""><p><em class="fn-left leftR"></em><em class="fn-left rightR"></em><em class="fn-right open"></em></p></li>
+        	</ul>
+        	<span class="delete"><i></i>删除全部图片</span>
+			<div class="fabu fn-clear">
+				<a class="fn-left" href="#">发布评论</a>
+				<dl class="fn-left">
+					<dt><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/h1.jpg" alt=""></dt>
+					<dd>你也是蘑菇嗎 </dd>
+					<dd><a href="#">切换帐户</a></dd>
+				</dl>
+			</div>
+      	</div>
+      </div>
+      <div class="popbg" style="display: none"></div>
+	<div class="digImg" style="display: none">
+		<i class="close"></i>
+		<div class="img">
+			<ul>
+				<li><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/P1.jpg" alt=""></li>
+				<li><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/P2.jpg" alt=""></li>
+				<li><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/P3.jpg" alt=""></li>
+				<li><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/P4.jpg" alt=""></li>
+				<li><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/P3.jpg" alt=""></li>
+				<li><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/P4.jpg" alt=""></li>
+				<li><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$templets_skin#}upfile/P3.jpg" alt=""></li>
+			</ul>
+			<a href="javascript:;" class="prev2"></a>
+			<a href="javascript:;" class="next2"></a>
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/photoD.js"></script>
+</body>
+</html>

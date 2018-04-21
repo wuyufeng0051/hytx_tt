@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+{#if $typeid == 0#}
+<title>家居装修效果图_家庭装修效果图-{#$renovation_title#}</title>
+<meta name="keywords" content="装修效果图,室内装修效果图大全,装修样板间,样板间" />
+<meta name="description" content="{#$cfg_shortname#}装修网装修效果图库，汇集国内外优质的室内装修样板间设计案例，包括欧式、美式、现代、别墅、复式、大户型、小户型等多种风格户型装修图片，每日更新上百套高清案例。" />
+{#elseif $typeid == 1#}
+<title>公装效果图大全-{#$renovation_title#}</title>
+<meta name="keywords" content="美容院,酒店,ktv,医院,酒吧" />
+<meta name="description" content="{#$cfg_shortname#}公装效果图专区,提供国内外最流行的公共装修效果图和2016最新款公装设计图片,还有丰富时尚的设计图、效果图、实景图。" />
+{#/if#}
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css">
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/siteConfig/touch/default/css/touch_common.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/albums.css?v=12">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$templets_skin#}js/zepto.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', staticPath = '{#$cfg_staticPath#}';;
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+{#* 微信分享 *#}
+{#$Share_description = {#$renovation_description#}#}
+{#$Share_title = "装修效果图"#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#getUrlPath service='renovation' template='albums'#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</head>
+<body>
+
+<!-- 头部 s-->
+{#$pageTitle = "装修效果图"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<!-- 头部 e -->
+
+
+<!-- 筛选 s-->
+<div class="deco_pic_lead fn-clear">
+	<ul class="fn-clear">
+		<li class="tab-type" data-id="0"><i>类别</i><em></em></li>
+		<li class="gz tab-comstyle"><i>类型</i><em></em></li>
+		<li class="jz tab-style"><i>风格</i><em></em></li>
+		<li class="jz tab-kongjian"><i>空间</i><em></em></li>
+		<li class="jz tab-jubu"><i>局部</i><em></em></li>
+		<li class="jz tab-units"><i>户型</i><em></em></li>
+		<li class="jz tab-apartment"><i>造价</i><em></em></li>
+	</ul>
+</div>
+<div class="pic_lead_list fn-clear">
+	<ul>
+		<li class="leib" data-id="0"><a href="javascript:;">家装</a></li>
+		<li data-id="1"><a href="javascript:;">公装</a></li>
+	</ul>
+	<ul>
+		<li class="leib" data-id=""><a href="javascript:;">不限</a></li>
+		{#renovation action="type" return='type' type='3'#}
+		<li data-id="{#$type.id#}"><a href="javascript:;">{#$type.typename#}</a></li>
+		{#/renovation#}
+	</ul>
+	<ul>
+		<li class="leib" data-id=""><a href="javascript:;">不限</a></li>
+		{#renovation action="type" return='type' type='4'#}
+		<li data-id="{#$type.id#}"><a href="javascript:;">{#$type.typename#}</a></li>
+		{#/renovation#}
+	</ul>
+	<ul>
+		<li class="leib" data-id=""><a href="javascript:;">不限</a></li>
+		{#renovation action="type" return='type' type='533'#}
+		<li data-id="{#$type.id#}"><a href="javascript:;">{#$type.typename#}</a></li>
+		{#/renovation#}
+	</ul>
+	<ul>
+		<li class="leib" data-id=""><a href="javascript:;">不限</a></li>
+		{#renovation action="type" return='type' type='545'#}
+		<li data-id="{#$type.id#}"><a href="javascript:;">{#$type.typename#}</a></li>
+		{#/renovation#}
+	</ul>
+	<ul>
+		<li class="leib" data-id=""><a href="javascript:;">不限</a></li>
+		{#renovation action="type" return='type' type='8'#}
+		<li data-id="{#$type.id#}"><a href="javascript:;">{#$type.typename#}</a></li>
+		{#/renovation#}
+	</ul>
+	<ul>
+		<li class="leib" data-id=""><a href="javascript:;">不限</a></li>
+		{#renovation action="type" return='type' type='6'#}
+		<li data-id="{#$type.id#}"><a href="javascript:;">{#$type.typename#}</a></li>
+		{#/renovation#}
+	</ul>
+</div>
+<!-- 筛选 e-->
+<!-- 列表 s-->
+<div class="deco_list" id="list">
+	<div class="fn-clear">
+		<ul id="list_1"></ul>
+		<ul id="list_2"></ul>
+	</div>
+</div>
+
+
+<!-- 列表 e-->
+<div class="disk"></div>
+
+<script>
+	var atpage = '{#$page#}',
+			totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+			totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+			pageSize = 10;
+</script>
+<script src="{#$templets_skin#}js/albums.js?v=5"></script>
+</body>
+</html>

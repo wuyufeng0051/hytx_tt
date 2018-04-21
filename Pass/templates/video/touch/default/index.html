@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$video_title#}</title>
+<meta name="keywords" content="{#$video_keywords#}" />
+<meta name="description" content="{#$video_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v=1">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v=11"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+</head>
+<body>
+{#$pageTitle = "视频首页"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<div class="subnav">
+	<ul>
+		{#video action="type" return="typenav" type="0"#}
+		<li><a href="{#$typenav.url#}">{#$typenav.typename#}</a></li>
+		{#/video#}
+	</ul>
+</div>
+<!-- 头部幻灯片 s -->
+<div class="wrapper picscroll">
+	<div class="swiper-container bd" id="picscroll">
+	    <ul class="swiper-wrapper">
+		   {#myad id="194"#}
+	    </ul>
+	<div class="pages"><span class="page">1</span> / <span class="count"></span></div>
+	</div>
+</div>
+<!-- 头部幻灯片 e -->
+<!-- 内容 s-->
+{#video action="type" return="type1" type="0"#}
+<div class="hot">
+	<div class="hot-lead">
+		<h1>{#$type1.typename#}</h1>
+		<em><a href="{#$type1.url#}">更多</a></em>
+	</div>
+	<ul>
+		{#video action="alist" return="alist11" typeid=$type1.id pageSize="6"#}
+		<li>
+			<a href="{#$alist11.url#}">
+				<div class="hot-pic">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$alist11.litpic#}" alt="{#$alist11.title#}">
+				</div>
+				<div class="hot-txt">
+					<i>{#$alist11.title#}</i>
+					<b><s></s>{#$alist11.click#}</b>
+				</div>
+			</a>
+		</li>
+		{#/video#}
+	</ul>
+</div>
+{#/video#}
+<div class="foot">
+	<p>Copyright © 火鸟门户所有 2013-2016</p>
+</div>
+<!-- 内容 e-->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script src="{#$templets_skin#}js/slider.js"></script>
+<script src="{#$templets_skin#}js/index.js"></script>
+</body>
+</html>

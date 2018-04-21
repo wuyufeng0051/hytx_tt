@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$seo_title#}品牌库-{#$home_title#}</title>
+<meta name="keywords" content="{#$home_keywords#}"/>
+<meta name="description" content="{#$home_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/brandlist.css" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$home_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'brand'#}
+{#include file="top.html"#}
+
+<div class="bread">
+	您当前位置：<a href="{#$home_channelDomain#}">首页</a> > <a href="{#getUrlPath service='home' template='brand'#}">品牌库</a>{#if $typeid != 0#} > <a href="{#getUrlPath service='home' template='brand' typeid={#$typeid#}#}">{#$seo_title#}</a>{#/if#}
+</div>
+
+<!-- 内容部分 -->
+<div class="container clearfix">
+	<div class="select">
+		<div class="b">
+			<span class="title">类别</span>
+			<div>
+				<a{#if $typeid == 0#} class="active"{#/if#} href="{#getUrlPath service='home' template='brand'#}">不限</a>
+				{#home action="type" return="type"#}
+				<a{#if $typeid == $type.id#} class="active"{#/if#} href="{#getUrlPath service='home' template='brand' typeid={#$type.id#}#}">{#$type.typename#}</a>
+				{#/home#}
+			</div>
+		</div>
+	</div>
+	<div class="brandlist">
+		<div class="right">
+			<ul class="clearfix">
+				{#home action="brand" typeid={#$typeid#} page={#$page#} pageSize=140#}
+				<li><a href="{#$row.url#}" target="_blank"><div class="img"><div class="grey">{#$row.title#}</div><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$row.logo#}" alt="{#$row.title#}"></div></a></li>
+				{#/home#}
+				{#if $pageInfo.totalCount == 0#}
+				<li class="empty">抱歉！ 暂无品牌信息</li>
+				{#/if#}
+			</ul>
+		</div>
+
+		<!-- 分页 -->
+		{#getPageList service='home' template='brand' typeid={#$typeid#}#}
+	</div>
+</div>
+
+
+{#include file="bottom.html"#}
+</body>
+</html>

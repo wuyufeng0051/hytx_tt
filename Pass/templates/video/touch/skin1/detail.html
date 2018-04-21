@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#}</title>
+<meta name="keywords" content="{#$video_keywords#}" />
+<meta name="description" content="{#$video_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v=1" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/huoniao.media.min.css?v=1">
+<link rel="stylesheet" href="{#$templets_skin#}css/detail.css?v=2">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v=11"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$video_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var	JubaoConfig = {
+		"module" : 'video',
+		"action" : 'detail',
+		"id" : '{#$detail_id#}'
+	};
+</script>
+
+{#* 微信分享 *#}
+{#$Share_description = {#$video_description#}#}
+{#$Share_title = {#$detail_title#}#}
+{#$Share_img = {#$detail_litpic#}#}
+{#$Share_url = {#getUrlPath service='video' template='detail' id={#$detail_id#}#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</head>
+<body>
+
+	{#$pageTitle = "{#$detail_title#}"#}
+	{#include file="../../../siteConfig/touch_top.html"#}
+	<div class="video_box">
+		{#if $detail_videotype == 1#}
+		<iframe src="{#$detail_videourl#}" frameborder="0" width="970" height="522" allowfullscreen="true"></iframe>
+		{#else#}
+		<div class="playvideo">
+      <div class="huoniao_media">
+        <video playsinline="true" webkit-playsinline="true"  poster="{#$detail_litpic#}">
+          <source src="{#$detail_videourl#}" type="video/mp4">您的浏览器不支持HTML5视频</video>
+      </div>
+    </div>
+		{#/if#}
+	</div>
+	<div class="infor">
+		<div class="infor_txt">
+			<div class="infor_title fn-clear"><em class="line">{#$detail_title#}</em><img src="{#$templets_skin#}images/arrow_top.png" alt=""></div>
+			<div class="infor_detail"><em>{#$list_typename#}</em> <span>{#$detail_click#}次观看</span></div>
+		</div>
+		<div class="video_author fn-clear">
+			<div class="member fn-clear">
+				<!-- <div class="member_img"><img src="upfile/363f000ee22df66d81c9.jpg" alt=""></div> -->
+				<div class="member_name">{#$list_typename#}</div>
+			</div>
+			<div class="guan">关注</div>
+		</div>
+	</div>
+	<div class="hot_video">
+		<h1>猜你喜欢</h1>
+		<div class="hot_list fn-clear">
+			{#video action="alist" return="about" typeid=$list.id pageSize="4"#}
+			<div class="hot_box"><a href="{#$about.url#}">
+				<div class="hot_img">
+					{#if $about.flags == 1#}
+					<div class="tips">热门</div>
+					{#/if#}
+					<img src="{#$about.litpic#}" alt="">
+					<!-- <em>00:37</em> -->
+				</div>
+				<div class="hot_infor">
+					<div class="hi_title"><span>{#$about.click#}次观看</span></div>
+					<div class="hi_txt">{#$about.title#}</div>
+				</div>
+			</a></div>
+			{#/video#}
+		</div>
+	</div>
+	<script src="{#$templets_skin#}js/huoniao.media.min.js" type="text/javascript"></script>
+  <script src="{#$templets_skin#}js/detail.js" type="text/javascript"></script>
+</body>
+</html>
