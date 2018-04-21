@@ -1,0 +1,76 @@
+/**index.wxss**/
+.Head{height: 50px;background: #fff;position: relative}
+.TypeLink_icon{width: 50px;height: 50px;position: absolute;left: 0;top: 0;}
+.TypeLink_icon image{width: 25px;height: 25px;margin: 0 auto;margin-top: 13px;margin-left: 13px;}
+.logo{width: 85px;height: 35px;margin: 0 auto;display: block;padding-top: 7px;}
+.slide-image{width: 100%;height: 220px;}
+
+.NavBox{padding: 0 5px;}
+.NavBox .NavBtn{float: left;width: 20%;}
+.NavBox .NavBtn image{width: 50px;height:50px;display: block;margin: 10px auto 5px; }
+.NavBox .NavBtn .TypeName{font-size: 12px;display: block;text-align: center;color: #595458;margin-bottom: 13px;}
+
+.Product{background: #f5f5f5;padding: 30px 0;}
+.Product.Case{background: #fff;}
+.Product.News{background: #fff;}
+.Product.Contact{padding: 30px 20px;}
+.Product.MessageBoard{background: #fff;}
+
+.PublicTitle{text-align: center;margin-bottom: 25px;}
+.PublicTitle .T1{font-size: 22px;color: #7bc623;font-weight: bold}
+.PublicTitle .T2{font-size: 14px;color: #b2b2b2;margin-top: 5px;}
+
+.ProductBox{padding: 0 15px;}
+.ProductBox .PBox{float: left;text-align: center;width: 48%;margin-right: 10px;margin-bottom: 20px;}
+.ProductBox .PBox:nth-child(even){margin-right: 0;}
+.ProductBox .PBox image{height: 120px;width: 100%;}
+.ProductBox .PBox .PB_Title{font-size: 14px;color: #575558;margin-top: 5px;width: 100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.ProductBox .PBox .PB_price{font-size: 14px;color: #575558;margin-top: 5px;}
+.SeeMore{border: 1px solid #7bc623;border-radius: 50px;font-size: 16px;text-align: center;width: 150px;height: 40px;line-height: 40px;margin: 0 auto;color: #7bc623;margin-top: 15px;}
+
+.Company{margin: 0 20px;background: #e9f2f9;padding: 20px;}
+.Company .ComTitle1{margin-top: 20px;font-size: 22px;color: #aab5e2;letter-spacing:3px;font-weight: bold}
+.Company .ComTitle2{margin-top: 0px;font-size: 14px;color: #aab5e2;letter-spacing:3px;font-weight: bold}
+.Company .ComTitle3{font-size: 18px;color: #4f55ad;margin-top: 10px;margin-bottom: 20px;font-weight: bold}
+.CompanyTxT{margin: 15px 20px 0;font-size: 16px;color: #888888;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;margin-bottom: 40px;}
+
+.NewsBox{padding: 20px;border-bottom: 1px solid #ececec;}
+.NewsBox:nth-child(3){border-bottom: none;}
+.NewsBox .NewsImg{float: left;width: 40%;height: 100px;margin-right: 15px;overflow: hidden}
+.NewsBox .NewsImg image{width:100%;height: 100px;}
+.NewsCon{width: 55%;float: left;}
+.NewsBox .NewsTitle{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;margin-top: 20px;font-size: 14px;}
+.NewsBox .NewsTime{font-size: 12px;color: #d3d3d3;margin-top: 10px}
+
+
+.MapTitle{margin-top: 5px;margin-bottom: 5px;}
+.LocationTips{margin-top: 10px;}
+.LocationTips .LT_left{float: left;color: #969495;font-size: 14px;}
+.LocationTips .LT_right{float: right;text-align: right;font-size: 18px;width: 70%;}
+
+.MessageBoard{margin-bottom: 100px;}
+.FormList input{width: 88%;display: block;margin: 0 auto;border: 1px solid #e6e6e6;border-radius: 5px;height: 35px;line-height: 35px;font-size: 16px;padding-left: 10px;margin-bottom: 10px;}
+.FormList textarea{width: 85%;margin: 0 auto;border: 1px solid #e6e6e6;font-size: 16px;padding: 10px;border-radius: 5px;margin-bottom: 10px;}
+.FormList button{width: 90%;height: 40px;background: #7bc623;color: #fff;line-height: 40px;text-align:center;margin-top: 20px;}
+
+.footer{position: fixed;bottom: 0;left: 0;right: 0;height: 60px;background: #fff;text-align: center;overflow: hidden;border-top: 1px solid #b2b2b2;z-index: 999999999}
+.footer .FootTab{float: left;width: 50%;}
+.footer .FootTab image{width: 29px;height: 29px;margin-top: 8px;}
+.footer .FootTab:nth-child(1) image{width: 35px;height: 35px;margin-top: 4px;}
+.footer  .FT_txt{font-size: 14px;position: relative;top: -8px;}
+.footer .FootTab:nth-child(2) .FT_txt{top: -5px;}
+.footer .FootTab.choice{color: #7bc623}
+
+
+/* 侧滑效果 */
+.back{position: fixed;left: 0;right: 0;top: 0;bottom: 0;background: #fafafa;z-index: -1}
+.Menu{display: none;z-index:1;height:100%;width:100%;margin-left:-190px;opacity:0;position:relative;-webkit-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);-moz-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);-ms-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);-o-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);} 
+.MenuLink{width:320px;padding-top:15px;text-align:left;font-size:16px;text-indent: 150px;height: 40px;height: 40px;border-bottom: 1px solid #ececec;}
+.MenuLink image{width: 20px;height: 20px;position: relative;top: 3px;}
+.MenuLink.home{margin-top: 50px;}
+ .screen{position: relative;left:0;background:#fff;-webkit-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);-moz-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);-ms-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);-o-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);} 
+
+.disk.animate{width: 100%;height: 100%;background: rgba(0, 0, 0, 0.23921568627450981);position: absolute;left:0px;top: 0;bottom: 0;z-index: 9999999999}
+.Menu.animate{display: block;margin-left:-110px;opacity:1;-webkit-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);-moz-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);-ms-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);-o-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);}
+.screen.animate{width:100%;height:100%;overflow:auto;position:fixed;top:0px;left:0px;z-index:2;left:200px;-webkit-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);-moz-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);-ms-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);-o-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);overflow:hidden;}
+.footer.animate{left:200px;-webkit-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);-moz-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);-ms-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);-o-transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);transition:all 500ms cubic-bezier(0.000,0.995,0.990,1.000);}

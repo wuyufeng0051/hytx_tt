@@ -1,0 +1,55 @@
+<!--pages/case/case.wxml-->
+
+<view class='window'>
+
+  <view class='back'></view>
+
+  <!-- 左侧展开栏 -->
+  <view class='Menu {{animate}}'>
+    <navigator class='MenuLink home' url="../index/index" open-type="redirect" hover-class="other-navigator-hover"><image src='../../images/icon/index.png'></image> 首页</navigator>
+    <navigator class='MenuLink' url="../about/about" open-type="redirect" hover-class="other-navigator-hover">关于我们</navigator>
+    <navigator class='MenuLink' url="../news/news" open-type="redirect" hover-class="other-navigator-hover">新闻中心</navigator>
+    <navigator class='MenuLink' url="../service/service" open-type="redirect" hover-class="other-navigator-hover">服务项目</navigator>
+    <navigator class='MenuLink' url="../case/case" open-type="redirect" hover-class="other-navigator-hover">案例展示</navigator>
+    <navigator class='MenuLink' url="../contact/contact" open-type="redirect" hover-class="other-navigator-hover">联系我们</navigator>
+  </view>
+
+  <!-- 中间主体部分 -->
+  <view class='screen {{animate}}'>
+    <view class='disk {{animate}}' bindtap="Disk_Tap"></view>
+    <!-- 头部 -->
+    <view class='Head'>
+      <view class='TypeLink_icon'>
+        <image  src='../../images/type.png' bindtap="TypeLink_Tap"></image>
+      </view>
+      <image class='logo' src="../../images/header_logo.png"></image>
+    </view> 
+
+   <scroll-view scroll-y="true" class="list {{animate}}" bindscrolltolower="lower">
+    <view class='TopBanner'><image src='../../images/banner02.jpg'></image></view>
+    <view class="navfixbox">
+      <scroll-view class="scrollview" scroll-x="true" scroll-left="{{scrollLeft}}">
+        <view class="tab-item {{currentTab == index?'active':''}}" bindtap="swichNav" data-typeid='{{item.id}}' data-current='{{index}}' wx:for="{{NavList}}">
+          {{item.name}}
+          <view class='line'>
+            <view class='line-bg'></view>
+          </view>  
+        </view>
+      </scroll-view>
+    </view>
+    <view class='ProductBox'>
+
+        <view class='PBox' wx:for="{{ServiceList}}"  data-id='{{item.id}}'>
+          <image src='{{item.https_img}}'></image>
+          <view class='PB_Title'>{{item.name}}</view>
+          <view class='PB_price'>{{item.price}}</view>
+        </view>
+
+    </view>
+    <view class='load{{load_show}}'>加载中...</view>
+    <view class='end{{show}}'>已经到底了</view>
+
+    </scroll-view>
+
+  </view> 
+</view>

@@ -1,0 +1,50 @@
+<!--pages/contact/contact.wxml-->
+
+<view class='window'>
+
+  <view class='back'></view>
+
+  <!-- 左侧展开栏 -->
+  <view class='Menu {{animate}}'>
+    <navigator class='MenuLink home' url="../index/index" open-type="redirect" hover-class="other-navigator-hover"><image src='../../images/icon/index.png'></image> 首页</navigator>
+    <navigator class='MenuLink' url="../about/about" open-type="redirect" hover-class="other-navigator-hover">关于我们</navigator>
+    <navigator class='MenuLink' url="../news/news" open-type="redirect" hover-class="other-navigator-hover">新闻中心</navigator>
+    <navigator class='MenuLink' url="../service/service" open-type="redirect" hover-class="other-navigator-hover">服务项目</navigator>
+    <navigator class='MenuLink' url="../case/case" open-type="redirect" hover-class="other-navigator-hover">案例展示</navigator>
+    <navigator class='MenuLink' url="../contact/contact" open-type="redirect" hover-class="other-navigator-hover">联系我们</navigator>
+  </view>
+
+  <!-- 中间主体部分 -->
+  <view class='screen {{animate}}'>
+    <view class='disk {{animate}}' bindtap="Disk_Tap"></view>
+    <!-- 头部 -->
+    <view class='Head'>
+      <view class='TypeLink_icon'>
+        <image  src='../../images/type.png' bindtap="TypeLink_Tap"></image>
+      </view>
+      <image class='logo' src="../../images/header_logo.png"></image>
+    </view>
+
+    <view class='TopBanner'><image src='../../images/banner02.jpg'></image></view>
+
+      <view class='MapBox'>
+
+        <map id="map" longitude="126.6858500000" latitude="45.7440900000" scale="18" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange"  style="width: 100%; height: 200px;"></map>
+
+        <view class='LocationDetail'>
+          <view class='LocationTips'>
+            <view class='LT_left'>地址</view>
+            <view class='LT_right'>{{place}}</view>
+          </view>
+          <view class='LocationTips'>
+            <view class='LT_left'>电话</view>
+            <view class='LT_right' bindtap="Tel">{{tel}}</view>
+          </view>
+        </view>
+
+      </view>
+      
+
+
+  </view>
+</view>

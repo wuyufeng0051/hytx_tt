@@ -1,0 +1,38 @@
+<!--pages/infomation/infomation.wxml-->
+
+<view class='info'>
+  <view class='photo'>
+    <image src='{{avatarUrl}}'></image>
+  </view>
+  <view class='name'>{{nickName}}</view>
+</view>
+
+<form bindsubmit="formSubmit" class='FormList'>
+  <view class='PublicTitle'>姓名</view>
+  <view class='PublicInput'><input name="name" value="{{nickName}}" /></view>
+  <view class='PublicTitle'>性别</view>
+  <view class='choice'>
+      <radio-group bindchange="radioChange" >
+        <label>
+            <radio name="sex" value="1" wx:if="{{gender == 1 }}" checked="true"></radio>
+            <radio name="sex" value="1" wx:else></radio>
+            <view>男</view>
+        </label>   
+        <label>
+            <radio name="sex" value="2" wx:if="{{gender == 2 }}" checked="true"></radio>
+            <radio name="sex" value="2" wx:else></radio>
+            <view>女</view>
+        </label>   
+    </radio-group>
+  </view>
+  <view class='PublicTitle'>手机号</view>
+  <view class='PublicInput'><input name="tel" value='{{telephone}}' placeholder='请正确填写手机号' /></view>
+  <view class='PublicTitle'>地址</view>
+  <view class='PublicInput'><input name="place" value='{{address}}' maxlength="18" placeholder='18个字以内' /></view>
+  <view class='PublicTitle'>详细介绍下自己</view>
+  <view class='PublicInput'><input name="info" value='{{description}}' maxlength="100" placeholder='100个字以内' /></view>
+  <view class="submit">
+    <button form-type="submit">提交</button>
+  </view>
+</form>
+

@@ -1,0 +1,171 @@
+<!--index.wxml-->
+
+
+<view class='window'>
+
+  <view class='back'></view>
+
+  <!-- 左侧展开栏 -->
+  <view class='Menu {{animate}}'>
+    <navigator class='MenuLink home' url="../index/index" open-type="redirect" hover-class="other-navigator-hover"><image src='../../images/icon/index.png'></image> 首页</navigator>
+    <navigator class='MenuLink' url="../about/about" open-type="redirect" hover-class="other-navigator-hover">关于我们</navigator>
+    <navigator class='MenuLink' url="../news/news" open-type="redirect" hover-class="other-navigator-hover">新闻中心</navigator>
+    <navigator class='MenuLink' url="../service/service" open-type="redirect" hover-class="other-navigator-hover">服务项目</navigator>
+    <navigator class='MenuLink' url="../case/case" open-type="redirect" hover-class="other-navigator-hover">案例展示</navigator>
+    <navigator class='MenuLink' url="../contact/contact" open-type="redirect" hover-class="other-navigator-hover">联系我们</navigator>
+  </view>
+
+  <!-- 中间主体部分 -->
+  <view class='screen {{animate}}'>
+    <view class='disk {{animate}}' bindtap="Disk_Tap"></view>
+    <!-- 头部 -->
+    <view class='Head'>
+      <view class='TypeLink_icon'>
+        <image  src='../../images/type.png' bindtap="TypeLink_Tap"></image>
+      </view>
+      <image class='logo' src="../../images/header_logo.png"></image>
+    </view>
+
+    <!-- 幻灯片 -->
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:400rpx;' indicator-active-color='rgb(123,198,35)'>
+      <block wx:for="{{imgUrls}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="100%"/>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <!-- 导航栏 -->
+    <view class='NavBox fn-clear'>
+      <view class='NavBtn'><navigator url="../about/about" open-type="redirect" hover-class="other-navigator-hover"><image src='../../images/icon/icon1.png'></image><view class='TypeName'>关于我们</view></navigator></view>
+      <view class='NavBtn'><navigator url="../news/news" open-type="redirect" hover-class="other-navigator-hover"><image src='../../images/icon/icon2.png'></image><view class='TypeName'>新闻中心</view></navigator></view>
+      <view class='NavBtn'><navigator url="../service/service" open-type="redirect" hover-class="other-navigator-hover"><image src='../../images/icon/icon3.png'></image><view class='TypeName'>服务项目</view></navigator></view>
+      <view class='NavBtn'><navigator url="../case/case" open-type="redirect" hover-class="other-navigator-hover"><image src='../../images/icon/icon4.png'></image><view class='TypeName'>案例展示</view></navigator></view>
+      <view class='NavBtn'><navigator url="../contact/contact" open-type="redirect" hover-class="other-navigator-hover"><image src='../../images/icon/icon5.png'></image><view class='TypeName'>联系我们</view></navigator></view>
+    </view>
+
+    <!-- 服务项目 -->
+    <view class='Product' >
+      <view class='PublicTitle'>
+        <view class='T1'>服务项目</view>
+        <view class='T2'>PRODUCT</view>
+      </view>
+      <view class='ProductBox' >
+        <view class='PBox' wx:for="{{Product}}" bindtap="ProductClick" data-id='{{item.id}}'>
+          <image src='{{item.https_icon}}'></image>
+          <view class='PB_Title'>{{item.name}}</view>
+          <view class='PB_price'>{{item.price}}</view>
+        </view>
+      </view>
+      <navigator class='SeeMore' url="../service/service" hover-class="navigator-hover">查看所有产品</navigator>
+    </view>
+
+
+    <!-- 案例展示 -->
+    <view class='Product Case'>
+      <view class='PublicTitle'>
+        <view class='T1'>案例展示</view>
+        <view class='T2'>Case Show</view>
+      </view>
+      <view class='ProductBox'>
+        <view class='PBox' wx:for="{{Case}}">
+          <image src='{{item.https_img}}'></image>
+          <view class='PB_Title'>{{item.name}}</view>
+        </view>
+      </view>
+      <navigator class='SeeMore' url="../case/case" hover-class="navigator-hover">所有案例展示</navigator>
+    </view>
+
+
+    <!-- 关于我们 -->
+    <view class='Product About'>
+      <view class='PublicTitle'>
+        <view class='T1'>关于我们</view>
+        <view class='T2'>About Us</view>
+      </view>
+      <view class='Company'>
+        <view class='ComTitle1'>INTRODUCTION TO</view>
+        <view class='ComTitle2'>WANJING SHANWU MISHU</view>
+        <view class='ComTitle3'>婉菁商务秘书公司简介</view>
+      </view>
+      <view class='CompanyTxT'>
+        黑龙江婉菁商务秘书服务有限公司是经哈尔滨市政府备案批准的一家集群托管企业，是黑龙江省首家商务秘书公司。公司顺应当前互联网+的时代潮流，构筑众创空间，扶持初创企业，竭诚为广大客户及创业、企事业单位提供低成本，高附加值的创业平台，权威的“一站式管家服务”。
+      </view>
+      <navigator class='SeeMore' url="../about/about" hover-class="navigator-hover">详细了解我们</navigator>
+    </view>
+
+    <!-- 新闻中心 -->
+    <view class='Product News'>
+      <view class='PublicTitle'>
+        <view class='T1'>新闻中心</view>
+        <view class='T2'>News Center</view>
+      </view>
+      <view class='NewsBox fn-clear' wx:for="{{article}}" bindtap="NewsClick" data-id='{{item.id}}'>
+        <view class='NewsImg'>
+          <image src='../../images/banner01.jpg' wx:if="{{item.https_icon == null }}"></image>
+          <image src='{{item.https_icon}}' wx:else></image>
+        </view>
+        <view class='NewsCon'>
+          <view class='NewsTitle'>{{item.title}}</view>
+          <view class='NewsTime'>{{item.created_at}}</view>
+        </view>
+      </view>
+      <navigator class='SeeMore' url="../news/news" hover-class="navigator-hover">进入新闻中心</navigator>
+    </view>
+
+
+    <!-- 联系我们 -->
+    <view class='Product Contact'>
+      <view class='PublicTitle'>
+        <view class='T1'>联系我们</view>
+        <view class='T2'>CONTACT US</view>
+      </view>
+
+      <map id="map" longitude="126.6858500000" latitude="45.7440900000" scale="18" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange"  style="width: 100%; height: 200px;"></map>
+
+      <view class='MapTitle'>黑龙江婉菁商务秘书服务有限公司</view>
+      <view class='LocationDetail'>
+        <view class='LocationTips'>
+          <view class='LT_left'>地址</view>
+          <view class='LT_right'>{{place}}</view>
+        </view>
+        <view class='LocationTips'>
+          <view class='LT_left'>电话</view>
+          <view class='LT_right' bindtap="Tel">{{tel}}</view>
+        </view>
+      </view>
+    </view>
+
+
+    <!-- 留言板 -->
+    <view class='Product MessageBoard'>
+      <view class='PublicTitle'>
+        <view class='T1'>留言板</view>
+        <view class='T2'>Message Board</view>
+      </view>
+      <form bindsubmit="formSubmit" class='FormList'>
+        <input placeholder="请输入电话" name="tel" value='{{form_info}}'  confirm-type="next"/>
+        <input placeholder="请输入邮箱" name="email" value='{{form_info}}'  confirm-type="next"/>
+        <textarea placeholder="请输入您的建议" value='{{form_info}}' name="message"/>
+        <button form-type="submit">提交</button>
+      </form>
+    </view>
+
+
+    <!-- 底部固定栏 -->
+    <view class='footer {{animate}} fn-clear'>
+      <view class='FootTab choice'>
+        <navigator  url="../index/index" open-type="redirect" hover-class="navigator-hover">
+          <image src='../../images/icon/icon6.png'></image><view class='FT_txt'>公司</view>
+        </navigator>
+      </view>
+      <view class='FootTab'>
+        <navigator  url="../my/my" open-type="redirect" hover-class="navigator-hover">
+          <image src='../../images/icon/icon9.png'></image><view class='FT_txt'>我的</view>
+        </navigator>
+      </view>
+    </view>
+
+  </view>
+</view>
+

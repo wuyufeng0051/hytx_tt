@@ -1,0 +1,50 @@
+<!--pages/my/my.wxml-->
+
+
+<view class='window'>
+
+  <view class='back'></view>
+
+
+  <!-- 中间主体部分 -->
+  <view class='screen {{animate}}'>
+    <view class='InfoBox'><navigator  url="../infomation/infomation" class=' fn-clear' hover-class="navigator-hover">
+      <view class='IconPhoto'>
+        <image src='{{pic}}'></image>
+      </view>
+      <view class='name'>{{name}}</view>
+      <view class='arrow'><image src='../../images/arrow.png'></image></view>
+    </navigator></view>
+
+    <view class='Same fn-clear' bindtap='SameTap'>
+      <view class='turnicon'>
+        <image src='../../images/turn.png'></image>
+      </view>
+      <view class='name'>同步微信信息</view>
+    </view>
+
+    <view class='cntact'>
+      <navigator  url="../contact/contact" hover-class="navigator-hover">
+        <view class='arrow1'><image src='../../images/arrow.png'></image></view>
+        <view class='name'>联系我们</view>
+      </navigator>
+    </view>
+
+    <!-- 底部固定栏 -->
+    <view class='footer {{animate}} fn-clear'>
+      <view class='FootTab '>
+        <navigator  url="../index/index" open-type="redirect" hover-class="navigator-hover">
+          <image src='../../images/icon/icon7.png'></image><view class='FT_txt'>公司</view>
+        </navigator>
+      </view>
+      <view class='FootTab choice'>
+        <navigator  url="../my/my" open-type="redirect" hover-class="navigator-hover">
+          <image src='../../images/icon/icon8.png'></image><view class='FT_txt'>我的</view>
+        </navigator>
+      </view>
+    </view>
+
+  </view>
+</view>
+
+

@@ -1,0 +1,43 @@
+<!--pages/about/about.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+
+<view class='window'>
+
+  <view class='back'></view>
+
+  <!-- 左侧展开栏 -->
+  <view class='Menu {{animate}}'>
+    <navigator class='MenuLink home' url="../index/index" open-type="redirect" hover-class="other-navigator-hover"><image src='../../images/icon/index.png'></image> 首页</navigator>
+    <navigator class='MenuLink' url="../about/about" open-type="redirect" hover-class="other-navigator-hover">关于我们</navigator>
+    <navigator class='MenuLink' url="../news/news" open-type="redirect" hover-class="other-navigator-hover">新闻中心</navigator>
+    <navigator class='MenuLink' url="../service/service" open-type="redirect" hover-class="other-navigator-hover">服务项目</navigator>
+    <navigator class='MenuLink' url="../case/case" open-type="redirect" hover-class="other-navigator-hover">案例展示</navigator>
+    <navigator class='MenuLink' url="../contact/contact" open-type="redirect" hover-class="other-navigator-hover">联系我们</navigator>
+  </view>
+
+  <!-- 中间主体部分 -->
+  <view class='screen {{animate}}'>
+    <view class='disk {{animate}}' bindtap="Disk_Tap"></view>
+    <!-- 头部 -->
+    <view class='Head'>
+      <view class='TypeLink_icon'>
+        <image  src='../../images/type.png' bindtap="TypeLink_Tap"></image>
+      </view>
+      <image class='logo' src="../../images/header_logo.png"></image>
+    </view>
+
+    <view class='TopBanner'><image src='../../images/banner02.jpg'></image></view>
+
+    <view class='Company'>
+      <view class='ComTitle1'>INTRODUCTION TO</view>
+      <view class='ComTitle2'>WANJING SHANWU MISHU</view>
+      <view class='ComTitle3'>婉菁商务秘书公司简介</view>
+    </view>
+
+    <view class='TxT'>
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    </view>
+    
+  </view>
+</view>
+
