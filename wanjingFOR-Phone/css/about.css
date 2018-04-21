@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors zhangzhixin
+ * @date    2018-04-11 11:44:44
+ */
+
+
+
+.navbar{
+	display: none;
+}
+.footer{
+	display: none;
+}
+
+
+
+.find_nav {
+    width: 100%;
+    height: 55px;
+    background-color: #f9f9f9;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    border-bottom: 1px solid #ddd;
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+}
+.find_nav_left {
+    height: 55px;
+    position: relative;
+    overflow: hidden;
+    -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+}
+.find_nav_list {
+    position: absolute;
+    left: 0;
+}
+.find_nav_list ul {
+    position: relative;
+    white-space: nowrap;
+    font-size: 0;
+}
+.find_nav_list ul li {
+    display: inline-block;
+    padding: 0;
+    margin:0 20px;
+}
+.find_nav_list ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 55px;
+    font-size: 16px;
+    text-align: center;
+    color: #666;
+}
+.find_nav_cur a {
+    color: #7bc623 !important;
+}
+.find_nav_list a.active{ color:#C00}
+.sideline {
+    display: block;
+    position: absolute;
+    border: 0;
+    height: 2px;
+    background-color: #7bc623;
+    left: 0;
+    top: 53px;
+    pointer-events: none;
+}
+
+.li_list{overflow-y:auto; display:table;}/*将每个li封闭成一个盒子，就可以独立每个li内的内容*/
+.li_list span{ display:block; height:300px; overflow:hidden; background:rgba(255,255,255,.2); color:#fff; margin:0 0 20px; font-size:55px; line-height:300px; text-align:center}
+.swipe{ padding:55px 0 0 0;}
+
+
+.li_list em{text-indent: .35rem;font-size: .28rem;display: block;padding: 0 .25rem;}
+.ConTitle{font-size: .36rem;text-align: center;position: relative;padding-top: .3rem;}
+.ChoiceTab{font-size: .24rem;color: #7bc623;text-align: right;padding: 0 .25rem;margin-bottom: .25rem;margin-top: .1rem}
